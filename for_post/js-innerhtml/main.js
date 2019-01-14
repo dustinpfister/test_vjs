@@ -1,12 +1,11 @@
+var el = document.getElementById('out'),
+arr = [1,2,3,4];
+html = '<ul>';
 
-var onfocus = function (e) {
+arr.forEach(function(n){
 
-    console.log(e);
-
-};
-
-document.getElementById('foo').addEventListener('focus', function () {
-
-    console.log('foo');
+html += '<li>'+n+'</li>'
 
 });
+
+el.innerHTML = html += '<\/ul>';

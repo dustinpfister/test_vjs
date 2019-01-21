@@ -1,1 +1,1 @@
-console.log('foo');
+document.getElementById('out').innerText = 'external';

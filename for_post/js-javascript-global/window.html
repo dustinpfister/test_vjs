@@ -1,10 +1,17 @@
 <html>
     <head>
-        <title>javascript global</title>
+        <title>javascript globals with window</title>
     </head>
     <body>
+        <div></div>
         <script>
- 
+let foo = function(){
+
+window.bar = 'foobar';
+
+};
+foo();
+document.getElementsByTagName('div')[0].innerText = bar;
         </script>
     </body>
 </html>

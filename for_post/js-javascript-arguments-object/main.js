@@ -1,4 +1,4 @@
-var func1 = function (a, b) {
+let func1 = function (a, b) {
  
     if (arguments.length == 2) {
         return a + b;

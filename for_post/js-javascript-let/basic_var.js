@@ -1,7 +1,6 @@
-let n = 40;
+var n = 40;
 if (n > 42) {
-    let a = 5;
- 
+    var a = 5;
 }
  
 try {

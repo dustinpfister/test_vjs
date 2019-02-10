@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>javascript iframe basic example</title>
+    </head>
+    <body>
+        <iframe id="theframe" width="320" height="240"></iframe>
+        <script>
+let iFrame = document.querySelector('#theframe'),
+w = iFrame.contentWindow;
+div = document.createElement('div');
+ 
+div.innerHTML ='Hello World';
+w.document.body.appendChild(div);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>javascript iframe</title>
+    </head>
+    <body>
+        <iframe id="theframe" width="320" height="240"></iframe>
+        <script>
+let iFrame = document.querySelector('#theframe'),
+w = iFrame.contentWindow;
+
+iFrame.setAttribute('src', './basic.html');
+        </script>
+    </body>
+</html>

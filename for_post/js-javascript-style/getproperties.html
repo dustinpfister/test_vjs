@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>javaScript style get properties</title>
+    </head>
+    <body>
+        <h1 style="background-color:red;color:white;z-index:1;font-family:arial;">Header</h1>
+        <script>
+var el = document.getElementsByTagName('h1')[0];
+ 
+[].forEach.call(el.style, function(prop){
+console.log(prop, el.style[prop]); // background-color red color white...
+});
+        </script>
+    </body>
+</html>

@@ -22,7 +22,6 @@ let findGuy = (grid) => {
         return {
             guy: cell,
             c: c
-
         };
     }
     return {
@@ -37,3 +36,9 @@ console.log(findGuy({
         w: 3,
         cells: [0, 0, 0, 0, 0, 0, 0, 0, 0]
     })); // {guy: false, c:9}
+
+console.log(findGuy({
+        h: 3,
+        w: 3,
+        cells: [0, 0, {guy:true,hp:10}, 0, 0, 0, 0, 0, 0]
+    })); // { guy: { guy: true, hp: 10 }, c: 2 }

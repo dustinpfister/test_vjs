@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>parent element example</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <div id="gamearea"></div>
+        </div>
+        <script>
+var ga = document.querySelector('#gamearea'),
+container = ga.parentElement;
+console.log(container.className); // wrap
+        </script>
+    </body>
+</html>

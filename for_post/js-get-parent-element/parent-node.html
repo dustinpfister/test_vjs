@@ -3,12 +3,10 @@
         <title>parent node example</title>
     </head>
     <body>
-        <div class="foo">
-            <div id="container"></div>
-        </div>
         <script>
-var el = document.getElementById('container');
-console.log(el.parentNode.className); // foo
+var el = document.getElementsByTagName('html')[0];
+console.log(el.parentElement); // null
+console.log(el.parentNode); // #document
         </script>
     </body>
 </html>

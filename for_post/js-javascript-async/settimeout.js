@@ -1,3 +1,7 @@
+// set-timeout brings a kind of pseudo-parallelism
+// however it is a kind of async feature in the sense
+// that it is a way to set a function to happen at a different time in the future
+
 // doing something
 console.log('tick1');
 

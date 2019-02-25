@@ -1,11 +1,7 @@
-var n = 42;
+var str = 'foo';
 
 // with brackets
-if (n === 42) {
-    console.log('the answer');
+if (str === 'foo') {
+    console.log('bar');
 }
-
-// without
-if (n >= 40)
-    console.log('the answer');
-
+// > 'bar'

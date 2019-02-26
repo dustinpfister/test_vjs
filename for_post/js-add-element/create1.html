@@ -1,16 +1,12 @@
 <html>
     <head>
-        <title>javascript alert</title>
+        <title>javascript create element</title>
     </head>
     <body>
         <script>
- 
-// alert can be used as a way to log
-// something to make sure it is working
-// as exspected
-var n = 40 + 2;
-alert(n >= 40); // true
- 
+var el = document.createElement('p');
+el.appendChild(document.createTextNode('hello world'));
+document.body.appendChild(el);
         </script>
     </body>
 </html>

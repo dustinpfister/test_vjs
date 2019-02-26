@@ -12,7 +12,7 @@ if (n >= 40)
 // > 'the answer'
 
 if (n === '42') {
-    console.log('the answser is a string');
+    console.log('the answer is a string');
 } else {
     if (n === 42) {
         console.log('the answer is a number.')

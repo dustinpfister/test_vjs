@@ -9,3 +9,4 @@ Foo.prototype.foobar = function () {
 
 var foo = new Foo('foo','bar');
 console.log(foo.foobar()); // 'foo-bar'
+console.log(foo.hasOwnProperty('foobar')); // false

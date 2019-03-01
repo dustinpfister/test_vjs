@@ -1,3 +1,4 @@
+// ES5- function deceleration that returns a product
 function foo(a, b) {
     return a + b;
 };

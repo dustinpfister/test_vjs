@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>canvas arc</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="30" height="30"></canvas>
+        <script>
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// create arc
+ctx.beginPath();
+ctx.arc(15,15,10,0,Math.Pi*2);
+ 
+// set stroke and fill style
+ctx.strokeStyle = 'red';
+ctx.fillStyle='black';
+ 
+// fill, and stroke
+ctx.fill();
+ctx.stroke();
+        </script>
+    </body>
+</html>

@@ -23,7 +23,20 @@ var drawPoints = function (ctx, points,close) {
     ctx.stroke();
 
 };
-drawPoints(ctx,[15,15,15,5,25,5,25,20,5,30]);
+
+var createPolygonPoints = function(cx,cy,r,s){
+    var i = 0,points=[];
+    while(i < s){
+        a = Math.PI * 2 * (i/s);
+        x = Math.cos(a) * r + cx;
+        y = Math.sin(a) * r + cy;
+       points.push(x,y);
+     i += 1;
+   }
+    return points;
+}
+
+drawPoints(ctx,createPolygonPoints(15,15,5,4),true);
         </script>
     </body>
 </html>

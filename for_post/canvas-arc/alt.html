@@ -1,14 +1,14 @@
 <html>
     <head>
-        <title>canvas line</title>
+        <title>canvas arc</title>
     </head>
     <body>
-        <canvas id="the-canvas"></canvas>
+        <canvas id="the-canvas" width="30" height="30"></canvas>
         <script>
-var canvas = document.getElementById('the-canvas'),ctx;
-canvas.width = 30;
-canvas.height = 30;
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
+ 
 // draw a polygon for the given context
 var drawPoints = function (ctx, points,close) {
     var i = 2,
@@ -34,9 +34,11 @@ var createPolygonPoints = function(cx,cy,r,s){
      i += 1;
    }
     return points;
-};
+}
 
-drawPoints(ctx,createPolygonPoints(15,15,5,4),true);
+var pointCount = 50,
+radius = 10;
+drawPoints(ctx, createPolygonPoints(15,15,radius,pointCount), true);
         </script>
     </body>
 </html>

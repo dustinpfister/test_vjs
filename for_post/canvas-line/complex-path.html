@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>canvas line</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),ctx;
+canvas.width = 30;
+canvas.height = 30;
+ctx = canvas.getContext('2d');
+
+// draw a polygon for the given context
+var drawPoints = function (ctx, points) {
+    var i = 2,
+    len = points.length;
+    ctx.moveTo(points[0], points[1]);
+    while (i < len) {
+        ctx.lineTo(points[i], points[i + 1]);
+        i += 2;
+    }
+    ctx.stroke();
+};
+
+drawPoints(ctx,[15,15,15,5,25,5,25,20,5,30])
+        </script>
+    </body>
+</html>

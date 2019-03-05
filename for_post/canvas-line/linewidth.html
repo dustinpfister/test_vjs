@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>canvas line</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),ctx;
+canvas.width = 30;
+canvas.height = 30;
+ctx = canvas.getContext('2d');
+
+ctx.strokeStyle = '#ff0000';
+ctx.beginPath();
+// line width of 3
+ctx.lineWidth = 3;
+ctx.moveTo(0,0);
+ctx.lineTo(29,29);
+ctx.stroke();
+        </script>
+    </body>
+</html>

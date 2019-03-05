@@ -10,13 +10,27 @@ canvas.width = 30;
 canvas.height = 30;
 ctx = canvas.getContext('2d');
 
-ctx.strokeStyle = '#ff0000';
-ctx.beginPath();
+
 // line width of 3
+ctx.beginPath();
+ctx.strokeStyle = 'red';
 ctx.lineWidth = 3;
 ctx.moveTo(0,0);
 ctx.lineTo(29,29);
 ctx.stroke();
+
+// line width of 1 on top
+ctx.beginPath();
+ctx.strokeStyle = 'black';
+ctx.lineWidth = 1;
+ctx.moveTo(0,0);
+ctx.lineTo(29,29);
+ctx.stroke();
+
+// scale canvas
+canvas.style.width = '320px';
+canvas.style.height = '320px';
+
         </script>
     </body>
 </html>

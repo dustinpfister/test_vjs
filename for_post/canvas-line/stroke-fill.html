@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>canvas line</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),ctx;
+canvas.width = 30;
+canvas.height = 30;
+ctx = canvas.getContext('2d');
+
+ctx.beginPath();
+ctx.moveTo(10,20);
+ctx.lineTo(20,20);
+ctx.lineTo(15,10);
+ctx.closePath()
+
+ctx.lineWidth = 3;
+ctx.fillStyle = 'black';
+ctx.strokeStyle='red'
+ctx.stroke();
+ctx.fill();
+        </script>
+    </body>
+</html>

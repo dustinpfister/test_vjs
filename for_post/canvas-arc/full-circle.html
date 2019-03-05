@@ -12,13 +12,13 @@ ctx = canvas.getContext('2d');
 // create arc
 ctx.beginPath();
 
-// a full circle is from 0 to 6.28... radian
+// a full circle is from 0 to 6.28... radians
 var startRadian = 0,
 endRadian = Math.PI * 2,
 cx = 15,
 cy = 15,
 radius = 10;
-ctx.arc(cx,cy,radius,statRadian,endRadian);
+ctx.arc(cx,cy,radius,startRadian,endRadian);
  
 // set stroke and fill style
 ctx.strokeStyle = 'red';

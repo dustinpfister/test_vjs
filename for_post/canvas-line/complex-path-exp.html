@@ -10,7 +10,23 @@ var canvas = document.getElementById('the-canvas'),ctx;
 canvas.width = 30;
 canvas.height = 30;
 ctx = canvas.getContext('2d');
-drawPoints(ctx,[15,15,15,5,25,5,25,20,5,30]);
+
+var createExpCurvePoints = function (base, ptCount, width) {
+    var points = [],
+    i = 0,
+    x,
+    y;
+    while (i < ptCount) {
+        x = i * (width / ptCount);
+        y = Math.pow(base, i);
+        points.push(x, y);
+        i += 2;
+    }
+    return points;
+};
+
+drawPoints(ctx, createExpCurvePoints(1.4, 12, 30))
+
         </script>
     </body>
 </html>

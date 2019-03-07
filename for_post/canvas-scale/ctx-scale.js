@@ -5,11 +5,11 @@ ctx = canvas.getContext('2d');
 canvas.width = 64;
 canvas.height = 48;
 
-// Scales the canvas
+// Scales the canvas via in-line css
 canvas.style.width = '640px';
 canvas.style.height = '480px';
 
-
+// adds a scaling transformation
 ctx.scale(.5,.5);
 ctx.fillStyle = 'black';
 ctx.fillRect(5, 5, 16, 16);

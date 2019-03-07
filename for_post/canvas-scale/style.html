@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>canvas scale</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+// sets the actual native size of the canvas
+canvas.width = 320;
+canvas.height = 240;
+
+// Scales the canvas
+canvas.style.width = '640px';
+canvas.style.height = '480px';
+
+var rect = [60,20,200,200];
+ctx.strokeStyle = 'green';
+ctx.lineWidth = 7;
+ctx.strokeRect.apply(ctx, rect);
+
+ctx.strokeStyle='black';
+ctx.lineWidth = 1;
+ctx.strokeRect.apply(ctx, rect);
+
+        </script>
+    </body>
+</html>

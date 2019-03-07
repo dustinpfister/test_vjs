@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>canvas scale</title>
+        <!-- the values in css will set the scaled size of the canvas-->
+        <style>
+#the-canvas{
+width: 640px;
+height:480px;
+}
+        </style>
+    </head>
+    <body>
+        <!-- The values here will set the native size of the canvas-->
+        <canvas id="the-canvas" width="32" height="24"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.strokeStyle = 'green';
+ctx.lineWidth = 5;
+ctx.strokeRect(11, 7, 10, 10);
+        </script>
+    </body>
+</html>

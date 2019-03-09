@@ -7,12 +7,15 @@
         <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
+ 
+// create an instance of image
 var img = new Image();
+// what to do when the image is loaded
 img.addEventListener('load', function(){
     // draw an image
     ctx.drawImage(img,32,32);
 });
+// when src is set the download will begin
 img.src='./pic.png';
         </script>
     </body>

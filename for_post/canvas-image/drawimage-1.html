@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>canvas image</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="128" height="128"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+var img = new Image();
+img.addEventListener('load', function(){
+    // draw an image
+    ctx.drawImage(img,32,32);
+});
+img.src='./pic.png';
+        </script>
+    </body>
+</html>

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>canvas image</title>
+        <title>canvas image scale</title>
     </head>
     <body>
         <canvas id="the-canvas" width="128" height="128"></canvas>
@@ -13,9 +13,12 @@ var img = new Image();
 // what to do when the image is loaded
 img.addEventListener('load', function(){
     // draw an image
-    var dx =32,
-    dy = 8;
-    ctx.drawImage(img,dx,dy);
+
+    // destination x and y
+    var dx = 0,dy = 0,
+    // destination width and height
+    dw = 64,dh = 64;
+    ctx.drawImage(img,dx,dy,dw,dh);
 });
 // when src is set the download will begin
 img.src='./pic.png';

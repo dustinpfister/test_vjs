@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>canvas image scale</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="128" height="128"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// create an instance of image
+var img = new Image();
+// what to do when the image is loaded
+img.addEventListener('load', function(){
+
+    // image source x and y
+    var sx = 32, sy =0,
+
+    // image source width and height
+    sw = 32, sh = 32,
+
+    // destination x and y
+    dx = 0,dy = 0,
+    // destination width and height
+    dw = 64,dh = 64;
+
+    // draw the image
+    ctx.drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh);
+});
+// when src is set the download will begin
+img.src='./pic-sheet.png';
+        </script>
+    </body>
+</html>

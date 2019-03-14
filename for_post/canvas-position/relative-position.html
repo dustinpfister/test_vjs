@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>canvas position relative</title>
+    </head>
+    <body>
+        <div style="position:relative;top:100px;">
+        <canvas id="the-canvas" width="320" height="240" style="position:relative; left:50px;"></canvas>
+        </div>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>canvas position resize</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+// get canvas, set native size
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+
+// position canvas method
+var positionCanvas = function(){
+    canvas.style.position = 'absolute';
+    canvas.style.top = window.innerHeight / 2 - canvas.height / 2 + 'px';
+    canvas.style.left = window.innerWidth / 2 - canvas.width / 2 + 'px';
+};
+
+// attach position canvas method to window resize event
+window.addEventListener('resize', positionCanvas);
+// call it for the first time
+positionCanvas();
+
+// draw
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+        </script>
+    </body>
+</html>

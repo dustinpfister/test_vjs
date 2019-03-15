@@ -14,16 +14,12 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
+// get mouse position
 var getPos = function(e){
-
     var bx = e.target.getBoundingClientRect(),
     x = e.clientX - bx.left,y = e.clientY - bx.top;
-
     console.log(x,y);
-
-
 }
-
 canvas.addEventListener('mousedown', getPos);
 
 // draw

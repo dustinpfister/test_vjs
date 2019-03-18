@@ -6,8 +6,6 @@ var ship = {
     x: 144,
     y: 104,
     a: 0,
-    //dx: 0,
-    //dy: 0
     pps: 64,
     lastTick: new Date()
 };
@@ -49,13 +47,8 @@ canvas.addEventListener('mousedown', function (e) {
     x = e.clientX - bx.left,
     y = e.clientY - bx.top;
 
-    if (x > canvas.width - 50) {
-        //ship.dx = 1;
-    }
-
-    if (x < 50) {
-        //ship.dx = -1;
-    }
+    // using Math.atan2 to set ship angle
+    ship.a = Math.atan2(y - canvas.width / 2, x - canvas.height / 2);
 
 });
 

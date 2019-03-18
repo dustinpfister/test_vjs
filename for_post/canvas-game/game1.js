@@ -5,8 +5,11 @@ ctx = canvas.getContext('2d');
 var ship = {
     x: 144,
     y: 104,
-    dx: 0,
-    dy: 0
+    a: 0,
+    //dx: 0,
+    //dy: 0
+    pps: 64,
+    lastTick: new Date()
 };
 
 var mod = function (x, m) {
@@ -15,8 +18,15 @@ var mod = function (x, m) {
 
 // an update loop for the state
 var update = function () {
-    ship.x += ship.dx;
-    ship.y += ship.dy;
+
+    var secs = (new Date() - ship.lastTick) / 1000;
+    ship.lastTick = new Date();
+
+    var dx = Math.cos(ship.a) * ship.pps * secs;
+    var dy = Math.sin(ship.a) * ship.pps * secs;
+
+    ship.x += dx;
+    ship.y += dy;
 
     ship.x = mod(ship.x, canvas.width - 32);
     ship.y = mod(ship.y, canvas.height - 32);
@@ -40,11 +50,11 @@ canvas.addEventListener('mousedown', function (e) {
     y = e.clientY - bx.top;
 
     if (x > canvas.width - 50) {
-        ship.dx = 1;
+        //ship.dx = 1;
     }
 
     if (x < 50) {
-        ship.dx = -1;
+        //ship.dx = -1;
     }
 
 });

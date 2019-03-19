@@ -59,6 +59,18 @@ canvas.addEventListener('mousemove', function (e) {
     x = e.clientX - bb.left,
     y = e.clientY - bb.top;
 
+    state.toPoint.x = x;
+    state.toPoint.y = y;
+
+});
+canvas.addEventListener('mousedown', function (e) {
+    var bb = e.target.getBoundingClientRect(),
+    x = e.clientX - bb.left,
+    y = e.clientY - bb.top;
+
+    state.fromPoint.x = x;
+    state.fromPoint.y = y;
+
 });
 
 // LOOP

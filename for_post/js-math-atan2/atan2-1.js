@@ -12,11 +12,19 @@ var state = {
     fromPoint: {
         x: canvas.width / 2,
         y: canvas.height / 2
+    },
+    a: 0,
+    findAngle: function () {
+        this.a = Math.atan2(this.toPoint.y - this.fromPoint.y, this.toPoint.x - this.fromPoint.x);
     }
 };
 
 // UPADTE
-var update = function () {};
+var update = function () {
+
+    state.findAngle();
+
+};
 
 // DRAW
 var drawPoint = function (point, style) {
@@ -34,6 +42,15 @@ var draw = function () {
 
     drawPoint(state.fromPoint, 'white');
     drawPoint(state.toPoint, 'red');
+
+    // draw line from state.fromPoint tp state.toPoint
+    ctx.strokeStyle = 'yellow';
+    ctx.beginPath();
+    ctx.moveTo(state.fromPoint.x, state.fromPoint.y);
+    ctx.lineTo(
+        state.fromPoint.x + Math.cos(state.a) * 50,
+        state.fromPoint.y + Math.sin(state.a) * 50)
+    ctx.stroke();
 };
 
 // INPUT

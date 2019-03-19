@@ -1,6 +1,9 @@
 var canvas = document.getElementById('gamearea'),
 ctx = canvas.getContext('2d');
 
+canvas.width = 320;
+canvas.height = 240;
+
 // a simple state
 var ship = {
     x: 144,

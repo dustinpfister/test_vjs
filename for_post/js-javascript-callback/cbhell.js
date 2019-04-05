@@ -1,7 +1,7 @@
 let fs = require('fs'),
-path = require('path');
+path = require('path'),
 
-let root = path.resolve('./');
+root = path.resolve('./');
 
 // read a root dir for files (using a callback)
 fs.readdir(root, function (e, files) {
@@ -20,6 +20,7 @@ fs.readdir(root, function (e, files) {
                     // read file (yet another callback)
                     fs.readFile(dir, function (err, data) {
 
+                        // finally log javaScript code
                         console.log(data.toString());
 
                     })

@@ -20,3 +20,7 @@ a['foo'] = 'bar'
 // count works as expected compared to actual key length
 console.log(count(a)); // 3
 console.log(Object.keys(a).length); // 3
+
+// using delete will get rid of an element for real
+delete a[71];
+console.log(count(a)); // 2

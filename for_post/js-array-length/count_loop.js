@@ -16,6 +16,11 @@ let a = new Array(100);
 a[49] = 'foo';
 a[70] = 'bar';
 
-
 console.log(a.length); // 100
 console.log(count(a)); // 2
+
+a[71] = undefined;
+
+// however declared yet undefined keys will not be counted
+console.log(count(a)); // 2
+console.log(Object.keys(a).length); // 3

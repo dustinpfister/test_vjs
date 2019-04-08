@@ -5,17 +5,16 @@ let fromObj = function (obj) {
     });
     return arr;
 };
-
+ 
 let obj = {
     0: 'bar',
     1: 42,
     3: false
 };
-
-
+ 
 console.log(fromObj(obj).length); // 3
-
-// deleting the source object
+ 
+// deleting a source object property
 delete obj[1];
-
+ 
 console.log(fromObj(obj).length); // 2

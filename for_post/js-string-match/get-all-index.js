@@ -38,4 +38,6 @@ let createIndexObjects = (str) => {
 
 };
 
-console.log(createIndexObjects(str));
+console.log(createIndexObjects(str).map((m) => {
+        return m.index;
+    })); // [16,32,80]

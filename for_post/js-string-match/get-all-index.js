@@ -1,6 +1,3 @@
-// a string with many instances of 'foo'
-let str = 'Okay so here is 20190410.js and 20190410.html, you might also want to check out 20180410.js';
-// 16 32 80
 let createIndexObjects = (str) => {
 
     let patt = /\d+(\.js|\.html)/,
@@ -37,6 +34,10 @@ let createIndexObjects = (str) => {
     return arr;
 
 };
+
+// a string with many instances of 'foo'
+let str = 'Okay so here is 20190410.js and 20190410.html, you might also want to check out 20180410.js';
+
 
 console.log(createIndexObjects(str).map((m) => {
         return m.index;

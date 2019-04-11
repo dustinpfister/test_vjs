@@ -10,10 +10,22 @@
 var el = document.querySelector('input.pow'),
 out = document.querySelector('#out');
 
-
-el.onchange = function(e){
+var func1 = function(e){
     out.innerHTML = Math.pow(2,e.target.value);
 };
+
+var func2 = function(e){
+console.log('change event for ');
+console.log(e.target);
+}
+
+// the onchange attribute can be used to set a single handler
+el.onchange = func1;
+
+// however add event listener can be used to set more
+// than one onchange event for the same element
+el.addEventListener('change', func1);
+el.addEventListener('change', func2);
  
  
         </script>

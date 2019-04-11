@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>on change</title>
+    </head>
+    <body>
+        <input class="pow" type="text" placeholder="4">
+        <p id="out"></p>
+        <script>
+ 
+var el = document.querySelector('input.pow'),
+out = document.querySelector('#out');
+
+
+el.onchange = function(e){
+
+    out.innerHTML = Math.pow(2,e.target.value);
+};
+ 
+ 
+        </script>
+    </body>
+</html>

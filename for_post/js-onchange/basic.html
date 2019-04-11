@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>on change</title>
+    </head>
+    <body>
+        <input class="pow" type="text" placeholder="4">
+        <p id="out"></p>
+        <script>
+ 
+        var inputPow = document.querySelector('input.pow'),
+        out = document.querySelector('#out');
+ 
+        // set to the giver power
+        var set = function(pow){
+            out.innerText = Math.pow(2,pow);
+        };
+ 
+        // set the new power when input changes
+        inputPow.addEventListener('change', function(e){
+           set(e.target.value);
+        });
+ 
+        // start out at placeholder
+        set(inputPow.placeholder);
+ 
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>canvas arc</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="300" height="300"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+ctx.strokeStyle = 'red';
+ctx.beginPath();
+ctx.arc(150,150,100,Math.PI,0,true);
+ctx.arc(150,150,50,0,Math.PI,false);
+ctx.closePath();
+ctx.stroke();
+
+        </script>
+    </body>
+</html>

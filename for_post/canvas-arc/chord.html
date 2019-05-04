@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>canvas arc</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// create Chord
+ctx.beginPath();
+ctx.arc(160, 120, 100, 0, Math.PI / 2);
+ctx.closePath();
+ctx.stroke();
+        </script>
+    </body>
+</html>

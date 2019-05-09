@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>canvas center position </title>
+    </head>
+    <body>
+           <canvas 
+            id="the-canvas" 
+             width="320" height="240" 
+             style="display:block;margin-left:auto;margin-right:auto;">
+           </canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+        </script>
+    </body>
+</html>

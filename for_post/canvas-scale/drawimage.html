@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>canvas scale drawimage</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+
+var scaledDraw = function(opt){
+   var fromCanvas = document.createElement('canvas'),
+   ctx = fromCanvas.getContext('2d');
+   fromCanvas.width = opt.w;
+   fromCanvas.height = opt.h;
+   opt.draw(ctx);
+   opt.toCanvas.getContext('2d').drawImage(fromCanvas,opt.sx,opt.sy,opt.sw,opt.sh,opt.dx,opt.dy,opt.dw,opt.dh);
+};
+
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+scaledDraw({
+  toCanvas: canvas,
+  draw: function(ctx){
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0,0,40,40);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(40,0,40,40);
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(0,40,40,40);
+  },
+  w: 80, h: 80,
+  sx:20,sy:20,sw:40,sh:40,
+  dx:20,dy:20,dw:280,dh:200
+});
+
+        </script>
+    </body>
+</html>

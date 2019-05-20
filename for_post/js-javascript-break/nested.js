@@ -1,4 +1,3 @@
-
 let findGuy = (grid) => {
     let x,
     y = 0,
@@ -17,15 +16,12 @@ let findGuy = (grid) => {
         }
         y += 1;
     }
-
     if (guy.type === 'guy') {
         guy.x = x;
         guy.y = y;
     }
-
     return guy;
 };
-
 console.log(findGuy({
         w: 3,
         h: 3,
@@ -34,13 +30,4 @@ console.log(findGuy({
             [0, {type: 'guy'}, 0],
             [0, 0, 0]]
     }));
-
-
-console.log(findGuy({
-        w: 3,
-        h: 3,
-        cells: [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0, 0]]
-    }));
+// { type: 'guy', x: 1, y: 1 }

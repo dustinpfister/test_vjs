@@ -37,3 +37,4 @@ console.log(findGuy({
                 }, 0],
             [0, 0, 0]]
     }));
+// { type: 'guy', x: 1, y: 1 }

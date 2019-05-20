@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>document location</title>
+    </head>
+    <body>
+        <script>
+if (location.protocol == 'file:') {
+    console.log('File should not be served via file prorotcol');
+} else {
+    console.log('we are good')
+}
+        </script>
+    </body>
+</html>

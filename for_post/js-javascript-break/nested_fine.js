@@ -3,8 +3,12 @@
 let flat = (grid) => {
     let gridC = JSON.parse(JSON.stringify(grid)),
     c = [];
-    gridC.cells.forEach((cells) => {
-        cells.forEach((cell) => {
+    gridC.cells.forEach((cells, y) => {
+        cells.forEach((cell, x) => {
+            if (typeof cell === 'object') {
+                cell.x = x;
+                cell.y = y;
+            }
             c.push(cell);
         });
     });
@@ -12,6 +16,7 @@ let flat = (grid) => {
     return gridC;
 };
 
+// find a guy
 let findGuy = (grid) => {
     return flat(grid).cells.find((cell) => {
         if (typeof cell === 'object') {

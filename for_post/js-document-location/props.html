@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>document location</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var el = document.getElementById('out'),
+html = '';
+
+for(var prop in document.location){
+   html += prop + '<br>';
+}
+//el.innerText = document.location;
+el.innerHTML = html;
+        </script>
+    </body>
+</html>

@@ -1,6 +1,6 @@
-let rad = Math.PI / 4,
+var rad = Math.PI / 4,
 // radians to degrees
-deg = rad * (180 / Math.PI);
+deg = 180 / Math.PI * rad;
 console.log(deg); // 45
 
 deg = 90;

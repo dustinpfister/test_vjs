@@ -3,16 +3,23 @@
         <title>canvas arc</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="30" height="30"></canvas>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
         <script>
 // get canvas can 2d context
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
  
-// create arc
+// create a canvas arc
+// begin by calling ctx.beginPath
 ctx.beginPath();
-ctx.arc(15,15,10,0,1);
- 
+var x = 150,
+y = 120,
+radius = 100,
+radianStart = 0,
+radianEnd = Math.PI / 2,
+clockwise = true;
+ctx.arc(x,y,radius,radianStart,radianEnd, clockwise);
+
 // set stroke and fill style
 ctx.strokeStyle = 'red';
 ctx.fillStyle='black';

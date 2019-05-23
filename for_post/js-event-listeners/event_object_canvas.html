@@ -18,7 +18,14 @@ var app = {
         this.circles.push({
             x: 0,
             y: 0,
-            radius: 25
+            radius: 25,
+            color: 'lime'
+        });
+        this.circles.push({
+            x: 0,
+            y: 0,
+            radius: 15,
+            color: 'red'
         });
         this.draw();
     },
@@ -28,7 +35,7 @@ var app = {
         ctx.fillStyle = 'grey';
         ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         this.circles.forEach(function (circle) {
-            ctx.strokeStyle = 'lime';
+            ctx.strokeStyle = circle.color;
             ctx.lineWidth = 3;
             ctx.beginPath()
             ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
@@ -36,6 +43,8 @@ var app = {
         });
     },
 
+    // Using the event object to get the canvas
+    // relative position
     getCanvasPos: function (e) {
         var bx = app.canvas.getBoundingClientRect();
         return {
@@ -43,9 +52,22 @@ var app = {
             y: e.clientY - bx.top
         }
     },
+	
+	setCircle: function(){
+		
+		
+	},
 
     clicked: function (e) {
         var circle = app.circles[0],
+        pos = app.getCanvasPos(e);
+        circle.x = pos.x;
+        circle.y = pos.y;
+        app.draw();
+    },
+
+    move: function (e) {
+        var circle = app.circles[1],
         pos = app.getCanvasPos(e);
         circle.x = pos.x;
         circle.y = pos.y;
@@ -57,6 +79,7 @@ app.init();
 
 // attach event listeners to the canvas
 app.canvas.addEventListener('click', app.clicked);
+app.canvas.addEventListener('mousemove', app.move);
 
         </script>
     </body>

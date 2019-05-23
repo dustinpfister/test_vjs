@@ -52,26 +52,23 @@ var app = {
             y: e.clientY - bx.top
         }
     },
-	
-	setCircle: function(){
-		
-		
-	},
 
-    clicked: function (e) {
-        var circle = app.circles[0],
+    // set circle position based on event object
+    // and given circle index
+    setCircle: function(e, index){
+        var circle = app.circles[index],
         pos = app.getCanvasPos(e);
         circle.x = pos.x;
         circle.y = pos.y;
         app.draw();
     },
 
+    clicked: function (e) {
+       app.setCircle(e,0);
+    },
+
     move: function (e) {
-        var circle = app.circles[1],
-        pos = app.getCanvasPos(e);
-        circle.x = pos.x;
-        circle.y = pos.y;
-        app.draw();
+        app.setCircle(e,1);
     }
 
 };

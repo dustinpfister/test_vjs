@@ -1,10 +1,10 @@
-
+// get a reference to the element
+var el = document.getElementById('foo');
 // a single focus event can be attached this way
-var onfocus = function (e) {
+el.onfocus = function (e) {
     console.log(e);
 };
-
 // attaching two or more will require the use of addEventListener
-document.getElementById('foo').addEventListener('focus', function () {
+el.addEventListener('focus', function () {
     console.log('foo');
 });

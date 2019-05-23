@@ -8,11 +8,12 @@
             <li>16</li>
             <li>32</li>
         </ul>
-        <div id="out">0</div>
+        <p>Pow of 2 is : <span id="out">0</span></p>
         <script>
+// get list and out elements
 var list = document.getElementById('list'),
 out = document.getElementById('out');
-
+// attaching to list rather than each li element
 list.addEventListener('click', function(e){
     var n = parseInt(e.target.innerText);
     out.innerText= Math.log(n) / Math.log(2);

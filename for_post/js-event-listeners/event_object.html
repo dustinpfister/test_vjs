@@ -3,18 +3,13 @@
         <title>Event Listeners</title>
     </head>
     <body>
-        <ul id="list" style="color:blue;text-decoration:underline;">
-            <li>8</li>
-            <li>16</li>
-            <li>32</li>
-        </ul>
-        <div id="out">0</div>
+        <a id="link" href="/" >some link</a>
         <script>
-var list = document.getElementById('list'),
-out = document.getElementById('out');
-list.addEventListener('click', function(e){
-var n = parseInt(e.target.innerText);
-out.innerText=
+var link = document.getElementById('link');
+// using the target property of the event object
+// to set the href property of a link
+link.addEventListener('click', function(e){
+   e.target.href='https://www.google.com/'
 });
         </script>
     </body>

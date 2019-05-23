@@ -4,6 +4,11 @@
     </head>
     <body>
         <input id="button" type="button" value="click me">
-        <script src="main.js"></script>
+        <script>
+var button = document.getElementById('button');
+button.addEventListener('click', function(e){
+    console.log('foo');
+});
+        </script>
     </body>
 </html>

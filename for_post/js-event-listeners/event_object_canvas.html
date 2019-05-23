@@ -7,12 +7,34 @@
             <canvas id="thecanvas" width="320" height="240"></canvas>
         </div>
         <script>
-
 var app = {
-
     canvas: document.getElementById('thecanvas'),
     ctx: null,
     circles: [],
+    // Using the event object to get the canvas
+    // relative position
+    getCanvasPos: function (e) {
+        var bx = app.canvas.getBoundingClientRect();
+        return {
+            x: e.clientX - bx.left,
+            y: e.clientY - bx.top
+        }
+    },
+    // set circle position based on event object
+    // and given circle index
+    setCircle: function(e, index){
+        var circle = app.circles[index],
+        pos = app.getCanvasPos(e);
+        circle.x = pos.x;
+        circle.y = pos.y;
+        app.draw();
+    },
+    clicked: function (e) {
+       app.setCircle(e,0);
+    },
+    move: function (e) {
+        app.setCircle(e,1);
+    },
     init: function () {
         this.ctx = this.canvas.getContext('2d');
         this.circles.push({
@@ -29,7 +51,6 @@ var app = {
         });
         this.draw();
     },
-
     draw: function () {
         var ctx = this.ctx;
         ctx.fillStyle = 'grey';
@@ -41,43 +62,12 @@ var app = {
             ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
             ctx.stroke();
         });
-    },
-
-    // Using the event object to get the canvas
-    // relative position
-    getCanvasPos: function (e) {
-        var bx = app.canvas.getBoundingClientRect();
-        return {
-            x: e.clientX - bx.left,
-            y: e.clientY - bx.top
-        }
-    },
-
-    // set circle position based on event object
-    // and given circle index
-    setCircle: function(e, index){
-        var circle = app.circles[index],
-        pos = app.getCanvasPos(e);
-        circle.x = pos.x;
-        circle.y = pos.y;
-        app.draw();
-    },
-
-    clicked: function (e) {
-       app.setCircle(e,0);
-    },
-
-    move: function (e) {
-        app.setCircle(e,1);
     }
-
 };
 app.init();
-
 // attach event listeners to the canvas
 app.canvas.addEventListener('click', app.clicked);
 app.canvas.addEventListener('mousemove', app.move);
-
         </script>
     </body>
 </html>

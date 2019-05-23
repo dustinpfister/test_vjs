@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Event Listeners</title>
+    </head>
+    <body>
+        <div style="padding:50px;">
+            <canvas id="thecanvas" width="320" height="240"></canvas>
+        </div>
+        <script>
+
+var app = {
+
+    canvas: document.getElementById('thecanvas'),
+    ctx: null,
+    circles: [],
+    init: function () {
+        this.ctx = this.canvas.getContext('2d');
+        this.circles.push({
+            x: 0,
+            y: 0,
+            radius: 25
+        });
+        this.draw();
+    },
+
+    draw: function () {
+        var ctx = this.ctx;
+        ctx.fillStyle = 'grey';
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.circles.forEach(function (circle) {
+            ctx.strokeStyle = 'lime';
+            ctx.lineWidth = 3;
+            ctx.beginPath()
+            ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+            ctx.stroke();
+        });
+    },
+
+    getCanvasPos: function (e) {
+        var bx = app.canvas.getBoundingClientRect();
+        return {
+            x: e.clientX - bx.left,
+            y: e.clientY - bx.top
+        }
+    },
+
+    clicked: function (e) {
+        var circle = app.circles[0],
+        pos = app.getCanvasPos(e);
+        circle.x = pos.x;
+        circle.y = pos.y;
+        app.draw();
+    }
+
+};
+app.init();
+
+// attach event listeners to the canvas
+app.canvas.addEventListener('click', app.clicked);
+
+        </script>
+    </body>
+</html>

@@ -4,9 +4,7 @@ if (n > 42) {
 }
  
 try {
-    console.log(a);
+    console.log(a); // undefined
 } catch (e) {
- 
     console.log(e.message);
- 
 }

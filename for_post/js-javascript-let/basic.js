@@ -7,7 +7,5 @@ if (n > 42) {
 try {
     console.log(a);
 } catch (e) {
- 
-    console.log(e.message);
- 
+    console.log(e.message); // 'a is not defined'
 }

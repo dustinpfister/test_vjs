@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>canvas arc</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d'),
+// some values
+i = 0,
+maxI = 50,
+cx = 160,
+cy = 120,
+radius = 50,
+radian, x, y;
+// draw
+ctx.beginPath();
+while (i < maxI) {
+    radian = Math.PI / 2 * (i / maxI);
+    x = Math.cos(radian) * radius + cx;
+    y = Math.sin(radian) * radius + cy;
+    if (i === 0) {
+        ctx.moveTo(x, y);
+    } else {
+        ctx.lineTo(x, y);
+    }
+    i += 1;
+}
+ctx.stroke();
+        </script>
+    </body>
+</html>

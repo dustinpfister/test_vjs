@@ -1,9 +1,7 @@
-var scripts = ['foo.js', 'bar.js'];
-
 console.log('loading scripts...');
-
-var i = 0;
-var loadNext = function () {
+var scripts = ['foo.js', 'bar.js'],
+i = 0,
+loadNext = function () {
     var scriptTag = document.createElement('script');
     scriptTag.src = scripts[i];
     scriptTag.addEventListener('load', function () {
@@ -16,7 +14,5 @@ var loadNext = function () {
     })
     document.body.appendChild(scriptTag);
 };
-
 loadNext();
 
-//});

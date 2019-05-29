@@ -1,5 +1,5 @@
 
-// right to left Associativity
+// left to right Associativity
 var a = 0,
 b = 1,
 c = 42,

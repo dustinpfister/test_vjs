@@ -5,29 +5,22 @@
     <body>
         <canvas id="the-canvas" tabindex="0" width="320" height="240"></canvas>
         <script>
+// get CANVAS
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
+// some handers and state for the canvas project
 var state = {
-
    focused : false,
-   
    onBlur : function(){
-   
-     state.focused = false;
-   
+       state.focused = false;
    },
-   
    onFocus : function(){
-   
-   state.focused = true;
-   
+       state.focused = true;
    }
-
 };
 canvas.addEventListener('blur', state.onBlur);
 canvas.addEventListener('focus', state.onFocus);
-
+// DRAW
 var draw = function(canvas, ctx){
    // crear screen
    ctx.fillStyle = 'black';
@@ -38,15 +31,12 @@ var draw = function(canvas, ctx){
    ctx.textBaseline='top';
    ctx.fillText('focused: ' + state.focused,10,10);
 };
-
+// LOOP
 var loop = function(){
-  requestAnimationFrame(loop);
-draw(canvas,ctx);
-
+   requestAnimationFrame(loop);
+   draw(canvas,ctx);
 };
-
 loop();
-
         </script>
     </body>
 </html>

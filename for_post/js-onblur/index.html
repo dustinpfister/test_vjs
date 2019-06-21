@@ -4,6 +4,14 @@
     </head>
     <body>
         <input id="foo" type="text" placeholder="foo">
-        <script src="onblur.js"></script>
+        <script>
+var foo = document.getElementById('foo');
+foo.addEventListener('blur', function (e) {
+    e.target.value = 'blur out';
+});
+foo.addEventListener('focus', function (e) {
+    e.target.value = 'has focus';
+});
+        </script>
     </body>
 </html>

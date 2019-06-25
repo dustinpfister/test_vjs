@@ -1,12 +1,10 @@
 let spawn = require('child_process').spawn;
-
 let startHeavy = () => {
     let heavy = spawn('node', ['heavy.js']);
     heavy.stdout.on('data', function (data) {
         console.log(data.toString());
     });
 };
-// loop
 let i = 0, st;
 let loop = function () {
     setTimeout(loop, 250);

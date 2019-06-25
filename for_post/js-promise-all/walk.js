@@ -2,6 +2,7 @@
 let util = require('util'),
 fs = require('fs');
 
+
 Promise.all([
         util.promisify(fs.stat)('./text.txt'),
         util.promisify(fs.readFile)('./text.txt')

@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>promise all</title>
+  </head>
+  <body>
+    <script>
+// get a url with fetch
+let get = (url) => {
+    return fetch(url)
+    .then((res) => {
+        return res.body.getReader().read();
+    })
+    .then((data) => {
+        return [].map.call(data.value, (byt) => {
+            return String.fromCharCode(byt)
+        }).join('');
+    })
+};
+// delay
+let delay = (time) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('delay done');
+        }, time);
+    });
+};
+// Promise all
+Promise.all([get('https://dustinpfister.github.io/'), delay(3000)])
+.then((result) => {
+    console.log(result)
+})
+.catch ((e) => {
+    console.log(e);
+});
+    </script>
+  </body>
+</html>

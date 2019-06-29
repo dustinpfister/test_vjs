@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <div id="header">
+            <h1>Hello world</h1>
+            <p>
+                <a href="/home">Home</a> | 
+                <a href="/blog">Blog</a> | 
+                <a href="/about">About</a>
+            </p>
+            <br>
+        </div>
+        <textarea id="out" cols="60" rows="20">
+        </textarea>
+        <script>
+var out = document.getElementById('out'),
+header = document.getElementById('header');
+out.value = header.innerHTML;
+console.log(typeof header.innerHTML); // 'string'
+console.log(typeof header); // 'object'
+        </script>
+    </body>
+</html>

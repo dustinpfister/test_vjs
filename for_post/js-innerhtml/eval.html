@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <div id="out" style="display:none;"></div>
+        <script>
+var out = document.getElementById('out');
+out.innerHTML = 'console.log(\'foo\')';
+eval(out.innerHTML)
+        </script>
+    </body>
+</html>

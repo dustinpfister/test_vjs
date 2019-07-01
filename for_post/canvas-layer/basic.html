@@ -8,42 +8,38 @@
             <canvas id="canvas_front" width="320" height="240" style="position:absolute;"></canvas>
         </div>
         <script>
-// get canvas can 2d context
+// get canvas elements and drawing content for each
 var canvas_back = document.getElementById('canvas_back'),
 canvas_front = document.getElementById('canvas_front'),
 ctx_back = canvas_back.getContext('2d'),
 ctx_front = canvas_front.getContext('2d');
-
 // some draw methods
-var drawBackground = function(ctx,canvas){
+var drawBackground = function (ctx, canvas) {
     ctx.fillStyle = 'black';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
-var drawCircle = function(ctx, canvas, circle){
+var drawCircle = function (ctx, canvas, circle) {
     ctx.strokeStyle = 'red';
-	ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
-    ctx.arc(circle.x,circle.y,circle.radius,0,Math.PI*2);
+    ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
     ctx.stroke();
 
 };
-
 // draw background once
-drawBackground(ctx_back,canvas_back)
-
+drawBackground(ctx_back, canvas_back)
 // draw circle on each frame tick
 var x = 0,
-y =30
-var loop = function(){
-requestAnimationFrame(loop);
-drawCircle(ctx_front, canvas_front, {
-  x: x,
-  y: y,
-  radius: 15
-});
-
-x += 5;
-x %= canvas_front.width;
+y = 30
+    var loop = function () {
+    requestAnimationFrame(loop);
+    drawCircle(ctx_front, canvas_front, {
+        x: x,
+        y: y,
+        radius: 15
+    });
+    x += 5;
+    x %= canvas_front.width;
 };
 loop();
 

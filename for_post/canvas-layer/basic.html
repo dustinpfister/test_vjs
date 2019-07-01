@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>canvas layer example</title>
+    </head>
+    <body>
+        <div>
+            <canvas id="canvas_back" width="320" height="240"></canvas>
+            <canvas id="canvas_front" width="320" height="240"></canvas>
+        </div>
+        <script>
+// get canvas can 2d context
+var canvas_back = document.getElementById('canvas_back'),
+canvas_front = document.getElementById('canvas_back'),
+ctx_back = canvas_back.getContext('2d'),
+ctx_front = canvas_front.getContext('2d');
+
+ctx_back.fillStyle = 'black';
+ctx_back.fillRect(0,0,canvas_back.width,canvas_back.height);
+
+        </script>
+    </body>
+</html>

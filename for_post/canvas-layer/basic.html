@@ -3,14 +3,14 @@
         <title>canvas layer example</title>
     </head>
     <body>
-        <div>
-            <canvas id="canvas_back" width="320" height="240"></canvas>
-            <canvas id="canvas_front" width="320" height="240"></canvas>
+        <div style="position:absolute;left:50px;top:50px;">
+            <canvas id="canvas_back" width="320" height="240" style="position:absolute;"></canvas>
+            <canvas id="canvas_front" width="320" height="240" style="position:absolute;"></canvas>
         </div>
         <script>
 // get canvas can 2d context
 var canvas_back = document.getElementById('canvas_back'),
-canvas_front = document.getElementById('canvas_back'),
+canvas_front = document.getElementById('canvas_front'),
 ctx_back = canvas_back.getContext('2d'),
 ctx_front = canvas_front.getContext('2d');
 
@@ -21,17 +21,31 @@ var drawBackground = function(ctx,canvas){
 };
 var drawCircle = function(ctx, canvas, circle){
     ctx.strokeStyle = 'red';
+	ctx.clearRect(0,0,canvas.width,canvas.height);
     ctx.beginPath();
     ctx.arc(circle.x,circle.y,circle.radius,0,Math.PI*2);
     ctx.stroke();
 
 };
+
+// draw background once
 drawBackground(ctx_back,canvas_back)
+
+// draw circle on each frame tick
+var x = 0,
+y =30
+var loop = function(){
+requestAnimationFrame(loop);
 drawCircle(ctx_front, canvas_front, {
-  x: 30,
-  y: 40,
+  x: x,
+  y: y,
   radius: 15
-})
+});
+
+x += 5;
+x %= canvas_front.width;
+};
+loop();
 
         </script>
     </body>

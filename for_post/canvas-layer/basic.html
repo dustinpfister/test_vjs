@@ -17,6 +17,25 @@ ctx_front = canvas_front.getContext('2d');
 ctx_back.fillStyle = 'black';
 ctx_back.fillRect(0,0,canvas_back.width,canvas_back.height);
 
+
+var drawCircle = function(ctx, canvas, circle){
+   //ctx.clearRect(0,0,canvas.width, canvas.height);
+   ctx.strokeStyle = 'red';
+   ctx.beginPath();
+   ctx.arc(circle.x,circle.y,circle.radius,0,Math.PI*2);
+   ctx.stroke();
+
+};
+
+//ctx_front.strokeStyle = 'red';
+//ctx_front.fillRect(0,0,canvas_back.width,canvas_back.height);
+
+drawCircle(ctx_front, canvas_front, {
+  x: 30,
+  y: 40,
+  radius: 15
+})
+
         </script>
     </body>
 </html>

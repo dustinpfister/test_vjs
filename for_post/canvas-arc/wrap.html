@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>canvas arc</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var arc = function (opt) {
+    opt = opt || {};
+    // use given ctx, or attempt to get a global one
+    opt.ctx = opt.ctx || ctx;
+    opt.cx = opt.cx === undefined ? 0 : opt.cx;
+    opt.cy = opt.cy === undefined ? 0 : opt.cy;
+    opt.radius = opt.radius === undefined ? 50 : opt.radius;
+    opt.radStart = opt.radStart === undefined ? 0 : opt.radStart;
+    opt.radEnd = opt.radEnd === undefined ? Math.PI * 2 : opt.radEnd;
+    ctx.arc(opt.cx, opt.cy, opt.radius, opt.radStart, opt.radEnd);
+};
+
+
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+// now I can just call arc
+ctx.strokeStyle='red';
+ctx.beginPath();
+arc();
+ctx.stroke();
+
+// or give just the values I want to give,
+// if the hard coded values I set for myself work fine
+ctx.beginPath();
+arc({
+  cx: canvas.width / 2,
+  cy: canvas.height / 2,
+});
+ctx.stroke();
+
+        </script>
+    </body>
+</html>

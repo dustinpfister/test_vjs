@@ -1,8 +1,8 @@
 var aTaner = function (opt) {
     // option defaults
     opt = opt || {};
-    opt.y = opt.y === undefined ? 45;
-    opt.x = opt.x === undefined ? 0;
+    opt.y = opt.y === undefined ? 45 : opt.y;
+    opt.x = opt.x === undefined ? 0 : opt.x;
     opt.data = opt.data || {
         lineLength: 100
     };
@@ -20,19 +20,28 @@ var aTaner = function (opt) {
             Math.sin(r) * this.data.lineLength + cy);
         ctx.stroke();
     };
+
     // set up canvas and input element
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),
     container = document.createElement('div'),
     appendTo = opt.appendTo || document.body;
-    canvas.width = 320;
-    canvas.height = 240;
-    canvas.style.display = 'none';
+
     var input_y = document.createElement('input');
     input_y.value = opt.y;
     container.appendChild(input_y);
+    var input_x = document.createElement('input');
+    input_x.value = opt.x;
+    container.appendChild(input_x);
+
+    canvas.width = opt.width === undefined ? 320 : opt.width;
+    canvas.height = opt.height === undefined ? 240 : opt.height;
+    opt.cx = canvas.width / 2;
+    opt.cy = canvas.height / 2;
+    canvas.style.display = 'none';
     container.appendChild(canvas);
     container.style.width = canvas.width + 'px';
+
     appendTo.appendChild(container);
 
     // ON CHANGE, focus, and blur of input element
@@ -45,6 +54,11 @@ var aTaner = function (opt) {
     });
     input_y.addEventListener('blur', function (e) {
         canvas.style.display = 'none';
+    });
+
+    // canvas events
+    canvas.addEventListener('mousedown', function (e) {
+        e.preventDefault();
     });
 
     // first draw

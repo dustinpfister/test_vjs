@@ -54,7 +54,7 @@ var aTaner = function (opt) {
     container.appendChild(input_y);
     container.appendChild(canvas);
     container.style.width = canvas.width + 'px';
-    container.className = 'wrap_tanner';
+    container.className = 'wrap_taner';
     state.appendTo.appendChild(container);
     // ON CHANGE, focus, and blur for input element
     var onFocus = function (e) {

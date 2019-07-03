@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>document body on load</title>
+    </head>
+    <body>
+<img src="https://dustinpfister.github.io/css/images/banner.jpg">
+        <script>
+var createCanvas = function (image) {
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    // throw error if zero with image
+    if (image.naturalWidth === 0) {
+        throw new Error('zero width image!')
+    }
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha = 0.25;
+    ctx.drawImage(image,0,0);
+    document.body.appendChild(canvas);
+}
+
+// calling right away
+try{
+createCanvas(document.body.children[0]);
+}catch(e){
+console.log(e.message);
+}
+
+// calling after window load
+window.addEventListener('load', function () {
+    createCanvas(document.body.children[0]);
+});
+
+
+        </script>
+    </body>
+</html>

@@ -2,22 +2,16 @@ var aTaner = function (opt) {
     // option defaults
     opt = opt || {};
     opt.y = opt.y === undefined ? 45 : opt.y;
-    opt.x = opt.x === undefined ? 0 : opt.x;
+    opt.x = opt.x === undefined ? 45 : opt.x;
     opt.data = opt.data || {
         lineLength: 100
     };
     opt.draw = opt.draw || function (ctx, canvas) {
-        ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = 'white';
-        var cx = canvas.width / 2,
-        cy = canvas.height / 2,
-        r = Math.PI / 180 * this.y;
         ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.lineTo(
-            Math.cos(r) * this.data.lineLength + cx,
-            Math.sin(r) * this.data.lineLength + cy);
+        ctx.strokeStyle = 'green';
+        ctx.lineWidth = 3;
+        ctx.arc(this.x, this.y, 10, 0, Math.PI * 2);
         ctx.stroke();
     };
 
@@ -56,9 +50,24 @@ var aTaner = function (opt) {
         canvas.style.display = 'none';
     });
 
+    input_x.addEventListener('change', function (e) {
+        opt.x = e.target.value;
+        opt.draw.call(opt, ctx, canvas);
+    });
+    input_x.addEventListener('focus', function (e) {
+        canvas.style.display = 'block';
+    });
+    input_x.addEventListener('blur', function (e) {
+        canvas.style.display = 'none';
+    });
+
     // canvas events
     canvas.addEventListener('mousedown', function (e) {
         e.preventDefault();
+        var box = e.target.getBoundingClientRect();
+        input_x.value = opt.x = e.clientX - box.left;
+        input_y.value = opt.y = e.clientY - box.top;
+        opt.draw.call(opt, ctx, canvas);
     });
 
     // first draw

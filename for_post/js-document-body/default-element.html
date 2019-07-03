@@ -6,13 +6,20 @@
         <div></div>
         <div id="game-area"></div>
         <script>
-var createCanvas = function (container) {
+var createCanvas = function (container, w, h, draw) {
     container = container === undefined ? document.body : container;
     container = typeof container === 'string' ? document.querySelector(container) : container;
-    console.log(container);
+    draw = draw || function (ctx, canvas) {
+        ctx.fillStyle = '#afafaf';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    container.appendChild(canvas);
+    canvas.width = w || 160;
+    canvas.height = h || 120;
+    draw(ctx, canvas);
 };
-
-
 createCanvas('#game-area'); // appends to game area
 createCanvas(document.getElementsByTagName('div')[0]); // appends to first div
 createCanvas(); // appends to body

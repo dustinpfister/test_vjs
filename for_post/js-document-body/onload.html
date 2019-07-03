@@ -19,20 +19,16 @@ var createCanvas = function (image) {
     ctx.drawImage(image,0,0);
     document.body.appendChild(canvas);
 }
-
 // calling right away
 try{
 createCanvas(document.body.children[0]);
 }catch(e){
 console.log(e.message);
 }
-
 // calling after window load
 window.addEventListener('load', function () {
     createCanvas(document.body.children[0]);
 });
-
-
         </script>
     </body>
 </html>

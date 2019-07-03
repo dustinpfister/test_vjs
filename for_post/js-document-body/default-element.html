@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>document body as a default element</title>
+    </head>
+    <body>
+        <div></div>
+        <div id="game-area"></div>
+        <script>
+var createCanvas = function (container) {
+    container = container === undefined ? document.body : container;
+    container = typeof container === 'string' ? document.querySelector(container) : container;
+    console.log(container);
+};
+
+
+createCanvas('#game-area'); // appends to game area
+createCanvas(document.getElementsByTagName('div')[0]); // appends to first div
+createCanvas(); // appends to body
+        </script>
+    </body>
+</html>

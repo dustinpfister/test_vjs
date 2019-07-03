@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>document body</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var forTag = function (tagName, cb, children) {
+    children = children === undefined ? document.children : children;
+    tagName = tagName === undefined ? 'body' : tagName;
+    tagName = tagName.toLowerCase();
+    cb = cb || function (tag) {
+        console.log(tag);
+    };
+    var i = children.length,
+    tag;
+    while (i--) {
+        tag = children[i];
+        if (tag.children.length > 0) {
+            forTag(tagName, cb, tag.children);
+        }
+        if (tag.nodeName.toLowerCase() === tagName) {
+            cb(tag);
+        }
+    }
+};
+forTag('body', function(body){
+   console.log(body);
+});
+        </script>
+    </body>
+</html>

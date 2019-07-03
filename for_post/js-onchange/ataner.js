@@ -38,28 +38,27 @@ var aTaner = function (opt) {
 
     appendTo.appendChild(container);
 
+    var onFocus = function (e) {
+        canvas.style.display = 'block';
+    };
+    var onBlur = function (e) {
+        canvas.style.display = 'none';
+    };
+
     // ON CHANGE, focus, and blur of input element
     input_y.addEventListener('change', function (e) {
         opt.y = e.target.value;
         opt.draw.call(opt, ctx, canvas);
     });
-    input_y.addEventListener('focus', function (e) {
-        canvas.style.display = 'block';
-    });
-    input_y.addEventListener('blur', function (e) {
-        canvas.style.display = 'none';
-    });
+    input_y.addEventListener('focus', onFocus);
+    input_y.addEventListener('blur', onBlur);
 
     input_x.addEventListener('change', function (e) {
         opt.x = e.target.value;
         opt.draw.call(opt, ctx, canvas);
     });
-    input_x.addEventListener('focus', function (e) {
-        canvas.style.display = 'block';
-    });
-    input_x.addEventListener('blur', function (e) {
-        canvas.style.display = 'none';
-    });
+    input_x.addEventListener('focus', onFocus);
+    input_x.addEventListener('blur', onBlur);
 
     // canvas events
     canvas.addEventListener('mousedown', function (e) {

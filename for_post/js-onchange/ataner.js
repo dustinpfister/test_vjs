@@ -23,9 +23,11 @@ var aTaner = function (opt) {
 
     var input_y = document.createElement('input');
     input_y.value = opt.y;
+    input_y.id = 'input_y';
     container.appendChild(input_y);
     var input_x = document.createElement('input');
     input_x.value = opt.x;
+    input_x.id = 'input_x';
     container.appendChild(input_x);
 
     canvas.width = opt.width === undefined ? 320 : opt.width;
@@ -38,29 +40,27 @@ var aTaner = function (opt) {
 
     appendTo.appendChild(container);
 
+    // ON CHANGE, focus, and blur for input element
     var onFocus = function (e) {
         canvas.style.display = 'block';
-    };
-    var onBlur = function (e) {
+    },
+    onBlur = function (e) {
         canvas.style.display = 'none';
-    };
-
-    // ON CHANGE, focus, and blur of input element
-    input_y.addEventListener('change', function (e) {
-        opt.y = e.target.value;
+    },
+    onChange = function (e) {
+        var el = e.target,
+        axis = el.id.split('_')[1];
+        opt[axis] = e.target.value;
         opt.draw.call(opt, ctx, canvas);
-    });
+    };
+    input_y.addEventListener('change', onChange);
     input_y.addEventListener('focus', onFocus);
     input_y.addEventListener('blur', onBlur);
-
-    input_x.addEventListener('change', function (e) {
-        opt.x = e.target.value;
-        opt.draw.call(opt, ctx, canvas);
-    });
+    input_x.addEventListener('change', onChange);
     input_x.addEventListener('focus', onFocus);
     input_x.addEventListener('blur', onBlur);
 
-    // canvas events
+    // canvas event for mouse down
     canvas.addEventListener('mousedown', function (e) {
         e.preventDefault();
         var box = e.target.getBoundingClientRect();

@@ -38,10 +38,10 @@ var aTaner = function (opt) {
     // set up canvas and input elements
     var input_y = document.createElement('input');
     input_y.value = state.y;
-    input_y.id = 'input_y';
+    input_y.className = 'input_y';
     var input_x = document.createElement('input');
     input_x.value = state.x;
-    input_x.id = 'input_x';
+    input_x.className = 'input_x';
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),
     container = document.createElement('div');
@@ -54,6 +54,7 @@ var aTaner = function (opt) {
     container.appendChild(input_y);
     container.appendChild(canvas);
     container.style.width = canvas.width + 'px';
+    container.className = 'wrap_tanner';
     state.appendTo.appendChild(container);
     // ON CHANGE, focus, and blur for input element
     var onFocus = function (e) {
@@ -64,7 +65,7 @@ var aTaner = function (opt) {
     },
     onChange = function (e) {
         var el = e.target,
-        axis = el.id.split('_')[1];
+        axis = el.className.split('_')[1];
         state[axis] = e.target.value;
         state.figureAngle();
         state.draw.call(state, ctx, canvas);

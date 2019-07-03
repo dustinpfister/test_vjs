@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>document body create new</title>
+        <script>
+var body = document.createElement('body'),
+h1 = document.createElement('h1');
+h1.appendChild(document.createTextNode('Well that seems to work okay.'));
+body.appendChild(h1);
+document.body = body;
+        </script>
+    </head>
+    <body>
+        <h1>Oh no looks like javaScript is not working.</h1>
+    </body>
+</html>

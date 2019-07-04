@@ -13,7 +13,10 @@ out = document.getElementById('out');
 input.addEventListener('keyup', function(e){
     var str = e.target.value;
     console.log(typeof str); // 'string'
-    console.log(str);
+    // do something with it
+    out.innerText = str.split('').map(function(ch){
+        return ch.charCodeAt(0);
+    }).join(':');
 });
         </script>
     </body>

@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>javaScript string from input element</title>
+    </head>
+    <body>
+        <input type="text">
+        <div id="out"></div>
+        <script>
+// get references to elements
+var input = document.getElementsByTagName('input')[0],
+out = document.getElementById('out');
+// attach event
+input.addEventListener('keyup', function(e){
+    var str = e.target.value;
+    console.log(typeof str); // 'string'
+    console.log(str);
+});
+        </script>
+    </body>
+</html>

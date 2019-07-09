@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>javaScript alert map example</title>
+    </head>
+    <body>
+        <script>
+var startTime = new Date(),n;
+setTimeout(()=>{
+   let el = document.createElement('p'),
+   time = new Date() - startTime;
+   el.innerText = time + ' : ' + n;
+   document.body.appendChild(el);
+},1000);
+n = prompt('Give a number', 0);
+        </script>
+    </body>
+</html>

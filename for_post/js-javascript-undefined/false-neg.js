@@ -1,5 +1,4 @@
 let r;
-let myVar;
 try {
     r = typeof myVar === undefined;
 } catch (e) {

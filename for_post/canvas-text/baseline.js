@@ -4,6 +4,10 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
+// some variables for the example
+// baseY is used to position a baseline
+// and is also the same y value that will
+// be used for the fill text method
 var mess = 'Hello',
 baseY = 10,
 stepX = 30;
@@ -28,8 +32,6 @@ ctx.fillStyle = 'red';
     'middle',
     'top'
 ].forEach(function (baseLineValue, index) {
-
     ctx.textBaseline = baseLineValue;
     ctx.fillText(mess, stepX * index, baseY);
-
 });

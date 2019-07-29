@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>canvas arc animation</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+// state
+var frame = 0,
+maxFrame = 100,
+bxCount = 5,
+radPos,
+bx;
+// init
+var init = function () {
+    var i = 0;
+    bx = [];
+    while (i < bxCount) {
+        bx.push({
+            x: 0,
+            y: 0,
+            w: 32,
+            h: 32
+        });
+        i += 1;
+    }
+};
+// update
+var update = function () {
+    // do something cool with the start and end radians
+    var per = frame / maxFrame,
+    bias = Math.abs(per - 0.5) / 0.5;
+    // update radPos
+    radPos = Math.PI * 2 * per;
+    // update boxes
+    bx.forEach((b, i) => {
+        var rOff = Math.PI * 2 / bx.length * i,
+        radius = 25 + 50 * bias;
+        var x = Math.cos(radPos + rOff) * radius + 160 - b.w / 2,
+        y = Math.sin(radPos + rOff) * radius + 120 - b.h / 2;
+        b.x = x;
+        b.y = y;
+    });
+    // step frame
+    frame += 1;
+    frame = frame % maxFrame;
+};
+// draw
+var draw = function () {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    bx.forEach((bx, i) => {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(bx.x, bx.y, 32, 32);
+    });
+};
+// loop
+var loop = function () {
+    requestAnimationFrame(loop);
+    update();
+    draw();
+
+};
+init();
+loop();
+        </script>
+    </body>
+</html>

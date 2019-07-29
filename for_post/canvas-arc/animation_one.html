@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>canvas arc animation</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+// state
+var frame = 0,
+maxFrame = 50,
+startRad,
+endRad;
+
+// update
+var update = function(){
+   // do something cool with the start and end radians
+   var per = frame / maxFrame,
+   bias = Math.abs(per - 0.5) / 0.5;
+   startRad = Math.PI * 2 * per;
+   endRad = startRad + 1 + 2 * bias;
+   // step frame
+   frame += 1;
+   frame = frame % maxFrame;
+
+};
+
+// draw
+var draw = function(){
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(160, 120, 50, startRad, endRad);
+    ctx.stroke();
+};
+
+// loop
+var loop = function(){
+    requestAnimationFrame(loop);
+    update();
+    draw();
+
+};
+loop();
+
+        </script>
+    </body>
+</html>

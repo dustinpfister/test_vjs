@@ -1,9 +1,11 @@
+// a weight function that adds up any number
+// of weight metric functions
 let weight = function (text, keyword) {
     let w = 0,
     i = 2,
     len = arguments.length;
     while (i < len) {
-        w += arguments[i](text, keyword);
+        w += arguments[i](text.toLowerCase(), keyword.toLowerCase());
         i += 1;
     }
     return w;
@@ -37,13 +39,16 @@ let wordCount = (text, keyword) => {
     return text.split(' ').length;
 };
 
-let text = 'this is some text about fuzzy cats in action becuase cats are cool';
+// the text and keyword to find the weight for
+let text = 'this is some text about fuzzy cats in action becuase cats are cool',
+kw = 'fuzzy cats';
 
+// find the weight
 let w1 = weight(
         text,
-        'fuzzy cats',
+        kw,
         totalMatch,
         keywords,
         wordCount);
-
 console.log(w1);
+// 188

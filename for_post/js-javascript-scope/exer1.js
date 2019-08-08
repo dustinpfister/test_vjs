@@ -13,7 +13,7 @@ var pointer = function () {
 
     // move the point
     api.movePoint = function (dx, dy) {
-        // accessing a global variable from within
+        // accessing the point variable from within
         // this other nested function within the api
         // object
         point.x += dx === undefined ? this.dx: dx;

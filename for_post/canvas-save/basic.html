@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>canvas save</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+ctx.fillStyle = 'red';
+console.log(ctx.fillStyle); // '#ff0000'
+
+ctx.save();
+
+ctx.fillStyle = 'blue';
+console.log(ctx.fillStyle); // '#0000ff'
+
+ctx.restore();
+console.log(ctx.fillStyle); // '#ff0000'
+
+        </script>
+    </body>
+</html>

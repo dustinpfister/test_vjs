@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>canvas save rotate example</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas can 2d context
+var state = {
+  canvas : document.getElementById('the-canvas'),
+  ctx : null,
+  x: 160,
+  y: 120,
+  a: 0,
+  st: new Date()
+};
+state.ctx = state.canvas.getContext('2d');
+
+var clear = function(state){
+    state.ctx.fillRect(0,0,state.canvas.width, state.canvas.height);
+};
+
+var drawBox = function(state){
+  var ctx = state.ctx;
+  ctx.save();
+  ctx.fillStyle = 'red';
+  ctx.translate(state.x,state.y);
+  ctx.rotate(state.a);
+  ctx.fillRect(-85,-85,170,170);
+  ctx.restore();
+};
+
+var update = function(state){
+   state.a += Math.PI / 180 * 1;
+   state.a %= Math.PI * 2;
+}
+
+var loop = function(){
+   requestAnimationFrame(loop);
+   clear(state);
+   drawBox(state);
+   update(state);
+};
+loop();
+
+        </script>
+    </body>
+</html>

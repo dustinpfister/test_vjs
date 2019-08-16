@@ -1,20 +1,35 @@
 <html>
     <head>
-        <title>javascript svg example</title>
+        <title>javaScript svg example</title>
     </head>
     <body>
         <svg 
-            version="1.1" 
             width="320" height="240" 
             xmlns="http://www.w3.org/2000/svg" 
-            xmlns:xlink="http://www.w3.org/1999/xlink"
             style="background:black;"
-            stroke-width="3">
-            <circle cx="160" cy="120" r="20" fill="red" stroke="white" />
+            stroke-width="3"
+        >
+            <circle cx="160" cy="120" r="50" fill="white" stroke="red" />
         </svg>
         <script>
 var circle = document.getElementsByTagName('circle')[0];
-circle.setAttributeNS(null, 'r', 75);
+
+var frame = 0, maxFrame = 100;
+var loop = function(){
+    requestAnimationFrame(loop);
+    var per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    radian = Math.PI * 2 * per,
+    x = 160 + Math.cos(radian) * 75,
+    y = 120 + Math.sin(radian) * 25,
+    r = 10 + 50 * bias;
+    circle.setAttributeNS(null, 'cx', x);
+    circle.setAttributeNS(null, 'cy', y);
+    circle.setAttributeNS(null, 'r', r);
+    frame += 1;
+    frame %= maxFrame;
+};
+loop();
         </script>
     </body>
 </html>

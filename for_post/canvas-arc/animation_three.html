@@ -13,7 +13,7 @@
         per: 0,
         bias: 0,
         points: [],
-        pointsMax: 5,
+        pointsMax: 9,
         cx: 160,
         cy: 120,
         updateValues: function () {
@@ -26,39 +26,37 @@
         },
         update: function () {
             var i = 0,
-			sx = this.pointsMax / 2 * 32,
+            sx = this.pointsMax * 32 / 2 - 16,
+            by = 32 * this.bias,
+            h = 64 * this.bias,
             len = this.pointsMax;
             this.points = [];
             this.updateValues();
             while (i < len) {
                 this.points[i] = {
-                    x: this.cx -  sx,
-                    y: this.cy - 32 + 64 * (i % 2)
+                    x: this.cx - sx + 32 * i,
+                    y: this.cy - by + h * (i % 2)
                 }
                 i += 1;
             }
             this.stepFrame();
         }
     };
-
     // RENDER
     var canvas = document.getElementById('the-canvas'),
     ctx = canvas.getContext('2d');
     // draw
     var draw = function (state, ctx, canvas) {
-
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = 'red';
+        // draw circles around each point with canvas arc
+        ctx.strokeStyle = 'white';
         state.points.forEach(function (pt) {
-
             ctx.beginPath()
-            ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+            ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
             ctx.stroke();
         });
-
     };
-
     // LOOP
     var loop = function () {
         requestAnimationFrame(loop);
@@ -66,10 +64,8 @@
         draw(state, ctx, canvas);
     };
     loop();
-
 }
     ());
-
         </script>
     </body>
 </html>

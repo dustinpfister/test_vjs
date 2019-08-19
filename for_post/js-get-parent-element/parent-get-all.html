@@ -9,18 +9,24 @@
             </div>
         </div>
         <script>
-var getParents = function(el){
+var getParents = function (el) {
     var parents = [],
-	node = el;
-	while(node != document){
-		parents.push(node.parentNode);
-	    node = node.parentNode;
-	
-	}
+    node = el;
+    while (node != document) {
+        parents.push(node.parentNode);
+        node = node.parentNode;
+    }
     return parents;
 }
 var el = document.getElementById('logo');
-getParents(el);
+getParents(el).forEach(function (el) {
+    console.log(el.nodeName, el.id || '');
+});
+// DIV header
+// DIV wrap
+// BODY
+// HTML
+// #document
         </script>
     </body>
 </html>

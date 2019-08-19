@@ -10,7 +10,8 @@
         </div>
         <script>
 var onClick = function(e){
-    console.log(e.target);
+    console.log(e.target); // the element that was clicked
+    console.log(e.currentTarget ); // the element this handler is attached to
 };
 document.body.addEventListener('click', onClick);
         </script>

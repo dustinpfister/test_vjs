@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Get parent element on event</title>
+    </head>
+    <body>
+        <div id="wrap" style="width:640px;height:480px;background:red;">
+            <div id="header" style="height:120px;background:green;">
+                <div id="logo" style="width:120px;height:120px;background:blue;"></div>
+            </div>
+        </div>
+        <script>
+var onClick = function(e){
+    console.log(e.target);
+};
+document.body.addEventListener('click', onClick);
+        </script>
+    </body>
+</html>

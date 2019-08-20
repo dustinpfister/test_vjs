@@ -1,0 +1,3 @@
+# test_vjs
+
+These are a bunch of original vanilla javaScript demos that I worked out for content on [my site here](https://dustinpfister.github.io/) at github pages, mainly my [js](https://dustinpfister.github.io/categories/js/) and [canvas](https://dustinpfister.github.io/categories/canvas/) collections of content. In some cases some of these demos might also include the use of additional external resources outside of native javaScript by itself, but the goal is to avoid doing so.

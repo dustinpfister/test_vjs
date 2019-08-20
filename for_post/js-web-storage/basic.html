@@ -6,6 +6,16 @@
         <input id="the-text" type="text" placeholder="foo">
         <script>
 
+var set = function(e){
+
+    console.log(e.target.value);
+
+};
+
+var text = document.getElementById('the-text');
+text.addEventListener('change', set);
+text.addEventListener('keyup', set);
+
         </script>
     </body>
 </html>

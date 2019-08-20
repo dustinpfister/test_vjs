@@ -6,15 +6,25 @@
         <input id="the-text" type="text" placeholder="foo">
         <script>
 
-var set = function(e){
+var text = document.getElementById('the-text');
 
-    console.log(e.target.value);
-
+// get an item with local storage
+var get = function(){
+  var mess = localStorage.getItem('mess');
+  if(mess){
+      text.value = mess;
+  }
 };
 
-var text = document.getElementById('the-text');
+// set an item with local storage
+var set = function(e){
+    localStorage.setItem('mess', e.target.value);
+};
+
 text.addEventListener('change', set);
 text.addEventListener('keyup', set);
+
+get();
 
         </script>
     </body>

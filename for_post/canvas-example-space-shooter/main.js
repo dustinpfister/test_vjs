@@ -3,34 +3,6 @@ ctx = canvas.getContext('2d');
 
 var lt = new Date();
 
-// apply bounds
-var applyBounds = function (obj, canvas) {
-    var w = obj.w || 16,
-    h = obj.h || 16;
-    if (obj.x < -w) {
-        obj.x = canvas.width + w - Math.abs(obj.x) % (canvas.width + w);
-    }
-    if (obj.x > canvas.width + w) {
-        obj.x = obj.x % (canvas.width + w);
-    }
-    if (obj.y < -h) {
-        obj.y = canvas.height + h - Math.abs(obj.y) % (canvas.height + h);
-    }
-    if (obj.y > canvas.height + h) {
-        obj.y = obj.y % (canvas.height + h);
-    }
-};
-
-// move Obj
-var moveObj = function (obj, t) {
-
-    var s = t / 1000;
-    var delta = obj.pps * s;
-    obj.x += Math.cos(obj.heading) * delta;
-    obj.y += Math.sin(obj.heading) * delta;
-
-}
-
 // ship
 var ship = {
     x: 160,
@@ -44,15 +16,14 @@ var ship = {
     shotDelay: 350,
     update: function (t) {
         t = t === undefined ? 0 : t;
-        moveObj(this, t);
-        applyBounds(this, canvas);
+        disp.moveObj(this, t);
+        disp.applyBounds(this, canvas);
         this.updateShots(t);
     },
     updateShots: function (t) {
-
         this.shotTime += t;
         var s = t / 1000;
-
+        // create new shots
         var newShots = this.shotTime / this.shotDelay;
         if (newShots >= 1) {
             this.shotTime = this.shotTime % this.shotDelay;
@@ -66,15 +37,13 @@ var ship = {
                 });
             }
         }
-
         // update shots
         this.shots.forEach(function (shot) {
-            moveObj(shot, t);
+            disp.moveObj(shot, t);
             shot.life -= t;
-            applyBounds(shot, canvas);
+            disp.applyBounds(shot, canvas);
         });
-
-        // purge old
+        // purge old shots
         var i = this.shots.length;
         while (i--) {
             var shot = this.shots[i];
@@ -82,7 +51,6 @@ var ship = {
                 this.shots.splice(i, 1);
             }
         }
-
     }
 };
 

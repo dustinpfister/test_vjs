@@ -45,16 +45,16 @@ disp.Ship.prototype.draw = function (ctx) {
 };
 
 // ship update
-disp.Ship.prototype.update = function (t) {
+disp.Ship.prototype.update = function (t, shipPool) {
     // apply BaseObj update first
     disp.BaseObj.prototype.update.call(this, t);
 
     // update shots
-    this.updateShots(t);
+    this.updateShots(t, shipPool);
 };
 
 // update shots
-disp.Ship.prototype.updateShots = function (t) {
+disp.Ship.prototype.updateShots = function (t, shipPool) {
     this.shotTime += t;
     var s = t / 1000;
     // create new shots
@@ -76,6 +76,13 @@ disp.Ship.prototype.updateShots = function (t) {
         disp.moveObj(shot, t);
         shot.life -= t;
         disp.applyBounds(shot, canvas);
+		if(shipPool){
+			shipPool.forEach(function(ship){
+				
+				
+			});
+		}
+		
     });
     // purge old shots
     var i = this.shots.length;

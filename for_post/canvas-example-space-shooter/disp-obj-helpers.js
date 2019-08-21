@@ -26,4 +26,9 @@ disp.moveObj = function (obj, t) {
     var delta = obj.pps * s;
     obj.x += Math.cos(obj.heading) * delta;
     obj.y += Math.sin(obj.heading) * delta;
-}
+};
+
+// distance
+disp.distance = function (obj1, obj2) {
+    return Math.sqrt(Math.pow(obj1.x - obj2.x, 2) + Math.pow(obj1.y - obj2.y, 2));
+};

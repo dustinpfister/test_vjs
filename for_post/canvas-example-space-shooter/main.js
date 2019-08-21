@@ -4,12 +4,13 @@ ctx = canvas.getContext('2d');
 var lt = new Date();
 
 // new base class
-var box = new disp.BaseObj({
+var box = new disp.Ship({
         x: 160,
         y: 120,
         pps: 32,
         heading: Math.PI / 180 * 45
     });
+console.log(box.constructor.name);
 
 // Main Update
 var update = function () {

@@ -53,6 +53,14 @@ disp.Ship.prototype.update = function (t, shipPool) {
     this.updateShots(t, shipPool);
 };
 
+disp.Ship.prototype.hit = function(shot){
+	
+	console.log('HIT!');
+	console.log(shot)
+	
+};
+
+
 // update shots
 disp.Ship.prototype.updateShots = function (t, shipPool) {
     this.shotTime += t;
@@ -76,13 +84,14 @@ disp.Ship.prototype.updateShots = function (t, shipPool) {
         disp.moveObj(shot, t);
         shot.life -= t;
         disp.applyBounds(shot, canvas);
-		if(shipPool){
-			shipPool.forEach(function(ship){
-				
-				
-			});
-		}
-		
+        if (shipPool) {
+            shipPool.forEach(function (ship) {
+                if (disp.distance(ship, shot) <= ship.w) {
+                    ship.hit(shot);
+                    shot.life = 0;
+                }
+            });
+        }
     });
     // purge old shots
     var i = this.shots.length;

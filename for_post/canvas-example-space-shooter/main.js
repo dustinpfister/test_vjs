@@ -14,7 +14,8 @@ var ship = new disp.Ship({
 var e = new disp.Ship({
         x: 200,
         y: 120,
-        pps: 0
+        pps: 0,
+        shotDelay: 1000
     });
 var enemies = [];
 enemies.push(e);
@@ -24,25 +25,26 @@ var update = function () {
     var now = new Date(),
     t = now - lt;
     ship.update(t, enemies);
+    enemies.forEach(function (enemy) {
+        enemy.update(t, [ship]);
+    });
 
     lt = now;
 };
 
 // Main Draw
 var draw = function () {
-
     ctx.fillStyle = 'black';
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 3;
-
     // clear
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ship.draw(ctx);
+    // draw player
+    ship.draw(ctx, 'blue', 'blue');
+    // draw enemies
     enemies.forEach(function (enemy) {
-        enemy.draw(ctx);
+        enemy.draw(ctx, 'red', 'red');
     });
-
 };
 
 // Main APP loop

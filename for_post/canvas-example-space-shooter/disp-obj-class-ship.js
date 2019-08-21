@@ -24,28 +24,6 @@ disp.Ship = function (opt) {
 // inherit from BaseObj
 disp.Ship.prototype = new disp.BaseObj();
 
-// draw The Ship to a canvas context
-disp.Ship.prototype.draw = function (ctx) {
-    var hw = this.w / 2,
-    hh = this.h / 2;
-    // draw ship
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.heading);
-    ctx.beginPath();
-    ctx.moveTo(16, 0);
-    ctx.lineTo(-8, 8);
-    ctx.lineTo(-8, -8);
-    ctx.closePath();
-    ctx.stroke();
-    ctx.restore();
-    // draw shots
-    ctx.fillStyle = 'blue';
-    this.shots.forEach(function (shot) {
-        ctx.fillRect(shot.x - 2, shot.y - 2, 4, 4);
-    });
-};
-
 // ship update
 disp.Ship.prototype.update = function (t, shipPool) {
     // apply BaseObj update first
@@ -102,4 +80,27 @@ disp.Ship.prototype.updateShots = function (t, shipPool) {
             this.shots.splice(i, 1);
         }
     }
+};
+
+// draw The Ship to a canvas context
+disp.Ship.prototype.draw = function (ctx, shipStyle, shotStyle) {
+    var hw = this.w / 2,
+    hh = this.h / 2;
+    // draw ship
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.heading);
+    ctx.beginPath();
+    ctx.moveTo(16, 0);
+    ctx.lineTo(-8, 8);
+    ctx.lineTo(-8, -8);
+    ctx.closePath();
+    ctx.strokeStyle = shipStyle || 'white';
+    ctx.stroke();
+    ctx.restore();
+    // draw shots
+    ctx.fillStyle = shotStyle || 'white';
+    this.shots.forEach(function (shot) {
+        ctx.fillRect(shot.x - 2, shot.y - 2, 4, 4);
+    });
 };

@@ -1,6 +1,5 @@
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
 var lt = new Date();
 var enemies = [];
 // player ship
@@ -10,7 +9,7 @@ var ship = new disp.Ship({
         pps: 32,
         heading: Math.PI / 180 * 0
     });
-
+// make enemies
 var makeEnemies = function (count, canvas) {
     var e,
     enemies = [];
@@ -25,10 +24,9 @@ var makeEnemies = function (count, canvas) {
             });
         enemies.push(e);
     };
-
     return enemies;
 };
-
+// purge
 var purgeEnemies = function (enemies) {
     var i = enemies.length;
     while (i--) {
@@ -38,7 +36,6 @@ var purgeEnemies = function (enemies) {
         }
     }
 };
-
 // Main Update
 var update = function () {
     var now = new Date(),
@@ -50,7 +47,6 @@ var update = function () {
     purgeEnemies(enemies);
     lt = now;
 };
-
 // Main Draw
 var draw = function () {
     ctx.fillStyle = 'black';
@@ -65,7 +61,6 @@ var draw = function () {
         enemy.draw(ctx, 'red', 'red');
     });
 };
-
 // Main APP loop
 var loop = function () {
     requestAnimationFrame(loop);
@@ -74,7 +69,6 @@ var loop = function () {
 };
 enemies = makeEnemies(3, canvas);
 loop();
-
 // EVENTS
 canvas.addEventListener('click', function (e) {
     var bx = e.target.getBoundingClientRect(),

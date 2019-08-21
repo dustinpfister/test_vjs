@@ -3,12 +3,20 @@ ctx = canvas.getContext('2d');
 
 var lt = new Date();
 
+// new base class
+var box = new disp.BaseObj({
+        x: 160,
+        y: 120,
+        pps: 32,
+        heading: Math.PI / 180 * 45
+    });
 
 // Main Update
 var update = function () {
     var now = new Date(),
     t = now - lt;
     ship.update(t);
+    box.update(t);
     lt = now;
 };
 
@@ -33,6 +41,8 @@ var draw = function () {
     ctx.closePath();
     ctx.stroke();
     ctx.restore();
+
+    box.draw(ctx);
 
     // draw ship shots
     ctx.fillStyle = 'blue';

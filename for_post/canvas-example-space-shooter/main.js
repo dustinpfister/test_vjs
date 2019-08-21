@@ -27,6 +27,10 @@ var ship = {
     y: 120,
     heading: 0, // Math.PI,
     pps: 128,
+    shots: [],
+    shotMax: 3,
+    shotTime: 0,
+    shotDelay: 500,
     update: function (t) {
         t = t === undefined ? 0 : t;
         t = t / 1000;
@@ -34,6 +38,34 @@ var ship = {
         this.x += Math.cos(this.heading) * delta;
         this.y += Math.sin(this.heading) * delta;
         applyBounds(this, canvas);
+        this.updateShots(t);
+    },
+    updateShots: function (t) {
+
+        this.shotTime += t;
+
+        var newShots = this.shotTime / this.shotDelay;
+        if (newShots) {
+            this.shotTime = this.shotTime % this.shotDelay;
+            if (this.shots.length < this.shotMax) {
+                this.shots.push({
+                    x: this.x,
+                    y: this.y,
+                    heading: this.heading,
+                    pps: this.pps + 64,
+                    life: 3000
+                });
+            }
+        }
+
+        this.shots.forEach(function (shot) {
+
+            var delta = shot.pps * t;
+            shot.x += Math.cos(shot.heading) * delta;
+            shot.y += Math.sin(shot.heading) * delta;
+
+        });
+
     }
 };
 

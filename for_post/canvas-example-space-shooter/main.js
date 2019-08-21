@@ -28,7 +28,7 @@ var ship = {
     heading: 0, // Math.PI,
     pps: 128,
     shots: [],
-    shotMax: 3,
+    shotMax: 5,
     shotTime: 0,
     shotDelay: 250,
     update: function (t) {
@@ -53,18 +53,29 @@ var ship = {
                     x: this.x,
                     y: this.y,
                     heading: this.heading,
-                    pps: this.pps + 64,
-                    life: 3000
+                    pps: this.pps + 128,
+                    life: 1000
                 });
             }
         }
 
+        // update shots
         this.shots.forEach(function (shot) {
             var delta = shot.pps * s;
             shot.x += Math.cos(shot.heading) * delta;
             shot.y += Math.sin(shot.heading) * delta;
-			applyBounds(shot, canvas);
+            shot.life -= t;
+            applyBounds(shot, canvas);
         });
+
+        // purge old
+        var i = this.shots.length;
+        while (i--) {
+            var shot = this.shots[i];
+            if (shot.life <= 0) {
+                this.shots.splice(i, 1);
+            }
+        }
 
     }
 };

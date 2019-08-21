@@ -16,7 +16,7 @@ console.log(box.constructor.name);
 var update = function () {
     var now = new Date(),
     t = now - lt;
-    ship.update(t);
+    //ship.update(t);
     box.update(t);
     lt = now;
 };
@@ -31,6 +31,7 @@ var draw = function () {
     // clear
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+/*
     // draw ship
     ctx.save();
     ctx.translate(ship.x, ship.y);
@@ -42,16 +43,20 @@ var draw = function () {
     ctx.closePath();
     ctx.stroke();
     ctx.restore();
+	*/
 
     box.draw(ctx);
 
+/*
     // draw ship shots
     ctx.fillStyle = 'blue';
     ship.shots.forEach(function (shot) {
-
         ctx.fillRect(shot.x - 2, shot.y - 2, 4, 4);
-
-    })
+    });
+	box.shots.forEach(function (shot) {
+        ctx.fillRect(shot.x - 2, shot.y - 2, 4, 4);
+    });
+	*/
 
 };
 
@@ -74,7 +79,7 @@ canvas.addEventListener('click', function (e) {
     cy = canvas.height / 2,
     a = Math.PI + Math.atan2(cy - y, cx - x);
 
-    ship.heading = a;
+    box.heading = a;
 
     console.log(x, y, a.toFixed(2));
 

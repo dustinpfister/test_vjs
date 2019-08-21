@@ -63,6 +63,7 @@ var ship = {
             var delta = shot.pps * s;
             shot.x += Math.cos(shot.heading) * delta;
             shot.y += Math.sin(shot.heading) * delta;
+			applyBounds(shot, canvas);
         });
 
     }

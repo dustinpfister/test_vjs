@@ -12,10 +12,12 @@ disp.Ship = function (opt) {
     this.shotDelay = opt.shotDelay === undefined ? 350 : opt.shotDelay;
     this.shotPPS = opt.shotPPS === undefined ? 256 : opt.shotPPS;
     this.shotDamage = opt.shotDamage === undefined ? 1 : opt.shotDamage;
+    this.maxHP = opt.maxHP === undefined ? 10 : opt.maxHP;
 
     // internals
     this.shots = [];
     this.shotTime = 0;
+    this.HP = this.maxHP;
 
 };
 
@@ -53,13 +55,11 @@ disp.Ship.prototype.update = function (t, shipPool) {
     this.updateShots(t, shipPool);
 };
 
-disp.Ship.prototype.hit = function(shot){
-	
-	console.log('HIT!');
-	console.log(shot)
-	
+disp.Ship.prototype.hit = function (shot) {
+    this.HP -= shot.damage;
+    this.HP = this.HP < 0 ? 0 : this.HP;
+    console.log('hit!', this.HP);
 };
-
 
 // update shots
 disp.Ship.prototype.updateShots = function (t, shipPool) {
@@ -75,7 +75,8 @@ disp.Ship.prototype.updateShots = function (t, shipPool) {
                 y: this.y,
                 heading: this.heading,
                 pps: this.pps + 128,
-                life: this.shotLife
+                life: this.shotLife,
+                damage: 1
             });
         }
     }

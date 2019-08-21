@@ -2,8 +2,8 @@ var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
 var lt = new Date();
-
-// new ship
+var enemies = [];
+// player ship
 var ship = new disp.Ship({
         x: 16,
         y: 120,
@@ -11,15 +11,23 @@ var ship = new disp.Ship({
         heading: Math.PI / 180 * 0
     });
 
-var e = new disp.Ship({
-        x: 200,
-        y: 120,
-        pps: 16,
-        //heading: Math.PI * 2 * Math.random(),
-        shotDelay: 1000
-    });
-var enemies = [];
-enemies.push(e);
+var makeEnemies = function (count, canvas) {
+    var e,
+    enemies = [];
+    count = count || 1;
+    while (count--) {
+        e = new disp.Ship({
+                x: Math.floor(canvas.width * Math.random()),
+                y: Math.floor(canvas.height * Math.random()),
+                pps: 16,
+                heading: Math.PI * 2 * Math.random(),
+                shotDelay: 1000
+            });
+        enemies.push(e);
+    };
+
+    return enemies;
+};
 
 var purgeEnemies = function (enemies) {
     var i = enemies.length;
@@ -40,7 +48,6 @@ var update = function () {
         enemy.update(t, [ship]);
     });
     purgeEnemies(enemies);
-
     lt = now;
 };
 
@@ -65,21 +72,17 @@ var loop = function () {
     update();
     draw();
 };
-
+enemies = makeEnemies(3, canvas);
 loop();
 
 // EVENTS
 canvas.addEventListener('click', function (e) {
-
     var bx = e.target.getBoundingClientRect(),
     x = e.clientX - bx.left,
     y = e.clientY - bx.top,
     cx = canvas.width / 2,
     cy = canvas.height / 2,
     a = Math.PI + Math.atan2(cy - y, cx - x);
-
     ship.heading = a;
-
     console.log(x, y, a.toFixed(2));
-
 });

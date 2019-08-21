@@ -1,15 +1,14 @@
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
-var applyBounds = function(pt){
-	
-	if(pt.x < 0){
-		
-		pt.x = 320 - 16 - Math.abs(-330) % 320
-		
-	}
-	
-	
+var applyBounds = function (pt, canvas) {
+    var w = pt.w || 16;
+    if (pt.x < -pt.w) {
+        pt.x = canvas.width - pt.w - Math.abs(pt.x) % canvas.width;
+    }
+    if (pt.x > canvas.width + pt.w) {
+        px.x = pt.x % canvas.width;
+    }
 };
 
 var ship = {

@@ -1,4 +1,7 @@
 
+var disp = disp || {};
+
+
 // ship
 var ship = {
     x: 160,

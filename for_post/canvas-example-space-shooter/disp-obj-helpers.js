@@ -1,5 +1,5 @@
 
-var disp = {};
+var disp = disp || {};
 
 // apply canvas bounds to given display object with the given canvas
 disp.applyBounds = function (obj, canvas) {

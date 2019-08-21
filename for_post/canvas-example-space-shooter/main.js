@@ -14,11 +14,22 @@ var ship = new disp.Ship({
 var e = new disp.Ship({
         x: 200,
         y: 120,
-        pps: 0,
+        pps: 16,
+        //heading: Math.PI * 2 * Math.random(),
         shotDelay: 1000
     });
 var enemies = [];
 enemies.push(e);
+
+var purgeEnemies = function (enemies) {
+    var i = enemies.length;
+    while (i--) {
+        var enemy = enemies[i];
+        if (enemy.HP === 0) {
+            enemies.splice(i, 1);
+        }
+    }
+};
 
 // Main Update
 var update = function () {
@@ -28,6 +39,7 @@ var update = function () {
     enemies.forEach(function (enemy) {
         enemy.update(t, [ship]);
     });
+    purgeEnemies(enemies);
 
     lt = now;
 };

@@ -58,9 +58,9 @@ var draw = function () {
     ctx.rotate(ship.heading);
 
     ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(8, 16);
-    ctx.lineTo(-8, 16);
+    ctx.moveTo(16, 0);
+    ctx.lineTo(-8, 8);
+    ctx.lineTo(-8, -8);
     ctx.closePath();
     ctx.stroke();
     ctx.restore();

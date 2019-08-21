@@ -30,11 +30,11 @@ var ship = {
     shots: [],
     shotMax: 3,
     shotTime: 0,
-    shotDelay: 500,
+    shotDelay: 250,
     update: function (t) {
         t = t === undefined ? 0 : t;
-        t = t / 1000;
-        var delta = this.pps * t;
+        var s = t / 1000;
+        var delta = this.pps * s;
         this.x += Math.cos(this.heading) * delta;
         this.y += Math.sin(this.heading) * delta;
         applyBounds(this, canvas);
@@ -43,9 +43,10 @@ var ship = {
     updateShots: function (t) {
 
         this.shotTime += t;
+        var s = t / 1000;
 
         var newShots = this.shotTime / this.shotDelay;
-        if (newShots) {
+        if (newShots >= 1) {
             this.shotTime = this.shotTime % this.shotDelay;
             if (this.shots.length < this.shotMax) {
                 this.shots.push({
@@ -59,11 +60,9 @@ var ship = {
         }
 
         this.shots.forEach(function (shot) {
-
-            var delta = shot.pps * t;
+            var delta = shot.pps * s;
             shot.x += Math.cos(shot.heading) * delta;
             shot.y += Math.sin(shot.heading) * delta;
-
         });
 
     }
@@ -83,12 +82,14 @@ var draw = function () {
     ctx.fillStyle = 'black';
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 3;
+
+    // clear
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // draw ship
     ctx.save();
     ctx.translate(ship.x, ship.y);
     ctx.rotate(ship.heading);
-
     ctx.beginPath();
     ctx.moveTo(16, 0);
     ctx.lineTo(-8, 8);
@@ -96,6 +97,14 @@ var draw = function () {
     ctx.closePath();
     ctx.stroke();
     ctx.restore();
+
+    // draw ship shots
+    ctx.fillStyle = 'blue';
+    ship.shots.forEach(function (shot) {
+
+        ctx.fillRect(shot.x - 2, shot.y - 2, 4, 4);
+
+    })
 
 };
 

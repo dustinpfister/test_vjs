@@ -21,6 +21,16 @@ var applyBounds = function (pt, canvas) {
     }
 };
 
+// move Obj
+var moveObj = function (obj, t) {
+
+    var s = t / 1000;
+    var delta = obj.pps * s;
+    obj.x += Math.cos(obj.heading) * delta;
+    obj.y += Math.sin(obj.heading) * delta;
+
+}
+
 // ship
 var ship = {
     x: 160,
@@ -33,10 +43,7 @@ var ship = {
     shotDelay: 250,
     update: function (t) {
         t = t === undefined ? 0 : t;
-        var s = t / 1000;
-        var delta = this.pps * s;
-        this.x += Math.cos(this.heading) * delta;
-        this.y += Math.sin(this.heading) * delta;
+        moveObj(this, t);
         applyBounds(this, canvas);
         this.updateShots(t);
     },
@@ -61,9 +68,7 @@ var ship = {
 
         // update shots
         this.shots.forEach(function (shot) {
-            var delta = shot.pps * s;
-            shot.x += Math.cos(shot.heading) * delta;
-            shot.y += Math.sin(shot.heading) * delta;
+            moveObj(shot, t);
             shot.life -= t;
             applyBounds(shot, canvas);
         });

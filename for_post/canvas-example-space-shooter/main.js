@@ -5,12 +5,19 @@ var lt = new Date();
 
 // apply bounds
 var applyBounds = function (pt, canvas) {
-    var w = pt.w || 16;
+    var w = pt.w || 16,
+    h = pt.h || 16;
     if (pt.x < -w) {
         pt.x = canvas.width + w - Math.abs(pt.x) % (canvas.width + w);
     }
     if (pt.x > canvas.width + w) {
-        pt.x = pt.x % canvas.width;
+        pt.x = pt.x % (canvas.width + w);
+    }
+    if (pt.y < -h) {
+        pt.y = canvas.height + h - Math.abs(pt.y) % (canvas.height + h);
+    }
+    if (pt.y > canvas.height + h) {
+        pt.y = pt.y % (canvas.height + h);
     }
 };
 
@@ -18,7 +25,7 @@ var applyBounds = function (pt, canvas) {
 var ship = {
     x: 160,
     y: 120,
-    heading: Math.PI,
+    heading: 0, //Math.PI,
     pps: 128,
     update: function (t) {
         t = t === undefined ? 0 : t;

@@ -4,20 +4,20 @@ ctx = canvas.getContext('2d');
 var lt = new Date();
 
 // apply bounds
-var applyBounds = function (pt, canvas) {
-    var w = pt.w || 16,
-    h = pt.h || 16;
-    if (pt.x < -w) {
-        pt.x = canvas.width + w - Math.abs(pt.x) % (canvas.width + w);
+var applyBounds = function (obj, canvas) {
+    var w = obj.w || 16,
+    h = obj.h || 16;
+    if (obj.x < -w) {
+        obj.x = canvas.width + w - Math.abs(obj.x) % (canvas.width + w);
     }
-    if (pt.x > canvas.width + w) {
-        pt.x = pt.x % (canvas.width + w);
+    if (obj.x > canvas.width + w) {
+        obj.x = obj.x % (canvas.width + w);
     }
-    if (pt.y < -h) {
-        pt.y = canvas.height + h - Math.abs(pt.y) % (canvas.height + h);
+    if (obj.y < -h) {
+        obj.y = canvas.height + h - Math.abs(obj.y) % (canvas.height + h);
     }
-    if (pt.y > canvas.height + h) {
-        pt.y = pt.y % (canvas.height + h);
+    if (obj.y > canvas.height + h) {
+        obj.y = obj.y % (canvas.height + h);
     }
 };
 
@@ -40,7 +40,8 @@ var ship = {
     shots: [],
     shotMax: 5,
     shotTime: 0,
-    shotDelay: 250,
+    shotLife: 1500,
+    shotDelay: 350,
     update: function (t) {
         t = t === undefined ? 0 : t;
         moveObj(this, t);
@@ -61,7 +62,7 @@ var ship = {
                     y: this.y,
                     heading: this.heading,
                     pps: this.pps + 128,
-                    life: 1000
+                    life: this.shotLife
                 });
             }
         }

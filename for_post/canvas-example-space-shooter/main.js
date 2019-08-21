@@ -25,7 +25,7 @@ var applyBounds = function (pt, canvas) {
 var ship = {
     x: 160,
     y: 120,
-    heading: 0, //Math.PI,
+    heading: 0, // Math.PI,
     pps: 128,
     update: function (t) {
         t = t === undefined ? 0 : t;
@@ -37,6 +37,7 @@ var ship = {
     }
 };
 
+// Main Update
 var update = function () {
     var now = new Date(),
     t = now - lt;
@@ -44,6 +45,7 @@ var update = function () {
     lt = now;
 };
 
+// Main Draw
 var draw = function () {
 
     ctx.fillStyle = 'black';
@@ -65,12 +67,27 @@ var draw = function () {
 
 };
 
+// Main APP loop
 var loop = function () {
-
     requestAnimationFrame(loop);
     update();
     draw();
-
 };
 
 loop();
+
+// EVENTS
+canvas.addEventListener('click', function (e) {
+
+    var bx = e.target.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top,
+    cx = canvas.width / 2,
+    cy = canvas.height / 2,
+    a = Math.PI + Math.atan2(cy - y, cx - x);
+
+    ship.heading = a;
+
+    console.log(x, y, a.toFixed(2));
+
+});

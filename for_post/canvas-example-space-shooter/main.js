@@ -74,17 +74,29 @@ var loop = function () {
 };
 enemies = makeEnemies(3, canvas);
 
-//update();
-//draw();
 loop();
-// EVENTS
-canvas.addEventListener('click', function (e) {
+
+// move ship handler that will work with mouse
+// and touch events
+var moveShip = function (e) {
     var bx = e.target.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top,
+    x = 0,
+    y = 0,
+    cx,
+    cy;
+    if (e.touches) {
+        x = e.touches[0].clientX - bx.left;
+        y = e.touches[0].clientY - bx.top;
+        console.log(e.touches);
+    } else {
+        x = e.clientX - bx.left;
+        y = e.clientY - bx.top;
+    }
     cx = canvas.width / 2,
-    cy = canvas.height / 2,
-    a = Math.PI + Math.atan2(cy - y, cx - x);
-    ship.heading = a;
-    console.log(x, y, a.toFixed(2));
-});
+    cy = canvas.height / 2;
+    ship.heading = Math.PI + Math.atan2(cy - y, cx - x);
+};
+
+// EVENTS
+canvas.addEventListener('mousemove', moveShip);
+canvas.addEventListener('touchmove', moveShip);

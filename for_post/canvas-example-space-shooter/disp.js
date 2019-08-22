@@ -134,7 +134,7 @@ Ship.prototype.updateShots = function (t, shipPool) {
         shot.applyBounds(canvas);
         if (shipPool) {
             shipPool.forEach(function (ship) {
-                if (disp.distance(ship, shot) <= ship.w) {
+                if (ship.distance(shot) <= ship.w) {
                     ship.hit(shot);
                     shot.life = 0;
                 }

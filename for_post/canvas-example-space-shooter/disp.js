@@ -12,7 +12,7 @@ var Disp = function (opt) {
 // update method
 Disp.prototype.update = function (t) {
     t = t === undefined ? 0 : t;
-    this.moveObj(this, t);
+    this.moveObj(t);
     this.applyBounds(this, canvas);
 };
 // Base draw to a canvas method
@@ -46,8 +46,10 @@ Disp.prototype.applyBounds = function (canvas) {
 Disp.prototype.moveObj = function (t) {
     var s = t / 1000;
     var delta = this.pps * s;
+	console.log(t);
     this.x += Math.cos(this.heading) * delta;
     this.y += Math.sin(this.heading) * delta;
+	//console.log(this.x,this.y);
 };
 
 // distance
@@ -95,7 +97,9 @@ Ship.prototype = new Disp();
 // ship update
 Ship.prototype.update = function (t, shipPool) {
     // apply Disp update first
+	//console.log(this.x,this.y);
     Disp.prototype.update.call(this, t);
+	//console.log(this.x,this.y);
 
     // update shots
     this.updateShots(t, shipPool);

@@ -2,6 +2,7 @@ var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 var lt = new Date();
 var enemies = [];
+
 // player ship
 var ship = new disp.Ship({
         x: 16,

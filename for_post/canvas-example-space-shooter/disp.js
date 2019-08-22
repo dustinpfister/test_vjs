@@ -31,9 +31,8 @@ Disp.prototype.draw = function () {
     ctx.restore();
 };
 
-Disp.prototype.applyBounds = function (canvas) {
-    //var w = this.w || 16,
-    //h = obj.h || 16;
+Disp.prototype.applyBounds = function () {
+    var canvas = this.canvas;
     if (this.x < -this.w) {
         this.x = canvas.width + this.w - Math.abs(this.x) % (canvas.width + this.w);
     }

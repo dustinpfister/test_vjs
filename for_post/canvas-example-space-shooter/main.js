@@ -44,10 +44,10 @@ var update = function () {
     var now = new Date(),
     t = now - lt;
     ship.update(t, enemies);
-    //enemies.forEach(function (enemy) {
-    //    enemy.update(t, [ship]);
-    //});
-    //purgeEnemies(enemies);
+    enemies.forEach(function (enemy) {
+        enemy.update(t, [ship]);
+    });
+    purgeEnemies(enemies);
     lt = now;
 };
 // Main Draw
@@ -70,12 +70,11 @@ var loop = function () {
     update();
     draw();
 };
-//update();
-//update();
-ship.update(350);
-    ship.draw(ctx, 'blue', 'blue');
 enemies = makeEnemies(3, canvas);
-//loop();
+
+//update();
+//draw();
+loop();
 // EVENTS
 canvas.addEventListener('click', function (e) {
     var bx = e.target.getBoundingClientRect(),

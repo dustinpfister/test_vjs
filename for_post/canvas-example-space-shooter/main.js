@@ -4,7 +4,7 @@ var lt = new Date();
 var enemies = [];
 
 // player ship
-var ship = new disp.Ship({
+var ship = new Ship({
         x: 16,
         y: 120,
         pps: 32,
@@ -16,7 +16,7 @@ var makeEnemies = function (count, canvas) {
     enemies = [];
     count = count || 1;
     while (count--) {
-        e = new disp.Ship({
+        e = new Ship({
                 x: Math.floor(canvas.width * Math.random()),
                 y: Math.floor(canvas.height * Math.random()),
                 pps: 16,

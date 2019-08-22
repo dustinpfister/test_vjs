@@ -2,18 +2,18 @@
 // Disp Base Class And Global
 var Disp = function (opt) {
     opt = opt || {};
-    this.x = opt.x === undefined ? 0: opt.x;
-    this.y = opt.y === undefined ? 0: opt.y;
-    this.w = opt.w === undefined ? 16: opt.w;
-    this.h = opt.h === undefined ? 16: opt.h;
-    this.heading = opt.heading === undefined ? 0: opt.heading;
-    this.pps = opt.pps === undefined ? 0: opt.pps;
+    this.x = opt.x === undefined ? 0 : opt.x;
+    this.y = opt.y === undefined ? 0 : opt.y;
+    this.w = opt.w === undefined ? 16 : opt.w;
+    this.h = opt.h === undefined ? 16 : opt.h;
+    this.heading = opt.heading === undefined ? 0 : opt.heading;
+    this.pps = opt.pps === undefined ? 0 : opt.pps;
 };
 // update method
 Disp.prototype.update = function (t) {
     t = t === undefined ? 0 : t;
-    disp.moveObj(this, t);
-    disp.applyBounds(this, canvas);
+    this.moveObj(this, t);
+    this.applyBounds(this, canvas);
 };
 // Base draw to a canvas method
 Disp.prototype.draw = function (ctx) {
@@ -29,7 +29,7 @@ Disp.prototype.draw = function (ctx) {
 Disp.prototype.applyBounds = function (canvas) {
     //var w = this.w || 16,
     //h = obj.h || 16;
-    if (this.x < -w) {
+    if (this.x < -this.w) {
         this.x = canvas.width + this.w - Math.abs(this.x) % (canvas.width + this.w);
     }
     if (this.x > canvas.width + this.w) {
@@ -54,6 +54,18 @@ Disp.prototype.moveObj = function (t) {
 Disp.prototype.distance = function (disp2) {
     return Math.sqrt(Math.pow(this.x - disp2.x, 2) + Math.pow(this.y - disp2.y, 2));
 };
+
+// Shot Class
+var Shot = function (opt) {
+    opt = opt || {};
+
+    // use Disp Base Constructor first
+    Object.assign(this, new Disp(opt));
+
+};
+
+// inherit from Disp
+Shot.prototype = new Disp();
 
 // Ship Class
 var Ship = function (opt) {
@@ -96,28 +108,30 @@ Ship.prototype.hit = function (shot) {
 
 // update shots
 Ship.prototype.updateShots = function (t, shipPool) {
+    var s = t / 1000,
+    ship = this;
     this.shotTime += t;
-    var s = t / 1000;
     // create new shots
     var newShots = this.shotTime / this.shotDelay;
     if (newShots >= 1) {
         this.shotTime = this.shotTime % this.shotDelay;
         if (this.shots.length < this.shotMax) {
-            this.shots.push({
-                x: this.x,
-                y: this.y,
-                heading: this.heading,
-                pps: this.pps + 128,
-                life: this.shotLife,
-                damage: 1
-            });
+
+            this.shots.push(new Shot({
+                    x: this.x,
+                    y: this.y,
+                    heading: this.heading,
+                    pps: this.pps + 128,
+                    life: this.shotLife,
+                    damage: 1
+                }));
         }
     }
     // update shots
     this.shots.forEach(function (shot) {
-        this.moveObj(shot, t);
+        shot.moveObj(t);
         shot.life -= t;
-        this.applyBounds(shot, canvas);
+        shot.applyBounds(canvas);
         if (shipPool) {
             shipPool.forEach(function (ship) {
                 if (disp.distance(ship, shot) <= ship.w) {

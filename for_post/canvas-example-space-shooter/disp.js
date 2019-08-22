@@ -87,7 +87,7 @@ var Ship = function (opt) {
     this.shotMax = opt.shotMax === undefined ? 5 : opt.shotMax; ;
     this.shotLife = opt.shotLife === undefined ? 1500 : opt.shotLife;
     this.shotDelay = opt.shotDelay === undefined ? 350 : opt.shotDelay;
-    this.shotPPS = opt.shotPPS === undefined ? 256 : opt.shotPPS;
+    this.shotPPS = opt.shotPPS === undefined ? 128 : opt.shotPPS;
     this.shotDamage = opt.shotDamage === undefined ? 1 : opt.shotDamage;
     this.maxHP = opt.maxHP === undefined ? 10 : opt.maxHP;
 
@@ -133,7 +133,7 @@ Ship.prototype.updateShots = function (t, shipPool) {
                     x: this.x,
                     y: this.y,
                     heading: this.heading,
-                    pps: this.pps + 128,
+                    pps: this.shotPPS,
                     life: this.shotLife,
                     damage: 1
                 }));

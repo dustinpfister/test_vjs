@@ -22,8 +22,10 @@ var makeEnemies = function (count, canvas) {
                 x: Math.floor(canvas.width * Math.random()),
                 y: Math.floor(canvas.height * Math.random()),
                 pps: 16,
+                shotPPS: 64,
+                shotLife: 5000,
                 heading: Math.PI * 2 * Math.random(),
-                shotDelay: 1000
+                shotDelay: 3000
             });
         enemies.push(e);
     };

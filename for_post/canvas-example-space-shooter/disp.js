@@ -129,6 +129,7 @@ Ship.prototype.updateShots = function (t, shipPool) {
         if (this.shots.length < this.shotMax) {
 
             this.shots.push(new Shot({
+				    canvas: this.canvas,
                     x: this.x,
                     y: this.y,
                     heading: this.heading,

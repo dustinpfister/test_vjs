@@ -68,6 +68,9 @@ var Shot = function (opt) {
     // use Disp Base Constructor first
     Object.assign(this, new Disp(opt));
 
+    this.life = opt.life || 1000;
+    this.damage = opt.damage === undefined ? 1 : opt.damage;
+
 };
 
 // inherit from Disp
@@ -139,7 +142,7 @@ Ship.prototype.updateShots = function (t, shipPool) {
     this.shots.forEach(function (shot) {
         shot.moveObj(t);
         shot.life -= t;
-        shot.applyBounds(canvas);
+        shot.applyBounds();
         if (shipPool) {
             shipPool.forEach(function (ship) {
                 if (ship.distance(shot) <= ship.w) {

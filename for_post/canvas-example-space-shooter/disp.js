@@ -8,6 +8,10 @@ var Disp = function (opt) {
     this.h = opt.h === undefined ? 16 : opt.h;
     this.heading = opt.heading === undefined ? 0 : opt.heading;
     this.pps = opt.pps === undefined ? 0 : opt.pps;
+
+    // canvas
+    this.canvas = opt.canvas || document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
 };
 // update method
 Disp.prototype.update = function (t) {
@@ -16,8 +20,9 @@ Disp.prototype.update = function (t) {
     this.applyBounds(this, canvas);
 };
 // Base draw to a canvas method
-Disp.prototype.draw = function (ctx) {
-    var hw = this.w / 2,
+Disp.prototype.draw = function () {
+    var ctx = this.ctx,
+    hw = this.w / 2,
     hh = this.h / 2;
     ctx.save();
     ctx.translate(this.x, this.y);
@@ -46,10 +51,10 @@ Disp.prototype.applyBounds = function (canvas) {
 Disp.prototype.moveObj = function (t) {
     var s = t / 1000;
     var delta = this.pps * s;
-	console.log(t);
+    console.log(t);
     this.x += Math.cos(this.heading) * delta;
     this.y += Math.sin(this.heading) * delta;
-	//console.log(this.x,this.y);
+    //console.log(this.x,this.y);
 };
 
 // distance
@@ -97,9 +102,9 @@ Ship.prototype = new Disp();
 // ship update
 Ship.prototype.update = function (t, shipPool) {
     // apply Disp update first
-	//console.log(this.x,this.y);
+    //console.log(this.x,this.y);
     Disp.prototype.update.call(this, t);
-	//console.log(this.x,this.y);
+    //console.log(this.x,this.y);
 
     // update shots
     this.updateShots(t, shipPool);

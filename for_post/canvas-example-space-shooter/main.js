@@ -5,6 +5,7 @@ var enemies = [];
 
 // player ship
 var ship = new Ship({
+        canvas: canvas,
         x: 16,
         y: 120,
         pps: 32,
@@ -17,6 +18,7 @@ var makeEnemies = function (count, canvas) {
     count = count || 1;
     while (count--) {
         e = new Ship({
+                canvas: canvas,
                 x: Math.floor(canvas.width * Math.random()),
                 y: Math.floor(canvas.height * Math.random()),
                 pps: 16,
@@ -68,10 +70,10 @@ var loop = function () {
     update();
     draw();
 };
-    //update();
-	    //update();
-   ship.update(1000);
-   ship.update(1000);
+//update();
+//update();
+ship.update(350);
+    ship.draw(ctx, 'blue', 'blue');
 enemies = makeEnemies(3, canvas);
 //loop();
 // EVENTS

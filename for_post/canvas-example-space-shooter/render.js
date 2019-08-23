@@ -12,15 +12,31 @@ var draw = (function () {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    var states = {
+
+        none: function () {},
+        game: function () {
+
+            // draw player
+            States.disp.ship.draw(ctx, 'blue', 'blue');
+            // draw enemies
+            States.disp.enemies.forEach(function (enemy) {
+                enemy.draw(ctx, 'red', 'red');
+            });
+
+        },
+        gameOver: function () {}
+
+    }
+
     return function () {
 
         cls();
-        // draw player
-        States.disp.ship.draw(ctx, 'blue', 'blue');
-        // draw enemies
-        States.disp.enemies.forEach(function (enemy) {
-            enemy.draw(ctx, 'red', 'red');
-        });
+
+        var drawState = states[States.current] || states['none'];
+
+        drawState();
+
     };
 
 }

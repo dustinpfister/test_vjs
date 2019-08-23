@@ -1,7 +1,6 @@
 var States = (function () {
 
     var lt = new Date(),
-	eCount = 1,
     canvas = document.getElementById('the-canvas'),
     ctx = canvas.getContext('2d');
 
@@ -38,6 +37,14 @@ var States = (function () {
         }
     };
 
+    // setup a level
+    var setupLevel = function (api) {
+        api.disp.enemies = makeEnemies(api.eCount, api.canvas);
+        var ship = api.disp.ship;
+        ship.x = canvas.width / 2;
+        ship.y = canvas.width / 2;
+    };
+
     // PUBLIC API
     return {
 
@@ -45,6 +52,8 @@ var States = (function () {
         ctx: ctx,
         win: false,
         reset: false,
+        eCount: 1,
+        level: 1,
         disp: {}, // display Objects to be used with the renderer
         current: 'init', // current state
 
@@ -53,14 +62,17 @@ var States = (function () {
             // player ship
             this.disp.ship = new Ship({
                     canvas: canvas,
-                    x: 16,
-                    y: 120,
+                    x: 0,
+                    y: 0,
                     pps: 32,
                     heading: Math.PI / 180 * 0
                 });
-            this.disp.enemies = makeEnemies(eCount, canvas);
-            this.win = false;
-            this.reset = false;
+            this.eCount = 1;
+            this.level = 1;
+            //this.disp.enemies = makeEnemies(eCount, canvas);
+            //this.win = false;
+            //this.reset = false;
+            setupLevel(this);
             this.current = 'game';
         },
 

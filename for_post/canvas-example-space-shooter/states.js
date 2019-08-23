@@ -6,21 +6,26 @@ var States = (function () {
 
     // HELPERS
     // make enemies
-    var makeEnemies = function (count, canvas) {
+    var makeEnemies = function (level, canvas) {
         var e,
         enemies = [];
-        count = count || 1;
+
+        // cap things past level 30
+        var cap = level / 30;
+        cap = cap > 1 ? 1 : cap;
+
+        var count = level;
         while (count--) {
             e = new Ship({
                     canvas: canvas,
                     x: Math.floor(canvas.width * Math.random()),
                     y: Math.floor(canvas.height * Math.random()),
-                    pps: 16,
-                    shotPPS: 64,
+                    pps: 16 + Math.floor(64 * cap),
+                    shotPPS: 64 + Math.floor(128 * cap),
                     shotLife: 5000,
                     heading: Math.PI * 2 * Math.random(),
-                    shotDelay: 3000,
-                    maxHP: 1
+                    shotDelay: 3000 - Math.floor(2500 * cap),
+                    maxHP: 1 + Math.floor(15 * cap)
                 });
             enemies.push(e);
         };
@@ -41,9 +46,9 @@ var States = (function () {
     // setup a level
     var setupLevel = function (api) {
 
-        api.eCount = api.level;
+        //api.eCount = api.level;
 
-        api.disp.enemies = makeEnemies(api.eCount, api.canvas);
+        api.disp.enemies = makeEnemies(api.level, api.canvas);
         var ship = api.disp.ship;
         ship.x = canvas.width / 2;
         ship.y = canvas.width / 2;
@@ -58,7 +63,7 @@ var States = (function () {
         ctx: ctx,
         win: false,
         reset: false,
-        eCount: 1,
+        //eCount: 1,
         level: 1,
         disp: {}, // display Objects to be used with the renderer
         current: 'init', // current state
@@ -73,7 +78,7 @@ var States = (function () {
                     pps: 32,
                     heading: Math.PI / 180 * 0
                 });
-            this.eCount = 1;
+            //this.eCount = 1;
             this.level = 1;
             setupLevel(this);
             this.current = 'game';

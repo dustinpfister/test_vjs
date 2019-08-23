@@ -19,7 +19,8 @@ var draw = function () {
 var loop = function () {
     requestAnimationFrame(loop);
     //update();
-    States[States.current]();
+    //States[States.current]();
+    States.tick();
     draw();
 };
 loop();

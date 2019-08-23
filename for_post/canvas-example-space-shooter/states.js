@@ -72,6 +72,12 @@ var States = (function () {
             });
             purgeEnemies(enemies);
             lt = now;
+        },
+
+        tick: function () {
+
+            this[this.current]();
+
         }
 
     };

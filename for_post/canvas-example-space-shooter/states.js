@@ -19,7 +19,8 @@ var States = (function () {
                     shotPPS: 64,
                     shotLife: 5000,
                     heading: Math.PI * 2 * Math.random(),
-                    shotDelay: 3000
+                    shotDelay: 3000,
+                    maxHP: 1
                 });
             enemies.push(e);
         };

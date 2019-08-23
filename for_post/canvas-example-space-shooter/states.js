@@ -42,8 +42,8 @@ var States = (function () {
 
         canvas: canvas,
         ctx: ctx,
+        win: false,
         disp: {}, // display Objects to be used with the renderer
-
         current: 'init', // current state
 
         // Initialize the Game State
@@ -57,6 +57,7 @@ var States = (function () {
                     heading: Math.PI / 180 * 0
                 });
             this.disp.enemies = makeEnemies(3, canvas);
+            this.win = false;
             this.current = 'game';
         },
 
@@ -71,8 +72,17 @@ var States = (function () {
                 enemy.update(t, [ship]);
             });
             purgeEnemies(enemies);
+            if (enemies.length === 0) {
+                this.win = true;
+                this.current = 'gameOver';
+            }
+            if (ship.HP === 0) {
+                this.current = 'gameOver';
+            }
             lt = now;
         },
+
+        gameOver: function () {},
 
         tick: function () {
 

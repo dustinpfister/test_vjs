@@ -1,6 +1,7 @@
 var States = (function () {
 
     var lt = new Date(),
+	eCount = 1,
     canvas = document.getElementById('the-canvas'),
     ctx = canvas.getContext('2d');
 
@@ -57,7 +58,7 @@ var States = (function () {
                     pps: 32,
                     heading: Math.PI / 180 * 0
                 });
-            this.disp.enemies = makeEnemies(3, canvas);
+            this.disp.enemies = makeEnemies(eCount, canvas);
             this.win = false;
             this.reset = false;
             this.current = 'game';

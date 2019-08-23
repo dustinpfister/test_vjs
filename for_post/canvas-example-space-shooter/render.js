@@ -25,7 +25,16 @@ var draw = (function () {
             });
 
         },
-        gameOver: function () {}
+        gameOver: function () {
+
+            ctx.fillStyle = 'white';
+            if (States.win) {
+                ctx.fillText('Victory', 10, 10);
+            } else {
+                ctx.fillText('Game Over', 10, 10);
+            }
+
+        }
 
     }
 

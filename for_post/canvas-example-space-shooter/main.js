@@ -46,6 +46,18 @@ var moveShip = function (e) {
     States.disp.ship.heading = Math.PI + Math.atan2(cy - y, cx - x);
 };
 
+var startGame = function () {
+
+    if (States.current === 'gameOver') {
+
+        States.reset = true;
+    }
+
+}
+
 // EVENTS
 canvas.addEventListener('mousemove', moveShip);
 canvas.addEventListener('touchmove', moveShip);
+
+canvas.addEventListener('mousedown', startGame);
+canvas.addEventListener('touchstart', startGame);

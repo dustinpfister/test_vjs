@@ -43,6 +43,7 @@ var States = (function () {
         canvas: canvas,
         ctx: ctx,
         win: false,
+        reset: false,
         disp: {}, // display Objects to be used with the renderer
         current: 'init', // current state
 
@@ -58,6 +59,7 @@ var States = (function () {
                 });
             this.disp.enemies = makeEnemies(3, canvas);
             this.win = false;
+			this.reset=false;
             this.current = 'game';
         },
 
@@ -82,7 +84,15 @@ var States = (function () {
             lt = now;
         },
 
-        gameOver: function () {},
+        gameOver: function () {
+
+            if (this.reset) {
+
+                this.current = 'init';
+
+            }
+
+        },
 
         tick: function () {
 

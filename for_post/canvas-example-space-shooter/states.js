@@ -59,7 +59,7 @@ var States = (function () {
                 });
             this.disp.enemies = makeEnemies(3, canvas);
             this.win = false;
-			this.reset=false;
+            this.reset = false;
             this.current = 'game';
         },
 
@@ -84,20 +84,16 @@ var States = (function () {
             lt = now;
         },
 
+        // game over state
         gameOver: function () {
-
             if (this.reset) {
-
                 this.current = 'init';
-
             }
-
         },
 
+        // tick method to be called in the main app loop
         tick: function () {
-
             this[this.current]();
-
         }
 
     };

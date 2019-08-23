@@ -16,7 +16,7 @@ var Disp = function (opt) {
 Disp.prototype.update = function (t) {
     t = t === undefined ? 0 : t;
     this.moveObj(t);
-    this.applyBounds(this, canvas);
+    this.applyBounds(this, this.canvas);
 };
 // Base draw to a canvas method
 Disp.prototype.draw = function () {

@@ -39,10 +39,15 @@ var States = (function () {
 
     // setup a level
     var setupLevel = function (api) {
+
+        api.eCount = api.level;
+
         api.disp.enemies = makeEnemies(api.eCount, api.canvas);
         var ship = api.disp.ship;
         ship.x = canvas.width / 2;
         ship.y = canvas.width / 2;
+        api.win = false;
+        api.reset = false;
     };
 
     // PUBLIC API
@@ -69,9 +74,6 @@ var States = (function () {
                 });
             this.eCount = 1;
             this.level = 1;
-            //this.disp.enemies = makeEnemies(eCount, canvas);
-            //this.win = false;
-            //this.reset = false;
             setupLevel(this);
             this.current = 'game';
         },
@@ -100,7 +102,18 @@ var States = (function () {
         // game over state
         gameOver: function () {
             if (this.reset) {
-                this.current = 'init';
+
+                if (this.win) {
+
+                    this.level += 1;
+                    setupLevel(this);
+                    this.current = 'game';
+
+                } else {
+
+                    this.current = 'init';
+
+                }
             }
         },
 

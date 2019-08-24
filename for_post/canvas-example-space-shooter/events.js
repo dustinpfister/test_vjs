@@ -1,6 +1,5 @@
 // EVENTS
 (function () {
-
     var canvas = States.canvas
         // move ship handler that will work with mouse
         // and touch events
@@ -33,6 +32,5 @@
     canvas.addEventListener('touchmove', moveShip);
     canvas.addEventListener('mousedown', startGame);
     canvas.addEventListener('touchstart', startGame);
-
 }
     ());

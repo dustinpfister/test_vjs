@@ -3,17 +3,14 @@ var States = (function () {
     var lt = new Date(),
     canvas = document.getElementById('the-canvas'),
     ctx = canvas.getContext('2d');
-
     // HELPERS
     // make enemies
     var makeEnemies = function (level, canvas) {
         var e,
         enemies = [];
-
         // cap things past level 30
         var cap = level / 30;
         cap = cap > 1 ? 1 : cap;
-
         var count = level;
         while (count--) {
             e = new Ship({
@@ -31,7 +28,6 @@ var States = (function () {
         };
         return enemies;
     };
-
     // purge
     var purgeEnemies = function (enemies) {
         var i = enemies.length;
@@ -42,12 +38,9 @@ var States = (function () {
             }
         }
     };
-
     // setup a level
     var setupLevel = function (api) {
-
         //api.eCount = api.level;
-
         api.disp.enemies = makeEnemies(api.level, api.canvas);
         var ship = api.disp.ship;
         ship.x = canvas.width / 2;
@@ -55,10 +48,8 @@ var States = (function () {
         api.win = false;
         api.reset = false;
     };
-
     // PUBLIC API
     return {
-
         canvas: canvas,
         ctx: ctx,
         win: false,
@@ -67,7 +58,6 @@ var States = (function () {
         level: 1,
         disp: {}, // display Objects to be used with the renderer
         current: 'init', // current state
-
         // Initialize the Game State
         init: function () {
             // player ship
@@ -83,7 +73,6 @@ var States = (function () {
             setupLevel(this);
             this.current = 'game';
         },
-
         // Main Game State
         game: function () {
             var now = new Date(),
@@ -104,31 +93,22 @@ var States = (function () {
             }
             lt = now;
         },
-
         // game over state
         gameOver: function () {
             if (this.reset) {
-
                 if (this.win) {
-
                     this.level += 1;
                     setupLevel(this);
                     this.current = 'game';
-
                 } else {
-
                     this.current = 'init';
-
                 }
             }
         },
-
         // tick method to be called in the main app loop
         tick: function () {
             this[this.current]();
         }
-
     };
-
 }
     ());

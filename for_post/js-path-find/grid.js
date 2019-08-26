@@ -107,10 +107,10 @@ Grid.prototype.findPath = function(startNode, endNode){
         return open.sort(function(nodeA, nodeB){
             //console.log(nodeA.weight, nodeB.weight);
             if(nodeA.weight < nodeB.weight){
-                return -1;
+                return 1;
             }
             if(nodeA.weight > nodeB.weight){
-                return 1;
+                return -1;
             }
             return 0;
         });
@@ -139,17 +139,15 @@ Grid.prototype.findPath = function(startNode, endNode){
                 ni += 1;
                 continue;
             }
-            neighbor.weight = Math.sqrt(Math.pow(endNode.x - node.x, 2) + Math.pow(endNode.y - node.y, 2));
+            neighbor.weight = Math.sqrt(Math.pow(endNode.x - neighbor.x, 2) + Math.pow(endNode.y - neighbor.y, 2));
             if (!neighbor.opened){
                 neighbor.parent = node;
                 open.push(neighbor);
                 neighbor.opened = true;
-
             }
             ni += 1;
         }
         sortOpen(open);
-        
     }
     return [];
 };

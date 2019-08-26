@@ -118,6 +118,7 @@ Grid.prototype.findPath = function(startNode, endNode){
                 path.push([node.x,node.y]);
                 node = node.parent;
             }
+            path.push([node.x,node.y]);
             return path;
         }
         

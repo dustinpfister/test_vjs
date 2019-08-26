@@ -12,10 +12,20 @@ let printGrid = (grid)=> {
     });
 };
 
+// set the tile index value for the given path
+let setTilesforPath = function(grid, path, ti){
+    ti = ti === undefined ? 3 : ti;
+    path.forEach((pt)=>{
+        let node = grid.nodes[pt[1]][pt[0]];
+        node.ti = ti;
+    });
+};
 
+// new grid and path
 let g = new Grid();
 let p = g.findPath(g.nodes[1][1], g.nodes[3][4])
 
-console.log(p);
-//printGrid(g);
+setTilesforPath(g, p, 3);
+
+printGrid(g);
 

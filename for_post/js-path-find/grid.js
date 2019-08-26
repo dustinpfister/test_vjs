@@ -100,17 +100,24 @@ Grid.prototype.findPath = function(startNode, endNode){
     
     var grid = Grid.fromMatrix(this.nodes),
     path = [],
-    opened = [],
+    open = [],
     node;
     
     startNode = grid.nodes[startNode.y][startNode.x];
     endNode = grid.nodes[endNode.y][endNode.x];
     
-    opened.push(startNode);
-    startNode.opened = true;
+    var sortOpen = function(open){
+        return open.sort(function(nodeA, nodeB){
+            return nodeA.weight - nodeB.weight;
+        });
+    };
     
-    while(opened.length > 0){
-        node = opened.pop();
+    open.push(startNode);
+    startNode.opened = true;
+    startNode.weight = 0;
+    
+    while(open.length > 0){
+        node = open.pop();
         node.closed = true;
         
         if(node === endNode){
@@ -138,8 +145,11 @@ Grid.prototype.findPath = function(startNode, endNode){
                 
                 neighbor.parent = node;
                 
-                opened.push(neighbor);
+                node.weight = Math.sqrt(Math.pow(node.x - endNode.x, 2) + Math.pow(node.y-endNode.y, 2));
+                
+                open.push(neighbor);
                 neighbor.opened = true;
+                sortOpen(open);
             }
             
             ni += 1;

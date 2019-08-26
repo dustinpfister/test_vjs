@@ -5,6 +5,7 @@ var Node = function(opt){
     this.y = opt.y;
     this.i = opt.i;
     this.walkable = opt.walkable === undefined ? true: opt.walkable;
+    this.ti = opt.ti || 0; // tile index used to skin the tile
 };
 
 // Main Grid Constructor

@@ -4,12 +4,14 @@ os = require('os');
 let g = new Grid();
 
 let printGrid = (grid)=> {
+    
+    var tiles = ['.', '@']
   
     grid.nodes.forEach((row) => {
        
         row.forEach((node) => {
             
-            process.stdout.write(node.i + ':');
+            process.stdout.write(tiles[node.ti]);
             
         });
         

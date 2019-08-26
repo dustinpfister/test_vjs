@@ -23,7 +23,7 @@ let setTilesforPath = function(grid, path, ti){
 
 // new grid and path
 let g = new Grid();
-let p = g.findPath(g.nodes[1][1], g.nodes[4][3])
+let p = g.findPath(g.nodes[0][0], g.nodes[5][7])
 
 setTilesforPath(g, p, 3);
 

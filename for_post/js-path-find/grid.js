@@ -97,29 +97,30 @@ Grid.prototype.getNeighbors = function(node){
 
 // Find path from start node to end node
 Grid.prototype.findPath = function(startNode, endNode){
-    
     var grid = Grid.fromMatrix(this.nodes),
     path = [],
     open = [],
     node;
-    
     startNode = grid.nodes[startNode.y][startNode.x];
     endNode = grid.nodes[endNode.y][endNode.x];
-    
     var sortOpen = function(open){
         return open.sort(function(nodeA, nodeB){
-            return nodeA.weight - nodeB.weight;
+            //console.log(nodeA.weight, nodeB.weight);
+            if(nodeA.weight < nodeB.weight){
+                return 1;
+            }
+            if(nodeA.weight > nodeB.weight){
+                return -1;
+            }
+            return 0;
         });
     };
-    
     open.push(startNode);
     startNode.opened = true;
     startNode.weight = 0;
-    
     while(open.length > 0){
         node = open.pop();
         node.closed = true;
-        
         if(node === endNode){
             while (node.parent) {
                 path.push([node.x,node.y]);
@@ -128,11 +129,9 @@ Grid.prototype.findPath = function(startNode, endNode){
             path.push([node.x,node.y]);
             return path;
         }
-        
         var neighbors = grid.getNeighbors(node);
         var ni = 0,
         nl = neighbors.length;
-        
         // loop current neighbors
         while(ni < nl){
             var neighbor = neighbors[ni];
@@ -140,25 +139,27 @@ Grid.prototype.findPath = function(startNode, endNode){
                 ni += 1;
                 continue;
             }
-            
+            neighbor.weight = Math.sqrt(Math.pow(endNode.x - node.x, 2) + Math.pow(endNode.y - node.y, 2));
             if (!neighbor.opened){
-                
                 neighbor.parent = node;
-                
-                node.weight = Math.sqrt(Math.pow(node.x - endNode.x, 2) + Math.pow(node.y-endNode.y, 2));
-                
+  
+
                 open.push(neighbor);
+                
+                //console.log(open);
                 neighbor.opened = true;
-                sortOpen(open);
+
             }
-            
             ni += 1;
         }
+        sortOpen(open);
+        
+        //open[0].parent = node;
+        
+        //ni = 0;
         
     }
-    
     return [];
-    
 };
 
 // if node

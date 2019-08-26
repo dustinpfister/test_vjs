@@ -116,7 +116,6 @@ Grid.prototype.findPath = function(startNode, endNode){
         if(node === endNode){
             while (node.parent) {
                 path.push([node.x,node.y]);
-                console.log(node);
                 node = node.parent;
             }
             return path;

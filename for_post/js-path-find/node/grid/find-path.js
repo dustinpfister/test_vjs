@@ -1,5 +1,6 @@
 let Grid = require('./grid.js').Grid;
 
+// sort a list of open nodes
 var sortOpen = function (open) {
     return open.sort(function (nodeA, nodeB) {
         if (nodeA.weight < nodeB.weight) {
@@ -12,20 +13,23 @@ var sortOpen = function (open) {
     });
 };
 
+// set weight for a node
 var setWeight = function (endNode, neighbor) {
-
     return Math.sqrt(Math.pow(endNode.x - neighbor.x, 2) + Math.pow(endNode.y - neighbor.y, 2))
-
 };
 
 // Find path from start node to end node
-module.exports = function (givenGrid, startNode, endNode) {
+module.exports = function (givenGrid, sx, sy, ex, ey) {
+
+    // copy the given grid
     var grid = Grid.fromMatrix(givenGrid.nodes),
     path = [],
     open = [],
     node;
-    startNode = grid.nodes[startNode.y][startNode.x];
-    endNode = grid.nodes[endNode.y][endNode.x];
+
+    // set startNode and End Node to copy of grid
+    var startNode = grid.nodes[sy][sx];
+    endNode = grid.nodes[ey][ex];
 
     open.push(startNode);
     startNode.opened = true;

@@ -25,7 +25,7 @@ exports.setStartEnd = (grid, sx, sy, ex, ey) => {
     let startNode = grid.nodes[sy][sx],
     endNode = grid.nodes[ey][ex],
     //p = grid.findPath(startNode, endNode);
-    p = findPath(grid, startNode, endNode);
+    p = findPath(grid, sx, sy, ex, ey);
     this.setTileIndexValuesforPath(grid, p, 1);
     startNode.ti = 2;
     endNode.ti = 3;

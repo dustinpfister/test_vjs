@@ -17,4 +17,6 @@ var open = [
 sortOpen(open);
 
 console.log(open);
+// [ { weight: 12 }, { weight: 7 }, { weight: 5 }, { weight: 3 } ]
 console.log(open.pop());
+// { weight: 3 }

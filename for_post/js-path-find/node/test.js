@@ -1,6 +1,6 @@
-let Grid = require('./lib_grid_node.js').Grid,
-findPath = require('./lib_find_path_node.js'),
-helpers = require('./lib_helpers.js');
+let Grid = require('./grid/grid.js').Grid,
+findPath = require('./grid/find-path.js'),
+helpers = require('./grid/helpers.js');
 
 let g = new Grid({
         w: 40,

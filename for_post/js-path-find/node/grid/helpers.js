@@ -1,4 +1,4 @@
-let findPath = require('./lib_find_path_node.js'),
+let findPath = require('./find-path.js'),
 os = require('os');
 
 // print a grid

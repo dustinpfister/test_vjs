@@ -1,4 +1,4 @@
-let Grid = require('./lib_grid_node.js').Grid;
+let Grid = require('./grid.js').Grid;
 
 var sortOpen = function (open) {
     return open.sort(function (nodeA, nodeB) {

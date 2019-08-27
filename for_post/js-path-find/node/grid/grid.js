@@ -1,5 +1,5 @@
 // Node Constructor
-var Node = function(opt){
+var Node = exports.Node = function(opt){
     var opt = opt || {};
     this.x = opt.x;
     this.y = opt.y;
@@ -9,7 +9,7 @@ var Node = function(opt){
 };
 
 // Main Grid Constructor
-var Grid = function(opt){
+var Grid = exports.Grid = function(opt){
     opt = opt || {};
     this.w = opt.w || 8;
     this.h = opt.h || 6;
@@ -93,9 +93,4 @@ Grid.prototype.getNeighbors = function(node){
         neighbors.push(this.nodes[y][x+1]);
     }
     return neighbors;    
-};
-
-module.exports = {
-    Grid: Grid,
-    Node: Node
 };

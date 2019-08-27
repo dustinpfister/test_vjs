@@ -33,8 +33,9 @@ Grid.fromMatrix = function (matrix) {
             grid.nodes[y][x] = new Node({
                     x: x,
                     y: y,
-                    i: m.i,
-                    walkable: m.walkable
+                    i: y * grid.w + x,
+                    walkable: m.walkable,
+                    ti: m.ti || 0
                 });
             x += 1;
         }

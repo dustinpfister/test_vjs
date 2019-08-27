@@ -3,7 +3,7 @@ os = require('os');
 
 // print a grid
 exports.print = (grid) => {
-    var tiles = ['.', '+', 'S', 'E'];
+    var tiles = ['.', '+', 'S', 'E', '#'];
     grid.nodes.forEach((row) => {
         row.forEach((node) => {
             process.stdout.write(tiles[node.ti]);
@@ -21,6 +21,7 @@ exports.setTileIndexValuesforPath = (grid, path, ti) => {
     });
 };
 
+// set the start and end point tile locations
 exports.setStartEnd = (grid, sx, sy, ex, ey) => {
     let startNode = grid.nodes[sy][sx],
     endNode = grid.nodes[ey][ex],

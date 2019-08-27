@@ -1,4 +1,4 @@
-let Grid = require('./grid.js'),
+let Grid = require('./node_grid.js').Grid,
 os = require('os');
 
 // print a grid

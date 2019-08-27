@@ -105,7 +105,6 @@ Grid.prototype.findPath = function(startNode, endNode){
     endNode = grid.nodes[endNode.y][endNode.x];
     var sortOpen = function(open){
         return open.sort(function(nodeA, nodeB){
-            //console.log(nodeA.weight, nodeB.weight);
             if(nodeA.weight < nodeB.weight){
                 return 1;
             }

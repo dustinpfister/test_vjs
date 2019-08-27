@@ -18,6 +18,18 @@ var setWeight = function (endNode, neighbor) {
     return Math.sqrt(Math.pow(endNode.x - neighbor.x, 2) + Math.pow(endNode.y - neighbor.y, 2))
 };
 
+// build a path based an parent property
+var buildPath = function (node) {
+    var path = [];
+    while (node.parent) {
+        path.push([node.x, node.y]);
+        node = node.parent;
+    }
+    path.push([node.x, node.y]);
+    return path;
+
+};
+
 // Find path from start node to end node
 module.exports = function (givenGrid, sx, sy, ex, ey) {
 
@@ -45,12 +57,13 @@ module.exports = function (givenGrid, sx, sy, ex, ey) {
 
         // if the node is the end node
         if (node === endNode) {
-            while (node.parent) {
-                path.push([node.x, node.y]);
-                node = node.parent;
-            }
-            path.push([node.x, node.y]);
-            return path;
+            //while (node.parent) {
+            //    path.push([node.x, node.y]);
+            //    node = node.parent;
+            //}
+            //path.push([node.x, node.y]);
+            //return path;
+            return buildPath(node);
         }
 
         // loop current neighbors
@@ -80,6 +93,7 @@ module.exports = function (givenGrid, sx, sy, ex, ey) {
 
         // sort the list of nodes be weight value to end node
         sortOpen(open);
+
     }
 
     // return an empty array if we get here (can not get to end node)

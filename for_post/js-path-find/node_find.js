@@ -3,7 +3,7 @@ os = require('os');
 
 // print a grid
 let printGrid = (grid)=> {
-    var tiles = ['.', 'S', 'E', '#'];
+    var tiles = ['.', '+', 'S', 'E'];
     grid.nodes.forEach((row) => {
         row.forEach((node) => {
             process.stdout.write(tiles[node.ti]);
@@ -13,8 +13,8 @@ let printGrid = (grid)=> {
 };
 
 // set the tile index value for the given path
-let setTilesforPath = function(grid, path, ti){
-    ti = ti === undefined ? 3 : ti;
+let setTileIndexValuesforPath = function(grid, path, ti){
+    ti = ti === undefined ? 0 : ti;
     path.forEach((pt)=>{
         let node = grid.nodes[pt[1]][pt[0]];
         node.ti = ti;
@@ -25,7 +25,9 @@ let setTilesforPath = function(grid, path, ti){
 let g = new Grid({w:16,h:9});
 let p = g.findPath(g.nodes[0][0], g.nodes[8][12]);
 
-setTilesforPath(g, p, 3);
+setTileIndexValuesforPath(g, p, 1);
+g.nodes[0][0].ti = 2;
+g.nodes[8][12].ti = 3;
 
 printGrid(g);
 

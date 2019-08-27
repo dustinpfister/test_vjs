@@ -31,12 +31,19 @@ module.exports = function (givenGrid, sx, sy, ex, ey) {
     var startNode = grid.nodes[sy][sx];
     endNode = grid.nodes[ey][ex];
 
+    // push start Node to open list
     open.push(startNode);
     startNode.opened = true;
     startNode.weight = 0;
+
+    // start walking
     while (open.length > 0) {
+
+        // pop out next Node from open list
         node = open.pop();
         node.closed = true;
+
+        // if the node is the end node
         if (node === endNode) {
             while (node.parent) {
                 path.push([node.x, node.y]);
@@ -45,18 +52,24 @@ module.exports = function (givenGrid, sx, sy, ex, ey) {
             path.push([node.x, node.y]);
             return path;
         }
+
+        // loop current neighbors
         var neighbors = grid.getNeighbors(node);
         var ni = 0,
         nl = neighbors.length;
-        // loop current neighbors
         while (ni < nl) {
             var neighbor = neighbors[ni];
+
+            // if the neighbor is closed continue looping
             if (neighbor.closed) {
                 ni += 1;
                 continue;
             }
+
             // set weight for the neighbor
             neighbor.weight = setWeight(endNode, neighbor);
+
+            // if the node is not opened
             if (!neighbor.opened) {
                 neighbor.parent = node;
                 open.push(neighbor);
@@ -64,7 +77,12 @@ module.exports = function (givenGrid, sx, sy, ex, ey) {
             }
             ni += 1;
         }
+
+        // sort the list of nodes be weight value to end node
         sortOpen(open);
     }
+
+    // return an empty array if we get here (can not get to end node)
     return [];
+
 };

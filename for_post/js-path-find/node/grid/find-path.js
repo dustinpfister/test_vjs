@@ -31,7 +31,7 @@ var buildPath = function (node) {
 };
 
 // for Each Neighbor for the given grid, node, and open list
-var forNeighbors = function (grid, node, open) {
+var forNeighbors = function (grid, node, endNode, open) {
     var neighbors = grid.getNeighbors(node);
     var ni = 0,
     nl = neighbors.length;
@@ -78,7 +78,7 @@ module.exports = function (givenGrid, sx, sy, ex, ey) {
             return buildPath(node);
         }
         // loop current neighbors
-        forNeighbors(grid, node, open);
+        forNeighbors(grid, node, endNode, open);
         // sort the list of nodes be weight value to end node
         sortOpen(open);
     }

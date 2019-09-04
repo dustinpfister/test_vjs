@@ -10,9 +10,9 @@
         </select>
         <script>
 var select = document.getElementById('selections');
-
-select.addEventListener('change', function () {
-  console.log(select.value);
+select.addEventListener('change', function (e) {
+  var sel = e.target;
+  console.log(sel.value);
 });
         </script>
     </body>

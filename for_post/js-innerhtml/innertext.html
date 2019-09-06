@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>innerText example</title>
+    </head>
+    <body>
+        <div id="content">
+            <h1>So this is a header</h1>
+            <p>This is some text in a paragraph element</p>
+        </div>
+        <script>
+var el = document.getElementById('content');
+console.log(el.innerText.length); // 61
+console.log(el.textContent.length); // 94
+console.log(el.innerHTML.length); // 110
+        </script>
+    </body>
+</html>

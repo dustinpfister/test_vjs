@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>BigInt example</title>
+  </head>
+  <p>n</p>
+  <body>
+    <script>
+
+var bigN = BigInt(42);
+
+console.log(bigN === 42); // false
+console.log(bigN == 42); // true
+console.log(bigN == '42'); // true
+
+
+document.querySelector('p').innerText = typeof bigN;
+// 585000037
+    </script>
+  <body>
+</html>

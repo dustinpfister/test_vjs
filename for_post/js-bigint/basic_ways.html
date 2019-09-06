@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>BigInt example</title>
+  </head>
+  <p>n</p>
+  <body>
+    <script>
+// create BigInts from a Number
+var n = BigInt(37),
+// from a string of a number
+x = BigInt('130000'),
+// by appending an n to the end of a number literal
+y = 4500n,
+// by writing an expression using BigInts
+z = n + x * y;
+
+console.log(z.toString());
+// '585000037'
+
+document.querySelector('p').innerText = z;
+// 585000037
+    </script>
+  <body>
+</html>

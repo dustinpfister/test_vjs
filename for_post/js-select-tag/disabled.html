@@ -3,17 +3,26 @@
         <title>javaScript select tag</title>
     </head>
     <body>
-        <select id="selections" disabled>
-            <option value="1">One</option>
-            <option value="2" disabled>Two</option>
-            <option value="3">Three</option>
+        <select id="obj-control">
+            <option value="ai">AI Control</option>
+            <option value="user">User Control</option>
+        <select>
+        <select id="obj-control-user-options" disabled>
+            <option value="1">keyboard only (wasd)</option>
+            <option value="2">mouse only</option>
+            <option value="3">mouse and keyboard (wasd)</option>
         </select>
         <script>
-var select = document.getElementById('selections');
-select.addEventListener('change', function (e) {
-  var sel = e.target;
-  console.log(sel.value);
+var sel_control = document.getElementById('obj-control'),
+sel_control_useropt = document.getElementById('obj-control-user-options');
+
+sel_control.addEventListener('change', function(e){
+    sel_control_useropt.setAttribute('disabled', 'true');
+    if(e.target.value === 'user'){
+        sel_control_useropt.removeAttribute('disabled');
+    }
 });
+
         </script>
     </body>
 </html>

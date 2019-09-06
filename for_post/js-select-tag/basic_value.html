@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>javaScript create element</title>
+    </head>
+    <body>
+        <select id="selections">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <script>
+var select = document.getElementById('selections');
+select.addEventListener('change', function (e) {
+  var sel = e.target;
+  console.log(sel.value);
+});
+        </script>
+    </body>
+</html>

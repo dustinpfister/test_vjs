@@ -11,6 +11,13 @@
 var canvas = document.getElementById('chart-demo-1'),
 ctx = canvas.getContext('2d');
 
+canvas.width = 320;
+canvas.height = 240;
+
+drawLineChart(canvas, {
+clicks: [12,30,24,250,30,25]
+});
+
 
     </script>
   </body>

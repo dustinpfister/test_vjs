@@ -1,0 +1,30 @@
+<html>
+  <head>
+      <title>chart.js basic</title>
+  </head>
+  <body>
+    <div style="width:320px;">
+      <canvas id="chart-demo-1"></canvas>
+    </div>
+    <script src="chart.min.js"></script>
+    <script>
+var ctx = document.getElementById('chart-demo-1').getContext('2d'),
+// chart
+chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['week1', 'week2', 'week3'],
+            datasets: [{
+                label: 'impressions',
+                borderColor: '#ff0000',
+                data: [450, 375, 680]
+            },{
+                label: 'clicks',
+                borderColor: '#0000ff',
+                data: [70, 20, 120]
+            }]
+        }
+    });
+    </script>
+  </body>
+</html>

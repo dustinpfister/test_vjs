@@ -8,14 +8,14 @@ var drawLineChart = (function () {
         });
     };
     // return the draw function
-    return function (canvas, data) {
+    return function (canvas, opt) {
         var ctx = canvas.getContext('2d');
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        Object.keys(data).forEach(function (setName) {
-            var values = setScale(canvas, data[setName]);
+        Object.keys(opt.data).forEach(function (setName, di) {
+            var values = setScale(canvas, opt.data[setName]);
             ctx.beginPath();
-            ctx.strokeStyle = 'white';
+            ctx.strokeStyle = opt.colors[di] || 'white';
             values.forEach(function (n, i) {
                 var x = canvas.width / (values.length - 1) * i,
                 y = canvas.height - n;

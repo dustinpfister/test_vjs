@@ -13,6 +13,8 @@ let defaultTest = () => {
     return false;
 }
 
+// so I have a method that returns a promise that can resolve
+// or reject depending on the outcome of what it does
 let delayTest = (delay, theTest) => {
     delay = delay === undefined ? 1000 : delay;
     theTest = theTest === undefined ? defaultTest : theTest;
@@ -26,14 +28,13 @@ let delayTest = (delay, theTest) => {
     });
 };
 
+// I can then use the promise example
+// and have methods that will fire if the promise resolves
+// or rejects
 delayTest()
 .then((mess) => {
-
     console.log(mess)
-
 })
 .catch((e) => {
-
     console.log(e);
-
-})
+});

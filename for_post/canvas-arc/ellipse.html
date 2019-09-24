@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>canvas arc ellipse</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+ 
+// a drawEllipse method that takes a center x and y point
+// along with width and height
+var drawEllipse = function(ctx, cx, cy, w, h, pointCount){
+    var i = 0,
+    x,y,r;
+    pointCount = pointCount || 100,
+    ctx.beginPath();
+    while(i < pointCount){
+        r = Math.PI * 2 * (i / pointCount);
+        x = cx + Math.cos(r) * w;
+        y = cy + Math.sin(r) * h;
+        ctx.lineTo(x,y);
+        i += 1;
+    }
+    ctx.closePath();
+    ctx.stroke();
+};
+ 
+// looks good
+drawEllipse(ctx, 160, 120, 100, 50, 25)
+ 
+        </script>
+    </body>
+</html>

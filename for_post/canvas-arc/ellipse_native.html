@@ -9,9 +9,17 @@
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
-ctx.beginPath(); 
-ctx.ellipse(160, 120, 100, 50, 0, 0, Math.PI * 2);
-ctx.stroke(); 
+var cx = 160,
+cy = 120,
+radiusX = 100,
+radiusY = 50,
+rotation = Math.PI * 0.25,
+startRadian = 0,
+endRadian = Math.PI * 2;
+
+ctx.beginPath();
+ctx.ellipse(cx, cy, radiusX, radiusY, rotation, startRadian, endRadian);
+ctx.stroke();
         </script>
     </body>
 </html>

@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>canvas arc ellipse</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+ctx.beginPath(); 
+ctx.ellipse(160, 120, 100, 50, 0, 0, Math.PI * 2);
+ctx.stroke(); 
+        </script>
+    </body>
+</html>

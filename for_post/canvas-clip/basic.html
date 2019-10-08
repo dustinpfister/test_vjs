@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>canvas clip</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+
+ctx.beginPath();
+ctx.arc(160, 120, 50, 0, Math.PI * 2);
+ctx.clip();
+
+ctx.fillStyle = 'red';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+        </script>
+    </body>
+</html>

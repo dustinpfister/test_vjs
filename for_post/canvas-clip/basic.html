@@ -8,16 +8,13 @@
 // get canvas can 2d context
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
-
+// start a path and clip
 ctx.beginPath();
 ctx.arc(160, 120, 50, 0, Math.PI * 2);
 ctx.clip();
-
+// draw in the cliped area
 ctx.fillStyle = 'red';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-
         </script>
     </body>
 </html>

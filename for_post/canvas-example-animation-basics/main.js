@@ -1,30 +1,36 @@
 var aniState = {
     frame: 0,
-    maxFrame: 100,
+    maxFrame: 240,
+    circles: 8,
     disp: [],
     init: function () {
-        var i = 5;
+        var i = this.circles;
         while (i--) {
             disp = {
                 x: 0,
-                y: 0
+                y: 0,
+                radius: 10
             };
             this.disp.push(disp);
         }
         this.forFrame(0, this.maxFrame);
     },
     forFrame: function () {
-        var i = 5,
+        var i = this.circles,
         disp,
         cx = 160,
         cy = 120,
-        radius = 50,
+        radius = 0,
+        per = this.frame / this.maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5,
         rad;
         while (i--) {
             disp = this.disp[i];
-            rad = Math.PI * 2 / 5 * i + Math.PI * 2 * (this.frame / this.maxFrame);
+            radius = 25 + 75 * bias;
+            rad = Math.PI * 2 / this.circles * i + Math.PI * 2 * per;
             disp.x = cx + Math.cos(rad) * radius;
-            disp.y = cy + Math.sin(rad) * radius
+            disp.y = cy + Math.sin(rad) * radius;
+            disp.radius = 10 + 15 * bias;
         }
         this.frame += 1;
         this.frame %= this.maxFrame;
@@ -43,7 +49,7 @@ var loop = function () {
     aniState.disp.forEach(function (disp) {
         ctx.fillStyle = 'red';
         ctx.beginPath();
-        ctx.arc(disp.x, disp.y, 25, 0, Math.PI * 2);
+        ctx.arc(disp.x, disp.y, disp.radius, 0, Math.PI * 2);
         ctx.fill();
     });
     aniState.forFrame();

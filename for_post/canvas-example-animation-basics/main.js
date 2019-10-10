@@ -1,8 +1,13 @@
 var aniState = {
     frame: 0,
     maxFrame: 240,
-    circles: 8,
+
     disp: [],
+
+    circles: 8,
+    circleRadiusMin: 5,
+    circleRadiusMax: 35,
+
     init: function () {
         var i = this.circles;
         while (i--) {
@@ -30,7 +35,7 @@ var aniState = {
             rad = Math.PI * 2 / this.circles * i + Math.PI * 2 * per;
             disp.x = cx + Math.cos(rad) * radius;
             disp.y = cy + Math.sin(rad) * radius;
-            disp.radius = 10 + 15 * bias;
+            disp.radius = this.circleRadiusMin + (this.circleRadiusMax - this.circleRadiusMin) * bias;
         }
         this.frame += 1;
         this.frame %= this.maxFrame;

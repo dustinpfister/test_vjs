@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>canvas line</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas = document.getElementById('the-canvas'),ctx;
+ctx = canvas.getContext('2d');
+
+// solid black background
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+// fully opacity red circle
+ctx.fillStyle='red';
+ctx.beginPath();
+ctx.arc(160,120, 40, 0, Math.PI * 2);
+ctx.fill();
+
+// half opacity green circle using globalAlpha
+ctx.fillStyle='green';
+ctx.globalAlpha = 0.5;
+ctx.beginPath();
+ctx.arc(180,140, 40, 0, Math.PI * 2);
+ctx.fill();
+        </script>
+    </body>
+</html>

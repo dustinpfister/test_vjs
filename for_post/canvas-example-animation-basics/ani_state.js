@@ -8,6 +8,7 @@ var aniState = {
     circleRadiusMin: 5,
     circleRadiusMax: 35,
 
+    // initialize the animation state
     init: function () {
         var i = this.circles;
         while (i--) {
@@ -20,6 +21,8 @@ var aniState = {
         }
         this.forFrame(0, this.maxFrame);
     },
+
+    // for each frame
     forFrame: function () {
         var i = this.circles,
         disp,
@@ -42,13 +45,8 @@ var aniState = {
     }
 };
 
-// Main APP loop
-aniState.init();
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
-
-var loop = function () {
-    requestAnimationFrame(loop);
+// draw to the canvas
+var draw = function () {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     aniState.disp.forEach(function (disp) {
@@ -57,6 +55,17 @@ var loop = function () {
         ctx.arc(disp.x, disp.y, disp.radius, 0, Math.PI * 2);
         ctx.fill();
     });
+};
+
+// get canvas and initialize state
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+aniState.init();
+
+// Main APP loop
+var loop = function () {
+    requestAnimationFrame(loop);
+    draw();
     aniState.forFrame();
 };
 loop();

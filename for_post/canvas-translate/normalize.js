@@ -26,6 +26,7 @@ var data = (function () {
             }
         }
             ()));
+    // the stats
     api.stats = stats;
     // create an array of normalized points
     api.points = stats.map(function (statObj) {
@@ -43,12 +44,7 @@ var data = (function () {
 }
     ());
 
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
-canvas.width = 320;
-canvas.height = 240;
-
-// draw a stat object
+// draw a stat objects normalized chart value points
 var drawStatObjects = function (ctx, data) {
     ctx.lineWidth = 3;
     data.points.forEach(function (statPoints, statIndex) {
@@ -62,6 +58,7 @@ var drawStatObjects = function (ctx, data) {
     });
 };
 
+// draw normalized base lines of chart
 var drawBaseLines = function (ctx, data) {
     ctx.strokeStyle = 'white';
     ctx.beginPath();
@@ -71,8 +68,22 @@ var drawBaseLines = function (ctx, data) {
     ctx.stroke();
 };
 
-ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-ctx.translate(canvas.width / 2, canvas.height / 2);
-drawStatObjects(ctx, data);
-drawBaseLines(ctx, data);
+// main draw method that uses canvas translate
+var draw = function (ctx, data) {
+    // black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // translate to the center of the canvas
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    // draw stat object points
+    drawStatObjects(ctx, data);
+    // draw base lines
+    drawBaseLines(ctx, data);
+};
+
+// the app
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+draw(ctx, data);

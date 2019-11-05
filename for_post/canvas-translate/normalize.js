@@ -53,18 +53,19 @@ var data = (function () {
 console.log(data);
 
 // draw a stat object
-var drawStatObj = function (ctx, data, statIndex) {
-    statObj = data.stats[statIndex];
-    ctx.strokeStyle = statObj.color || 'red';
-    ctx.beginPath();
+var drawStatObjects = function (ctx, data) {
+    ctx.lineWidth = 3;
     data.points.forEach(function (statPoints, statIndex) {
+        var statObj = data.stats[statIndex];
+        ctx.beginPath();
+        ctx.strokeStyle = statObj.color || 'red';
         statPoints.forEach(function (pt, pointIndex) {
             ctx.lineTo(pt.x, pt.y);
         });
+        ctx.stroke();
     });
-    ctx.stroke();
-}
+};
 
 ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-drawStatObj(ctx, data, 0);
+drawStatObjects(ctx, data, 0);

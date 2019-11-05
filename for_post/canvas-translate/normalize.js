@@ -1,8 +1,24 @@
 // data objects
 var data = (function () {
     var api = {
+        stats: [],
         chartWidth: 160,
         chartHeight: 120,
+        points: [],
+        updateNormalizedPoints: function () {
+
+            return api.points = api.stats.map(function (statObj) {
+                    var max = Math.max.apply(null, statObj.values),
+                    deltaX = api.chartWidth / (stats[0].values.length - 1);
+                    return statObj.values.map(function (val, i) {
+                        return {
+                            x: deltaX * i - api.chartWidth / 2,
+                            y: (1 - val / max) * api.chartHeight - api.chartHeight / 2
+                        }
+                    });
+                });
+
+        }
     };
     // hard coded stats
     var stats = [{
@@ -28,19 +44,22 @@ var data = (function () {
             ()));
     // the stats
     api.stats = stats;
+    api.updateNormalizedPoints();
     // create an array of normalized points
+    /*
     api.points = stats.map(function (statObj) {
-            var max = Math.max.apply(null, statObj.values),
-            deltaX = api.chartWidth / (stats[0].values.length - 1);
-            return statObj.values.map(function (val, i) {
-                return {
-                    x: deltaX * i - api.chartWidth / 2,
-                    y: (1 - val / max) * api.chartHeight - api.chartHeight / 2
-                }
-            });
-        })
-        // return stats array
-        return api
+    var max = Math.max.apply(null, statObj.values),
+    deltaX = api.chartWidth / (stats[0].values.length - 1);
+    return statObj.values.map(function (val, i) {
+    return {
+    x: deltaX * i - api.chartWidth / 2,
+    y: (1 - val / max) * api.chartHeight - api.chartHeight / 2
+    }
+    });
+    });
+     */
+    // return stats array
+    return api
 }
     ());
 
@@ -95,4 +114,8 @@ canvas.height = 240;
 
 drawBackground(ctx);
 drawGraph(ctx, data, canvas.width / 2, canvas.height / 2);
-drawGraph(ctx, data, 0, 0);
+
+data.chartWidth = 80;
+data.chartHeight= 40;
+data.updateNormalizedPoints();
+drawGraph(ctx, data, 50, 30);

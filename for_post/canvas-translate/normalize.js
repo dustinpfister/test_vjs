@@ -65,6 +65,19 @@ var data = (function () {
 
 console.log(data)
 
+
+// main draw method that uses canvas translate
+var drawGraph = function (ctx, data, x, y) {
+    ctx.save();
+    // translate to the center of the canvas
+    ctx.translate(x, y);
+    // draw stat object points
+    drawStatObjects(ctx, data);
+    // draw base lines
+    drawBaseLines(ctx, data);
+    ctx.restore();
+};
+
 // draw a stat objects normalized chart value points
 var drawStatObjects = function (ctx, data) {
     ctx.lineWidth = 3;
@@ -87,18 +100,6 @@ var drawBaseLines = function (ctx, data) {
     ctx.lineTo(-data.chartWidth / 2, data.chartHeight / 2);
     ctx.lineTo(data.chartWidth / 2, data.chartHeight / 2);
     ctx.stroke();
-};
-
-// main draw method that uses canvas translate
-var drawGraph = function (ctx, data, x, y) {
-    ctx.save();
-    // translate to the center of the canvas
-    ctx.translate(x, y);
-    // draw stat object points
-    drawStatObjects(ctx, data);
-    // draw base lines
-    drawBaseLines(ctx, data);
-    ctx.restore();
 };
 
 // draw background

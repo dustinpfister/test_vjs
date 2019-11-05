@@ -5,19 +5,31 @@ var data = (function () {
         chartWidth: 160,
         chartHeight: 120,
         points: [],
-        updateNormalizedPoints: function () {
-
+        // normalize points
+        normalize: function () {
             return api.points = api.stats.map(function (statObj) {
                     var max = Math.max.apply(null, statObj.values),
                     deltaX = api.chartWidth / (stats[0].values.length - 1);
                     return statObj.values.map(function (val, i) {
                         return {
-                            x: deltaX * i - api.chartWidth / 2,
-                            y: (1 - val / max) * api.chartHeight - api.chartHeight / 2
+                            x: (deltaX * i - api.chartWidth / 2) / api.chartWidth,
+                            y: ((1 - val / max) * api.chartHeight - api.chartHeight / 2) / api.chartHeight
                         }
                     });
                 });
-
+        },
+        // set scale of points by normalizing, and then scaling
+        scale: function (scaleW, scaleH) {
+            api.chartWidth = scaleW || api.chartWidth;
+            api.chartHeight = scaleH || api.chartHeight;
+            api.normalize();
+            return api.points = api.points.map(function (statPoints) {
+                    return statPoints.map(function (pt) {
+                        pt.x = pt.x * api.chartWidth;
+                        pt.y = pt.y * api.chartHeight;
+                        return pt;
+                    });
+                });
         }
     };
     // hard coded stats
@@ -42,26 +54,16 @@ var data = (function () {
             }
         }
             ()));
-    // the stats
+    // set stats and update points for first time
     api.stats = stats;
-    api.updateNormalizedPoints();
-    // create an array of normalized points
-    /*
-    api.points = stats.map(function (statObj) {
-    var max = Math.max.apply(null, statObj.values),
-    deltaX = api.chartWidth / (stats[0].values.length - 1);
-    return statObj.values.map(function (val, i) {
-    return {
-    x: deltaX * i - api.chartWidth / 2,
-    y: (1 - val / max) * api.chartHeight - api.chartHeight / 2
-    }
-    });
-    });
-     */
-    // return stats array
+    api.normalize();
+    api.scale();
+    // return the api
     return api
 }
     ());
+
+console.log(data)
 
 // draw a stat objects normalized chart value points
 var drawStatObjects = function (ctx, data) {
@@ -113,9 +115,10 @@ canvas.width = 320;
 canvas.height = 240;
 
 drawBackground(ctx);
+
+// draw Graph at default
 drawGraph(ctx, data, canvas.width / 2, canvas.height / 2);
 
-data.chartWidth = 80;
-data.chartHeight= 40;
-data.updateNormalizedPoints();
-drawGraph(ctx, data, 50, 30);
+// using scale method to make a smaller version of the graph
+data.scale(50,50);
+drawGraph(ctx, data, 30, 30);

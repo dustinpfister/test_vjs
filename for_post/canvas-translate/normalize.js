@@ -39,7 +39,6 @@ var data = (function () {
     api.points = stats.map(function (statObj) {
             var max = Math.max.apply(null, statObj.values);
             return statObj.values.map(function (val, i) {
-                console.log(val / max)
                 return {
                     x: api.deltaX * i - api.chartWidth / 2,
                     y: val / max * api.chartHeight - api.chartHeight / 2
@@ -55,16 +54,15 @@ console.log(data);
 
 // draw a stat object
 var drawStatObj = function (ctx, data, statIndex) {
-
     statObj = data.stats[statIndex];
-
     ctx.strokeStyle = statObj.color || 'red';
     ctx.beginPath();
-    statObj.values.forEach(function (val, i) {
-        ctx.lineTo(i * data.deltaX, val);
+    data.points.forEach(function (statPoints, statIndex) {
+        statPoints.forEach(function (pt, pointIndex) {
+            ctx.lineTo(pt.x, pt.y);
+        });
     });
     ctx.stroke();
-
 }
 
 ctx.fillStyle = 'black';

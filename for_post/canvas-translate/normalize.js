@@ -69,26 +69,30 @@ var drawBaseLines = function (ctx, data) {
 };
 
 // main draw method that uses canvas translate
-var drawGraph = function (ctx, data) {
+var drawGraph = function (ctx, data, x, y) {
+    ctx.save();
     // translate to the center of the canvas
-    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.translate(x, y);
     // draw stat object points
     drawStatObjects(ctx, data);
     // draw base lines
     drawBaseLines(ctx, data);
+    ctx.restore();
 };
 
+// draw background
 var drawBackground = function (ctx) {
     // black background
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-// the app
+// Lets use it
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
+
 drawBackground(ctx);
-drawGraph(ctx, data);
-drawGraph(ctx, data);
+drawGraph(ctx, data, canvas.width / 2, canvas.height / 2);
+drawGraph(ctx, data, 0, 0);

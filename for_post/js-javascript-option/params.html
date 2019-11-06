@@ -20,11 +20,11 @@ opt.innerText = 'mode2';
 sel.appendChild(opt)
 
 // there is also window.Option constructor
-// and the first param can be used to set the
-// inner text of the element.
-// also the add method of a select element
+// and the add method of a select element
 // that will also work in most clients
-sel.add(new Option('mode3'));
+opt = new Option();
+opt.innerText='mode3';
+sel.add(opt);
         </script>
     </body>
 </html>

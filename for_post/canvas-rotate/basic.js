@@ -1,8 +1,7 @@
-
 // get canvas can 2d context
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
+// a basic draw box method
 var drawBox = function (ctx, bx) {
     bx = bx || {};
     bx.x = bx.x === undefined ? 0 : bx.x;
@@ -13,10 +12,9 @@ var drawBox = function (ctx, bx) {
     ctx.strokeStyle = bx.color || 'green';
     ctx.strokeRect(bx.x - bx.w / 2, bx.y - bx.h / 2, bx.w, bx.h);
 };
-
+// paint a packground
 ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-
 // just drawing a box at the center
 drawBox(ctx, {
     x: 160,
@@ -25,7 +23,6 @@ drawBox(ctx, {
     h: 32,
     color: 'red'
 });
-
 // using the canvas rotate method
 // to draw a box at the same location
 // but rotated at 45 degrees

@@ -7,23 +7,9 @@
             <option>default</option>
         </select>
         <script>
-// get a reference to the select method one way
-// or another
 var sel = document.getElementById('select_modes');
-
-// there is the document.createElement method
-// that can be used to create an option element
-// and then append child can be used to append
-// the element to the select element
-var opt = document.createElement('option');
-opt.innerText = 'mode2';
-sel.appendChild(opt)
-
-// there is also window.Option constructor
-// and the add method of a select element
-// that will also work in most clients
-opt = new Option();
-opt.innerText='mode3';
+// params to set the innerText, value, default element boolean, and the selected boolean
+opt = new Option('mode2', '2', true, true);
 sel.add(opt);
         </script>
     </body>

@@ -1,3 +1,4 @@
+// GRID
 var Grid = function (opt) {
     opt = opt || {};
     this.xOffset = opt.xOffset || 5;
@@ -7,22 +8,19 @@ var Grid = function (opt) {
     this.cellHeight = opt.cellHeight || 6;
 };
 
+// SETUP CANVAS
 (function () {
-
-    // SETUP CANVAS
-
     // create and append canvas element, and get 2d context
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),
     container = document.getElementById('gamearea') || document.body;
     container.appendChild(canvas);
-
     // set width and height
     canvas.width = 320;
     canvas.height = 240;
 
+    // draw grid lines method
     var drawGridLines = function (ctx, grid) {
-
         var x,
         y,
         cx = 0,
@@ -47,12 +45,8 @@ var Grid = function (opt) {
             ctx.stroke();
             cx += 1;
         }
-
     };
-
     var grid = new Grid();
-
     drawGridLines(ctx, grid);
-
 }
     ());

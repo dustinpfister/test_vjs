@@ -3,6 +3,7 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
+// update a state
 var updateState = function (state) {
     var now = new Date(),
     time = now - state.lt;
@@ -11,6 +12,7 @@ var updateState = function (state) {
     state.lt = now;
 };
 
+// draw a state
 var draw = function (st) {
     var ctx = st.ctx,
     canvas = st.canvas;
@@ -22,6 +24,7 @@ var draw = function (st) {
     ctx.fill();
 };
 
+// the state
 var state = {
     canvas: canvas,
     ctx: ctx,
@@ -31,10 +34,10 @@ var state = {
     lt: new Date()
 };
 
+// app loop
 var loop = function () {
     requestAnimationFrame(loop);
     updateState(state);
     draw(state);
 };
-
 loop();

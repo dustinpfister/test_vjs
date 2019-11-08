@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>canvas image</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+// main canvas
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 32 * 30;
+canvas.height = 32;
+
+// sheet
+var sheet = document.createElement('canvas'),
+ctxSheet = sheet.getContext('2d');
+sheet.width = 32 * 30;
+sheet.height = 32;
+var drawPlayerSheet = function(ctx, canvas, cells){
+  ctx.clearRect(0,0, canvas.width,canvas.height);
+  var i = 0,r,x,y;
+  
+  cells = cells || 30;
+  ctx.save();
+  ctx.lineWidth = 3;
+  while(i < cells){
+    r = Math.PI * 2 * ( i / cells),
+    x = Math.cos(r) * 16 + 16,
+    y = Math.sin(r) * 16 + 16;
+    ctx.beginPath();
+    ctx.arc(16,16,8, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(16,16);
+    ctx.lineTo(x,y);
+    ctx.stroke();
+    ctx.translate(32,0);
+    i += 1;
+  }
+  ctx.restore();
+};
+drawPlayerSheet(ctx, canvas, 16);
+
+        </script>
+    </body>
+</html>

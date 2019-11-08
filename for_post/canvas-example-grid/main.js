@@ -1,71 +1,66 @@
-var aniState = {
-    frame: 0,
-    maxFrame: 240,
+// GRID
+var Grid = function (opt) {
+    opt = opt || {};
+    this.xOffset = opt.xOffset === undefined ? 5 : opt.xOffset;
+    this.yOffset = opt.yOffset === undefined ? 5 : opt.yOffset;
+    this.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;
+    this.cellWidth = opt.cellWidth || 7;
+    this.cellHeight = opt.cellHeight || 6;
+};
 
-    disp: [],
-
-    circles: 8,
-    circleRadiusMin: 5,
-    circleRadiusMax: 35,
-
-    // initialize the animation state
-    init: function () {
-        var i = this.circles;
-        while (i--) {
-            disp = {
-                x: 0,
-                y: 0,
-                radius: 10
-            };
-            this.disp.push(disp);
-        }
-        this.forFrame(0, this.maxFrame);
-    },
-
-    // for each frame
-    forFrame: function () {
-        var i = this.circles,
-        disp,
-        cx = 160,
-        cy = 120,
-        radius = 0,
-        per = this.frame / this.maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5,
-        rad;
-        while (i--) {
-            disp = this.disp[i];
-            radius = 25 + 75 * bias;
-            rad = Math.PI * 2 / this.circles * i + Math.PI * 2 * per;
-            disp.x = cx + Math.cos(rad) * radius;
-            disp.y = cy + Math.sin(rad) * radius;
-            disp.radius = this.circleRadiusMin + (this.circleRadiusMax - this.circleRadiusMin) * bias;
-        }
-        this.frame += 1;
-        this.frame %= this.maxFrame;
+// draw grid lines method
+var drawGridLines = function (ctx, grid) {
+    var x,
+    y,
+    cx = 0,
+    cy = 0;
+    ctx.strokeStyle = 'red';
+    while (cy < grid.cellHeight + 1) {
+        y = cy * grid.cellSize + grid.yOffset + 0.5;
+        x = grid.xOffset + 0.5;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        x = grid.xOffset + grid.cellSize * grid.cellWidth + 0.5;
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        cy += 1;
+    }
+    while (cx < grid.cellWidth + 1) {
+        y = grid.yOffset + 0.5;
+        x = cx * grid.cellSize + grid.xOffset + 0.5;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        y = grid.yOffset + grid.cellSize * grid.cellHeight + 0.5;
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        cx += 1;
     }
 };
 
-// draw to the canvas
-var draw = function () {
+// SETUP CANVAS
+(function () {
+    // create and append canvas element, and get 2d context
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    container = document.getElementById('gamearea') || document.body;
+    container.appendChild(canvas);
+    // set width and height
+    canvas.width = 320;
+    canvas.height = 240;
+
+    // creating a grid instance
+    var grid = new Grid({
+            xOffset: 15,
+            yOffset: 25,
+            cellSize: 32,
+            cellWidth: 9
+        });
+
+    // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    aniState.disp.forEach(function (disp) {
-        ctx.fillStyle = 'red';
-        ctx.beginPath();
-        ctx.arc(disp.x, disp.y, disp.radius, 0, Math.PI * 2);
-        ctx.fill();
-    });
-};
 
-// get canvas and initialize state
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
-aniState.init();
-
-// Main APP loop
-var loop = function () {
-    requestAnimationFrame(loop);
-    draw();
-    aniState.forFrame();
-};
-loop();
+    // draw grid lines
+    drawGridLines(ctx, grid);
+}
+    ());

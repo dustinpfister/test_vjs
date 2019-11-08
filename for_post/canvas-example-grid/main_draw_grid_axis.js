@@ -8,6 +8,7 @@ var Grid = function (opt) {
     this.cellHeight = opt.cellHeight || 6;
 };
 
+// Draw a grid Axis
 var drawGridAxis = function (ctx, grid, axis, style) {
     axis = axis || 'y';
     var otherAxis = axis === 'y' ? 'x' : 'y',
@@ -39,6 +40,12 @@ var drawGridAxis = function (ctx, grid, axis, style) {
     }
 };
 
+// Now by drawGridLines method just calls 
+// drawGridLines twice
+var drawGridLines = function(ctx, grid, style){
+    drawGridAxis(ctx, grid, 'y', style);
+    drawGridAxis(ctx, grid, 'x', style);
+};
 
 // SETUP CANVAS
 (function () {
@@ -64,8 +71,7 @@ var drawGridAxis = function (ctx, grid, axis, style) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // draw grid lines
-    //drawGridLines(ctx, grid);
-    drawGridAxis(ctx, grid, 'y');
-    drawGridAxis(ctx, grid, 'x');
+    drawGridLines(ctx, grid, 'white');
+
 }
     ());

@@ -5,42 +5,61 @@
     <body>
         <canvas id="the-canvas"></canvas>
         <script>
-// main canvas
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
-canvas.width = 32 * 30;
-canvas.height = 32;
-
 // sheet
 var sheet = document.createElement('canvas'),
 ctxSheet = sheet.getContext('2d');
-sheet.width = 32 * 30;
+sheet.width = 32 * 16;
 sheet.height = 32;
-var drawPlayerSheet = function(ctx, canvas, cells){
-  ctx.clearRect(0,0, canvas.width,canvas.height);
-  var i = 0,r,x,y;
-  
-  cells = cells || 30;
-  ctx.save();
-  ctx.lineWidth = 3;
-  while(i < cells){
-    r = Math.PI * 2 * ( i / cells),
-    x = Math.cos(r) * 16 + 16,
-    y = Math.sin(r) * 16 + 16;
-    ctx.beginPath();
-    ctx.arc(16,16,8, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(16,16);
-    ctx.lineTo(x,y);
-    ctx.stroke();
-    ctx.translate(32,0);
-    i += 1;
-  }
-  ctx.restore();
+var drawPlayerSheet = function (ctx, canvas, cells) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var i = 0,
+    r,
+    x,
+    y;
+    cells = cells || 30;
+    ctx.save();
+    ctx.lineWidth = 3;
+    while (i < cells) {
+        r = Math.PI * 2 * (i / cells),
+        x = Math.cos(r) * 16 + 16,
+        y = Math.sin(r) * 16 + 16;
+        ctx.beginPath();
+        ctx.arc(16, 16, 8, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(16, 16);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.translate(32, 0);
+        i += 1;
+    }
+    ctx.restore();
 };
-drawPlayerSheet(ctx, canvas, 16);
+drawPlayerSheet(ctxSheet, sheet, 16);
+ 
+// using the sheet with
+// the main canvas
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+var cellIndex = 0,
+x = 160,
+y = 120;
+var loop = function () {
+    requestAnimationFrame(loop);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.translate(-16, -16);
+    // using the other 'sheet' canvas as an image source
+    ctx.drawImage(sheet, 32 * cellIndex, 0, 32, 32, x, y, 32, 32);
+    ctx.restore();
+    cellIndex += 1;
+    cellIndex %= 16;
 
+};
+loop();
         </script>
     </body>
 </html>

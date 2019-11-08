@@ -9,12 +9,12 @@ var Grid = function (opt) {
 };
 
 // draw grid lines method
-var drawGridLines = function (ctx, grid) {
+var drawGridLines = function (ctx, grid, style) {
     var x,
     y,
     cx = 0,
     cy = 0;
-    ctx.strokeStyle = 'red';
+    ctx.strokeStyle = style || 'red';
     while (cy < grid.cellHeight + 1) {
         y = cy * grid.cellSize + grid.yOffset + 0.5;
         x = grid.xOffset + 0.5;
@@ -61,6 +61,6 @@ var drawGridLines = function (ctx, grid) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // draw grid lines
-    drawGridLines(ctx, grid);
+    drawGridLines(ctx, grid, 'orange');
 }
     ());

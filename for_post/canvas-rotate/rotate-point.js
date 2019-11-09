@@ -11,18 +11,21 @@ var obj = {
     w: 64,
     h: 64,
     rotation: {
-        x: -32,
-        y: -32,
-        r: Math.PI / 180 * 40
+        x: 0,
+        y: 0,
+        r: 0
     },
     fillStyle: 'red'
 };
 
-var drawPoint = function () {
-    ctx.fillStyle = 'white';
+var drawPoint = function (ctx, x, y, style, strokeStyle) {
+    ctx.lineWidth = 3;
+    ctx.fillStyle = style || 'white';
+    ctx.strokeStyle = strokeStyle || '#4a4a4a';
     ctx.beginPath();
-    ctx.arc(obj.rotation.x, obj.rotation.y, 5, 0, Math.PI * 2);
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
     ctx.fill();
+    ctx.stroke();
 };
 
 var drawObj = function (ctx, obj) {
@@ -31,9 +34,27 @@ var drawObj = function (ctx, obj) {
     ctx.translate(obj.x, obj.y);
     ctx.rotate(obj.rotation.r);
     ctx.fillRect(-obj.w / 2 + obj.rotation.x, -obj.h / 2 + obj.rotation.y, obj.w, obj.h);
+    drawPoint(ctx, 0, 0, 'green');
+    drawPoint(ctx, obj.rotation.x, obj.rotation.y, 'blue');
     ctx.restore();
 };
 
-ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-drawObj(ctx, obj);
+var frame = 0, maxFrame = 100;
+var loop = function () {
+    requestAnimationFrame(loop);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawObj(ctx, obj);
+
+    var per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    obj.rotation.r = Math.PI * 2 * per;
+    obj.rotation.x = -16 * bias
+    frame += 1;
+    frame %= maxFrame;
+
+};
+
+loop();

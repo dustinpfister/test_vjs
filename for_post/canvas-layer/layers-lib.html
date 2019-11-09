@@ -7,40 +7,35 @@
         </div>
         <script src="layers-lib.js"></script>
         <script>
-
+// create new layers stack
 var layers = new Layers({
-   container: document.getElementById('gamearea')
-});
-
+        container: document.getElementById('gamearea')
+    });
 // draw background on layer 0 once
-layers.draw(function(ctx, canvas){
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-},0);
-
+layers.draw(function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}, 0);
 // draw another area to layer 1 once
-layers.draw(function(ctx, canvas){
-  ctx.fillStyle = 'rgba(0,128,128,0.8)';
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillRect(5, 5, 310, 50);
-},1);
-
+layers.draw(function (ctx, canvas) {
+    ctx.fillStyle = 'rgba(0,128,128,0.8)';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(5, 5, 310, 50);
+}, 1);
+// can use the top layer for animation
 var canvas = layers.layers[2].canvas,
 ctx = layers.layers[2].ctx,
 obj = {
-   x:0,
-   y: 120
+    x: 0,
+    y: 120
 };
-var loop = function(){
-  requestAnimationFrame(loop);
-  
-  obj.x += 5;
-  obj.x %= canvas.width;
-  
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = 'white';
-  ctx.fillRect(obj.x, obj.y, 32, 32);
-  
+var loop = function () {
+    requestAnimationFrame(loop);
+    obj.x += 5;
+    obj.x %= canvas.width;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(obj.x, obj.y, 32, 32);
 };
 loop();
         </script>

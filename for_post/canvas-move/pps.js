@@ -20,7 +20,7 @@ var draw = function (st) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'white';
     ctx.beginPath();
-    ctx.arc(state.x, state.y, 16, 0, Math.PI * 2);
+    ctx.arc(st.x, st.y, 16, 0, Math.PI * 2);
     ctx.fill();
 };
 

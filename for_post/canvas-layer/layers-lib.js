@@ -15,7 +15,7 @@ var Layers = function (obj) {
     var i = 0,
     canvas,
     ctx;
-    while (i < this.layersCount) {
+    while (i < this.layerCount) {
         canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
         canvas.width = this.layerWidth;
@@ -31,12 +31,13 @@ var Layers = function (obj) {
 
 };
 
-Layers.prototype.drawToLayer = function (draw, index) {
+Layers.prototype.draw = function (draw, index) {
 
     draw = draw || function () {};
     index = index === undefined ? 0 : index;
 
     var layer = this.layers[index];
+	console.log(this.layers)
     draw.call(layer, layer.ctx, layer.canvas);
 
 };

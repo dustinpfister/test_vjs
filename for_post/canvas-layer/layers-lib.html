@@ -3,15 +3,46 @@
         <title>canvas layer example</title>
     </head>
     <body>
-        <div id="gamearea" style="position:absolute;left:50px;top:50px;">
+        <div id="gamearea" style="position:absolute;left:50px;top:25px;">
         </div>
         <script src="layers-lib.js"></script>
         <script>
-		
+
 var layers = new Layers({
    container: document.getElementById('gamearea')
-})
-		
+});
+
+// draw background on layer 0 once
+layers.draw(function(ctx, canvas){
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+},0);
+
+// draw another area to layer 1 once
+layers.draw(function(ctx, canvas){
+  ctx.fillStyle = 'rgba(0,128,128,0.8)';
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillRect(5, 5, 310, 50);
+},1);
+
+var canvas = layers.layers[2].canvas,
+ctx = layers.layers[2].ctx,
+obj = {
+   x:0,
+   y: 120
+};
+var loop = function(){
+  requestAnimationFrame(loop);
+  
+  obj.x += 5;
+  obj.x %= canvas.width;
+  
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = 'white';
+  ctx.fillRect(obj.x, obj.y, 32, 32);
+  
+};
+loop();
         </script>
     </body>
 </html>

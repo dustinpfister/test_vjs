@@ -37,7 +37,7 @@ Layers.prototype.draw = function (draw, index) {
     index = index === undefined ? 0 : index;
 
     var layer = this.layers[index];
-	console.log(this.layers)
+    console.log(this.layers)
     draw.call(layer, layer.ctx, layer.canvas);
 
 };

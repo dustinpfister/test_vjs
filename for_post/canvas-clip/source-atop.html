@@ -10,7 +10,8 @@ var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
 var drawMask = function () {
-    // set default composite and clear canvas
+    // set default composite source-over 
+    // clear the clear canvas and draw a mask
     ctx.globalCompositeOperation = 'source-over';
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'black';
@@ -21,6 +22,8 @@ var drawMask = function () {
 
 var drawToMask = function () {
     var i = 100,x,y,r;
+    // set to source-atop to draw to canvas content only
+    // ( just the mask ) transparent areas are not effected
     ctx.globalCompositeOperation = 'source-atop';
     while (i--) {
         x = Math.random() * canvas.width;
@@ -34,9 +37,17 @@ var drawToMask = function () {
     }
 };
 
+var drawToClear = function(){
+    // set to destination-over, only the remaining 
+    // transparent areas are rendered to
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+
 drawMask();
 drawToMask();
-
+drawToClear();
 
         </script>
     </body>

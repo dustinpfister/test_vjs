@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>canvas clip</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+var drawMask = function(){
+    // set default composite and clear canvas
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, 50);
+    ctx.fillRect(50,50,100, canvas.height);
+    ctx.fillRect(0,200,canvas.width, canvas.height);
+};
+
+var draw = function(){
+    ctx.globalCompositeOperation = 'source-atop';
+    ctx.fillStyle = 'red';
+    //ctx.fillRect(0,0,canvas.width, canvas.height);
+	
+	    ctx.beginPath();
+		ctx.arc(0,0,50,0,Math.PI * 2);
+		//ctx.closePath();
+		
+		
+	    //ctx.beginPath();
+		ctx.arc(100,50,50,0,Math.PI * 2);
+		ctx.fill();
+	
+};
+
+drawMask();
+draw();
+
+        </script>
+    </body>
+</html>

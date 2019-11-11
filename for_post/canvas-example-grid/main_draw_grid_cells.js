@@ -46,14 +46,13 @@ var drawCellLines = function (ctx, grid, style) {
     }
 };
 
+// draw cell backgrounds
 var drawCellBackgrounds = function (ctx, grid, sheet) {
-
     var ci = 0,
     cell,
     cLen = grid.cells.length;
     while (ci < cLen) {
         cell = grid.cells[ci];
-
         ctx.drawImage(
             sheet,
             // source

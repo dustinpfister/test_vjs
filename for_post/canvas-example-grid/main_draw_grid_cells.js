@@ -21,7 +21,8 @@ Grid.prototype.setCells = function (forCell) {
         cellObj = {
             i: ci,
             y: Math.floor(ci / this.cellWidth),
-            x: ci % this.cellWidth
+            x: ci % this.cellWidth,
+            backgroundIndex: 0
         };
         forCell(cellObj);
         this.cells.push(cellObj);
@@ -38,6 +39,28 @@ var drawCellLines = function (ctx, grid, style) {
     while (ci < cLen) {
         cell = grid.cells[ci];
         ctx.strokeRect(
+            cell.x * grid.cellSize + grid.xOffset + 0.5,
+            cell.y * grid.cellSize + grid.yOffset + 0.5,
+            grid.cellSize, grid.cellSize)
+        ci += 1;
+    }
+};
+
+var drawCellBackgrounds = function (ctx, grid, sheet) {
+
+    var ci = 0,
+    cell,
+    cLen = grid.cells.length;
+    while (ci < cLen) {
+        cell = grid.cells[ci];
+
+        ctx.drawImage(
+            sheet,
+            // source
+            cell.backgroundIndex * grid.cellSize + 0.5,
+            -0.5,
+            grid.cellSize, grid.cellSize,
+            // placement
             cell.x * grid.cellSize + grid.xOffset + 0.5,
             cell.y * grid.cellSize + grid.yOffset + 0.5,
             grid.cellSize, grid.cellSize)
@@ -64,12 +87,32 @@ var drawCellLines = function (ctx, grid, style) {
             cellWidth: 9
         });
 
+    // create a sheet
+    var sheet = document.createElement('canvas'),
+    ctx_sheet = sheet.getContext('2d');
+    sheet.width = 64;
+    sheet.height = 32;
+    ctx_sheet.fillStyle = 'orange';
+    ctx_sheet.fillRect(0, 0, sheet.width, sheet.height);
+    ctx_sheet.fillStyle = 'green';
+    ctx_sheet.fillRect(grid.cellSize, 0, grid.cellSize, grid.cellSize);
+
+    // setting some cells to a background index
+    // other that the default 0
+    grid.cells[10].backgroundIndex = 1;
+    grid.cells[18].backgroundIndex = 1;
+    grid.cells[19].backgroundIndex = 1;
+    grid.cells[20].backgroundIndex = 1;
+    grid.cells[28].backgroundIndex = 1;
+
     // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // draw backgrounds
+    drawCellBackgrounds(ctx, grid, sheet);
     // draw grid lines
-    drawCellLines(ctx, grid, 'white');
+    drawCellLines(ctx, grid, 'grey');
 
 }
     ());

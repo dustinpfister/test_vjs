@@ -63,9 +63,3 @@ p.normalize = function (points, center) {
     }
     return normals;
 };
-
-console.log(normalize([-64, -64, -32, -64, -32, -32, -64, -32]));
-console.log(normalize([-32, -32, 0, -32, 0, 0, -32, 0]));
-console.log(normalize([-16, -16, 16, -16, 16, 16, -16, 16]));
-console.log(normalize([0, 0, 32, 0, 32, 32, 0, 32]));
-console.log(normalize([32, 32, 64, 32, 64, 64, 32, 64]));

@@ -6,62 +6,53 @@
         <canvas id="the-canvas"></canvas>
         <script>
 
-var getRanges = function(points){
-    var min = [Infinity,Infinity],
-	max = [0,0],
-	i = 0,
-	len = points.length;
-	while(i < len){
-	   var x = points[i],
-	   y = points[i+1];
-	   min[0] = x < min[0] ? x : min[0];
-	   min[1] = y < min[1] ? y : min[1];
-	   max[0] = x > max[0] ? x : max[0];
-	   max[1] = y > max[1] ? y : max[1];
-	   i += 2;
-	}
-	return {
-	   min: min,
-	   max: max
-	};
+var getRanges = function (points) {
+    var min = [Infinity, Infinity],
+    max = [-Infinity, -Infinity],
+    i = 0,
+    len = points.length;
+    while (i < len) {
+        var x = points[i],
+        y = points[i + 1];
+        min[0] = x < min[0] ? x : min[0];
+        min[1] = y < min[1] ? y : min[1];
+        max[0] = x > max[0] ? x : max[0];
+        max[1] = y > max[1] ? y : max[1];
+        i += 2;
+    }
+    return {
+        min: min,
+        max: max
+    };
 };
 
-var normalize = function(points){
+var normalize = function (points, center) {
+    var ranges = getRanges(points),
+    dx = ranges.min[0] > 0 ? -ranges.min[0] : Math.abs(ranges.min[0]),
+    dy = ranges.min[1] > 0 ? -ranges.min[1] : Math.abs(ranges.min[1]),
+    w = Math.abs(ranges.max[0] - ranges.min[0]),
+    h = Math.abs(ranges.max[1] - ranges.min[1]),
+    normals = [],
+    i = 0,
+    len = points.length,
+    x,
+    y;
+    while (i < len) {
+        x = points[i] + dx;
+        y = points[i + 1] + dy;
+        normals.push(x / w, y / h);
+        i += 2
+    }
+    return normals;
 
-   var ranges = getRanges(points),
-   normals = [];
-   
-   var i = 0,
-   len = points.length;
-   
-   var dx = ranges.min[0] > 0 ? -ranges.min[0] : Math.abs(ranges.min[0]),
-       dy = ranges.min[1] > 0 ? -ranges.min[1] : Math.abs(ranges.min[1]);
-	   
-	console.log(dx,dy)
-   
-   while(i < len){
-       var x = points[i] + dx,
-	   y = points[i+1] + dy;
-	   
-	   normals.push(x,y);
-	   
-	   
-     i += 2
-   }
-   
-   return normals;
+};
 
-}
+console.log(normalize([-64, -64, -32, -64, -32, -32, -64, -32]));
+console.log(normalize([-32, -32, 0, -32, 0, 0, -32, 0]));
+console.log(normalize([-16, -16, 16, -16, 16, 16, -16, 16]));
+console.log(normalize([0, 0, 32, 0, 32, 32, 0, 32]));
+console.log(normalize([32, 32, 64, 32, 64, 64, 32, 64]));
 
-//var points = ;
-//var points = ;
-
-//var points = ;
-
-//console.log(getRanges(points));
-console.log( normalize([-32,-32,32,-32,32,32,-32,32]) );
-console.log( normalize([0,0,32,0,32,32,0,32]) );
-console.log( normalize([32,32,64,32,64,64,32,64]) );
         </script>
     </body>
 </html>

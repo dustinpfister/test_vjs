@@ -6,6 +6,7 @@
         <canvas id="the-canvas"></canvas>
         <script>
 
+// get ranges
 var getRanges = function (points) {
     var min = [Infinity, Infinity],
     max = [-Infinity, -Infinity],
@@ -26,10 +27,12 @@ var getRanges = function (points) {
     };
 };
 
+// normalize points
 var normalize = function (points, center) {
-    
-	center = center === undefined ? true : false;
-
+    if(!points){
+      return [];
+    }
+    center = center === undefined ? true : false;
     var ranges = getRanges(points),
     dx = ranges.min[0] > 0 ? -ranges.min[0] : Math.abs(ranges.min[0]),
     dy = ranges.min[1] > 0 ? -ranges.min[1] : Math.abs(ranges.min[1]),
@@ -38,17 +41,15 @@ var normalize = function (points, center) {
     normals = [],
     i = 0,
     len = points.length,
-	ajustAxis = center ? -0.5: 0,
-    x,
-    y;
+    ajustAxis = center ? -0.5: 0;
     while (i < len) {
-        x = points[i] + dx;
-        y = points[i + 1] + dy;
-        normals.push(x / w + ajustAxis, y / h + ajustAxis);
+        normals.push(
+            (points[i] + dx) / w + ajustAxis, 
+            (points[i + 1] + dy) / h + ajustAxis
+        );
         i += 2
     }
     return normals;
-
 };
 
 console.log( normalize([-64, -64, -32, -64, -32, -32, -64, -32]) );

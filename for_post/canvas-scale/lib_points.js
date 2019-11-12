@@ -10,13 +10,14 @@ p.scale = function (points, scale, dx, dy) {
     dy = dy == undefined ? 0 : dy;
     var i = 0,
     len = points.length,
-    scaled = [];
+    scaledPoints = [];
     while (i < len) {
-        scaled.push(
+        scaledPoints.push(
             points[i] * scale + dx,
             points[i + 1] * scale + dy);
         i += 2;
     }
+    return scaledPoints;
 };
 
 // get ranges
@@ -45,8 +46,8 @@ p.normalize = function (points, center) {
     if (!points) {
         return [];
     }
-    center = center === undefined ? true : false;
-    var ranges = getRanges(points),
+    center = center === undefined ? true : center;
+    var ranges = p.getRanges(points),
     dx = ranges.min[0] > 0 ? -ranges.min[0] : Math.abs(ranges.min[0]),
     dy = ranges.min[1] > 0 ? -ranges.min[1] : Math.abs(ranges.min[1]),
     w = Math.abs(ranges.max[0] - ranges.min[0]),
@@ -55,6 +56,7 @@ p.normalize = function (points, center) {
     i = 0,
     len = points.length,
     ajustAxis = center ? -0.5 : 0;
+
     while (i < len) {
         normals.push(
             (points[i] + dx) / w + ajustAxis,
@@ -62,4 +64,26 @@ p.normalize = function (points, center) {
         i += 2
     }
     return normals;
+};
+
+// draw to a canvas context
+p.draw = function (points, ctx, strokeStyle, fillStyle, lineWidth, close) {
+    ctx.save();
+    ctx.strokeStyle = strokeStyle || 'black';
+    ctx.fillStyle = fillStyle || 'white';
+    ctx.lineWidth = lineWidth || 3;
+    var i = 2,
+    len = points.length;
+    ctx.beginPath();
+    ctx.moveTo(points[0], points[1]);
+    while (i < len) {
+        ctx.lineTo(points[i], points[i + 1])
+        i += 2;
+    }
+    if (close === undefined ? true : close) {
+        ctx.closePath();
+    }
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
 };

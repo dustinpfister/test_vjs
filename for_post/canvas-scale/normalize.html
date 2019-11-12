@@ -7,11 +7,29 @@
         <script src="lib_points.js"></script>
         <script>
 
-console.log( p.normalize([-64, -64, -32, -64, -32, -32, -64, -32]) );
-console.log( p.normalize([-32, -32, 0, -32, 0, 0, -32, 0]) );
-console.log( p.normalize([-16, -16, 16, -16, 16, 16, -16, 16]) );
-console.log( p.normalize([0, 0, 32, 0, 32, 32, 0, 32]) );
-console.log( p.normalize([32, 32, 64, 32, 64, 64, 32, 64]) );
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+
+var points_source = [0, 0, 32, 0, 32, 32, 0, 32],
+points_normalized = p.normalize(points_source, true),
+points_scaled = p.scale(points_normalized, 128, canvas.width / 2, canvas.height/ 2);
+
+ctx.fillStyle = 'red';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+p.draw(points_scaled, ctx)
+
+console.log()
+
+
+//var source = p.normalize([-100, -100, -32, -50, 0, 0, 100, 75, -80, 60]),
+//console.log( p.normalize([-64, -64, -32, -64, -32, -32, -64, -32]) );
+//console.log( p.normalize([-32, -32, 0, -32, 0, 0, -32, 0]) );
+//console.log( p.normalize([-16, -16, 16, -16, 16, 16, -16, 16]) );
+//console.log( p.normalize([0, 0, 32, 0, 32, 32, 0, 32]) );
+//console.log( p.normalize([32, 32, 64, 32, 64, 64, 32, 64]) );
 
         </script>
     </body>

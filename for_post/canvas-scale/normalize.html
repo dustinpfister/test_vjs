@@ -21,7 +21,13 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 
 p.draw(points_scaled, ctx)
 
-console.log()
+console.log( points_source.join(',') );
+// 0,0,32,0,32,32,0,32
+console.log( points_normalized.join(',') );
+// -0.5,-0.5,0.5,-0.5,0.5,0.5,-0.5,0.5
+console.log( points_scaled.join(',') );
+// 96,56,224,56,224,184,96,184
+
 
 
 //var source = p.normalize([-100, -100, -32, -50, 0, 0, 100, 75, -80, 60]),

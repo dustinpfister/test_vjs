@@ -1,5 +1,4 @@
 var p = {};
-
 // scale points
 p.scale = function (points, scale, dx, dy) {
     if (!points) {
@@ -19,28 +18,33 @@ p.scale = function (points, scale, dx, dy) {
     }
     return scaledPoints;
 };
-
-// get ranges
-p.getRanges = function (points) {
-    var min = [Infinity, Infinity],
-    max = [-Infinity, -Infinity],
+// split an single dimension array of pints
+// into an array of arrays of axis values
+p.toAxisArrays = function (points) {
+    var axisArrays = [[], []],
     i = 0,
     len = points.length;
     while (i < len) {
-        var x = points[i],
-        y = points[i + 1];
-        min[0] = x < min[0] ? x : min[0];
-        min[1] = y < min[1] ? y : min[1];
-        max[0] = x > max[0] ? x : max[0];
-        max[1] = y > max[1] ? y : max[1];
+        axisArrays[0].push(points[i]);
+        axisArrays[1].push(points[i + 1]);
         i += 2;
     }
-    return {
-        min: min,
-        max: max
-    };
+    return axisArrays;
 };
-
+// get ranges
+p.getRanges = function (points) {
+    var axis = p.toAxisArrays(points);
+    return {
+        min: [
+            Math.min.apply(null, axis[0]),
+            Math.min.apply(null, axis[1])
+        ],
+        max: [
+            Math.max.apply(null, axis[0]),
+            Math.max.apply(null, axis[1])
+        ]
+    }
+};
 // normalize points
 p.normalize = function (points, center) {
     if (!points) {
@@ -56,7 +60,6 @@ p.normalize = function (points, center) {
     i = 0,
     len = points.length,
     ajustAxis = center ? -0.5 : 0;
-
     while (i < len) {
         normals.push(
             (points[i] + dx) / w + ajustAxis,
@@ -65,7 +68,6 @@ p.normalize = function (points, center) {
     }
     return normals;
 };
-
 // draw to a canvas context
 p.draw = function (points, ctx, strokeStyle, fillStyle, lineWidth, close) {
     ctx.save();

@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>closest example</title>
+    </head>
+    <body>
+        <div id="f1" class="foo">
+            <div id="b1" class="bar">
+                <div id="b2" class="bar">
+                    <div id="fb1" class="foobar"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+var el = document.getElementById('fb1');
+var parent = el.closest('.bar');
+console.log( parent.id ); // 'b2'
+parent = el.closest('.foo');
+console.log( parent.id ); // 'f1'
+        </script>
+    </body>
+</html>

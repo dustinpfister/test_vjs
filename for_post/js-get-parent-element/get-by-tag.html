@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>get parent by tag</title>
+    </head>
+    <body>
+        <div id="f1">
+            <div id="b1">
+                <ul id="u1">
+                    <li id="li1">foo</li>
+                    <li id="li2">bar</li>
+                    <li id="li3">baz</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+var getParentByTag = function(child, tagName) {
+  var el = child;
+  tagName = tagName.toLowerCase();
+  while (el && el.parentNode) {
+    el = el.parentNode;
+    if (el.tagName && el.tagName.toLowerCase() == tagName) {
+      return el;
+    }
+  }
+  return null;
+};
+ 
+var li = document.getElementById('li3');
+console.log( getParentByTag(li, 'div').id ); // 'b1'
+        </script>
+    </body>
+</html>

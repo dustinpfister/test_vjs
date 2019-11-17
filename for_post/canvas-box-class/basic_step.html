@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>canvas box class example</title>
+    </head>
+    <body>
+        <script>
+var Box = function (op) {
+    op = op === undefined ? {} : op;
+    // current position
+    this.x = op.x === undefined ? 50 : op.x;
+    this.y = op.y === undefined ? 50 : op.y;
+    // with and height
+    this.w = op.w === undefined ? 32 : op.w;
+    this.h = op.h === undefined ? 32 : op.h;
+    // style
+    this.fillColor = '#ffffff' || op.fillColor;
+    this.strokeColor = '#000000' || op.strokeColor;
+};
+
+// move the box
+Box.prototype.move = function (dx, dy) {
+    dx = dx === undefined ? 0 : dx;
+    dy = dy === undefined ? 0 : dy;
+    this.x += dx;
+    this.y += dy;
+};
+
+(function () {
+    // create and inject a canvas
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = 320;
+    canvas.height = 240;
+    document.body.appendChild(canvas);
+ 
+    // the single draw function
+    var draw = function () {
+        // default the canvas to a solid back background
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // draw the current state of the Box class instance to the context
+        ctx.fillStyle = bx.fillColor;
+        ctx.strokeStyle = bx.strokeColor;
+        ctx.lineWidth = 3;
+        ctx.fillRect(bx.x + 0.5, bx.y + 0.5, bx.w, bx.h);
+        ctx.strokeRect(bx.x + 0.5, bx.y + 0.5, bx.w, bx.h);
+    };
+ 
+    // make a new instance of my box class
+    var bx = new Box({
+        y: canvas.height / 2 - 64,
+        w: 128,
+        h: 128
+    });
+ 
+    // the loop
+    var loop = function () {
+        requestAnimationFrame(loop);
+        // use my move method
+        bx.move(1, 0);
+        // some basic rules for the box
+        if (bx.x >= canvas.width) {
+            bx.x = bx.x % canvas.width - bx.w;
+        }
+        draw();
+    };
+    loop();
+}
+    ());
+
+        </script>
+    </body>
+</html>

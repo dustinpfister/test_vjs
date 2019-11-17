@@ -12,9 +12,6 @@ var Box = function (op) {
     // with and height
     this.w = op.w === undefined ? 32 : op.w;
     this.h = op.h === undefined ? 32 : op.h;
-    // style
-    this.fillColor = '#ffffff' || op.fillColor;
-    this.strokeColor = '#000000' || op.strokeColor;
 };
 
 // move the box
@@ -39,8 +36,8 @@ Box.prototype.move = function (dx, dy) {
         ctx.fillStyle = '#000000';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         // draw the current state of the Box class instance to the context
-        ctx.fillStyle = bx.fillColor;
-        ctx.strokeStyle = bx.strokeColor;
+        ctx.fillStyle = '#ffffff';
+        ctx.strokeStyle = '#000000';
         ctx.lineWidth = 3;
         ctx.fillRect(bx.x + 0.5, bx.y + 0.5, bx.w, bx.h);
         ctx.strokeRect(bx.x + 0.5, bx.y + 0.5, bx.w, bx.h);

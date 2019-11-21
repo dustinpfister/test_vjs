@@ -59,7 +59,7 @@ Box.prototype.move = function (dx, dy) {
         if (bx.x >= canvas.width) {
             bx.x = bx.x % canvas.width - bx.w;
         }
-        draw();
+        draw(ctx);
     };
     loop();
 }

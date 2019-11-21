@@ -1,7 +1,7 @@
 // start out with a simple object
 var source = {x: 32,y: 50},
 // create a whole new object
-var copy = {};
+copy = {};
 // populate the new object with the primitives
 // from the source object
 Object.keys(source).forEach(function (key) {

@@ -1,13 +1,12 @@
-
+// ENEMY OBJECT CLASS
 var Enemy = function (opt) {
     this.board = opt.board || new UnitGrid();
     this.cell = opt.cell || {};
     this.ticksPerMove = 8;
     this.ticks = 0;
 };
-
-Enemy.prototype.update = function (ticks) {
-
+// update and enemy
+Enemy.prototype.update = function (ticks) 
     this.ticks += ticks;
     // move to next
     if (this.ticks >= this.ticksPerMove) {
@@ -19,23 +18,17 @@ Enemy.prototype.update = function (ticks) {
                 this.cell = target;
             }
         } else {
-
             this.board.hits += 1;
             this.cell.enemy = false;
-
         }
         this.ticks = 0;
     }
-
 };
-
+// UNIT GRID CLASS
 var UnitGrid = function (opt) {
-
     opt = opt || {};
-
     // same base properties
     Object.assign(this, new Grid(opt));
-
     this.maxEnemies = opt.maxEnemies || 5;
     this.tickRate = opt.tickRate === undefined ? 1000 / 4 : opt.tickRate;
     this.enemyCount = 0;
@@ -44,9 +37,8 @@ var UnitGrid = function (opt) {
     this.kills = 0; // number of kills of enemies
 
 };
-
 UnitGrid.prototype = Object.create(new Grid());
-
+// spawn a new enemy
 UnitGrid.prototype.spawn = function () {
     if (this.enemyCount < this.maxEnemies) {
         var y = 0,
@@ -61,17 +53,15 @@ UnitGrid.prototype.spawn = function () {
             y += 1;
         }
         if (options.length > 0) {
-
             cell = options[Math.floor(Math.random() * options.length)];
             cell.enemy = new Enemy({
                     board: this,
                     cell: cell
                 });
-
         }
     }
 };
-
+// update board
 UnitGrid.prototype.update = function () {
     var i = 0,
     now = new Date(),

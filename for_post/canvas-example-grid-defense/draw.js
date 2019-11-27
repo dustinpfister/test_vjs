@@ -4,12 +4,12 @@ var draw = {
     enemyFillStyle: 'red',
     textFill: 'yellow'
 };
-
+// clear the canvas
 draw.cls = function (ctx, canvas) {
     ctx.fillStyle = 'blue';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
-
+// draw grid lines and enemies
 draw.gridCellLines = function (grid, ctx) {
     var ci = 0,
     x,
@@ -29,7 +29,7 @@ draw.gridCellLines = function (grid, ctx) {
         ci += 1;
     }
 };
-
+// draw display
 draw.disp = function (state, ctx) {
     var grid = state.grid;
     ctx.fillStyle = draw.textFill;

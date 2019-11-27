@@ -1,9 +1,29 @@
 
 var Enemy = function (opt) {
-    opt.board = opt.board || new UnitGrid();
+    this.board = opt.board || new UnitGrid();
+    this.cell = opt.cell || {};
+    this.ticksPerMove = 8;
+    this.moves = 0;
 };
 
-Enemy.prototype.update = function (ticks) {};
+Enemy.prototype.update = function (ticks) {
+
+    //console.log(ticks);
+    this.moves += ticks / this.ticksPerMove;
+    if (this.moves >= 1) {
+
+        var target = this.board.getCell(Math.floor(this.cell.x - 1), this.cell.y);
+
+        if (!target.enemy) {
+            this.cell.enemy = false;
+            target.enemy = this;
+            this.cell = target;
+        }
+        this.moves = 0;
+
+    }
+
+};
 
 var UnitGrid = function (opt) {
 
@@ -38,7 +58,8 @@ UnitGrid.prototype.spawn = function () {
 
             cell = options[Math.floor(Math.random() * options.length)];
             cell.enemy = new Enemy({
-                    board: this
+                    board: this,
+                    cell: cell
                 });
 
         }

@@ -1,5 +1,3 @@
-
-
 var state = {
     money: 100,
     grid: new UnitGrid({
@@ -8,7 +6,6 @@ var state = {
         cellSize: 32,
         cellWidth: 9
     })
-
 };
 
 // SETUP CANVAS

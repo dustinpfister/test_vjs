@@ -2,25 +2,27 @@
 var Enemy = function (opt) {
     this.board = opt.board || new UnitGrid();
     this.cell = opt.cell || {};
-    this.ticksPerMove = 8;
-    this.moves = 0;
+    this.ticksPerMove = 1;
+    this.ticks = 0;
 };
 
 Enemy.prototype.update = function (ticks) {
 
-    //console.log(ticks);
-    this.moves += ticks / this.ticksPerMove;
-    if (this.moves >= 1) {
-
+    this.ticks += ticks;
+    // move to next
+    if (this.ticks >= this.ticksPerMove) {
         var target = this.board.getCell(Math.floor(this.cell.x - 1), this.cell.y);
-
-        if (!target.enemy) {
-            this.cell.enemy = false;
-            target.enemy = this;
-            this.cell = target;
-        }
-        this.moves = 0;
-
+        if (target) {
+            if (!target.enemy) {
+                this.cell.enemy = false;
+                target.enemy = this;
+                this.cell = target;
+            }
+		}else{
+			console.log(target)
+			
+		}
+        this.ticks = 0;
     }
 
 };
@@ -32,7 +34,7 @@ var UnitGrid = function (opt) {
     // same base properties
     Object.assign(this, new Grid(opt));
 
-    this.maxEnemies = opt.maxEnemies || 10;
+    this.maxEnemies = opt.maxEnemies || 1;
     this.tickRate = opt.tickRate === undefined ? 1000 / 4 : opt.tickRate;
     this.enemyCount = 0;
     this.lastTick = new Date();

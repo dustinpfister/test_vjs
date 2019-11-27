@@ -16,7 +16,7 @@ Grid.prototype.getCell = function (ix, y) {
     if (arguments.length === 1) {
         cell = this.cells[ix];
     }
-    if (arguments.length === 2) {
+    if (arguments.length === 2 && ix >= 0 && ix < this.cellWidth) {
         cell = this.cells[y * this.cellWidth + ix];
     }
     return cell ? cell : false;

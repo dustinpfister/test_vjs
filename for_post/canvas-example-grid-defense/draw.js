@@ -1,6 +1,13 @@
 // draw Cell Lines
 var draw = {};
 
+draw.cls = function (ctx, canvas) {
+
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+};
+
 draw.gridCellLines = function (grid, ctx, style) {
     var ci = 0,
     cell,

@@ -107,8 +107,7 @@ var state = {
         state.grid.update();
 
         // fill black
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        draw.cls(ctx, canvas);
 
         // draw grid lines
         draw.gridCellLines(state.grid, ctx, 'white');

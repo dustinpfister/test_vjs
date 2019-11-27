@@ -110,7 +110,7 @@ var state = {
         draw.cls(ctx, canvas);
 
         // draw grid lines
-        draw.gridCellLines(state.grid, ctx, 'white');
+        draw.gridCellLines(state.grid, ctx);
 
     };
     loop();

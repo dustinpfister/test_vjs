@@ -1,5 +1,8 @@
 // draw Cell Lines
-var draw = {};
+var draw = {
+    gridLineStyle: 'white',
+    enemyFillStyle: 'red'
+};
 
 draw.cls = function (ctx, canvas) {
 
@@ -8,17 +11,22 @@ draw.cls = function (ctx, canvas) {
 
 };
 
-draw.gridCellLines = function (grid, ctx, style) {
+draw.gridCellLines = function (grid, ctx) {
     var ci = 0,
+    x,
+    y,
     cell,
     cLen = grid.cells.length;
-    ctx.strokeStyle = style || 'red';
     while (ci < cLen) {
         cell = grid.cells[ci];
-        ctx.strokeRect(
-            cell.x * grid.cellSize + grid.xOffset + 0.5,
-            cell.y * grid.cellSize + grid.yOffset + 0.5,
-            grid.cellSize, grid.cellSize)
+        x = cell.x * grid.cellSize + grid.xOffset + 0.5;
+        y = cell.y * grid.cellSize + grid.yOffset + 0.5;
+        ctx.strokeStyle = draw.gridLineStyle;
+        ctx.strokeRect(x, y, grid.cellSize, grid.cellSize);
+        if (cell.enemy) {
+            ctx.fillStyle = draw.enemyFillStyle;
+            ctx.fillRect(x, y, grid.cellSize, grid.cellSize);
+        }
         ci += 1;
     }
 };

@@ -1,9 +1,9 @@
 // STATE
 var ptl = {
     sec_current: 0,
-    sec_target: 50,
+    sec_target: 25,
     sec_total: 100,
-    sec_margin: 2,
+    sec_margin: 4,
     tick_dir: 1,
     tick_rate: 40,
     tick_last: new Date(),
@@ -29,6 +29,10 @@ var ptl = {
 // DRAW
 var drawPTL = function (ptl, ctx, canvas) {
 
+    var r,
+    x,
+    y;
+
     // background
     ctx.globalAlpha = 1;
     ctx.fillStyle = 'black';
@@ -41,11 +45,20 @@ var drawPTL = function (ptl, ctx, canvas) {
     ctx.arc(canvas.width / 2, canvas.height / 2, 100, 0, Math.PI * 2);
     ctx.stroke();
 
+    // draw target range
+
+    ctx.strokeStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(canvas.width / 2, canvas.height / 2, 100,
+        ptl.wrapSec(ptl.sec_target - ptl.sec_margin) / ptl.sec_total * Math.PI * 2,
+        ptl.wrapSec(ptl.sec_target + ptl.sec_margin) / ptl.sec_total * Math.PI * 2);
+    ctx.stroke();
+
     // draw current
     ctx.strokeStyle = 'blue';
     ctx.beginPath();
-    var r = ptl.sec_current / ptl.sec_total * Math.PI * 2,
-    x = Math.cos(r) * 100 + canvas.width / 2,
+    r = ptl.sec_current / ptl.sec_total * Math.PI * 2;
+    x = Math.cos(r) * 100 + canvas.width / 2;
     y = Math.sin(r) * 100 + canvas.height / 2;
     ctx.arc(x, y, 10, 0, Math.PI * 2);
     ctx.stroke();

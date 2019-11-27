@@ -37,7 +37,7 @@ UnitGrid.prototype.spawn = function () {
         if (options.length > 0) {
 
             cell = options[Math.floor(Math.random() * options.length)];
-            cell.enemy = new Enemey({
+            cell.enemy = new Enemy({
                     board: this
                 });
 
@@ -100,12 +100,21 @@ var state = {
         console.log(state.grid.getCellFromPoint(x, y));
     });
 
-    // fill black
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    var loop = function () {
 
-    // draw grid lines
-    draw.gridCellLines(state.grid, ctx, 'white');
+        requestAnimationFrame(loop);
+
+        state.grid.update();
+
+        // fill black
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // draw grid lines
+        draw.gridCellLines(state.grid, ctx, 'white');
+
+    };
+    loop();
 
 }
     ());

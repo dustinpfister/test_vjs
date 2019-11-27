@@ -10,6 +10,15 @@ var Grid = function (opt) {
     this.setCells();
 };
 
+Grid.prototype.getCell = function (x, y) {
+    var insideX = x >= this.xOffset && x <= this.xOffset + this.cellSize * this.cellWidth,
+    insideY = y >= this.yOffset && y <= this.yOffset + this.cellSize * this.cellHeight;
+    if (insideX && insideY) {
+        return true
+    }
+    return false;
+};
+
 // set cell objects for each cell in the grid
 Grid.prototype.setCells = function (forCell) {
     this.cells = [];

@@ -8,7 +8,7 @@ var Grid = function (opt) {
     this.cellHeight = opt.cellHeight || 6;
     this.cells = [];
     // set cells for the grid
-    this.setCells();
+    this.setCells(opt.forCell);
 };
 // return a cell by index or x y cell position
 Grid.prototype.getCell = function (ix, y) {

@@ -1,13 +1,14 @@
 // STATE
 var ptl = {
     sec_current: 0,
-    sec_target: 25,
+    sec_target: 4,
     sec_total: 100,
     sec_margin: 4,
     tick_dir: 1,
-    tick_rate: 40,
+    tick_rate: 100,
     tick_last: new Date(),
-    inrange: false,
+    inRange: false,
+    // wrap a sec value
     wrapSec: function (sec) {
         if (sec > this.sec_total) {
             sec %= this.sec_total;
@@ -17,11 +18,16 @@ var ptl = {
         }
         return sec;
     },
+    // get in range boolean
+    getInRange: function () {
+        return this.sec_current >= this.sec_target - this.sec_margin && this.sec_current <= this.sec_target + this.sec_margin;
+    },
     tick: function () {
         var time = new Date() - this.tick_last,
         ticks = time / this.tick_rate;
         this.sec_current += ticks * this.tick_dir;
         this.sec_current = this.wrapSec(this.sec_current);
+        this.inRange = this.getInRange();
         this.tick_last = new Date();
     }
 };
@@ -69,6 +75,7 @@ var drawPTL = function (ptl, ctx, canvas) {
     ctx.textBaseline = 'top';
     ctx.font = '10px arial';
     ctx.fillText('sec_current ' + ptl.sec_current.toFixed(2), 10, 10);
+    ctx.fillText('inrange ' + ptl.inRange, 10, 20);
 
 };
 

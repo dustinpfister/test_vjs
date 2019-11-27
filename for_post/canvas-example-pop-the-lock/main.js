@@ -12,7 +12,7 @@ var ptl = {
         if (sec > this.sec_total) {
             sec %= this.sec_total;
         }
-        if(sec < 0) {
+        if (sec < 0) {
             sec = this.sec_total - (this.sec_total + Math.abs(sec)) % this.sec_total;
         }
         return sec;
@@ -30,6 +30,7 @@ var ptl = {
 var drawPTL = function (ptl, ctx, canvas) {
 
     // background
+    ctx.globalAlpha = 1;
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -48,6 +49,13 @@ var drawPTL = function (ptl, ctx, canvas) {
     y = Math.sin(r) * 100 + canvas.height / 2;
     ctx.arc(x, y, 10, 0, Math.PI * 2);
     ctx.stroke();
+
+    // info
+    ctx.fillStyle = 'yellow';
+    ctx.globalAlpha = 0.35;
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('sec_current ' + ptl.sec_current.toFixed(2), 10, 10);
 
 };
 

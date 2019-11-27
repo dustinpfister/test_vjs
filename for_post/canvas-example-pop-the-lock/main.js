@@ -4,8 +4,8 @@ var ptl = {
     sec_target: 4,
     sec_total: 100,
     sec_margin: 4,
-    tick_dir: 1,
-    tick_rate: 100,
+    tick_dir: -1,
+    tick_rate: 40,
     tick_last: new Date(),
     inRange: false,
     score: 0,
@@ -22,6 +22,14 @@ var ptl = {
     // get in range boolean
     getInRange: function () {
         return this.sec_current >= this.sec_target - this.sec_margin && this.sec_current <= this.sec_target + this.sec_margin;
+    },
+    // user clicked to touched the canvas
+    click: function (e) {
+        console.log('yes');
+        ptl.score += ptl.inRange ? 1 : -1;
+        if (ptl.inRange) {
+            ptl.tick_dir = ptl.tick_dir === 1 ? -1 : 1;
+        }
     },
     // tick
     tick: function () {
@@ -99,6 +107,8 @@ var drawPTL = function (ptl, ctx, canvas) {
     // set width and height
     canvas.width = 320;
     canvas.height = 240;
+
+    canvas.addEventListener('click', ptl.click);
 
     var loop = function () {
         requestAnimationFrame(loop);

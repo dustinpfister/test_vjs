@@ -1,6 +1,20 @@
-var state = {
+var UnitGrid = function (opt) {
 
-    grid: new Grid({
+    // same base properties
+    Object.assign(this, new Grid(opt));
+
+};
+
+UnitGrid.prototype = Object.create(new Grid());
+
+UnitGrid.prototype.update = function(){
+	
+	
+}
+
+var state = {
+    money: 100,
+    grid: new UnitGrid({
         xOffset: 15,
         yOffset: 25,
         cellSize: 32,

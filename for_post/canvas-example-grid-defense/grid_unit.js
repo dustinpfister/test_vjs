@@ -2,7 +2,7 @@
 var Enemy = function (opt) {
     this.board = opt.board || new UnitGrid();
     this.cell = opt.cell || {};
-    this.ticksPerMove = 4;
+    this.ticksPerMove = 8;
     this.ticks = 0;
 };
 
@@ -36,7 +36,7 @@ var UnitGrid = function (opt) {
     // same base properties
     Object.assign(this, new Grid(opt));
 
-    this.maxEnemies = opt.maxEnemies || 20;
+    this.maxEnemies = opt.maxEnemies || 5;
     this.tickRate = opt.tickRate === undefined ? 1000 / 4 : opt.tickRate;
     this.enemyCount = 0;
     this.lastTick = new Date();

@@ -26,7 +26,13 @@ var state = {
         var bx = e.target.getBoundingClientRect(),
         x = e.clientX - bx.left,
         y = e.clientY - bx.top;
-        console.log(state.grid.getCellFromPoint(x, y));
+
+        var cell = state.grid.getCellFromPoint(x, y);
+
+        if (cell.enemy) {
+            state.grid.kills += 1;
+            cell.enemy = false;
+        }
     });
 
     console.log(state.grid.getCell(-1, 2))

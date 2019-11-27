@@ -22,7 +22,7 @@
         var bx = e.target.getBoundingClientRect(),
         x = e.clientX - bx.left,
         y = e.clientY - bx.top;
-        console.log(grid.getCell(x,y));
+        console.log(grid.getCellFromPoint(x,y));
     });
 
     // fill black

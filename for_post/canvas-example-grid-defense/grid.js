@@ -10,16 +10,25 @@ var Grid = function (opt) {
     // set cells for the grid
     this.setCells();
 };
-
-// return the cell at the given canvas relative x and y position
-// of false if out of range
-Grid.prototype.getCell = function (x, y) {
+// return a cell by index or x y cell position
+Grid.prototype.getCell = function (ix, y) {
+    if (arguments.length === 1) {
+        return this.cells[ix];
+    }
+    if (arguments.length === 2) {
+        return this.cells[y * this.cellWidth + ix];
+    }
+    return false;
+};
+// return the cell at the given canvas relative x and y pixel position
+// or false if out of range
+Grid.prototype.getCellFromPoint = function (x, y) {
     var insideX = x >= this.xOffset && x <= this.xOffset + this.cellSize * this.cellWidth,
     insideY = y >= this.yOffset && y <= this.yOffset + this.cellSize * this.cellHeight;
     if (insideX && insideY) {
-        var cellX = Math.floor((x - this.xOffset) / this.cellSize),
-        cellY = Math.floor((y - this.yOffset) / this.cellSize);
-        return this.cells[cellY * this.cellWidth + cellX];
+        return this.getCell(
+            Math.floor((x - this.xOffset) / this.cellSize),
+            Math.floor((y - this.yOffset) / this.cellSize));
     }
     return false;
 };

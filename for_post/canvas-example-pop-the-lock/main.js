@@ -8,6 +8,7 @@ var ptl = {
     tick_rate: 100,
     tick_last: new Date(),
     inRange: false,
+    score: 0,
     // wrap a sec value
     wrapSec: function (sec) {
         if (sec > this.sec_total) {
@@ -22,6 +23,7 @@ var ptl = {
     getInRange: function () {
         return this.sec_current >= this.sec_target - this.sec_margin && this.sec_current <= this.sec_target + this.sec_margin;
     },
+    // tick
     tick: function () {
         var time = new Date() - this.tick_last,
         ticks = time / this.tick_rate;
@@ -69,10 +71,18 @@ var drawPTL = function (ptl, ctx, canvas) {
     ctx.arc(x, y, 10, 0, Math.PI * 2);
     ctx.stroke();
 
+    // score
+    ctx.fillStyle = ptl.score > 0 ? 'green' : 'red';
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+    ctx.font = '25px arial';
+    ctx.fillText(ptl.score, canvas.width / 2, canvas.height / 2);
+
     // info
     ctx.fillStyle = 'yellow';
-    ctx.globalAlpha = 0.35;
     ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.globalAlpha = 0.35;
     ctx.font = '10px arial';
     ctx.fillText('sec_current ' + ptl.sec_current.toFixed(2), 10, 10);
     ctx.fillText('inrange ' + ptl.inRange, 10, 20);

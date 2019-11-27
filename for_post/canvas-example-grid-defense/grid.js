@@ -6,15 +6,20 @@ var Grid = function (opt) {
     this.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;
     this.cellWidth = opt.cellWidth || 7;
     this.cellHeight = opt.cellHeight || 6;
+    this.cells = [];
     // set cells for the grid
     this.setCells();
 };
 
+// return the cell at the given canvas relative x and y position
+// of false if out of range
 Grid.prototype.getCell = function (x, y) {
     var insideX = x >= this.xOffset && x <= this.xOffset + this.cellSize * this.cellWidth,
     insideY = y >= this.yOffset && y <= this.yOffset + this.cellSize * this.cellHeight;
     if (insideX && insideY) {
-        return true
+        var cellX = Math.floor((x - this.xOffset) / this.cellSize),
+        cellY = Math.floor((y - this.yOffset) / this.cellSize);
+        return this.cells[cellY * this.cellWidth + cellX];
     }
     return false;
 };

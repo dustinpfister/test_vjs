@@ -19,7 +19,7 @@ Object.keys(source).forEach(function (key) {
 copy.heading = 0;
 copy.pos.x = 0;
 
-// works as exspected when it comes to heading
+// works as expected when it comes to heading
 console.log(copy.heading, source.heading); // 0 1.57
 // does not work with pos because it just copied a
 // reference it did not deep clone

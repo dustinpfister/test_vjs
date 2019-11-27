@@ -2,7 +2,7 @@
 var Enemy = function (opt) {
     this.board = opt.board || new UnitGrid();
     this.cell = opt.cell || {};
-    this.ticksPerMove = 1;
+    this.ticksPerMove = 4;
     this.ticks = 0;
 };
 
@@ -18,10 +18,12 @@ Enemy.prototype.update = function (ticks) {
                 target.enemy = this;
                 this.cell = target;
             }
-		}else{
-			console.log(target)
-			
-		}
+        } else {
+
+            this.board.hits += 1;
+            this.cell.enemy = false;
+
+        }
         this.ticks = 0;
     }
 
@@ -34,10 +36,12 @@ var UnitGrid = function (opt) {
     // same base properties
     Object.assign(this, new Grid(opt));
 
-    this.maxEnemies = opt.maxEnemies || 1;
+    this.maxEnemies = opt.maxEnemies || 20;
     this.tickRate = opt.tickRate === undefined ? 1000 / 4 : opt.tickRate;
     this.enemyCount = 0;
     this.lastTick = new Date();
+    this.hits = 0; // times hit by an enemy
+    this.kills = 0; // number of kills of enemies
 
 };
 

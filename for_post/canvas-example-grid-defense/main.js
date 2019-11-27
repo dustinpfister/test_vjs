@@ -28,8 +28,8 @@ var state = {
         y = e.clientY - bx.top;
         console.log(state.grid.getCellFromPoint(x, y));
     });
-	
-	console.log(state.grid.getCell(-1,2))
+
+    console.log(state.grid.getCell(-1, 2))
 
     var loop = function () {
 
@@ -42,6 +42,7 @@ var state = {
 
         // draw grid lines
         draw.gridCellLines(state.grid, ctx);
+        draw.disp(state, ctx);
 
     };
     loop();

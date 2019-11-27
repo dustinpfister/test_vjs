@@ -1,14 +1,13 @@
 // draw Cell Lines
 var draw = {
     gridLineStyle: 'white',
-    enemyFillStyle: 'red'
+    enemyFillStyle: 'red',
+    textFill: 'yellow'
 };
 
 draw.cls = function (ctx, canvas) {
-
     ctx.fillStyle = 'blue';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
 };
 
 draw.gridCellLines = function (grid, ctx) {
@@ -29,4 +28,12 @@ draw.gridCellLines = function (grid, ctx) {
         }
         ci += 1;
     }
+};
+
+draw.disp = function (state, ctx) {
+    var grid = state.grid;
+    ctx.fillStyle = draw.textFill;
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('hits: ' + grid.hits + '; kills: ' + grid.kills, 10, 10);
 };

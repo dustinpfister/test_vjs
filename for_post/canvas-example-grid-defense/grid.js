@@ -12,13 +12,14 @@ var Grid = function (opt) {
 };
 // return a cell by index or x y cell position
 Grid.prototype.getCell = function (ix, y) {
+    var cell;
     if (arguments.length === 1) {
-        return this.cells[ix];
+        cell = this.cells[ix];
     }
     if (arguments.length === 2) {
-        return this.cells[y * this.cellWidth + ix];
+        cell = this.cells[y * this.cellWidth + ix];
     }
-    return false;
+    return cell ? cell : false;
 };
 // return the cell at the given canvas relative x and y pixel position
 // or false if out of range

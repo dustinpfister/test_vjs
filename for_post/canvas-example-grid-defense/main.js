@@ -22,8 +22,10 @@
         var bx = e.target.getBoundingClientRect(),
         x = e.clientX - bx.left,
         y = e.clientY - bx.top;
-        console.log(grid.getCellFromPoint(x,y));
+        console.log(grid.getCellFromPoint(x, y));
     });
+
+    console.log(grid.getCell(2, 2))
 
     // fill black
     ctx.fillStyle = 'black';

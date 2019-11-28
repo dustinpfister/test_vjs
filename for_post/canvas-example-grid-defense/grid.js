@@ -33,7 +33,6 @@ Grid.prototype.getCellFromPoint = function (x, y) {
     }
     return false;
 };
-
 // set cell objects for each cell in the grid
 Grid.prototype.setCells = function (forCell) {
     this.cells = [];

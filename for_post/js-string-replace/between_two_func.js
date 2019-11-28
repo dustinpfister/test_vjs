@@ -11,3 +11,9 @@ let result = str.replace(/---\n[\s|\S]*?---\n/, (table) => {
     });
 
 console.log(result);
+// 'foo bar foo bar 
+// <pre>
+// foo: bar
+// n: 42
+// </pre>
+// foo bar foo bar'

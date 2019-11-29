@@ -1,3 +1,4 @@
+// point movement function
 var pointMovement = function (frame, maxFrame, canvas) {
     let sx = -32,
     mx = canvas.width + 64;
@@ -18,17 +19,18 @@ var draw = function (pt, ctx, canvas) {
     ctx.fill();
 };
 
+
+// loop frames unrestricted
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
-// app loop
 var pt, frame = 0,
-maxFrame = 50;
+maxFrame = 100;
 var loop = function () {
     requestAnimationFrame(loop);
-    draw(pointMovement(47, maxFrame, canvas), ctx, canvas);
+    draw(pointMovement(frame, maxFrame, canvas), ctx, canvas);
     frame += 1;
     frame %= maxFrame;
 };

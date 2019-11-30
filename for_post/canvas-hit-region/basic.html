@@ -5,8 +5,59 @@
     <body>
         <canvas id="the-canvas" width="320" height="240"></canvas>
         <script>
+var bb = function (a, b) {
+    return !(
+        ((a.y + a.h) < (b.y)) ||
+        (a.y > (b.y + b.h)) ||
+        ((a.x + a.w) < b.x) ||
+        (a.x > (b.x + b.w)));
+};
+
+var actions = [{
+        x: 50,
+        y: 50,
+        w: 100,
+        h: 50,
+        click: function () {
+            console.log('action 1');
+        }
+    }
+];
+
+var actionHandler = function (e) {
+    var bx = e.target.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
+    var i = 0,
+    len = actions.length;
+    while (i < len) {
+        if (bb({
+                x: x,
+                y: y,
+                w: 1,
+                h: 1
+            }, actions[i])) {
+            actions[i].click();
+            break;
+        }
+        i += 1;
+    }
+}
+
+var drawActions = function (actions, ctx) {
+    ctx.fillStyle = 'white';
+    actions.forEach(function (act) {
+        ctx.fillRect(act.x, act.y, act.w, act.h);
+    });
+};
+
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
+canvas.addEventListener('click', actionHandler);
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+drawActions(actions, ctx);
+
         </script>
     </body>
 </html>

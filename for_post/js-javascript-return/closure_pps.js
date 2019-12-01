@@ -27,29 +27,23 @@ var pps = function (obj) {
     return api;
 };
 
+// Demo
 var boxState = pps({
         x: 0,
         y: 50,
         r: 0,
         pps: 100
     }), bx;
-
 var loop = function () {
-
     setTimeout(loop, 100);
     bx = boxState();
-
     if (bx.x >= 500) {
-
         boxState.set({
             x: 0,
             y: 50,
             r: Math.PI * 1.9 + Math.random() * (Math.PI * 0.2)
         });
-
     }
-
     console.log(bx.x.toFixed(2), bx.y.toFixed(2));
-
 };
 loop();

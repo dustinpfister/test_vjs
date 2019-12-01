@@ -1,8 +1,13 @@
-var closure = function (a) {
-    return function (d) {
-        return {
-            x: Math.cos(a) * d,
-            y: Math.sin(a) * d
-        }
+var count = function (si) {
+    var i = si === undefined ? 0 : si;
+    return function () {
+        i += 1;
+        return i;
     };
 };
+
+var c = count();
+
+console.log( c() ); // 1
+console.log( c() ); // 2
+console.log( c() ); // 3

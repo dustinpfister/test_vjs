@@ -35,7 +35,7 @@ var createArcPoints = function (cx, cy, radius, start, end, counterClock, pointC
     points = [],
     d = angleDist(start, end),
     angle = counterClock ? Math.PI * 2 - d : d,
-    radDelta = angle / pointCount * (counterClock ? -1: 1),
+    radDelta = angle / (pointCount-1) * (counterClock ? -1: 1),
     i = 0,
     x,
     y;
@@ -57,7 +57,7 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
-var points = createArcPoints(160, 120, 100, 0, Math.PI * 0.5, false, 100);
+var points = createArcPoints(160, 120, 100, 0, Math.PI, false, 5);
 
 ctx.strokeStyle = 'green';
 drawPoints(ctx, points, false);

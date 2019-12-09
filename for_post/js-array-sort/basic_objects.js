@@ -17,3 +17,4 @@ arr.sort(function (a, b) {
 });
 
 console.log(arr.map((e) => e.hp).join(':'));
+// 57:50:7:0:0

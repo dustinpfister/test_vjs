@@ -5,57 +5,18 @@
     <body>
         <canvas id="the-canvas"></canvas>
         <script src="draw-points.js"></script>
+        <script src="angles.js"></script>
+        <script src="points-arc.js"></script>
         <script>
-
-var mod = function (x, m) {
-    return (x % m + m) % m;
-};
-var angleDist = function (a, b) {
-    var m = Math.PI * 2,
-    h = m / 2,
-    diff = mod(a - b, m);
-    if (diff > h) {
-        diff = diff - m;
-    }
-    return Math.abs(diff);
-};
-var createArcPoints = function (cx, cy, radius, start, end, counterClock, pointCount) {
-
-    cx = cx === undefined ? 0 : cx;
-    cy = cy === undefined ? 0 : cy;
-    radius = radius === undefined ? 50 : radius;
-    start = start === undefined ? 0 : start;
-    end = end === undefined ? Math.PI * 2 : end;
-    counterClock = counterClock === undefined ? false : counterClock;
-    pointCount = pointCount === undefined ? 50 : pointCount;
-    var rad,
-    points = [],
-    d = angleDist(start, end),
-    angle = counterClock ? Math.PI * 2 - d : d,
-    radDelta = angle / (pointCount-1) * (counterClock ? -1: 1),
-    i = 0,
-    x,
-    y;
-    while (i < pointCount) {
-        rad = start + radDelta * i;
-        x = Math.cos(rad) * radius + cx;
-        y = Math.sin(rad) * radius + cy;
-        points.push(x, y);
-        i += 1;
-    }
-    return points;
-};
-
 
 // get canvas can 2d context
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
 canvas.width = 320;
 canvas.height = 240;
 
-var points = createArcPoints(160, 120, 100, 0, Math.PI * 2, true, 75);
-
+// use points arc and draw points to draw a circle the hard way
+var points = pointsArc(160, 120, 100, 0, Math.PI * 2, true, 75);
 ctx.strokeStyle = 'green';
 drawPoints(ctx, points, false);
 

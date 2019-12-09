@@ -10,7 +10,6 @@
 var mod = function (x, m) {
     return (x % m + m) % m;
 };
-
 var angleDist = function (a, b) {
     var m = Math.PI * 2,
     h = m / 2,
@@ -20,7 +19,6 @@ var angleDist = function (a, b) {
     }
     return Math.abs(diff);
 };
-
 var createArcPoints = function (cx, cy, radius, start, end, counterClock, pointCount) {
 
     cx = cx === undefined ? 0 : cx;
@@ -30,7 +28,6 @@ var createArcPoints = function (cx, cy, radius, start, end, counterClock, pointC
     end = end === undefined ? Math.PI * 2 : end;
     counterClock = counterClock === undefined ? false : counterClock;
     pointCount = pointCount === undefined ? 50 : pointCount;
-
     var rad,
     points = [],
     d = angleDist(start, end),
@@ -57,10 +54,11 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
-var points = createArcPoints(160, 120, 100, 0, Math.PI, false, 5);
+var points = createArcPoints(160, 120, 100, 0, Math.PI * 2, true, 75);
 
 ctx.strokeStyle = 'green';
 drawPoints(ctx, points, false);
+
         </script>
     </body>
 </html>

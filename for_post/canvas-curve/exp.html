@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>canvas arc</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script src="draw-points.js"></script>
+        <script src="angles.js"></script>
+        <script src="points-exp.js"></script>
+        <script>
+
+// get canvas can 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+
+// Using pointsExp method to create an draw points
+var points = pointsExp(20, 220, 1.125, 0, 45, 5, -1.15);
+ctx.strokeStyle = 'green';
+drawPoints(ctx, points, false);
+
+        </script>
+    </body>
+</html>

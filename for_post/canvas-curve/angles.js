@@ -1,7 +1,6 @@
 var angle = {
     scale: Math.PI * 2
 };
-
 angle.mod = function (x, m) {
     return (x % m + m) % m;
 };

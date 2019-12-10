@@ -1,22 +1,22 @@
-var pointsExp = function (sx, sy, base, powStart, powEnd, xMulti, yMulti) {
+var pointsExp = function (sx, sy, base, expStart, expEnd, xMulti, yMulti, iStep) {
     sx = sx === undefined ? 0 : sx;
     sy = sy === undefined ? 0 : sy;
     base = base === undefined ? 2 : base;
-    powStart = powStart === undefined ? 0 : powStart;
-    powEnd = powEnd === undefined ? 5 : powEnd;
+    expStart = expStart === undefined ? 0 : expStart;
+    expEnd = expEnd === undefined ? 5 : expEnd;
     xMulti = xMulti === undefined ? 10 : xMulti;
     yMulti = yMulti === undefined ? -1 : yMulti;
-
+    iStep = iStep === undefined ? 1 : iStep;
     var points = [],
     i = 0,
-    len = powEnd - powStart,
+    len = expEnd - expStart,
     x,
     y;
     while (i < len) {
         x = sx + i * xMulti;
-        y = sy + Math.pow(base, powStart + i) * yMulti;
+        y = sy + Math.pow(base, expStart + i) * yMulti;
         points.push(x, y);
-        i += 1;
+        i += iStep;
     }
     return points;
 };

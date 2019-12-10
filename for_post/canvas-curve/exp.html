@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>canvas arc</title>
+        <title>canvas curve</title>
     </head>
     <body>
         <canvas id="the-canvas"></canvas>
@@ -16,7 +16,7 @@ canvas.width = 320;
 canvas.height = 240;
 
 // Using pointsExp method to create an draw points
-var points = pointsExp(20, 220, 1.125, 0, 45, 5, -1.15);
+var points = pointsExp(20, 220, 2, 0, 9, 20, -1, 0.25);
 ctx.strokeStyle = 'green';
 drawPoints(ctx, points, false);
 

@@ -20,17 +20,22 @@ canvas.height = 240;
 ctx.fillStyle='black';
 ctx.fillRect(0,0,canvas.width, canvas.height);
 
-ctx.strokeStyle = 'green';
-ctx.lineWidth = 3;
-var points = pointsExp({
-    sx: 10,
-    sy: canvas.height-10,
-    yMulti: -1 * 10,
-    xMulti: 1 * 10,
-    expStart: -2,
-    iStep: 0.25
-});
-drawPoints(ctx, points, false);
+var i = 0, len = 10;
+
+while(i < len){
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 3;
+    var points = pointsExp({
+        sx: 10,
+        sy: canvas.height-10,
+        yMulti: -10,
+        xMulti: 50 * ( i / len ),
+        expStart: -2,
+        iStep: 0.25
+    });
+    drawPoints(ctx, points, false);
+    i += 1;
+}
 
         </script>
     </body>

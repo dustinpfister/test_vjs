@@ -1,5 +1,5 @@
-//var pointsExp = function (sx, sy, base, expStart, expEnd, xMulti, yMulti, iStep) {
 var pointsExp = function (opt) {
+
     opt = opt || {};
 
     var sx = opt.sx === undefined ? 0 : opt.sx,
@@ -22,5 +22,7 @@ var pointsExp = function (opt) {
         points.push(x, y);
         i += iStep;
     }
+
     return points;
+
 };

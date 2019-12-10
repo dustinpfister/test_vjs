@@ -16,8 +16,19 @@ canvas.width = 320;
 canvas.height = 240;
 
 // Using pointsExp method to create an draw points
-var points = pointsExp(20, 220, 2, 0, 9, 20, -1, 0.25);
+//var points = pointsExp(20, 220, 2, 0, 9, 20, -1, 0.25);
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width, canvas.height);
+var points = pointsExp({
+    sx: 10,
+    sy: canvas.height-10,
+    yMulti: -10,
+    xMulti:10,
+    expStart: -2,
+    iStep: 0.25
+});
 ctx.strokeStyle = 'green';
+ctx.lineWidth = 3;
 drawPoints(ctx, points, false);
 
         </script>

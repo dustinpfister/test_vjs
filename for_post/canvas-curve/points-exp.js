@@ -1,12 +1,16 @@
-var pointsExp = function (sx, sy, base, expStart, expEnd, xMulti, yMulti, iStep) {
-    sx = sx === undefined ? 0 : sx;
-    sy = sy === undefined ? 0 : sy;
-    base = base === undefined ? 2 : base;
-    expStart = expStart === undefined ? 0 : expStart;
-    expEnd = expEnd === undefined ? 5 : expEnd;
-    xMulti = xMulti === undefined ? 10 : xMulti;
-    yMulti = yMulti === undefined ? -1 : yMulti;
-    iStep = iStep === undefined ? 1 : iStep;
+//var pointsExp = function (sx, sy, base, expStart, expEnd, xMulti, yMulti, iStep) {
+var pointsExp = function (opt) {
+    opt = opt || {};
+
+    var sx = opt.sx === undefined ? 0 : opt.sx,
+    sy = opt.sy === undefined ? 0 : opt.sy,
+    base = opt.base === undefined ? 2 : opt.base,
+    expStart = opt.expStart === undefined ? 0 : opt.expStart,
+    expEnd = opt.expEnd === undefined ? 8 : opt.expEnd,
+    xMulti = opt.xMulti === undefined ? 30 : opt.xMulti,
+    yMulti = opt.yMulti === undefined ? 1 : opt.yMulti,
+    iStep = opt.iStep === undefined ? 1 : opt.iStep;
+
     var points = [],
     i = 0,
     len = expEnd - expStart,

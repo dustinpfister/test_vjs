@@ -52,7 +52,7 @@ IMG.chunkToString = function (chunk, colorDepth) {
             str += Number(px);
         });
     });
-    return str;
+    return str.split('').reverse().join('');
 };
 // draw to a canvas
 IMG.draw = function (canvas, chunk, w, pal) {

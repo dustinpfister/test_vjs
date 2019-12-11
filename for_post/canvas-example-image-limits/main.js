@@ -9,9 +9,7 @@ var w = 4, h = 4,
 colorDepth = 2,
 str = IMG.stringFromIndex(38505, colorDepth, w * h),
 matrix = IMG.stringToChunk(str, w);
-
 inputStr.value = parseInt(str, colorDepth);
-
 IMG.draw(canvas, matrix, w);
 
 // update by clicking canvas
@@ -30,7 +28,6 @@ canvas.addEventListener('click', function (e) {
     inputStr.value = parseInt(str, colorDepth);
     IMG.draw(canvas, matrix, w);
 });
-
 // update from input element
 inputStr.addEventListener('keyup', function (e) {
     var text = e.target.value,

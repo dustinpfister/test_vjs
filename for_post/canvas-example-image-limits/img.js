@@ -52,7 +52,6 @@ IMG.draw = function (canvas, chunk, w, pal) {
     chunk.forEach(function (row, y) {
         row.forEach(function (px, x) {
             ctx.fillStyle = pal[px] || 'black';
-            console.log(x, y);
             ctx.fillRect(x * size, y * size, size, size);
         });
     });

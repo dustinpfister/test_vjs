@@ -5,6 +5,22 @@ canvas.width = 320;
 canvas.height = 320;
 
 var w = 4, h = 4,
-str = IMG.stringFromIndex(38505, 2, w * h);
+colorDepth = 2,
+str = IMG.stringFromIndex(38505, colorDepth, w * h),
+matrix = IMG.stringToChunk(str, w);
 
-IMG.draw(canvas, IMG.stringToChunk(str, w), w);
+IMG.draw(canvas, matrix, w);
+
+canvas.addEventListener('click', function (e) {
+    var bx = e.target.getBoundingClientRect(),
+    size = canvas.width / w,
+    x = Math.floor((e.clientX - bx.left) / size),
+    y = Math.floor((e.clientY - bx.top) / size),
+    px = matrix[y][x];
+    px += 1;
+    if (px >= colorDepth) {
+        px = 0;
+    }
+    matrix[y][x] = px;
+    IMG.draw(canvas, matrix, w);
+});

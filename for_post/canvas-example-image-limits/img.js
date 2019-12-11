@@ -45,15 +45,16 @@ IMG.chunkString = function (str, w) {
     return arr;
 };
 // draw to a canvas
-IMG.drawStr = function (canvas, str, w, pal) {
+IMG.draw = function (canvas, str, w, pal) {
     pal = pal || ['white', 'black', 'red', 'green', 'blue'];
     var ctx = canvas.getContext('2d'),
-    arr = IMG.chunkString(str),
+    arr = IMG.chunkString(str, w),
     size = canvas.width / w;
-    arr.forEach(function (px, i) {
-        var x = i % w * size,
-        y = Math.floor(i / w) * size;
-        ctx.fillStyle = pal[px] || 'white';
-        ctx.fillRect(x, y, size, size);
+    arr.forEach(function (row, y) {
+        row.forEach(function (px, x) {
+            ctx.fillStyle = pal[px] || 'black';
+            console.log(x, y);
+            ctx.fillRect(x * size, y * size, size, size);
+        });
     });
 };

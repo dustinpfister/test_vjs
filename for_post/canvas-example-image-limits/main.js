@@ -7,4 +7,4 @@ canvas.height = 320;
 var w = 4, h = 4,
 str = IMG.stringFromIndex(38505, 2, w * h);
 
-IMG.draw(canvas, str, w);
+IMG.draw(canvas, IMG.stringToChunk(str, w), w);

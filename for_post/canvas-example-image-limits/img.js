@@ -34,7 +34,7 @@ IMG.stringFromIndex = function (index, colorDepth, size) {
 };
 // chunk and img string into an array of arrays
 // with the given width
-IMG.chunkString = function (str, w) {
+IMG.stringToChunk = function (str, w) {
     var i = 0,
     strArr = str.split(''),
     arr = [];
@@ -45,12 +45,11 @@ IMG.chunkString = function (str, w) {
     return arr;
 };
 // draw to a canvas
-IMG.draw = function (canvas, str, w, pal) {
+IMG.draw = function (canvas, chunk, w, pal) {
     pal = pal || ['white', 'black', 'red', 'green', 'blue'];
     var ctx = canvas.getContext('2d'),
-    arr = IMG.chunkString(str, w),
     size = canvas.width / w;
-    arr.forEach(function (row, y) {
+    chunk.forEach(function (row, y) {
         row.forEach(function (px, x) {
             ctx.fillStyle = pal[px] || 'black';
             console.log(x, y);

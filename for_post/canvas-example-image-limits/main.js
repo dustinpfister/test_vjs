@@ -1,5 +1,6 @@
 var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
+ctx = canvas.getContext('2d'),
+inputStr = document.getElementById('img-str');
 
 canvas.width = 320;
 canvas.height = 320;
@@ -8,6 +9,8 @@ var w = 4, h = 4,
 colorDepth = 2,
 str = IMG.stringFromIndex(38505, colorDepth, w * h),
 matrix = IMG.stringToChunk(str, w);
+
+inputStr.value = parseInt(str, colorDepth);
 
 IMG.draw(canvas, matrix, w);
 
@@ -23,8 +26,8 @@ canvas.addEventListener('click', function (e) {
     }
     matrix[y][x] = px;
     str = IMG.chunkToString(matrix, colorDepth);
-	console.log(str)
+    inputStr.value = parseInt(str, colorDepth);
     IMG.draw(canvas, matrix, w);
-    ctx.fillStyle = 'yellow';
-	ctx.fillText(str, 10,10)
+    //ctx.fillStyle = 'yellow';
+    //ctx.fillText(str, 10, 10)
 });

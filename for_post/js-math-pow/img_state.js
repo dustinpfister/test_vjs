@@ -20,13 +20,12 @@ var indexFromIMGString = function (string) {
         index += pix == 1 ? Math.pow(2, i): 0;
     });
     return index;
-
 }
 
-var str = IMGStringFromIndex( 123456789012345 );
-
+var str = IMGStringFromIndex( Math.pow(2, 7 * 7 ) - 1 );
 console.log(str);
+// 1111111111111111111111111111111111111111111111111
 
 var index = indexFromIMGString(str);
-
 console.log(index);
+// 562949953421311

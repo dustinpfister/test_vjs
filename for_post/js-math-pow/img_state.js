@@ -38,20 +38,37 @@ var IMGStringFromIndex = function (index, colorDepth, size) {
     baseStr = new Array(size).fill('0').join('');
     return String(baseStr + num).slice(size * -1).split('').reverse().join('');
 };
-
+// chunk and img string into an array of arrays
+// with the given width
+var chunkIMGString = function (str, w) {
+    var i = 0,
+    strArr = str.split(''),
+    arr = [];
+    while (i < str.length) {
+        arr.push(strArr.slice(i, i+ w));
+        i += w;
+    }
+    return arr;
+};
 
 var w = 4, h = 4,
 size = w * h,
 colorDepth = 2,
-index = Math.pow(2, 4) + 3,
+index = 38505,
 
-str = IMGStringFromIndex(index, colorDepth, size);
-
-console.log(totalImages(w, h, colorDepth)); // 65536
-console.log(pastSafe(w, h, colorDepth)); // false
+str = IMGStringFromIndex(index, colorDepth, size),
+img = chunkIMGString(str, w);
 
 console.log(str);
 // 1100100000000000
 
+console.log(img);
+// [ [ '1', '0', '0', '1' ],
+//   [ '0', '1', '1', '0' ],
+//   [ '0', '1', '1', '0' ],
+//   [ '1', '0', '0', '1' ] ]
+
+console.log(totalImages(w, h, colorDepth)); // 65536
+console.log(pastSafe(w, h, colorDepth)); // false
 console.log(indexFromString(str, colorDepth)); // 19
 console.log(indexFromString2(str, colorDepth)); // 19

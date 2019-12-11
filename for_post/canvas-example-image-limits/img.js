@@ -44,6 +44,16 @@ IMG.stringToChunk = function (str, w) {
     }
     return arr;
 };
+IMG.chunkToString = function (chunk, colorDepth) {
+    colorDepth = colorDepth || 2;
+    var str = '';
+    chunk.forEach(function (row, y) {
+        row.forEach(function (px, x) {
+            str += Number(px);
+        });
+    });
+    return str;
+};
 // draw to a canvas
 IMG.draw = function (canvas, chunk, w, pal) {
     pal = pal || ['white', 'black', 'red', 'green', 'blue'];

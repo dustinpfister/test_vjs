@@ -22,5 +22,9 @@ canvas.addEventListener('click', function (e) {
         px = 0;
     }
     matrix[y][x] = px;
+    str = IMG.chunkToString(matrix, colorDepth);
+	console.log(str)
     IMG.draw(canvas, matrix, w);
+    ctx.fillStyle = 'yellow';
+	ctx.fillText(str, 10,10)
 });

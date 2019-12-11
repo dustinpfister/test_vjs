@@ -14,6 +14,7 @@ inputStr.value = parseInt(str, colorDepth);
 
 IMG.draw(canvas, matrix, w);
 
+// update by clicking canvas
 canvas.addEventListener('click', function (e) {
     var bx = e.target.getBoundingClientRect(),
     size = canvas.width / w,
@@ -28,6 +29,21 @@ canvas.addEventListener('click', function (e) {
     str = IMG.chunkToString(matrix, colorDepth);
     inputStr.value = parseInt(str, colorDepth);
     IMG.draw(canvas, matrix, w);
-    //ctx.fillStyle = 'yellow';
-    //ctx.fillText(str, 10, 10)
+});
+
+// update from input element
+inputStr.addEventListener('keyup', function (e) {
+    var text = e.target.value,
+    n = parseInt(text);
+    if (n.toString() != 'NaN') {
+        if (n >= IMG.totalImages(w, h, colorDepth)) {
+            n = e.target.value = IMG.totalImages(w, h, colorDepth) - 1;
+        }
+        if (n < 0) {
+            n = e.target.value = 0;
+        }
+        str = IMG.stringFromIndex(n, colorDepth, w * h);
+        matrix = IMG.stringToChunk(str, w);
+        IMG.draw(canvas, matrix, w);
+    }
 });

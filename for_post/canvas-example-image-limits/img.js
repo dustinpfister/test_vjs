@@ -39,13 +39,21 @@ IMG.chunkString = function (str, w) {
     strArr = str.split(''),
     arr = [];
     while (i < str.length) {
-        arr.push(strArr.slice(i, i+ w));
+        arr.push(strArr.slice(i, i + w));
         i += w;
     }
     return arr;
 };
-IMG.drawStr = function(ctx, str, w){
-	
-	var arr
-	
+// draw to a canvas
+IMG.drawStr = function (canvas, str, w, pal) {
+    pal = pal || ['white', 'black', 'red', 'green', 'blue'];
+    var ctx = canvas.getContext('2d'),
+    arr = IMG.chunkString(str),
+    size = canvas.width / w;
+    arr.forEach(function (px, i) {
+        var x = i % w * size,
+        y = Math.floor(i / w) * size;
+        ctx.fillStyle = pal[px] || 'white';
+        ctx.fillRect(x, y, size, size);
+    });
 };

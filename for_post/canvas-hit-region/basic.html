@@ -18,7 +18,10 @@ var actions = [{
         y: 50,
         w: 100,
         h: 50,
+        colorIndex: 0,
         click: function () {
+            this.colorIndex += 1;
+            this.colorIndex %= 3;
             console.log('action 1');
         }
     }
@@ -37,16 +40,18 @@ var actionHandler = function (e) {
                 w: 1,
                 h: 1
             }, actions[i])) {
-            actions[i].click();
+            actions[i].click.call(actions[i]);
             break;
         }
         i += 1;
     }
+    drawActions(actions, ctx);
 }
 
 var drawActions = function (actions, ctx) {
-    ctx.fillStyle = 'white';
+    var pal = ['red', 'green', 'blue']
     actions.forEach(function (act) {
+        ctx.fillStyle = pal[act.colorIndex] || 'white';
         ctx.fillRect(act.x, act.y, act.w, act.h);
     });
 };

@@ -10,7 +10,7 @@ colorDepth = 2,
 str = IMG.stringFromIndex(38505, colorDepth, w * h),
 matrix = IMG.stringToChunk(str, w);
 inputStr.value = parseInt(str, colorDepth);
-IMG.draw(canvas, matrix, w);
+IMG.draw(canvas, matrix);
 
 // update by clicking canvas
 canvas.addEventListener('click', function (e) {
@@ -26,7 +26,7 @@ canvas.addEventListener('click', function (e) {
     matrix[y][x] = px;
     str = IMG.chunkToString(matrix, colorDepth);
     inputStr.value = parseInt(str, colorDepth);
-    IMG.draw(canvas, matrix, w);
+    IMG.draw(canvas, matrix);
 });
 // update from input element
 inputStr.addEventListener('keyup', function (e) {
@@ -41,6 +41,6 @@ inputStr.addEventListener('keyup', function (e) {
         }
         str = IMG.stringFromIndex(n, colorDepth, w * h);
         matrix = IMG.stringToChunk(str, w);
-        IMG.draw(canvas, matrix, w);
+        IMG.draw(canvas, matrix);
     }
 });

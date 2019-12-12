@@ -55,10 +55,10 @@ IMG.chunkToString = function (chunk, colorDepth) {
     return str.split('').reverse().join('');
 };
 // draw to a canvas
-IMG.draw = function (canvas, chunk, w, pal) {
+IMG.draw = function (canvas, chunk, pal) {
     pal = pal || ['white', 'black', 'red', 'green', 'blue'];
     var ctx = canvas.getContext('2d'),
-    size = canvas.width / w;
+    size = canvas.width / chunk[0].length;
     chunk.forEach(function (row, y) {
         row.forEach(function (px, x) {
             ctx.fillStyle = pal[px] || 'black';

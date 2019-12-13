@@ -1,4 +1,4 @@
-var sort = function (arr, sorter) {
+var sort = function (arr, sorter, reverseWeight) {
     // return empty array if not array is given
     if (!arr) {
         return [];
@@ -13,8 +13,9 @@ var sort = function (arr, sorter) {
         }
         return 0;
     };
+    reverseWeight = reverseWeight === undefined ? false : reverseWeight;
     // clone the array by some means
-    var copy = JSON.parse( JSON.stringify(arr) );
+    var copy = JSON.parse(JSON.stringify(arr));
     // using array sort off of the copy of the array
     // so that I do not mutate the argument array
     copy.sort(function (a, b) {
@@ -25,10 +26,10 @@ var sort = function (arr, sorter) {
         // return -1, 1, or zero to move down the index
         // move it up or do nothing
         if (c > d) {
-            return -1;
+            return reverseWeight ? 1 : -1;
         }
         if (c < d) {
-            return 1;
+            return reverseWeight ? -1 : 1;
         }
         return 0;
     });
@@ -38,6 +39,7 @@ var sort = function (arr, sorter) {
 var nums = [3, 5, 6, 1, 7, 9, 3];
 
 var numsSorted = sort(nums);
-
 console.log(nums.join('-'));
 console.log(numsSorted.join('-'));
+// 3-5-6-1-7-9-3
+// 9-7-6-5-3-3-1

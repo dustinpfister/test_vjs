@@ -36,10 +36,41 @@ var sort = function (arr, sorter, reverseWeight) {
     return copy;
 };
 
+// numbers
 var nums = [3, 5, 6, 1, 7, 9, 3];
-
 var numsSorted = sort(nums);
 console.log(nums.join('-'));
 console.log(numsSorted.join('-'));
 // 3-5-6-1-7-9-3
 // 9-7-6-5-3-3-1
+
+
+var posts = [{
+        wordCount: 500,
+        time: 330,
+        comentCount: 7
+    }, {
+        wordCount: 1800,
+        time: 1000,
+        comentCount: 0
+    }, {
+        wordCount: 750,
+        time: 0,
+        comentCount: 3
+    }, ];
+
+var byWordCount = sort(posts, function (post) {
+        return post.wordCount;
+    });
+console.log(byWordCount);
+// [ { wordCount: 1800, time: 1000, comentCount: 0 },
+//   { wordCount: 750, time: 0, comentCount: 3 },
+//   { wordCount: 500, time: 330, comentCount: 7 } ]
+
+var byFresh = sort(posts, function (post) {
+        return post.time;
+    }, true);
+console.log(byFresh);
+// [ { wordCount: 750, time: 0, comentCount: 3 },
+//   { wordCount: 500, time: 330, comentCount: 7 },
+//   { wordCount: 1800, time: 1000, comentCount: 0 } ]

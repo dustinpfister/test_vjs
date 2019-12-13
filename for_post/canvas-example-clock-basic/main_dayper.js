@@ -18,7 +18,7 @@
         var c = {};
         c.now = date || new Date(0);
         c.timeText = pad(c.now.getHours()) + ' : ' + pad(c.now.getMinutes()) + ' : ' + pad(c.now.getSeconds());
-        var dayStart = new Date(c.now.getFullYear(), c.now.getMonth(), c.now.getDate(), 0, 0, 0);
+        var dayStart = new Date(c.now.getFullYear(), c.now.getMonth(), c.now.getDate(), 0, 0, 0, 0);
         c.dayPer = (c.now - dayStart) / 86400000;
         return c;
     };
@@ -30,8 +30,9 @@
         ctx.font = '30px arial';
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
-        ctx.fillText(clock.timeText, canvas.width / 2, canvas.height / 2);
-        ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2);
+        var text = (clock.dayPer * 100).toFixed(3) + '%';
+        ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+        ctx.strokeText(text, canvas.width / 2, canvas.height / 2);
     };
     // draw day circle
     var drawClockDayCircle = function (canvas, ctx, clock) {
@@ -45,7 +46,6 @@
         ctx.beginPath();
         ctx.arc(canvas.width / 2, canvas.height / 2, (canvas.height - 50) / 2, 0, r);
         ctx.stroke();
-
     };
     // loop
     var loop = function () {
@@ -56,6 +56,6 @@
     };
     // start loop
     loop();
-    setInterval(loop, 1000);
+    setInterval(loop, 100);
 }
     ());

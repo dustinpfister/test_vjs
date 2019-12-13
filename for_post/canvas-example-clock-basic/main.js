@@ -1,0 +1,41 @@
+// SETUP CANVAS
+(function () {
+    // create and append canvas element, and get 2d context
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    container = document.getElementById('gamearea') || document.body;
+    container.appendChild(canvas);
+    // set width and height
+    canvas.width = 320;
+    canvas.height = 240;
+
+    var pad = function (a) {
+        return String('00' + a).slice(-2);
+    };
+
+    var getClock = function () {
+        var c = {};
+        c.now = new Date();
+        c.timeText = pad(c.now.getHours()) + ' : ' + pad(c.now.getMinutes()) + ' : ' + pad(c.now.getSeconds());
+        return c;
+    };
+
+    var drawClockText = function (canvas, ctx, clock) {
+        ctx.fillStyle = 'white';
+        ctx.strokeStyle = 'black';
+        ctx.font = '20px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'center';
+        ctx.fillText(clock.timeText, canvas.width / 2, canvas.height / 2);
+        ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2);
+    };
+
+    var loop = function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawClockText(canvas, ctx, getClock());
+    };
+
+    loop();
+    setInterval(loop, 1000);
+}
+    ());

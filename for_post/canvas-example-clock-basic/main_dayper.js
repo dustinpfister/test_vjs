@@ -35,13 +35,15 @@
     };
     // draw day circle
     var drawClockDayCircle = function (canvas, ctx, clock) {
-
         var r = Math.PI * 2 * clock.dayPer;
-
         ctx.lineWidth = 7;
         ctx.strokeStyle = 'grey';
         ctx.beginPath();
         ctx.arc(canvas.width / 2, canvas.height / 2, (canvas.height - 50) / 2, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.strokeStyle = 'green';
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2, canvas.height / 2, (canvas.height - 50) / 2, 0, r);
         ctx.stroke();
 
     };

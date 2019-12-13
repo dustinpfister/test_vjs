@@ -9,17 +9,18 @@
     canvas.width = 320;
     canvas.height = 240;
 
+    // pad a value
     var pad = function (a) {
         return String('00' + a).slice(-2);
     };
-
-    var getClock = function () {
+    // get a clock state with the give date or new Date(0) by default
+    var getClock = function (date) {
         var c = {};
-        c.now = new Date();
+        c.now = date || new Date(0);
         c.timeText = pad(c.now.getHours()) + ' : ' + pad(c.now.getMinutes()) + ' : ' + pad(c.now.getSeconds());
         return c;
     };
-
+    // draw a clock to a canvas
     var drawClockText = function (canvas, ctx, clock) {
         ctx.fillStyle = 'white';
         ctx.strokeStyle = 'black';
@@ -29,12 +30,13 @@
         ctx.fillText(clock.timeText, canvas.width / 2, canvas.height / 2);
         ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2);
     };
-
+    // loop
     var loop = function () {
+        var clock = getClock(new Date());
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawClockText(canvas, ctx, getClock());
+        drawClockText(canvas, ctx, clock);
     };
-
+    // start loop
     loop();
     setInterval(loop, 1000);
 }

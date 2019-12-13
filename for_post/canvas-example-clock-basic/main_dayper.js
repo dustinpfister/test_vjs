@@ -18,6 +18,8 @@
         var c = {};
         c.now = date || new Date(0);
         c.timeText = pad(c.now.getHours()) + ' : ' + pad(c.now.getMinutes()) + ' : ' + pad(c.now.getSeconds());
+        var dayStart = new Date(c.now.getFullYear(), c.now.getMonth(), c.now.getDate(), 0, 0, 0);
+        c.dayPer = (c.now - dayStart) / 86400000;
         return c;
     };
     // draw a clock to a canvas
@@ -25,17 +27,30 @@
         ctx.lineWidth = 1;
         ctx.fillStyle = 'white';
         ctx.strokeStyle = 'black';
-        ctx.font = '20px arial';
+        ctx.font = '30px arial';
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
         ctx.fillText(clock.timeText, canvas.width / 2, canvas.height / 2);
         ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2);
+    };
+    // draw day circle
+    var drawClockDayCircle = function (canvas, ctx, clock) {
+
+        var r = Math.PI * 2 * clock.dayPer;
+
+        ctx.lineWidth = 7;
+        ctx.strokeStyle = 'grey';
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2, canvas.height / 2, (canvas.height - 50) / 2, 0, Math.PI * 2);
+        ctx.stroke();
+
     };
     // loop
     var loop = function () {
         var clock = getClock(new Date());
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawClockText(canvas, ctx, clock);
+        drawClockDayCircle(canvas, ctx, clock);
     };
     // start loop
     loop();

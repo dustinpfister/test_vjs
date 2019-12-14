@@ -2,7 +2,7 @@ var drawClockText = function (clock, canvas, ctx, x, y) {
     ctx.lineWidth = 1;
     ctx.fillStyle = 'white';
     ctx.strokeStyle = 'black';
-    ctx.font = '70px courier';
+    ctx.font = '40px courier';
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
     ctx.fillText(clock.timeText, x + 0.5, y + 0.5);
@@ -17,6 +17,8 @@ container.appendChild(canvas);
 // set width and height
 canvas.width = 640;
 canvas.height = 240;
+
+console.log(clock.figMoney(101.5))
 
 var loop = function () {
     requestAnimationFrame(loop);

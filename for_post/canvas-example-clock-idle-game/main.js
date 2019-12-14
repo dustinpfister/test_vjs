@@ -3,8 +3,17 @@ var getClock = function (now, start) {
     var clock = {};
     clock.now = now || new Date(2000, 3, 6, 10, 5);
     clock.start = start || new Date(1983, 3, 6, 10, 5);
+    // get t value of the given dates
     clock.t = clock.now - clock.start;
-    clock.timeText = Number(clock.t / 1000).toFixed(1);
+    
+    // percent done is between zero and 2.5 billion seconds
+    clock.per = clock.t / 1000 / (2.5 * Math.pow(10, 9));
+    clock.per = clock.per > 1 ? 1 : clock.per;
+    clock.per = clock.per < 0 ? 0 : clock.per;
+
+    // level
+
+    clock.timeText = clock.per.toFixed(10);
     return clock;
 };
 

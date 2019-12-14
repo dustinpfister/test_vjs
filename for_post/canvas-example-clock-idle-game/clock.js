@@ -70,7 +70,8 @@ clock.get = function (now, start) {
 
     //c.per = clock.getPercent(c.days);
 
-    c.timeText = c.days;
+    c.money = clock.figMoney(c.days)
+    c.timeText = c.money.toFixed(2);
     //c.timeText = clock.figMoney(c.days).toFixed(2) + ' ' + c.days.toFixed(2);
 
     return c;

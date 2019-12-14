@@ -27,28 +27,35 @@ return per;
 
 // figure money based on days
 clock.figMoney = function (days, rates) {
-
     days = days || 0;
     rates = rates || [{
                 min: 0,
                 perDay: 1
             }, {
-                min: 100,
+                min: 500,
                 perDay: 2
+            }, {
+                min: 3000,
+                perDay: 3
+            }, {
+                min: 10000,
+                perDay: 6
             }
         ];
     var pastDays = Math.floor(days),
     currentDay = days % pastDays;
 
-    var money = 0;
+    var money = 0,
+    cr = 0;
     rates.forEach(function (rate) {
         var d = pastDays - rate.min;
+        cr += rate.perDay;
         if (d > 0) {
             money += d * rate.perDay;
         }
     });
 
-    return money;
+    return money + currentDay * cr;
 
 };
 

@@ -1,6 +1,7 @@
 
 var clock = {};
 
+// get basic values with the given t value in milliseconds
 clock.getBasicValues = function (t) {
     t = t === undefined ? 0 : t;
     t = t < 0 ? 0 : t;
@@ -12,6 +13,17 @@ clock.getBasicValues = function (t) {
     }
 };
 
+// get percent done based on days over max days
+clock.getPercent = function (days, max) {
+    days = days || 0;
+    max = max || (3 * Math.pow(10, 4));
+    var per = days / max;
+    per = per > 1 ? 1 : per;
+    per = per < 0 ? 0 : per;
+    return per;
+}
+
+// get a clock object
 clock.get = function (now, start) {
     var c = {};
     c.now = now || new Date(2000, 3, 6, 10, 5);
@@ -20,15 +32,13 @@ clock.get = function (now, start) {
     // get basic values
     c = Object.assign(c, clock.getBasicValues(c.now - c.start));
 
-    // percent done is between zero and 2.5 billion seconds
-    c.per = c.sec / (2.5 * Math.pow(10, 9));
-    c.per = c.per > 1 ? 1 : c.per;
-    c.per = c.per < 0 ? 0 : c.per;
+    c.per = clock.getPercent(c.days);
 
     // level
-    c.level = Math.floor(6 * c.per) + 1;
+    //c.level = Math.floor(6 * c.per) + 1;
 
-    c.timeText = c.days.toFixed(6);
+
+    c.timeText = c.per.toFixed(4);
 
     return c;
 };

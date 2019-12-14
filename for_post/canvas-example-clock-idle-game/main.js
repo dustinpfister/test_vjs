@@ -1,20 +1,24 @@
 
 var getClock = function (now, start) {
-    var clock = {};
-    clock.now = now || new Date(2000, 3, 6, 10, 5);
-    clock.start = start || new Date(1983, 3, 6, 10, 5);
+    var c = {};
+    c.now = now || new Date(2000, 3, 6, 10, 5);
+    c.start = start || new Date(1983, 3, 6, 10, 5);
     // get t value of the given dates
-    clock.t = clock.now - clock.start;
-    
+    c.t = c.now - c.start;
+    c.sec = c.t / 1000;
+    c.days = c.sec / 86400;
+
     // percent done is between zero and 2.5 billion seconds
-    clock.per = clock.t / 1000 / (2.5 * Math.pow(10, 9));
-    clock.per = clock.per > 1 ? 1 : clock.per;
-    clock.per = clock.per < 0 ? 0 : clock.per;
+    c.per = c.sec / (2.5 * Math.pow(10, 9));
+    c.per = c.per > 1 ? 1 : c.per;
+    c.per = c.per < 0 ? 0 : c.per;
 
     // level
+    c.level = Math.floor(6 * c.per) + 1;
 
-    clock.timeText = clock.per.toFixed(10);
-    return clock;
+    c.timeText = c.days.toFixed(6);
+
+    return c;
 };
 
 var drawClockText = function (clock, canvas, ctx, x, y) {

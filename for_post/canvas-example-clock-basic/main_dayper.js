@@ -58,4 +58,4 @@ canvas.height = 240;
 loop(canvas);
 setInterval(function () {
     loop(canvas);
-}, 1000);
+}, 100);

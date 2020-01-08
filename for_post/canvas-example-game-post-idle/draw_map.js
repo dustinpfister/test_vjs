@@ -1,10 +1,10 @@
 var drawMap = function (grid, ctx, canvas) {
     var colors = ['yellow', 'green'],
-    cellSize =grid.cellSize || 10,
+    cellSize = grid.cellSize || 10,
     x,
     y,
-    xOffset = 10,
-    yOffset = 10;
+    xOffset = grid.xOffset,
+    yOffset = grid.yOffset;
     grid.cells.forEach(function (cell) {
         ctx.fillStyle = colors[cell.type] || 'white';
         x = cell.x * cellSize + xOffset;

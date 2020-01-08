@@ -9,9 +9,19 @@ canvas.width = 320;
 canvas.height = 120;
 
 var grid = g.createGridObject(4, 4);
+grid.xOffset = canvas.width / 2 - grid.width * grid.cellSize / 2;
+grid.yOffset = 0;
 
-// fill black
-ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+var loop = function () {
 
-drawMap(grid, ctx, canvas);
+    requestAnimationFrame(loop);
+
+    // fill black
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // draw map
+    drawMap(grid, ctx, canvas);
+
+};
+
+loop();

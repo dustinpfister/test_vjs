@@ -24,7 +24,7 @@ var loop = function () {
     grid.xOffset += gridDelta.x;
     grid.yOffset += gridDelta.y;
 
-    var offsets = g.clampedOffsets(grid, canvas, 32);
+    var offsets = g.clampedOffsets(grid, canvas);
     grid.xOffset = offsets.xOffset;
     grid.yOffset = offsets.yOffset;
 
@@ -38,8 +38,15 @@ loop();
 
 // EVENTS
 canvas.addEventListener('mousedown', function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
     e.preventDefault();
     mousedown = true;
+
+    console.log(g.getCellPositionFromCanvasPoint(grid, canvas, x, y))
+
 });
 canvas.addEventListener('mouseup', function (e) {
     e.preventDefault();

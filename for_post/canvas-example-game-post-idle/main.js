@@ -7,7 +7,7 @@ canvas.width = 320;
 canvas.height = 120;
 
 // CREATE GRID
-var grid = g.createGridObject(4, 4);
+var grid = g.createGridObject(16, 8);
 grid.xOffset = canvas.width / 2 - grid.width * grid.cellSize / 2;
 grid.yOffset = 0;
 
@@ -22,6 +22,7 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     grid.xOffset += gridDelta.x;
+    grid.yOffset += gridDelta.y;
 
     // fill black
     ctx.fillStyle = 'black';
@@ -43,8 +44,17 @@ canvas.addEventListener('mouseup', function (e) {
     gridDelta.y = 0;
 });
 canvas.addEventListener('mousemove', function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top,
+    a = Math.atan2(y - canvas.height / 2, x - canvas.width / 2);
+
     e.preventDefault();
+
     if (mousedown) {
-        gridDelta.x = 1;
+        gridDelta.x = Math.cos(a) * -2;
+        gridDelta.y = Math.sin(a) * -2;
     }
+
 });

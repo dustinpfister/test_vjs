@@ -10,6 +10,7 @@ g.parseGridProps = function (grid) {
     a.cellSize = grid.cellSize || 32;
     a.xOffset = grid.xOffset === undefined ? 0 : grid.xOffset;
     a.yOffset = grid.yOffset === undefined ? 0 : grid.yOffset;
+    a.bufferSize = grid.bufferSize === undefined? 32 : grid.bufferSize;
     a.cells = [];
     return a;
 };
@@ -47,18 +48,15 @@ g.createClearCellGrid = function (grid) {
 // BOUNDS
 
 // return a set of clamped offset values for the given grid
-g.clampedOffsets = function (grid, canvas, bufferSize) {
-
+g.clampedOffsets = function (grid, canvas) {
     var w = grid.width * grid.cellSize,
-    h = grid.height * grid.cellSize;
-
+    h = grid.height * grid.cellSize,
+    bufferSize = grid.bufferSize;
     canvas = canvas || {
         width: 320,
         height: 120
     };
-
-    bufferSize = bufferSize === undefined ? 32 : bufferSize;
-
+    //bufferSize = bufferSize === undefined ? 32 : bufferSize;
     var xMin = bufferSize,
     yMin = bufferSize,
     xMax = (w - canvas.width + bufferSize) * -1,
@@ -75,4 +73,15 @@ g.clampedOffsets = function (grid, canvas, bufferSize) {
         xOffset: x,
         yOffset: y
     };
+};
+
+// GET CELL
+
+// get a cell by way of a point on a canvas
+g.getCellFromCanvasPoint = function (grid, canvas, x, y) {
+
+    var cell = {};
+
+    return cell;
+
 };

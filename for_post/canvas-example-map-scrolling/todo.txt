@@ -1,2 +1,4 @@
 ## Canvas Example Map Scrolling todo
 
+* (done) have a method that can clamp offset values for a canvas
+

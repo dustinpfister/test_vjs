@@ -24,7 +24,7 @@ var loop = function () {
     grid.xOffset += gridDelta.x;
     grid.yOffset += gridDelta.y;
 
-    var offsets = g.clampedOffsets(grid, canvas);
+    var offsets = g.clampedOffsets(grid, canvas, 32);
     grid.xOffset = offsets.xOffset;
     grid.yOffset = offsets.yOffset;
 

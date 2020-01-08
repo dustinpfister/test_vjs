@@ -10,11 +10,16 @@ var drawMap = function (grid, ctx, canvas) {
         x = cell.x * cellSize + xOffset;
         y = cell.y * cellSize + yOffset;
         ctx.fillRect(x, y, cellSize, cellSize);
-
         ctx.strokeStyle = 'white';
-        if (cell.i === grid.selectedCellIndex) {
-            ctx.strokeStyle = 'red';
-        }
         ctx.strokeRect(x, y, cellSize, cellSize);
     });
+
+    if (grid.selectedCellIndex > -1) {
+        ctx.strokeStyle = 'red';
+        var cell = grid.cells[grid.selectedCellIndex],
+        x = cell.x * cellSize + xOffset,
+        y = cell.y * cellSize + yOffset;
+        ctx.strokeStyle = 'red';
+        ctx.strokeRect(x, y, cellSize, cellSize);
+    }
 };

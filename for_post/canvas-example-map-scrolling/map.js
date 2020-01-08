@@ -25,7 +25,7 @@ g.createGridObject = function (w, h) {
 
 // create a new grid object with blank cells by passing a given grid Object
 g.createClearCellGrid = function (grid) {
-   var a = g.parseGridProps(grid);
+    var a = g.parseGridProps(grid);
     // create clean cells
     var i = 0,
     x,
@@ -42,4 +42,29 @@ g.createClearCellGrid = function (grid) {
         i += 1;
     }
     return a;
+};
+
+// BOUNDS
+
+// return a set of clamped offset values for the given grid
+g.clampedOffsets = function (grid, canvas) {
+    var bufferSize = 32,
+    w = grid.width * grid.cellSize,
+    h = grid.height * grid.cellSize,
+    xMin = bufferSize,
+    yMin = bufferSize,
+    xMax = (w - canvas.width + bufferSize) * -1,
+    yMax = (h - canvas.height + bufferSize) * -1,
+    x = grid.xOffset,
+    y = grid.yOffset;
+    // rules
+    x = x > xMin ? xMin : x;
+    y = y > yMin ? yMin : y;
+    x = x < xMax ? xMax : x;
+    y = y < yMax ? yMax : y;
+    // return offset values
+    return {
+        xOffset: x,
+        yOffset: y
+    };
 };

@@ -24,6 +24,10 @@ var loop = function () {
     grid.xOffset += gridDelta.x;
     grid.yOffset += gridDelta.y;
 
+    var offsets = g.clampedOffsets(grid, canvas);
+    grid.xOffset = offsets.xOffset;
+    grid.yOffset = offsets.yOffset;
+
     // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -53,8 +57,8 @@ canvas.addEventListener('mousemove', function (e) {
     e.preventDefault();
 
     if (mousedown) {
-        gridDelta.x = Math.cos(a) * -2;
-        gridDelta.y = Math.sin(a) * -2;
+        gridDelta.x = Math.cos(a) * -4;
+        gridDelta.y = Math.sin(a) * -4;
     }
 
 });

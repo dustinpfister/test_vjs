@@ -10,6 +10,9 @@
 * (done) render current grid to the canvas by starting a drawMap method
 * (done) place drawMap method in its own file called draw_map.js
 * (done) g.parseGridProps method that will parse grid properties so I do not have to repeat code
+* (done) app loop started
+
+* mouse event that moves map
 
 * scroll map with mouse events
 

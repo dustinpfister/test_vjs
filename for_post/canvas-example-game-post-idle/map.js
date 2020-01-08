@@ -7,6 +7,7 @@ g.createGridObject = function (w, h) {
     var grid = {};
     grid.width = w || 64;
     grid.height = h || 16;
+    grid.cellSize = 32;
     grid.cells = [];
     return g.createClearCellGrid(grid);
 };
@@ -16,6 +17,7 @@ g.createClearCellGrid = function (grid) {
     var g = {};
     g.width = grid.width || 64;
     g.height = grid.height || 16;
+    g.cellSize = grid.cellSize || 32;
     g.cells = [];
 
     // create clean cells

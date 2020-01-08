@@ -7,9 +7,10 @@
 * (done) cell type index value
 * (done) sand == 0, grass == 1 - 5, wood == 6 - 10, cell types for now ( sand is default )
 * (done) worth property of cell with default value of 0 ( sand worthless )
-
 * (done) render current grid to the canvas by starting a drawMap method
-* place drawMap method in its own file
+* (done) place drawMap method in its own file called draw_map.js
+
+* scroll map with mouse events
 
 * Just one resource called money
 * build things on the grid that make money

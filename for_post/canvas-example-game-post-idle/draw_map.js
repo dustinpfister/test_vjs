@@ -1,6 +1,6 @@
 var drawMap = function (grid, ctx, canvas) {
     var colors = ['yellow', 'green'],
-    cellSize = 24,
+    cellSize =grid.cellSize || 10,
     x,
     y,
     xOffset = 10,

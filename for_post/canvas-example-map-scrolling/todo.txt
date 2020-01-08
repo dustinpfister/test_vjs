@@ -1,5 +1,5 @@
 ## Canvas Example Map Scrolling todo
 
 * (done) have a method that can clamp offset values for a canvas
-* have a method that will return a cell index for a given x and y canvas position
+* have a method that will return a cell position for a given x and y canvas position
 

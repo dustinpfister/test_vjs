@@ -9,9 +9,15 @@ g.createClearCellGrid = function (grid) {
 
     // create clean cells
     var i = 0,
+    x,
+    y,
     len = g.width * g.height;
     while (i < len) {
-        g.cells.push({});
+        g.cells.push({
+            i: i,
+            x: i % grid.width,
+            y: Math.floor(i / grid.width)
+        });
         i += 1;
     }
     return g;

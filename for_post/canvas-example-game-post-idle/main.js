@@ -8,8 +8,9 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 120;
 
+var grid = g.createGridObject(8, 8);
 
-var grid = g.createGridObject()
+console.log(grid);
 
 // fill black
 ctx.fillStyle = 'black';

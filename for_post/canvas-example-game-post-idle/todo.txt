@@ -1,0 +1,5 @@
+## Post Idle Canvas Game Example
+
+* (done) start map.js
+* Map.js g.createGridObject should create an array of cell objects
+* g.createClearCellGrid method will create a new grid object with the given grid object that will contain blank cells with default values

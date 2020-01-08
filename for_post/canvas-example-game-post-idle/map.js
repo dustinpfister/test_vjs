@@ -28,7 +28,7 @@ g.createClearCellGrid = function (grid) {
             i: i,
             x: i % grid.width,
             y: Math.floor(i / grid.width),
-            type: 0 // type index (0 = sand , 1-5 = grass, 6-10 = wood),
+            type: 0, // type index (0 = sand , 1-5 = grass, 6-10 = wood),
             worth: 0
         });
         i += 1;

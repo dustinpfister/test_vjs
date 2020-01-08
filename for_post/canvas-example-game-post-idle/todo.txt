@@ -5,11 +5,10 @@
 * (done) start a g.createClearCellGrid method will create a new grid object with the given grid object that will contain blank cells with default values
 * (done) g.createClearCellGrid should set values such as x, y, and i for each cell
 * (done) cell type index value
-
 * (done) sand == 0, grass == 1 - 5, wood == 6 - 10, cell types for now ( sand is default )
 * (done) worth property of cell with default value of 0 ( sand worthless )
 
+* render current grid to the canvas by starting a drawGrid method
+
 * Just one resource called money
 * build things on the grid that make money
-
-* figure out theme for this

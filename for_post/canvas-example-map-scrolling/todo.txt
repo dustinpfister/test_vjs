@@ -4,4 +4,4 @@
 * (done) have a method that will return a cell position for a given x and y canvas position
 * (done) get cell method
 * (done) get a cell by canvas position
-
+* selected cell index value

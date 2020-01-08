@@ -45,8 +45,16 @@ canvas.addEventListener('mousedown', function (e) {
     e.preventDefault();
     mousedown = true;
 
-    // console.log(g.getCellPositionFromCanvasPoint(grid, x, y))
-    console.log(g.getCellFromCanvasPoint(grid, x, y))
+    var cell = g.getCellFromCanvasPoint(grid, x, y);
+
+    if (cell.i === grid.selectedCellIndex) {
+        grid.selectedCellIndex = -1;
+    } else {
+
+        if (cell.i >= 0) {
+            grid.selectedCellIndex = cell.i;
+        }
+    }
 
 });
 canvas.addEventListener('mouseup', function (e) {

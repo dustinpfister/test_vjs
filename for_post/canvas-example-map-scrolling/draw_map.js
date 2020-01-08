@@ -10,7 +10,11 @@ var drawMap = function (grid, ctx, canvas) {
         x = cell.x * cellSize + xOffset;
         y = cell.y * cellSize + yOffset;
         ctx.fillRect(x, y, cellSize, cellSize);
+
         ctx.strokeStyle = 'white';
+        if (cell.i === grid.selectedCellIndex) {
+            ctx.strokeStyle = 'red';
+        }
         ctx.strokeRect(x, y, cellSize, cellSize);
     });
 };

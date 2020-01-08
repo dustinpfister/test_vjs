@@ -11,6 +11,7 @@ g.parseGridProps = function (grid) {
     a.xOffset = grid.xOffset === undefined ? 0 : grid.xOffset;
     a.yOffset = grid.yOffset === undefined ? 0 : grid.yOffset;
     a.bufferSize = grid.bufferSize === undefined ? 32 : grid.bufferSize;
+    a.selectedCellIndex = grid.selectedCellIndex || -1;
     a.cells = [];
     return a;
 };

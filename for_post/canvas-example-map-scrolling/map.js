@@ -78,17 +78,22 @@ g.clampedOffsets = function (grid, canvas) {
 
 // get a cell from the given cell position
 g.get = function (grid, x, y) {
-    x = x < 0 ? 0 : x;
-    y = y < 0 ? 0 : y;
-    x = x >= grid.width - 1 ? grid.width - 1 : x;
-    y = y >= grid.height - 1 ? grid.height - 1 : y;
+    if (x < 0 || y < 0 || x >= grid.width || y >= grid.height) {
+        return {};
+    }
     return grid.cells[y * grid.width + x];
 };
 
-// get a cell by way of a point on a canvas
+// get a cell position by way of a point on a canvas
 g.getCellPositionFromCanvasPoint = function (grid, x, y) {
     return {
         x: Math.floor((x - grid.xOffset) / grid.cellSize),
         y: Math.floor((y - grid.yOffset) / grid.cellSize)
     };
+};
+
+// get a cell position by way of a point on a canvas
+g.getCellFromCanvasPoint = function (grid, x, y) {
+    var pos = g.getCellPositionFromCanvasPoint(grid, x, y);
+    return g.get(grid, pos.x, pos.y);
 };

@@ -45,7 +45,8 @@ canvas.addEventListener('mousedown', function (e) {
     e.preventDefault();
     mousedown = true;
 
-    console.log(g.getCellPositionFromCanvasPoint(grid, x, y))
+    // console.log(g.getCellPositionFromCanvasPoint(grid, x, y))
+    console.log(g.getCellFromCanvasPoint(grid, x, y))
 
 });
 canvas.addEventListener('mouseup', function (e) {

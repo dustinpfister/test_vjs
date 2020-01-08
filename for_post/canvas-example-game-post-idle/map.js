@@ -8,6 +8,8 @@ g.createGridObject = function (w, h) {
     grid.width = w || 64;
     grid.height = h || 16;
     grid.cellSize = 32;
+    g.xOffset = grid.xOffset === undefined ? 0 : grid.xOffset;
+    g.yOffset = grid.yOffset === undefined ? 0 : grid.yOffset;
     grid.cells = [];
     return g.createClearCellGrid(grid);
 };
@@ -18,6 +20,8 @@ g.createClearCellGrid = function (grid) {
     g.width = grid.width || 64;
     g.height = grid.height || 16;
     g.cellSize = grid.cellSize || 32;
+    g.xOffset = grid.xOffset === undefined ? 0 : grid.xOffset;
+    g.yOffset = grid.yOffset === undefined ? 0 : grid.yOffset;
     g.cells = [];
 
     // create clean cells

@@ -68,13 +68,20 @@ canvas.addEventListener('mousemove', function (e) {
     bx = canvas.getBoundingClientRect(),
     x = e.clientX - bx.left,
     y = e.clientY - bx.top,
-    a = Math.atan2(y - canvas.height / 2, x - canvas.width / 2);
+    cx = canvas.width / 2,
+    cy = canvas.height / 2,
+    a = Math.atan2(y - cy, x - cx),
+    d = Math.sqrt(Math.pow(x - cx, 2) + Math.pow(y - cy, 2)),
+    per,
+    delta
 
-    e.preventDefault();
+    d = d >= 80 ? 80 : d;
+    per = d / 80;
+    delta = (1 + per * 3) * -1;
 
     if (mousedown) {
-        gridDelta.x = Math.cos(a) * -4;
-        gridDelta.y = Math.sin(a) * -4;
+        gridDelta.x = Math.cos(a) * delta;
+        gridDelta.y = Math.sin(a) * delta;
     }
 
 });

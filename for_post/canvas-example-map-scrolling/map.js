@@ -98,3 +98,28 @@ g.getCellFromCanvasPoint = function (grid, x, y) {
     var pos = g.getCellPositionFromCanvasPoint(grid, x, y);
     return g.get(grid, pos.x, pos.y);
 };
+
+// MAP MOVEMENT
+
+g.getPointerMovementDeltas = function (grid, canvas, px, py) {
+
+    //var bx = canvas.getBoundingClientRect(),
+    //x = e.clientX - bx.left,
+    //y = e.clientY - bx.top,
+    var cx = canvas.width / 2,
+    cy = canvas.height / 2,
+    a = Math.atan2(py - cy, px - cx),
+    d = Math.sqrt(Math.pow(px - cx, 2) + Math.pow(py - cy, 2)),
+    per,
+    delta
+
+    d = d >= 80 ? 80 : d;
+    per = d / 80;
+    delta = (1 + per * 3) * -1;
+
+    return {
+        x : Math.cos(a) * delta,
+        y : Math.sin(a) * delta
+    };
+
+};

@@ -44,18 +44,14 @@ canvas.addEventListener('mousedown', function (e) {
     y = e.clientY - bx.top;
     e.preventDefault();
     mousedown = true;
-
     var cell = g.getCellFromCanvasPoint(grid, x, y);
-
     if (cell.i === grid.selectedCellIndex) {
         grid.selectedCellIndex = -1;
     } else {
-
         if (cell.i >= 0) {
             grid.selectedCellIndex = cell.i;
         }
     }
-
 });
 canvas.addEventListener('mouseup', function (e) {
     e.preventDefault();
@@ -68,20 +64,9 @@ canvas.addEventListener('mousemove', function (e) {
     bx = canvas.getBoundingClientRect(),
     x = e.clientX - bx.left,
     y = e.clientY - bx.top,
-    cx = canvas.width / 2,
-    cy = canvas.height / 2,
-    a = Math.atan2(y - cy, x - cx),
-    d = Math.sqrt(Math.pow(x - cx, 2) + Math.pow(y - cy, 2)),
-    per,
-    delta
-
-    d = d >= 80 ? 80 : d;
-    per = d / 80;
-    delta = (1 + per * 3) * -1;
-
+    deltas = g.getPointerMovementDeltas(grid, canvas, x, y);
     if (mousedown) {
-        gridDelta.x = Math.cos(a) * delta;
-        gridDelta.y = Math.sin(a) * delta;
+        gridDelta.x = deltas.x;
+        gridDelta.y = deltas.y;
     }
-
 });

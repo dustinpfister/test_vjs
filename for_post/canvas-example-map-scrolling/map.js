@@ -101,25 +101,20 @@ g.getCellFromCanvasPoint = function (grid, x, y) {
 
 // MAP MOVEMENT
 
+// get a set of deltas
 g.getPointerMovementDeltas = function (grid, canvas, px, py) {
-
-    //var bx = canvas.getBoundingClientRect(),
-    //x = e.clientX - bx.left,
-    //y = e.clientY - bx.top,
     var cx = canvas.width / 2,
     cy = canvas.height / 2,
     a = Math.atan2(py - cy, px - cx),
     d = Math.sqrt(Math.pow(px - cx, 2) + Math.pow(py - cy, 2)),
     per,
+    dMax = canvas.height / 2,
     delta
-
-    d = d >= 80 ? 80 : d;
-    per = d / 80;
-    delta = (1 + per * 3) * -1;
-
+    d = d >= dMax ? dMax : d;
+    per = d / dMax;
+    delta = (0.5 + per * 2.5) * -1;
     return {
-        x : Math.cos(a) * delta,
-        y : Math.sin(a) * delta
+        x: Math.cos(a) * delta,
+        y: Math.sin(a) * delta
     };
-
 };

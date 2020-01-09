@@ -20,14 +20,11 @@ gridDelta = {
 // MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);
-
     grid.xOffset += gridDelta.x;
     grid.yOffset += gridDelta.y;
-
     var offsets = g.clampedOffsets(grid, canvas);
     grid.xOffset = offsets.xOffset;
     grid.yOffset = offsets.yOffset;
-
     // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);

@@ -3,12 +3,16 @@ var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('gamearea') || document.body;
 container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 120;
+
+// scale
+var ratio = window.devicePixelRatio || 1;
+//ratio = 2;
+canvas.width = 320 * ratio;
+canvas.height = 120 * ratio;
 
 // CREATE GRID
-var grid = g.createGridObject(16, 8);
-grid.xOffset = canvas.width / 2 - grid.width * grid.cellSize / 2;
+var grid = g.createGridObject(12, 8);
+grid.xOffset = 0;
 grid.yOffset = 0;
 
 var mousedown = false,
@@ -29,7 +33,7 @@ var loop = function () {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     // draw map
-    drawMap(grid, ctx, canvas);
+    drawMap(grid, ctx, canvas, 2);
 };
 loop();
 

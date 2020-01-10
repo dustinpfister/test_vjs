@@ -9,6 +9,9 @@ var ratio = window.devicePixelRatio || 1;
 canvas.width = 320 * ratio;
 canvas.height = 120 * ratio;
 
+console.log(ratio);
+console.log(window.innerWidth);
+
 // CREATE GRID
 var grid = g.createGridObject(12, 8);
 grid.xOffset = 0;
@@ -45,7 +48,7 @@ canvas.addEventListener('mousedown', function (e) {
     y = e.clientY - bx.top;
     e.preventDefault();
     mousedown = true;
-    var cell = g.getCellFromCanvasPoint(grid, x, y);
+    var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
     if (cell.i === grid.selectedCellIndex) {
         grid.selectedCellIndex = -1;
     } else {
@@ -63,8 +66,8 @@ canvas.addEventListener('mouseup', function (e) {
 canvas.addEventListener('mousemove', function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top,
+    x = (e.clientX - bx.left) * ratio,
+    y = (e.clientY - bx.top) * ratio,
     deltas = g.getPointerMovementDeltas(grid, canvas, x, y);
     if (mousedown) {
         gridDelta.x = deltas.x;

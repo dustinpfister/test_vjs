@@ -6,7 +6,6 @@ container.appendChild(canvas);
 
 // scale
 var ratio = window.devicePixelRatio || 1;
-//ratio = 2;
 canvas.width = 320 * ratio;
 canvas.height = 120 * ratio;
 
@@ -24,16 +23,17 @@ gridDelta = {
 // MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);
-    grid.xOffset += gridDelta.x;
-    grid.yOffset += gridDelta.y;
-    var offsets = g.clampedOffsets(grid, canvas);
+    grid.xOffset += gridDelta.x * ratio;
+    grid.yOffset += gridDelta.y * ratio;
+
+    var offsets = g.clampedOffsets(grid, canvas, ratio);
     grid.xOffset = offsets.xOffset;
     grid.yOffset = offsets.yOffset;
     // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     // draw map
-    drawMap(grid, ctx, canvas, 2);
+    drawMap(grid, ctx, canvas, ratio);
 };
 loop();
 

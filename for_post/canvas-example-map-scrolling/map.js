@@ -49,16 +49,17 @@ g.createClearCellGrid = function (grid) {
 // BOUNDS
 
 // return a set of clamped offset values for the given grid
-g.clampedOffsets = function (grid, canvas) {
+g.clampedOffsets = function (grid, canvas, pxRatio) {
     canvas = canvas || {
         width: 320,
         height: 120
     };
-    var w = grid.width * grid.cellSize,
-    h = grid.height * grid.cellSize,
-    bufferSize = grid.bufferSize,
-    xMin = bufferSize,
-    yMin = bufferSize,
+    pxRatio = pxRatio || 1;
+    var w = grid.width * grid.cellSize * pxRatio,
+    h = grid.height * grid.cellSize * pxRatio,
+    bufferSize = grid.bufferSize  * pxRatio,
+    xMin = bufferSize * pxRatio,
+    yMin = bufferSize  * pxRatio,
     xMax = (w - canvas.width + bufferSize) * -1,
     yMax = (h - canvas.height + bufferSize) * -1,
     x = grid.xOffset,

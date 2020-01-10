@@ -9,15 +9,29 @@ var turret = {
     cy: canvas.height / 2,
     heading: 0,
     rps: 1, // radians per second
-    lt: new Date() // last time turret was updated
+    lt: new Date(), // last time turret was updated
+    shots: [],
+    shotDelay: 1,
+    shotTime: 0
 };
+
+var updateTurretShots = function (turret, secs) {
+
+    turret.shotTime += secs;
+
+    var shots = Math.floor(turret.shotTime / turret.shotDelay);
+
+}
 
 // update turret method
 var updateTurret = function (turret) {
     var now = new Date(),
-    t = (now - turret.lt) / 1000;
-    turret.heading += turret.rps * t;
+    secs = (now - turret.lt) / 1000;
+    turret.heading += turret.rps * secs;
     turret.heading %= Math.PI * 2;
+
+    updateTurretShots(turret, secs);
+
     turret.lt = now;
 };
 

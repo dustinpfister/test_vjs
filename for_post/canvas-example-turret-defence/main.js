@@ -31,8 +31,8 @@ var updateTurretShots = function (turret, secs) {
                 x: turret.cx,
                 y: turret.cy,
                 heading: turret.heading,
-                pps: 32,
-                lifeSpan: 3,
+                pps: 64,
+                lifeSpan: 4,
                 shotTime: new Date()
             });
         }
@@ -87,15 +87,27 @@ var drawTurret = function (turret, ctx, canvas) {
     ctx.restore();
 };
 
-var drawTurretInfo = function (turret, ctx, canvas) {
+var drawTurretShots = function (turret, ctx, canvas) {
 
+    ctx.fillStyle = 'blue';
+
+    turret.shots.forEach(function (shot) {
+
+        ctx.beginPath();
+        ctx.arc(shot.x, shot.y, 5, 0, Math.PI * 2);
+        ctx.fill();
+
+    });
+
+};
+
+var drawTurretInfo = function (turret, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.font = '10px arial';
     ctx.fillText('heading: ' + turret.heading.toFixed(2), 5, 5);
     ctx.fillText('shotTime: ' + turret.shotTime.toFixed(2), 5, 15);
     ctx.fillText('active shots: ' + turret.shots.length, 5, 25);
-
 };
 
 // main app loop
@@ -106,5 +118,6 @@ var loop = function () {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawTurret(turret, ctx, canvas);
     drawTurretInfo(turret, ctx, canvas);
+    drawTurretShots(turret, ctx, canvas);
 };
 loop();

@@ -15,12 +15,10 @@ var turret = {
     shotTime: 0
 };
 
+// update turret shots
 var updateTurretShots = function (turret, secs) {
-
     turret.shotTime += secs;
-
     var shots = Math.floor(turret.shotTime / turret.shotDelay);
-
 }
 
 // update turret method
@@ -51,6 +49,15 @@ var drawTurret = function (turret, ctx, canvas) {
     ctx.restore();
 };
 
+var drawTurretInfo = function (turret, ctx, canvas) {
+
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText(turret.heading.toFixed(2), 5, 5);
+
+};
+
 // main app loop
 var loop = function () {
     requestAnimationFrame(loop);
@@ -58,5 +65,6 @@ var loop = function () {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawTurret(turret, ctx, canvas);
+    drawTurretInfo(turret, ctx, canvas);
 };
 loop();

@@ -11,6 +11,7 @@ var turret = {
     rps: 1, // radians per second
     lt: new Date(), // last time turret was updated
     shots: [],
+    shotsMax: 10,
     shotDelay: 1,
     shotTime: 0
 };
@@ -19,6 +20,17 @@ var turret = {
 var updateTurretShots = function (turret, secs) {
     turret.shotTime += secs;
     var shots = Math.floor(turret.shotTime / turret.shotDelay);
+    if (shots >= 1) {
+        turret.shotTime -= shots * turret.shotDelay;
+        if (turret.shots.length < turret.shotsMax) {
+            turret.shots.push({
+                x: turret.cx,
+                y: turret.cy,
+                lifeSpan: 3000,
+                shotTime: new Date()
+            });
+        }
+    }
 }
 
 // update turret method
@@ -54,7 +66,9 @@ var drawTurretInfo = function (turret, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.font = '10px arial';
-    ctx.fillText(turret.heading.toFixed(2), 5, 5);
+    ctx.fillText('heading: ' + turret.heading.toFixed(2), 5, 5);
+    ctx.fillText('shotTime: ' + turret.shotTime.toFixed(2), 5, 15);
+    ctx.fillText('active shots: ' + turret.shots.length, 5, 25);
 
 };
 

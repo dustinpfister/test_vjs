@@ -11,26 +11,52 @@ var turret = {
     rps: 1, // radians per second
     lt: new Date(), // last time turret was updated
     shots: [],
-    shotsMax: 10,
+    shotsMax: 13,
     shotDelay: 1,
     shotTime: 0
 };
 
 // update turret shots
 var updateTurretShots = function (turret, secs) {
+
+    // spawn new shots
     turret.shotTime += secs;
-    var shots = Math.floor(turret.shotTime / turret.shotDelay);
-    if (shots >= 1) {
-        turret.shotTime -= shots * turret.shotDelay;
+    var newShots = Math.floor(turret.shotTime / turret.shotDelay);
+    if (newShots >= 1) {
+        turret.shotTime -= newShots * turret.shotDelay;
         if (turret.shots.length < turret.shotsMax) {
             turret.shots.push({
+                sx: turret.cx,
+                sy: turret.cy,
                 x: turret.cx,
                 y: turret.cy,
-                lifeSpan: 3000,
+                heading: turret.heading,
+                pps: 32,
+                lifeSpan: 3,
                 shotTime: new Date()
             });
         }
     }
+
+    // update active shots
+    var i = turret.shots.length,
+    now = new Date(),
+    shot,
+    t;
+    while (i--) {
+        shot = turret.shots[i];
+        t = (now - shot.shotTime) / 1000;
+        shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
+        shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
+
+        if (t >= shot.lifeSpan) {
+
+            turret.shots.splice(i, 1);
+
+        }
+
+    }
+
 }
 
 // update turret method

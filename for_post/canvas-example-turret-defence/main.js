@@ -55,10 +55,10 @@ loop();
 // focus and blur
 canvas.tabIndex = 0;
 canvas.addEventListener('focus', function () {
-    turret.paused = false;
+    game.paused = false;
 });
 canvas.addEventListener('blur', function () {
-    turret.paused = true;
+    game.paused = true;
 });
 canvas.focus();
 canvas.blur();

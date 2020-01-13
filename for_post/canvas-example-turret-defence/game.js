@@ -4,18 +4,26 @@ var td = (function () {
     // public api
     var api = {};
 
+    var shiftShots = function (game) {
+
+        game.shots.forEach(function (shot) {
+            if (!(shot.sx === shot.x && shot.sy === shot.y)) {
+                shot.lifeSpanAjust = (new Date() - shot.shotTime) / 1000 * -1;
+                shot.sx = shot.x;
+                shot.sy = shot.y;
+            }
+            shot.shotTime = new Date();
+        });
+
+    };
+
     // update turret shots
     var updateTurretShots = function (game, secs) {
         // if the game is paused
         if (game.paused) {
-            game.shots.forEach(function (shot) {
-                if (!(shot.sx === shot.x && shot.sy === shot.y)) {
-                    shot.lifeSpanAjust = (new Date() - shot.shotTime) / 1000 * -1;
-                    shot.sx = shot.x;
-                    shot.sy = shot.y;
-                }
-                shot.shotTime = new Date();
-            });
+
+            shiftShots(game);
+
         } else {
             // the game is not paused
             // spawn new shots

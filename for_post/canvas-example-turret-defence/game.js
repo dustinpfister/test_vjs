@@ -1,10 +1,8 @@
 
+var td = {};
 
-
-var game = {};
-
-// the turret object
-game.createTurretObject = function () {
+// the game object
+td.createGameObject = function () {
     return {
         cx: canvas.width / 2,
         cy: canvas.height / 2,
@@ -20,11 +18,11 @@ game.createTurretObject = function () {
 };
 
 // update turret shots
-game.updateTurretShots = function (turret, secs) {
+td.updateTurretShots = function (game, secs) {
 
-    if (turret.paused) {
+    if (game.paused) {
 
-        turret.shots.forEach(function (shot) {
+        game.shots.forEach(function (shot) {
             if (!(shot.sx === shot.x && shot.sy === shot.y)) {
                 shot.lifeSpanAjust = (new Date() - shot.shotTime) / 1000 * -1;
                 shot.sx = shot.x;
@@ -35,17 +33,17 @@ game.updateTurretShots = function (turret, secs) {
 
     } else {
         // spawn new shots
-        turret.shotTime += secs;
-        var newShots = Math.floor(turret.shotTime / turret.shotDelay);
+        game.shotTime += secs;
+        var newShots = Math.floor(game.shotTime / game.shotDelay);
         if (newShots >= 1) {
-            turret.shotTime -= newShots * turret.shotDelay;
-            if (turret.shots.length < turret.shotsMax) {
-                turret.shots.push({
-                    sx: turret.cx,
-                    sy: turret.cy,
-                    x: turret.cx,
-                    y: turret.cy,
-                    heading: turret.heading,
+            game.shotTime -= newShots * game.shotDelay;
+            if (game.shots.length < game.shotsMax) {
+                game.shots.push({
+                    sx: game.cx,
+                    sy: game.cy,
+                    x: game.cx,
+                    y: game.cy,
+                    heading: game.heading,
                     pps: 64,
                     lifeSpan: 3,
                     lifeSpanAjust: 0,
@@ -54,18 +52,18 @@ game.updateTurretShots = function (turret, secs) {
             }
         }
         // update active shots
-        var i = turret.shots.length,
+        var i = game.shots.length,
         now = new Date(),
         shot,
         t;
         while (i--) {
-            shot = turret.shots[i];
+            shot = game.shots[i];
             t = (now - shot.shotTime) / 1000;
             shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
             shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
             // purge old shots
             if (t >= shot.lifeSpan + shot.lifeSpanAjust) {
-                turret.shots.splice(i, 1);
+                game.shots.splice(i, 1);
             }
         }
 
@@ -73,16 +71,16 @@ game.updateTurretShots = function (turret, secs) {
 };
 
 // update turret method
-game.updateTurret = function (turret) {
+td.updateTurret = function (game) {
     var now = new Date(),
-    secs = (now - turret.lt) / 1000;
+    secs = (now - game.lt) / 1000;
 
-    if (turret.paused) {
-        turret.lt = now;
+    if (game.paused) {
+        game.lt = now;
     } else {
-        turret.heading += turret.rps * secs;
-        turret.heading %= Math.PI * 2;
-        turret.lt = now;
+        game.heading += game.rps * secs;
+        game.heading %= Math.PI * 2;
+        game.lt = now;
     }
-    game.updateTurretShots(turret, secs);
+    td.updateTurretShots(game, secs);
 };

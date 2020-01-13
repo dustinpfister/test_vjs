@@ -37,27 +37,35 @@ var td = (function () {
             }
         }
     };
-	
-	var purgeShotCheck = function(game, shot){
-		
-		
-	};
+
+    var purgeShotCheck = function (game, i) {
+
+        var now = new Date(),
+        shot = game.shots[i],
+
+        t = (now - shot.shotTime) / 1000;
+
+        // purge old shots
+        if (t >= shot.lifeSpan + shot.lifeSpanAjust) {
+            game.shots.splice(i, 1);
+        }
+
+    };
 
     var updateActiveShots = function (game) {
         // update active shots
         var i = game.shots.length,
         now = new Date(),
-        shot,
-        t;
+        shot;
         while (i--) {
             shot = game.shots[i];
+
             t = (now - shot.shotTime) / 1000;
             shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
             shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
-            // purge old shots
-            if (t >= shot.lifeSpan + shot.lifeSpanAjust) {
-                game.shots.splice(i, 1);
-            }
+
+            purgeShotCheck(game, i);
+
         }
     };
 

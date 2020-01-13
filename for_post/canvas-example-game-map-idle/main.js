@@ -17,6 +17,10 @@ var grid = g.createGridObject(12, 8);
 grid.xOffset = 0;
 grid.yOffset = 0;
 
+// SET GRID WORTH
+g.setGridWorth(grid, 0, 0, 2);
+console.log(grid);
+
 var mousedown = false,
 gridDelta = {
     x: 0,

@@ -1,7 +1,11 @@
 var g = {};
 
-// UTILITYS 
+// UTILITYS
 
+// distance
+g.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
 
 // CREATE A GRID OBJECT
 
@@ -53,16 +57,25 @@ g.createClearCellGrid = function (grid) {
 // GRID WORTH
 
 // set grid worth for all cells from a fixed point outwards
-// using a base and power
-g.setGridWorth = function(grid, x, y, b, p){
-	
-	var i = cells.length;
-	while(i--){
-		
-		
-		
-	}
-	
+// using a base
+g.setGridWorth = function (grid, x, y, b) {
+
+    x = x === undefined ? 0 : x;
+    y = y === undefined ? 0 : y;
+    b = b === undefined ? 2 : b;
+
+    var i = grid.cells.length,
+    d,
+    cell;
+    while (i--) {
+
+        cell = grid.cells[i];
+
+        d = g.distance(cell.x, cell.y, x, y);
+        cell.worth = 1 + Math.pow(b, d);
+
+    }
+
 };
 
 // BOUNDS

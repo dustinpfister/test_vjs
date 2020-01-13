@@ -3,8 +3,6 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
-canvas.tabIndex = 0;
-
 var turret = disp.createTurretObject();
 
 // draw the turret
@@ -53,10 +51,14 @@ var loop = function () {
 };
 loop();
 
+
+// focus and blur
+canvas.tabIndex = 0;
 canvas.addEventListener('focus', function () {
     turret.paused = false;
 });
-
 canvas.addEventListener('blur', function () {
     turret.paused = true;
-})
+});
+canvas.focus();
+canvas.blur();

@@ -3,7 +3,7 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
-var turret = disp.createTurretObject();
+var turret = game.createTurretObject();
 
 // draw the turret
 var drawTurret = function (turret, ctx, canvas) {
@@ -42,7 +42,7 @@ var drawTurretInfo = function (turret, ctx, canvas) {
 // main app loop
 var loop = function () {
     requestAnimationFrame(loop);
-    disp.updateTurret(turret);
+    game.updateTurret(turret);
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawTurret(turret, ctx, canvas);

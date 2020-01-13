@@ -16,6 +16,28 @@ var td = (function () {
         });
     };
 
+    // spawn new shots
+    var spawnShots = function (game, secs) {
+        game.shotTime += secs;
+        var newShots = Math.floor(game.shotTime / game.shotDelay);
+        if (newShots >= 1) {
+            game.shotTime -= newShots * game.shotDelay;
+            if (game.shots.length < game.shotsMax) {
+                game.shots.push({
+                    sx: game.cx,
+                    sy: game.cy,
+                    x: game.cx,
+                    y: game.cy,
+                    heading: game.heading,
+                    pps: 64,
+                    lifeSpan: 3,
+                    lifeSpanAjust: 0,
+                    shotTime: new Date()
+                });
+            }
+        }
+    };
+
     // update turret shots
     var updateTurretShots = function (game, secs) {
         // if the game is paused
@@ -23,25 +45,8 @@ var td = (function () {
             holdShots(game);
         } else {
             // the game is not paused
-            // spawn new shots
-            game.shotTime += secs;
-            var newShots = Math.floor(game.shotTime / game.shotDelay);
-            if (newShots >= 1) {
-                game.shotTime -= newShots * game.shotDelay;
-                if (game.shots.length < game.shotsMax) {
-                    game.shots.push({
-                        sx: game.cx,
-                        sy: game.cy,
-                        x: game.cx,
-                        y: game.cy,
-                        heading: game.heading,
-                        pps: 64,
-                        lifeSpan: 3,
-                        lifeSpanAjust: 0,
-                        shotTime: new Date()
-                    });
-                }
-            }
+            spawnShots(game, secs)
+
             // update active shots
             var i = game.shots.length,
             now = new Date(),

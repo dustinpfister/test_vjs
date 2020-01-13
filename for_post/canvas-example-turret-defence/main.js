@@ -18,7 +18,6 @@ var turret = {
 
 // update turret shots
 var updateTurretShots = function (turret, secs) {
-
     // spawn new shots
     turret.shotTime += secs;
     var newShots = Math.floor(turret.shotTime / turret.shotDelay);
@@ -37,7 +36,6 @@ var updateTurretShots = function (turret, secs) {
             });
         }
     }
-
     // update active shots
     var i = turret.shots.length,
     now = new Date(),
@@ -48,16 +46,11 @@ var updateTurretShots = function (turret, secs) {
         t = (now - shot.shotTime) / 1000;
         shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
         shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
-
         if (t >= shot.lifeSpan) {
-
             turret.shots.splice(i, 1);
-
         }
-
     }
-
-}
+};
 
 // update turret method
 var updateTurret = function (turret) {
@@ -65,9 +58,7 @@ var updateTurret = function (turret) {
     secs = (now - turret.lt) / 1000;
     turret.heading += turret.rps * secs;
     turret.heading %= Math.PI * 2;
-
     updateTurretShots(turret, secs);
-
     turret.lt = now;
 };
 
@@ -88,17 +79,12 @@ var drawTurret = function (turret, ctx, canvas) {
 };
 
 var drawTurretShots = function (turret, ctx, canvas) {
-
     ctx.fillStyle = 'blue';
-
     turret.shots.forEach(function (shot) {
-
         ctx.beginPath();
         ctx.arc(shot.x, shot.y, 5, 0, Math.PI * 2);
         ctx.fill();
-
     });
-
 };
 
 var drawTurretInfo = function (turret, ctx, canvas) {

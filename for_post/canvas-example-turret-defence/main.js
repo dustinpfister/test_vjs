@@ -42,7 +42,7 @@ var drawTurretInfo = function (turret, ctx, canvas) {
 // main app loop
 var loop = function () {
     requestAnimationFrame(loop);
-    td.updateTurret(game);
+    td.update(game);
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawTurret(game, ctx, canvas);

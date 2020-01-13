@@ -4,6 +4,8 @@ var td = (function () {
     // public api
     var api = {};
 
+    // SHOTS
+
     // hold shots
     var holdShots = function (game) {
         game.shots.forEach(function (shot) {
@@ -38,20 +40,17 @@ var td = (function () {
         }
     };
 
+    // purge old shots
     var purgeShotCheck = function (game, i) {
-
         var now = new Date(),
         shot = game.shots[i],
-
         t = (now - shot.shotTime) / 1000;
-
-        // purge old shots
         if (t >= shot.lifeSpan + shot.lifeSpanAjust) {
             game.shots.splice(i, 1);
         }
-
     };
 
+    // loop over all shots, move them, and make a purge check
     var updateActiveShots = function (game) {
         // update active shots
         var i = game.shots.length,
@@ -59,13 +58,10 @@ var td = (function () {
         shot;
         while (i--) {
             shot = game.shots[i];
-
             t = (now - shot.shotTime) / 1000;
             shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
             shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
-
             purgeShotCheck(game, i);
-
         }
     };
 
@@ -81,6 +77,32 @@ var td = (function () {
         }
     };
 
+    // ENEMIES
+
+    var spawnEnemies = function (game, secs) {
+
+        // new enemy count
+        var nec = Math.floor(game.enemyTime / game.enemyDelay);
+
+        if (!game.paused) {
+            game.enemyTime += secs;
+
+            if (nec >= 1) {
+                game.enemyTime -= nec * game.enemyDelay;
+                if (nec + game.enemies.length > game.enemiesMax) {
+                    nec = game.enemiesMax - game.enemies.length;
+                }
+				
+				console.log(nec);
+				
+            }
+
+        }
+
+    };
+
+    // PUBLIC API
+
     // the game object
     api.createGameObject = function () {
         return {
@@ -89,19 +111,22 @@ var td = (function () {
             heading: 0,
             rps: 1, // radians per second
             lt: new Date(), // last time game was updated
+            paused: false,
             shots: [],
             shotsMax: 13,
             shotDelay: 1,
             shotTime: 0,
-            paused: false
+            enemies: [],
+            enemiesMax: 3,
+            enemyDelay: 1,
+            enemyTime: 2
         };
     };
 
     // update turret method
-    api.updateTurret = function (game) {
+    api.update = function (game) {
         var now = new Date(),
         secs = (now - game.lt) / 1000;
-
         if (game.paused) {
             game.lt = now;
         } else {
@@ -110,6 +135,7 @@ var td = (function () {
             game.lt = now;
         }
         updateTurretShots(game, secs);
+        spawnEnemies(game, secs);
     };
 
     return api;

@@ -14,7 +14,8 @@ disp.createTurretObject = function () {
         shots: [],
         shotsMax: 13,
         shotDelay: 1,
-        shotTime: 0
+        shotTime: 0,
+        paused: false
     };
 };
 
@@ -58,8 +59,13 @@ disp.updateTurretShots = function (turret, secs) {
 disp.updateTurret = function (turret) {
     var now = new Date(),
     secs = (now - turret.lt) / 1000;
-    turret.heading += turret.rps * secs;
-    turret.heading %= Math.PI * 2;
-    disp.updateTurretShots(turret, secs);
-    turret.lt = now;
+
+    if (turret.paused) {
+        turret.lt = now;
+    } else {
+        turret.heading += turret.rps * secs;
+        turret.heading %= Math.PI * 2;
+        disp.updateTurretShots(turret, secs);
+        turret.lt = now;
+    }
 };

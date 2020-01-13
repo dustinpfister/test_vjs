@@ -1,5 +1,8 @@
 var g = {};
 
+// UTILITYS 
+
+
 // CREATE A GRID OBJECT
 
 // parse grid properties
@@ -38,12 +41,28 @@ g.createClearCellGrid = function (grid) {
             i: i,
             x: i % a.width,
             y: Math.floor(i / a.width),
-            type: 0, // type index (0 = sand , 1-5 = grass, 6-10 = wood),
-            worth: 0
+            type: 0, // type index (0 - 4 = sand, 5 - 9 = grass, 10 -14 = wood),
+            worth: 0, // the value of the cell
+            buildIndex: 0 // building index
         });
         i += 1;
     }
     return a;
+};
+
+// GRID WORTH
+
+// set grid worth for all cells from a fixed point outwards
+// using a base and power
+g.setGridWorth = function(grid, x, y, b, p){
+	
+	var i = cells.length;
+	while(i--){
+		
+		
+		
+	}
+	
 };
 
 // BOUNDS
@@ -57,9 +76,9 @@ g.clampedOffsets = function (grid, canvas, pxRatio) {
     pxRatio = pxRatio || 1;
     var w = grid.width * grid.cellSize * pxRatio,
     h = grid.height * grid.cellSize * pxRatio,
-    bufferSize = grid.bufferSize  * pxRatio,
+    bufferSize = grid.bufferSize * pxRatio,
     xMin = bufferSize * pxRatio,
-    yMin = bufferSize  * pxRatio,
+    yMin = bufferSize * pxRatio,
     xMax = (w - canvas.width + bufferSize) * -1,
     yMax = (h - canvas.height + bufferSize) * -1,
     x = grid.xOffset,

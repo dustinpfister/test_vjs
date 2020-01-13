@@ -26,4 +26,5 @@ var drawMap = function (grid, ctx, canvas, pxRatio) {
         ctx.strokeStyle = 'red';
         ctx.strokeRect(x, y, cellSize, cellSize);
     }
+
 };

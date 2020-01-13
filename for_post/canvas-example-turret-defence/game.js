@@ -37,8 +37,31 @@ var td = (function () {
             }
         }
     };
+	
+	var purgeShotCheck = function(game, shot){
+		
+		
+	};
 
-    // update turret shots
+    var updateActiveShots = function (game) {
+        // update active shots
+        var i = game.shots.length,
+        now = new Date(),
+        shot,
+        t;
+        while (i--) {
+            shot = game.shots[i];
+            t = (now - shot.shotTime) / 1000;
+            shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
+            shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
+            // purge old shots
+            if (t >= shot.lifeSpan + shot.lifeSpanAjust) {
+                game.shots.splice(i, 1);
+            }
+        }
+    };
+
+    // Main update shots helper
     var updateTurretShots = function (game, secs) {
         // if the game is paused
         if (game.paused) {
@@ -46,22 +69,7 @@ var td = (function () {
         } else {
             // the game is not paused
             spawnShots(game, secs)
-
-            // update active shots
-            var i = game.shots.length,
-            now = new Date(),
-            shot,
-            t;
-            while (i--) {
-                shot = game.shots[i];
-                t = (now - shot.shotTime) / 1000;
-                shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
-                shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
-                // purge old shots
-                if (t >= shot.lifeSpan + shot.lifeSpanAjust) {
-                    game.shots.splice(i, 1);
-                }
-            }
+            updateActiveShots(game);
         }
     };
 

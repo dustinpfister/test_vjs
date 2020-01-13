@@ -79,26 +79,39 @@ var td = (function () {
 
     // ENEMIES
 
+    // spawn new enemies
     var spawnEnemies = function (game, secs) {
-
         // new enemy count
         var nec = Math.floor(game.enemyTime / game.enemyDelay);
-
         if (!game.paused) {
             game.enemyTime += secs;
-
             if (nec >= 1) {
                 game.enemyTime -= nec * game.enemyDelay;
                 if (nec + game.enemies.length > game.enemiesMax) {
                     nec = game.enemiesMax - game.enemies.length;
                 }
-				
-				console.log(nec);
-				
+
+                //console.log(nec);
+                var i = nec,
+                r,
+                x,
+                y;
+                while (i--) {
+
+                    r = Math.random() * (Math.PI * 2);
+                    x = Math.cos(r) * 100 + game.cx;
+                    y = Math.sin(r) * 100 + game.cy;
+
+                    game.enemies.push({
+                        x: x,
+                        y: y,
+                        size: 32
+                    });
+
+                };
+
             }
-
         }
-
     };
 
     // PUBLIC API
@@ -119,7 +132,7 @@ var td = (function () {
             enemies: [],
             enemiesMax: 3,
             enemyDelay: 1,
-            enemyTime: 2
+            enemyTime: 0
         };
     };
 

@@ -37,6 +37,7 @@ var drawTurretInfo = function (turret, ctx, canvas) {
     ctx.fillText('heading: ' + turret.heading.toFixed(2), 5, 5);
     ctx.fillText('shotTime: ' + turret.shotTime.toFixed(2), 5, 15);
     ctx.fillText('active shots: ' + turret.shots.length, 5, 25);
+    ctx.fillText('active enemies: ' + turret.enemies.length, 5, 35);
 };
 
 // main app loop
@@ -50,7 +51,6 @@ var loop = function () {
     drawTurretShots(game, ctx, canvas);
 };
 loop();
-
 
 // focus and blur
 canvas.tabIndex = 0;

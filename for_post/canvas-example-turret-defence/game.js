@@ -105,7 +105,7 @@ var td = (function () {
                     game.enemies.push({
                         x: x,
                         y: y,
-                        size: 32
+                        size: 10
                     });
 
                 };
@@ -122,7 +122,7 @@ var td = (function () {
             cx: canvas.width / 2,
             cy: canvas.height / 2,
             heading: 0,
-            rps: 1, // radians per second
+            rps: 0.5, // radians per second
             lt: new Date(), // last time game was updated
             paused: false,
             shots: [],

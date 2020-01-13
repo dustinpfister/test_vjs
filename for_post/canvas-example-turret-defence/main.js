@@ -10,7 +10,7 @@ var drawTurret = function (turret, ctx, canvas) {
     ctx.save();
     ctx.translate(turret.cx, turret.cy);
     ctx.rotate(turret.heading);
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = 'green';
     ctx.fillRect(-8, -8, 16, 16);
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 3;
@@ -40,6 +40,15 @@ var drawTurretInfo = function (turret, ctx, canvas) {
     ctx.fillText('active enemies: ' + turret.enemies.length, 5, 35);
 };
 
+var drawEnemies = function (game, ctx, canvas) {
+    ctx.fillStyle = 'red';
+    game.enemies.forEach(function (enemy) {
+        ctx.beginPath();
+        ctx.arc(enemy.x, enemy.y, enemy.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+};
+
 // main app loop
 var loop = function () {
     requestAnimationFrame(loop);
@@ -47,6 +56,7 @@ var loop = function () {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawTurret(game, ctx, canvas);
+    drawEnemies(game, ctx, canvas);
     drawTurretInfo(game, ctx, canvas);
     drawTurretShots(game, ctx, canvas);
 };

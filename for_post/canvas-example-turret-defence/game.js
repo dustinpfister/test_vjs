@@ -4,8 +4,8 @@ var td = (function () {
     // public api
     var api = {};
 
-    var shiftShots = function (game) {
-
+    // hold shots
+    var holdShots = function (game) {
         game.shots.forEach(function (shot) {
             if (!(shot.sx === shot.x && shot.sy === shot.y)) {
                 shot.lifeSpanAjust = (new Date() - shot.shotTime) / 1000 * -1;
@@ -14,16 +14,13 @@ var td = (function () {
             }
             shot.shotTime = new Date();
         });
-
     };
 
     // update turret shots
     var updateTurretShots = function (game, secs) {
         // if the game is paused
         if (game.paused) {
-
-            shiftShots(game);
-
+            holdShots(game);
         } else {
             // the game is not paused
             // spawn new shots

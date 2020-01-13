@@ -3,6 +3,7 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
+/*
 // the turret object
 var turret = {
     cx: canvas.width / 2,
@@ -52,6 +53,7 @@ var updateTurretShots = function (turret, secs) {
     }
 };
 
+
 // update turret method
 var updateTurret = function (turret) {
     var now = new Date(),
@@ -61,6 +63,9 @@ var updateTurret = function (turret) {
     updateTurretShots(turret, secs);
     turret.lt = now;
 };
+*/
+
+var turret = disp.createTurretObject();
 
 // draw the turret
 var drawTurret = function (turret, ctx, canvas) {
@@ -99,7 +104,7 @@ var drawTurretInfo = function (turret, ctx, canvas) {
 // main app loop
 var loop = function () {
     requestAnimationFrame(loop);
-    updateTurret(turret);
+    disp.updateTurret(turret);
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawTurret(turret, ctx, canvas);

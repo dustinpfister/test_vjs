@@ -5,11 +5,11 @@
 * (done)starting land
 * (done) bought property for cells (player can only build on tiles that they own)
 * (done) create building method
+* (done) tickTime property
+* (done) lastUpdate property
+* (done) updateGrid method that will figure the number of ticks, and update money
 
-* tickTime property
-* lastUpdate property
-
-* updateGrid method that will figure the number of ticks, and update money
+* status bar that displays current map money
 
 * info display when any tile is selected
 * build menu when tile that is bought is selected

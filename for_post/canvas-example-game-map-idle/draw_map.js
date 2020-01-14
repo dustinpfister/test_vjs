@@ -21,10 +21,8 @@ var drawMap = function (grid, ctx, canvas, pxRatio) {
         }
 
         if (cell.building.index >= 0) {
-
             ctx.fillStyle = 'red';
             ctx.fillRect(x, y, cellSize, cellSize);
-
         }
 
         ctx.strokeStyle = 'white';
@@ -39,5 +37,13 @@ var drawMap = function (grid, ctx, canvas, pxRatio) {
         ctx.strokeStyle = 'red';
         ctx.strokeRect(x, y, cellSize, cellSize);
     }
+
+    // status info
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
+    ctx.fillStyle = 'black';
+    ctx.textBaseline = 'top';
+    ctx.font = '15px courier';
+    ctx.fillText('$' + grid.money, 5, canvas.height - 15)
 
 };

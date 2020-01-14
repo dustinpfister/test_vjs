@@ -71,8 +71,21 @@ var loop = function () {
     while (i < balls.length) {
 
         ball = balls[i];
+
+        // move
         ball.x += Math.cos(ball.h) * ball.d;
         ball.y += Math.sin(ball.h) * ball.d;
+
+        // boundaries
+        if (ball.y >= canvas.height - ball.r) {
+            ball.y = canvas.height - ball.r;
+            ball.h += Math.PI;
+        }
+
+        if (ball.y <= ball.r) {
+            ball.y = ball.r;
+            ball.h += Math.PI;
+        }
 
         i += 1;
     }

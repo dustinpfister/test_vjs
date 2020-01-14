@@ -44,6 +44,6 @@ var drawMap = function (grid, ctx, canvas, pxRatio) {
     ctx.fillStyle = 'black';
     ctx.textBaseline = 'top';
     ctx.font = '15px courier';
-    ctx.fillText('$' + grid.money, 5, canvas.height - 15)
+    ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15)
 
 };

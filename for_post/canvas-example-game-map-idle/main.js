@@ -37,6 +37,10 @@ var loop = function () {
     var offsets = g.clampedOffsets(grid, canvas, ratio);
     grid.xOffset = offsets.xOffset;
     grid.yOffset = offsets.yOffset;
+	
+	
+	g.updateGrid(grid);
+	
     // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);

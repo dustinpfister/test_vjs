@@ -179,7 +179,7 @@ g.updateGrid = function (grid) {
 
     var now = new Date(),
     t = now - grid.lastUpdate,
-    ticks = t / grid.tickTime,
+    ticks = Math.floor(t / grid.tickTime),
     cell,
     i = grid.cells.length;
 
@@ -187,7 +187,8 @@ g.updateGrid = function (grid) {
         while (i--) {
             cell = grid.cells[i];
             if (cell.building.index >= 0) {
-                grid.money += cell.moneyPerTick * ticks;
+                //grid.money += cell.moneyPerTick * ticks;
+                grid.money += cell.building.moneyPerTick * ticks;
             }
         }
         grid.lastUpdate = now;

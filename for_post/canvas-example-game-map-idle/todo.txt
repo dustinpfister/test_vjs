@@ -1,10 +1,11 @@
 ## Canvas Example game map idle
 
 * (done) set grid worth value for cells
+* (done) map should have a money property
+* (done)starting land
+* (done) bought property for cells (player can only build on tiles that they own)
 
-* map should have a money property
-* starting land
-* bought property for cells (player can only build on tiles that they own)
+* create building method
 * info display when any tile is selected
 * build menu when tile that is bought is selected
 * can build at least one building type that generates money

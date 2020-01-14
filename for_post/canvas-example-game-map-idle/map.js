@@ -64,11 +64,9 @@ g.createClearCellGrid = function (grid) {
 // set grid worth for all cells from a fixed point outwards
 // using a base
 g.setGridWorth = function (grid, x, y, b) {
-
     x = x === undefined ? 0 : x;
     y = y === undefined ? 0 : y;
     b = b === undefined ? 2 : b;
-
     var i = grid.cells.length,
     d,
     cell;
@@ -81,6 +79,23 @@ g.setGridWorth = function (grid, x, y, b) {
     cell = g.get(grid, x, y);
     cell.bought = true;
 
+    // starting building
+    g.createBuilding(grid, x, y, 0);
+};
+
+// BUILDINGS
+
+// create a building object at the given cell position
+g.createBuilding = function (grid, x, y, index) {
+    index = index === undefined ? 0 : index;
+    var cell = g.get(grid, x, y);
+    // should be an empty object if not building is there
+    if (cell.building.index === undefined) {
+        cell.building = {
+            index: index,
+            moneyPerTick: 1
+        };
+    }
 };
 
 // BOUNDS

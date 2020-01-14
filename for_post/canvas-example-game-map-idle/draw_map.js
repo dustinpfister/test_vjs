@@ -20,6 +20,13 @@ var drawMap = function (grid, ctx, canvas, pxRatio) {
             ctx.fillRect(x, y, cellSize, cellSize);
         }
 
+        if (cell.building.index >= 0) {
+
+            ctx.fillStyle = 'red';
+            ctx.fillRect(x, y, cellSize, cellSize);
+
+        }
+
         ctx.strokeStyle = 'white';
         ctx.strokeRect(x, y, cellSize, cellSize);
     });

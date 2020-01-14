@@ -26,8 +26,8 @@ var drawBallObject = function (ball, ctx) {
 
     ctx.beginPath();
     ctx.moveTo(ball.x, ball.y);
-    x = Math.cos(ball.h) * ball.r * 2+ ball.x;
-    y = Math.sin(ball.h) * ball.r * 2+ ball.y;
+    x = Math.cos(ball.h) * ball.r * 2 + ball.x;
+    y = Math.sin(ball.h) * ball.r * 2 + ball.y;
     ctx.lineTo(x, y);
     ctx.stroke();
 
@@ -42,6 +42,7 @@ var drawBallCollection = function (balls, ctx) {
 var balls = b.createBallCollection({
         count: 2,
         r: 20,
+        h: Math.PI / 2,
         forBall: function (ball, i, opt) {
             var space = 3.5;
             ball.x = canvas.width / 2 - ball.r * space * opt.count / 2 + ball.r * (space / 2) + ball.r * i * space;

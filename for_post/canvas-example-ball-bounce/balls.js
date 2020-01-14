@@ -30,7 +30,8 @@ b.createBallCollection = function (opt) {
     balls = [];
     while (i < opt.count) {
         ball = b.createBallObject({
-                r: opt.r
+                r: opt.r,
+				h: opt.h
             });
         opt.forBall(ball, i, opt);
         balls.push(ball);

@@ -26,7 +26,12 @@ var drawBallCollection = function (balls, ctx) {
     });
 };
 
-var balls = b.createBallCollection();
+var balls = b.createBallCollection({
+        forBall: function (ball, i, opt) {
+            ball.x = canvas.width / 2 - ball.r * 3 * opt.count / 2 + ball.r * i * 3;
+            ball.y = canvas.height / 2;
+        }
+    });
 
 ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);

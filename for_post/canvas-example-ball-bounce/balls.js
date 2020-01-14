@@ -11,3 +11,26 @@ b.createBallObject = function (opt) {
     ball.d = opt.d === undefined ? 0 : opt.d;
     return ball;
 };
+
+b.createBallCollection = function (opt) {
+    var noop = function (ball, i) {
+        ball.x = ball.r + ball.r * 3 * i;
+        ball.y = ball.r;
+    },
+    i,
+    ball,
+    balls;
+    opt = opt || {};
+    opt.count = opt.count === undefined ? 4 : opt.count;
+    opt.forBall = opt.forBall === undefined ? noop : opt.forBall;
+
+    i = 0;
+    balls = [];
+    while (i < opt.count) {
+        ball = b.createBallObject();
+        opt.forBall(ball, i);
+        balls.push(ball);
+        i += 1;
+    }
+    return balls;
+};

@@ -21,13 +21,17 @@ b.createBallCollection = function (opt) {
     ball,
     balls;
     opt = opt || {};
-    opt.count = opt.count === undefined ? 4	 : opt.count;
+    opt.r = opt.r === undefined ? 5 : opt.r;
+    opt.h = opt.h === undefined ? 5 : opt.h;
+    opt.count = opt.count === undefined ? 4 : opt.count;
     opt.forBall = opt.forBall === undefined ? noop : opt.forBall;
 
     i = 0;
     balls = [];
     while (i < opt.count) {
-        ball = b.createBallObject();
+        ball = b.createBallObject({
+                r: opt.r
+            });
         opt.forBall(ball, i, opt);
         balls.push(ball);
         i += 1;

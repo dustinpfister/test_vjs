@@ -27,8 +27,11 @@ var drawBallCollection = function (balls, ctx) {
 };
 
 var balls = b.createBallCollection({
+        count: 2,
+        r: 20,
         forBall: function (ball, i, opt) {
-            ball.x = canvas.width / 2 - ball.r * 3 * opt.count / 2 + ball.r * i * 3;
+            var space = 3.5;
+            ball.x = canvas.width / 2 - ball.r * space * opt.count / 2 + ball.r * (space / 2) + ball.r * i * space;
             ball.y = canvas.height / 2;
         }
     });

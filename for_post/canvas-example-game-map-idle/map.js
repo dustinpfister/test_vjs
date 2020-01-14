@@ -91,7 +91,7 @@ g.createBuilding = function (grid, x, y, index) {
     index = index === undefined ? 0 : index;
     var cell = g.get(grid, x, y);
     // should be an empty object if not building is there
-    if (cell.building.index === undefined) {
+    if (cell.building.index === undefined && cell.bought) {
         cell.building = {
             index: index,
             moneyPerTick: 1

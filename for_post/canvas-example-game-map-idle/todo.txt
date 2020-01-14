@@ -9,7 +9,8 @@
 * (done) lastUpdate property
 * (done) updateGrid method that will figure the number of ticks, and update money
 
-* status bar that displays current map money
+* (done) status bar that displays current map money
+* status bar displays current tick progress
 
 * info display when any tile is selected
 * build menu when tile that is bought is selected

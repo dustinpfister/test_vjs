@@ -12,12 +12,25 @@ ctx.translate(0.5, 0.5);
 
 // draw a ball object
 var drawBallObject = function (ball, ctx) {
+
+    var x,
+    y;
+
     ctx.fillStyle = 'red';
     ctx.strokeStyle = 'white';
+    ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(ball.x, ball.y);
+    x = Math.cos(ball.h) * ball.r * 2+ ball.x;
+    y = Math.sin(ball.h) * ball.r * 2+ ball.y;
+    ctx.lineTo(x, y);
+    ctx.stroke();
+
 };
 
 var drawBallCollection = function (balls, ctx) {

@@ -27,6 +27,7 @@ gridDelta = {
     y: 0
 };
 
+ctx.translate(0.5, 0.5);
 // MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);

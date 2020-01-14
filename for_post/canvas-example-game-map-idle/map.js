@@ -73,13 +73,13 @@ g.setGridWorth = function (grid, x, y, b) {
     d,
     cell;
     while (i--) {
-
         cell = grid.cells[i];
-
         d = g.distance(cell.x, cell.y, x, y);
         cell.worth = 1 + Math.pow(b, d);
-
     }
+    // player starts with cell at x,y
+    cell = g.get(grid, x, y);
+    cell.bought = true;
 
 };
 

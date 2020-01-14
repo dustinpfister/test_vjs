@@ -14,6 +14,12 @@ var drawMap = function (grid, ctx, canvas, pxRatio) {
         x = cell.x * cellSize + xOffset * pxRatio;
         y = cell.y * cellSize + yOffset * pxRatio;
         ctx.fillRect(x, y, cellSize, cellSize);
+
+        if (!cell.bought) {
+            ctx.fillStyle = 'rgba(0,0,0,0.5)';
+            ctx.fillRect(x, y, cellSize, cellSize);
+        }
+
         ctx.strokeStyle = 'white';
         ctx.strokeRect(x, y, cellSize, cellSize);
     });

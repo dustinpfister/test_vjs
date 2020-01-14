@@ -20,6 +20,9 @@ g.parseGridProps = function (grid) {
     a.bufferSize = grid.bufferSize === undefined ? 32 : grid.bufferSize;
     a.selectedCellIndex = grid.selectedCellIndex || -1;
     a.cells = [];
+
+    // game logic
+    a.money = 0; // player money
     return a;
 };
 
@@ -47,7 +50,9 @@ g.createClearCellGrid = function (grid) {
             y: Math.floor(i / a.width),
             type: 0, // type index (0 - 4 = sand, 5 - 9 = grass, 10 -14 = wood),
             worth: 0, // the value of the cell
-            buildIndex: 0 // building index
+            bought: false, // has the player bought the cell
+            building: {}
+            // the building object
         });
         i += 1;
     }

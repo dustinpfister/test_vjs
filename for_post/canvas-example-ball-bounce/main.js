@@ -42,6 +42,7 @@ var drawBallCollection = function (balls, ctx) {
 var balls = b.createBallCollection({
         count: 2,
         r: 20,
+        d: 1,
         h: Math.PI / 2,
         forBall: function (ball, i, opt) {
             var space = 3.5;
@@ -50,11 +51,13 @@ var balls = b.createBallCollection({
         }
     });
 
-
+var lt = new Date();
 
 var loop = function () {
 
     var i,
+    now = new Date(),
+    t = now - lt,
     ball;
 
     requestAnimationFrame(loop);
@@ -68,8 +71,8 @@ var loop = function () {
     while (i < balls.length) {
 
         ball = balls[i];
-
-        //ball.y =0;
+        ball.x += Math.cos(ball.h) * ball.d;
+        ball.y += Math.sin(ball.h) * ball.d;
 
         i += 1;
     }

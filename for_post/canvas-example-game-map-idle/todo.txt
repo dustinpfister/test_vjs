@@ -4,8 +4,13 @@
 * (done) map should have a money property
 * (done)starting land
 * (done) bought property for cells (player can only build on tiles that they own)
+* (done) create building method
 
-* create building method
+* tickTime property
+* lastUpdate property
+
+* updateGrid method that will figure the number of ticks, and update money
+
 * info display when any tile is selected
 * build menu when tile that is bought is selected
 * can build at least one building type that generates money

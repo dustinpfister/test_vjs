@@ -23,6 +23,8 @@ g.parseGridProps = function (grid) {
 
     // game logic
     a.money = 0; // player money
+    a.lastUpdate = new Date();
+    a.tickTime = 3000;
     return a;
 };
 
@@ -78,7 +80,6 @@ g.setGridWorth = function (grid, x, y, b) {
     // player starts with cell at x,y
     cell = g.get(grid, x, y);
     cell.bought = true;
-
     // starting building
     g.createBuilding(grid, x, y, 0);
 };
@@ -170,4 +171,26 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py) {
         x: Math.cos(a) * delta,
         y: Math.sin(a) * delta
     };
+};
+
+// UPDATE GRID
+
+g.updateGrid = function (grid) {
+
+    var now = new Date(),
+    t = now - grid.lastUpdate,
+    ticks = t / grid.tickTime,
+    cell,
+    i = grid.cells.length;
+
+    if (ticks >= 1) {
+        while (i--) {
+            cell = grid.cells[i];
+            if (cell.building.index >= 0) {
+                grid.money += cell.moneyPerTick * ticks;
+            }
+        }
+        grid.lastUpdate = now;
+    }
+
 };

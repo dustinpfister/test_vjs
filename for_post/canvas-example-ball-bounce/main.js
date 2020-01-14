@@ -12,10 +12,9 @@ ctx.translate(0.5, 0.5);
 
 // draw a ball object
 var drawBallObject = function (ball, ctx) {
-
     var x,
     y;
-
+    // draw ball
     ctx.fillStyle = 'red';
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 3;
@@ -23,22 +22,23 @@ var drawBallObject = function (ball, ctx) {
     ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
-
+    // draw heading line
     ctx.beginPath();
     ctx.moveTo(ball.x, ball.y);
     x = Math.cos(ball.h) * ball.r * 2 + ball.x;
     y = Math.sin(ball.h) * ball.r * 2 + ball.y;
     ctx.lineTo(x, y);
     ctx.stroke();
-
 };
 
+// draw ball collection
 var drawBallCollection = function (balls, ctx) {
     balls.forEach(function (ball) {
         drawBallObject(ball, ctx);
     });
 };
 
+// create ball collection
 var balls = b.createBallCollection({
         count: 2,
         r: 20,
@@ -50,7 +50,29 @@ var balls = b.createBallCollection({
         }
     });
 
-ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-drawBallCollection(balls, ctx);
+
+var loop = function () {
+
+    var i,
+    ball;
+
+    requestAnimationFrame(loop);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawBallCollection(balls, ctx);
+
+    i = 0;
+    while (i < balls.length) {
+
+        ball = balls[i];
+
+        //ball.y =0;
+
+        i += 1;
+    }
+};
+
+loop();

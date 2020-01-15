@@ -40,14 +40,15 @@ var drawBallCollection = function (balls, ctx) {
 
 // create ball collection
 var balls = b.createBallCollection({
-        count: 2,
+        count: 4,
         r: 20,
         d: 1,
-        h: Math.PI / 2,
         forBall: function (ball, i, opt) {
             var space = 3.5;
-            ball.x = canvas.width / 2 - ball.r * space * opt.count / 2 + ball.r * (space / 2) + ball.r * i * space;
+            //ball.x = canvas.width / 2 - ball.r * space * opt.count / 2 + ball.r * (space / 2) + ball.r * i * space;
+            ball.x = canvas.width / 2;
             ball.y = canvas.height / 2;
+            ball.h = Math.PI * 2 / opt.count * i + Math.PI * 0.25;
         }
     });
 
@@ -72,19 +73,30 @@ var loop = function () {
 
         ball = balls[i];
 
+        var dy = Math.cos(ball.h) * ball.d,
+        dx = Math.sin(ball.h) * ball.d;
+
         // move
-        ball.x += Math.cos(ball.h) * ball.d;
-        ball.y += Math.sin(ball.h) * ball.d;
+        ball.x += dy;
+        ball.y += dx
 
         // boundaries
         if (ball.y >= canvas.height - ball.r) {
             ball.y = canvas.height - ball.r;
-            ball.h += Math.PI;
+            ball.h = ball.h * -1;
         }
 
         if (ball.y <= ball.r) {
-            ball.y = ball.r;
-            ball.h += Math.PI;
+            ball.h = ball.h * -1;
+        }
+
+        if (ball.x >= canvas.width - ball.r) {
+            ball.h = (ball.h + Math.PI) * -1
+        }
+
+        if (ball.x <= ball.r) {
+            ball.x = ball.r;
+            ball.h = (ball.h + Math.PI) * -1;
         }
 
         i += 1;

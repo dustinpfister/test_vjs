@@ -47,34 +47,23 @@ var balls = b.createBallCollection({
             var space = 3.5;
             ball.x = canvas.width / 2 - ball.r * space * opt.count / 2 + ball.r * (space / 2) + ball.r * i * space;
             ball.y = canvas.height / 2;
-            //ball.h = Math.PI * 2 / opt.count * i + Math.PI * 0.25;
-            ball.h = Math.PI * 2 * Math.random();
+            ball.h = Math.PI * 2 / opt.count * i + Math.PI * 0.25;
+            //ball.h = Math.PI * 2 * Math.random();
         }
     });
 
-var lt = new Date();
-
 var loop = function () {
-
-    var i,
-    now = new Date(),
-    t = now - lt,
-    ball;
-
+    var i
     requestAnimationFrame(loop);
-
+    // black background
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+    // draw balls
     drawBallCollection(balls, ctx);
-
+    // move all
     i = 0;
     while (i < balls.length) {
-
-        ball = balls[i];
-
-        b.moveBallObject(ball, canvas);
-
+        b.moveBallObject(balls[i], canvas);
         i += 1;
     }
 };

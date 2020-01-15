@@ -42,16 +42,13 @@ b.createBallCollection = function (opt) {
 };
 
 b.moveBallObject = function (ball, canvas) {
-
     canvas = canvas || {
         width: 320,
         height: 240
     };
-
     // move
     ball.x += Math.cos(ball.h) * ball.d;
     ball.y += Math.sin(ball.h) * ball.d;
-
     // boundaries
     if (ball.y >= canvas.height - ball.r) {
         ball.y = canvas.height - ball.r;

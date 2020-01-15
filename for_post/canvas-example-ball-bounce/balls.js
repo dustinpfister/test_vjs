@@ -40,3 +40,33 @@ b.createBallCollection = function (opt) {
     }
     return balls;
 };
+
+b.moveBallObject = function (ball, canvas) {
+
+    canvas = canvas || {
+        width: 320,
+        height: 240
+    };
+
+    // move
+    ball.x += Math.cos(ball.h) * ball.d;
+    ball.y += Math.sin(ball.h) * ball.d;
+
+    // boundaries
+    if (ball.y >= canvas.height - ball.r) {
+        ball.y = canvas.height - ball.r;
+        ball.h = ball.h * -1;
+    }
+    if (ball.y <= ball.r) {
+        ball.y = ball.r;
+        ball.h = ball.h * -1;
+    }
+    if (ball.x >= canvas.width - ball.r) {
+        ball.x = canvas.width - ball.r;
+        ball.h = (ball.h + Math.PI) * -1
+    }
+    if (ball.x <= ball.r) {
+        ball.x = ball.r;
+        ball.h = (ball.h + Math.PI) * -1;
+    }
+};

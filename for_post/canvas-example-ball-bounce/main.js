@@ -45,10 +45,10 @@ var balls = b.createBallCollection({
         d: 1,
         forBall: function (ball, i, opt) {
             var space = 3.5;
-            //ball.x = canvas.width / 2 - ball.r * space * opt.count / 2 + ball.r * (space / 2) + ball.r * i * space;
-            ball.x = canvas.width / 2;
+            ball.x = canvas.width / 2 - ball.r * space * opt.count / 2 + ball.r * (space / 2) + ball.r * i * space;
             ball.y = canvas.height / 2;
-            ball.h = Math.PI * 2 / opt.count * i + Math.PI * 0.25;
+            //ball.h = Math.PI * 2 / opt.count * i + Math.PI * 0.25;
+            ball.h = Math.PI * 2 * Math.random();
         }
     });
 
@@ -73,31 +73,7 @@ var loop = function () {
 
         ball = balls[i];
 
-        var dy = Math.cos(ball.h) * ball.d,
-        dx = Math.sin(ball.h) * ball.d;
-
-        // move
-        ball.x += dy;
-        ball.y += dx
-
-        // boundaries
-        if (ball.y >= canvas.height - ball.r) {
-            ball.y = canvas.height - ball.r;
-            ball.h = ball.h * -1;
-        }
-
-        if (ball.y <= ball.r) {
-            ball.h = ball.h * -1;
-        }
-
-        if (ball.x >= canvas.width - ball.r) {
-            ball.h = (ball.h + Math.PI) * -1
-        }
-
-        if (ball.x <= ball.r) {
-            ball.x = ball.r;
-            ball.h = (ball.h + Math.PI) * -1;
-        }
+        b.moveBallObject(ball, canvas);
 
         i += 1;
     }

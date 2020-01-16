@@ -19,7 +19,7 @@ var bird = {
     lt: new Date(),
     berries: [],
     berriesLastSpawn: new Date(),
-    berriesDelay: 3,
+    berriesDelay: 1,
     berriesMax: 4
 };
 
@@ -33,12 +33,12 @@ var flap = function (bird) {
 var spawnBerry = function (bird, canvas) {
     var count = bird.berries.length,
     now = new Date(),
-    secs = now - bird.berriesLastSpawn;
+    secs = (now - bird.berriesLastSpawn) / 1000;
     if (secs >= bird.berriesDelay) {
         if (count < bird.berriesMax) {
             var yRange = canvas.height - 64;
             bird.berries.push({
-                x: canvas.width - 32,
+                x: canvas.width + 32,
                 y: yRange - Math.random() * yRange,
                 size: 32,
                 pps: 64
@@ -48,12 +48,23 @@ var spawnBerry = function (bird, canvas) {
     }
 };
 
-var updateBerries = function () {};
+var updateBerries = function (bird, secs, canvas) {
+    var i = bird.berries.length,
+    berry;
+    while (i--) {
+        berry = bird.berries[i];
+        berry.x -= berry.pps * secs;
+        if (berry.x <= berry.size * -1) {
+            bird.berries.splice(i, 1);
+        }
+    }
+};
 
 var updateBird = function (bird, canvas) {
     var now = new Date(),
     secs = (now - bird.lt) / 1000;
     bird.y += bird.pps * secs;
+    updateBerries(bird, secs, canvas);
     if (bird.y >= canvas.height - bird.size) {
         bird.y = canvas.height - bird.size;
     }
@@ -92,10 +103,12 @@ var drawBerries = function (bird, ctx) {
 var loop = function () {
     requestAnimationFrame(loop);
     drawBackground(ctx);
-    drawBird(bird, ctx);
+
     drawBerries(bird, ctx);
+    drawBird(bird, ctx);
     drawInfo(bird, ctx);
     updateBird(bird, canvas);
+    //updateBerries(bird, canvas);
     spawnBerry(bird, canvas);
 };
 

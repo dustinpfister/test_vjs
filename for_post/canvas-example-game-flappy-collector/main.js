@@ -17,7 +17,9 @@ var bird = {
     size: 32,
     pps: 64,
     //gameOver: false,
-    lt: new Date()
+    lt: new Date(),
+    berries: [],
+    berriesMax: 4
 };
 
 var flap = function (bird) {
@@ -25,6 +27,21 @@ var flap = function (bird) {
     if (bird.y < 0) {
         bird.y = 0;
     }
+};
+
+var spawnBerry = function (bird, canvas) {
+
+    var count = bird.berries.length;
+
+    if (count < bird.berriesMax) {
+        bird.berries.push({
+            x: canvas.width + 32,
+            y: canvas.height - 64,
+            size: 32,
+            pps: 64
+        });
+    }
+
 };
 
 var updateBirdPosition = function (bird, canvas) {

@@ -23,6 +23,14 @@ var bird = {
     berriesMax: 4
 };
 
+var bb = function (a, b) {
+    return !(
+        ((a.y + a.size) < (b.y)) ||
+        (a.y > (b.y + b.size)) ||
+        ((a.x + a.size) < b.x) ||
+        (a.x > (b.x + b.size)));
+};
+
 var flap = function (bird) {
     bird.y -= 32;
     if (bird.y < 0) {
@@ -54,6 +62,11 @@ var updateBerries = function (bird, secs, canvas) {
     while (i--) {
         berry = bird.berries[i];
         berry.x -= berry.pps * secs;
+
+        if (bb(bird, berry)) {
+            bird.berries.splice(i, 1);
+        }
+
         if (berry.x <= berry.size * -1) {
             bird.berries.splice(i, 1);
         }

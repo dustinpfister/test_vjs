@@ -16,9 +16,10 @@ var bird = {
     y: 0,
     size: 32,
     pps: 64,
-    //gameOver: false,
     lt: new Date(),
     berries: [],
+    berriesLastSpawn: new Date(),
+    berriesDelay: 3,
     berriesMax: 4
 };
 
@@ -30,17 +31,25 @@ var flap = function (bird) {
 };
 
 var spawnBerry = function (bird, canvas) {
-
-    var count = bird.berries.length;
-    if (count < bird.berriesMax) {
-        bird.berries.push({
-            x: canvas.width + 32,
-            y: canvas.height - 64,
-            size: 32,
-            pps: 64
-        });
+    var count = bird.berries.length,
+    now = new Date(),
+    secs = now - bird.berriesLastSpawn;
+    if (secs >= bird.berriesDelay) {
+        if (count < bird.berriesMax) {
+            bird.berries.push({
+                x: canvas.width + 32,
+                y: canvas.height - 64,
+                size: 32,
+                pps: 64
+            });
+        }
+        bird.berriesLastSpawn = now;
     }
+};
 
+var updateBerries = function(){
+	
+	
 };
 
 var updateBird = function (bird, canvas) {
@@ -49,7 +58,6 @@ var updateBird = function (bird, canvas) {
     bird.y += bird.pps * secs;
     if (bird.y >= canvas.height - bird.size) {
         bird.y = canvas.height - bird.size;
-        //bird.gameOver = true;
     }
     bird.lt = now;
 };
@@ -76,13 +84,13 @@ var drawInfo = function (bird, ctx) {
 };
 
 // Main APP Loop
-
 var loop = function () {
     requestAnimationFrame(loop);
     drawBackground(ctx);
     drawBird(bird, ctx);
     drawInfo(bird, ctx);
     updateBird(bird, canvas);
+    spawnBerry(bird, canvas);
 };
 
 loop();

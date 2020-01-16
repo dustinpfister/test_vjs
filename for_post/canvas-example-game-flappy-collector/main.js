@@ -32,7 +32,6 @@ var flap = function (bird) {
 var spawnBerry = function (bird, canvas) {
 
     var count = bird.berries.length;
-
     if (count < bird.berriesMax) {
         bird.berries.push({
             x: canvas.width + 32,
@@ -44,7 +43,7 @@ var spawnBerry = function (bird, canvas) {
 
 };
 
-var updateBirdPosition = function (bird, canvas) {
+var updateBird = function (bird, canvas) {
     var now = new Date(),
     secs = (now - bird.lt) / 1000;
     bird.y += bird.pps * secs;
@@ -74,7 +73,6 @@ var drawInfo = function (bird, ctx) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.fillText('bird pos: ( ' + Math.floor(bird.x) + ',' + Math.floor(bird.y) + ')', 10, 10);
-    //ctx.fillText('game over: ' + bird.gameOver, 10, 10);
 };
 
 // Main APP Loop
@@ -84,7 +82,7 @@ var loop = function () {
     drawBackground(ctx);
     drawBird(bird, ctx);
     drawInfo(bird, ctx);
-    updateBirdPosition(bird, canvas);
+    updateBird(bird, canvas);
 };
 
 loop();

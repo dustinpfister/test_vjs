@@ -36,9 +36,10 @@ var spawnBerry = function (bird, canvas) {
     secs = now - bird.berriesLastSpawn;
     if (secs >= bird.berriesDelay) {
         if (count < bird.berriesMax) {
+            var yRange = canvas.height - 64;
             bird.berries.push({
-                x: canvas.width + 32,
-                y: canvas.height - 64,
+                x: canvas.width - 32,
+                y: yRange - Math.random() * yRange,
                 size: 32,
                 pps: 64
             });
@@ -47,10 +48,7 @@ var spawnBerry = function (bird, canvas) {
     }
 };
 
-var updateBerries = function(){
-	
-	
-};
+var updateBerries = function () {};
 
 var updateBird = function (bird, canvas) {
     var now = new Date(),
@@ -75,12 +73,19 @@ var drawBackground = function (ctx) {
 };
 var drawBird = function (bird, ctx) {
     ctx.fillStyle = 'green';
-    ctx.fillRect(bird.x, bird.y, 32, 32);
+    ctx.fillRect(bird.x, bird.y, bird.size, bird.size);
 };
 var drawInfo = function (bird, ctx) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.fillText('bird pos: ( ' + Math.floor(bird.x) + ',' + Math.floor(bird.y) + ')', 10, 10);
+};
+var drawBerries = function (bird, ctx) {
+
+    ctx.fillStyle = 'red';
+    bird.berries.forEach(function (berry) {
+        ctx.fillRect(berry.x, berry.y, berry.size, berry.size);
+    });
 };
 
 // Main APP Loop
@@ -88,6 +93,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     drawBackground(ctx);
     drawBird(bird, ctx);
+    drawBerries(bird, ctx);
     drawInfo(bird, ctx);
     updateBird(bird, canvas);
     spawnBerry(bird, canvas);

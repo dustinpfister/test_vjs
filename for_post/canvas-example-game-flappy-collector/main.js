@@ -23,9 +23,9 @@ var loop = function () {
     drawBerries(bird, ctx);
     drawBird(bird, ctx);
     drawInfo(bird, ctx);
-    updateBird(bird, canvas);
-    //updateBerries(bird, canvas);
-    spawnBerry(bird, canvas);
+
+    update(bird, canvas);
+
 };
 
 loop();

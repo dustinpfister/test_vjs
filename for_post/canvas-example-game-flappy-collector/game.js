@@ -63,13 +63,14 @@ var updateBerries = function (bird, secs, canvas) {
     }
 };
 
-var updateBird = function (bird, canvas) {
+var update = function (bird, canvas) {
     var now = new Date(),
     secs = (now - bird.lt) / 1000;
     bird.y += bird.pps * secs;
-    updateBerries(bird, secs, canvas);
     if (bird.y >= canvas.height - bird.size) {
         bird.y = canvas.height - bird.size;
     }
-    bird.lt = now;
+    updateBerries(bird, secs, canvas);
+    spawnBerry(bird, canvas);
+    bird.lt = new Date();
 };

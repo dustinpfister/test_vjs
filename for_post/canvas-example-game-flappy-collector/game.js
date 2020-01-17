@@ -46,6 +46,12 @@ var game = (function () {
         }
     };
 
+    // update bird Pixels per second
+    var updateBirdPPS = function (bird, secs) {
+        bird.pps = 128 - 256 * bird.flap;
+        bird.flap = bird.flap > 0 ? bird.flap - 0.9 * secs : 0;
+    };
+
     // public api
     var api = {};
 
@@ -55,6 +61,7 @@ var game = (function () {
             x: 32,
             y: 0,
             size: 32,
+            flap: 0,
             pps: 64,
             lt: new Date(),
             berries: [],
@@ -73,17 +80,18 @@ var game = (function () {
         if (bird.y >= canvas.height - bird.size) {
             bird.y = canvas.height - bird.size;
         }
+        if (bird.y < 0) {
+            bird.y = 0;
+        }
         updateBerries(bird, secs, canvas);
         spawnBerry(bird, canvas);
+        updateBirdPPS(bird, secs);
         bird.lt = new Date();
     };
 
     // flap a bird
     api.flap = function (bird) {
-        bird.y -= 32;
-        if (bird.y < 0) {
-            bird.y = 0;
-        }
+        bird.flap = 1;
     };
 
     return api;

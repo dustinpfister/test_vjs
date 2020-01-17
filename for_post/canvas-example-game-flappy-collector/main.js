@@ -18,10 +18,10 @@ canvas.addEventListener('click', function () {
 // Main APP Loop
 var loop = function () {
     requestAnimationFrame(loop);
-    drawBackground(ctx);
-    drawBerries(bird, ctx);
-    drawBird(bird, ctx);
-    drawInfo(bird, ctx);
+    draw.background(ctx);
+    draw.berries(bird, ctx);
+    draw.bird(bird, ctx);
+    draw.info(bird, ctx);
     game.update(bird, canvas);
 };
 

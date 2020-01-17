@@ -90,7 +90,7 @@ canvas.addEventListener('click', function () {
 });
 
 // DRAW
-
+/*
 var drawBackground = function (ctx) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -106,13 +106,12 @@ var drawInfo = function (bird, ctx) {
     ctx.fillText('bird pos: ( ' + Math.floor(bird.x) + ',' + Math.floor(bird.y) + ')', 10, 20);
 };
 var drawBerries = function (bird, ctx) {
-
     ctx.fillStyle = 'red';
     bird.berries.forEach(function (berry) {
         ctx.fillRect(berry.x, berry.y, berry.size, berry.size);
     });
 };
-
+*/
 // Main APP Loop
 var loop = function () {
     requestAnimationFrame(loop);

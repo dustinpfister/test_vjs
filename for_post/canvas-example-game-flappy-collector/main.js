@@ -20,7 +20,8 @@ var bird = {
     berries: [],
     berriesLastSpawn: new Date(),
     berriesDelay: 1,
-    berriesMax: 4
+    berriesMax: 4,
+    points: 0
 };
 
 var bb = function (a, b) {
@@ -62,11 +63,10 @@ var updateBerries = function (bird, secs, canvas) {
     while (i--) {
         berry = bird.berries[i];
         berry.x -= berry.pps * secs;
-
         if (bb(bird, berry)) {
+            bird.points += 1;
             bird.berries.splice(i, 1);
         }
-
         if (berry.x <= berry.size * -1) {
             bird.berries.splice(i, 1);
         }
@@ -102,7 +102,8 @@ var drawBird = function (bird, ctx) {
 var drawInfo = function (bird, ctx) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
-    ctx.fillText('bird pos: ( ' + Math.floor(bird.x) + ',' + Math.floor(bird.y) + ')', 10, 10);
+    ctx.fillText('points: ' + bird.points, 10, 10);
+    ctx.fillText('bird pos: ( ' + Math.floor(bird.x) + ',' + Math.floor(bird.y) + ')', 10, 20);
 };
 var drawBerries = function (bird, ctx) {
 

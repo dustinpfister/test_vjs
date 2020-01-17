@@ -10,21 +10,26 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 
+
+var bird = game.newBird();
+
 // INPUT
 canvas.addEventListener('click', function () {
-    flap(bird);
+    game.flap(bird);
 });
+
 
 // Main APP Loop
 var loop = function () {
-    requestAnimationFrame(loop);
-    drawBackground(ctx);
 
+    requestAnimationFrame(loop);
+
+    drawBackground(ctx);
     drawBerries(bird, ctx);
     drawBird(bird, ctx);
     drawInfo(bird, ctx);
 
-    update(bird, canvas);
+    game.update(bird, canvas);
 
 };
 

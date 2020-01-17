@@ -1,6 +1,7 @@
 
 var game = (function () {
 
+    // bounding box
     var bb = function (a, b) {
         return !(
             ((a.y + a.size) < (b.y)) ||
@@ -9,6 +10,7 @@ var game = (function () {
             (a.x > (b.x + b.size)));
     };
 
+    // spawn a new berry
     var spawnBerry = function (bird, canvas) {
         var count = bird.berries.length,
         now = new Date(),
@@ -27,6 +29,7 @@ var game = (function () {
         }
     };
 
+    // update berries
     var updateBerries = function (bird, secs, canvas) {
         var i = bird.berries.length,
         berry;
@@ -43,29 +46,11 @@ var game = (function () {
         }
     };
 
+    // public api
     var api = {};
 
-    api.update = function (bird, canvas) {
-        var now = new Date(),
-        secs = (now - bird.lt) / 1000;
-        bird.y += bird.pps * secs;
-        if (bird.y >= canvas.height - bird.size) {
-            bird.y = canvas.height - bird.size;
-        }
-        updateBerries(bird, secs, canvas);
-        spawnBerry(bird, canvas);
-        bird.lt = new Date();
-    };
-
-    api.flap = function (bird) {
-        bird.y -= 32;
-        if (bird.y < 0) {
-            bird.y = 0;
-        }
-    };
-
+    // create and return a new bird ( game object )
     api.newBird = function () {
-
         return {
             x: 32,
             y: 0,
@@ -78,10 +63,30 @@ var game = (function () {
             berriesMax: 4,
             points: 0
         };
+    };
 
+    // update a bird ( game object )
+    api.update = function (bird, canvas) {
+        var now = new Date(),
+        secs = (now - bird.lt) / 1000;
+        bird.y += bird.pps * secs;
+        if (bird.y >= canvas.height - bird.size) {
+            bird.y = canvas.height - bird.size;
+        }
+        updateBerries(bird, secs, canvas);
+        spawnBerry(bird, canvas);
+        bird.lt = new Date();
+    };
+
+    // flap a bird
+    api.flap = function (bird) {
+        bird.y -= 32;
+        if (bird.y < 0) {
+            bird.y = 0;
+        }
     };
 
     return api;
 
 }
-());
+    ());

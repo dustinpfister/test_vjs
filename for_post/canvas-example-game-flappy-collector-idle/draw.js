@@ -10,7 +10,9 @@ draw.background = function (ctx) {
 // draw the bird
 draw.bird = function (bird, ctx) {
     ctx.fillStyle = 'green';
+    ctx.strokeStyle = 'white';
     ctx.fillRect(bird.x, bird.y, bird.size, bird.size);
+    ctx.strokeRect(bird.x, bird.y, bird.size, bird.size);
 };
 
 // draw info
@@ -30,8 +32,10 @@ draw.info = function (bird, ctx) {
 // draw berries
 draw.berries = function (bird, ctx) {
     ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'white';
     bird.berries.forEach(function (berry) {
         ctx.fillRect(berry.x, berry.y, berry.size, berry.size);
+        ctx.strokeRect(berry.x, berry.y, berry.size, berry.size);
     });
 };
 

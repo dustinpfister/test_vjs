@@ -104,8 +104,8 @@ var game = (function () {
             berriesCollected: 0, // used in level up
             berriesNextLevel: Infinity, // used in level up
             berriesLastSpawn: new Date(),
-            berriesDelay: 3,
-            berriesMax: 4,
+            berriesDelay: 0.125,
+            berriesMax: 100,
             // points
             points: 0,
             // auto play

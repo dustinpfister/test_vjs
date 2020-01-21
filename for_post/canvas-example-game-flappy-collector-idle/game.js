@@ -63,7 +63,7 @@ var game = (function () {
     var getShouldFlap = function (bird) {
         var berry = bird.berries[0];
         if (berry) {
-            return berry.y < bird.y ? true : false;
+            return berry.y + 16 < bird.y ? true : false;
         }
         return false;
     };
@@ -85,8 +85,11 @@ var game = (function () {
             berriesDelay: 1,
             berriesMax: 4,
             points: 0,
+            // auto play
             shouldFlap: false,
-            autoPlay: true
+            autoPlay: true,
+            autoTime: 5,
+            autoDelay: 5
         };
     };
 
@@ -94,6 +97,7 @@ var game = (function () {
     api.update = function (bird, canvas) {
         var now = new Date(),
         secs = (now - bird.lt) / 1000;
+
         bird.y += bird.pps * secs;
         if (bird.y >= canvas.height - bird.size) {
             bird.y = canvas.height - bird.size;
@@ -101,16 +105,22 @@ var game = (function () {
         if (bird.y < 0) {
             bird.y = 0;
         }
+
+        // berries
         updateBerries(bird, secs, canvas);
         spawnBerry(bird, canvas);
+
+        // bird pps
         updateBirdPPS(bird, secs);
 
+        // auto play
         bird.shouldFlap = getShouldFlap(bird);
-
         if (bird.autoPlay && bird.shouldFlap) {
-
             bird.flap = 1;
-
+        } else {
+            bird.autoTime -= secs;
+            bird.autoTime = bird.autoTime < 0 ? 0 : bird.autoTime;
+            bird.autoPlay = bird.autoTime === 0 ? true : false;
         }
 
         bird.lt = new Date();
@@ -118,9 +128,12 @@ var game = (function () {
 
     // flap a bird
     api.flap = function (bird) {
-        if (!bird.autoPlay) {
-            bird.flap = 1;
-        }
+        //if (bird.autoPlay) {
+
+        //}
+        bird.autoPlay = false;
+        bird.autoTime = bird.autoDelay;
+        bird.flap = 1;
     };
 
     return api;

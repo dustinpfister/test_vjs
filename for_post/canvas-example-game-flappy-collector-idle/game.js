@@ -50,13 +50,15 @@ var game = (function () {
     };
 
     var berryNextLevelSet = function (bird) {
-
         bird.berriesNextLevel = 32 + Math.pow(2, bird.berryLevel);
-
     };
 
     // check if the current level needs to be upgraded
     var berryLevelCheck = function (bird) {
+
+        var e = Math.floor(Math.log(bird.berriesCollected + 1) / Math.log(2) + 1);
+
+        bird.berryLevel = e > 6 ? e - 6 : 1;
 
     };
 

@@ -20,12 +20,13 @@ var game = (function () {
         if (secs >= bird.berriesDelay) {
             if (count < bird.berriesMax) {
                 var yRange = canvas.height - 64,
-                l = bird.berryLevel - 1;
+                l = bird.berryLevel - 1,
+                p = (l > 16 ? 16 : l) / 16;
                 bird.berries.push({
                     x: canvas.width + 32,
                     y: yRange - Math.random() * yRange,
                     size: 32,
-                    pps: 32,
+                    pps: 32 + Math.floor(96 * p),
                     worth: 1 + 0.25 * l
                 });
             }

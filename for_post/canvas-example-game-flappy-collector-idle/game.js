@@ -62,8 +62,15 @@ var game = (function () {
     // the next berry
     var getShouldFlap = function (bird) {
 
-        return false;
+        var berry = bird.berries[0];
 
+        if (berry) {
+
+            return 1;
+
+        }
+
+        return false;
     };
 
     // public api
@@ -101,6 +108,7 @@ var game = (function () {
         updateBerries(bird, secs, canvas);
         spawnBerry(bird, canvas);
         updateBirdPPS(bird, secs);
+        bird.shouldFlap = getShouldFlap(bird);
         bird.lt = new Date();
     };
 

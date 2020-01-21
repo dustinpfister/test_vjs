@@ -19,6 +19,7 @@ draw.info = function (bird, ctx) {
     ctx.textBaseline = 'top';
     ctx.fillText('points: ' + bird.points, 10, 10);
     ctx.fillText('bird pos: ( ' + Math.floor(bird.x) + ',' + Math.floor(bird.y) + ')', 10, 20);
+    ctx.fillText('shouldFlap: ' + bird.shouldFlap, 10, 30);
 };
 
 // draw berries

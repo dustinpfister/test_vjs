@@ -22,6 +22,7 @@ var loop = function () {
     draw.berries(bird, ctx);
     draw.bird(bird, ctx);
     draw.info(bird, ctx);
+    draw.autoTimeProgressBar(bird, ctx, canvas);
     game.update(bird, canvas);
 };
 

@@ -30,3 +30,14 @@ draw.berries = function (bird, ctx) {
         ctx.fillRect(berry.x, berry.y, berry.size, berry.size);
     });
 };
+
+// autoTime progress bar
+draw.autoTimeProgressBar = function (bird, ctx, canvas) {
+    var per = bird.autoTime / bird.autoDelay;
+    if (bird.autoTime) {
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
+        ctx.fillStyle = 'rgba(0,0,255,0.2)';
+        ctx.fillRect(0, canvas.height - 10, canvas.width * per, 10);
+    }
+};

@@ -24,7 +24,7 @@ var game = (function () {
                     x: canvas.width + 32,
                     y: yRange - Math.random() * yRange,
                     size: 32,
-                    pps: 64
+                    pps: 32
                 });
             }
             bird.berriesLastSpawn = now;
@@ -53,7 +53,7 @@ var game = (function () {
     // update bird Pixels per second
     var updateBirdPPS = function (bird, secs) {
         bird.pps = 128 - 256 * bird.flap;
-        bird.flap = bird.flap > 0 ? bird.flap - 0.9 * secs : 0;
+        bird.flap = bird.flap > 0 ? bird.flap - secs * 1 : 0;
     };
 
     // AUTO PLAY MODE
@@ -78,12 +78,12 @@ var game = (function () {
             y: 0,
             size: 32,
             flap: 0,
-            pps: 64,
+            pps: 0,
             lt: new Date(),
             berries: [],
             berriesLastSpawn: new Date(),
-            berriesDelay: 1,
-            berriesMax: 4,
+            berriesDelay: 3,
+            berriesMax: 10,
             points: 0,
             // auto play
             shouldFlap: false,

@@ -13,8 +13,8 @@
 * (done) new berry level check helper
 * (done) berries will level up as they are collected
 * (done) higher level berries are worth more
-* spawn delay will go down with berry level
-* berry pps will go up with level
+* (done) spawn delay will go down with berry level
+* (done) berry pps will go up with level
 
 <!-- BERRY SPAWN -->
 * more than one spawn method

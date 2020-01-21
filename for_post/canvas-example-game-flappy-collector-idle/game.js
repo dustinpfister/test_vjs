@@ -71,7 +71,6 @@ var game = (function () {
         var l = bird.berryLevel - 1,
         p = (l > 16 ? 16 : l) / 16;
         bird.berriesDelay = 3 - 3.75 * p;
-
     };
 
     // BIRD

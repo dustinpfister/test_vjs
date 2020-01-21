@@ -23,7 +23,6 @@ draw.info = function (bird, ctx) {
     ctx.fillText('berry level: ' + bird.berryLevel, 10, 20);
     ctx.fillText('berries collected: ' + bird.berriesCollected + '/' + bird.berriesNextLevel, 10, 30);
     ctx.fillText('berries delay: ' + bird.berriesDelay, 10, 40);
-
     if (bird.berries.length > 0) {
         berry = bird.berries[0];
         ctx.fillText('berry 0 worth: ' + berry.worth, 10, 50);

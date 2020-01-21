@@ -8,11 +8,18 @@
 * (done) progress bar for AutoTime when drawing scene
 
 <!-- BERRY LEVEL-->
+* new berry level bird object property
+* new berries collected property
+* new berry level check helper
 * berries will level up as they are collected
 * higher level berries are worth more
 * spawn delay will go down with berry level
 * berry pps will go up with level
-* more than one spawn method (spawn method that will take into account bird y position)
+
+<!-- BERRY SPAWN -->
+* more than one spawn method
+* spawn method that will take into account bird y position
+* spawn method that will spawn two or more berries at once
 
 <!-- UPGRADES -->
 * Have upgrade buttons on the right side of the canvas

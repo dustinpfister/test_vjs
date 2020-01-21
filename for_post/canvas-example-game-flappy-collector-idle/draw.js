@@ -18,9 +18,8 @@ draw.info = function (bird, ctx) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.fillText('points: ' + bird.points, 10, 10);
-    ctx.fillText('bird pos: ( ' + Math.floor(bird.x) + ',' + Math.floor(bird.y) + ')', 10, 20);
-    ctx.fillText('shouldFlap: ' + bird.shouldFlap, 10, 30);
-    ctx.fillText('autoTime: ' + bird.autoTime, 10, 40);
+    ctx.fillText('berry level: ' + bird.berryLevel, 10, 20);
+    ctx.fillText('berries collected: ' + bird.berriesCollected, 10, 30);
 };
 
 // draw berries

@@ -41,12 +41,16 @@ var game = (function () {
             if (bb(bird, berry)) {
                 bird.points += 1;
                 bird.berries.splice(i, 1);
+                bird.berriesCollected += 1;
             }
             if (berry.x <= berry.size * -1) {
                 bird.berries.splice(i, 1);
             }
         }
     };
+
+    // check current level upgrading if needed
+    var berryLevelCheck = function (bird) {};
 
     // BIRD
 
@@ -80,10 +84,14 @@ var game = (function () {
             flap: 0,
             pps: 0,
             lt: new Date(),
+            // berries
             berries: [],
+            berryLevel: 1,
+            berriesCollected: 0,
             berriesLastSpawn: new Date(),
             berriesDelay: 3,
             berriesMax: 10,
+            // points
             points: 0,
             // auto play
             shouldFlap: false,

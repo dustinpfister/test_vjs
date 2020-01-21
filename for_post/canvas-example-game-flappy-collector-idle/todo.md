@@ -10,9 +10,9 @@
 <!-- BERRY LEVEL-->
 * (done) new berry level bird object property
 * (done) new berries collected property
-* new berry level check helper
-* berries will level up as they are collected
-* higher level berries are worth more
+* (done) new berry level check helper
+* (done) berries will level up as they are collected
+* (done) higher level berries are worth more
 * spawn delay will go down with berry level
 * berry pps will go up with level
 

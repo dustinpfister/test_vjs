@@ -19,12 +19,14 @@ var game = (function () {
         secs = (now - bird.berriesLastSpawn) / 1000;
         if (secs >= bird.berriesDelay) {
             if (count < bird.berriesMax) {
-                var yRange = canvas.height - 64;
+                var yRange = canvas.height - 64,
+                l = bird.berryLevel - 1;
                 bird.berries.push({
                     x: canvas.width + 32,
                     y: yRange - Math.random() * yRange,
                     size: 32,
-                    pps: 32
+                    pps: 32,
+                    worth: 1 + 0.25 * l
                 });
             }
             bird.berriesLastSpawn = now;
@@ -39,7 +41,7 @@ var game = (function () {
             berry = bird.berries[i];
             berry.x -= berry.pps * secs;
             if (bb(bird, berry)) {
-                bird.points += 1;
+                bird.points += berry.worth;
                 bird.berries.splice(i, 1);
                 bird.berriesCollected += 1;
             }
@@ -49,11 +51,13 @@ var game = (function () {
         }
     };
 
+    // set berry next level property
     var berryNextLevelSet = function (bird) {
         var e = Math.floor(Math.log(bird.berriesCollected) / Math.log(2));
         bird.berriesNextLevel = e >= 6 ? Math.pow(2, bird.berryLevel + 5) : 64;
     };
 
+    // check and set berry level
     var berryLevelCheck = function (bird) {
         var e = Math.floor(Math.log(bird.berriesCollected) / Math.log(2));
         berryNextLevelSet(bird);
@@ -99,8 +103,8 @@ var game = (function () {
             berriesCollected: 0, // used in level up
             berriesNextLevel: Infinity, // used in level up
             berriesLastSpawn: new Date(),
-            berriesDelay: 1,
-            berriesMax: 10,
+            berriesDelay: 3,
+            berriesMax: 4,
             // points
             points: 0,
             // auto play

@@ -49,8 +49,16 @@ var game = (function () {
         }
     };
 
-    // check current level upgrading if needed
-    var berryLevelCheck = function (bird) {};
+    var berryNextLevelSet = function (bird) {
+
+        bird.berriesNextLevel = 32 + Math.pow(2, bird.berryLevel);
+
+    };
+
+    // check if the current level needs to be upgraded
+    var berryLevelCheck = function (bird) {
+
+    };
 
     // BIRD
 
@@ -87,7 +95,8 @@ var game = (function () {
             // berries
             berries: [],
             berryLevel: 1,
-            berriesCollected: 0,
+            berriesCollected: 0, // used in level up
+            berriesNextLevel: Infinity, // used in level up
             berriesLastSpawn: new Date(),
             berriesDelay: 3,
             berriesMax: 10,
@@ -117,6 +126,8 @@ var game = (function () {
         // berries
         updateBerries(bird, secs, canvas);
         spawnBerry(bird, canvas);
+        berryNextLevelSet(bird);
+        berryLevelCheck(bird);
 
         // bird pps
         updateBirdPPS(bird, secs);

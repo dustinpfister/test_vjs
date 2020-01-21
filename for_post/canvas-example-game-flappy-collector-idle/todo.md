@@ -8,8 +8,8 @@
 * (done) progress bar for AutoTime when drawing scene
 
 <!-- BERRY LEVEL-->
-* new berry level bird object property
-* new berries collected property
+* (done) new berry level bird object property
+* (done) new berries collected property
 * new berry level check helper
 * berries will level up as they are collected
 * higher level berries are worth more

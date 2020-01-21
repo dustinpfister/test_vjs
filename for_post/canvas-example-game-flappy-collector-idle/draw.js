@@ -19,7 +19,7 @@ draw.info = function (bird, ctx) {
     ctx.textBaseline = 'top';
     ctx.fillText('points: ' + bird.points, 10, 10);
     ctx.fillText('berry level: ' + bird.berryLevel, 10, 20);
-    ctx.fillText('berries collected: ' + bird.berriesCollected, 10, 30);
+    ctx.fillText('berries collected: ' + bird.berriesCollected + '/' + bird.berriesNextLevel, 10, 30);
 };
 
 // draw berries

@@ -63,7 +63,7 @@ var game = (function () {
     var getShouldFlap = function (bird) {
         var berry = bird.berries[0];
         if (berry) {
-            return berry.y < bird.y ? true: false;
+            return berry.y < bird.y ? true : false;
         }
         return false;
     };
@@ -85,7 +85,8 @@ var game = (function () {
             berriesDelay: 1,
             berriesMax: 4,
             points: 0,
-            shouldFlap: false
+            shouldFlap: false,
+            autoPlay: true
         };
     };
 
@@ -103,13 +104,23 @@ var game = (function () {
         updateBerries(bird, secs, canvas);
         spawnBerry(bird, canvas);
         updateBirdPPS(bird, secs);
+
         bird.shouldFlap = getShouldFlap(bird);
+
+        if (bird.autoPlay && bird.shouldFlap) {
+
+            bird.flap = 1;
+
+        }
+
         bird.lt = new Date();
     };
 
     // flap a bird
     api.flap = function (bird) {
-        bird.flap = 1;
+        if (!bird.autoPlay) {
+            bird.flap = 1;
+        }
     };
 
     return api;

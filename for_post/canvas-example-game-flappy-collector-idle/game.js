@@ -61,15 +61,10 @@ var game = (function () {
     // return true if the bird should flap in order to get
     // the next berry
     var getShouldFlap = function (bird) {
-
         var berry = bird.berries[0];
-
         if (berry) {
-
-            return 1;
-
+            return berry.y < bird.y ? true: false;
         }
-
         return false;
     };
 

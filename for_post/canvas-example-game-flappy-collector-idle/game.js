@@ -66,6 +66,14 @@ var game = (function () {
         berryNextLevelSet(bird);
     };
 
+    // set the berries delay based on current berry level
+    var setBerriesDelay = function (bird) {
+        var l = bird.berryLevel - 1,
+        p = (l > 16 ? 16 : l) / 16;
+        bird.berriesDelay = 3 - 3.75 * p;
+
+    };
+
     // BIRD
 
     // update bird Pixels per second
@@ -104,7 +112,7 @@ var game = (function () {
             berriesCollected: 0, // used in level up
             berriesNextLevel: Infinity, // used in level up
             berriesLastSpawn: new Date(),
-            berriesDelay: 0.125,
+            berriesDelay: 3,
             berriesMax: 100,
             // points
             points: 0,
@@ -134,6 +142,7 @@ var game = (function () {
         spawnBerry(bird, canvas);
         berryNextLevelSet(bird);
         berryLevelCheck(bird);
+        setBerriesDelay(bird);
 
         // bird pps
         updateBirdPPS(bird, secs);

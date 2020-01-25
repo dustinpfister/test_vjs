@@ -1,11 +1,8 @@
+// range
 var getRange = function(nums){
     var min = Math.min.apply(null, nums),
     max = Math.max.apply(null, nums);
-
-    return {
-		
-	}
-
+    return max - min;
 };
 
 // median
@@ -32,6 +29,7 @@ var getMean = function (nums) {
     return getSum(nums) / nums.length;
 };
 
+// get everything
 var getEverything = function (nums) {
     var e = {};
     e.min = Math.min.apply(null, nums);

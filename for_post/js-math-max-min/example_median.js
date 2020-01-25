@@ -1,3 +1,14 @@
+var getRange = function(nums){
+    var min = Math.min.apply(null, nums),
+    max = Math.max.apply(null, nums);
+
+    return {
+		
+	}
+
+};
+
+// median
 var getMedian = function (nums) {
     var half = Math.floor(nums.length / 2);
     nums.sort(function (a, b) {
@@ -6,6 +17,7 @@ var getMedian = function (nums) {
     return nums.length % 2 ? nums[half] : (nums[half - 1] + nums[half]) / 2;
 };
 
+// sum
 var getSum = function (nums) {
     var i = nums.length,
     sum = 0;
@@ -15,27 +27,28 @@ var getSum = function (nums) {
     return sum;
 };
 
+// mean
 var getMean = function (nums) {
     return getSum(nums) / nums.length;
 };
 
-var getAverages = function (nums) {
-    var avgs = {};
-    avgs.min = Math.min.apply(null, nums);
-    avgs.max = Math.max.apply(null, nums);
-    avgs.range = avgs.max - avgs.min;
-    avgs.median = getMedian(nums);
-    avgs.sum = getSum(nums);
-    avgs.mean = getMean(nums);
-    return avgs;
+var getEverything = function (nums) {
+    var e = {};
+    e.min = Math.min.apply(null, nums);
+    e.max = Math.max.apply(null, nums);
+    e.range = getRange(nums);
+    e.median = getMedian(nums);
+    e.sum = getSum(nums);
+    e.mean = getMean(nums);
+    return e;
 };
 
 var nums = [1, 2, 4, 7];
 
-var avgs = getAverages(nums);
+var e = getEverything(nums);
 
-console.log(avgs.median); // 3
-console.log(avgs.min, avgs.max); // 1 7
-console.log(avgs.range); // 6
-console.log(avgs.sum); // 14
-console.log(avgs.mean); // 3.5
+console.log(e.median); // 3
+console.log(e.min, e.max); // 1 7
+console.log(e.range); // 6
+console.log(e.sum); // 14
+console.log(e.mean); // 3.5

@@ -8,9 +8,7 @@ var getRange = function(nums){
 // median
 var getMedian = function (nums) {
     var half = Math.floor(nums.length / 2);
-    nums.sort(function (a, b) {
-        return a - b;
-    });
+    nums.sort();
     return nums.length % 2 ? nums[half] : (nums[half - 1] + nums[half]) / 2;
 };
 

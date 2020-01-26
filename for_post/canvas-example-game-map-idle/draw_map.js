@@ -1,5 +1,6 @@
 var draw = (function () {
 
+    // draw cells
     var drawCells = function (grid, ctx, canvas, pxRatio, xOffset, yOffset, cellSize) {
         var colors = ['yellow', 'green'];
         grid.cells.forEach(function (cell) {
@@ -20,16 +21,25 @@ var draw = (function () {
         });
     };
 
+    // draw a navigation circle when moving the map
     var drawNavCircle = function (grid, ctx, canvas) {
 
-        var cx = canvas.width / 2,
-        cy = canvas.height / 2;
-
         if (grid.mapMoveMode) {
+
+            var cx = canvas.width / 2,
+            cy = canvas.height / 2,
+            min = Math.min(cx, cy),
+            a = Math.atan2(cy - (cy + grid.mapMoveDeltas.y), cx - (cx + grid.mapMoveDeltas.x));
+
             ctx.strokeStyle = 'white';
             ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.arc(cx, cy, Math.min(cx, cy) - 3, 0, Math.PI * 2);
+            ctx.arc(cx, cy, min / 2 - 3, 0, Math.PI * 2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(Math.cos(a) * min + cx, Math.sin(a) * min + cy);
             ctx.stroke();
 
         }
@@ -72,7 +82,8 @@ var draw = (function () {
         ctx.fillStyle = 'black';
         ctx.textBaseline = 'top';
         ctx.font = '15px courier';
-        ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
+        //ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
+        ctx.fillText('$' + grid.mapMoveDeltas.y.toFixed(2), 5, canvas.height - 15);
 
         drawNavCircle(grid, ctx, canvas);
 

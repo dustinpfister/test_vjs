@@ -175,10 +175,11 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
 
     ratio = ratio || 1;
 
-    var cx = canvas.width / 2,
-    cy = canvas.height / 2,
+    var cx = grid.mapMoveStartPoint.x,
+    cy = grid.mapMoveStartPoint.y,
     a = Math.atan2(py - cy, px - cx),
-    d = Math.sqrt(Math.pow(px - cx, 2) + Math.pow(py - cy, 2)),
+    //d = Math.sqrt(Math.pow(px - cx, 2) + Math.pow(py - cy, 2)),
+    d = grid.moveDistance,
     per,
     dMax = canvas.height / 2,
     delta

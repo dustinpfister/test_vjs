@@ -10,8 +10,8 @@
 * (done) updateGrid method that will figure the number of ticks, and update money
 * (done) status bar that displays current map money
 * (done) move main.js code to map.js
+* (done) break down drawMap method in draw_map.js
 
-* break down drawMap method in draw_map.js
 * display a navigation circle when moving the map
 * status bar displays current tick progress
 * info display when any tile is selected

@@ -26,8 +26,6 @@ var loop = function () {
     g.updateGrid(grid);
 
     // draw
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
     draw.map(grid, ctx, canvas, ratio);
 };
 loop();

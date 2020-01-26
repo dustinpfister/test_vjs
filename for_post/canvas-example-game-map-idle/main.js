@@ -28,7 +28,7 @@ var loop = function () {
     // draw
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    drawMap(grid, ctx, canvas, ratio);
+    draw.map(grid, ctx, canvas, ratio);
 };
 loop();
 

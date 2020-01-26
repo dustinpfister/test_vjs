@@ -1,49 +1,62 @@
-var drawMap = function (grid, ctx, canvas, pxRatio) {
-    var colors = ['yellow', 'green'],
-    cellSize = grid.cellSize || 10,
-    x,
-    y,
-    xOffset = grid.xOffset,
-    yOffset = grid.yOffset;
+var draw = (function () {
 
-    pxRatio = pxRatio || 1;
-    cellSize = cellSize * pxRatio;
+    var api = {};
 
-    grid.cells.forEach(function (cell) {
-        ctx.fillStyle = colors[cell.type] || 'white';
-        x = cell.x * cellSize + xOffset * pxRatio;
-        y = cell.y * cellSize + yOffset * pxRatio;
-        ctx.fillRect(x, y, cellSize, cellSize);
+    api.map = function (grid, ctx, canvas, pxRatio) {
+        var colors = ['yellow', 'green'],
+        cellSize = grid.cellSize || 10,
+        x,
+        y,
+        xOffset = grid.xOffset,
+        yOffset = grid.yOffset;
 
-        if (!cell.bought) {
-            ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        pxRatio = pxRatio || 1;
+        cellSize = cellSize * pxRatio;
+
+        grid.cells.forEach(function (cell) {
+            ctx.fillStyle = colors[cell.type] || 'white';
+            x = cell.x * cellSize + xOffset * pxRatio;
+            y = cell.y * cellSize + yOffset * pxRatio;
             ctx.fillRect(x, y, cellSize, cellSize);
+
+            if (!cell.bought) {
+                ctx.fillStyle = 'rgba(0,0,0,0.5)';
+                ctx.fillRect(x, y, cellSize, cellSize);
+            }
+
+            if (cell.building.index >= 0) {
+                ctx.fillStyle = 'red';
+                ctx.fillRect(x, y, cellSize, cellSize);
+            }
+
+            ctx.strokeStyle = 'white';
+            ctx.strokeRect(x, y, cellSize, cellSize);
+        });
+
+        if (grid.selectedCellIndex > -1) {
+            ctx.strokeStyle = 'red';
+            var cell = grid.cells[grid.selectedCellIndex],
+            x = cell.x * cellSize + xOffset * pxRatio;
+            y = cell.y * cellSize + yOffset * pxRatio;
+            ctx.strokeStyle = 'red';
+            ctx.strokeRect(x, y, cellSize, cellSize);
         }
 
-        if (cell.building.index >= 0) {
-            ctx.fillStyle = 'red';
-            ctx.fillRect(x, y, cellSize, cellSize);
-        }
+        // status info
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
+        ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.font = '15px courier';
+        ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15)
 
-        ctx.strokeStyle = 'white';
-        ctx.strokeRect(x, y, cellSize, cellSize);
-    });
+    };
 
-    if (grid.selectedCellIndex > -1) {
-        ctx.strokeStyle = 'red';
-        var cell = grid.cells[grid.selectedCellIndex],
-        x = cell.x * cellSize + xOffset * pxRatio;
-        y = cell.y * cellSize + yOffset * pxRatio;
-        ctx.strokeStyle = 'red';
-        ctx.strokeRect(x, y, cellSize, cellSize);
-    }
+    return api;
 
-    // status info
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
-    ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
-    ctx.fillStyle = 'black';
-    ctx.textBaseline = 'top';
-    ctx.font = '15px courier';
-    ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15)
+}
+    ());
 
-};
+/*
+var drawMap =
+*/

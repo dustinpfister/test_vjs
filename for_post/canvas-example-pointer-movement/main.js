@@ -36,9 +36,7 @@ var drawBackground = function (pm, ctx, canvas) {
 
 // draw a navigation circle when moving the map
 var drawNavCircle = function (pm, ctx, canvas) {
-    //var cx = canvas.width / 2,
-    //cy = canvas.height / 2,
-    if (pm.move) {
+    if (pm.down) {
         var cx = pm.sp.x,
         cy = pm.sp.y,
         x,
@@ -69,9 +67,14 @@ var drawNavCircle = function (pm, ctx, canvas) {
     }
 };
 
+var drawDebugInfo = function (pm, pt, ctx, canvas) {
+    ctx.fillStyle = 'white';
+    ctx.fillText(pt.x + ', ' + pt.y, 10, 10);
+}
+
 // Pointer Movement State
 var pm = {
-    move: false,
+    down: false,
     angle: 0,
     dist: 0,
     delta: 0,
@@ -85,17 +88,21 @@ var pm = {
     }
 };
 
+// a point
+var pt = {
+    x: 0,
+    y: 0
+};
+
 // update the pm based on startPoint, and currentPoint
 var updatePM = function (pm) {
-
     pm.dist = 0;
     pm.delta = 0;
     pm.angle = 0;
-
     if (pm.cp.x >= 0 && pm.cp.y >= 0) {
         pm.dist = distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
     }
-    if (pm.move && pm.dist >= 5) {
+    if (pm.down && pm.dist >= 5) {
         var per = pm.dist / 64;
         per = per > 1 ? 1 : per;
         per = per < 0 ? 0 : per;
@@ -104,9 +111,15 @@ var updatePM = function (pm) {
     }
 };
 
+// step a point by the current values of the pm
+var stepPointByPM = function (pm, pt) {
+    pt.x += Math.cos(pm.angle) * pm.delta;
+    pt.y += Math.sin(pm.angle) * pm.delta;
+};
+
 canvas.addEventListener('mousedown', function (e) {
     var pos = getCanvasRelative(e);
-    pm.move = true;
+    pm.down = true;
     pm.sp = {
         x: pos.x,
         y: pos.y
@@ -121,7 +134,7 @@ canvas.addEventListener('mousemove', function (e) {
 });
 canvas.addEventListener('mouseup', function (e) {
     var pos = getCanvasRelative(e);
-    pm.move = false;
+    pm.down = false;
     pm.sp = {
         x: -1,
         y: -1
@@ -135,7 +148,9 @@ canvas.addEventListener('mouseup', function (e) {
 var loop = function () {
     requestAnimationFrame(loop);
     updatePM(pm);
+    stepPointByPM(pm, pt);
     drawBackground(pm, ctx, canvas);
     drawNavCircle(pm, ctx, canvas);
+    drawDebugInfo(pm, pt, ctx, canvas);
 };
 loop();

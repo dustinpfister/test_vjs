@@ -87,15 +87,20 @@ var pm = {
 
 // update the pm based on startPoint, and currentPoint
 var updatePM = function (pm) {
-    if (pm.move) {
+
+    pm.dist = 0;
+    pm.delta = 0;
+    pm.angle = 0;
+
+    if (pm.cp.x >= 0 && pm.cp.y >= 0) {
         pm.dist = distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
+    }
+    if (pm.move && pm.dist >= 5) {
         var per = pm.dist / 64;
         per = per > 1 ? 1 : per;
         per = per < 0 ? 0 : per;
         pm.delta = per * 3;
-
         pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
-
     }
 };
 

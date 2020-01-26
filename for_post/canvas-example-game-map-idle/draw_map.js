@@ -1,18 +1,7 @@
 var draw = (function () {
 
-    var api = {};
-
-    api.map = function (grid, ctx, canvas, pxRatio) {
-        var colors = ['yellow', 'green'],
-        cellSize = grid.cellSize || 10,
-        x,
-        y,
-        xOffset = grid.xOffset,
-        yOffset = grid.yOffset;
-
-        pxRatio = pxRatio || 1;
-        cellSize = cellSize * pxRatio;
-
+    var drawCells = function (grid, ctx, canvas, pxRatio, xOffset, yOffset, cellSize) {
+        var colors = ['yellow', 'green'];
         grid.cells.forEach(function (cell) {
             ctx.fillStyle = colors[cell.type] || 'white';
             x = cell.x * cellSize + xOffset * pxRatio;
@@ -32,6 +21,23 @@ var draw = (function () {
             ctx.strokeStyle = 'white';
             ctx.strokeRect(x, y, cellSize, cellSize);
         });
+
+    };
+
+    var api = {};
+
+    api.map = function (grid, ctx, canvas, pxRatio) {
+        var colors = ['yellow', 'green'],
+        cellSize = grid.cellSize || 10,
+        x,
+        y,
+        xOffset = grid.xOffset,
+        yOffset = grid.yOffset;
+
+        pxRatio = pxRatio || 1;
+        cellSize = cellSize * pxRatio;
+
+        drawCells(grid, ctx, canvas, pxRatio, xOffset, yOffset, cellSize);
 
         if (grid.selectedCellIndex > -1) {
             ctx.strokeStyle = 'red';
@@ -56,7 +62,3 @@ var draw = (function () {
 
 }
     ());
-
-/*
-var drawMap =
-*/

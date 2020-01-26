@@ -235,21 +235,13 @@ g.userCanvasActionStart = function (grid, e, ratio) {
     bx = canvas.getBoundingClientRect(),
     x = e.clientX - bx.left,
     y = e.clientY - bx.top;
+
     e.preventDefault();
 
     grid.mapMoveStartPoint = {
         x: x,
         y: y
     };
-
-    var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
-    if (cell.i === grid.selectedCellIndex) {
-        grid.selectedCellIndex = -1;
-    } else {
-        if (cell.i >= 0) {
-            grid.selectedCellIndex = cell.i;
-        }
-    }
 
 };
 
@@ -278,8 +270,26 @@ g.userCanvasActionMove = function (grid, e, ratio) {
     }
 };
 
-g.userCanvasActionEnd = function (grid, e) {
+g.userCanvasActionEnd = function (grid, e, ratio) {
+
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
     e.preventDefault();
+
+    if (!grid.mapMoveMode) {
+        console.log('hello');
+        var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
+        if (cell.i === grid.selectedCellIndex) {
+            grid.selectedCellIndex = -1;
+        } else {
+            if (cell.i >= 0) {
+                grid.selectedCellIndex = cell.i;
+            }
+        }
+    }
+
     grid.mapMoveMode = false;
     grid.mapMoveDeltas.x = 0;
     grid.mapMoveDeltas.y = 0;

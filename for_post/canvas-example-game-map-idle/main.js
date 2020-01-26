@@ -45,7 +45,7 @@ canvas.addEventListener('mousedown', function (e) {
 });
 
 canvas.addEventListener('mouseup', function (e) {
-    g.userCanvasActionEnd(grid, e);
+    g.userCanvasActionEnd(grid, e, pxRatio);
 });
 canvas.addEventListener('mousemove', function (e) {
     g.userCanvasActionMove(grid, e, pxRatio);

@@ -19,11 +19,22 @@ var draw = (function () {
             ctx.strokeRect(x, y, cellSize, cellSize);
         });
     };
-	
-	var drawNavCircle = function(){
-		
-		
-	};
+
+    var drawNavCircle = function (grid, ctx, canvas) {
+
+        var cx = canvas.width / 2,
+        cy = canvas.height / 2;
+
+        if (grid.mapMoveMode) {
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(cx, cy, Math.min(cx, cy) - 3, 0, Math.PI * 2);
+            ctx.stroke();
+
+        }
+
+    };
 
     var api = {};
 
@@ -37,6 +48,8 @@ var draw = (function () {
 
         pxRatio = pxRatio || 1;
         cellSize = cellSize * pxRatio;
+
+        ctx.lineWidth = 1;
 
         // black background
         ctx.fillStyle = 'black';
@@ -59,7 +72,9 @@ var draw = (function () {
         ctx.fillStyle = 'black';
         ctx.textBaseline = 'top';
         ctx.font = '15px courier';
-        ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15)
+        ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
+
+        drawNavCircle(grid, ctx, canvas);
 
     };
 

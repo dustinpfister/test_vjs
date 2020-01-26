@@ -7,23 +7,6 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-// get canvas relative point
-var getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top;
-    return {
-        x: x,
-        y: y,
-        bx: bx
-    };
-};
-
-var distance = function (x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-};
-
 var drawBackground = function (pm, ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -91,21 +74,7 @@ var drawDebugInfo = function (pm, pt, ctx, canvas) {
     ctx.fillText(pt.x + ', ' + pt.y, 10, 10);
 }
 
-// Pointer Movement State
-var pm = {
-    down: false,
-    angle: 0,
-    dist: 0,
-    delta: 0,
-    sp: { // start point
-        x: -1,
-        y: -1
-    },
-    cp: { // current point
-        x: -1,
-        y: -1
-    }
-};
+var pm = PM.newPM();
 
 // a point
 var pt = {
@@ -113,27 +82,17 @@ var pt = {
     y: 0
 };
 
-// update the pm based on startPoint, and currentPoint
-var updatePM = function (pm) {
-    pm.dist = 0;
-    pm.delta = 0;
-    pm.angle = 0;
-    if (pm.cp.x >= 0 && pm.cp.y >= 0) {
-        pm.dist = distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
-    }
-    if (pm.down && pm.dist >= 5) {
-        var per = pm.dist / 64;
-        per = per > 1 ? 1 : per;
-        per = per < 0 ? 0 : per;
-        pm.delta = per * 3;
-        pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
-    }
-};
-
-// step a point by the current values of the pm
-var stepPointByPM = function (pm, pt) {
-    pt.x += Math.cos(pm.angle) * pm.delta;
-    pt.y += Math.sin(pm.angle) * pm.delta;
+// get canvas relative point
+var getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
+    return {
+        x: x,
+        y: y,
+        bx: bx
+    };
 };
 
 canvas.addEventListener('mousedown', function (e) {
@@ -166,8 +125,8 @@ canvas.addEventListener('mouseup', function (e) {
 
 var loop = function () {
     requestAnimationFrame(loop);
-    updatePM(pm);
-    stepPointByPM(pm, pt);
+    PM.updatePM(pm);
+    PM.stepPointByPM(pm, pt);
     drawBackground(pm, ctx, canvas);
     drawNavCircle(pm, ctx, canvas);
     drawDebugInfo(pm, pt, ctx, canvas);

@@ -26,7 +26,8 @@ var draw = (function () {
 
             ctx.fillStyle = 'white';
             var pt = grid.mapMoveStartPoint;
-            ctx.fillText(pt.x + ',' + pt.y, 10, 10)
+            ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 10);
+            ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 20);
 
         }
 

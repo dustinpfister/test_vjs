@@ -23,10 +23,11 @@ g.parseGridProps = function (grid) {
 
     // map movement
     a.mapMoveMode = false;
+    a.moveDistance = 0;
     a.mapMoveStartPoint = {
         x: -1,
         y: -1
-    },
+    };
     a.mapMoveDeltas = {
         x: 0,
         y: 0
@@ -241,30 +242,39 @@ g.userCanvasActionStart = function (grid, e, ratio) {
         y: y
     };
 
-    /*
-    grid.mapMoveMode = true;
     var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
     if (cell.i === grid.selectedCellIndex) {
-    grid.selectedCellIndex = -1;
+        grid.selectedCellIndex = -1;
     } else {
-    if (cell.i >= 0) {
-    grid.selectedCellIndex = cell.i;
+        if (cell.i >= 0) {
+            grid.selectedCellIndex = cell.i;
+        }
     }
-    }
-     */
+
 };
 
 g.userCanvasActionMove = function (grid, e, ratio) {
     ratio = ratio || 1;
+
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
     x = (e.clientX - bx.left) * ratio,
     y = (e.clientY - bx.top) * ratio,
     deltas = g.getPointerMovementDeltas(grid, canvas, x, y, ratio);
+
+    grid.moveDistance = 0;
+    if (grid.mapMoveStartPoint.x != -1 && grid.mapMoveStartPoint.y != -1) {
+        grid.moveDistance = g.distance(x, y, grid.mapMoveStartPoint.x, grid.mapMoveStartPoint.y);
+    }
+
     e.preventDefault();
-    if (grid.mapMoveMode) {
+
+    if (grid.moveDistance >= 32) {
+        grid.mapMoveMode = true;
         grid.mapMoveDeltas.x = deltas.x;
         grid.mapMoveDeltas.y = deltas.y;
+    } else {
+        grid.mapMoveMode = false;
     }
 };
 
@@ -273,4 +283,8 @@ g.userCanvasActionEnd = function (grid, e) {
     grid.mapMoveMode = false;
     grid.mapMoveDeltas.x = 0;
     grid.mapMoveDeltas.y = 0;
+    grid.mapMoveStartPoint = {
+        x: -1,
+        y: -1
+    };
 };

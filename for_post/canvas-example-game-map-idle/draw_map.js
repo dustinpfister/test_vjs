@@ -82,8 +82,8 @@ var draw = (function () {
         ctx.fillStyle = 'black';
         ctx.textBaseline = 'top';
         ctx.font = '15px courier';
-        //ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
-        ctx.fillText('$' + grid.mapMoveDeltas.y.toFixed(2), 5, canvas.height - 15);
+        ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
+        //ctx.fillText('$' + grid.mapMoveDeltas.y.toFixed(2), 5, canvas.height - 15);
 
         drawNavCircle(grid, ctx, canvas);
 

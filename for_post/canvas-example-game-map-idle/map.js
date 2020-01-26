@@ -261,7 +261,7 @@ g.userCanvasActionEnd = function (grid, e) {
 
     e.preventDefault();
     grid.mapMoveMode = false;
-    //grid.mapMoveDeltas.x = 0;
-    //grid.mapMoveDeltas.y = 0;
+    grid.mapMoveDeltas.x = 0;
+    grid.mapMoveDeltas.y = 0;
 
 };

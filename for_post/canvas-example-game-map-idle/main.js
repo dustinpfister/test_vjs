@@ -12,7 +12,7 @@ ctx.translate(0.5, 0.5);
 
 // CREATE GRID
 
-var grid = g.createGridObject(12, 8);
+var grid = g.createGridObject(8, 8);
 grid.xOffset = 0;
 grid.yOffset = 0;
 g.setGridWorth(grid, 0, 0, 2);

@@ -26,43 +26,14 @@ var loop = function () {
 };
 loop();
 
-// get canvas relative point
-var getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top;
-    return {
-        x: x,
-        y: y,
-        bx: bx
-    };
-};
+
 
 canvas.addEventListener('mousedown', function (e) {
-    var pos = getCanvasRelative(e);
-    pm.down = true;
-    pm.sp = {
-        x: pos.x,
-        y: pos.y
-    };
+PM.onPointerStart(pm, e);
 });
 canvas.addEventListener('mousemove', function (e) {
-    var pos = getCanvasRelative(e);
-    pm.cp = {
-        x: pos.x,
-        y: pos.y
-    };
+PM.onPointerMove(pm, e);
 });
 canvas.addEventListener('mouseup', function (e) {
-    var pos = getCanvasRelative(e);
-    pm.down = false;
-    pm.sp = {
-        x: -1,
-        y: -1
-    };
-    pm.cp = {
-        x: -1,
-        y: -1
-    };
+PM.onPointerEnd(pm, e);
 });

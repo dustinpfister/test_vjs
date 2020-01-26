@@ -25,9 +25,10 @@ var loop = function () {
     // update
     g.updateGrid(grid, pxRatio);
 
-    draw.background(ctx, canvas);
-    // draw Map
-    drawMap(grid, ctx, canvas, pxRatio);
+    // draw
+    draw.background(ctx, canvas); // background
+    drawMap(grid, ctx, canvas, pxRatio); // the map
+    draw.gridStatusInfo(ctx, canvas, grid); // status bar
 };
 loop();
 

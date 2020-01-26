@@ -61,13 +61,6 @@ var drawMap = (function () {
             ctx.strokeStyle = 'red';
             ctx.strokeRect(x, y, cellSize, cellSize);
         }
-        // status info
-        ctx.fillStyle = 'rgba(255,255,255,0.5)';
-        ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
-        ctx.fillStyle = 'black';
-        ctx.textBaseline = 'top';
-        ctx.font = '15px courier';
-        ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
         drawNavCircle(grid, ctx, canvas);
     };
 

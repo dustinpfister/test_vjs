@@ -24,6 +24,7 @@ g.parseGridProps = function (grid) {
     // map movement
     a.mapMoveMode = false;
     a.moveDistance = 0;
+    a.moveDelta = 0;
     a.mapMoveStartPoint = {
         x: -1,
         y: -1
@@ -178,17 +179,18 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
     var cx = grid.mapMoveStartPoint.x,
     cy = grid.mapMoveStartPoint.y,
     a = Math.atan2(py - cy, px - cx),
-    //d = Math.sqrt(Math.pow(px - cx, 2) + Math.pow(py - cy, 2)),
-    d = grid.moveDistance,
+    d = grid.moveDistance - 32,
     per,
-    dMax = canvas.height / 2,
-    delta
+    dMax = 32,
+    delta;
+
     d = d >= dMax ? dMax : d;
     per = d / dMax;
-    delta = (0.5 + per * 2.5) * -1;
+    delta = per * 3;
+    grid.moveDelta = delta >= 0 ? delta: 0;
     return {
-        x: Math.cos(a) * delta * ratio,
-        y: Math.sin(a) * delta * ratio
+        x: Math.cos(a) * delta * ratio * -1,
+        y: Math.sin(a) * delta * ratio * -1
     };
 };
 
@@ -280,7 +282,6 @@ g.userCanvasActionEnd = function (grid, e, ratio) {
     e.preventDefault();
 
     if (!grid.mapMoveMode) {
-        console.log('hello');
         var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
         if (cell.i === grid.selectedCellIndex) {
             grid.selectedCellIndex = -1;

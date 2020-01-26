@@ -28,6 +28,7 @@ var draw = (function () {
             var pt = grid.mapMoveStartPoint;
             ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 10);
             ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 20);
+            ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 30);
 
         }
 

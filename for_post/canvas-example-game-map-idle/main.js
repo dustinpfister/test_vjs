@@ -32,9 +32,7 @@ var loop = function () {
     draw.background(ctx, canvas); // background
     drawMap(grid, ctx, canvas, pxRatio); // the map
     draw.gridStatusInfo(ctx, canvas, grid); // status bar
-
-
-    draw.debugInfo(ctx, grid);
+    draw.debugInfo(ctx, grid); // drawing debug into
 };
 loop();
 

@@ -24,6 +24,7 @@
 * (done) cell gets selected if a user action begins and ends within a 32px distance from the start point
 * (done) map movement should be based from the click start point and not from the center of the canvas
 * move rate should be set based on (distance - 32) / maxDistnace * maxDelta
+* display the current state when drawing the navigation circle
 
 ### other
 

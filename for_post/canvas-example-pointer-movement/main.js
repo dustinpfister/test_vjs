@@ -83,15 +83,16 @@ var pm = {
 
 // update the pm based on startPoint, and currentPoint
 var updatePM = function (pm) {
-
     if (pm.move) {
         pm.dist = distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
         var per = pm.dist / 64;
         per = per > 1 ? 1 : per;
         per = per < 0 ? 0 : per;
         pm.delta = per * 3;
-    }
 
+        pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
+
+    }
 };
 
 canvas.addEventListener('mousedown', function (e) {
@@ -123,11 +124,9 @@ canvas.addEventListener('mouseup', function (e) {
 });
 
 var loop = function () {
-
     requestAnimationFrame(loop);
     updatePM(pm);
     drawBackground(pm, ctx, canvas);
     drawNavCircle(pm, ctx, canvas);
-
 };
 loop();

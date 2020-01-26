@@ -7,12 +7,12 @@ container = document.getElementById('gamearea') || document.body;
 container.appendChild(canvas);
 var pxRatio = window.devicePixelRatio || 1; // scale
 canvas.width = 320 * pxRatio;
-canvas.height = 120 * pxRatio;
+canvas.height = 240 * pxRatio;
 ctx.translate(0.5, 0.5);
 
 // CREATE GRID
 
-var grid = g.createGridObject(8, 8);
+var grid = g.createGridObject(16, 12);
 grid.xOffset = 0;
 grid.yOffset = 0;
 g.setGridWorth(grid, 0, 0, 2);

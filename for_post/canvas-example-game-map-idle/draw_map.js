@@ -23,29 +23,24 @@ var draw = (function () {
 
     // draw a navigation circle when moving the map
     var drawNavCircle = function (grid, ctx, canvas) {
-
         if (grid.mapMoveMode) {
-
             var cx = canvas.width / 2,
             cy = canvas.height / 2,
             min = Math.min(cx, cy),
             a = Math.atan2(cy - (cy + grid.mapMoveDeltas.y), cx - (cx + grid.mapMoveDeltas.x));
-
             ctx.strokeStyle = 'white';
             ctx.lineWidth = 3;
             ctx.beginPath();
             ctx.arc(cx, cy, min / 2 - 3, 0, Math.PI * 2);
             ctx.stroke();
-
             ctx.beginPath();
             ctx.moveTo(cx, cy);
             ctx.lineTo(Math.cos(a) * min + cx, Math.sin(a) * min + cy);
             ctx.stroke();
-
         }
-
     };
 
+    // public api
     var api = {};
 
     api.map = function (grid, ctx, canvas, pxRatio) {
@@ -55,18 +50,13 @@ var draw = (function () {
         y,
         xOffset = grid.xOffset,
         yOffset = grid.yOffset;
-
         pxRatio = pxRatio || 1;
         cellSize = cellSize * pxRatio;
-
         ctx.lineWidth = 1;
-
         // black background
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
         drawCells(grid, ctx, canvas, pxRatio, xOffset, yOffset, cellSize);
-
         if (grid.selectedCellIndex > -1) {
             ctx.strokeStyle = 'red';
             var cell = grid.cells[grid.selectedCellIndex],
@@ -75,7 +65,6 @@ var draw = (function () {
             ctx.strokeStyle = 'red';
             ctx.strokeRect(x, y, cellSize, cellSize);
         }
-
         // status info
         ctx.fillStyle = 'rgba(255,255,255,0.5)';
         ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
@@ -83,10 +72,7 @@ var draw = (function () {
         ctx.textBaseline = 'top';
         ctx.font = '15px courier';
         ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
-        //ctx.fillText('$' + grid.mapMoveDeltas.y.toFixed(2), 5, canvas.height - 15);
-
         drawNavCircle(grid, ctx, canvas);
-
     };
 
     return api;

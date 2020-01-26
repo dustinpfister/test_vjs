@@ -53,8 +53,8 @@ var drawMap = (function () {
         cellSize = cellSize * pxRatio;
         ctx.lineWidth = 1;
         // black background
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        //ctx.fillStyle = 'black';
+        //ctx.fillRect(0, 0, canvas.width, canvas.height);
         drawCells(grid, ctx, canvas, pxRatio, xOffset, yOffset, cellSize);
         if (grid.selectedCellIndex > -1) {
             ctx.strokeStyle = 'red';

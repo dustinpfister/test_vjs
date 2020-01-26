@@ -5,9 +5,9 @@ var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('gamearea') || document.body;
 container.appendChild(canvas);
-var ratio = window.devicePixelRatio || 1; // scale
-canvas.width = 320 * ratio;
-canvas.height = 120 * ratio;
+var pxRatio = window.devicePixelRatio || 1; // scale
+canvas.width = 320 * pxRatio;
+canvas.height = 120 * pxRatio;
 ctx.translate(0.5, 0.5);
 
 // CREATE GRID
@@ -23,22 +23,22 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     // update
-    g.updateGrid(grid);
+    g.updateGrid(grid, pxRatio);
 
     // draw
-    draw.map(grid, ctx, canvas, ratio);
+    draw.map(grid, ctx, canvas, pxRatio);
 };
 loop();
 
 // EVENTS
 
 canvas.addEventListener('mousedown', function (e) {
-    g.userCanvasActionStart(grid, e);
+    g.userCanvasActionStart(grid, e, pxRatio);
 });
 
 canvas.addEventListener('mouseup', function (e) {
     g.userCanvasActionEnd(grid, e);
 });
 canvas.addEventListener('mousemove', function (e) {
-    g.userCanvasActionMove(grid, e);
+    g.userCanvasActionMove(grid, e, pxRatio);
 });

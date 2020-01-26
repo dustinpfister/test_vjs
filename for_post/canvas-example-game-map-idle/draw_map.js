@@ -19,6 +19,11 @@ var draw = (function () {
             ctx.strokeRect(x, y, cellSize, cellSize);
         });
     };
+	
+	var drawNavCircle = function(){
+		
+		
+	};
 
     var api = {};
 

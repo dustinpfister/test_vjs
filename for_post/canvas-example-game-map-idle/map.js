@@ -185,7 +185,9 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
 
 // UPDATE GRID
 
-g.updateGrid = function (grid) {
+g.updateGrid = function (grid, ratio) {
+
+    ratio = ratio || 1;
 
     var now = new Date(),
     t = now - grid.lastUpdate,
@@ -219,7 +221,7 @@ g.updateGrid = function (grid) {
 // EVENTS
 
 // user action start
-g.userCanvasActionStart = function (grid, e) {
+g.userCanvasActionStart = function (grid, e, ratio) {
 
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
@@ -239,7 +241,9 @@ g.userCanvasActionStart = function (grid, e) {
 
 };
 
-g.userCanvasActionMove = function (grid, e) {
+g.userCanvasActionMove = function (grid, e, ratio) {
+
+    ratio = ratio || 1;
 
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),

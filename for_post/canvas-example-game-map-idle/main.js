@@ -12,10 +12,13 @@ ctx.translate(0.5, 0.5);
 
 // CREATE GRID
 
-var grid = g.createGridObject(16, 12);
+var grid = g.createGridObject(17, 13);
 grid.xOffset = 0;
 grid.yOffset = 0;
 g.setGridWorth(grid, 0, 0, 2);
+
+// starting building
+g.createBuilding(grid,8,6,0)
 
 // MAIN APP LOOP
 

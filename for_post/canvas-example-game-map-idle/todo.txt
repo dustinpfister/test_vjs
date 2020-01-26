@@ -13,11 +13,13 @@
 * (done) break down drawMap method in draw_map.js
 * (done) display a navigation circle when moving the map
 
+* building menu offset that is used for scrolling the build menu
+* new draw_buildmenu.js file for drawing the building menus
 * build menu when tile that is bought is selected and does not have a building on it
 * build menu can be used to create a new building
 
 * map starts out centered
-* a starting building is located at the center or home cell
+* a starting building is located at the center
 * status bar displays current tick progress
 * info display when any tile is selected
 * can build at least one building type that generates money

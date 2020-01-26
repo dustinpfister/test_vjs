@@ -28,6 +28,14 @@ g.parseGridProps = function (grid) {
         y: 0
     };
 
+    // build menus
+    a.buildMenuYOffset = 0;
+    a.buildOptions = [{
+            name: 'farm',
+            moneyPerTick: 1
+        }
+    ];
+
     // game logic
     a.money = 0; // player money
     a.lastUpdate = new Date();
@@ -59,7 +67,7 @@ g.createClearCellGrid = function (grid) {
             y: Math.floor(i / a.width),
             type: 0, // type index (0 - 4 = sand, 5 - 9 = grass, 10 -14 = wood),
             worth: 0, // the value of the cell
-            bought: false, // has the player bought the cell
+            bought: true, // has the player bought the cell
             building: {}
             // the building object
         });
@@ -84,11 +92,6 @@ g.setGridWorth = function (grid, x, y, b) {
         d = g.distance(cell.x, cell.y, x, y);
         cell.worth = 1 + Math.pow(b, d);
     }
-    // player starts with cell at x,y
-    cell = g.get(grid, x, y);
-    cell.bought = true;
-    // starting building
-    g.createBuilding(grid, x, y, 0);
 };
 
 // BUILDINGS
@@ -99,10 +102,9 @@ g.createBuilding = function (grid, x, y, index) {
     var cell = g.get(grid, x, y);
     // should be an empty object if not building is there
     if (cell.building.index === undefined && cell.bought) {
-        cell.building = {
-            index: index,
-            moneyPerTick: 1
-        };
+        cell.building = Object.assign({
+                index: index
+            }, grid.buildOptions[index]);
     }
 };
 

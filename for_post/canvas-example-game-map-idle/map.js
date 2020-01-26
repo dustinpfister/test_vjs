@@ -206,9 +206,6 @@ g.updateGrid = function (grid) {
 
     if (grid.mapMoveMode) {
 
-        //grid.mapMoveDeltas.x = 0;
-        //grid.mapMoveDeltas.x = 0;
-
         grid.xOffset += grid.mapMoveDeltas.x;
         grid.yOffset += grid.mapMoveDeltas.y;
         var offsets = g.clampedOffsets(grid, canvas, ratio);
@@ -219,3 +216,48 @@ g.updateGrid = function (grid) {
 
 };
 
+// EVENTS
+
+// user action start
+g.userCanvasActionStart = function (grid, e) {
+
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
+    e.preventDefault();
+
+    grid.mapMoveMode = true;
+    var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
+    if (cell.i === grid.selectedCellIndex) {
+        grid.selectedCellIndex = -1;
+    } else {
+        if (cell.i >= 0) {
+            grid.selectedCellIndex = cell.i;
+        }
+    }
+
+};
+
+g.userCanvasActionMove = function (grid, e) {
+
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    x = (e.clientX - bx.left) * ratio,
+    y = (e.clientY - bx.top) * ratio,
+    deltas = g.getPointerMovementDeltas(grid, canvas, x, y, ratio);
+    e.preventDefault();
+    if (grid.mapMoveMode) {
+        grid.mapMoveDeltas.x = deltas.x;
+        grid.mapMoveDeltas.y = deltas.y;
+    }
+};
+
+g.userCanvasActionEnd = function (grid, e) {
+
+    e.preventDefault();
+    grid.mapMoveMode = false;
+    grid.mapMoveDeltas.x = 0;
+    grid.mapMoveDeltas.y = 0;
+
+};

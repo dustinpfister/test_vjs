@@ -17,24 +17,14 @@ grid.xOffset = 0;
 grid.yOffset = 0;
 g.setGridWorth(grid, 0, 0, 2);
 
-//var mousedown = false,
-//gridDelta = {
-//    x: 0,
-//    y: 0
-//};
-
 // MAIN APP LOOP
 
 var loop = function () {
     requestAnimationFrame(loop);
-    // update
-    //grid.xOffset += gridDelta.x;
-    //grid.yOffset += gridDelta.y;
-    //var offsets = g.clampedOffsets(grid, canvas, ratio);
-    //grid.xOffset = offsets.xOffset;
-    //grid.yOffset = offsets.yOffset;
 
+    // update
     g.updateGrid(grid);
+
     // draw
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -45,37 +35,12 @@ loop();
 // EVENTS
 
 canvas.addEventListener('mousedown', function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top;
-    e.preventDefault();
-	
-    mousedown = true;
-    var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
-    if (cell.i === grid.selectedCellIndex) {
-        grid.selectedCellIndex = -1;
-    } else {
-        if (cell.i >= 0) {
-            grid.selectedCellIndex = cell.i;
-        }
-    }
-	
+    g.userCanvasActionStart(grid, e);
 });
+
 canvas.addEventListener('mouseup', function (e) {
-    e.preventDefault();
-    mousedown = false;
-    gridDelta.x = 0;
-    gridDelta.y = 0;
+    g.userCanvasActionEnd(grid, e);
 });
 canvas.addEventListener('mousemove', function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = (e.clientX - bx.left) * ratio,
-    y = (e.clientY - bx.top) * ratio,
-    deltas = g.getPointerMovementDeltas(grid, canvas, x, y, ratio);
-    if (mousedown) {
-        gridDelta.x = deltas.x;
-        gridDelta.y = deltas.y;
-    }
+    g.userCanvasActionMove(grid, e);
 });

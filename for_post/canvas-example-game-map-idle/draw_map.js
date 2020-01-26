@@ -1,4 +1,4 @@
-var draw = (function () {
+var drawMap = (function () {
 
     // draw cells
     var drawCells = function (grid, ctx, canvas, pxRatio, xOffset, yOffset, cellSize) {
@@ -40,10 +40,9 @@ var draw = (function () {
         }
     };
 
-    // public api
-    var api = {};
 
-    api.map = function (grid, ctx, canvas, pxRatio) {
+    // public draw map method
+    return function (grid, ctx, canvas, pxRatio) {
         var colors = ['yellow', 'green'],
         cellSize = grid.cellSize || 10,
         x,
@@ -74,8 +73,6 @@ var draw = (function () {
         ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
         drawNavCircle(grid, ctx, canvas);
     };
-
-    return api;
 
 }
     ());

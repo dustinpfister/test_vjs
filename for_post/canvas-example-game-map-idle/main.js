@@ -25,8 +25,8 @@ var loop = function () {
     // update
     g.updateGrid(grid, pxRatio);
 
-    // draw
-    draw.map(grid, ctx, canvas, pxRatio);
+    // draw Map
+    drawMap(grid, ctx, canvas, pxRatio);
 };
 loop();
 

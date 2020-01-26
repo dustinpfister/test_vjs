@@ -16,6 +16,18 @@ var draw = (function () {
             ctx.textBaseline = 'top';
             ctx.font = '15px courier';
             ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
+        },
+
+        // draw debug info
+        debugInfo: function (ctx, grid) {
+
+            ctx.fillStyle = 'rgba(0,0,0,0.25)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = 'white';
+            var pt = grid.mapMoveStartPoint;
+            ctx.fillText(pt.x + ',' + pt.y, 10, 10)
+
         }
 
     }

@@ -18,7 +18,7 @@ grid.yOffset = 0;
 g.setGridWorth(grid, 0, 0, 2);
 
 // starting building
-g.createBuilding(grid,8,6,0)
+g.createBuilding(grid, 8, 6, 0)
 
 // MAIN APP LOOP
 
@@ -32,6 +32,9 @@ var loop = function () {
     draw.background(ctx, canvas); // background
     drawMap(grid, ctx, canvas, pxRatio); // the map
     draw.gridStatusInfo(ctx, canvas, grid); // status bar
+
+
+    draw.debugInfo(ctx, grid);
 };
 loop();
 

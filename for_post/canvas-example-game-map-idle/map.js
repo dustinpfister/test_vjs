@@ -23,12 +23,17 @@ g.parseGridProps = function (grid) {
 
     // map movement
     a.mapMoveMode = false;
+    a.mapMoveStartPoint = {
+        x: -1,
+        y: -1
+    },
     a.mapMoveDeltas = {
         x: 0,
         y: 0
     };
 
     // build menus
+    a.menuOpen = false;
     a.buildMenuYOffset = 0;
     a.buildOptions = [{
             name: 'farm',
@@ -231,22 +236,26 @@ g.userCanvasActionStart = function (grid, e, ratio) {
     y = e.clientY - bx.top;
     e.preventDefault();
 
+    grid.mapMoveStartPoint = {
+        x: x,
+        y: y
+    };
+
+    /*
     grid.mapMoveMode = true;
     var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
     if (cell.i === grid.selectedCellIndex) {
-        grid.selectedCellIndex = -1;
+    grid.selectedCellIndex = -1;
     } else {
-        if (cell.i >= 0) {
-            grid.selectedCellIndex = cell.i;
-        }
+    if (cell.i >= 0) {
+    grid.selectedCellIndex = cell.i;
     }
-
+    }
+     */
 };
 
 g.userCanvasActionMove = function (grid, e, ratio) {
-
     ratio = ratio || 1;
-
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
     x = (e.clientX - bx.left) * ratio,
@@ -260,10 +269,8 @@ g.userCanvasActionMove = function (grid, e, ratio) {
 };
 
 g.userCanvasActionEnd = function (grid, e) {
-
     e.preventDefault();
     grid.mapMoveMode = false;
     grid.mapMoveDeltas.x = 0;
     grid.mapMoveDeltas.y = 0;
-
 };

@@ -1,61 +1,56 @@
+
 // CANVAS
+
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('gamearea') || document.body;
 container.appendChild(canvas);
-
-// scale
-var ratio = window.devicePixelRatio || 1;
+var ratio = window.devicePixelRatio || 1; // scale
 canvas.width = 320 * ratio;
 canvas.height = 120 * ratio;
-
-console.log(ratio);
-console.log(window.innerWidth);
+ctx.translate(0.5, 0.5);
 
 // CREATE GRID
+
 var grid = g.createGridObject(12, 8);
 grid.xOffset = 0;
 grid.yOffset = 0;
-
-// SET GRID WORTH
 g.setGridWorth(grid, 0, 0, 2);
-console.log(grid);
 
-var mousedown = false,
-gridDelta = {
-    x: 0,
-    y: 0
-};
+//var mousedown = false,
+//gridDelta = {
+//    x: 0,
+//    y: 0
+//};
 
-ctx.translate(0.5, 0.5);
 // MAIN APP LOOP
+
 var loop = function () {
     requestAnimationFrame(loop);
-    grid.xOffset += gridDelta.x * ratio;
-    grid.yOffset += gridDelta.y * ratio;
+    // update
+    //grid.xOffset += gridDelta.x;
+    //grid.yOffset += gridDelta.y;
+    //var offsets = g.clampedOffsets(grid, canvas, ratio);
+    //grid.xOffset = offsets.xOffset;
+    //grid.yOffset = offsets.yOffset;
 
-    var offsets = g.clampedOffsets(grid, canvas, ratio);
-    grid.xOffset = offsets.xOffset;
-    grid.yOffset = offsets.yOffset;
-	
-	
-	g.updateGrid(grid);
-	
-    // fill black
+    g.updateGrid(grid);
+    // draw
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    // draw map
     drawMap(grid, ctx, canvas, ratio);
 };
 loop();
 
 // EVENTS
+
 canvas.addEventListener('mousedown', function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
     x = e.clientX - bx.left,
     y = e.clientY - bx.top;
     e.preventDefault();
+	
     mousedown = true;
     var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
     if (cell.i === grid.selectedCellIndex) {
@@ -65,6 +60,7 @@ canvas.addEventListener('mousedown', function (e) {
             grid.selectedCellIndex = cell.i;
         }
     }
+	
 });
 canvas.addEventListener('mouseup', function (e) {
     e.preventDefault();
@@ -77,7 +73,7 @@ canvas.addEventListener('mousemove', function (e) {
     bx = canvas.getBoundingClientRect(),
     x = (e.clientX - bx.left) * ratio,
     y = (e.clientY - bx.top) * ratio,
-    deltas = g.getPointerMovementDeltas(grid, canvas, x, y);
+    deltas = g.getPointerMovementDeltas(grid, canvas, x, y, ratio);
     if (mousedown) {
         gridDelta.x = deltas.x;
         gridDelta.y = deltas.y;

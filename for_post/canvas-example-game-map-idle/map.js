@@ -21,6 +21,13 @@ g.parseGridProps = function (grid) {
     a.selectedCellIndex = grid.selectedCellIndex || -1;
     a.cells = [];
 
+    // map movement
+    a.mapMoveMode = false;
+    a.mapMoveDeltas = {
+        x: 0,
+        y: 0
+    };
+
     // game logic
     a.money = 0; // player money
     a.lastUpdate = new Date();
@@ -156,7 +163,10 @@ g.getCellFromCanvasPoint = function (grid, x, y) {
 // MAP MOVEMENT
 
 // get a set of deltas
-g.getPointerMovementDeltas = function (grid, canvas, px, py) {
+g.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
+
+    ratio = ratio || 1;
+
     var cx = canvas.width / 2,
     cy = canvas.height / 2,
     a = Math.atan2(py - cy, px - cx),
@@ -168,8 +178,8 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py) {
     per = d / dMax;
     delta = (0.5 + per * 2.5) * -1;
     return {
-        x: Math.cos(a) * delta,
-        y: Math.sin(a) * delta
+        x: Math.cos(a) * delta * ratio,
+        y: Math.sin(a) * delta * ratio
     };
 };
 
@@ -194,4 +204,18 @@ g.updateGrid = function (grid) {
         grid.lastUpdate = now;
     }
 
+    if (grid.mapMoveMode) {
+
+        //grid.mapMoveDeltas.x = 0;
+        //grid.mapMoveDeltas.x = 0;
+
+        grid.xOffset += grid.mapMoveDeltas.x;
+        grid.yOffset += grid.mapMoveDeltas.y;
+        var offsets = g.clampedOffsets(grid, canvas, ratio);
+        grid.xOffset = offsets.xOffset;
+        grid.yOffset = offsets.yOffset;
+
+    }
+
 };
+

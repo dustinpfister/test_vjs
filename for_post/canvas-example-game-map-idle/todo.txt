@@ -8,10 +8,11 @@
 * (done) tickTime property
 * (done) lastUpdate property
 * (done) updateGrid method that will figure the number of ticks, and update money
-
 * (done) status bar that displays current map money
-* status bar displays current tick progress
 
+* display a navigation circle when moving the map
+* status bar displays current tick progress
 * info display when any tile is selected
 * build menu when tile that is bought is selected
 * can build at least one building type that generates money
+* use local storage to save state

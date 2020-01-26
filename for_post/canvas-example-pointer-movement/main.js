@@ -1,10 +1,8 @@
 
-// create and append canvas element, and get 2d context
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('gamearea') || document.body;
 container.appendChild(canvas);
-// set width and height
 canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
@@ -27,12 +25,33 @@ var distance = function (x1, y1, x2, y2) {
 };
 
 var drawBackground = function (pm, ctx, canvas) {
-
-    // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
 }
+var drawPTGridlines = function (pt, ctx, canvas) {
+    var cellX = -1,
+    cellY = -1,
+    x,
+    y;
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 1;
+    while (cellX < 11) {
+        x = cellX * 32 - pt.x % 32;
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+        cellX += 1;
+    }
+    while (cellY < 8) {
+        y = cellY * 32 - pt.y % 32;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+        cellY += 1;
+    }
+};
 
 // draw a navigation circle when moving the map
 var drawNavCircle = function (pm, ctx, canvas) {
@@ -41,7 +60,7 @@ var drawNavCircle = function (pm, ctx, canvas) {
         cy = pm.sp.y,
         x,
         y,
-        min = 64, //Math.min(cx, cy),
+        min = 64,
         per = 0,
         a = pm.angle;
         ctx.strokeStyle = 'white';
@@ -152,5 +171,6 @@ var loop = function () {
     drawBackground(pm, ctx, canvas);
     drawNavCircle(pm, ctx, canvas);
     drawDebugInfo(pm, pt, ctx, canvas);
+    drawPTGridlines(pt, ctx, canvas);
 };
 loop();

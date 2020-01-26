@@ -23,8 +23,9 @@
 ### Map movement
 * (done) cell gets selected if a user action begins and ends within a 32px distance from the start point
 * (done) map movement should be based from the click start point and not from the center of the canvas
-* move rate should be set based on (distance - 32) / maxDistnace * maxDelta
-* display the current state when drawing the navigation circle
+* (done) move rate should be something based on (distance - 32) / maxDistnace * maxDelta
+* (done) display the current delta state when drawing the navigation circle
+* movement angle set in gird state and used in draw nav circle method
 
 ### other
 

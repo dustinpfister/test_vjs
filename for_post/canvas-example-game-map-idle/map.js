@@ -181,7 +181,7 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
     a = Math.atan2(py - cy, px - cx),
     d = grid.moveDistance - 32,
     per,
-    dMax = 32,
+    dMax = canvas.height / 2,
     delta;
 
     d = d >= dMax ? dMax : d;

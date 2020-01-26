@@ -36,33 +36,37 @@ var drawBackground = function (pm, ctx, canvas) {
 
 // draw a navigation circle when moving the map
 var drawNavCircle = function (pm, ctx, canvas) {
-    var cx = canvas.width / 2,
-    cy = canvas.height / 2,
-    x,
-    y,
-    min = Math.min(cx, cy),
-    per = 0,
-    a = pm.angle;
-    ctx.strokeStyle = 'white';
-    ctx.lineWidth = 3;
-    // draw circle
-    ctx.beginPath();
-    ctx.arc(cx, cy, min / 2, 0, Math.PI * 2);
-    ctx.stroke();
-    // draw direction line
-    x = Math.cos(a) * min + cx;
-    y = Math.sin(a) * min + cy;
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(x, y);
-    ctx.stroke();
-    // draw delta circle
-    per = pm.delta / 3;
-    x = Math.cos(a) * min * per + cx;
-    y = Math.sin(a) * min * per + cy;
-    ctx.beginPath();
-    ctx.arc(x, y, 10, 0, Math.PI * 2);
-    ctx.stroke();
+    //var cx = canvas.width / 2,
+    //cy = canvas.height / 2,
+    if (pm.move) {
+        var cx = pm.sp.x,
+        cy = pm.sp.y,
+        x,
+        y,
+        min = 64, //Math.min(cx, cy),
+        per = 0,
+        a = pm.angle;
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 3;
+        // draw circle
+        ctx.beginPath();
+        ctx.arc(cx, cy, min / 2, 0, Math.PI * 2);
+        ctx.stroke();
+        // draw direction line
+        x = Math.cos(a) * min + cx;
+        y = Math.sin(a) * min + cy;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        // draw delta circle
+        per = pm.delta / 3;
+        x = Math.cos(a) * min * per + cx;
+        y = Math.sin(a) * min * per + cy;
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, Math.PI * 2);
+        ctx.stroke();
+    }
 };
 
 // Pointer Movement State

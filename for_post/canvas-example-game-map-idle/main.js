@@ -25,6 +25,7 @@ var loop = function () {
     // update
     g.updateGrid(grid, pxRatio);
 
+    draw.background(ctx, canvas);
     // draw Map
     drawMap(grid, ctx, canvas, pxRatio);
 };

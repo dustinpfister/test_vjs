@@ -13,19 +13,19 @@ u.normalizeHalf = function (n, scale) {
     return u.mod(n + h, c) - h;
 };
 
-u.shortestAngleDirection = function (a1, a2) {
+u.getAngleToPoint = function (pt1, pt2) {
+    return u.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x));
+};
 
+u.shortestAngleDirection = function (a1, a2) {
     var z = a1 - a2,
     x = u.normalizeHalf(z);
-
     if (x < 0) {
         return -1; // Left
     }
-
     if (x > 0) {
         return 1; // Right
     }
-
     // if a1 === a2 or any other case
     return 0;
 };

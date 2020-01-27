@@ -111,6 +111,21 @@ var td = (function () {
         }
     };
 
+    // set turret Radians Per Second based on enemies array
+    var setTurretRPS = function (game) {
+        game.rps = 0;
+        if (game.enemies.length > 0) {
+            // just target enemy index 0
+            var target = game.enemies[0],
+            a = u.getAngleToPoint({
+                    x: game.cx,
+                    y: game.cy
+                }, target),
+            d = u.shortestAngleDirection(game.heading, a);
+            game.rps = 0.5 * d;
+        };
+    };
+
     // PUBLIC API
     // public api
     var api = {};
@@ -146,6 +161,7 @@ var td = (function () {
             game.heading %= Math.PI * 2;
             game.lt = now;
         }
+		setTurretRPS(game);
         updateTurretShots(game, secs);
         spawnEnemies(game, secs);
     };

@@ -121,8 +121,10 @@ var td = (function () {
                     x: game.cx,
                     y: game.cy
                 }, target),
-            d = u.shortestAngleDirection(game.heading, a);
-            game.rps = 0.5 * d;
+            d = u.angleDistance(game.heading, a),
+            p = 1 - d / Math.PI,
+            dir = u.shortestAngleDirection(game.heading, a);
+            game.rps = 3 * p * dir;
         };
     };
 
@@ -161,7 +163,7 @@ var td = (function () {
             game.heading %= Math.PI * 2;
             game.lt = now;
         }
-		setTurretRPS(game);
+        setTurretRPS(game);
         updateTurretShots(game, secs);
         spawnEnemies(game, secs);
     };

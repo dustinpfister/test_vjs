@@ -13,10 +13,23 @@ u.normalizeHalf = function (n, scale) {
     return u.mod(n + h, c) - h;
 };
 
+// the angular distance between two angles
+u.angleDistance = function (a, b, scale) {
+    var m = scale || u.defaultAngleScale,
+    h = m / 2,
+    diff = u.normalizeHalf(a - b);
+    if (diff > h) {
+        diff = diff - m;
+    }
+    return Math.abs(diff);
+};
+
+// get the angle from one point to another
 u.getAngleToPoint = function (pt1, pt2) {
     return u.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x));
 };
 
+// get -1, 1, or 0 depending on the the state of two angles
 u.shortestAngleDirection = function (a1, a2) {
     var z = a1 - a2,
     x = u.normalizeHalf(z);

@@ -1,5 +1,10 @@
 var draw = {};
 
+draw.background = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+
 // draw the turret
 draw.turret = function (turret, ctx, canvas) {
     ctx.save();

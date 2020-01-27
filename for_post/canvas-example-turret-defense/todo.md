@@ -4,4 +4,4 @@
 * (done) angle distance used when setting RPS
 * (done) distance method for utils
 * (done) Shots hit and kill enemies
-* purge killed enemies
+* (done) purge killed enemies

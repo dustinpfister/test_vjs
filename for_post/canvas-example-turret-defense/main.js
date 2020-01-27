@@ -9,8 +9,8 @@ var game = td.createGameObject();
 var loop = function () {
     requestAnimationFrame(loop);
     td.update(game);
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    draw.background(ctx, canvas);
     draw.turret(game, ctx, canvas);
     draw.enemies(game, ctx, canvas);
     draw.turretInfo(game, ctx, canvas);

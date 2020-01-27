@@ -33,6 +33,7 @@ draw.turretInfo = function (turret, ctx, canvas) {
     ctx.fillText('shotTime: ' + turret.shotTime.toFixed(2), 5, 15);
     ctx.fillText('active shots: ' + turret.shots.length, 5, 25);
     ctx.fillText('active enemies: ' + turret.enemies.length, 5, 35);
+    ctx.fillText('turret RPS: ' + turret.rps, 5, 45);
 };
 
 draw.enemies = function (game, ctx, canvas) {
@@ -43,4 +44,3 @@ draw.enemies = function (game, ctx, canvas) {
         ctx.fill();
     });
 };
-

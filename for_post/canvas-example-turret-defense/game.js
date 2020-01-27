@@ -28,7 +28,9 @@ var td = (function () {
                     x: game.cx,
                     y: game.cy,
                     heading: game.heading,
+                    dam: 1,
                     pps: 64,
+                    hit: false,
                     lifeSpan: 3,
                     lifeSpanAjust: 0,
                     shotTime: new Date()
@@ -42,8 +44,24 @@ var td = (function () {
         var now = new Date(),
         shot = game.shots[i],
         t = (now - shot.shotTime) / 1000;
-        if (t >= shot.lifeSpan + shot.lifeSpanAjust) {
+        if (t >= shot.lifeSpan + shot.lifeSpanAjust || shot.hit) {
             game.shots.splice(i, 1);
+        }
+    };
+
+    // check to see if a shot has hit an enemy
+    var shotEnemyCheck = function (game, shot) {
+        var i = game.enemies.length;
+        while (i--) {
+            var enemy = game.enemies[i];
+            if (u.distance(shot.x, shot.y, enemy.x, enemy.y) <= enemy.size) {
+                enemy.hp -= shot.dam;
+                if (enemy.hp < 0) {
+                    enemy.hp = 0;
+                }
+                shot.hit = true;
+                break;
+            }
         }
     };
 
@@ -58,6 +76,7 @@ var td = (function () {
             t = (now - shot.shotTime) / 1000;
             shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
             shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
+            shotEnemyCheck(game, shot);
             purgeShotCheck(game, i);
         }
     };
@@ -102,6 +121,7 @@ var td = (function () {
                     game.enemies.push({
                         x: x,
                         y: y,
+                        hp: 1,
                         size: 10
                     });
 

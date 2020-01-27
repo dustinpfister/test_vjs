@@ -106,30 +106,36 @@ var td = (function () {
                 if (nec + game.enemies.length > game.enemiesMax) {
                     nec = game.enemiesMax - game.enemies.length;
                 }
-
-                //console.log(nec);
                 var i = nec,
                 r,
                 x,
                 y;
                 while (i--) {
-
                     r = Math.random() * (Math.PI * 2);
                     x = Math.cos(r) * 100 + game.cx;
                     y = Math.sin(r) * 100 + game.cy;
-
                     game.enemies.push({
                         x: x,
                         y: y,
                         hp: 1,
                         size: 10
                     });
-
                 };
-
             }
         }
     };
+
+    var purgeEnemies = function (game) {
+        var i = game.enemies.length;
+        while (i--) {
+            var enemy = game.enemies[i];
+            if (enemy.hp <= 0) {
+                game.enemies.splice(i, 1);
+            }
+        }
+    };
+
+    // TURRET
 
     // set turret Radians Per Second based on enemies array
     var setTurretRPS = function (game) {
@@ -186,6 +192,7 @@ var td = (function () {
         setTurretRPS(game);
         updateTurretShots(game, secs);
         spawnEnemies(game, secs);
+        purgeEnemies(game);
     };
 
     return api;

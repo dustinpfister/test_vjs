@@ -75,8 +75,11 @@ var Machine = (function () {
 
         var sm = {
             currentState: null,
+            currentMode: null,
             game: {},
+            draw: {},
             states: {},
+            modes: {},
             canvas: null,
             container: parseContainer(container),
             ctx: null,
@@ -111,8 +114,17 @@ var Machine = (function () {
             requestAnimationFrame(loop);
             var stateObj = states[sm.currentState] || {};
 
+            // call top level tick
             if (stateObj.tick) {
                 stateObj.tick(sm);
+            }
+
+            // call mode tick
+            if (stateObj.modes && stateObj.currentMode) {
+                var mode = stateObj.modes[stateObj.currentMode];
+                if (mode.tick) {
+                    stateObj.tick(sm);
+                };
             }
 
         };

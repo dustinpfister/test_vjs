@@ -35,13 +35,15 @@ g.parseGridProps = function (grid) {
     };
 
     // build menus
+    /*
     a.menuOpen = false;
     a.buildMenuYOffset = 0;
     a.buildOptions = [{
-            name: 'farm',
-            moneyPerTick: 1
-        }
+    name: 'farm',
+    moneyPerTick: 1
+    }
     ];
+     */
 
     // game logic
     a.money = 0; // player money
@@ -104,14 +106,19 @@ g.setGridWorth = function (grid, x, y, b) {
 // BUILDINGS
 
 // create a building object at the given cell position
-g.createBuilding = function (grid, x, y, index) {
+g.createBuilding = function (grid, x, y, index, buildOptions) {
+    buildOptions = buildOptions || [{
+                name: 'farm',
+                moneyPerTick: 1
+            }
+        ];
     index = index === undefined ? 0 : index;
     var cell = g.get(grid, x, y);
     // should be an empty object if not building is there
     if (cell.building.index === undefined && cell.bought) {
         cell.building = Object.assign({
                 index: index
-            }, grid.buildOptions[index]);
+            }, buildOptions[index]);
     }
 };
 
@@ -187,7 +194,7 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
     d = d >= dMax ? dMax : d;
     per = d / dMax;
     delta = per * 3;
-    grid.moveDelta = delta >= 0 ? delta: 0;
+    grid.moveDelta = delta >= 0 ? delta : 0;
     return {
         x: Math.cos(a) * delta * ratio * -1,
         y: Math.sin(a) * delta * ratio * -1

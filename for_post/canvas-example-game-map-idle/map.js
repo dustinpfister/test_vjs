@@ -1,12 +1,5 @@
 var g = {};
 
-// UTILITYS
-
-// distance
-//g.distance = function (x1, y1, x2, y2) {
-//    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-//};
-
 // CREATE A GRID OBJECT
 
 // parse grid properties
@@ -66,7 +59,8 @@ g.createClearCellGrid = function (grid) {
             type: 0, // type index (0 - 4 = sand, 5 - 9 = grass, 10 -14 = wood),
             worth: 0, // the value of the cell
             bought: true, // has the player bought the cell
-            building: {} // the building object
+            building: {}
+            // the building object
         });
         i += 1;
     }
@@ -229,16 +223,13 @@ g.updateGrid = function (grid, ratio) {
 // user action start
 g.userCanvasActionStart = function (grid, e, ratio) {
 
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top;
+    var pos = u.getCanvasRelative(e);
 
     e.preventDefault();
 
     grid.mapMoveStartPoint = {
-        x: x,
-        y: y
+        x: pos.x,
+        y: pos.y
     };
 
 };
@@ -246,15 +237,12 @@ g.userCanvasActionStart = function (grid, e, ratio) {
 g.userCanvasActionMove = function (grid, e, ratio) {
     ratio = ratio || 1;
 
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = (e.clientX - bx.left) * ratio,
-    y = (e.clientY - bx.top) * ratio,
-    deltas = g.getPointerMovementDeltas(grid, canvas, x, y, ratio);
+    var pos = u.getCanvasRelative(e),
+    deltas = g.getPointerMovementDeltas(grid, canvas, pos.x, pos.y, ratio);
 
     grid.moveDistance = 0;
     if (grid.mapMoveStartPoint.x != -1 && grid.mapMoveStartPoint.y != -1) {
-        grid.moveDistance = u.distance(x, y, grid.mapMoveStartPoint.x, grid.mapMoveStartPoint.y);
+        grid.moveDistance = u.distance(pos.x, pos.y, grid.mapMoveStartPoint.x, grid.mapMoveStartPoint.y);
     }
 
     e.preventDefault();
@@ -270,14 +258,12 @@ g.userCanvasActionMove = function (grid, e, ratio) {
 
 g.userCanvasActionEnd = function (grid, e, ratio) {
 
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top;
+    var pos = u.getCanvasRelative(e);
+
     e.preventDefault();
 
     if (!grid.mapMoveMode) {
-        var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
+        var cell = g.getCellFromCanvasPoint(grid, pos.x / ratio, pos.y / ratio);
         if (cell.i === grid.selectedCellIndex) {
             grid.selectedCellIndex = -1;
         } else {

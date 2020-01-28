@@ -2,12 +2,14 @@
 
 ## utils.js
 
-* Start new utils.js file
-* distance formula should be removed from map.js and placed in utils.js
+* (done) Start new utils.js file
+* (done) distance formula should be removed from map.js and placed in utils.js
+* new get canvas relative util, used for events
 
 ## main.js
 
 * state machine started for main.js
+* game_view state
 * game_nav state
 * game_build state
 

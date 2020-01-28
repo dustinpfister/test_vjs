@@ -18,6 +18,18 @@ var Machine = (function () {
 
     // CANVAS
 
+    // create a canvas for the given state machine
+    var createCanvas = function (sm, w, h) {
+        sm.canvas = document.createElement('canvas');
+        sm.ctx = sm.canvas.getContext('2d');
+        sm.container.appendChild(sm.canvas);
+        sm.canvas.width = w || 320;
+        sm.canvas.height = h || 240;
+        // fill black for starters
+        sm.ctx.fillStyle = 'black';
+        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
+    };
+
     // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
@@ -31,22 +43,16 @@ var Machine = (function () {
         };
     };
 
-    // create a canvas for the given state machine
-    var createCanvas = function (sm, w, h) {
-        sm.canvas = document.createElement('canvas');
-        sm.ctx = sm.canvas.getContext('2d');
-        sm.container.appendChild(sm.canvas);
-        sm.canvas.width = w || 320;
-        sm.canvas.height = h || 240;
-        // fill black for starters
-        sm.ctx.fillStyle = 'black';
-        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
-    };
-
     // attach canvas events for the given state machine
     var attachCanvasEvents = function (sm) {
 
-        sm.canvas.addEventListener('mousedown', function (e) {});
+        sm.canvas.addEventListener('mousedown', function (e) {
+
+            var pos = getCanvasRelative(e);
+
+            console.log(pos.x, pos.y);
+
+        });
 
     };
 
@@ -80,6 +86,7 @@ var Machine = (function () {
         };
 
         createCanvas(sm, 320, 240);
+        attachCanvasEvents(sm);
 
         // states
         var states = sm.states = {};

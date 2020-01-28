@@ -79,7 +79,6 @@ var Machine = (function () {
             game: {},
             draw: {},
             states: {},
-            modes: {},
             canvas: null,
             container: parseContainer(container),
             ctx: null,
@@ -120,10 +119,10 @@ var Machine = (function () {
             }
 
             // call mode tick
-            if (stateObj.modes && stateObj.currentMode) {
-                var mode = stateObj.modes[stateObj.currentMode];
+            if (stateObj.modes && sm.currentMode) {
+                var mode = stateObj.modes[sm.currentMode];
                 if (mode.tick) {
-                    stateObj.tick(sm);
+                    mode.tick(sm);
                 };
             }
 

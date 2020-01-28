@@ -48,9 +48,19 @@ var Machine = (function () {
 
         sm.canvas.addEventListener('mousedown', function (e) {
 
-            var pos = getCanvasRelative(e);
+            var pos = getCanvasRelative(e),
+            stateObj = sm.states[sm.currentState],
+            handler;
+            if (stateObj.userPointer) {
 
-            console.log(sm.currentState);
+                handler = stateObj.userPointer.start;
+                if (handler) {
+
+                    handler(pos, sm, e);
+
+                }
+
+            }
 
         });
 
@@ -98,12 +108,11 @@ var Machine = (function () {
         var loop = function () {
             requestAnimationFrame(loop);
             var stateObj = states[sm.currentState] || {};
-            //if (stateObj.every) {
-                //var every = stateObj.every;
-                if (stateObj.tick) {
-                    stateObj.tick(sm);
-                }
-            //}
+
+            if (stateObj.tick) {
+                stateObj.tick(sm);
+            }
+
         };
 
         return sm;

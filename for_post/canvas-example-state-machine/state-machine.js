@@ -1,5 +1,7 @@
 var Machine = (function () {
 
+    // PARSE arguments
+
     // Parse a container argument
     var parseContainer = function (container) {
         // if object assume element that is to be used as the container
@@ -14,6 +16,21 @@ var Machine = (function () {
         return document.body;
     };
 
+    // CANVAS
+
+    // get canvas relative point
+    var getCanvasRelative = function (e) {
+        var canvas = e.target,
+        bx = canvas.getBoundingClientRect(),
+        x = e.clientX - bx.left,
+        y = e.clientY - bx.top;
+        return {
+            x: x,
+            y: y,
+            bx: bx
+        };
+    };
+
     // create a canvas for the given state machine
     var createCanvas = function (sm, w, h) {
         sm.canvas = document.createElement('canvas');
@@ -24,6 +41,13 @@ var Machine = (function () {
         // fill black for starters
         sm.ctx.fillStyle = 'black';
         sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
+    };
+
+    // attach canvas events for the given state machine
+    var attachCanvasEvents = function (sm) {
+
+        sm.canvas.addEventListener('mousedown', function (e) {});
+
     };
 
     // create a new state machine

@@ -9,21 +9,20 @@ canvas.height = 240;
 ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-var sm = stateMachine();
+var sm = stateMachine('gamearea');
 
 sm.load({
 
     name: 'game',
     bootState: true,
 
-    init: function () {},
+    init: function (sm) {
+        console.log('container:');
+        console.log(sm.container);
+    },
 
     every: {
-        tick: function (sm) {
-
-            //console.log(sm.container);
-
-        },
+        tick: function (sm) {},
         userPointer: {
             start: function (pt, sm) {},
             move: function (pt, sm) {},

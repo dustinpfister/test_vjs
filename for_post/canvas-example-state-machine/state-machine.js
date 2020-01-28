@@ -1,5 +1,6 @@
 var stateMachine = (function () {
 
+    // Parse a container argument
     var parseContainer = function (container) {
         // if object assume element that is to be used as the container
         if (typeof container === 'object' && container != null) {
@@ -33,6 +34,10 @@ var stateMachine = (function () {
                 }
             },
             start: function () {
+                var init = states[currentState].init || null;
+                if (init) {
+                    init(sm);
+                }
                 loop();
             }
         };

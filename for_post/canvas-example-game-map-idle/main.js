@@ -19,9 +19,11 @@ var states = {
 
     currentState: 'init',
 
+    grid: g.createGridObject(17, 13),
+
     init: function () {
 
-        grid = g.createGridObject(17, 13);
+        grid = states.grid;
         grid.xOffset = 0;
         grid.yOffset = 0;
         g.setGridWorth(grid, 0, 0, 2);
@@ -35,7 +37,7 @@ var states = {
 
     always: function () {
 
-        g.updateGrid(grid, pxRatio);
+        g.updateGrid(states.grid, pxRatio);
 
     },
 
@@ -57,21 +59,21 @@ var loop = function () {
 
     // draw
     draw.background(ctx, canvas); // background
-    drawMap(grid, ctx, canvas, pxRatio); // the map
-    draw.gridStatusInfo(ctx, canvas, grid); // status bar
-    draw.debugInfo(ctx, grid); // drawing debug into
+    drawMap(states.grid, ctx, canvas, pxRatio); // the map
+    draw.gridStatusInfo(ctx, canvas, states.grid); // status bar
+    draw.debugInfo(ctx, states.grid); // drawing debug into
 };
 loop();
 
 // EVENTS
 
 canvas.addEventListener('mousedown', function (e) {
-    g.userCanvasActionStart(grid, e, pxRatio);
+    g.userCanvasActionStart(states.grid, e, pxRatio);
 });
 
 canvas.addEventListener('mouseup', function (e) {
-    g.userCanvasActionEnd(grid, e, pxRatio);
+    g.userCanvasActionEnd(states.grid, e, pxRatio);
 });
 canvas.addEventListener('mousemove', function (e) {
-    g.userCanvasActionMove(grid, e, pxRatio);
+    g.userCanvasActionMove(states.grid, e, pxRatio);
 });

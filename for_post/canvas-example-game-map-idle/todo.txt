@@ -8,7 +8,8 @@
 
 ## main.js
 
-* state machine started for main.js
+* (done) state machine started for main.js
+* (done) always state for each frame tick
 * disp state - for just displaying the current map
 * nav state - for navigating the map
 * create state - for creating buildings

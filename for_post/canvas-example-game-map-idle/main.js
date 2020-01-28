@@ -28,38 +28,32 @@ var states = {
 
         // starting building
         g.createBuilding(grid, 8, 6, 0);
-		
-		states.currentState = 'disp';
+
+        states.currentState = 'disp';
 
     },
-	
-	disp: function(){
-		
-		
-	},
-	
-	nav: function(){
-		
-		
-	},
-	
-	createMenu: function(){
-		
-		
-	},
-	
-	buildingMenu: function(){
-		
-		
-	}
+
+    always: function () {
+
+        g.updateGrid(grid, pxRatio);
+
+    },
+
+    disp: function () {},
+
+    nav: function () {},
+
+    createMenu: function () {},
+
+    buildingMenu: function () {}
 
 };
 
 var loop = function () {
     requestAnimationFrame(loop);
 
-    // update
-    g.updateGrid(grid, pxRatio);
+    states[states.currentState]();
+    states.always();
 
     // draw
     draw.background(ctx, canvas); // background

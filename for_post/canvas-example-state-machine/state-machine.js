@@ -80,6 +80,7 @@ var Machine = (function () {
     // create a new state machine
     return function (container, w , h) {
 
+        // state machine Object
         var sm = {
             currentState: null,
             currentMode: null,
@@ -92,14 +93,14 @@ var Machine = (function () {
             load: function (stateObj) {
                 // just reference the object for now as long as
                 // that works okay
-                states[stateObj.name || 'game'] = stateObj;
+                sm.states[stateObj.name || 'game'] = stateObj;
                 if (stateObj.bootState) {
                     sm.currentState = stateObj.name;
                 }
             },
             start: function (stateName) {
                 sm.currentState = stateName || sm.currentState;
-                var init = states[sm.currentState].init || null;
+                var init = sm.states[sm.currentState].init || null;
                 if (init) {
                     init(sm);
                 }
@@ -107,18 +108,14 @@ var Machine = (function () {
             }
         };
 
+        // create canvas and attach event handlers
         createCanvas(sm, w, h);
         attachAllCanvasEvents(sm);
-
-        // states
-        var states = sm.states = {};
-
-        var game = sm.game = {};
 
         // main loop
         var loop = function () {
             requestAnimationFrame(loop);
-            var stateObj = states[sm.currentState] || {};
+            var stateObj = sm.states[sm.currentState] || {};
 
             // call top level tick
             if (stateObj.tick) {

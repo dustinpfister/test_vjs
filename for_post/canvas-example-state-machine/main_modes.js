@@ -23,8 +23,9 @@ sm.load({
 
         sm.currentMode = null;
         if (g.userDown) {
-            sm.currentMode = 'nav';
-            //console.log(sm.currentMode);
+            if (new Date() - g.userDownST >= 1000) {
+                sm.currentMode = 'nav';
+            }
         }
 
         ctx.fillStyle = 'black';
@@ -42,8 +43,7 @@ sm.load({
     userPointer: {
         start: function (pt, sm, e) {
             sm.game.userDown = true;
-            console.log(sm.states[sm.currentState].modes);
-            console.log(sm.currentMode);
+            sm.game.userDownST = new Date();
         },
         end: function (pt, sm, e) {
             sm.game.userDown = false;
@@ -58,13 +58,8 @@ sm.load({
                 ship = g.ship;
 
                 ship.x += 1;
-				console.log('nav mode');
 
             }
-        },
-
-        build: {
-            tick: function () {}
         }
 
     }

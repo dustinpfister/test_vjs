@@ -14,7 +14,12 @@
 * nav state - for navigating the map
 * create state - for creating buildings
 * building state - for upgrading and deleting buildings
+* corresponding state functions for events
 * remove everything for device pixel ratio
+
+## draw.js
+
+* corresponding draw methods for all state events
 
 ### buildings.js
 * building menu offset that is used for scrolling the build menu

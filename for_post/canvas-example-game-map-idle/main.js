@@ -14,48 +14,59 @@ ctx.translate(0.5, 0.5);
 
 
 // MAIN APP LOOP
-var grid;
 var states = {
 
     currentState: 'init',
 
     grid: g.createGridObject(17, 13),
 
-    init: function () {
+    always: {
+        tick: function () {
 
-        grid = states.grid;
-        grid.xOffset = 0;
-        grid.yOffset = 0;
-        g.setGridWorth(grid, 0, 0, 2);
+            g.updateGrid(states.grid, pxRatio);
 
-        // starting building
-        g.createBuilding(grid, 8, 6, 0);
-
-        states.currentState = 'disp';
-
+        }
     },
 
-    always: function () {
+    init: {
+        tick: function () {
 
-        g.updateGrid(states.grid, pxRatio);
+            grid = states.grid;
+            grid.xOffset = 0;
+            grid.yOffset = 0;
+            g.setGridWorth(grid, 0, 0, 2);
 
+            // starting building
+            g.createBuilding(grid, 8, 6, 0);
+
+            states.currentState = 'disp';
+
+        }
     },
 
-    disp: function () {},
+    disp: {
+        tick: function () {}
+    },
 
-    nav: function () {},
+    nav: {
+        tick: function () {}
+    },
 
-    createMenu: function () {},
+    createMenu: {
+        tick: function () {}
+    },
 
-    buildingMenu: function () {}
+    buildingMenu: {
+        tick: function () {}
+    }
 
 };
 
 var loop = function () {
     requestAnimationFrame(loop);
 
-    states[states.currentState]();
-    states.always();
+    states.always.tick();
+    states[states.currentState].tick();
 
     // draw
     draw.background(ctx, canvas); // background

@@ -10,14 +10,13 @@ sm.load({
         console.log(sm.container);
     },
 
-    every: {
-        tick: function (sm) {},
-        userPointer: {
-            start: function (pt, sm) {},
-            move: function (pt, sm) {},
-            end: function (pt, sm) {}
-        }
+    tick: function (sm) {},
+    userPointer: {
+        start: function (pt, sm) {},
+        move: function (pt, sm) {},
+        end: function (pt, sm) {}
     }
+
 });
 
 sm.start();

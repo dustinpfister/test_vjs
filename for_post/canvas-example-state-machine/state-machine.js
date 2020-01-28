@@ -50,7 +50,7 @@ var Machine = (function () {
 
             var pos = getCanvasRelative(e);
 
-            console.log(pos.x, pos.y);
+            console.log(sm.currentState);
 
         });
 
@@ -59,9 +59,10 @@ var Machine = (function () {
     // create a new state machine
     return function (container) {
 
-        var currentState = null;
+        //var currentState = null;
 
         var sm = {
+            currentState: null,
             game: {},
             states: {},
             canvas: null,
@@ -72,12 +73,12 @@ var Machine = (function () {
                 // that works okay
                 states[stateObj.name || 'game'] = stateObj;
                 if (stateObj.bootState) {
-                    currentState = stateObj.name;
+                    sm.currentState = stateObj.name;
                 }
             },
             start: function (stateName) {
-                currentState = stateName || currentState
-                    var init = states[currentState].init || null;
+                sm.currentState = stateName || sm.currentState;
+                var init = states[sm.currentState].init || null;
                 if (init) {
                     init(sm);
                 }
@@ -96,13 +97,13 @@ var Machine = (function () {
         // main loop
         var loop = function () {
             requestAnimationFrame(loop);
-            var stateObj = states[currentState] || {};
-            if (stateObj.every) {
-                var every = stateObj.every;
-                if (every.tick) {
-                    every.tick(sm);
+            var stateObj = states[sm.currentState] || {};
+            //if (stateObj.every) {
+                //var every = stateObj.every;
+                if (stateObj.tick) {
+                    stateObj.tick(sm);
                 }
-            }
+            //}
         };
 
         return sm;

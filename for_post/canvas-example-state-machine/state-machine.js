@@ -65,17 +65,13 @@ var Machine = (function () {
 
     // attach canvas events for the given state machine
     var attachAllCanvasEvents = function (sm) {
-
         attachCanvasEvent(sm, 'mousedown', 'start');
         attachCanvasEvent(sm, 'mousemove', 'move');
         attachCanvasEvent(sm, 'mouseup', 'end');
-
     };
 
     // create a new state machine
     return function (container) {
-
-        //var currentState = null;
 
         var sm = {
             currentState: null,

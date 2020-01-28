@@ -43,15 +43,13 @@ var Machine = (function () {
         };
     };
 
+    // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
-
         sm.canvas.addEventListener(DOMType, function (e) {
-
             var pos = getCanvasRelative(e),
             stateObj = sm.states[sm.currentState],
             handler,
             mode;
-
             // call top level if there
             if (stateObj.userPointer) {
                 handler = stateObj.userPointer[smType];
@@ -59,7 +57,6 @@ var Machine = (function () {
                     handler(pos, sm, e);
                 }
             }
-
             // call for current mode if there
             if (stateObj.modes && sm.currentMode) {
                 mode = stateObj.modes[sm.currentMode];
@@ -70,10 +67,8 @@ var Machine = (function () {
                     }
                 }
             }
-
         });
-
-    }
+    };
 
     // attach canvas events for the given state machine
     var attachAllCanvasEvents = function (sm) {
@@ -83,7 +78,7 @@ var Machine = (function () {
     };
 
     // create a new state machine
-    return function (container) {
+    return function (container, w , h) {
 
         var sm = {
             currentState: null,
@@ -112,7 +107,7 @@ var Machine = (function () {
             }
         };
 
-        createCanvas(sm, 320, 240);
+        createCanvas(sm, w, h);
         attachAllCanvasEvents(sm);
 
         // states

@@ -1,4 +1,4 @@
-var sm = Machine('gamearea');
+var sm = Machine('gamearea', 640, 480);
 
 sm.load({
     name: 'game',

@@ -12,15 +12,48 @@ ctx.translate(0.5, 0.5);
 
 // CREATE GRID
 
-var grid = g.createGridObject(17, 13);
-grid.xOffset = 0;
-grid.yOffset = 0;
-g.setGridWorth(grid, 0, 0, 2);
-
-// starting building
-g.createBuilding(grid, 8, 6, 0)
 
 // MAIN APP LOOP
+var grid;
+var states = {
+
+    currentState: 'init',
+
+    init: function () {
+
+        grid = g.createGridObject(17, 13);
+        grid.xOffset = 0;
+        grid.yOffset = 0;
+        g.setGridWorth(grid, 0, 0, 2);
+
+        // starting building
+        g.createBuilding(grid, 8, 6, 0);
+		
+		states.currentState = 'disp';
+
+    },
+	
+	disp: function(){
+		
+		
+	},
+	
+	nav: function(){
+		
+		
+	},
+	
+	createMenu: function(){
+		
+		
+	},
+	
+	buildingMenu: function(){
+		
+		
+	}
+
+};
 
 var loop = function () {
     requestAnimationFrame(loop);

@@ -4,14 +4,16 @@
 
 * (done) Start new utils.js file
 * (done) distance formula should be removed from map.js and placed in utils.js
-* new get canvas relative util, used for events
+* (done) new get canvas relative util, used for events
 
 ## main.js
 
 * state machine started for main.js
-* game_view state
-* game_nav state
-* game_build state
+* disp state - for just displaying the current map
+* nav state - for navigating the map
+* create state - for creating buildings
+* building state - for upgrading and deleting buildings
+* remove everything for device pixel ratio
 
 ### buildings.js
 * building menu offset that is used for scrolling the build menu
@@ -21,6 +23,7 @@
 
 ### map.js
 
+* remove everything for device pixel ratio
 * change global variable from 'g' to 'map'
 * map starts out centered
 * a starting building is located at the center

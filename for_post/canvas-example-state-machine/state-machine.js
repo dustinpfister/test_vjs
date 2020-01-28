@@ -43,26 +43,32 @@ var Machine = (function () {
         };
     };
 
-    // attach canvas events for the given state machine
-    var attachCanvasEvents = function (sm) {
+    var attachCanvasEvent = function (sm, DOMType, smType) {
 
-        sm.canvas.addEventListener('mousedown', function (e) {
+        sm.canvas.addEventListener(DOMType, function (e) {
 
             var pos = getCanvasRelative(e),
             stateObj = sm.states[sm.currentState],
             handler;
+
+            // call top level
             if (stateObj.userPointer) {
-
-                handler = stateObj.userPointer.start;
+                handler = stateObj.userPointer[smType];
                 if (handler) {
-
                     handler(pos, sm, e);
-
                 }
-
             }
 
         });
+
+    }
+
+    // attach canvas events for the given state machine
+    var attachAllCanvasEvents = function (sm) {
+
+        attachCanvasEvent(sm, 'mousedown', 'start');
+        attachCanvasEvent(sm, 'mousemove', 'move');
+        attachCanvasEvent(sm, 'mouseup', 'end');
 
     };
 
@@ -97,7 +103,7 @@ var Machine = (function () {
         };
 
         createCanvas(sm, 320, 240);
-        attachCanvasEvents(sm);
+        attachAllCanvasEvents(sm);
 
         // states
         var states = sm.states = {};

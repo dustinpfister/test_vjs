@@ -12,13 +12,21 @@ sm.load({
 
     tick: function (sm) {},
     userPointer: {
-        start: function (pt, sm) {
+        start: function (pt, sm, e) {
 
-            console.log(pt.x, pt.y);
+            console.log(e.type, pt.x, pt.y);
 
         },
-        move: function (pt, sm) {},
-        end: function (pt, sm) {}
+        move: function (pt, sm, e) {
+
+            console.log(e.type, pt.x, pt.y);
+
+        },
+        end: function (pt, sm, e) {
+
+            console.log(e.type, pt.x, pt.y);
+
+        }
     }
 
 });

@@ -1,4 +1,4 @@
-var stateMachine = (function () {
+var Machine = (function () {
 
     // Parse a container argument
     var parseContainer = function (container) {
@@ -12,6 +12,18 @@ var stateMachine = (function () {
         }
         // if we get this far return document.body
         return document.body;
+    };
+
+    // create a canvas for the given state machine
+    var createCanvas = function (sm, w, h) {
+        sm.canvas = document.createElement('canvas');
+        sm.ctx = sm.canvas.getContext('2d');
+        sm.container.appendChild(sm.canvas);
+        sm.canvas.width = w || 320;
+        sm.canvas.height = h || 240;
+        // fill black for starters
+        sm.ctx.fillStyle = 'black';
+        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
     };
 
     // create a new state machine
@@ -42,6 +54,8 @@ var stateMachine = (function () {
                 loop();
             }
         };
+
+        createCanvas(sm, 320, 240);
 
         // states
         var states = sm.states = {};

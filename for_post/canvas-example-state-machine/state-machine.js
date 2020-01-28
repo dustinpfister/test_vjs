@@ -49,13 +49,25 @@ var Machine = (function () {
 
             var pos = getCanvasRelative(e),
             stateObj = sm.states[sm.currentState],
-            handler;
+            handler,
+            mode;
 
-            // call top level
+            // call top level if there
             if (stateObj.userPointer) {
                 handler = stateObj.userPointer[smType];
                 if (handler) {
                     handler(pos, sm, e);
+                }
+            }
+
+            // call for current mode if there
+            if (stateObj.modes && sm.currentMode) {
+                mode = stateObj.modes[sm.currentMode];
+                if (mode.userPointer) {
+                    handler = mode.userPointer[smType];
+                    if (handler) {
+                        handler(pos, sm, e);
+                    }
                 }
             }
 

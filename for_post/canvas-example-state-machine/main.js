@@ -19,15 +19,15 @@ sm.load({
     init: function () {},
 
     every: {
-        tick: function (game, sm) {
+        tick: function (sm) {
 
-            console.log('tick');
+            //console.log(sm.container);
 
         },
         userPointer: {
-            start: function (game, pt, sm) {},
-            move: function (game, pt, sm) {},
-            end: function (game, pt, sm) {}
+            start: function (pt, sm) {},
+            move: function (pt, sm) {},
+            end: function (pt, sm) {}
         }
     }
 });

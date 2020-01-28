@@ -1,13 +1,29 @@
 var stateMachine = (function () {
 
+    var parseContainer = function (container) {
+        // if object assume element that is to be used as the container
+        if (typeof container === 'object' && container != null) {
+            return container;
+        }
+        // if string assume id
+        if (typeof container === 'string') {
+            return document.getElementById(container);
+        }
+        // if we get this far return document.body
+        return document.body;
+    };
+
     // create a new state machine
-    return function () {
+    return function (container) {
 
         var currentState = null;
 
         var sm = {
             game: {},
             states: {},
+            canvas: null,
+            container: parseContainer(container),
+            ctx: null,
             load: function (stateObj) {
                 // just reference the object for now as long as
                 // that works okay
@@ -33,7 +49,7 @@ var stateMachine = (function () {
             if (stateObj.every) {
                 var every = stateObj.every;
                 if (every.tick) {
-                    every.tick(game, sm);
+                    every.tick(sm);
                 }
             }
         };

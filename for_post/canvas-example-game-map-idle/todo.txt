@@ -1,5 +1,10 @@
 ## Canvas Example game map idle
 
+## utils.js
+
+* Start new utils.js file
+* distance formula should be removed from map.js and placed in utils.js
+
 ## main.js
 
 * state machine started for main.js
@@ -15,7 +20,6 @@
 ### map.js
 
 * change global variable from 'g' to 'map'
-* distance formula should be removed from map.js and placed in utils.js
 * map starts out centered
 * a starting building is located at the center
 * status bar displays current tick progress

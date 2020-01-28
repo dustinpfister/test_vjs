@@ -3,9 +3,9 @@ var g = {};
 // UTILITYS
 
 // distance
-g.distance = function (x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-};
+//g.distance = function (x1, y1, x2, y2) {
+//    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+//};
 
 // CREATE A GRID OBJECT
 
@@ -33,17 +33,6 @@ g.parseGridProps = function (grid) {
         x: 0,
         y: 0
     };
-
-    // build menus
-    /*
-    a.menuOpen = false;
-    a.buildMenuYOffset = 0;
-    a.buildOptions = [{
-    name: 'farm',
-    moneyPerTick: 1
-    }
-    ];
-     */
 
     // game logic
     a.money = 0; // player money
@@ -77,8 +66,7 @@ g.createClearCellGrid = function (grid) {
             type: 0, // type index (0 - 4 = sand, 5 - 9 = grass, 10 -14 = wood),
             worth: 0, // the value of the cell
             bought: true, // has the player bought the cell
-            building: {}
-            // the building object
+            building: {} // the building object
         });
         i += 1;
     }
@@ -98,7 +86,7 @@ g.setGridWorth = function (grid, x, y, b) {
     cell;
     while (i--) {
         cell = grid.cells[i];
-        d = g.distance(cell.x, cell.y, x, y);
+        d = u.distance(cell.x, cell.y, x, y);
         cell.worth = 1 + Math.pow(b, d);
     }
 };
@@ -266,7 +254,7 @@ g.userCanvasActionMove = function (grid, e, ratio) {
 
     grid.moveDistance = 0;
     if (grid.mapMoveStartPoint.x != -1 && grid.mapMoveStartPoint.y != -1) {
-        grid.moveDistance = g.distance(x, y, grid.mapMoveStartPoint.x, grid.mapMoveStartPoint.y);
+        grid.moveDistance = u.distance(x, y, grid.mapMoveStartPoint.x, grid.mapMoveStartPoint.y);
     }
 
     e.preventDefault();

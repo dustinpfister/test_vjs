@@ -33,8 +33,9 @@ var stateMachine = (function () {
                     currentState = stateObj.name;
                 }
             },
-            start: function () {
-                var init = states[currentState].init || null;
+            start: function (stateName) {
+                currentState = stateName || currentState
+                    var init = states[currentState].init || null;
                 if (init) {
                     init(sm);
                 }

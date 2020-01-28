@@ -4,24 +4,20 @@ sm.load({
     name: 'game',
     bootState: true,
     init: function (sm) {
-
         var g = sm.game;
-
         g.ship = {
             x: sm.canvas.width / 2,
             y: sm.canvas.height / 2,
-            heading: 0,
-            pps: 32
+            heading: 0
         };
         g.userDown = false;
-
     },
     tick: function (sm) {
 
         var g = sm.game,
         ctx = sm.ctx;
 
-        // set mode to nav
+        // set mode to nav conditions
         sm.currentMode = null;
         if (g.userDown) {
             if (new Date() - g.userDownST >= 1000) {
@@ -29,12 +25,11 @@ sm.load({
             }
         }
 
+        // draw
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
-
         ctx.fillStyle = 'white';
         ctx.fillText(g.userDown, 10, 20);
-
         ctx.strokeStyle = 'white';
         ctx.beginPath();
         ctx.arc(g.ship.x, g.ship.y, 5, 0, Math.PI * 2);

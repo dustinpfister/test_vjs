@@ -203,11 +203,11 @@ map.updateGrid = function (grid) {
 
     if (grid.mapMoveMode) {
 
-        grid.xOffset += grid.mapMoveDeltas.x;
-        grid.yOffset += grid.mapMoveDeltas.y;
-        var offsets = map.clampedOffsets(grid, canvas);
-        grid.xOffset = offsets.xOffset;
-        grid.yOffset = offsets.yOffset;
+        //grid.xOffset += grid.mapMoveDeltas.x;
+        //grid.yOffset += grid.mapMoveDeltas.y;
+        //var offsets = map.clampedOffsets(grid, canvas);
+        //grid.xOffset = offsets.xOffset;
+        //grid.yOffset = offsets.yOffset;
 
     }
 

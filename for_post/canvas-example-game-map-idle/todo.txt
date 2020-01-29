@@ -26,6 +26,7 @@
 ## pm.js
 <!-- *************************************** -->
 * (done) copy over pm.js
+* (done) creating, updating and drawing a PM state
 * use what was worked out in canvas-example-pointer-movement in place of what is worked out in map.js
 * replace the getCanvasRelatibe helper with what is now in utils.js
 

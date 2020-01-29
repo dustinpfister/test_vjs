@@ -116,6 +116,13 @@ var states = {
 
             PM.updatePM(states.pm);
             draw.navCirclePM(states.pm, ctx, canvas);
+            var pos = {
+                x: states.grid.xOffset,
+                y: states.grid.yOffset
+            };
+            PM.stepPointByPM(states.pm, pos, true);
+            grid.xOffset = pos.x;
+            grid.yOffset = pos.y;
 
         },
         pointer: {

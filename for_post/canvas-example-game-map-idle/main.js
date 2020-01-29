@@ -42,6 +42,7 @@ var states = {
         }
     },
 
+    // DISPLAY STATE
     disp: {
         tick: function () {},
         pointer: {
@@ -53,8 +54,26 @@ var states = {
                 };
 
             },
+            move: function (pos, grid, e) {
+
+                // movement can trigger nave state
+                var pos2 = grid.mapMoveStartPoint;
+                grid.moveDistance = 0;
+                if (grid.mapMoveStartPoint.x != -1 && grid.mapMoveStartPoint.y != -1) {
+                    grid.moveDistance = u.distance(pos.x, pos.y, pos2.x, pos2.y);
+                }
+
+                grid.mapMoveMode = false;
+                if (grid.moveDistance >= 32) {
+                    grid.mapMoveMode = true;
+                    // enter nav mode
+                    states.currentState = 'nav';
+                }
+
+            },
             end: function (pos, grid, e) {
 
+                // select a cell if not entering nav state
                 if (!grid.mapMoveMode) {
                     var cell = g.getCellFromCanvasPoint(grid, pos.x, pos.y);
                     if (cell.i === grid.selectedCellIndex) {
@@ -66,30 +85,28 @@ var states = {
                     }
                 }
 
+                grid.mapMoveStartPoint = {
+                    x: -1,
+                    y: -1
+                };
+
             }
         }
     },
 
+    // NAV STATE
     nav: {
         tick: function () {},
         pointer: {
 
             move: function (pos, grid, e) {
 
-                var deltas = g.getPointerMovementDeltas(grid, canvas, pos.x, pos.y);
+                var deltas = g.getPointerMovementDeltas(grid, canvas, pos.x, pos.y),
+                pos2 = grid.mapMoveStartPoint;
 
-                grid.moveDistance = 0;
-                if (grid.mapMoveStartPoint.x != -1 && grid.mapMoveStartPoint.y != -1) {
-                    grid.moveDistance = u.distance(pos.x, pos.y, grid.mapMoveStartPoint.x, grid.mapMoveStartPoint.y);
-                }
-
-                if (grid.moveDistance >= 32) {
-                    grid.mapMoveMode = true;
-                    grid.mapMoveDeltas.x = deltas.x;
-                    grid.mapMoveDeltas.y = deltas.y;
-                } else {
-                    grid.mapMoveMode = false;
-                }
+                grid.moveDistance = u.distance(pos.x, pos.y, pos2.x, pos2.y);
+                grid.mapMoveDeltas.x = deltas.x;
+                grid.mapMoveDeltas.y = deltas.y;
 
             },
             end: function (pos, grid, e) {
@@ -101,6 +118,9 @@ var states = {
                     x: -1,
                     y: -1
                 };
+
+                // return to disp
+                states.currentState = 'disp';
 
             }
 

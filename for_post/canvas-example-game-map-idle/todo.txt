@@ -10,7 +10,6 @@
 
 ### map.js
 <!-- *************************************** -->
-* map starts out centered
 * status bar displays current tick progress
 
 
@@ -32,6 +31,7 @@
 
 ## done
 <!-- *************************************** -->
+* (done) map starts out centered
 * (done) have offset values as map.offset.x rather than map.xOffset
 * (done) fix bug where nav state is entered after creating a building in land state
 * (done) clamp map offsets in nav state

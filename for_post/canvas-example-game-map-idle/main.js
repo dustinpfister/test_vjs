@@ -10,8 +10,15 @@ canvas.width = 320 * pxRatio;
 canvas.height = 240 * pxRatio;
 ctx.translate(0.5, 0.5);
 
-// CREATE GRID
-
+// BUILD MENU
+var buildMenu = {
+    yOffet:0,
+    buildOptions: [{
+            name: 'farm',
+            moneyPerTick: 1
+        }
+    ]
+};
 
 // MAIN APP LOOP
 var states = {
@@ -125,7 +132,11 @@ var states = {
     },
 
     land: {
-        tick: function () {},
+        tick: function () {
+
+            draw.buildMenu(ctx, canvas, buildMenu);
+
+        },
         pointer: {
             end: function (pos, grid, e) {
                 if (pos.x >= 96) {

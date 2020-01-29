@@ -40,16 +40,19 @@ var draw = (function () {
             ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 30);
         },
 
+        buildMenu: function (ctx, canvas, buildMenu) {
+
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
+            ctx.fillRect(0, 0, 96, canvas.height);
+
+        },
+
         stateDebugInfo: function (ctx, stateName, grid) {
-
             var state = drawStateDebug[stateName];
-
             ctx.fillStyle = 'rgba(0,0,0,0.25)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = 'white';
-
             ctx.fillText('current state: ' + stateName, 10, 10);
-
             if (state) {
                 state(ctx, grid);
             }

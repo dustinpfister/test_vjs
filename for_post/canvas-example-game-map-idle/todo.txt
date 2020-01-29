@@ -3,6 +3,9 @@
 ## main.js
 <!-- *************************************** -->
 * (done) remove everything for device pixel ratio
+* (done) creating, updating and drawing a PM state
+* (done) use what was worked out in canvas-example-pointer-movement in place of what is worked out in map.js
+* clamp map offsets in nav state
 * use localStorage to save and load state
 
 
@@ -18,6 +21,8 @@
 * (done) remove everything for device pixel ratio
 * (done) change global variable from 'g' to 'map'
 * remove everything that has to do with what is now done with pm.js
+* remove all old code that has to do with moving the map
+* have offset values as map.offset.x rather than map.xOffset
 * map starts out centered
 * status bar displays current tick progress
 
@@ -25,9 +30,8 @@
 
 ## pm.js
 <!-- *************************************** -->
-* (done) copy over pm.js
-* (done) creating, updating and drawing a PM state
-* use what was worked out in canvas-example-pointer-movement in place of what is worked out in map.js
+* (done) copy over pm.js to the project
+* (done) new invert argument for stepPointByPM
 * replace the getCanvasRelatibe helper with what is now in utils.js
 
 

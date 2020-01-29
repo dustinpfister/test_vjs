@@ -1,9 +1,9 @@
-var g = {};
+var map = {};
 
 // CREATE A GRID OBJECT
 
 // parse grid properties
-g.parseGridProps = function (grid) {
+map.parseGridProps = function (grid) {
     var a = {};
     a.width = grid.width || 64;
     a.height = grid.height || 16;
@@ -35,17 +35,17 @@ g.parseGridProps = function (grid) {
 };
 
 // make and return a new grid object by just passing width and height values
-g.createGridObject = function (w, h) {
-    var a = g.parseGridProps({
+map.createGridObject = function (w, h) {
+    var a = map.parseGridProps({
             width: w,
             height: h
         });
-    return g.createClearCellGrid(a);
+    return map.createClearCellGrid(a);
 };
 
 // create a new grid object with blank cells by passing a given grid Object
-g.createClearCellGrid = function (grid) {
-    var a = g.parseGridProps(grid);
+map.createClearCellGrid = function (grid) {
+    var a = map.parseGridProps(grid);
     // create clean cells
     var i = 0,
     x,
@@ -71,7 +71,7 @@ g.createClearCellGrid = function (grid) {
 
 // set grid worth for all cells from a fixed point outwards
 // using a base
-g.setGridWorth = function (grid, x, y, b) {
+map.setGridWorth = function (grid, x, y, b) {
     x = x === undefined ? 0 : x;
     y = y === undefined ? 0 : y;
     b = b === undefined ? 2 : b;
@@ -88,14 +88,14 @@ g.setGridWorth = function (grid, x, y, b) {
 // BUILDINGS
 
 // create a building object at the given cell position
-g.createBuilding = function (grid, x, y, index, buildOptions) {
+map.createBuilding = function (grid, x, y, index, buildOptions) {
     buildOptions = buildOptions || [{
                 name: 'farm',
                 moneyPerTick: 1
             }
         ];
     index = index === undefined ? 0 : index;
-    var cell = g.get(grid, x, y);
+    var cell = map.get(grid, x, y);
     // should be an empty object if not building is there
     if (cell.building.index === undefined && cell.bought) {
         cell.building = Object.assign({
@@ -107,7 +107,7 @@ g.createBuilding = function (grid, x, y, index, buildOptions) {
 // BOUNDS
 
 // return a set of clamped offset values for the given grid
-g.clampedOffsets = function (grid, canvas, pxRatio) {
+map.clampedOffsets = function (grid, canvas, pxRatio) {
     canvas = canvas || {
         width: 320,
         height: 120
@@ -137,7 +137,7 @@ g.clampedOffsets = function (grid, canvas, pxRatio) {
 // GET CELL
 
 // get a cell from the given cell position
-g.get = function (grid, x, y) {
+map.get = function (grid, x, y) {
     if (x < 0 || y < 0 || x >= grid.width || y >= grid.height) {
         return {};
     }
@@ -145,7 +145,7 @@ g.get = function (grid, x, y) {
 };
 
 // get a cell position by way of a point on a canvas
-g.getCellPositionFromCanvasPoint = function (grid, x, y) {
+map.getCellPositionFromCanvasPoint = function (grid, x, y) {
     return {
         x: Math.floor((x - grid.xOffset) / grid.cellSize),
         y: Math.floor((y - grid.yOffset) / grid.cellSize)
@@ -153,15 +153,15 @@ g.getCellPositionFromCanvasPoint = function (grid, x, y) {
 };
 
 // get a cell position by way of a point on a canvas
-g.getCellFromCanvasPoint = function (grid, x, y) {
-    var pos = g.getCellPositionFromCanvasPoint(grid, x, y);
-    return g.get(grid, pos.x, pos.y);
+map.getCellFromCanvasPoint = function (grid, x, y) {
+    var pos = map.getCellPositionFromCanvasPoint(grid, x, y);
+    return map.get(grid, pos.x, pos.y);
 };
 
 // MAP MOVEMENT
 
 // get a set of deltas
-g.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
+map.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
 
     ratio = ratio || 1;
 
@@ -185,7 +185,7 @@ g.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
 
 // UPDATE GRID
 
-g.updateGrid = function (grid, ratio) {
+map.updateGrid = function (grid, ratio) {
 
     ratio = ratio || 1;
 
@@ -210,7 +210,7 @@ g.updateGrid = function (grid, ratio) {
 
         grid.xOffset += grid.mapMoveDeltas.x;
         grid.yOffset += grid.mapMoveDeltas.y;
-        var offsets = g.clampedOffsets(grid, canvas, ratio);
+        var offsets = map.clampedOffsets(grid, canvas, ratio);
         grid.xOffset = offsets.xOffset;
         grid.yOffset = offsets.yOffset;
 

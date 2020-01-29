@@ -25,13 +25,13 @@ var states = {
 
     currentState: 'init',
 
-    grid: g.createGridObject(17, 13),
+    grid: map.createGridObject(17, 13),
 
     // ALWAYS STATE
     always: {
         tick: function () {
             // update and draw
-            g.updateGrid(states.grid, pxRatio);
+            map.updateGrid(states.grid, pxRatio);
             draw.background(ctx, canvas); // background
             draw.map(states.grid, ctx, canvas, pxRatio); // the map
             draw.stateDebugInfo(ctx, states.currentState, states.grid);
@@ -44,9 +44,9 @@ var states = {
             grid = states.grid;
             grid.xOffset = 0;
             grid.yOffset = 0;
-            g.setGridWorth(grid, 0, 0, 2);
+            map.setGridWorth(grid, 0, 0, 2);
             // starting building
-            g.createBuilding(grid, 8, 6, 0);
+            map.createBuilding(grid, 8, 6, 0);
             // enter disp state
             states.currentState = 'disp';
         }
@@ -81,7 +81,7 @@ var states = {
             end: function (pos, grid, e) {
                 // select a cell if not entering nav state
                 if (!grid.mapMoveMode) {
-                    var cell = g.getCellFromCanvasPoint(grid, pos.x, pos.y);
+                    var cell = map.getCellFromCanvasPoint(grid, pos.x, pos.y);
                     if (cell.i === grid.selectedCellIndex) {
                         grid.selectedCellIndex = -1;
                     } else {
@@ -111,7 +111,7 @@ var states = {
         tick: function () {},
         pointer: {
             move: function (pos, grid, e) {
-                var deltas = g.getPointerMovementDeltas(grid, canvas, pos.x, pos.y),
+                var deltas = map.getPointerMovementDeltas(grid, canvas, pos.x, pos.y),
                 pos2 = grid.mapMoveStartPoint;
                 grid.moveDistance = u.distance(pos.x, pos.y, pos2.x, pos2.y);
                 grid.mapMoveDeltas.x = deltas.x;
@@ -146,7 +146,7 @@ var states = {
                     if (pos.y <= 96) {
                         var buildIndex = 0,
                         cell = grid.cells[grid.selectedCellIndex];
-                        g.createBuilding(grid, cell.x, cell.y, buildIndex, buildMenu.buildOptions);
+                        map.createBuilding(grid, cell.x, cell.y, buildIndex, buildMenu.buildOptions);
                     }
                 }
 

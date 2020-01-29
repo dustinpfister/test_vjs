@@ -9,7 +9,7 @@
 ## draw.js
 <!-- *************************************** -->
 * (done) debug draw method for building state
-* combine draw_map.js into draw.js
+* (done) combine draw_map.js into draw.js
 
 
 

@@ -178,3 +178,10 @@ var attachPointerEvent = function (canvas, domType, smType) {
 attachPointerEvent(canvas, 'mousedown', 'start');
 attachPointerEvent(canvas, 'mousemove', 'move');
 attachPointerEvent(canvas, 'mouseup', 'end');
+attachPointerEvent(canvas, 'mouseout', 'end');
+
+/*
+attachPointerEvent(canvas, 'mousedown', 'start');
+attachPointerEvent(canvas, 'mousemove', 'move');
+attachPointerEvent(canvas, 'mouseup', 'end');
+*/

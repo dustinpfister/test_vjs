@@ -1,13 +1,51 @@
 ## Canvas Example game map idle
 
-## utils.js
+## main.js
+<!-- *************************************** -->
+* remove everything for device pixel ratio
 
+
+
+## draw.js
+<!-- *************************************** -->
+* debug draw method for building state
+* corresponding draw methods for all state events
+* combine draw_map.js into draw.js
+
+
+
+### map.js
+<!-- *************************************** -->
+* remove everything for device pixel ratio
+* change global variable from 'g' to 'map'
+* map starts out centered
+* status bar displays current tick progress
+* info display when any tile is selected
+* can build at least one building type that generates money
+* use local storage to save state
+* fix bug so that the the grid does not go into move mode right away when clicked or touched.
+
+
+
+## pm.js
+<!-- *************************************** -->
+* copy over pm.js
+* use what was worked out in canvas-example-pointer-movement in place of what is worked out in map.js
+
+
+
+## utils.js
+<!-- *************************************** -->
+
+
+
+## done
+<!-- *************************************** -->
+* (done) build menu when tile that is bought is selected and does not have a building on it
+* (done) build menu can be used to create a new building
 * (done) Start new utils.js file
 * (done) distance formula should be removed from map.js and placed in utils.js
 * (done) new get canvas relative util, used for events
-
-## main.js
-
 * (done) state machine started for main.js
 * (done) always state for each frame tick
 * (done) disp state - for just displaying the current map
@@ -17,42 +55,8 @@
 * (done) create a building from land state
 * (done) building state - for upgrading and deleting buildings
 * (done) corresponding state functions for events
-* remove everything for device pixel ratio
-
-## draw.js
-
-* debug draw method for land state
-* debug draw method for building state
-* corresponding draw methods for all state events
-* combine draw_map.js into draw.js
-
-### buildings.js
-* building menu offset that is used for scrolling the build menu
-* new draw_buildings.js file for drawing the building menus
-* build menu when tile that is bought is selected and does not have a building on it
-* build menu can be used to create a new building
-
-### map.js
-
-* remove everything for device pixel ratio
-* change global variable from 'g' to 'map'
-* map starts out centered
-* a starting building is located at the center
-* status bar displays current tick progress
-* info display when any tile is selected
-* can build at least one building type that generates money
-* use local storage to save state
-* fix bug so that the the grid does not go into move mode right away when clicked or touched.
-
-## pm.js
-
-* copy over pm.js
-* use what was worked out in canvas-example-pointer-movement in place of what is worked out in map.js
-
-
-
-## done
-
+* (done) debug draw method for land state
+* (done) a starting building is located at the center
 * (done) set grid worth value for cells
 * (done) map should have a money property
 * (done)starting land
@@ -72,4 +76,3 @@
 * (done) buildOptions removed from grid state
 * (done) hard coded buildOptions value in createBuilding method
 * (done) buildOptions given as argument when used from the outside
-

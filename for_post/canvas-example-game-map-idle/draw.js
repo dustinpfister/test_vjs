@@ -9,8 +9,16 @@ var draw = (function () {
         },
         land: function (ctx, grid) {
             var cell = grid.cells[grid.selectedCellIndex];
-            ctx.fillText('index (x,y): ' + cell.i +' (' + cell.x + ',' + cell.y + ')', 10, 20);
+            ctx.fillText('index (x,y): ' + cell.i + ' (' + cell.x + ',' + cell.y + ')', 10, 20);
             ctx.fillText('worth: ' + cell.worth, 10, 30);
+        },
+        building: function (ctx, grid) {
+            var cell = grid.cells[grid.selectedCellIndex],
+            build = cell.building;
+            ctx.fillText('index (x,y): ' + cell.i + ' (' + cell.x + ',' + cell.y + ')', 10, 20);
+            ctx.fillText('worth: ' + cell.worth, 10, 30);
+            ctx.fillText('name: ' + build.name, 10, 40);
+            ctx.fillText('money per tick: ' + build.moneyPerTick, 10, 50);
         }
     }
 

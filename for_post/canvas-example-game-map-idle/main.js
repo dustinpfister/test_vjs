@@ -167,7 +167,7 @@ var attachPointerEvent = function (canvas, domType, smType) {
     canvas.addEventListener(domType, function (e) {
         var pos = u.getCanvasRelative(e),
         stateObj = states[states.currentState];
-        //e.preventDefault();
+        e.preventDefault();
         if (stateObj.pointer) {
             var handler = stateObj.pointer[smType];
             if (handler) {

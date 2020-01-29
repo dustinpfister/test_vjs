@@ -2,15 +2,10 @@ var draw = (function () {
 
     var drawStateDebug = {
         nav: function (ctx, grid, states) {
-            //var pt = grid.mapMoveStartPoint,
             var pm = states.pm;
-            //ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 20);
-            //ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 30);
-            //ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 40);
             ctx.fillText('pm.angle: ' + pm.angle, 10, 30);
             ctx.fillText('pm.down: ' + pm.down, 10, 40);
             ctx.fillText('pm.cp: ' + pm.cp.x, 10, 50);
-
         },
         land: function (ctx, grid) {
             var cell = grid.cells[grid.selectedCellIndex];
@@ -48,35 +43,6 @@ var draw = (function () {
         });
     };
 
-    // draw a navigation circle when moving the map
-	/*
-    var drawNavCircle = function (grid, ctx, canvas) {
-        if (grid.mapMoveMode) {
-            var cx = canvas.width / 2,
-            cy = canvas.height / 2,
-            min = Math.min(cx, cy),
-            per = 0,
-            a = Math.atan2(cy - (cy + grid.mapMoveDeltas.y), cx - (cx + grid.mapMoveDeltas.x));
-            ctx.strokeStyle = 'white';
-            ctx.lineWidth = 3;
-            // draw circle
-            ctx.beginPath();
-            ctx.arc(cx, cy, min / 2 - 3, 0, Math.PI * 2);
-            ctx.stroke();
-            // draw direction line
-            ctx.beginPath();
-            ctx.moveTo(cx, cy);
-            ctx.lineTo(Math.cos(a) * min + cx, Math.sin(a) * min + cy);
-            ctx.stroke();
-            // draw delta circle
-            per = grid.moveDelta / 3;
-            ctx.beginPath();
-            ctx.arc(Math.cos(a) * min * per + cx, Math.sin(a) * min * per + cy, 5, 0, Math.PI * 2);
-            ctx.stroke();
-        }
-    };
-	*/
-
     return {
 
         // draw background
@@ -108,10 +74,8 @@ var draw = (function () {
         },
 
         buildMenu: function (ctx, canvas, buildMenu) {
-
             ctx.fillStyle = 'rgba(255,255,255,0.5)';
             ctx.fillRect(0, 0, 96, canvas.height);
-
             ctx.strokeStyle = 'rgba(255,0,0,0.5)';
             ctx.strokeRect(0, 0, 96, 96);
             ctx.fillStyle = 'rgba(255,0,0,0.5)';
@@ -151,13 +115,10 @@ var draw = (function () {
                 ctx.strokeStyle = 'red';
                 ctx.strokeRect(x, y, cellSize, cellSize);
             }
-            //drawNavCircle(grid, ctx, canvas);
         },
 
         // draw a navigation circle when moving the map
         navCirclePM: function (pm, ctx, canvas) {
-            //if (pm.down) {
-
             var cx = pm.sp.x,
             cy = pm.sp.y,
             x,
@@ -185,7 +146,6 @@ var draw = (function () {
             ctx.beginPath();
             ctx.arc(x, y, 10, 0, Math.PI * 2);
             ctx.stroke();
-            //}
         }
 
     }

@@ -1,27 +1,15 @@
 ## Canvas Example game map idle
 
+
+
 ## main.js
 <!-- *************************************** -->
-* (done) remove everything for device pixel ratio
-* (done) creating, updating and drawing a PM state
-* (done) use what was worked out in canvas-example-pointer-movement in place of what is worked out in map.js
-* fix bug where nav state is entered after creating a building in land state
-* clamp map offsets in nav state
 * use localStorage to save and load state
-
-
-## draw.js
-<!-- *************************************** -->
-* (done) debug draw method for building state
-* (done) combine draw_map.js into draw.js
 
 
 
 ### map.js
 <!-- *************************************** -->
-* (done) remove everything for device pixel ratio
-* (done) change global variable from 'g' to 'map'
-* (done) remove everything that has to do with what is now done with pm.js
 * have offset values as map.offset.x rather than map.xOffset
 * map starts out centered
 * status bar displays current tick progress
@@ -30,9 +18,7 @@
 
 ## pm.js
 <!-- *************************************** -->
-* (done) copy over pm.js to the project
-* (done) new invert argument for stepPointByPM
-* replace the getCanvasRelatibe helper with what is now in utils.js
+
 
 
 ## utils.js
@@ -40,8 +26,25 @@
 
 
 
+## draw.js
+<!-- *************************************** -->
+
+
+
 ## done
 <!-- *************************************** -->
+* (done) fix bug where nav state is entered after creating a building in land state
+* (done) clamp map offsets in nav state
+* (done) copy over pm.js to the project
+* (done) new invert argument for stepPointByPM
+* (done) remove everything for device pixel ratio
+* (done) change global variable from 'g' to 'map'
+* (done) remove everything that has to do with what is now done with pm.js
+* (done) debug draw method for building state
+* (done) combine draw_map.js into draw.js
+* (done) remove everything for device pixel ratio
+* (done) creating, updating and drawing a PM state
+* (done) use what was worked out in canvas-example-pointer-movement in place of what is worked out in map.js
 * (done) build menu when tile that is bought is selected and does not have a building on it
 * (done) build menu can be used to create a new building
 * (done) Start new utils.js file

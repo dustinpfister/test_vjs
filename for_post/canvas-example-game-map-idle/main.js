@@ -12,7 +12,7 @@ ctx.translate(0.5, 0.5);
 
 // BUILD MENU
 var buildMenu = {
-    yOffet:0,
+    yOffet: 0,
     buildOptions: [{
             name: 'farm',
             moneyPerTick: 1
@@ -141,8 +141,16 @@ var states = {
             end: function (pos, grid, e) {
                 if (pos.x >= 96) {
                     grid.selectedCellIndex = -1;
-                    states.currentState = 'disp';
+                } else {
+                    // create a building
+                    if (pos.y <= 96) {
+                        var buildIndex = 0,
+                        cell = grid.cells[grid.selectedCellIndex];
+                        g.createBuilding(grid, cell.x, cell.y, buildIndex, buildMenu.buildOptions);
+                    }
                 }
+
+                states.currentState = 'disp';
             }
         }
     },

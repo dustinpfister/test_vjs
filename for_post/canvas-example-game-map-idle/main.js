@@ -5,10 +5,11 @@ var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('gamearea') || document.body;
 container.appendChild(canvas);
-var pxRatio = window.devicePixelRatio || 1; // scale
-canvas.width = 320 * pxRatio;
-canvas.height = 240 * pxRatio;
+canvas.width = 320;
+canvas.height = 240;
 ctx.translate(0.5, 0.5);
+
+//var pxRatio = window.devicePixelRatio || 1; // scale
 
 // BUILD MENU
 var buildMenu = {
@@ -31,9 +32,9 @@ var states = {
     always: {
         tick: function () {
             // update and draw
-            map.updateGrid(states.grid, pxRatio);
+            map.updateGrid(states.grid);
             draw.background(ctx, canvas); // background
-            draw.map(states.grid, ctx, canvas, pxRatio); // the map
+            draw.map(states.grid, ctx, canvas); // the map
             draw.stateDebugInfo(ctx, states.currentState, states.grid);
         }
     },

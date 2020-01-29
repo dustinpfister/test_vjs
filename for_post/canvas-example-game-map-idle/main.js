@@ -53,6 +53,27 @@ var states = {
                 };
 
             },
+            end: function (pos, grid, e) {
+
+                if (!grid.mapMoveMode) {
+                    var cell = g.getCellFromCanvasPoint(grid, pos.x, pos.y);
+                    if (cell.i === grid.selectedCellIndex) {
+                        grid.selectedCellIndex = -1;
+                    } else {
+                        if (cell.i >= 0) {
+                            grid.selectedCellIndex = cell.i;
+                        }
+                    }
+                }
+
+            }
+        }
+    },
+
+    nav: {
+        tick: function () {},
+        pointer: {
+
             move: function (pos, grid, e) {
 
                 var deltas = g.getPointerMovementDeltas(grid, canvas, pos.x, pos.y);
@@ -73,17 +94,6 @@ var states = {
             },
             end: function (pos, grid, e) {
 
-                if (!grid.mapMoveMode) {
-                    var cell = g.getCellFromCanvasPoint(grid, pos.x, pos.y);
-                    if (cell.i === grid.selectedCellIndex) {
-                        grid.selectedCellIndex = -1;
-                    } else {
-                        if (cell.i >= 0) {
-                            grid.selectedCellIndex = cell.i;
-                        }
-                    }
-                }
-
                 grid.mapMoveMode = false;
                 grid.mapMoveDeltas.x = 0;
                 grid.mapMoveDeltas.y = 0;
@@ -93,11 +103,8 @@ var states = {
                 };
 
             }
-        }
-    },
 
-    nav: {
-        tick: function () {}
+        }
     },
 
     createMenu: {

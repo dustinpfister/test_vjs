@@ -57,6 +57,7 @@ var states = {
     // DISPLAY STATE
     disp: {
         tick: function () {
+			            PM.updatePM(states.pm);
             draw.gridStatusInfo(ctx, canvas, states.grid); // status bar
         },
         pointer: {
@@ -70,6 +71,11 @@ var states = {
             },
             move: function (pos, grid, e) {
                 // movement can trigger nave state
+				                PM.onPointerMove(states.pm, pos, e);
+				if(states.pm.dist >=32 && states.pm.down){
+				      states.currentState = 'nav';
+				}
+				/*
                 var pos2 = grid.mapMoveStartPoint;
                 grid.moveDistance = 0;
                 if (grid.mapMoveStartPoint.x != -1 && grid.mapMoveStartPoint.y != -1) {
@@ -81,10 +87,11 @@ var states = {
                     // enter nav mode
                     states.currentState = 'nav';
                 }
+				*/
             },
             end: function (pos, grid, e) {
                 // select a cell if not entering nav state
-                if (!grid.mapMoveMode) {
+                //if (!states.pm.down) {
                     var cell = map.getCellFromCanvasPoint(grid, pos.x, pos.y);
                     if (cell.i === grid.selectedCellIndex) {
                         grid.selectedCellIndex = -1;
@@ -101,11 +108,11 @@ var states = {
                             }
                         }
                     }
-                }
-                grid.mapMoveStartPoint = {
-                    x: -1,
-                    y: -1
-                };
+                //}
+                //grid.mapMoveStartPoint = {
+                //    x: -1,
+                //    y: -1
+                //};
             }
         }
     },
@@ -130,11 +137,13 @@ var states = {
             //    PM.onPointerStart(states.pm, pos, e);
             //},
             move: function (pos, grid, e) {
+				/*
                 var deltas = map.getPointerMovementDeltas(grid, canvas, pos.x, pos.y),
                 pos2 = grid.mapMoveStartPoint;
                 grid.moveDistance = u.distance(pos.x, pos.y, pos2.x, pos2.y);
                 grid.mapMoveDeltas.x = deltas.x;
                 grid.mapMoveDeltas.y = deltas.y;
+				*/
 
                 //PM.stepPointByPM(states.pm, {});
 
@@ -142,6 +151,7 @@ var states = {
 
             },
             end: function (pos, grid, e) {
+				/*
                 grid.mapMoveMode = false;
                 grid.mapMoveDeltas.x = 0;
                 grid.mapMoveDeltas.y = 0;
@@ -149,6 +159,7 @@ var states = {
                     x: -1,
                     y: -1
                 };
+				*/
                 PM.onPointerEnd(states.pm, pos, e);
                 // return to disp
                 states.currentState = 'disp';

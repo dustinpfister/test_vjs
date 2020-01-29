@@ -20,8 +20,7 @@
 <!-- *************************************** -->
 * (done) remove everything for device pixel ratio
 * (done) change global variable from 'g' to 'map'
-* remove everything that has to do with what is now done with pm.js
-* remove all old code that has to do with moving the map
+* (done) remove everything that has to do with what is now done with pm.js
 * have offset values as map.offset.x rather than map.xOffset
 * map starts out centered
 * status bar displays current tick progress

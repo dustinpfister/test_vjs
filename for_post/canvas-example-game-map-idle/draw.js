@@ -2,9 +2,9 @@ var draw = (function () {
 
     var drawStateDebug = {
         nav: function (ctx, grid, states) {
-            var pt = grid.mapMoveStartPoint,
-            pm = states.pm;
-            ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 20);
+            //var pt = grid.mapMoveStartPoint,
+            var pm = states.pm;
+            //ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 20);
             //ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 30);
             //ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 40);
             ctx.fillText('pm.angle: ' + pm.angle, 10, 30);
@@ -49,6 +49,7 @@ var draw = (function () {
     };
 
     // draw a navigation circle when moving the map
+	/*
     var drawNavCircle = function (grid, ctx, canvas) {
         if (grid.mapMoveMode) {
             var cx = canvas.width / 2,
@@ -74,6 +75,7 @@ var draw = (function () {
             ctx.stroke();
         }
     };
+	*/
 
     return {
 
@@ -149,7 +151,7 @@ var draw = (function () {
                 ctx.strokeStyle = 'red';
                 ctx.strokeRect(x, y, cellSize, cellSize);
             }
-            drawNavCircle(grid, ctx, canvas);
+            //drawNavCircle(grid, ctx, canvas);
         },
 
         // draw a navigation circle when moving the map

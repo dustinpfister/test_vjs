@@ -15,17 +15,17 @@ map.parseGridProps = function (grid) {
     a.cells = [];
 
     // map movement
-    a.mapMoveMode = false;
-    a.moveDistance = 0;
-    a.moveDelta = 0;
-    a.mapMoveStartPoint = {
-        x: -1,
-        y: -1
-    };
-    a.mapMoveDeltas = {
-        x: 0,
-        y: 0
-    };
+    //a.mapMoveMode = false;
+    //a.moveDistance = 0;
+    //a.moveDelta = 0;
+    //a.mapMoveStartPoint = {
+    //    x: -1,
+    //    y: -1
+    //};
+    //a.mapMoveDeltas = {
+    //    x: 0,
+    //    y: 0
+    //};
 
     // game logic
     a.money = 0; // player money
@@ -160,6 +160,7 @@ map.getCellFromCanvasPoint = function (grid, x, y) {
 // MAP MOVEMENT
 
 // get a set of deltas
+/*
 map.getPointerMovementDeltas = function (grid, canvas, px, py) {
 
     var cx = grid.mapMoveStartPoint.x,
@@ -179,6 +180,7 @@ map.getPointerMovementDeltas = function (grid, canvas, px, py) {
         y: Math.sin(a) * delta  * -1
     };
 };
+*/
 
 // UPDATE GRID
 
@@ -201,7 +203,7 @@ map.updateGrid = function (grid) {
         grid.lastUpdate = now;
     }
 
-    if (grid.mapMoveMode) {
+    //if (grid.mapMoveMode) {
 
         //grid.xOffset += grid.mapMoveDeltas.x;
         //grid.yOffset += grid.mapMoveDeltas.y;
@@ -209,7 +211,7 @@ map.updateGrid = function (grid) {
         //grid.xOffset = offsets.xOffset;
         //grid.yOffset = offsets.yOffset;
 
-    }
+    //}
 
 };
 

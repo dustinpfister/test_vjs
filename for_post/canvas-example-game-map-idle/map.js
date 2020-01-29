@@ -165,9 +165,9 @@ map.updateGrid = function (grid) {
         grid.lastUpdate = now;
     }
 
-    //var offsets = map.clampedOffsets(grid, canvas);
-    //grid.xOffset = offsets.xOffset;
-    //grid.yOffset = offsets.yOffset;
+    var offsets = map.clampedOffsets(grid, canvas);
+    grid.xOffset = offsets.xOffset;
+    grid.yOffset = offsets.yOffset;
 
 
 };

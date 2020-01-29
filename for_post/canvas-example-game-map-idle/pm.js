@@ -62,9 +62,6 @@ var PM = (function () {
 
     // when a pointer action starts
     api.onPointerStart = function (pm, e) {
-		
-		console.log('yes we are getting this far at least');
-		
         var pos = getCanvasRelative(e);
         pm.down = true;
         pm.sp = {

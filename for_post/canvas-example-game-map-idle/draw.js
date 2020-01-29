@@ -1,11 +1,16 @@
 var draw = (function () {
 
     var drawStateDebug = {
-        nav: function (ctx, grid) {
-            var pt = grid.mapMoveStartPoint;
+        nav: function (ctx, grid, states) {
+            var pt = grid.mapMoveStartPoint,
+            pm = states.pm;
             ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 20);
-            ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 30);
-            ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 40);
+            //ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 30);
+            //ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 40);
+            ctx.fillText('pm.angle: ' + pm.angle, 10, 30);
+            ctx.fillText('pm.down: ' + pm.down, 10, 40);
+            ctx.fillText('pm.cp: ' + pm.cp.x, 10, 50);
+
         },
         land: function (ctx, grid) {
             var cell = grid.cells[grid.selectedCellIndex];
@@ -113,7 +118,7 @@ var draw = (function () {
 
         },
 
-        stateDebugInfo: function (ctx, stateName, grid) {
+        stateDebugInfo: function (ctx, stateName, grid, states) {
             var state = drawStateDebug[stateName];
             ctx.fillStyle = 'rgba(0,0,0,0.25)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -121,7 +126,7 @@ var draw = (function () {
             ctx.textAlign = 'left';
             ctx.fillText('current state: ' + stateName, 10, 10);
             if (state) {
-                state(ctx, grid);
+                state(ctx, grid, states);
             }
         },
 
@@ -145,6 +150,40 @@ var draw = (function () {
                 ctx.strokeRect(x, y, cellSize, cellSize);
             }
             drawNavCircle(grid, ctx, canvas);
+        },
+
+        // draw a navigation circle when moving the map
+        navCirclePM: function (pm, ctx, canvas) {
+            //if (pm.down) {
+
+            var cx = pm.sp.x,
+            cy = pm.sp.y,
+            x,
+            y,
+            min = 64,
+            per = 0,
+            a = pm.angle;
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 3;
+            // draw circle
+            ctx.beginPath();
+            ctx.arc(cx, cy, min / 2, 0, Math.PI * 2);
+            ctx.stroke();
+            // draw direction line
+            x = Math.cos(a) * min + cx;
+            y = Math.sin(a) * min + cy;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            // draw delta circle
+            per = pm.delta / 3;
+            x = Math.cos(a) * min * per + cx;
+            y = Math.sin(a) * min * per + cy;
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI * 2);
+            ctx.stroke();
+            //}
         }
 
     }

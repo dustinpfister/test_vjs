@@ -27,6 +27,7 @@ var states = {
     currentState: 'init',
 
     grid: map.createGridObject(17, 13),
+    pm: PM.newPM(),
 
     // ALWAYS STATE
     always: {
@@ -35,7 +36,7 @@ var states = {
             map.updateGrid(states.grid);
             draw.background(ctx, canvas); // background
             draw.map(states.grid, ctx, canvas); // the map
-            draw.stateDebugInfo(ctx, states.currentState, states.grid);
+            draw.stateDebugInfo(ctx, states.currentState, states.grid, states);
         }
     },
 
@@ -64,6 +65,8 @@ var states = {
                     x: pos.x,
                     y: pos.y
                 };
+
+                PM.onPointerStart(states.pm, e);
             },
             move: function (pos, grid, e) {
                 // movement can trigger nave state
@@ -109,14 +112,28 @@ var states = {
 
     // NAV STATE
     nav: {
-        tick: function () {},
+        tick: function () {
+
+            PM.updatePM(states.pm);
+            draw.navCirclePM(states.pm, ctx, canvas);
+
+        },
         pointer: {
+            start: function (pos, grid, e) {
+
+                PM.onPointerStart(states.pm, e);
+            },
             move: function (pos, grid, e) {
                 var deltas = map.getPointerMovementDeltas(grid, canvas, pos.x, pos.y),
                 pos2 = grid.mapMoveStartPoint;
                 grid.moveDistance = u.distance(pos.x, pos.y, pos2.x, pos2.y);
                 grid.mapMoveDeltas.x = deltas.x;
                 grid.mapMoveDeltas.y = deltas.y;
+
+                //PM.stepPointByPM(states.pm, {});
+
+                PM.onPointerMove(states.pm, e);
+
             },
             end: function (pos, grid, e) {
                 grid.mapMoveMode = false;
@@ -126,6 +143,7 @@ var states = {
                     x: -1,
                     y: -1
                 };
+                PM.onPointerEnd(states.pm, e);
                 // return to disp
                 states.currentState = 'disp';
             }
@@ -134,9 +152,7 @@ var states = {
 
     land: {
         tick: function () {
-
             draw.buildMenu(ctx, canvas, buildMenu);
-
         },
         pointer: {
             end: function (pos, grid, e) {
@@ -150,7 +166,6 @@ var states = {
                         map.createBuilding(grid, cell.x, cell.y, buildIndex, buildMenu.buildOptions);
                     }
                 }
-
                 states.currentState = 'disp';
             }
         }

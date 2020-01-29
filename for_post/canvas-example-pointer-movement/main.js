@@ -8,6 +8,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var pm = PM.newPM();
+
 // a point
 var pt = {
     x: 0,

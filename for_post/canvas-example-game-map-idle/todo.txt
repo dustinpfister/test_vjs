@@ -10,9 +10,10 @@
 
 * (done) state machine started for main.js
 * (done) always state for each frame tick
-* disp state - for just displaying the current map
-* nav state - for navigating the map
-* create state - for creating buildings
+* (done) disp state - for just displaying the current map
+* (done) nav state - for navigating the map
+* create state - for creating buildings started
+* enter create state when a blank land cell is selected
 * building state - for upgrading and deleting buildings
 * corresponding state functions for events
 * remove everything for device pixel ratio

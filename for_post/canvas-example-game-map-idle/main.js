@@ -81,6 +81,15 @@ var states = {
                     } else {
                         if (cell.i >= 0) {
                             grid.selectedCellIndex = cell.i;
+                            var cell = grid.cells[cell.i];
+                            // if cell index enter building state
+                            if (cell.building.index >= 0) {
+                                states.currentState = 'building';
+                            } else {
+                                // else eneter land state
+                                states.currentState = 'land';
+
+                            }
                         }
                     }
                 }
@@ -127,11 +136,11 @@ var states = {
         }
     },
 
-    createMenu: {
+    land: {
         tick: function () {}
     },
 
-    buildingMenu: {
+    building: {
         tick: function () {}
     }
 

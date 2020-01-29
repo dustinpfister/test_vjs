@@ -5,6 +5,7 @@
 * (done) remove everything for device pixel ratio
 * (done) creating, updating and drawing a PM state
 * (done) use what was worked out in canvas-example-pointer-movement in place of what is worked out in map.js
+* fix bug where nav state is entered after creating a building in land state
 * clamp map offsets in nav state
 * use localStorage to save and load state
 

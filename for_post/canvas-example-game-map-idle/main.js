@@ -66,7 +66,6 @@ var states = {
                     x: pos.x,
                     y: pos.y
                 };
-
                 PM.onPointerStart(states.pm, pos, e);
             },
             move: function (pos, grid, e) {
@@ -75,11 +74,9 @@ var states = {
                 if (states.pm.dist >= 32 && states.pm.down) {
                     states.currentState = 'nav';
                 }
-
             },
             end: function (pos, grid, e) {
                 // select a cell if not entering nav state
-
                 var cell = map.getCellFromCanvasPoint(grid, pos.x, pos.y);
                 if (cell.i === grid.selectedCellIndex) {
                     grid.selectedCellIndex = -1;
@@ -96,7 +93,6 @@ var states = {
                         }
                     }
                 }
-
             }
         }
     },
@@ -104,7 +100,6 @@ var states = {
     // NAV STATE
     nav: {
         tick: function () {
-
             PM.updatePM(states.pm);
             draw.navCirclePM(states.pm, ctx, canvas);
             var pos = {
@@ -114,17 +109,12 @@ var states = {
             PM.stepPointByPM(states.pm, pos, true);
             grid.xOffset = pos.x;
             grid.yOffset = pos.y;
-
         },
         pointer: {
-
             move: function (pos, grid, e) {
-
                 PM.onPointerMove(states.pm, pos, e);
-
             },
             end: function (pos, grid, e) {
-
                 PM.onPointerEnd(states.pm, pos, e);
                 // return to disp
                 states.currentState = 'disp';
@@ -148,6 +138,7 @@ var states = {
                         map.createBuilding(grid, cell.x, cell.y, buildIndex, buildMenu.buildOptions);
                     }
                 }
+                PM.onPointerEnd(states.pm, pos, e);
                 states.currentState = 'disp';
             }
         }
@@ -157,6 +148,7 @@ var states = {
         tick: function () {},
         pointer: {
             end: function (pos, grid, e) {
+                PM.onPointerEnd(states.pm, pos, e);
                 if (pos.x >= 96) {
                     grid.selectedCellIndex = -1;
                     states.currentState = 'disp';

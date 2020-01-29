@@ -101,8 +101,8 @@ var draw = (function () {
             cellSize = grid.cellSize || 10,
             x,
             y,
-            xOffset = grid.xOffset,
-            yOffset = grid.yOffset;
+            xOffset = grid.offset.x,
+            yOffset = grid.offset.y;
             pxRatio = pxRatio || 1;
             cellSize = cellSize * pxRatio;
             ctx.lineWidth = 1;

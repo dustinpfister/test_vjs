@@ -41,8 +41,10 @@ var states = {
     init: {
         tick: function () {
             grid = states.grid;
-            grid.xOffset = 0;
-            grid.yOffset = 0;
+            grid.offset = {
+                x: 0,
+                y: 0
+            };
             map.setGridWorth(grid, 0, 0, 2);
             // starting building
             map.createBuilding(grid, 8, 6, 0);
@@ -99,13 +101,7 @@ var states = {
         tick: function () {
             PM.updatePM(states.pm);
             draw.navCirclePM(states.pm, ctx, canvas);
-            var pos = {
-                x: states.grid.xOffset,
-                y: states.grid.yOffset
-            };
-            PM.stepPointByPM(states.pm, pos, true);
-            grid.xOffset = pos.x;
-            grid.yOffset = pos.y;
+            PM.stepPointByPM(states.pm, grid.offset, true);
         },
         pointer: {
             move: function (pos, grid, e) {
@@ -155,7 +151,6 @@ var states = {
     }
 
 };
-
 
 // MAIN APP LOOP
 var loop = function () {

@@ -8,8 +8,9 @@ map.parseGridProps = function (grid) {
     a.width = grid.width || 64;
     a.height = grid.height || 16;
     a.cellSize = grid.cellSize || 32;
-    a.xOffset = grid.xOffset === undefined ? 0 : grid.xOffset;
-    a.yOffset = grid.yOffset === undefined ? 0 : grid.yOffset;
+    a.offset = {};
+    a.offset.x = grid.xOffset === undefined ? 0 : grid.xOffset;
+    a.offset.y = grid.yOffset === undefined ? 0 : grid.yOffset;
     a.bufferSize = grid.bufferSize === undefined ? 32 : grid.bufferSize;
     a.selectedCellIndex = grid.selectedCellIndex || -1;
     a.cells = [];
@@ -106,8 +107,9 @@ map.clampedOffsets = function (grid, canvas) {
     yMin = bufferSize,
     xMax = (w - canvas.width + bufferSize) * -1,
     yMax = (h - canvas.height + bufferSize) * -1,
-    x = grid.xOffset,
-    y = grid.yOffset;
+    x = grid.offset.x,
+    y = grid.offset.y;
+
     // rules
     x = x > xMin ? xMin : x;
     y = y > yMin ? yMin : y;
@@ -115,8 +117,8 @@ map.clampedOffsets = function (grid, canvas) {
     y = y < yMax ? yMax : y;
     // return offset values
     return {
-        xOffset: x,
-        yOffset: y
+        x: x,
+        y: y
     };
 };
 
@@ -133,8 +135,8 @@ map.get = function (grid, x, y) {
 // get a cell position by way of a point on a canvas
 map.getCellPositionFromCanvasPoint = function (grid, x, y) {
     return {
-        x: Math.floor((x - grid.xOffset) / grid.cellSize),
-        y: Math.floor((y - grid.yOffset) / grid.cellSize)
+        x: Math.floor((x - grid.offset.x) / grid.cellSize),
+        y: Math.floor((y - grid.offset.y) / grid.cellSize)
     };
 };
 
@@ -165,9 +167,6 @@ map.updateGrid = function (grid) {
         grid.lastUpdate = now;
     }
 
-    var offsets = map.clampedOffsets(grid, canvas);
-    grid.xOffset = offsets.xOffset;
-    grid.yOffset = offsets.yOffset;
-
+    grid.offset = map.clampedOffsets(grid, canvas);
 
 };

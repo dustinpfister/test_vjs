@@ -76,19 +76,21 @@ var states = {
             },
             end: function (pos, grid, e) {
                 // select a cell if not entering nav state
-                var cell = map.getCellFromCanvasPoint(grid, pos.x, pos.y);
-                if (cell.i === grid.selectedCellIndex) {
-                    grid.selectedCellIndex = -1;
-                } else {
-                    if (cell.i >= 0) {
-                        grid.selectedCellIndex = cell.i;
-                        var cell = grid.cells[cell.i];
-                        // if cell index enter building state
-                        if (cell.building.index >= 0) {
-                            states.currentState = 'building';
-                        } else {
-                            // else enter land state
-                            states.currentState = 'land';
+                if (states.pm.down) {
+                    var cell = map.getCellFromCanvasPoint(grid, pos.x, pos.y);
+                    if (cell.i === grid.selectedCellIndex) {
+                        grid.selectedCellIndex = -1;
+                    } else {
+                        if (cell.i >= 0) {
+                            grid.selectedCellIndex = cell.i;
+                            var cell = grid.cells[cell.i];
+                            // if cell index enter building state
+                            if (cell.building.index >= 0) {
+                                states.currentState = 'building';
+                            } else {
+                                // else enter land state
+                                states.currentState = 'land';
+                            }
                         }
                     }
                 }
@@ -180,8 +182,6 @@ attachPointerEvent(canvas, 'mousemove', 'move');
 attachPointerEvent(canvas, 'mouseup', 'end');
 attachPointerEvent(canvas, 'mouseout', 'end');
 
-/*
-attachPointerEvent(canvas, 'mousedown', 'start');
-attachPointerEvent(canvas, 'mousemove', 'move');
-attachPointerEvent(canvas, 'mouseup', 'end');
-*/
+//attachPointerEvent(canvas, 'touchstart', 'start');
+//attachPointerEvent(canvas, 'touchmove', 'move');
+//attachPointerEvent(canvas, 'touchend', 'end');

@@ -15,8 +15,8 @@
 
 ### map.js
 <!-- *************************************** -->
-* remove everything for device pixel ratio
-* change global variable from 'g' to 'map'
+* (done) remove everything for device pixel ratio
+* (done) change global variable from 'g' to 'map'
 * map starts out centered
 * status bar displays current tick progress
 * info display when any tile is selected

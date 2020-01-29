@@ -107,17 +107,16 @@ map.createBuilding = function (grid, x, y, index, buildOptions) {
 // BOUNDS
 
 // return a set of clamped offset values for the given grid
-map.clampedOffsets = function (grid, canvas, pxRatio) {
+map.clampedOffsets = function (grid, canvas) {
     canvas = canvas || {
         width: 320,
         height: 120
     };
-    pxRatio = pxRatio || 1;
-    var w = grid.width * grid.cellSize * pxRatio,
-    h = grid.height * grid.cellSize * pxRatio,
-    bufferSize = grid.bufferSize * pxRatio,
-    xMin = bufferSize * pxRatio,
-    yMin = bufferSize * pxRatio,
+    var w = grid.width * grid.cellSize,
+    h = grid.height * grid.cellSize,
+    bufferSize = grid.bufferSize,
+    xMin = bufferSize,
+    yMin = bufferSize,
     xMax = (w - canvas.width + bufferSize) * -1,
     yMax = (h - canvas.height + bufferSize) * -1,
     x = grid.xOffset,
@@ -161,9 +160,7 @@ map.getCellFromCanvasPoint = function (grid, x, y) {
 // MAP MOVEMENT
 
 // get a set of deltas
-map.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
-
-    ratio = ratio || 1;
+map.getPointerMovementDeltas = function (grid, canvas, px, py) {
 
     var cx = grid.mapMoveStartPoint.x,
     cy = grid.mapMoveStartPoint.y,
@@ -178,16 +175,14 @@ map.getPointerMovementDeltas = function (grid, canvas, px, py, ratio) {
     delta = per * 3;
     grid.moveDelta = delta >= 0 ? delta : 0;
     return {
-        x: Math.cos(a) * delta * ratio * -1,
-        y: Math.sin(a) * delta * ratio * -1
+        x: Math.cos(a) * delta  * -1,
+        y: Math.sin(a) * delta  * -1
     };
 };
 
 // UPDATE GRID
 
-map.updateGrid = function (grid, ratio) {
-
-    ratio = ratio || 1;
+map.updateGrid = function (grid) {
 
     var now = new Date(),
     t = now - grid.lastUpdate,
@@ -210,7 +205,7 @@ map.updateGrid = function (grid, ratio) {
 
         grid.xOffset += grid.mapMoveDeltas.x;
         grid.yOffset += grid.mapMoveDeltas.y;
-        var offsets = map.clampedOffsets(grid, canvas, ratio);
+        var offsets = map.clampedOffsets(grid, canvas);
         grid.xOffset = offsets.xOffset;
         grid.yOffset = offsets.yOffset;
 

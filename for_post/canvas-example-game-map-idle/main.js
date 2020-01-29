@@ -66,7 +66,7 @@ var states = {
                     y: pos.y
                 };
 
-                PM.onPointerStart(states.pm, e);
+                PM.onPointerStart(states.pm, pos, e);
             },
             move: function (pos, grid, e) {
                 // movement can trigger nave state
@@ -126,10 +126,9 @@ var states = {
 
         },
         pointer: {
-            start: function (pos, grid, e) {
-
-                PM.onPointerStart(states.pm, e);
-            },
+            //start: function (pos, grid, e) {
+            //    PM.onPointerStart(states.pm, pos, e);
+            //},
             move: function (pos, grid, e) {
                 var deltas = map.getPointerMovementDeltas(grid, canvas, pos.x, pos.y),
                 pos2 = grid.mapMoveStartPoint;
@@ -139,7 +138,7 @@ var states = {
 
                 //PM.stepPointByPM(states.pm, {});
 
-                PM.onPointerMove(states.pm, e);
+                PM.onPointerMove(states.pm, pos, e);
 
             },
             end: function (pos, grid, e) {
@@ -150,7 +149,7 @@ var states = {
                     x: -1,
                     y: -1
                 };
-                PM.onPointerEnd(states.pm, e);
+                PM.onPointerEnd(states.pm, pos, e);
                 // return to disp
                 states.currentState = 'disp';
             }

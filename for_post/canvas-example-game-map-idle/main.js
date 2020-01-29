@@ -125,42 +125,18 @@ var loop = function () {
 loop();
 
 // EVENTS
-
-canvas.addEventListener('mousedown', function (e) {
-    var pos = u.getCanvasRelative(e);
-    var stateObj = states[states.currentState];
-    if (stateObj.pointer) {
-        var handler = stateObj.pointer.start;
-        if (handler) {
-            handler(pos, states.grid, e);
+var attachEvent = function (canvas, domType, smType) {
+    canvas.addEventListener(domType, function (e) {
+        var pos = u.getCanvasRelative(e);
+        var stateObj = states[states.currentState];
+        if (stateObj.pointer) {
+            var handler = stateObj.pointer[smType];
+            if (handler) {
+                handler(pos, states.grid, e);
+            }
         }
-    }
-    //g.userCanvasActionStart(states.grid, e, pxRatio);
-});
-
-canvas.addEventListener('mouseup', function (e) {
-
-    var pos = u.getCanvasRelative(e);
-    var stateObj = states[states.currentState];
-    if (stateObj.pointer) {
-        var handler = stateObj.pointer.end;
-        if (handler) {
-            handler(pos, states.grid, e);
-        }
-    }
-
-    //g.userCanvasActionEnd(states.grid, e, pxRatio);
-});
-canvas.addEventListener('mousemove', function (e) {
-
-    var pos = u.getCanvasRelative(e);
-    var stateObj = states[states.currentState];
-    if (stateObj.pointer) {
-        var handler = stateObj.pointer.move;
-        if (handler) {
-            handler(pos, states.grid, e);
-        }
-    }
-
-    //g.userCanvasActionMove(states.grid, e, pxRatio);
-});
+    });
+};
+attachEvent(canvas, 'mousedown', 'start');
+attachEvent(canvas, 'mousemove', 'move');
+attachEvent(canvas, 'mouseup', 'end');

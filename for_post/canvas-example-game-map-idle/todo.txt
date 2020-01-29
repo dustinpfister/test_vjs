@@ -4,6 +4,9 @@
 
 ## main.js
 <!-- *************************************** -->
+* get touch support working
+* have building state display a building menu
+* the building menu can be used to delete a building
 * use localStorage to save and load state
 * do something with window.devicePixelRatio
 
@@ -11,12 +14,14 @@
 ### map.js
 <!-- *************************************** -->
 * status bar displays current tick progress
+* do something with the worth value of cells.
+* make it so building a building debits money
 
 
 
 ## pm.js
 <!-- *************************************** -->
-
+* get touch support working
 
 
 ## utils.js

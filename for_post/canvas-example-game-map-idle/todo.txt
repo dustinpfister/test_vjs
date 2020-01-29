@@ -8,8 +8,7 @@
 
 ## draw.js
 <!-- *************************************** -->
-* debug draw method for building state
-* corresponding draw methods for all state events
+* (done) debug draw method for building state
 * combine draw_map.js into draw.js
 
 

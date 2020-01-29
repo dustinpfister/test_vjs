@@ -33,7 +33,7 @@ var states = {
             // update and draw
             g.updateGrid(states.grid, pxRatio);
             draw.background(ctx, canvas); // background
-            drawMap(states.grid, ctx, canvas, pxRatio); // the map
+            draw.map(states.grid, ctx, canvas, pxRatio); // the map
             draw.stateDebugInfo(ctx, states.currentState, states.grid);
         }
     },

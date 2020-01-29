@@ -161,10 +161,11 @@ var loop = function () {
 loop();
 
 // EVENTS
-var attachEvent = function (canvas, domType, smType) {
+var attachPointerEvent = function (canvas, domType, smType) {
     canvas.addEventListener(domType, function (e) {
-        var pos = u.getCanvasRelative(e);
-        var stateObj = states[states.currentState];
+        var pos = u.getCanvasRelative(e),
+        stateObj = states[states.currentState];
+        e.preventDefault();
         if (stateObj.pointer) {
             var handler = stateObj.pointer[smType];
             if (handler) {
@@ -173,6 +174,7 @@ var attachEvent = function (canvas, domType, smType) {
         }
     });
 };
-attachEvent(canvas, 'mousedown', 'start');
-attachEvent(canvas, 'mousemove', 'move');
-attachEvent(canvas, 'mouseup', 'end');
+
+attachPointerEvent(canvas, 'mousedown', 'start');
+attachPointerEvent(canvas, 'mousemove', 'move');
+attachPointerEvent(canvas, 'mouseup', 'end');

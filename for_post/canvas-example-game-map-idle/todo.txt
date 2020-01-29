@@ -14,9 +14,13 @@
 ### map.js
 <!-- *************************************** -->
 * status bar displays current tick progress
-* do something with the worth value of cells.
 * make it so building a building debits money
-
+* have a building cell index
+* total map worth property
+* highestCellWorth property
+* cell worth / highestCellWorth used to set type property
+* do something with the worth value of cells.
+* do something with the type property of a cell or loose it.
 
 
 ## pm.js
@@ -32,7 +36,7 @@
 ## draw.js
 <!-- *************************************** -->
 
-
+* sprite sheets and draw image calls
 
 ## done
 <!-- *************************************** -->
@@ -68,7 +72,7 @@
 * (done) a starting building is located at the center
 * (done) set grid worth value for cells
 * (done) map should have a money property
-* (done)starting land
+* (done) starting land state
 * (done) bought property for cells (player can only build on tiles that they own)
 * (done) create building method
 * (done) tickTime property

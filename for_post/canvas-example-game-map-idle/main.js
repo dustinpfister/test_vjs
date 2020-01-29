@@ -163,25 +163,44 @@ var loop = function () {
 loop();
 
 // EVENTS
+
+// attach pointer events
 var attachPointerEvent = function (canvas, domType, smType) {
+    // attach a hander of the given domType to the canvas
     canvas.addEventListener(domType, function (e) {
+        // get position and state
         var pos = u.getCanvasRelative(e),
         stateObj = states[states.currentState];
+        // prevent default
         e.preventDefault();
+        // if we have a point object
         if (stateObj.pointer) {
             var handler = stateObj.pointer[smType];
+            // if we have a hander
             if (handler) {
-                handler(pos, states.grid, e);
+                // do not fire handler if we go out of bounds
+                // but trigger and end for the current state if
+                // if is there
+                if (pos.x < 0 || pos.x >= canvas.width || pos.y < 0 || pos.y >= canvas.height) {
+                    var endHandler = stateObj.pointer.end;
+                    if (endHandler) {
+                        endHandler(pos, states.grid, e);
+                    }
+                } else {
+                    // if we are in bounds just fire the hander
+                    handler(pos, states.grid, e);
+                }
             }
         }
     });
 };
 
+// mouse events
 attachPointerEvent(canvas, 'mousedown', 'start');
 attachPointerEvent(canvas, 'mousemove', 'move');
 attachPointerEvent(canvas, 'mouseup', 'end');
 attachPointerEvent(canvas, 'mouseout', 'end');
-
+// touch events
 attachPointerEvent(canvas, 'touchstart', 'start');
 attachPointerEvent(canvas, 'touchmove', 'move');
 attachPointerEvent(canvas, 'touchend', 'end');

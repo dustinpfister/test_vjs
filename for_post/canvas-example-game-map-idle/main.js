@@ -167,7 +167,7 @@ var attachPointerEvent = function (canvas, domType, smType) {
     canvas.addEventListener(domType, function (e) {
         var pos = u.getCanvasRelative(e),
         stateObj = states[states.currentState];
-        e.preventDefault();
+        //e.preventDefault();
         if (stateObj.pointer) {
             var handler = stateObj.pointer[smType];
             if (handler) {
@@ -182,6 +182,7 @@ attachPointerEvent(canvas, 'mousemove', 'move');
 attachPointerEvent(canvas, 'mouseup', 'end');
 attachPointerEvent(canvas, 'mouseout', 'end');
 
-//attachPointerEvent(canvas, 'touchstart', 'start');
-//attachPointerEvent(canvas, 'touchmove', 'move');
-//attachPointerEvent(canvas, 'touchend', 'end');
+attachPointerEvent(canvas, 'touchstart', 'start');
+attachPointerEvent(canvas, 'touchmove', 'move');
+attachPointerEvent(canvas, 'touchend', 'end');
+attachPointerEvent(canvas, 'touchcancel', 'end');

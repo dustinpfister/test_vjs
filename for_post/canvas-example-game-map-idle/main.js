@@ -23,6 +23,10 @@ var states = {
     always: {
         tick: function () {
             g.updateGrid(states.grid, pxRatio);
+
+            draw.background(ctx, canvas); // background
+            drawMap(states.grid, ctx, canvas, pxRatio); // the map
+
         }
     },
 
@@ -44,7 +48,11 @@ var states = {
 
     // DISPLAY STATE
     disp: {
-        tick: function () {},
+        tick: function () {
+
+            draw.gridStatusInfo(ctx, canvas, states.grid); // status bar
+
+        },
         pointer: {
             start: function (pos, grid, e) {
 
@@ -153,10 +161,10 @@ var loop = function () {
     states[states.currentState].tick();
 
     // draw
-    draw.background(ctx, canvas); // background
-    drawMap(states.grid, ctx, canvas, pxRatio); // the map
-    draw.gridStatusInfo(ctx, canvas, states.grid); // status bar
-    draw.debugInfo(ctx, states.grid); // drawing debug into
+    //draw.background(ctx, canvas); // background
+    //drawMap(states.grid, ctx, canvas, pxRatio); // the map
+    //draw.gridStatusInfo(ctx, canvas, states.grid); // status bar
+    //draw.debugInfo(ctx, states.grid); // drawing debug into
 };
 loop();
 

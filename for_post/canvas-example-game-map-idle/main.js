@@ -57,7 +57,7 @@ var states = {
     // DISPLAY STATE
     disp: {
         tick: function () {
-			            PM.updatePM(states.pm);
+            PM.updatePM(states.pm);
             draw.gridStatusInfo(ctx, canvas, states.grid); // status bar
         },
         pointer: {
@@ -71,48 +71,32 @@ var states = {
             },
             move: function (pos, grid, e) {
                 // movement can trigger nave state
-				                PM.onPointerMove(states.pm, pos, e);
-				if(states.pm.dist >=32 && states.pm.down){
-				      states.currentState = 'nav';
-				}
-				/*
-                var pos2 = grid.mapMoveStartPoint;
-                grid.moveDistance = 0;
-                if (grid.mapMoveStartPoint.x != -1 && grid.mapMoveStartPoint.y != -1) {
-                    grid.moveDistance = u.distance(pos.x, pos.y, pos2.x, pos2.y);
-                }
-                grid.mapMoveMode = false;
-                if (grid.moveDistance >= 32) {
-                    grid.mapMoveMode = true;
-                    // enter nav mode
+                PM.onPointerMove(states.pm, pos, e);
+                if (states.pm.dist >= 32 && states.pm.down) {
                     states.currentState = 'nav';
                 }
-				*/
+
             },
             end: function (pos, grid, e) {
                 // select a cell if not entering nav state
-                //if (!states.pm.down) {
-                    var cell = map.getCellFromCanvasPoint(grid, pos.x, pos.y);
-                    if (cell.i === grid.selectedCellIndex) {
-                        grid.selectedCellIndex = -1;
-                    } else {
-                        if (cell.i >= 0) {
-                            grid.selectedCellIndex = cell.i;
-                            var cell = grid.cells[cell.i];
-                            // if cell index enter building state
-                            if (cell.building.index >= 0) {
-                                states.currentState = 'building';
-                            } else {
-                                // else enter land state
-                                states.currentState = 'land';
-                            }
+
+                var cell = map.getCellFromCanvasPoint(grid, pos.x, pos.y);
+                if (cell.i === grid.selectedCellIndex) {
+                    grid.selectedCellIndex = -1;
+                } else {
+                    if (cell.i >= 0) {
+                        grid.selectedCellIndex = cell.i;
+                        var cell = grid.cells[cell.i];
+                        // if cell index enter building state
+                        if (cell.building.index >= 0) {
+                            states.currentState = 'building';
+                        } else {
+                            // else enter land state
+                            states.currentState = 'land';
                         }
                     }
-                //}
-                //grid.mapMoveStartPoint = {
-                //    x: -1,
-                //    y: -1
-                //};
+                }
+
             }
         }
     },
@@ -133,33 +117,14 @@ var states = {
 
         },
         pointer: {
-            //start: function (pos, grid, e) {
-            //    PM.onPointerStart(states.pm, pos, e);
-            //},
-            move: function (pos, grid, e) {
-				/*
-                var deltas = map.getPointerMovementDeltas(grid, canvas, pos.x, pos.y),
-                pos2 = grid.mapMoveStartPoint;
-                grid.moveDistance = u.distance(pos.x, pos.y, pos2.x, pos2.y);
-                grid.mapMoveDeltas.x = deltas.x;
-                grid.mapMoveDeltas.y = deltas.y;
-				*/
 
-                //PM.stepPointByPM(states.pm, {});
+            move: function (pos, grid, e) {
 
                 PM.onPointerMove(states.pm, pos, e);
 
             },
             end: function (pos, grid, e) {
-				/*
-                grid.mapMoveMode = false;
-                grid.mapMoveDeltas.x = 0;
-                grid.mapMoveDeltas.y = 0;
-                grid.mapMoveStartPoint = {
-                    x: -1,
-                    y: -1
-                };
-				*/
+
                 PM.onPointerEnd(states.pm, pos, e);
                 // return to disp
                 states.currentState = 'disp';

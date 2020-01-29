@@ -42,8 +42,8 @@ var states = {
         tick: function () {
             grid = states.grid;
             grid.offset = {
-                x: 0,
-                y: 0
+                x: grid.cellSize * grid.width / 2 * -1 + canvas.width / 2,
+                y: grid.cellSize * grid.height / 2 * -1 + canvas.height / 2
             };
             map.setGridWorth(grid, 0, 0, 2);
             // starting building

@@ -10,7 +10,6 @@
 
 ### map.js
 <!-- *************************************** -->
-* have offset values as map.offset.x rather than map.xOffset
 * map starts out centered
 * status bar displays current tick progress
 
@@ -33,6 +32,7 @@
 
 ## done
 <!-- *************************************** -->
+* (done) have offset values as map.offset.x rather than map.xOffset
 * (done) fix bug where nav state is entered after creating a building in land state
 * (done) clamp map offsets in nav state
 * (done) copy over pm.js to the project

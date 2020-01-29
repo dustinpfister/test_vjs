@@ -25,6 +25,7 @@ var draw = (function () {
             ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
             ctx.fillStyle = 'black';
             ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
             ctx.font = '15px courier';
             ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
         },
@@ -45,6 +46,12 @@ var draw = (function () {
             ctx.fillStyle = 'rgba(255,255,255,0.5)';
             ctx.fillRect(0, 0, 96, canvas.height);
 
+            ctx.strokeStyle = 'rgba(255,0,0,0.5)';
+            ctx.strokeRect(0, 0, 96, 96);
+            ctx.fillStyle = 'rgba(255,0,0,0.5)';
+            ctx.textAlign = 'center';
+            ctx.fillText(buildMenu.buildOptions[0].name, 48, 32);
+
         },
 
         stateDebugInfo: function (ctx, stateName, grid) {
@@ -52,6 +59,7 @@ var draw = (function () {
             ctx.fillStyle = 'rgba(0,0,0,0.25)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = 'white';
+            ctx.textAlign = 'left';
             ctx.fillText('current state: ' + stateName, 10, 10);
             if (state) {
                 state(ctx, grid);

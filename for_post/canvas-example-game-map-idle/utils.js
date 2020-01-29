@@ -8,8 +8,9 @@ u.distance = function (x1, y1, x2, y2) {
 u.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
-    x = ( e.touches ? e.touches[0].clientX : e.clientX ) - bx.left,
-    y = ( e.touches ? e.touches[0].clientY : e.clientY ) - bx.top;
+    x = (e.touches ? e.touches[0].clientX : e.clientX) - bx.left,
+    y = (e.touches ? e.touches[0].clientY : e.clientY) - bx.top;
+    e.preventDefault();
     return {
         x: x,
         y: y,

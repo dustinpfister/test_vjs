@@ -22,9 +22,7 @@ var states = {
 
     always: {
         tick: function () {
-
             g.updateGrid(states.grid, pxRatio);
-
         }
     },
 
@@ -45,7 +43,17 @@ var states = {
     },
 
     disp: {
-        tick: function () {}
+        tick: function () {},
+        pointer: {
+            start: function (pos, grid, e) {
+
+                grid.mapMoveStartPoint = {
+                    x: pos.x,
+                    y: pos.y
+                };
+
+            }
+        }
     },
 
     nav: {
@@ -79,12 +87,20 @@ loop();
 // EVENTS
 
 canvas.addEventListener('mousedown', function (e) {
-    g.userCanvasActionStart(states.grid, e, pxRatio);
+    var pos = u.getCanvasRelative(e);
+    var stateObj = states[states.currentState];
+    if (stateObj.pointer) {
+        var handler = stateObj.pointer.start;
+        if (handler) {
+            handler(pos, states.grid, e);
+        }
+    }
+    //g.userCanvasActionStart(states.grid, e, pxRatio);
 });
 
 canvas.addEventListener('mouseup', function (e) {
-    g.userCanvasActionEnd(states.grid, e, pxRatio);
+    //g.userCanvasActionEnd(states.grid, e, pxRatio);
 });
 canvas.addEventListener('mousemove', function (e) {
-    g.userCanvasActionMove(states.grid, e, pxRatio);
+    //g.userCanvasActionMove(states.grid, e, pxRatio);
 });

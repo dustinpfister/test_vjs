@@ -221,6 +221,7 @@ g.updateGrid = function (grid, ratio) {
 // EVENTS
 
 // user action start
+/*
 g.userCanvasActionStart = function (grid, e, ratio) {
 
     var pos = u.getCanvasRelative(e);
@@ -281,3 +282,4 @@ g.userCanvasActionEnd = function (grid, e, ratio) {
         y: -1
     };
 };
+*/

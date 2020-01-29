@@ -1,14 +1,17 @@
 var draw = (function () {
 
     var drawStateDebug = {
-
         nav: function (ctx, grid) {
             var pt = grid.mapMoveStartPoint;
             ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 20);
             ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 30);
             ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 40);
+        },
+        land: function (ctx, grid) {
+            var cell = grid.cells[grid.selectedCellIndex];
+            ctx.fillText('index (x,y): ' + cell.i +' (' + cell.x + ',' + cell.y + ')', 10, 20);
+            ctx.fillText('worth: ' + cell.worth, 10, 30);
         }
-
     }
 
     return {

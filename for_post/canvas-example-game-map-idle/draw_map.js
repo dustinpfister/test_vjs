@@ -41,7 +41,7 @@ var drawMap = (function () {
             ctx.lineTo(Math.cos(a) * min + cx, Math.sin(a) * min + cy);
             ctx.stroke();
             // draw delta circle
-			per = grid.moveDelta / 3;
+            per = grid.moveDelta / 3;
             ctx.beginPath();
             ctx.arc(Math.cos(a) * min * per + cx, Math.sin(a) * min * per + cy, 5, 0, Math.PI * 2);
             ctx.stroke();

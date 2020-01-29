@@ -14,14 +14,17 @@
 * (done) nav state - for navigating the map
 * (done) land state - for creating buildings started
 * (done) enter land state when a blank land cell is selected
-* create a building from land state
-* building state - for upgrading and deleting buildings
-* corresponding state functions for events
+* (done) create a building from land state
+* (done) building state - for upgrading and deleting buildings
+* (done) corresponding state functions for events
 * remove everything for device pixel ratio
 
 ## draw.js
 
+* debug draw method for land state
+* debug draw method for building state
 * corresponding draw methods for all state events
+* combine draw_map.js into draw.js
 
 ### buildings.js
 * building menu offset that is used for scrolling the build menu

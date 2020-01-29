@@ -1,6 +1,5 @@
 
 // CANVAS
-
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('gamearea') || document.body;
@@ -8,8 +7,6 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
-
-//var pxRatio = window.devicePixelRatio || 1; // scale
 
 // BUILD MENU
 var buildMenu = {
@@ -21,7 +18,7 @@ var buildMenu = {
     ]
 };
 
-// MAIN APP LOOP
+// STATE
 var states = {
 
     currentState: 'init',
@@ -159,12 +156,12 @@ var states = {
 
 };
 
+
+// MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);
-
     states.always.tick();
     states[states.currentState].tick();
-
 };
 loop();
 

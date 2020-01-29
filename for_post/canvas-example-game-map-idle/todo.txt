@@ -5,7 +5,7 @@
 ## main.js
 <!-- *************************************** -->
 * use localStorage to save and load state
-
+* do something with window.devicePixelRatio
 
 
 ### map.js

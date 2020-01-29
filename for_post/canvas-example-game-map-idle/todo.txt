@@ -12,8 +12,9 @@
 * (done) always state for each frame tick
 * (done) disp state - for just displaying the current map
 * (done) nav state - for navigating the map
-* create state - for creating buildings started
-* enter create state when a blank land cell is selected
+* (done) land state - for creating buildings started
+* (done) enter land state when a blank land cell is selected
+* create a building from land state
 * building state - for upgrading and deleting buildings
 * corresponding state functions for events
 * remove everything for device pixel ratio

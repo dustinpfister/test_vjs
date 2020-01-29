@@ -85,7 +85,7 @@ var states = {
                             if (cell.building.index >= 0) {
                                 states.currentState = 'building';
                             } else {
-                                // else eneter land state
+                                // else enter land state
                                 states.currentState = 'land';
                             }
                         }
@@ -125,11 +125,27 @@ var states = {
     },
 
     land: {
-        tick: function () {}
+        tick: function () {},
+        pointer: {
+            end: function (pos, grid, e) {
+                if (pos.x >= 96) {
+                    grid.selectedCellIndex = -1;
+                    states.currentState = 'disp';
+                }
+            }
+        }
     },
 
     building: {
-        tick: function () {}
+        tick: function () {},
+        pointer: {
+            end: function (pos, grid, e) {
+                if (pos.x >= 96) {
+                    grid.selectedCellIndex = -1;
+                    states.currentState = 'disp';
+                }
+            }
+        }
     }
 
 };

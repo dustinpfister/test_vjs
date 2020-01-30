@@ -13,12 +13,12 @@ var PMMT = (function () {
     };
 
     // attach pointer events
-    var attachPointerEvent = function (states, canvas, domType, smType) {
+    var attachPointerEvent = function (sm, domType, smType) {
         // attach a hander of the given domType to the canvas
-        canvas.addEventListener(domType, function (e) {
+        sm.canvas.addEventListener(domType, function (e) {
             // get position and state
             var pos = getCanvasRelative(e),
-            stateObj = states[states.currentState] || {},
+            stateObj = sm[sm.currentState] || {},
             hander,
             endHander;
             // prevent default
@@ -31,14 +31,14 @@ var PMMT = (function () {
                     // do not fire handler if we go out of bounds
                     // but trigger and end for the current state if
                     // if is there
-                    if (pos.x < 0 || pos.x >= canvas.width || pos.y < 0 || pos.y >= canvas.height) {
+                    if (pos.x < 0 || pos.x >= sm.canvas.width || pos.y < 0 || pos.y >= sm.canvas.height) {
                         endHandler = stateObj.pointer.end;
                         if (endHandler) {
-                            endHandler(pos, states, e);
+                            endHandler(pos, sm, e);
                         }
                     } else {
                         // if we are in bounds just fire the hander
-                        handler(pos, states, e);
+                        handler(pos, sm, e);
                     }
                 }
             }
@@ -47,16 +47,16 @@ var PMMT = (function () {
 
     // single attachment method for a state manager
     return function (sm) {
-
-        attachPointerEvent(sm, sm.canvas, 'mousedown', 'start');
-        attachPointerEvent(sm, sm.canvas, 'mousemove', 'move');
-        attachPointerEvent(sm, sm.canvas, 'mouseup', 'end');
-        attachPointerEvent(sm, sm.canvas, 'mouseout', 'end');
+        // mouse events
+        attachPointerEvent(sm, 'mousedown', 'start');
+        attachPointerEvent(sm, 'mousemove', 'move');
+        attachPointerEvent(sm, 'mouseup', 'end');
+        attachPointerEvent(sm, 'mouseout', 'end');
         // touch events
-        attachPointerEvent(sm, sm.canvas, 'touchstart', 'start');
-        attachPointerEvent(sm, sm.canvas, 'touchmove', 'move');
-        attachPointerEvent(sm, sm.canvas, 'touchend', 'end');
-        attachPointerEvent(sm, sm.canvas, 'touchcancel', 'end');
+        attachPointerEvent(sm, 'touchstart', 'start');
+        attachPointerEvent(sm, 'touchmove', 'move');
+        attachPointerEvent(sm, 'touchend', 'end');
+        attachPointerEvent(sm, 'touchcancel', 'end');
 
     };
 

@@ -17,10 +17,8 @@ var sm = {
     },
     init: {
         tick: function (model, sm) {
-
             PMMT(sm);
             sm.currentState = 'demo';
-
         }
     },
     demo: {

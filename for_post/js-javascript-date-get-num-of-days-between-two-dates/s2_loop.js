@@ -9,20 +9,18 @@ var getDayDiff2 = function (d1, d2) {
     m = d2.getMonth(),
     d = d2.getDate(),
     days = getDaysInMonth(y, m);
-    console.log(y, m, getDaysInMonth(y, m));
     do {
         m = Number(m) + 1;
         if (m >= 12) {
             m = 0;
             y = Number(y) + 1;
         }
-        //console.log(y, m, getDaysInMonth(y, m));
         days += getDaysInMonth(y, m);
     } while ((y + '.' + m != d1.getFullYear() + '.' + d1.getMonth()));
     return days - d2.getDate() - (getDaysInMonth(d1.getFullYear(), d1.getMonth()) - d1.getDate());
 };
 
-var d1 = new Date(2020, 0, 30),
+var d1 = new Date(2020, 0, 13),
 d2 = new Date(2017, 1, 2);
 
 var days = getDayDiff2(d1, d2);

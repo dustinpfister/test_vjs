@@ -7,7 +7,54 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var states = {};
+var model = {
+    x: canvas.width / 2,
+    y: canvas.height / 2
+};
+
+var sm = {
+    currentState: 'demo',
+    model: model,
+    demo: {
+
+        tick: function (model, sm) {
+
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.strokeStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(model.x, model.y, 5, 0, Math.PI * 2);
+            ctx.stroke();
+
+        },
+
+        pointer: {
+            start: function (pos, sm, e) {
+
+                sm.model.down = true;
+
+            },
+            move: function (pos, sm, e) {
+
+                var m = sm.model;
+
+                if (m.down) {
+                    m.x = pos.x;
+                    m.y = pos.y;
+                }
+
+            },
+            end: function () {
+
+                sm.model.down = false;
+
+            }
+        }
+
+    }
+
+};
 
 // get canvas relative point
 var getCanvasRelative = function (e) {
@@ -22,26 +69,27 @@ var getCanvasRelative = function (e) {
     };
 };
 
-
 // attach pointer events
 var attachPointerEvent = function (states, canvas, domType, smType) {
     // attach a hander of the given domType to the canvas
     canvas.addEventListener(domType, function (e) {
         // get position and state
         var pos = getCanvasRelative(e),
-        stateObj = states[states.currentState] || {};
+        stateObj = states[states.currentState] || {},
+        hander,
+        endHander;
         // prevent default
         e.preventDefault();
         // if we have a point object
         if (stateObj.pointer) {
-            var handler = stateObj.pointer[smType];
+            handler = stateObj.pointer[smType];
             // if we have a hander
             if (handler) {
                 // do not fire handler if we go out of bounds
                 // but trigger and end for the current state if
                 // if is there
                 if (pos.x < 0 || pos.x >= canvas.width || pos.y < 0 || pos.y >= canvas.height) {
-                    var endHandler = stateObj.pointer.end;
+                    endHandler = stateObj.pointer.end;
                     if (endHandler) {
                         endHandler(pos, states, e);
                     }
@@ -55,21 +103,19 @@ var attachPointerEvent = function (states, canvas, domType, smType) {
 };
 
 // mouse events
-attachPointerEvent(states, canvas, 'mousedown', 'start');
-attachPointerEvent(states, canvas, 'mousemove', 'move');
-attachPointerEvent(states, canvas, 'mouseup', 'end');
-attachPointerEvent(states, canvas, 'mouseout', 'end');
+attachPointerEvent(sm, canvas, 'mousedown', 'start');
+attachPointerEvent(sm, canvas, 'mousemove', 'move');
+attachPointerEvent(sm, canvas, 'mouseup', 'end');
+attachPointerEvent(sm, canvas, 'mouseout', 'end');
 // touch events
-attachPointerEvent(states, canvas, 'touchstart', 'start');
-attachPointerEvent(states, canvas, 'touchmove', 'move');
-attachPointerEvent(states, canvas, 'touchend', 'end');
-attachPointerEvent(states, canvas, 'touchcancel', 'end');
-
+attachPointerEvent(sm, canvas, 'touchstart', 'start');
+attachPointerEvent(sm, canvas, 'touchmove', 'move');
+attachPointerEvent(sm, canvas, 'touchend', 'end');
+attachPointerEvent(sm, canvas, 'touchcancel', 'end');
 
 var loop = function () {
     requestAnimationFrame(loop);
+    sm[sm.currentState].tick(model, sm);
 
 };
 loop();
-
-

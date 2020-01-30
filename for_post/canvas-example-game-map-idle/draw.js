@@ -62,17 +62,6 @@ var draw = (function () {
             ctx.fillText('$' + grid.money.toFixed(2), 5, canvas.height - 15);
         },
 
-        // draw debug info
-        debugInfo: function (ctx, grid) {
-            ctx.fillStyle = 'rgba(0,0,0,0.25)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'white';
-            var pt = grid.mapMoveStartPoint;
-            ctx.fillText('startPos: (' + pt.x + ',' + pt.y + ')', 10, 10);
-            ctx.fillText('moveDistance: ' + grid.moveDistance, 10, 20);
-            ctx.fillText('moveDelta: ' + grid.moveDelta, 10, 30);
-        },
-
         buildMenu: function (ctx, canvas, buildMenu) {
             ctx.fillStyle = 'rgba(255,255,255,0.5)';
             ctx.fillRect(0, 0, 96, canvas.height);

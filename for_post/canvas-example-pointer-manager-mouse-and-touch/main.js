@@ -8,12 +8,20 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var sm = {
-    currentState: 'demo',
+    currentState: 'init',
     canvas: canvas,
     ctx: ctx,
     model: {
         x: canvas.width / 2,
         y: canvas.height / 2
+    },
+    init: {
+        tick: function (model, sm) {
+
+            PMMT(sm);
+            sm.currentState = 'demo';
+
+        }
     },
     demo: {
         tick: function (model, sm) {
@@ -45,11 +53,9 @@ var sm = {
     }
 };
 
-PMMT(sm);
 
 var loop = function () {
     requestAnimationFrame(loop);
     sm[sm.currentState].tick(sm.model, sm);
-
 };
 loop();

@@ -16,44 +16,33 @@ var sm = {
     currentState: 'demo',
     model: model,
     demo: {
-
         tick: function (model, sm) {
-
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             ctx.strokeStyle = 'white';
             ctx.beginPath();
             ctx.arc(model.x, model.y, 5, 0, Math.PI * 2);
             ctx.stroke();
-
         },
-
         pointer: {
             start: function (pos, sm, e) {
-
                 sm.model.down = true;
-
             },
             move: function (pos, sm, e) {
-
                 var m = sm.model;
-
                 if (m.down) {
                     m.x = pos.x;
                     m.y = pos.y;
                 }
-
             },
             end: function () {
-
-                sm.model.down = false;
-
+                var m = sm.model;
+                m.down = false;
+                m.x = canvas.width / 2,
+                m.y = canvas.height / 2
             }
         }
-
     }
-
 };
 
 // get canvas relative point

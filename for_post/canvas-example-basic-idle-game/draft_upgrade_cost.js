@@ -3,9 +3,9 @@
 var upgradeData = [{
         dispName: 'Manual Gather',
         cost: {
-            base: 50,
-            pow: 1.25,
-            inc: 10
+            base: 10,
+            pow: 1.125,
+            inc: 5
         }
     }
 ];
@@ -28,6 +28,12 @@ var setUS = function (us, level) {
     us.cost.current = us.cost.base + us.cost.inc * level + Math.pow(us.cost.pow, level);
 };
 
-var u = makeUS(upgradeData);
-
-console.log(u.cost);
+var u = makeUS(upgradeData[0]);
+console.log(u);
+var level = 0,
+len = 100;
+while (level < len) {
+    setUS(u, level);
+    console.log(level, u.cost);
+    level += 1;
+}

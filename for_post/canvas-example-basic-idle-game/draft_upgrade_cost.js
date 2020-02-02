@@ -22,18 +22,29 @@ var makeUS = function (ud) {
 };
 
 // set the given upgrade state to the given level
-var setUS = function (us, level) {
+var setUSCurrentCost = function (us, level) {
     level = level || 0;
     us.level = level;
-    us.cost.current = us.cost.base + us.cost.inc * level + Math.pow(us.cost.pow, level);
+    us.cost.current = us.cost.base + us.cost.inc * level + Math.floor(Math.pow(us.cost.pow, level));
+};
+
+// get the breakdown for base, inc, and pow that sets current cost
+var getUSCostBreakdown = function (us) {
+    return {
+        base: us.cost.base,
+        inc: us.cost.inc * us.level,
+        pow: Math.floor(Math.pow(us.cost.pow, level))
+    };
 };
 
 var u = makeUS(upgradeData[0]);
 console.log(u);
 var level = 0,
+bd,
 len = 100;
 while (level < len) {
-    setUS(u, level);
-    console.log(level, u.cost);
+    setUSCurrentCost(u, level);
+    bd = getUSCostBreakdown(u);
+    console.log(level, u.cost.current === (bd.base + bd.inc + bd.pow));
     level += 1;
 }

@@ -16,7 +16,7 @@ var game = (function () {
     return {
 
         // return the state object to use
-        init: function () {
+        getState: function () {
             return createNewState();
         },
 

@@ -3,4 +3,5 @@
 
 ## draft_upgrade_cost.js
 * (done) a method for setting upgrade cost
-* method for finding breakdown of cost for base, inc, and pow
+* (done) method for finding breakdown of cost for base, inc, and pow
+* use breakdown method for setting current cost

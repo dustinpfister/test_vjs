@@ -4,7 +4,7 @@ var upgradeData = [{
         dispName: 'Manual Gather',
         cost: {
             base: 10,
-            pow: 1.125,
+            pow: 1.09,
             inc: 5
         }
     }
@@ -21,13 +21,6 @@ var makeUS = function (ud) {
     };
 };
 
-// set the given upgrade state to the given level
-var setUSCurrentCost = function (us, level) {
-    level = level || 0;
-    us.level = level;
-    us.cost.current = us.cost.base + us.cost.inc * level + Math.floor(Math.pow(us.cost.pow, level));
-};
-
 // get the breakdown for base, inc, and pow that sets current cost
 var getUSCostBreakdown = function (us) {
     return {
@@ -35,6 +28,15 @@ var getUSCostBreakdown = function (us) {
         inc: us.cost.inc * us.level,
         pow: Math.floor(Math.pow(us.cost.pow, level))
     };
+};
+
+// set the given upgrade state to the given level
+var setUSCurrentCost = function (us, level) {
+    var bd;
+    level = level || 0;
+    us.level = level;
+    var bd = getUSCostBreakdown(us);
+    us.cost.current = bd.base + bd.inc + bd.pow;
 };
 
 var u = makeUS(upgradeData[0]);
@@ -45,6 +47,6 @@ len = 100;
 while (level < len) {
     setUSCurrentCost(u, level);
     bd = getUSCostBreakdown(u);
-    console.log(level, u.cost.current === (bd.base + bd.inc + bd.pow));
+    console.log(level, u.cost.current, bd.base, bd.inc, bd.pow);
     level += 1;
 }

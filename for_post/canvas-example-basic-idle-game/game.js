@@ -4,6 +4,8 @@ var game = (function () {
     var createNewState = function () {
         return {
             money: 0,
+            tickRate: 1000,
+            lastTick: new Date(),
             gatherRate: {
                 maunal: 1,
                 auto: 0
@@ -24,7 +26,15 @@ var game = (function () {
         },
 
         // I would like to update the given state
-        update: function (state) {}
+        update: function (state) {
+            var now = new Date(),
+            t = now - state.lastTick,
+            ticks = t / state.tickRate;
+            if (ticks >= 1) {
+                state.money += state.gatherRate * ticks;
+                state.lastTick = now;
+            }
+        }
 
     };
 

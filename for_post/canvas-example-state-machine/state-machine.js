@@ -50,6 +50,8 @@ var Machine = (function () {
             stateObj = sm.states[sm.currentState],
             handler,
             mode;
+            // prevent default
+            e.preventDefault();
             // call top level if there
             if (stateObj.userPointer) {
                 handler = stateObj.userPointer[smType];

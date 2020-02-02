@@ -19,12 +19,24 @@ draw.stateStatusInfo = function (ctx, state) {
     ctx.fillText(state.money, 10, 10);
 };
 
+draw.tickProgressBar = function (ctx, canvas, state) {
+    var t = new Date() - state.lastTick,
+    per = t / state.tickRate;
+    ctx.fillStyle = 'grey';
+    ctx.fillRect(0, 0, canvas.width, 10);
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(0, 0, canvas.width * per, 10);
+};
+
 var state = game.getState();
 
 var loop = function () {
     requestAnimationFrame(loop);
 
     draw.background(ctx, canvas);
+    draw.tickProgressBar(ctx, canvas, state);
     draw.stateStatusInfo(ctx, state);
+	
+	game.update(state);
 };
 loop();

@@ -4,7 +4,7 @@ var game = (function () {
     var createNewState = function () {
         return {
             money: 0,
-            tickRate: 1000,
+            tickRate: 3000,
             lastTick: new Date(),
             gatherRate: {
                 maunal: 1,

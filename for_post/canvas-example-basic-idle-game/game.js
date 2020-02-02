@@ -7,7 +7,7 @@ var game = (function () {
             tickRate: 3000,
             lastTick: new Date(),
             gatherRate: {
-                maunal: 1,
+                manual: 1,
                 auto: 0
             }
         };

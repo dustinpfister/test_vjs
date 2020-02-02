@@ -75,6 +75,9 @@ var Machine = (function () {
         attachCanvasEvent(sm, 'mousedown', 'start');
         attachCanvasEvent(sm, 'mousemove', 'move');
         attachCanvasEvent(sm, 'mouseup', 'end');
+        attachCanvasEvent(sm, 'touchstart', 'start');
+        attachCanvasEvent(sm, 'touchmove', 'move');
+        attachCanvasEvent(sm, 'touchend', 'end');
     };
 
     // create a new state machine

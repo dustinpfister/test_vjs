@@ -33,9 +33,9 @@ var Machine = (function () {
     // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
-        bx = canvas.getBoundingClientRect(),
-        x = e.clientX - bx.left,
-        y = e.clientY - bx.top;
+        bx = canvas.getBoundingClientRect();
+        var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
         return {
             x: x,
             y: y,
@@ -78,7 +78,7 @@ var Machine = (function () {
     };
 
     // create a new state machine
-    return function (container, w , h) {
+    return function (container, w, h) {
 
         // state machine Object
         var sm = {

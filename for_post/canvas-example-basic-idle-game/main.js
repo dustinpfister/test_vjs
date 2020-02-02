@@ -23,9 +23,9 @@ draw.tickProgressBar = function (ctx, canvas, state) {
     var t = new Date() - state.lastTick,
     per = t / state.tickRate;
     ctx.fillStyle = 'grey';
-    ctx.fillRect(0, 0, canvas.width, 10);
+    ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
     ctx.fillStyle = 'blue';
-    ctx.fillRect(0, 0, canvas.width * per, 10);
+    ctx.fillRect(0, canvas.height - 10, canvas.width * per, 10);
 };
 
 var state = game.getState();
@@ -36,7 +36,8 @@ var loop = function () {
     draw.background(ctx, canvas);
     draw.tickProgressBar(ctx, canvas, state);
     draw.stateStatusInfo(ctx, state);
-	
-	game.update(state);
+
+    game.update(state);
+
 };
 loop();

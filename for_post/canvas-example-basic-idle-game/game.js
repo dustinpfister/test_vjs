@@ -31,7 +31,7 @@ var game = (function () {
             t = now - state.lastTick,
             ticks = t / state.tickRate;
             if (ticks >= 1) {
-                state.money += state.gatherRate * ticks;
+                state.money += state.gatherRate.auto * ticks;
                 state.lastTick = now;
             }
         }

@@ -9,21 +9,23 @@ canvas.height = 240;
 // create state
 var state = game.getState();
 
+// create button layout
+var buttons = [{
+        x: 16,
+        y: 100,
+        w: 64,
+        h: 32,
+        label: 'Gather',
+        onAction: function (pos, opt, e) {
+            game.manualGather(state);
+        }
+    }
+];
+
 var blOptions = {
     attachTo: canvas,
-    buttons: [{
-            x: 32,
-            y: 100,
-            w: 32,
-            h: 32,
-            onAction: function (pos, opt, e) {
-                game.manualGather(state);
-            }
-        }
-    ]
+    buttons: buttons
 };
-
-// create button layout
 var blObj = u.mkButtonLayout(blOptions);
 
 var loop = function () {

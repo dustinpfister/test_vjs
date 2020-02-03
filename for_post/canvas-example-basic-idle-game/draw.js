@@ -8,6 +8,7 @@ draw.background = function (ctx, canvas) {
 draw.stateStatusInfo = function (ctx, state) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
     ctx.fillText('money: ' + state.money + ', manual: ' + state.gatherRate.manual, 10, 10);
 };
 
@@ -22,21 +23,23 @@ draw.tickProgressBar = function (ctx, canvas, state) {
 
 draw.debugUpgrades = function (ctx, state) {
     ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
     state.US.forEach(function (uc, i) {
         ctx.fillText('upgrade: ' + uc.dispName + ', level: ' + uc.level, 10, 20 + 10 * i);
     });
 };
 
 draw.buttonLayout = function (ctx, blObj) {
-
-
     var i = blObj.buttons.length,
     b;
-
-    ctx.fillStyle = 'red';
     while (i--) {
         b = blObj.buttons[i];
+        ctx.fillStyle = 'red';
         ctx.fillRect(b.x, b.y, b.w, b.h);
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.fillText(b.label || '', b.x + b.w / 2, b.y + b.h / 2);
     }
-
 };

@@ -20,9 +20,10 @@
 * draw upgrade menu method
 
 ## utils.js
-* start a utils.js file
-* place get canvas relative in utils
-* place a bounding box method in utils
+* (done) start a utils.js file
+* (done) place get canvas relative in utils
+* (done) place a bounding box method in utils
+* create a mkButtonLayoutHandler method that creates and returns an event hander for interacting with a game
 
 
 ## main.js

@@ -12,10 +12,28 @@ u.getCanvasRelative = function (e) {
     };
 };
 
-u.boundingBox = function (a, b) {
+u.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(
-        (a.y + a.h) < (b.y) ||
-        a.y > (b.y + b.h) ||
-        (a.x + a.w) < b.x ||
-        a.x > (b.x + b.w));
+        (y1 + h1) < (y2) ||
+        y1 > (y2 + h2) ||
+        (x1 + w1) < x2 ||
+        x1 > (x2 + w2));
+};
+
+u.mkButtonLayoutHandler = function (opt) {
+    opt = opt || {};
+    opt.buttons = opt.buttons || [];
+    return function (e) {
+        var pos = u.getCanvasRelative(e),
+        i = opt.buttons.length,
+        b;
+        e.preventDefault();
+        while (i--) {
+            b = opt.buttons[i];
+            if (u.boundingBox(pos.x, pos.y, 1, 1, b.x, b.y, b.w, b.h)) {
+                console.log(button);
+                break;
+            }
+        }
+    };
 };

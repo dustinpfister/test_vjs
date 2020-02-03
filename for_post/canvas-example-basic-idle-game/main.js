@@ -10,17 +10,35 @@ canvas.height = 240;
 var state = game.getState();
 
 // create button layout
-var buttons = [{
-        x: 16,
-        y: 100,
-        w: 64,
-        h: 32,
-        label: 'Gather',
-        onAction: function (pos, opt, e) {
-            game.manualGather(state);
-        }
+var buttons = state.US.map(function (us, i) {
+
+        return {
+            x: 170,
+            y: 40 + 32 * i,
+            w: 128,
+            h: 32,
+            label: 'upgrade: ' + i,
+            onAction: function (pos, opt, e) {
+
+                console.log(us);
+
+            }
+
+        };
+
+    });
+
+// push manual gather button
+buttons.push({
+    x: 16,
+    y: 100,
+    w: 64,
+    h: 32,
+    label: 'Gather',
+    onAction: function (pos, opt, e) {
+        game.manualGather(state);
     }
-];
+});
 
 var blOptions = {
     attachTo: canvas,

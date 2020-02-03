@@ -19,6 +19,12 @@
 * (done) add a draw.debugUpgrades draw method
 * draw upgrade menu method
 
+## utils.js
+* start a utils.js file
+* place get canvas relative in utils
+* place a bounding box method in utils
+
+
 ## main.js
 * (done) handle user input for an upgrade menu
 * have a functioning upgrade menu

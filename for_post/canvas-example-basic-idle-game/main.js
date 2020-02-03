@@ -21,23 +21,9 @@ var loop = function () {
 };
 loop();
 
-// EVENTS
-
-// get canvas relative point
-var getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-    return {
-        x: x,
-        y: y,
-        bx: bx
-    };
-};
-
+// EVENT
 canvas.addEventListener('click', function (e) {
-    var pos = getCanvasRelative(e);
+    var pos = u.getCanvasRelative(e);
     e.preventDefault();
     console.log(pos);
     game.manualGather(state);

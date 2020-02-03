@@ -1,6 +1,8 @@
 var game = (function () {
 
     // UPGRADES
+
+    // upgrade data array
     var upgradeData = [{
             dispName: 'Manual Gather',
             cost: {
@@ -54,6 +56,15 @@ var game = (function () {
         applyUSEffectToState(us, state, ud);
     };
 
+    // apply all the current states of a state
+    var applyAllUSFromState = function (state, upgradeData) {
+        state.US.forEach(function (us, i) {
+            setUpgradeLevel(us, state, upgradeData[i], us.level);
+        });
+    };
+
+    // GAME STATE OBJECT CREATE
+
     // create and return a new game save state with the given upgradeData
     var createNewState = function (upgradeData) {
         return {
@@ -66,7 +77,7 @@ var game = (function () {
             },
             // just set zero for each upgrade
             US: upgradeData.map(function (ud) {
-                return 0;
+                return makeUS(ud);
             })
         };
     };
@@ -75,7 +86,9 @@ var game = (function () {
 
         // return the state object to use
         getState: function () {
-            return createNewState(upgradeData);
+            var state = createNewState(upgradeData);
+            applyAllUSFromState(state, upgradeData);
+            return state;
         },
 
         // a manual gather action has happened to the given state

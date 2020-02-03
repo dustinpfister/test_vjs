@@ -11,5 +11,5 @@
 * (done) main set upgrade state level function
 
 ## game.js
-
-* work draft_upgrade_effect into game.js
+* (done) work draft_upgrade_effect into game.js
+* use UD property of state object to set effects for all upgrades in US Property

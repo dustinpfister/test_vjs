@@ -8,7 +8,7 @@ var upgradeData = [{
             inc: 5
         },
         effect: function (state, level) {
-            state.gatherRate.manual = 1 + level + Math.floor(1 - Math.pow(1.0125, level));
+            state.gatherRate.manual = 1 + level + Math.floor(Math.pow(1.05, level) - 1);
         }
     }
 ];
@@ -29,7 +29,7 @@ var getUSCostBreakdown = function (us) {
     return {
         base: us.cost.base,
         inc: us.cost.inc * us.level,
-        pow: Math.floor(Math.pow(us.cost.pow, level))
+        pow: Math.floor(Math.pow(us.cost.pow, us.level))
     };
 };
 
@@ -42,8 +42,15 @@ var setUSCurrentCost = function (us, level) {
     us.cost.current = bd.base + bd.inc + bd.pow;
 };
 
+// apply the effect of an upgrade
 var applyUSEffectToState = function (us, state, ud) {
     ud.effect(state, us.level);
+};
+
+// set the upgrade level
+var setUpgradeLevel = function (us, state, ud, level) {
+    setUSCurrentCost(us, level);
+    applyUSEffectToState(us, state, ud);
 };
 
 var createNewState = function () {
@@ -62,9 +69,7 @@ var state = createNewState();
 var ud = upgradeData[0];
 var us = makeUS(ud);
 
-applyUSEffectToState(us, state, ud);
+setUpgradeLevel(us, state, ud, 100);
 
 console.log(us);
 console.log(state);
-
-

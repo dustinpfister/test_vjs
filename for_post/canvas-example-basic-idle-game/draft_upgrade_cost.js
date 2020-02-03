@@ -26,7 +26,7 @@ var getUSCostBreakdown = function (us) {
     return {
         base: us.cost.base,
         inc: us.cost.inc * us.level,
-        pow: Math.floor(Math.pow(us.cost.pow, level))
+        pow: Math.floor(Math.pow(us.cost.pow, us.level))
     };
 };
 

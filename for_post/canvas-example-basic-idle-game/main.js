@@ -6,28 +6,6 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
-// get canvas relative point
-var getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-    return {
-        x: x,
-        y: y,
-        bx: bx
-    };
-};
-
-canvas.addEventListener('click', function (e) {
-
-    var pos = getCanvasRelative(e);
-    e.preventDefault();
-
-    console.log(pos);
-
-});
-
 var state = game.getState();
 
 var loop = function () {
@@ -42,3 +20,25 @@ var loop = function () {
 
 };
 loop();
+
+// EVENTS
+
+// get canvas relative point
+var getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
+    return {
+        x: x,
+        y: y,
+        bx: bx
+    };
+};
+
+canvas.addEventListener('click', function (e) {
+    var pos = getCanvasRelative(e);
+    e.preventDefault();
+    console.log(pos);
+    game.manualGather(state);
+});

@@ -22,20 +22,22 @@ var loop = function () {
 loop();
 
 // EVENT
-canvas.addEventListener('click', function (e) {
-    var pos = u.getCanvasRelative(e);
-    e.preventDefault();
-    console.log(pos);
-    game.manualGather(state);
-});
+//canvas.addEventListener('click', function (e) {
+//    var pos = u.getCanvasRelative(e);
+//    e.preventDefault();
+//    console.log(pos);
+ //   game.manualGather(state);
+//});
 
 var buttonLayout = u.mkButtonLayoutHandler({
         buttons: [{
                 x: 0,
                 y: 0,
                 w: 32,
-                h: 32
-
+                h: 32,
+                onAction: function (pos, opt, e) {
+                    game.manualGather(state);
+                }
             }
         ]
     });

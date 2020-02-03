@@ -31,7 +31,9 @@ u.mkButtonLayoutHandler = function (opt) {
         while (i--) {
             b = opt.buttons[i];
             if (u.boundingBox(pos.x, pos.y, 1, 1, b.x, b.y, b.w, b.h)) {
-                console.log(b);
+                if (b.onAction) {
+                    b.onAction.call(opt, pos, opt, e);
+                }
                 break;
             }
         }

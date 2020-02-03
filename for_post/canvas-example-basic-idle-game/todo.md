@@ -12,4 +12,8 @@
 
 ## game.js
 * (done) work draft_upgrade_effect into game.js
-* use UD property of state object to set effects for all upgrades in US Property
+* (done) use UD property of state object to set effects for all upgrades in US Property
+
+## draw.js
+* start a draw.js file
+* add a draw.debugUpgrades draw method

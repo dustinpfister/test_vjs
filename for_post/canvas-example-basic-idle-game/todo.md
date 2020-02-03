@@ -18,7 +18,7 @@
 * (done) start a draw.js file
 * (done) add a draw.debugUpgrades draw method
 * (done) draw buttonLayout
-* draw label for buttons
+* (done) draw label for buttons
 
 ## utils.js
 * (done) start a utils.js file
@@ -29,9 +29,10 @@
 * (done) mkButtonLayput returns an buttonLayputObject not a hander
 * (done) buttonLayputObject contains state of buttonLayput including buttons
 * (done) mkButtonLayout can accept an attachTo Property so event attachment happens in the method also
-* mkButtonLayout button objects have labels
+* (done) mkButtonLayout button objects have labels
 
 ## main.js
 * (done) handle user input for an upgrade menu
-* have upgrade buttons for all upgrades in game state object
+* (done) have upgrade buttons for all upgrades in game state object
+* make clicking an upgrade button work
 * cost of upgrade displayed in button label

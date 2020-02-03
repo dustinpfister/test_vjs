@@ -20,5 +20,5 @@
 * draw upgrade menu method
 
 ## main.js
-* handle user input for an upgrade menu
+* (done) handle user input for an upgrade menu
 * have a functioning upgrade menu

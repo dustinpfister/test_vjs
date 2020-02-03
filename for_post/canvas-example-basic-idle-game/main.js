@@ -28,3 +28,16 @@ canvas.addEventListener('click', function (e) {
     console.log(pos);
     game.manualGather(state);
 });
+
+var buttonLayout = u.mkButtonLayoutHandler({
+        buttons: [{
+                x: 0,
+                y: 0,
+                w: 32,
+                h: 32
+
+            }
+        ]
+    });
+
+canvas.addEventListener('click', buttonLayout);

@@ -16,7 +16,7 @@
 
 ## draw.js
 * (done) start a draw.js file
-* add a draw.debugUpgrades draw method
+* (done) add a draw.debugUpgrades draw method
 * draw upgrade menu method
 
 ## main.js

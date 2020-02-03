@@ -23,6 +23,6 @@ draw.tickProgressBar = function (ctx, canvas, state) {
 draw.debugUpgrades = function (ctx, state) {
     ctx.fillStyle = 'white';
     state.US.forEach(function (uc, i) {
-        ctx.fillText(uc.level, 10, 20 + 10 * i);
+        ctx.fillText('upgrade: '+ uc.dispName+ ', level: ' + uc.level, 10, 20 + 10 * i);
     });
 };

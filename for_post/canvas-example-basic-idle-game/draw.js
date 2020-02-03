@@ -8,7 +8,7 @@ draw.background = function (ctx, canvas) {
 draw.stateStatusInfo = function (ctx, state) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
-    ctx.fillText(state.money, 10, 10);
+    ctx.fillText('money: ' + state.money + ', manual: ' + state.gatherRate.manual, 10, 10);
 };
 
 draw.tickProgressBar = function (ctx, canvas, state) {

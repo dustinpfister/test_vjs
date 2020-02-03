@@ -24,10 +24,10 @@
 * (done) place get canvas relative in utils
 * (done) place a bounding box method in utils
 * (done) create a mkButtonLayoutHandler method that creates and returns an event hander for interacting with a game
-* rename mkButtonLayoutHander to just mkButtonLayout
-* mkButtonLayput returns an buttonLayputObject not a hander
-* buttonLayputObject contains state of buttonLayput including buttons
-* mkButtonLayout can accept an attachTo Property so event attachment happens in the method also
+* (done) rename mkButtonLayoutHander to just mkButtonLayout
+* (done) mkButtonLayput returns an buttonLayputObject not a hander
+* (done) buttonLayputObject contains state of buttonLayput including buttons
+* (done) mkButtonLayout can accept an attachTo Property so event attachment happens in the method also
 
 ## main.js
 * (done) handle user input for an upgrade menu

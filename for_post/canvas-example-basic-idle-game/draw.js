@@ -27,16 +27,16 @@ draw.debugUpgrades = function (ctx, state) {
     });
 };
 
-draw.buttonLayout = function (ctx, buttonLayout) {
+draw.buttonLayout = function (ctx, blObj) {
 
-/*
-    var i = buttonLayout.buttons.length,
+
+    var i = blObj.buttons.length,
     b;
 
     ctx.fillStyle = 'red';
     while (i--) {
-        b = buttonLayout.buttons[i];
+        b = blObj.buttons[i];
         ctx.fillRect(b.x, b.y, b.w, b.h);
     }
-*/
+
 };

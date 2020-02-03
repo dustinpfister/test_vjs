@@ -20,10 +20,12 @@ u.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
         x1 > (x2 + w2));
 };
 
-u.mkButtonLayoutHandler = function (opt) {
+u.mkButtonLayout = function (opt) {
+    var blObj = {};
     opt = opt || {};
-    opt.buttons = opt.buttons || [];
-    return function (e) {
+    blObj.buttons = opt.buttons || [];
+    blObj.attachTo = opt.attachTo || window;
+    blObj.handler = function (e) {
         var pos = u.getCanvasRelative(e),
         i = opt.buttons.length,
         b;
@@ -38,4 +40,6 @@ u.mkButtonLayoutHandler = function (opt) {
             }
         }
     };
+    blObj.attachTo.addEventListener('click', blObj.handler);
+    return blObj;
 };

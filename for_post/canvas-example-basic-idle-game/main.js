@@ -6,7 +6,25 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
+// create state
 var state = game.getState();
+
+var blOptions = {
+    attachTo: canvas,
+    buttons: [{
+            x: 32,
+            y: 100,
+            w: 32,
+            h: 32,
+            onAction: function (pos, opt, e) {
+                game.manualGather(state);
+            }
+        }
+    ]
+};
+
+// create button layout
+var blObj = u.mkButtonLayout(blOptions);
 
 var loop = function () {
     requestAnimationFrame(loop);
@@ -14,32 +32,11 @@ var loop = function () {
     draw.background(ctx, canvas);
     draw.tickProgressBar(ctx, canvas, state);
     draw.stateStatusInfo(ctx, state);
+    draw.buttonLayout(ctx, blObj);
+
     draw.debugUpgrades(ctx, state);
 
     game.update(state);
 
 };
 loop();
-
-// EVENT
-//canvas.addEventListener('click', function (e) {
-//    var pos = u.getCanvasRelative(e);
-//    e.preventDefault();
-//    console.log(pos);
- //   game.manualGather(state);
-//});
-
-var buttonLayout = u.mkButtonLayoutHandler({
-        buttons: [{
-                x: 0,
-                y: 0,
-                w: 32,
-                h: 32,
-                onAction: function (pos, opt, e) {
-                    game.manualGather(state);
-                }
-            }
-        ]
-    });
-
-canvas.addEventListener('click', buttonLayout);

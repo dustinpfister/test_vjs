@@ -19,3 +19,10 @@ draw.tickProgressBar = function (ctx, canvas, state) {
     ctx.fillStyle = 'blue';
     ctx.fillRect(0, canvas.height - 10, canvas.width * per, 10);
 };
+
+draw.debugUpgrades = function (ctx, state) {
+    ctx.fillStyle = 'white';
+    state.US.forEach(function (uc, i) {
+        ctx.fillText(uc.level, 10, 20 + 10 * i);
+    });
+};

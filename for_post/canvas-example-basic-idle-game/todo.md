@@ -15,5 +15,10 @@
 * (done) use UD property of state object to set effects for all upgrades in US Property
 
 ## draw.js
-* start a draw.js file
+* (done) start a draw.js file
 * add a draw.debugUpgrades draw method
+* draw upgrade menu method
+
+## main.js
+* handle user input for an upgrade menu
+* have a functioning upgrade menu

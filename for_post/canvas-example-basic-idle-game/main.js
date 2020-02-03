@@ -14,6 +14,7 @@ var loop = function () {
     draw.background(ctx, canvas);
     draw.tickProgressBar(ctx, canvas, state);
     draw.stateStatusInfo(ctx, state);
+    draw.debugUpgrades(ctx, state);
 
     game.update(state);
 

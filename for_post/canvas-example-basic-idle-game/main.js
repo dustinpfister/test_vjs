@@ -19,6 +19,15 @@ var getCanvasRelative = function (e) {
     };
 };
 
+canvas.addEventListener('click', function (e) {
+
+    var pos = getCanvasRelative(e);
+    e.preventDefault();
+
+    console.log(pos);
+
+});
+
 var state = game.getState();
 
 var loop = function () {

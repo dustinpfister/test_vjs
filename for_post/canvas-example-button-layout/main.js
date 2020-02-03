@@ -9,20 +9,21 @@ var count = 0;
 
 // create button layout
 var blObj = u.mkButtonLayout({
-    attachTo: canvas,
-    buttons: [{
-            x: 16,
-            y: 100,
-            w: 64,
-            h: 32,
-            label: 'Step 0',
-            onAction: function (pos, opt, e) {
-                count += 1;
-                console.log(count);
+        attachTo: canvas,
+        buttons: [{
+                x: 16,
+                y: 100,
+                w: 64,
+                h: 32,
+                label: 'Step 0',
+                onAction: function (pos, opt, button, e) {
+                    count += 1;
+                    console.log(button);
+                    button.label = 'Step ' + count;
+                }
             }
-        }
-    ]
-});
+        ]
+    });
 
 var loop = function () {
     requestAnimationFrame(loop);

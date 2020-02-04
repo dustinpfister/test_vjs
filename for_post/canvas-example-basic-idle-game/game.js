@@ -20,7 +20,15 @@ var game = (function () {
                 pow: 1.25,
                 inc: 250
             },
-            effect: function (state, level) {}
+            effect: function (state, level, us) {
+
+                state.autoGatherActive = false;
+                if (level >= 1) {
+                    state.autoGatherActive = true;
+                    state.gatherRate.auto = level;
+                }
+
+            }
         }
     ];
 
@@ -56,7 +64,7 @@ var game = (function () {
 
     // apply the effect of an upgrade
     var applyUSEffectToState = function (us, state, ud) {
-        ud.effect(state, us.level);
+        ud.effect(state, us.level, us);
     };
 
     // set the upgrade level

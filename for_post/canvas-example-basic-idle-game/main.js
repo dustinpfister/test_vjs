@@ -16,9 +16,10 @@ var buttons = state.US.map(function (us, i) {
             y: 40 + 32 * i,
             w: 128,
             h: 32,
-            label: 'upgrade: ' + i,
-            onAction: function (pos, opt, e) {
+            label: us.dispName + ' (' + us.cost.current + ') ',
+            onAction: function (pos, opt, b, e) {
                 game.buyUpgrade(state, us);
+                b.label = us.dispName + ' (' + us.cost.current + ') ';
             }
         };
     });

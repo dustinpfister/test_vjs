@@ -1,14 +1,16 @@
 # todo list for canvas-example-basic-idle-game
 
 ## main.js
-* make clicking an upgrade button work
-* cost of upgrade displayed in button label
+* (done) make clicking an upgrade button work
+* (done) cost of upgrade displayed in button label
 
 
 ## game.js
 * (done) public method to buy an upgrade from outside the game module
 * (done) buy upgrade method sets level of the given upgrade
-* buy upgrade method does not set the given upgrade if there is not enough money
+* (done) buy upgrade method does not set the given upgrade if there is not enough money
+* auto feature working
+* at least one auto upgrade
 
 ## draw.js
 

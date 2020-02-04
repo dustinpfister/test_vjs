@@ -91,6 +91,15 @@ var game = (function () {
             return state;
         },
 
+        // buy the nest upgrade for the given upgrade
+        buyUpgrade: function (state, usi) {
+
+            usi = typeof usi === 'number' ? state.US[usi] : usi;
+
+            console.log(usi);
+
+        },
+
         // a manual gather action has happened to the given state
         manualGather: function (state) {
             state.money += state.gatherRate.manual;

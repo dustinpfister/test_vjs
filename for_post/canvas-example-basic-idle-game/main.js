@@ -11,7 +11,6 @@ var state = game.getState();
 
 // create button layout
 var buttons = state.US.map(function (us, i) {
-
         return {
             x: 170,
             y: 40 + 32 * i,
@@ -19,13 +18,9 @@ var buttons = state.US.map(function (us, i) {
             h: 32,
             label: 'upgrade: ' + i,
             onAction: function (pos, opt, e) {
-
-                console.log(us);
-
+                game.buyUpgrade(state, us);
             }
-
         };
-
     });
 
 // push manual gather button

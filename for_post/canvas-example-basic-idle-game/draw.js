@@ -9,7 +9,9 @@ draw.stateStatusInfo = function (ctx, state) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.textAlign = 'left';
-    ctx.fillText('money: ' + state.money + ', manual: ' + state.gatherRate.manual, 10, 10);
+    ctx.fillText('money: ' + state.money.toFixed(2) +
+        ', manual: ' + state.gatherRate.manual +
+        ', auto: ' + state.gatherRate.auto, 10, 10);
 };
 
 draw.tickProgressBar = function (ctx, canvas, state) {

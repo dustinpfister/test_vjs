@@ -122,7 +122,7 @@ var game = (function () {
             var now = new Date(),
             t = now - state.lastTick,
             ticks = t / state.tickRate;
-            if (ticks >= 1) {
+            if (ticks >= 1 && state.autoGatherActive) {
                 state.money += state.gatherRate.auto * ticks;
                 state.lastTick = now;
             }

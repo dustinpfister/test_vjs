@@ -15,10 +15,12 @@ draw.stateStatusInfo = function (ctx, state) {
 draw.tickProgressBar = function (ctx, canvas, state) {
     var t = new Date() - state.lastTick,
     per = t / state.tickRate;
-    ctx.fillStyle = 'grey';
-    ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(0, canvas.height - 10, canvas.width * per, 10);
+    if (state.autoGatherActive) {
+        ctx.fillStyle = 'grey';
+        ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(0, canvas.height - 10, canvas.width * per, 10);
+    }
 };
 
 draw.debugUpgrades = function (ctx, state) {

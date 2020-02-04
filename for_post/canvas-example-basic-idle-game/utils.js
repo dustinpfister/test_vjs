@@ -34,7 +34,12 @@ u.mkButtonLayout = function (opt) {
             b = opt.buttons[i];
             if (u.boundingBox(pos.x, pos.y, 1, 1, b.x, b.y, b.w, b.h)) {
                 if (b.onAction) {
-                    b.onAction.call(opt, pos, opt, e);
+                    b.onAction.call({
+                        opt: opt,
+                        pos: pos,
+                        button: b,
+                        e: e
+                    }, pos, opt, b, e);
                 }
                 break;
             }

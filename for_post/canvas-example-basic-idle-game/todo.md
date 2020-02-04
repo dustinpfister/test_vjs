@@ -1,25 +1,27 @@
 # todo list for canvas-example-basic-idle-game
 
-## main.js
+* loading state from local storage
+
+
+
+
+
+
+
+
+
+
+
+## DONE
+
 * (done) make clicking an upgrade button work
 * (done) cost of upgrade displayed in button label
-
-
-## game.js
 * (done) public method to buy an upgrade from outside the game module
 * (done) buy upgrade method sets level of the given upgrade
 * (done) buy upgrade method does not set the given upgrade if there is not enough money
-* auto feature working by adding money over time
-* auto feature tick bar not updating until first upgrade is bought
-* at least one auto upgrade
-* loading state from local storage
-
-## draw.js
-
-## utils.js
-
-
-
+* (done) auto feature working by adding money over time
+* (done) auto feature tick bar not updating until first upgrade is bought
+* (done) at least one auto upgrade
 * (done) handle user input for an upgrade menu
 * (done) have upgrade buttons for all upgrades in game state object
 * (done) start a utils.js file

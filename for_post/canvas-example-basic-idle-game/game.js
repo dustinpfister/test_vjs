@@ -20,8 +20,7 @@ var game = (function () {
                 pow: 1.25,
                 inc: 250
             },
-            effect: function (state, level) {
-            }
+            effect: function (state, level) {}
         }
     ];
 
@@ -81,6 +80,7 @@ var game = (function () {
             money: 0,
             tickRate: 3000,
             lastTick: new Date(),
+            autoGatherActive: false,
             gatherRate: {
                 manual: 1,
                 auto: 0
@@ -122,8 +122,12 @@ var game = (function () {
             var now = new Date(),
             t = now - state.lastTick,
             ticks = t / state.tickRate;
-            if (ticks >= 1 && state.autoGatherActive) {
-                state.money += state.gatherRate.auto * ticks;
+            if (state.autoGatherActive) {
+                if (ticks >= 1) {
+                    state.money += state.gatherRate.auto * ticks;
+                    state.lastTick = now;
+                }
+            } else {
                 state.lastTick = now;
             }
         }

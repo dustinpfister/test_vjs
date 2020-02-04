@@ -13,6 +13,15 @@ var game = (function () {
             effect: function (state, level) {
                 state.gatherRate.manual = 1 + level + Math.floor(Math.pow(1.05, level) - 1);
             }
+        }, {
+            dispName: 'Auto Gather',
+            cost: {
+                base: 1000,
+                pow: 1.25,
+                inc: 250
+            },
+            effect: function (state, level) {
+            }
         }
     ];
 

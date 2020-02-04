@@ -9,8 +9,10 @@
 * (done) public method to buy an upgrade from outside the game module
 * (done) buy upgrade method sets level of the given upgrade
 * (done) buy upgrade method does not set the given upgrade if there is not enough money
-* auto feature working
+* auto feature working by adding money over time
+* auto feature tick bar not updating until first upgrade is bought
 * at least one auto upgrade
+* loading state from local storage
 
 ## draw.js
 

@@ -20,6 +20,7 @@ var game = (function () {
     var makeUS = function (ud) {
         return {
             dispName: ud.dispName,
+            ud: ud,
             level: 0,
             cost: Object.assign({
                 current: ud.cost
@@ -51,15 +52,15 @@ var game = (function () {
     };
 
     // set the upgrade level
-    var setUpgradeLevel = function (us, state, ud, level) {
+    var setUpgradeLevel = function (us, state, level) {
         setUSCurrentCost(us, level);
-        applyUSEffectToState(us, state, ud);
+        applyUSEffectToState(us, state, us.ud);
     };
 
     // apply all the current states of a state
     var applyAllUSFromState = function (state, upgradeData) {
         state.US.forEach(function (us, i) {
-            setUpgradeLevel(us, state, upgradeData[i], us.level);
+            setUpgradeLevel(us, state, us.level);
         });
     };
 
@@ -95,8 +96,7 @@ var game = (function () {
         buyUpgrade: function (state, usi) {
 
             usi = typeof usi === 'number' ? state.US[usi] : usi;
-
-            console.log(usi);
+            setUpgradeLevel(usi, state, usi.level += 1);
 
         },
 

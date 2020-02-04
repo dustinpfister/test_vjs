@@ -7,7 +7,7 @@
 
 ## game.js
 * (done) public method to buy an upgrade from outside the game module
-* buy upgrade method sets level of the given upgrade
+* (done) buy upgrade method sets level of the given upgrade
 * buy upgrade method does not set the given upgrade if there is not enough money
 
 ## draw.js

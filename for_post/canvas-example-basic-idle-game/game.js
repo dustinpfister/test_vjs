@@ -96,8 +96,11 @@ var game = (function () {
         buyUpgrade: function (state, usi) {
 
             usi = typeof usi === 'number' ? state.US[usi] : usi;
-            setUpgradeLevel(usi, state, usi.level += 1);
 
+            if (state.money >= usi.cost.current) {
+                state.money -= usi.cost.current;
+                setUpgradeLevel(usi, state, usi.level += 1);
+            }
         },
 
         // a manual gather action has happened to the given state

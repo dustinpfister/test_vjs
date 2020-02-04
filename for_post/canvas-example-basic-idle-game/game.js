@@ -25,7 +25,7 @@ var game = (function () {
                 state.autoGatherActive = false;
                 if (level >= 1) {
                     state.autoGatherActive = true;
-                    state.gatherRate.auto = level;
+                    state.gatherRate.auto = level + Math.floor(Math.pow(1.025, level) - 1);;
                 }
 
             }

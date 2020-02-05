@@ -1,0 +1,3 @@
+## canvas gradient todo
+
+* just have a basic example of a Linear Gradient for starters

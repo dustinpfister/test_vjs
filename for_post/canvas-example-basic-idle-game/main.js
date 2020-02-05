@@ -44,15 +44,11 @@ var blObj = u.mkButtonLayout(blOptions);
 
 var loop = function () {
     requestAnimationFrame(loop);
-
     draw.background(ctx, canvas);
     draw.tickProgressBar(ctx, canvas, state);
     draw.stateStatusInfo(ctx, state);
     draw.buttonLayout(ctx, blObj);
-
     draw.debugUpgrades(ctx, state);
-
     game.update(state);
-
 };
 loop();

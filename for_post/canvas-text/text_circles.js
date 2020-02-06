@@ -3,6 +3,15 @@ var tc = (function () {
 
     var api = {};
 
+    var setMeasueAndRadius = function (tcObj) {
+        tcObj.ctx.save();
+        tcObj.ctx.font = tcObj.fontSize + 'px ' + tcObj.fontFamily;
+        tcObj.m = tcObj.ctx.measureText(tcObj.text);
+        console.log(tcObj.ctx.font, tcObj.m.width);
+        tcObj.r = Math.ceil(tcObj.m.width / 2);
+        tcObj.ctx.restore();
+    };
+
     return {
 
         createTextCircleObject: function (opt) {
@@ -17,12 +26,9 @@ var tc = (function () {
             tcObj.h = opt.h === undefined ? 0 : opt.h;
             tcObj.textStyles = ['red', 'black'];
             tcObj.circleStyles = ['white', 'black'];
-            tcObj.ctx.save();
-            tcObj.ctx.font = tcObj.fontSize + 'px ' + tcObj.fontFamily;
-            tcObj.m = tcObj.ctx.measureText(tcObj.text);
-            console.log(tcObj.ctx.font, tcObj.m.width);
-            tcObj.r = Math.ceil(tcObj.m.width / 2);
-            tcObj.ctx.restore();
+
+            setMeasueAndRadius(tcObj);
+
             return tcObj;
         },
 

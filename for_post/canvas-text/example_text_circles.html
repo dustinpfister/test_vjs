@@ -13,25 +13,39 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
-var textCircles = [];
-
+var textCircles = ['wow', 'so this is', 'a little cool'].map(function (text) {
+    var w = canvas.width,
+    h = canvas.height,
+    qw = w / 4,
+    qh = h / 4;
+    return tc.createTextCircleObject({
+        ctx: ctx,
+        x: qw - qw + Math.floor(w * Math.random()),
+        y: qh - qh + Math.floor(h * Math.random()),
+        h: Math.PI * 2 * Math.random(),
+        text: text,
+        fontSize: 10 + Math.floor(20 * Math.random()),
+        space: 10
+    })
+});
 textCircles.push(tc.createTextCircleObject({
-  ctx: ctx,
-  x: canvas.width / 2,
-  y: canvas.height / 2,
-  h: Math.PI / 180 * 45,
-  text: 'This is fun!',
-  fontSize: 30,
-  space: 3
-}));
-
+        ctx: ctx,
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        h: Math.PI / 180 * -45,
+        text: 'This is fun!',
+        circleStyles: ['rgba(255,255,255,0.5)', 'rgba(0,0,0,0.8)'],
+        fontSize: 30,
+        space: 10
+    }));
 
 ctx.fillStyle = 'blue';
-ctx.fillRect(0,0,canvas.width, canvas.height);
-
-textCircles.forEach(function(tcObj){
-tc.draw(ctx, tcObj);
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+textCircles.forEach(function (tcObj) {
+    tc.draw(ctx, tcObj);
 });
+
+
 
 
         </script>

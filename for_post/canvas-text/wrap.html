@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>canvas text</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+
+
+var wrapText = function (ctx, text, sx, sy, w) {
+    var words = text.match(/\w+/g),
+    word,
+    lines = [],
+    currentLine = '',
+    len = words.length,
+    wordIndex = 0,
+    x = sx,
+    y = sy,
+    m;
+    while (wordIndex < len) {
+        word = words[wordIndex];
+        m = ctx.measureText(word + ' ');
+        x += m.width;
+        if (x + m.width < w) {
+            currentLine += word + ' ';
+            if (wordIndex === len - 1) {
+                lines.push(currentLine);
+            }
+        } else {
+            x = sx;
+            lines.push(currentLine);
+            currentLine = word + ' ';
+        }
+        wordIndex += 1;
+    }
+    return lines;
+};
+
+
+      
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+
+var text = 'So then this is some text that is a little long so it might need to be wraped';
+
+ctx.font = '30px courier';
+var lines = wrapText(ctx, text,0,0,canvas.width);
+
+ctx.fillStyle = 'red';
+ctx.textBaseline = 'top';
+console.log(lines);
+lines.forEach(function(line,i){
+	console.log(line);
+	ctx.fillText(line, 0, 40 * i)
+	
+});
+
+        </script>
+    </body>
+</html>

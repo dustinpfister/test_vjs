@@ -1,3 +1,4 @@
 ## canvas gradient todo
 
-* just have a basic example of a Linear Gradient for starters
+* (done) have a basic example of a Linear Gradient for starters
+* another example for Radial Gradient

@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>foo</title>
+  </head>
+  <body>
+    <textarea id="out"></textarea>
+    <script>
+      var out =document.getElementById('out');
+      out.value += document.title + '\n'; // foo
+      document.title = 'bar';
+      out.value += document.title + '\n'; // bar
+    </script>
+  </body>
+</html>

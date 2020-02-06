@@ -24,6 +24,7 @@ tc.draw = function (ctx, tcOpj) {
     ctx.save();
 
     ctx.translate(tcObj.x, tcObj.y);
+    ctx.rotate(tcObj.h);
 
     // draw text
     ctx.font = tcObj.fontSize + 'px ' + tcObj.fontFamily;

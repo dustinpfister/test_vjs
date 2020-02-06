@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>canvas text</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script src="text_circles.js"></script>
+        <script>
+
+
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 240;
+
+
+var tcObj = tc.createTextCircleObject({
+  x: canvas.width / 2,
+  y: canvas.height / 2,
+  text: 'This is fun!',
+  fontSize: 30
+});
+
+tc.draw(ctx, tcObj);
+
+
+        </script>
+    </body>
+</html>

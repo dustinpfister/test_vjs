@@ -35,7 +35,7 @@ var tc = (function () {
             return tcObj;
         },
 
-        draw: function (ctx, tcOpj) {
+        draw: function (ctx, tcObj) {
             var styles = [];
             ctx.save();
             ctx.translate(tcObj.x, tcObj.y);

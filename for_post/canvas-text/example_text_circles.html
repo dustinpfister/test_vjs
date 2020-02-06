@@ -13,8 +13,9 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 
+var textCircles = [];
 
-var tcObj = tc.createTextCircleObject({
+textCircles.push(tc.createTextCircleObject({
   ctx: ctx,
   x: canvas.width / 2,
   y: canvas.height / 2,
@@ -22,12 +23,15 @@ var tcObj = tc.createTextCircleObject({
   text: 'This is fun!',
   fontSize: 30,
   space: 3
-});
+}));
 
 
 ctx.fillStyle = 'blue';
 ctx.fillRect(0,0,canvas.width, canvas.height);
+
+textCircles.forEach(function(tcObj){
 tc.draw(ctx, tcObj);
+});
 
 
         </script>

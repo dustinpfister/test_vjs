@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>canvas text</title>
+    </head>
+    <body>
+        <canvas id="the-canvas"></canvas>
+        <script>
+
+// get the canvas, context and set size
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 320;
+canvas.height = 40;
+
+var mess = 'Hello World',
+m,
+dx = 0;
+
+ctx.fillStyle='black';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle='red';
+ctx.font = '20px courier';
+ctx.textBaseline = 'top';
+ctx.textAlign='left';
+m = ctx.measureText(mess);
+dx = m.width;
+ctx.fillText('hello world', canvas.width - dx, 10);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <textarea id="out"></textarea>
+    <script>
+var lt = new Date();
+var loop = function () {
+    var now = new Date(),
+    t = now - lt;
+    setTimeout(loop, 33);
+    document.title = t;
+    lt = now;
+};
+ 
+loop();
+    </script>
+  </body>
+</html>

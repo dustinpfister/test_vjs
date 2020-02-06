@@ -41,6 +41,7 @@ var tc = (function () {
             ctx.translate(tcObj.x, tcObj.y);
             ctx.rotate(tcObj.h);
             // draw circle
+            ctx.lineWidth = 3;
             styles = tcObj.circleStyles || [];
             ctx.fillStyle = styles[0] || 'red';
             ctx.strokeStyle = styles[1] || 'black';
@@ -49,6 +50,7 @@ var tc = (function () {
             ctx.fill();
             ctx.stroke();
             // draw text
+            ctx.lineWidth = 1;
             ctx.font = tcObj.fontSize + 'px ' + tcObj.fontFamily;
             ctx.textBaseline = 'middle';
             ctx.textAlign = 'center';

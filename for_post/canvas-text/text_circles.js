@@ -1,17 +1,19 @@
 
 var tc = (function () {
 
-    var api = {};
+    // PRIVATE HELPERS
 
+    // set the measure and radius of a text circle
     var setMeasueAndRadius = function (tcObj) {
         tcObj.ctx.save();
         tcObj.ctx.font = tcObj.fontSize + 'px ' + tcObj.fontFamily;
         tcObj.m = tcObj.ctx.measureText(tcObj.text);
         console.log(tcObj.ctx.font, tcObj.m.width);
-        tcObj.r = Math.ceil(tcObj.m.width / 2);
+        tcObj.r = Math.ceil(tcObj.m.width / 2) + tcObj.space;
         tcObj.ctx.restore();
     };
 
+    // PUBLIC API
     return {
 
         createTextCircleObject: function (opt) {
@@ -24,8 +26,9 @@ var tc = (function () {
             tcObj.x = opt.x === undefined ? 0 : opt.x;
             tcObj.y = opt.y === undefined ? 0 : opt.y;
             tcObj.h = opt.h === undefined ? 0 : opt.h;
-            tcObj.textStyles = ['red', 'black'];
-            tcObj.circleStyles = ['white', 'black'];
+            tcObj.space = opt.space || 0;
+            tcObj.textStyles = opt.textStyles || ['red', 'black'];
+            tcObj.circleStyles = opt.circleStyles || ['white', 'black'];
 
             setMeasueAndRadius(tcObj);
 

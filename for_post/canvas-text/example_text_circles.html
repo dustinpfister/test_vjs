@@ -20,9 +20,13 @@ var tcObj = tc.createTextCircleObject({
   y: canvas.height / 2,
   h: Math.PI / 180 * 45,
   text: 'This is fun!',
-  fontSize: 30
+  fontSize: 30,
+  space: 3
 });
 
+
+ctx.fillStyle = 'blue';
+ctx.fillRect(0,0,canvas.width, canvas.height);
 tc.draw(ctx, tcObj);
 
 

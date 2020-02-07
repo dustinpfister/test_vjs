@@ -29,7 +29,8 @@ var makeBoxSheet = function () {
     var i = 0,
     len = 10;
     while (i < len) {
-        ctx.translate(32 / 2 * (i + 1), 32 / 2);
+        ctx.save();
+        ctx.translate(32 / 2 + 32 * i, 32 / 2);
         ctx.rotate(Math.PI * 2 * (i / len));
         drawBox(ctx, {
             x: 0,
@@ -37,6 +38,7 @@ var makeBoxSheet = function () {
             w: 32,
             h: 32
         });
+        ctx.restore();
         i += 1;
     }
     return canvas;
@@ -50,7 +52,7 @@ var sheet = makeBoxSheet();
 
 drawBackground(ctx, canvas);
 
-ctx.drawImage(sheet, 0, 0, 32, 32, canvas.width / 2 - 16, canvas.height / 2 - 16, 32, 32);
+ctx.drawImage(sheet, 64, 0, 32, 32, canvas.width / 2 - 16, canvas.height / 2 - 16, 32, 32);
 /*
 drawBox(ctx, {
 x: canvas.width / 2,

@@ -17,6 +17,10 @@ var drawBox = function (ctx, bx) {
     ctx.stroke();
 };
 
+var drawSheetCell = function (ctx, sheet, cellIndex) {
+    ctx.drawImage(sheet, 32 * cellIndex, 0, 32, 32, canvas.width / 2 - 16, canvas.height / 2 - 16, 32, 32);
+};
+
 // make a sprite sheet
 
 var makeBoxSheet = function () {
@@ -51,18 +55,4 @@ ctx.translate(0.5, 0.5);
 var sheet = makeBoxSheet();
 
 drawBackground(ctx, canvas);
-
-ctx.drawImage(sheet, 64, 0, 32, 32, canvas.width / 2 - 16, canvas.height / 2 - 16, 32, 32);
-/*
-drawBox(ctx, {
-x: canvas.width / 2,
-y: canvas.height / 2,
-w: 32,
-h: 32
-});
- */
-
-//ctx.save();
-//ctx.translate(160, 120);
-//ctx.rotate(Math.PI / 180 * 45);
-//ctx.restore();
+drawSheetCell(ctx, sheet, 5);

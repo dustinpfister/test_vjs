@@ -1,7 +1,5 @@
 ## Canvas Example game map idle
 
-
-
 ## main.js
 <!-- *************************************** -->
 * get touch support working

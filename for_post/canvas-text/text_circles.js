@@ -1,7 +1,7 @@
 
 var tc = (function () {
 
-    // PRIVATE HELPERS
+    // PRIVATE HELPER
 
     // set the measure and radius of a text circle
     var setMeasueAndRadius = function (tcObj) {
@@ -29,9 +29,7 @@ var tc = (function () {
             tcObj.space = opt.space || 0;
             tcObj.textStyles = opt.textStyles || ['red', 'black'];
             tcObj.circleStyles = opt.circleStyles || ['white', 'black'];
-
             setMeasueAndRadius(tcObj);
-
             return tcObj;
         },
 

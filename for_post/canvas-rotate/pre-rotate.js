@@ -61,7 +61,16 @@ var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 ctx.translate(0.5, 0.5);
 
-var sheet = makeBoxSheet(32);
+var sheet = makeBoxSheet(32, 64),
+cellIndex = 0,
+x = canvas.width / 2 - 16,
+y = canvas.height / 2 - 16;
 
-drawBackground(ctx, canvas);
-drawSheetCell(ctx, sheet, 4, canvas.width / 2 - 16, canvas.height / 2 - 16);
+var loop = function () {
+    requestAnimationFrame(loop);
+    drawBackground(ctx, canvas);
+    drawSheetCell(ctx, sheet, cellIndex, x, y);
+    cellIndex += 1;
+    cellIndex %= sheet.cellCount;
+};
+loop();

@@ -23,24 +23,24 @@ var drawSheetCell = function (ctx, sheet, cellIndex) {
 
 // make a sprite sheet
 
-var makeBoxSheet = function () {
+var makeBoxSheet = function (cellSize) {
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
-    canvas.width = 32 * 10;
-    canvas.height = 32;
+    canvas.width = cellSize * 10;
+    canvas.height = cellSize;
     ctx.fillStyle = 'grey';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     var i = 0,
     len = 10;
     while (i < len) {
         ctx.save();
-        ctx.translate(32 / 2 + 32 * i, 32 / 2);
+        ctx.translate(cellSize / 2 + cellSize * i, cellSize / 2);
         ctx.rotate(Math.PI * 2 * (i / len));
         drawBox(ctx, {
             x: 0,
             y: 0,
-            w: 32,
-            h: 32
+            w: cellSize,
+            h: cellSize
         });
         ctx.restore();
         i += 1;
@@ -52,7 +52,7 @@ var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 ctx.translate(0.5, 0.5);
 
-var sheet = makeBoxSheet();
+var sheet = makeBoxSheet(32);
 
 drawBackground(ctx, canvas);
 drawSheetCell(ctx, sheet, 5);

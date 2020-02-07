@@ -17,8 +17,11 @@ var drawBox = function (ctx, bx) {
     ctx.stroke();
 };
 
-var drawSheetCell = function (ctx, sheet, cellIndex) {
-    ctx.drawImage(sheet, 32 * cellIndex, 0, 32, 32, canvas.width / 2 - 16, canvas.height / 2 - 16, 32, 32);
+var drawSheetCell = function (ctx, sheet, cellIndex, dx, dy) {
+    var cs = sheet.cellSize,
+    sx = sheet.cellSize * cellIndex,
+    sy = 0;
+    ctx.drawImage(sheet.canvas, sx, sy, cs, cs, dx, dy, cs, cs);
 };
 
 // make a sprite sheet
@@ -45,7 +48,11 @@ var makeBoxSheet = function (cellSize) {
         ctx.restore();
         i += 1;
     }
-    return canvas;
+    return {
+        cellSize: cellSize,
+        canvas: canvas,
+        ctx: ctx
+    };
 };
 
 var canvas = document.getElementById('the-canvas'),
@@ -55,4 +62,4 @@ ctx.translate(0.5, 0.5);
 var sheet = makeBoxSheet(32);
 
 drawBackground(ctx, canvas);
-drawSheetCell(ctx, sheet, 5);
+drawSheetCell(ctx, sheet, 8, canvas.width / 2 - 16, canvas.height / 2 - 16);

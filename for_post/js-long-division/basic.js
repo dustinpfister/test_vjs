@@ -18,3 +18,4 @@ var div = function (n, d) {
 }
 
 console.log(div('10', '2'));
+// 05.000

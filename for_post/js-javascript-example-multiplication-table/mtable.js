@@ -36,18 +36,6 @@ var mTable = (function () {
         return mkCells(w, h, forN, wOffset, hOffset);
     };
 
-    api.mk_html_div = function (cells, cellSize) {
-        cellSize = cellSize || 32;
-        var html = '<div style=\"position:absolute;\">';
-        html += cells.map(function (cell) {
-            var x = (cell.x - cells.wOffset) * cellSize,
-            y = (cell.y - cells.hOffset) * cellSize;
-            console.log(cell);
-            return '<div style=\"position:absolute;left:' + x + 'px;top:' + y + 'px;\">' + cell.n + '<\/div>';
-        }).join();
-        return html + '<\/div>';
-    };
-
     return api; ;
 
 }
@@ -55,6 +43,16 @@ var mTable = (function () {
 
 var table = mTable(5, 5);
 
-//console.log(table);
+var htmlDiv = function (table, cellSize) {
+    cellSize = cellSize || 32;
+    var html = '<div style=\"position:absolute;\">';
+    // cells
+    html += table.map(function (cell) {
+        var x = (cell.x - table.wOffset) * cellSize + cellSize,
+        y = (cell.y - table.hOffset) * cellSize + cellSize;
+        return '<div style=\"position:absolute;left:' + x + 'px;top:' + y + 'px;\">' + cell.n + '<\/div>';
+    }).join('');
+    return html + '<\/div>';
+};
 
-console.log(mTable.mk_html_div(table, 32));
+console.log(htmlDiv(table, 32));

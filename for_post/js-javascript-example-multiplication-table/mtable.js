@@ -4,7 +4,7 @@ var mTable = (function () {
         return cell.x * cell.y;
     };
 
-    var mkCells = function (w, h, forN) {
+    var mkCells = function (w, h, forN, wOffset, hOffset) {
         var cells = [],
         len = w * h,
         i = 0,
@@ -12,8 +12,8 @@ var mTable = (function () {
         while (i < len) {
             cell = {
                 i: i,
-                x: i % w + 1,
-                y: Math.floor(i / w) + 1
+                x: i % w + wOffset,
+                y: Math.floor(i / w) + hOffset
             };
             cell.n = forN(cell);
             cells.push(cell);
@@ -23,11 +23,11 @@ var mTable = (function () {
     };
 
     // public API
-    var api = function (w, h, forN) {
+    var api = function (w, h, forN, wOffset, hOffset) {
         w = w === undefined ? 10 : w;
         h = h === undefined ? 10 : h;
         forN = forN === undefined ? forN_default : forN;
-        return mkCells(w, h, forN);
+        return mkCells(w, h, forN, wOffset, hOffset);
     };
 
     return api; ;

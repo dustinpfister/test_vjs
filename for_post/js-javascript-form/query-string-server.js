@@ -19,9 +19,7 @@ let getHandler = function (req, res) {
                     resolve();
                 });
             } else {
-
                 let qs = url.parse(req.url, true).query;
-
                 res.writeHead(200, {
                     'Content-Type': 'text/plain'
                 });
@@ -32,11 +30,9 @@ let getHandler = function (req, res) {
             reject(new Error('not a get request'));
         }
     });
-
 };
 
 server.on('request', function (req, res) {
-
     getHandler(req, res)
     .catch((e) => {
         res.writeHead(501, {
@@ -48,11 +44,8 @@ server.on('request', function (req, res) {
     .then(() => {
         res.end();
     });
-
 });
 
 server.listen(port, () => {
-
     console.log('web server is up on port: ' + port);
-
 });

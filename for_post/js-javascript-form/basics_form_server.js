@@ -26,7 +26,7 @@ let getHandler = function (req, res) {
                 resolve();
             }
         } else {
-            reject('not a get request');
+            reject(new Error('not a get request'));
         }
     });
 
@@ -39,7 +39,7 @@ server.on('request', function (req, res) {
         res.writeHead(501, {
             'Content-Type': 'text/plain'
         });
-        res.write(e, message);
+        res.write(e.message);
         res.end();
     })
     .then(() => {

@@ -15,7 +15,7 @@ let getHandler = function (req, res) {
                 res.writeHead(200, {
                     'Content-Type': 'text/html'
                 });
-                fs.createReadStream(path.join(__dirname, 'basics_form.html')).pipe(res, function () {
+                fs.createReadStream(path.join(__dirname, 'query-string.html')).pipe(res, function () {
                     resolve();
                 });
             } else {

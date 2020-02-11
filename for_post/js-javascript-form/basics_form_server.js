@@ -2,6 +2,7 @@
 let http = require('http'),
 path = require('path'),
 fs = require('fs'),
+url = require('url'),
 port = process.env.port || process.argv[2] || 8080;
 
 let server = http.createServer();
@@ -19,10 +20,12 @@ let getHandler = function (req, res) {
                 });
             } else {
 
+                let qs = url.parse(req.url, true).query;
+
                 res.writeHead(200, {
                     'Content-Type': 'text/plain'
                 });
-                res.write('Hello Node.js World! ' + req.url + ' ' + req.method);
+                res.write('query for: ' + qs.fn);
                 resolve();
             }
         } else {

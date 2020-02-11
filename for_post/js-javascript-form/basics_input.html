@@ -9,16 +9,11 @@
 var disp = function(text){
     document.getElementById('out').innerText = text;
 };
-var gen = function(seed){
-    return seed.split('').map(function(c){
-        return c.charCodeAt(0) + ':';
-    }).join('');
-};
 var input = document.getElementById('seed');
 input.addEventListener('keyup', function(e){
-    disp(gen(e.target.value));
+    disp(e.target.value);
 });
-disp(gen(input.value));
+disp(input.value);
         </script>
     </body>
 </html>

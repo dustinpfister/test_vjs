@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>javaScript form</title>
+    </head>
+    <body>
+        <input id="seed" type="text" value="1234"><br><br>
+        <div id="out"></div>
+        <script>
+var disp = function(text){
+    document.getElementById('out').innerText = text;
+};
+var gen = function(seed){
+    return seed.split('').map(function(c){
+        return c.charCodeAt(0) + ':';
+    }).join('');
+};
+var input = document.getElementById('seed');
+input.addEventListener('keyup', function(e){
+    disp(gen(e.target.value));
+});
+disp(gen(input.value));
+        </script>
+    </body>
+</html>

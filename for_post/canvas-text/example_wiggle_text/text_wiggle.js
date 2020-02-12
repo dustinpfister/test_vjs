@@ -5,9 +5,10 @@ var tw = (function () {
 
     return {
 
-        createWiggleTextObject: function (str, fontSize) {
+        createWiggleTextObject: function (str, fontSize, spacing) {
 
             fontSize = fontSize || 10;
+            spacing = spacing === undefined ? 0 : spacing;
 
             return {
                 chars: str.split('').map(function (ch, i) {

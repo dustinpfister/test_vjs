@@ -23,7 +23,7 @@ let getHandler = function (req, res) {
                 res.writeHead(200, {
                     'Content-Type': 'text/plain'
                 });
-                res.write('query for: ' + qs.fn);
+                res.write('query for: ' + qs.q);
                 resolve();
             }
         } else {

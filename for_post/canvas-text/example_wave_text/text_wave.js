@@ -1,5 +1,5 @@
 
-var wiggleText = (function () {
+var textWave = (function () {
 
     var makeCharsArray = function (obj) {
         var deltaWidth = (obj.fontSize + obj.spacing),

@@ -1,7 +1,15 @@
 
 var wiggleText = (function () {
 
-    var makeCharsArray = function () {};
+    var makeCharsArray = function (str, fontSize, spacing) {
+        return str.split('').map(function (ch, i) {
+            return {
+                x: i * (fontSize + spacing),
+                y: 0,
+                ch: ch
+            };
+        });
+    };
 
     return {
 
@@ -11,13 +19,7 @@ var wiggleText = (function () {
             spacing = spacing === undefined ? 0 : spacing;
 
             return {
-                chars: str.split('').map(function (ch, i) {
-                    return {
-                        x: i * (fontSize + spacing),
-                        y: 0,
-                        ch: ch
-                    };
-                })
+                chars: makeCharsArray(str, fontSize, spacing)
             };
 
         }

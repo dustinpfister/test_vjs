@@ -5,7 +5,7 @@ var wiggleText = (function () {
         return obj.str.split('').map(function (ch, i) {
             return {
                 x: i * (obj.fontSize + obj.spacing),
-                y: 0,
+                y: obj.fontSize / 2 * -1,
                 ch: ch
             };
         });

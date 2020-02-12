@@ -4,16 +4,42 @@
     </head>
     <body>
         <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="draw.js"></script>
         <script src="star.js"></script>
         <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
+/*
+var drawPoints = function(ctx, points, cx, cy){
 
-var star = starMod.create1(5, 10, 5);
+cx = cx === undefined ? 0 : cx;
+cy = cy === undefined ? 0 : cy;
+
+ctx.save();
+ctx.translate(cx, cy);
+var i = 2, len = points.length;
+ctx.beginPath();
+ctx.moveTo(points[0], points[1])
+while(i < len){
+ctx.lineTo(points[i], points[i+ 1])
+i += 2;
+}
+ctx.closePath();
+ctx.stroke();
+ctx.fill();
+ctx.restore();
+
+};
+*/
+
+
+var star = starMod.create1(5, 50, 35);
 
 ctx.fillStyle = 'black';
 ctx.fillRect( 0, 0, canvas.width, canvas.height);
-
+ctx.strokeStyle = 'white';
+ctx.lineWidth = 3;
+draw.points(ctx, star, canvas.width / 2, canvas.height / 2);
         </script>
     </body>
 </html>

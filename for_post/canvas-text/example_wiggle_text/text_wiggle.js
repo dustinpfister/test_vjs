@@ -6,7 +6,7 @@ var wiggleText = (function () {
         halfWidth = obj.str.length * deltaWidth / 2;
         return obj.str.split('').map(function (ch, i) {
             return {
-                x: i * deltaWidth - halfWidth,
+                x: i * deltaWidth - halfWidth + obj.fontSize / 2,
                 y: obj.fontSize / 2 * -1,
                 ch: ch
             };
@@ -35,6 +35,8 @@ var wiggleText = (function () {
             ctx.translate(obj.cx, obj.cy);
             ctx.fillStyle = '#00ffff';
             ctx.font = obj.fontSize + 'px courier';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'center';
             obj.chars.forEach(function (c) {
                 ctx.fillText(c.ch, c.x, c.y);
             });

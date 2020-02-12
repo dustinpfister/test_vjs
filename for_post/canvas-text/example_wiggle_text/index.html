@@ -24,10 +24,21 @@ var tw = wiggleText.createObject({
 
 console.log(tw);
 
+var loop = function(){
+	
+	requestAnimationFrame(loop);
+	
+	wiggleText.updateObject(tw, new Date());
+	
+	
 ctx.fillStyle = 'black';
 ctx.fillRect(0,0,canvas.width, canvas.height);
 wiggleText.draw(ctx, tw);
 
+	
+};
+
+loop();
 
         </script>
     </body>

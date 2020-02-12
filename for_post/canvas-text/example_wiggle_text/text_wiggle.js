@@ -13,7 +13,16 @@ var wiggleText = (function () {
         });
     };
 
+    var wiggleChars = function (obj) {
+        var per = obj.frame / obj.maxFrame;
+        obj.chars.map(function (c) {
+            c.y = obj.fontSize - obj.fontSize * per - obj.fontSize / 2;
+            return c;
+        });
+    };
+
     return {
+        // create a wiggle text object
         createObject: function (opt) {
             opt = opt || {};
             var obj = {
@@ -24,12 +33,33 @@ var wiggleText = (function () {
                 cy: opt.cy === undefined ? 0 : opt.cy,
                 frame: 0,
                 maxFrame: 50,
+                fps: 60,
                 lt: new Date(),
                 chars: []
             };
             obj.chars = makeCharsArray(obj);
             return obj
         },
+        // update that object
+        updateObject: function (obj, now) {
+
+            // now date must be given
+            now = now || obj.lt;
+
+            var t = now - obj.lt,
+            sec = t / 1000,
+            deltaFrame = Math.floor(obj.fps * sec);
+
+            if (deltaFrame >= 1) {
+                obj.frame += deltaFrame;
+                obj.frame %= obj.maxFrame;
+                obj.lt = now;
+            }
+
+            wiggleChars(obj);
+
+        },
+        // draw that object
         draw: function (ctx, obj) {
             ctx.save();
             ctx.translate(obj.cx, obj.cy);

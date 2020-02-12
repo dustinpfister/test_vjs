@@ -1,10 +1,10 @@
 
 var wiggleText = (function () {
 
-    var makeCharsArray = function (str, fontSize, spacing) {
-        return str.split('').map(function (ch, i) {
+    var makeCharsArray = function (obj) {
+        return obj.str.split('').map(function (ch, i) {
             return {
-                x: i * (fontSize + spacing),
+                x: i * (obj.fontSize + obj.spacing),
                 y: 0,
                 ch: ch
             };
@@ -13,14 +13,24 @@ var wiggleText = (function () {
 
     return {
 
-        createObject: function (str, fontSize, spacing) {
+        createObject: function (opt) {
 
-            fontSize = fontSize || 10;
-            spacing = spacing === undefined ? 0 : spacing;
+            opt = opt || {};
 
-            return {
-                chars: makeCharsArray(str, fontSize, spacing)
+            var obj = {
+                str: opt.str || 'wiggle',
+                spacing: opt.spacing === undefined ? 0 : opt.spacing,
+				fontSize: opt.fontSize || 10,
+                cx: 0,
+                cy: 0,
+                frame: 0,
+                maxFrame: 50,
+                lt: new Date()
             };
+
+            obj.chars = makeCharsArray(obj);
+
+            return obj
 
         }
 

@@ -1,11 +1,11 @@
 
-var tw = (function () {
+var wiggleText = (function () {
 
     var makeCharsArray = function () {};
 
     return {
 
-        createWiggleTextObject: function (str, fontSize, spacing) {
+        createObject: function (str, fontSize, spacing) {
 
             fontSize = fontSize || 10;
             spacing = spacing === undefined ? 0 : spacing;

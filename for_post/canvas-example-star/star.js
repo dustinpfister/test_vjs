@@ -12,16 +12,17 @@ var starMod = (function () {
     return {
 
         // create start method 1
-        create1: function (pointCount, outerR, innerR) {
+        create1: function (pointCount, outerR, innerR, radianAjust) {
             var i = 0,
             pt,
             r,
             rd = Math.PI * 2 / pointCount,
             points = [];
+            radianAjust = radianAjust || 0;
             while (i < pointCount) {
-                pt = getPoint(rd * i, outerR);
+                pt = getPoint(rd * i + radianAjust, outerR);
                 points.push(pt.x, pt.y);
-                pt = getPoint(rd * i + rd / 2, innerR);
+                pt = getPoint(rd * i + rd / 2 + radianAjust, innerR);
                 points.push(pt.x, pt.y);
                 i += 1;
             }

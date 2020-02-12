@@ -34,6 +34,7 @@ var wiggleText = (function () {
             ctx.save();
             ctx.translate(obj.cx, obj.cy);
             ctx.fillStyle = '#00ffff';
+            ctx.font = obj.fontSize + 'px courier';
             obj.chars.forEach(function (c) {
                 ctx.fillText(c.ch, c.x, c.y);
             });

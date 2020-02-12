@@ -5,3 +5,4 @@ arr = arr.filter((el) => {
     });
 
 console.log(arr);
+// [ 7, 13, 20 ]

@@ -29,6 +29,15 @@ var wiggleText = (function () {
             };
             obj.chars = makeCharsArray(obj);
             return obj
+        },
+        draw: function (ctx, obj) {
+            ctx.save();
+            ctx.translate(obj.cx, obj.cy);
+            ctx.fillStyle = '#00ffff';
+            obj.chars.forEach(function (c) {
+                ctx.fillText(c.ch, c.x, c.y);
+            });
+            ctx.restore();
         }
     };
 

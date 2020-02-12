@@ -13,10 +13,11 @@ var wiggleText = (function () {
         });
     };
 
-    var wiggleChars = function (obj) {
+    var waveChars = function (obj) {
         var per = obj.frame / obj.maxFrame;
-        obj.chars.map(function (c) {
-            c.y = obj.fontSize - obj.fontSize * per - obj.fontSize / 2;
+        obj.chars.map(function (c, i) {
+            var r = i / obj.chars.length * (Math.PI * 2) + Math.PI * 2 * per;
+            c.y = Math.cos(r) * obj.fontSize - obj.fontSize / 2;
             return c;
         });
     };
@@ -56,7 +57,7 @@ var wiggleText = (function () {
                 obj.lt = now;
             }
 
-            wiggleChars(obj);
+            waveChars(obj);
 
         },
         // draw that object

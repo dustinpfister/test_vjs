@@ -1,6 +1,5 @@
 
 var textWave = (function () {
-
     var makeCharsArray = function (obj) {
         var deltaWidth = (obj.fontSize + obj.spacing),
         halfWidth = obj.str.length * deltaWidth / 2;
@@ -12,7 +11,6 @@ var textWave = (function () {
             };
         });
     };
-
     var waveChars = function (obj) {
         var per = obj.frame / obj.maxFrame;
         obj.chars.map(function (c, i) {
@@ -21,7 +19,6 @@ var textWave = (function () {
             return c;
         });
     };
-
     return {
         // create a wiggle text object
         createObject: function (opt) {
@@ -43,22 +40,17 @@ var textWave = (function () {
         },
         // update that object
         updateObject: function (obj, now) {
-
             // now date must be given
             now = now || obj.lt;
-
             var t = now - obj.lt,
             sec = t / 1000,
             deltaFrame = Math.floor(obj.fps * sec);
-
             if (deltaFrame >= 1) {
                 obj.frame += deltaFrame;
                 obj.frame %= obj.maxFrame;
                 obj.lt = now;
             }
-
             waveChars(obj);
-
         },
         // draw that object
         draw: function (ctx, obj) {
@@ -74,6 +66,5 @@ var textWave = (function () {
             ctx.restore();
         }
     };
-
 }
     ());

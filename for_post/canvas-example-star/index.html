@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>canvas star</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="star.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+var star = starMod.create1(5, 10, 5);
+
+ctx.fillStyle = 'black';
+ctx.fillRect( 0, 0, canvas.width, canvas.height);
+
+        </script>
+    </body>
+</html>

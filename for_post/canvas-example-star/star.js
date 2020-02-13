@@ -8,25 +8,37 @@ var starMod = (function () {
         };
     };
 
+    var parseOptions = function (opt) {
+        opt = opt || {};
+        opt.pointCount = opt.pointCount || 5;
+        opt.radius = opt.radius === undefined ? 50 : opt.radius;
+        opt.radiusInner = opt.radiusInner === undefined ? 25 : opt.radiusInner;
+        opt.radianAjust = opt.radianAjust === undefined ? 0 : opt.radianAjust;
+        opt.ox = opt.ox || 0;
+        opt.oy = opt.oy || 0;
+        opt.pointSkip = opt.pointSkip || 2;
+        return opt;
+    };
+
     // public API
     return {
 
         // create a star points array by pointCount, and inner and outer radius
-        create1: function (pointCount, outerR, innerR, radianAjust, ox, oy) {
+        //create1: function (pointCount, outerR, innerR, radianAjust, ox, oy) {
+        create1: function (opt) {
+
+            opt = parseOptions(opt);
 
             var i = 0,
             pt,
             r,
-            rd = Math.PI * 2 / pointCount,
+            rd = Math.PI * 2 / opt.pointCount,
             points = [];
 
-            radianAjust = radianAjust || 0;
-            ox = ox === undefined ? 0 : ox;
-            oy = oy === undefined ? 0 : oy;
-            while (i < pointCount) {
-                pt = getPoint(rd * i + radianAjust, outerR, ox, oy);
+            while (i < opt.pointCount) {
+                pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
                 points.push(pt.x, pt.y);
-                pt = getPoint(rd * i + rd / 2 + radianAjust, innerR, ox, oy);
+                pt = getPoint(rd * i + rd / 2 + opt.radianAjust, opt.radiusInner, opt.ox, opt.oy);
                 points.push(pt.x, pt.y);
                 i += 1;
             }
@@ -34,19 +46,19 @@ var starMod = (function () {
         },
 
         // create a star by point count radius and point skip
-        create2: function (pointCount, radius, pointSkip, radianAjust, ox, oy) {
+        //create2: function (pointCount, radius, pointSkip, radianAjust, ox, oy) {
+create2: function (opt) {
+
+            opt = parseOptions(opt);
+
             var i = 0,
             pt,
             r,
-            rd = Math.PI * 2 / pointCount * pointSkip,
+            rd = Math.PI * 2 / opt.pointCount * opt.pointSkip,
             points = [];
-			
-            radianAjust = radianAjust || 0;
-            ox = ox === undefined ? 0 : ox;
-            oy = oy === undefined ? 0 : oy;
-			
-            while (i < pointCount) {
-                pt = getPoint(rd * i + radianAjust, radius, ox, oy);
+
+            while (i < opt.pointCount) {
+                pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
                 points.push(pt.x, pt.y);
                 i += 1;
             }

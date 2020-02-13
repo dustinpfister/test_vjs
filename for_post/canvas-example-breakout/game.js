@@ -33,20 +33,20 @@ var breakout = (function () {
     var api = {};
 
     // create a new game state
-    api.createNewState = function () {
-
-        var state = {
+    api.createNewState = function (canvas) {
+        canvas = canvas || {
+            width: 320,
+            height: 240
+        };
+        return {
             blocks: createBlocks(),
             paddle: {
-                x: 32,
-                y: 200,
+                x: canvas.width / 2 - 60,
+                y: canvas.height - 30,
                 w: 120,
                 h: 15
             }
         };
-
-        return state;
-
     };
 
     // update the given state object with the given amount of time

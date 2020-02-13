@@ -9,7 +9,7 @@ canvas.width = 320;
 canvas.height = 240;
 
 
-var state = breakout.createNewState();
+var state = breakout.createNewState(canvas);
 
 console.log(state);
 

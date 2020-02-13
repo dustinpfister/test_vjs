@@ -63,6 +63,14 @@ var breakout = (function () {
             ball = state.balls[i];
             ball.x += Math.cos(ball.heading) * ball.pps * secs;
             ball.y += Math.sin(ball.heading) * ball.pps * secs;
+
+            // out?
+            if (ball.y >= state.canvas.height + ball.radius) {
+                // just reset to center for now
+                ball.x = state.canvas.width / 2;
+                ball.y = state.canvas.height / 1.5;
+            }
+
             i += 1;
         }
 
@@ -87,7 +95,7 @@ var breakout = (function () {
                     y: canvas.height / 1.5,
                     radius: 5,
                     heading: Math.PI / 2,
-                    pps: 32
+                    pps: 64
                 }
             ],
             blocks: createBlocks({

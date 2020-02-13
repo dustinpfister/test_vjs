@@ -20,6 +20,8 @@ var breakout = (function () {
                 gy: gy,
                 x: opt.sx + gx * opt.blockWidth,
                 y: opt.sy + gy * opt.blockHeight,
+                w: opt.blockWidth,
+                h: opt.blockHeight,
                 points: 1,
                 i: i
             });
@@ -34,7 +36,13 @@ var breakout = (function () {
     api.createNewState = function () {
 
         var state = {
-            blocks: createBlocks()
+            blocks: createBlocks(),
+            paddle: {
+                x: 32,
+                y: 200,
+                w: 120,
+                h: 15
+            }
         };
 
         return state;

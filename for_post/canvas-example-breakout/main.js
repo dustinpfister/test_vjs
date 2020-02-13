@@ -10,6 +10,26 @@ ctx.translate(0.5, 0.5);
 
 var state = breakout.createNewState(canvas);
 
+window.addEventListener('keydown', function (e) {
+    var key = e.key.toLowerCase();
+    if (key === 'a') {
+        state.input.left = true;
+    }
+    if (key === 'd') {
+        state.input.right = true;
+    }
+});
+
+window.addEventListener('keyup', function (e) {
+    var key = e.key.toLowerCase();
+    if (key === 'a') {
+        state.input.left = false;
+    }
+    if (key === 'd') {
+        state.input.right = false;
+    }
+});
+
 var lt = new Date();
 var loop = function () {
     var now = new Date();
@@ -19,6 +39,5 @@ var loop = function () {
     draw.background(ctx, canvas);
     draw.blocks(ctx, state);
     draw.paddle(ctx, state);
-
 };
 loop();

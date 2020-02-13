@@ -65,7 +65,7 @@ var breakout = (function () {
         };
         return {
             input: {
-                left: true,
+                left: false,
                 right: false
             },
             canvas: canvas,

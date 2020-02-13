@@ -3,12 +3,12 @@ var breakout = (function () {
 
     var createBlocks = function (opt) {
         opt = opt || {};
-        opt.sx = 32;
-        opt.sy = 32;
-        opt.blockWidth = 32;
-        opt.blockHeight = 16;
-        opt.gridWidth = 4;
-        opt.gridHeight = 4;
+        opt.sx = opt.sx || 0;
+        opt.sy = opt.sy || 0;
+        opt.blockWidth = opt.blockWidth || 32;
+        opt.blockHeight = opt.blockHeight || 16;
+        opt.gridWidth = opt.gridWidth || 4;
+        opt.gridHeight = opt.gridHeight || 4;
         var blocks = [],
         i = 0,
         len = opt.gridWidth * opt.gridHeight;
@@ -39,7 +39,14 @@ var breakout = (function () {
             height: 240
         };
         return {
-            blocks: createBlocks(),
+            blocks: createBlocks({
+                sx: 32,
+                sy: 32,
+                blockWidth: (canvas.width - 64) / 8,
+                blockHeight: 16,
+                gridWidth: 8,
+                gridHeight: 5
+            }),
             paddle: {
                 x: canvas.width / 2 - 60,
                 y: canvas.height - 30,

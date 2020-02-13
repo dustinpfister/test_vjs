@@ -54,6 +54,20 @@ var breakout = (function () {
         }
     };
 
+    var moveBalls = function (state, secs) {
+
+        var i = 0,
+        ball,
+        len = state.balls.length;
+        while (i < len) {
+            ball = state.balls[i];
+            ball.x += Math.cos(ball.heading) * ball.pps * secs;
+            ball.y += Math.sin(ball.heading) * ball.pps * secs;
+            i += 1;
+        }
+
+    };
+
     var api = {};
 
     // create a new game state
@@ -99,6 +113,7 @@ var breakout = (function () {
     api.update = function (state, secs) {
 
         movePaddle(state, secs);
+        moveBalls(state, secs);
 
     };
 

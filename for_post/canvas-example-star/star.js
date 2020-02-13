@@ -8,6 +8,7 @@ var starMod = (function () {
         };
     };
 
+    // parse options
     var parseOptions = function (opt) {
         opt = opt || {};
         opt.pointCount = opt.pointCount || 5;
@@ -22,19 +23,14 @@ var starMod = (function () {
 
     // public API
     return {
-
         // create a star points array by pointCount, and inner and outer radius
-        //create1: function (pointCount, outerR, innerR, radianAjust, ox, oy) {
         create1: function (opt) {
-
             opt = parseOptions(opt);
-
             var i = 0,
             pt,
             r,
             rd = Math.PI * 2 / opt.pointCount,
             points = [];
-
             while (i < opt.pointCount) {
                 pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
                 points.push(pt.x, pt.y);
@@ -44,19 +40,14 @@ var starMod = (function () {
             }
             return points;
         },
-
         // create a star by point count radius and point skip
-        //create2: function (pointCount, radius, pointSkip, radianAjust, ox, oy) {
-create2: function (opt) {
-
+        create2: function (opt) {
             opt = parseOptions(opt);
-
             var i = 0,
             pt,
             r,
             rd = Math.PI * 2 / opt.pointCount * opt.pointSkip,
             points = [];
-
             while (i < opt.pointCount) {
                 pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
                 points.push(pt.x, pt.y);
@@ -64,7 +55,6 @@ create2: function (opt) {
             }
             return points;
         }
-
     }
 
 }

@@ -9,6 +9,9 @@ canvas.width = 320;
 canvas.height = 240;
 
 
+var state = breakout.createNewState();
+
+console.log(state);
 
 ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);

@@ -31,10 +31,9 @@ var breakout = (function () {
     };
 
     var movePaddle = function (state, secs) {
-
         var paddle = state.paddle,
         d = 0;
-
+        // set direction
         if (state.input.left) {
             d = -1;
         }
@@ -69,6 +68,14 @@ var breakout = (function () {
                 right: false
             },
             canvas: canvas,
+            balls: [{
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    radius: 5,
+                    heading: Math.PI / 2,
+                    pps: 32
+                }
+            ],
             blocks: createBlocks({
                 sx: 32,
                 sy: 32,

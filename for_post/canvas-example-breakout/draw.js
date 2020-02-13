@@ -29,3 +29,15 @@ draw.paddle = function (ctx, state) {
     ctx.fill();
     ctx.stroke();
 };
+
+draw.balls = function (ctx, state) {
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'white';
+    state.balls.forEach(function (ball) {
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+    });
+
+};

@@ -70,7 +70,7 @@ var breakout = (function () {
             canvas: canvas,
             balls: [{
                     x: canvas.width / 2,
-                    y: canvas.height / 2,
+                    y: canvas.height / 1.5,
                     radius: 5,
                     heading: Math.PI / 2,
                     pps: 32

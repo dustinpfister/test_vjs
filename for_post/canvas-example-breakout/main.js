@@ -39,5 +39,6 @@ var loop = function () {
     draw.background(ctx, canvas);
     draw.blocks(ctx, state);
     draw.paddle(ctx, state);
+    draw.balls(ctx, state);
 };
 loop();

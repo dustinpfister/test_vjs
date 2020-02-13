@@ -44,9 +44,15 @@ var breakout = (function () {
         if (state.input.left && state.input.right) {
             d = 0;
         }
-
-        state.paddle.x += state.paddle.pps * secs * d;
-
+        // move paddle
+        paddle.x += paddle.pps * secs * d;
+        // bounds
+        if (paddle.x + paddle.w > state.canvas.width) {
+            paddle.x = canvas.width - paddle.w;
+        }
+        if (paddle.x < 0) {
+            paddle.x = 0;
+        }
     };
 
     var api = {};
@@ -59,8 +65,8 @@ var breakout = (function () {
         };
         return {
             input: {
-                left: false,
-                right: true
+                left: true,
+                right: false
             },
             canvas: canvas,
             blocks: createBlocks({

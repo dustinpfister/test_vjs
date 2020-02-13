@@ -8,7 +8,6 @@ draw.background = function (ctx, canvas) {
 };
 
 draw.blocks = function (ctx, state) {
-
     ctx.fillStyle = 'rgba(0,255,0,0.5)';
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 3;
@@ -18,5 +17,15 @@ draw.blocks = function (ctx, state) {
         ctx.fill();
         ctx.stroke();
     });
+};
 
+draw.paddle = function (ctx, state) {
+    var paddle = state.paddle;
+    ctx.fillStyle = 'blue';
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.rect(paddle.x, paddle.y, paddle.w, paddle.h);
+    ctx.fill();
+    ctx.stroke();
 };

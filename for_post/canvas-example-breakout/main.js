@@ -11,7 +11,6 @@ ctx.translate(0.5, 0.5);
 
 var state = breakout.createNewState(canvas);
 
-console.log(state);
-
 draw.background(ctx, canvas);
 draw.blocks(ctx, state);
+draw.paddle(ctx, state);

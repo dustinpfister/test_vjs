@@ -29,6 +29,12 @@ var breakout = (function () {
         }
         return blocks;
     };
+	
+	var movePaddle = function(state, secs){
+		
+		state.paddle.x += state.paddle.pps * secs;
+		
+	};
 
     var api = {};
 
@@ -39,6 +45,11 @@ var breakout = (function () {
             height: 240
         };
         return {
+            input: {
+                left: false,
+                right: false
+            },
+            canvas: canvas,
             blocks: createBlocks({
                 sx: 32,
                 sy: 32,
@@ -51,14 +62,19 @@ var breakout = (function () {
                 x: canvas.width / 2 - 60,
                 y: canvas.height - 30,
                 w: 120,
-                h: 15
+                h: 15,
+                pps: 64
             }
         };
     };
 
     // update the given state object with the given amount of time
-    // passed sense last update in seconds, and input
-    api.update = function (state, secs, input) {};
+    // passed sense last update in seconds
+    api.update = function (state, secs) {
+		
+		movePaddle(state, secs);
+		
+	};
 
     return api;
 

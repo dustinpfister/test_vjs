@@ -10,7 +10,6 @@ var renderTable = function (table) {
     len = table.length,
     cell;
     while (i < len) {
-
         cell = table[i];
         line += pad(cell.n) + '|';
         if (cell.x === table.w) {

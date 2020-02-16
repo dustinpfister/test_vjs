@@ -25,31 +25,31 @@ util.angleBounce = function (a, scale) {
     a = util.angleNormalize(a, scale);
 
     var si = util.angleSection(a, 4, scale),
-    h = util.mod(si + 2, 4);
+    h = util.mod(si + 2, 4),
+    b = 0;
 
     if (h === 0) {
-        return scale - (a - scale / 2);
+        b = scale - (a - scale / 2);
     }
     if (h === 1) {
-        return scale / 4 - (a - scale * 0.75);
+        b = scale / 4 - (a - scale * 0.75);
     }
     if (h === 2) {
-        return scale / 2 - a;
+        b = scale / 2 - a;
     }
-	if(h === 3){
-		
-		
-	}
+    if (h === 3) {
+        b = scale * 0.75 - (a - scale / 4);
+    }
 
-    return 0;
+    return util.angleNormalize(b, scale);
 
 };
 
 var d = 0,
-de = 90;
+de = 360;
 while (d < de) {
     console.log(d, util.angleBounce(d, 360));
-    d += 1;
+    d += 10;
 };
 
 //console.log(util.angleBounce(225, 360));

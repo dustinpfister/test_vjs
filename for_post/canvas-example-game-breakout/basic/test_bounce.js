@@ -14,21 +14,16 @@ util.angleNormalize = function (a, scale) {
 
 // get an angle section
 util.angleSection = function (a, sc, scale) {
-
     scale = scale === undefined ? util.TAU : scale;
     sc = sc === undefined ? 4 : sc;
-
-    var per = a / scale;
-
-    return Math.floor(scale / sc * a);
-
+    return Math.floor(a / scale * sc);
 };
 
 util.angleBounce = function (a, scale) {
 
     scale = scale === undefined ? util.TAU : scale;
 
-    return util.angleSection(a, scale);
+    return util.angleSection(a, 4, scale);
 
 };
 

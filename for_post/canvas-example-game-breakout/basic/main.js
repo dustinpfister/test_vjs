@@ -42,3 +42,5 @@ var loop = function () {
     draw.balls(ctx, state);
 };
 loop();
+
+console.log( util.angleCompass(44, 360) );

@@ -93,7 +93,7 @@ var breakout = (function () {
             ballBounds(ball, state.canvas);
 
             // hit the paddle?
-            if (util.bb(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
+            if (util.boundingBox(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
 
                 ball.heading = Math.PI * 1.5;
 

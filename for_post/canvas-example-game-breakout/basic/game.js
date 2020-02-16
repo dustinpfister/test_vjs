@@ -162,6 +162,8 @@ var breakout = (function () {
             ballBlockHitCheck(ball, state);
             // hit the paddle?
             ballPaddleHitCheck(ball, state.paddle);
+            // make sure ball heading is normalized
+            ball.heading = util.angleNormalize(ball.heading);
             i += 1;
         }
     };

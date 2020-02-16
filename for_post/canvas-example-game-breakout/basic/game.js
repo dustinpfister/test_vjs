@@ -144,7 +144,7 @@ var breakout = (function () {
                     x: canvas.width / 2,
                     y: canvas.height / 1.5,
                     radius: 5,
-                    heading: Math.PI / 180 * 300,
+                    heading: Math.PI / 2,
                     pps: 128
                 }
             ],

@@ -31,15 +31,18 @@ util.angleBounce = function (a, scale) {
     b = 0;
     if (h === 0) {
         b = scale - (a - scale / 2);
+		
     }
     if (h === 1) {
         b = scale / 4 - (a - scale * 0.75);
     }
     if (h === 2) {
         b = scale / 2 - a;
+		b = scale / 2 - a;
     }
     if (h === 3) {
         b = scale * 0.75 - (a - scale / 4);
+		//b = Math.PI;
     }
     return util.angleNormalize(b, scale);
 };

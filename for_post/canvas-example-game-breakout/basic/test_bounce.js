@@ -31,6 +31,7 @@ util.angleBounce = function (a, scale) {
     }
     if (h === 1) {
         b = scale / 4 - (a - scale * 0.75);
+		//b = a - scale * 0.75;//scale * 0.75;
     }
     if (h === 2) {
         b = scale / 2 - a;
@@ -41,16 +42,16 @@ util.angleBounce = function (a, scale) {
     return util.angleNormalize(b, scale);
 };
 
-var d = 0,
-de = 360;
-while (d < de) {
-    console.log(d, util.angleBounce(d, 360));
-    d += 10;
+var radToDeg = function(rad){
+	
+	return Math.floor(rad / (Math.PI * 2) * 360);
+	
 };
 
-//console.log(util.angleBounce(225, 360));
-/*
-console.log(util.angleBounce(270, 360));
-console.log(util.angleBounce(45, 360));
-console.log(util.angleBounce(10, 360));
-*/
+var d = Math.PI * 1.5,
+de = Math.PI * 2;
+while (d < de) {
+    console.log( radToDeg(d) , radToDeg(util.angleBounce(d)));
+    d += Math.PI / 2 / 9;
+};
+

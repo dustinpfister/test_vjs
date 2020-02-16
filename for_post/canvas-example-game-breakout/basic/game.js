@@ -58,15 +58,18 @@ var breakout = (function () {
 
         if (ball.y <= ball.radius) {
             ball.y = ball.radius;
-            ball.heading = util.angleBounce(ball.heading);
+            ball.heading = ball.heading * -1;
+            //ball.heading = util.angleBounce(ball.heading);
         }
         if (ball.x >= canvas.width - ball.radius) {
             ball.x = canvas.width - ball.radius;
-            ball.heading = util.angleBounce(ball.heading);
+            ball.heading = (ball.heading + Math.PI) * -1
+            //ball.heading = util.angleBounce(ball.heading);
         }
         if (ball.x <= ball.radius) {
             ball.x = ball.radius;
-            ball.heading = util.angleBounce(ball.heading);
+            ball.heading = (ball.heading + Math.PI) * -1;
+            //ball.heading = util.angleBounce(ball.heading);
         }
 
     };

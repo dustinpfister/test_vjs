@@ -65,6 +65,9 @@ var breakout = (function () {
             bl = blocks[i];
             if (util.boundingBox(ball.x, ball.y, 1, 1, bl.x, bl.y, bl.w, bl.h)) {
                 blocks.splice(i, 1);
+                if (blocks.length === 0) {
+                    setGame(state);
+                }
             }
         }
     };
@@ -164,6 +167,7 @@ var breakout = (function () {
 
     // set game state and balls
     var setGame = function (state) {
+        var canvas = state.canvas;
         state.blocks = createBlocks({
                 sx: 32,
                 sy: 32,
@@ -175,6 +179,13 @@ var breakout = (function () {
         state.balls = [];
         addBalls(state, 3);
         resetAllBalls(state);
+        state.paddle = {
+            x: canvas.width / 2 - 60,
+            y: canvas.height - 30,
+            w: 120,
+            h: 15,
+            pps: 128
+        };
     };
 
     var api = {};
@@ -193,13 +204,7 @@ var breakout = (function () {
             canvas: canvas,
             balls: [],
             blocks: [],
-            paddle: {
-                x: canvas.width / 2 - 60,
-                y: canvas.height - 30,
-                w: 120,
-                h: 15,
-                pps: 128
-            }
+            paddle: {}
         };
         setGame(state);
         return state;

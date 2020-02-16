@@ -61,6 +61,8 @@ var breakout = (function () {
         len = state.balls.length;
         while (i < len) {
             ball = state.balls[i];
+
+            // move ball
             ball.x += Math.cos(ball.heading) * ball.pps * secs;
             ball.y += Math.sin(ball.heading) * ball.pps * secs;
 
@@ -70,6 +72,8 @@ var breakout = (function () {
                 ball.x = state.canvas.width / 2;
                 ball.y = state.canvas.height / 1.5;
             }
+
+            util.ballBounds(ball, state.canvas);
 
             i += 1;
         }
@@ -94,8 +98,8 @@ var breakout = (function () {
                     x: canvas.width / 2,
                     y: canvas.height / 1.5,
                     radius: 5,
-                    heading: Math.PI / 2,
-                    pps: 64
+                    heading: Math.PI * 1.25,
+                    pps: 128
                 }
             ],
             blocks: createBlocks({

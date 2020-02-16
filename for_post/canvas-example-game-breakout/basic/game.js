@@ -102,7 +102,7 @@ var breakout = (function () {
     var resetBall = function (ballIndex, state) {
         var ball = state.balls[ballIndex],
         len = state.balls.length,
-        xAjust = len === 1 ? 0 : -60 + 120 / (len -1 ) * ballIndex ,
+        xAjust = len === 1 ? 0 : -60 + 120 / (len - 1) * ballIndex,
         per = ballIndex / len;
         ball.x = state.canvas.width / 2 + xAjust;
         ball.y = state.canvas.height / 1.5;
@@ -162,6 +162,21 @@ var breakout = (function () {
         }
     };
 
+    // set game state and balls
+    var setGame = function (state) {
+        state.blocks = createBlocks({
+                sx: 32,
+                sy: 32,
+                blockWidth: (canvas.width - 64) / 8,
+                blockHeight: 16,
+                gridWidth: 8,
+                gridHeight: 5
+            });
+        state.balls = [];
+        addBalls(state, 3);
+        resetAllBalls(state);
+    };
+
     var api = {};
 
     // create a new game state
@@ -177,14 +192,7 @@ var breakout = (function () {
             },
             canvas: canvas,
             balls: [],
-            blocks: createBlocks({
-                sx: 32,
-                sy: 32,
-                blockWidth: (canvas.width - 64) / 8,
-                blockHeight: 16,
-                gridWidth: 8,
-                gridHeight: 5
-            }),
+            blocks: [],
             paddle: {
                 x: canvas.width / 2 - 60,
                 y: canvas.height - 30,
@@ -193,10 +201,7 @@ var breakout = (function () {
                 pps: 128
             }
         };
-
-        addBalls(state, 4);
-        resetAllBalls(state);
-
+        setGame(state);
         return state;
     };
 

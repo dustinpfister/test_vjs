@@ -58,7 +58,8 @@ var breakout = (function () {
 
         var i = 0,
         ball,
-        len = state.balls.length;
+        len = state.balls.length,
+        paddle = state.paddle;
         while (i < len) {
             ball = state.balls[i];
 
@@ -73,7 +74,15 @@ var breakout = (function () {
                 ball.y = state.canvas.height / 1.5;
             }
 
+            // hit a wall?
             util.ballBounds(ball, state.canvas);
+
+            // hit the paddle?
+            if (util.bb(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
+
+                ball.heading = Math.PI * 1.5;
+
+            }
 
             i += 1;
         }

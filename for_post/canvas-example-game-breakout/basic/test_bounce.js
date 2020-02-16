@@ -22,12 +22,20 @@ util.angleSection = function (a, sc, scale) {
 util.angleBounce = function (a, scale) {
 
     scale = scale === undefined ? util.TAU : scale;
+    a = util.angleNormalize(a, scale);
 
-    return util.angleSection(a, 4, scale);
+    var si = util.angleSection(a, 4, scale),
+    h = util.mod(si + 2, 4);
+
+    if (h === 0) {
+        return scale * 1.5 - a;
+    }
+
+    return 0;
 
 };
 
-console.log( util.angleBounce(225, 360) );
-console.log( util.angleBounce(270, 360) );
-console.log( util.angleBounce(45, 360) );
-console.log( util.angleBounce(10, 360) );
+console.log(util.angleBounce(225, 360));
+console.log(util.angleBounce(270, 360));
+console.log(util.angleBounce(45, 360));
+console.log(util.angleBounce(10, 360));

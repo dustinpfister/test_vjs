@@ -1,6 +1,7 @@
 
 var breakout = (function () {
 
+    // create a blocks grid
     var createBlocks = function (opt) {
         opt = opt || {};
         opt.sx = opt.sx || 0;
@@ -30,6 +31,7 @@ var breakout = (function () {
         return blocks;
     };
 
+    // move the paddle
     var movePaddle = function (state, secs) {
         var paddle = state.paddle,
         d = 0;
@@ -54,6 +56,7 @@ var breakout = (function () {
         }
     };
 
+    // check if a ball hit a block, and purge it if it did
     var ballBlockHitCheck = function (ball, state) {
         var blocks = state.blocks,
         i = blocks.length,
@@ -66,13 +69,8 @@ var breakout = (function () {
         }
     };
 
+    // check if a ball hot a wall
     var ballBounds = function (ball, canvas) {
-        /*
-        if (ball.y >= canvas.height - ball.radius) {
-        ball.y = canvas.height - ball.radius;
-        ball.heading = ball.heading * -1;
-        }
-         */
         if (ball.y <= ball.radius) {
             ball.y = ball.radius;
             ball.heading = ball.heading * -1;
@@ -87,8 +85,8 @@ var breakout = (function () {
         }
     };
 
+    // check if a ball has hit the paddle and change ball heading if it did.
     var ballPaddleHitCheck = function (ball, paddle) {
-
         if (util.boundingBox(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
             ball.heading = Math.PI * 1.5;
             ball.y = paddle.y;
@@ -98,40 +96,33 @@ var breakout = (function () {
             a = Math.PI / 4 * per * dir;
             ball.heading = Math.PI * 1.5 + a;
         }
-
     };
 
+    // move balls
     var moveBalls = function (state, secs) {
-
         var i = 0,
         ball,
         len = state.balls.length,
         paddle = state.paddle;
         while (i < len) {
             ball = state.balls[i];
-
             // move ball
             ball.x += Math.cos(ball.heading) * ball.pps * secs;
             ball.y += Math.sin(ball.heading) * ball.pps * secs;
-
             // out?
             if (ball.y >= state.canvas.height + ball.radius) {
                 // just reset to center for now
-                ball.x = state.canvas.width / 2;
+                ball.x = (state.canvas.width / 2 - 60) + 240 * (i / len);
                 ball.y = state.canvas.height / 1.5;
+                ball.heading = Math.PI / 2;
             }
-
             // hit a wall?
             ballBounds(ball, state.canvas);
-
             ballBlockHitCheck(ball, state);
-
             // hit the paddle?
             ballPaddleHitCheck(ball, state.paddle);
-
             i += 1;
         }
-
     };
 
     var api = {};
@@ -149,10 +140,16 @@ var breakout = (function () {
             },
             canvas: canvas,
             balls: [{
-                    x: canvas.width / 2,
+                    x: canvas.width / 2 + 60,
                     y: canvas.height / 1.5,
                     radius: 5,
-                    heading: Math.PI / 2,
+                    heading: Math.PI - Math.PI / 4,
+                    pps: 128
+                }, {
+                    x: canvas.width / 2 - 60,
+                    y: canvas.height / 1.5,
+                    radius: 5,
+                    heading: Math.PI / 4,
                     pps: 128
                 }
             ],

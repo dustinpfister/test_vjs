@@ -43,4 +43,3 @@ var loop = function () {
 };
 loop();
 
-console.log( util.angleCompass(44, 360) );

@@ -15,9 +15,33 @@ util.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
         x1 > (x2 + w2));
 };
 
-util.angleBounce = function(a, scale){
-	
-	
+// get an angle section
+util.angleSection = function (a, sc, scale) {
+    scale = scale === undefined ? util.TAU : scale;
+    sc = sc === undefined ? 4 : sc;
+    return Math.floor(a / scale * sc);
+};
+
+// given an inbound angle a get an outbound angle b
+util.angleBounce = function (a, scale) {
+    scale = scale === undefined ? util.TAU : scale;
+    a = util.angleNormalize(a, scale);
+    var si = util.angleSection(a, 4, scale),
+    h = util.mod(si + 2, 4),
+    b = 0;
+    if (h === 0) {
+        b = scale - (a - scale / 2);
+    }
+    if (h === 1) {
+        b = scale / 4 - (a - scale * 0.75);
+    }
+    if (h === 2) {
+        b = scale / 2 - a;
+    }
+    if (h === 3) {
+        b = scale * 0.75 - (a - scale / 4);
+    }
+    return util.angleNormalize(b, scale);
 };
 
 // normalize angle method

@@ -55,18 +55,26 @@ var breakout = (function () {
     };
 
     var ballBounds = function (ball, canvas) {
+		
         if (ball.y <= ball.radius) {
             ball.y = ball.radius;
-            ball.heading = ball.heading * -1;
+            //ball.heading = ball.heading * -1;
+			ball.heading = util.angleBounce(ball.heading);
         }
         if (ball.x >= canvas.width - ball.radius) {
             ball.x = canvas.width - ball.radius;
-            ball.heading = (ball.heading + Math.PI) * -1
+            //ball.heading = (ball.heading + Math.PI) * -1
+			ball.heading = util.angleBounce(ball.heading);
         }
         if (ball.x <= ball.radius) {
             ball.x = ball.radius;
-            ball.heading = (ball.heading + Math.PI) * -1;
+            //ball.heading = (ball.heading + Math.PI) * -1;
+			ball.heading = util.angleBounce(ball.heading);
         }
+		
+		
+		
+		
     };
 
     var moveBalls = function (state, secs) {

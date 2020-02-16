@@ -67,7 +67,6 @@ var breakout = (function () {
     };
 
     var ballBounds = function (ball, canvas) {
-
         /*
         if (ball.y >= canvas.height - ball.radius) {
         ball.y = canvas.height - ball.radius;
@@ -85,6 +84,13 @@ var breakout = (function () {
         if (ball.x <= ball.radius) {
             ball.x = ball.radius;
             ball.heading = (ball.heading + Math.PI) * -1;
+        }
+    };
+
+    var ballPaddleHitCheck = function (ball, paddle) {
+
+        if (util.boundingBox(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
+            ball.heading = Math.PI * 1.5;
         }
 
     };
@@ -115,11 +121,7 @@ var breakout = (function () {
             ballBlockHitCheck(ball, state);
 
             // hit the paddle?
-            if (util.boundingBox(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
-
-                ball.heading = Math.PI * 1.5;
-
-            }
+            ballPaddleHitCheck(ball, state.paddle);
 
             i += 1;
         }

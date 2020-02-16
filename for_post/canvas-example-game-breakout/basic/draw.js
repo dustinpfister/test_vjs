@@ -39,5 +39,11 @@ draw.balls = function (ctx, state) {
         ctx.fill();
         ctx.stroke();
     });
+};
 
+draw.info = function (ctx, state) {
+    ctx.fillStyle = 'white';
+    ctx.font = '15px arial';
+    ctx.textBaseline = 'top';
+    ctx.fillText(state.score, 10, 10);
 };

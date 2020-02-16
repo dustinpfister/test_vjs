@@ -64,6 +64,7 @@ var breakout = (function () {
         while (i--) {
             bl = blocks[i];
             if (util.boundingBox(ball.x, ball.y, 1, 1, bl.x, bl.y, bl.w, bl.h)) {
+                state.score += bl.points;
                 blocks.splice(i, 1);
                 if (blocks.length === 0) {
                     setGame(state);
@@ -197,6 +198,7 @@ var breakout = (function () {
             height: 240
         };
         var state = {
+            score: 0,
             input: {
                 left: false,
                 right: false

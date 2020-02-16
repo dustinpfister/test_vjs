@@ -91,6 +91,12 @@ var breakout = (function () {
 
         if (util.boundingBox(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
             ball.heading = Math.PI * 1.5;
+            ball.y = paddle.y;
+            var d = util.distance(ball.x, ball.y, paddle.x + paddle.w / 2, paddle.y),
+            per = d / (paddle.w / 2),
+            dir = ball.x < paddle.x + paddle.w / 2 ? -1 : 1,
+            a = Math.PI / 4 * per * dir;
+            ball.heading = Math.PI * 1.5 + a;
         }
 
     };

@@ -54,22 +54,37 @@ var breakout = (function () {
         }
     };
 
+    var ballBlockHitCheck = function (ball, state) {
+        var blocks = state.blocks,
+        i = blocks.length,
+        bl;
+        while (i--) {
+            bl = blocks[i];
+            if (util.boundingBox(ball.x, ball.y, 1, 1, bl.x, bl.y, bl.w, bl.h)) {
+                blocks.splice(i, 1);
+            }
+        }
+    };
+
     var ballBounds = function (ball, canvas) {
 
+        /*
+        if (ball.y >= canvas.height - ball.radius) {
+        ball.y = canvas.height - ball.radius;
+        ball.heading = ball.heading * -1;
+        }
+         */
         if (ball.y <= ball.radius) {
             ball.y = ball.radius;
             ball.heading = ball.heading * -1;
-            //ball.heading = util.angleBounce(ball.heading);
         }
         if (ball.x >= canvas.width - ball.radius) {
             ball.x = canvas.width - ball.radius;
             ball.heading = (ball.heading + Math.PI) * -1
-            //ball.heading = util.angleBounce(ball.heading);
         }
         if (ball.x <= ball.radius) {
             ball.x = ball.radius;
             ball.heading = (ball.heading + Math.PI) * -1;
-            //ball.heading = util.angleBounce(ball.heading);
         }
 
     };
@@ -96,6 +111,8 @@ var breakout = (function () {
 
             // hit a wall?
             ballBounds(ball, state.canvas);
+
+            ballBlockHitCheck(ball, state);
 
             // hit the paddle?
             if (util.boundingBox(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {

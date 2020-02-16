@@ -21,7 +21,7 @@ util.angleSection = function (a, sc, scale) {
     sc = sc === undefined ? 4 : sc;
     return Math.floor(a / scale * sc);
 };
-
+/*
 // given an inbound angle a get an outbound angle b
 util.angleBounce = function (a, scale) {
     scale = scale === undefined ? util.TAU : scale;
@@ -46,6 +46,7 @@ util.angleBounce = function (a, scale) {
     }
     return util.angleNormalize(b, scale);
 };
+*/
 
 // normalize angle method
 util.angleNormalize = function (a, scale) {

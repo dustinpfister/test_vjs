@@ -98,6 +98,17 @@ var breakout = (function () {
         }
     };
 
+    var resetBall = function (ballIndex, state) {
+
+        var ball = state.balls[ballIndex],
+        len = state.balls.length,
+        per = ballIndex / len;
+        ball.x = state.canvas.width / 2 - 60 / len + 60 * ballIndex;
+        ball.y = state.canvas.height / 1.5;
+        ball.heading = Math.PI / 2;
+
+    };
+
     // move balls
     var moveBalls = function (state, secs) {
         var i = 0,
@@ -112,9 +123,11 @@ var breakout = (function () {
             // out?
             if (ball.y >= state.canvas.height + ball.radius) {
                 // just reset to center for now
-                ball.x = (state.canvas.width / 2 - 60) + 240 * (i / len);
-                ball.y = state.canvas.height / 1.5;
-                ball.heading = Math.PI / 2;
+                //var per = i / len;
+                //ball.x = state.canvas.width / 2 - 60 / len + 60 * i;
+                //ball.y = state.canvas.height / 1.5;
+                //ball.heading = Math.PI / 2;
+                resetBall(i, state);
             }
             // hit a wall?
             ballBounds(ball, state.canvas);

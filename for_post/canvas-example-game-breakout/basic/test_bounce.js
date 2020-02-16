@@ -30,18 +30,22 @@ util.angleBounce = function (a, scale) {
     if (h === 0) {
         return scale - (a - scale / 2);
     }
+    if (h === 1) {
+        return scale / 4 - (a - scale * 0.75);
+    }
 
     return 0;
 
 };
 
-/*
-var d = 180;
-while (d < 270) {
-    console.log(d, util.angleBounce(d, 360));
-    d += 1;
+
+var d = 270,
+de = 360;
+while (d < de) {
+console.log(d, util.angleBounce(d, 360));
+d += 1;
 };
-*/
+
 
 //console.log(util.angleBounce(225, 360));
 /*

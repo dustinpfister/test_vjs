@@ -98,15 +98,43 @@ var breakout = (function () {
         }
     };
 
+    // reset a ball
     var resetBall = function (ballIndex, state) {
-
         var ball = state.balls[ballIndex],
         len = state.balls.length,
+        xAjust = len === 1 ? 0 : -60 + 120 / (len -1 ) * ballIndex ,
         per = ballIndex / len;
-        ball.x = state.canvas.width / 2 - 60 / len + 60 * ballIndex;
+        ball.x = state.canvas.width / 2 + xAjust;
         ball.y = state.canvas.height / 1.5;
         ball.heading = Math.PI / 2;
+    };
 
+    // reset all balls
+    var resetAllBalls = function (state) {
+        var i = state.balls.length;
+        while (i--) {
+            resetBall(i, state);
+        }
+    };
+
+    // make a ball object
+    var addBalls = function (state, count) {
+        count = count || 1;
+        var canvas = state.canvas,
+        i = count,
+        ball;
+        state.balls = state.balls || [];
+        while (i--) {
+            ball = {
+                x: canvas.width / 2 - 60,
+                y: canvas.height / 1.5,
+                radius: 5,
+                heading: Math.PI - Math.PI / 4,
+                pps: 128
+            };
+            state.balls.push(ball);
+        }
+        return ball;
     };
 
     // move balls
@@ -122,11 +150,7 @@ var breakout = (function () {
             ball.y += Math.sin(ball.heading) * ball.pps * secs;
             // out?
             if (ball.y >= state.canvas.height + ball.radius) {
-                // just reset to center for now
-                //var per = i / len;
-                //ball.x = state.canvas.width / 2 - 60 / len + 60 * i;
-                //ball.y = state.canvas.height / 1.5;
-                //ball.heading = Math.PI / 2;
+                // reset ball
                 resetBall(i, state);
             }
             // hit a wall?
@@ -146,26 +170,13 @@ var breakout = (function () {
             width: 320,
             height: 240
         };
-        return {
+        var state = {
             input: {
                 left: false,
                 right: false
             },
             canvas: canvas,
-            balls: [{
-                    x: canvas.width / 2 + 60,
-                    y: canvas.height / 1.5,
-                    radius: 5,
-                    heading: Math.PI - Math.PI / 4,
-                    pps: 128
-                }, {
-                    x: canvas.width / 2 - 60,
-                    y: canvas.height / 1.5,
-                    radius: 5,
-                    heading: Math.PI / 4,
-                    pps: 128
-                }
-            ],
+            balls: [],
             blocks: createBlocks({
                 sx: 32,
                 sy: 32,
@@ -182,6 +193,11 @@ var breakout = (function () {
                 pps: 128
             }
         };
+
+        addBalls(state, 4);
+        resetAllBalls(state);
+
+        return state;
     };
 
     // update the given state object with the given amount of time

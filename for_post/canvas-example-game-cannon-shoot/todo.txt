@@ -17,8 +17,8 @@
 * (done) shot stops when it hits the ground
 * (done) return to aim mode when clicking screen in over mode
 * (done) break main.js down into utils.js, game.js and main.js
+* (done) have an draw.debug method
 
-* have an draw.debug method
 * draw the ground
 * shot power loss is based on something like pps of the shot
 * cannon power set by distance from bottom left of canvas

@@ -88,9 +88,10 @@ var draw = (function () {
 
             var ctx = state.ctx;
             ctx.fillStyle = 'white';
-            ctx.font = '15px arial';
+            ctx.font = '10px arial';
             ctx.textBaseline = 'top';
             ctx.fillText('mode: ' + state.mode, 10, 10);
+            ctx.fillText('map offset:  ' + Math.floor(state.offset.x) + ',' + Math.floor(state.offset.y), 10, 20);
 
         }
 

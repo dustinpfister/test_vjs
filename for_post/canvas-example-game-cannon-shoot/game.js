@@ -132,7 +132,7 @@ var game = (function () {
         state.offset.y += Math.sin(state.shot.heading) * state.shot.pps * secs;
 
         if (state.offset.y > canvas.height) {
-            state.offset.y = 0;
+            state.offset.y = canvas.height;
             state.mode = 'over';
         } else {
             state.shot.power /= 1.0025;

@@ -111,6 +111,8 @@ var game = (function () {
     userAction.over = {
         end: function (pos, state, e) {
             setCannon(state, -1, 1);
+            state.offset.x = 0;
+            state.offset.y = 0;
             state.mode = 'aim';
         }
     };

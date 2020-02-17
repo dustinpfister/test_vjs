@@ -1,13 +1,18 @@
+// UTILS
+var utils = {};
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
+    return {
+        x: x,
+        y: y,
+        bx: bx
+    };
+};
 
-// CANVAS
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
-
+// GAME
 var createNewState = function () {
     return {
         mode: 'aim', // 'aim', 'fired, and 'over' modes
@@ -32,12 +37,20 @@ var fireShot = function (state) {
     state.mode = 'fired';
 }
 
+// MAIN
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d'),
+container = document.getElementById('gamearea') || document.body;
+container.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ctx.translate(0.5, 0.5);
+
 var state = createNewState();
 
 // MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);
-
     draw.background(ctx, canvas);
 };
 loop();

@@ -37,7 +37,7 @@ utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 
-// Math mod and angle methods from 
+// Math mod and angle methods from
 // https://github.com/infusion/Angles.js/blob/master/angles.js
 utils.mod = function mod(x, m) {
     return (x % m + m) % m;
@@ -109,7 +109,9 @@ var fireShot = function (state) {
     canvas,
     ca = state.cannon;
     sh.pps = 32 + Math.floor(64 * ca.power);
-    sh.heading = ca.heading;
+    sh.startHeading = ca.heading;
+    sh.angleDistanceToGround = utils.angleMinDistance(sh.startHeading, Math.PI / 2);
+    sh.heading = sh.startHeading;
     sh.x = canvas.width / 2,
     sh.y = canvas.height / 2,
     state.offset.x = ca.sx;

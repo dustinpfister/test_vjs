@@ -15,8 +15,8 @@
 * (done) need a t variable for each update call
 * (done) update shot by way of its pps value rather than the static delta
 * (done) shot stops when it hits the ground
+* (done) return to aim mode when clicking screen in over mode
 
-* return to aim mode when clicking screen in over mode
 * break main.js down into utils.js, game.js and main.js
 * draw the ground
 * have an draw.debug method

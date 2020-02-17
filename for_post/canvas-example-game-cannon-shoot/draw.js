@@ -6,15 +6,13 @@ var draw = (function () {
 
             var ctx = state.ctx,
             canvas = state.canvas,
-            cannon = state.cannon,
-            x = Math.cos(cannon.heading) * 100,
-            y = Math.sin(cannon.heading) * 100;
+            cannon = state.cannon;
 
 
             ctx.strokeStyle = 'lime';
             ctx.beginPath();
             ctx.moveTo(0, canvas.height);
-            ctx.lineTo(x, canvas.height + y);
+            ctx.lineTo(cannon.sx, cannon.sy);
             ctx.stroke();
 
         },

@@ -40,7 +40,9 @@ var createNewState = function (opt) {
         },
         cannon: {
             heading: 0,
-            power: 1
+            power: 1,
+            sx: 0,
+            sy: 0
         }
     };
 };
@@ -83,23 +85,33 @@ userAction.aim = {
         var cannon = state.cannon,
         canvas = state.canvas;
         if (state.userDown) {
+
             cannon.heading = Math.atan2(canvas.height - pos.y, pos.x) * -1;
             cannon.power = 1;
+            cannon.sx = Math.cos(cannon.heading) * 100,
+            cannon.sy = Math.sin(cannon.heading) * 100 + canvas.height;
+
             console.log(cannon.heading / (Math.PI * 2) * 360);
         }
     },
     end: function (pos, state, e) {
         var overFire = utils.boundingBox(pos.x, pos.y, 1, 1, canvas.width - 64, canvas.height - 64, 64, 64);
         if (overFire) {
-            console.log('fire');
             state.mode = 'fired';
         }
     }
 };
 
-var update = function () {};
+var update = function (state) {
 
-update.aim = function () {}
+    var modeUpdate = update[state.mode] || false;
+    if (modeUpdate) {
+        modeUpdate(state);
+    }
+
+};
+
+update.fired = function () {}
 
 // MAIN
 var canvas = document.createElement('canvas'),
@@ -117,6 +129,7 @@ var state = createNewState({
 // MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);
+    update(state);
     draw.background(state);
     draw.currentMode(state);
 };

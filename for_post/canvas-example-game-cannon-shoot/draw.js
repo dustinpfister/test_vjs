@@ -1,5 +1,28 @@
 var draw = (function () {
 
+    // draw Cell Lines
+    var drawCellLines = function (ctx, opt) {
+        opt = opt || {};
+        var ci = 0,
+        w = opt.w || 8,
+        h = opt.h || 8,
+        cellSize = opt.cellSize || 32,
+        cLen = w * h;
+        offset = opt.offset || {};
+        offset.x = offset.x === undefined ? 0 : offset.x;
+        offset.y = offset.y === undefined ? 0 : offset.y;
+        ctx.strokeStyle = opt.style || 'lime';
+        while (ci < cLen) {
+            var x = ci % w,
+            y = Math.floor(ci / w);
+            ctx.strokeRect(
+                x * cellSize + offset.x,
+                y * cellSize + offset.y,
+                cellSize, cellSize);
+            ci += 1;
+        }
+    };
+
     var modes = {
 
         aim: function (state) {
@@ -43,6 +66,19 @@ var draw = (function () {
         currentMode: function (state) {
             modes[state.mode](state);
 
+        },
+
+        gridLines: function (state) {
+            var ctx = state.ctx;
+			//xPer = state
+            drawCellLines(ctx, {
+                w: 4,
+                h: 4,
+                offset: {
+                    x: 32,
+                    y: 32
+                }
+            });
         }
 
     }

@@ -1,6 +1,18 @@
 // UTILS
 var utils = {};
 
+// create an return a new once method
+utils.once = (function () {
+    var fired = false;
+    return function (mess) {
+        if (!fired) {
+            console.log(mess);
+        }
+        fired = true;
+    };
+}
+    ());
+
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -32,8 +44,9 @@ var createNewState = function (opt) {
         ctx: ctx = canvas.getContext('2d'),
         mode: 'aim', // 'aim', 'fired, and 'over' modes
         userDown: false,
-        xOffset: 0,
-        yOffset: 0,
+        offset: {
+            x: 0,y: 0
+        },
         shot: {
             x: 0,
             y: 0,
@@ -69,8 +82,8 @@ var fireShot = function (state) {
     //sh.y = ca.sy;
     sh.x = canvas.width / 2,
     sh.y = canvas.height / 2,
-    state.xOffset = ca.sx;
-    state.yOffset = ca.sy;
+    state.offset.x = ca.sx;
+    state.offset.y = ca.sy;
     state.mode = 'fired';
 };
 
@@ -148,6 +161,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     update(state);
     draw.background(state);
+    draw.gridLines(state);
     draw.currentMode(state);
 };
 loop();

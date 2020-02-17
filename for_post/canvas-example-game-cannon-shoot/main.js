@@ -35,7 +35,31 @@ var fireShot = function (state) {
     sh.pps = 32 + Math.floor(64 * ca.power);
     sh.heading = ca.heading;
     state.mode = 'fired';
-}
+};
+
+// Events
+var eventTypeMaps = {
+    mousedown: 'start',
+    mousemove: 'move',
+    mouseup: 'end'
+};
+var userAction = function (e) {
+
+    console.log(eventTypeMaps[e.type]);
+
+};
+
+userAction.aim = {
+
+    start: function () {},
+    move: function () {},
+    end: function () {}
+
+};
+
+var update = function () {};
+
+update.aim = function () {}
 
 // MAIN
 var canvas = document.createElement('canvas'),
@@ -54,3 +78,7 @@ var loop = function () {
     draw.background(ctx, canvas);
 };
 loop();
+
+canvas.addEventListener('mousedown', userAction);
+canvas.addEventListener('mousemove', userAction);
+canvas.addEventListener('mouseup', userAction);

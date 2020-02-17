@@ -174,6 +174,11 @@ var update = function (state) {
 update.fired = function (state) {
     state.offset.x += Math.cos(state.shot.heading) * 5;
     state.offset.y += Math.sin(state.shot.heading) * 5;
+    //state.shot.power /= 0.00025;
+
+    state.shot.power /= 1.005;
+    state.shot.power = state.shot.power < 0.025 ? 0 : state.shot.power;
+    setShot(state.shot);
 };
 
 // MAIN

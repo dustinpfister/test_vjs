@@ -77,8 +77,8 @@ var draw = (function () {
                 h: 10,
                 style: 'grey',
                 offset: {
-                    x: -32 + 32 * xPer,
-                    y: -32 + 32 * yPer
+                    x: -32 * xPer - 32,
+                    y: -32 * yPer - 32
                 }
             });
         }

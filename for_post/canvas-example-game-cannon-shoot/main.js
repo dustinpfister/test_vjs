@@ -140,7 +140,13 @@ var update = function (state) {
 
 };
 
-update.fired = function () {}
+update.fired = function (state) {
+	
+	state.offset.x += Math.cos(state.shot.heading) * 5;
+	state.offset.y += Math.sin(state.shot.heading) * 5;
+	
+	
+}
 
 // MAIN
 var canvas = document.createElement('canvas'),

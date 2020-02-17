@@ -13,8 +13,10 @@ utils.getCanvasRelative = function (e) {
 };
 
 // GAME
-var createNewState = function () {
+var createNewState = function (opt) {
     return {
+        canvas: canvas,
+        ctx: ctx = canvas.getContext('2d'),
         mode: 'aim', // 'aim', 'fired, and 'over' modes
         userDown: false,
         shot: {
@@ -59,16 +61,17 @@ var userAction = function (state) {
 };
 
 userAction.aim = {
-
     start: function (pos, state, e) {},
     move: function (pos, state, e) {
-
+        var cannon = state.cannon,
+        canvas = state.canvas;
         if (state.userDown) {
-            console.log(pos);
+            cannon.heading = Math.atan2(canvas.height - pos.y, pos.x);
+            cannon.power = 1;
+            console.log(cannon.heading / (Math.PI * 2) * 360);
         }
     },
     end: function (pos, state, e) {}
-
 };
 
 var update = function () {};
@@ -84,7 +87,9 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var state = createNewState();
+var state = createNewState({
+        canvas: canvas
+    });
 
 // MAIN APP LOOP
 var loop = function () {

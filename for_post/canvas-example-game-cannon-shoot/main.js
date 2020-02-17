@@ -98,9 +98,7 @@ var setCannon = function (state, heading, power) {
 
 // set the shot heading and pps based on power and startHeading
 var setShot = function (shot) {
-
-    shot.heading = shot.startHeading;
-
+    shot.heading = shot.startHeading + shot.angleDistanceToGround * (1 - shot.power);
 };
 
 var fireShot = function (state) {
@@ -111,11 +109,12 @@ var fireShot = function (state) {
     sh.pps = 32 + Math.floor(64 * ca.power);
     sh.startHeading = ca.heading;
     sh.angleDistanceToGround = utils.angleMinDistance(sh.startHeading, Math.PI / 2);
-    sh.heading = sh.startHeading;
+    //sh.heading = sh.startHeading;
     sh.x = canvas.width / 2,
     sh.y = canvas.height / 2,
     state.offset.x = ca.sx;
     state.offset.y = ca.sy;
+    setShot(sh);
     state.mode = 'fired';
 };
 

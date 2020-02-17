@@ -70,13 +70,14 @@ var draw = (function () {
 
         gridLines: function (state) {
             var ctx = state.ctx;
-			//xPer = state
+            var xPer = state.offset.x % 32 / 32,
+            yPer = state.offset.y % 32 / 32;
             drawCellLines(ctx, {
                 w: 4,
                 h: 4,
                 offset: {
-                    x: 32,
-                    y: 32
+                    x: 32 * xPer,
+                    y: 32 * yPer
                 }
             });
         }

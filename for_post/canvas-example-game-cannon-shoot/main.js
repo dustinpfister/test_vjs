@@ -69,7 +69,11 @@ var userAction = function (state) {
         if (myType === 'end') {
             state.userDown = false;
         }
-        userAction[state.mode][myType](pos, state, e)
+        var userActionMode = userAction[state.mode] || {},
+        modeAction = userActionMode[myType];
+        if (modeAction) {
+            modeAction(pos, state, e);
+        }
     };
 };
 
@@ -85,14 +89,11 @@ userAction.aim = {
         }
     },
     end: function (pos, state, e) {
-
         var overFire = utils.boundingBox(pos.x, pos.y, 1, 1, canvas.width - 64, canvas.height - 64, 64, 64);
         if (overFire) {
-
             console.log('fire');
-
+            state.mode = 'fired';
         }
-
     }
 };
 

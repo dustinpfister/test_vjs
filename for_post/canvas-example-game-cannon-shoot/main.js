@@ -16,6 +16,7 @@ utils.getCanvasRelative = function (e) {
 var createNewState = function () {
     return {
         mode: 'aim', // 'aim', 'fired, and 'over' modes
+        userDown: false,
         shot: {
             x: 0,
             y: 0,
@@ -47,19 +48,26 @@ var userAction = function (state) {
     return function (e) {
         var pos = utils.getCanvasRelative(e),
         myType = eventTypeMaps[e.type];
+        if (myType === 'start') {
+            state.userDown = true;
+        }
+        if (myType === 'end') {
+            state.userDown = false;
+        }
         userAction[state.mode][myType](pos, state, e)
     };
 };
 
 userAction.aim = {
 
-    start: function (pos) {
+    start: function (pos, state, e) {},
+    move: function (pos, state, e) {
 
-        console.log(pos);
-
+        if (state.userDown) {
+            console.log(pos);
+        }
     },
-    move: function (pos) {},
-    end: function (pos) {}
+    end: function (pos, state, e) {}
 
 };
 

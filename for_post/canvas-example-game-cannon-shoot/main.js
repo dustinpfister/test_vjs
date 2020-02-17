@@ -116,7 +116,7 @@ var state = createNewState({
 // MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);
-    draw.background(ctx, canvas);
+    draw.background(state);
 };
 loop();
 

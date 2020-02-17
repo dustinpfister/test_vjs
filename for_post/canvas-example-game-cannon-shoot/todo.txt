@@ -1,10 +1,11 @@
 ## Canvas Example game cannon shoot todo list
 
 * (done) get basic structure together
+* (done) add bounding box to utils object
+* (done) add distance method to utils
+
 * fireShot method that sets mode to fired, and sets starting pps and heading of the shot object
 * main update state method, and update methods for aim, fired, and over modes
 * Basic event attachment for the canvas element worked out for mouse and touch events
-* add bounding box to utils object
 * when in aim mode there is a fire button that will cause the game to enter fired mode with current cannon values
-* add distance method to utils
 * cannon power set by distance from bottom left of canvas

@@ -7,10 +7,11 @@
 * (done) main update state method, and update methods for aim, fired, and over modes
 * (done) Basic event attachment for the canvas element worked out for mouse and touch events
 * (done) when in aim mode there is a fire button that will cause the game to enter fired mode with current cannon values
+* (done) need an x and y offset value for the state
+* (done) grid drawn at all times
+* (done) grid state changes depending on x and y Offset.
+* (done) shot position should just be the center of the canvas, the offset position is what should be set and changed
 
-* need an x and y offset value for the state
-* grid drawn at all times
-* gird state changes depending on x and y Offset.
-* shot position should just be the center of the canvas, the offset position is what should be set and changed
+* shot heading should change based on current power, and the rate at which power is lost
 
 * cannon power set by distance from bottom left of canvas

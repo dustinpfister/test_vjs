@@ -37,6 +37,28 @@ utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 
+// Math mod and angle methods from 
+// https://github.com/infusion/Angles.js/blob/master/angles.js
+utils.mod = function mod(x, m) {
+    return (x % m + m) % m;
+};
+
+utils.angleNormalizeHalf = function (n) {
+    var c = Math.PI * 2;
+    var h = c / 2;
+    return utils.mod(n + h, c) - h;
+};
+
+utils.angleMinDistance = function (a, b) {
+    var m = Math.PI * 2;
+    var h = m / 2;
+    var diff = utils.angleNormalizeHalf(a - b);
+    if (diff > h) {
+        diff = diff - m;
+    }
+    return Math.abs(diff);
+};
+
 // GAME
 var createNewState = function (opt) {
     return {
@@ -45,12 +67,15 @@ var createNewState = function (opt) {
         mode: 'aim', // 'aim', 'fired, and 'over' modes
         userDown: false,
         offset: {
-            x: 0,y: 0
+            x: 0,
+            y: 0
         },
         shot: {
             x: 0,
             y: 0,
             pps: 64,
+            power: 1,
+            startHeading: 0,
             heading: 0
         },
         cannon: {
@@ -71,6 +96,13 @@ var setCannon = function (state, heading, power) {
 
 };
 
+// set the shot heading and pps based on power and startHeading
+var setShot = function (shot) {
+
+    shot.heading = shot.startHeading;
+
+};
+
 var fireShot = function (state) {
     var sh = state.shot,
     canvas = state.canvas,
@@ -78,8 +110,6 @@ var fireShot = function (state) {
     ca = state.cannon;
     sh.pps = 32 + Math.floor(64 * ca.power);
     sh.heading = ca.heading;
-    //sh.x = ca.sx;
-    //sh.y = ca.sy;
     sh.x = canvas.width / 2,
     sh.y = canvas.height / 2,
     state.offset.x = ca.sx;
@@ -141,12 +171,9 @@ var update = function (state) {
 };
 
 update.fired = function (state) {
-	
-	state.offset.x += Math.cos(state.shot.heading) * 5;
-	state.offset.y += Math.sin(state.shot.heading) * 5;
-	
-	
-}
+    state.offset.x += Math.cos(state.shot.heading) * 5;
+    state.offset.y += Math.sin(state.shot.heading) * 5;
+};
 
 // MAIN
 var canvas = document.createElement('canvas'),

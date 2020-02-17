@@ -178,13 +178,18 @@ var update = function (state) {
 };
 
 update.fired = function (state) {
-    var secs = state.time / 1000;
+    var secs = state.time / 1000,
+    canvas = state.canvas;
     state.offset.x += Math.cos(state.shot.heading) * state.shot.pps * secs;
     state.offset.y += Math.sin(state.shot.heading) * state.shot.pps * secs;
-    //state.shot.power /= 0.00025;
 
-    state.shot.power /= 1.0025;
-    state.shot.power = state.shot.power < 0.025 ? 0 : state.shot.power;
+    if (state.offset.y > canvas.height) {
+        state.offset.y = 0;
+        state.mode = 'over';
+    } else {
+        state.shot.power /= 1.0025;
+        state.shot.power = state.shot.power < 0.025 ? 0 : state.shot.power;
+    }
     setShot(state.shot);
 };
 

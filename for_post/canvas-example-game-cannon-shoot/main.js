@@ -1,5 +1,3 @@
-
-
 // MAIN
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
@@ -12,7 +10,6 @@ ctx.translate(0.5, 0.5);
 var state = game.createNewState({
         canvas: canvas
     });
-//setCannon(state, -1, 1);
 
 // MAIN APP LOOP
 var loop = function () {
@@ -23,7 +20,6 @@ var loop = function () {
     draw.currentMode(state);
 };
 loop();
-
 canvas.addEventListener('mousedown', game.userAction(state));
 canvas.addEventListener('mousemove', game.userAction(state));
 canvas.addEventListener('mouseup', game.userAction(state));

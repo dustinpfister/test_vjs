@@ -39,7 +39,6 @@ var game = (function () {
         cannon.power = power;
         cannon.sx = Math.cos(cannon.heading) * 100,
         cannon.sy = Math.sin(cannon.heading) * 100 + state.canvas.height;
-
     };
 
     // set the shot heading and pps based on power and startHeading
@@ -54,7 +53,6 @@ var game = (function () {
         canvas,
         ca = state.cannon;
         sh.power = 1;
-        sh.pps = 32 + Math.floor(64 * ca.power);
         sh.startHeading = ca.heading;
         sh.angleDistanceToGround = utils.angleMinDistance(sh.startHeading, Math.PI / 2);
         sh.x = canvas.width / 2,

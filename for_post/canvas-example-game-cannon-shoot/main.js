@@ -1,5 +1,6 @@
 // UTILS
 var utils = {};
+
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -83,7 +84,16 @@ userAction.aim = {
             console.log(cannon.heading / (Math.PI * 2) * 360);
         }
     },
-    end: function (pos, state, e) {}
+    end: function (pos, state, e) {
+
+        var overFire = utils.boundingBox(pos.x, pos.y, 1, 1, canvas.width - 64, canvas.height - 64, 64, 64);
+        if (overFire) {
+
+            console.log('fire');
+
+        }
+
+    }
 };
 
 var update = function () {};

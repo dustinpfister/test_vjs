@@ -109,15 +109,16 @@ var fireShot = function (state) {
     canvas = state.canvas,
     canvas,
     ca = state.cannon;
+    sh.power = 1;
     sh.pps = 32 + Math.floor(64 * ca.power);
     sh.startHeading = ca.heading;
     sh.angleDistanceToGround = utils.angleMinDistance(sh.startHeading, Math.PI / 2);
-    //sh.heading = sh.startHeading;
     sh.x = canvas.width / 2,
     sh.y = canvas.height / 2,
     state.offset.x = ca.sx;
     state.offset.y = ca.sy;
     setShot(sh);
+    state.lastTick = new Date();
     state.mode = 'fired';
 };
 
@@ -163,6 +164,15 @@ userAction.aim = {
             fireShot(state);
         }
     }
+};
+
+userAction.over = {
+
+    end: function (pos, state, e) {
+        setCannon(state, -1, 1);
+        state.mode = 'aim';
+    }
+
 };
 
 var update = function (state) {

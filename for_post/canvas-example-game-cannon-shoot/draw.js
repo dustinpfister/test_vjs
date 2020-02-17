@@ -35,29 +35,21 @@ var draw = (function () {
     var modes = {
 
         aim: function (state) {
-
             var ctx = state.ctx,
             canvas = state.canvas,
             cannon = state.cannon;
-
             ctx.strokeStyle = 'lime';
             ctx.beginPath();
             ctx.moveTo(0, canvas.height);
             ctx.lineTo(cannon.sx, cannon.sy);
             ctx.stroke();
-
         },
         fired: function (state) {
-
             drawShot(state);
-
         },
         over: function () {
-
             drawShot(state);
-
         }
-
     };
 
     return {
@@ -73,9 +65,9 @@ var draw = (function () {
         // draw by way of the current mode
         currentMode: function (state) {
             modes[state.mode](state);
-
         },
 
+        // draw grid lines
         gridLines: function (state) {
             var ctx = state.ctx;
             var xPer = state.offset.x % 32 / 32,
@@ -89,6 +81,17 @@ var draw = (function () {
                     y: -32 * yPer - 32
                 }
             });
+        },
+
+        // draw debug info
+        debug: function (state) {
+
+            var ctx = state.ctx;
+            ctx.fillStyle = 'white';
+            ctx.font = '15px arial';
+            ctx.textBaseline = 'top';
+            ctx.fillText('mode: ' + state.mode, 10, 10);
+
         }
 
     }

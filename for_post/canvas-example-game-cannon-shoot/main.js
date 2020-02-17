@@ -18,6 +18,7 @@ var loop = function () {
     draw.background(state);
     draw.gridLines(state);
     draw.currentMode(state);
+    draw.debug(state);
 };
 loop();
 canvas.addEventListener('mousedown', game.userAction(state));

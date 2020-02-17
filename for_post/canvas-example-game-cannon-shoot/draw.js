@@ -8,7 +8,6 @@ var draw = (function () {
             canvas = state.canvas,
             cannon = state.cannon;
 
-
             ctx.strokeStyle = 'lime';
             ctx.beginPath();
             ctx.moveTo(0, canvas.height);
@@ -16,7 +15,16 @@ var draw = (function () {
             ctx.stroke();
 
         },
-        fired: function () {},
+        fired: function (state) {
+
+            var ctx = state.ctx;
+
+            ctx.strokeStyle = 'lime';
+            ctx.beginPath();
+            ctx.arc(state.shot.x, state.shot.y, 5, 0, Math.PI * 2);
+            ctx.stroke();
+
+        },
         over: function () {}
 
     };

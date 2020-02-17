@@ -43,17 +43,23 @@ var eventTypeMaps = {
     mousemove: 'move',
     mouseup: 'end'
 };
-var userAction = function (e) {
-
-    console.log(eventTypeMaps[e.type]);
-
+var userAction = function (state) {
+    return function (e) {
+        var pos = utils.getCanvasRelative(e),
+        myType = eventTypeMaps[e.type];
+        userAction[state.mode][myType](pos, state, e)
+    };
 };
 
 userAction.aim = {
 
-    start: function () {},
-    move: function () {},
-    end: function () {}
+    start: function (pos) {
+
+        console.log(pos);
+
+    },
+    move: function (pos) {},
+    end: function (pos) {}
 
 };
 
@@ -79,6 +85,6 @@ var loop = function () {
 };
 loop();
 
-canvas.addEventListener('mousedown', userAction);
-canvas.addEventListener('mousemove', userAction);
-canvas.addEventListener('mouseup', userAction);
+canvas.addEventListener('mousedown', userAction(state));
+canvas.addEventListener('mousemove', userAction(state));
+canvas.addEventListener('mouseup', userAction(state));

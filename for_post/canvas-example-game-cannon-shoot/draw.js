@@ -23,6 +23,15 @@ var draw = (function () {
         }
     };
 
+    var drawShot = function (state) {
+        var ctx = state.ctx;
+        ctx.strokeStyle = 'lime';
+        ctx.beginPath();
+        ctx.arc(state.shot.x, state.shot.y, 5, 0, Math.PI * 2);
+        ctx.stroke();
+
+    }
+
     var modes = {
 
         aim: function (state) {
@@ -40,15 +49,14 @@ var draw = (function () {
         },
         fired: function (state) {
 
-            var ctx = state.ctx;
-
-            ctx.strokeStyle = 'lime';
-            ctx.beginPath();
-            ctx.arc(state.shot.x, state.shot.y, 5, 0, Math.PI * 2);
-            ctx.stroke();
+            drawShot(state);
 
         },
-        over: function () {}
+        over: function () {
+
+            drawShot(state);
+
+        }
 
     };
 

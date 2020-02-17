@@ -61,6 +61,8 @@ var fireShot = function (state) {
     ca = state.cannon;
     sh.pps = 32 + Math.floor(64 * ca.power);
     sh.heading = ca.heading;
+    sh.x = ca.sx;
+    sh.y = ca.sy;
     state.mode = 'fired';
 };
 
@@ -94,23 +96,16 @@ userAction.aim = {
         var cannon = state.cannon,
         canvas = state.canvas;
         if (state.userDown) {
-
-            //cannon.heading = Math.atan2(canvas.height - pos.y, pos.x) * -1;
-            //cannon.power = 1;
-            //cannon.sx = Math.cos(cannon.heading) * 100,
-            //cannon.sy = Math.sin(cannon.heading) * 100 + canvas.height;
-
             setCannon(state,
                 Math.atan2(canvas.height - pos.y, pos.x) * -1,
                 1)
-
-            console.log(cannon.heading / (Math.PI * 2) * 360);
         }
     },
     end: function (pos, state, e) {
+        var cannon = state.cannon;
         var overFire = utils.boundingBox(pos.x, pos.y, 1, 1, canvas.width - 64, canvas.height - 64, 64, 64);
         if (overFire) {
-            state.mode = 'fired';
+            fireShot(state);
         }
     }
 };

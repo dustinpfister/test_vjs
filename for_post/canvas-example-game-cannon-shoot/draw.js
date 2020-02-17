@@ -73,11 +73,12 @@ var draw = (function () {
             var xPer = state.offset.x % 32 / 32,
             yPer = state.offset.y % 32 / 32;
             drawCellLines(ctx, {
-                w: 4,
-                h: 4,
+                w: 12,
+                h: 10,
+                style: 'grey',
                 offset: {
-                    x: 32 * xPer,
-                    y: 32 * yPer
+                    x: -32 + 32 * xPer,
+                    y: -32 + 32 * yPer
                 }
             });
         }

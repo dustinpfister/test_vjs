@@ -11,7 +11,12 @@
 * (done) grid drawn at all times
 * (done) grid state changes depending on x and y Offset.
 * (done) shot position should just be the center of the canvas, the offset position is what should be set and changed
+* (done) shot heading should change based on current power, and the rate at which power is lost
 
-* shot heading should change based on current power, and the rate at which power is lost
+* need a t variable for each update call
+* update shot by way of its pps value rather than the static delta
+* shot stops when it hits the ground
+* draw the ground
+* have an draw.debug method
 
 * cannon power set by distance from bottom left of canvas

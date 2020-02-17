@@ -66,6 +66,8 @@ var createNewState = function (opt) {
         ctx: ctx = canvas.getContext('2d'),
         mode: 'aim', // 'aim', 'fired, and 'over' modes
         userDown: false,
+        lastTick: new Date(),
+        time: 0,
         offset: {
             x: 0,
             y: 0
@@ -99,7 +101,7 @@ var setCannon = function (state, heading, power) {
 // set the shot heading and pps based on power and startHeading
 var setShot = function (shot) {
     shot.heading = shot.startHeading + shot.angleDistanceToGround * (1 - shot.power);
-    shot.pps = 16 * Math.floor(64 * shot.power);
+    shot.pps = 128 + Math.floor(256 * shot.power);
 };
 
 var fireShot = function (state) {
@@ -164,6 +166,9 @@ userAction.aim = {
 };
 
 var update = function (state) {
+    var now = new Date();
+    state.time = now - state.lastTick;
+    state.lastTick = now;
 
     var modeUpdate = update[state.mode] || false;
     if (modeUpdate) {
@@ -173,11 +178,12 @@ var update = function (state) {
 };
 
 update.fired = function (state) {
-    state.offset.x += Math.cos(state.shot.heading) * 5;
-    state.offset.y += Math.sin(state.shot.heading) * 5;
+    var secs = state.time / 1000;
+    state.offset.x += Math.cos(state.shot.heading) * state.shot.pps * secs;
+    state.offset.y += Math.sin(state.shot.heading) * state.shot.pps * secs;
     //state.shot.power /= 0.00025;
 
-    state.shot.power /= 1.005;
+    state.shot.power /= 1.0025;
     state.shot.power = state.shot.power < 0.025 ? 0 : state.shot.power;
     setShot(state.shot);
 };

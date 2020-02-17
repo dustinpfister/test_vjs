@@ -79,7 +79,7 @@ userAction.aim = {
         var cannon = state.cannon,
         canvas = state.canvas;
         if (state.userDown) {
-            cannon.heading = Math.atan2(canvas.height - pos.y, pos.x);
+            cannon.heading = Math.atan2(canvas.height - pos.y, pos.x) * -1;
             cannon.power = 1;
             console.log(cannon.heading / (Math.PI * 2) * 360);
         }
@@ -117,6 +117,7 @@ var state = createNewState({
 var loop = function () {
     requestAnimationFrame(loop);
     draw.background(state);
+    draw.currentMode(state);
 };
 loop();
 

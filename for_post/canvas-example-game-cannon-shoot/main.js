@@ -32,6 +32,8 @@ var createNewState = function (opt) {
         ctx: ctx = canvas.getContext('2d'),
         mode: 'aim', // 'aim', 'fired, and 'over' modes
         userDown: false,
+        xOffset: 0,
+        yOffset: 0,
         shot: {
             x: 0,
             y: 0,
@@ -58,11 +60,17 @@ var setCannon = function (state, heading, power) {
 
 var fireShot = function (state) {
     var sh = state.shot,
+    canvas = state.canvas,
+    canvas,
     ca = state.cannon;
     sh.pps = 32 + Math.floor(64 * ca.power);
     sh.heading = ca.heading;
-    sh.x = ca.sx;
-    sh.y = ca.sy;
+    //sh.x = ca.sx;
+    //sh.y = ca.sy;
+    sh.x = canvas.width / 2,
+    sh.y = canvas.height / 2,
+    state.xOffset = ca.sx;
+    state.yOffset = ca.sy;
     state.mode = 'fired';
 };
 

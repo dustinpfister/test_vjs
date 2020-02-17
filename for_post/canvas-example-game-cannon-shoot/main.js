@@ -47,6 +47,15 @@ var createNewState = function (opt) {
     };
 };
 
+var setCannon = function (state, heading, power) {
+    var cannon = state.cannon;
+    cannon.heading = heading;
+    cannon.power = power;
+    cannon.sx = Math.cos(cannon.heading) * 100,
+    cannon.sy = Math.sin(cannon.heading) * 100 + state.canvas.height;
+
+};
+
 var fireShot = function (state) {
     var sh = state.shot,
     ca = state.cannon;
@@ -86,10 +95,14 @@ userAction.aim = {
         canvas = state.canvas;
         if (state.userDown) {
 
-            cannon.heading = Math.atan2(canvas.height - pos.y, pos.x) * -1;
-            cannon.power = 1;
-            cannon.sx = Math.cos(cannon.heading) * 100,
-            cannon.sy = Math.sin(cannon.heading) * 100 + canvas.height;
+            //cannon.heading = Math.atan2(canvas.height - pos.y, pos.x) * -1;
+            //cannon.power = 1;
+            //cannon.sx = Math.cos(cannon.heading) * 100,
+            //cannon.sy = Math.sin(cannon.heading) * 100 + canvas.height;
+
+            setCannon(state,
+                Math.atan2(canvas.height - pos.y, pos.x) * -1,
+                1)
 
             console.log(cannon.heading / (Math.PI * 2) * 360);
         }
@@ -125,6 +138,7 @@ ctx.translate(0.5, 0.5);
 var state = createNewState({
         canvas: canvas
     });
+setCannon(state, -1, 1);
 
 // MAIN APP LOOP
 var loop = function () {

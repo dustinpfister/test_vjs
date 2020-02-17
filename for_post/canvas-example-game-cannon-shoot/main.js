@@ -99,6 +99,7 @@ var setCannon = function (state, heading, power) {
 // set the shot heading and pps based on power and startHeading
 var setShot = function (shot) {
     shot.heading = shot.startHeading + shot.angleDistanceToGround * (1 - shot.power);
+    shot.pps = 16 * Math.floor(64 * shot.power);
 };
 
 var fireShot = function (state) {

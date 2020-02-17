@@ -9,21 +9,21 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var state = createNewState({
+var state = game.createNewState({
         canvas: canvas
     });
-setCannon(state, -1, 1);
+//setCannon(state, -1, 1);
 
 // MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);
-    update(state);
+    game.update(state);
     draw.background(state);
     draw.gridLines(state);
     draw.currentMode(state);
 };
 loop();
 
-canvas.addEventListener('mousedown', userAction(state));
-canvas.addEventListener('mousemove', userAction(state));
-canvas.addEventListener('mouseup', userAction(state));
+canvas.addEventListener('mousedown', game.userAction(state));
+canvas.addEventListener('mousemove', game.userAction(state));
+canvas.addEventListener('mouseup', game.userAction(state));

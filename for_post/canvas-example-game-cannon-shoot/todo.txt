@@ -16,12 +16,13 @@
 * (done) update shot by way of its pps value rather than the static delta
 * (done) shot stops when it hits the ground
 * (done) return to aim mode when clicking screen in over mode
+* (done) break main.js down into utils.js, game.js and main.js
 
-* break main.js down into utils.js, game.js and main.js
-* draw the ground
 * have an draw.debug method
+* draw the ground
 * shot power loss is based on something like pps of the shot
 * cannon power set by distance from bottom left of canvas
 * add touch events
+* min and max angles for cannon
 * do not move cannon when clicking/moving in button area
 * fire button does not fire when releasing in fire button area from outside of fire button area

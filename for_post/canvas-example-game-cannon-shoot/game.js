@@ -19,6 +19,7 @@ var game = (function () {
                 y: 0,
                 pps: 64,
                 power: 1,
+                plps: 1/ 10,
                 startHeading: 0,
                 heading: 0
             },
@@ -127,8 +128,6 @@ var game = (function () {
         }
     };
 
-
-
     update.fired = function (state) {
         var secs = state.time / 1000,
         canvas = state.canvas;
@@ -139,7 +138,7 @@ var game = (function () {
             state.offset.y = canvas.height;
             state.mode = 'over';
         } else {
-            state.shot.power /= 1.0025;
+            state.shot.power -= state.shot.plps * secs;
             state.shot.power = state.shot.power < 0.025 ? 0 : state.shot.power;
         }
         setShot(state.shot);

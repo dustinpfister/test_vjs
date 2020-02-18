@@ -17,9 +17,9 @@ var game = (function () {
             shot: {
                 x: 0,
                 y: 0,
-                pps: 64,
+                pps: 64, // pixels per second
                 power: 1,
-                plps: 1/ 10,
+                plps: 1/ 10, // power loss per second
                 startHeading: 0,
                 heading: 0
             },

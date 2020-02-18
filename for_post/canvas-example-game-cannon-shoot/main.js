@@ -17,6 +17,7 @@ var loop = function () {
     game.update(state);
     draw.background(state);
     draw.gridLines(state);
+    draw.ground(state);
     draw.currentMode(state);
     draw.debug(state);
 };

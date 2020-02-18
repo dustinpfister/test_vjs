@@ -127,6 +127,8 @@ var game = (function () {
         }
     };
 
+
+
     update.fired = function (state) {
         var secs = state.time / 1000,
         canvas = state.canvas;

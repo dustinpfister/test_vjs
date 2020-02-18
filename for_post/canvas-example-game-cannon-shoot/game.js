@@ -27,7 +27,8 @@ var game = (function () {
                 heading: 0,
                 power: 1,
                 sx: 0,
-                sy: 0
+                sy: 0,
+                len: 100
             }
         };
         setCannon(state, -1, 1);
@@ -38,8 +39,8 @@ var game = (function () {
         var cannon = state.cannon;
         cannon.heading = heading;
         cannon.power = power;
-        cannon.sx = Math.cos(cannon.heading) * 100,
-        cannon.sy = Math.sin(cannon.heading) * 100 + state.canvas.height;
+        cannon.sx = Math.cos(cannon.heading) * cannon.len,
+        cannon.sy = Math.sin(cannon.heading) * cannon.len + state.canvas.height;
     };
 
     // set the shot heading and pps based on power and startHeading
@@ -47,7 +48,6 @@ var game = (function () {
         shot.heading = shot.startHeading + shot.angleDistanceToGround * (1 - shot.power);
         shot.pps = 128 + Math.floor(256 * shot.power);
     };
-
 
     // fire the shot
     var fireShot = function (state) {

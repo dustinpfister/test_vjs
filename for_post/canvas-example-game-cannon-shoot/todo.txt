@@ -21,8 +21,8 @@
 * (done) draw the ground
 * (done) shot power loss is based on something like pps of the shot
 * (done) cannon power set by distance from bottom left of canvas
+* (done) add touch events
 
-* add touch events
 * min and max angles for cannon
 * do not move cannon when clicking/moving in button area
 * fire button does not fire when releasing in fire button area from outside of fire button area

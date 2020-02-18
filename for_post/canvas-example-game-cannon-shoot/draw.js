@@ -36,11 +36,20 @@ var draw = (function () {
             var ctx = state.ctx,
             canvas = state.canvas,
             cannon = state.cannon;
+            // crude cannon line
             ctx.strokeStyle = 'lime';
             ctx.beginPath();
             ctx.moveTo(0, canvas.height);
             ctx.lineTo(cannon.sx, cannon.sy);
             ctx.stroke();
+            // fire button
+            ctx.fillStyle = 'red';
+            ctx.fillRect(canvas.width - 64, canvas.height - 64, 64, 64);
+            ctx.fillStyle = 'black';
+            ctx.font = '20px arial';
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            ctx.fillText('FIRE!', canvas.width - 32, canvas.height - 32);
         },
         fired: function (state) {
             drawShot(state);
@@ -87,6 +96,7 @@ var draw = (function () {
             ctx.fillStyle = 'white';
             ctx.font = '10px arial';
             ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
             ctx.fillText('mode: ' + state.mode, 10, 10);
             ctx.fillText('map offset:  ' + Math.floor(state.offset.x) + ',' +
                 Math.floor(state.offset.y), 10, 20);
@@ -102,7 +112,6 @@ var draw = (function () {
                 yAjust = state.offset.y > 0 ? state.offset.y / canvas.height : 0;
                 ctx.fillRect(0, canvas.height - 5 - (canvas.height / 2) * yAjust, canvas.width, 150);
             }
-
         }
 
     }

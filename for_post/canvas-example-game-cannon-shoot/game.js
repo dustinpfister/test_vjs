@@ -71,7 +71,10 @@ var game = (function () {
     var eventTypeMaps = {
         mousedown: 'start',
         mousemove: 'move',
-        mouseup: 'end'
+        mouseup: 'end',
+        touchstart: 'start',
+        touchmove: 'move',
+        touchend: 'end'
     };
     var userAction = function (state) {
         return function (e) {

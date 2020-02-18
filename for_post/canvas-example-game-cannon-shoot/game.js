@@ -19,7 +19,7 @@ var game = (function () {
                 y: 0,
                 pps: 64, // pixels per second
                 power: 1,
-                plps: 1/ 10, // power loss per second
+                plps: 1 / 10, // power loss per second
                 startHeading: 0,
                 heading: 0
             },
@@ -48,18 +48,20 @@ var game = (function () {
         shot.pps = 128 + Math.floor(256 * shot.power);
     };
 
+
+    // fire the shot
     var fireShot = function (state) {
         var sh = state.shot,
         canvas = state.canvas,
-        canvas,
         ca = state.cannon;
-        sh.power = 1;
+
         sh.startHeading = ca.heading;
         sh.angleDistanceToGround = utils.angleMinDistance(sh.startHeading, Math.PI / 2);
         sh.x = canvas.width / 2,
         sh.y = canvas.height / 2,
         state.offset.x = ca.sx;
         state.offset.y = ca.sy;
+        sh.power = ca.power;
         setShot(sh);
         state.lastTick = new Date();
         state.mode = 'fired';
@@ -97,7 +99,7 @@ var game = (function () {
             if (state.userDown) {
                 setCannon(state,
                     Math.atan2(canvas.height - pos.y, pos.x) * -1,
-                    1)
+                    1);
             }
         },
         end: function (pos, state, e) {

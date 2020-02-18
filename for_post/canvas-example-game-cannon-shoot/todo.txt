@@ -20,8 +20,8 @@
 * (done) have an draw.debug method
 * (done) draw the ground
 * (done) shot power loss is based on something like pps of the shot
+* (done) cannon power set by distance from bottom left of canvas
 
-* cannon power set by distance from bottom left of canvas
 * add touch events
 * min and max angles for cannon
 * do not move cannon when clicking/moving in button area

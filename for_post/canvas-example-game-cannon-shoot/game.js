@@ -97,9 +97,12 @@ var game = (function () {
             var cannon = state.cannon,
             canvas = state.canvas;
             if (state.userDown) {
+                var d = utils.distance(pos.x, pos.y, 0, canvas.height);
+                var power = d / cannon.len;
+                power = power > 1 ? 1 : power;
                 setCannon(state,
                     Math.atan2(canvas.height - pos.y, pos.x) * -1,
-                    1);
+                    0.75 + 0.25 * power);
             }
         },
         end: function (pos, state, e) {

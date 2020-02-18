@@ -90,6 +90,7 @@ var draw = (function () {
             ctx.fillText('mode: ' + state.mode, 10, 10);
             ctx.fillText('map offset:  ' + Math.floor(state.offset.x) + ',' +
                 Math.floor(state.offset.y), 10, 20);
+            ctx.fillText('cannon power: ' + state.cannon.power, 10, 30);
         },
 
         // draw ground
@@ -98,8 +99,8 @@ var draw = (function () {
             yAjust = 0;
             if (state.offset.y > -5) {
                 ctx.fillStyle = 'green';
-                yAjust = state.offset.y > 0 ? state.offset.y / canvas.height: 0;
-                ctx.fillRect(0, canvas.height - 5 - (canvas.height/2) * yAjust, canvas.width, 150);
+                yAjust = state.offset.y > 0 ? state.offset.y / canvas.height : 0;
+                ctx.fillRect(0, canvas.height - 5 - (canvas.height / 2) * yAjust, canvas.width, 150);
             }
 
         }

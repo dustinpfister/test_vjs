@@ -5,11 +5,16 @@ ctx.translate(0.5, 0.5);
 var opt = {
     forFrame: function (api, f, mf) {
         var bxArr = api.ani.bxArr = [];
-        var i = 0, bxCount = 3;
+        var i = 0,
+        per,
+        bxCount = 5,
+        maxSize = canvas.width;
         while (i < bxCount) {
+            per = api.per + 1 / bxCount * i;
+            per %= 1;
             bx = {};
-            bx.w = 100 * api.per;
-            bx.h = 100 * api.per;
+            bx.w = maxSize * per;
+            bx.h = maxSize * per;
             bx.x = canvas.width / 2 - (bx.w / 2);
             bx.y = canvas.height / 2 - (bx.h / 2);
             bxArr.push(bx);
@@ -26,10 +31,10 @@ var frame = 0;
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas)
-    draw.bxArr(ctx, ani(frame, 50));
+    draw.bxArr(ctx, ani(frame, 200));
 
     frame += 1;
-    frame %= 50;
+    frame %= 200;
 
 };
 

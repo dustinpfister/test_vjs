@@ -7,7 +7,6 @@ draw.bx = function (ctx, bx) {
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.rect(bx.x, bx.y, bx.w, bx.h);
-    //ctx.fill();
     ctx.stroke();
 };
 draw.bxArr = function (ctx, ani) {

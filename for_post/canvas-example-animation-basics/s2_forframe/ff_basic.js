@@ -1,16 +1,29 @@
 var FF = function (opt) {
+
     var api = {};
     opt = opt || {};
     api.ani = {};
     api.forFrame = opt.forFrame || function () {};
+
+    // set the main percent and bias values for api
+    var setMainPerAndBias = function (api) {
+        api.per = api.frameIndex / api.maxFrame;
+        api.bias = 1 - Math.abs(0.5 - api.per) / 0.5;
+    };
+
+    // private forFrame method
     var forFrame = function (frameIndex, maxFrame) {
+        // set api frame index and max frame
         api.frameIndex = frameIndex;
         api.maxFrame = maxFrame;
-        api.per = frameIndex / maxFrame;
+        // set main percent done and bias value
+        setMainPerAndBias(api);
+        // call api forFrame with current api state
         api.forFrame.call(api, api, frameIndex, maxFrame);
         // return just the ani object
         return api.ani;
     };
+
     // public method used to set by frameIndex
     // over max Frames
     return function (frame, maxFrame) {

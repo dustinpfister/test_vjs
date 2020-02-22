@@ -11,36 +11,30 @@ ctx = canvas.getContext('2d');
 
 var state = {
     keys: {},
-    dir: 0
+    dir: 0,
+    maxDir: 8
 };
 
 var setDir = function () {
-    state.dir = 0;
-    var ct = 0;
-    if (state.keys.d) {
-        state.dir += 1
-        ct += 1;
-    }
-    if (state.keys.s) {
-        state.dir += 2;
-        ct += 1;
-    }
     if (state.keys.a) {
-        state.dir += 3;
-        ct += 1;
+        state.dir -= 1;
     }
-    if (state.keys.w) {
-        state.dir += 4;
-        ct += 1;
+    if (state.keys.d) {
+        state.dir += 1;
     }
-    state.dir = ct > 1 ? state.dir / ct : state.dir;
+
+    if (state.dir >= state.maxDir) {
+        state.dir = state.dir % state.maxDir;
+    }
+    if (state.dir < 0) {
+        state.dir = state.maxDir - Math.abs(state.dir) % state.maxDir;
+    }
+
 };
 
 var keyHandler = function (e) {
     state.keys[e.key] = e.type === 'keyup' ? false : true;
-
     setDir();
-
     draw(ctx, canvas, state);
 };
 

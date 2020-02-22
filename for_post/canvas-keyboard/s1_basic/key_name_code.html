@@ -14,21 +14,24 @@ var draw = function(ctx, canvas, state){
    ctx.fillStyle = 'white';
    ctx.textBaseline = 'middle';
    ctx.textAlign = 'center';
-   ctx.font = '60px courier';
-   ctx.fillText(state.code, canvas.width/ 2, canvas.height/2);
+   ctx.font = '20px courier';
+   ctx.fillText(state.key + '(' +state.code + ')', canvas.width/ 2, canvas.height/2);
 };
 var state = {
     keydown: false,
-    code: -1
+    code: -1,
+    key: ''
 };
 var keyDown = function(e){
    state.keydown = true;
    state.code = e.keyCode;
+   state.key = e.key;
    draw(ctx, canvas, state);
 };
 var keyUp = function(e){
    state.keydown = false;
    state.code = -1;
+   state.key = '';
    draw(ctx, canvas, state);
 };
 window.addEventListener('keydown', keyDown);

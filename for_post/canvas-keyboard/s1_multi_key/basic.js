@@ -15,6 +15,13 @@ var state = {
     maxDir: 8
 };
 
+var mod = function (a, b) {
+    if (a < 0) {
+        return b - Math.abs(a) % b;
+    }
+    return a % b;
+};
+
 var setDir = function () {
     if (state.keys.a) {
         state.dir -= 1;
@@ -22,14 +29,6 @@ var setDir = function () {
     if (state.keys.d) {
         state.dir += 1;
     }
-
-    if (state.dir >= state.maxDir) {
-        state.dir = state.dir % state.maxDir;
-    }
-    if (state.dir < 0) {
-        state.dir = state.maxDir - Math.abs(state.dir) % state.maxDir;
-    }
-
 };
 
 var keyHandler = function (e) {

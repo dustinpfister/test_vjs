@@ -5,18 +5,30 @@
     <body>
         <div>
         <input id="income" value="20000"><br>
-        <span id="tax"></span>
+        <span id="tax"></span><br>
+        <div id="brackets"></div>
         </div>
         <script src="tax_brackets.js"></script>
         <script>
 var input_income = document.getElementById('income'),
-el_tax = document.getElementById('tax');
+el_tax = document.getElementById('tax'),
+el_brack = document.getElementById('brackets');
  
 var update = function () {
     var income = input_income.value,
     t = tax.income(income),
     per = Number(t.totalPercent * 100).toFixed(2) + ' %';
     el_tax.innerText = 'tax: ' + t.totalTax + ' ( ' + per + ' ) ';
+    var html = '<table>';
+    html += '<tr><th>Rate</th><th>Amount</th><th>Tax</th></tr>';
+    t.brackets.forEach(function(bracket){
+        html += '<tr>'+
+        '<td>'+bracket.rate+'%</td>'+
+        '<td>'+bracket.amount+'</td>'+
+        '<td>'+bracket.tax+'</td>'+
+        '</tr>';
+    });
+    el_brack.innerHTML = html + '<table>';
 }
  
 update();

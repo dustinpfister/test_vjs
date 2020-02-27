@@ -62,6 +62,7 @@ var tax = (function () {
 
             taxObj.brackets = figureTax(income, createBrackets(tableData));
             taxObj.totalTax = tabulateTaxAmounts(taxObj.brackets);
+            taxObj.totalPercent = taxObj.totalTax / income;
 
             return taxObj;
         }

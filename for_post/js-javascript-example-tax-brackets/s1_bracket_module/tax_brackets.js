@@ -23,7 +23,22 @@ var tax = (function () {
     };
 
     var api = {
-        createBrackets: createBrackets
+        createBrackets: createBrackets,
+        income: function (income, brackets) {
+            brackets = brackets === undefined ? createBrackets() : brackets;
+            var m = income,
+            a = 0;
+            return brackets.map(function (bracket) {
+                if (m <= bracket.upper) {
+                    a = m;
+                } else {
+                    a = bracket.upper;
+                }
+                m -= a;
+                bracket.amount = a * (bracket.rate/ 100);
+                return bracket;
+            });
+        }
     };
 
     return api; ;

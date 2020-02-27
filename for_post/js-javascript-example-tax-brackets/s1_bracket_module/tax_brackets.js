@@ -23,7 +23,15 @@ var tax = (function () {
         });
     };
 
-    var figureIncomeTax = function (income, brackets) {
+    var createTaxObject = function (tableData) {
+        return {
+            totalTax: 0,
+            totalPercent: 0,
+            brackets: createBrackets(tableData)
+        };
+    };
+
+    var figureTax = function (income, brackets) {
         brackets = brackets === undefined ? createBrackets() : brackets;
         var m = income,
         a = 0;
@@ -40,10 +48,22 @@ var tax = (function () {
         });
     };
 
+    var tabulateTaxAmounts = function (brackets) {
+        return brackets.reduce(function (acc, bracket) {
+            acc = typeof acc === 'object' ? acc.tax : acc;
+            return acc + bracket.tax;
+        });
+    };
+
     var api = {
-        createBrackets: createBrackets,
-        income: function (income, brackets) {
-            return figureIncomeTax(income, brackets);
+        income: function (income, tableData) {
+
+            var taxObj = createTaxObject(tableData);
+
+            taxObj.brackets = figureTax(income, createBrackets(tableData));
+            taxObj.totalTax = tabulateTaxAmounts(taxObj.brackets);
+
+            return taxObj;
         }
     };
 

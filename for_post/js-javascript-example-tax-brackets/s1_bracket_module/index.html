@@ -8,12 +8,14 @@
         </div>
         <script src="tax_brackets.js"></script>
         <script>
-        var b = tax.income(20000),
+        var t = tax.income(20000);
+		/*
         t = b.reduce(function(acc, bracket){
             acc = typeof acc === 'object' ? acc.tax: acc;
             return acc + bracket.tax;
         });
-        document.getElementById('tax').innerText = t;
+		*/
+        document.getElementById('tax').innerText = t.totalTax;
         </script>
     </body>
 </html>

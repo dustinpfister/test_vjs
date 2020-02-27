@@ -7,7 +7,8 @@ var tax = (function () {
             rate: rate,
             lower: lower,
             upper: upper,
-            amount: 0
+            amount: 0,
+            tax: 0
         };
     };
 
@@ -35,7 +36,8 @@ var tax = (function () {
                     a = bracket.upper;
                 }
                 m -= a;
-                bracket.amount = a * (bracket.rate/ 100);
+                bracket.amount = a;
+                bracket.tax = a * (bracket.rate / 100);
                 return bracket;
             });
         }

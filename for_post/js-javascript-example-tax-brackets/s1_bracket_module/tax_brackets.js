@@ -1,6 +1,8 @@
 var tax = (function () {
 
-    var hardTableData = '10:9700,12:39475';
+    // 2019 hard table data
+    // https://www.propublica.org/article/what-are-2019s-tax-brackets
+    var hardTableData = '10:9700,12:39475,22:84200,24:160725,32:204100,35:510300,37:Infinity';
 
     var createBracketObject = function (rate, lower, upper) {
         return {
@@ -17,7 +19,8 @@ var tax = (function () {
         var lower = 0;
         return tableData.split(',').map(function (bracketData) {
             var bd = bracketData.split(':'),
-            bracketObj = createBracketObject(parseInt(bd[0]), lower, parseInt(bd[1]));
+            upper = bd[1] === 'Infinity' ? Number.MAX_SAFE_INTEGER : parseInt(bd[1]),
+            bracketObj = createBracketObject(parseInt(bd[0]), lower, upper);
             lower += parseInt(bd[1]) + 1;
             return bracketObj;
         });

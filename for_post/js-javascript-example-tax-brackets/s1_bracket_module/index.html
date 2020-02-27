@@ -3,9 +3,17 @@
         <title>javaScript example tax brackets</title>
     </head>
     <body>
+        <div>
+        <p id="tax"></p>
+        </div>
         <script src="tax_brackets.js"></script>
         <script>
-console.log(tax.income(20000));
+        var b = tax.income(20000),
+        t = b.reduce(function(acc, bracket){
+            acc = typeof acc === 'object' ? acc.tax: acc;
+            return acc + bracket.tax;
+        });
+        document.getElementById('tax').innerText = t;
         </script>
     </body>
 </html>

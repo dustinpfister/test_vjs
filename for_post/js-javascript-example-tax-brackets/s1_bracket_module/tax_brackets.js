@@ -4,6 +4,7 @@ var tax = (function () {
     // https://www.propublica.org/article/what-are-2019s-tax-brackets
     var hardTableData = '10:9700,12:39475,22:84200,24:160725,32:204100,35:510300,37:Infinity';
 
+    // create a bracket object
     var createBracketObject = function (rate, lower, upper) {
         return {
             rate: rate,
@@ -14,6 +15,7 @@ var tax = (function () {
         };
     };
 
+    // create brackets array
     var createBrackets = function (tableData) {
         tableData = tableData === undefined ? hardTableData : tableData;
         var lower = 0;
@@ -26,6 +28,7 @@ var tax = (function () {
         });
     };
 
+    // create a tax object
     var createTaxObject = function (tableData) {
         return {
             totalTax: 0,
@@ -34,6 +37,7 @@ var tax = (function () {
         };
     };
 
+    // figure tax for the given income and brackets array
     var figureTax = function (income, brackets) {
         brackets = brackets === undefined ? createBrackets() : brackets;
         var m = income,
@@ -56,6 +60,8 @@ var tax = (function () {
         });
     };
 
+    // add up a total tax amount with the given brackets
+    // array
     var tabulateTaxAmounts = function (brackets) {
         return brackets.reduce(function (acc, bracket) {
             acc = typeof acc === 'object' ? acc.tax : acc;
@@ -63,6 +69,7 @@ var tax = (function () {
         });
     };
 
+    // the public method
     return function (income, tableData) {
         var taxObj = createTaxObject(tableData);
         taxObj.brackets = figureTax(income, createBrackets(tableData));

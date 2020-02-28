@@ -19,7 +19,7 @@ var tax = (function () {
         var lower = 0;
         return tableData.split(',').map(function (bracketData) {
             var bd = bracketData.split(':'),
-            upper = bd[1] === 'Infinity' ? Number.MAX_SAFE_INTEGER : parseInt(bd[1]),
+            upper = bd[1] === 'Infinity' ? Infinity : parseInt(bd[1]),
             bracketObj = createBracketObject(parseInt(bd[0]), lower, upper);
             lower += parseInt(bd[1]) + 1;
             return bracketObj;

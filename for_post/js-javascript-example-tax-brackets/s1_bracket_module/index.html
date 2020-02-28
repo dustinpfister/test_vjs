@@ -16,14 +16,14 @@ el_brack = document.getElementById('brackets');
  
 var update = function () {
     var income = input_income.value,
-    t = tax.income(income),
+    t = tax(income),
     per = Number(t.totalPercent * 100).toFixed(2) + ' %';
     el_tax.innerText = 'tax: ' + t.totalTax + ' ( ' + per + ' ) ';
     var html = '<table>';
     html += '<tr><th>Range</th><th>Rate</th><th>Amount</th><th>Tax</th></tr>';
     t.brackets.forEach(function(bracket){
         html += '<tr>'+
-		'<td>'+bracket.lower+ ' - '+ bracket.upper+ '</td>'+
+        '<td>'+bracket.lower+ ' - '+ bracket.upper+ '</td>'+
         '<td>'+bracket.rate+'%</td>'+
         '<td>'+bracket.amount+'</td>'+
         '<td>'+bracket.tax+'</td>'+

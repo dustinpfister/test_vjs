@@ -41,11 +41,12 @@ var tax = (function () {
         a = 0;
         return brackets.map(function (bracket) {
             bracket.base = base;
-            if (m <= bracket.upper) {
+            if (m <= bracket.upper - bracket.base) {
                 a = m;
             } else {
-                a = bracket.upper;
+                a = bracket.upper - bracket.base;
             }
+            a = a < 0 ? 0 : a;
             m -= a;
             bracket.amount = a;
             bracket.tax = a * (bracket.rate / 100);

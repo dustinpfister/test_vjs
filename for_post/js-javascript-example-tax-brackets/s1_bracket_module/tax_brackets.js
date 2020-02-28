@@ -37,8 +37,10 @@ var tax = (function () {
     var figureTax = function (income, brackets) {
         brackets = brackets === undefined ? createBrackets() : brackets;
         var m = income,
+        base = 0,
         a = 0;
         return brackets.map(function (bracket) {
+            bracket.base = base;
             if (m <= bracket.upper) {
                 a = m;
             } else {
@@ -47,6 +49,7 @@ var tax = (function () {
             m -= a;
             bracket.amount = a;
             bracket.tax = a * (bracket.rate / 100);
+            base += bracket.upper;
             return bracket;
         });
     };

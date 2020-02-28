@@ -40,6 +40,7 @@ var tax = (function () {
         base = 0,
         a = 0;
         return brackets.map(function (bracket) {
+            base += bracket.lower;
             bracket.base = base;
             if (m <= bracket.upper - bracket.base) {
                 a = m;
@@ -50,7 +51,7 @@ var tax = (function () {
             m -= a;
             bracket.amount = a;
             bracket.tax = a * (bracket.rate / 100);
-            base += bracket.upper;
+            //base += bracket.upper;
             return bracket;
         });
     };

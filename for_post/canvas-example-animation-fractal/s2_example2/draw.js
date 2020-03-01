@@ -6,6 +6,11 @@ draw.points = function (ctx, points, opt) {
     opt.close = opt.close === undefined ? false : opt.close;
     opt.strokeOnly = opt.strokeOnly === undefined ? true : opt.strokeOnly;
     ctx.beginPath();
+    ctx.strokeStyle = opt.strokeStyle || 'white';
+    ctx.lineWidth = opt.lineWidth || 3;
+    if (points.length <= 1) {
+        return;
+    }
     ctx.moveTo(points[0][0], points[0][1]);
     var i = 1,
     len = points.length;

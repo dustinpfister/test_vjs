@@ -11,7 +11,7 @@
         <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
+ 
 var getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -21,29 +21,27 @@ var getCanvasRelative = function (e) {
         bx: bx
     };
 };
-
-var drawBackground = function(ctx){
+ 
+var drawBackground = function (ctx) {
     ctx.fillStyle = 'black';
-    ctx.fillRect(0,0,canvas.width, canvas.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
-
-var drawPos = function(ctx, pos){
-ctx.strokeStyle = 'green';
-   ctx.beginPath();
-   ctx.arc(pos.x,pos.y,5,0,Math.PI*2);
-   ctx.stroke();
+ 
+var drawPos = function (ctx, pos) {
+    ctx.strokeStyle = 'green';
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
+    ctx.stroke();
 };
-
-var pointerHandler = function(e){
-   var pos = getCanvasRelative(e);
-   //console.log(pos);
-   drawPos(ctx, pos);
+ 
+var pointerHandler = function (e) {
+    var pos = getCanvasRelative(e);
+    drawPos(ctx, pos);
 };
-
+ 
 drawBackground(ctx);
-canvas.addEventListener('mousedown', pointerHandler);
-
-
+canvas.addEventListener('mousemove', pointerHandler);
+canvas.addEventListener('touchmove', pointerHandler);
         </script>
     </body>
 </html>

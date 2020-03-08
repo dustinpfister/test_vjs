@@ -19,7 +19,7 @@ var makeGradiantData = function (w, h) {
         x = 0;
         while (x < h) {
             // expressions for r,g,b, and alpha
-            data[i] = 0;
+            data[i] = 128;
             data[i + 1] = 0;
             data[i + 2] = 0;
             data[i + 3] = 255;
@@ -28,12 +28,13 @@ var makeGradiantData = function (w, h) {
         }
         y += 1;
     }
-    console.log(data);
-    console.log(data.length / (4 * w));
     return new ImageData(new Uint8ClampedArray(data), w, h)
 };
 
-console.log(makeGradiantData(3, 2));
 
 ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+var imgData = makeGradiantData(128,128);
+ctx.putImageData(imgData, 32, 32);

@@ -1,6 +1,6 @@
 ## canvas gradient todo
 
-* getImageData example that is a distance based color gradient
-
+* blobs animation example
+* (done) getImageData example that is a distance based color gradient
 * (done) have a basic example of a Linear Gradient for starters
 * (done) another example for Radial Gradient

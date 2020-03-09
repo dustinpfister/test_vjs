@@ -38,7 +38,7 @@ var makeGradiantData = function (w, h, fx, fy, maxDist) {
         }
         y += 1;
     }
-    return new ImageData(new Uint8ClampedArray(data), w, h)
+    return new ImageData(new Uint8ClampedArray(data), w, h);
 };
 
 ctx.fillStyle = 'black';

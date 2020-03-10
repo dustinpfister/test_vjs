@@ -1,4 +1,4 @@
-var canvas = document.createElement('canvas'),
+var canvas = document.getElementById('mycanvas'),
 ctx = canvas.getContext('2d');
 document.body.appendChild(canvas);
 canvas.width = 320;
@@ -20,7 +20,7 @@ var distance = function (x1, y1, x2, y2) {
 };
 
 var draw = function (ctx, canvas, state) {
-    ctx.fillStyke = 'black';
+    ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'red';
     ctx.beginPath();
@@ -29,10 +29,32 @@ var draw = function (ctx, canvas, state) {
 };
 
 var state = {
-    x: 20,
-    y: 20,
+    x: canvas.width / 2,
+    y: canvas.height / 2,
     r: 10,
     down: false
 };
 
-draw(ctx, canvas, state)
+canvas.addEventListener('mousedown', function (e) {
+
+    var pos = getCanvasRelative(e);
+    if (distance(pos.x, pos.y, state.x, state.y) <= state.r) {
+        state.down = true;
+    }
+
+});
+
+canvas.addEventListener('mousemove', function (e) {
+    var pos = getCanvasRelative(e);
+    if (state.down) {
+        state.x = pos.x;
+        state.y = pos.y;
+        draw(ctx, canvas, state);
+    }
+});
+
+canvas.addEventListener('mouseup', function (e) {
+    state.down = false;
+});
+
+draw(ctx, canvas, state);

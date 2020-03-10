@@ -61,7 +61,6 @@ var getDiscPath = function (opt) {
         points.push(x, y);
         i += 1;
     }
-
     return points;
 };
 

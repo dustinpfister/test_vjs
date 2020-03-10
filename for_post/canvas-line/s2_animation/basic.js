@@ -6,9 +6,9 @@ ctx = canvas.getContext('2d');
 
 var state = {
     frame: 0,
-    maxFrame: 50,
+    maxFrame: 100,
     lastFrame: new Date(),
-    FPS: 1,
+    FPS: 30,
     points: []
 };
 
@@ -19,7 +19,7 @@ var initPoints = function (state, canvas) {
     y,
     points = state.points = [];
     while (i < len) {
-        x = canvas.width / (state.maxFrame-1) * i;
+        x = canvas.width / (state.maxFrame - 1) * i;
         y = canvas.height / 2 - 50 + 100 * Math.random();
         points.push(x, y);
         i += 1;
@@ -27,8 +27,25 @@ var initPoints = function (state, canvas) {
 
 };
 
-initPoints(state, canvas);
+var update = function (state) {
+    var now = new Date(),
+    t = now - state.lastFrame,
+    frames = Math.floor(t / 1000 * state.FPS);
+    if (frames >= 1) {
+        state.frame += frames;
+        state.frame %= state.maxFrame;
+        state.lastFrame = now;
+    }
+};
 
-draw.back(ctx, canvas);
-ctx.strokeStyle = 'red';
-draw.points(ctx, state.points, false);
+initPoints(state, canvas);
+var loop = function () {
+    requestAnimationFrame(loop);
+    update(state);
+    draw.back(ctx, canvas);
+    ctx.strokeStyle = 'red';
+    var i = Math.floor(state.maxFrame * (state.frame / state.maxFrame)) + 1;
+    draw.points(ctx, state.points.slice(0, i * 2), false);
+
+};
+loop();

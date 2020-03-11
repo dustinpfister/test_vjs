@@ -12,16 +12,6 @@ var distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 
-// draw
-var draw = function (ctx, canvas, state) {
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'red';
-    ctx.beginPath();
-    ctx.arc(state.x, state.y, state.r, 0, Math.PI * 2);
-    ctx.fill();
-};
-
 // Event handlers
 var pointerDown = function (state) {
     return function (e) {
@@ -45,6 +35,16 @@ var pointerUp = function (state) {
     return function (e) {
         state.down = false;
     };
+};
+
+// draw
+var draw = function (ctx, canvas, state) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(state.x, state.y, state.r, 0, Math.PI * 2);
+    ctx.fill();
 };
 
 // set up canvas

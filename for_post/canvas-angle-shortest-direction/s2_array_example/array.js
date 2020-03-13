@@ -13,7 +13,7 @@ var findDir = function (arr, indexCurrent, indexTarget) {
     if (indexCurrent === indexTarget) {
         return 0;
     }
-    if (normalizeHalf(z) < 0) {
+    if (normalizeHalf(arr, z) < 0) {
         return 1;
     } else {
         return -1;
@@ -23,4 +23,5 @@ var findDir = function (arr, indexCurrent, indexTarget) {
 var arr = [0, 1, 2, 3, 4];
 
 console.log( findDir(arr, 1, 4) ); // -1
-console.log( findDir(arr, 4, 1) ); // 1
+console.log( findDir(arr, 4, 0) ); // 1
+console.log( findDir(arr, 2, 2) ); // 0

@@ -25,17 +25,11 @@ var update = function (state) {
 };
 
 var loop = function () {
-
     requestAnimationFrame(loop);
     update(state);
-
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'white';
-    ctx.fillText(state.current, 20, 20);
-
+    draw.back(ctx, canvas);
     draw.circle(ctx, canvas, state);
-
+    draw.debug(ctx, state);
 };
 
 loop();

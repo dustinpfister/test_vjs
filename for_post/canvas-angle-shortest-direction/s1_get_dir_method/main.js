@@ -24,14 +24,6 @@ var update = function (state) {
     }
 };
 
-var drawCirclePoint = function (ctx, canvas, angle, radius) {
-    ctx.beginPath();
-    var x = Math.cos(angle) * radius + canvas.width / 2;
-    var y = Math.sin(angle) * radius + canvas.height / 2;
-    ctx.arc(x, y, 5, 0, Math.PI * 2);
-    ctx.fill();
-};
-
 var loop = function () {
 
     requestAnimationFrame(loop);
@@ -42,10 +34,7 @@ var loop = function () {
     ctx.fillStyle = 'white';
     ctx.fillText(state.current, 20, 20);
 
-    ctx.fillStyle = 'blue';
-    drawCirclePoint(ctx, canvas, state.target, 50);
-    ctx.fillStyle = 'green';
-    drawCirclePoint(ctx, canvas, state.current, 50);
+    draw.circle(ctx, canvas, state);
 
 };
 

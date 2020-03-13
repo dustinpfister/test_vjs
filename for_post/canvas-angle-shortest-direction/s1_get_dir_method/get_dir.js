@@ -17,9 +17,9 @@ var getDir = (function () {
             return 0;
         }
         if (normalizeHalf(z) < 0) {
-            return -1;
-        } else {
             return 1;
+        } else {
+            return -1;
         }
     };
 }

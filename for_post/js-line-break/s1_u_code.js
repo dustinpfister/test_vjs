@@ -1,6 +1,6 @@
 var eol = {
-    win: '\r\n',
-    posix: '\n'
+    win: '\u000d\u000a',
+    posix: '\u000a'
 },
 os = 'win',
 

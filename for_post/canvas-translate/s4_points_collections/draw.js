@@ -33,3 +33,18 @@ draw.points = function (ctx, points, close, stroke, fill, lw) {
         ctx.stroke();
     }
 };
+
+draw.dispObjects = function (ctx, dispObjects) {
+    var i = 0,
+    disp,
+    len = dispObjects.length;
+    while (i < len) {
+        disp = dispObjects[i];
+        ctx.save();
+        ctx.translate(disp.x, disp.y);
+        ctx.rotate(disp.r);
+        draw.points(ctx, disp.points, true, 'white', 'red', 3);
+        ctx.restore();
+        i += 1;
+    }
+};

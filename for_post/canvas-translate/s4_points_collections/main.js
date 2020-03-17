@@ -12,6 +12,14 @@ var dispObjects = [{
         fill: false,
         stroke: 'white',
         close: true
+    }, {
+        x: 50,
+        y: 50,
+        r: Math.PI / 180 * 90,
+        points: [-32, -32, 32, -32, 32, 32],
+        fill: false,
+        stroke: 'white',
+        close: true
     }
 ];
 

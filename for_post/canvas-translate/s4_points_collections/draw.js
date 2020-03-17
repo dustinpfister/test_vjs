@@ -10,7 +10,7 @@ draw.points = function (ctx, points, close, stroke, fill, lw) {
     close = close === undefined ? true : close;
     stroke = stroke === undefined ? 'black' : stroke;
     fill = fill === undefined ? false : fill;
-    ctx.lineWidth = lw === undefined ? 1 : lw;
+    ctx.lineWidth = lw === undefined ? 3 : lw;
 
     ctx.beginPath();
     ctx.moveTo(points[0], points[1]);
@@ -43,7 +43,7 @@ draw.dispObjects = function (ctx, dispObjects) {
         ctx.save();
         ctx.translate(disp.x, disp.y);
         ctx.rotate(disp.r);
-        draw.points(ctx, disp.points, disp.close, disp.stroke || 'white', disp.fill || 'black', disp.lw || 3);
+        draw.points(ctx, disp.points, disp.close, disp.stroke, disp.fill, disp.lw);
         ctx.restore();
         i += 1;
     }

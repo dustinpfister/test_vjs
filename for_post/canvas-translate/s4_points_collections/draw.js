@@ -6,15 +6,12 @@ draw.back = function (ctx, canvas) {
 };
 
 draw.points = function (ctx, points, close, stroke, fill, lw) {
-
     close = close === undefined ? true : close;
     stroke = stroke === undefined ? 'black' : stroke;
     fill = fill === undefined ? false : fill;
     ctx.lineWidth = lw === undefined ? 3 : lw;
-
     ctx.beginPath();
     ctx.moveTo(points[0], points[1]);
-
     var i = 2,
     len = points.length;
     while (i < len) {

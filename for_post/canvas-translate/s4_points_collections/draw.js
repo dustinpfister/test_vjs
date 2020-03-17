@@ -43,7 +43,7 @@ draw.dispObjects = function (ctx, dispObjects) {
         ctx.save();
         ctx.translate(disp.x, disp.y);
         ctx.rotate(disp.r);
-        draw.points(ctx, disp.points, true, 'white', 'red', 3);
+        draw.points(ctx, disp.points, disp.close, disp.stroke || 'white', disp.fill || 'black', disp.lw || 3);
         ctx.restore();
         i += 1;
     }

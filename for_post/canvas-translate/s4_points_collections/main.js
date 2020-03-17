@@ -5,6 +5,5 @@ canvas.width = 320;
 canvas.height = 240;
 
 
-//ctx.strokeStyle = 'red';
-//ctx.fillStyle = 'white';
-draw.points(ctx, [10,10, 100, 10, 100,100], true, 'red', 'black', 3);
+draw.back(ctx, canvas);
+draw.points(ctx, [10,10, 100, 10, 100,100], true, 'white', 'red', 3);

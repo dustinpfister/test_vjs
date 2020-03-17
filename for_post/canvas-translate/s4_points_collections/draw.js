@@ -1,5 +1,10 @@
 var draw = {};
 
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+
 draw.points = function (ctx, points, close, stroke, fill, lw) {
 
     close = close === undefined ? true : close;

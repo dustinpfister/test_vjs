@@ -94,8 +94,11 @@ var paricles = (function () {
     };
 
     var updatePool = function (state, t) {
-        var secs = t / 1000;
-        state.pool.forEach(function (part) {
+        var secs = t / 1000,
+        i = state.pool.length,
+        part;
+        while (i--) {
+            part = state.pool[i];
             if (part.bits === '10' || part.bits === '01') {
                 part.x += Math.cos(part.heading) * part.pps * secs;
                 part.y += Math.sin(part.heading) * part.pps * secs;
@@ -112,7 +115,7 @@ var paricles = (function () {
                     part.deactivate();
                 }
             }
-        });
+        }
     };
 
     return {

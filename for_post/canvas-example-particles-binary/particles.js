@@ -52,7 +52,6 @@ var paricles = (function () {
     var partHitCheck = function (state, part) {
         var i = state.pool.length,
         compare;
-
         if (part.bits === '11') {
             return;
         }
@@ -96,12 +95,20 @@ var paricles = (function () {
 
             // update pool
             state.pool.forEach(function (part) {
-                if (part.bits != '00') {
+                if (part.bits === '10' || part.bits === '01') {
                     part.x += Math.cos(part.heading) * part.pps * secs;
                     part.y += Math.sin(part.heading) * part.pps * secs;
                     part.x = u.mod(part.x, state.canvas.width);
                     part.y = u.mod(part.y, state.canvas.height);
                     partHitCheck(state, part);
+                }
+                if (part.bits === '11') {
+
+                    part.life -= t;
+                    if (part.life < 0) {
+                        part.deactivate()
+                    }
+
                 }
             });
 

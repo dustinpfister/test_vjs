@@ -26,6 +26,13 @@ var paricles = (function () {
         return pool;
     };
 
+    var randomHeading = function (min, max) {
+        min = min === undefined ? 0 : min;
+        max = max === undefined ? 359 : max;
+        var degree = min + Math.random() * (max - min);
+        return Math.PI / 180 * degree;
+    };
+
     return {
 
         create: function (opt) {
@@ -67,7 +74,8 @@ var paricles = (function () {
                         part.bits = '10';
                         part.x = canvas.width / 2;
                         part.y = 0;
-                        part.heading = Math.PI / 2;
+                        part.heading = randomHeading(45, 135);
+                        break;
                     }
                 }
             }

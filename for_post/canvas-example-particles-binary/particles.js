@@ -21,6 +21,7 @@ var paricles = (function () {
         this.pps = 32; // pixels per second
         this.life = PARTICLE_MAX_LIFE; // life left in milliseconds when in explode mode
         this.radius = PARTICLE_MIN_RADIUS;
+        this.per = 1;
     };
 
     //Particle.prototype.radius = PARTICLE_MIN_RADIUS;
@@ -33,6 +34,7 @@ var paricles = (function () {
         this.pps = 32;
         this.life = PARTICLE_MAX_LIFE;
         this.radius = PARTICLE_MIN_RADIUS;
+        this.per = 1;
     };
 
     Particle.prototype.deactivate = function () {
@@ -109,8 +111,8 @@ var paricles = (function () {
                 }
                 if (part.bits === '11') {
 
-                    var per = 1 - part.life / PARTICLE_MAX_LIFE,
-                    deltaRadius = (PARTICLE_MAX_RADIUS - PARTICLE_MIN_RADIUS) * per;
+                    part.per = 1 - part.life / PARTICLE_MAX_LIFE;
+                    var deltaRadius = (PARTICLE_MAX_RADIUS - PARTICLE_MIN_RADIUS) * part.per;
                     part.radius = PARTICLE_MIN_RADIUS + deltaRadius;
                     part.life -= t;
 

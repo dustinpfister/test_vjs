@@ -7,9 +7,16 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
+/*
 var state = {
     canvas: canvas,
     ctx: ctx
 };
+*/
+
+var state = paricles.create({
+    canvas: canvas,
+    ctx: ctx
+});
 
 draw.background(state);

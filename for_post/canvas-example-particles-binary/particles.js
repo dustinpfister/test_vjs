@@ -1,8 +1,9 @@
 
-var paricles(function () {
+var paricles = (function () {
+
+    var DEFAULT_POOL_SIZE = 20;
 
     var createPartcile = function () {
-
         return {
             x: -1,
             y: -1,
@@ -11,12 +12,29 @@ var paricles(function () {
             pps: 32, // pixels per second
             life: 3000 // life left in milliseconds when in explode mode
         };
+    };
 
+    var createPool = function () {
+        var len = DEFAULT_POOL_SIZE,
+        i = len,
+        pool = [];
+        while (i--) {
+            pool.push(createPartcile());
+        }
+        return pool;
     };
 
     return {
 
-        create: function () {},
+        create: function (opt) {
+            opt = opt || {};
+            state = {
+                canvas: opt.canvas || null,
+                ctx: opt.ctx || null,
+                pool: createPool()
+            };
+            return state;
+        },
 
         update: function () {}
 

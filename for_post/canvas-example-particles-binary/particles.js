@@ -3,7 +3,7 @@ var paricles = (function () {
 
     var DEFAULT_POOL_SIZE = 80,
     PARTICLE_MIN_RADIUS = 8,
-    PARTICLE_MAX_RADIUS = 32,
+    PARTICLE_MAX_RADIUS = 64,
     PARTICLE_MAX_LIFE = 3000;
 
     var randomHeading = function (min, max) {
@@ -110,16 +110,13 @@ var paricles = (function () {
                     partHitCheck(state, part);
                 }
                 if (part.bits === '11') {
-
                     part.per = 1 - part.life / PARTICLE_MAX_LIFE;
                     var deltaRadius = (PARTICLE_MAX_RADIUS - PARTICLE_MIN_RADIUS) * part.per;
                     part.radius = PARTICLE_MIN_RADIUS + deltaRadius;
                     part.life -= t;
-
                     if (part.life < 0) {
                         part.deactivate();
                     }
-
                 }
             });
 

@@ -76,7 +76,9 @@ var paricles = (function () {
         }
     };
 
-    var spawn = function (state) {
+    // spawn or activate particles
+    var spawn = function (state, t) {
+        state.lastSpawn += t;
         if (state.lastSpawn >= state.spawnRate) {
             state.lastSpawn = u.mod(state.lastSpawn, state.spawnRate);
             var i = state.pool.length;
@@ -84,12 +86,33 @@ var paricles = (function () {
                 var part = state.pool[i];
                 if (part.bits === '00') {
                     part.activate(state.nextSide, state.canvas);
-                    //part.activate(1, state.canvas);
                     state.nextSide = u.mod(state.nextSide + 1, 2);
                     break;
                 }
             }
         }
+    };
+
+    var updatePool = function (state, t) {
+        var secs = t / 1000;
+        state.pool.forEach(function (part) {
+            if (part.bits === '10' || part.bits === '01') {
+                part.x += Math.cos(part.heading) * part.pps * secs;
+                part.y += Math.sin(part.heading) * part.pps * secs;
+                part.x = u.mod(part.x, state.canvas.width);
+                part.y = u.mod(part.y, state.canvas.height);
+                partHitCheck(state, part);
+            }
+            if (part.bits === '11') {
+                part.per = 1 - part.life / PARTICLE_MAX_LIFE;
+                var deltaRadius = (PARTICLE_MAX_RADIUS - PARTICLE_MIN_RADIUS) * part.per;
+                part.radius = PARTICLE_MIN_RADIUS + deltaRadius;
+                part.life -= t;
+                if (part.life < 0) {
+                    part.deactivate();
+                }
+            }
+        });
     };
 
     return {
@@ -109,53 +132,14 @@ var paricles = (function () {
         },
 
         update: function (state) {
-
             var now = new Date(),
             t = now - state.lastTime,
             secs = t / 1000;
-
-            state.lastSpawn += t;
-
-            // update pool
-            state.pool.forEach(function (part) {
-                if (part.bits === '10' || part.bits === '01') {
-                    part.x += Math.cos(part.heading) * part.pps * secs;
-                    part.y += Math.sin(part.heading) * part.pps * secs;
-                    part.x = u.mod(part.x, state.canvas.width);
-                    part.y = u.mod(part.y, state.canvas.height);
-                    partHitCheck(state, part);
-                }
-                if (part.bits === '11') {
-                    part.per = 1 - part.life / PARTICLE_MAX_LIFE;
-                    var deltaRadius = (PARTICLE_MAX_RADIUS - PARTICLE_MIN_RADIUS) * part.per;
-                    part.radius = PARTICLE_MIN_RADIUS + deltaRadius;
-                    part.life -= t;
-                    if (part.life < 0) {
-                        part.deactivate();
-                    }
-                }
-            });
-
-            // spawn
-            spawn(state);
-            /*
-            if (state.lastSpawn >= state.spawnRate) {
-            state.lastSpawn = u.mod(state.lastSpawn, state.spawnRate);
-            var i = state.pool.length;
-            while (i--) {
-            var part = state.pool[i];
-            if (part.bits === '00') {
-            part.activate(state.nextSide, state.canvas);
-            //part.activate(1, state.canvas);
-            state.nextSide = u.mod(state.nextSide + 1, 2);
-            break;
-            }
-            }
-            }
-             */
-
+            // update pool, and spawn
+            updatePool(state, t);
+            spawn(state, t);
+            // update last time
             state.lastTime = now;
-
         }
 
     }

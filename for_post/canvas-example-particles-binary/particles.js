@@ -2,7 +2,8 @@
 var paricles = (function () {
 
     var DEFAULT_POOL_SIZE = 20,
-    PARTICLE_MIN_RADIUS = 8;
+    PARTICLE_MIN_RADIUS = 8,
+    PARTICLE_MIN_LIFE = 3000;
 
     var randomHeading = function (min, max) {
         min = min === undefined ? 0 : min;
@@ -17,18 +18,17 @@ var paricles = (function () {
         this.heading = 0;
         this.bits = '00'; // [0,0] inactive, [1,0] // blue, [0,1] red, [1,1] // explode
         this.pps = 32; // pixels per second
-        this.life = 3000; // life left in milliseconds when in explode mode
+        this.life = PARTICLE_MIN_LIFE; // life left in milliseconds when in explode mode
     };
 
     Particle.prototype.radius = PARTICLE_MIN_RADIUS;
 
     Particle.prototype.activate = function (side, canvas) {
-
-        this.bits = '10';
+        this.bits = side === 1 ? '10' : '01';
         this.x = canvas.width / 2;
-        this.y = 0;
-        this.heading = randomHeading(45, 135);
-
+        this.y = side === 1 ? 0 : canvas.height - 1;
+        this.heading = side === 1 ? randomHeading(45, 135) : randomHeading(225, 315);
+        this.life = PARTICLE_MIN_LIFE;
     };
 
     var createPool = function () {
@@ -52,7 +52,8 @@ var paricles = (function () {
                 pool: createPool(),
                 lastTime: new Date(), // last Tick
                 spawnRate: 1000, // num of ms per spawn event
-                lastSpawn: 0 // ms sense last spawn
+                lastSpawn: 0, // ms sense last spawn
+                nextSide: 0
             };
             return state;
         },
@@ -80,13 +81,8 @@ var paricles = (function () {
                 while (i--) {
                     var part = state.pool[i];
                     if (part.bits === '00') {
-                        part.activate(1, state.canvas);
-                        /*
-                        part.bits = '10';
-                        part.x = canvas.width / 2;
-                        part.y = 0;
-                        part.heading = randomHeading(45, 135);
-                         */
+                        part.activate(state.nextSide, state.canvas);
+                        state.nextSide = u.mod(state.nextSide + 1, 2);
                         break;
                     }
                 }

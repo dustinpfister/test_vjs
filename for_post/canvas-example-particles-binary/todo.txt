@@ -1,8 +1,11 @@
 ## Canvas Example Particles Binary todo list
 
-* alpha transparency effect for draw.pool method
-* purple explosions
+* make an update pool function and pull logic from public update method into it
+* stand alone spawn method
+* clean up utils of unused methods
 
+* (done) alpha transparency effect for draw.pool method
+* (done) purple explosions
 * (done) a '11' bits state particle has its radius grow from a min to max as it dies
 * (done) part that gets set to '11' state should have its position set to an an average between the two points.
 * (done) make it so that when two particles hit each other one becomes inactive, and then other enters '11' bits state

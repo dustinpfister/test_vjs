@@ -76,6 +76,22 @@ var paricles = (function () {
         }
     };
 
+    var spawn = function (state) {
+        if (state.lastSpawn >= state.spawnRate) {
+            state.lastSpawn = u.mod(state.lastSpawn, state.spawnRate);
+            var i = state.pool.length;
+            while (i--) {
+                var part = state.pool[i];
+                if (part.bits === '00') {
+                    part.activate(state.nextSide, state.canvas);
+                    //part.activate(1, state.canvas);
+                    state.nextSide = u.mod(state.nextSide + 1, 2);
+                    break;
+                }
+            }
+        }
+    };
+
     return {
 
         create: function (opt) {
@@ -121,19 +137,22 @@ var paricles = (function () {
             });
 
             // spawn
+            spawn(state);
+            /*
             if (state.lastSpawn >= state.spawnRate) {
-                state.lastSpawn = u.mod(state.lastSpawn, state.spawnRate);
-                var i = state.pool.length;
-                while (i--) {
-                    var part = state.pool[i];
-                    if (part.bits === '00') {
-                        part.activate(state.nextSide, state.canvas);
-                        //part.activate(1, state.canvas);
-                        state.nextSide = u.mod(state.nextSide + 1, 2);
-                        break;
-                    }
-                }
+            state.lastSpawn = u.mod(state.lastSpawn, state.spawnRate);
+            var i = state.pool.length;
+            while (i--) {
+            var part = state.pool[i];
+            if (part.bits === '00') {
+            part.activate(state.nextSide, state.canvas);
+            //part.activate(1, state.canvas);
+            state.nextSide = u.mod(state.nextSide + 1, 2);
+            break;
             }
+            }
+            }
+             */
 
             state.lastTime = now;
 

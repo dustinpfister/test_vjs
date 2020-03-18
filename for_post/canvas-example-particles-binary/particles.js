@@ -63,6 +63,8 @@ var paricles = (function () {
             if (u.distance(part.x, part.y, compare.x, compare.y) <= 16) {
                 part.bits = '11';
                 part.pps = 0;
+                part.x = (part.x + compare.x) / 2;
+                part.y = (part.y + compare.y) / 2;
                 compare.deactivate();
                 break;
             }

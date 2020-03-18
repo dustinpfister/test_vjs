@@ -4,6 +4,13 @@ var paricles = (function () {
     var DEFAULT_POOL_SIZE = 20,
     PARTICLE_MIN_RADIUS = 8;
 
+    var randomHeading = function (min, max) {
+        min = min === undefined ? 0 : min;
+        max = max === undefined ? 359 : max;
+        var degree = min + Math.random() * (max - min);
+        return Math.PI / 180 * degree;
+    };
+
     var Particle = function () {
         this.x = -1;
         this.y = -1;
@@ -15,6 +22,15 @@ var paricles = (function () {
 
     Particle.prototype.radius = PARTICLE_MIN_RADIUS;
 
+    Particle.prototype.activate = function (side, canvas) {
+
+        this.bits = '10';
+        this.x = canvas.width / 2;
+        this.y = 0;
+        this.heading = randomHeading(45, 135);
+
+    };
+
     var createPool = function () {
         var len = DEFAULT_POOL_SIZE,
         i = len,
@@ -24,13 +40,6 @@ var paricles = (function () {
             pool.push(new Particle());
         }
         return pool;
-    };
-
-    var randomHeading = function (min, max) {
-        min = min === undefined ? 0 : min;
-        max = max === undefined ? 359 : max;
-        var degree = min + Math.random() * (max - min);
-        return Math.PI / 180 * degree;
     };
 
     return {
@@ -71,10 +80,13 @@ var paricles = (function () {
                 while (i--) {
                     var part = state.pool[i];
                     if (part.bits === '00') {
+                        part.activate(1, state.canvas);
+                        /*
                         part.bits = '10';
                         part.x = canvas.width / 2;
                         part.y = 0;
                         part.heading = randomHeading(45, 135);
+                         */
                         break;
                     }
                 }

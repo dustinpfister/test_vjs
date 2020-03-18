@@ -1,7 +1,9 @@
 ## Canvas Example Particles Binary todo list
 
-* a '11' bits state particle has its radius grow from a min to max as it dies
+* alpha transparency effect for draw.pool method
+* purple explosions
 
+* (done) a '11' bits state particle has its radius grow from a min to max as it dies
 * (done) part that gets set to '11' state should have its position set to an an average between the two points.
 * (done) make it so that when two particles hit each other one becomes inactive, and then other enters '11' bits state
 * (done) once a particle is in '11' bits state I will explode and become inactive after it runs out of life

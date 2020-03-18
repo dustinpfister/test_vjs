@@ -1,3 +1,11 @@
 ## Canvas Example Particles Binary todo list
 
-* clean starting point
+* (done) clean starting point
+* particles.js: start a particles.js file
+* particles.js: private method to create a single particle object
+* particles.js: private method to create a pool of particle objects
+* particles.js: public method to create a state object
+* particles.js: public method to update, or tick a state object
+* use particles.js in main.js to create, and update the state object.
+* draw.pariclePool method in draw.js
+* draw a particles.js state object in main.js

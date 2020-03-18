@@ -4,19 +4,6 @@ var paricles = (function () {
     var DEFAULT_POOL_SIZE = 20,
     PARTICLE_MIN_RADIUS = 8;
 
-    /*
-    var createPartcile = function () {
-    return {
-    x: -1,
-    y: -1,
-    heading: 0,
-    bits: '00', // [0,0] inactive, [1,0] // blue, [0,1] red, [1,1] // explode
-    pps: 32, // pixels per second
-    life: 3000 // life left in milliseconds when in explode mode
-    };
-    };
-     */
-
     var Particle = function () {
         this.x = -1;
         this.y = -1;
@@ -46,12 +33,48 @@ var paricles = (function () {
             state = {
                 canvas: opt.canvas || null,
                 ctx: opt.ctx || null,
-                pool: createPool()
+                pool: createPool(),
+                lastTime: new Date(), // last Tick
+                spawnRate: 1000, // num of ms per spawn event
+                lastSpawn: 0 // ms sense last spawn
             };
             return state;
         },
 
-        update: function () {}
+        update: function (state) {
+
+            var now = new Date(),
+            t = now - state.lastTime,
+            secs = t / 1000;
+
+            state.lastSpawn += t;
+
+            state.pool.forEach(function (part) {
+                if (part.bits != '00') {
+                    part.x += Math.cos(part.heading) * part.pps * secs;
+                    part.y += Math.sin(part.heading) * part.pps * secs;
+                    part.x = u.mod(part.x, state.canvas.width);
+                    part.y = u.mod(part.y, state.canvas.height);
+                }
+            });
+
+            if (state.lastSpawn >= state.spawnRate) {
+                state.lastSpawn = u.mod(state.lastSpawn, state.spawnRate);
+                var i = state.pool.length;
+                while (i--) {
+                    var part = state.pool[i];
+                    if (part.bits === '00') {
+                        part.bits = '10';
+                        part.x = canvas.width / 2;
+                        part.y = 0;
+                        part.heading = Math.PI / 2;
+                    }
+                }
+            }
+
+            state.lastTime = now;
+
+        }
 
     }
 

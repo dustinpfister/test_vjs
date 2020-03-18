@@ -6,6 +6,7 @@ var paricles = (function () {
     PARTICLE_MAX_RADIUS = 64,
     PARTICLE_MAX_LIFE = 3000;
 
+    // random reading
     var randomHeading = function (min, max) {
         min = min === undefined ? 0 : min;
         max = max === undefined ? 359 : max;
@@ -13,6 +14,7 @@ var paricles = (function () {
         return Math.PI / 180 * degree;
     };
 
+    // Particle Class
     var Particle = function () {
         this.x = -1;
         this.y = -1;
@@ -24,8 +26,7 @@ var paricles = (function () {
         this.per = 1;
     };
 
-    //Particle.prototype.radius = PARTICLE_MIN_RADIUS;
-
+    // Particle prototype methods for activating an deactivating a particle
     Particle.prototype.activate = function (side, canvas) {
         this.bits = side === 1 ? '10' : '01';
         this.x = canvas.width / 2;
@@ -36,24 +37,24 @@ var paricles = (function () {
         this.radius = PARTICLE_MIN_RADIUS;
         this.per = 1;
     };
-
     Particle.prototype.deactivate = function () {
         this.bits = '00';
         this.x = -1;
         this.y = -1;
     };
 
+    // create a particle pool
     var createPool = function () {
         var len = DEFAULT_POOL_SIZE,
         i = len,
         pool = [];
         while (i--) {
-            //pool.push(createPartcile());
             pool.push(new Particle());
         }
         return pool;
     };
 
+    // check if a particle has hit another
     var partHitCheck = function (state, part) {
         var i = state.pool.length,
         compare;
@@ -93,6 +94,7 @@ var paricles = (function () {
         }
     };
 
+    // update a particle pool
     var updatePool = function (state, t) {
         var secs = t / 1000,
         i = state.pool.length,
@@ -117,9 +119,10 @@ var paricles = (function () {
             }
         }
     };
-
+    
+    // public API
     return {
-
+        // create a state
         create: function (opt) {
             opt = opt || {};
             state = {
@@ -133,7 +136,7 @@ var paricles = (function () {
             };
             return state;
         },
-
+        // update state
         update: function (state) {
             var now = new Date(),
             t = now - state.lastTime,
@@ -144,7 +147,6 @@ var paricles = (function () {
             // update last time
             state.lastTime = now;
         }
-
     }
 
 }

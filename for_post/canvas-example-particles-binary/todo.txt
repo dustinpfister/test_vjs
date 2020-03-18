@@ -1,10 +1,10 @@
 ## Canvas Example Particles Binary todo list
 
-* make it so that when two particles hit each other one becomes inactive, and then other enters '11' bits state
-* once a particle is in '11' bits state I will explode and become inactive after it runs out of life
-* a '11' bits state partice has its radius grow from a min to max as it dies
-* a '11' bits state orb has its pps set to zero
+* a '11' bits state particle has its radius grow from a min to max as it dies
 
+* (done) make it so that when two particles hit each other one becomes inactive, and then other enters '11' bits state
+* (done) once a particle is in '11' bits state I will explode and become inactive after it runs out of life
+* (done) a '11' bits state orb has its pps set to zero
 * (done) clean starting point
 * (done) particles.js: start a particles.js file
 * (done) particles.js: private method to create a single particle object

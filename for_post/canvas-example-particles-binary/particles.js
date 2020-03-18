@@ -1,7 +1,7 @@
 
 var paricles = (function () {
 
-    var DEFAULT_POOL_SIZE = 20,
+    var DEFAULT_POOL_SIZE = 80,
     PARTICLE_MIN_RADIUS = 8,
     PARTICLE_MIN_LIFE = 3000;
 
@@ -52,12 +52,12 @@ var paricles = (function () {
     var partHitCheck = function (state, part) {
         var i = state.pool.length,
         compare;
-        if (part.bits === '11') {
+        if (part.bits === '11' || part.bits === '00') {
             return;
         }
         while (i--) {
             compare = state.pool[i];
-            if (part === compare || compare.bits === '11') {
+            if (part === compare || compare.bits === '11' || compare.bits === part.bits || compare.bits === '00') {
                 continue;
             }
             if (u.distance(part.x, part.y, compare.x, compare.y) <= 16) {
@@ -78,7 +78,7 @@ var paricles = (function () {
                 ctx: opt.ctx || null,
                 pool: createPool(),
                 lastTime: new Date(), // last Tick
-                spawnRate: 1000, // num of ms per spawn event
+                spawnRate: 250, // num of ms per spawn event
                 lastSpawn: 0, // ms sense last spawn
                 nextSide: 0
             };
@@ -120,6 +120,7 @@ var paricles = (function () {
                     var part = state.pool[i];
                     if (part.bits === '00') {
                         part.activate(state.nextSide, state.canvas);
+                        //part.activate(1, state.canvas);
                         state.nextSide = u.mod(state.nextSide + 1, 2);
                         break;
                     }

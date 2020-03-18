@@ -1,9 +1,8 @@
 ## Canvas Example Particles Binary todo list
 
-* make an update pool function and pull logic from public update method into it
-* stand alone spawn method
-* clean up utils of unused methods
-
+* (done) make an update pool function and pull logic from public update method into it
+* (done) stand alone spawn method
+* (done) clean up utils of unused methods
 * (done) alpha transparency effect for draw.pool method
 * (done) purple explosions
 * (done) a '11' bits state particle has its radius grow from a min to max as it dies

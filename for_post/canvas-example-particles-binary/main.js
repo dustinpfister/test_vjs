@@ -13,7 +13,7 @@ var state = paricles.create({
         canvas: canvas,
         ctx: ctx
     });
-
+draw.setGradient(state);
 var loop = function () {
     requestAnimationFrame(loop);
     draw.background(state);

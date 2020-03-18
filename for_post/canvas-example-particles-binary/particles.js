@@ -28,7 +28,14 @@ var paricles = (function () {
         this.x = canvas.width / 2;
         this.y = side === 1 ? 0 : canvas.height - 1;
         this.heading = side === 1 ? randomHeading(45, 135) : randomHeading(225, 315);
+        this.pps = 32;
         this.life = PARTICLE_MIN_LIFE;
+    };
+
+    Particle.prototype.deactivate = function () {
+        this.bits = '00';
+        this.x = -1;
+        this.y = -1;
     };
 
     var createPool = function () {
@@ -40,6 +47,27 @@ var paricles = (function () {
             pool.push(new Particle());
         }
         return pool;
+    };
+
+    var partHitCheck = function (state, part) {
+        var i = state.pool.length,
+        compare;
+
+        if (part.bits === '11') {
+            return;
+        }
+        while (i--) {
+            compare = state.pool[i];
+            if (part === compare || compare.bits === '11') {
+                continue;
+            }
+            if (u.distance(part.x, part.y, compare.x, compare.y) <= 16) {
+                part.bits = '11';
+                part.pps = 0;
+                compare.deactivate();
+                break;
+            }
+        }
     };
 
     return {
@@ -73,6 +101,7 @@ var paricles = (function () {
                     part.y += Math.sin(part.heading) * part.pps * secs;
                     part.x = u.mod(part.x, state.canvas.width);
                     part.y = u.mod(part.y, state.canvas.height);
+                    partHitCheck(state, part);
                 }
             });
 

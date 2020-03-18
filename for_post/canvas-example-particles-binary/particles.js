@@ -66,6 +66,7 @@ var paricles = (function () {
 
             state.lastSpawn += t;
 
+            // update pool
             state.pool.forEach(function (part) {
                 if (part.bits != '00') {
                     part.x += Math.cos(part.heading) * part.pps * secs;
@@ -75,6 +76,7 @@ var paricles = (function () {
                 }
             });
 
+            // spawn
             if (state.lastSpawn >= state.spawnRate) {
                 state.lastSpawn = u.mod(state.lastSpawn, state.spawnRate);
                 var i = state.pool.length;

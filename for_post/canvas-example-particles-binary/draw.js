@@ -27,7 +27,7 @@ var draw = (function () {
                 var part = state.pool[i];
                 if (part.bits != '00') {
                     var color = part.bits === '01' ? 'blue' : 'red';
-                    color = part.bits === '11' ? 'purple' : color;
+                    color = part.bits === '11' ? '#bf00bf' : color;
                     ctx.globalAlpha = 0.8;
                     if (part.bits === '11') {
                         ctx.globalAlpha = 1 - part.per;

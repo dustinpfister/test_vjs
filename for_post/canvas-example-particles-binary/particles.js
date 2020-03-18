@@ -3,7 +3,8 @@ var paricles = (function () {
 
     var DEFAULT_POOL_SIZE = 80,
     PARTICLE_MIN_RADIUS = 8,
-    PARTICLE_MIN_LIFE = 3000;
+    PARTICLE_MAX_RADIUS = 32,
+    PARTICLE_MAX_LIFE = 3000;
 
     var randomHeading = function (min, max) {
         min = min === undefined ? 0 : min;
@@ -18,10 +19,11 @@ var paricles = (function () {
         this.heading = 0;
         this.bits = '00'; // [0,0] inactive, [1,0] // blue, [0,1] red, [1,1] // explode
         this.pps = 32; // pixels per second
-        this.life = PARTICLE_MIN_LIFE; // life left in milliseconds when in explode mode
+        this.life = PARTICLE_MAX_LIFE; // life left in milliseconds when in explode mode
+        this.radius = PARTICLE_MIN_RADIUS;
     };
 
-    Particle.prototype.radius = PARTICLE_MIN_RADIUS;
+    //Particle.prototype.radius = PARTICLE_MIN_RADIUS;
 
     Particle.prototype.activate = function (side, canvas) {
         this.bits = side === 1 ? '10' : '01';
@@ -29,7 +31,8 @@ var paricles = (function () {
         this.y = side === 1 ? 0 : canvas.height - 1;
         this.heading = side === 1 ? randomHeading(45, 135) : randomHeading(225, 315);
         this.pps = 32;
-        this.life = PARTICLE_MIN_LIFE;
+        this.life = PARTICLE_MAX_LIFE;
+        this.radius = PARTICLE_MIN_RADIUS;
     };
 
     Particle.prototype.deactivate = function () {
@@ -106,9 +109,13 @@ var paricles = (function () {
                 }
                 if (part.bits === '11') {
 
+                    var per = 1 - part.life / PARTICLE_MAX_LIFE,
+                    deltaRadius = (PARTICLE_MAX_RADIUS - PARTICLE_MIN_RADIUS) * per;
+                    part.radius = PARTICLE_MIN_RADIUS + deltaRadius;
                     part.life -= t;
+
                     if (part.life < 0) {
-                        part.deactivate()
+                        part.deactivate();
                     }
 
                 }

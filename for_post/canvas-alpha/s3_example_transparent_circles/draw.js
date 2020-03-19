@@ -15,9 +15,11 @@ draw.circles = function (state) {
     circle;
     while (i--) {
         circle = state.circles[i];
-        ctx.fillStyle = 'rgba(0,128,0,0.5)';
+        ctx.globalAlpha = circle.alpha;
+        ctx.fillStyle = circle.color;
         ctx.beginPath();
         ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
         ctx.fill();
     }
+    ctx.globalAlpha = 1;
 };

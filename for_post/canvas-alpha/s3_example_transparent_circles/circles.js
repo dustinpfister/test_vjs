@@ -13,6 +13,13 @@ var circles = (function () {
         // move 45 degrees per second
         function (state, circle, secs) {
             circle.heading += Math.PI / 180 * 45 * secs;
+        },
+        // weird thing with sin
+        function (state, circle, secs) {
+            circle.ticks += secs;
+            circle.ticks = mod(circle.ticks, 100);
+            var r = Math.PI * 2 * (circle.ticks / 100);
+            circle.heading = Math.sin(r) * (Math.PI * 2);
         }
     ];
 
@@ -31,6 +38,7 @@ var circles = (function () {
                 alpha: 0.5,
                 pps: 64 + 128 * Math.random(),
                 heading: Math.PI * 2 * Math.random(),
+                ticks: 0,
                 forTickIndex: Math.floor(forTicks.length * Math.random())
             });
         }

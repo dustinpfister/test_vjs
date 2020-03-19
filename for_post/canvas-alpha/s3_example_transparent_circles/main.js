@@ -1,5 +1,16 @@
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
-draw.back(ctx, canvas);
-draw.circles(ctx, circles);
+var state = {
+    canvas: canvas,
+    ctx: ctx,
+    circles: [{
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 32
+        }
+    ]
+};
+
+draw.back(state);
+draw.circles(state);

@@ -16,7 +16,7 @@ var state = {
             color: 'red',
             alpha: 0.5,
             pps: 128,
-            heading: 5 //Math.PI
+            heading: 0 //Math.PI
         }
     ]
 };
@@ -35,6 +35,7 @@ var wrapCircle = function (state, circle) {
     if (circle.y > canvas.height + circle.radius) {
         circle.y = mod(circle.y, canvas.height + circle.radius) - circle.radius;
     }
+
 };
 
 var update = function (state) {

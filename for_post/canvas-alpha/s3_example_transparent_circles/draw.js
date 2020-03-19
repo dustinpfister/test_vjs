@@ -13,6 +13,8 @@ draw.circles = function (state) {
     canvas = state.canvas,
     i = state.circles.length,
     circle;
+    ctx.stokeStyle = 'black';
+    ctx.lineWidth = 3;
     while (i--) {
         circle = state.circles[i];
         ctx.globalAlpha = circle.alpha;
@@ -20,6 +22,7 @@ draw.circles = function (state) {
         ctx.beginPath();
         ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
         ctx.fill();
+        ctx.stroke();
     }
     ctx.globalAlpha = 1;
 };

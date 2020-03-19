@@ -12,16 +12,23 @@ var state = {
     canvas: canvas,
     ctx: ctx,
     lastTime: new Date(),
-    circles: [{
+    circles: []
+};
+
+var genCircles = function (state) {
+    state.circles = [];
+    var i = 10;
+    while (i--) {
+        state.circles.push({
             x: canvas.width / 2,
             y: canvas.height / 2,
             radius: 32,
             color: 'red',
             alpha: 0.5,
             pps: 128,
-            heading: 0 //Math.PI
-        }
-    ]
+            heading: Math.PI * 2 * Math.random()
+        });
+    }
 };
 
 var wrapCircle = function (state, circle) {
@@ -56,7 +63,7 @@ var update = function (state) {
         circle.y += Math.sin(circle.heading) * circle.pps * secs;
         wrapCircle(state, circle);
 
-        // set alpha of a circle based on distnace
+        // set alpha of a circle based on distance
         var d = distance(circle.x, circle.y, state.canvas.width / 2, state.canvas.height / 2);
         circle.alpha = 1 - d / (canvas.width / 2);
         circle.alpha = circle.alpha < 0 ? 0 : circle.alpha;
@@ -67,6 +74,7 @@ var update = function (state) {
 
 };
 
+genCircles(state);
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(state);

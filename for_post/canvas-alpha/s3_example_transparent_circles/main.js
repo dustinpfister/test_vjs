@@ -16,7 +16,7 @@ var state = {
             color: 'red',
             alpha: 0.5,
             pps: 128,
-            heading: 0 //Math.PI
+            heading: 5 //Math.PI
         }
     ]
 };
@@ -28,6 +28,12 @@ var wrapCircle = function (state, circle) {
     }
     if (circle.x > canvas.width + circle.radius) {
         circle.x = mod(circle.x, canvas.width + circle.radius) - circle.radius;
+    }
+    if (circle.y < circle.radius * -1) {
+        circle.y = mod(circle.y, canvas.height + circle.radius) + circle.radius;
+    }
+    if (circle.y > canvas.height + circle.radius) {
+        circle.y = mod(circle.y, canvas.height + circle.radius) - circle.radius;
     }
 };
 

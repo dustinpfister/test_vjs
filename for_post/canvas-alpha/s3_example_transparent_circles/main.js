@@ -2,6 +2,7 @@
 var state = circles.create({
         canvas: document.getElementById('the-canvas')
     });
+draw.setGradient(state);
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(state);

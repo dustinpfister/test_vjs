@@ -7,13 +7,21 @@ var circles = (function () {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     };
 
+    var forTicks = [
+        // noop (just move with current stats)
+        function () {},
+        // move 45 degrees per second
+        function (state, circle, secs) {
+            circle.heading += Math.PI / 180 * 45 * secs;
+        }
+    ];
+
     var genCircles = function (state) {
         state.circles = [];
         var i = 30,
         colors = ['red', 'lime', 'blue', 'white'],
         color;
         while (i--) {
-
             color = colors[Math.floor(Math.random() * colors.length)];
             state.circles.push({
                 x: state.canvas.width / 2,
@@ -22,7 +30,8 @@ var circles = (function () {
                 color: color,
                 alpha: 0.5,
                 pps: 64 + 128 * Math.random(),
-                heading: Math.PI * 2 * Math.random()
+                heading: Math.PI * 2 * Math.random(),
+                forTickIndex: Math.floor(forTicks.length * Math.random())
             });
         }
     };
@@ -71,6 +80,11 @@ var circles = (function () {
             circle;
             while (i--) {
                 circle = state.circles[i];
+
+                // forTick
+                forTicks[circle.forTickIndex](state, circle, secs);
+                circle.heading = mod(circle.heading, Math.PI * 2);
+
                 // step and wrap position
                 circle.x += Math.cos(circle.heading) * circle.pps * secs;
                 circle.y += Math.sin(circle.heading) * circle.pps * secs;

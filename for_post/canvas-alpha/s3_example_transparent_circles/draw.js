@@ -3,6 +3,7 @@ var draw = (function () {
     var gradient;
     var api = {};
 
+    // set a gradient for the background
     api.setGradient = function (state) {
         var canvas = state.canvas;
         gradient = state.ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
@@ -12,14 +13,15 @@ var draw = (function () {
         gradient.addColorStop(1, '#ffffff');
     };
 
+    // draw background
     api.back = function (state) {
         var ctx = state.ctx,
         canvas = state.canvas;
-        // solid black background
         ctx.fillStyle = gradient || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    // draw the circles
     api.circles = function (state) {
         var ctx = state.ctx,
         canvas = state.canvas,

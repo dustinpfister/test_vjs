@@ -9,15 +9,19 @@ var circles = (function () {
 
     var genCircles = function (state) {
         state.circles = [];
-        var i = 10;
+        var i = 30,
+        colors = ['red', 'lime', 'blue', 'white'],
+        color;
         while (i--) {
+
+            color = colors[Math.floor(Math.random() * colors.length)];
             state.circles.push({
                 x: state.canvas.width / 2,
                 y: state.canvas.height / 2,
-                radius: 32,
-                color: 'red',
+                radius: 16 + 32 * Math.random(),
+                color: color,
                 alpha: 0.5,
-                pps: 128,
+                pps: 64 + 128 * Math.random(),
                 heading: Math.PI * 2 * Math.random()
             });
         }

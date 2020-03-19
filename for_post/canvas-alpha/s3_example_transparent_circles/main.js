@@ -4,6 +4,9 @@ ctx = canvas.getContext('2d');
 var mod = function mod(x, m) {
     return (x % m + m) % m;
 };
+var distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
 
 var state = {
     canvas: canvas,
@@ -35,7 +38,6 @@ var wrapCircle = function (state, circle) {
     if (circle.y > canvas.height + circle.radius) {
         circle.y = mod(circle.y, canvas.height + circle.radius) - circle.radius;
     }
-
 };
 
 var update = function (state) {
@@ -52,9 +54,12 @@ var update = function (state) {
         // step and wrap position
         circle.x += Math.cos(circle.heading) * circle.pps * secs;
         circle.y += Math.sin(circle.heading) * circle.pps * secs;
-        //circle.x = mod(circle.x, state.canvas.width);
-        //circle.y = mod(circle.y, state.canvas.height);
         wrapCircle(state, circle);
+
+        // set alpha of a circle based on distnace
+        var d = distance(circle.x, circle.y, state.canvas.width / 2, state.canvas.height / 2);
+        circle.alpha = 1 - d / (canvas.width / 2);
+        circle.alpha = circle.alpha < 0 ? 0 : circle.alpha;
 
     }
 

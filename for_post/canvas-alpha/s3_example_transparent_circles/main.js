@@ -47,31 +47,28 @@ var wrapCircle = function (state, circle) {
     }
 };
 
-var update = function (state) {
+// set alpha of a circle based on distance
+var setCircleAlpha = function (state, circle) {
+    var d = distance(circle.x, circle.y, state.canvas.width / 2, state.canvas.height / 2);
+    circle.alpha = 1 - d / (state.canvas.width / 2);
+    circle.alpha = circle.alpha < 0 ? 0 : circle.alpha;
+};
 
+var update = function (state) {
     var now = new Date(),
     t = now - state.lastTime,
     secs = t / 1000,
     i = state.circles.length,
     circle;
     while (i--) {
-
         circle = state.circles[i];
-
         // step and wrap position
         circle.x += Math.cos(circle.heading) * circle.pps * secs;
         circle.y += Math.sin(circle.heading) * circle.pps * secs;
         wrapCircle(state, circle);
-
-        // set alpha of a circle based on distance
-        var d = distance(circle.x, circle.y, state.canvas.width / 2, state.canvas.height / 2);
-        circle.alpha = 1 - d / (canvas.width / 2);
-        circle.alpha = circle.alpha < 0 ? 0 : circle.alpha;
-
+        setCircleAlpha(state, circle);
     }
-
     state.lastTime = now;
-
 };
 
 genCircles(state);

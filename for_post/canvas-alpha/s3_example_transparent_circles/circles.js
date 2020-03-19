@@ -20,6 +20,22 @@ var circles = (function () {
             circle.ticks = mod(circle.ticks, 100);
             var r = Math.PI * 2 * (circle.ticks / 100);
             circle.heading = Math.sin(r) * (Math.PI * 2);
+        },
+        // go down
+        function (state, circle, secs) {
+            circle.heading = Math.PI / 2;
+        },
+        // go up
+        function (state, circle, secs) {
+            circle.heading = Math.PI * 1.5;
+        },
+        // go right
+        function (state, circle, secs) {
+            circle.heading = 0;
+        },
+        // go left
+        function (state, circle, secs) {
+            circle.heading = Math.PI;
         }
     ];
 
@@ -43,7 +59,8 @@ var circles = (function () {
                 pps: 64 + 128 * Math.random(),
                 heading: Math.PI * 2 * Math.random(),
                 ticks: 0,
-                forTickIndex: randomForTickIndex()
+                forTickIndex: randomForTickIndex(),
+                forTickLife: 3
             });
         }
     };
@@ -103,7 +120,11 @@ var circles = (function () {
                 wrapCircle(state, circle);
                 setCircleAlpha(state, circle);
 
-                //circle.forTickIndex = randomForTickIndex()
+                circle.forTickLife -= secs;
+                if (circle.forTickLife <= 0) {
+                    circle.forTickLife = 3;
+                    circle.forTickIndex = randomForTickIndex()
+                }
             }
             state.lastTime = now;
         }

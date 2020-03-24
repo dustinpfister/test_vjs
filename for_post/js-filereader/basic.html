@@ -1,14 +1,29 @@
 <input type="file" id="input_files">
 
 <script>
-var el_files = document.getElementById('input_files');
 
+var loadJSON = function(text){
+    try{
+        var obj = JSON.parse(text);
+        obj.message = 'loaded file';
+        return obj;
+    }catch(e){
+        return {
+            x:0,
+            y:0,
+            message: e.message
+        };
+    }
+};
+
+var el_files = document.getElementById('input_files');
 el_files.addEventListener('change', function(e){
    var files = this.files;
    console.log(files);
    var reader = new FileReader();
    reader.onload = function(e){
-       console.log(e.target.result);
+       var obj = loadJSON(e.target.result);
+       console.log(obj);
    };
    reader.readAsText(files[0]);
 });

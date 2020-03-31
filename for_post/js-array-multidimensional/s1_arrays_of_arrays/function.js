@@ -12,10 +12,10 @@ var createGrid = function (w, h, forCell) {
         return i;
     }
      : forCell;
-    while (y < 4) {
+    while (y < w) {
         x = 0;
         row = [];
-        while (x < 4) {
+        while (x < h) {
             row.push(forCell(i));
             i += 1;
             x += 1;

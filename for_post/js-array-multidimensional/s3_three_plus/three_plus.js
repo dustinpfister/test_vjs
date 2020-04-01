@@ -1,6 +1,6 @@
 var lengthFromDims = function (dims) {
     return Object.values(dims).reduce(function (acc, n) {
-        return acc + n;
+        return acc * n;
     });
 };
 
@@ -68,33 +68,36 @@ var threePlus = function (dims, forCell) {
 
 var print = function (threePlus) {
     return threePlus.map(function (a) {
-        return Object.values(a).join('')
+        var vals = Object.values(a);
+        return a.i + ':' + vals.slice(1, vals.length).join('');
     }).sort().join('\n');
 }
 
 var three = threePlus({
         x: 2,
         y: 2,
-        z: 2,
-        //a: 2,
-        //b: 2
+        z: 2
     });
 
-console.log(three);
+console.log(print(three));
 
 // output
-//  [ { i: 0, x: 0, y: 0, z: 0 },
-//    { i: 1, x: 1, y: 1, z: 1 },
-//    { i: 2, x: 1, y: 0, z: 0 },
-//    { i: 3, x: 0, y: 1, z: 1 },
-//    { i: 4, x: 0, y: 1, z: 0 },
-//    { i: 5, x: 1, y: 0, z: 1 } ]
-
+// 0:000
+// 1:111
+// 2:100
+// 3:011
+// 4:010
+// 5:101
+// 6:110
+// 7:001
 
 // Desired output
-//  [ { i: 0, x: 0, y: 0, z: 0 },
-//    { i: 1, x: 1, y: 0, z: 0 },
-//    { i: 2, x: 0, y: 1, z: 0 },
-//    { i: 3, x: 1, y: 1, z: 0 },
-//    { i: 4, x: 0, y: 0, z: 1 },
-//    { i: 5, x: 1, y: 1, z: 1 } ]
+// 0:000 0
+// 1:100 2
+// 2:010 4
+// 3:110 6
+// 4:001 7
+// 5:101 5
+// 6:011 3
+// 7:111 1
+

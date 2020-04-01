@@ -41,16 +41,12 @@ var threePlus = function (dims, forCell) {
             var pdi = di - 1 < 0 ? 0 : di - 1;
             var p2 = getDimProduct(dims, pdi, di);
             var p3 = getDimProduct(dims, pdi, di - 1);
-
             //var s1 = (i % p2 + Math.floor(i / p)) % val;
-
             var a = i % p2,
             b = Math.floor(i / p),
             c = a + b,
             s1 = c % val;
-
             pos[dimName] = s1;
-
         });
 
         var cell = {};

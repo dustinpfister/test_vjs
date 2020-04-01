@@ -21,7 +21,6 @@ var getDimProduct = function (dims, si, ei) {
 };
 
 var threePlus = function (dims, forCell) {
-
     dims = dims || {
         x: 2,
         y: 2,
@@ -37,10 +36,18 @@ var threePlus = function (dims, forCell) {
         Object.keys(dims).forEach(function (d, di) {
             var val = dims[d];
 
-            var x = i % w,
-            y = Math.floor(i / w);
+            var p = getDimProduct({
+                    x: 2,
+                    y: 2,
+                    z: 2
+                }, 0, di);
+            var p2 = getDimProduct({
+                    x: 2,
+                    y: 2,
+                    z: 2
+                }, di - 1 < 0 ? 0 : di - 1, di);
 
-            pos[d] = val;
+            pos[d] = (i % p2 + Math.floor(i / p)) % val;
         });
 
         var cell = {};
@@ -56,14 +63,25 @@ var threePlus = function (dims, forCell) {
 
 };
 
-//var three = threePlus();
+var three = threePlus();
 
-//console.log(three);
+console.log(three);
 
+/*
 var p = getDimProduct({
-        x: 2,
-        y: 2,
-        z: 2
-    }, 0, 2);
+x: 2,
+y: 2,
+z: 2
+}, 0, 2);
 
 console.log(p);
+ */
+
+/*
+[ { i: 0, x: 0, y: 0, z: 0 },
+{ i: 1, x: 1, y: 0, z: 0 },
+{ i: 2, x: 0, y: 1, z: 0 },
+{ i: 3, x: 1, y: 1, z: 0 },
+{ i: 4, x: 0, y: 0, z: 1 },
+{ i: 5, x: 1, y: 1, z: 1 } ]
+*/

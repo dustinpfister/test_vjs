@@ -4,6 +4,17 @@ var lengthFromDims = function (dims) {
     });
 };
 
+// get the product of all dims from si to ei
+var getDimProduct = function (dims, si, ei) {
+    var p = Object.values(dims)[si],
+    i = si + 1;
+    while (i <= ei) {
+        p = p * Object.values(dims)[i];
+        i += 1;
+    }
+    return p;
+};
+
 var threePlus = function (dims, forCell) {
 
     dims = dims || {
@@ -20,6 +31,10 @@ var threePlus = function (dims, forCell) {
 
         Object.keys(dims).forEach(function (d, di) {
             var val = dims[d];
+
+            var x = i % w,
+            y = Math.floor(i / w);
+
             pos[d] = val;
         });
 
@@ -36,6 +51,15 @@ var threePlus = function (dims, forCell) {
 
 };
 
-var three = threePlus();
+//var three = threePlus();
 
-console.log(three);
+//console.log(three);
+
+var p = getDimProduct({
+    x: 2,
+    y: 2,
+    z: 2
+}, 0, 2);
+
+
+console.log(p);

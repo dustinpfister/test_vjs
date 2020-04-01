@@ -4,12 +4,17 @@ var lengthFromDims = function (dims) {
     });
 };
 
+// get Dim Value by index
+var getDVByIndex = function (dims, i) {
+    return Object.values(dims)[i];
+};
+
 // get the product of all dims from si to ei
 var getDimProduct = function (dims, si, ei) {
-    var p = Object.values(dims)[si],
+    var p = getDVByIndex(dims, si),
     i = si + 1;
     while (i <= ei) {
-        p = p * Object.values(dims)[i];
+        p = p * getDVByIndex(dims, i);
         i += 1;
     }
     return p;
@@ -56,10 +61,9 @@ var threePlus = function (dims, forCell) {
 //console.log(three);
 
 var p = getDimProduct({
-    x: 2,
-    y: 2,
-    z: 2
-}, 0, 2);
-
+        x: 2,
+        y: 2,
+        z: 2
+    }, 0, 2);
 
 console.log(p);

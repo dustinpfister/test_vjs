@@ -2,7 +2,7 @@
 var Box = (function () {
 
     var clone = function (bx) {
-        return JSON.parse(JSON.strigify(bx));
+        return JSON.parse(JSON.stringify(bx));
     };
 
     var api = {};
@@ -21,8 +21,8 @@ var Box = (function () {
         heading = heading === undefined ? 0 : heading;
         delta = delta === undefined ? 1 : delta;
         var nbx = clone(bx);
-        nbx.x = nbx.x + npx.w / 2 + Math.cos(heading) * delta;
-        nbx.y = nbx.y + npx.h / 2 + Math.sin(heading) * delta;
+        nbx.x = nbx.x + nbx.w / 2 + Math.cos(heading) * delta;
+        nbx.y = nbx.y + nbx.h / 2 + Math.sin(heading) * delta;
         return nbx;
     };
 

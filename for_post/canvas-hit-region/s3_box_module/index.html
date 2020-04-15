@@ -11,20 +11,16 @@
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
-
-
 var bx = Box.create({x: 100, y: 80}),
 bx2 = Box.create({y:80});
 
 bx2 = Box.moveByHeading(bx2, 0, 75);
 
 draw.back(ctx, canvas);
-
 var fill = 'white';
 if(Box.boundingBox(bx, bx2)){
  fill = 'red';
 }
-
 draw.box(ctx, bx, fill);
 draw.box(ctx, bx2);
 

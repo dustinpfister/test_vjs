@@ -7,18 +7,16 @@
         <script src="box.js"></script>
         <script src="draw.js"></script>
         <script>
-
-    // create and inject a canvas
-    var canvas = document.getElementById('the-canvas'),
-    ctx = canvas.getContext('2d');
- 
-    // make and draw a box
-    var bx = Box.create({x: 100, y:80}),
-	bx2 = Box.moveByHeading(bx, Math.PI / 180 * 45, 100);
-    draw.back(ctx, canvas);
-    draw.box(ctx, bx);
-	draw.box(ctx, bx2);
-
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d'),
+bx = Box.create({
+        x: 100,
+        y: 80
+    }),
+bx2 = Box.moveByHeading(bx, Math.PI / 180 * 45, 100);
+draw.back(ctx, canvas);
+draw.box(ctx, bx);
+draw.box(ctx, bx2);
         </script>
     </body>
 </html>

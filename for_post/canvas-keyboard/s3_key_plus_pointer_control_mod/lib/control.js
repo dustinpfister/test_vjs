@@ -64,10 +64,17 @@ var controlMod = (function () {
 
     return function (canvas, win) {
         var input = createInputState(canvas, win || window);
+        // mouse
         setPointerHandler(input, 'mousedown', 'pointerStart');
         setPointerHandler(input, 'mousemove', 'pointerMove');
         setPointerHandler(input, 'mouseup', 'pointerEnd');
 
+        // touch
+        setPointerHandler(input, 'touchstart', 'pointerStart');
+        setPointerHandler(input, 'touchmove', 'pointerMove');
+        setPointerHandler(input, 'touchend', 'pointerEnd');
+
+        // keyboard
         setKeyHandler(input, 'keydown');
         setKeyHandler(input, 'keyup');
         return input;

@@ -11,20 +11,36 @@ var controlMod = (function () {
     };
 
     var createInputState = function (canvas) {
-        var inputState = {
+        var input = {
             canvas: canvas,
+            down: false,
             pointers: [],
             keys: []
         };
-        return inputState;
+        return input;
     };
 
-    return function (canvas, handlers) {
+    // handers
+    var handlers = {
+        pointerStart: function (pointers, input, e) {
+            console.log(pointers);
+        }
+    };
 
-        var inputState = createInputState(canvas);
+    // set an event handler for the given input state, DOMType, and type in handlers
+    var setPointerHandler = function (input, DOMType, type) {
+        console.log(input.canvas);
+        input.canvas.addEventListener(DOMType, function (e) {
+            var pointers = getCanvasRelative(e);
+            e.preventDefault();
+            handlers[type](pointers, input, e);
+        });
+    };
 
-        return inputState;
-
+    return function (canvas) {
+        var input = createInputState(canvas);
+        setPointerHandler(input, 'mousedown', 'pointerStart')
+        return input;
     };
 
 }

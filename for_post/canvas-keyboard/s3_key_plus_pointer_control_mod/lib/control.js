@@ -16,7 +16,10 @@ var controlMod = (function () {
             win: win,
             pointerDown: false,
             keys: {},
-            pointers: [],
+            pos: {
+                x: null,
+                y: null
+            },
             keys: []
         };
         return input;
@@ -24,11 +27,22 @@ var controlMod = (function () {
 
     // handers
     var handlers = {
-        pointerStart: function (pointers, input, e) {
+        pointerStart: function (pos, input, e) {
             input.pointerDown = true;
+            input.pos.x = pos.x;
+            input.pos.y = pos.y;
         },
-        pointerEnd: function (pointers, input, e) {
+        pointerMove: function (pos, input, e) {
+            // update pos only if pointer is down
+            if (input.pointerDown) {
+                input.pos.x = pos.x;
+                input.pos.y = pos.y;
+            }
+        },
+        pointerEnd: function (pos, input, e) {
             input.pointerDown = false;
+            input.pos.x = null;
+            input.pos.y = null;
         }
     };
 
@@ -36,9 +50,9 @@ var controlMod = (function () {
     var setPointerHandler = function (input, DOMType, type) {
         console.log(input.canvas);
         input.canvas.addEventListener(DOMType, function (e) {
-            var pointers = getCanvasRelative(e);
+            var pos = getCanvasRelative(e);
             e.preventDefault();
-            handlers[type](pointers, input, e);
+            handlers[type](pos, input, e);
         });
     };
 
@@ -54,6 +68,7 @@ var controlMod = (function () {
     return function (canvas, win) {
         var input = createInputState(canvas, win || window);
         setPointerHandler(input, 'mousedown', 'pointerStart');
+        setPointerHandler(input, 'mousemove', 'pointerMove');
         setPointerHandler(input, 'mouseup', 'pointerEnd');
 
         setKeyHandler(input, 'keydown');

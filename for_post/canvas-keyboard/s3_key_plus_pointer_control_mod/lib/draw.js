@@ -7,6 +7,10 @@ draw.back = function (ctx, canvas) {
 draw.debugInput = function (ctx, input) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
-    ctx.font = '15px arial';
-    ctx.fillText('input.pointerDown: ' + input.pointerDown, 10, 15);
+    ctx.font = '10px arial';
+    ctx.fillText('input.pointerDown: ' + input.pointerDown, 10, 10);
+    ctx.fillText('input.keys.w: ' + input.keys.w, 10, 20);
+    ctx.fillText('input.keys.a: ' + input.keys.a, 10, 30);
+    ctx.fillText('input.keys.s: ' + input.keys.s, 10, 40);
+    ctx.fillText('input.keys.d: ' + input.keys.d, 10, 50);
 };

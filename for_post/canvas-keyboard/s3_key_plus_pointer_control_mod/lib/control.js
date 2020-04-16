@@ -10,10 +10,12 @@ var controlMod = (function () {
         };
     };
 
-    var createInputState = function (canvas) {
+    var createInputState = function (canvas, win) {
         var input = {
             canvas: canvas,
+            win: win,
             pointerDown: false,
+            keys: {},
             pointers: [],
             keys: []
         };
@@ -40,10 +42,22 @@ var controlMod = (function () {
         });
     };
 
-    return function (canvas) {
-        var input = createInputState(canvas);
+    var setKeyHandler = function (input, DOMType) {
+        input.win.addEventListener(DOMType, function (e) {
+            input.keys[e.key] = false;
+            if (e.type === 'keydown') {
+                input.keys[e.key] = true;
+            }
+        });
+    };
+
+    return function (canvas, win) {
+        var input = createInputState(canvas, win || window);
         setPointerHandler(input, 'mousedown', 'pointerStart');
         setPointerHandler(input, 'mouseup', 'pointerEnd');
+
+        setKeyHandler(input, 'keydown');
+        setKeyHandler(input, 'keyup');
         return input;
     };
 

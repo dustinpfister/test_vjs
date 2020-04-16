@@ -58,11 +58,7 @@ var controlMod = (function () {
 
     var setKeyHandler = function (input, DOMType) {
         input.win.addEventListener(DOMType, function (e) {
-            var key = e.key.toLowerCase();
-            input.keys[key] = false;
-            if (e.type === 'keydown') {
-                input.keys[key] = true;
-            }
+            input.keys[e.keyCode] = e.type === 'keydown';
         });
     };
 

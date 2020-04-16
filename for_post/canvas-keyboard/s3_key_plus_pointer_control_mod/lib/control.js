@@ -13,7 +13,7 @@ var controlMod = (function () {
     var createInputState = function (canvas) {
         var input = {
             canvas: canvas,
-            down: false,
+            pointerDown: false,
             pointers: [],
             keys: []
         };
@@ -23,10 +23,10 @@ var controlMod = (function () {
     // handers
     var handlers = {
         pointerStart: function (pointers, input, e) {
-            input.down = true;
+            input.pointerDown = true;
         },
         pointerEnd: function (pointers, input, e) {
-            input.down = false;
+            input.pointerDown = false;
         }
     };
 

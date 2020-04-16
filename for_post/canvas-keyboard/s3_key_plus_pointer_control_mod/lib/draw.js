@@ -8,5 +8,5 @@ draw.debugInput = function (ctx, input) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.font = '15px arial';
-    ctx.fillText('input.down: ' + input.down, 10, 15);
+    ctx.fillText('input.pointerDown: ' + input.pointerDown, 10, 15);
 };

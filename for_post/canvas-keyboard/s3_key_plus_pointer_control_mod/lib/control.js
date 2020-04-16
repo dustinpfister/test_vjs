@@ -23,7 +23,10 @@ var controlMod = (function () {
     // handers
     var handlers = {
         pointerStart: function (pointers, input, e) {
-            console.log(pointers);
+            input.down = true;
+        },
+        pointerEnd: function (pointers, input, e) {
+            input.down = false;
         }
     };
 
@@ -39,7 +42,8 @@ var controlMod = (function () {
 
     return function (canvas) {
         var input = createInputState(canvas);
-        setPointerHandler(input, 'mousedown', 'pointerStart')
+        setPointerHandler(input, 'mousedown', 'pointerStart');
+        setPointerHandler(input, 'mouseup', 'pointerEnd');
         return input;
     };
 

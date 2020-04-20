@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>canvas save rotate example</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var canvas =document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+
+var drawBackground = function(ctx, canvas){
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+};
+
+var drawBoxOverPoint = function(ctx, x,y, w, h){
+  ctx.save();
+  ctx.fillStyle = 'red';
+  ctx.translate(x, y);
+  ctx.fillRect(w / 2 * -1,h / 2 * -1, w, h);
+  ctx.restore();
+};
+
+drawBackground(ctx, canvas);
+drawBoxOverPoint(ctx, 16, 16, 32, 32);
+
+        </script>
+    </body>
+</html>

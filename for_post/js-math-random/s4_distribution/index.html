@@ -11,19 +11,20 @@ ctx = canvas.getContext('2d'),
 points1 = dist(1000, 150, 200, dist.methodOne);
 points2 = dist(1000, 150, 200, dist.methodTwo);
 
-var drawPoints = function(points, ctx, fill, sx, sy){
-    ctx.fillStyle= fill || 'green';
-	sx = sx === undefined ? 0: sx;
-	sy = sy === undefined ? 0: sy;
-    points.forEach(function(pt){
+var drawPoints = function (points, ctx, fill, sx, sy) {
+    ctx.fillStyle = fill || 'green';
+    sx = sx === undefined ? 0 : sx;
+    sy = sy === undefined ? 0 : sy;
+    points.forEach(function (pt) {
         ctx.beginPath();
-        ctx.arc(sx + pt.x, sy + pt.y,5,0, Math.PI*2);
+        ctx.arc(sx + pt.x, sy + pt.y, 5, 0, Math.PI * 2);
         ctx.fill();
     });
 };
 
 drawPoints(points1, ctx, 'red');
 drawPoints(points2, ctx, 'green', 150);
+
         </script>
     </body>
 </html>

@@ -8,14 +8,22 @@
         <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d'),
-points1 = distMethod(1000, canvas.width, canvas.height);
+points1 = dist(1000, 150, 200, dist.methodOne);
+points2 = dist(1000, 150, 200, dist.methodTwo);
 
-ctx.fillStyle='green';
-points1.forEach(function(pt){
-   ctx.beginPath();
-   ctx.arc(pt.x,pt.y,5,0, Math.PI*2);
-   ctx.fill();
-});
+var drawPoints = function(points, ctx, fill, sx, sy){
+    ctx.fillStyle= fill || 'green';
+	sx = sx === undefined ? 0: sx;
+	sy = sy === undefined ? 0: sy;
+    points.forEach(function(pt){
+        ctx.beginPath();
+        ctx.arc(sx + pt.x, sy + pt.y,5,0, Math.PI*2);
+        ctx.fill();
+    });
+};
+
+drawPoints(points1, ctx, 'red');
+drawPoints(points2, ctx, 'green', 150);
         </script>
     </body>
 </html>

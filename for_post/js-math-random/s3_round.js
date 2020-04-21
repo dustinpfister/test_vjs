@@ -12,6 +12,6 @@ console.log( Math.ceil(0.99) ); // 1
 console.log( Math.floor(0.99) ); // 0
 
 console.log('******');
-console.log( Math.round(0.25 * 6) ); // 0 - 6
-console.log( Math.ceil(Math.random() * 6) ); // 1 - 6
-console.log( Math.floor(Math.random() * 6) ); // 0 - 5
+console.log( Math.round(Math.random() * 6) ); // 0 - 6 (range of 7!)
+console.log( Math.ceil(Math.random() * 6) ); // 1 - 6 (range of 6)
+console.log( Math.floor(Math.random() * 6) ); // 0 - 5 (range of 6)

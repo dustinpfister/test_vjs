@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Math random</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="dist.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d'),
+points1 = distMethodOne(100, canvas.width, canvas.height);
+
+ctx.fillStyle='green';
+points1.forEach(function(pt){
+   ctx.beginPath();
+   ctx.arc(pt.x,pt.y,5,0, Math.PI*2);
+   ctx.fill();
+});
+        </script>
+    </body>
+</html>

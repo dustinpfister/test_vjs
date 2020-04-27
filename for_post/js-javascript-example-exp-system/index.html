@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>javaScript example exp system</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script src="xp.js"></script>
+        <script>
+var levelObj = XP.parseByXP(1000, 30);
+document.getElementById('out').innerText = JSON.stringify(levelObj);
+        </script>
+    </body>
+</html>

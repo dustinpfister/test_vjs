@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>javaScript example exp system</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script src="xp.js"></script>
+        <script>
+var l = 1,
+cap = 30,
+deltaNext = 100,
+html = '',
+levelObj;
+while(l < cap){
+    levelObj = XP.parseByLevel(l, cap, deltaNext);
+    html += '<span> level: ' + levelObj.level + '; xp: '+levelObj.xp+'; toNext: '+levelObj.toNext+' </span><br>';
+    l+= 1;
+}
+document.getElementById('out').innerHTML = html;
+        </script>
+    </body>
+</html>

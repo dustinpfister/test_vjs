@@ -19,3 +19,17 @@ draw.circles = function (ctx, game) {
         ctx.stroke();
     }
 };
+
+draw.boxes = function (ctx, game) {
+    var i = game.boxes.length,
+    bx;
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'white';
+    while (i--) {
+        bx = game.boxes[i];
+        ctx.beginPath();
+        ctx.rect(bx.x, bx.y, bx.w, bx.h);
+        ctx.fill();
+        ctx.stroke();
+    }
+};

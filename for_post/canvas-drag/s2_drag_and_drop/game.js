@@ -19,16 +19,31 @@ var gameMod = (function () {
                 i: i,
                 x: 16 + x * 32,
                 y: 16 + y * 32,
-                radius: 16
+                radius: 16,
+                socketed: false
             });
         }
         return circles;
     };
 
+    var createBoxPool = function () {
+
+        return [{
+                x: 32 * 6,
+                y: 32 * 3,
+                w: 32,
+                h: 32,
+                socket: null
+            }
+        ];
+
+    }
+
     // create state main method
     var api = function () {
         return {
-            circles: createCircles()
+            circles: createCircles(),
+            boxes: createBoxPool()
         };
     };
 

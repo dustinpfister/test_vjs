@@ -16,6 +16,7 @@ draw.circles(ctx, game);
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
+    draw.boxes(ctx, game);
     draw.circles(ctx, game);
 };
 loop();

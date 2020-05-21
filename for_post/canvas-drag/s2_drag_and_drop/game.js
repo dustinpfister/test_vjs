@@ -28,7 +28,6 @@ var gameMod = (function () {
     };
 
     var createBoxPool = function () {
-
         return [{
                 i: 0,
                 type: 'bx',
@@ -39,8 +38,7 @@ var gameMod = (function () {
                 socket: null
             }
         ];
-
-    }
+    };
 
     // create state main method
     var api = function () {
@@ -52,23 +50,28 @@ var gameMod = (function () {
 
     // get something that might be at the given
     // game area position
-    api.get = function (game, x, y) {
+    api.get = function (game, x, y, type) {
+        type = type === undefined ? 'any' : type;
         // is there a circle there?
-        var i = game.circles.length,
-        cir;
-        while (i--) {
-            cir = game.circles[i];
-            if (utils.distance(cir.x, cir.y, x, y) <= cir.radius) {
-                return cir;
+        if (type === 'any' || type === 'cir') {
+            var i = game.circles.length,
+            cir;
+            while (i--) {
+                cir = game.circles[i];
+                if (utils.distance(cir.x, cir.y, x, y) <= cir.radius) {
+                    return cir;
+                }
             }
         }
         // box?
-        var i = game.boxes.length,
-        bx;
-        while (i--) {
-            bx = game.boxes[i];
-            if (utils.distance(bx.x + 16, bx.y + 16, x, y) <= 16) {
-                return bx;
+        if (type === 'any' || type === 'bx') {
+            var i = game.boxes.length,
+            bx;
+            while (i--) {
+                bx = game.boxes[i];
+                if (utils.distance(bx.x + 16, bx.y + 16, x, y) <= 16) {
+                    return bx;
+                }
             }
         }
         // nothing there
@@ -102,7 +105,13 @@ var gameMod = (function () {
                 if (grab) {
                     snapToGrid(grab);
                 }
-                var obj = api.get(game, grab.x, grab.y);
+                var obj = api.get(game, grab.x, grab.y, 'bx');
+                if (obj) {
+                    if (obj.type == 'bx' && obj.socket == null) {
+                        grab.socketed = true;
+                        obj.socket = grab;
+                    }
+                }
                 grab = false;
             };
         };

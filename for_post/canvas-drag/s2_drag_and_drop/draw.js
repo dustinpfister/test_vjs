@@ -8,11 +8,11 @@ draw.back = function (ctx, canvas) {
 draw.circles = function (ctx, game) {
     var i = game.circles.length,
     cir;
-    ctx.fillStyle = 'green';
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 3;
     while (i--) {
         cir = game.circles[i];
+        ctx.fillStyle = cir.socketed ? 'blue' : 'green';
         ctx.beginPath();
         ctx.arc(cir.x, cir.y, cir.radius, 0, Math.PI * 2);
         ctx.fill();

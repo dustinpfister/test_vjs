@@ -17,6 +17,7 @@ var gameMod = (function () {
             y = Math.floor(i / 3);
             circles.push({
                 i: i,
+                type: 'cir',
                 x: 16 + x * 32,
                 y: 16 + y * 32,
                 radius: 16,
@@ -29,6 +30,8 @@ var gameMod = (function () {
     var createBoxPool = function () {
 
         return [{
+                i: 0,
+                type: 'bx',
                 x: 32 * 6,
                 y: 32 * 3,
                 w: 32,
@@ -57,6 +60,15 @@ var gameMod = (function () {
             cir = game.circles[i];
             if (utils.distance(cir.x, cir.y, x, y) <= cir.radius) {
                 return cir;
+            }
+        }
+        // box?
+        var i = game.boxes.length,
+        bx;
+        while (i--) {
+            bx = game.boxes[i];
+            if (utils.distance(bx.x + 16, bx.y + 16, x, y) <= 16) {
+                return bx;
             }
         }
         // nothing there
@@ -88,6 +100,7 @@ var gameMod = (function () {
                 if (grab) {
                     snapToGrid(grab);
                 }
+                var obj = api.get(game, grab.x, grab.y);
                 grab = false;
             };
         };

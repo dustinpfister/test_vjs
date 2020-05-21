@@ -11,3 +11,4 @@ var game = gameMod();
 
 
 draw.back(ctx, canvas);
+draw.circles(ctx, game);

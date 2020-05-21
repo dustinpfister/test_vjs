@@ -8,7 +8,7 @@ var gameMod = (function () {
             circles.push({
                 x: 0,
                 y: 0,
-                radius: 5
+                radius: 16
             });
         }
         return circles;

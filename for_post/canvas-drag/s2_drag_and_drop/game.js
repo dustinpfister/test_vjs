@@ -124,25 +124,22 @@ var gameMod = (function () {
                         grab.socketed = bx;
                         bx.socket = grab;
                     } else {
-
+                        // send home if cir is socked all ready
                         grab.x = grab.homeX;
                         grab.y = grab.homeY;
-
                     }
                 } else {
-
                     // release from socket
                     if (grab.socketed) {
                         grab.socketed.socket = null;
                         grab.socketed = false;
                     }
-
+                    // send home if other cir
                     var cir = api.get(game, grab.x, grab.y, 'cir', grab);
                     if (cir) {
                         grab.x = grab.homeX;
                         grab.y = grab.homeY;
                     }
-
                 }
                 grab = false;
             };

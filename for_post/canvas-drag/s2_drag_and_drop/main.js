@@ -8,7 +8,7 @@ ctx.translate(0.5, 0.5);
 
 var game = gameMod();
 
-
+console.log( gameMod.get(game, 34, 34) );
 
 draw.back(ctx, canvas);
 draw.circles(ctx, game);

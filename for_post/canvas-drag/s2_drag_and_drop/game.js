@@ -105,12 +105,21 @@ var gameMod = (function () {
                 if (grab) {
                     snapToGrid(grab);
                 }
-                var obj = api.get(game, grab.x, grab.y, 'bx');
-                if (obj) {
-                    if (obj.type == 'bx' && obj.socket == null) {
-                        grab.socketed = true;
-                        obj.socket = grab;
+                var bx = api.get(game, grab.x, grab.y, 'bx');
+                if (bx) {
+                    if (bx.socket == null) {
+                        grab.socketed = bx;
+                        bx.socket = grab;
                     }
+                } else {
+
+                    if (grab.socketed) {
+
+                        grab.socketed.socket = null;
+                        grab.socketed = false;
+
+                    }
+
                 }
                 grab = false;
             };

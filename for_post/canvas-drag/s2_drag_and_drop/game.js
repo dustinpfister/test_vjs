@@ -20,6 +20,8 @@ var gameMod = (function () {
                 type: 'cir',
                 x: 16 + x * 32,
                 y: 16 + y * 32,
+                homeX: 16 + x * 32,
+                homeY: 16 + y * 32,
                 radius: 16,
                 socketed: false
             });
@@ -50,7 +52,7 @@ var gameMod = (function () {
 
     // get something that might be at the given
     // game area position
-    api.get = function (game, x, y, type) {
+    api.get = function (game, x, y, type, skip) {
         type = type === undefined ? 'any' : type;
         // is there a circle there?
         if (type === 'any' || type === 'cir') {
@@ -58,6 +60,12 @@ var gameMod = (function () {
             cir;
             while (i--) {
                 cir = game.circles[i];
+                if (skip) {
+                    if (cir === skip) {
+                        continue;
+                    }
+
+                }
                 if (utils.distance(cir.x, cir.y, x, y) <= cir.radius) {
                     return cir;
                 }
@@ -88,6 +96,10 @@ var gameMod = (function () {
                 obj = gameMod.get(game, pos.x, pos.y);
                 if (obj) {
                     grab = obj.type === 'cir' ? obj : false;
+                    if (grab) {
+                        grab.homeX = grab.x;
+                        grab.homeY = grab.y;
+                    }
                 }
             };
         };
@@ -107,17 +119,28 @@ var gameMod = (function () {
                 }
                 var bx = api.get(game, grab.x, grab.y, 'bx');
                 if (bx) {
+                    // socket the cir to the bx
                     if (bx.socket == null) {
                         grab.socketed = bx;
                         bx.socket = grab;
+                    } else {
+
+                        grab.x = grab.homeX;
+                        grab.y = grab.homeY;
+
                     }
                 } else {
 
+                    // release from socket
                     if (grab.socketed) {
-
                         grab.socketed.socket = null;
                         grab.socketed = false;
+                    }
 
+                    var cir = api.get(game, grab.x, grab.y, 'cir', grab);
+                    if (cir) {
+                        grab.x = grab.homeX;
+                        grab.y = grab.homeY;
                     }
 
                 }

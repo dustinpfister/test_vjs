@@ -2,9 +2,8 @@
 var gameMod = (function () {
 
     var snapToGrid = function (cir) {
-		console.log('yes');
-        cir.x = Math.floor(cir.x / 16) * 16;
-        cir.y = Math.floor(cir.y / 16) * 16;
+        cir.x = Math.floor(cir.x / 32) * 32 + 16;
+        cir.y = Math.floor(cir.y / 32) * 32 + 16;
     };
 
     // create a pool of circles

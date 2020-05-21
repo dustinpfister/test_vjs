@@ -13,3 +13,9 @@ gameMod.attach(game, canvas);
 draw.back(ctx, canvas);
 draw.circles(ctx, game);
 
+var loop = function () {
+    requestAnimationFrame(loop);
+    draw.back(ctx, canvas);
+    draw.circles(ctx, game);
+};
+loop();

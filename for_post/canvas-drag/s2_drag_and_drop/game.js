@@ -1,6 +1,12 @@
 
 var gameMod = (function () {
 
+    var snapToGrid = function (cir) {
+		console.log('yes');
+        cir.x = Math.floor(cir.x / 16) * 16;
+        cir.y = Math.floor(cir.y / 16) * 16;
+    };
+
     // create a pool of circles
     var createCircles = function () {
         var circles = [],
@@ -12,8 +18,8 @@ var gameMod = (function () {
             y = Math.floor(i / 3);
             circles.push({
                 i: i,
-                x: 32 + x * 32,
-                y: 32 + y * 32,
+                x: 16 + x * 32,
+                y: 16 + y * 32,
                 radius: 16
             });
         }
@@ -60,13 +66,14 @@ var gameMod = (function () {
                 if (grab) {
                     grab.x = pos.x;
                     grab.y = pos.y;
-                    draw.back(ctx, canvas);
-                    draw.circles(ctx, game);
                 }
             };
         };
         var pointerUp = function (game) {
             return function (e) {
+                if (grab) {
+                    snapToGrid(grab);
+                }
                 grab = false;
             };
         };

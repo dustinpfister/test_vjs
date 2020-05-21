@@ -82,8 +82,10 @@ var gameMod = (function () {
         var pointerDown = function (game) {
             return function (e) {
                 var pos = utils.getCanvasRelative(e),
-                cir = gameMod.get(game, pos.x, pos.y);
-                grab = cir ? cir : false;
+                obj = gameMod.get(game, pos.x, pos.y);
+                if (obj) {
+                    grab = obj.type === 'cir' ? obj : false;
+                }
             };
         };
         var pointerMove = function (game) {

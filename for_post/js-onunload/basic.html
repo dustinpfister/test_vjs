@@ -6,9 +6,11 @@
         <div id="out"><div>
         <script>
 
-var text = localStorage.getItem('unload-demo');
+var timeText = localStorage.getItem('unload-demo'),
+now = new Date(),
+time = timeText ? now - new Date(Number(timeText)) : 0;
 
-document.getElementById('out').innerHTML = text || '';
+document.getElementById('out').innerHTML = time || '';
 
 window.addEventListener('unload', function (e) {
     localStorage.setItem('unload-demo', new Date().getTime());

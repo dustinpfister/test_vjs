@@ -28,6 +28,7 @@ var spawn = function (state, secs) {
     }
 };
 
+// purge method using the splice method
 var purge = function (state) {
     var i = state.parts.length,
     part;

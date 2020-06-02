@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>ononload example</title>
+    </head>
+    <body>
+        <div id="out"><div>
+        <script>
+
+var text = localStorage.getItem('unload-demo');
+
+document.getElementById('out').innerHTML = text || '';
+
+window.addEventListener('unload', function (e) {
+    localStorage.setItem('unload-demo', new Date().getTime());
+});
+        </script>
+    </body>
+</html>

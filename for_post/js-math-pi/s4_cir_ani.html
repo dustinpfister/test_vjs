@@ -6,74 +6,50 @@
         <canvas id="out" width="320" height="240"><canvas>
         <script>
 
+// Math PI * 2 is the total number of radians
+// in a circle
 var pi2 = Math.PI * 2;
 
-
-var update = function(state, secs){
-	
-	state.radian += state.radiansPerSecond * secs;
-	state.radian %= pi2;
-	
+var update = function (state, secs) {
+    state.radian += state.radiansPerSecond * secs;
+    // use Math.PI * 2 to always get the remainder
+    // for state.radians
+    state.radian %= pi2;
 };
 
-var draw = function(state, ctx, canvas){
-	
-	ctx.fillStyle = 'black';
-	ctx.fillRect(0,0,canvas.width, canvas.height);
-	
-	ctx.beginPath();
-	ctx.arc(state.cx, state.cy, state.radius, 0, state.radian);
-	ctx.stroke();
-	
+var draw = function (state, ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'lime';
+    ctx.lineWidth = 7;
+    ctx.beginPath();
+    ctx.arc(state.cx, state.cy, state.radius, 0, state.radian);
+    ctx.stroke();
 };
 
-
-var canvas = document.getElementById('canvas'),
+var canvas = document.getElementById('out'),
 ctx = canvas.getContext('2d'),
 lt = new Date();
 
 var state = {
-	cx: canvas.width / 2,
-	cx: canvas.height / 2,
-	radius: 50,
-	radian: 0,
-	radainsPerSecond: 1,
+    cx: canvas.width / 2,
+    cy: canvas.height / 2,
+    radius: 50,
+    radian: 0,
+    radiansPerSecond: Math.PI / 180 * 45, // 45 degrees per second
 };
 
-var loop = function(){
-	
-	var now = new Date(),
-	t = now - lt,
-	secs = t / 1000;
-	
-	requestAnimationFrame(loop);
-	
-	update(state, secs);
-	draw(state, ctx, canvas);
-	
-	lt = now;
-	
+var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
+    requestAnimationFrame(loop);
+    update(state, secs);
+    draw(state, ctx, canvas);
+    lt = now;
 };
 loop();
 
-/*
-var degreeToRadian = function (deg) {
-    return Math.PI / 180 * deg;
-};
-
-var getCirclePoint = function (cx, cy, radius, radian) {
-    return {
-        x: cx + Math.cos(radian) * radius,
-        y: cy + Math.sin(radian) * radius
-    }
-};
-
-var radian = degreeToRadian(45);
-var pt = getCirclePoint(0,0, 10, radian);
-
-console.log(pt);
-// { x: 7.0710678118654755, y: 7.071067811865475 }
-*/
         </script>
     </body>
 </html>

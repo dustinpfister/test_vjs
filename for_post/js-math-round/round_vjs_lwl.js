@@ -9,3 +9,7 @@ var round = function (number, precision) {
     precision = precision === undefined ? 0 : precision;
     return shift(Math.round(shift(number, +precision)), -precision);
 };
+
+console.log( Math.round(1.005) ); // 1
+console.log( (1.005).toFixed(2)); // 1.00
+console.log( round(1.005, 2) ); // 1.01

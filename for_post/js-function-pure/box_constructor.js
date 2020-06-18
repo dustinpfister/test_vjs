@@ -38,4 +38,7 @@ bx1.y = -24;
 // is passed and it did not change.
 console.log(bx1.distance(bx2)); // 136
 
+// one way to resolve this might be to use call to make it more
+// pure function like, but it still might be best to just make distance
+// a stand alone function.
 console.log( Box.prototype.distance.call(bx1, bx2) ); // 136

@@ -37,3 +37,5 @@ bx1.y = -24;
 // results in a different value even though the same argument
 // is passed and it did not change.
 console.log(bx1.distance(bx2)); // 136
+
+console.log( Box.prototype.distance.call(bx1, bx2) ); // 136

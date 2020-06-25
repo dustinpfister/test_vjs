@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>javascript mouse get element relative</title>
+    </head>
+    <body>
+        <canvas id="out" width="320" height="240" style="position:absolute;left:50px;top:50px;"><canvas>
+        <script>
+// Gte El relative
+var getElRelative = function (e) {
+    var el = e.target,
+    bx = el.getBoundingClientRect();
+    return {
+        x: e.clientX - bx.left,
+        y: e.clientY - bx.top,
+        bx: bx
+    };
+};
+var setPos = function (state, e) {
+    var pos = getElRelative(e);
+    state.x = pos.x;
+    state.y = pos.y;
+};
+var render = function (ctx, canvas, state) {
+    var text = 'pos: (' + state.x + ',' + state.y + ' ); down: ' + state.down + ';';
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.fillText(text, 32, 32);
+};
+// state object
+var state = {
+    down: false,
+    x: null,
+    y: null
+};
+// attach events to canvas
+var canvas = document.getElementById('out'),
+ctx = canvas.getContext('2d');
+canvas.addEventListener('mousedown', function (e) {
+    state.down = true;
+    setPos(state, e);
+    render(ctx, canvas, state);
+});
+canvas.addEventListener('mousemove', function (e) {
+    setPos(state, e);
+    render(ctx, canvas, state);
+});
+canvas.addEventListener('mouseup', function (e) {
+    state.down = false;
+    setPos(state, e);
+    render(ctx, canvas, state);
+});
+render(ctx, canvas, state);
+        </script>
+    </body>
+</html>

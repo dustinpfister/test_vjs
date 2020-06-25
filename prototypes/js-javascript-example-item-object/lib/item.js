@@ -17,8 +17,15 @@ var item = (function () {
         opt = opt || {};
         return {
             bx: createBox(opt),
-            worth: 10
+            worth: opt.worth === undefined ? 10
         };
+    };
+
+    // create a new item by combining two pre-existing items
+    api.combine = function (item1, item2) {
+        return api.create({
+            worth: item1.worth + item2.worth
+        });
     };
 
     return api;

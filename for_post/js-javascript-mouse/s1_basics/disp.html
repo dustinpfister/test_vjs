@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>javascript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out"><div>
+        <script>
+// basic state and render stuff
+var state = {
+    down: false,
+    x: null,
+    y: null
+};
+var setPos = function (state, e) {
+    state.x = e.clientX;
+    state.y = e.clientY;
+};
+var render = function (state) {
+    var out = document.getElementById('out');
+    out.innerText = 'pos: (' + state.x + ',' + state.y + ' ); down: ' + state.down + ';';
+};
+// attach events to window
+window.addEventListener('mousedown', function (e) {
+    state.down = true;
+    setPos(state, e);
+    render(state);
+});
+window.addEventListener('mousemove', function (e) {
+    setPos(state, e);
+    render(state);
+});
+window.addEventListener('mouseup', function (e) {
+    state.down = false;
+    setPos(state, e);
+    render(state);
+});
+render(state);
+        </script>
+    </body>
+</html>

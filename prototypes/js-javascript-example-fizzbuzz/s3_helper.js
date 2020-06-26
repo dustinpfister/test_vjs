@@ -2,17 +2,13 @@ var fizzer = function (i, m, mess) {
     if (i % m === 0) {
         return mess;
     }
-    return i;
+    return '';
 }
 
 for (var i = 1; i <= 100; i++) {
     var output = '';
-    if (i % 3 === 0) {
-        output += 'Fizz'
-    }
-    if (i % 5 === 0) {
-        output += 'Buzz'
-    }
+    output += fizzer(i, 3, 'Fizz');
+    output += fizzer(i, 5, 'Buzz');
     if (output === '') {
         output = i;
     }

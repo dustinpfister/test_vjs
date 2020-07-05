@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>js iife</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// make everything private with a js iife
+(function () {
+    var canvas = document.getElementById('the-canvas'),
+    ctx = canvas.getContext('2d');
+    var cir = {
+        x: 32,
+        y: 16,
+        r: 10,
+        color: 'red'
+    };
+    var draw = function () {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = cir.color;
+        ctx.beginPath();
+        ctx.arc(cir.x, cir.y, cir.r, 0, Math.PI * 2);
+        ctx.fill();
+    };
+    draw();
+}
+    ());
+        </script>
+    </body>
+</html>

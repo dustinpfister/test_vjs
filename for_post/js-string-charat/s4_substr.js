@@ -3,4 +3,5 @@ m = str.match(/best site/);
 
 if (m) {
     console.log(str.substr(m.index, str.length - m.index));
+    // best site on javaScript
 }

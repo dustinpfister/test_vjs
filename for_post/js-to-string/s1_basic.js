@@ -1,16 +1,18 @@
 var obj = {
-    exp: 4,
-    base: 2,
-    valueOf: function () {
-        return Math.pow(this.base, this.exp);
-    },
+    x: 40,
+    y: 5
+};
+
+console.log( String(obj) );
+// [object Object]
+
+var pt = {
+    x: 40,
+    y: 5,
     toString: function () {
-        return '*' + this.valueOf() + '*';
+        return '(' + this.x + ', ' + this.y + ')';
     }
 };
 
-var n = obj + 5,
-str = String(obj) + 5;
-
-console.log(n, typeof n); // 21 'number'
-console.log(str, typeof str); // *16*5 string
+console.log( String(pt) );
+// (40, 5)

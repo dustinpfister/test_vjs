@@ -10,6 +10,7 @@ var state = {
     points: points.gen(20, canvas.width, canvas.height),
     canvas: canvas,
     lt: new Date(),
+    FPS: 16,
     moved: {
         x: 32,
         y: 32,
@@ -19,12 +20,7 @@ var state = {
     }
 };
 
-var update = function (state) {
-
-    var now = new Date(),
-    t = now - state.lt,
-    secs = t / 1000;
-
+var update = function (state, secs) {
     var i = 0,
     len = state.points.length,
     pt;
@@ -34,28 +30,29 @@ var update = function (state) {
         pt.y += Math.sin(pt.heading) * pt.pps * secs;
         i += 1;
     }
-
     state.points = points.wrap(state.points, state.canvas);
-
     var m = state.moved;
     m.points = points.move(state.points, m.x, m.y, m.w, m.h, state.canvas);
-
-    state.lt = now;
 };
 
 var loop = function () {
+    var now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
 
     requestAnimationFrame(loop);
 
-    update(state);
-
-    var m = state.moved;
-    draw.background(ctx, canvas);
-    draw.points(ctx, state.points, ' green ', 6);
-	draw.lowAndHigh(ctx, state.points);
-    draw.box(ctx, m.x, m.y, m.w, m.h, ' rgba(0, 0, 255, 0.4)')
-    draw.points(ctx, m.points, ' blue ', 3);
-    draw.lowAndHigh(ctx, m.points);
+    if (t >= 1000 / state.FPS) {
+        update(state, secs);
+        var m = state.moved;
+        draw.background(ctx, canvas);
+        draw.points(ctx, state.points, ' green ', 6);
+        draw.lowAndHigh(ctx, state.points);
+        draw.box(ctx, m.x, m.y, m.w, m.h, ' rgba(0, 0, 255, 0.4)')
+        draw.points(ctx, m.points, ' blue ', 3);
+        draw.lowAndHigh(ctx, m.points);
+        state.lt = now;
+    }
 
 };
 

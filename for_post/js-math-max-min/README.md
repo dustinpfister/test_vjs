@@ -1,0 +1,3 @@
+## js-math-max-min
+
+Here is the source code for the [blog post on the Math.max, and Min methods](https://dustinpfister.github.io/2020/01/22/js-math-max-min/). In this post I made a canvas example as a way to help make some of these posts of mine a little more interesting. In time I might make more of these for various posts on the site to see if they help make things a little more fun and interesting.

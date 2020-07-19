@@ -39,16 +39,14 @@ var loop = function () {
     var now = new Date(),
     t = now - state.lt,
     secs = t / 1000;
-
     requestAnimationFrame(loop);
-
     if (t >= 1000 / state.FPS) {
         update(state, secs);
         var m = state.moved;
         draw.background(ctx, canvas);
         draw.points(ctx, state.points, ' green ', 6);
         draw.lowAndHigh(ctx, state.points);
-        draw.box(ctx, m.x, m.y, m.w, m.h, ' rgba(0, 0, 255, 0.4)')
+        draw.box(ctx, m.x, m.y, m.w, m.h, ' rgba(0, 0, 255, 0.4)');
         draw.points(ctx, m.points, ' blue ', 3);
         draw.lowAndHigh(ctx, m.points);
         state.lt = now;

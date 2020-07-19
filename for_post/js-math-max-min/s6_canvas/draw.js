@@ -9,13 +9,15 @@ draw.pointBack = function (ctx, p) {};
 
 draw.lowAndHigh = function (ctx, p) {
     ctx.strokeStyle = 'white';
-    var pt = points.getLorH(p, 'min');
+    var l = points.getLorH(p, 'min'),
+    h = points.getLorH(p, 'max');
+
     ctx.beginPath();
-    ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+    ctx.arc(l.x, l.y, 3, 0, Math.PI * 2);
     ctx.stroke();
-    pt = points.getLorH(p, 'max');
+
     ctx.beginPath();
-    ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+    ctx.arc(h.x, h.y, 9, 0, Math.PI * 2);
     ctx.stroke();
 }
 

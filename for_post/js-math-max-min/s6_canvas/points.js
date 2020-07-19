@@ -27,8 +27,15 @@ var points = (function () {
         });
     };
 
+    api.getLow = function (points) {
+        return {
+            x: Math.min.apply(null, getAxisValues(points, 'x')),
+            y: Math.min.apply(null, getAxisValues(points, 'y'))
+        }
+    };
+
     // get ranges for each axis
-    var getAxisRanges = function (points) {
+    api.getAxisRanges = function (points) {
         var xValues = getAxisValues(points, 'x'),
         yValues = getAxisValues(points, 'y');
         return {
@@ -39,7 +46,7 @@ var points = (function () {
 
     // normalize points
     var normalize = function (points) {
-        var range = getAxisRanges(points);
+        var range = api.getAxisRanges(points);
         return points.map(function (pt) {
             return {
                 x: pt.x / range.x,

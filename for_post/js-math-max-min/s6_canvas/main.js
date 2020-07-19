@@ -11,9 +11,9 @@ var state = {
     canvas: canvas,
     lt: new Date(),
     moved: {
-        x: 130,
-        y: 90,
-        w: 128,
+        x: 32,
+        y: 32,
+        w: 64,
         h: 64,
         points: []
     }

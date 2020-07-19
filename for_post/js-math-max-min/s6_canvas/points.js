@@ -14,7 +14,7 @@ var points = (function () {
                 x: Math.floor(Math.random() * width),
                 y: Math.floor(Math.random() * height),
                 heading: Math.random() * (Math.PI * 2),
-                pps: 32
+                pps: 16 + Math.round(64 * Math.random())
             })
             i += 1;
         }

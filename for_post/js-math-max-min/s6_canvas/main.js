@@ -52,6 +52,7 @@ var loop = function () {
     var m = state.moved;
     draw.background(ctx, canvas);
     draw.points(ctx, state.points, ' green ', 6);
+	draw.lowAndHigh(ctx, state.points);
     draw.box(ctx, m.x, m.y, m.w, m.h, ' rgba(0, 0, 255, 0.4)')
     draw.points(ctx, m.points, ' blue ', 3);
     draw.lowAndHigh(ctx, m.points);

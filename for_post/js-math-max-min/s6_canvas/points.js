@@ -13,7 +13,7 @@ var points = (function () {
             points.push({
                 x: Math.floor(Math.random() * width),
                 y: Math.floor(Math.random() * height),
-                heading: 0, //Math.random() * (Math.PI * 2),
+                heading: Math.random() * (Math.PI * 2),
                 pps: 32
             })
             i += 1;
@@ -78,18 +78,13 @@ var points = (function () {
     };
 
     api.wrap = function (points, canvas) {
-
         return points.map(function (pt) {
-
             var x = pt.x,
             y = pt.y;
-
-            //x = x < 0 ? canvas.width - x : x;
-            //y = y < 0 ? canvas.height - y : y;
-
+            x = x < 0 ? canvas.width + x : x;
+            y = y < 0 ? canvas.height + y : y;
             x = x >= 320 ? x % 320 : x;
             y = y >= 240 ? y % 240 : y;
-
             return {
                 x: x,
                 y: y,
@@ -97,7 +92,6 @@ var points = (function () {
                 pps: pt.pps
             }
         });
-
     };
 
     return api;

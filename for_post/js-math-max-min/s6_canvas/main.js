@@ -8,6 +8,7 @@ canvas.height = 240;
 
 var state = {
     points: points.gen(20, canvas.width, canvas.height),
+    canvas: canvas,
     lt: new Date(),
     moved: {
         x: 130,
@@ -34,8 +35,10 @@ var update = function (state) {
         i += 1;
     }
 
+    state.points = points.wrap(state.points, state.canvas);
+
     var m = state.moved;
-    m.points = points.move(state.points, m.x, m.y, m.w, m.h);
+    m.points = points.move(state.points, m.x, m.y, m.w, m.h, state.canvas);
 
     state.lt = now;
 };

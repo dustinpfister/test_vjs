@@ -13,7 +13,7 @@ var points = (function () {
             points.push({
                 x: Math.floor(Math.random() * width),
                 y: Math.floor(Math.random() * height),
-                heading: Math.random() * (Math.PI * 2),
+                heading: 0, //Math.random() * (Math.PI * 2),
                 pps: 32
             })
             i += 1;
@@ -50,24 +50,54 @@ var points = (function () {
     };
 
     // normalize points
-    var normalize = function (points) {
-        var range = api.getAxisRanges(points)
+    var normalize = function (points, canvas) {
+        var range = api.getAxisRanges(points);
+        //l = api.getLorH(points, 'min');
+        canvas = canvas || {
+            width: range.x,
+            height: range.y
+        };
         return points.map(function (pt) {
             return {
-                x: pt.x/ range.x,
-                y: pt.y / range.y
+                //x: (pt.x - l.x) / range.x,
+                //y: (pt.y - l.y) / range.y
+                x: pt.x / canvas.width,
+                y: pt.y / canvas.height
             }
         });
     };
 
     // move and scale points
-    api.move = function (points, x, y, w, h) {
-        return normalize(points).map(function (pt) {
+    api.move = function (points, x, y, w, h, canvas) {
+        return normalize(points, canvas).map(function (pt) {
             return {
                 x: x + pt.x * w,
                 y: y + pt.y * h
             };
         });
+    };
+
+    api.wrap = function (points, canvas) {
+
+        return points.map(function (pt) {
+
+            var x = pt.x,
+            y = pt.y;
+
+            //x = x < 0 ? canvas.width - x : x;
+            //y = y < 0 ? canvas.height - y : y;
+
+            x = x >= 320 ? x % 320 : x;
+            y = y >= 240 ? y % 240 : y;
+
+            return {
+                x: x,
+                y: y,
+                heading: pt.heading,
+                pps: pt.pps
+            }
+        });
+
     };
 
     return api;

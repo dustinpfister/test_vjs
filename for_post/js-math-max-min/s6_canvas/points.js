@@ -11,8 +11,8 @@ var points = (function () {
         var i = 0;
         while (i < count) {
             points.push({
-                x: Math.random() * width,
-                y: Math.random() * height
+                x: Math.floor(Math.random() * width),
+                y: Math.floor(Math.random() * height)
             })
             i += 1;
         }
@@ -40,8 +40,8 @@ var points = (function () {
         var xValues = getAxisValues(points, 'x'),
         yValues = getAxisValues(points, 'y');
         return {
-            x: Math.max.apply(null, xValues) - Math.min.apply(null, xValues),
-            y: Math.max.apply(null, yValues) - Math.min.apply(null, yValues)
+            x: Math.max.apply(null, xValues) - Math.abs(Math.min.apply(null, xValues)),
+            y: Math.max.apply(null, yValues) - Math.abs(Math.min.apply(null, yValues))
         }
     };
 

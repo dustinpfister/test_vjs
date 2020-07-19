@@ -5,7 +5,10 @@ draw.background = function (ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-draw.pointBack = function (ctx, p) {};
+draw.box = function (ctx, x, y, w, h, fill) {
+    ctx.fillStyle = fill || 'black';
+    ctx.fillRect(x, y, w, h);
+};
 
 draw.lowAndHigh = function (ctx, p) {
     ctx.strokeStyle = 'white';

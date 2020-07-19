@@ -24,14 +24,15 @@ draw.lowAndHigh = function (ctx, p) {
     ctx.stroke();
 }
 
-draw.points = function (ctx, p, fill) {
+draw.points = function (ctx, p, fill, radius) {
+    radius = radius || 6;
     ctx.fillStyle = fill || 'red';
     var i = p.length,
     pt;
     while (i--) {
         pt = p[i];
         ctx.beginPath();
-        ctx.arc(pt.x, pt.y, 6, 0, Math.PI * 2);
+        ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
     }

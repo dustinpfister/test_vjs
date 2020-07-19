@@ -17,7 +17,7 @@ console.log(points.getLorH(pMoved, 'max'));
 
 
 draw.background(ctx, canvas);
-draw.points(ctx, p);
+draw.points(ctx, p, 'green', 6);
 draw.box(ctx,32,32,64,64,'rgba(0,0,255,0.4)')
-draw.points(ctx, pMoved, 'blue');
+draw.points(ctx, pMoved, 'blue', 3);
 draw.lowAndHigh(ctx, pMoved);

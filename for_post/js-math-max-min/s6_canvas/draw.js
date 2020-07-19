@@ -14,15 +14,13 @@ draw.lowAndHigh = function (ctx, p) {
     ctx.strokeStyle = 'white';
     var l = points.getLorH(p, 'min'),
     h = points.getLorH(p, 'max');
-
     ctx.beginPath();
     ctx.arc(l.x, l.y, 3, 0, Math.PI * 2);
     ctx.stroke();
-
     ctx.beginPath();
     ctx.arc(h.x, h.y, 9, 0, Math.PI * 2);
     ctx.stroke();
-}
+};
 
 draw.points = function (ctx, p, fill, radius) {
     radius = radius || 6;

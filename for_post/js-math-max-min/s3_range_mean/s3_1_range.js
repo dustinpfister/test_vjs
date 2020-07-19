@@ -4,7 +4,5 @@ var getRange = function (nums) {
     max = Math.max.apply(null, nums);
     return max - min;
 };
-
 var arr = [-5, 10, 8, 3, 0];
-
-console.log(getRange(arr));
+console.log(getRange(arr)); // 15

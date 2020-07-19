@@ -6,18 +6,22 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
-var p = points.gen(20, canvas.width, canvas.height),
-//p = [{x:32, y: 32},{x:150, y: 150}];
+var state = {
+    points: points.gen(20, canvas.width, canvas.height),
+    moved: {
+        x: 130,
+        y: 90,
+        w: 128,
+        h: 64,
+        points: []
+    }
+};
 
-
-pMoved = points.move(p, 32, 32, 64, 64);
-
-console.log(points.getAxisRanges(pMoved));
-console.log(points.getLorH(pMoved, 'max'));
-
+var m = state.moved;
+m.points = points.move(state.points, m.x, m.y, m.w, m.h);
 
 draw.background(ctx, canvas);
-draw.points(ctx, p, 'green', 6);
-draw.box(ctx,32,32,64,64,'rgba(0,0,255,0.4)')
-draw.points(ctx, pMoved, 'blue', 3);
-draw.lowAndHigh(ctx, pMoved);
+draw.points(ctx, state.points, 'green', 6);
+draw.box(ctx, m.x, m.y, m.w, m.h, 'rgba(0,0,255,0.4)')
+draw.points(ctx, m.points, 'blue', 3);
+draw.lowAndHigh(ctx, m.points);

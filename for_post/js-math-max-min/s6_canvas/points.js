@@ -47,11 +47,12 @@ var points = (function () {
 
     // normalize points
     var normalize = function (points) {
-        var range = api.getAxisRanges(points);
+        var range = api.getAxisRanges(points),
+        l = api.getLorH(points, 'min');
         return points.map(function (pt) {
             return {
-                x: pt.x / range.x,
-                y: pt.y / range.y
+                x: (pt.x - l.x) / range.x,
+                y: (pt.y - l.y) / range.y
             }
         });
     };

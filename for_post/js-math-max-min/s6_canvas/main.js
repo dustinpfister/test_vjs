@@ -6,12 +6,15 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
-//var p = points.gen(20, canvas.width, canvas.height),
-p = [{x:32, y: 32},{x:150, y: 150}];
+var p = points.gen(20, canvas.width, canvas.height),
+//p = [{x:32, y: 32},{x:150, y: 150}];
 
-console.log(points.getAxisRanges(p))
 
 pMoved = points.move(p, 32, 32, 64, 64);
+
+console.log(points.getAxisRanges(pMoved));
+console.log(points.getLorH(pMoved, 'max'));
+
 
 draw.background(ctx, canvas);
 draw.points(ctx, p);

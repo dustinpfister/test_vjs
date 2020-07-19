@@ -31,7 +31,7 @@ draw.points = function (ctx, p, fill) {
     while (i--) {
         pt = p[i];
         ctx.beginPath();
-        ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+        ctx.arc(pt.x, pt.y, 6, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
     }

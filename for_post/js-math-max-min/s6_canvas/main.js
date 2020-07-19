@@ -5,8 +5,8 @@ draw.background = function (ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-draw.points = function (ctx, points) {
-    ctx.fillStyle = 'red';
+draw.points = function (ctx, points, fill) {
+    ctx.fillStyle = fill || 'red';
     var i = points.length,
     pt;
     while (i--) {
@@ -26,7 +26,8 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
-var points = points.gen(20, canvas.width, canvas.height);
+var p = points.gen(20, canvas.width, canvas.height);
 
 draw.background(ctx, canvas);
-draw.points(ctx, points);
+draw.points(ctx, p);
+draw.points(ctx, points.move(p, 32, 32, 128, 64), 'blue');

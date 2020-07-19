@@ -12,7 +12,9 @@ var points = (function () {
         while (i < count) {
             points.push({
                 x: Math.floor(Math.random() * width),
-                y: Math.floor(Math.random() * height)
+                y: Math.floor(Math.random() * height),
+                heading: Math.PI, //Math.random() * (Math.PI * 2),
+                pps: 32
             })
             i += 1;
         }

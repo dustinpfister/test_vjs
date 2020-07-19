@@ -17,11 +17,24 @@ var state = {
     }
 };
 
-var m = state.moved;
-m.points = points.move(state.points, m.x, m.y, m.w, m.h);
+var update = function (state) {
+    var m = state.moved;
+    m.points = points.move(state.points, m.x, m.y, m.w, m.h);
+};
 
-draw.background(ctx, canvas);
-draw.points(ctx, state.points, 'green', 6);
-draw.box(ctx, m.x, m.y, m.w, m.h, 'rgba(0,0,255,0.4)')
-draw.points(ctx, m.points, 'blue', 3);
-draw.lowAndHigh(ctx, m.points);
+var loop = function () {
+
+    requestAnimationFrame(loop);
+
+    update(state);
+
+    var m = state.moved;
+    draw.background(ctx, canvas);
+    draw.points(ctx, state.points, 'green', 6);
+    draw.box(ctx, m.x, m.y, m.w, m.h, 'rgba(0,0,255,0.4)')
+    draw.points(ctx, m.points, 'blue', 3);
+    draw.lowAndHigh(ctx, m.points);
+
+};
+
+loop();

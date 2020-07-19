@@ -27,6 +27,7 @@ draw.lowAndHigh = function (ctx, p) {
 draw.points = function (ctx, p, fill, radius) {
     radius = radius || 6;
     ctx.fillStyle = fill || 'red';
+    ctx.strokeStyle = 'black';
     var i = p.length,
     pt;
     while (i--) {

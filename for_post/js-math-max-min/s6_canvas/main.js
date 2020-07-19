@@ -12,4 +12,4 @@ pMoved = points.move(p, 32, 32, 64, 64);
 draw.background(ctx, canvas);
 draw.points(ctx, p);
 draw.points(ctx, pMoved, 'blue');
-draw.lowPoint(ctx, pMoved);
+draw.lowAndHigh(ctx, pMoved);

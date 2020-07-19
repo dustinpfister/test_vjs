@@ -27,10 +27,11 @@ var points = (function () {
         });
     };
 
-    api.getLow = function (points) {
+    api.getLorH = function (points, minMax) {
+        minMax = minMax === undefined ? 'min' : minMax;
         return {
-            x: Math.min.apply(null, getAxisValues(points, 'x')),
-            y: Math.min.apply(null, getAxisValues(points, 'y'))
+            x: Math[minMax].apply(null, getAxisValues(points, 'x')),
+            y: Math[minMax].apply(null, getAxisValues(points, 'y'))
         }
     };
 

@@ -1,20 +1,3 @@
-
-var genPoints = function (count, width, height) {
-    count = count === undefined ? 10 : count;
-    width = width === undefined ? 160 : width;
-    height = height === undefined ? 120 : height;
-    var points = [];
-    var i = 0;
-    while (i < count) {
-        points.push({
-            x: Math.random() * width,
-            y: Math.random() * height
-        })
-        i += 1;
-    }
-    return points;
-};
-
 var draw = {};
 
 draw.background = function (ctx, canvas) {
@@ -43,7 +26,7 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
-var points = genPoints(20, canvas.width, canvas.height);
+var points = points.gen(20, canvas.width, canvas.height);
 
 draw.background(ctx, canvas);
 draw.points(ctx, points);

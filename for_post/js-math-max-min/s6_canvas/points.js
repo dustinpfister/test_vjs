@@ -13,7 +13,7 @@ var points = (function () {
             points.push({
                 x: Math.floor(Math.random() * width),
                 y: Math.floor(Math.random() * height),
-                heading: Math.PI, //Math.random() * (Math.PI * 2),
+                heading: Math.random() * (Math.PI * 2),
                 pps: 32
             })
             i += 1;
@@ -40,21 +40,22 @@ var points = (function () {
     // get ranges for each axis
     api.getAxisRanges = function (points) {
         var xValues = getAxisValues(points, 'x'),
-        yValues = getAxisValues(points, 'y');
+        yValues = getAxisValues(points, 'y'),
+        xLow = Math.min.apply(null, xValues),
+        yLow = Math.min.apply(null, yValues);
         return {
-            x: Math.max.apply(null, xValues) - Math.abs(Math.min.apply(null, xValues)),
-            y: Math.max.apply(null, yValues) - Math.abs(Math.min.apply(null, yValues))
+            x: (Math.max.apply(null, xValues) - Math.abs(xLow)),
+            y: (Math.max.apply(null, yValues) - Math.abs(yLow))
         }
     };
 
     // normalize points
     var normalize = function (points) {
-        var range = api.getAxisRanges(points),
-        l = api.getLorH(points, 'min');
+        var range = api.getAxisRanges(points)
         return points.map(function (pt) {
             return {
-                x: (pt.x - l.x) / range.x,
-                y: (pt.y - l.y) / range.y
+                x: pt.x/ range.x,
+                y: pt.y / range.y
             }
         });
     };

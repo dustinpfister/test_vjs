@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>window innerWidth and innerHeight</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+
+var out = document.getElementById('out'),
+update = function(){
+    out.innerHTML = window.innerWidth + ',' + window.innerHeight;
+};
+update();
+window.addEventListener('resize', function(e){
+    update();
+});
+        </script>
+    </body>
+</html>

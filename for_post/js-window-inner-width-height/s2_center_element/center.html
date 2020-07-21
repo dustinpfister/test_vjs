@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>window innerWidth and innerHeight</title>
+    </head>
+    <body>
+        <div id="container" style="position:absolute;width:320px;height:240px;background-color:black;">hello</div>
+        <script>
+
+var div = document.getElementById('container'),
+center = function(){
+    var w = window.innerWidth,
+    h = window.innerHeight,
+    x = w / 2 - 160,
+    y = h / 2 - 120;
+    div.style.left = x + 'px';
+    div.style.top = y + 'px';
+};
+center();
+window.addEventListener('resize', function(e){
+    center();
+});
+        </script>
+    </body>
+</html>

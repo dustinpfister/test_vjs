@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>window innerWidth and innerHeight</title>
+    </head>
+    <body>
+        <div id="container" style="position:fixed;width:640px;height:480px;background-color:black;"></div>
+        <script>
+state = {
+    div: document.getElementById('container'),
+    full: false,
+    w: 640,
+    h: 480,
+    center : function(){
+        var w = window.innerWidth,
+        h = window.innerHeight,
+        el = this.div,
+        x = w / 2 - el.scrollWidth / 2,
+        y = h / 2 - el.scrollHeight / 2;
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+    },
+    toggleFull: function(){
+        this.full = !this.full;
+        var w = this.full ? window.innerWidth: this.w,
+        h = this.full ? window.innerHeight: this.h,
+        el = this.div;
+        el.style.width = w + 'px';
+        el.style.height = h + 'px';
+        this.center();
+    }
+},
+
+state.center();
+window.addEventListener('resize', function(e){
+    state.center();
+});
+state.div.addEventListener('click', function(e){
+   state.toggleFull();
+});
+        </script>
+    </body>
+</html>

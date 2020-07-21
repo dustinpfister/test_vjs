@@ -3,21 +3,21 @@
         <title>window innerWidth and innerHeight</title>
     </head>
     <body>
-        <div id="container" style="position:absolute;width:320px;height:240px;background-color:black;">hello</div>
+        <div id="container" style="position:fixed;width:640px;height:480px;background-color:black;">hello</div>
         <script>
-
 var div = document.getElementById('container'),
-center = function(){
+center = function(el){
     var w = window.innerWidth,
     h = window.innerHeight,
-    x = w / 2 - 160,
-    y = h / 2 - 120;
-    div.style.left = x + 'px';
-    div.style.top = y + 'px';
+    x = w / 2 - el.scrollWidth / 2,
+    y = h / 2 - el.scrollHeight / 2;
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+	console.log()
 };
-center();
+center(div);
 window.addEventListener('resize', function(e){
-    center();
+    center(div);
 });
         </script>
     </body>

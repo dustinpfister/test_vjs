@@ -1,42 +1,46 @@
-<body>
-<script>
+
+<html>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script>
 (function () {
 
     // create and inject a canvas
     var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-
-    // append to body
-    document.body.appendChild(canvas);
-
-    // set actual matrix size of the canvas
+    ctx = canvas.getContext('2d'),
+    // append to container
+    container = document.getElementById('canvas-app');
+    container.appendChild(canvas);
     canvas.width = 320;
     canvas.height = 240;
-
     var state = {
+        lastTick: new Date(),
+        FPS: 1000 / 40,
         cx: canvas.width / 2,
         cy: canvas.height / 2,
         x: 0,
         y: 0,
         r1: 100,
-        r2: 32,
+        r2: 16,
         frameIndex: 0,
         maxFrames: 50
     };
-
     var set = function (state) {
         var per = state.frameIndex / state.maxFrames,
         radian = Math.PI * 2 * per;
         state.x = state.cx + Math.cos(radian) * state.r1;
         state.y = state.cy + Math.sin(radian) * state.r1;
     };
-
     var update = function (state) {
-        state.frameIndex += 1;
-        state.frameIndex %= state.maxFrames;
-        set(state);
+        var now = new Date(),
+        t = now - state.lastTick;
+        if (t >= state.FPS) {
+            state.frameIndex += 1;
+            state.frameIndex %= state.maxFrames;
+            set(state);
+            state.lastTick = now;
+        }
     };
-
     var draw = function (ctx, canvas, state) {
         ctx.fillStyle = '#000000';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -47,16 +51,14 @@
         ctx.fill();
         ctx.stroke();
     };
-
-    var loop = function(){
-		requestAnimationFrame(loop)
-    update(state)
-    draw(ctx, canvas, state);
-	
-	};
-	loop();
-
+    var loop = function () {
+        requestAnimationFrame(loop)
+        update(state)
+        draw(ctx, canvas, state);
+    };
+    loop();
 }
     ());
-</script>
+        </script>
 </body>
+</html>

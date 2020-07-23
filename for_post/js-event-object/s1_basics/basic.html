@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Event Object</title>
+    </head>
+    <body>
+        <div id="out" style="width:280px;height:200px;background-color:green;padding:20px;cursor:hand;"></div>
+        <script>
+document.getElementById('out').addEventListener('mousedown', function(e){
+   e.preventDefault();
+   e.target.innerText = e.target.id + 
+   ', ' + e.type +
+   ', ' + e.clientX + 
+   ', ' + e.clientY;
+});
+        </script>
+    </body>
+</html>

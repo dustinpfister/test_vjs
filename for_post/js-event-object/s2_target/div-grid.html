@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Event Object</title>
+    </head>
+    <body>
+        <div id="out" style="position:relative;width:280px;height:200px;background-color:grey;padding:20px;cursor:hand;"></div>
+        <script>
+var divClick = function(e){
+  var div = e.target,
+  c = div.style.backgroundColor;
+  div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
+};
+var container = document.getElementById('out'),
+div,
+i = 0,x,y, 
+len = 8 * 8,
+w = container.scrollWidth / 8,
+h = container.scrollHeight / 8;
+while(i < len){
+   x = i % 8 * w;
+   y = Math.floor(i / 8) * h;
+   div = document.createElement('div');
+   div.style.position = 'absolute';
+   div.style.left = x + 'px';
+   div.style.top = y + 'px';
+   div.style.width = w + 'px';
+   div.style.height = h + 'px';
+   div.style.backgroundColor = 'grey';
+   div.addEventListener('mousedown',divClick)
+   container.appendChild(div);
+   i += 1;
+}
+        </script>
+    </body>
+</html>

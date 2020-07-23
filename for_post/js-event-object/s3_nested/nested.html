@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+div{
+  position:relative;
+  background-color:black;
+  outline:1px solid #ffffff;
+  cursor:hand
+}
+#one{
+  width:280px;
+  height:200px;
+}
+#two{
+  width:120px;
+  height:100px;
+}
+#three{
+  width:60px;
+  height:50px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="one">
+            <div id="two">
+                <div id="three">
+                </div>
+            </div>
+        </div>
+        <script>
+var divClick = function(e){
+  var div = e.currentTarget,
+  c = div.style.backgroundColor;
+  div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
+};
+var get = function(id){
+    return document.getElementById(id);
+};
+get('one').addEventListener('mousedown',divClick);
+get('two').addEventListener('mousedown',divClick);
+get('three').addEventListener('mousedown',divClick);
+        </script>
+    </body>
+</html>

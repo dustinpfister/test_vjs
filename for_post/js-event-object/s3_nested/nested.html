@@ -33,6 +33,7 @@ div{
 var divClick = function(e){
   var div = e.currentTarget,
   c = div.style.backgroundColor;
+  e.stopPropagation();
   div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
 };
 var get = function(id){

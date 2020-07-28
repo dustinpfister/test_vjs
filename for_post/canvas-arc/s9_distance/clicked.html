@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>canvas arc and distance</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// the distance formula
+var distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+// draw
+var draw = function (ctx, state) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillStyle = state.colors[state.colorIndex];
+    ctx.beginPath();
+    ctx.arc(state.cx, state.cy, state.radius, 0, Math.PI * 2);
+    ctx.fill();
+};
+// create an event hander for mouse down
+var createOnClick = function (state, ctx) {
+    return function (e) {
+       // get canvas relative point
+        var bx = e.target.getBoundingClientRect(),
+        x = e.clientX - bx.left,
+        y = e.clientY - bx.top;
+        // if distance to point is less than or equal to radius
+        if (distance(x, y, state.cx, state.cy) <= state.radius) {
+            state.colorIndex += 1;
+            state.colorIndex %= state.colors.length;
+        }
+        draw(ctx, state);
+    };
+};
+// create canvas and state object, attach event and draw for first time
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+var state = {
+    cx: canvas.width / 2,
+    cy: canvas.height / 2,
+    radius: canvas.height / 3,
+    colors: ['red', 'green'],
+    colorIndex: 0
+};
+canvas.addEventListener('mousedown', createOnClick(state, ctx));
+draw(ctx, state);
+        </script>
+    </body>
+</html>

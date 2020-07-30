@@ -15,7 +15,7 @@ var Box = (function () {
             w: opt.w === undefined ? 32 : opt.w,
             h: opt.h === undefined ? 32 : opt.h,
             color: 'white',
-            onHit: opt.onHit || function (bx) {
+            hitCheck: opt.hitCheck || function (bx) {
                 this.color = 'white';
                 if (api.boundingBox(bx, this)) {
                     this.color = 'red';

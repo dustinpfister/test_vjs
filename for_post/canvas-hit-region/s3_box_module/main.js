@@ -15,7 +15,7 @@ pool = [Box.create({
 var poolHitCheck = function (p, bx) {
     var i = p.length;
     while (i--) {
-        p[i].onHit(bx);
+        p[i].hitCheck(bx);
     }
 };
 
@@ -28,7 +28,6 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     player = Box.moveByHeading(player, Math.PI / 180 * heading, 32 * secs);
-    //pool[0].onHit(player);
     poolHitCheck(pool, player)
     heading += 25 * secs;
     heading %= 360;

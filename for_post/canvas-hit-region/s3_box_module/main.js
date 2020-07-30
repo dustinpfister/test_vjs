@@ -44,7 +44,7 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     player = Box.moveByHeading(player, Math.PI / 180 * heading, 32 * secs);
-    poolHitCheck(pool, player, secs)
+    poolHitCheck(pool, player, secs);
     heading += 25 * secs;
     heading %= 360;
 

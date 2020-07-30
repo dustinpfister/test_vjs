@@ -3,13 +3,25 @@ var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
 var player = Box.create({
-        x: 100,
-        y: 0
+        x: 150,
+        y: 50
     }),
 pool = [Box.create({
-        x: canvas.width / 2 - 50,
-        y: 80,
+        x: canvas.width / 1.5 - 50,
+        y: 120,
         w: 100
+    }),
+    Box.create({
+        x: 5,
+        y: 20,
+        w: 75,
+        h: 75
+    }),
+    Box.create({
+        x: 80,
+        y: 20,
+        w: 75,
+        h: 50
     })];
 
 var poolHitCheck = function (p, bx) {
@@ -33,7 +45,8 @@ var loop = function () {
     heading %= 360;
 
     draw.back(ctx, canvas);
-    draw.box(ctx, pool[0], pool[0].color);
+    //draw.box(ctx, pool[0], pool[0].color);
+    draw.pool(ctx, pool);
     draw.box(ctx, player, player.color);
     lt = now;
 };

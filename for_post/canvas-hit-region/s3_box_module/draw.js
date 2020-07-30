@@ -14,3 +14,10 @@ draw.box = function (ctx, bx, fill, stroke) {
     ctx.fill();
     ctx.stroke();
 };
+
+draw.pool = function (ctx, pool) {
+    var i = pool.length;
+    while (i--) {
+        draw.box(ctx, pool[i], pool[i].color, 'black');
+    }
+};

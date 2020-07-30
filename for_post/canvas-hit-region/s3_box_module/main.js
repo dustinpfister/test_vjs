@@ -24,10 +24,10 @@ pool = [Box.create({
         h: 50
     })];
 
-var poolHitCheck = function (p, bx) {
+var poolHitCheck = function (p, bx, secs) {
     var i = p.length;
     while (i--) {
-        p[i].hitCheck(bx);
+        p[i].hitCheck(bx, secs);
     }
 };
 
@@ -40,7 +40,7 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     player = Box.moveByHeading(player, Math.PI / 180 * heading, 32 * secs);
-    poolHitCheck(pool, player)
+    poolHitCheck(pool, player, secs)
     heading += 25 * secs;
     heading %= 360;
 
@@ -48,6 +48,7 @@ var loop = function () {
     //draw.box(ctx, pool[0], pool[0].color);
     draw.pool(ctx, pool);
     draw.box(ctx, player, player.color);
+    draw.info(ctx, canvas, player, pool);
     lt = now;
 };
 

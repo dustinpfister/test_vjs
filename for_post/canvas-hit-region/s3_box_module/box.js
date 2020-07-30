@@ -10,15 +10,19 @@ var Box = (function () {
     api.create = function (opt) {
         opt = opt || {};
         return {
+            ver: '0.1.0',
             x: opt.x === undefined ? 0 : opt.x,
             y: opt.y === undefined ? 0 : opt.y,
             w: opt.w === undefined ? 32 : opt.w,
             h: opt.h === undefined ? 32 : opt.h,
             color: 'white',
-            hitCheck: opt.hitCheck || function (bx) {
+            damage: 0,
+            DPS: opt.DPS || 5,
+            hitCheck: opt.hitCheck || function (bx, secs) {
                 this.color = 'white';
                 if (api.boundingBox(bx, this)) {
                     this.color = 'red';
+                    this.damage += bx.DPS * secs;
                 }
             }
         };

@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>canvas hit region</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+var bb = function (a, b) {
+    console.log(a, b)
+    return !(
+        (a.y + a.h) < b.y ||
+        a.y > (b.y + b.h) ||
+        (a.x + a.w) < b.x ||
+        a.x > (b.x + b.w))
+};
+var createObj = function(){
+
+};
+var getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - bx.left,
+        y: e.clientY - bx.top,
+        bx: bx
+    };
+};
+var createClickHandler = function (obj) {
+    return function (e) {
+        var pos = getCanvasRelative(e);
+        pos.w = 1;
+        pos.h = 1;
+        if (bb(pos, obj)) {
+            obj.click();
+        }
+    };
+};
+var draw = function (ctx, obj) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = obj.colors[obj.colorIndex];
+    ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+};
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+var obj = {
+    x: 50,
+    y: 50,
+    w: 100,
+    h: 50,
+    colors: ['red', 'white', 'blue'],
+    colorIndex: 0,
+    click: function () {
+        this.colorIndex += 1;
+        this.colorIndex %= 3;
+        console.log('action 1');
+        draw(ctx, obj);
+    }
+};
+canvas.addEventListener('click', createClickHandler(obj));
+draw(ctx, obj);
+
+        </script>
+    </body>
+</html>

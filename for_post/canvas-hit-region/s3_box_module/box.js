@@ -18,7 +18,6 @@ var Box = (function () {
             onHit: opt.onHit || function (bx) {
                 this.color = 'white';
                 if (api.boundingBox(bx, this)) {
-					console.log('yes')
                     this.color = 'red';
                 }
             }

@@ -2,15 +2,22 @@
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
-var bx = Box.create({
+var player = Box.create({
         x: 100,
         y: 0
     }),
-bx2 = Box.create({
+pool = [Box.create({
         x: canvas.width / 2 - 50,
         y: 80,
         w: 100
-    });
+    })];
+
+var poolHitCheck = function (p, bx) {
+    var i = p.length;
+    while (i--) {
+        p[i].onHit(bx);
+    }
+};
 
 var lt = new Date(),
 heading = 45;
@@ -20,15 +27,15 @@ var loop = function () {
     secs = t / 1000;
     requestAnimationFrame(loop);
 
-    bx = Box.moveByHeading(bx, Math.PI / 180 * heading, 32 * secs);
+    player = Box.moveByHeading(player, Math.PI / 180 * heading, 32 * secs);
+    //pool[0].onHit(player);
+    poolHitCheck(pool, player)
     heading += 25 * secs;
     heading %= 360;
 
     draw.back(ctx, canvas);
-
-    bx2.onHit(bx);
-    draw.box(ctx, bx2, bx2.color);
-    draw.box(ctx, bx, bx.color);
+    draw.box(ctx, pool[0], pool[0].color);
+    draw.box(ctx, player, player.color);
     lt = now;
 };
 

@@ -1,0 +1,3 @@
+# canvas-hit-region
+
+A few basic and not so basic examples of using bounding box collesion detection. Thes examples are written about in detail in my [canvas-hit-region blog post](https://dustinpfister.github.io/2019/12/01/canvas-hit-region/) that you might want to check out. Here I might just have things like a todo list for any upcoming changes, and anything else that might be worth mentioning in a read me rather than the blog post.

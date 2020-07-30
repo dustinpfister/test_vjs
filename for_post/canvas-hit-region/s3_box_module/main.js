@@ -25,12 +25,10 @@ var loop = function () {
     heading %= 360;
 
     draw.back(ctx, canvas);
-    var fill = 'white';
-    if (Box.boundingBox(bx, bx2)) {
-        fill = 'red';
-    }
-    draw.box(ctx, bx2, fill);
-    draw.box(ctx, bx);
+
+    bx2.onHit(bx);
+    draw.box(ctx, bx2, bx2.color);
+    draw.box(ctx, bx, bx.color);
     lt = now;
 };
 

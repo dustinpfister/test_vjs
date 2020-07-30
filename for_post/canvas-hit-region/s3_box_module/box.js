@@ -13,7 +13,15 @@ var Box = (function () {
             x: opt.x === undefined ? 0 : opt.x,
             y: opt.y === undefined ? 0 : opt.y,
             w: opt.w === undefined ? 32 : opt.w,
-            h: opt.h === undefined ? 32 : opt.h
+            h: opt.h === undefined ? 32 : opt.h,
+            color: 'white',
+            onHit: opt.onHit || function (bx) {
+                this.color = 'white';
+                if (api.boundingBox(bx, this)) {
+					console.log('yes')
+                    this.color = 'red';
+                }
+            }
         };
     };
 

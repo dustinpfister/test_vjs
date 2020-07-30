@@ -6,15 +6,11 @@
         <canvas id="the-canvas" width="320" height="240"></canvas>
         <script>
 var bb = function (a, b) {
-    console.log(a, b)
     return !(
         (a.y + a.h) < b.y ||
         a.y > (b.y + b.h) ||
         (a.x + a.w) < b.x ||
         a.x > (b.x + b.w))
-};
-var createObj = function(){
-
 };
 var getCanvasRelative = function (e) {
     var canvas = e.target,
@@ -40,26 +36,31 @@ var draw = function (ctx, obj) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = obj.colors[obj.colorIndex];
     ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+    ctx.fillStyle = 'black';
+    ctx.font = '40px courier';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    ctx.fillText(obj.clicks, obj.x + obj.w / 2, obj.y + obj.h / 2 - 20);
 };
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 var obj = {
-    x: 50,
-    y: 50,
-    w: 100,
-    h: 50,
+    x: canvas.width / 2 - 100,
+    y: canvas.height / 2 - 50,
+    w: 200,
+    h: 100,
+    clicks: 0,
     colors: ['red', 'white', 'blue'],
     colorIndex: 0,
     click: function () {
         this.colorIndex += 1;
         this.colorIndex %= 3;
-        console.log('action 1');
+        this.clicks += 1;
         draw(ctx, obj);
     }
 };
 canvas.addEventListener('click', createClickHandler(obj));
 draw(ctx, obj);
-
         </script>
     </body>
 </html>

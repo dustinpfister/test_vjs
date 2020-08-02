@@ -1,0 +1,27 @@
+<canvas id="the-canvas"></canvas>
+<script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 32;
+canvas.height = 32;
+canvas.style.imageRendering = 'pixelated';
+canvas.style.width = '160px';
+canvas.style.height = '160px';
+
+ctx.translate(0.5,0.5);
+// draw read background
+ctx.fillStyle = 'red';
+ctx.fillRect(-1, -1, canvas.width+1, canvas.height+1);
+
+// draw green recr
+ctx.strokeStyle = 'green';
+ctx.lineWidth = 1;
+ctx.strokeRect(3, 3, 5, 5);
+
+// GET IMAGE DATA
+var imgData = ctx.getImageData(3, 3, 6, 6);
+
+// PUT THE IMAGE DATA somewhere
+ctx.putImageData(imgData,10,6);
+
+</script>

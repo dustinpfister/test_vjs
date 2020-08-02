@@ -1,21 +1,19 @@
-<canvas id="the-canvas" width="32" height="32"></canvas>
+<canvas id="the-canvas"></canvas>
 <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-ctx.fillStyle = 'red';
-ctx.fillRect(0, 0, 32, 32);
-ctx.strokeStyle = 'green';
-ctx.globalAlpha = 1;
-ctx.lineWidth = 1;
-ctx.strokeRect(3, 3, 5, 5);
-var imgData = ctx.getImageData(3, 3, 5, 5);
-imgData.data.forEach(function (v, i,data) {
-    data[i] = v === 0 ? 0 : 255;
-});
-ctx.putImageData(imgData,3,3);
-var i = 0;
-while (i < imgData.data.length) {
-    console.log(imgData.data.slice(i, i + 4));
-    i += 4;
-}
+ctx.translate(0.5,0.5);
+
+canvas.width = 8;
+canvas.height = 8;
+canvas.style.imageRendering = 'pixelated';
+canvas.style.width = '160px';
+canvas.style.height = '160px';
+
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, 8, 8);
+// single yellow pixel
+var data = new Uint8ClampedArray([ 255,255,0,255]);
+var img = new ImageData( data,1,1)
+ctx.putImageData( img, 1,1);
 </script>

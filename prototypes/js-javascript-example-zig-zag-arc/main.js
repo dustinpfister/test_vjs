@@ -17,6 +17,7 @@ var loop = function () {
 
     draw.back(ctx, canvas);
     draw.pool(ctx, game);
+    draw.info(ctx, game);
     lt = now;
 };
 

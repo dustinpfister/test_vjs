@@ -19,3 +19,12 @@ draw.pool = function (ctx, game) {
         }
     });
 };
+
+draw.info = function (ctx, game) {
+
+    ctx.fillStyle = 'gray';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px courier';
+    ctx.fillText('v' + game.ver, 5, game.mainBox.height - 15);
+
+}

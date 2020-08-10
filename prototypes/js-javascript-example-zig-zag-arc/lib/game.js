@@ -6,7 +6,6 @@ var gameMod = (function () {
             var per = disp.i / disp.iMax,
             arcPer = utils.linPerToArcPer(per),
             h = state.mainBox.height - disp.h;
-            disp.x = 32;
             disp.y = h - h * arcPer;
         },
         function (disp, state, secs) {
@@ -81,10 +80,13 @@ var gameMod = (function () {
         state.spawn.secs += secs;
         if (state.spawn.secs >= state.spawn.rate) {
             // make inactive disps active
-            var disp = getNextInactive(state.pool);
+            var disp = getNextInactive(state.pool),
+            w;
             if (disp) {
                 disp.active = true;
                 disp.i = 0;
+                w = state.mainBox.width - disp.w;
+                disp.x = w - w * Math.random();
                 disp.updateMethodIndex = Math.floor(dispUpdateMethods.length * Math.random());
             }
             state.spawn.secs %= state.spawn.rate;

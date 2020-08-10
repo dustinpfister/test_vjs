@@ -10,7 +10,7 @@ var gameMod = (function () {
         },
         function (disp, state, secs) {
             var per = disp.i / disp.iMax,
-            zigPer = utils.linPerToZigZagPer(per, 3),
+            zigPer = utils.linPerToZigZagPer(per, disp.waves),
             w = state.mainBox.width - disp.w,
             h = state.mainBox.height - disp.h;
             disp.x = w * zigPer;
@@ -66,10 +66,10 @@ var gameMod = (function () {
             ver: '0.0.0',
             mainBox: mainBox,
             spawn: {
-                rate: 1,
+                rate: 0.5,
                 secs: 0
             },
-            pool: createPool(10)
+            pool: createPool(20)
         };
         return state;
     };
@@ -85,6 +85,7 @@ var gameMod = (function () {
             if (disp) {
                 disp.active = true;
                 disp.i = 0;
+                disp.waves = 2 + Math.floor(3 * Math.random());
                 w = state.mainBox.width - disp.w;
                 disp.x = w - w * Math.random();
                 disp.updateMethodIndex = Math.floor(dispUpdateMethods.length * Math.random());

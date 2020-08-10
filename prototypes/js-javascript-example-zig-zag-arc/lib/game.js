@@ -5,7 +5,7 @@ var gameMod = (function () {
         function (disp, state, secs) {
             var per = disp.i / disp.iMax,
             arcPer = utils.linPerToArcPer(per),
-            h = state.mainBox.height;
+            h = state.mainBox.height - disp.h;
             disp.x = 32;
             disp.y = h - h * arcPer;
         }
@@ -21,7 +21,7 @@ var gameMod = (function () {
             w: 32,
             h: 32,
             i: 0,
-            iMax: 50,
+            iMax: 200,
             updateMethodIndex: 0
         };
         return disp;
@@ -40,6 +40,7 @@ var gameMod = (function () {
             if (!pool[i].active) {
                 return pool[i];
             }
+            i += 1;
         }
         return false;
     };
@@ -63,25 +64,27 @@ var gameMod = (function () {
 
         var disp = getNextInactive(state.pool);
 
+        // make inactive disps active
         if (disp) {
             disp.active = true;
             disp.i = 0;
         }
 
+        // update disps
         var i = 0,
         len = state.pool.length,
         disp;
         while (i < len) {
-
             disp = state.pool[i];
-
             if (disp.active) {
                 disp.i += 1;
-                dispUpdateMethods[disp.updateMethodIndex](disp, state, secs);
+                if (disp.i >= disp.iMax) {
+                    disp.active = false;
+                } else {
+                    dispUpdateMethods[disp.updateMethodIndex](disp, state, secs);
+                }
             }
-
             i += 1;
-
         }
 
     };

@@ -7,5 +7,5 @@ utils.linPerToZigZagPer = function (linPer, waveCount) {
 };
 
 utils.linPerToArcPer = function (linPer) {
-    return linPerToZigZagPer(linPer, 1);
+    return utils.linPerToZigZagPer(linPer, 1);
 };

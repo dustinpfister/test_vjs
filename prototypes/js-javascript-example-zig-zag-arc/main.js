@@ -10,7 +10,9 @@ draw.pool = function (ctx, game) {
     var pool = game.pool;
     ctx.fillStyle = 'red';
     pool.forEach(function (disp) {
-        ctx.fillRect(disp.x, disp.y, disp.w, disp.h);
+        if (disp.active) {
+            ctx.fillRect(disp.x, disp.y, disp.w, disp.h);
+        }
     });
 };
 
@@ -34,4 +36,3 @@ var loop = function () {
 };
 
 loop();
-

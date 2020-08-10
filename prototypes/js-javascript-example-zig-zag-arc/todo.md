@@ -5,5 +5,5 @@
 * (done) create a game.js file
 * (done) game.js can be used to create a state object with a basic object pool
 * (done) objects in object pool move using utility methods
-* basic canvas display of what is going on
+* (done) basic canvas display of what is going on
 * pkg_0_0_0.html

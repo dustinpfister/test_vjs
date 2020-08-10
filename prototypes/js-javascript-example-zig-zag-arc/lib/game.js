@@ -8,6 +8,14 @@ var gameMod = (function () {
             h = state.mainBox.height - disp.h;
             disp.x = 32;
             disp.y = h - h * arcPer;
+        },
+        function (disp, state, secs) {
+            var per = disp.i / disp.iMax,
+            zigPer = utils.linPerToZigZagPer(per, 3),
+            w = state.mainBox.width - disp.w,
+            h = state.mainBox.height - disp.h;
+            disp.x = w * zigPer;
+            disp.y = h * per;
         }
     ];
 
@@ -22,7 +30,7 @@ var gameMod = (function () {
             h: 32,
             i: 0,
             iMax: 200,
-            updateMethodIndex: 0
+            updateMethodIndex: 1
         };
         return disp;
     };

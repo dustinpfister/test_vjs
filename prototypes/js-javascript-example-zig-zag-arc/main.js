@@ -25,14 +25,17 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var game = gameMod.create(canvas);
-
+var lt = new Date();
 var loop = function () {
-
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
     requestAnimationFrame(loop);
-    gameMod.update(game, 0.1);
+    gameMod.update(game, secs);
 
     draw.back(ctx, canvas);
     draw.pool(ctx, game);
+    lt = now;
 };
 
 loop();

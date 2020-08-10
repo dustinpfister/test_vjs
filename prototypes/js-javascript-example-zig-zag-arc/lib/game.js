@@ -85,6 +85,7 @@ var gameMod = (function () {
             if (disp) {
                 disp.active = true;
                 disp.i = 0;
+                disp.updateMethodIndex = Math.floor(dispUpdateMethods.length * Math.random());
             }
             state.spawn.secs %= state.spawn.rate;
         }

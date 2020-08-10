@@ -5,15 +5,15 @@ var gameMod = (function () {
         function (disp, state, secs) {
             var per = disp.i / disp.iMax,
             arcPer = utils.linPerToArcPer(per),
-            h = state.mainBox.height - disp.h;
+            h = state.mainBox.height - disp.h / 2;
             disp.y = h - h * arcPer;
         },
         function (disp, state, secs) {
             var per = disp.i / disp.iMax,
             zigPer = utils.linPerToZigZagPer(per, disp.waves),
-            w = state.mainBox.width - disp.w,
+            w = state.mainBox.width - disp.w / 2,
             h = state.mainBox.height - disp.h;
-            disp.x = w * zigPer;
+            disp.x = disp.w / 2 + w * zigPer;
             disp.y = h * per;
         }
     ];
@@ -86,8 +86,8 @@ var gameMod = (function () {
                 disp.active = true;
                 disp.i = 0;
                 disp.waves = 2 + Math.floor(3 * Math.random());
-                w = state.mainBox.width - disp.w;
-                disp.x = w - w * Math.random();
+                w = state.mainBox.width - (disp.w / 2);
+                disp.x = disp.w / 2 + w - w * Math.random();
                 disp.updateMethodIndex = Math.floor(dispUpdateMethods.length * Math.random());
             }
             state.spawn.secs %= state.spawn.rate;

@@ -27,7 +27,7 @@ var game = gameMod.create(canvas);
 var loop = function () {
 
     requestAnimationFrame(loop);
-    gameMod.update(game);
+    gameMod.update(game, 0.1);
 
     draw.back(ctx, canvas);
     draw.pool(ctx, game);

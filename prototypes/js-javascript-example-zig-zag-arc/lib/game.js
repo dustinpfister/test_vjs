@@ -35,9 +35,13 @@ var gameMod = (function () {
         return disp;
     };
 
-    var createPool = function () {
-        var pool = [];
-        pool.push(createDispObject());
+    var createPool = function (count) {
+        var pool = [],
+        i = 0;
+        while (i < count) {
+            pool.push(createDispObject());
+            i += 1;
+        }
         return pool;
     };
 
@@ -62,7 +66,11 @@ var gameMod = (function () {
         var state = {
             ver: '0.0.0',
             mainBox: mainBox,
-            pool: createPool()
+            spawn: {
+                rate: 1,
+                secs: 0
+            },
+            pool: createPool(10)
         };
         return state;
     };
@@ -70,12 +78,15 @@ var gameMod = (function () {
     // update
     api.update = function (state, secs) {
 
-        var disp = getNextInactive(state.pool);
-
-        // make inactive disps active
-        if (disp) {
-            disp.active = true;
-            disp.i = 0;
+        state.spawn.secs += secs;
+        if (state.spawn.secs >= state.spawn.rate) {
+            // make inactive disps active
+            var disp = getNextInactive(state.pool);
+            if (disp) {
+                disp.active = true;
+                disp.i = 0;
+            }
+            state.spawn.secs %= state.spawn.rate;
         }
 
         // update disps

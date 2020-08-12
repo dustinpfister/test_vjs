@@ -1,7 +1,5 @@
 var draw = (function () {
-
     var unitColors = ['blue', 'red'];
-
     return {
         // draw background
         back: function (sm) {
@@ -10,7 +8,6 @@ var draw = (function () {
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
-
         // draw a map
         map: function (sm) {
             var canvas = sm.canvas,
@@ -43,7 +40,6 @@ var draw = (function () {
                 i += 1;
             }
         },
-
         info: function (sm) {
             var ctx = sm.ctx,
             canvas = sm.canvas;
@@ -52,13 +48,10 @@ var draw = (function () {
             ctx.textBaseline = 'top';
             var pos = sm.input.pos;
             ctx.fillText('down: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 5, 5);
-
             var p = sm.game.player;
             ctx.fillText('player pos: ' + p.currentCell.x + ',' + p.currentCell.y, 5, 15);
-
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }
-
     }
 }
     ());

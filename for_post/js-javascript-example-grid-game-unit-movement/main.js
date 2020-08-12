@@ -9,7 +9,7 @@
     ctx.translate(0.5, 0.5);
 
     var sm = {
-        ver: '0.1.0',
+        ver: '0.0.1',
         game: gameMod.create(),
         canvas: canvas,
         ctx: ctx,
@@ -26,13 +26,10 @@
         start: function (sm, e) {
             var pos = sm.input.pos;
             sm.input.pointerDown = true;
-
             var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
-
             if (cell) {
                 sm.game.targetCell = cell;
             }
-
         },
         move: function (sm, e) {},
         end: function (sm, e) {
@@ -53,9 +50,7 @@
 
     var loop = function () {
         requestAnimationFrame(loop);
-
         gameMod.update(sm.game);
-
         draw.back(sm);
         draw.map(sm);
         draw.info(sm);

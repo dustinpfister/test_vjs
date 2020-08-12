@@ -2,7 +2,7 @@
 
 ## 0.0.1 - some clean up
 * (done) removed unused code from utils.js
-* display player position
+* (done) display player position
 * (done) adjust map setting so the map is more centered
 * make a pkg_0_0_1.html
 

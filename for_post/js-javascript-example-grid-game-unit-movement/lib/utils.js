@@ -1,14 +1,11 @@
 // UTILS
 var utils = {};
-
 // angle from one point to another
 utils.angleToPoint = function (x1, y1, x2, y2, scale) {
     scale = scale === undefined ? Math.PI * 2 : scale;
     var aTan = Math.atan2(y1 - y2, x1 - x2);
     return (aTan + Math.PI) / (Math.PI * 2) * scale;
 };
-
-
 // get a point relative to a canvas element rather than window
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,

@@ -1,5 +1,9 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
+## 0.0.1 - some clean up
+* (done) removed unused code from utils.js
+* make a pkg_0_0_1.html
+
 ## 0.0.0 - copy and past from canvas-example-game-monster-smash (v0.0.0)
 * (done) have a basic map.js module that creates a map object of cells that can be formed into a grid
 * (done) have a game.js module that where 1 map objects are created as part of the state

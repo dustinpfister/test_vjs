@@ -52,7 +52,12 @@ var gameMod = (function () {
             targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit()
         };
-        game.maps.push(mapMod.create());
+        game.maps.push(mapMod.create({
+                marginX: 32,
+                marginY: 32,
+                w: 8,
+                h: 6
+            }));
         setupGame(game);
         return game;
     };

@@ -26,7 +26,7 @@ var mapMod = (function () {
         return map.cells[y * map.w + x];
     };
 
-    // get a cell in the current map by way of 
+    // get a cell in the current map by way of
     // a canvas relative x and y pixel pos
     api.getCellByPointer = function (map, x, y) {
         var cx = Math.floor((x - map.margin.x) / map.cellSize),
@@ -41,8 +41,8 @@ var mapMod = (function () {
             h: opt.h || 7,
             cellSize: 32,
             margin: {
-                x: 5,
-                y: 5
+                x: opt.marginX == undefined ? 5 : opt.marginX,
+                y: opt.marginY == undefined ? 5 : opt.marginY
             },
             cells: []
         };

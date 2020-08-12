@@ -2,6 +2,8 @@
 
 ## 0.0.1 - some clean up
 * (done) removed unused code from utils.js
+* display player position
+* (done) adjust map setting so the map is more centered
 * make a pkg_0_0_1.html
 
 ## 0.0.0 - copy and past from canvas-example-game-monster-smash (v0.0.0)

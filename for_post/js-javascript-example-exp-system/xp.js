@@ -17,17 +17,21 @@ var XP = (function () {
         xp = xp === undefined ? DEFAULTS.xp : xp;
         cap = cap === undefined ? DEFAULTS.cap : cap;
         deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
-
         var l = set(xp, deltaNext);
         l = l > cap ? cap : l;
         var level = Math.floor(l),
         forNext = getXPtoLevel(level + 1, deltaNext);
+        forNext = l === cap ? Infinity : forNext;
+        var toNext = l === cap ? Infinity : forNext - xp;
+        var forLast = getXPtoLevel(level, deltaNext);
         return {
             level: level,
             levelFrac: l,
             xp: xp,
-            forNext: l === cap ? Infinity : forNext,
-            toNext: l === cap ? Infinity : forNext - xp
+            per: (xp - forLast) / (forNext - forLast),
+            forNext: forNext,
+            toNext: toNext,
+            forLast: forLast
         };
     };
     return {

@@ -52,7 +52,7 @@ var XP = (function () {
                 levelObj: levelObj,
                 valueOf: function () {
                     var level = this.levelObj.level;
-                    return level;
+                    return 1 - (1 / (skillPoints + 1));
                 }
             };
         }

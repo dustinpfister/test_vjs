@@ -10,7 +10,7 @@ canvas.height = 240;
 var state = {
     levelObj: {},
     level: 1,
-    levelCap: 100,
+    levelCap: 10,
     deltaNext: 10000,
     DPS: 0,
     skillPoints: 0,
@@ -25,6 +25,7 @@ var createValues = function (state) {
         var DPS = XP.applySkillPoints(state.levelObj, state.skillPoints, state.skillOptions);
         state.values.push(Number(DPS));
         state.level += 1;
+        state.skillPoints += 1000;
     }
 };
 

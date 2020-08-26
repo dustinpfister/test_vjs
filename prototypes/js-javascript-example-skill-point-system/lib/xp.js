@@ -13,6 +13,7 @@ var XP = (function () {
     var getXPtoLevel = function (level, deltaNext) {
         return ((Math.pow(level, 2) - level) * deltaNext) / 2;
     };
+    // parse by xp
     var parseByXP = function (xp, cap, deltaNext) {
         xp = xp === undefined ? DEFAULTS.xp : xp;
         cap = cap === undefined ? DEFAULTS.cap : cap;
@@ -34,15 +35,27 @@ var XP = (function () {
             forLast: forLast
         };
     };
+    // The Public API
     return {
+        // create a levelObj by passing a level value
         parseByLevel: function (l, cap, deltaNext) {
             l = l === undefined ? DEFAULTS.level : l;
             deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
             var xp = getXPtoLevel(l, deltaNext);
-            console.log(xp);
             return parseByXP(xp, cap, deltaNext);
         },
-        parseByXP: parseByXP
+        // create a levelObj by passing an XP value
+        parseByXP: parseByXP,
+        // the apply skill points public method
+        applySkillPoints: function (levelObj, skillPoints, opt) {
+            return {
+                levelObj: levelObj,
+                valueOf: function () {
+                    var level = this.levelObj.level;
+                    return level;
+                }
+            };
+        }
     };
 }
     ());

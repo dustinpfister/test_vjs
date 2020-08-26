@@ -1,6 +1,14 @@
 ## todo list for js-javascript-example-skill-point-system
 
-### 0.1.0 - Improved utils.logPer method
+## 0.x.0 - Controls
+* give some controls so you can adjust values for skill points and so forth
+
+## 0.x.0 - Improved graph
+* have a grid like pattern behind the graph
+* have some labels
+* display lines for baseValue, levelValue, and spValue
+
+### 0.x.0 - Improved utils.logPer method
 * create an improved logPer method that will result in a given per value of 1 also returning 1
 
 ### 0.0.0 - Basic idea of skill point system

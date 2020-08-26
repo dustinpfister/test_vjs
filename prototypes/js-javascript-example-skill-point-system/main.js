@@ -7,6 +7,8 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
+console.log( Number(XP.parseByLevel(7)) );
+
 var state = {
     levelObj: {},
     level: 1,
@@ -25,7 +27,8 @@ var createValues = function (state) {
         var DPS = XP.applySkillPoints(state.levelObj, state.skillPoints, state.skillOptions);
         state.values.push(Number(DPS));
         state.level += 1;
-        state.skillPoints += Math.floor(Math.pow(1.847, state.level));
+        //state.skillPoints += Math.floor(Math.pow(5, state.level));
+         state.skillPoints += Math.floor(Math.pow(1.847, state.level)); // 1000sp over 100 levels
         //state.skillPoints += 1;
     }
 };

@@ -32,7 +32,10 @@ var XP = (function () {
             per: (xp - forLast) / (forNext - forLast),
             forNext: forNext,
             toNext: toNext,
-            forLast: forLast
+            forLast: forLast,
+            valueOf: function () {
+                return this.level;
+            }
         };
     };
 
@@ -53,7 +56,7 @@ var XP = (function () {
     // XP.applySkillPointes helpers and Public method
     var getSkillPointsPer = function (skillPoints) {
         var per = 1 - (1 / (skillPoints + 1));
-        return utils.logPer(per, 2, 2.5);
+        return utils.logPer(per, 2, 2.15);
     };
     api.applySkillPoints = function (levelObj, skillPoints, opt) {
         opt = opt || {};
@@ -65,7 +68,7 @@ var XP = (function () {
                 var level = this.levelObj.level,
                 spPer = getSkillPointsPer(skillPoints),
                 spValue = this.opt.skillPointMax * spPer;
-                return spPer;
+                return spValue;
             }
         };
     };

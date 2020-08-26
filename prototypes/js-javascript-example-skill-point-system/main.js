@@ -41,13 +41,13 @@ canvas.height = 240;
 var state = {
     levelObj: {},
     level: 1,
-    levelCap: 10,
+    levelCap: 100,
     deltaNext: 10000,
     DPS: 0,
     skillPoints: 0,
     skillOptions: {
-        SPEffectMax: 2000,
-        levelEffectMax: 500
+        SPEffectMax: 800,
+        levelEffectMax: 200
 
     },
     values: [], // values array for the graph
@@ -62,8 +62,8 @@ var createValues = function (state) {
         state.values.push(Number(DPS));
         state.level += 1;
         //state.skillPoints += Math.floor(Math.pow(5, state.level));
-        //state.skillPoints += Math.floor(Math.pow(1.847, state.level)); // 1000sp over 100 levels
-        //state.skillPoints += 1;
+        //state.skillPoints += Math.floor(Math.pow(1.5, state.level));
+        state.skillPoints += 1;
         //state.skillPoints = 5;
     }
     state.valueMax = Math.max.apply(null, state.values);

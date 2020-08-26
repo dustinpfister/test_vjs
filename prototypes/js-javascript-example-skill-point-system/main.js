@@ -25,7 +25,7 @@ var createValues = function (state) {
         var DPS = XP.applySkillPoints(state.levelObj, state.skillPoints, state.skillOptions);
         state.values.push(Number(DPS));
         state.level += 1;
-        state.skillPoints += 1000;
+        state.skillPoints += 1;
     }
 };
 

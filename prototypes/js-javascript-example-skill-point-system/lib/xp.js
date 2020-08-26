@@ -50,13 +50,18 @@ var XP = (function () {
     // create a levelObj by passing an XP value
     api.parseByXP = parseByXP;
 
-    // the apply skill points public method
+    // XP.applySkillPointes helpers and Public method
+    var getSkillPointsPer = function (skillPoints) {
+        return 1 - (1 / (skillPoints + 1));
+    };
     api.applySkillPoints = function (levelObj, skillPoints, opt) {
         return {
             levelObj: levelObj,
             valueOf: function () {
-                var level = this.levelObj.level;
-                return 1 - (1 / (skillPoints + 1));
+                var level = this.levelObj.level,
+                spPer = getSkillPointsPer(skillPoints);
+                return spPer;
+
             }
         };
     };

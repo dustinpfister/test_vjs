@@ -28,6 +28,7 @@ var XP = (function () {
         return {
             level: level,
             levelFrac: l,
+            cap: cap,
             xp: xp,
             per: (xp - forLast) / (forNext - forLast),
             forNext: forNext,
@@ -60,7 +61,8 @@ var XP = (function () {
     };
     api.applySkillPoints = function (levelObj, skillPoints, opt) {
         opt = opt || {};
-        opt.SPEffectMax = opt.SPEffectMax === undefined ? 1000: opt.SPEffectMax;
+        opt.SPEffectMax = opt.SPEffectMax === undefined ? 1000 : opt.SPEffectMax;
+        opt.levelEffectMax = opt.levelEffectMax === undefined ? 250 : opt.levelEffectMax;
         return {
             levelObj: levelObj,
             opt: opt,
@@ -68,7 +70,8 @@ var XP = (function () {
                 var level = this.levelObj.level,
                 spPer = getSkillPointsPer(skillPoints),
                 spValue = this.opt.SPEffectMax * spPer;
-                return spValue;
+                levelValue = this.opt.levelEffectMax / this.levelObj.cap * level;
+                return spValue + levelValue;
             }
         };
     };

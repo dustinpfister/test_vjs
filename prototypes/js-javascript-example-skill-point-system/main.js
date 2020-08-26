@@ -14,15 +14,21 @@ var state = {
     deltaNext: 10000,
     DPS: 0,
     skillPoints: 0,
-    skillOptions: {}
+    skillOptions: {},
+    values: []// values array for the graph
 };
 
-state.levelObj = XP.parseByLevel(state.level, state.levelCap, state.deltaNext);
+var createValues = function (state) {
+    state.level = 1;
+    while (state.level <= state.levelCap) {
+        state.levelObj = XP.parseByLevel(state.level, state.levelCap, state.deltaNext);
+        var DPS = XP.applySkillPoints(state.levelObj, state.skillPoints, state.skillOptions);
+        state.values.push(Number(DPS));
+        state.level += 1;
+    }
+};
 
-state.DPS = XP.applySkillPoints(state.levelObj, state.skillPoints, state.skillOptions);
+createValues(state);
 
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-
-console.log(Number(state.DPS));
-
+console.log(state.values);

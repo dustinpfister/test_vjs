@@ -55,13 +55,16 @@ var XP = (function () {
         return 1 - (1 / (skillPoints + 1));
     };
     api.applySkillPoints = function (levelObj, skillPoints, opt) {
+        opt = opt || {};
+        opt.skillPointMax = 1000;
         return {
             levelObj: levelObj,
+            opt: opt,
             valueOf: function () {
                 var level = this.levelObj.level,
-                spPer = getSkillPointsPer(skillPoints);
-                return spPer;
-
+                spPer = getSkillPointsPer(skillPoints),
+                spValue = this.opt.skillPointMax * spPer;
+                return spValue;
             }
         };
     };

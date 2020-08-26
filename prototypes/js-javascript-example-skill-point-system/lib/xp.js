@@ -35,27 +35,33 @@ var XP = (function () {
             forLast: forLast
         };
     };
-    // The Public API
-    return {
-        // create a levelObj by passing a level value
-        parseByLevel: function (l, cap, deltaNext) {
-            l = l === undefined ? DEFAULTS.level : l;
-            deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
-            var xp = getXPtoLevel(l, deltaNext);
-            return parseByXP(xp, cap, deltaNext);
-        },
-        // create a levelObj by passing an XP value
-        parseByXP: parseByXP,
-        // the apply skill points public method
-        applySkillPoints: function (levelObj, skillPoints, opt) {
-            return {
-                levelObj: levelObj,
-                valueOf: function () {
-                    var level = this.levelObj.level;
-                    return 1 - (1 / (skillPoints + 1));
-                }
-            };
-        }
+
+    // THE PUBIC API
+    var api = {};
+
+    // create a levelObj by passing a level value
+    api.parseByLevel = function (l, cap, deltaNext) {
+        l = l === undefined ? DEFAULTS.level : l;
+        deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
+        var xp = getXPtoLevel(l, deltaNext);
+        return parseByXP(xp, cap, deltaNext);
     };
+
+    // create a levelObj by passing an XP value
+    api.parseByXP = parseByXP;
+
+    // the apply skill points public method
+    api.applySkillPoints = function (levelObj, skillPoints, opt) {
+        return {
+            levelObj: levelObj,
+            valueOf: function () {
+                var level = this.levelObj.level;
+                return 1 - (1 / (skillPoints + 1));
+            }
+        };
+    };
+
+    // return the public api to the XP global
+    return api;
 }
     ());

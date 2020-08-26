@@ -63,15 +63,21 @@ var XP = (function () {
         opt = opt || {};
         opt.SPEffectMax = opt.SPEffectMax === undefined ? 1000 : opt.SPEffectMax;
         opt.levelEffectMax = opt.levelEffectMax === undefined ? 250 : opt.levelEffectMax;
+
+        var level = levelObj.level,
+        spPer = getSkillPointsPer(skillPoints),
+        spValue = opt.SPEffectMax * spPer;
+        levelValue = opt.levelEffectMax / levelObj.cap * level,
+        n = spValue + levelValue;
+
         return {
             levelObj: levelObj,
             opt: opt,
+            levelValue: levelValue,
+            spValue: spValue,
+            n: n,
             valueOf: function () {
-                var level = this.levelObj.level,
-                spPer = getSkillPointsPer(skillPoints),
-                spValue = this.opt.SPEffectMax * spPer;
-                levelValue = this.opt.levelEffectMax / this.levelObj.cap * level;
-                return spValue + levelValue;
+                return this.n;
             }
         };
     };

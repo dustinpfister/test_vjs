@@ -4,8 +4,8 @@ draw.back = function (ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 draw.valuesChart = function (ctx, canvas, state) {
-    var h = canvas.height,
-    w = canvas.width,
+    var h = canvas.height * 0.75,
+    w = canvas.width * 0.75,
     i = 0,
     per,
     n,
@@ -16,8 +16,8 @@ draw.valuesChart = function (ctx, canvas, state) {
     while (i < len) {
         n = state.values[i];
         per = n <= 0 ? 0 : n / state.valueMax;
-        x = w / (len - 1) * i;
-        y = h - per * h;
+        x = 50 + w / (len - 1) * i;
+        y = canvas.height - per * h;
         if (i === 0) {
             ctx.moveTo(x, y);
         } else {

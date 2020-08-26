@@ -9,6 +9,5 @@
 * (done) The XP.applySkillPoints method returns an object with a valueOf method
 * (done) The valueOf method is used to return the current primitive value of what is betting set by XP.applySkillPoints
 * (done) add a valueOf method for levelObjects that will return the level value
-
-* The options argument is used to tweak the effects of skillPoints and level
-* display a line chart between level 1 and cap for levelObj used for XP.applySkillPoints
+* (done) The options argument is used to tweak the effects of skillPoints and level
+* (done) display a line chart between level 1 and cap for levelObj used for XP.applySkillPoints

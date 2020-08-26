@@ -52,7 +52,8 @@ var XP = (function () {
 
     // XP.applySkillPointes helpers and Public method
     var getSkillPointsPer = function (skillPoints) {
-        return 1 - (1 / (skillPoints + 1));
+        var per = 1 - (1 / (skillPoints + 1));
+        return utils.logPer(per, 2, 2.5);
     };
     api.applySkillPoints = function (levelObj, skillPoints, opt) {
         opt = opt || {};
@@ -64,7 +65,7 @@ var XP = (function () {
                 var level = this.levelObj.level,
                 spPer = getSkillPointsPer(skillPoints),
                 spValue = this.opt.skillPointMax * spPer;
-                return spValue;
+                return spPer;
             }
         };
     };

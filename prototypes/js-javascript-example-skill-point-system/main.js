@@ -1,6 +1,7 @@
 var draw = {};
 
 draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 draw.valuesChart = function (ctx, canvas, state) {
@@ -28,6 +29,14 @@ draw.valuesChart = function (ctx, canvas, state) {
     ctx.strokeStyle = 'red';
     ctx.stroke();
 };
+draw.ver = function (ctx, canvas, state) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + state.ver, 4, canvas.height - 12);
+
+};
 
 // create and append canvas element, and get 2d context
 var canvas = document.createElement('canvas'),
@@ -39,6 +48,7 @@ canvas.width = 320;
 canvas.height = 240;
 
 var state = {
+    ver: '0.0.0',
     levelObj: {},
     level: 1,
     levelCap: 100,
@@ -75,3 +85,4 @@ console.log(state.values);
 
 draw.back(ctx, canvas);
 draw.valuesChart(ctx, canvas, state);
+draw.ver(ctx, canvas, state);

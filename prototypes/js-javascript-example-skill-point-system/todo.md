@@ -11,3 +11,4 @@
 * (done) add a valueOf method for levelObjects that will return the level value
 * (done) The options argument is used to tweak the effects of skillPoints and level
 * (done) display a line chart between level 1 and cap for levelObj used for XP.applySkillPoints
+* make a pkg_0_0_0.html for this javaScript-example

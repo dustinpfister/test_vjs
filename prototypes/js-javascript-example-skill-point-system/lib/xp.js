@@ -63,18 +63,20 @@ var XP = (function () {
         opt = opt || {};
         opt.SPEffectMax = opt.SPEffectMax === undefined ? 1000 : opt.SPEffectMax;
         opt.levelEffectMax = opt.levelEffectMax === undefined ? 250 : opt.levelEffectMax;
+        opt.baseValue = opt.baseValue === undefined ? 0 : opt.baseValue;
 
         var level = levelObj.level,
         spPer = getSkillPointsPer(skillPoints),
         spValue = opt.SPEffectMax * spPer;
         levelValue = opt.levelEffectMax * utils.logPer((level / levelObj.cap), 2, 2),
-        n = spValue + levelValue;
+        n = opt.baseValue + spValue + levelValue;
 
         return {
             levelObj: levelObj,
             opt: opt,
             levelValue: levelValue,
             spValue: spValue,
+            baseValue: opt.baseValue,
             n: n,
             valueOf: function () {
                 return this.n;

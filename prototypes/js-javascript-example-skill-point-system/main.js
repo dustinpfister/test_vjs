@@ -56,9 +56,9 @@ var state = {
     DPS: 0,
     skillPoints: 0,
     skillOptions: {
-        SPEffectMax: 800,
-        levelEffectMax: 200
-
+        SPEffectMax: 700,
+        levelEffectMax: 200,
+        baseValue: 100
     },
     values: [], // values array for the graph
     valueMax: 0
@@ -73,7 +73,7 @@ var createValues = function (state) {
         state.level += 1;
         //state.skillPoints += Math.floor(Math.pow(5, state.level));
         //state.skillPoints += Math.floor(Math.pow(1.5, state.level));
-        //state.skillPoints += 1;
+        state.skillPoints += 1;
         //state.skillPoints = 5;
     }
     state.valueMax = Math.max.apply(null, state.values);

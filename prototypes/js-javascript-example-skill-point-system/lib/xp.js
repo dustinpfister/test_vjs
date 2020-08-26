@@ -67,7 +67,7 @@ var XP = (function () {
         var level = levelObj.level,
         spPer = getSkillPointsPer(skillPoints),
         spValue = opt.SPEffectMax * spPer;
-        levelValue = opt.levelEffectMax / levelObj.cap * level,
+        levelValue = opt.levelEffectMax * (level / levelObj.cap),
         n = spValue + levelValue;
 
         return {

@@ -16,14 +16,13 @@ draw.valuesChart = function (ctx, canvas, state) {
     while (i < len) {
         n = state.values[i];
         per = n <= 0 ? 0 : n / state.valueMax;
-        x = w / len * i;
+        x = w / (len - 1) * i;
         y = h - per * h;
         if (i === 0) {
             ctx.moveTo(x, y);
         } else {
             ctx.lineTo(x, y);
         }
-        console.log(x, y);
         i += 1;
     }
     ctx.strokeStyle = 'red';
@@ -46,7 +45,11 @@ var state = {
     deltaNext: 10000,
     DPS: 0,
     skillPoints: 0,
-    skillOptions: {},
+    skillOptions: {
+        SPEffectMax: 2000,
+        levelEffectMax: 500
+
+    },
     values: [], // values array for the graph
     valueMax: 0
 };
@@ -59,15 +62,16 @@ var createValues = function (state) {
         state.values.push(Number(DPS));
         state.level += 1;
         //state.skillPoints += Math.floor(Math.pow(5, state.level));
-        state.skillPoints += Math.floor(Math.pow(1.847, state.level)); // 1000sp over 100 levels
+        //state.skillPoints += Math.floor(Math.pow(1.847, state.level)); // 1000sp over 100 levels
         //state.skillPoints += 1;
         //state.skillPoints = 5;
     }
     state.valueMax = Math.max.apply(null, state.values);
 };
 
-console.log();
-
 createValues(state);
+
+console.log(state.values);
+
 draw.back(ctx, canvas);
 draw.valuesChart(ctx, canvas, state);

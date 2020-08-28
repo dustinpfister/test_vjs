@@ -10,4 +10,4 @@ var newFilledWithChars = function (count, str) {
 
 var arr = newFilledWithChars(10, 'abc');
 
-console.log(arr.join('')); // 'abcabca'
+console.log(arr.join('')); // 'abcabcabca'

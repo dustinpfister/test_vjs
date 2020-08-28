@@ -1,6 +1,6 @@
 // starting out with an object literal, and some hard coded defaults
 var pointMod = {
-    xDeflaut: 0,
+    xDefault: 0,
     yDefault: 0
 };
 // no state object in the module, but a method to create
@@ -22,5 +22,12 @@ pointMod.move = function (point, dx, dy) {
 };
 // distance
 pointMod.distance = function (pointA, pointB) {
+	console.log(pointA);
     return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2));
 };
+
+var origin = pointMod.create(),
+a = pointMod.move(origin, 10, 5),
+b = pointMod.move(origin, 25, 17),
+d = pointMod.distance(a, b);
+console.log(d.toFixed(2)); // '19.21'

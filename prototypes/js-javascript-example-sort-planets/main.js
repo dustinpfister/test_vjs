@@ -5,12 +5,12 @@ var createPlanets = function (opt) {
         width: 320,
         height: 240
     };
-    opt.count = opt.count || 8;
+    opt.count = opt.count || 5;
     var i = 0,
     y,
     a,
     d,
-    dMax = Math.min.call(null, opt.canvas.width, opt.canvas.height),
+    dMax = Math.min.call(null, opt.canvas.width / 2, opt.canvas.height/ 2),
     planets = [];
     while (i < opt.count) {
         d = dMax / opt.count * i;
@@ -20,12 +20,30 @@ var createPlanets = function (opt) {
         planets.push({
             x: x,
             y: y,
-            r: 16,
+            r: 8,
             minerals: 0
         });
         i += 1;
     }
     return planets;
+};
+
+var draw = {};
+
+draw.back = function (ctx, canvas) {
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+
+draw.planets = function (ctx, planets) {
+    var i = planets.length,
+    pl;
+    while (i--) {
+        pl = planets[i];
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(pl.x, pl.y, pl.r, 0, Math.PI * 2);
+        ctx.fill();
+    }
 };
 
 var container = document.getElementById('canvas-app'),
@@ -41,4 +59,5 @@ var planets = createPlanets({
 
 console.log(planets);
 
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+draw.back(ctx, canvas);
+draw.planets(ctx, planets);

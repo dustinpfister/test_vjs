@@ -92,7 +92,10 @@ var planets = createPlanets({
         canvas: canvas
     });
 
-var targets = getTargets(planets, canvas.width / 2, canvas.height / 2);
+var update = function (planets, x, y) {
+    var targets = getTargets(planets, x, y);
+    draw.back(ctx, canvas);
+    draw.targets(ctx, targets);
+};
 
-draw.back(ctx, canvas);
-draw.targets(ctx, targets);
+update(planets, canvas.width / 2, canvas.height / 2);

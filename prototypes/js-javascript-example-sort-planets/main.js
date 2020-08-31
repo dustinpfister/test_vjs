@@ -1,6 +1,15 @@
 var distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
+var getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    return {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+};
 var createPlanets = function (opt) {
     opt = opt || {};
     opt.canvas = opt.canvas || {
@@ -60,6 +69,7 @@ var getTargets = function (planets, x, y) {
 var draw = {};
 
 draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
@@ -99,3 +109,8 @@ var update = function (planets, x, y) {
 };
 
 update(planets, canvas.width / 2, canvas.height / 2);
+
+canvas.addEventListener('mousedown', function (e) {
+    var pos = getCanvasRelative(e);
+    update(planets, pos.x, pos.y);
+});

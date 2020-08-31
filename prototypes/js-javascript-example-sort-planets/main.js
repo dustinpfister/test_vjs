@@ -63,15 +63,21 @@ draw.back = function (ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-draw.planets = function (ctx, planets) {
-    var i = planets.length,
+draw.targets = function (ctx, targets) {
+    var i = targets.length,
+    target,
     pl;
     while (i--) {
-        pl = planets[i];
+        target = targets[i];
+        pl = target.pl;
         ctx.fillStyle = 'white';
         ctx.beginPath();
         ctx.arc(pl.x, pl.y, pl.r, 0, Math.PI * 2);
         ctx.fill();
+        ctx.fillStyle = 'blue';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(i, pl.x, pl.y);
     }
 };
 
@@ -86,7 +92,7 @@ var planets = createPlanets({
         canvas: canvas
     });
 
-console.log(getTargets(planets, 0, 0));
+var targets = getTargets(planets, canvas.width / 2, canvas.height / 2);
 
 draw.back(ctx, canvas);
-draw.planets(ctx, planets);
+draw.targets(ctx, targets);

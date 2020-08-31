@@ -4,7 +4,7 @@ ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 container.appendChild(canvas);
-// create plantes collection
+// create planets collection
 var planets = planetMod.createPlanets({
         canvas: canvas
     });
@@ -14,7 +14,7 @@ var update = function (planets, x, y) {
     draw.back(ctx, canvas);
     draw.targets(ctx, targets);
 };
-// get a canvas realtive point
+// get a canvas relative point
 var getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();

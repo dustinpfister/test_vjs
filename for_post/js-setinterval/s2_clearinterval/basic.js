@@ -3,5 +3,5 @@ var t = setInterval(function () {
     }, 250);
 
 setTimeout(function () {
-    clearTimeout(t);
+    clearInterval(t);
 }, 3000);

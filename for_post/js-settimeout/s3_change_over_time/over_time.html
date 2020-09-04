@@ -5,33 +5,41 @@
     <body>
 <div id="out"></div>
 <script>
-
+// create a state object
 var state = {
     container: document.getElementById('out'),
+    secs: 0,
+    secsMax: 0.5,
     money: 0,
-    moneyPerSecond: 15 / 60 / 60,
+    moneyPerSecond: 0.25,
     lt: new Date()
 };
-
-var render = function(state){
-    state.container.innerHTML = '$' + state.money.toFixed(2);
+// update the state
+var update = function(state, secs){
+    state.secs = secs;
+    if(state.secs <= state.secsMax){
+        state.money += state.moneyPerSecond * state.secs;
+    }
 };
-
+// render the state
+var logToTitle = function (mess) {
+    document.title = mess;
+};
+var render = function(state){
+    var str_money = '$' + state.money.toFixed(2);
+    state.container.innerHTML = str_money + ' : ' + state.secs;
+    logToTitle(str_money);
+};
+// The App loop using setTimeout
 var loop = function (t) {
     var now = new Date(),
     t = now - state.lt,
     secs = t / 1000;
-
     setTimeout(loop, 33);
-
-    state.money += state.moneyPerSecond * secs;
- 
+    update(state, secs);
     render(state);
- 
     state.lt = now;
- 
 };
- 
 loop();
 </script>
     </body>

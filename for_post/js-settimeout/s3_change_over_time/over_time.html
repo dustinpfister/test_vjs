@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+<div id="out"></div>
+<script>
+
+var state = {
+    container: document.getElementById('out'),
+    money: 0,
+    moneyPerSecond: 15 / 60 / 60,
+    lt: new Date()
+};
+
+var render = function(state){
+    state.container.innerHTML = '$' + state.money.toFixed(2);
+};
+
+var loop = function (t) {
+    var now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
+
+    setTimeout(loop, 33);
+
+    state.money += state.moneyPerSecond * secs;
+ 
+    render(state);
+ 
+    state.lt = now;
+ 
+};
+ 
+loop();
+</script>
+    </body>
+</html>

@@ -6,30 +6,36 @@
         <div id="container">
         </div>
         <script>
+// create a string with line breaks
+var createLinesString = function (w, h, ch, EOL) {
+    var i = 0,
+    w = w || 16,
+    h = h || 9,
+    EOL = EOL || '\r\n',
+    len = w * h,
+    x,
+    y,
+    str = '';
+    while (i < len) {
+        x = i % w;
+        y = Math.floor(i / w);
+        str += ch || '.';
+        if (x === w - 1) {
+            str += EOL;
+        }
+        i += 1;
+    }
+    return str;
+};
+
 var con = document.getElementById('container'),
 pre = document.createElement('pre'),
-text;
-
-var i = 0,
-w = 16,
-h = 9,
-EOL = '\r\n',
-len = w * h,x,y,str='';
-while(i < len){
-
-    x = i % w;
-    y = Math.floor(i / w);
-    str += 'x';
-    if(x === w-1){
-        str += EOL;
-    }
-    i += 1;
-}
-
+str = createLinesString(16, 9, 'o'),
 text = document.createTextNode(str);
 
 pre.appendChild(text);
 document.body.appendChild(pre);
+
         </script>
     </body>
 </html>

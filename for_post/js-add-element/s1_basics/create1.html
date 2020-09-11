@@ -4,8 +4,11 @@
     </head>
     <body>
         <script>
-var el = document.createElement('p');
-el.appendChild(document.createTextNode('hello world'));
+// create an element
+var el = document.createElement('textarea');
+// can add values to properties
+el.value = 'Hello World';
+// then I can append it to the document
 document.body.appendChild(el);
         </script>
     </body>

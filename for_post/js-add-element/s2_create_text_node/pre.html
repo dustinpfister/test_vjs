@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>javaScript create element</title>
+    </head>
+    <body>
+        <div id="container">
+        </div>
+        <script>
+var con = document.getElementById('container'),
+pre = document.createElement('pre'),
+text;
+
+var i = 0,
+w = 16,
+h = 9,
+EOL = '\r\n',
+len = w * h,x,y,str='';
+while(i < len){
+
+    x = i % w;
+    y = Math.floor(i / w);
+    str += 'x';
+    if(x === w-1){
+        str += EOL;
+    }
+    i += 1;
+}
+
+text = document.createTextNode(str);
+
+pre.appendChild(text);
+document.body.appendChild(pre);
+        </script>
+    </body>
+</html>

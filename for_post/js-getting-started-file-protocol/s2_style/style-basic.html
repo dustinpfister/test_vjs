@@ -7,7 +7,26 @@
            <div id="child" style="position:absolute;width:32px;height:32px;background:gray;"></div>
         </div>
         <script>
-
+var render = function(child, state){
+    child.style.left = state.x + 'px';
+    child.style.top = state.y + 'px';
+    child.style.width = state.w + 'px';
+   child.style.height = state.h + 'px';
+};
+var center = function(state, container){
+   state.x = container.scrollWidth / 2 - state.w / 2;
+   state.y = container.scrollHeight / 2 - state.h / 2;
+};
+var state = {
+   x: 25,
+   y: 5,
+   w: 128,
+   h: 64
+};
+var container = document.getElementById('container');
+var child = document.getElementById('child');
+center(state, container);
+render(child, state);
         </script>
     </body>
 </html>

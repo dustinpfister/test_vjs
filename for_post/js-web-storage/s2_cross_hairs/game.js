@@ -40,11 +40,7 @@ var gameMod = (function () {
                 return Number(game.mapLevelObj.level).toString(36);
             },
             apply: function (game, partString) {
-                // set up map level from saveString part which should be a base36 level number
-                var level = parseInt(partString, 36);
-                if (level >= 1) {
-                    game.mapXP = XP.parseByLevel(level, game.mapLevelCap, game.mapDeltaNext).xp;
-                }
+                // apply nothing for map level for now
             }
         },
         skillPoints: {

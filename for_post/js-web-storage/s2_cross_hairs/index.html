@@ -5,32 +5,40 @@
     <body>
         <script src="xp.js"></script>
         <script src="game.js"></script>
-        <input id="input_total_damage" type="text">
+        total damage: <input id="input_total_damage" type="text">
         <script>
 
 
-// save string helpers
+// save a game object at slot of gameName
 var saveState = function (game, saveSlot, gameName) {
     if (!game) {
         return;
     }
     saveSlot = saveSlot === undefined ? 0 : saveSlot;
-    gameName = gameName || 'game-crosshairs-save-'
-        localStorage.setItem(gameName + saveSlot, gameMod.createSaveString(sm.game));
+    gameName = gameName || 'game-crosshairs-save-';
+    localStorage.setItem(gameName + saveSlot, gameMod.createSaveString(game));
 };
+// load a save string slot of gameName and return a gameObject
 var loadState = function (saveSlot, gameName) {
-    return localStorage.getItem(gameName + saveSlot);
+    var str = localStorage.getItem(gameName + saveSlot);
+    if(str){
+        var game = gameMod.create();
+        gameMod.applySaveString(game, str);
+        return game;
+    }
+    return false;
 };
 
 
-var game = gameMod.create();
-var saveStr = gameMod.createSaveString(game);
-console.log(saveStr);
+input_total_damage = document.getElementById('input_total_damage');
 
-var saveStr = loadState('0', 'game-crosshairs-save-');
-gameMod.applySaveString(game, saveStr);
-console.log(saveStr);
-console.log(game);
+//input_total_damage.addEventListener
+
+var game = loadState('0', 'game-crosshairs-save-');
+if(game){
+	input_total_damage.value = game.totalDamage;
+}
+
 
         </script>
     </body>

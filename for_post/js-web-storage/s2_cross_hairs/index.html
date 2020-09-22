@@ -5,17 +5,18 @@
  <body>
  <script src = "xp.js"></script>
      <script src = "game.js"></script>
-    total damage:  <input id="input_total_damage" type="text">
+    total damage:  <input id="input_total_damage" type="text"><br>
+    save string: <br><textarea id="input_save_string" cols="30" rows="10"></textarea>
      <script>
 
 // save a game object at slot of gameName
-var saveState = function (game, saveSlot, gameName) {
-    if (!game) {
+var saveStateString = function (str, saveSlot, gameName) {
+    if (!str || typeof str != 'string') {
         return;
     }
     saveSlot = saveSlot === undefined ? 0 : saveSlot;
     gameName = gameName || 'game-crosshairs-save-';
-    var str = gameMod.createSaveString(game);
+    //var str = gameMod.createSaveString(game);
     localStorage.setItem(gameName + saveSlot, str);
 };
 // load a save string slot of gameName and return a gameObject
@@ -30,12 +31,16 @@ var loadState = function (saveSlot, gameName) {
 };
 
 var game = loadState('0', 'game-crosshairs-save-'),
-input_total_damage = document.getElementById('input_total_damage');
+input_total_damage = document.getElementById('input_total_damage')
+input_save_string = document.getElementById('input_save_string');
 
 input_total_damage.addEventListener('keyup', function (e) {
     if (game) {
         game.totalDamage = e.target.value;
-        saveState(game, '0', 'game-crosshairs-save-');
+        var str = gameMod.createSaveString(game);
+        //console.log(str);
+        //saveStateString(str, '0', 'game-crosshairs-save-');
+		input_save_string.value = str;
     }
 });
 

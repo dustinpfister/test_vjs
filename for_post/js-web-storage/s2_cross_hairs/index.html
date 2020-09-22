@@ -5,18 +5,19 @@
     <body>
         <script>
 
-    // save string helpers
-    var saveState = function (game, saveSlot, gameName) {
-        if(!game){
-		   return;
-		}
-		saveSlot = saveSlot === undefined ? 0 : saveSlot;
-		gameName = gameName || 'game-crosshairs-save-'
+// save string helpers
+var saveState = function (game, saveSlot, gameName) {
+    if (!game) {
+        return;
+    }
+    saveSlot = saveSlot === undefined ? 0 : saveSlot;
+    gameName = gameName || 'game-crosshairs-save-'
         localStorage.setItem(gameName + saveSlot, gameMod.createSaveString(sm.game));
-    };
-    var loadState = function (saveSlot, gameName) {
-        return localStorage.getItem(gameName + saveSlot);
-    };
+};
+var loadState = function (saveSlot, gameName) {
+    return localStorage.getItem(gameName + saveSlot);
+};
+
         </script>
     </body>
 </html>

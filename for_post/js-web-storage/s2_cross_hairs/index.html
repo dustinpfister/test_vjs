@@ -3,7 +3,9 @@
         <title>web storage</title>
     </head>
     <body>
+        <script src="game.js"></script>
         <script>
+
 
 // save string helpers
 var saveState = function (game, saveSlot, gameName) {
@@ -18,6 +20,10 @@ var loadState = function (saveSlot, gameName) {
     return localStorage.getItem(gameName + saveSlot);
 };
 
+
+var game = gameMod.create();
+var saveStr = gameMod.createSaveString(game);
+console.log(saveStr);
         </script>
     </body>
 </html>

@@ -1,6 +1,17 @@
 
 var gameMod = (function () {
 
+    // hard coded settings
+    var hardSet = {
+        // max seconds for sec value used in updates
+        maxSecs: 0.25,
+        // deltaNext and levelCap for main game.levelObj
+        deltaNext: 5000,
+        levelCap: 1000,
+        // save string
+        saveStringVer: 'v1'
+    };
+
     var api = {};
 
     // SAVE STATES
@@ -83,12 +94,14 @@ var gameMod = (function () {
         });
     };
 
-    api.create = function () {
-
+    api.create = function (opt) {
+        opt = opt || {};
         var game = {
-
-            damage: opt.damage || 0,
-            maIndex: opt.mapIndex || 0
+            mapLevelObj: {
+                level: 1
+            },
+            totalDamage: opt.damage || 0,
+            maIndex: opt.mapIndex || 0,
             skills: opt.skills || {
                 weapon_0: {
                     points: 0

@@ -44,8 +44,6 @@ var gameMod = (function () {
                 var level = parseInt(partString, 36);
                 if (level >= 1) {
                     game.mapXP = XP.parseByLevel(level, game.mapLevelCap, game.mapDeltaNext).xp;
-                    //setMap(game, game.mapXP, game.mapDeltaNext, game.mapLevelCap, game.startingCellDamage);
-                    console.log('applying map level: ' + level);
                 }
             }
         },
@@ -59,7 +57,6 @@ var gameMod = (function () {
                 return str;
             },
             apply: function (game, partString) {
-                //resetSkills(game);
                 if (partString) {
                     var match = partString.match(/\w+/g);
                     if (match) {
@@ -70,7 +67,6 @@ var gameMod = (function () {
                         });
                     }
                 }
-                //setFreeFromSkills(game);
             }
         },
     };

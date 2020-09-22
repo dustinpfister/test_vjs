@@ -27,7 +27,10 @@ setMessHandler = function(e){
 };
 text.addEventListener('change', setMessHandler);
 text.addEventListener('keyup', setMessHandler);
-text.value = ws.get('mess');
+var storeText = ws.get('mess');
+if(storeText != ''){
+   text.value = storeText;
+}
         </script>
     </body>
 </html>

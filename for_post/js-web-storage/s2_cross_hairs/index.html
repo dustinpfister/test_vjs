@@ -15,7 +15,9 @@ var saveState = function (game, saveSlot, gameName) {
     }
     saveSlot = saveSlot === undefined ? 0 : saveSlot;
     gameName = gameName || 'game-crosshairs-save-';
-    localStorage.setItem(gameName + saveSlot, gameMod.createSaveString(game));
+	var str = gameMod.createSaveString(game);
+	console.log(str);
+    localStorage.setItem(gameName + saveSlot, 'v1.4sdq3.1.0-0-0-1.');
 };
 // load a save string slot of gameName and return a gameObject
 var loadState = function (saveSlot, gameName) {
@@ -33,6 +35,7 @@ input_total_damage = document.getElementById('input_total_damage');
 
 input_total_damage.addEventListener('keyup', function (e) {
     if (game) {
+        game.totalDamage = e.target.value;
         saveState(game, '0', 'game-crosshairs-save-');
     }
 });

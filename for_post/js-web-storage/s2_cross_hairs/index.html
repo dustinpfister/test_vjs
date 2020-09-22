@@ -3,7 +3,9 @@
         <title>web storage</title>
     </head>
     <body>
+        <script src="xp.js"></script>
         <script src="game.js"></script>
+        <input id="input_total_damage" type="text">
         <script>
 
 
@@ -24,6 +26,12 @@ var loadState = function (saveSlot, gameName) {
 var game = gameMod.create();
 var saveStr = gameMod.createSaveString(game);
 console.log(saveStr);
+
+var saveStr = loadState('0', 'game-crosshairs-save-');
+gameMod.applySaveString(game, saveStr);
+console.log(saveStr);
+console.log(game);
+
         </script>
     </body>
 </html>

@@ -6,7 +6,8 @@
  <script src = "xp.js"></script>
      <script src = "game.js"></script>
     total damage:  <input id="input_total_damage" type="text"><br>
-    save string: <br><textarea id="input_save_string" cols="30" rows="10"></textarea>
+    save string: <br><textarea id="input_save_string" cols="30" rows="10"></textarea><br>
+    <input id="input_save" type="button" value="save"><br>
      <script>
 
 // save a game object at slot of gameName
@@ -46,6 +47,11 @@ input_save_string.addEventListener('change', function (e) {
     gameMod.applySaveString(game, e.target.value);
     input_total_damage.value = game.totalDamage;
 });
+input_save.addEventListener('click', function (e) {
+    var str = gameMod.createSaveString(game);
+    console.log('save string: ' + str);
+    saveStateString(str, '0', 'game-crosshairs-save-');
+})
 
 if (game) {
     input_total_damage.value = game.totalDamage;

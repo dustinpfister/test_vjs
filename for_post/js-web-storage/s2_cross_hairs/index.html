@@ -34,18 +34,28 @@ var game = loadState('0', 'game-crosshairs-save-'),
 input_total_damage = document.getElementById('input_total_damage')
 input_save_string = document.getElementById('input_save_string');
 
+var render = function(){
+    var str = gameMod.createSaveString(game);
+    input_total_damage.value = game.totalDamage;
+    input_save_string.value = str;
+};
+
+
 input_total_damage.addEventListener('keyup', function (e) {
     if (game) {
         game.totalDamage = e.target.value;
-        var str = gameMod.createSaveString(game);
-        //console.log(str);
-        //saveStateString(str, '0', 'game-crosshairs-save-');
-		input_save_string.value = str;
+        render();
     }
+});
+
+input_save_string.addEventListener('keyup', function (e) {
+    gameMod.applySaveString(game, e.target.value);
+    render();
 });
 
 if (game) {
     input_total_damage.value = game.totalDamage;
+	render();
 }
 
  </script>

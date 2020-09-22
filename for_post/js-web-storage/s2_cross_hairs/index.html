@@ -15,9 +15,8 @@ var saveState = function (game, saveSlot, gameName) {
     }
     saveSlot = saveSlot === undefined ? 0 : saveSlot;
     gameName = gameName || 'game-crosshairs-save-';
-	var str = gameMod.createSaveString(game);
-	console.log(str);
-    localStorage.setItem(gameName + saveSlot, 'v1.4sdq3.1.0-0-0-1.');
+    var str = gameMod.createSaveString(game);
+    localStorage.setItem(gameName + saveSlot, str);
 };
 // load a save string slot of gameName and return a gameObject
 var loadState = function (saveSlot, gameName) {

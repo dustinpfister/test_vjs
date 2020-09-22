@@ -114,15 +114,6 @@ var gameMod = (function () {
                 },
                 weapon_3: {
                     points: 0
-                },
-                weapon_4: {
-                    points: 0
-                },
-                weapon_5: {
-                    points: 0
-                },
-                weapon_6: {
-                    points: 0
                 }
             }
         };

@@ -48,7 +48,6 @@ var round = (function () {
 console.log(round(-1.5) + 0); // -2
 console.log(round(-1.5, 0, Math.round) + 0); // -1
 
-
 console.log(round(-2.465, 2) + 0); // -2.47
 console.log(round(-2.465, 2, Math.round) + 0); // -2.46
 

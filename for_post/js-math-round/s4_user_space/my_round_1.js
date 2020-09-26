@@ -18,16 +18,17 @@ var round = (function () {
     };
     // precision rounding
     var roundPre = function (number, precision, roundMethod) {
-        precision = precision === undefined ? 0 : precision;
-        roundMethod = roundMethod === undefined ? roundNeg : roundMethod;
         return shift(roundMethod(shift(number, +precision)), -precision);
     };
     // how to format a number
-    var format = function (n) {
+    var format1 = function (n) {
         return String(n);
     };
     // public method
-    return function (n, precision, roundMethod) {
+    return function (n, precision, roundMethod, format) {
+        precision = precision === undefined ? 0 : precision;
+        roundMethod = roundMethod === undefined ? roundNeg : roundMethod;
+        format = format === undefined ? format1 : format;
         var n = roundPre(n, precision, roundMethod);
         return {
             n: n,

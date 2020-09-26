@@ -1,0 +1,1 @@
+console.log( Math.round(-0.5) ); // -0

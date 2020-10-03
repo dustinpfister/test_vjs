@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>JS Array filter</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="foo1">one</div>
+            <div id="foo2">2</div>
+            <div id="foo3">3</div>
+            <div id="foo4">four</div>
+        </div>
+        <script>
+var container = document.getElementById('container'),
+divs = container.children;
+Array.prototype.filter.call(divs, function (el, i) {
+    return String(parseInt(el.innerText)) != 'NaN';
+}).forEach(function (el) {
+    var n = parseInt(el.innerText);
+    el.innerText = n + ' : ' + Math.pow(n, 2);
+});
+        </script>
+    </body>
+</html>

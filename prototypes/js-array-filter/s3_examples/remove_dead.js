@@ -1,3 +1,4 @@
+// remove dead function
 var removeDead = function (pool, onDead) {
     onDead = onDead || function () {};
     var dead = [];
@@ -15,7 +16,7 @@ var removeDead = function (pool, onDead) {
     });
     return clean;
 };
-
+// DEMO
 var ships = [{
         hp: 0
     }, {
@@ -27,11 +28,9 @@ var ships = [{
     }
 ];
 var score = 0;
-
 ships = removeDead(ships, function (ship) {
         score += 1;
     });
-
 console.log(ships);
 // [ { hp: 10 }, { hp: 7 } ]
 console.log(score);

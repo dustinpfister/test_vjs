@@ -1,5 +1,5 @@
 var obj = {
-    mess: 'foo'
+    mess: 'foobar'
 };
 
 Object.defineProperty(obj, 'foo', {
@@ -9,4 +9,4 @@ Object.defineProperty(obj, 'foo', {
 });
 
 console.log(obj.foo);
-// '(foo)'
+// 'foobar'

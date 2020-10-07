@@ -1,5 +1,4 @@
 var Point = function (x, y) {
-
     if (!(this instanceof Point)) {
         return new Point(x, y);
     }

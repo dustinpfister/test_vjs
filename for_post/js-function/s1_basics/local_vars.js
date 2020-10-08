@@ -4,9 +4,7 @@ var func = function (x, y) {
     c = Math.sqrt(a * b);
     return Math.round(c);
 };
-
 var d = func(2, 5);
-
 console.log(d); // 15
 try {
     console.log(x);

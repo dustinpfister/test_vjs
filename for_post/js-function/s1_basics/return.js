@@ -2,4 +2,4 @@ var func = function () {
     return 'Hello World';
 };
 
-console.log( func() );
+console.log( func() ); // 'Hello World'

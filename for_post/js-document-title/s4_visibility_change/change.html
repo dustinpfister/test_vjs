@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>active</title>
+  </head>
+  <body>
+    <script>
+document.addEventListener("visibilitychange", function() {
+  if (document.visibilityState === 'visible') {
+    document.title = 'Active'
+  } else {
+    document.title = 'Not Active'
+  }
+});
+    </script>
+  </body>
+</html>

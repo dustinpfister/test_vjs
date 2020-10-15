@@ -6,12 +6,16 @@
     <script>
 var lt = new Date(),
 mess = 'Hello World ',
-i = 3;
+i = 0;
 var loop = function () {
     var now = new Date(),
-    t = now - lt;
-    setTimeout(loop, 33);
-    document.title = mess.substr(i, 4);
+    t = now - lt,
+    sec = t / 1000;
+    setTimeout(loop, 100);
+    document.title = mess.substr(Math.floor(i), 4);
+    i += sec;
+    i %= mess.length - 1;
+    lt = now;
 };
  
 loop();

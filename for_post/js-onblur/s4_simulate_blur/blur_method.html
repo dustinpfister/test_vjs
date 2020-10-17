@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>blur method example</title>
+    </head>
+    <body>
+        <input type="text"></input>
+        <input type="text"></input>
+        <input type="text"></input>
+        <script>
+var input = document.getElementsByTagName('input');
+var i = 2;
+// set focus to input 2
+input[i].focus();
+setTimeout(function(){
+    // blur it
+    input[i].blur();
+}, 3000);
+        </script>
+    </body>
+</html>

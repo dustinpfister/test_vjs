@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+var updateTitle = function(e){
+    document.title = document.visibilityState;
+};
+document.addEventListener("visibilitychange", updateTitle);
+updateTitle();
+        </script>
+    </body>
+</html>

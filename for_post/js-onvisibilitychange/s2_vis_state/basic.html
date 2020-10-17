@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+var updateTitle = function(e){
+    document.title = document.visibilityState;
+};
+updateTitle();
+setInterval(updateTitle, 100);
+        </script>
+    </body>
+</html>

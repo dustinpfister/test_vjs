@@ -1,14 +1,35 @@
 <html>
     <head>
-        <title></title>
+        <title>Basic Money Game</title>
     </head>
     <body>
+        <p id="disp"></p>
         <script>
-var updateTitle = function(e){
-    document.title = document.visibilityState;
+ 
+var state = {
+    money : 0,
+    moneyPerSecond : 1,
+    lt : new Date()
 };
-updateTitle();
-setInterval(updateTitle, 100);
+ 
+var moneyStr = function(state){
+   return state.money.toFixed(2) + '$'
+};
+ 
+var update = function(e){
+    var now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
+    if(document.visibilityState === 'visible'){
+        document.title = 'Basic Money Game';
+        document.getElementById('disp').innerText = moneyStr(state);
+    }else{
+        document.title = moneyStr(state);
+    }
+    state.money += state.moneyPerSecond * secs;
+    state.lt = now;
+};
+setInterval(update, 100);
         </script>
     </body>
 </html>

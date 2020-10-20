@@ -1,11 +1,12 @@
 var process = function (str) {
     if (str === 'bar') {
         console.log('foobar');
+    } else {
+        throw {
+            message: 'must give bar',
+            name: 'NoBarError'
+        };
     }
-    throw {
-        message: 'must give bar',
-        name: 'NoBarError'
-    };
 };
 
 try {

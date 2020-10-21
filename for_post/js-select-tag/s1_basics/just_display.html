@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>javaScript select tag</title>
+    </head>
+    <body>
+        <span>Option: </span><span id="disp"></span><br><br>
+        <select id="selections">
+            <option>One</option>
+            <option>Two</option>
+            <option>Three</option>
+        </select>
+        <script>
+// get references to select tag, and disp span
+var select = document.getElementById('selections'),
+disp = document.getElementById('disp');
+// setDisp method
+var setDisp = function (e) {
+  disp.innerText = select.value;
+};
+// call setDisp on every change event for the select tag
+select.addEventListener('change', setDisp);
+// call setDisp once for starters
+setDisp();
+        </script>
+    </body>
+</html>

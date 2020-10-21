@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>javaScript select tag</title>
+    </head>
+    <body>
+        <span>Option: </span><span id="disp"></span><br><br>
+        <select id="selections">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3" selected>Three</option>
+        </select>
+        <script>
+var select = document.getElementById('selections'),
+disp = document.getElementById('disp');
+var setDisp = function (e) {
+  disp.innerText = select.value;
+};
+select.addEventListener('change', setDisp);
+setDisp();
+        </script>
+    </body>
+</html>

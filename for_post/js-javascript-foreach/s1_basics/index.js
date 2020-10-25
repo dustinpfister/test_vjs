@@ -12,15 +12,7 @@ values.forEach((num, i, val) => {
 });
 
 console.log(points);
-
-
-
-/*
-let a = [2, 5, 10],
-b = [];
-a.forEach((n, i) => {
-b.push( Math.pow(n, i) );
-});
-console.log(b); // [1, 5, 100]
-)
-*/
+// [ { x: 0, y: 240 },
+//   { x: 80, y: 0 },
+//   { x: 160, y: 90 },
+//   { x: 240, y: 165 } ]

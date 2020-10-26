@@ -24,10 +24,3 @@ fizz.createFizzBuzzArray = function (len) {
     }
     return arr;
 };
-
-var arr = fizz.createFizzBuzzArray(100);
-var html = arr.map(function (result) {
-    return '<p>' + result.i + ' : ' + result.output + '<\/p>';
-}).join('');
-
-console.log(html);

@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>fizzbuzz</title>
+    </head>
+    <body>
+        <div id="results"></div>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="fizz.js"></script>
+        <script>
+var arr = fizz.createFizzBuzzArray(100);
+var html = arr.map(function (result) {
+    return '<p>' + result.i + ' : ' + result.output + '<\/p>';
+}).join('');
+document.getElementById('results').innerHTML = html;
+        </script>
+    </body>
+</html>

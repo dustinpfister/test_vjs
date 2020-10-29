@@ -14,13 +14,15 @@ read(filePath)
     return Promise.resolve(obj);
 })
 .catch((e) => {
-    console.warn(e.message);
-    console.log(e.code);
-    return Promise.resolve({
-        count: 0
-    });
+    if (e.code === 'ENOENT') {
+        return Promise.resolve({
+            count: 0
+        });
+    }
+    return Promise.reject(e);
 })
 .then((obj) => {
+    obj.count += 1;
     console.log('count: ' + obj.count);
     return write(filePath, JSON.stringify(obj));
 })
@@ -29,4 +31,5 @@ read(filePath)
 })
 .catch((e) => {
     console.warn(e.message);
-})
+    console.log(e.code);
+});

@@ -14,13 +14,19 @@ read(filePath)
     return Promise.resolve(obj);
 })
 .catch((e) => {
-    console.log(e.message);
+    console.warn(e.message);
+    console.log(e.code);
     return Promise.resolve({
         count: 0
     });
 })
 .then((obj) => {
-
     console.log('count: ' + obj.count);
-
-});
+    return write(filePath, JSON.stringify(obj));
+})
+.then(() => {
+    console.log('updated json file at: ' + filePath);
+})
+.catch((e) => {
+    console.warn(e.message);
+})

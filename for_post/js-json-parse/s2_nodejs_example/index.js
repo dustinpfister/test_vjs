@@ -30,6 +30,6 @@ read(filePath)
     console.log('updated json file at: ' + filePath);
 })
 .catch((e) => {
-    console.warn(e.message);
+    console.warn(e);
     console.log(e.code);
 });

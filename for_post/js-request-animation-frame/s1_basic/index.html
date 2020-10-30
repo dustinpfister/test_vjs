@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>request animation frame</title>
+    </head>
+    <body>
+        <div id="thediv" style="position:fixed;width:32px;height:32px;background:red;top:0px;"></div>
+        <script>
+var lt = new Date(),
+div = document.getElementById('thediv'),
+x = 0, pps = 128;
+// loop function
+var loop = function(now){
+    var t = secs = (now - lt) / 1000;
+    if(secs > 0){
+        x += pps * secs;
+        x %= window.innerWidth;
+    }
+    div.style.left =  Math.floor(x) + 'px';
+    // calling loop function with requestAnimationFrame
+    requestAnimationFrame(loop);
+    lt = now;
+};
+loop();
+        </script>
+    </body>
+</html>

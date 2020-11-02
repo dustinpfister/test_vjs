@@ -1,6 +1,6 @@
 
 var getDayDiff1 = function (d1, d2) {
-    return ((d1 - d2) / 1000 / 60 / 60 / 24);
+    return ((d2 - d1) / 1000 / 60 / 60 / 24);
 };
 
 var d1 = new Date(2020, 0, 30),

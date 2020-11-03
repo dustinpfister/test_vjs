@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>js fetch</title>
+    </head>
+    <body>
+        <textarea id = "out" cols="100" rows="15"></textarea>
+        <script>
+let out = document.getElementById('out');
+fetch('https://dustinpfister.github.io/2018/03/27/js-fetch/')
+.then(response => {
+    return response.text();
+}).then((text) => {
+    out.value = text;
+}).catch((e)=>{
+    out.value = e.messgae;
+});
+        </script>
+    </body>
+</html>

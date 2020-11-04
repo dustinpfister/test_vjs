@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>ononload example</title>
+    </head>
+    <body>
+        <div id="out" style="width:320px;height:240px;background:black;"><div>
+        <script>
+
+var firstClick = true;
+document.getElementById('out').addEventListener('click', function(){
+    if(firstClick){
+        window.addEventListener('beforeunload', function (e) {
+            var str = 'Sorry to see you go';
+            (e || window.event).returnValue = str;
+            return str;
+        });
+    }
+    firstClick = false;
+});
+
+        </script>
+    </body>
+</html>

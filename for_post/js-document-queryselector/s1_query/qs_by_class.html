@@ -8,9 +8,15 @@
         <span class="foo">three</span>
         <p id="out"></p>
         <script>
-var foos = document.querySelectorAll('.foo');
- 
-console.log(foos[1].innerText); // two
+var foos = document.querySelectorAll('.foo'),
+out = document.querySelector('#out')
+
+// query selector all returns a NodeList
+// while query selector returns an element
+console.log( foos.constructor.name ); // 'NodeList'
+console.log( out.constructor.name ); // 'HTMLParagraphElement'
+
+out.innerText =  foos[1].innerText; // two
  
         
         </script>

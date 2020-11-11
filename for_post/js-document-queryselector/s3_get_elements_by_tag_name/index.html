@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Get By Tag Name</title>
+  </head>
+  <body>
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+    <script>
+ 
+    var html = document.getElementsByTagName('div');
+    console.log(html.constructor.name); // 'HTMLCollection'
+    console.log( html[0].innerText ); // 'one'
+ 
+    </script>
+  </body>
+</html>

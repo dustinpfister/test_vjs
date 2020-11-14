@@ -1,16 +1,10 @@
-// The Boolean Constructor can be used
-// to create A Boolean value from a value such
-// as the number 0
-console.log(Boolean(0)); // false
+var mess = function (happy) {
+    if (!happy) {
+        return 'I am Not Happy'
+    }
+    return 'I am Happy';
+};
 
-// The JS Not (!) operator can also be used to
-// convert a number to a Boolean but it will also
-// negate the truth value
-let b = !0;
-console.log(typeof b); // boolean
-console.log(b); // true
-
-// Double JS Not (!!) can fix this
-let c = !!0;
-console.log(typeof b); // boolean
-console.log(b); // false
+console.log(mess()); // 'I am NOT Happy'
+console.log(mess(false)); // 'I am NOT Happy'
+console.log(mess(true)); // 'I am Happy'

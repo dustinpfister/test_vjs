@@ -23,16 +23,21 @@ let gridMod = (function () {
         }
     };
 
-    api.get = (grid, xi, y) => {
-        if (arguments.length < 1) {
-            return [];
-        }
-        if (arguments.length === 1) {
+    api.get = function (grid, xi, y) {
+        if (arguments.length === 2) {
             return grid.cells[xi];
-        } else
+        }
+        if (arguments.length === 3) {
             return grid.cells[y * grid.w + xi];
-    }
-};
+        }
+        return arguments.length
+    };
+
+    return api;
 
 }
-());
+    ());
+
+let grid = gridMod(3, 3);
+gridMod.get(grid, 3).type = 'grass'
+console.log(grid);

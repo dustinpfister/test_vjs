@@ -23,14 +23,26 @@ let gridMod = (function () {
         }
     };
 
-    api.get = function (grid, xi, y) {
+    api.get = function (grid, a, b) {
+        // if two arguments (grid, a)
         if (arguments.length === 2) {
-            return grid.cells[xi];
+            // if number get by index (grid, index)
+            if (typeof arguments[1] === 'number') {
+                return grid.cells[arguments[1]];
+            }
+            // if string get by type (gird, type)
+            if (typeof arguments[1] === 'string') {
+                let str = arguments[1];
+                return grid.cells.filter(function (cell) {
+                    return cell.type === str;
+                });
+            }
         }
+        // if three arguments
         if (arguments.length === 3) {
-            return grid.cells[y * grid.w + xi];
+            return grid.cells[b * grid.w + a];
         }
-        return arguments.length
+        return false;
     };
 
     return api;
@@ -39,5 +51,7 @@ let gridMod = (function () {
     ());
 
 let grid = gridMod(3, 3);
-gridMod.get(grid, 3).type = 'grass'
+gridMod.get(grid, 3).type = 'grass';
+gridMod.get(grid, 2, 1).type = 'grass';
 console.log(grid);
+console.log(gridMod.get(grid, 'grass'));

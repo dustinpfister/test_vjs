@@ -54,4 +54,26 @@ let grid = gridMod(3, 3);
 gridMod.get(grid, 3).type = 'grass';
 gridMod.get(grid, 2, 1).type = 'grass';
 console.log(grid);
+/*
+{
+    cells:[ 
+        { i: 0, type: 'empty', x: 0, y: 0 },
+        { i: 1, type: 'empty', x: 1, y: 0 },
+        { i: 2, type: 'empty', x: 2, y: 0 },
+        { i: 3, type: 'grass', x: 0, y: 1 },
+        { i: 4, type: 'empty', x: 1, y: 1 },
+        { i: 5, type: 'grass', x: 2, y: 1 },
+        { i: 6, type: 'empty', x: 0, y: 2 },
+        { i: 7, type: 'empty', x: 1, y: 2 },
+        { i: 8, type: 'empty', x: 2, y: 2 }
+    ],
+    w: 3
+}
+*/
 console.log(gridMod.get(grid, 'grass'));
+/*
+[
+    { i: 3, type: 'grass', x: 0, y: 1 },
+    { i: 5, type: 'grass', x: 2, y: 1 }
+]
+*/

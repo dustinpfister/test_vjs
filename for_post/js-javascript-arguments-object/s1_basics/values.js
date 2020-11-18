@@ -1,4 +1,4 @@
-let sum = function (a, b) {
+let sum = function () {
     let sum = 0,
     i = 0,
     len = arguments.length;

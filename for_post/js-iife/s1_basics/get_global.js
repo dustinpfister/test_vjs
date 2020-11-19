@@ -1,4 +1,4 @@
-// global variable
+// global variable 
 var global = 40;
 (function () {
     // local variable n

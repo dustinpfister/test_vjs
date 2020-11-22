@@ -3,6 +3,10 @@ var Percent = (function () {
 
     // main api function
     var api = function(n, d, methodKey, args){
+        n = n === undefined ? 0 : n;
+        d = d === undefined ? 100 : d;
+        methodKey = methodKey === undefined ? 'basePer' : methodKey;
+        args = args === undefined ? [] : args;
         return api[methodKey].apply(null, [n,d].concat(args));
     };
 

@@ -10,7 +10,7 @@ var Percent = (function () {
         return api[methodKey].apply(null, [n,d].concat(args));
     };
 
-    // basic percent function
+    // base percent function
     api.basePer = function(n, d){
         return n / d;
     };
@@ -21,12 +21,19 @@ var Percent = (function () {
         return 1 - Math.abs(per - 0.5) / 0.5;
     };
 
+    api.log1 = function(n, d){
+        var per = api.basePer(n, d);
+        return Math.log(1 + per) / Math.log(2);
+    };
+
     return api;
 }
     ());
 
 var per = Percent(1, 5, 'basePer', []),
-bias = Percent(3, 5, 'bias', []);
+bias = Percent(3, 5, 'bias', []),
+log1 = Percent(5, 5, 'log1', []);
 
 console.log( per ); // 0.2
 console.log( bias ); // 0.2
+console.log( log1 ); // 0.2

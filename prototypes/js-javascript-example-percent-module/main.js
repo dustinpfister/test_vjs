@@ -15,13 +15,20 @@
         }
         return {
             points: points,
+            x: sx,
+            y: sy,
             w: w,
             h: h,
             d: d
         };
     };
 
-    var drawGraph = function () {};
+    var drawGraph = function (ctx, graph) {
+
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(graph.x, graph.y, graph.w, graph.h);
+
+    };
 
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),
@@ -34,9 +41,11 @@
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    var points = createPerGraph(32, 32, 100, 100, Percent.basePer);
+    var basePerGraph = createPerGraph(32, 32, 100, 100, Percent.basePer);
 
-    console.log(points);
+    console.log(basePerGraph);
+
+    drawGraph(ctx, basePerGraph);
 
 }
     ());

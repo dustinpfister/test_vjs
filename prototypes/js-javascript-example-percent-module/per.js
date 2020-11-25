@@ -35,11 +35,3 @@ var Percent = (function () {
     return api;
 }
     ());
-
-var per = Percent(1, 5, 'basePer', []),
-bias = Percent(3, 5, 'bias', []),
-log1 = Percent(7, 5, 'log1', []);
-
-console.log( per ); // 0.2
-console.log( bias ); // 0.2
-console.log( log1 ); // 0.2

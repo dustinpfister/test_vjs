@@ -8,8 +8,8 @@
         while (n < d) {
             points.push({
                 n: n,
-                x: sx + w / d * n,
-                y: sy + h - h * perMethod(n, d)
+                x: Math.floor(sx + n / ( d - 1 ) * w),
+                y: Math.floor(sy + h - h * perMethod(n, d))
             });
             n += 1;
         }

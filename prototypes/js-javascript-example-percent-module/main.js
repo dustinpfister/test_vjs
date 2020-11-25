@@ -5,7 +5,7 @@
         var d = 10,
         points = [],
         n = 0;
-        while (n < len) {
+        while (n < d) {
             points.push({
                 n: n,
                 x: sx + w / d * n,
@@ -13,6 +13,7 @@
             });
             n += 1;
         }
+        return points;
     };
 
     var canvas = document.createElement('canvas'),
@@ -25,6 +26,10 @@
 
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    var points = createPerGraph(32, 32, 100, 100, Percent.basePer);
+
+    console.log(points);
 
 }
     ());

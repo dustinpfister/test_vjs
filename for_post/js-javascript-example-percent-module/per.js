@@ -47,19 +47,21 @@ var Percent = (function () {
         return clamp(per);
     };
 
-    var trig = function (n, d, method, invert) {
+    // Trig helper method
+    var trig = function (n, d, method, waves, invert) {
+        waves = waves === undefined ? 1 : waves;
+        invert = invert === undefined ? false : true;
         var per = api.basePer(n, d),
-        a = Math.PI * 2 * per,
+        a = Math.PI * 2 * per / (1 / waves),
         cos = (Math[method](a) * 0.5 + 0.5);
         return invert ? cos : 1 - cos;
     };
-
-    api.cos = function (n, d, invert) {
-        return trig(n, d, 'cos', invert);
+    // cos, and sin method
+    api.cos = function (n, d, waves, invert) {
+        return trig(n, d, 'cos', waves, invert);
     };
-
-    api.sin = function (n, d, invert) {
-        return trig(n, d, 'sin', invert);
+    api.sin = function (n, d, waves, invert) {
+        return trig(n, d, 'sin', waves, invert);
     };
 
     return api;

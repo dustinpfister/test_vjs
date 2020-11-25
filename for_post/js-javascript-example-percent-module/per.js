@@ -48,20 +48,21 @@ var Percent = (function () {
     };
 
     // Trig helper method
-    var trig = function (n, d, method, waves, invert) {
+    var trig = function (n, d, method, waves, radianOffset, invert) {
         waves = waves === undefined ? 1 : waves;
+        radianOffset = radianOffset === undefined ? 0 : radianOffset;
         invert = invert === undefined ? false : true;
         var per = api.basePer(n, d),
-        a = Math.PI * 2 * per / (1 / waves),
+        a = Math.PI * 2 * per / (1 / waves) + radianOffset,
         cos = (Math[method](a) * 0.5 + 0.5);
         return invert ? cos : 1 - cos;
     };
     // cos, and sin method
-    api.cos = function (n, d, waves, invert) {
-        return trig(n, d, 'cos', waves, invert);
+    api.cos = function (n, d, waves, radianOffset, invert) {
+        return trig(n, d, 'cos', waves, radianOffset, invert);
     };
-    api.sin = function (n, d, waves, invert) {
-        return trig(n, d, 'sin', waves, invert);
+    api.sin = function (n, d, waves, radianOffset, invert) {
+        return trig(n, d, 'sin', waves, radianOffset, invert);
     };
 
     return api;

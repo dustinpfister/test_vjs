@@ -44,6 +44,12 @@ var Percent = (function () {
         per = basePer + range * logPer;
         return clamp(per);
     };
+    // 'log3' percent method that takes a value a that has an interetsing effect on the curve
+    api.log3 = function (n, d, a) {
+        a = a === undefined ? 10 : a;
+        var per = api.basePer(n, d);
+        return clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per));
+    };
     // MATH.COS AND MATH.SIN
     // Trig helper method
     var trig = function (n, d, method, waves, radianOffset, invert) {
@@ -54,7 +60,7 @@ var Percent = (function () {
         var per = api.basePer(n, d),
         a = Math.PI * 2 * per / (1 / waves) + radianOffset,
         cos = (Math[method](a) * 0.5 + 0.5);
-        return invert ? cos : 1 - cos ;
+        return invert ? cos : 1 - cos;
     };
     // cos, and sin method
     api.cos = function (n, d, waves, radianOffset, invert) {

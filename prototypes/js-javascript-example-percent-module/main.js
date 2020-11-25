@@ -5,10 +5,10 @@
         var d = 10,
         points = [],
         n = 0;
-        while (n < d) {
+        while (n <= d) {
             points.push({
                 n: n,
-                x: Math.floor(sx + n / (d - 1) * w),
+                x: Math.floor(sx + w  / d  * n),
                 y: Math.floor(sy + h - h * perMethod(n, d))
             });
             n += 1;
@@ -24,10 +24,18 @@
     };
 
     var drawGraph = function (ctx, graph) {
-
         ctx.fillStyle = 'gray';
         ctx.fillRect(graph.x, graph.y, graph.w, graph.h);
-
+        ctx.beginPath();
+        graph.points.forEach(function (point) {
+            if (point.n === 0) {
+                ctx.moveTo(point.x, point.y);
+            } else {
+                ctx.lineTo(point.x, point.y);
+            }
+        });
+        ctx.strokeStyle = 'red';
+        ctx.stroke();
     };
 
     var canvas = document.createElement('canvas'),

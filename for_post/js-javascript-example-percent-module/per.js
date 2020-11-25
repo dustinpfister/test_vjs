@@ -27,9 +27,15 @@ var Percent = (function () {
         return 1 - Math.abs(per - 0.5) / 0.5;
     };
 
+    // 'log1' percent method that uses Math.log 
     api.log1 = function(n, d){
         var per = api.basePer(n, d);
         return Math.log(1 + per) / Math.log(2);
+    };
+
+    api.log2 = function(n, d){
+        var per = api.log1(n, d);
+        return 0.25 +  0.5 * per;
     };
 
     return api;

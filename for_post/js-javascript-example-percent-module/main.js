@@ -57,7 +57,7 @@
     // create and draw some graphs
     var gSize = 120,
     graphs = {};
-    ['basePer', 'bias', 'log1'].forEach(function(perName, i){
+    ['basePer', 'bias', 'log1', 'log2'].forEach(function(perName, i){
         graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10, gSize, gSize, Percent[perName]);
         drawGraph(ctx, graphs[perName]);
     });

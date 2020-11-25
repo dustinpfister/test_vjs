@@ -22,11 +22,11 @@ var XP = (function () {
     };
      */
 
-    var getXPForLevel = function (level, cap) {
-        return Percent.log3(10000, 100000) * 100;
-    };
+    //var getXPForLevel = function (level, cap) {
+    //    return Percent.log3(10000, 100000) * 100;
+    //};
 
-    console.log(getXPForLevel())
+    //console.log(getXPForLevel())
 
     var parseByXP = function (xp, cap) {
         xp = xp === undefined ? DEFAULTS.xp : xp;

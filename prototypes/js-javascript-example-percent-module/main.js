@@ -8,13 +8,20 @@
         while (n < d) {
             points.push({
                 n: n,
-                x: Math.floor(sx + n / ( d - 1 ) * w),
+                x: Math.floor(sx + n / (d - 1) * w),
                 y: Math.floor(sy + h - h * perMethod(n, d))
             });
             n += 1;
         }
-        return points;
+        return {
+            points: points,
+            w: w,
+            h: h,
+            d: d
+        };
     };
+
+    var drawGraph = function () {};
 
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),

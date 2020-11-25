@@ -2,7 +2,7 @@
 (function () {
 
     var createPerGraph = function (sx, sy, w, h, perMethod) {
-        var d = 30,
+        var d = 40,
         points = [],
         n = 0;
         while (n <= d) {

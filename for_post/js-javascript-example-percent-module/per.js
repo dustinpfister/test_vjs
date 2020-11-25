@@ -47,11 +47,19 @@ var Percent = (function () {
         return clamp(per);
     };
 
-    api.cos = function (n, d, invert) {
+    var trig = function (n, d, method, invert) {
         var per = api.basePer(n, d),
         a = Math.PI * 2 * per,
-        cos = (Math.cos(a) * 0.5 + 0.5);
+        cos = (Math[method](a) * 0.5 + 0.5);
         return invert ? cos : 1 - cos;
+    };
+
+    api.cos = function (n, d, invert) {
+        return trig(n, d, 'cos', invert);
+    };
+
+    api.sin = function (n, d, invert) {
+        return trig(n, d, 'sin', invert);
     };
 
     return api;

@@ -34,3 +34,7 @@ var createtable = function(){
 
 var table = createtable();
 console.log(table);
+
+var parseByXp = function(xp, table){
+
+};

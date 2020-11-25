@@ -10,27 +10,31 @@ var Percent = (function () {
         return api[methodKey].apply(null, [n,d].concat(args));
     };
 
-    // base percent function
-    api.basePer = function(n, d){
-        if(n >= d){
+    var clamp = function(per){
+        if(per > 1){
             return 1;
         }
-        if(n < 0){
+        if(per < 0){
             return 0;
         }
-        return n / d;
+        return per;
+    };
+
+    // base percent function
+    api.basePer = function(n, d){
+        return clamp( n / d );
     };
 
     // 'bias' percent function
     api.bias = function(n, d){
         var per = api.basePer(n, d);
-        return 1 - Math.abs(per - 0.5) / 0.5;
+        return clamp( 1 - Math.abs(per - 0.5) / 0.5 );
     };
 
     // 'log1' percent method that uses Math.log 
     api.log1 = function(n, d){
         var per = api.basePer(n, d);
-        return Math.log(1 + per) / Math.log(2);
+        return clamp( Math.log(1 + per) / Math.log(2) );
     };
 
     api.log2 = function(n, d, basePer, maxPer){
@@ -39,7 +43,7 @@ var Percent = (function () {
         var logPer = api.log1(n, d),
         range = maxPer - basePer,
         per = basePer + range * logPer;
-        return per;
+        return clamp( per );
     };
 
     return api;

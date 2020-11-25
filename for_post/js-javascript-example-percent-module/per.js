@@ -49,13 +49,14 @@ var Percent = (function () {
 
     // Trig helper method
     var trig = function (n, d, method, waves, radianOffset, invert) {
+        method = method === undefined ? 'cos' : method;
         waves = waves === undefined ? 1 : waves;
         radianOffset = radianOffset === undefined ? 0 : radianOffset;
         invert = invert === undefined ? false : true;
         var per = api.basePer(n, d),
         a = Math.PI * 2 * per / (1 / waves) + radianOffset,
         cos = (Math[method](a) * 0.5 + 0.5);
-        return invert ? cos : 1 - cos;
+        return invert ? cos : 1 - cos ;
     };
     // cos, and sin method
     api.cos = function (n, d, waves, radianOffset, invert) {
@@ -63,6 +64,10 @@ var Percent = (function () {
     };
     api.sin = function (n, d, waves, radianOffset, invert) {
         return trig(n, d, 'sin', waves, radianOffset, invert);
+    };
+    api.waves = function (n, d, waves, radianOffset, invert, method) {
+        waves = waves === undefined ? 5 : waves;
+        return trig(n, d, method, waves, radianOffset, invert);
     };
 
     return api;

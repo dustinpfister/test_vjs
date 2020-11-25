@@ -61,7 +61,7 @@
         graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10, gSize, gSize, Percent[perName]);
         drawGraph(ctx, graphs[perName]);
     });
-    ['cos', 'sin'].forEach(function(perName, i){
+    ['cos', 'sin', 'waves'].forEach(function(perName, i){
         graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10 + gSize + 10, gSize, gSize, Percent[perName]);
         drawGraph(ctx, graphs[perName]);
     });

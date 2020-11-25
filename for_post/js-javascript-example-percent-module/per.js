@@ -37,6 +37,7 @@ var Percent = (function () {
         return clamp( Math.log(1 + per) / Math.log(2) );
     };
 
+    // 'log2' percent method that uses Math.log with a range between a base and max per 
     api.log2 = function(n, d, basePer, maxPer){
         basePer = basePer === undefined ? 0.25 : basePer;
         maxPer = maxPer === undefined ? 0.75 : maxPer;
@@ -45,6 +46,8 @@ var Percent = (function () {
         per = basePer + range * logPer;
         return clamp( per );
     };
+
+    
 
     return api;
 }

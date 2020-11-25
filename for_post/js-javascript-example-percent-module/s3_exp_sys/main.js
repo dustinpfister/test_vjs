@@ -6,7 +6,7 @@ levelCap = 100;
 
 var parseByXp = function(xp){
     xp = xp === undefined ? 0 : xp; //23.102118,
-    var l = 1 + Percent.log3(xp, xpCap, 10, 0, 1) * levelCap
+    var l = Percent.log3(xp, xpCap, 10, 0, 1) * levelCap
     return {
         xp: xp,
         l: l,
@@ -15,3 +15,7 @@ var parseByXp = function(xp){
 };
 
 console.log( parseByXp(23.102118) );
+
+// can not figure out parse by level
+
+// parseByLevel(1)

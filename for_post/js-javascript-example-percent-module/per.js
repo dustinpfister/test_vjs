@@ -33,9 +33,13 @@ var Percent = (function () {
         return Math.log(1 + per) / Math.log(2);
     };
 
-    api.log2 = function(n, d){
-        var per = api.log1(n, d);
-        return 0.25 +  0.5 * per;
+    api.log2 = function(n, d, basePer, maxPer){
+        basePer = basePer === undefined ? 0.25 : basePer;
+        maxPer = maxPer === undefined ? 0.75 : maxPer;
+        var logPer = api.log1(n, d),
+        range = maxPer - basePer,
+        per = basePer + range * logPer;
+        return per;
     };
 
     return api;

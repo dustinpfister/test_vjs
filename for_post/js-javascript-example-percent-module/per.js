@@ -9,7 +9,7 @@ var Percent = (function () {
         args = args === undefined ? [] : args;
         return api[methodKey].apply(null, [n, d].concat(args));
     };
-
+    // CLAMP
     var clamp = function (per) {
         if (per > 1) {
             return 1;
@@ -19,24 +19,22 @@ var Percent = (function () {
         }
         return per;
     };
-
+    // BASICS
     // base percent function
     api.basePer = function (n, d) {
         return clamp(n / d);
     };
-
     // 'bias' percent function
     api.bias = function (n, d) {
         var per = api.basePer(n, d);
         return clamp(1 - Math.abs(per - 0.5) / 0.5);
     };
-
+    // MATH.LOG
     // 'log1' percent method that uses Math.log
     api.log1 = function (n, d) {
         var per = api.basePer(n, d);
         return clamp(Math.log(1 + per) / Math.log(2));
     };
-
     // 'log2' percent method that uses Math.log with a range between a base and max per
     api.log2 = function (n, d, basePer, maxPer) {
         basePer = basePer === undefined ? 0.25 : basePer;
@@ -46,7 +44,7 @@ var Percent = (function () {
         per = basePer + range * logPer;
         return clamp(per);
     };
-
+    // MATH.COS AND MATH.SIN
     // Trig helper method
     var trig = function (n, d, method, waves, radianOffset, invert) {
         method = method === undefined ? 'cos' : method;
@@ -69,7 +67,7 @@ var Percent = (function () {
         waves = waves === undefined ? 5 : waves;
         return trig(n, d, method, waves, radianOffset, invert);
     };
-
+    // return public API
     return api;
 }
     ());

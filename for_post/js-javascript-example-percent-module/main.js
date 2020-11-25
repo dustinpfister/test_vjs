@@ -49,15 +49,13 @@
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    var gSize = 50;
-    
-    var basePerGraph = createPerGraph(10 + (gSize + 10) * 0, 10, gSize, gSize, Percent.basePer);
-    var biasPerGraph = createPerGraph(10 + (gSize + 10) * 1, 10, gSize, gSize, Percent.bias);
-    var log1Graph = createPerGraph(10 + (gSize + 10) * 2, 10, gSize, gSize, Percent.log1);
-
-    drawGraph(ctx, basePerGraph);
-    drawGraph(ctx, biasPerGraph);
-    drawGraph(ctx, log1Graph);
+    // create and draw some graphs
+    var gSize = 50,
+    graphs = {};
+    ['basePer', 'bias', 'log1'].forEach(function(perName, i){
+        graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10, gSize, gSize, Percent[perName]);
+        drawGraph(ctx, graphs[perName]);
+    });
 
 }
     ());

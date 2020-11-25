@@ -47,7 +47,10 @@ var Percent = (function () {
         return clamp( per );
     };
 
-    
+    api.cos = function(n, d){
+        var per = api.basePer(n, d);
+        return Math.cos(Math.PI * 2 * per) / (Math.PI)
+    };
 
     return api;
 }

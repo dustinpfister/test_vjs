@@ -61,7 +61,7 @@
         graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10, gSize, gSize, Percent[perName]);
         drawGraph(ctx, graphs[perName]);
     });
-    ['log2'].forEach(function(perName, i){
+    ['cos'].forEach(function(perName, i){
         graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10 + gSize + 10, gSize, gSize, Percent[perName]);
         drawGraph(ctx, graphs[perName]);
     });

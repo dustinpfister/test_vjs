@@ -49,9 +49,11 @@
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    var basePerGraph = createPerGraph(32, 10, 100, 100, Percent.basePer);
-    var biasPerGraph = createPerGraph(150, 10, 100, 100, Percent.bias);
-    var log1Graph = createPerGraph(32, 120, 100, 100, Percent.log1);
+    var gSize = 50;
+    
+    var basePerGraph = createPerGraph(10 + (gSize + 10) * 0, 10, gSize, gSize, Percent.basePer);
+    var biasPerGraph = createPerGraph(10 + (gSize + 10) * 1, 10, gSize, gSize, Percent.bias);
+    var log1Graph = createPerGraph(10 + (gSize + 10) * 2, 10, gSize, gSize, Percent.log1);
 
     drawGraph(ctx, basePerGraph);
     drawGraph(ctx, biasPerGraph);

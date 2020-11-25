@@ -44,11 +44,15 @@ var Percent = (function () {
         per = basePer + range * logPer;
         return clamp(per);
     };
-    // 'log3' percent method that takes a value a that has an interetsing effect on the curve
-    api.log3 = function (n, d, a) {
-        a = a === undefined ? 10 : a;
-        var per = api.basePer(n, d);
-        return clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per));
+    // 'log3' percent method that takes a value a that has an interesting effect on the curve
+    api.log3 = function (n, d, a, basePer, maxPer) {
+        basePer = basePer === undefined ? 0.10 : basePer;
+        maxPer = maxPer === undefined ? 1 : maxPer;
+        a = a === undefined ? 12 : a;
+        var per = api.basePer(n, d),
+        per2 = clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
+        range = maxPer - basePer;
+        return clamp( basePer + range * per2 );
     };
     // MATH.COS AND MATH.SIN
     // Trig helper method

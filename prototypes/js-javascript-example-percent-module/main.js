@@ -8,7 +8,7 @@
         while (n <= d) {
             points.push({
                 n: n,
-                x: Math.floor(sx + w  / d  * n),
+                x: Math.floor(sx + w / d * n),
                 y: Math.floor(sy + h - h * perMethod(n, d))
             });
             n += 1;
@@ -49,11 +49,13 @@
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    var basePerGraph = createPerGraph(32, 32, 100, 100, Percent.basePer);
-
-    console.log(basePerGraph);
+    var basePerGraph = createPerGraph(32, 10, 100, 100, Percent.basePer);
+    var biasPerGraph = createPerGraph(150, 10, 100, 100, Percent.bias);
+    var log1Graph = createPerGraph(32, 120, 100, 100, Percent.log1);
 
     drawGraph(ctx, basePerGraph);
+    drawGraph(ctx, biasPerGraph);
+    drawGraph(ctx, log1Graph);
 
 }
     ());

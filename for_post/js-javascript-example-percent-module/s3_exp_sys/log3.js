@@ -19,30 +19,27 @@ var log3 = (function () {
         }
     };
     return {
-        getPer : function(n, d, a, basePer, maxPer){
-/*
-            basePer = basePer === undefined ? 0.10 : basePer;
-            maxPer = maxPer === undefined ? 1 : maxPer;
+        getPer : function(n, d, a){
             a = a === undefined ? 12 : a;
-            var per = basic.getPer(n, d),
-            per2 = clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
-            range = maxPer - basePer;
-            return clamp( basePer + range * per2 );
-*/
-            return basic.getPer(n, d);
+            var per = basic.getPer(n, d);
+            //return clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per));
+            return Math.log(1 + per) / Math.log(2);
+
         },
-        getN : function(per, d){
-            return basic.getN(per, d);
+        getN : function(per, d, a){
+            // close
+            //return Math.pow(1 + per, 2) * 2;
+            var basicN = basic.getN(per, d)
+            return Math.pow(basicN/d, 1);
         }
     };
 }
     ());
 
-// test
+// test - the result of getN should equal the original value of n
 var n = 5,
 d = 10,
 per = log3.getPer(n, d),
 n2 = log3.getN(per, d);
-
 console.log( 'n=' + n, 'd=' + d, 'per=' + per, 'n2=' + n2);
-console.log( 'n == n2 : ' + (n === n2) );
+console.log( 'n == n2 : ' + (n === n2) ); // should be true

@@ -1,3 +1,4 @@
 # js-javascript-example-percent-module
 
-* work out an experence point system based on log3 if possible, or some other percent method if need be
+* (done) work out getN method for log1 in log1.js for exp sys folder
+* work out getN method for log3 in log3.js for exp sys folder

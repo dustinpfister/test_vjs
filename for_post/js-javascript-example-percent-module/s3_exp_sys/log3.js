@@ -18,18 +18,13 @@ var log3 = (function () {
             return per * d;
         }
     };
+    // PUBLIC API
     return {
-        getPer : function(n, d, a){
-            a = a === undefined ? 12 : a;
-            var per = basic.getPer(n, d);
-            //return clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per));
-            return Math.log(1 + per) / Math.log(2);
+        getPer : function(n, d){
+            return Math.log(1 + basic.getPer(n, d)) / Math.log(2);
 
         },
-        getN : function(per, d, a){
-            // close
-            //return Math.pow(1 + per, 2) * 2;
-            var basicN = basic.getN(per, d)
+        getN : function(per, d){
             return Math.round((Math.pow(2, 1 + per) / 2 - 1) * d);
         }
     };
@@ -40,8 +35,6 @@ var log3 = (function () {
 var testForN = function(n, d){
     var per = log3.getPer(n, d),
     n2 = log3.getN(per, d);
-    //console.log( 'n=' + n, 'd=' + d, 'per=' + per, 'n2=' + n2);
-    //console.log( n ,'n == n2 : ' + (n === n2) ); // should be true
     return n === n2;
 };
 

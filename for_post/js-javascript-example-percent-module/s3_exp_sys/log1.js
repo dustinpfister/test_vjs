@@ -33,8 +33,8 @@ var log1 = (function () {
 
 // test - the result of getN should equal the original value of n
 var testForN = function(n, d){
-    var per = log3.getPer(n, d),
-    n2 = log3.getN(per, d);
+    var per = log1.getPer(n, d),
+    n2 = log1.getN(per, d);
     return n === n2;
 };
 

@@ -1,4 +1,4 @@
-var log3 = (function () {
+var log1 = (function () {
     // CLAMP
     var clamp = function (per) {
         if (per > 1) {
@@ -18,6 +18,7 @@ var log3 = (function () {
             return per * d;
         }
     };
+    // PUBLIC API
     return {
         getPer : function(n, d){
             return Math.log(1 + basic.getPer(n, d)) / Math.log(2);

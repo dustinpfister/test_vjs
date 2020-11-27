@@ -21,18 +21,18 @@ var Percent = (function () {
     };
     // BASICS
     // base percent function
-    api.basePer = function (n, d) {
+    api.basicPer = function (n, d) {
         return clamp(n / d);
     };
     // 'bias' percent function
     api.bias = function (n, d) {
-        var per = api.basePer(n, d);
+        var per = api.basicPer(n, d);
         return clamp(1 - Math.abs(per - 0.5) / 0.5);
     };
     // MATH.LOG
     // 'log1' percent method that uses Math.log
     api.log1 = function (n, d) {
-        var per = api.basePer(n, d);
+        var per = api.basicPer(n, d);
         return clamp(Math.log(1 + per) / Math.log(2));
     };
     // 'log2' percent method that uses Math.log with a range between a base and max per
@@ -49,7 +49,7 @@ var Percent = (function () {
         basePer = basePer === undefined ? 0.10 : basePer;
         maxPer = maxPer === undefined ? 1 : maxPer;
         a = a === undefined ? 12 : a;
-        var per = api.basePer(n, d),
+        var per = api.basicPer(n, d),
         //per2 = clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
         per2 = clamp(Math.log(1 + per) / Math.log(2 + a)),
         range = maxPer - basePer;
@@ -59,7 +59,7 @@ var Percent = (function () {
         basePer = basePer === undefined ? 0.10 : basePer;
         maxPer = maxPer === undefined ? 1 : maxPer;
         a = a === undefined ? 12 : a;
-        var per = api.basePer(n, d);
+        var per = api.basicPer(n, d);
         return {
             basicPer: per,
             per: clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
@@ -77,7 +77,7 @@ var Percent = (function () {
         waves = waves === undefined ? 1 : waves;
         radianOffset = radianOffset === undefined ? 0 : radianOffset;
         invert = invert === undefined ? false : true;
-        var per = api.basePer(n, d),
+        var per = api.basicPer(n, d),
         a = Math.PI * 2 * per / (1 / waves) + radianOffset,
         cos = (Math[method](a) * 0.5 + 0.5);
         return invert ? cos : 1 - cos;

@@ -22,18 +22,23 @@ var log3 = (function () {
     return {
         getPer: function (n, d, a) {
             a = a === undefined ? 12 : a;
-            //return Math.log(1 + basic.getPer(n, d)) / Math.log(2);
             var per = basic.getPer(n, d);
-            return clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per))
+            // log1 return Math.log(1 + basic.getPer(n, d)) / Math.log(2);
+            // log3 return clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per))
+
+           return Math.log(1 + basic.getPer(n, d)) / Math.log(2 + a);
 
         },
         getN: function (per, d, a) {
             a = a === undefined ? 12 : a;
+
+            return Math.round((Math.pow(2 + a, 1 + per) / (2 + a) - 1) * d);
+
             //return Math.round((Math.pow(2, 1 + per) / 2 - 1) * d);
             // not working
             //return return Math.round((Math.pow(2, 1 + per) / Math.log(a - (a - 2) * per) - 1) * d);
-            var base = a - (a - 2) * per;
-            return (Math.pow(2, 1 + per) / 2 - 1) * d;
+            //var base = a - (a - 2) * per;
+            //return (Math.pow(2, 1 + per) / 2 - 1) * d;
         }
     };
 }
@@ -47,6 +52,8 @@ var testForN = function (n, d) {
     console.log(n, n2, n === n2);
     return result;
 };
+
+testForN(0, 10);
 
 var n = 0,
 d = 10,

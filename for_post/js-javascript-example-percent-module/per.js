@@ -48,7 +48,7 @@ var Percent = (function () {
     // 'log1' percent method that uses Math.log
     api.log1 = function (n, d) {
         var per = api.basicPer(n, d);
-        return clamp(Math.log(1 + per) / Math.log(2));
+        return createPerObject(arguments, clamp(Math.log(1 + per) / Math.log(2)) );
     };
     // 'log2' percent method that uses Math.log with a range between a base and max per
     api.log2 = function (n, d, basePer, maxPer) {
@@ -57,7 +57,7 @@ var Percent = (function () {
         var logPer = api.log1(n, d),
         range = maxPer - basePer,
         per = basePer + range * logPer;
-        return clamp(per);
+        return createPerObject(arguments, clamp(per) );
     };
     // 'log3' percent method that takes a value a that has an interesting effect on the curve
     api.log3 = function (n, d, a, basePer, maxPer) {
@@ -65,20 +65,17 @@ var Percent = (function () {
         maxPer = maxPer === undefined ? 1 : maxPer;
         a = a === undefined ? 12 : a;
         var per = api.basicPer(n, d),
-        //per2 = clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
         per2 = clamp(Math.log(1 + per) / Math.log(2 + a)),
         range = maxPer - basePer;
-        return clamp( basePer + range * per2 );
-        //return createPerObject(n, d, basePer + range * per2 );
+        return createPerObject(arguments, clamp(basePer + range * per2) );
     };
+    // log4
     api.log4 = function (n, d, a, basePer, maxPer) {
         basePer = basePer === undefined ? 0.10 : basePer;
         maxPer = maxPer === undefined ? 1 : maxPer;
         a = a === undefined ? 12 : a;
         var per = api.basicPer(n, d);
-
         return createPerObject(arguments, clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)));
-
     };
     // MATH.COS AND MATH.SIN
     // Trig helper method

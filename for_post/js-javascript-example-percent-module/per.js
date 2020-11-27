@@ -50,8 +50,8 @@ var Percent = (function () {
         maxPer = maxPer === undefined ? 1 : maxPer;
         a = a === undefined ? 12 : a;
         var per = api.basePer(n, d),
-        per2 = clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
-        //per2 = clamp(Math.log(1 + per) / Math.log(2 + a)),
+        //per2 = clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
+        per2 = clamp(Math.log(1 + per) / Math.log(2 + a)),
         range = maxPer - basePer;
         return clamp( basePer + range * per2 );
     };

@@ -23,22 +23,24 @@ var log3 = (function () {
         getPer: function (n, d, a) {
             a = a === undefined ? 12 : a;
             var per = basic.getPer(n, d);
-            // log1 return Math.log(1 + basic.getPer(n, d)) / Math.log(2);
-            // log3 return clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per))
 
-           return Math.log(1 + basic.getPer(n, d)) / Math.log(2 + a);
+            // new log3 where we just add a
+            return Math.log(1 + per) / Math.log(2 + a);
+
+            // old log3 where we use per with a
+            //return clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per));
 
         },
         getN: function (per, d, a) {
             a = a === undefined ? 12 : a;
+;
+            // new log3 where we just add a
             var base = 2 + a;
             return Math.round((Math.pow(base, 1 + per) / base - 1) * d);
 
-            //return Math.round((Math.pow(2, 1 + per) / 2 - 1) * d);
-            // not working
-            //return return Math.round((Math.pow(2, 1 + per) / Math.log(a - (a - 2) * per) - 1) * d);
-            //var base = a - (a - 2) * per;
-            //return (Math.pow(2, 1 + per) / 2 - 1) * d;
+            // old log3 where we use per with a
+            //var base = Math.pow(Math.E, a - (a - 2) * per);
+            //return Math.round((Math.pow(base, 1 + per) / base - 1) * d);
         }
     };
 }
@@ -53,7 +55,7 @@ var testForN = function (n, d) {
     return result;
 };
 
-testForN(0, 10);
+testForN(5, 10);
 
 var n = 0,
 d = 10,

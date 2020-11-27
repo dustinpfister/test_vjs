@@ -27,6 +27,7 @@ var Percent = (function () {
             per: per,
             n: args[0],
             d: args[1],
+            args: [].slice.call(args, 2, args.length),
             valueOf : function(){
                 return this.per;
             }

@@ -26,8 +26,8 @@ var log4 = (function () {
             return {
                 basePer: per,
                 per: clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
-                n,
-                d,
+                n: n,
+                d: d,
                 valueOf : function(){
                     return this.per;
                 }

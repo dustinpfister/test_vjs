@@ -19,6 +19,20 @@ var Percent = (function () {
         }
         return per;
     };
+
+    // createPerObject helper
+    var createPerObject = function(args, per){
+        return {
+            basicPer: api.basicPer(args[0], args[1]),
+            per: per,
+            n: args[0],
+            d: args[1],
+            valueOf : function(){
+                return this.per;
+            }
+        };
+    }
+
     // BASICS
     // base percent function
     api.basicPer = function (n, d) {
@@ -54,21 +68,16 @@ var Percent = (function () {
         per2 = clamp(Math.log(1 + per) / Math.log(2 + a)),
         range = maxPer - basePer;
         return clamp( basePer + range * per2 );
+        //return createPerObject(n, d, basePer + range * per2 );
     };
     api.log4 = function (n, d, a, basePer, maxPer) {
         basePer = basePer === undefined ? 0.10 : basePer;
         maxPer = maxPer === undefined ? 1 : maxPer;
         a = a === undefined ? 12 : a;
         var per = api.basicPer(n, d);
-        return {
-            basicPer: per,
-            per: clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
-            n,
-            d,
-            valueOf : function(){
-                return this.per;
-            }
-        };
+
+        return createPerObject(arguments, clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)));
+
     };
     // MATH.COS AND MATH.SIN
     // Trig helper method

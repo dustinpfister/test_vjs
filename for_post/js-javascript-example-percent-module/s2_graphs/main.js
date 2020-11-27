@@ -61,8 +61,12 @@
         graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10, gSize, gSize, Percent[perName]);
         drawGraph(ctx, graphs[perName]);
     });
-    ['log3', 'cos', 'sin', 'waves'].forEach(function(perName, i){
+    ['log3', 'log4'].forEach(function(perName, i){
         graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10 + gSize + 10, gSize, gSize, Percent[perName]);
+        drawGraph(ctx, graphs[perName]);
+    });
+    ['cos', 'sin', 'waves'].forEach(function(perName, i){
+        graphs[perName] = createPerGraph(10 + (gSize + 10) * i, 10 + (gSize + 10) * 2, gSize, gSize, Percent[perName]);
         drawGraph(ctx, graphs[perName]);
     });
 

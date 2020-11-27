@@ -37,12 +37,12 @@ var Percent = (function () {
     // BASICS
     // base percent function
     api.basicPer = function (n, d) {
-        return clamp(n / d);
+        return arguments, clamp(n / d);
     };
     // 'bias' percent function
     api.bias = function (n, d) {
         var per = api.basicPer(n, d);
-        return clamp(1 - Math.abs(per - 0.5) / 0.5);
+        return createPerObject(arguments, clamp(1 - Math.abs(per - 0.5) / 0.5) );
     };
     // MATH.LOG
     // 'log1' percent method that uses Math.log

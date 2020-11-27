@@ -31,8 +31,8 @@ var log3 = (function () {
         },
         getN: function (per, d, a) {
             a = a === undefined ? 12 : a;
-
-            return Math.round((Math.pow(2 + a, 1 + per) / (2 + a) - 1) * d);
+            var base = 2 + a;
+            return Math.round((Math.pow(base, 1 + per) / base - 1) * d);
 
             //return Math.round((Math.pow(2, 1 + per) / 2 - 1) * d);
             // not working

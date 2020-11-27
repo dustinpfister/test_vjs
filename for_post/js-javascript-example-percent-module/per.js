@@ -91,14 +91,14 @@ var Percent = (function () {
     };
     // cos, and sin method
     api.cos = function (n, d, waves, radianOffset, invert) {
-        return trig(n, d, 'cos', waves, radianOffset, invert);
+        return createPerObject(arguments, trig(n, d, 'cos', waves, radianOffset, invert));
     };
     api.sin = function (n, d, waves, radianOffset, invert) {
-        return trig(n, d, 'sin', waves, radianOffset, invert);
+        return createPerObject(arguments, trig(n, d, 'sin', waves, radianOffset, invert));
     };
     api.waves = function (n, d, waves, radianOffset, invert, method) {
         waves = waves === undefined ? 5 : waves;
-        return trig(n, d, method, waves, radianOffset, invert);
+        return createPerObject(arguments, trig(n, d, method, waves, radianOffset, invert));
     };
     // return public API
     return api;

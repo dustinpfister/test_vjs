@@ -35,9 +35,13 @@ var log1 = (function () {
 var testForN = function(n, d){
     var per = log1.getPer(n, d),
     n2 = log1.getN(per, d);
+    console.log(n, n2, n === n2);
     return n === n2;
 };
 
+testForN(5, 10);
+
+/*
 var n = 0,
 d = 1000,
 result,
@@ -51,3 +55,4 @@ while(n <= d){
     n += 1
 }
 console.log('passed? :' + pass);
+*/

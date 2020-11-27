@@ -55,6 +55,21 @@ var Percent = (function () {
         range = maxPer - basePer;
         return clamp( basePer + range * per2 );
     };
+    api.log4 = function (n, d, a, basePer, maxPer) {
+        basePer = basePer === undefined ? 0.10 : basePer;
+        maxPer = maxPer === undefined ? 1 : maxPer;
+        a = a === undefined ? 12 : a;
+        var per = api.basePer(n, d);
+        return {
+            basicPer: per,
+            per: clamp(Math.log(1 + per) / Math.log(a - (a - 2) * per)),
+            n,
+            d,
+            valueOf : function(){
+                return this.per;
+            }
+        };
+    };
     // MATH.COS AND MATH.SIN
     // Trig helper method
     var trig = function (n, d, method, waves, radianOffset, invert) {

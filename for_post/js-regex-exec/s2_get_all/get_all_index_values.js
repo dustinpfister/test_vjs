@@ -1,18 +1,18 @@
 var getIndexValues = function (str, regex) {
-    var r = new RegExp(regex),
-    m,
-    arr = [];
-    if (r.global) {
-        while (m = r.exec(str)) {
-            arr.push(m);
+    var patt = new RegExp(regex), // creating a new regEx Object from the given one
+    match,  // to hold a current match result
+    matchArray = []; // the array of matches
+    if (patt.global) {
+        while (match = patt.exec(str)) {
+            matchArray.push(match);
         }
     } else {
-        m = r.exec(str);
-        if (m) {
-            arr.push(m);
+        match = patt.exec(str);
+        if (match) {
+            matchArray.push(match);
         }
     }
-    return arr;
+    return matchArray;
 };
 
 var formated = function (str, regex) {

@@ -3,9 +3,11 @@
         <title>javaScript get style example</title>
     </head>
     <body>
-        <h1 style="color:red">Red Header</h1>
+        <h1 id="header" style="color:red"></h1>
         <script>
-console.log(document.getElementsByTagName('h1')[0].style.color); // red
+var el = document.getElementById('header');
+color = el.style.color;
+el.innerText = 'This header is: ' + color;
         </script>
     </body>
 </html>

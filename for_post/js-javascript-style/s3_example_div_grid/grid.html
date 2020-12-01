@@ -3,9 +3,14 @@
         <title>javaScript style API example</title>
         <style>
 #div-grid{
+  position: absolute;
   width:640px;
   height:240px;
   background:gray;
+}
+.grid-div{
+  position: absolute;
+  background: black;
 }
         </style>
     </head>
@@ -13,8 +18,35 @@
         <div id="div-grid">
         </div>
         <script>
-var el_grid = document.getElementById('div-grid');
-console.log(el_grid.scrollWidth);
+var el_grid = document.getElementById('div-grid'),
+gridDivCountWidth = 32,
+gridDivCountHeight = 12,
+// use scrollWidth and scrollHeight to get the pixel size
+divWidth = el_grid.scrollWidth / gridDivCountWidth,
+divHeight = el_grid.scrollHeight / gridDivCountHeight,
+x = 0, y = 0,
+g,
+div;
+while(y < gridDivCountHeight){
+  x = 0;
+  while(x < gridDivCountWidth){
+    // create a div
+    div = document.createElement('div');
+    div.className = 'grid-div';
+    div.style.width = divWidth + 'px';
+    div.style.height = divHeight + 'px';
+    div.style.left = (divWidth * x) + 'px';
+    div.style.top = (divHeight * y) + 'px';
+    // set random green color for each div
+    g = Math.floor(128 + 128 * Math.random());
+    div.style.backgroundColor = 'rgba(0,' + g + ',0,1)';
+    // append to the el_grid container
+    el_grid.appendChild(div);
+    x += 1;
+  }
+  y += 1;
+}
+
         </script>
     </body>
 </html>

@@ -5,11 +5,8 @@
     <body>
         <canvas id="the-canvas" width="320" height="240"></canvas>
         <script>
-// Get the canvas and 2d context
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
-// fill black
 ctx.fillStyle='black';
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
@@ -20,20 +17,23 @@ var drawCircle = function(ctx, x, y, r, style){
     ctx.stroke();
 };
 
-// attach a touch start event for the canvas
-canvas.addEventListener('touchstart', function(e){
-    // prevent any default action for touch events
+var pointerDown = function(e){
     e.preventDefault();
-    // get the canvas relative rather than window relative
-    // position of the first touch by making use of the
-    // getBoundingClientRect method and the changedTouches array of
-    // the touch event
     var bx = e.target.getBoundingClientRect(),
-    x = e.changedTouches[0].clientX,
-    y = e.changedTouches[0].clientY;
-    // draw a circle centered there
-    drawCircle(ctx, x, y, 15, 'red');
-});
+    x = e.clientX,
+    y = e.clientY,
+    color = 'lime';
+    if(e.changedTouches){
+        x = e.changedTouches[0].clientX,
+        y = e.changedTouches[0].clientY;
+        color = 'red'
+    }
+    drawCircle(ctx, x, y, 15, color);
+};
+
+canvas.addEventListener('touchstart', pointerDown);
+canvas.addEventListener('mousedown', pointerDown);
+
         </script>
     </body>
 </html>

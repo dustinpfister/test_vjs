@@ -16,18 +16,22 @@ var drawCircle = function(ctx, x, y, r, style){
     ctx.arc(x,y,r,0,Math.PI*2);
     ctx.stroke();
 };
-
+// pointer down event that will work with Touch AND Mouse events
 var pointerDown = function(e){
     e.preventDefault();
     var bx = e.target.getBoundingClientRect(),
+    // assuming mouse to begin with
     x = e.clientX,
     y = e.clientY,
     color = 'lime';
+    // checking for touch
     if(e.changedTouches){
         x = e.changedTouches[0].clientX,
         y = e.changedTouches[0].clientY;
         color = 'red'
     }
+    // adjust to make values relative to target element
+    // to which this hander is attached to rather than window
     x -= bx.left;
     y -= bx.top;
     drawCircle(ctx, x, y, 15, color);

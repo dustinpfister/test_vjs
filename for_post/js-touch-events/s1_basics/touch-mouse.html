@@ -3,7 +3,7 @@
         <title>touch events example</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <canvas id="the-canvas" width="320" height="240" style="margin:100px;"></canvas>
         <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
@@ -28,6 +28,8 @@ var pointerDown = function(e){
         y = e.changedTouches[0].clientY;
         color = 'red'
     }
+    x -= bx.left;
+    y -= bx.top;
     drawCircle(ctx, x, y, 15, color);
 };
 

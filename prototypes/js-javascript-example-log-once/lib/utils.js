@@ -13,3 +13,16 @@ utils.createLogOnce = function (callBack) {
         }
     };
 };
+
+utils.isBrowser = function () {
+    try {
+        return this === window;
+    } catch (e) {
+        return false;
+    }
+};
+
+// if nodejs, export utils
+if (!utils.isBrowser()) {
+    module.exports = utils;
+}

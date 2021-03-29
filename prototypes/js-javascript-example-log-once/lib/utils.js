@@ -14,13 +14,15 @@ utils.createLogOnce = function (callBack) {
     };
 };
 
-utils.isBrowser = function () {
-    try {
-        return this === window;
-    } catch (e) {
-        return false;
-    }
-};
+utils.isBrowser = (function(global){
+    return function () {
+        try {
+            return global === window;
+        } catch (e) {
+            return false;
+        }
+    };
+}(this));
 
 // if nodejs, export utils
 if (!utils.isBrowser()) {

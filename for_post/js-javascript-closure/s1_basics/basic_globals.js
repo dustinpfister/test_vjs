@@ -1,6 +1,6 @@
 
-var x = 0,
-y = 0;
+var x = 15,
+y = 5;
 
 var movePoint = function(dx, dy) {
     return {

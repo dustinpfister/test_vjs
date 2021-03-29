@@ -8,7 +8,5 @@ var point = function (x, y) {
 };
 
 var pt = point(15,5);
-
 console.log( pt(-5,5) ); // { x: 10, y: 10 }
-console.log( pt(32,90) ); // { x: 42, y: 100 }
 

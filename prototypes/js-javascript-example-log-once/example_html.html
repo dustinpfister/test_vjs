@@ -5,7 +5,11 @@
     <body>
         <script src="./lib/utils.js"></script>
         <script>
-utils.log(utils.isBrowser()); // true
+var i = 10,
+logOnce = utils.createLogOnce();
+while(i--){
+    logOnce('i=' + i);
+}
         </script>
     </body>
 </html>

@@ -9,16 +9,16 @@
     <script>
 var pageLang = document.documentElement.lang;
 
-var currancy = pageLang === 'en-US' ? 'USD' : 'EUR';
+var currency = pageLang === 'en-US' ? 'USD' : 'EUR';
 
 var formatter = new Intl.NumberFormat(pageLang, {
         style: 'currency',
-        currency: currancy
+        currency: currency
 });
 
 
 document.getElementById('disp-lang').innerText = pageLang;
-document.getElementById('disp-cur').innerText = currancy;
+document.getElementById('disp-cur').innerText = currency;
 document.getElementById('disp-money').innerText = formatter.format(1234.56);
 
     </script>

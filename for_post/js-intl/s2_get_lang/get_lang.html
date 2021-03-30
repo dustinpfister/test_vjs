@@ -1,0 +1,26 @@
+<html lang="en-US">
+  <html>
+    <title>Get Lang</title>
+  </html>
+  <body>
+    <div> Page lang is: <span id="disp-lang"></span></div>
+    <div> Using currency: <span id="disp-cur"></span></div>
+    <div> Using currency: <span id="disp-money"></span></div>
+    <script>
+var pageLang = document.documentElement.lang;
+
+var currancy = pageLang === 'en-US' ? 'USD' : 'EUR';
+
+var formatter = new Intl.NumberFormat(pageLang, {
+        style: 'currency',
+        currency: currancy
+});
+
+
+document.getElementById('disp-lang').innerText = pageLang;
+document.getElementById('disp-cur').innerText = currancy;
+document.getElementById('disp-money').innerText = formatter.format(1234.56);
+
+    </script>
+  </body>
+</html>

@@ -20,3 +20,5 @@ let trap = createLogOnce();
 
 trap('okay'); // 'okay' logged to the console
 trap('nope'); // (nothing)
+trap('nope'); // (nothing)
+trap('nope'); // (nothing)

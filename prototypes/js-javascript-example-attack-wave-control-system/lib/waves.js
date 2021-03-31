@@ -5,7 +5,7 @@ var waveMod = (function () {
     // spawn an update methods
     var spawn = function (obj, pool, sm, opt) {
         obj.heading = Math.PI * 1.5;
-        obj.pps = 4;
+        obj.pps = 32; //4;
         obj.h = 128;
         obj.lifespan = Infinity;
     };
@@ -13,6 +13,9 @@ var waveMod = (function () {
     var update = function (obj, pool, sm, secs) {
 
         poolMod.moveByPPS(obj, secs);
+        if (obj.y <= 0) {
+            obj.active = false;
+        }
 
     };
 

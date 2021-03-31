@@ -1,13 +1,14 @@
 var waveMod = (function () {
 
-    var BUTTON_HEIGHT = 64;
+    var BUTTON_HEIGHT = 128,
+    BUTTON_BASE_PPS = 4;
 
     var api = {};
 
     // spawn an update methods
     var spawn = function (obj, pool, sm, opt) {
         obj.heading = Math.PI * 1.5;
-        obj.pps = 32; //4;
+        obj.pps = BUTTON_BASE_PPS;
         obj.h = BUTTON_HEIGHT;
         obj.lifespan = Infinity;
         obj.x = opt.x || 0;

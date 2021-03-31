@@ -10,15 +10,14 @@ var waveMod = (function () {
         obj.lifespan = Infinity;
         obj.x = opt.x || 0;
         obj.y = opt.startY;
+        pool.data.toSpawn -= 1;
     };
 
     var update = function (obj, pool, sm, secs) {
-
         poolMod.moveByPPS(obj, secs);
         if (obj.y <= 0) {
             obj.active = false;
         }
-
     };
 
     // create a waveButtons pool
@@ -43,10 +42,12 @@ var waveMod = (function () {
             if (i < opt.waveCount) {
                 //obj.active = true;
                 //spawn(obj, pool, {}, {});
-				poolMod.spawn(pool, sm, {startY: opt.startY + i * 128});
+                poolMod.spawn(pool, sm, {
+                    startY: opt.startY + i * 128
+                });
                 //obj.x = opt.x || 0;
                 //obj.y = opt.startY + obj.h * i;
-                pool.data.toSpawn -= 1;
+
             }
         });
         return {
@@ -66,7 +67,9 @@ var waveMod = (function () {
 
         if (pool.data.activeCount < pool.objects.length && pool.data.toSpawn > 0) {
 
-           // poolMod.spawn((pool, sm, {}));
+            poolMod.spawn(pool, sm, {
+                startY: sm.canvas.height
+            });
 
         }
 

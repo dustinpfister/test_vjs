@@ -8,6 +8,8 @@ var waveMod = (function () {
         obj.pps = 32; //4;
         obj.h = 128;
         obj.lifespan = Infinity;
+        obj.x = opt.x || 0;
+        obj.y = opt.startY;
     };
 
     var update = function (obj, pool, sm, secs) {
@@ -36,13 +38,14 @@ var waveMod = (function () {
         // set all to active
         //poolMod.setActiveStateForAll(pool, true);
         pool.objects.map(function (obj, i) {
-            spawn(obj, pool, {}, {});
-            obj.x = opt.x || 0;
-            obj.y = opt.startY + obj.h * i;
             // if i is less than wave count then start the object
             // off as active
             if (i < opt.waveCount) {
-                obj.active = true;
+                //obj.active = true;
+                //spawn(obj, pool, {}, {});
+				poolMod.spawn(pool, sm, {startY: opt.startY + i * 128});
+                //obj.x = opt.x || 0;
+                //obj.y = opt.startY + obj.h * i;
                 pool.data.toSpawn -= 1;
             }
         });
@@ -60,6 +63,12 @@ var waveMod = (function () {
         poolMod.update(pool, secs, sm);
 
         pool.data.activeCount = poolMod.activeCount(pool);
+
+        if (pool.data.activeCount < pool.objects.length && pool.data.toSpawn > 0) {
+
+           // poolMod.spawn((pool, sm, {}));
+
+        }
 
     };
 

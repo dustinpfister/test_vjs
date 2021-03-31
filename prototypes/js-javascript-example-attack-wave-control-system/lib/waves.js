@@ -9,7 +9,7 @@ var waveMod = (function () {
     // spawn an update methods
     var spawn = function (obj, pool, sm, opt) {
         obj.heading = Math.PI * 1.5;
-        obj.pps = opt.pps || BUTTON_BASE_PPS;
+        obj.pps = pool.data.pps; //opt.pps || BUTTON_BASE_PPS;
         obj.h = BUTTON_HEIGHT;
         obj.lifespan = Infinity;
         obj.x = opt.x || 0;
@@ -22,6 +22,7 @@ var waveMod = (function () {
     };
 
     var update = function (obj, pool, sm, secs) {
+        obj.pps = pool.data.pps;
         poolMod.moveByPPS(obj, secs);
         if (obj.y <= 0) {
             obj.active = false;
@@ -38,6 +39,7 @@ var waveMod = (function () {
                 spawn: spawn,
                 update: update,
                 data: {
+                    pps: BUTTON_BASE_PPS,
                     currentWave: 0,
                     waveNumber: 1,
                     waveCount: opt.waveCount || 0, // total number of waves
@@ -92,16 +94,18 @@ var waveMod = (function () {
                 startY: lowest.y + BUTTON_HEIGHT //sm.canvas.height
             });
         }
+
+        pool.data.pps = BUTTON_BASE_PPS;
+        if (pool.data.rushTo > pool.data.currentWave) {
+            pool.data.pps = BUTTON_RUSH_PPS;
+        }
+
     };
 
     api.onClick = function (sm, pos) {
-
         var pool = sm.game.waveButtons.pool;
-
         var obj = poolMod.getObjectAt(pool, pos.x, pos.y);
-
         if (obj) {
-            console.log(obj.data);
             pool.data.rushTo = obj.data.waveNumber;
         }
     }

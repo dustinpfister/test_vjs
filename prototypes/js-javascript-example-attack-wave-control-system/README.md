@@ -1,0 +1,1 @@
+The basic idea of this javaScript example is to have a module that can be used to create and combine simple item objects. There is not much more thought to it beyond that at the point that I started this.

@@ -1,6 +1,6 @@
 var waveMod = (function () {
 
-   var BUTTON_HEIGHT = 64;
+    var BUTTON_HEIGHT = 64;
 
     var api = {};
 
@@ -54,6 +54,21 @@ var waveMod = (function () {
         };
     };
 
+    var getLowsetActive = function (pool) {
+
+        var lowest = {
+            y: 0,
+            obj: {}
+        };
+        pool.objects.forEach(function (obj, i) {
+            if (obj.active && obj.y > lowest.y) {
+                lowest.y = obj.y;
+                lowest.obj = obj;
+            }
+        });
+        return lowest.obj;
+    };
+
     api.update = function (sm, secs) {
 
         var pool = sm.game.waveButtons.pool;
@@ -64,8 +79,10 @@ var waveMod = (function () {
 
         if (pool.data.activeCount < pool.objects.length && pool.data.toSpawn > 0) {
 
+            var lowest = getLowsetActive(pool);
+
             poolMod.spawn(pool, sm, {
-                startY: sm.canvas.height
+                startY: lowest.y + BUTTON_HEIGHT //sm.canvas.height
             });
 
         }

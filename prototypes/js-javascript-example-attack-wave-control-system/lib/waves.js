@@ -1,12 +1,14 @@
 var waveMod = (function () {
 
+   var BUTTON_HEIGHT = 64;
+
     var api = {};
 
     // spawn an update methods
     var spawn = function (obj, pool, sm, opt) {
         obj.heading = Math.PI * 1.5;
         obj.pps = 32; //4;
-        obj.h = 128;
+        obj.h = BUTTON_HEIGHT;
         obj.lifespan = Infinity;
         obj.x = opt.x || 0;
         obj.y = opt.startY;
@@ -40,14 +42,9 @@ var waveMod = (function () {
             // if i is less than wave count then start the object
             // off as active
             if (i < opt.waveCount) {
-                //obj.active = true;
-                //spawn(obj, pool, {}, {});
                 poolMod.spawn(pool, sm, {
-                    startY: opt.startY + i * 128
+                    startY: opt.startY + i * BUTTON_HEIGHT
                 });
-                //obj.x = opt.x || 0;
-                //obj.y = opt.startY + obj.h * i;
-
             }
         });
         return {

@@ -3,15 +3,23 @@ var canvasObj = utils.createCanvas({
         height: 480
     });
 
+var gameMod = (function () {
+    var api = {};
+    api.create = function () {
+        return {
+            waveButtons: waveMod.create({
+                startY: 64,
+                waveCount: 99
+            })
+        };
+    };
+    return api;
+}());
+
 var sm = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
-    game: {
-        waveButtons: waveMod.create({
-            startY: 64,
-            waveCount: 99
-        })
-    },
+    game: gameMod.create(),
     lt: new Date()
 };
 

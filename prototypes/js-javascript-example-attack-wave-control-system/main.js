@@ -6,9 +6,11 @@ var canvasObj = utils.createCanvas({
 var sm = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
-    waveButtons: waveMod.create({
-        startY: 64
-    }),
+    game: {
+        waveButtons: waveMod.create({
+            startY: 64
+        })
+    },
     lt: new Date()
 };
 
@@ -21,7 +23,9 @@ var loop = function () {
     waveMod.update(sm, secs);
 
     draw.background(sm.ctx, sm.canvas, 'blue');
-    draw.waveButtons(sm.ctx, sm.waveButtons.pool);
+    draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
+
+    draw.debugInfo(sm.ctx, sm, 128, 32);
 
     sm.lt = now;
 };

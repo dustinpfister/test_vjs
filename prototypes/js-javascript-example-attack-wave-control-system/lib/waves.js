@@ -48,7 +48,7 @@ var waveMod = (function () {
 
     api.update = function (sm, secs) {
 
-        poolMod.update(sm.waveButtons.pool, secs, sm);
+        poolMod.update(sm.game.waveButtons.pool, secs, sm);
 
     };
 

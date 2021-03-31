@@ -48,8 +48,23 @@ var draw = (function () {
     api.pool = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.basic);
     };
+
     api.waveButtons = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.basic);
+    };
+
+    // debug info
+    api.debugInfo = function (ctx, sm, sx, sy) {
+
+        var waveButtonsPool = sm.game.waveButtons.pool;
+
+        ctx.fillStyle = 'white';
+        ctx.font = '10px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+
+        ctx.fillText(waveButtonsPool.data.waveCount, sx, sy);
+
     };
 
     return api;

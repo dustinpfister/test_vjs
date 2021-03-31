@@ -71,6 +71,8 @@ var draw = (function () {
         ctx.fillText('toSpawn: ' + waveButtonData.toSpawn, sx, sy + 40);
         ctx.fillText('ActiveCount: ' + waveButtonData.activeCount, sx, sy + 60);
         ctx.fillText('rushTo: ' + waveButtonData.rushTo, sx, sy + 80);
+
+        ctx.fillText('Unit Count: ' + sm.game.unitQueue.unitCount, sx, sy + 120);
     };
 
     return api;

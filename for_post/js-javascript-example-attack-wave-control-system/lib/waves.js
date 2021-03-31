@@ -1,7 +1,7 @@
 var waveMod = (function () {
 
     var BUTTON_HEIGHT = 128,
-    BUTTON_BASE_PPS = BUTTON_HEIGHT / 30, // every 30 secs
+    BUTTON_BASE_PPS = BUTTON_HEIGHT / 60, // every 30 secs
     BUTTON_RUSH_PPS = BUTTON_HEIGHT / 1; // every 1 sec
 
     var api = {};

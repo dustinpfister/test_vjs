@@ -1,6 +1,7 @@
 var gameMod = (function () {
     var UNIT_PPS = 32,
-    UNIT_RELEASE_RATE = 1;
+    UNIT_RELEASE_RATE_MIN = 0.25,
+    UNIT_RELEASE_RATE_MAX = 3;
     var api = {};
 
     // on unit spawn
@@ -32,7 +33,7 @@ var gameMod = (function () {
                 secs: 0
             },
             unitPool: poolMod.create({
-                count: 100,
+                count: 30,
                 spawn: unitSpawn,
                 update: unitUpdate,
                 data: {}
@@ -50,7 +51,11 @@ var gameMod = (function () {
 
         if (sm.game.unitQueue.unitCount > 0) {
             sm.game.unitQueue.secs += secs;
-            if (sm.game.unitQueue.secs > UNIT_RELEASE_RATE) {
+            var releasePer = sm.game.unitQueue.unitCount / 30;
+            releasePer = releasePer > 1 ? 1 : releasePer;
+            var releaseDelta = (UNIT_RELEASE_RATE_MAX - UNIT_RELEASE_RATE_MIN) * (1 - releasePer);
+            sm.game.unit_release_rate = UNIT_RELEASE_RATE_MIN + releaseDelta;
+            if (sm.game.unitQueue.secs > sm.game.unit_release_rate) {
                 var unit = poolMod.spawn(sm.game.unitPool, sm, {});
                 if (unit) {
                     sm.game.unitQueue.unitCount -= 1;

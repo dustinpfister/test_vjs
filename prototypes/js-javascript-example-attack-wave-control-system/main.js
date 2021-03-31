@@ -5,7 +5,11 @@ var canvasObj = utils.createCanvas({
 
 var sm = {
     canvas: canvasObj.canvas,
-    ctx: canvasObj.ctx
+    ctx: canvasObj.ctx,
+    waveButtons: waveMod.create({
+        startY: 64
+    })
 };
 
 draw.background(sm.ctx, sm.canvas, 'blue');
+draw.waveButtons(sm.ctx, sm.waveButtons.pool)

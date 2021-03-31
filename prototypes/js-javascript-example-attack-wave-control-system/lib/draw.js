@@ -48,6 +48,9 @@ var draw = (function () {
     api.pool = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.basic);
     };
+    api.waveButtons = function (ctx, pool) {
+        drawPool(ctx, pool, globalDraw.basic);
+    };
 
     return api;
 

@@ -1,4 +1,4 @@
-var waves = (function () {
+var waveMod = (function () {
 
     var api = {};
 
@@ -11,20 +11,30 @@ var waves = (function () {
 
     api.create = function (opt) {
         opt = opt || {};
-        var waveButtons = poolMod.create({
+        opt.startY = opt.startY || 0;
+        var pool = poolMod.create({
                 count: 10, // max number of buttons on the canvas
                 spawn: spawn,
                 update: update,
-                x: 0,
-                y: opt.startY || 0,
                 data: {
                     waveCount: opt.waveCount || 30, // total number of waves
                 }
             });
+
+        // set all to active
+        poolMod.setActiveStateForAll(pool, true);
+
+        pool.objects.map(function (obj, i) {
+
+            obj.x = opt.x || 0;
+            obj.y = opt.startY + obj.h * i
+
+        });
+
         return {
             x: opt.x || 0, // the upper left position of the wave bar
             y: opt.y || 0,
-            waveButtons: waveButtons
+            pool: pool
         };
     };
 

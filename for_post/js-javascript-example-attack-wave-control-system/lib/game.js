@@ -34,7 +34,8 @@ var gameMod = (function () {
             }),
             waveButtons: waveMod.create({
                 startY: 64,
-                waveCount: 99
+                waveCount: 99,
+                baseUnitCount: 10
             }),
             onWaveStart: onWaveStart
         };

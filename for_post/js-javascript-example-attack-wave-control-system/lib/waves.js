@@ -14,7 +14,10 @@ var waveMod = (function () {
         obj.lifespan = Infinity;
         obj.x = opt.x || 0;
         obj.y = opt.startY;
+
         obj.data.waveNumber = pool.data.waveNumber || 0;
+        obj.data.unitCount = pool.data.baseUnitCount;
+
         pool.data.waveNumber += 1;
         pool.data.toSpawn -= 1;
     };
@@ -39,6 +42,7 @@ var waveMod = (function () {
                 update: update,
                 data: {
                     pps: BUTTON_BASE_PPS,
+                    baseUnitCount: opt.baseUnitCount || 1,
                     currentWave: 0,
                     waveNumber: 1,
                     waveCount: opt.waveCount || 0, // total number of waves

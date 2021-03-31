@@ -32,11 +32,13 @@ var loop = function () {
     var now = new Date(),
     secs = (now - sm.lt) / 1000;
     requestAnimationFrame(loop);
-    // update wave buttons
-    waveMod.update(sm, secs);
+
+    gameMod.update(sm, secs);
+
     // draw
     draw.background(sm.ctx, sm.canvas, 'blue');
     draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
+    draw.pool(sm.ctx, sm.game.unitPool);
     draw.debugInfo(sm.ctx, sm, 128, 32);
     sm.lt = now;
 };

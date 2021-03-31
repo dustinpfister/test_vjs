@@ -66,9 +66,11 @@ var draw = (function () {
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
-        ctx.fillText('total waves: ' + waveButtonData.waveCount, sx, sy);
-        ctx.fillText('wave buttons to spawn: ' + waveButtonData.toSpawn, sx, sy + 20);
-        ctx.fillText('wave buttons active: ' + waveButtonData.activeCount, sx, sy + 40);
+        ctx.fillText('currentWave: ' + waveButtonData.currentWave, sx, sy);
+        ctx.fillText('waveCount: ' + waveButtonData.waveCount, sx, sy + 20);
+        ctx.fillText('toSpawn: ' + waveButtonData.toSpawn, sx, sy + 40);
+        ctx.fillText('ActiveCount: ' + waveButtonData.activeCount, sx, sy + 60);
+        ctx.fillText('rushTo: ' + waveButtonData.rushTo, sx, sy + 80);
     };
 
     return api;

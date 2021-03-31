@@ -1,8 +1,8 @@
 var waveMod = (function () {
 
     var BUTTON_HEIGHT = 128,
-    BUTTON_BASE_PPS = 16,
-    BUTTON_RUSH_PPS = 32;
+    BUTTON_BASE_PPS = BUTTON_HEIGHT / 5, // every 30 secs
+    BUTTON_RUSH_PPS = BUTTON_HEIGHT / 1; // every 1 sec
 
     var api = {};
 
@@ -25,6 +25,7 @@ var waveMod = (function () {
         poolMod.moveByPPS(obj, secs);
         if (obj.y <= 0) {
             obj.active = false;
+            pool.data.currentWave += 1;
         }
     };
 
@@ -37,10 +38,12 @@ var waveMod = (function () {
                 spawn: spawn,
                 update: update,
                 data: {
+                    currentWave: 0,
                     waveNumber: 1,
                     waveCount: opt.waveCount || 0, // total number of waves
                     toSpawn: opt.waveCount,
-                    activeCount: 4
+                    activeCount: 4,
+                    rushTo: 0
                 }
             });
         // set all to active
@@ -99,6 +102,7 @@ var waveMod = (function () {
 
         if (obj) {
             console.log(obj.data);
+            pool.data.rushTo = obj.data.waveNumber;
         }
     }
 

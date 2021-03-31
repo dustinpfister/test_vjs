@@ -34,7 +34,6 @@ var draw = (function () {
         basic: function (ctx, obj, i) {
             ctx.fillStyle = obj.data.fill || 'white';
             ctx.globalAlpha = obj.data.alpha || 1;
-            //ctx.translate(obj.x, obj.y);
             ctx.beginPath();
             ctx.rect(obj.x, obj.y, obj.w, obj.h);
             ctx.fill();
@@ -73,6 +72,17 @@ var draw = (function () {
         ctx.fillText('rushTo: ' + waveButtonData.rushTo, sx, sy + 80);
 
         ctx.fillText('Unit Count: ' + sm.game.unitQueue.unitCount, sx, sy + 120);
+    };
+
+    api.resetButton = function (ctx, sm) {
+        ctx.fillStyle =  'white';
+        ctx.globalAlpha = 1;
+        ctx.beginPath();
+        var obj = sm.resetButton;
+        ctx.rect(obj.x, obj.y, obj.w, obj.h);
+        ctx.fill();
+        ctx.stroke();
+        ctx.globalAlpha = 1;
     };
 
     return api;

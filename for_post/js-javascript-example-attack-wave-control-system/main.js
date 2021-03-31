@@ -8,10 +8,10 @@ var sm = {
     ctx: canvasObj.ctx,
     game: gameMod.create(),
     resetButton: {
-        x: canvasObj.canvas.width - 32,
-        y: 0,
-        w: 32,
-        h: 32
+        x: canvasObj.canvas.width - 48,
+        y: 8,
+        w: 40,
+        h: 40
     },
     lt: new Date()
 };
@@ -47,6 +47,7 @@ var loop = function () {
     draw.background(sm.ctx, sm.canvas, 'blue');
     draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
     draw.pool(sm.ctx, sm.game.unitPool);
+    draw.resetButton(sm.ctx, sm);
     draw.debugInfo(sm.ctx, sm, 128, 32);
     sm.lt = now;
 };

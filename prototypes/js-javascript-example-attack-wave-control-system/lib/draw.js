@@ -66,6 +66,7 @@ var draw = (function () {
 
         ctx.fillText('total waves: ' + waveButtonData.waveCount, sx, sy);
         ctx.fillText('wave buttons to spawn: ' + waveButtonData.toSpawn, sx, sy + 20);
+        ctx.fillText('wave buttons active: ' + waveButtonData.activeCount, sx, sy + 40);
 
     };
 

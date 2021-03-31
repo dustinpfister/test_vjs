@@ -143,6 +143,19 @@ var poolMod = (function () {
         return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
     };
 
+    // active count method
+    api.activeCount = function (pool, activeState) {
+        activeState = activeState === undefined ? true : activeState;
+        var i = pool.objects.length,
+        count = 0;
+        while (i--) {
+            if (pool.objects[i].active === activeState) {
+                count += 1;
+            }
+        }
+        return count;
+    };
+
     // return public method
     return api;
 }

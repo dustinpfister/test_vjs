@@ -29,7 +29,8 @@ var waveMod = (function () {
                 update: update,
                 data: {
                     waveCount: opt.waveCount || 0, // total number of waves
-                    toSpawn: opt.waveCount
+                    toSpawn: opt.waveCount,
+                    activeCount: 4
                 }
             });
         // set all to active
@@ -54,7 +55,11 @@ var waveMod = (function () {
 
     api.update = function (sm, secs) {
 
-        poolMod.update(sm.game.waveButtons.pool, secs, sm);
+        var pool = sm.game.waveButtons.pool;
+
+        poolMod.update(pool, secs, sm);
+
+        pool.data.activeCount = poolMod.activeCount(pool);
 
     };
 

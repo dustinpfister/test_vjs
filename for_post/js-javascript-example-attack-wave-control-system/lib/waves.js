@@ -24,6 +24,7 @@ var waveMod = (function () {
         poolMod.moveByPPS(obj, secs);
         if (obj.y <= 0) {
             obj.active = false;
+            sm.game.onWaveStart(obj, sm);
             pool.data.currentWave += 1;
         }
     };

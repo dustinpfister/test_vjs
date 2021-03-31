@@ -8,7 +8,8 @@ var sm = {
     ctx: canvasObj.ctx,
     game: {
         waveButtons: waveMod.create({
-            startY: 64
+            startY: 64,
+            waveCount: 10
         })
     },
     lt: new Date()

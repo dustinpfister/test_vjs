@@ -56,14 +56,16 @@ var draw = (function () {
     // debug info
     api.debugInfo = function (ctx, sm, sx, sy) {
 
-        var waveButtonsPool = sm.game.waveButtons.pool;
+        var waveButtonsPool = sm.game.waveButtons.pool,
+        waveButtonData = waveButtonsPool.data;
 
         ctx.fillStyle = 'white';
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
 
-        ctx.fillText(waveButtonsPool.data.waveCount, sx, sy);
+        ctx.fillText('total waves: ' + waveButtonData.waveCount, sx, sy);
+        ctx.fillText('wave buttons to spawn: ' + waveButtonData.toSpawn, sx, sy + 20);
 
     };
 

@@ -45,7 +45,7 @@ var draw = (function () {
             ctx.fillStyle = 'black';
             ctx.fillText(obj.data.waveNumber, obj.x + 5, obj.y + 5);
         }
-    }
+    };
 
     // basic draw pool method with a solid background fallback if there is
     // draw method in an disp objects data object

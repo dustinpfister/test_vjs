@@ -14,18 +14,32 @@ var gameMod = (function () {
         };
     };
     return api;
-}());
+}
+    ());
 
 var sm = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     game: gameMod.create(),
+    resetButton: {
+        x: canvasObj.canvas.width - 32,
+        y: 0,
+        w: 32,
+        h: 32
+    },
     lt: new Date()
 };
 
 sm.canvas.addEventListener('click', function (e) {
     var pos = utils.getCanvasRelative(e);
+
     waveMod.onClick(sm, pos);
+
+    var bx = sm.resetButton;
+    if (utils.boundingBox(pos.x, pos.y, 1, 1, bx.x, bx.y, bx.w, bx.h)) {
+        sm.game = gameMod.create();
+    }
+
 });
 
 var loop = function () {

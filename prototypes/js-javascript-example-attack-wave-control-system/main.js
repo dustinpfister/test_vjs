@@ -9,7 +9,7 @@ var sm = {
     game: {
         waveButtons: waveMod.create({
             startY: 64,
-            waveCount: 10
+            waveCount: 99
         })
     },
     lt: new Date()

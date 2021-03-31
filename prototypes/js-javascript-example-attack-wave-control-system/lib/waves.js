@@ -1,7 +1,7 @@
 var waveMod = (function () {
 
     var BUTTON_HEIGHT = 128,
-    BUTTON_BASE_PPS = BUTTON_HEIGHT / 5, // every 30 secs
+    BUTTON_BASE_PPS = BUTTON_HEIGHT / 30, // every 30 secs
     BUTTON_RUSH_PPS = BUTTON_HEIGHT / 1; // every 1 sec
 
     var api = {};
@@ -14,9 +14,7 @@ var waveMod = (function () {
         obj.lifespan = Infinity;
         obj.x = opt.x || 0;
         obj.y = opt.startY;
-
         obj.data.waveNumber = pool.data.waveNumber || 0;
-
         pool.data.waveNumber += 1;
         pool.data.toSpawn -= 1;
     };
@@ -94,12 +92,10 @@ var waveMod = (function () {
                 startY: lowest.y + BUTTON_HEIGHT //sm.canvas.height
             });
         }
-
         pool.data.pps = BUTTON_BASE_PPS;
         if (pool.data.rushTo > pool.data.currentWave) {
             pool.data.pps = BUTTON_RUSH_PPS;
         }
-
     };
 
     api.onClick = function (sm, pos) {

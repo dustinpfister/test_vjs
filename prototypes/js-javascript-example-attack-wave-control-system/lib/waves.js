@@ -91,6 +91,17 @@ var waveMod = (function () {
         }
     };
 
+    api.onClick = function (sm, pos) {
+
+        var pool = sm.game.waveButtons.pool;
+
+        var obj = poolMod.getObjectAt(pool, pos.x, pos.y);
+
+        if (obj) {
+            console.log(obj.data);
+        }
+    }
+
     return api;
 
 }

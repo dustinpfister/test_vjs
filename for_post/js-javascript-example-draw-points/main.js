@@ -26,7 +26,7 @@ var demoMethod = function () {
         radian = Math.PI * 2 / count * i;
         x = Math.cos(radian) * radius;
         y = Math.sin(radian) * radius;
-        arr = [Math.round(x), Math.round(y), 0, 0, 'stroke:white', 'close:false'];
+        arr = [Math.round(x), Math.round(y), 0, 0, 'stroke:white', 'close:false', 'lineWidth:' + (2 + i * 2)];
         points.push(arr);
         i += 1;
     }
@@ -38,4 +38,4 @@ draw.points(ctx, points, 80, 5);
 
 console.log(demoMethod());
 
-draw.points(ctx, demoMethod(), 80, 5);
+draw.points(ctx, demoMethod(), 80, 100);

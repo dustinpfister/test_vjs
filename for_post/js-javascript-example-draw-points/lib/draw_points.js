@@ -12,6 +12,7 @@
             close = opt.close === undefined ? true : opt.close,
             fill = opt.fill === undefined ? 'black' : opt.fill,
             stroke = opt.stroke === undefined ? 'white' : opt.stroke,
+            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
             el,
             i = 2;
             ctx.beginPath();
@@ -32,9 +33,13 @@
                     if (parts[0] === 'fill') {
                         fill = parts[1] || false;
                     }
+                    if (parts[0] === 'lineWidth') {
+                        lineWidth = parts[1] || 1;
+                    }
                     i += 1;
                 }
             }
+            ctx.lineWidth = lineWidth;
             if (close) {
                 ctx.closePath();
             }

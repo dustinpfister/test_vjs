@@ -4,6 +4,8 @@ var Points = (function () {
 
     var ParseMatrix = function (source) {};
 
+    var ParseObjects = function (source) {};
+
     var ParseArray = function (source) {
         var result = [];
         var i = 0,
@@ -33,6 +35,9 @@ var Points = (function () {
             if (a instanceof Array) {
                 if (a[0]instanceof Array) {
                     return ParseMatrix(a);
+                }
+                if (a[0]instanceof Object) {
+                    return ParseObjects(a);
                 }
                 return ParseArray(a);
             }

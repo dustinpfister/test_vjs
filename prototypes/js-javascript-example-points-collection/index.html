@@ -16,15 +16,10 @@ canvas.height = 240;
 ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-var points = [
-    [25,75, 50, 50, 17, 100],
-    [28,78, 50, 50, 17, 100]
-];
-
 var drawPoints = function(ctx, points, cx, cy){
     ctx.save();
-    ctx.transalte(cx, cy);
-	ctx.strokeStyle = 'white'
+    ctx.translate(cx, cy);
+    ctx.strokeStyle = 'white'
     points.forEach(function(pointArray){
         var len = pointArray.length,
         i = 2;
@@ -34,10 +29,19 @@ var drawPoints = function(ctx, points, cx, cy){
             ctx.lineTo(pointArray[i], pointArray[i + 1]);
             i += 2;
         }
+        ctx.closePath();
         ctx.stroke();
     });
     ctx.restore();
 };
+
+
+var points = [
+    [25, 75, 175, 50, 17, 210],
+    [30, 80, 165, 55, 22, 200]
+];
+
+drawPoints(ctx, points, 0, 0);
 
         </script>
     </body>

@@ -1,24 +1,49 @@
-var points = [0, 0, 100, 0, 100, 100];
+var Points = (function () {
 
-var points = [[0, 0, 100, 0, 100, 100, 100, 'close', 'stroke', 'fill']];
+    var api = {};
 
-var points = {
-    close: true,
-    stroke: 'black',
-    fill: 'white',
-    points: [0, 0, 100, 0, 100, 100]
-};
+    var ParseMatrix = function (source) {};
 
-var points = [{
-        close: true,
-        stroke: 'black',
-        fill: 'white',
-        points: [0, 0, 100, 0, 100, 100]
-    }, {
-        close: true,
-        stroke: 'black',
-        fill: false,
-        points: [45, 20, 75, 30, 35, 10]
-    },
-	[]
-]
+    var ParseArray = function (source) {
+        var result = [];
+        var i = 0,
+        el,
+        obj = false,
+        len = source.length;
+        while (i < len) {
+            el = source[i];
+            if (!obj) {
+                obj = {
+                    points: []
+                };
+            }
+            obj.points.push(el);
+            i += 1;
+            if (i === len) {
+                if (obj) {
+                    result.push(obj);
+                }
+            }
+        }
+        return result;
+    };
+
+    api.parse = function (a) {
+        if (typeof a === 'object') {
+            if (a instanceof Array) {
+                if (a[0]instanceof Array) {
+                    return ParseMatrix(a);
+                }
+                return ParseArray(a);
+            }
+        }
+    };
+
+    return api;
+
+}
+    ());
+
+var a = Points.parse([45, 0, 100, 0, 100, 100]);
+
+console.log(a);

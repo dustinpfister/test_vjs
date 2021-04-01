@@ -19,10 +19,11 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 var drawPoints = function(ctx, points, cx, cy){
     ctx.save();
     ctx.translate(cx, cy);
-    ctx.strokeStyle = 'white'
     points.forEach(function(pointArray){
         var len = pointArray.length,
         close = true,
+        fill = false,
+        stroke = 'white',
         el,
         i = 2;
         ctx.beginPath();
@@ -37,13 +38,26 @@ var drawPoints = function(ctx, points, cx, cy){
                 if(parts[0] === 'close'){
                     close = parts[1] === 'true' ? true : false;
                 }
+                if(parts[0] === 'stroke'){
+                    stroke = parts[1] || false;
+                }
+                if(parts[0] === 'fill'){
+                    fill = parts[1] || false;
+                }
                 i += 1;
             }
         }
         if(close){
             ctx.closePath();
         }
-        ctx.stroke();
+        if(fill){
+            ctx.fillStyle = fill;
+            ctx.fill();
+        }
+        if(stroke){
+            ctx.strokeStyle = stroke;
+            ctx.stroke();
+        }
     });
     ctx.restore();
 };

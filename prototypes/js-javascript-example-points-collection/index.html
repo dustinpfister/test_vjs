@@ -22,14 +22,27 @@ var drawPoints = function(ctx, points, cx, cy){
     ctx.strokeStyle = 'white'
     points.forEach(function(pointArray){
         var len = pointArray.length,
+        close = true,
+        el,
         i = 2;
         ctx.beginPath();
         ctx.moveTo(pointArray[0], pointArray[1]);
         while(i < len){
-            ctx.lineTo(pointArray[i], pointArray[i + 1]);
-            i += 2;
+            el = pointArray[i];
+            if(typeof el === 'number'){
+                ctx.lineTo(el, pointArray[i + 1]);
+                i += 2;
+            }else{
+                var parts = el.split(':');
+                if(parts[0] === 'close'){
+                    close = parts[1] === 'true' ? true : false;
+                }
+                i += 1;
+            }
         }
-        ctx.closePath();
+        if(close){
+            ctx.closePath();
+        }
         ctx.stroke();
     });
     ctx.restore();
@@ -38,7 +51,7 @@ var drawPoints = function(ctx, points, cx, cy){
 
 var points = [
     [25, 75, 175, 50, 17, 210],
-    [30, 80, 165, 55, 22, 200]
+    [30, 80, 165, 55, 22, 200, 'close:false']
 ];
 
 drawPoints(ctx, points, 0, 0);

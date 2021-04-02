@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>BigInt example</title>
+  </head>
+  <p>n</p>
+  <body>
+    <script>
+
+var bigN = BigInt(8);
+
+// The valueOf method of a bigInt
+// will return a bigint and not a number
+var a = bigN.valueOf();
+console.log(typeof a); // bigint
+
+// so to covert to a number use the Number method
+var b = Number(bigN);
+console.log(typeof b); // number
+
+// bigint values must be converted to a number
+// when using them with a method that expects a number
+var c;
+try{
+  c = Math.pow(2, bigN);
+}catch(e){
+    console.log(e.message); // Cannot convert a BigInt value to a number
+}
+c = Math.pow(2, Number(bigN));
+console.log(c); // 256
+
+document.querySelector('p').innerText = c;
+// 585000037
+    </script>
+  <body>
+</html>

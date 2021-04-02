@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>BigInt example</title>
+  </head>
+  <p>n</p>
+  <body>
+    <script>
+
+// a is MAX_SAFE_INTEGER + 1
+var a = Number.MAX_SAFE_INTEGER + 1;
+
+// b is now MSI+1 + 1
+var b = a + 1;
+
+// If I compare a === b one might
+// expect a false value, but this is not the
+// case, thus the name MAX_SAFE_INTEGER
+console.log(a === b); // true
+
+
+// however with bigint values I can not go beyond
+// max safe integer and retain precession
+var a = BigInt(Number.MAX_SAFE_INTEGER) + BigInt(1);
+var b = a + BigInt(1);
+console.log(a === b); // false
+
+document.querySelector('p').innerText = b + ' : ' + (b + 1n);
+    </script>
+  <body>
+</html>

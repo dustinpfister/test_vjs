@@ -14,9 +14,20 @@ utils.mod = function (x, m) {
 };
 
 utils.normalizeHalf = function (n, scale) {
-    var c = scale || 360,
+    var c = scale || Math.PI * 2,
     h = c / 2;
     return utils.mod(n + h, c) - h;
+};
+
+// the angular distance between two angles
+utils.angleDistance = function (a, b, scale) {
+    var m = scale || Math.PI * 2,
+    h = m / 2,
+    diff = utils.normalizeHalf(a - b, scale);
+    if (diff > h) {
+        diff = diff - m;
+    }
+    return Math.abs(diff);
 };
 
 // get -1, 1, or 0 depending on the the state of two angles
@@ -67,11 +78,13 @@ var state = {
         w: 32,
         h: 32,
         facing: 1.25,
-        targetRadian : 0,
+        target : Math.PI * 2 - 0.25,
         radiansPerSecond: 1,
         heading: Math.PI * 1.5
     }
 };
+
+console.log(utils.angleDistance(state.turret.facing, state.turret.target));
 
 
 var lt = new Date();

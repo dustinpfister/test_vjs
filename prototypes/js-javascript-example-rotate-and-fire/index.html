@@ -107,15 +107,18 @@ var state = {
     down: false // a pointer is down
 };
 
+var updateTurretTarget = function(state, x, y){
+    var turret = state.turret;
+    turret.target = Math.atan2(y - turret.y, x - turret.x);
+};
+
 // update turret facing to face current target
 var updateTurretFacing = function(state, secs){
     var turret = state.turret;
-	
-	var toAngle = turret.heading;
-	if(state.down){
-		toAngle = turret.target;
-	}
-	
+    var toAngle = turret.heading;
+    if(state.down){
+        toAngle = turret.target;
+    }
     var dist = utils.angleDistance(turret.facing, toAngle);
     var dir = utils.shortestAngleDirection(toAngle, turret.facing);
     var delta = turret.radiansPerSecond * secs;
@@ -148,6 +151,8 @@ var pointerUp = function(e){
     var pos = utils.getCanvasRelative(e);
     state.down = false;
 };
+
+updateTurretTarget(state, 0, 0);
 
 canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mouseup', pointerUp);

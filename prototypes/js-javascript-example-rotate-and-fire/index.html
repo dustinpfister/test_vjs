@@ -23,8 +23,11 @@ draw.back = function(ctx, canvas){
 
 draw.turret = function(ctx, state){
     var turret = state.turret;
+    ctx.fillStyle = 'red';
     ctx.save();
-    ctx.transalte(turret.x, turret.y)
+    ctx.translate(turret.x, turret.y);
+    ctx.rotate(turret.facing);
+    ctx.fillRect(turret.w / 2 * -1, turret.h / 2 * -1, 32, 32);
     ctx.restore();
 };
 
@@ -32,7 +35,9 @@ var state = {
     turret: {
         x: canvas.width / 2,
         y: canvas.height / 2,
-        facing: 0
+        w: 32,
+        h: 32,
+        facing: 1.25
     }
 };
 
@@ -40,6 +45,7 @@ var state = {
 var loop = function(){
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
+    draw.turret(ctx, state);
 };
 loop();
 

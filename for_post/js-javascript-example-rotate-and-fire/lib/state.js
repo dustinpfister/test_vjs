@@ -15,7 +15,8 @@ var stateMod = (function () {
                 radiansPerSecond: Math.PI / 180 * 90,
                 heading: Math.PI * 1.5,
                 fireRate: 0.25,
-                fireSecs: 0
+                fireSecs: 0,
+                inRange: false
             },
             down: false // a pointer is down
         };
@@ -56,6 +57,10 @@ var stateMod = (function () {
         } else {
             turret.facing += delta * dir;
         }
+        turret.inRange = false;
+        if (state.down && dist < Math.PI / 180 * 5) {
+            turret.inRange = true;
+        }
     };
 
     // find and return a free shot or false
@@ -76,7 +81,7 @@ var stateMod = (function () {
     api.updateShots = function (state, secs) {
         var turret = state.turret;
         turret.fireSecs += secs;
-        if (turret.fireSecs >= turret.fireRate) {
+        if (turret.fireSecs >= turret.fireRate && turret.inRange) {
             var freeShot = getFreeShot(state);
             if (freeShot) {
                 freeShot.active = true;

@@ -145,14 +145,12 @@ loop();
 
 var pointerDown = function(e){
     var pos = utils.getCanvasRelative(e);
+    updateTurretTarget(state, pos.x, pos.y);
     state.down = true;
 };
 var pointerUp = function(e){
-    var pos = utils.getCanvasRelative(e);
     state.down = false;
 };
-
-updateTurretTarget(state, 0, 0);
 
 canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mouseup', pointerUp);

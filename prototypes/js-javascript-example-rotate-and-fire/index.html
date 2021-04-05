@@ -8,6 +8,23 @@
 
 var utils = {};
 
+// get canvas relative point
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
+};
+
 // mathematical modulo
 utils.mod = function (x, m) {
     return (x % m + m) % m;
@@ -115,6 +132,15 @@ var loop = function(){
     lt = now;
 };
 loop();
+
+var pointerDown = function(e){
+	
+	var pos = utils.getCanvasRelative(e);
+	
+};
+
+canvas.addEventListner('mousedown', pointerDown);
+canvas.addEventListner('mouseup', pointerUp);
 
         </script>
     </body>

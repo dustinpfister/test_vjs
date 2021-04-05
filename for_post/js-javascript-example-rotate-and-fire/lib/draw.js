@@ -25,10 +25,12 @@ draw.turret = function (ctx, state) {
 draw.shots = function (ctx, state) {
     var shots = state.shots;
     shots.forEach(function (shot) {
-        ctx.save()
-        ctx.fillStyle = 'white';
-        ctx.translate(shot.x, shot.y);
-        ctx.fillRect(-3, -3, 6, 6);
-        ctx.restore();
+        if (shot.active) {
+            ctx.save()
+            ctx.fillStyle = 'white';
+            ctx.translate(shot.x, shot.y);
+            ctx.fillRect(-3, -3, 6, 6);
+            ctx.restore();
+        }
     });
 };

@@ -67,7 +67,12 @@ draw.turret = function(ctx, state){
     ctx.fillRect(turret.w * 0.5 * -1, turret.h * 0.5 * -1, turret.w, turret.h);
     ctx.rotate(turret.facing);
     ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'red';
     ctx.fillRect(turret.w * 0.3 * -1, turret.h * 0.3 * -1, turret.w * 0.6, turret.h * 0.6);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(turret.w, 0);
+    ctx.stroke();
     ctx.restore();
 };
 
@@ -77,14 +82,21 @@ var state = {
         y: canvas.height / 2,
         w: 32,
         h: 32,
-        facing: 1.25,
-        target : Math.PI * 2 - 0.25,
+        facing: 1.57,
+        target : 0,
         radiansPerSecond: 1,
         heading: Math.PI * 1.5
     }
 };
 
-console.log(utils.angleDistance(state.turret.facing, state.turret.target));
+var updateTurretFacing = function(state, secs){
+    var turret = state.turret
+    var dist = utils.angleDistance(turret.facing, turret.target);
+    var delta = turret.radiansPerSecond * secs;
+    console.log(delta);
+};
+
+updateTurretFacing(state, 1);
 
 
 var lt = new Date();

@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>XMLHttpRequest example</title>
+    </head>
+    <body>
+        <textarea id="out"></textarea>
+        <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://dustinpfister.github.io/', true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById('out').value += this.response;
+        }
+    };
+    xhr.send();
+        </script>
+    </body>
+</html>

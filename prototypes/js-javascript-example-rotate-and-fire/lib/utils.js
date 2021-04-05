@@ -9,7 +9,7 @@ utils.getCanvasRelative = function (e) {
         y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
         bx: bx
     };
-    // ajust for native canvas matrix size
+    // adjust for native canvas matrix size
     pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
     pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
     // prevent default

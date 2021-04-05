@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>XMLHttpRequest example</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://dustinpfister.github.io/json/fakekeys.json', true);
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.response['fake-site-one']);
+        }
+    };
+    xhr.send();
+        </script>
+    </body>
+</html>

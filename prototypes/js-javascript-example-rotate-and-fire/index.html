@@ -101,19 +101,26 @@ var state = {
         h: 32,
         facing: 1.57,
         target : 0,
-        radiansPerSecond: Math.PI / 180 * 20,
+        radiansPerSecond: Math.PI / 180 * 90,
         heading: Math.PI * 1.5
-    }
+    },
+    down: false // a pointer is down
 };
 
 // update turret facing to face current target
 var updateTurretFacing = function(state, secs){
-    var turret = state.turret
-    var dist = utils.angleDistance(turret.facing, turret.target);
-    var dir = utils.shortestAngleDirection(turret.target, turret.facing);
+    var turret = state.turret;
+	
+	var toAngle = turret.heading;
+	if(state.down){
+		toAngle = turret.target;
+	}
+	
+    var dist = utils.angleDistance(turret.facing, toAngle);
+    var dir = utils.shortestAngleDirection(toAngle, turret.facing);
     var delta = turret.radiansPerSecond * secs;
     if(delta > dist){
-        turret.facing = turret.target;
+        turret.facing = toAngle;
     }else{
         turret.facing += delta * dir;
     }
@@ -134,13 +141,16 @@ var loop = function(){
 loop();
 
 var pointerDown = function(e){
-	
-	var pos = utils.getCanvasRelative(e);
-	
+    var pos = utils.getCanvasRelative(e);
+    state.down = true;
+};
+var pointerUp = function(e){
+    var pos = utils.getCanvasRelative(e);
+    state.down = false;
 };
 
-canvas.addEventListner('mousedown', pointerDown);
-canvas.addEventListner('mouseup', pointerUp);
+canvas.addEventListener('mousedown', pointerDown);
+canvas.addEventListener('mouseup', pointerUp);
 
         </script>
     </body>

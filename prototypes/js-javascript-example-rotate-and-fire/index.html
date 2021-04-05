@@ -84,28 +84,35 @@ var state = {
         h: 32,
         facing: 1.57,
         target : 0,
-        radiansPerSecond: 1,
+        radiansPerSecond: Math.PI / 180 * 20,
         heading: Math.PI * 1.5
     }
 };
 
+// update turret facing to face current target
 var updateTurretFacing = function(state, secs){
     var turret = state.turret
     var dist = utils.angleDistance(turret.facing, turret.target);
+    var dir = utils.shortestAngleDirection(turret.target, turret.facing);
     var delta = turret.radiansPerSecond * secs;
-    console.log(delta);
+    if(delta > dist){
+        turret.facing = turret.target;
+    }else{
+        turret.facing += delta * dir;
+    }
 };
-
-updateTurretFacing(state, 1);
-
 
 var lt = new Date();
 var loop = function(){
     var now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
+
+    updateTurretFacing(state, secs);
+
     draw.back(ctx, canvas);
     draw.turret(ctx, state);
+    lt = now;
 };
 loop();
 

@@ -13,7 +13,9 @@ var stateMod = (function () {
                 facing: 1.57,
                 target: 0,
                 radiansPerSecond: Math.PI / 180 * 90,
-                heading: Math.PI * 1.5
+                heading: Math.PI * 1.5,
+                fireRate: 0.5,
+                fireSecs: 0
             },
             down: false // a pointer is down
         };
@@ -52,6 +54,14 @@ var stateMod = (function () {
             turret.facing = toAngle;
         } else {
             turret.facing += delta * dir;
+        }
+    };
+
+    api.updateShots = function (state, secs) {
+        var turret = state.turret;
+        turret.fireSecs += secs;
+        if (turret.fireSecs >= turret.fireRate) {
+            turret.fireSecs = utils.mod(turret.fireSecs, turret.fireRate);
         }
     };
 

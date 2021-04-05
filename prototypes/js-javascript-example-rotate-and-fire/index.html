@@ -6,6 +6,33 @@
         <div id="canvas-app"></div>
         <script>
 
+var utils = {};
+
+// mathematical modulo
+utils.mod = function (x, m) {
+    return (x % m + m) % m;
+};
+
+utils.normalizeHalf = function (n, scale) {
+    var c = scale || 360,
+    h = c / 2;
+    return utils.mod(n + h, c) - h;
+};
+
+// get -1, 1, or 0 depending on the the state of two angles
+utils.shortestAngleDirection = function (a1, a2, scale) {
+    var z = a1 - a2,
+    x = utils.normalizeHalf(z, scale);
+    if (x < 0) {
+        return -1; // Left
+    }
+    if (x > 0) {
+        return 1; // Right
+    }
+    // if a1 === a2 or any other case
+    return 0;
+};
+
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 
@@ -40,12 +67,17 @@ var state = {
         w: 32,
         h: 32,
         facing: 1.25,
+        targetRadian : 0,
+        radiansPerSecond: 1,
         heading: Math.PI * 1.5
     }
 };
 
 
+var lt = new Date();
 var loop = function(){
+    var now = new Date(),
+    secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
     draw.turret(ctx, state);

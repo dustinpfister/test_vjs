@@ -1,8 +1,13 @@
-
 var stateMod = (function () {
-
+    // constants
+    var SHOT_COUNT = 10,
+    SHOT_MAX_DIST = 300,
+    SHOT_PPS = 256,
+    TURRET_FIRE_RANGE = Math.PI / 180 * 20,
+    TURRET_ROTATION_RATE = Math.PI / 180 * 180;
+    // pubic api
     var api = {};
-
+    // create state
     api.create = function (opt) {
         var state = {
             turret: {
@@ -10,21 +15,19 @@ var stateMod = (function () {
                 y: opt.canvas.height / 2,
                 w: 32,
                 h: 32,
-                facing: 1.57,
+                facing: 0,
                 target: 0,
-                radiansPerSecond: Math.PI / 180 * 90,
+                radiansPerSecond: TURRET_ROTATION_RATE,
                 heading: Math.PI * 1.5,
-                fireRate: 0.25,
+                fireRate: 0.125,
                 fireSecs: 0,
                 inRange: false
             },
             down: false // a pointer is down
         };
-
         state.shots = [];
-        var shotCount = 10,
-        i = 0;
-        while (i < shotCount) {
+        var i = 0;
+        while (i < SHOT_COUNT) {
             state.shots.push({
                 x: 0,
                 y: 0,
@@ -36,12 +39,11 @@ var stateMod = (function () {
 
         return state;
     };
-
+    // update turret target
     api.updateTurretTarget = function (state, x, y) {
         var turret = state.turret;
         turret.target = Math.atan2(y - turret.y, x - turret.x);
     };
-
     // update turret facing to face current target
     api.updateTurretFacing = function (state, secs) {
         var turret = state.turret;
@@ -58,11 +60,10 @@ var stateMod = (function () {
             turret.facing += delta * dir;
         }
         turret.inRange = false;
-        if (state.down && dist < Math.PI / 180 * 5) {
+        if (state.down && dist < TURRET_FIRE_RANGE) {
             turret.inRange = true;
         }
     };
-
     // find and return a free shot or false
     var getFreeShot = function (state) {
         var i = 0,
@@ -77,7 +78,7 @@ var stateMod = (function () {
         }
         return false;
     };
-
+    // update shots
     api.updateShots = function (state, secs) {
         var turret = state.turret;
         turret.fireSecs += secs;
@@ -91,20 +92,17 @@ var stateMod = (function () {
             }
             turret.fireSecs = 0;
         }
-
         state.shots.forEach(function (shot) {
             if (shot.active) {
-                shot.x += Math.cos(shot.heading) * 512 * secs;
-                shot.y += Math.sin(shot.heading) * 512 * secs;
-                if (utils.distance(shot.x, shot.y, turret.x, turret.y) >= 250) {
+                shot.x += Math.cos(shot.heading) * SHOT_PPS * secs;
+                shot.y += Math.sin(shot.heading) * SHOT_PPS * secs;
+                if (utils.distance(shot.x, shot.y, turret.x, turret.y) >= SHOT_MAX_DIST) {
                     shot.active = false;
                 }
             }
         });
-
     };
-
+    // return public api
     return api;
-
 }
     ());

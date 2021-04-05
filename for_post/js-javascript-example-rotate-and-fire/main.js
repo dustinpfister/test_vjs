@@ -4,30 +4,34 @@ document.getElementById('canvas-app').appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
-var state = stateMod.create({canvas: canvas});
+var state = stateMod.create({
+        canvas: canvas
+    });
 
 var lt = new Date();
-var loop = function(){
+var loop = function () {
     var now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     stateMod.updateTurretFacing(state, secs);
+    stateMod.updateShots(state, secs);
     draw.back(ctx, canvas);
     draw.turret(ctx, state);
+    draw.shots(ctx, state);
     lt = now;
 };
 loop();
 
-var pointerDown = function(e){
+var pointerDown = function (e) {
     var pos = utils.getCanvasRelative(e);
     stateMod.updateTurretTarget(state, pos.x, pos.y);
     state.down = true;
 };
-var pointerMove = function(e){
+var pointerMove = function (e) {
     var pos = utils.getCanvasRelative(e);
     stateMod.updateTurretTarget(state, pos.x, pos.y);
 };
-var pointerUp = function(e){
+var pointerUp = function (e) {
     state.down = false;
 };
 

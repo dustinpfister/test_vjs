@@ -1,11 +1,11 @@
 var draw = {};
 
-draw.back = function(ctx, canvas){
+draw.back = function (ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-draw.turret = function(ctx, state){
+draw.turret = function (ctx, state) {
     var turret = state.turret;
     ctx.save();
     ctx.translate(turret.x, turret.y);
@@ -20,4 +20,15 @@ draw.turret = function(ctx, state){
     ctx.lineTo(turret.w, 0);
     ctx.stroke();
     ctx.restore();
+};
+
+draw.shots = function (ctx, state) {
+    var shots = state.shots;
+    shots.forEach(function (shot) {
+        ctx.save()
+        ctx.fillStyle = 'white';
+        ctx.translate(shot.x, shot.y);
+        ctx.fillRect(-3, -3, 6, 6);
+        ctx.restore();
+    });
 };

@@ -17,6 +17,19 @@ var stateMod = (function () {
             },
             down: false // a pointer is down
         };
+
+        state.shots = [];
+        var shotCount = 10,
+        i = 0;
+        while (i < shotCount) {
+            state.shots.push({
+                x: 0,
+                y: 0,
+                active: false
+            });
+            i += 1;
+        }
+
         return state;
     };
 

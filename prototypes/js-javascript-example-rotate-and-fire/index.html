@@ -23,11 +23,13 @@ draw.back = function(ctx, canvas){
 
 draw.turret = function(ctx, state){
     var turret = state.turret;
-    ctx.fillStyle = 'red';
     ctx.save();
     ctx.translate(turret.x, turret.y);
+    ctx.fillStyle = 'yellow';
+    ctx.fillRect(turret.w * 0.5 * -1, turret.h * 0.5 * -1, turret.w, turret.h);
     ctx.rotate(turret.facing);
-    ctx.fillRect(turret.w / 2 * -1, turret.h / 2 * -1, 32, 32);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(turret.w * 0.3 * -1, turret.h * 0.3 * -1, turret.w * 0.6, turret.h * 0.6);
     ctx.restore();
 };
 
@@ -37,7 +39,8 @@ var state = {
         y: canvas.height / 2,
         w: 32,
         h: 32,
-        facing: 1.25
+        facing: 1.25,
+        heading: Math.PI * 1.5
     }
 };
 

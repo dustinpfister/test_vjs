@@ -84,18 +84,17 @@ var stateMod = (function () {
                 freeShot.y = turret.y;
                 freeShot.heading = turret.facing;
             }
-            turret.fireSecs = 0; //utils.mod(turret.fireSecs, turret.fireRate);
+            turret.fireSecs = 0;
         }
 
         state.shots.forEach(function (shot) {
-
             if (shot.active) {
-
-                shot.x += Math.cos(shot.heading) * 128 * secs;
-                shot.y += Math.sin(shot.heading) * 128 * secs;
-
+                shot.x += Math.cos(shot.heading) * 512 * secs;
+                shot.y += Math.sin(shot.heading) * 512 * secs;
+                if (utils.distance(shot.x, shot.y, turret.x, turret.y) >= 250) {
+                    shot.active = false;
+                }
             }
-
         });
 
     };

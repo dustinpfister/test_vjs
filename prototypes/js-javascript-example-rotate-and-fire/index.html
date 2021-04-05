@@ -21,15 +21,27 @@ draw.back = function(ctx, canvas){
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-var deg = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
-    deg: {
+draw.turret = function(ctx, state){
+    var turret = state.turret;
+    ctx.save();
+    ctx.transalte(turret.x, turret.y)
+    ctx.restore();
+};
+
+var state = {
+    turret: {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
         facing: 0
     }
 };
 
-draw.back(ctx, canvas);
+
+var loop = function(){
+    requestAnimationFrame(loop);
+    draw.back(ctx, canvas);
+};
+loop();
 
         </script>
     </body>

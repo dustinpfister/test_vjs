@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>XMLHttpRequest example</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://dustinpfister.github.io/favicon.ico', true);
+    xhr.responseType = 'blob';
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var img = document.createElement('img')
+            img.src = window.URL.createObjectURL(this.response);
+            document.getElementById('out').appendChild(img);
+        }
+    };
+    xhr.send();
+        </script>
+    </body>
+</html>

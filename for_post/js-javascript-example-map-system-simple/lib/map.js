@@ -70,12 +70,13 @@ var mapMod = (function () {
         return false;
     };
 
+    // update the map, this should be called in a state machine update method
     api.update = function(map, sm, secs){
         if(map.moveMap.moving){
-            if(sm.pos.y > map.moveMap.y){
+            if(sm.pos.y > map.moveMap.startPos.y){
                 map.yOffset += 5;
             }
-            if(sm.pos.y < map.moveMap.y){
+            if(sm.pos.y < map.moveMap.startPos.y){
                 map.yOffset -= 5;
             }
             map.yOffset = map.yOffset > map.yMax ? map.yMax : map.yOffset;
@@ -85,14 +86,14 @@ var mapMod = (function () {
 
     api.on = {
         start: function(map, x, y){
-            map.moveMap.x = x;
-            map.moveMap.y = y;
+            map.moveMap.startPos.x = x;
+            map.moveMap.startPos.y = y;
             map.moveMap.dist = 0;
             map.moveMap.moving = false;
         },
         move: function(map, x, y, down){
             if(down){
-                map.moveMap.dist = utils.distance(x, y, map.moveMap.x, map.moveMap.y);
+                map.moveMap.dist = utils.distance(x, y, map.moveMap.startPos.x, map.moveMap.startPos.y);
                 map.moveMap.moving = false;
                 if(map.moveMap.dist >= 50){
                     map.moveMap.moving = true;

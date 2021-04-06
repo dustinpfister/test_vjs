@@ -13,37 +13,15 @@ var sm = {
     down: false
 };
 
-
 sm.states.mapMenu = {
-
-    moveMap: {
-        startPos: {x: 0, y: 0},
-        dist: 0,
-        moveing: false
-    },
-
     update: function(sm, secs){
         var state = this;
-        mapMod.update(sm.map, sm, secs)
-/*
-        if(state.moveMap.moving){
-            if(sm.pos.y > state.moveMap.y){
-                sm.map.yOffset += 5;
-            }
-            if(sm.pos.y < state.moveMap.y){
-                sm.map.yOffset -= 5;
-            }
-            sm.map.yOffset = sm.map.yOffset > sm.map.yMax ? sm.map.yMax : sm.map.yOffset;
-            sm.map.yOffset = sm.map.yOffset < 0 ? 0 : sm.map.yOffset;
-        }
-*/
+        mapMod.update(sm.map, secs);
     },
-
     draw: function(ctx, canvas, sm){
         draw.back(ctx, canvas);
         draw.map(ctx, sm.map)
     },
-
     pointer: {
         start: function(sm, pos, e){
             mapMod.on.start(sm.map, pos.x, pos.y);
@@ -63,22 +41,18 @@ sm.states.mapMenu = {
             mapMod.on.end(sm.map, pos.x, pos.y);
         }
     }
-
 };
 
 sm.states.game = {
-
     update: function(sm, secs){
         gameMod.updateTurretFacing(sm.game, secs);
         gameMod.updateShots(sm.game, secs);
     },
-
     draw: function(ctx, canvas, sm){
         draw.back(ctx, canvas);
         draw.turret(ctx, sm.game);
         draw.shots(ctx, sm.game);
     },
-
     pointer: {
         start: function(sm, pos, e){
             gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
@@ -87,7 +61,6 @@ sm.states.game = {
             gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
         }
     }
-
 };
 
 
@@ -96,11 +69,9 @@ var loop = function () {
     var now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-
     var state = sm.states[sm.currentState];
     state.update.call(state, sm, secs);
     state.draw.call(state, ctx, canvas, sm);
-
     lt = now;
 };
 loop();

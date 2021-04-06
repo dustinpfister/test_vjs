@@ -9,6 +9,7 @@ var mapMod = (function () {
         var map = {
             moveMap: {
                 startPos: {x: 0, y: 0},
+                curPos: {x:0, y:0 },
                 dist: 0,
                 moveing: false
             },
@@ -71,12 +72,14 @@ var mapMod = (function () {
     };
 
     // update the map, this should be called in a state machine update method
-    api.update = function(map, sm, secs){
+    api.update = function(map, secs){
+        var curPos = map.moveMap.curPos,
+        startPos = map.moveMap.startPos;
         if(map.moveMap.moving){
-            if(sm.pos.y > map.moveMap.startPos.y){
+            if(curPos.y > startPos.y){
                 map.yOffset += 5;
             }
-            if(sm.pos.y < map.moveMap.startPos.y){
+            if(curPos.y < startPos.y){
                 map.yOffset -= 5;
             }
             map.yOffset = map.yOffset > map.yMax ? map.yMax : map.yOffset;
@@ -88,12 +91,18 @@ var mapMod = (function () {
         start: function(map, x, y){
             map.moveMap.startPos.x = x;
             map.moveMap.startPos.y = y;
+            map.moveMap.curPos.x = map.moveMap.startPos.x;
+            map.moveMap.curPos.y = map.moveMap.startPos.y;
             map.moveMap.dist = 0;
             map.moveMap.moving = false;
         },
         move: function(map, x, y, down){
+            var curPos = map.moveMap.curPos,
+            startPos = map.moveMap.startPos;
             if(down){
-                map.moveMap.dist = utils.distance(x, y, map.moveMap.startPos.x, map.moveMap.startPos.y);
+                curPos.x = x;
+                curPos.y = y;
+                map.moveMap.dist = utils.distance(curPos.x, curPos.y, startPos.x, startPos.y);
                 map.moveMap.moving = false;
                 if(map.moveMap.dist >= 50){
                     map.moveMap.moving = true;

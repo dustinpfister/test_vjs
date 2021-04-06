@@ -51,10 +51,12 @@ sm.states.mapMenu = {
         },
         move: function(sm, pos, e){
             var state = this;
-            state.moveMap.dist = utils.distance(pos.x, pos.y, state.moveMap.x, state.moveMap.y);
-            state.moveMap.moving = false;
-            if(state.moveMap.dist >= 50){
-                state.moveMap.moving = true;
+            if(sm.down){
+                state.moveMap.dist = utils.distance(pos.x, pos.y, state.moveMap.x, state.moveMap.y);
+                state.moveMap.moving = false;
+                if(state.moveMap.dist >= 50){
+                    state.moveMap.moving = true;
+                }
             }
         },
         end: function(sm, pos, e){
@@ -119,9 +121,11 @@ var createPointerHandler = function(sm, eventType){
         pointer = state.pointer;
         if(eventType === 'start'){
             sm.game.down = true;
+            sm.down = true;
         }
         if(eventType === 'end'){
             sm.game.down = false;
+            sm.down = false;
         }
         if(pointer){
             if(pointer[eventType]){

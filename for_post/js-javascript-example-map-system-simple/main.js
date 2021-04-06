@@ -24,6 +24,8 @@ sm.states.mapMenu = {
 
     update: function(sm, secs){
         var state = this;
+        mapMod.update(sm.map, sm, secs)
+/*
         if(state.moveMap.moving){
             if(sm.pos.y > state.moveMap.y){
                 sm.map.yOffset += 5;
@@ -34,6 +36,7 @@ sm.states.mapMenu = {
             sm.map.yOffset = sm.map.yOffset > sm.map.yMax ? sm.map.yMax : sm.map.yOffset;
             sm.map.yOffset = sm.map.yOffset < 0 ? 0 : sm.map.yOffset;
         }
+*/
     },
 
     draw: function(ctx, canvas, sm){
@@ -43,25 +46,31 @@ sm.states.mapMenu = {
 
     pointer: {
         start: function(sm, pos, e){
-            var state = this;
+            var map = sm.map;
+/*
             state.moveMap.x = pos.x;
             state.moveMap.y = pos.y;
             state.moveMap.dist = 0;
             state.moveMap.moving = false;
+*/
+            map.moveMap.x = pos.x;
+            map.moveMap.y = pos.y;
+            map.moveMap.dist = 0;
+            map.moveMap.moving = false;
         },
         move: function(sm, pos, e){
-            var state = this;
+            var map = sm.map;
             if(sm.down){
-                state.moveMap.dist = utils.distance(pos.x, pos.y, state.moveMap.x, state.moveMap.y);
-                state.moveMap.moving = false;
-                if(state.moveMap.dist >= 50){
-                    state.moveMap.moving = true;
+                map.moveMap.dist = utils.distance(pos.x, pos.y, map.moveMap.x, map.moveMap.y);
+                map.moveMap.moving = false;
+                if(map.moveMap.dist >= 50){
+                    map.moveMap.moving = true;
                 }
             }
         },
         end: function(sm, pos, e){
-            var state = this;
-            if(!state.moveMap.moving){
+            var map = sm.map;
+            if(!map.moveMap.moving){
                 var obj = mapMod.getObjectAt(sm.map, pos.x, pos.y);
                 if(obj){
                     var gameOptions = Object.assign({canvas: canvas}, obj.gameOptions)
@@ -69,7 +78,7 @@ sm.states.mapMenu = {
                     sm.currentState = 'game';
                 }
             }
-            state.moveMap.moving = false;
+            map.moveMap.moving = false;
         }
     }
 

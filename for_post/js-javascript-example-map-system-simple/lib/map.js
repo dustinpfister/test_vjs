@@ -4,9 +4,14 @@ var mapMod = (function () {
     // pubic api
     var api = {};
 
-    // create state
+    // create a new map state object
     api.create = function (opt) {
-        var state = {
+        var map = {
+            moveMap: {
+                startPos: {x: 0, y: 0},
+                dist: 0,
+                moveing: false
+            },
             yOffset: 0,
             yMax: 480,
             objects: [
@@ -22,10 +27,10 @@ var mapMod = (function () {
                     }
                 },
                 {
-                    x: 520, // location in map
+                    x: 520,
                     y: 480,
-                    r: 20, // radius of map button
-                    gameOptions: { // data to feed to game.create
+                    r: 20,
+                    gameOptions: { 
                         enemyCount: 15,
                         releaseRate: 1,
                         radiansPerSecond: Math.PI / 180 * 90,
@@ -33,10 +38,10 @@ var mapMod = (function () {
                     }
                 },
                 {
-                    x: 220, // location in map
+                    x: 220,
                     y: 720,
-                    r: 20, // radius of map button
-                    gameOptions: { // data to feed to game.create
+                    r: 20,
+                    gameOptions: {
                         enemyCount: 15,
                         releaseRate: 1,
                         radiansPerSecond: Math.PI / 180 * 90,
@@ -45,10 +50,12 @@ var mapMod = (function () {
                 }
             ]
         };
-        return state;
+        return map;
     };
 
-
+    // get an object in the map with the given canvas
+    // relative position. In the event that there is no object
+    // return false
     api.getObjectAt = function(map, x, y){
         var i = 0,
         obj,
@@ -61,6 +68,19 @@ var mapMod = (function () {
             i += 1;
         }
         return false;
+    };
+
+    api.update = function(map, sm, secs){
+        if(map.moveMap.moving){
+            if(sm.pos.y > map.moveMap.y){
+                map.yOffset += 5;
+            }
+            if(sm.pos.y < map.moveMap.y){
+                map.yOffset -= 5;
+            }
+            map.yOffset = map.yOffset > map.yMax ? map.yMax : map.yOffset;
+            map.yOffset = map.yOffset < 0 ? 0 : map.yOffset;
+        }
     };
 
     // return public api

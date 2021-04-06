@@ -22,6 +22,11 @@ sm.states.mapMenu = {
 
     draw: function(ctx, canvas, sm){
         draw.back(ctx, canvas);
+    },
+
+    pointer: {
+        start: function(sm, pos, e){
+        }
     }
 
 };
@@ -37,6 +42,15 @@ sm.states.game = {
         draw.back(ctx, canvas);
         draw.turret(ctx, sm.game);
         draw.shots(ctx, sm.game);
+    },
+
+    pointer: {
+        start: function(sm, pos, e){
+            gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
+        },
+        move: function(s, pos, e){
+            gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
+        }
     }
 
 };
@@ -51,29 +65,51 @@ var loop = function () {
     sm.states[sm.currentState].update(sm, secs);
     sm.states[sm.currentState].draw(ctx, canvas, sm);
 
-    //gameMod.updateTurretFacing(sm.game, secs);
-    //gameMod.updateShots(sm.game, secs);
-
-    //draw.back(ctx, canvas);
-    //draw.turret(ctx, sm.game);
-    //draw.shots(ctx, sm.game);
     lt = now;
 };
 loop();
-
+/*
 var pointerDown = function (e) {
-    var pos = utils.getCanvasRelative(e);
-    gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
+    var pos = utils.getCanvasRelative(e),
+    pointer =     sm.states[sm.currentState].pointer;
+    if(pointer){
+        if(pointer.start){
+            pointer.start(sm, pos, e);
+        }
+    }
     sm.game.down = true;
 };
 var pointerMove = function (e) {
     var pos = utils.getCanvasRelative(e);
-    gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
+    //gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
 };
 var pointerUp = function (e) {
     sm.game.down = false;
 };
+*/
+var createPointerHandler = function(sm, eventType){
+    return function (e) {
+        var pos = utils.getCanvasRelative(e),
+        pointer =     sm.states[sm.currentState].pointer;
+        if(eventType === 'start'){
+            sm.game.down = true;
+        }
+        if(eventType === 'end'){
+            sm.game.down = false;
+        }
+        if(pointer){
+            if(pointer[eventType]){
+                pointer[eventType](sm, pos, e);
+            }
+        }
+    };
+};
 
-canvas.addEventListener('mousedown', pointerDown);
-canvas.addEventListener('mousemove', pointerMove);
-canvas.addEventListener('mouseup', pointerUp);
+//canvas.addEventListener('mousedown', pointerDown);
+//canvas.addEventListener('mousemove', pointerMove);
+//canvas.addEventListener('mouseup', pointerUp);
+
+canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
+canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
+canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
+

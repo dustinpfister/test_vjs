@@ -28,17 +28,6 @@ var mapMod = (function () {
                     }
                 },
                 {
-                    x: 520,
-                    y: 480,
-                    r: 20,
-                    gameOptions: { 
-                        enemyCount: 15,
-                        releaseRate: 1,
-                        radiansPerSecond: Math.PI / 180 * 90,
-                        fireRate: 0.25
-                    }
-                },
-                {
                     x: 220,
                     y: 720,
                     r: 20,

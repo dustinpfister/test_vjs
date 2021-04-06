@@ -14,6 +14,12 @@ var sm = {
 
 sm.states.mapMenu = {
 
+    moveMap: {
+        startPos: {x: 0, y: 0},
+        dist: 0,
+        moveing: false
+    },
+
     update: function(){
 
     },
@@ -24,14 +30,31 @@ sm.states.mapMenu = {
     },
 
     pointer: {
+        start: function(sm, pos, e){
+            var state = this;
+            state.moveMap.x = pos.x;
+            state.moveMap.y = pos.y;
+            state.moveMap.dist = 0;
+            state.moveMap.moving = false;
+        },
+        move: function(sm, pos, e){
+            var state = this;
+            state.moveMap.dist = utils.distance(pos.x, pos.y, state.moveMap.x, state.moveMap.y);
+            state.moveMap.moving = false;
+            if(state.moveMap.dist >= 50){
+                state.moveMap.moving = true;
+            }
+        },
         end: function(sm, pos, e){
-           var obj = mapMod.getObjectAt(sm.map, pos.x, pos.y);
-           if(obj){
-               console.log(obj);
-               var gameOptions = Object.assign({canvas: canvas}, obj.gameOptions)
-               sm.game = gameMod.create(gameOptions);
-               sm.currentState = 'game';
-           }
+            var state = this;
+            if(!state.moveMap.moving){
+                var obj = mapMod.getObjectAt(sm.map, pos.x, pos.y);
+                if(obj){
+                    var gameOptions = Object.assign({canvas: canvas}, obj.gameOptions)
+                    sm.game = gameMod.create(gameOptions);
+                    sm.currentState = 'game';
+                }
+            }
         }
     }
 
@@ -68,8 +91,9 @@ var loop = function () {
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
 
-    sm.states[sm.currentState].update(sm, secs);
-    sm.states[sm.currentState].draw(ctx, canvas, sm);
+    var state = sm.states[sm.currentState];
+    state.update.call(state, sm, secs);
+    state.draw.call(state, ctx, canvas, sm);
 
     lt = now;
 };
@@ -78,7 +102,8 @@ loop();
 var createPointerHandler = function(sm, eventType){
     return function (e) {
         var pos = utils.getCanvasRelative(e),
-        pointer =     sm.states[sm.currentState].pointer;
+        state = sm.states[sm.currentState],
+        pointer = state.pointer;
         if(eventType === 'start'){
             sm.game.down = true;
         }
@@ -87,7 +112,7 @@ var createPointerHandler = function(sm, eventType){
         }
         if(pointer){
             if(pointer[eventType]){
-                pointer[eventType](sm, pos, e);
+                pointer[eventType].call(state, sm, pos, e, state);
             }
         }
     };

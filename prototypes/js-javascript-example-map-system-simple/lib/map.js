@@ -11,9 +11,9 @@ var mapMod = (function () {
             yMax: 960,
             objects: [
                 {
-                    x: 32, // location in map
+                    x: 50, // location in map
                     y: 45,
-                    r: 32, // radius of map button
+                    r: 20, // radius of map button
                     data: { // data to feed to game.create
                         enemyCount: 15,
                         releaseRate: 1

@@ -5,7 +5,7 @@ canvas.width = 640;
 canvas.height = 480;
 
 var sm = {
-    currentState: 'game',
+    currentState: 'mapMenu',
     game: gameMod.create({
         canvas: canvas
     }),
@@ -22,6 +22,7 @@ sm.states.mapMenu = {
 
     draw: function(ctx, canvas, sm){
         draw.back(ctx, canvas);
+        draw.map(ctx, sm.map)
     },
 
     pointer: {
@@ -68,25 +69,7 @@ var loop = function () {
     lt = now;
 };
 loop();
-/*
-var pointerDown = function (e) {
-    var pos = utils.getCanvasRelative(e),
-    pointer =     sm.states[sm.currentState].pointer;
-    if(pointer){
-        if(pointer.start){
-            pointer.start(sm, pos, e);
-        }
-    }
-    sm.game.down = true;
-};
-var pointerMove = function (e) {
-    var pos = utils.getCanvasRelative(e);
-    //gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
-};
-var pointerUp = function (e) {
-    sm.game.down = false;
-};
-*/
+
 var createPointerHandler = function(sm, eventType){
     return function (e) {
         var pos = utils.getCanvasRelative(e),
@@ -104,10 +87,6 @@ var createPointerHandler = function(sm, eventType){
         }
     };
 };
-
-//canvas.addEventListener('mousedown', pointerDown);
-//canvas.addEventListener('mousemove', pointerMove);
-//canvas.addEventListener('mouseup', pointerUp);
 
 canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
 canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));

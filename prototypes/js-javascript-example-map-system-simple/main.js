@@ -27,6 +27,7 @@ sm.states.mapMenu = {
 
     pointer: {
         start: function(sm, pos, e){
+
         }
     }
 

@@ -8,7 +8,9 @@ var sm = {
     currentState: 'mapMenu',
     game: {},
     map: mapMod.create(),
-    states: {}
+    states: {},
+    pos: {},
+    down: false
 };
 
 
@@ -20,8 +22,18 @@ sm.states.mapMenu = {
         moveing: false
     },
 
-    update: function(){
-
+    update: function(sm, secs){
+        var state = this;
+        if(state.moveMap.moving){
+            if(sm.pos.y > state.moveMap.y){
+                sm.map.yOffset += 5;
+            }
+            if(sm.pos.y < state.moveMap.y){
+                sm.map.yOffset -= 5;
+            }
+            sm.map.yOffset = sm.map.yOffset > sm.map.yMax ? sm.map.yMax : sm.map.yOffset;
+            sm.map.yOffset = sm.map.yOffset < 0 ? 0 : sm.map.yOffset;
+        }
     },
 
     draw: function(ctx, canvas, sm){
@@ -55,6 +67,7 @@ sm.states.mapMenu = {
                     sm.currentState = 'game';
                 }
             }
+            state.moveMap.moving = false;
         }
     }
 
@@ -101,7 +114,7 @@ loop();
 
 var createPointerHandler = function(sm, eventType){
     return function (e) {
-        var pos = utils.getCanvasRelative(e),
+        var pos = sm.pos = utils.getCanvasRelative(e),
         state = sm.states[sm.currentState],
         pointer = state.pointer;
         if(eventType === 'start'){

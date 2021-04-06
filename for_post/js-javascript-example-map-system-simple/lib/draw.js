@@ -9,7 +9,7 @@ draw.map = function(ctx, map){
    map.objects.forEach(function(obj){
        ctx.fillStyle = 'lime';
        ctx.beginPath();
-       ctx.arc(obj.x, obj.y, obj.r, 0, utils.pi2);
+       ctx.arc(obj.x, obj.y - map.yOffset, obj.r, 0, utils.pi2);
        ctx.fill();
    });
 };

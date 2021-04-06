@@ -8,7 +8,7 @@ var mapMod = (function () {
     api.create = function (opt) {
         var state = {
             yOffset: 0,
-            yMax: 960,
+            yMax: 480,
             objects: [
                 {
                     x: 50, // location in map
@@ -23,7 +23,18 @@ var mapMod = (function () {
                 },
                 {
                     x: 520, // location in map
-                    y: 275,
+                    y: 480,
+                    r: 20, // radius of map button
+                    gameOptions: { // data to feed to game.create
+                        enemyCount: 15,
+                        releaseRate: 1,
+                        radiansPerSecond: Math.PI / 180 * 90,
+                        fireRate: 0.25
+                    }
+                },
+                {
+                    x: 220, // location in map
+                    y: 720,
                     r: 20, // radius of map button
                     gameOptions: { // data to feed to game.create
                         enemyCount: 15,
@@ -44,7 +55,7 @@ var mapMod = (function () {
         len = map.objects.length;
         while(i < len){
             obj = map.objects[i];
-            if(utils.distance(x, y, obj.x, obj.y) <= obj.r){
+            if(utils.distance(x, y, obj.x, obj.y - map.yOffset) <= obj.r){
                 return obj;
             }
             i += 1;

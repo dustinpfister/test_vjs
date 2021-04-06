@@ -46,26 +46,13 @@ sm.states.mapMenu = {
 
     pointer: {
         start: function(sm, pos, e){
-            var map = sm.map;
-            mapMod.on.down(map, pos.x, pos.y);
-            //map.moveMap.x = pos.x;
-            //map.moveMap.y = pos.y;
-            //map.moveMap.dist = 0;
-            //map.moveMap.moving = false;
+            mapMod.on.start(sm.map, pos.x, pos.y);
         },
         move: function(sm, pos, e){
-            var map = sm.map;
-            if(sm.down){
-                map.moveMap.dist = utils.distance(pos.x, pos.y, map.moveMap.x, map.moveMap.y);
-                map.moveMap.moving = false;
-                if(map.moveMap.dist >= 50){
-                    map.moveMap.moving = true;
-                }
-            }
+            mapMod.on.move(sm.map, pos.x, pos.y, sm.down);
         },
         end: function(sm, pos, e){
-            var map = sm.map;
-            if(!map.moveMap.moving){
+            if(!sm.map.moveMap.moving){
                 var obj = mapMod.getObjectAt(sm.map, pos.x, pos.y);
                 if(obj){
                     var gameOptions = Object.assign({canvas: canvas}, obj.gameOptions)
@@ -73,7 +60,7 @@ sm.states.mapMenu = {
                     sm.currentState = 'game';
                 }
             }
-            map.moveMap.moving = false;
+            sm.map.moveMap.moving = false;
         }
     }
 

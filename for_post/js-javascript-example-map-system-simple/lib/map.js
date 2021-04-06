@@ -84,11 +84,22 @@ var mapMod = (function () {
     };
 
     api.on = {
-        down: function(map, x, y){
+        start: function(map, x, y){
             map.moveMap.x = x;
             map.moveMap.y = y;
             map.moveMap.dist = 0;
             map.moveMap.moving = false;
+        },
+        move: function(map, x, y, down){
+            if(down){
+                map.moveMap.dist = utils.distance(x, y, map.moveMap.x, map.moveMap.y);
+                map.moveMap.moving = false;
+                if(map.moveMap.dist >= 50){
+                    map.moveMap.moving = true;
+                }
+            }
+        },
+        end: function(map, x, y){
         }
     };
 

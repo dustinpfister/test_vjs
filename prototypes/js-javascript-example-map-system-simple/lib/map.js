@@ -7,7 +7,9 @@ var mapMod = (function () {
     // create state
     api.create = function (opt) {
         var state = {
-            maps: [
+            yOffset: 0,
+            yMax: 960,
+            objects: [
                 {
                     x: 32, // location in map
                     y: 45,

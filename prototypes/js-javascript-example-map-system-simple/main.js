@@ -4,38 +4,74 @@ document.getElementById('canvas-app').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = {
+var sm = {
+    currentState: 'game',
     game: gameMod.create({
         canvas: canvas
     }),
-    map: mapMod.create()
+    map: mapMod.create(),
+    states: {}
 };
+
+
+sm.states.mapMenu = {
+
+    update: function(){
+
+    },
+
+    draw: function(ctx, canvas, sm){
+        draw.back(ctx, canvas);
+    }
+
+};
+
+sm.states.game = {
+
+    update: function(sm, secs){
+        gameMod.updateTurretFacing(sm.game, secs);
+        gameMod.updateShots(sm.game, secs);
+    },
+
+    draw: function(ctx, canvas, sm){
+        draw.back(ctx, canvas);
+        draw.turret(ctx, sm.game);
+        draw.shots(ctx, sm.game);
+    }
+
+};
+
 
 var lt = new Date();
 var loop = function () {
     var now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    gameMod.updateTurretFacing(state.game, secs);
-    gameMod.updateShots(state.game, secs);
-    draw.back(ctx, canvas);
-    draw.turret(ctx, state.game);
-    draw.shots(ctx, state.game);
+
+    sm.states[sm.currentState].update(sm, secs);
+    sm.states[sm.currentState].draw(ctx, canvas, sm);
+
+    //gameMod.updateTurretFacing(sm.game, secs);
+    //gameMod.updateShots(sm.game, secs);
+
+    //draw.back(ctx, canvas);
+    //draw.turret(ctx, sm.game);
+    //draw.shots(ctx, sm.game);
     lt = now;
 };
 loop();
 
 var pointerDown = function (e) {
     var pos = utils.getCanvasRelative(e);
-    gameMod.updateTurretTarget(state.game, pos.x, pos.y);
-    state.game.down = true;
+    gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
+    sm.game.down = true;
 };
 var pointerMove = function (e) {
     var pos = utils.getCanvasRelative(e);
-    gameMod.updateTurretTarget(state.game, pos.x, pos.y);
+    gameMod.updateTurretTarget(sm.game, pos.x, pos.y);
 };
 var pointerUp = function (e) {
-    state.game.down = false;
+    sm.game.down = false;
 };
 
 canvas.addEventListener('mousedown', pointerDown);

@@ -5,8 +5,17 @@ draw.back = function (ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-draw.turret = function (ctx, state) {
-    var turret = state.turret;
+draw.map = function(ctx, map){
+   map.objects.forEach(function(obj){
+       ctx.fillStyle = 'lime';
+       ctx.beginPath();
+       ctx.arc(obj.x, obj.y, obj.r, 0, utils.pi2);
+       ctx.fill();
+   });
+};
+
+draw.turret = function (ctx, game) {
+    var turret = game.turret;
     ctx.save();
     ctx.translate(turret.x, turret.y);
     ctx.fillStyle = 'yellow';
@@ -22,8 +31,8 @@ draw.turret = function (ctx, state) {
     ctx.restore();
 };
 
-draw.shots = function (ctx, state) {
-    var shots = state.shots;
+draw.shots = function (ctx, game) {
+    var shots = game.shots;
     shots.forEach(function (shot) {
         if (shot.active) {
             ctx.save()

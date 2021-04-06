@@ -1,12 +1,15 @@
-var stateMod = (function () {
+var gameMod = (function () {
+
     // constants
     var SHOT_COUNT = 10,
     SHOT_MAX_DIST = 300,
     SHOT_PPS = 256,
     TURRET_FIRE_RANGE = Math.PI / 180 * 20,
     TURRET_ROTATION_RATE = Math.PI / 180 * 180;
+
     // pubic api
     var api = {};
+
     // create state
     api.create = function (opt) {
         var state = {

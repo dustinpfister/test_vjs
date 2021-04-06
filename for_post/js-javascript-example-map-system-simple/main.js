@@ -47,16 +47,11 @@ sm.states.mapMenu = {
     pointer: {
         start: function(sm, pos, e){
             var map = sm.map;
-/*
-            state.moveMap.x = pos.x;
-            state.moveMap.y = pos.y;
-            state.moveMap.dist = 0;
-            state.moveMap.moving = false;
-*/
-            map.moveMap.x = pos.x;
-            map.moveMap.y = pos.y;
-            map.moveMap.dist = 0;
-            map.moveMap.moving = false;
+            mapMod.on.down(map, pos.x, pos.y);
+            //map.moveMap.x = pos.x;
+            //map.moveMap.y = pos.y;
+            //map.moveMap.dist = 0;
+            //map.moveMap.moving = false;
         },
         move: function(sm, pos, e){
             var map = sm.map;

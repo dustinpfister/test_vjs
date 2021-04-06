@@ -83,6 +83,15 @@ var mapMod = (function () {
         }
     };
 
+    api.on = {
+        down: function(map, x, y){
+            map.moveMap.x = x;
+            map.moveMap.y = y;
+            map.moveMap.dist = 0;
+            map.moveMap.moving = false;
+        }
+    };
+
     // return public api
     return api;
 }

@@ -6,9 +6,7 @@ canvas.height = 480;
 
 var sm = {
     currentState: 'mapMenu',
-    game: gameMod.create({
-        canvas: canvas
-    }),
+    game: {},
     map: mapMod.create(),
     states: {}
 };
@@ -26,8 +24,14 @@ sm.states.mapMenu = {
     },
 
     pointer: {
-        start: function(sm, pos, e){
-
+        end: function(sm, pos, e){
+           var obj = mapMod.getObjectAt(sm.map, pos.x, pos.y);
+           if(obj){
+               console.log(obj);
+               var gameOptions = Object.assign({canvas: canvas}, obj.gameOptions)
+               sm.game = gameMod.create(gameOptions);
+               sm.currentState = 'game';
+           }
         }
     }
 

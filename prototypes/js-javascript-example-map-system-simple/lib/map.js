@@ -14,9 +14,22 @@ var mapMod = (function () {
                     x: 50, // location in map
                     y: 45,
                     r: 20, // radius of map button
-                    data: { // data to feed to game.create
+                    gameOptions: { // data to feed to game.create
                         enemyCount: 15,
-                        releaseRate: 1
+                        releaseRate: 1,
+                        radiansPerSecond: Math.PI / 180 * 20,
+                        fireRate: 1
+                    }
+                },
+                {
+                    x: 520, // location in map
+                    y: 275,
+                    r: 20, // radius of map button
+                    gameOptions: { // data to feed to game.create
+                        enemyCount: 15,
+                        releaseRate: 1,
+                        radiansPerSecond: Math.PI / 180 * 90,
+                        fireRate: 0.25
                     }
                 }
             ]

@@ -12,6 +12,7 @@ var gameMod = (function () {
 
     // create state
     api.create = function (opt) {
+        opt = opt || {};
         var state = {
             turret: {
                 x: opt.canvas.width / 2,
@@ -20,9 +21,9 @@ var gameMod = (function () {
                 h: 32,
                 facing: 0,
                 target: 0,
-                radiansPerSecond: TURRET_ROTATION_RATE,
+                radiansPerSecond: opt.radiansPerSecond || TURRET_ROTATION_RATE,
                 heading: Math.PI * 1.5,
-                fireRate: 0.125,
+                fireRate: opt.fireRate || 0.125,
                 fireSecs: 0,
                 inRange: false
             },

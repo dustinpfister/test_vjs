@@ -1,5 +1,9 @@
 var mapMod = (function () {
 
+    var DIST_MIN = 50,
+    DIST_MAX = 100,
+    MAP_PPS_MAX = 256;
+
 
     // pubic api
     var api = {};
@@ -15,30 +19,7 @@ var mapMod = (function () {
             },
             yOffset: 0,
             yMax: 480,
-            objects: [
-                {
-                    x: 50, // location in map
-                    y: 45,
-                    r: 20, // radius of map button
-                    gameOptions: { // data to feed to game.create
-                        enemyCount: 15,
-                        releaseRate: 1,
-                        radiansPerSecond: Math.PI / 180 * 20,
-                        fireRate: 1
-                    }
-                },
-                {
-                    x: 220,
-                    y: 720,
-                    r: 20,
-                    gameOptions: {
-                        enemyCount: 15,
-                        releaseRate: 1,
-                        radiansPerSecond: Math.PI / 180 * 90,
-                        fireRate: 0.25
-                    }
-                }
-            ]
+            objects: []
         };
         return map;
     };
@@ -63,13 +44,17 @@ var mapMod = (function () {
     // update the map, this should be called in a state machine update method
     api.update = function(map, secs){
         var curPos = map.moveMap.curPos,
-        startPos = map.moveMap.startPos;
+        startPos = map.moveMap.startPos,
+        per,
+        delta;
         if(map.moveMap.moving){
+            per = (map.moveMap.dist - DIST_MIN) / (DIST_MAX - DIST_MIN);
+            delta = MAP_PPS_MAX * per * secs;
             if(curPos.y > startPos.y){
-                map.yOffset += 5;
+                map.yOffset += delta
             }
             if(curPos.y < startPos.y){
-                map.yOffset -= 5;
+                map.yOffset -= delta;
             }
             map.yOffset = map.yOffset > map.yMax ? map.yMax : map.yOffset;
             map.yOffset = map.yOffset < 0 ? 0 : map.yOffset;
@@ -93,7 +78,7 @@ var mapMod = (function () {
                 curPos.y = y;
                 map.moveMap.dist = utils.distance(curPos.x, curPos.y, startPos.x, startPos.y);
                 map.moveMap.moving = false;
-                if(map.moveMap.dist >= 50){
+                if(map.moveMap.dist >= DIST_MIN){
                     map.moveMap.moving = true;
                 }
             }

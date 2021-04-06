@@ -60,7 +60,7 @@ sm.states.mapMenu = {
                     sm.currentState = 'game';
                 }
             }
-            sm.map.moveMap.moving = false;
+            mapMod.on.end(sm.map, pos.x, pos.y);
         }
     }
 

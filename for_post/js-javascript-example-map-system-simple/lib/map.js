@@ -100,6 +100,7 @@ var mapMod = (function () {
             }
         },
         end: function(map, x, y){
+            map.moveMap.moving = false;
         }
     };
 

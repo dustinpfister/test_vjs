@@ -4,35 +4,38 @@ document.getElementById('canvas-app').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = gameMod.create({
+var state = {
+    game: gameMod.create({
         canvas: canvas
-    });
+    }),
+    map: mapMod.create()
+};
 
 var lt = new Date();
 var loop = function () {
     var now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    gameMod.updateTurretFacing(state, secs);
-    gameMod.updateShots(state, secs);
+    gameMod.updateTurretFacing(state.game, secs);
+    gameMod.updateShots(state.game, secs);
     draw.back(ctx, canvas);
-    draw.turret(ctx, state);
-    draw.shots(ctx, state);
+    draw.turret(ctx, state.game);
+    draw.shots(ctx, state.game);
     lt = now;
 };
 loop();
 
 var pointerDown = function (e) {
     var pos = utils.getCanvasRelative(e);
-    gameMod.updateTurretTarget(state, pos.x, pos.y);
-    state.down = true;
+    gameMod.updateTurretTarget(state.game, pos.x, pos.y);
+    state.game.down = true;
 };
 var pointerMove = function (e) {
     var pos = utils.getCanvasRelative(e);
-    gameMod.updateTurretTarget(state, pos.x, pos.y);
+    gameMod.updateTurretTarget(state.game, pos.x, pos.y);
 };
 var pointerUp = function (e) {
-    state.down = false;
+    state.game.down = false;
 };
 
 canvas.addEventListener('mousedown', pointerDown);

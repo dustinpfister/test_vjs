@@ -12,7 +12,7 @@ var TradeSim = (function(){
         Object.keys(game.trade.items).forEach(function(itemKey){
             var item = game.trade.items[itemKey],
             item_player = game.trade.items_player[itemKey];
-            text += item.desc + ':\n';
+            text += itemKey + ':\n';
             text += '    current cost : $' + item.current + '\n';
             text += '    on hand : ' + item_player.count + '\n\n';
         });
@@ -26,9 +26,22 @@ var TradeSim = (function(){
         };
     };
 
+    api.info = function(){
+        console.log(plainText(game));
+    };
+
+    api.action = function(action, itemKey, count){
+        if(action === 'buy' || action === 'sell'){
+            tradeMod[action](game.trade, itemKey, count, game);
+        }
+        tradeMod.newValues(game.trade);
+        api.info();
+    };
+
     api.startNew(150);
-    tradeMod.buy(game.trade, 'apple', 5, game);
-    console.log(plainText(game));
+    api.info();
+
+    return api;
 
 }());
 

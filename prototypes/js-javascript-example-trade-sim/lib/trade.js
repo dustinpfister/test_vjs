@@ -80,7 +80,7 @@ var tradeMod = (function () {
         if(playerItem.count < count){
            count = playerItem.count
         }
-        state.money += count * item.current * count;
+        state.money += count * item.current;
         playerItem.count -= count;
     };
 

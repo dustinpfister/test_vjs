@@ -31,11 +31,25 @@ var tradeMod = (function () {
         };
     };
 
+    var createItemsObject = function(){
+        var itemsObj = {};
+        Object.keys(ITEMS).forEach(function(itemKey){
+            var item = ITEMS[itemKey],
+            vg = item.valueRange;
+            itemsObj[itemKey] = {
+                desc: item.desc,
+                current: vg[0] + (vg[1] - vg[0]) * Math.random()
+            };
+        });
+        return itemsObj;
+    };
+
     api.create = function () {
 
+        // main state object
         var trade = {
             items_player: {},
-            items: {}
+            items: createItemsObject()
         };
 
         Object.keys(ITEMS).forEach(function(itemKey){

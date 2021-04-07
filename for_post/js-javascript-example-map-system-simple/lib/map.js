@@ -4,7 +4,6 @@ var mapMod = (function () {
     DIST_MAX = 100,
     MAP_PPS_MAX = 256;
 
-
     // pubic api
     var api = {};
 
@@ -15,7 +14,7 @@ var mapMod = (function () {
                 startPos: {x: 0, y: 0},
                 curPos: {x:0, y:0 },
                 dist: 0,
-                moveing: false
+                moving: false
             },
             yOffset: 0,
             yMax: 480,

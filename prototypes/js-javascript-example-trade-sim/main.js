@@ -1,23 +1,36 @@
 
-var sm = {
-   money: 100,
-   trade : tradeMod.create()
-};
+var TradeSim = (function(){
 
-// create a simple plain text view
-var plainText = function(sm){
-    var text = '';
-    text += 'money: ' + sm.money + '\n\n';
-    Object.keys(sm.trade.items).forEach(function(itemKey){
-        var item = sm.trade.items[itemKey],
-        item_player = sm.trade.items_player[itemKey];
-        text += item.desc + ':\n';
-        text += '    current cost : $' + item.current + '\n';
-        text += '    on hand : ' + item_player.count + '\n\n';
-    });
-    return text;
-};
+    var api = {};
 
-tradeMod.buy(sm.trade, 'apple', 5, sm);
+    var game = {};
 
-console.log( plainText(sm) );
+    // create a simple plain text view
+    var plainText = function(game){
+        var text = '';
+        text += 'money: ' + game.money + '\n\n';
+        Object.keys(game.trade.items).forEach(function(itemKey){
+            var item = game.trade.items[itemKey],
+            item_player = game.trade.items_player[itemKey];
+            text += item.desc + ':\n';
+            text += '    current cost : $' + item.current + '\n';
+            text += '    on hand : ' + item_player.count + '\n\n';
+        });
+        return text;
+    };
+
+    api.startNew = function(money){
+        game = {
+            money: money || 100,
+            trade : tradeMod.create()
+        };
+    };
+
+    api.startNew(150);
+
+    tradeMod.buy(game.trade, 'apple', 5, game);
+
+    console.log(plainText(game));
+
+}());
+

@@ -13,7 +13,7 @@ var tradeMod = (function () {
     };
 
     ITEMS.kiwi = {
-        desc : 'kiwi      	',
+        desc : 'kiwi      ',
         valueRange: [1, 3]
     };
 

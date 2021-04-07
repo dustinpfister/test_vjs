@@ -12,7 +12,7 @@ var gameMod = (function () {
 
     // create state
     api.create = function (opt) {
-        opt = opt || {};
+        opt = opt || {canvas: {width: 640, height: 480}};
         var state = {
             turret: {
                 x: opt.canvas.width / 2,

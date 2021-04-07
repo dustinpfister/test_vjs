@@ -5,74 +5,14 @@ canvas.width = 640;
 canvas.height = 480;
 
 var sm = {
-    currentState: 'mapMenu',
+    currentState: 'game',
     game: {},
-    map: mapMod.create(),
     states: {},
     pos: {},
     down: false
 };
 
-// push some objects to the map
-sm.map.objects.push({
-    x: 50,
-    y: 45,
-    r: 20,
-    gameOptions: {
-        radiansPerSecond: Math.PI / 180 * 20,
-        fireRate: 1
-    }
-});
-
-sm.map.objects.push({
-    x: 520,
-    y: 480,
-    r: 20,
-    gameOptions: {
-        radiansPerSecond: Math.PI / 180 * 45,
-        fireRate: 0.75
-    }
-});
-
-sm.map.objects.push({
-    x: 220,
-    y: 720,
-    r: 20,
-    gameOptions: {
-        radiansPerSecond: Math.PI / 180 * 90,
-        fireRate: 0.25
-    }
-});
-
-sm.states.mapMenu = {
-    update: function(sm, secs){
-        var state = this;
-        mapMod.update(sm.map, secs);
-    },
-    draw: function(ctx, canvas, sm){
-        draw.back(ctx, canvas);
-        draw.map(ctx, sm.map)
-    },
-    pointer: {
-        start: function(sm, pos, e){
-            mapMod.on.start(sm.map, pos.x, pos.y);
-        },
-        move: function(sm, pos, e){
-            mapMod.on.move(sm.map, pos.x, pos.y, sm.down);
-        },
-        end: function(sm, pos, e){
-            if(!sm.map.moveMap.moving){
-                var obj = mapMod.getObjectAt(sm.map, pos.x, pos.y);
-                if(obj){
-                    var gameOptions = Object.assign({canvas: canvas}, obj.gameOptions)
-                    sm.game = gameMod.create(gameOptions);
-                    sm.currentState = 'game';
-                }
-            }
-            mapMod.on.end(sm.map, pos.x, pos.y);
-        }
-    }
-};
+sm.game = gameMod.create();
 
 sm.states.game = {
     update: function(sm, secs){
@@ -93,7 +33,6 @@ sm.states.game = {
         }
     }
 };
-
 
 var lt = new Date();
 var loop = function () {

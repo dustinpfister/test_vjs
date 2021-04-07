@@ -66,12 +66,22 @@ var tradeMod = (function () {
     // buy the given itemKey and count, if there is enough state.money
     api.buy = function(trade, itemKey, count, state){
         var item = trade.items[itemKey],
-        playerItem = trade.items_player[itemKey];
+        playerItem = trade.items_player[itemKey],
         totalCost = item.current * count;
         if(state.money >= totalCost){
             state.money -= totalCost;
             playerItem.count += count;
         }
+    };
+
+    api.sell = function(trade, itemKey, count, state){
+        var item = trade.items[itemKey],
+        playerItem = trade.items_player[itemKey];
+        if(playerItem.count < count){
+           count = playerItem.count
+        }
+        state.money += count * item.current * count;
+        playerItem.count -= count;
     };
 
     return api;

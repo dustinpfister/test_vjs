@@ -27,9 +27,7 @@ var TradeSim = (function(){
     };
 
     api.startNew(150);
-
     tradeMod.buy(game.trade, 'apple', 5, game);
-
     console.log(plainText(game));
 
 }());

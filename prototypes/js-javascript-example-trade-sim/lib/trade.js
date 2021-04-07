@@ -45,22 +45,23 @@ var tradeMod = (function () {
     };
 
     api.create = function () {
-
         // main state object
         var trade = {
             items_player: {},
             items: createItemsObject()
         };
-
         Object.keys(ITEMS).forEach(function(itemKey){
             var item = ITEMS[itemKey];
             trade.items_player[itemKey] = createPlayerItemObject({
                 desc: item.desc
             });
         });
-
         return trade;
+    };
 
+    api.newValues = function(trade){
+        trade.items = createItemsObject();
+        return trade;
     };
 
     return api;

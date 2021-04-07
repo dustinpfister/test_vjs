@@ -15,4 +15,6 @@ var plainText = function(sm){
     return text;
 };
 
+tradeMod.buy(sm.trade, 'apple', 5, sm);
+
 console.log( plainText(sm) );

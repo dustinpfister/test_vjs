@@ -9,8 +9,11 @@ var plainText = function(sm){
     var text = '';
     text += 'money: ' + sm.money + '\n\n';
     Object.keys(sm.trade.items).forEach(function(itemKey){
-        var item = sm.trade.items[itemKey];
-        text += item.desc + ' : ' + item.current + '\n';
+        var item = sm.trade.items[itemKey],
+        item_player = sm.trade.items_player[itemKey];
+        text += item.desc + ':\n';
+        text += '    current cost : $' + item.current + '\n';
+        text += '    on hand : ' + item_player.count + '\n\n';
     });
     return text;
 };

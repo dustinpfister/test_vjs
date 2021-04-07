@@ -1,4 +1,4 @@
-var trade = (function () {
+var tradeMod = (function () {
 
     var ITEMS = {};
 
@@ -33,9 +33,19 @@ var trade = (function () {
 
     api.create = function () {
 
-        return {
-            items_player: []
+        var trade = {
+            items_player: {},
+            items: {}
         };
+
+        Object.keys(ITEMS).forEach(function(itemKey){
+            var item = ITEMS[itemKey];
+            trade.items_player[itemKey] = createPlayerItemObject({
+                desc: item.desc
+            });
+        });
+
+        return trade;
 
     };
 

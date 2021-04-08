@@ -16,8 +16,7 @@ sm.game = gameMod.create();
 
 sm.states.game = {
     update: function(sm, secs){
-        gameMod.updateTurretFacing(sm.game, secs);
-        gameMod.updateShots(sm.game, secs);
+        gameMod.update(sm.game, secs);
     },
     draw: function(ctx, canvas, sm){
         draw.back(ctx, canvas);

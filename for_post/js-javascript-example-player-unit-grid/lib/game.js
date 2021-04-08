@@ -84,7 +84,7 @@ var gameMod = (function () {
         turret.data.target = Math.atan2(y - turret.y, x - turret.x);
     };
     // update turret facing to face current target
-    api.updateTurretFacing = function (state, secs) {
+    var updateTurretFacing = function (state, secs) {
         var turret = state.turret;
         var toAngle = turret.heading;
         if (state.down) {
@@ -118,7 +118,7 @@ var gameMod = (function () {
         return false;
     };
     // update shots
-    api.updateShots = function (state, secs) {
+    var updateShots = function (state, secs) {
         var turret = state.turret;
         turret.data.fireSecs += secs;
         if (turret.data.fireSecs >= turret.data.fireRate && turret.data.inRange) {
@@ -141,6 +141,12 @@ var gameMod = (function () {
             }
         });
     };
+
+    api.update = function(game, secs){
+        updateTurretFacing(sm.game, secs);
+        updateShots(sm.game, secs);
+    };
+
     // return public api
     return api;
 }

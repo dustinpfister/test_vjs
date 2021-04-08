@@ -124,9 +124,14 @@ var gameMod = (function () {
         return game;
     };
     // update turret target
-    api.updateTurretTarget = function (state, x, y) {
-        var turret = state.turret;
+    api.updateTurretTarget = function (game, x, y) {
+        var turret = game.turret;
         turret.data.target = Math.atan2(y - turret.y, x - turret.x);
+        game.player_units.forEach(function(unit){
+           if(unit.data.unitType === 'turret'){
+               unit.data.target = Math.atan2(y - unit.y, x - unit.x);
+           }
+        });
     };
 
     // find and return a free shot or false

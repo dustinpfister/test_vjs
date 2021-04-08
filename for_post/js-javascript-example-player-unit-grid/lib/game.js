@@ -32,7 +32,7 @@ var gameMod = (function () {
         return disp;
     };
 
-    // create a base player unit that will just serve as a place holder unit
+    // CREATE a base player unit that will just serve as a place holder unit
     var create_unit_base = function(opt){
         opt = opt || {};
         opt.w = 32;
@@ -43,8 +43,25 @@ var gameMod = (function () {
         return unit;
     };
 
+    // SET the given player unit pool slot to a turret
+    var set_unit_turret = function(game, slotIndex){
+        var unit = game.player_units[slotIndex];
+        unit.heading = Math.PI * 1.5;
+        unit.active = true;
+        unit.data = {
+            unitType: 'turret',
+            facing: 0,
+            target: 0,
+            radiansPerSecond: TURRET_ROTATION_RATE,
+            fireRate: TURRET_FIRE_RATE,
+            fireSecs: 0,
+            inRange: false
+        };
+        return unit;
+    };
+
     // create a turret UNIT
-    var create_unit_turret = function(opt){
+    var createTurret = function(opt){
         opt = opt || {};
         opt.w = 32;
         opt.h = 32;
@@ -70,7 +87,7 @@ var gameMod = (function () {
     api.create = function (opt) {
         opt = opt || {canvas: {width: 640, height: 480}};
         var game = {
-            turret: create_unit_turret(),
+            turret: createTurret({x: 32, y: 32}),
             player_units: [],
             shots: [],
             down: false // a pointer is down
@@ -85,11 +102,14 @@ var gameMod = (function () {
             x = i % w;
             y = Math.floor(i / w);
             game.player_units.push(create_unit_base({
-                x: 200 + x * 32,
-                y: 200 + y * 32 
+                x: 200 + x * 32 + 20 * x,
+                y: 200 + y * 32 + 20 * y
             }));
             i += 1;
         }
+
+        // start unit
+        set_unit_turret(game, 0);
 
         // create shot pool
         game.shots = [];

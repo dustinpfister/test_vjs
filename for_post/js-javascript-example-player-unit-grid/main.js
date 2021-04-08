@@ -20,7 +20,9 @@ sm.states.game = {
     },
     draw: function(ctx, canvas, sm){
         draw.back(ctx, canvas);
+
         draw.turret(ctx, sm.game);
+        draw.player_units(ctx, sm.game);
         draw.shots(ctx, sm.game);
     },
     pointer: {

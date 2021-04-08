@@ -24,7 +24,7 @@ var gameMod = (function () {
         opt = opt || {};
         var disp = {
             x:0,y:0,w:32,h:32,
-            heading: 0,
+            heading: opt.heading === undefined ? 0 : opt.heading,
             active: false,
             data: {}
         };
@@ -35,9 +35,10 @@ var gameMod = (function () {
     // create a turret UNIT
     var createTurretUnit = function(opt){
         opt = opt || {};
-        var turret = createBaseDispObject({
-           x: 0, y: 0, w: 32, h: 32
-        });
+        opt.w = 32;
+        opt.h = 32;
+        opt.heading = Math.PI * 1.5;
+        var turret = createBaseDispObject(opt);
         turret.active = opt.active === undefined ? true: opt.active;
         turret.data = {
             facing: 0,

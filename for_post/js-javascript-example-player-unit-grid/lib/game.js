@@ -34,6 +34,9 @@ var gameMod = (function () {
 
     // create a base player unit that will just serve as a place holder unit
     var create_unit_base = function(opt){
+        opt = opt || {};
+        opt.w = 32;
+        opt.h = 32;
         var unit = createBaseDispObject(opt);
         unit.active = false;
         unit.data.unitType = 'none';
@@ -68,14 +71,36 @@ var gameMod = (function () {
         opt = opt || {canvas: {width: 640, height: 480}};
         var game = {
             turret: create_unit_turret(),
+            player_units: [],
+            shots: [],
             down: false // a pointer is down
         };
+
+        // create unit pool
+        var i = 0,
+        w = 3, h = 3, x, y,
+        len = w * h;
+        game.player_units = [];
+        while(i < len){
+            x = i % w;
+            y = Math.floor(i / w);
+            game.player_units.push(create_unit_base({
+                x: 200 + x * 32,
+                y: 200 + y * 32 
+            }));
+            i += 1;
+        }
+
+        // create shot pool
         game.shots = [];
         var i = 0;
         while (i < SHOT_COUNT) {
             game.shots.push(createBaseDispObject());
             i += 1;
         }
+
+        console.log(game);
+
         return game;
     };
     // update turret target

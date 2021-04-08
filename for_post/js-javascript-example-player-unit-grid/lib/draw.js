@@ -33,6 +33,10 @@ draw.turret = function (ctx, game) {
     ctx.restore();
 };
 
+draw.player_units = function(ctx, game){
+
+};
+
 draw.shots = function (ctx, game) {
     var shots = game.shots;
     shots.forEach(function (shot) {

@@ -1,17 +1,19 @@
 
 let func1 = (a) => {
-    return a == undefined ? 0 : a;
+    let b = a == undefined ? 0 : a;
+    console.log(b);
+    return b;
 };
 
 let func2 = (a) => {
-    return a === undefined ? 0 : a;
+    let b = a === undefined ? 0 : a;
+    console.log(b);
+    return b;
 };
 
 
-console.log( func1() );     // 0
-console.log( func1(null) ); // 0
+func1()     // 0
+func1(null) // 0
 
-console.log('');
-
-console.log( func2() );     // 0
-console.log( func2(null) ); // null
+func2()     // 0
+func2(null) // null

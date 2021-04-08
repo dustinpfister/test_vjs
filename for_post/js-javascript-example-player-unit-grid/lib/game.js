@@ -35,21 +35,17 @@ var gameMod = (function () {
     // create a turret UNIT
     var createTurretUnit = function(opt){
         opt = opt || {};
-        var turret = {
-            x: opt.x === undefined ? 0 : opt.x,
-            y: opt.y === undefined ? 0 : opt.y,
-            w: 32,
-            h: 32,
-            heading: Math.PI * 1.5,
-            
-            data: {
-                facing: 0,
-                target: 0,
-                radiansPerSecond: TURRET_ROTATION_RATE,
-                fireRate: TURRET_FIRE_RATE,
-                fireSecs: 0,
-                inRange: false
-            }
+        var turret = createBaseDispObject({
+           x: 0, y: 0, w: 32, h: 32
+        });
+        turret.active = opt.active === undefined ? true: opt.active;
+        turret.data = {
+            facing: 0,
+            target: 0,
+            radiansPerSecond: TURRET_ROTATION_RATE,
+            fireRate: TURRET_FIRE_RATE,
+            fireSecs: 0,
+            inRange: false
         };
         return turret;
     };

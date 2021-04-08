@@ -113,7 +113,17 @@ var gameMod = (function () {
     api.updateTurretTarget = function (game, x, y) {
         game.player_units.forEach(function(unit){
            if(unit.data.unitType === 'turret'){
-               unit.data.target = Math.atan2(y - unit.y, x - unit.x);
+               // old system just sets an angle
+               var a = Math.atan2(y - unit.y, x - unit.x);
+               unit.data.target = a;
+               // new system will involve some kind of object
+               unit.data.targetObj = {
+                   x: x,
+                   y: y,
+                   dist: Infinity,
+                   frames: 60,
+                   framesMax: 60
+               };
            }
         });
     };

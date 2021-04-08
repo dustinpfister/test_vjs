@@ -83,26 +83,7 @@ var gameMod = (function () {
         var turret = state.turret;
         turret.data.target = Math.atan2(y - turret.y, x - turret.x);
     };
-    // update turret facing to face current target
-    var updateTurretFacing = function (state, secs) {
-        var turret = state.turret;
-        var toAngle = turret.heading;
-        if (state.down) {
-            toAngle = turret.data.target;
-        }
-        var dist = utils.angleDistance(turret.data.facing, toAngle);
-        var dir = utils.shortestAngleDirection(toAngle, turret.data.facing);
-        var delta = turret.data.radiansPerSecond * secs;
-        if (delta > dist) {
-            turret.data.facing = toAngle;
-        } else {
-            turret.data.facing += delta * dir;
-        }
-        turret.data.inRange = false;
-        if (state.down && dist < TURRET_FIRE_RANGE) {
-            turret.data.inRange = true;
-        }
-    };
+
     // find and return a free shot or false
     var getFreeShot = function (state) {
         var i = 0,
@@ -116,6 +97,26 @@ var gameMod = (function () {
             i += 1;
         }
         return false;
+    };
+
+    // update turret facing to face current target
+    var update_turret_facing = function (game, turret, secs) {
+        var toAngle = turret.heading;
+        if (game.down) {
+            toAngle = turret.data.target;
+        }
+        var dist = utils.angleDistance(turret.data.facing, toAngle);
+        var dir = utils.shortestAngleDirection(toAngle, turret.data.facing);
+        var delta = turret.data.radiansPerSecond * secs;
+        if (delta > dist) {
+            turret.data.facing = toAngle;
+        } else {
+            turret.data.facing += delta * dir;
+        }
+        turret.data.inRange = false;
+        if (game.down && dist < TURRET_FIRE_RANGE) {
+            turret.data.inRange = true;
+        }
     };
 
     var update_turret_fire = function(game, turret, secs){
@@ -147,7 +148,7 @@ var gameMod = (function () {
     };
 
     api.update = function(game, secs){
-        updateTurretFacing(game, secs);
+        update_turret_facing(game, game.turret, secs);
         update_turret_fire(game, game.turret, secs);
         updateShots(game, secs);
     };

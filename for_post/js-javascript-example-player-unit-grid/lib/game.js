@@ -60,26 +60,6 @@ var gameMod = (function () {
         return unit;
     };
 
-    // create a turret UNIT
-    var createTurret = function(opt){
-        opt = opt || {};
-        opt.w = 32;
-        opt.h = 32;
-        opt.heading = Math.PI * 1.5;
-        var turret = createBaseDispObject(opt);
-        turret.active = opt.active === undefined ? true: opt.active;
-        turret.data = {
-            unitType: 'turret',
-            facing: 0,
-            target: 0,
-            radiansPerSecond: TURRET_ROTATION_RATE,
-            fireRate: TURRET_FIRE_RATE,
-            fireSecs: 0,
-            inRange: false
-        };
-        return turret;
-    };
-
     // pubic api
     var api = {};
 
@@ -87,7 +67,6 @@ var gameMod = (function () {
     api.create = function (opt) {
         opt = opt || {canvas: {width: 640, height: 480}};
         var game = {
-            turret: createTurret({x: 32, y: 32}),
             player_units: [],
             shots: [],
             down: false // a pointer is down
@@ -127,8 +106,6 @@ var gameMod = (function () {
     };
     // update turret target
     api.updateTurretTarget = function (game, x, y) {
-        var turret = game.turret;
-        turret.data.target = Math.atan2(y - turret.y, x - turret.x);
         game.player_units.forEach(function(unit){
            if(unit.data.unitType === 'turret'){
                unit.data.target = Math.atan2(y - unit.y, x - unit.x);
@@ -207,8 +184,6 @@ var gameMod = (function () {
                update_turret_fire(game, unit, secs);
            }
         });
-        update_turret_facing(game, game.turret, secs);
-        update_turret_fire(game, game.turret, secs);
         updateShots(game, secs);
     };
 

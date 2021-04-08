@@ -40,13 +40,16 @@ var gameMod = (function () {
             y: opt.y === undefined ? 0 : opt.y,
             w: 32,
             h: 32,
-            facing: 0,
-            target: 0,
-            radiansPerSecond: TURRET_ROTATION_RATE,
             heading: Math.PI * 1.5,
-            fireRate: TURRET_FIRE_RATE,
-            fireSecs: 0,
-            inRange: false
+            
+            data: {
+                facing: 0,
+                target: 0,
+                radiansPerSecond: TURRET_ROTATION_RATE,
+                fireRate: TURRET_FIRE_RATE,
+                fireSecs: 0,
+                inRange: false
+            }
         };
         return turret;
     };
@@ -74,26 +77,26 @@ var gameMod = (function () {
     // update turret target
     api.updateTurretTarget = function (state, x, y) {
         var turret = state.turret;
-        turret.target = Math.atan2(y - turret.y, x - turret.x);
+        turret.data.target = Math.atan2(y - turret.y, x - turret.x);
     };
     // update turret facing to face current target
     api.updateTurretFacing = function (state, secs) {
         var turret = state.turret;
         var toAngle = turret.heading;
         if (state.down) {
-            toAngle = turret.target;
+            toAngle = turret.data.target;
         }
-        var dist = utils.angleDistance(turret.facing, toAngle);
-        var dir = utils.shortestAngleDirection(toAngle, turret.facing);
-        var delta = turret.radiansPerSecond * secs;
+        var dist = utils.angleDistance(turret.data.facing, toAngle);
+        var dir = utils.shortestAngleDirection(toAngle, turret.data.facing);
+        var delta = turret.data.radiansPerSecond * secs;
         if (delta > dist) {
-            turret.facing = toAngle;
+            turret.data.facing = toAngle;
         } else {
-            turret.facing += delta * dir;
+            turret.data.facing += delta * dir;
         }
-        turret.inRange = false;
+        turret.data.inRange = false;
         if (state.down && dist < TURRET_FIRE_RANGE) {
-            turret.inRange = true;
+            turret.data.inRange = true;
         }
     };
     // find and return a free shot or false
@@ -113,16 +116,16 @@ var gameMod = (function () {
     // update shots
     api.updateShots = function (state, secs) {
         var turret = state.turret;
-        turret.fireSecs += secs;
-        if (turret.fireSecs >= turret.fireRate && turret.inRange) {
+        turret.data.fireSecs += secs;
+        if (turret.data.fireSecs >= turret.data.fireRate && turret.data.inRange) {
             var freeShot = getFreeShot(state);
             if (freeShot) {
                 freeShot.active = true;
                 freeShot.x = turret.x + turret.w / 2 - freeShot.w / 2;
                 freeShot.y = turret.y + turret.h / 2 - freeShot.h / 2;
-                freeShot.heading = turret.facing;
+                freeShot.heading = turret.data.facing;
             }
-            turret.fireSecs = 0;
+            turret.data.fireSecs = 0;
         }
         state.shots.forEach(function (shot) {
             if (shot.active) {

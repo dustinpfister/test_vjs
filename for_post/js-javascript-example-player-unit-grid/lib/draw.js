@@ -22,7 +22,7 @@ draw.turret = function (ctx, game) {
     ctx.fillStyle = 'yellow';
     ctx.fillRect(0, 0, turret.w, turret.h);
     ctx.translate(turret.w / 2, turret.h / 2);
-    ctx.rotate(turret.facing);
+    ctx.rotate(turret.data.facing);
     ctx.fillStyle = 'red';
     ctx.strokeStyle = 'red';
     ctx.fillRect(-8, -8, 16, 16);

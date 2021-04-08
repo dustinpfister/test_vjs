@@ -1,7 +1,7 @@
 var gameMod = (function () {
 
     // constants
-    var SHOT_COUNT = 30,
+    var SHOT_COUNT = 100,
     SHOT_MAX_DIST = 300,
     SHOT_PPS = 256,
     TURRET_FIRE_RANGE = Math.PI / 180 * 20,
@@ -110,6 +110,10 @@ var gameMod = (function () {
 
         // start unit
         set_unit_turret(game, 0);
+        set_unit_turret(game, 2);
+        set_unit_turret(game, 4);
+        set_unit_turret(game, 6);
+        set_unit_turret(game, 8);
 
         // create shot pool
         game.shots = [];
@@ -118,8 +122,6 @@ var gameMod = (function () {
             game.shots.push(createBaseDispObject());
             i += 1;
         }
-
-        console.log(game);
 
         return game;
     };
@@ -175,6 +177,7 @@ var gameMod = (function () {
             var freeShot = getFreeShot(game);
             if (freeShot) {
                 freeShot.active = true;
+                freeShot.data.unit = turret;
                 freeShot.x = turret.x + turret.w / 2 - freeShot.w / 2;
                 freeShot.y = turret.y + turret.h / 2 - freeShot.h / 2;
                 freeShot.heading = turret.data.facing;
@@ -190,7 +193,7 @@ var gameMod = (function () {
             if (shot.active) {
                 shot.x += Math.cos(shot.heading) * SHOT_PPS * secs;
                 shot.y += Math.sin(shot.heading) * SHOT_PPS * secs;
-                if (utils.distance(shot.x, shot.y, turret.x, turret.y) >= SHOT_MAX_DIST) {
+                if (utils.distance(shot.x, shot.y, shot.data.unit.x, shot.data.unit.y) >= SHOT_MAX_DIST) {
                     shot.active = false;
                 }
             }

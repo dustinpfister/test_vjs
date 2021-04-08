@@ -193,6 +193,12 @@ var gameMod = (function () {
     };
 
     api.update = function(game, secs){
+        game.player_units.forEach(function(unit){
+           if(unit.data.unitType === 'turret'){
+               update_turret_facing(game, unit, secs);
+               update_turret_fire(game, unit, secs);
+           }
+        });
         update_turret_facing(game, game.turret, secs);
         update_turret_fire(game, game.turret, secs);
         updateShots(game, secs);

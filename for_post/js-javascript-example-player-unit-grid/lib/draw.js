@@ -38,7 +38,7 @@ draw.shots = function (ctx, game) {
             ctx.save()
             ctx.fillStyle = 'white';
             ctx.translate(shot.x, shot.y);
-            ctx.fillRect(-3, -3, 6, 6);
+            ctx.fillRect(0, 0, shot.w, shot.h);
             ctx.restore();
         }
     });

@@ -8,19 +8,32 @@ var gameMod = (function () {
     TURRET_ROTATION_RATE = Math.PI / 180 * 180,
     TURRET_FIRE_RATE = 0.125;
 
+    var setDispObject = function(disp, x, y, w, h){
+        disp.x = x === undefined ? 0 : x;
+        disp.y = y === undefined ? 0 : y;
+        disp.w = w === undefined ? 8 : w;
+        disp.h = h === undefined ? 8 : h;
+        disp.hh = disp.h / 2;
+        disp.hw = disp.w / 2;
+        disp.cx = disp.x + disp.hw;
+        disp.cy = disp.y + disp.hh;
+    };
+
+    // create a base disp object
     var createBaseDispObject = function(opt){
         opt = opt || {};
         var disp = {
-            x: 0,
-            y: 0,
+            x:0,y:0,w:32,h:32,
             heading: 0,
             active: false,
             data: {}
         };
+        setDispObject(disp, opt.x, opt.y, opt.w, opt.h);
         return disp;
     };
 
-    var createTurret = function(opt){
+    // create a turret UNIT
+    var createTurretUnit = function(opt){
         opt = opt || {};
         var turret = {
             x: opt.x === undefined ? 0 : opt.x,
@@ -45,7 +58,7 @@ var gameMod = (function () {
     api.create = function (opt) {
         opt = opt || {canvas: {width: 640, height: 480}};
         var game = {
-            turret: createTurret({
+            turret: createTurretUnit({
                 x: opt.canvas.width / 2, 
                 y: opt.canvas.height / 2}),
             down: false // a pointer is down
@@ -105,8 +118,8 @@ var gameMod = (function () {
             var freeShot = getFreeShot(state);
             if (freeShot) {
                 freeShot.active = true;
-                freeShot.x = turret.x;
-                freeShot.y = turret.y;
+                freeShot.x = turret.x - freeShot.w / 2;
+                freeShot.y = turret.y - freeShot.h / 2;
                 freeShot.heading = turret.facing;
             }
             turret.fireSecs = 0;

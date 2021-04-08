@@ -117,12 +117,11 @@ var gameMod = (function () {
         }
         return false;
     };
-    // update shots
-    var updateShots = function (state, secs) {
-        var turret = state.turret;
+
+    var update_turret_fire = function(game, turret, secs){
         turret.data.fireSecs += secs;
         if (turret.data.fireSecs >= turret.data.fireRate && turret.data.inRange) {
-            var freeShot = getFreeShot(state);
+            var freeShot = getFreeShot(game);
             if (freeShot) {
                 freeShot.active = true;
                 freeShot.x = turret.x + turret.w / 2 - freeShot.w / 2;
@@ -131,6 +130,11 @@ var gameMod = (function () {
             }
             turret.data.fireSecs = 0;
         }
+    };
+
+    // update shots
+    var updateShots = function (state, secs) {
+        var turret = state.turret;
         state.shots.forEach(function (shot) {
             if (shot.active) {
                 shot.x += Math.cos(shot.heading) * SHOT_PPS * secs;
@@ -143,8 +147,9 @@ var gameMod = (function () {
     };
 
     api.update = function(game, secs){
-        updateTurretFacing(sm.game, secs);
-        updateShots(sm.game, secs);
+        updateTurretFacing(game, secs);
+        update_turret_fire(game, game.turret, secs);
+        updateShots(game, secs);
     };
 
     // return public api

@@ -5,7 +5,26 @@ var gameMod = (function () {
     SHOT_MAX_DIST = 300,
     SHOT_PPS = 256,
     TURRET_FIRE_RANGE = Math.PI / 180 * 20,
-    TURRET_ROTATION_RATE = Math.PI / 180 * 180;
+    TURRET_ROTATION_RATE = Math.PI / 180 * 180,
+    TURRET_FIRE_RATE = 0.125;
+
+    var createTurret = function(opt){
+        opt = opt || {};
+        var turret = {
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            w: 32,
+            h: 32,
+            facing: 0,
+            target: 0,
+            radiansPerSecond: TURRET_ROTATION_RATE,
+            heading: Math.PI * 1.5,
+            fireRate: TURRET_FIRE_RATE,
+            fireSecs: 0,
+            inRange: false
+        };
+        return turret;
+    };
 
     // pubic api
     var api = {};
@@ -14,19 +33,9 @@ var gameMod = (function () {
     api.create = function (opt) {
         opt = opt || {canvas: {width: 640, height: 480}};
         var state = {
-            turret: {
-                x: opt.canvas.width / 2,
-                y: opt.canvas.height / 2,
-                w: 32,
-                h: 32,
-                facing: 0,
-                target: 0,
-                radiansPerSecond: opt.radiansPerSecond || TURRET_ROTATION_RATE,
-                heading: Math.PI * 1.5,
-                fireRate: opt.fireRate || 0.125,
-                fireSecs: 0,
-                inRange: false
-            },
+            turret: createTurret({
+                x: opt.canvas.width / 2, 
+                y: opt.canvas.height / 2}),
             down: false // a pointer is down
         };
         state.shots = [];

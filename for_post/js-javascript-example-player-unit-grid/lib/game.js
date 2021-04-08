@@ -1,12 +1,24 @@
 var gameMod = (function () {
 
     // constants
-    var SHOT_COUNT = 10,
+    var SHOT_COUNT = 30,
     SHOT_MAX_DIST = 300,
     SHOT_PPS = 256,
     TURRET_FIRE_RANGE = Math.PI / 180 * 20,
     TURRET_ROTATION_RATE = Math.PI / 180 * 180,
     TURRET_FIRE_RATE = 0.125;
+
+    var createBaseDispObject = function(opt){
+        opt = opt || {};
+        var disp = {
+            x: 0,
+            y: 0,
+            heading: 0,
+            active: false,
+            data: {}
+        };
+        return disp;
+    };
 
     var createTurret = function(opt){
         opt = opt || {};
@@ -32,25 +44,19 @@ var gameMod = (function () {
     // create state
     api.create = function (opt) {
         opt = opt || {canvas: {width: 640, height: 480}};
-        var state = {
+        var game = {
             turret: createTurret({
                 x: opt.canvas.width / 2, 
                 y: opt.canvas.height / 2}),
             down: false // a pointer is down
         };
-        state.shots = [];
+        game.shots = [];
         var i = 0;
         while (i < SHOT_COUNT) {
-            state.shots.push({
-                x: 0,
-                y: 0,
-                heading: 0,
-                active: false
-            });
+            game.shots.push(createBaseDispObject());
             i += 1;
         }
-
-        return state;
+        return game;
     };
     // update turret target
     api.updateTurretTarget = function (state, x, y) {

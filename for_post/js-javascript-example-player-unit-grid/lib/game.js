@@ -67,6 +67,7 @@ var gameMod = (function () {
     api.create = function (opt) {
         opt = opt || {canvas: {width: 640, height: 480}};
         var game = {
+            canvas : opt.canvas,
             player_units: [],
             shots: [],
             down: false // a pointer is down
@@ -75,14 +76,18 @@ var gameMod = (function () {
         // create unit pool
         var i = 0,
         w = 3, h = 3, x, y,
+        spacing = 20,
+        unitSize = 32,
+        sx = game.canvas.width / 2 - ((unitSize + spacing) * w / 2),
+        sy = game.canvas.height / 2 - ((unitSize + spacing) * h / 2),
         len = w * h;
         game.player_units = [];
         while(i < len){
             x = i % w;
             y = Math.floor(i / w);
             game.player_units.push(create_unit_base({
-                x: 200 + x * 32 + 20 * x,
-                y: 200 + y * 32 + 20 * y
+                x: sx + x * unitSize + spacing * x,
+                y: sy + y * unitSize + spacing * y
             }));
             i += 1;
         }

@@ -18,12 +18,14 @@ draw.turret = function (ctx, game) {
     var turret = game.turret;
     ctx.save();
     ctx.translate(turret.x, turret.y);
+    // draw base area
     ctx.fillStyle = 'yellow';
-    ctx.fillRect(turret.w * 0.5 * -1, turret.h * 0.5 * -1, turret.w, turret.h);
+    ctx.fillRect(0, 0, turret.w, turret.h);
+    ctx.translate(turret.w / 2, turret.h / 2);
     ctx.rotate(turret.facing);
     ctx.fillStyle = 'red';
     ctx.strokeStyle = 'red';
-    ctx.fillRect(turret.w * 0.3 * -1, turret.h * 0.3 * -1, turret.w * 0.6, turret.h * 0.6);
+    ctx.fillRect(-8, -8, 16, 16);
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(turret.w, 0);

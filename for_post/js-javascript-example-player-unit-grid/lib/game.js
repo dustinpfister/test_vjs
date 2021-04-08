@@ -118,8 +118,8 @@ var gameMod = (function () {
             var freeShot = getFreeShot(state);
             if (freeShot) {
                 freeShot.active = true;
-                freeShot.x = turret.x - freeShot.w / 2;
-                freeShot.y = turret.y - freeShot.h / 2;
+                freeShot.x = turret.x + turret.w / 2 - freeShot.w / 2;
+                freeShot.y = turret.y + turret.h / 2 - freeShot.h / 2;
                 freeShot.heading = turret.facing;
             }
             turret.fireSecs = 0;

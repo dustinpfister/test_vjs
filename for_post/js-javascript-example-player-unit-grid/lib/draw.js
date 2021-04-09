@@ -5,15 +5,6 @@ draw.back = function (ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-draw.map = function(ctx, map){
-   map.objects.forEach(function(obj){
-       ctx.fillStyle = 'lime';
-       ctx.beginPath();
-       ctx.arc(obj.x, obj.y - map.yOffset, obj.r, 0, utils.pi2);
-       ctx.fill();
-   });
-};
-
 var drawUnit = {
     none: function(ctx, unit){
         ctx.save();

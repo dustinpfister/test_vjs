@@ -1,2 +1,2 @@
 
-console.log(new orbMod.Orb());
+console.log(orbMod.create());

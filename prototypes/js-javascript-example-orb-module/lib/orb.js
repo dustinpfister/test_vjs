@@ -169,43 +169,47 @@ var orbMod = (function () {
 
     var api = {};
 
-    // the Orb constructor
-    api.Orb = function (opt) {
-        var self = this;
+    // create and return an Orb Object
+    api.create = function(opt){
+
+        var orb = {};
         opt = opt || {};
         opt.points = opt.points || null;
         opt.ratio = opt.ratio || null;
         opt.level = opt.level || null;
-        this.recipies = opt.recipies || [{
+
+        // recipies
+        orb.recipies = opt.recipies || [{
                     type: 'heal',
                     ratio: [0, 0, 2, 5]
                 }
             ];
         // if points i opt, set by points
         if (opt.points) {
-            setByPoints.call(this, opt.points);
+            setByPoints.call(orb, opt.points);
         }
         // if ratio in opt, set by ratio, and level
         if (opt.ratio) {
-            setByRatio.call(this, opt.ratio, opt.level);
+            setByRatio.call(orb, opt.ratio, opt.level);
         }
         // if orbs in opt set by one or more given orbs
         if (opt.orbs) {
-            fromOrbs.call(this, opt.orbs);
+            fromOrbs.call(orb, opt.orbs);
         }
         // if just calling new Orb()
         if (!opt.points && !opt.ratio && !opt.orbs) {
-            setByPoints.call(this, [1, 0, 0, 0]);
+            setByPoints.call(orb, [1, 0, 0, 0]);
         }
         // set el stats
-        this.elStats = getElStats(this.points);
-        this.worth = 0;
-        this.points.forEach(function (pt) {
-            self.worth += pt;
+        orb.elStats = getElStats(orb.points);
+        orb.worth = 0;
+        orb.points.forEach(function (pt) {
+            orb.worth += pt;
         });
-        findType.call(this);
+        findType.call(orb);
         // set final level based on ratio, points, and type
-        setLevel.call(this);
+        setLevel.call(orb);
+        return orb;
     };
 
     return api;

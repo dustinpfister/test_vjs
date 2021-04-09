@@ -98,9 +98,10 @@ var orbMod = (function () {
     // set orb values based on a given points array
     var setByPoints = function (orb, points) {
         orb.points = Array.from(points);
-        orb.ratio = [];
         // find the simple ratio
         orb.ratio = getSimpleRatio(orb.points);
+        // find type
+        findType(orb);
         return orb;
     };
 
@@ -128,19 +129,11 @@ var orbMod = (function () {
 
     // create and return an Orb Object
     api.create = function(opt){
-
         var orb = {};
         opt = opt || {};
         opt.points = opt.points || null;
         opt.ratio = opt.ratio || null;
         opt.level = opt.level || null;
-
-        // recipies
-        orb.recipies = opt.recipies || [{
-                    type: 'heal',
-                    ratio: [0, 0, 2, 5]
-                }
-            ];
         // if points i opt, set by points
         if (opt.points) {
             setByPoints(orb, opt.points);
@@ -149,21 +142,10 @@ var orbMod = (function () {
         if (opt.ratio) {
             setByRatio(orb, opt.ratio, opt.level);
         }
-        // if orbs in opt set by one or more given orbs
-        //if (opt.orbs) {
-        //    fromOrbs(orb, opt.orbs);
-        //}
         // if just calling new Orb()
         if (!opt.points && !opt.ratio && !opt.orbs) {
             setByPoints(orb, [1, 0, 0, 0]);
         }
-        // set el stats
-        //orb.elStats = getElStats(orb.points);
-        orb.worth = 0;
-        orb.points.forEach(function (pt) {
-            orb.worth += pt;
-        });
-        findType(orb);
         return orb;
     };
 
@@ -181,7 +163,6 @@ var orbMod = (function () {
                 tab(a);
             });
             var orb = setByPoints(api.create(), points);
-            findType(orb);
             return orb;
         } else {
             // assume just single orb is given

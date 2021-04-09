@@ -1,5 +1,7 @@
 var orbMod = (function () {
 
+    var api = {};
+
     // Greatest Common Deviser
     var gcd = function (a, b) {
         if (!b) {
@@ -120,26 +122,27 @@ var orbMod = (function () {
         orb.ratio = [];
         // find the simple ratio
         orb.ratio = getSimpleRatio(orb.points);
+        return orb;
     };
 
     // combine one or more orbs with this one
-    var fromOrbs = function (orbs) {
+    api.fromOrbs = function (orb, orbCollection) {
         var points = [0, 0, 0, 0],
-        tab = function (orb) {
-            orb.points.forEach(function (pt, i) {
+        tab = function (a) {
+            a.points.forEach(function (pt, i) {
                 points[i] += pt;
             });
         };
         // if Array of Orbs (combine, new from)
-        if (orbs.constructor.name === 'Array') {
-            orbs.forEach(function (orb) {
-                tab(orb);
+        if (orbCollection.constructor.name === 'Array') {
+            orbCollection.forEach(function (a) {
+                tab(a);
             });
-            setByPoints.call(this, points);
+            return setByPoints(orb, points);
         } else {
             // assume just single orb is given
             // then just set by the given orbs points (clone orb)
-            setByPoints.call(this, orbs.points);
+            return setByPoints(orb, orbCollection.points);
         }
     };
 
@@ -165,8 +168,6 @@ var orbMod = (function () {
         }
     };
 
-    var api = {};
-
     // create and return an Orb Object
     api.create = function(opt){
 
@@ -191,9 +192,9 @@ var orbMod = (function () {
             setByRatio(orb, opt.ratio, opt.level);
         }
         // if orbs in opt set by one or more given orbs
-        if (opt.orbs) {
-            fromOrbs.call(orb, opt.orbs);
-        }
+        //if (opt.orbs) {
+        //    fromOrbs(orb, opt.orbs);
+        //}
         // if just calling new Orb()
         if (!opt.points && !opt.ratio && !opt.orbs) {
             setByPoints(orb, [1, 0, 0, 0]);

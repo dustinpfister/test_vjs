@@ -125,27 +125,6 @@ var orbMod = (function () {
         return orb;
     };
 
-    // combine one or more orbs with this one
-    api.fromOrbs = function (orb, orbCollection) {
-        var points = [0, 0, 0, 0],
-        tab = function (a) {
-            a.points.forEach(function (pt, i) {
-                points[i] += pt;
-            });
-        };
-        // if Array of Orbs (combine, new from)
-        if (orbCollection.constructor.name === 'Array') {
-            orbCollection.forEach(function (a) {
-                tab(a);
-            });
-            return setByPoints(orb, points);
-        } else {
-            // assume just single orb is given
-            // then just set by the given orbs points (clone orb)
-            return setByPoints(orb, orbCollection.points);
-        }
-    };
-
     var findType = function () {
         var oneCT = 0,
         nonOne = false;
@@ -209,6 +188,27 @@ var orbMod = (function () {
         // set final level based on ratio, points, and type
         setLevel.call(orb);
         return orb;
+    };
+
+    // create an orb from a collection of orbs
+    api.fromOrbs = function (orbCollection) {
+        var points = [0, 0, 0, 0],
+        tab = function (a) {
+            a.points.forEach(function (pt, i) {
+                points[i] += pt;
+            });
+        };
+        // if Array of Orbs (combine, new from)
+        if (orbCollection.constructor.name === 'Array') {
+            orbCollection.forEach(function (a) {
+                tab(a);
+            });
+            return setByPoints(api.create(), points);
+        } else {
+            // assume just single orb is given
+            // then just set by the given orbs points (clone orb)
+            return setByPoints(api.create(), orbCollection.points);
+        }
     };
 
     return api;

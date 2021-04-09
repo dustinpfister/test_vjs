@@ -12,7 +12,7 @@ var orbMod = (function () {
     };
 
     // get the number I need to divide points by to get the simple ratio
-    var getGcdFromPoints = function (points) {
+    var getGCDFromPoints = function (points) {
         var ai = 0,
         d,
         gd = 1,
@@ -42,13 +42,16 @@ var orbMod = (function () {
         return gd;
     };
 
+console.log('gcd test: ' + getGCDFromPoints([2,2,0,4])); // 2
+console.log('gcd test: ' + getGCDFromPoints([2,2,0,3])); // 1
+
     // get the Element Stats based on the given points (or ratio)
     var getElStats = function (points) {
         var elStats = {
             ct: 0, // element count [0,4,0,0] = 1, [7,0,6,7] = 3
             i: [], // indexes of elements
             equalAll: false, // all elements equal each other (pure,dual,triple,and quad)
-            gcd: getGcdFromPoints(points) // the gcd
+            gcd: getGCDFromPoints(points) // the gcd
         };
         // get count and indexes
         points.forEach(function (pt, i) {
@@ -75,21 +78,28 @@ var orbMod = (function () {
     // get the simple ratio from a set of points (or simplify a ratio)
     // [0,0,14,2] => [0,0,7,1]
     var getSimpleRatio = function (points) {
-        var gd = getGcdFromPoints(points),
+
+        var gd = getGCDFromPoints(points),
         elStats = getElStats(points);
         // get simple ratio by diving all points by gd
         var simp = points.map(function (pt, i) {
                 return pt / gd;
             });
-        // special case for pure, dual, triple, and quad,
-        // always assure the ratio is 1:1 based on stats from
-        // elStats and not getGcdFromPoints
+       //special case for pure, dual, triple, and quad,
+       //always assure the ratio is 1:1 based on stats from
+       //elStats and not getGcdFromPoints
         if (elStats.equalAll) {
             elStats.i.forEach(function (i) {
                 simp[i] = 1;
             });
         }
         return simp;
+/*
+        var gd = getGCDFromPoints(points);
+        return points.map(function(pointValue){
+            return pointValue / gd;
+        });
+*/
     };
 
     // set level when points, and ratio are valid

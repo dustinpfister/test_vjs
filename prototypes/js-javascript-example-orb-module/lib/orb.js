@@ -42,74 +42,44 @@ var orbMod = (function () {
         return gd;
     };
 
-console.log('gcd test: ' + getGCDFromPoints([2,2,0,4])); // 2
-console.log('gcd test: ' + getGCDFromPoints([2,2,0,3])); // 1
-
-    // get the Element Stats based on the given points (or ratio)
-    var getElStats = function (points) {
-        var elStats = {
-            ct: 0, // element count [0,4,0,0] = 1, [7,0,6,7] = 3
-            i: [], // indexes of elements
-            equalAll: false, // all elements equal each other (pure,dual,triple,and quad)
-            gcd: getGCDFromPoints(points) // the gcd
-        };
-        // get count and indexes
-        points.forEach(function (pt, i) {
-            if (pt > 0) {
-                elStats.ct += 1;
-                elStats.i.push(i);
-            }
-        });
-        // are all the Elements equal to each other?
-        if (elStats.ct === 1) {
-            elStats.equalAll = true;
-        } else {
-            elStats.i.forEach(function (i) {
-                if (i + 1 < elStats.i.length) {
-                    if (points[i] === points[elStats.i[i + 1]]) {
-                        elStats.equalAll = true;
-                    }
-                }
-            })
+    // are all non-zero elements in the ratio equal to each other?
+    var allEqual = function(ratio){
+        var i = 0,
+        len = ratio.length,
+        el,
+        n = 0;
+        while(i < len){
+           el = ratio[i];
+           if(el){
+               if(n === 0){
+                   n = el;
+               }else{
+                   if(n != el){
+                       return false;
+                   }
+               }
+           }
+           i += 1;
         }
-        return elStats;
+        return true;
     };
 
     // get the simple ratio from a set of points (or simplify a ratio)
     // [0,0,14,2] => [0,0,7,1]
     var getSimpleRatio = function (points) {
-
-        var gd = getGCDFromPoints(points),
-        elStats = getElStats(points);
+        var gd = getGCDFromPoints(points);
         // get simple ratio by diving all points by gd
-        var simp = points.map(function (pt, i) {
+        var ratio = points.map(function (pt, i) {
                 return pt / gd;
             });
-       //special case for pure, dual, triple, and quad,
-       //always assure the ratio is 1:1 based on stats from
-       //elStats and not getGcdFromPoints
-        if (elStats.equalAll) {
-            elStats.i.forEach(function (i) {
-                simp[i] = 1;
+        // make sure pure, dual, triple, and quad
+        // work they way they should
+        if(allEqual(ratio)){
+            ratio = ratio.map(function(el){
+                return el === 0 ? 0 : 1;
             });
         }
-        return simp;
-/*
-        var gd = getGCDFromPoints(points);
-        return points.map(function(pointValue){
-            return pointValue / gd;
-        });
-*/
-    };
-
-    // set level when points, and ratio are valid
-    var setLevel = function () {
-        // for pure,dual,triple, and quad this will work
-        this.level = this.points[this.elStats.i[0]];
-        if (this.type === 'composite' || this.type === 'recipe') {
-            var i = this.elStats.i[0];
-            this.level = this.points[i] / this.ratio[i]
-        }
+        return ratio;
     };
 
     // set orb values by a given ratio, and level
@@ -189,14 +159,12 @@ console.log('gcd test: ' + getGCDFromPoints([2,2,0,3])); // 1
             setByPoints(orb, [1, 0, 0, 0]);
         }
         // set el stats
-        orb.elStats = getElStats(orb.points);
+        //orb.elStats = getElStats(orb.points);
         orb.worth = 0;
         orb.points.forEach(function (pt) {
             orb.worth += pt;
         });
         findType(orb);
-        // set final level based on ratio, points, and type
-        setLevel.call(orb);
         return orb;
     };
 

@@ -2,12 +2,11 @@ var orbMod = (function () {
 
     var api = {};
 
-    // Greatest Common Deviser
+    // Greatest Common Divisor
     var gcd = function (a, b) {
         if (!b) {
             return a;
         }
-
         return gcd(b, a % b);
     };
 
@@ -67,19 +66,19 @@ var orbMod = (function () {
     // get the simple ratio from a set of points (or simplify a ratio)
     // [0,0,14,2] => [0,0,7,1]
     var getSimpleRatio = function (points) {
-        var gd = getGCDFromPoints(points);
-        // get simple ratio by diving all points by gd
-        var ratio = points.map(function (pt, i) {
-                return pt / gd;
-            });
         // make sure pure, dual, triple, and quad
         // work they way they should
-        if(allEqual(ratio)){
-            ratio = ratio.map(function(el){
+        if(allEqual(points)){
+            return points.map(function(el){
                 return el === 0 ? 0 : 1;
             });
         }
-        return ratio;
+        // if we get this far use getGDCFromPoints
+        var gd = getGCDFromPoints(points);
+        // get simple ratio by diving all points by gd
+        return points.map(function (pt, i) {
+            return pt / gd;
+        });
     };
 
     // set orb values by a given ratio, and level

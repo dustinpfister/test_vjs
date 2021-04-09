@@ -116,12 +116,11 @@ var orbMod = (function () {
     };
 
     // set orb values based on a given points array
-    var setByPoints = function (points) {
-        var self = this;
-        this.points = Array.from(points);
-        this.ratio = [];
+    var setByPoints = function (orb, points) {
+        orb.points = Array.from(points);
+        orb.ratio = [];
         // find the simple ratio
-        this.ratio = getSimpleRatio(this.points);
+        orb.ratio = getSimpleRatio(orb.points);
     };
 
     // combine one or more orbs with this one
@@ -186,7 +185,7 @@ var orbMod = (function () {
             ];
         // if points i opt, set by points
         if (opt.points) {
-            setByPoints.call(orb, opt.points);
+            setByPoints(orb, opt.points);
         }
         // if ratio in opt, set by ratio, and level
         if (opt.ratio) {
@@ -198,7 +197,7 @@ var orbMod = (function () {
         }
         // if just calling new Orb()
         if (!opt.points && !opt.ratio && !opt.orbs) {
-            setByPoints.call(orb, [1, 0, 0, 0]);
+            setByPoints(orb, [1, 0, 0, 0]);
         }
         // set el stats
         orb.elStats = getElStats(orb.points);

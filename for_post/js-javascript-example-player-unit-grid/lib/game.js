@@ -114,7 +114,7 @@ var gameMod = (function () {
         game.player_units.forEach(function(unit){
            if(unit.data.unitType === 'turret'){
                // old system just sets an angle
-               var a = Math.atan2(y - unit.y, x - unit.x);
+               var a = Math.atan2(y - (unit.y + unit.hh), x - (unit.x + unit.hw));
                unit.data.target = a;
                // new system will involve some kind of object
                unit.data.targetObj = {
@@ -179,12 +179,13 @@ var gameMod = (function () {
     };
 
     // update shots
-    var updateShots = function (state, secs) {
-        var turret = state.turret;
-        state.shots.forEach(function (shot) {
+    var updateShots = function (game, secs) {
+        game.shots.forEach(function (shot) {
             if (shot.active) {
+                
                 shot.x += Math.cos(shot.heading) * SHOT_PPS * secs;
                 shot.y += Math.sin(shot.heading) * SHOT_PPS * secs;
+
                 if (utils.distance(shot.x, shot.y, shot.data.unit.x, shot.data.unit.y) >= SHOT_MAX_DIST) {
                     shot.active = false;
                 }

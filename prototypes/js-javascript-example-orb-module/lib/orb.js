@@ -101,16 +101,15 @@ var orbMod = (function () {
     };
 
     // set orb values by a given ratio, and level
-    var setByRatio = function (ratio, level) {
-        var self = this;
+    var setByRatio = function (orb, ratio, level) {
         // set level, and ratio to given values
-        this.level = level || 1;
-        this.ratio = Array.from(ratio) || [1, 0, 0, 0];
+        orb.level = level || 1;
+        orb.ratio = Array.from(ratio) || [1, 0, 0, 0];
         // make sure it is simple
-        this.ratio = getSimpleRatio(this.ratio);
+        orb.ratio = getSimpleRatio(orb.ratio);
         // find points by multiplying simple ratio by level
-        this.points = [];
-        this.ratio.forEach(function (pt, i) {
+        orb.points = [];
+        orb.ratio.forEach(function (pt, i) {
             self.points[i] = pt * level;
         });
     };
@@ -189,7 +188,7 @@ var orbMod = (function () {
         }
         // if ratio in opt, set by ratio, and level
         if (opt.ratio) {
-            setByRatio.call(orb, opt.ratio, opt.level);
+            setByRatio(orb, opt.ratio, opt.level);
         }
         // if orbs in opt set by one or more given orbs
         if (opt.orbs) {

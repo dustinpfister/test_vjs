@@ -11,8 +11,8 @@ var gameMod = (function () {
     var setDispObject = function(disp, x, y, w, h){
         disp.x = x === undefined ? 0 : x;
         disp.y = y === undefined ? 0 : y;
-        disp.w = w === undefined ? 8 : w;
-        disp.h = h === undefined ? 8 : h;
+        disp.w = w === undefined ? 4 : w;
+        disp.h = h === undefined ? 4 : h;
         disp.hh = disp.h / 2;
         disp.hw = disp.w / 2;
         disp.cx = disp.x + disp.hw;
@@ -121,9 +121,7 @@ var gameMod = (function () {
                    x: x,
                    y: y,
                    a: a + Math.PI,
-                   dist: utils.distance(x, y, unit.x + unit.hw, unit.y + unit.hh),
-                   frames: 60,
-                   framesMax: 60
+                   dist: utils.distance(x, y, unit.x + unit.hw, unit.y + unit.hh)
                };
            }
         });
@@ -170,16 +168,18 @@ var gameMod = (function () {
             var freeShot = getFreeShot(game);
             if (freeShot) {
                 freeShot.active = true;
-                freeShot.data.unit = turret;
-                freeShot.x = turret.x + turret.w / 2 - freeShot.w / 2;
-                freeShot.y = turret.y + turret.h / 2 - freeShot.h / 2;
-                freeShot.heading = turret.data.facing;
+
+                // OLD SYSTEM
+                //freeShot.data.unit = turret;
+                //freeShot.x = turret.x + turret.w / 2 - freeShot.w / 2;
+                //freeShot.y = turret.y + turret.h / 2 - freeShot.h / 2;
+                //freeShot.heading = turret.data.facing;
                  
-                // set angle and dist
+                // NEW SYSTEM set angle and dist
                 freeShot.data.a = turret.data.targetObj.a;
                 freeShot.data.dist = turret.data.targetObj.dist;
-                freeShot.data.targetX = turret.data.targetObj.x;
-                freeShot.data.targetY = turret.data.targetObj.y;
+                freeShot.data.targetX = turret.data.targetObj.x
+                freeShot.data.targetY = turret.data.targetObj.y
             }
             turret.data.fireSecs = 0;
         }
@@ -190,18 +190,19 @@ var gameMod = (function () {
         game.shots.forEach(function (shot) {
             if (shot.active) {
                 
+                // OLD SYSTEM
                 //shot.x += Math.cos(shot.heading) * SHOT_PPS * secs;
                 //shot.y += Math.sin(shot.heading) * SHOT_PPS * secs;
-
                 //if (utils.distance(shot.x, shot.y, shot.data.unit.x, shot.data.unit.y) >= SHOT_MAX_DIST) {
                 //    shot.active = false;
                 //}
 
+                // NEW SYSTEM
                 var data = shot.data;
-                shot.x = data.targetX + Math.cos(data.a) * data.dist;
-                shot.y = data.targetY + Math.sin(data.a) * data.dist;
                 data.dist -= SHOT_PPS * secs;
                 data.dist = data.dist < 0 ? 0 : data.dist;
+                shot.x = data.targetX + Math.cos(data.a) * data.dist;
+                shot.y = data.targetY + Math.sin(data.a) * data.dist;
                 if(data.dist === 0){
                     shot.active = false;
                 }

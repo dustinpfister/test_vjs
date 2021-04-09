@@ -125,12 +125,12 @@ var orbMod = (function () {
         return orb;
     };
 
-    var findType = function () {
+    var findType = function (orb) {
         var oneCT = 0,
-        nonOne = false;
+        nonOne = false,
         oneTypes = ['pure', 'dual', 'triple', 'quad'];
         // find count of 1's in the ratio
-        this.ratio.forEach(function (pt) {
+        orb.ratio.forEach(function (pt) {
             if (pt === 1) {
                 oneCT += 1;
             } else {
@@ -140,10 +140,10 @@ var orbMod = (function () {
             }
         });
         // default to a type based on count of ones in ratio
-        this.type = oneTypes[oneCT - 1];
+        orb.type = oneTypes[oneCT - 1];
         // if any value that is not 1 is in the ratio then default to composite
         if (nonOne) {
-            this.type = 'composite';
+            orb.type = 'composite';
         }
     };
 
@@ -184,7 +184,7 @@ var orbMod = (function () {
         orb.points.forEach(function (pt) {
             orb.worth += pt;
         });
-        findType.call(orb);
+        findType(orb);
         // set final level based on ratio, points, and type
         setLevel.call(orb);
         return orb;
@@ -203,7 +203,9 @@ var orbMod = (function () {
             orbCollection.forEach(function (a) {
                 tab(a);
             });
-            return setByPoints(api.create(), points);
+            var orb = setByPoints(api.create(), points);
+            findType(orb);
+            return orb;
         } else {
             // assume just single orb is given
             // then just set by the given orbs points (clone orb)

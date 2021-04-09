@@ -167,8 +167,10 @@ var orbMod = (function () {
         }
     };
 
+    var api = {};
+
     // the Orb constructor
-    var Orb = function (opt) {
+    api.Orb = function (opt) {
         var self = this;
         opt = opt || {};
         opt.points = opt.points || null;
@@ -206,7 +208,7 @@ var orbMod = (function () {
         setLevel.call(this);
     };
 
-    return Orb;
+    return api;
 
 }
     ());

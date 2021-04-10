@@ -4,7 +4,7 @@ utils.GCD = function (a, b) {
     if (!b) {
         return a;
     }
-    return GCD(b, a % b);
+    return utils.GCD(b, a % b);
 };
 
 utils.GCDFromArray = function (points) {
@@ -23,7 +23,7 @@ utils.GCDFromArray = function (points) {
                 bi += 1;
                 continue;
             }
-            d = utils.GDC(points[ai], points[bi]);
+            d = utils.GCD(points[ai], points[bi]);
             if (points[ai] === points[bi]) {
                 d = 1;
             }

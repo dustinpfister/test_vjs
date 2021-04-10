@@ -2,45 +2,6 @@ var orbMod = (function () {
 
     var api = {};
 
-    // Greatest Common Divisor
-    var gcd = function (a, b) {
-        if (!b) {
-            return a;
-        }
-        return gcd(b, a % b);
-    };
-
-    // get the number I need to divide points by to get the simple ratio
-    var getGCDFromPoints = function (points) {
-        var ai = 0,
-        d,
-        gd = 1,
-        bi;
-        while (ai < points.length) {
-            if (points[ai] < 1) {
-                ai += 1;
-                continue;
-            }
-            bi = 0;
-            while (bi < points.length) {
-                if (bi === ai || points[bi] < 1) {
-                    bi += 1;
-                    continue;
-                }
-                d = gcd(points[ai], points[bi]);
-                if (points[ai] === points[bi]) {
-                    d = 1;
-                }
-                if (d > gd) {
-                    gd = d;
-                }
-                bi += 1;
-            }
-            ai += 1;
-        }
-        return gd;
-    };
-
     // are all non-zero elements in the ratio equal to each other?
     var allEqual = function(ratio){
         var i = 0,
@@ -73,11 +34,11 @@ var orbMod = (function () {
                 return el === 0 ? 0 : 1;
             });
         }
-        // if we get this far use getGDCFromPoints
-        var gd = getGCDFromPoints(points);
+        // if we get this far use utils.GDCFromArray
+        var gcd = utils.GCDFromArray(points);
         // get simple ratio by diving all points by gd
         return points.map(function (pt, i) {
-            return pt / gd;
+            return pt / gcd;
         });
     };
 

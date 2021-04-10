@@ -39,22 +39,21 @@ utils.GCDFromArray = function (points) {
 
 // are all non-zero elements in the ratio equal to each other?
 utils.allNonZeroEqual = function (array) {
-    var i = 0,
-    len = array.length,
-    el,
-    n = 0;
-    while (i < len) {
-        el = array[i];
-        if (el) {
-            if (n === 0) {
-                n = el;
-            } else {
-                if (n != el) {
-                    return false;
-                }
-            }
+    var a = 0;
+    return array.filter(function (num) {
+        return num > 0;
+    }).every(function (num) {
+        if (a === 0) {
+            a = num;
+            return true;
         }
-        i += 1;
-    }
-    return true;
+        return num === a;
+    });
 };
+
+console.log(utils.allNonZeroEqual([2, 0, 0, 0])); // true
+console.log(utils.allNonZeroEqual([2, 2, 0, 0])); // true
+console.log(utils.allNonZeroEqual([2, 2, 2, 0])); // true
+console.log(utils.allNonZeroEqual([2, 2, 2, 2])); // true
+
+console.log(utils.allNonZeroEqual([2, 0, 1, 0])); // false

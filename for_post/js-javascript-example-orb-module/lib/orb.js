@@ -2,34 +2,12 @@ var orbMod = (function () {
 
     var api = {};
 
-    // are all non-zero elements in the ratio equal to each other?
-    var allEqual = function(ratio){
-        var i = 0,
-        len = ratio.length,
-        el,
-        n = 0;
-        while(i < len){
-           el = ratio[i];
-           if(el){
-               if(n === 0){
-                   n = el;
-               }else{
-                   if(n != el){
-                       return false;
-                   }
-               }
-           }
-           i += 1;
-        }
-        return true;
-    };
-
     // get the simple ratio from a set of points (or simplify a ratio)
     // [0,0,14,2] => [0,0,7,1]
     var getSimpleRatio = function (points) {
         // make sure pure, dual, triple, and quad
         // work they way they should
-        if(allEqual(points)){
+        if(utils.allNonZeroEqual(points)){
             return points.map(function(el){
                 return el === 0 ? 0 : 1;
             });

@@ -68,10 +68,3 @@ utils.getSimpleRatio = function (points) {
         return pt / gcd;
     });
 };
-
-console.log(utils.allNonZeroEqual([2, 0, 0, 0])); // true
-console.log(utils.allNonZeroEqual([2, 2, 0, 0])); // true
-console.log(utils.allNonZeroEqual([2, 2, 2, 0])); // true
-console.log(utils.allNonZeroEqual([2, 2, 2, 2])); // true
-
-console.log(utils.allNonZeroEqual([2, 0, 1, 0])); // false

@@ -51,6 +51,24 @@ utils.allNonZeroEqual = function (array) {
     });
 };
 
+// get the simple ratio from a set of points (or simplify a ratio)
+// [0,0,14,2] => [0,0,7,1]
+utils.getSimpleRatio = function (points) {
+    // make sure pure, dual, triple, and quad
+    // work they way they should
+    if (utils.allNonZeroEqual(points)) {
+        return points.map(function (el) {
+            return el === 0 ? 0 : 1;
+        });
+    }
+    // if we get this far use utils.GDCFromArray
+    var gcd = utils.GCDFromArray(points);
+    // get simple ratio by diving all points by gd
+    return points.map(function (pt, i) {
+        return pt / gcd;
+    });
+};
+
 console.log(utils.allNonZeroEqual([2, 0, 0, 0])); // true
 console.log(utils.allNonZeroEqual([2, 2, 0, 0])); // true
 console.log(utils.allNonZeroEqual([2, 2, 2, 0])); // true

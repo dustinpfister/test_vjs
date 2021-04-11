@@ -28,6 +28,19 @@ api.runTest = (opt) => {
         args: [5, 10],
         exspect : 5
     }];
+    opt.testFunction = opt.testFunction || function(result, exspect, testObj, opt) {
+        if(typeof exspect === 'number' || typeof exspect === 'string' || typeof exspect === 'boolean' ){
+            return exspect === result;
+        }
+        if(typeof exspect === 'object'){
+            if(exspect instanceof Array){
+                return result.join() === exspect.join();
+            }
+        }
+        return false;
+    };
+
+
     let mod = require( path.resolve(opt.dir_lib, opt.name_mod + '.js') );
     let method = mod[opt.name_method];
     log('module: ' + opt.name_mod);
@@ -38,7 +51,8 @@ api.runTest = (opt) => {
         log('args: ' + testObj.args);
         log('exspect | result: ' + testObj.exspect + ' | ' + testResult);
 
-        let pass = false;
+        let pass = opt.testFunction(testResult, testObj.exspect, testObj, opt);
+/*
         if(typeof testObj.exspect === 'number' || 
            typeof testObj.exspect === 'string' ||
            typeof testObj.exspect === 'boolean' ){
@@ -49,6 +63,7 @@ api.runTest = (opt) => {
                 pass = testResult.join() === testObj.exspect.join();
             }
         }
+*/
 
         log('pass: ' + pass, pass );
     });

@@ -42,6 +42,14 @@ utils.allNonZeroEqual = function (array) {
     });
 };
 
+// count nonZero
+utils.countNonZero = function(array){
+    return array.reduce(function(acc, n){
+         acc = acc === 0 ? 0 : 1;
+         return n > 0 ? acc + 1 : acc;
+    });
+};
+
 // get the simple ratio from a set of arr (or simplify a ratio)
 // utils.getSimpleRatio([0,0,14,2]); // [0,0,7,1]
 utils.getSimpleRatio = function (arr) {

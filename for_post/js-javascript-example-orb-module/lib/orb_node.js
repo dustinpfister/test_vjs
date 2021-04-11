@@ -21,7 +21,7 @@ var orbMod = (function (global) {
 
     api.findType = function(orb){
         var type = 'composite';
-
+        
 
         return type;
     };

@@ -1,5 +1,8 @@
 let path = require('path')
 
+let log = (mess) => {
+    console.log(mess);
+};
 
 let api = {};
 
@@ -16,14 +19,14 @@ api.runTest = (opt) => {
 
     let mod = require( path.resolve(opt.dir_lib, opt.name_mod + '.js') );
     let method = mod[opt.name_method];
-    console.log('module: ' + opt.name_mod);
-    console.log('method: ' + opt.name_method);
+    log('module: ' + opt.name_mod);
+    log('method: ' + opt.name_method);
     opt.tests.forEach((testObj) => {
         var testResult = method.apply(null, testObj.args);
-        console.log('');
-        console.log('args: ' + testObj.args);
-        console.log('exspect | result: ' + testObj.exspect + ' | ' + testResult);
-        console.log('pass: ' + ( testObj.exspect === testResult ) );
+        log('');
+        log('args: ' + testObj.args);
+        log('exspect | result: ' + testObj.exspect + ' | ' + testResult);
+        log('pass: ' + ( testObj.exspect === testResult ) );
     });
 };
 

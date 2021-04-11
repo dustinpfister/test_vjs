@@ -50,6 +50,20 @@ utils.countNonZero = function(array){
     });
 };
 
+// binary only
+utils.isBinaryArray = function(array){
+    var i = 0,
+    len = array.length;
+    while(i < len){
+        if(Number(array[i]) === 0 || Number(array[i]) === 1){
+           i += 1;
+           continue;
+        }
+        return false;
+    }
+    return true;
+};
+
 // get the simple ratio from a set of arr (or simplify a ratio)
 // utils.getSimpleRatio([0,0,14,2]); // [0,0,7,1]
 utils.getSimpleRatio = function (arr) {

@@ -1,21 +1,21 @@
-var utils = {};
+var ratio = {};
 
 // Greatest Common Divisor
 // https://en.wikipedia.org/wiki/Greatest_common_divisor
-utils.GCD = function (a, b) {
+ratio.GCD = function (a, b) {
     if (!b) {
         return a;
     }
-    return utils.GCD(b, a % b);
+    return ratio.GCD(b, a % b);
 };
 
 // Greatest Common Divisor from array
 // https://www.geeksforgeeks.org/gcd-two-array-numbers/
-utils.GCDFromArray = function(arr, n){
+ratio.GCDFromArray = function(arr, n){
     let result = arr[0];
     n = n === undefined ? arr.length: n;
     for (let i = 1; i < n; i++){
-        result = utils.GCD(arr[i], result);
+        result = ratio.GCD(arr[i], result);
         if(result == 1){
             return 1;
         }
@@ -24,9 +24,9 @@ utils.GCDFromArray = function(arr, n){
 }
 
 // Are all non-zero elements in the ratio equal to each other?
-// utils.allNonZeroEqual([1,0,1,1]); // true
-// utils.allNonZeroEqual([1,2,0,4]); // false
-utils.allNonZeroEqual = function (array) {
+// ratio.allNonZeroEqual([1,0,1,1]); // true
+// ratio.allNonZeroEqual([1,2,0,4]); // false
+ratio.allNonZeroEqual = function (array) {
     var a = 0;
     return array.every(function(num){
         if(num === 0){ // if 0 return true
@@ -43,7 +43,7 @@ utils.allNonZeroEqual = function (array) {
 };
 
 // count nonZero array elements
-utils.countNonZero = function(array){
+ratio.countNonZero = function(array){
     return array.reduce(function(acc, n, i){
         acc = i === 1 ? acc === 0 ? 0 : 1 : acc;
         return acc += n > 0 ? 1 : 0;
@@ -51,7 +51,7 @@ utils.countNonZero = function(array){
 };
 
 // is binary only array
-utils.isBinaryArray = function(array){
+ratio.isBinaryArray = function(array){
     var i = 0,
     len = array.length;
     while(i < len){
@@ -65,17 +65,17 @@ utils.isBinaryArray = function(array){
 };
 
 // get the simple ratio from a set of arr (or simplify a ratio)
-// utils.getSimpleRatio([0,0,14,2]); // [0,0,7,1]
-utils.getSimpleRatio = function (arr) {
+// ratio.getSimpleRatio([0,0,14,2]); // [0,0,7,1]
+ratio.getSimpleRatio = function (arr) {
     // make sure pure, dual, triple, and quad
     // work they way they should
-    if (utils.allNonZeroEqual(arr)) {
+    if (ratio.allNonZeroEqual(arr)) {
         return arr.map(function (el) {
             return el === 0 ? 0 : 1;
         });
     }
-    // if we get this far use utils.GDCFromArray
-    var gcd = utils.GCDFromArray(arr);
+    // if we get this far use ratio.GDCFromArray
+    var gcd = ratio.GCDFromArray(arr);
     // get simple ratio by diving all arr by gd
     return arr.map(function (pt, i) {
         return pt / gcd;
@@ -86,17 +86,17 @@ utils.getSimpleRatio = function (arr) {
 // The array of numbers will be simplified
 // ratio.getRaisedRatio([2,2,0,1], 2, 1); // [4,4,0,2]
 // ratio.getRaisedRatio([2,2,0,1], 4, 2); // [32,32,0,16]
-utils.getRaisedRatio = function(arr, n, base){
+ratio.getRaisedRatio = function(arr, n, base){
     n = n === undefined ? 1 : n;
     base = base === undefined ? 1 : base;
-    var ratio = utils.getSimpleRatio(arr);
-    return ratio.map(function(el){
+    var simp = ratio.getSimpleRatio(arr);
+    return simp.map(function(el){
         return el * Math.pow(n, base);
     });
 };
 
 // is browser?
-utils.isBrowser = (function(global){
+ratio.isBrowser = (function(global){
     return function () {
         try {
             return global === window;
@@ -106,8 +106,8 @@ utils.isBrowser = (function(global){
     };
 }(this));
 
-// if nodejs, export utils
-if (!utils.isBrowser()) {
-    module.exports = utils;
+// if nodejs, export ratio
+if (!ratio.isBrowser()) {
+    module.exports = ratio;
 }
 

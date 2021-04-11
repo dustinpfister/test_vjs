@@ -40,10 +40,11 @@ var orbMod = (function (global) {
 
         // LEVEL, and INCREMENTAL
         // The level of the orb is the power of the simple ratio to the power of 2
-        // the ratio.getLevel method should use if the base is set to 2, the same method
-        // should also work to get the incremental by just setting base to 1
-        orb.level = Math.floor(ratio.getLevel(orb.ratio, 2));
-        orb.incremental = ratio.getLevel(orb.ratio, 1);
+        // the ratio.getLevel method should use if the points array is given along with the 
+        // base set to 2, the same method should also work to get the 
+        //  incremental by just setting base to 1
+        orb.level = Math.floor(ratio.getLevel(orb.points, 2)) + 1;
+        orb.incremental = ratio.getLevel(orb.points, 1);
         return orb
     };
 

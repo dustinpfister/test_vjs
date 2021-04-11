@@ -37,22 +37,27 @@ utils.GCDFromArray = function (points) {
     return gd;
 };
 
-// are all non-zero elements in the ratio equal to each other?
+// Are all non-zero elements in the ratio equal to each other?
+// utils.allNonZeroEqual([1,0,1,1]); // true
+// utils.allNonZeroEqual([1,2,0,4]); // false
 utils.allNonZeroEqual = function (array) {
     var a = 0;
-    return array.filter(function (num) {
-        return num > 0;
-    }).every(function (num) {
-        if (a === 0) {
+    return array.every(function(num){
+        if(num === 0){ // if 0 return true
+            return true;
+        }
+        if (a === 0) { // if first non-zero value return true
             a = num;
             return true;
         }
+        // if any additional non-zero value does not equal the 
+        // first non zero value return false, else true
         return num === a;
     });
 };
 
 // get the simple ratio from a set of points (or simplify a ratio)
-// [0,0,14,2] => [0,0,7,1]
+// utils.getSimpleRatio([0,0,14,2]); // [0,0,7,1]
 utils.getSimpleRatio = function (points) {
     // make sure pure, dual, triple, and quad
     // work they way they should

@@ -27,6 +27,14 @@ testMod.runTest({
         {
             args: [ [1,2,0,4] ],
             exspect : 3
+        },
+        {
+            args: [ [7,0,0,14] ],
+            exspect : 2
+        },
+        {
+            args: [ [0,1,1,0] ],
+            exspect : 2
         }
     ]
 });

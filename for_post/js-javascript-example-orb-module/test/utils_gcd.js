@@ -7,6 +7,9 @@ testMod.runTest({
     testFunction : function(result, exspect, testObj, opt) {
         return exspect === result;
     },
+    log: function(mess, type, pass){
+        console.log(mess);
+    },
     tests: [
         {
             args: [5, 10],

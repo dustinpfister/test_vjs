@@ -1,5 +1,7 @@
 var utils = {};
 
+// Greatest Common Divisor
+// https://en.wikipedia.org/wiki/Greatest_common_divisor
 utils.GCD = function (a, b) {
     if (!b) {
         return a;
@@ -7,24 +9,25 @@ utils.GCD = function (a, b) {
     return utils.GCD(b, a % b);
 };
 
-utils.GCDFromArray = function (points) {
+// Greatest Common Divisor from array
+utils.GCDFromArray = function (arr) {
     var ai = 0,
     d,
     gd = 1,
     bi;
-    while (ai < points.length) {
-        if (points[ai] < 1) {
+    while (ai < arr.length) {
+        if (arr[ai] < 1) {
             ai += 1;
             continue;
         }
         bi = 0;
-        while (bi < points.length) {
-            if (bi === ai || points[bi] < 1) {
+        while (bi < arr.length) {
+            if (bi === ai || arr[bi] < 1) {
                 bi += 1;
                 continue;
             }
-            d = utils.GCD(points[ai], points[bi]);
-            if (points[ai] === points[bi]) {
+            d = utils.GCD(arr[ai], arr[bi]);
+            if (arr[ai] === arr[bi]) {
                 d = 1;
             }
             if (d > gd) {
@@ -56,20 +59,20 @@ utils.allNonZeroEqual = function (array) {
     });
 };
 
-// get the simple ratio from a set of points (or simplify a ratio)
+// get the simple ratio from a set of arr (or simplify a ratio)
 // utils.getSimpleRatio([0,0,14,2]); // [0,0,7,1]
-utils.getSimpleRatio = function (points) {
+utils.getSimpleRatio = function (arr) {
     // make sure pure, dual, triple, and quad
     // work they way they should
-    if (utils.allNonZeroEqual(points)) {
-        return points.map(function (el) {
+    if (utils.allNonZeroEqual(arr)) {
+        return arr.map(function (el) {
             return el === 0 ? 0 : 1;
         });
     }
     // if we get this far use utils.GDCFromArray
-    var gcd = utils.GCDFromArray(points);
-    // get simple ratio by diving all points by gd
-    return points.map(function (pt, i) {
+    var gcd = utils.GCDFromArray(arr);
+    // get simple ratio by diving all arr by gd
+    return arr.map(function (pt, i) {
         return pt / gcd;
     });
 };

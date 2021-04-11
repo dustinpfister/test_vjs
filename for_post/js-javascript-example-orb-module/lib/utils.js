@@ -22,37 +22,6 @@ utils.GCDFromArray = function(arr, n){
     }
     return result;
 }
-/*
-utils.GCDFromArray = function (arr) {
-    var ai = 0,
-    d,
-    gd = 1,
-    bi;
-    while (ai < arr.length) {
-        if (arr[ai] < 1) {
-            ai += 1;
-            continue;
-        }
-        bi = 0;
-        while (bi < arr.length) {
-            if (bi === ai || arr[bi] < 1) {
-                bi += 1;
-                continue;
-            }
-            d = utils.GCD(arr[ai], arr[bi]);
-            if (arr[ai] === arr[bi]) {
-                d = 1;
-            }
-            if (d > gd) {
-                gd = d;
-            }
-            bi += 1;
-        }
-        ai += 1;
-    }
-    return gd;
-};
-*/
 
 // Are all non-zero elements in the ratio equal to each other?
 // utils.allNonZeroEqual([1,0,1,1]); // true

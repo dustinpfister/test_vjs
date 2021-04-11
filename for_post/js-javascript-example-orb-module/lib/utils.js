@@ -44,9 +44,9 @@ utils.allNonZeroEqual = function (array) {
 
 // count nonZero
 utils.countNonZero = function(array){
-    return array.reduce(function(acc, n){
-         acc = acc === 0 ? 0 : 1;
-         return n > 0 ? acc + 1 : acc;
+    return array.reduce(function(acc, n, i){
+        acc = i === 1 ? acc === 0 ? 0 : 1 : acc;
+        return acc += n > 0 ? 1 : 0;
     });
 };
 

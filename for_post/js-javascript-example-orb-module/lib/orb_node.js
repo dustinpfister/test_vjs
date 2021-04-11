@@ -19,7 +19,14 @@ var orbMod = (function (global) {
     // PUBLIC API
     var api = {};
 
+    api.findType = function(orb){
+        var type = 'composite';
 
+
+        return type;
+    };
+
+    // create from points
     api.createFromPoints = function(points){
         points = points || [1,0,0,0];
         var orb = {};

@@ -39,15 +39,13 @@ api.runTest = (opt) => {
         log('exspect | result: ' + testObj.exspect + ' | ' + testResult);
 
         let pass = false;
-        if(typeof testObj.exspect === 'number' || typeof testObj.exspect === 'string'){
+        if(typeof testObj.exspect === 'number' || 
+           typeof testObj.exspect === 'string' ||
+           typeof testObj.exspect === 'boolean' ){
             pass = ( testObj.exspect === testResult);
         }
         if(typeof testObj.exspect === 'object'){
-
             if(testObj.exspect instanceof Array){
-                //pass = testResult.every(function(a, i){
-                //    return a === testObj.exspect[i];
-                //});
                 pass = testResult.join() === testObj.exspect.join();
             }
         }

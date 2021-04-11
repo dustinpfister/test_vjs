@@ -16,10 +16,7 @@ let log = (mess, type, bool) => {
     console.log(out);
 };
 
-let api = {};
-
-// run test method
-api.runTest = (opt) => {
+let parseOptions = (opt) => {
     opt = opt || {}
     opt.dir_lib = opt.dir_lib || path.resolve(__dirname, '../lib'),
     opt.name_mod = opt.name_mod || 'utils',
@@ -39,6 +36,15 @@ api.runTest = (opt) => {
         }
         return false;
     };
+    return opt;
+};
+
+
+let api = {};
+
+// run test method
+api.runTest = (opt) => {
+    opt = parseOptions(opt);
 
     // prefrom the test
     let mod = require( path.resolve(opt.dir_lib, opt.name_mod + '.js') );

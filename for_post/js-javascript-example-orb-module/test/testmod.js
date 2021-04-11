@@ -11,7 +11,7 @@ let colors = {
 let log = (mess, bool) => {
     let out = mess;
     if(typeof bool === 'boolean'){
-        out = (bool ? colors.green : colors.red) + out + colors.reset;
+        out = (bool === true ? colors.green : colors.red) + out + colors.reset;
     }
     console.log(out);
 };
@@ -37,7 +37,8 @@ api.runTest = (opt) => {
         log('');
         log('args: ' + testObj.args);
         log('exspect | result: ' + testObj.exspect + ' | ' + testResult);
-        log('pass: ' + ( testObj.exspect === testResult), true );
+        var pass = ( testObj.exspect === testResult);
+        log('pass: ' + pass, pass );
     });
 };
 

@@ -8,9 +8,9 @@ let colors = {
    reset: '\u001b[39m'
 };
 
-let log = (mess, bool) => {
+let log = (mess, type, bool) => {
     let out = mess;
-    if(typeof bool === 'boolean'){
+    if(type === 'result.pass' && typeof bool === 'boolean'){
         out = (bool === true ? colors.green : colors.red) + out + colors.reset;
     }
     console.log(out);
@@ -40,34 +40,21 @@ api.runTest = (opt) => {
         return false;
     };
 
-
+    // prefrom the test
     let mod = require( path.resolve(opt.dir_lib, opt.name_mod + '.js') );
     let method = mod[opt.name_method];
-    log('module: ' + opt.name_mod);
-    log('method: ' + opt.name_method);
+    log('module: ' + opt.name_mod, 'info');
+    log('method: ' + opt.name_method, 'info');
     opt.tests.forEach((testObj) => {
-        var testResult = method.apply(null, testObj.args);
-        log('');
-        log('args: ' + testObj.args);
-        log('exspect | result: ' + testObj.exspect + ' | ' + testResult);
-
-        let pass = opt.testFunction(testResult, testObj.exspect, testObj, opt);
-/*
-        if(typeof testObj.exspect === 'number' || 
-           typeof testObj.exspect === 'string' ||
-           typeof testObj.exspect === 'boolean' ){
-            pass = ( testObj.exspect === testResult);
-        }
-        if(typeof testObj.exspect === 'object'){
-            if(testObj.exspect instanceof Array){
-                pass = testResult.join() === testObj.exspect.join();
-            }
-        }
-*/
-
-        log('pass: ' + pass, pass );
+        var testResult = method.apply(null, testObj.args),
+        pass = opt.testFunction(testResult, testObj.exspect, testObj, opt);
+        log('', 'space');
+        log('args: ' + testObj.args, 'result');
+        log('exspect | result: ' + testObj.exspect + ' | ' + testResult, 'result');
+        log('pass: ' + pass, 'result.pass', pass );
     });
 };
 
+// export api
 module.exports = api;
 

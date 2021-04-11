@@ -33,6 +33,42 @@ testMod.runTest({
             }
         },
         {
+            args: [[0,7,7,0]],
+            exspect : function(orb){
+                return orb.type === 'dual';
+            }
+        },
+        {
+            args: [[10,0,0,10]],
+            exspect : function(orb){
+                return orb.type === 'dual';
+            }
+        },
+        {
+            args: [[0,7,7,7]],
+            exspect : function(orb){
+                return orb.type === 'tripple';
+            }
+        },
+        {
+            args: [[10,0,10,10]],
+            exspect : function(orb){
+                return orb.type === 'tripple';
+            }
+        },
+        {
+            args: [[1,1,1,1]],
+            exspect : function(orb){
+                return orb.type === 'quad';
+            }
+        },
+        {
+            args: [[14,14,14,14]],
+            exspect : function(orb){
+                return orb.type === 'quad';
+            }
+        },
+        {
             args: [[0,2,2,8]],
             exspect : function(orb){
                 return orb.type === 'composite';

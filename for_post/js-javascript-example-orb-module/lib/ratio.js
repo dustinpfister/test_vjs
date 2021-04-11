@@ -42,7 +42,7 @@ utils.allNonZeroEqual = function (array) {
     });
 };
 
-// count nonZero
+// count nonZero array elements
 utils.countNonZero = function(array){
     return array.reduce(function(acc, n, i){
         acc = i === 1 ? acc === 0 ? 0 : 1 : acc;
@@ -50,7 +50,7 @@ utils.countNonZero = function(array){
     });
 };
 
-// binary only
+// is binary only array
 utils.isBinaryArray = function(array){
     var i = 0,
     len = array.length;

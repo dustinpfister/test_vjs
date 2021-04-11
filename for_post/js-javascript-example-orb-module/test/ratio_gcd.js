@@ -2,14 +2,14 @@ let path = require('path'),
 testMod = require( path.resolve(__dirname, './testmod.js') );
 
 testMod.runTest({
-    name_mod: 'utils',
+    name_mod: 'ratio',
     name_method: 'GCD',
     testFunction : function(result, exspect, testObj, opt) {
         return exspect === result;
     },
-    log: function(mess, type, pass){
-        console.log(mess);
-    },
+    //log: function(mess, type, pass){
+    //    console.log(mess);
+    //},
     tests: [
         {
             args: [5, 10],

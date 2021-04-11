@@ -2,7 +2,7 @@ let path = require('path'),
 testMod = require( path.resolve(__dirname, './testmod.js') );
 
 testMod.runTest({
-    name_mod: 'utils',
+    name_mod: 'ratio',
     name_method: 'isBinaryArray',
     testFunction :  function(result, exspect, testObj, opt) {
        return result === exspect;

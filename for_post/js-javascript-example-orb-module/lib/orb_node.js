@@ -11,9 +11,9 @@ var orbMod = (function (global) {
         };
     }(global));
     if(!isBrowser()){
-        // utils should be in same folder as orb_node
+        // ratio should be in same folder as orb_node
         var path = require('path');
-        var utils = require(path.join(__dirname, 'utils.js'));
+        var ratio = require(path.join(__dirname, 'ratio.js'));
     }
 
     // PUBLIC API
@@ -21,8 +21,8 @@ var orbMod = (function (global) {
 
     var findType = function(orb){
         var type = 'composite',
-        binArr = utils.isBinaryArray(orb.ratio),
-        elCount = utils.countNonZero(orb.ratio);
+        binArr = ratio.isBinaryArray(orb.ratio),
+        elCount = ratio.countNonZero(orb.ratio);
         if(binArr){
            type = ['pure', 'dual', 'tripple', 'quad'][elCount - 1];
         }
@@ -34,13 +34,13 @@ var orbMod = (function (global) {
         points = points || [1,0,0,0];
         var orb = {};
         orb.points = points;
-        orb.ratio = utils.getSimpleRatio(orb.points);
+        orb.ratio = ratio.getSimpleRatio(orb.points);
         orb.type = findType(orb);
         return orb
     };
 
     // EXPORT/RETURN PUBLIC API
-    // if nodejs, export utils
+    // if nodejs, export ratio
     if (!isBrowser()) {
          module.exports = api;
     }

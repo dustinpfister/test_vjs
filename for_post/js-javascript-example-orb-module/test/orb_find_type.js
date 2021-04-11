@@ -15,6 +15,24 @@ testMod.runTest({
             }
         },
         {
+            args: [[0,7,0,0]],
+            exspect : function(orb){
+                return orb.type === 'pure';
+            }
+        },
+        {
+            args: [[0,0,7,0]],
+            exspect : function(orb){
+                return orb.type === 'pure';
+            }
+        },
+        {
+            args: [[0,0,0,10]],
+            exspect : function(orb){
+                return orb.type === 'pure';
+            }
+        },
+        {
             args: [[0,2,2,8]],
             exspect : function(orb){
                 return orb.type === 'composite';

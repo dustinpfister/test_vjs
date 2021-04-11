@@ -19,10 +19,13 @@ var orbMod = (function (global) {
     // PUBLIC API
     var api = {};
 
-    api.findType = function(orb){
-        var type = 'composite';
-        
-
+    var findType = function(orb){
+        var type = 'composite',
+        binArr = utils.isBinaryArray(orb.ratio),
+        elCount = utils.countNonZero(orb.ratio);
+        if(binArr){
+           type = ['pure', 'dual', 'tripple', 'quad'][elCount - 1];
+        }
         return type;
     };
 
@@ -32,6 +35,7 @@ var orbMod = (function (global) {
         var orb = {};
         orb.points = points;
         orb.ratio = utils.getSimpleRatio(orb.points);
+        orb.type = findType(orb);
         return orb
     };
 

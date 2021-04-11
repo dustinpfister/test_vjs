@@ -1,5 +1,7 @@
 let path = require('path')
 
+// PRIVATE helpers and values
+
 let colors = {
    black: '\u001b[30m',
    red: '\u001b[31m',
@@ -8,6 +10,7 @@ let colors = {
    reset: '\u001b[39m'
 };
 
+// build in log method
 let log = (mess, type, bool) => {
     let out = mess;
     if(type === 'result.pass' && typeof bool === 'boolean'){
@@ -16,6 +19,7 @@ let log = (mess, type, bool) => {
     console.log(out);
 };
 
+// parse options
 let parseOptions = (opt) => {
     opt = opt || {}
     opt.dir_lib = opt.dir_lib || path.resolve(__dirname, '../lib'),
@@ -26,6 +30,7 @@ let parseOptions = (opt) => {
         exspect : 5
     }];
     opt.log = opt.log || log;
+    // built in test function
     opt.testFunction = opt.testFunction || function(result, exspect, testObj, opt) {
         if(typeof exspect === 'number' || typeof exspect === 'string' || typeof exspect === 'boolean' ){
             return exspect === result;
@@ -40,7 +45,7 @@ let parseOptions = (opt) => {
     return opt;
 };
 
-
+// PUBLIC API
 let api = {};
 
 // run test method

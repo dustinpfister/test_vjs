@@ -8,7 +8,11 @@ testMod.runTest({
         return exspect === result;
     },
     log: function(mess, type, pass){
-        console.log(mess);
+        if(type === 'result.pass'){
+            console.log((pass ? '\u001b[32m' : '\u001b[31m') + mess + '\u001b[39m');
+        }else{
+            console.log(mess);
+        }
     },
     tests: [
         {

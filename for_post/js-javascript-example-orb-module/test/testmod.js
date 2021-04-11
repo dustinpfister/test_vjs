@@ -25,6 +25,7 @@ let parseOptions = (opt) => {
         args: [5, 10],
         exspect : 5
     }];
+    opt.log = opt.log || log;
     opt.testFunction = opt.testFunction || function(result, exspect, testObj, opt) {
         if(typeof exspect === 'number' || typeof exspect === 'string' || typeof exspect === 'boolean' ){
             return exspect === result;
@@ -44,11 +45,12 @@ let api = {};
 
 // run test method
 api.runTest = (opt) => {
+    // parse options
     opt = parseOptions(opt);
-
-    // prefrom the test
-    let mod = require( path.resolve(opt.dir_lib, opt.name_mod + '.js') );
-    let method = mod[opt.name_method];
+    // preform the test
+    let mod = require( path.resolve(opt.dir_lib, opt.name_mod + '.js') ),
+    method = mod[opt.name_method],
+    log = opt.log;
     log('module: ' + opt.name_mod, 'info');
     log('method: ' + opt.name_method, 'info');
     opt.tests.forEach((testObj) => {

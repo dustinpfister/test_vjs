@@ -17,6 +17,14 @@ testMod.runTest({
             exspect : true
         },
         {
+            args: [ [0,1,1,1] ],
+            exspect : true
+        },
+        {
+            args: [ [0,1,1,0] ],
+            exspect : true
+        },
+        {
             args: [ [1,1,1,0] ],
             exspect : true
         },
@@ -33,12 +41,8 @@ testMod.runTest({
             exspect : false
         },
         {
-            args: [ [0,1,1,0] ],
-            exspect : true
-        },
-        {
-            args: [ [0,1,1,1] ],
-            exspect : true
+            args: [ [1,1,2,1] ],
+            exspect : false
         }
     ]
 });

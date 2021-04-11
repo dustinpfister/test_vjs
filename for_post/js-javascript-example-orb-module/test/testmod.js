@@ -37,7 +37,21 @@ api.runTest = (opt) => {
         log('');
         log('args: ' + testObj.args);
         log('exspect | result: ' + testObj.exspect + ' | ' + testResult);
-        var pass = ( testObj.exspect === testResult);
+
+        let pass = false;
+        if(typeof testObj.exspect === 'number' || typeof testObj.exspect === 'string'){
+            pass = ( testObj.exspect === testResult);
+        }
+        if(typeof testObj.exspect === 'object'){
+
+            if(testObj.exspect instanceof Array){
+                //pass = testResult.every(function(a, i){
+                //    return a === testObj.exspect[i];
+                //});
+                pass = testResult.join() === testObj.exspect.join();
+            }
+        }
+
         log('pass: ' + pass, pass );
     });
 };

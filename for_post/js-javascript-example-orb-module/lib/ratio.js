@@ -82,6 +82,19 @@ utils.getSimpleRatio = function (arr) {
     });
 };
 
+// raise the given array of numbers n time with the given base
+// The array of numbers will be simplified
+// ratio.getRaisedRatio([2,2,0,1], 2, 1); // [4,4,0,2]
+// ratio.getRaisedRatio([2,2,0,1], 4, 2); // [32,32,0,16]
+utils.getRaisedRatio = function(arr, n, base){
+    n = n === undefined ? 1 : n;
+    base = base === undefined ? 1 : base;
+    var ratio = utils.getSimpleRatio(arr);
+    return ratio.map(function(el){
+        return el * Math.pow(n, base);
+    });
+};
+
 // is browser?
 utils.isBrowser = (function(global){
     return function () {

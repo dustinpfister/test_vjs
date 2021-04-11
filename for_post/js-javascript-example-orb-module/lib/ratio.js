@@ -95,6 +95,27 @@ ratio.getRaisedRatio = function(arr, n, base){
     });
 };
 
+// The inverse of ratio.getRaisedRatio
+// ratio.getRaisedRatio([4,4,0,2], 1); // 2
+// ratio.getRaisedRatio([32,32,0,16], 2); // 4
+ratio.getLevelFromArray = function(arr, base){
+    base = base === undefined ? 1 : base;
+    // get lowest non zerro number
+    var a = Math.min.apply(null, arr.filter(function(n){
+        return n > 0;
+    }));
+    // if base is one just divide
+    if(base === 1){
+        return a / base;
+    }
+    // else use Math.log
+    return Math.log(a) / Math.log(base);
+};
+
+console.log(ratio.getLevelFromArray([4,4,0,2], 1))
+console.log(ratio.getLevelFromArray([32,32,0,16], 2))
+
+
 // is browser?
 ratio.isBrowser = (function(global){
     return function () {

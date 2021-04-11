@@ -1,7 +1,19 @@
 let path = require('path')
 
-let log = (mess) => {
-    console.log(mess);
+let colors = {
+   black: '\u001b[30m',
+   red: '\u001b[31m',
+   green: '\u001b[32m',
+   white: '\u001b[37m',
+   reset: '\u001b[39m'
+};
+
+let log = (mess, bool) => {
+    let out = mess;
+    if(typeof bool === 'boolean'){
+        out = (bool ? colors.green : colors.red) + out + colors.reset;
+    }
+    console.log(out);
 };
 
 let api = {};
@@ -16,7 +28,6 @@ api.runTest = (opt) => {
         args: [5, 10],
         exspect : 5
     }];
-
     let mod = require( path.resolve(opt.dir_lib, opt.name_mod + '.js') );
     let method = mod[opt.name_method];
     log('module: ' + opt.name_mod);
@@ -26,7 +37,7 @@ api.runTest = (opt) => {
         log('');
         log('args: ' + testObj.args);
         log('exspect | result: ' + testObj.exspect + ' | ' + testResult);
-        log('pass: ' + ( testObj.exspect === testResult ) );
+        log('pass: ' + ( testObj.exspect === testResult), true );
     });
 };
 

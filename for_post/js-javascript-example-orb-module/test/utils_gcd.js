@@ -4,6 +4,9 @@ testMod = require( path.resolve(__dirname, './testmod.js') );
 testMod.runTest({
     name_mod: 'utils',
     name_method: 'GCD',
+    testFunction : function(result, exspect, testObj, opt) {
+        return exspect === result;
+    },
     tests: [
         {
             args: [5, 10],

@@ -1,9 +1,24 @@
 var orbMod = (function (global) {
 
+    var isBrowser = (function(global){
+        return function () {
+            try {
+                return global === window;
+            } catch (e) {
+                return false;
+            }
+        };
+    }(global));
+
+    if(!isBrowser()){
+        var path = require('path');
+        var utils = require(path.join(__dirname, 'utils.js'));
+    }
 
     var api = {};
 
     // set orb values based on a given points array
+/*
     var setByPoints = function (orb, points) {
         orb.points = Array.from(points);
         // find the simple ratio
@@ -12,7 +27,9 @@ var orbMod = (function (global) {
         findType(orb);
         return orb;
     };
+*/
 
+/*
     var findType = function (orb) {
         var oneCT = 0,
         nonOne = false,
@@ -34,8 +51,10 @@ var orbMod = (function (global) {
             orb.type = 'composite';
         }
     };
+*/
 
     // create and return an Orb Object
+/*
     api.create = function(opt){
         var orb = {};
         opt = opt || {};
@@ -52,7 +71,9 @@ var orbMod = (function (global) {
         }
         return orb;
     };
+*/
 
+/*
     // create an orb from a collection of orbs
     api.fromOrbs = function (orbCollection) {
         var points = [0, 0, 0, 0],
@@ -74,6 +95,24 @@ var orbMod = (function (global) {
             return setByPoints(api.create(), orbCollection.points);
         }
     };
+*/
+
+    api.createFromPoints = function(points){
+        points = points || [1,0,0,0];
+        var orb = {};
+        orb.points = points;
+        orb.ratio = utils.getSimpleRatio(orb.points);
+        return orb
+    };
+
+
+
+    // is browser?
+
+    // if nodejs, export utils
+    if (!isBrowser()) {
+         module.exports = api;
+    }
 
     return api;
 

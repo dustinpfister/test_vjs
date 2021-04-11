@@ -10,6 +10,19 @@ utils.GCD = function (a, b) {
 };
 
 // Greatest Common Divisor from array
+// https://www.geeksforgeeks.org/gcd-two-array-numbers/
+utils.GCDFromArray = function(arr, n){
+    let result = arr[0];
+    n = n === undefined ? arr.length: n;
+    for (let i = 1; i < n; i++){
+        result = utils.GCD(arr[i], result);
+        if(result == 1){
+            return 1;
+        }
+    }
+    return result;
+}
+/*
 utils.GCDFromArray = function (arr) {
     var ai = 0,
     d,
@@ -39,6 +52,7 @@ utils.GCDFromArray = function (arr) {
     }
     return gd;
 };
+*/
 
 // Are all non-zero elements in the ratio equal to each other?
 // utils.allNonZeroEqual([1,0,1,1]); // true

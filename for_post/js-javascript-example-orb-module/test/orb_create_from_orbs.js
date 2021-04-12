@@ -2,11 +2,7 @@ let path = require('path'),
 testMod = require( path.resolve(__dirname, './testmod.js') ),
 orb = require(path.resolve(__dirname, '../lib/orb_node.js'));
 
-var a = orb.createFromPoints([1,0,0,0]),
-b = orb.createFromPoints([1,0,4,0]);
-console.log(orb.createFromOrbs([a, b]));
 
-/*
 testMod.runTest({
     name_mod: 'orb_node',
     name_method: 'createFromOrbs',
@@ -15,23 +11,44 @@ testMod.runTest({
     },
     tests: [
         {
-            args: [[1,0,0,0]],
+            args: (function(){
+                var a = orb.createFromPoints([1,0,0,0]),
+                b = orb.createFromPoints([1,0,0,0]);
+                return [[a, b]];
+            }()),
             exspect : function(orb){
-                return orb.level === 1;
+                return orb.points.join('') === '2000' && orb.type === 'pure';
             }
         },
         {
-            args: [[0,8,8,0]],
+            args: (function(){
+                var a = orb.createFromPoints([1,0,0,0]),
+                b = orb.createFromPoints([1,0,2,0]);
+                return [[a, b]];
+            }()),
             exspect : function(orb){
-                return orb.level === 4;
+                return orb.points.join('') === '2020' && orb.type === 'dual';
             }
         },
         {
-            args: [[6,0,6,2]],
+            args: (function(){
+                var a = orb.createFromPoints([7,0,7,0]),
+                b = orb.createFromPoints([0,7,0,7]);
+                return [[a, b]];
+            }()),
             exspect : function(orb){
-                return orb.level === 2;
+                return orb.points.join('') === '7777' && orb.type === 'quad';
+            }
+        },
+        {
+            args: (function(){
+                var a = orb.createFromPoints([1,0,1,0]),
+                b = orb.createFromPoints([1,0,2,2]);
+                return [[a, b]];
+            }()),
+            exspect : function(orb){
+                return orb.points.join('') === '2032' && orb.type === 'composite';
             }
         }
     ]
 });
-*/

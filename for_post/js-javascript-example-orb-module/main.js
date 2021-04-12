@@ -7,7 +7,5 @@ var printOrbData = function(orb){
 
 var level = 4;
 var orb = orbMod.createFromLevel([1,0,2,0], level);
-printOrbData( orb );
-
-//console.log(ratio.getRaisedRatio([1,0,2,0], 2, 2));
+console.log(orb.points);
 

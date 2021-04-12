@@ -59,7 +59,7 @@ var orbMod = (function (global) {
     // create from a ratio and 1 relative level
     api.createFromLevel = function(r, level){
         var simp = ratio.getSimpleRatio(r);
-        return createFromRatio(simp, level === undefined ? 1 : level, 2);
+        return api.createFromRatio(simp, Math.pow(2, level - 1), 1);
     };
 
     // create from a collection of orbs made before hand

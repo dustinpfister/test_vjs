@@ -91,7 +91,8 @@ ratio.getRaisedRatio = function(arr, n, base){
     base = base === undefined ? 1 : base;
     var simp = ratio.getSimpleRatio(arr);
     return simp.map(function(el){
-        return el * Math.pow(n, base);
+        //return n * Math.pow(el, base);
+        return n * Math.pow(el, base);
     });
 };
 

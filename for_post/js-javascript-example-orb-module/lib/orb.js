@@ -1,21 +1,5 @@
 var orbMod = (function (global) {
 
-    // LOAD UTILS if NODE
-    var isBrowser = (function(global){
-        return function () {
-            try {
-                return global === window;
-            } catch (e) {
-                return false;
-            }
-        };
-    }(global));
-    if(!isBrowser()){
-        // ratio should be in same folder as orb_node
-        var path = require('path');
-        var ratio = require(path.join(__dirname, 'ratio.js'));
-    }
-
     // PUBLIC API
     var api = {};
 
@@ -53,13 +37,15 @@ var orbMod = (function (global) {
     api.createFromRatio = function(r, n, base){
         n = n === undefined ? 1: n;
         base = base === undefined ? 1: base;
+        console.log(ratio)
         return api.createFromPoints(ratio.getRaisedRatio(r, n, base));
     };
 
     // create from a ratio and 1 relative level
     api.createFromLevel = function(r, level){
-        var simp = ratio.getSimpleRatio(r),
-        return createFromRatio(r, level === undefined ? 1 : level, 2);
+        var simp = ratio.getSimpleRatio(r);
+        return api.createFromRatio(simp, Math.pow(2, (level - 1)), 2);
+        //return createFromRatio(simp, level === undefined ? 1 : level, 2);
     };
 
     // create from a collection of orbs made before hand
@@ -76,11 +62,6 @@ var orbMod = (function (global) {
         return api.createFromPoints(points);
     };
 
-    // EXPORT/RETURN PUBLIC API
-    // if nodejs, export ratio
-    if (!isBrowser()) {
-         module.exports = api;
-    }
     return api;
 
 }

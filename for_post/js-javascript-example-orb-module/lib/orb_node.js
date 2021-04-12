@@ -45,7 +45,19 @@ var orbMod = (function (global) {
         //  incremental by just setting base to 1
         orb.level = Math.floor(ratio.getLevel(orb.points, 2)) + 1;
         orb.incremental = ratio.getLevel(orb.points, 1);
+
         return orb
+    };
+
+    // create from a collection of orbs made before hand
+    api.createFromOrbs = function(orbCollection){
+        var points = orbCollection.map(function(orb){
+            return orb.points;
+        }).reduce(function(acc, points){
+            return acc.map(function(el, i){
+                return el + points[i];
+            });
+        });
     };
 
     // EXPORT/RETURN PUBLIC API

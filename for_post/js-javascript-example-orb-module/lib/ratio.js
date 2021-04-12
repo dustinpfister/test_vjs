@@ -112,6 +112,13 @@ ratio.getLevel = function(arr, base){
     return Math.log(a) / Math.log(base);
 };
 
+// just the sum of the numbers
+ratio.sum = function(arr){
+    return arr.reduce(function(acc, n){
+        return acc + n;
+    });
+};
+
 // is browser?
 ratio.isBrowser = (function(global){
     return function () {

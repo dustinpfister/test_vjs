@@ -1,8 +1,10 @@
 let path = require('path'),
 testMod = require( path.resolve(__dirname, './testmod.js') ),
-orbs = require(path.resolve(__dirname, '../lib/orb_node.js'));
+orb = require(path.resolve(__dirname, '../lib/orb_node.js'));
 
-console.log(orbs)
+var a = orb.createFromPoints([1,0,0,0]),
+b = orb.createFromPoints([1,0,4,0]);
+console.log(orb.createFromOrbs([a, b]));
 
 /*
 testMod.runTest({

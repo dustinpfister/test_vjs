@@ -58,6 +58,7 @@ var orbMod = (function (global) {
                 return el + points[i];
             });
         });
+        return api.createFromPoints(points);
     };
 
     // EXPORT/RETURN PUBLIC API

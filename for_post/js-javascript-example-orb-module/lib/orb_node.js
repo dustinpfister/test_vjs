@@ -49,8 +49,22 @@ var orbMod = (function (global) {
         return orb
     };
 
+    // create from ratio helper
+    api.createFromRatio = function(r, n, base){
+        n = n || 1;
+        base = base || 1;
+        return api.createFromPoints(ratio.getRaisedRatio(r, n, base));
+    };
+
+    // create from a ratio and 1 relative level
+    api.createFromLevel = function(r, level){
+        var simp = ratio.getSimpleRatio(r),
+        return createFromRatio(r, level || 1, 2);
+    };
+
     // create from a collection of orbs made before hand
     api.createFromOrbs = function(orbCollection){
+        // just add up the points
         var points = orbCollection.map(function(orb){
             return orb.points;
         }).reduce(function(acc, points){
@@ -58,6 +72,7 @@ var orbMod = (function (global) {
                 return el + points[i];
             });
         });
+        // and create a new orb with the sum of the points
         return api.createFromPoints(points);
     };
 

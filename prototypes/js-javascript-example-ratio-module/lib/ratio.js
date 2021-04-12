@@ -91,7 +91,8 @@ ratio.getRaisedRatio = function(arr, n, base){
     base = base === undefined ? 1 : base;
     var simp = ratio.getSimpleRatio(arr);
     return simp.map(function(el){
-        return el * Math.pow(n, base);
+        //return n * Math.pow(el, base);
+        return n * Math.pow(el, base);
     });
 };
 
@@ -110,6 +111,13 @@ ratio.getLevel = function(arr, base){
     }
     // else use Math.log
     return Math.log(a) / Math.log(base);
+};
+
+// just the sum of the numbers
+ratio.sum = function(arr){
+    return arr.reduce(function(acc, n){
+        return acc + n;
+    });
 };
 
 // is browser?

@@ -25,6 +25,15 @@ var orbPoolMod = (function (global) {
         return orbPool;
     };
 
+    // create a new orb
+    api.newOrb = function (orbPool, sm, options) {
+        sm = sm || {};
+        options = options || {
+            points: [2, 4, 0, 0]
+        };
+        return poolMod.spawn(orbPool, sm, options);
+    };
+
     return api;
 
 }

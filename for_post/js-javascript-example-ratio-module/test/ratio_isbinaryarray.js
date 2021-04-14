@@ -56,5 +56,9 @@ testMod.runTest({
             args: [ [null, null] ],
             exspect : false
         },
+        {
+            args: [ [true, false] ],
+            exspect : false
+        }
     ]
 });

@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>get by event target</title>
+    </head>
+    <body>
+        <input id="action_foo" type="button" value="foo">
+        <input id="action_bar" type="button" value="bar">
+        <input id="action_baz" type="button" value="baz">
+        <p id="out"></p>
+        <script>
+var out = document.querySelector('#out');
+document.addEventListener('click', function(e){
+    // getting a reference to the button that was clicked
+    // by the target prop of this events event object
+    out.innerText = e.target.id;
+});
+        </script>
+    </body>
+</html>

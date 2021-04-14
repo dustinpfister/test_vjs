@@ -1,8 +1,4 @@
 
-var orbPool = orbPoolMod.create({
-        count: 5
-    });
+var container = document.querySelector('#app');
 
-var orb = orbPoolMod.newOrb(orbPool, {}, {points:[2,4,0,0]})
-
-console.log(orb);
+container.innerText = utils.distance(37, 20, 10, 0);

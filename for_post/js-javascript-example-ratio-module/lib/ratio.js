@@ -54,6 +54,10 @@ ratio.countNonZero = function(array){
 ratio.isBinaryArray = function(array){
     var i = 0,
     len = array.length;
+    // return false for empty array
+    if(len === 0){
+        return false;
+    }
     while(i < len){
         if(Number(array[i]) === 0 || Number(array[i]) === 1){
            i += 1;

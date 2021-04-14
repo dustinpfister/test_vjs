@@ -43,6 +43,10 @@ testMod.runTest({
         {
             args: [ [1,1,2,1] ],
             exspect : false
+        },
+        {
+            args: [ [] ],
+            exspect : false
         }
     ]
 });

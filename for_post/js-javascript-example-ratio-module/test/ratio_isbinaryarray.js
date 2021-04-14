@@ -47,6 +47,14 @@ testMod.runTest({
         {
             args: [ [] ],
             exspect : false
-        }
+        },
+        {
+            args: [ [{},null, {}] ],
+            exspect : false
+        },
+        {
+            args: [ [null, null] ],
+            exspect : false
+        },
     ]
 });

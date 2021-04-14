@@ -59,7 +59,7 @@ ratio.isBinaryArray = function(array){
         return false;
     }
     while(i < len){
-        if(Number(array[i]) === 0 || Number(array[i]) === 1){
+        if(parseInt(array[i]) === 0 || parseInt(array[i]) === 1){
            i += 1;
            continue;
         }

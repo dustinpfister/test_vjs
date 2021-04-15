@@ -1,6 +1,7 @@
 (function(api){
 
     api.createDisp = function(opt){
+        opt = opt || {};
         var obj = {
             x: opt.x === undefined ? 0 : opt.x,
             y: opt.y === undefined ? 0 : opt.y,

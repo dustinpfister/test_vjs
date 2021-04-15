@@ -29,6 +29,11 @@
             disp.y += Math.sin(disp.heading) * disp.pps * secs;
             disp.cx = disp.x + disp.hw;
             disp.cy = disp.y + disp.hh;
+
+            if(utils.boundingBox(game.guy, disp)){
+                disp.active = false;
+            }
+
             if(disp.y >= canvas.height - 64){
                 disp.active = false;
             }

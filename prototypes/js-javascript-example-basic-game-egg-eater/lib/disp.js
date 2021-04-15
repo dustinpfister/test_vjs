@@ -12,6 +12,7 @@
         obj.hh = obj.h / 2;
         obj.cx = obj.x + obj.hw;
         obj.cy = obj.y + obj.hh;
+        obj.fill = opt.fill || 'gray';
         obj.active = true;
         return obj;
     };

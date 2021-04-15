@@ -6,16 +6,7 @@ var canvasObj = utils.createCanvas({
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
-
-
-console.log();
-
-var obj = dispMod.createDisp({
-   x: 32,
-   w: 96,
-   h: 96,
-   y: canvas.height - 96 - 32
-});
+var game = gameMod.create({canvas:canvas});
 
 draw.back(ctx, canvas);
-draw.disp(ctx, canvas, obj);
+draw.disp(ctx, canvas, game.guy);

@@ -12,4 +12,12 @@
         ctx.fillRect(disp.x, disp.y, disp.w, disp.h);
     };
 
+    api.pool = function(ctx, canvas, pool){
+        pool.disp.forEach(function(disp){
+            if(disp.active){
+                api.disp(ctx, canvas, disp);
+            }
+        });
+    };
+
 }(this['draw'] = {}));

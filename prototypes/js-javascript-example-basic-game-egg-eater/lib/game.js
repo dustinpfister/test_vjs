@@ -11,7 +11,8 @@
               h: 96,
               fill: 'blue',
               y: canvas.height - 96 - 32
-          })
+          }),
+          pool: dispMod.createPool({count: 15})
        };
        return game;
     };

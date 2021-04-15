@@ -10,3 +10,7 @@ var game = gameMod.create({canvas:canvas});
 
 draw.back(ctx, canvas);
 draw.disp(ctx, canvas, game.guy);
+
+game.pool.disp[0].active = true;
+
+draw.pool(ctx, canvas, game.pool);

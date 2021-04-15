@@ -6,23 +6,20 @@ var canvasObj = utils.createCanvas({
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
-var game = gameMod.create({canvas:canvas});
-
-var lt = new Date(),
+var game = gameMod.create({canvas:canvas}),
+lt = new Date(),
 rate = 20;
+
+
+game.pool.disp[0].active = true;
 
 var loop = function(){
     var now = new Date(),
     secs = (now - lt) / 1000;
-
     requestAnimationFrame(loop);
-
     if(secs > 1 / rate){
-
         lt = now;
-
-game.pool.disp[0].active = true;
-
+        gameMod.update(game, secs);
         draw.back(ctx, canvas);
         draw.disp(ctx, canvas, game.guy);
         draw.pool(ctx, canvas, game.pool);

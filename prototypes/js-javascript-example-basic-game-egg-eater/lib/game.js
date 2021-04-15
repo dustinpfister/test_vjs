@@ -19,6 +19,15 @@
 
     // draw display object
     api.update = function(game, secs){
+
+        game.pool.disp.forEach(function(disp){
+            disp.x += Math.cos(disp.heading) * disp.pps * secs;
+            disp.y += Math.sin(disp.heading) * disp.pps * secs;
+            if(disp.y >= canvas.height - 64){
+                disp.active = false;
+            }
+        });
+
     };
 
 }(this['gameMod'] = {}));

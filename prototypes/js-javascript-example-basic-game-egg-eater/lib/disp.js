@@ -6,7 +6,9 @@
             x: opt.x === undefined ? 0 : opt.x,
             y: opt.y === undefined ? 0 : opt.y,
             w: opt.w || 32,
-            h: opt.h || 32
+            h: opt.h || 32,
+            heading : opt.heading === undefined ? Math.PI * 0.5 : opt.heading,
+            pps: opt.pps || 128
         };
         obj.hw = obj.w / 2;
         obj.hh = obj.h / 2;

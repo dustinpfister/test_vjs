@@ -1,5 +1,6 @@
 (function(api){
 
+    // create a single display object
     api.createDisp = function(opt){
         opt = opt || {};
         var obj = {
@@ -19,6 +20,7 @@
         return obj;
     };
 
+    // create a pool of display obejcts
     api.createPool = function(opt){
          opt = opt || {};
          var pool = {
@@ -33,6 +35,19 @@
              i += 1;
          };
          return pool;
+    };
+
+    // get a free disp object from a pool or return false if all are active
+    api.getFreeDisp = function(pool){
+        var i = 0, disp;
+        while(i < pool.count){
+            disp = pool.disp[i];
+            if(!disp.active){
+                return disp;
+            }
+            i += 1;
+        }
+        return false;
     };
 
 

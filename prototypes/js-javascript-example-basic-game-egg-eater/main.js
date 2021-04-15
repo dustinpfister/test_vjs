@@ -11,7 +11,7 @@ lt = new Date(),
 rate = 20;
 
 
-game.pool.disp[0].active = true;
+//game.pool.disp[0].active = true;
 
 var loop = function(){
     var now = new Date(),

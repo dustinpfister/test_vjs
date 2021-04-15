@@ -6,3 +6,5 @@ ctx = canvasObj.ctx;
 
 
 console.log(dispMod.createDisp());
+
+draw.back(ctx, canvas);

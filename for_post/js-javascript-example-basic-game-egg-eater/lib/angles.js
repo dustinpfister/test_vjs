@@ -1,18 +1,18 @@
-(function(angles){
+(function(anglesMod){
 
-    angles.PI2 = Math.PI * 2;
+    anglesMod.PI2 = Math.PI * 2;
 
-    angles.normalizeHalf = function (n, scale) {
-        var c = scale || angles.PI2,
+    anglesMod.normalizeHalf = function (n, scale) {
+        var c = scale || anglesMod.PI2,
         h = c / 2;
         return utils.mod(n + h, c) - h;
     };
 
     // the angular distance between two angles
-    angles.distance = function (a, b, scale) {
+    anglesMod.distance = function (a, b, scale) {
         var m = scale || angles.PI2,
         h = m / 2,
-        diff = angles.normalizeHalf(a - b);
+        diff = anglesMod.normalizeHalf(a - b);
         if (diff > h) {
             diff = diff - m;
         }
@@ -20,14 +20,14 @@
     };
 
     // get the angle from one point to another
-    angles.getAngleToPoint = function (pt1, pt2, scale) {
-        return angles.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x), scale || angles.PI2);
+    anglesMod.getAngleToPoint = function (pt1, pt2, scale) {
+        return anglesMod.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x), scale || anglesMod.PI2);
     };
 
     // get -1, 1, or 0 depending on the the state of two angles
-    angles.shortestAngleDirection = function (a1, a2, scale) {
+    anglesMod.shortestAngleDirection = function (a1, a2, scale) {
         var z = a1 - a2,
-        x = utils.normalizeHalf(z, scale || angles.PI2);
+        x = utils.normalizeHalf(z, scale || anglesMod.PI2);
         if (x < 0) {
             return -1; // Left
         }

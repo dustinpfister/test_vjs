@@ -21,8 +21,11 @@
     // update the pool
     var updatePool = function(game, secs){
         game.pool.disp.forEach(function(disp){
+
             // ajust heading
-            disp.heading = Math.atan2(game.guy.cy - disp.cy, game.guy.cx - disp.cx);
+            disp.heading =  anglesMod.getAngleToPoint(game.guy, disp); 
+            //disp.heading = Math.atan2(game.guy.cy - disp.cy, game.guy.cx - disp.cx);
+
             // move display object
             dispMod.moveDispByPPS(disp, secs);
             // check if disp object has hit guy

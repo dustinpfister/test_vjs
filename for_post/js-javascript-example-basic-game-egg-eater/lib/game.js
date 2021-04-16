@@ -1,11 +1,16 @@
 (function(api){
 
-    // draw background
+    // create main game state
     api.create = function(opt){
        opt = opt || {};
        opt.canvas = opt.canvas || {width: 320, height: 240};
        var game = {
           canvas: opt.canvas,
+          spawn: {  // object spawn setings
+              rate: 1,
+              objectsPerSpawn: 3,
+              secs: 0
+          },
           guy : dispMod.createDisp({
               x: 32,
               w: 96,
@@ -38,8 +43,6 @@
                 disp.heading += Math.PI / 180 * 5;
             }
 
-            //disp.heading = Math.atan2(game.guy.cy - disp.cy, game.guy.cx - disp.cx);
-
             // move display object
             dispMod.moveDispByPPS(disp, secs);
             // check if disp object has hit guy
@@ -56,17 +59,21 @@
         });
     };
 
-
     // draw display object
     api.update = function(game, secs){
 
-        // spawn pool disps
-        var disp = dispMod.getFreeDisp(game.pool);
-        if(disp){
-            disp.active = true;
-            disp.x = game.canvas.width - 64;
-            disp.y = 64;
-            disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
+        // spawn
+        var spawn = game.spawn;
+        spawn.secs += secs;
+        if(spawn.secs >= spawn.rate){
+            var disp = dispMod.getFreeDisp(game.pool);
+            if(disp){
+                disp.active = true;
+                disp.x = game.canvas.width - 64;
+                disp.y = 64;
+                disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
+            }
+            spawn.secs = utils.mod(spawn.secs, spawn.rate);
         }
 
         // update pool

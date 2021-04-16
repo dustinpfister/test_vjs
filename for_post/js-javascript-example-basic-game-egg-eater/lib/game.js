@@ -9,7 +9,7 @@
           spawn: {  // object spawn setings
               rate: opt.spawnRate || 1,
               objectsPerSpawn: opt.objectsPerSpawn || 3,
-              bombChance: opt.bombChance === undefined ? 0.05 : opt.bombChance,
+              bombChance: opt.bombChance === undefined ? 0.25 : opt.bombChance,
               secs: 0
           },
           guy : dispMod.createDisp({
@@ -78,8 +78,12 @@
                     disp.y = 64;
                     disp.pps = 128 + 128 * Math.random();
                     disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
+                    disp.fill = 'white';
                     // game data
                     disp.data.type = objType;
+                    if(objType === 'bomb'){
+                        disp.fill = 'black';
+                    }
                 }
             }
             spawn.secs = utils.mod(spawn.secs, spawn.rate);

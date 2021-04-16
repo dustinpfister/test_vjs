@@ -59,9 +59,9 @@
         var disp = dispMod.getFreeDisp(game.pool);
         if(disp){
             disp.active = true;
-            disp.x = game.canvas.width- 64;
+            disp.x = game.canvas.width - 64;
             disp.y = 64;
-            disp.heading = Math.PI * 1.5;
+            disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
         }
 
         // update pool

@@ -8,7 +8,7 @@ ctx = canvasObj.ctx;
 
 var game = gameMod.create({canvas:canvas}),
 lt = new Date(),
-rate = 20;
+rate = 30;
 
 
 //game.pool.disp[0].active = true;

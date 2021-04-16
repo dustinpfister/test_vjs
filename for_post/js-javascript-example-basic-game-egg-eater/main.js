@@ -27,6 +27,9 @@ loop();
 
 var pointerDown = function(){
     game.down = true;
+    if(game.gameOver && game.gameOverSecs >= 3){
+        game = gameMod.create({canvas:canvas});
+    }
 };
 var pointerUp = function(){
     game.down = false;

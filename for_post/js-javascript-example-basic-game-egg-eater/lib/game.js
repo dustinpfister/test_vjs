@@ -8,6 +8,7 @@
           canvas: opt.canvas,
           down: false,
           gameOver: false,
+          gameOverSecs: 0,
           score: 0,
           spawn: {  // object spawn setings
               rate: opt.spawnRate || 1,
@@ -107,6 +108,8 @@
 
             // update pool of objects
             updatePool(game, secs);
+        }else{
+            game.gameOverSecs += secs;
         }
 
     };

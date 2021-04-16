@@ -64,13 +64,18 @@
         var spawn = game.spawn;
         spawn.secs += secs;
         if(spawn.secs >= spawn.rate){
-            var disp = dispMod.getFreeDisp(game.pool);
-            if(disp){
-                disp.active = true;
-                disp.x = game.canvas.width - 64;
-                disp.y = 64;
-                disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
+
+            var i = spawn.objectsPerSpawn;
+            while(i--){
+                var disp = dispMod.getFreeDisp(game.pool);
+                if(disp){
+                    disp.active = true;
+                    disp.x = game.canvas.width - 64;
+                    disp.y = 64;
+                    disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
+                }
             }
+
             spawn.secs = utils.mod(spawn.secs, spawn.rate);
         }
     };

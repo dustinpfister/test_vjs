@@ -33,14 +33,10 @@
 
             // ajust heading
             var a =  anglesMod.getAngleToPoint(game.guy, disp),
-            dir = anglesMod.shortestAngleDirection(disp.heading, a);
-
-            if(dir === 1){
-                disp.heading -= Math.PI / 180 * 5;
-            }
-            if(dir === -1){
-                disp.heading += Math.PI / 180 * 5;
-            }
+            dir = anglesMod.shortestAngleDirection(disp.heading, a),
+            delta = Math.PI / 180 * 5;
+            // apply delta to disp.heading
+            disp.heading -= delta * dir;
 
             // move display object
             dispMod.moveDispByPPS(disp, secs);
@@ -58,8 +54,8 @@
         });
     };
 
+    // spawn objects helper
     var spawn = function(game, secs){
-        // spawn
         var spawn = game.spawn;
         spawn.secs += secs;
         if(spawn.secs >= spawn.rate){
@@ -93,9 +89,10 @@
     // draw display object
     api.update = function(game, secs){
 
+        // spawn objects
         spawn(game, secs);
 
-        // update pool
+        // update pool of objects
         updatePool(game, secs);
 
     };

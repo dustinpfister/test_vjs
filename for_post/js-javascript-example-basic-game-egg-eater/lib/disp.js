@@ -9,6 +9,7 @@
             w: opt.w || 32,
             h: opt.h || 32,
             heading : opt.heading === undefined ? Math.PI * 0.5 : opt.heading,
+            degreesPS: opt.degreesPS === undefined ? 90 : opt.degreesPS,
             pps: opt.pps || 32
         };
         obj.hw = obj.w / 2;

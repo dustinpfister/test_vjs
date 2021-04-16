@@ -7,7 +7,7 @@
        var game = {
           canvas: opt.canvas,
           spawn: {  // object spawn setings
-              rate: opt.spawnRate || 1,
+              rate: opt.spawnRate || 0.5,
               objectsPerSpawn: opt.objectsPerSpawn || 3,
               bombChance: opt.bombChance === undefined ? 0.25 : opt.bombChance,
               secs: 0
@@ -34,7 +34,7 @@
             // ajust heading
             var a =  anglesMod.getAngleToPoint(game.guy, disp),
             dir = anglesMod.shortestAngleDirection(disp.heading, a),
-            delta = Math.PI / 180 * 5;
+            delta = Math.PI / 180 * disp.degreesPS * secs;
             // apply delta to disp.heading
             disp.heading -= delta * dir;
 
@@ -71,7 +71,7 @@
                     // core disp values
                     disp.active = true;
                     disp.x = game.canvas.width - 64;
-                    disp.y = 64;
+                    disp.y = 96;
                     disp.pps = 128 + 128 * Math.random();
                     disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
                     disp.fill = 'white';

@@ -1,5 +1,10 @@
 var utils = {};
 
+// mathematical modulo
+utils.mod = function (x, m) {
+    return (x % m + m) % m;
+};
+
 utils.boundingBox = function (a, b) {
     return !(
         (a.y + a.h) < b.y ||

@@ -12,6 +12,7 @@
         ctx.fillRect(disp.x, disp.y, disp.w, disp.h);
     };
 
+    // draw object pool
     api.pool = function(ctx, canvas, pool){
         pool.disp.forEach(function(disp){
             if(disp.active){
@@ -19,5 +20,13 @@
             }
         });
     };
+
+    // info
+    api.info = function(ctx, canvas, game){
+        ctx.font = '10px arial';
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = 'black';
+        ctx.fillText('score: ' + game.score, 10, 10);
+    };  
 
 }(this['draw'] = {}));

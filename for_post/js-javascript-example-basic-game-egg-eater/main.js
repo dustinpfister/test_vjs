@@ -20,6 +20,7 @@ var loop = function(){
         draw.back(ctx, canvas);
         draw.disp(ctx, canvas, game.guy);
         draw.pool(ctx, canvas, game.pool);
+        draw.info(ctx, canvas, game);
     }
 };
 loop();

@@ -8,10 +8,11 @@
           canvas: opt.canvas,
           down: false,
           gameOver: false,
+          score: 0,
           spawn: {  // object spawn setings
               rate: opt.spawnRate || 1,
               objectsPerSpawn: opt.objectsPerSpawn || 5,
-              bombChance: opt.bombChance === undefined ? 0.025 : opt.bombChance,
+              bombChance: opt.bombChance === undefined ? 0.05 : opt.bombChance,
               secs: 0
           },
           guy : dispMod.createDisp({
@@ -41,7 +42,9 @@
             // move display object
             dispMod.moveDispByPPS(disp, secs);
             // check if disp object has hit guy
-            if(utils.boundingBox(game.guy, disp)){
+            if(utils.boundingBox(game.guy, disp) && disp.active){
+                disp.x = 0;
+                disp.y = 0;
                 if(game.down){
                     if(disp.data.type === 'egg'){
                         game.score += 1;

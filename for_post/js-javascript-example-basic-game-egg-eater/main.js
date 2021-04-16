@@ -10,9 +10,6 @@ var game = gameMod.create({canvas:canvas}),
 lt = new Date(),
 rate = 30;
 
-
-//game.pool.disp[0].active = true;
-
 var loop = function(){
     var now = new Date(),
     secs = (now - lt) / 1000;
@@ -26,3 +23,13 @@ var loop = function(){
     }
 };
 loop();
+
+var pointerDown = function(){
+    game.down = true;
+};
+var pointerUp = function(){
+    game.down = false;
+};
+
+canvas.addEventListener('mousedown', pointerDown);
+canvas.addEventListener('mouseup', pointerUp);

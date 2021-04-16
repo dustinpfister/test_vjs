@@ -6,6 +6,8 @@
        opt.canvas = opt.canvas || {width: 320, height: 240};
        var game = {
           canvas: opt.canvas,
+          down: false,
+          gameOver: false,
           spawn: {  // object spawn setings
               rate: opt.spawnRate || 0.25,
               objectsPerSpawn: opt.objectsPerSpawn || 5,
@@ -40,6 +42,14 @@
             dispMod.moveDispByPPS(disp, secs);
             // check if disp object has hit guy
             if(utils.boundingBox(game.guy, disp)){
+                if(game.down){
+                    if(disp.data.type === 'egg'){
+                        game.score += 1;
+                    }
+                    if(disp.data.type === 'bomb'){
+                        game.gameOver = true;
+                    }
+                }
                 disp.active = false;
             }
             // out of bounds?
@@ -60,10 +70,10 @@
             var i = spawn.objectsPerSpawn;
             while(i--){
                 var disp = dispMod.getFreeDisp(game.pool),
-                objType = 'egg',
+                type = 'egg',
                 roll = Math.random();
                 if(roll < spawn.bombChance){
-                    objType = 'bomb';
+                    type = 'bomb';
                 }
                 if(disp){
                     // core disp values
@@ -75,8 +85,8 @@
                     disp.heading = Math.PI * 1.5 - Math.PI * 1.25 * Math.random();
                     disp.fill = 'white';
                     // game data
-                    disp.data.type = objType;
-                    if(objType === 'bomb'){
+                    disp.data.type = type;
+                    if(type === 'bomb'){
                         disp.fill = 'black';
                     }
                 }
@@ -88,11 +98,13 @@
     // draw display object
     api.update = function(game, secs){
 
-        // spawn objects
-        spawn(game, secs);
+        if(!game.gameOver){
+            // spawn objects
+            spawn(game, secs);
 
-        // update pool of objects
-        updatePool(game, secs);
+            // update pool of objects
+            updatePool(game, secs);
+        }
 
     };
 

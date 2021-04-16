@@ -7,8 +7,9 @@
        var game = {
           canvas: opt.canvas,
           spawn: {  // object spawn setings
-              rate: 1,
-              objectsPerSpawn: 3,
+              rate: opt.spawnRate || 1,
+              objectsPerSpawn: opt.objectsPerSpawn || 3,
+              bombChance: opt.bombChance === undefined ? 0.05 : opt.bombChance,
               secs: 0
           },
           guy : dispMod.createDisp({
@@ -20,9 +21,7 @@
           }),
           pool: dispMod.createPool({
               count: 30,
-              dispOptions: {
-                  pps: 256
-              }
+              dispOptions: {}
           })
        };
        return game;
@@ -64,7 +63,6 @@
         var spawn = game.spawn;
         spawn.secs += secs;
         if(spawn.secs >= spawn.rate){
-
             var i = spawn.objectsPerSpawn;
             while(i--){
                 var disp = dispMod.getFreeDisp(game.pool);
@@ -72,10 +70,10 @@
                     disp.active = true;
                     disp.x = game.canvas.width - 64;
                     disp.y = 64;
+                    disp.pps = 128 + 128 * Math.random();
                     disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
                 }
             }
-
             spawn.secs = utils.mod(spawn.secs, spawn.rate);
         }
     };

@@ -18,24 +18,22 @@
        return game;
     };
 
-/*
-    var moveDispByPPS = function(disp, secs){
-        disp.x += Math.cos(disp.heading) * disp.pps * secs;
-        disp.y += Math.sin(disp.heading) * disp.pps * secs;
-        disp.cx = disp.x + disp.hw;
-        disp.cy = disp.y + disp.hh;
-    };
-*/
-
+    // update the pool
     var updatePool = function(game, secs){
         game.pool.disp.forEach(function(disp){
             // ajust heading
             disp.heading = Math.atan2(game.guy.cy - disp.cy, game.guy.cx - disp.cx);
+            // move display object
             dispMod.moveDispByPPS(disp, secs);
+            // check if disp object has hit guy
             if(utils.boundingBox(game.guy, disp)){
                 disp.active = false;
             }
-            if(disp.y >= canvas.height - 64){
+            // out of bounds?
+            if(disp.y >= canvas.height + disp.h){
+                disp.active = false;
+            }
+            if(disp.x < 0 - disp.w){
                 disp.active = false;
             }
         });

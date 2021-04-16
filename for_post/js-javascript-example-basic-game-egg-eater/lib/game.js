@@ -7,9 +7,9 @@
        var game = {
           canvas: opt.canvas,
           spawn: {  // object spawn setings
-              rate: opt.spawnRate || 0.5,
-              objectsPerSpawn: opt.objectsPerSpawn || 3,
-              bombChance: opt.bombChance === undefined ? 0.25 : opt.bombChance,
+              rate: opt.spawnRate || 0.25,
+              objectsPerSpawn: opt.objectsPerSpawn || 5,
+              bombChance: opt.bombChance === undefined ? 0.025 : opt.bombChance,
               secs: 0
           },
           guy : dispMod.createDisp({
@@ -20,7 +20,7 @@
               y: canvas.height - 96 - 32
           }),
           pool: dispMod.createPool({
-              count: 30,
+              count: 100,
               dispOptions: {}
           })
        };
@@ -30,14 +30,12 @@
     // update the pool
     var updatePool = function(game, secs){
         game.pool.disp.forEach(function(disp){
-
             // ajust heading
             var a =  anglesMod.getAngleToPoint(game.guy, disp),
             dir = anglesMod.shortestAngleDirection(disp.heading, a),
             delta = Math.PI / 180 * disp.degreesPS * secs;
             // apply delta to disp.heading
             disp.heading -= delta * dir;
-
             // move display object
             dispMod.moveDispByPPS(disp, secs);
             // check if disp object has hit guy
@@ -73,7 +71,8 @@
                     disp.x = game.canvas.width - 64;
                     disp.y = 96;
                     disp.pps = 128 + 128 * Math.random();
-                    disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
+                    disp.degreesPS = 60 + (90 - 60) * Math.random();
+                    disp.heading = Math.PI * 1.5 - Math.PI * 1.25 * Math.random();
                     disp.fill = 'white';
                     // game data
                     disp.data.type = objType;

@@ -59,9 +59,7 @@
         });
     };
 
-    // draw display object
-    api.update = function(game, secs){
-
+    var spawn = function(game, secs){
         // spawn
         var spawn = game.spawn;
         spawn.secs += secs;
@@ -75,6 +73,12 @@
             }
             spawn.secs = utils.mod(spawn.secs, spawn.rate);
         }
+    };
+
+    // draw display object
+    api.update = function(game, secs){
+
+        spawn(game, secs);
 
         // update pool
         updatePool(game, secs);

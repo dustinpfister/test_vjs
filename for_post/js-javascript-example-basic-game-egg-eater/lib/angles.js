@@ -27,7 +27,7 @@
     // get -1, 1, or 0 depending on the the state of two angles
     anglesMod.shortestAngleDirection = function (a1, a2, scale) {
         var z = a1 - a2,
-        x = utils.normalizeHalf(z, scale || anglesMod.PI2);
+        x = anglesMod.normalizeHalf(z, scale || anglesMod.PI2);
         if (x < 0) {
             return -1; // Left
         }

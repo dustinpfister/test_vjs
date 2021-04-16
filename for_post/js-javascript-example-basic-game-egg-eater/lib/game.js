@@ -23,7 +23,16 @@
         game.pool.disp.forEach(function(disp){
 
             // ajust heading
-            disp.heading =  anglesMod.getAngleToPoint(game.guy, disp); 
+            var a =  anglesMod.getAngleToPoint(game.guy, disp),
+            dir = anglesMod.shortestAngleDirection(disp.heading, a);
+
+            if(dir === 1){
+                disp.heading -= Math.PI / 180 * 5;
+            }
+            if(dir === -1){
+                disp.heading += Math.PI / 180 * 5;
+            }
+
             //disp.heading = Math.atan2(game.guy.cy - disp.cy, game.guy.cx - disp.cx);
 
             // move display object
@@ -50,8 +59,9 @@
         var disp = dispMod.getFreeDisp(game.pool);
         if(disp){
             disp.active = true;
-            disp.x = game.canvas.width;
-            disp.y = 0;
+            disp.x = game.canvas.width- 64;
+            disp.y = 64;
+            disp.heading = Math.PI * 1.5;
         }
 
         // update pool

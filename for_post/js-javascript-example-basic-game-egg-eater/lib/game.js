@@ -18,18 +18,20 @@
        return game;
     };
 
+/*
     var moveDispByPPS = function(disp, secs){
         disp.x += Math.cos(disp.heading) * disp.pps * secs;
         disp.y += Math.sin(disp.heading) * disp.pps * secs;
         disp.cx = disp.x + disp.hw;
         disp.cy = disp.y + disp.hh;
     };
+*/
 
     var updatePool = function(game, secs){
         game.pool.disp.forEach(function(disp){
             // ajust heading
             disp.heading = Math.atan2(game.guy.cy - disp.cy, game.guy.cx - disp.cx);
-            moveDispByPPS(disp, secs);
+            dispMod.moveDispByPPS(disp, secs);
             if(utils.boundingBox(game.guy, disp)){
                 disp.active = false;
             }

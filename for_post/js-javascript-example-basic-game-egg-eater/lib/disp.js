@@ -50,5 +50,13 @@
         return false;
     };
 
+    // move a display object by heading and PPS
+    api.moveDispByPPS = function(disp, secs){
+        disp.x += Math.cos(disp.heading) * disp.pps * secs;
+        disp.y += Math.sin(disp.heading) * disp.pps * secs;
+        disp.cx = disp.x + disp.hw;
+        disp.cy = disp.y + disp.hh;
+    };
+
 
 }(this['dispMod'] = {}));

@@ -9,7 +9,7 @@
             w: opt.w || 32,
             h: opt.h || 32,
             heading : opt.heading === undefined ? Math.PI * 0.5 : opt.heading,
-            pps: opt.pps || 128
+            pps: opt.pps || 32
         };
         obj.hw = obj.w / 2;
         obj.hh = obj.h / 2;
@@ -29,7 +29,7 @@
          };
          var i = 0;
          while(i < pool.count){
-             var disp = api.createDisp();
+             var disp = api.createDisp(opt.dispOptions || {});
              disp.active = false;
              pool.disp.push(disp);
              i += 1;

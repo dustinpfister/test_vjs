@@ -33,3 +33,5 @@ var pointerUp = function(){
 
 canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mouseup', pointerUp);
+canvas.addEventListener('touchstart', pointerDown);
+canvas.addEventListener('touchend', pointerUp);

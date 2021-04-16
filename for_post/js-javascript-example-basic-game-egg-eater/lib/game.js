@@ -9,7 +9,7 @@
           down: false,
           gameOver: false,
           spawn: {  // object spawn setings
-              rate: opt.spawnRate || 0.25,
+              rate: opt.spawnRate || 1,
               objectsPerSpawn: opt.objectsPerSpawn || 5,
               bombChance: opt.bombChance === undefined ? 0.025 : opt.bombChance,
               secs: 0

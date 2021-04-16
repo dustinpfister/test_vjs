@@ -17,6 +17,7 @@
         obj.cy = obj.y + obj.hh;
         obj.fill = opt.fill || 'gray';
         obj.active = true;
+        obj.data = opt.data || {};
         return obj;
     };
 

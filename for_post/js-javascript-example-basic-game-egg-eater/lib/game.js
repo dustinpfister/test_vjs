@@ -65,13 +65,21 @@
         if(spawn.secs >= spawn.rate){
             var i = spawn.objectsPerSpawn;
             while(i--){
-                var disp = dispMod.getFreeDisp(game.pool);
+                var disp = dispMod.getFreeDisp(game.pool),
+                objType = 'egg',
+                roll = Math.random();
+                if(roll < spawn.bombChance){
+                    objType = 'bomb';
+                }
                 if(disp){
+                    // core disp values
                     disp.active = true;
                     disp.x = game.canvas.width - 64;
                     disp.y = 64;
                     disp.pps = 128 + 128 * Math.random();
                     disp.heading = Math.PI * 1.5 - Math.PI * Math.random();
+                    // game data
+                    disp.data.type = objType;
                 }
             }
             spawn.secs = utils.mod(spawn.secs, spawn.rate);

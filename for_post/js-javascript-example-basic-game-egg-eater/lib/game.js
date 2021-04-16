@@ -87,7 +87,7 @@
                     disp.pps = 128 + 128 * Math.random();
                     disp.degreesPS = 60 + (90 - 60) * Math.random();
                     disp.heading = Math.PI * 1.5 - Math.PI * 1.25 * Math.random();
-                    disp.fill = 'white';
+                    disp.fill = 'rgba(255,255,255,0.5)';
                     // game data
                     disp.data.type = type;
                     if(type === 'bomb'){

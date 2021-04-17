@@ -4,7 +4,7 @@
     anglesMod.PI2 = Math.PI * 2;
 
     // mathematical modulo
-    angles.mod = function (x, m) {
+    anglesMod.mod = function (x, m) {
         return (x % m + m) % m;
     };
 

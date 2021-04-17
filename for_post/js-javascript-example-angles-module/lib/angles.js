@@ -1,5 +1,6 @@
 (function(anglesMod){
 
+    // PI * 2
     anglesMod.PI2 = Math.PI * 2;
 
     // mathematical modulo
@@ -7,6 +8,7 @@
         return (x % m + m) % m;
     };
 
+    // normalize an angle by half
     anglesMod.normalizeHalf = function (n, scale) {
         var c = scale || anglesMod.PI2,
         h = c / 2;
@@ -26,7 +28,8 @@
 
     // get the angle from one point to another
     anglesMod.getAngleToPoint = function (pt1, pt2, scale) {
-        return anglesMod.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x), scale || anglesMod.PI2);
+        var a = Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x);
+        return anglesMod.normalizeHalf(a, scale || anglesMod.PI2);
     };
 
     // get -1, 1, or 0 depending on the the state of two angles
@@ -44,4 +47,4 @@
     };
 
 
-}(this['anglesMod'] = {}));
+}( typeof module === 'undefined' ? this['anglesMod'] = {} : module.exports  ));

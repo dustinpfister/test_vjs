@@ -12,7 +12,7 @@
     anglesMod.normalizeHalf = function (n, scale) {
         var c = scale || anglesMod.PI2,
         h = c / 2;
-        return angles.mod(n + h, c) - h;
+        return anglesMod.mod(n + h, c) - h;
     };
 
     // the angular distance between two angles

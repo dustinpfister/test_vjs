@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>javaScript example</title>
+    </head>
+    <body>
+        <div><button onclick="speak()">Speak</button></div>
+        <script>
+var speak = function(){
+console.log('hello');
+let utterance = new SpeechSynthesisUtterance("Hello world!");
+speechSynthesis.speak(utterance);
+};
+        </script>
+    </body>
+</html>

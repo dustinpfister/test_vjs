@@ -1,6 +1,6 @@
 
 ## () - expand alternatives section
-* new s5-altertaives example that showcases the use of a canvas element as a way to inject content
+* new s5-alternatives example that showcases the use of a canvas element as a way to inject content
 
 ## () - new s4-security example that makes use of a server side script
 * create a new s4-security example that is a node script that serves a single html file

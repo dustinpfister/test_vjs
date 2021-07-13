@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var el = document.getElementById('out');
+el.innerHTML = "<input type=\"button\" value=\"click it\" onclick='alert(\"bad times\")'>";
+        </script>
+    </body>
+</html>

@@ -19,4 +19,4 @@ let b = objs.reduce(function (acc, rec) {
 
 
 console.log(a); // 50
-console.log(b)
+console.log(b); // 50

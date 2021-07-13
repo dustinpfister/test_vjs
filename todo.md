@@ -10,7 +10,7 @@
 * edit a js-array-...post
 
 ## () - for 07/13/2021
-* start a new for post folder on js-array-reduce
+* (done) start a new for post folder on js-array-reduce
 * start a new post on js-array-reduce for 07/13/21
 * edit a js-array-...post
 

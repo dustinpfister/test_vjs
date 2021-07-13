@@ -1,17 +1,13 @@
-let sumObjects = (objs, prop) => {
-    prop = prop === undefined ? 'clicks' : prop;
-    return objs.reduce(function (acc, rec) {
-        acc = typeof acc === 'object' ? acc[prop] : acc;
-        return acc + rec[prop];
-    });
-};
-
 let objs = [
-    { clicks: 15, money: 0.75 },
-    { clicks: 10, money: 1.50 },
-    { clicks: 25, money: 3.35 }
+    { a: 5},
+    { a: 2},
+    { a: 3}
 ];
 
+let reducer = (acc, n) => {
+    return acc + n.a;
+};
 
-console.log(sumObjects(objs));          // 24
-console.log(sumObjects(objs, 'money')); // 5.6
+let n = objs.reduce(reducer, 0);
+
+console.log(n);

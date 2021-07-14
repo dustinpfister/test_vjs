@@ -4,7 +4,8 @@ var tokens = function (string) {
 };
 
 var text = 'This is some text',
+arr = tokens(text),
+wc = arr.length;
 
-wc = tokens(text).length;
-
+console.log(arr); // [ 'this', 'is', 'some', 'text' ]
 console.log(wc); // 4

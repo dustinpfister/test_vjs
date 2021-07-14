@@ -1,6 +1,7 @@
 
 ## () - new s4 section on regex
-* start a new s4 section on using regex to split a string
+* new simple s1 regex example
+* start a new s4 section on using regex to split a string using string.split
 
 ## () - new s3 example the creates an array of arrays from a string of numbers
 * start a new s3 example that will create an array of arrays from a string of numbers

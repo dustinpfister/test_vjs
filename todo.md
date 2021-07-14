@@ -9,11 +9,11 @@
 * edit a js-array-...post
 
 ## () - for 07/14/2021
-* start a for post folder for js-string-split
+* (done) start a for post folder for js-string-split
 * start a post on js-string-split
 * edit js-array-push
 
-## () - for 07/13/2021
+## (done) - for 07/13/2021
 * (done) start a new for post folder on js-array-reduce
 * (done) start a new post on js-array-reduce for 07/13/21
 * (done) edit a js-array-...post

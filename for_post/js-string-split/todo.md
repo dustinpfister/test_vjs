@@ -1,4 +1,10 @@
 
+## new s5 section on using array methods with split
+* have an s5 map example
+* have an s5 filter example
+* have an s5 reduce example
+* have an s5 for each example
+
 ## () - new s4 section on regex
 * (done) new simple s1 regex example
 * start a new s4 section on using regex to split a string using string.split

@@ -10,7 +10,7 @@
 
 ## () - for 07/14/2021
 * (done) start a for post folder for js-string-split
-* start a post on js-string-split
+* (done) start a post on js-string-split
 * edit js-array-push
 
 ## (done) - for 07/13/2021

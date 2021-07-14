@@ -1,4 +1,11 @@
 
+## () - new s4 section on regex
+* start a new s4 section on using regex to split a string
+
+## () - new s3 example the creates an array of arrays from a string of numbers
+* start a new s3 example that will create an array of arrays from a string of numbers
+* update blog post
+
 ## ( done 07/37/2021 ) - first set of examples
 * (done) start an s1 basic example with a basic example spiting a string with , sep
 * (done) start an s1 basic example that splits a sting with an empty string sep

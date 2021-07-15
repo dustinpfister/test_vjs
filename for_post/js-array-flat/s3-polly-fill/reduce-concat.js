@@ -1,28 +1,26 @@
 // polly fill for old versions of node
 Array.prototype.flat = function (depth) {
-    var level = 0,
-    arr = this;
+    //var level = 0,
+    var arr = this;
     depth = depth === undefined ? 1 : depth;
-    var flattenLevel = function (arr) {
+    var flattenLevel = function (arr, level) {
         var reducer = function (acc, val) {
             if (typeof val === 'object') {
                 if (val.constructor.name === 'Array') {
-                    level += 1;
-                    if (level <= depth) {
-                        return acc.concat(flattenLevel(val));
-                    } else {
-                        return acc.concat([val]);
+                    var nextLevel = level + 1;
+                    if (nextLevel <= depth) {
+                        return acc.concat(flattenLevel(val, nextLevel));
                     }
+                    return acc.concat([val]);
                 }
             }
             return acc.concat(val);
         };
         return arr.reduce(reducer, []);
     };
-    return flattenLevel(arr);
+    return flattenLevel(arr, 0);
 };
 
-let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-let flat = nums.flat();
-console.log(flat);
+let nums = [[1, 2, 3], [4, [5, 6]], [7, 8, 9]];
+console.log(nums.flat(2));
 // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]

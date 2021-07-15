@@ -7,7 +7,7 @@
 
 ## () - for 07/15/2021
 * (done) start a for post folder on js-array-flat
-* start a new post on js-array-flat for 07/15/2021
+* (done) start a new post on js-array-flat for 07/15/2021
 * edit js-array-push
 * edit a js-array-...post
 

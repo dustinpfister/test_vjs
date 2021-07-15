@@ -20,7 +20,7 @@ Array.prototype.flat = function (depth) {
     return flattenLevel(arr, 0);
 };
 
-var arr = [ 1,[2,3] ];
-var flat = arr.flat();
+let arr = [ 1,[2,3] ];
+let flat = arr.flat();
 console.log( arr ); // [ 1, [2, 3] ]
 console.log( flat); // [ 1, 2, 3 ]

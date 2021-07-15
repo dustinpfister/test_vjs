@@ -1,6 +1,7 @@
-
-var flatten = function (arr, depth) {
-    var level = 0;
+// polly fill for old versions of node
+Array.prototype.flat = function (depth) {
+    var level = 0,
+    arr = this;
     depth = depth === undefined ? 1 : depth;
     var flattenLevel = function (arr) {
         var reducer = function (acc, val) {
@@ -21,13 +22,7 @@ var flatten = function (arr, depth) {
     return flattenLevel(arr);
 };
 
-let nums = [[1, 2, 3, [4, 5]], 6, 7];
-// [ [ 1, 2, 3, [ 4, 5 ] ], 6, 7 ]
-
-console.log(flatten(nums, 0));
-
-console.log(flatten(nums, 1));
-// [ 1, 2, 3, [ 4, 5 ], 6, 7 ]
-
-console.log(flatten(nums, 2));
-// [ 1, 2, 3, 4, 5, 6, 7 ]
+let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+let flat = nums.flat();
+console.log(flat);
+// [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]

@@ -19,13 +19,17 @@ var flatten = function (arr, depth) {
     return flattenLevel(arr, 0);
 };
 
-let nums = [[1, 2, 3, [4, 5]], 6, 7];
-// [ [ 1, 2, 3, [ 4, 5 ] ], 6, 7 ]
-
+var nums = [[1, 2, 3, [4, 5]], 6, 7];
 console.log(flatten(nums, 0));
-
+// [ [ 1, 2, 3, [ 4, 5 ] ], 6, 7 ]
 console.log(flatten(nums, 1));
 // [ 1, 2, 3, [ 4, 5 ], 6, 7 ]
-
 console.log(flatten(nums, 2));
+// [ 1, 2, 3, 4, 5, 6, 7 ]
+
+var grid = [ [1, 2], [3, [4, 5]], [6, 7]];
+
+console.log(flatten(grid, 1));
+// [ 1, 2, 3, [ 4, 5 ], 6, 7 ]
+console.log(flatten(grid, 2));
 // [ 1, 2, 3, 4, 5, 6, 7 ]

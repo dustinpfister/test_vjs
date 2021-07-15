@@ -6,7 +6,7 @@ var flatten = function (arr) {
     return arr.reduce(reducer, []);
 };
 
-let nums = [[1, 2, 3, [4, 5]], 6, 7];
-let flat = flatten(nums);
+var nums = [[1, 2, 3, [4, 5]], 6, 7];
+var flat = flatten(nums);
 console.log(flat);
 // [ 1, 2, 3, [ 4, 5 ], 6, 7 ]

@@ -22,6 +22,10 @@ var flatten = function (arr, depth) {
 };
 
 let nums = [[1, 2, 3, [4, 5]], 6, 7];
-let flat = flatten(nums, 2);
-console.log(flat);
+
+
+console.log( flatten(nums, 1) );
+// [ 1, 2, 3, [ 4, 5 ], 6, 7 ]
+
+console.log( flatten(nums, 2) );
 // [ 1, 2, 3, 4, 5, 6, 7 ]

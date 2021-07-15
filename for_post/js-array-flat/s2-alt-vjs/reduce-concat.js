@@ -1,6 +1,8 @@
-// polly fill for old versions of node
-var flatten = function(arr) {
-    return arr.reduce((acc, val) => acc.concat(val), []);
+var flatten = function (arr) {
+    var reducer = function (acc, val) {
+        return acc.concat(val);
+    };
+    return arr.reduce(reducer, []);
 };
 
 let nums = [[1, 2, 3], 4, 5];

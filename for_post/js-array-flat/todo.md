@@ -5,7 +5,6 @@
 ## () - some examples on the lodash flatten method
 * s4 folder for examples on the lodash flatten method
 
-
 ## () - First set of examples
 * (done) start a s1 folder for any and all basic examples, have at least one
 * (done) s2 folder on vanilla javaScript alternatives

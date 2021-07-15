@@ -1,6 +1,5 @@
 // polly fill for old versions of node
 Array.prototype.flat = function (depth) {
-    //var level = 0,
     var arr = this;
     depth = depth === undefined ? 1 : depth;
     var flattenLevel = function (arr, level) {
@@ -22,5 +21,10 @@ Array.prototype.flat = function (depth) {
 };
 
 let nums = [[1, 2, 3], [4, [5, 6]], [7, 8, 9]];
+
+console.log(nums.flat(0));
+// [ [ 1, 2, 3 ], [ 4, [ 5, 6 ] ], [ 7, 8, 9 ] ]
+console.log(nums.flat(1));
+// [ 1, 2, 3, 4, [ 5, 6 ], 7, 8, 9 ]
 console.log(nums.flat(2));
 // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]

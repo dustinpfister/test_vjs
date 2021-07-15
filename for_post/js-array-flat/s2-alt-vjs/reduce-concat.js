@@ -1,14 +1,22 @@
+
 var flatten = function (arr) {
-    var reducer = function (acc, val) {
-        if (typeof val === 'object') {
-            if (val.constructor.name === 'Array') {
-                console.log(val)
-                return acc.concat(flatten(val));
+    var level = 1;
+    var flattenLevel = function (arr) {
+        var reducer = function (acc, val) {
+            if (typeof val === 'object') {
+                if (val.constructor.name === 'Array') {
+                    console.log(level);
+                    console.log(val);
+                    level += 1;
+                    return acc.concat(flattenLevel(val));
+                }
             }
-        }
-        return acc.concat(val);
+            return acc.concat(val);
+        };
+        return arr.reduce(reducer, []);
     };
-    return arr.reduce(reducer, []);
+
+    return flattenLevel(arr);
 };
 
 let nums = [[1, 2, 3, [4, 5]], 6, 7];

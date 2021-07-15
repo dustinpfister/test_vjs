@@ -7,7 +7,6 @@ var flatten = function (arr, depth) {
             if (typeof val === 'object') {
                 if (val.constructor.name === 'Array') {
                     level += 1;
-                    //console.log(level, val);
                     if (level <= depth) {
                         return acc.concat(flattenLevel(val));
                     } else {

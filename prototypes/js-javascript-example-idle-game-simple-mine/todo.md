@@ -9,7 +9,7 @@
         * ore.points    - can set a points value as a way to set yield
 
 ## () - 0.1.0 - /lib/mine.js module started
-* start a /lib/mine.js module
+* (done) start a /lib/mine.js module
 * The mine module will just create and return a single mineObj
     * mineObj.distance      - the distance of the mine from the 'home location' in km
     * mineObj.ore.name      - the name of the ore

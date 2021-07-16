@@ -4,4 +4,4 @@
 
 var mine = mineMod.create();
 
-console.log(mine);
+console.log(JSON.stringify(mine));

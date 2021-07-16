@@ -15,4 +15,4 @@ var mine = mineMod.create(home, {
     });
 //console.log(JSON.stringify(mine));
 
-mineMod.update(home, mine, 13);
+mineMod.update(home, mine, 10);

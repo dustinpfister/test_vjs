@@ -70,11 +70,26 @@
             shipDistanceCorrection(ship, trips);
         }
 
+        // credit / load cargo values
+        var credits = 0,
+        loadCargo = false;
+        if (roundTrips >= 0.5) {
+            if (roundTrips >= 1) {
+                credits = Math.floor(roundTrips);
+            }
+            // load cargo bool?
+            if (roundTrips % 1 >= 0.5) {
+                loadCargo = true;
+            }
+        }
+
         console.log('ship distance: ', ship.distance);
         console.log('ship dir', ship.dir);
         console.log('over dist: ', overDist);
         console.log('trips: ', trips);
         console.log('round trips: ', roundTrips);
+        console.log('credits: ', credits);
+        console.log('load cargo: ', loadCargo);
 
     };
 

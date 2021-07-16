@@ -24,9 +24,7 @@
                 amount: 0
             });
         });
-
         return mine;
-
     };
 
 }

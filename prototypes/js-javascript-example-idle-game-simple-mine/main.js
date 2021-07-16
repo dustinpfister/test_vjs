@@ -4,6 +4,7 @@ var home = homeMod.create();
 
 var mine = mineMod.create(home, {
         name: 'Furea',
+        distance: 100,
         ores: [{
                 index: 0,
                 points: 3
@@ -15,4 +16,6 @@ var mine = mineMod.create(home, {
     });
 //console.log(JSON.stringify(mine));
 
-mineMod.update(home, mine, 18);
+mine.ship.dir = 1;
+mine.ship.distance = 0;
+mineMod.update(home, mine, 21);

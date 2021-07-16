@@ -7,7 +7,7 @@
         opt.ores = opt.ores || [];
         var mine = {};
         mine.name = opt.name;
-        mine.distance = 100;
+        mine.distance = opt.distance || 100;
         // set up ore objects for the mine
         mine.ores = [];
         var totalOrePoints = opt.ores.reduce(function (total, oreProps) {
@@ -34,6 +34,14 @@
         return mine;
     };
 
+    var shipDistanceCorrection = function (ship, trips) {
+        if (ship.dir === -1) {
+            ship.distance = mine.distance - mine.distance * (trips % 1);
+        } else {
+            ship.distance = mine.distance * (trips % 1);
+        }
+    };
+
     // update a mine object by a secs time delta
     api.update = function (home, mine, secs) {
 
@@ -48,20 +56,26 @@
             overDist = Math.abs(ship.distance);
             trips = 1 + overDist / mine.distance;
             roundTrips = trips / 2;
-
             // update dir, and correct ship.distance
             ship.dir = -1 + 2 * Math.floor(trips % 2);
-            ship.distance = mine.distance * (trips % 1);
+            //ship.distance = mine.distance * (trips % 1);
+            shipDistanceCorrection(ship, trips);
         }
         // reached the mine?
         if (ship.distance >= mine.distance) {
             overDist = ship.distance - mine.distance;
             trips = 1 + overDist / mine.distance;
             roundTrips = trips / 2;
-
             // update dir, and correct ship.distance
             ship.dir = 1 - 2 * Math.floor(trips % 2);
+            shipDistanceCorrection(ship, trips);
+            /*
+            if (ship.dir === -1) {
             ship.distance = mine.distance - mine.distance * (trips % 1);
+            } else {
+            ship.distance = mine.distance * (trips % 1);
+            }
+             */
         }
 
         console.log('ship distance: ', ship.distance);

@@ -1,7 +1,12 @@
 # todo list for test_vjs
 
+## () - new javascript example post on orb pool module
+* start a todo list for the proto folder, outline what needs to be added and changed to get to MVP
+* finish js-javascript-example-orb-pool-module proto folder
+* write a post on the project thus far
+
 ## () - new javascript example post on simple mine idle game
-* start a new folder on js-javascript-example-idle-game-simple-mine
+* start a new proto folder on js-javascript-example-idle-game-simple-mine
 * start new post on js-javascript-example-idle-game-simple-mine for 07/16/021
 
 ## () - for 07/16/2021

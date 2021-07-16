@@ -1,9 +1,14 @@
 # todo list for js-javascript-example-idle-game-simple-mine
 
-## () - 0.2.0 - 
+## () - 0.3.0 - update home.js to create collection of mine objects
 * update home.js so that it will create a mine object for each ore collection object
 
-## () - 0.1.0 - /lib/mine.js module started
+## () - 0.2.0 - 0.2.0 - update ore method in mine.js
+* start an update ore method in mine.js
+* the update mine method needs to add to the amount values in the ore objects
+* in the process cargo method ore amounts need to be deducted from the ore object amount values and credited to home
+
+## ( done 07/16/2021 ) - 0.1.0 - /lib/mine.js module started
 * (done) start a /lib/mine.js module
 * (done) The mine module will just create and return a single mineObj
     * (done) mineObj.distance      - the distance of the mine from the 'home location' in km
@@ -18,7 +23,7 @@
     * (done) mineObj.ship.cargo    - the current amount of cargo in the ship.
 * (done) start an update method for the mine module that will update a mineObj with a given home object
 * (done) start process cargo helper
-* start an update ship method and use that in the main update method
+* (done) start an update ship method and use that in the main update method
 
 ## ( done 07/16/2021 ) - 0.0.0 - /lib/home.js module started
 * ( done ) start a home.js module that will create and return a main home object.

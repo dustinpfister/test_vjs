@@ -1,2 +1,4 @@
 
-console.log('hello');
+var home = homeMod.create();
+
+console.log(home);

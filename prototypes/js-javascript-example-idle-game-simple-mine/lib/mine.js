@@ -24,8 +24,8 @@
         // create ship object for the mine
         mine.ship = {};
         // start at home heading out
-        mine.ship.distance = 80;
-        mine.ship.dir = -1;
+        mine.ship.distance = 0;
+        mine.ship.dir = 1;
         // speed
         mine.ship.speed = opt.shipSpeed || 10;
         // cargo
@@ -44,9 +44,14 @@
 
         ship.distance += ship.speed * ship.dir * secs;
         // when past home out in space?
-        if (ship.distance < 0) {
-            ship.distance = Math.abs(ship.distance);
-            ship.dir = 1;
+        if (ship.distance <= 0) {
+            overDist = Math.abs(ship.distance);
+            trips = 1 + overDist / mine.distance;
+            roundTrips = trips / 2;
+
+            // update dir, and correct ship.distance
+            ship.dir = -1 + 2 * Math.floor(trips % 2);
+            ship.distance = mine.distance * (trips % 1);
         }
         // reached the mine?
         if (ship.distance >= mine.distance) {

@@ -58,7 +58,6 @@
             roundTrips = trips / 2;
             // update dir, and correct ship.distance
             ship.dir = -1 + 2 * Math.floor(trips % 2);
-            //ship.distance = mine.distance * (trips % 1);
             shipDistanceCorrection(ship, trips);
         }
         // reached the mine?
@@ -69,13 +68,6 @@
             // update dir, and correct ship.distance
             ship.dir = 1 - 2 * Math.floor(trips % 2);
             shipDistanceCorrection(ship, trips);
-            /*
-            if (ship.dir === -1) {
-            ship.distance = mine.distance - mine.distance * (trips % 1);
-            } else {
-            ship.distance = mine.distance * (trips % 1);
-            }
-             */
         }
 
         console.log('ship distance: ', ship.distance);

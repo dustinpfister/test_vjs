@@ -16,7 +16,7 @@
         * (done) mineObj.ore.name      - the name of the ore
         * (done) mineObj.ore.amount    - the amount of ore at the mine
         * (done) mineObj.yield         - the yield of the ore relative to others
-    * mineObj.ship.speed    - the current speed of the ship kmph
+    * mineObj.ship.speed    - the current speed of the ship kmps
     * moneObj.ship.distance - the current distance of the ship between 0 and mineObj.distance
     * mineObj.ship.dir      - the current direction of the ship 1 or -1 for going away from home and back again
     * mineObj.ship.cargoMax - the max amount of ore the ship can hold to take back home

@@ -6,8 +6,11 @@
             name: 'fooMine',
             ores: [{
                     index: 0,
+                    points: 3
+                }, {
+                    index: 1,
                     points: 1
-                }
+                },
             ]
         };
 

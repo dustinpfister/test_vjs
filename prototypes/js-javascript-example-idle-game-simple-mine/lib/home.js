@@ -3,8 +3,13 @@
     var ORE_DATA_DEFAULT = [
         // ore 0 - copper
         {
-            name: 'copper',
+            name: 'Copper',
             baseValue: 1
+        },
+        // ore 1 - iron
+        {
+            name: 'Iron',
+            baseValue: 3
         }
     ];
 

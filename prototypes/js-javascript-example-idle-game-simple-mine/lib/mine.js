@@ -28,6 +28,7 @@
             console.log(oreData);
             mine.ores.push({
                 name: oreData.name,
+                yeild: oreProps.points / totalOrePoints,
                 amount: 0
             })
         });

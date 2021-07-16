@@ -16,6 +16,10 @@
         mine.distance = 100;
         mine.ores = [];
 
+        var totalOrePoints = opt.ores.reduce(function (total, oreProps) {
+                return total + oreProps.points;
+            }, 0);
+
         opt.ores.forEach(function (oreProps) {
             var oreData = home.OREDATA[oreProps.index];
             console.log(oreData);

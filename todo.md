@@ -6,15 +6,16 @@
 * write a post on the project thus far
 
 ## () - new javascript example post on simple mine idle game
-* start a new proto folder on js-javascript-example-idle-game-simple-mine
-* start new post on js-javascript-example-idle-game-simple-mine for 07/16/021
+
 
 ## () - for 07/16/2021
+* (done) start a new folder on js-javascript-example-idle-game-simple-mine
+* start new post on js-javascript-example-idle-game-simple-mine for 07/16/021
 * edit js-array-push
 * edit a js-array-... post
 * edit a js-array-...post
 
-## () - for 07/15/2021
+## (done) - for 07/15/2021
 * (done) start a for post folder on js-array-flat
 * (done) start a new post on js-array-flat for 07/15/2021
 

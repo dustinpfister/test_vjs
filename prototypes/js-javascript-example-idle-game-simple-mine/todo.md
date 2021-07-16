@@ -1,5 +1,13 @@
 # todo list for js-javascript-example-idle-game-simple-mine
 
+## () - 0.2.0 - more than one ore at a mine
+* have a hard coded MINE DATA DEFAULT value and opt.MINEDATA option for create method in home.js
+* a mineProp in the mine data object contains info for each mine
+    * mineProp.name     - can set a custom name for the mine
+    * mineProp.ores     - an array of objects for each ore at the mine
+        * ore.index     - an index number for the ore in OREDATA
+        * ore.points    - can set a points value as a way to set yield
+
 ## () - 0.1.0 - /lib/mine.js module started
 * start a /lib/mine.js module
 * The mine module will just create and return a single mineObj

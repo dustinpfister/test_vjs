@@ -17,7 +17,8 @@
     * (done) mineObj.ship.cargoMax - the max amount of ore the ship can hold to take back home
     * (done) mineObj.ship.cargo    - the current amount of cargo in the ship.
 * (done) start an update method for the mine module that will update a mineObj with a given home object
-* process cargo helper
+* (done) start process cargo helper
+* start an update ship method and use that in the main update method
 
 ## ( done 07/16/2021 ) - 0.0.0 - /lib/home.js module started
 * ( done ) start a home.js module that will create and return a main home object.

@@ -64,14 +64,11 @@
         console.log('load cargo: ', loadCargo);
     };
 
-    // update a mine object by a secs time delta
-    api.update = function (home, mine, secs) {
-
+    var updateShip = function (home, mine, secs) {
         var ship = mine.ship,
         overDist = 0,
         trips = 0,
         roundTrips = 0;
-
         ship.distance += ship.speed * ship.dir * secs;
         // when past home out in space?
         if (ship.distance <= 0) {
@@ -91,7 +88,6 @@
             ship.dir = 1 - 2 * Math.floor(trips % 2);
             shipDistanceCorrection(ship, trips);
         }
-
         // credit / load cargo values
         var credits = 0,
         loadCargo = false;
@@ -105,11 +101,14 @@
             }
             processCargo(home, mine, credits, loadCargo);
         }
-
         // debug info
         console.log('\n\n');
-        debug_ship(ship, overDist, trips, roundTrips)
+        debug_ship(ship, overDist, trips, roundTrips);
+    };
 
+    // update a mine object by a secs time delta
+    api.update = function (home, mine, secs) {
+        updateShip(home, mine, secs);
     };
 
 }

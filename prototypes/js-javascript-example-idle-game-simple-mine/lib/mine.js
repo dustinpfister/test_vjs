@@ -24,6 +24,18 @@
                 amount: 0
             });
         });
+
+        // create ship object for the mine
+        mine.ship = {};
+        // start at home heading out
+        mine.ship.distance = 0;
+        mine.ship.dir = 1;
+        // speed
+        mine.ship.speed = opt.shipSpeed || 10;
+        // cargo
+        mine.ship.cargoMax = opt.shipCargoMax || 5;
+        mine.ship.cargo = 0;
+
         return mine;
     };
 

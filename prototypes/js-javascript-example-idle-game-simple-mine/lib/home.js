@@ -10,7 +10,6 @@
 
     var newOreCollection = function (home) {
         var oreCollection = [];
-        console.log(home);
         home.OREDATA.forEach(function (oreProps) {
             oreCollection.push({
                 name: oreProps.name,

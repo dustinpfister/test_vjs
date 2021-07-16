@@ -22,7 +22,7 @@
 * start an update method for the mine module that will update a mineObj with a given home object
 * update home.js so that it will create a mine object for each ore collection object
 
-## ( done ) - 0.0.0 - /lib/home.js module started
+## ( done 07/16/2021 ) - 0.0.0 - /lib/home.js module started
 * ( done ) start a home.js module that will create and return a main home object.
 * ( done ) the home object will be the main game state object.
-    * home.oreCollection - an array of objects for each ore in the game
+    * (done) home.oreCollection - an array of objects for each ore in the game

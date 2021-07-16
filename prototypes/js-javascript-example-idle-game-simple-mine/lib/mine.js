@@ -1,5 +1,13 @@
 (function (api) {
 
+    var debug_ship = function (ship, overDist, trips, roundTrips) {
+        console.log('ship distance: ', ship.distance);
+        console.log('ship dir', ship.dir);
+        console.log('over dist: ', overDist);
+        console.log('trips: ', trips);
+        console.log('round trips: ', roundTrips);
+    }
+
     api.create = function (home, opt) {
         home = home || homeMod.create();
         opt = opt || {};
@@ -34,12 +42,19 @@
         return mine;
     };
 
+    // ship distance correction
     var shipDistanceCorrection = function (ship, trips) {
         if (ship.dir === -1) {
             ship.distance = mine.distance - mine.distance * (trips % 1);
         } else {
             ship.distance = mine.distance * (trips % 1);
         }
+    };
+
+    // process cargo for the mine with given credits and load boolean values
+    var processCargo = function (home, mine, credits, loadCargo) {
+        console.log('credits: ', credits);
+        console.log('load cargo: ', loadCargo);
     };
 
     // update a mine object by a secs time delta
@@ -81,15 +96,10 @@
             if (roundTrips % 1 >= 0.5) {
                 loadCargo = true;
             }
+            processCargo(home, mine, credits, loadCargo);
         }
 
-        console.log('ship distance: ', ship.distance);
-        console.log('ship dir', ship.dir);
-        console.log('over dist: ', overDist);
-        console.log('trips: ', trips);
-        console.log('round trips: ', roundTrips);
-        console.log('credits: ', credits);
-        console.log('load cargo: ', loadCargo);
+        debug_ship(ship, overDist, trips, roundTrips)
 
     };
 

@@ -2,35 +2,27 @@
 
     api.create = function (home, opt) {
         home = home || homeMod.create();
-        opt = opt || {
-            name: 'fooMine',
-            ores: [{
-                    index: 0,
-                    points: 3
-                }, {
-                    index: 1,
-                    points: 1
-                },
-            ]
-        };
+        opt = opt || {};
+        opt.name = opt.name || 'fooMine';
+
+        opt.ores = opt.ores || [];
 
         var mine = {};
-
+        mine.name = opt.name;
         mine.distance = 100;
-        mine.ores = [];
 
+        // set up ore objects for the mine
+        mine.ores = [];
         var totalOrePoints = opt.ores.reduce(function (total, oreProps) {
                 return total + oreProps.points;
             }, 0);
-
         opt.ores.forEach(function (oreProps) {
             var oreData = home.OREDATA[oreProps.index];
-            console.log(oreData);
             mine.ores.push({
                 name: oreData.name,
                 yeild: oreProps.points / totalOrePoints,
                 amount: 0
-            })
+            });
         });
 
         return mine;

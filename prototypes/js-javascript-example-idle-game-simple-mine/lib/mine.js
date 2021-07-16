@@ -53,6 +53,13 @@
 
     // process cargo for the mine with given credits and load boolean values
     var processCargo = function (home, mine, credits, loadCargo) {
+
+        // if the ship has cargo add that to home
+
+        // add any and all credits to home
+
+        // load cargo
+
         console.log('credits: ', credits);
         console.log('load cargo: ', loadCargo);
     };
@@ -99,6 +106,8 @@
             processCargo(home, mine, credits, loadCargo);
         }
 
+        // debug info
+        console.log('\n\n');
         debug_ship(ship, overDist, trips, roundTrips)
 
     };

@@ -61,8 +61,8 @@
 
         // load cargo
 
-        console.log('credits: ', credits);
-        console.log('load cargo: ', loadCargo);
+        //console.log('credits: ', credits);
+        //console.log('load cargo: ', loadCargo);
     };
 
     // update the state of the ship, and also the given home object
@@ -104,17 +104,16 @@
             processCargo(home, mine, credits, loadCargo);
         }
         // debug info
-        console.log('\n\n');
-        debug_ship(ship, overDist, trips, roundTrips);
+        //console.log('\n\n');
+        //debug_ship(ship, overDist, trips, roundTrips);
     };
 
     // update the ore prop of the mine object
     var updateOres = function(home, mine, secs){
-        console.log('ore prop update:');
+        // update amounts ready for pick up by the ship
         mine.ores.forEach(function(ore){
             var amountDelta = ore.yeild * mine.oreRate * secs;
-            console.log(ore.name, amountDelta);
-            //console.log(mine.ores);
+            ore.amount += amountDelta;
         });
     };
 

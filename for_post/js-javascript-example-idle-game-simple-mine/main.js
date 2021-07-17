@@ -14,8 +14,8 @@ var mine = mineMod.create(home, {
             }
         ]
     });
-//console.log(JSON.stringify(mine));
-
 mine.ship.dir = 1;
 mine.ship.distance = 0;
-mineMod.update(home, mine, 1);
+mineMod.update(home, mine, 3);
+
+console.log(mine);

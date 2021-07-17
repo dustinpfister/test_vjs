@@ -7,7 +7,7 @@
 * update home.js so that it will create a mine object for each ore collection object
 
 ## () - 0.2.0 - 0.2.0 - update ore method in mine.js
-* start and update ore method in mine.js
+* (done) start and update ore method in mine.js
 * the update mine method needs to add to the amount values in the ore objects
 * in the process cargo method ore amounts need to be deducted from the ore object amount values and credited to home
 

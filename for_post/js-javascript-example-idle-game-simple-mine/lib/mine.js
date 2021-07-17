@@ -111,10 +111,11 @@
     // update the ore prop of the mine object
     var updateOres = function(home, mine, secs){
         console.log('ore prop update:');
-mine.ores.forEach(function(ore){
-console.log(ore);
-        //console.log(mine.ores);
-});
+        mine.ores.forEach(function(ore){
+            var amountDelta = ore.yeild * mine.oreRate * secs;
+            console.log(ore.name, amountDelta);
+            //console.log(mine.ores);
+        });
     };
 
     // update a mine object by a secs time delta

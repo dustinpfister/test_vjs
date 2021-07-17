@@ -18,4 +18,4 @@ var mine = mineMod.create(home, {
 
 mine.ship.dir = 1;
 mine.ship.distance = 0;
-mineMod.update(home, mine, 50);
+mineMod.update(home, mine, 1);

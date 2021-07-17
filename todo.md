@@ -7,13 +7,17 @@
 
 ## () - new javascript example post on simple mine idle game
 
-
-## () - for 07/16/2021
-* (done) start a new folder on js-javascript-example-idle-game-simple-mine
-* start new post on js-javascript-example-idle-game-simple-mine for 07/16/021
+## () - for 07/18 2021
 * edit js-array-push
 * edit a js-array-... post
 * edit a js-array-...post
+
+## () - for 07/17/2021
+* update todo list for js-javascript-example-idle-game-simple-mine
+
+## (done) - for 07/16/2021
+* (done) start a new folder on js-javascript-example-idle-game-simple-mine
+* (done) start new post on js-javascript-example-idle-game-simple-mine for 07/16/021
 
 ## (done) - for 07/15/2021
 * (done) start a for post folder on js-array-flat

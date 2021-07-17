@@ -1,10 +1,13 @@
 # todo list for js-javascript-example-idle-game-simple-mine
 
+## () - 0.4.0 - basic vjs ui
+* just have a basic vjs user interface to create and work with a home object
+
 ## () - 0.3.0 - update home.js to create collection of mine objects
 * update home.js so that it will create a mine object for each ore collection object
 
 ## () - 0.2.0 - 0.2.0 - update ore method in mine.js
-* start an update ore method in mine.js
+* start and update ore method in mine.js
 * the update mine method needs to add to the amount values in the ore objects
 * in the process cargo method ore amounts need to be deducted from the ore object amount values and credited to home
 

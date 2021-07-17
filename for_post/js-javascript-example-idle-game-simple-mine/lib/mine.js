@@ -64,6 +64,7 @@
         console.log('load cargo: ', loadCargo);
     };
 
+    // update the state of the ship, and also the given home object
     var updateShip = function (home, mine, secs) {
         var ship = mine.ship,
         overDist = 0,
@@ -106,8 +107,17 @@
         debug_ship(ship, overDist, trips, roundTrips);
     };
 
+    // update the ore prop of the mine object
+    var updateOres = function(home, mine, secs){
+        console.log('ore prop update:');
+        console.log(mine.ores);
+    };
+
     // update a mine object by a secs time delta
     api.update = function (home, mine, secs) {
+        // update ores
+        updateOres(home, mine, secs);
+        // update the ship, as well as the state of the home object
         updateShip(home, mine, secs);
     };
 

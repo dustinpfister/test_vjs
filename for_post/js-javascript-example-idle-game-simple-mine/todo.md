@@ -11,6 +11,7 @@
 * the update mine method needs to add to the amount values in the ore objects
 * in the process cargo method ore amounts need to be deducted from the ore object amount values and credited to home
 
+
 ## ( done 07/16/2021 ) - 0.1.0 - /lib/mine.js module started
 * (done) start a /lib/mine.js module
 * (done) The mine module will just create and return a single mineObj

@@ -16,6 +16,7 @@
         var mine = {};
         mine.name = opt.name;
         mine.distance = opt.distance || 100;
+        mine.oreRate = opt.oreRate || 10;
         // set up ore objects for the mine
         mine.ores = [];
         var totalOrePoints = opt.ores.reduce(function (total, oreProps) {
@@ -110,7 +111,10 @@
     // update the ore prop of the mine object
     var updateOres = function(home, mine, secs){
         console.log('ore prop update:');
-        console.log(mine.ores);
+mine.ores.forEach(function(ore){
+console.log(ore);
+        //console.log(mine.ores);
+});
     };
 
     // update a mine object by a secs time delta

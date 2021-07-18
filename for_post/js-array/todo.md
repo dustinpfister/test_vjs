@@ -2,12 +2,13 @@
 
 ## () - more examples
 * make an s3-add-elements example using array splice
+* make an s6-looping example on setTimeout
 
 ## () - have section folders on all existing sections
-* s3-add-elements
-* s4-arrays-are-objects
-* s5-array-like
-* s6-loop
+* (done) s3-add-elements
+* (done) s4-arrays-are-objects
+* (done) s5-array-like
+* (done) s6-loop
 * s7-filter
 * s8-map
 * s11-multidimensional-arrays

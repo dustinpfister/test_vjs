@@ -1,4 +1,6 @@
 
+// create and return a ship position string for the given mine object
+// ( H) --------->---------- (P )
 var createShipPosString = function(mine){
     var posArr = '--------------------'.split(''),
     posIndex = Math.round(mine.ship.distance / mine.distance * 19);
@@ -6,7 +8,7 @@ var createShipPosString = function(mine){
     return 'H) ' + posArr.join('') + ' (P';
 };
 
-// create and return html for a mine object
+// create and return HTML for a mine object
 var createMineObjectHTML = function(mine){
     var container = document.createElement('div');
     container.id = 'mine_' + mine.name;

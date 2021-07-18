@@ -16,9 +16,10 @@ var mine = mineMod.create(home, {
     });
 mine.ship.dir = 1;
 mine.ship.distance = 0;
-mineMod.update(home, mine, 10);
+mineMod.update(home, mine, 20);
 
 var ship = mine.ship;
 console.log('ship distance: ', ship.distance);
 console.log('ship dir', ship.dir);
 console.log('cargo: ', mine.ship.cargo);
+console.log(ship.over);

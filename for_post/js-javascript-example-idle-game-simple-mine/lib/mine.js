@@ -76,38 +76,41 @@
 
     // update the state of the ship, and also the given home object
     var updateShip = function (home, mine, secs) {
-        var ship = mine.ship,
-        overDist = 0,
-        trips = 0,
-        roundTrips = 0;
+        var ship = mine.ship;
+        //overDist = 0,
+        //trips = 0,
+        //roundTrips = 0;
+        ship.over.distance = 0;
+        ship.over.trips = 0;
+        ship.over.roundTrips = 0;
         ship.distance += ship.speed * ship.dir * secs;
         // when past home out in space?
         if (ship.distance <= 0) {
-            overDist = Math.abs(ship.distance);
-            trips = 1 + overDist / mine.distance;
-            roundTrips = trips / 2;
+            ship.over.diststance = Math.abs(ship.distance);
+            ship.over.trips = 1 + ship.over.distance / mine.distance;
+            ship.over.roundTrips = ship.over.trips / 2;
             // update dir, and correct ship.distance
-            ship.dir = -1 + 2 * Math.floor(trips % 2);
-            shipDistanceCorrection(ship, trips);
+            ship.dir = -1 + 2 * Math.floor(ship.over.trips % 2);
+            shipDistanceCorrection(ship, ship.over.trips);
         }
         // reached the mine?
         if (ship.distance >= mine.distance) {
-            overDist = ship.distance - mine.distance;
-            trips = 1 + overDist / mine.distance;
-            roundTrips = trips / 2;
+            ship.over.distance = ship.distance - mine.distance;
+            ship.over.trips = 1 + ship.over.distance / mine.distance;
+            ship.over.roundTrips = ship.over.trips / 2;
             // update dir, and correct ship.distance
-            ship.dir = 1 - 2 * Math.floor(trips % 2);
-            shipDistanceCorrection(ship, trips);
+            ship.dir = 1 - 2 * Math.floor(ship.over.trips % 2);
+            shipDistanceCorrection(ship, ship.over.trips);
         }
         // credit / load cargo values
         var credits = 0,
         loadCargo = false;
-        if (roundTrips >= 0.5) {
-            if (roundTrips >= 1) {
-                credits = Math.floor(roundTrips);
+        if (ship.over.roundTrips >= 0.5) {
+            if (ship.over.roundTrips >= 1) {
+                credits = Math.floor(ship.over.roundTrips);
             }
             // load cargo bool?
-            if (roundTrips % 1 >= 0.5) {
+            if (ship.over.roundTrips % 1 >= 0.5) {
                 loadCargo = true;
             }
             processCargo(home, mine, credits, loadCargo);

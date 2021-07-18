@@ -1,5 +1,8 @@
 # js-array-todo
 
+## () - more examples
+* make an s3-add-elements example using array splice
+
 ## () - have section folders on all existing sections
 * s3-add-elements
 * s4-arrays-are-objects

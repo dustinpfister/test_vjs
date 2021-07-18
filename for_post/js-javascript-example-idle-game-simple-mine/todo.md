@@ -14,6 +14,7 @@
 * (done) start a very simple visual display of the state of the a mine object in main.js
 * (done) very basic ship position display using -<> chars
 * (done) update ore info in a loop
+* (done) render_html.js file started
 * home object display
 
 ## () - 0.3.1 - credit round trips

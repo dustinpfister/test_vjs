@@ -17,6 +17,10 @@ mine.ship.distance = 0;
 mine.oreRate = 1;
 
 var mountPoint = document.getElementById('app');
+
+var homeDiv = html.createHomeObjectHTML(mine);
+mountPoint.appendChild(homeDiv);
+
 var mineDiv = html.createMineObjectHTML(mine);
 mountPoint.appendChild(mineDiv);
 

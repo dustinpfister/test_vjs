@@ -10,15 +10,26 @@ html.createShipPosString = function(mine){
     return 'H) ' + posArr.join('') + ' (P';
 };
 
+html.createHomeObjectHTML = function(home){
+    var container = document.createElement('div');
+    container.id = 'homedisp';
+    container.className = 'homedisp';
+    // header
+    var h = document.createElement('h2');
+    h.innerHTML = 'HOME OBJECT:';
+    container.appendChild(h);
+    return container;
+};
+
 // create and return HTML for a mine object
 html.createMineObjectHTML = function(mine){
     var container = document.createElement('div');
     container.id = 'minedisp_' + mine.name + '_' + mine.index;
     container.className = 'minedisp';
     // header
-    var h1 = document.createElement('h1');
-    h1.innerHTML = mine.name;
-    container.appendChild(h1);
+    var h = document.createElement('h2');
+    h.innerHTML = mine.name;
+    container.appendChild(h);
     // ship position
     var p = document.createElement('p');
     p.className = 'minedisp_ship_pos';
@@ -36,13 +47,12 @@ html.createMineObjectHTML = function(mine){
     return container;
 };
 
+// update html for a mine object
 html.updateMineObjectHTML = function(mountPoint, mine){
     var nodes = mountPoint.querySelectorAll('.minedisp');
-
     var mineDiv = nodes[mine.index];
     var shipPos = mineDiv.querySelector('.minedisp_ship_pos');
     shipPos.innerText = html.createShipPosString(mine);
-
     var oreList = mineDiv.querySelector('.minedisp_orelist');
     [].forEach.call(oreList.children, function(span, i){
         var ore = mine.ores[i];

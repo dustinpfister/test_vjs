@@ -84,13 +84,28 @@
         creditCargo(home, mine);
 
         // add any and all credits to home
-        console.log(over);
-        var i = 0;
-        
+        var i = 0,
+        delta,
+        freeSpace = ship.cargoMax * over.credits,
+        ore,
+        homeOre,
+        mineOres = mine.ores.sort(sortPriority);
+        while(i < mine.ores.length){
+            ore = mineOres[i];
+            delta = ship.cargoMax * over.credits;
+            if(delta < ore.amount && freeSpace >= delta){
+                freeSpace -= delta;
+                ore.amount -= delta;
+                homeOre = home.oreCollection[ore.index];
+                homeOre.amount += delta;
+            }               
+            i += 1;
+        }
 
         // load cargo
         if(over.load){
             var i = 0,
+            delta,
             freeSpace = ship.cargoMax;
             var mineOres = mine.ores.sort(sortPriority),
             ore;
@@ -100,7 +115,7 @@
                 // then I can just fill the free space with the ore
                 // and break out of this loop
                 if (ore.amount >= freeSpace) {
-                    var delta = freeSpace;
+                    delta = freeSpace;
                     freeSpace = 0;
                     ore.amount -= delta;
                     ship.cargo.push({
@@ -112,7 +127,7 @@
                 // if ore amount is less than freeSpace
                 // then load what there is for that ore
                 // and continue
-                var delta = ore.amount;
+                delta = ore.amount;
                 freeSpace -= ore.amount;
                 ore.amount = 0;
                 ship.cargo.push({

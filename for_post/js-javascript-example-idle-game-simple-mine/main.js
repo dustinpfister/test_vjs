@@ -44,7 +44,7 @@ var home = homeMod.create();
 var mine = mineMod.create(home, {
         name: 'Furea',
         index: 0,
-        distance: 100,
+        distance: 40,
         ores: [{
                 index: 0,
                 points: 3
@@ -95,10 +95,17 @@ var loop = function(){
     if(secs >= 1){
         mineMod.update(home, mine, secs);
         var nodes = mountPoint.querySelectorAll('.minedisp');
-        var mineDiv = nodes[0];
+
+        var mineDiv = nodes[mine.index];
         var shipPos = mineDiv.querySelector('.minedisp_ship_pos');
         shipPos.innerText = createShipPosString(mine);
-        console.log();
+
+        var oreList = mineDiv.querySelector('.minedisp_orelist');
+        [].forEach.call(oreList.children, function(span, i){
+            var ore = mine.ores[i];
+            span.innerHTML = ore.name + ' : ' + ore.amount.toFixed(2) + '<br>';
+        });
+
         lt = now;
     }
 };

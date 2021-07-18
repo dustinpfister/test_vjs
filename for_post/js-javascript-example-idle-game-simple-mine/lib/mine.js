@@ -122,7 +122,7 @@
         // add any and all credits to home
         processOverCredits(home, mine);
         // load cargo
-        if(over.load && ship.dir === -1){
+        if(over.load){
             var i = 0,
             delta,
             freeSpace = ship.cargoMax;
@@ -199,7 +199,7 @@
                 ship.over.credits = Math.floor(ship.over.roundTrips);
             }
             // load cargo bool?
-            if (ship.over.roundTrips % 1 >= 0.5) {
+            if (ship.over.roundTrips % 1 >= 0.5 && ship.dir === -1) {
                 ship.over.load = true;
             }
             processOver(home, mine);

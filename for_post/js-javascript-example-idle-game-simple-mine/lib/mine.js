@@ -56,7 +56,7 @@
     };
 
     // sort an array of ore objects by the loadPriorty prop
-    var sortPriorty = function (ore1, ore2) {
+    var sortPriority = function (ore1, ore2) {
         if (ore1.loadPriority < ore2.loadPriority) {
             return 1;
         }
@@ -81,7 +81,7 @@
 
         // load cargo
         var i = 0;
-        console.log(mine.ores.sort(sortPriorty));
+        console.log(mine.ores.sort(sortPriority));
 
     };
 

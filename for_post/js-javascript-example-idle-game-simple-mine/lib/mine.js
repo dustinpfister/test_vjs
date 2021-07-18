@@ -112,13 +112,10 @@
     var processOver = function (home, mine) {
         var ship = mine.ship,
         over = ship.over;
-
         // if the ship has cargo add the cargo to home, and clear out the cargo
         creditCargo(home, mine);
-
         // add any and all credits to home
         processOverCredits(home, mine);
-
         // load cargo
         if(over.load){
             var i = 0,
@@ -154,12 +151,10 @@
                 i += 1;
             }
         }
-
         // heading away from home with cargo!? credit it to home.
         if (ship.cargo.length > 0 && ship.dir === 1) {
             creditCargo(home, mine);
         }
-
     };
 
     // update the state of the ship, and also the given home object

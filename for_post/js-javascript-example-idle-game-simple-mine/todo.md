@@ -1,6 +1,7 @@
 # todo list for js-javascript-example-idle-game-simple-mine
 
 ## Known Issues
+
 * 0 - mine.js - processOver method: The ore amounts loaded are at a point in time after the ship departed from the mine, the distance prop of the over object count be used as a way to adjust for this.
 
 ## () - 0.6.0 - basic vjs ui
@@ -13,7 +14,7 @@
 * start a very simple visual display of the state of the a mine object in main.js
 
 ## () - 0.3.1 - credit round trips
-* the processOver method will deduct from the mine and credit the home object
+* (done) the processOver method will deduct from the mine and credit the home object
 
 ## ( done 07/18/2021 ) - 0.3.0 - ship over object
 * (done) have a ship.over object that will contain data that was used to figure credits, cargo when the ship goes over

@@ -55,6 +55,17 @@
         }
     };
 
+    // sort an array of ore objects by the loadPriorty prop
+    var sortPriorty = function (ore1, ore2) {
+        if (ore1.loadPriority < ore2.loadPriority) {
+            return 1;
+        }
+        if (ore1.loadPriority > ore2.loadPriority) {
+            return -1;
+        }
+        return 0;
+    };
+
     // process cargo for the mine with given credits and load boolean values
     var processOver = function (home, mine) {
         var ship = mine.ship,
@@ -69,8 +80,9 @@
         // add any and all credits to home
 
         // load cargo
-		console.log(mine.ores);
-        
+        var i = 0;
+        console.log(mine.ores.sort(sortPriorty));
+
     };
 
     // update the state of the ship, and also the given home object

@@ -9,11 +9,14 @@ var createMineObjectHTML = function(mine){
     h1.innerHTML = mine.name;
     container.appendChild(h1);
     // disp elemets for each ore
+    var ores = document.createElement('div');
+    ores.className = 'orelist';
     mine.ores.forEach(function(ore){
         var p = document.createElement('span');
         p.innerHTML = ore.name + ' : ' + ore.amount + '<br>';
-        container.appendChild(p);
+        ores.appendChild(p);
     });
+    container.appendChild(ores);
     return container;
 };
 

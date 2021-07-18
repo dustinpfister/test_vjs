@@ -71,6 +71,7 @@
     var processOver = function (home, mine) {
         var ship = mine.ship,
         over = ship.over;
+
         // if the ship has cargo add the cargo to home, and clear out the cargo
         ship.cargo.forEach(function (cargo) {
             var homeOre = home.oreCollection[cargo.index];

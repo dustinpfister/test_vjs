@@ -38,7 +38,9 @@
         mine.ship.over = {
             distance: 0,
             trips: 0,
-            roundTrips: 0
+            roundTrips: 0,
+            credits: 0,
+            load: false
         };
 
         return mine;
@@ -54,7 +56,9 @@
     };
 
     // process cargo for the mine with given credits and load boolean values
-    var processCargo = function (home, mine, credits, loadCargo) {
+    var processOver = function (home, mine) {
+        var over = mine.ship.over;
+        console.log(over);
 
         // if the ship has cargo add that to home
 
@@ -72,6 +76,7 @@
         ship.over.distance = 0;
         ship.over.trips = 0;
         ship.over.roundTrips = 0;
+
         ship.distance += ship.speed * ship.dir * secs;
         // when past home out in space?
         if (ship.distance <= 0) {
@@ -92,17 +97,19 @@
             shipDistanceCorrection(ship, ship.over.trips);
         }
         // credit / load cargo values
-        var credits = 0,
-        loadCargo = false;
+        //var credits = 0,
+        //loadCargo = false;
+        ship.over.credits = 0;
+        ship.over.load = false;
         if (ship.over.roundTrips >= 0.5) {
             if (ship.over.roundTrips >= 1) {
-                credits = Math.floor(ship.over.roundTrips);
+                ship.over.credits = Math.floor(ship.over.roundTrips);
             }
             // load cargo bool?
             if (ship.over.roundTrips % 1 >= 0.5) {
-                loadCargo = true;
+                ship.over.load = true;
             }
-            processCargo(home, mine, credits, loadCargo);
+            processOver(home, mine);
         }
     };
 

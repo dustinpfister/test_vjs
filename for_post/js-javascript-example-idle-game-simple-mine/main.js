@@ -11,19 +11,20 @@ var createShipPosString = function(mine){
 // create and return HTML for a mine object
 var createMineObjectHTML = function(mine){
     var container = document.createElement('div');
-    container.id = 'mine_' + mine.name;
+    container.id = 'minedisp_' + mine.name;
+    container.className = 'minedisp';
     // header
     var h1 = document.createElement('h1');
     h1.innerHTML = mine.name;
     container.appendChild(h1);
     // ship position
     var p = document.createElement('p');
-    p.className ='shippos';
+    p.className ='minedisp_ship_pos';
     p.innerHTML = createShipPosString(mine);
     container.appendChild(p);
     // disp elemets for each ore
     var ores = document.createElement('div');
-    ores.className = 'orelist';
+    ores.className = 'minedisp_orelist';
     mine.ores.forEach(function(ore){
         var p = document.createElement('span');
         p.innerHTML = ore.name + ' : ' + ore.amount + '<br>';
@@ -57,20 +58,17 @@ mine.ship.distance = 0;
 
 mine.oreRate = 0.5;
 mine.ship.cargo = [];
-mineMod.update(home, mine, 10);
+mineMod.update(home, mine, 0);
 
+/*
 var ship = mine.ship;
 console.log('ship distance: ', ship.distance);
 console.log('ship dir: ', ship.dir);
 console.log('cargo: ', mine.ship.cargo);
-
-
 var over = ship.over;
 console.log('over dist: ' + over.distance);
 console.log('over round trips: ' + over.roundTrips);
-
 console.log('');
-
 mine.ores.forEach(function(ore, i){
     console.log('mine ore ' + i + ': ', ore.name, ore.amount);
 });
@@ -78,12 +76,13 @@ console.log('');
 home.oreCollection.forEach(function(ore, i){
     console.log('home ore ' + i + ': ', ore.name, ore.amount);
 });
-
+*/
 
 
 var mountPoint = document.getElementById('app');
-
 var mineDiv = createMineObjectHTML(mine);
 mountPoint.appendChild(mineDiv);
 
-//console.log(ship.over);
+var nodes = mountPoint.querySelectorAll('.minedisp');
+console.log(nodes[0].id.split('_')[1]); // name of mine
+

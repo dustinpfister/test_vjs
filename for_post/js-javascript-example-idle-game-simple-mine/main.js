@@ -34,6 +34,20 @@ var createMineObjectHTML = function(mine){
     return container;
 };
 
+var updateMineObjectHTML = function(mountPoint, mine){
+    var nodes = mountPoint.querySelectorAll('.minedisp');
+
+    var mineDiv = nodes[mine.index];
+    var shipPos = mineDiv.querySelector('.minedisp_ship_pos');
+    shipPos.innerText = createShipPosString(mine);
+
+    var oreList = mineDiv.querySelector('.minedisp_orelist');
+    [].forEach.call(oreList.children, function(span, i){
+        var ore = mine.ores[i];
+        span.innerHTML = ore.name + ' : ' + ore.amount.toFixed(2) + '<br>';
+    });
+};
+
 
 
 
@@ -71,18 +85,11 @@ var loop = function(){
     secs = (now - lt) / 1000;
     setTimeout(loop, 100);
     if(secs >= 1){
+
         mineMod.update(home, mine, secs);
-        var nodes = mountPoint.querySelectorAll('.minedisp');
 
-        var mineDiv = nodes[mine.index];
-        var shipPos = mineDiv.querySelector('.minedisp_ship_pos');
-        shipPos.innerText = createShipPosString(mine);
+        updateMineObjectHTML(mountPoint, mine);
 
-        var oreList = mineDiv.querySelector('.minedisp_orelist');
-        [].forEach.call(oreList.children, function(span, i){
-            var ore = mine.ores[i];
-            span.innerHTML = ore.name + ' : ' + ore.amount.toFixed(2) + '<br>';
-        });
 
         lt = now;
     }

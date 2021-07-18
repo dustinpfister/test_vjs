@@ -89,25 +89,27 @@
         ore,
         homeOre,
         mineOres = mine.ores.sort(sortPriority);
-        while(i < mine.ores.length){
-            ore = mineOres[i];
-            // full?
-            delta = ore.amount;
-            if(delta <= ore.amount && freeSpace >= delta){
-                freeSpace -= delta;
-                ore.amount -= delta;
-                homeOre = home.oreCollection[ore.index];
-                homeOre.amount += delta;
+        if(over.credits >= 1){
+            while(i < mine.ores.length){
+                ore = mineOres[i];
+                // full?
+                delta = ore.amount;
+                if(delta <= ore.amount && freeSpace >= delta){
+                    freeSpace -= delta;
+                    ore.amount -= delta;
+                    homeOre = home.oreCollection[ore.index];
+                    homeOre.amount += delta;
+                }
+                // fill free space
+                delta = freeSpace;
+                if(delta <= ore.amount && freeSpace >= delta){
+                    freeSpace -= delta;
+                    ore.amount -= delta;
+                    homeOre = home.oreCollection[ore.index];
+                    homeOre.amount += delta;
+                }  
+                i += 1;
             }
-            // fill free space
-            delta = freeSpace;
-            if(delta <= ore.amount && freeSpace >= delta){
-                freeSpace -= delta;
-                ore.amount -= delta;
-                homeOre = home.oreCollection[ore.index];
-                homeOre.amount += delta;
-            }  
-            i += 1;
         }
     };
 
@@ -120,7 +122,7 @@
         // add any and all credits to home
         processOverCredits(home, mine);
         // load cargo
-        if(over.load){
+        if(over.load && ship.dir === -1){
             var i = 0,
             delta,
             freeSpace = ship.cargoMax;

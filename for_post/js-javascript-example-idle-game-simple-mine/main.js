@@ -19,7 +19,7 @@ var createMineObjectHTML = function(mine){
     container.appendChild(h1);
     // ship position
     var p = document.createElement('p');
-    p.className ='minedisp_ship_pos';
+    p.className = 'minedisp_ship_pos';
     p.innerHTML = createShipPosString(mine);
     container.appendChild(p);
     // disp elemets for each ore
@@ -56,8 +56,7 @@ var mine = mineMod.create(home, {
     });
 mine.ship.dir = 1;
 mine.ship.distance = 0;
-
-mine.oreRate = 0.5;
+mine.oreRate = 1;
 mine.ship.cargo = [];
 mineMod.update(home, mine, 0);
 
@@ -84,7 +83,23 @@ var mountPoint = document.getElementById('app');
 var mineDiv = createMineObjectHTML(mine);
 mountPoint.appendChild(mineDiv);
 
-var nodes = mountPoint.querySelectorAll('.minedisp');
-console.log(nodes[0].id.split('_')[1]); // name of mine
-console.log(nodes[0].id.split('_')[2]); // index of mine
+//var nodes = mountPoint.querySelectorAll('.minedisp');
+//console.log(nodes[0].id.split('_')[1]); // name of mine
+//console.log(nodes[0].id.split('_')[2]); // index of mine
 
+var lt = new Date();
+var loop = function(){
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    setTimeout(loop, 100);
+    if(secs >= 1){
+        mineMod.update(home, mine, secs);
+        var nodes = mountPoint.querySelectorAll('.minedisp');
+        var mineDiv = nodes[0];
+        var shipPos = mineDiv.querySelector('.minedisp_ship_pos');
+        shipPos.innerText = createShipPosString(mine);
+        console.log();
+        lt = now;
+    }
+};
+loop();

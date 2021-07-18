@@ -84,38 +84,43 @@
         creditCargo(home, mine);
 
         // add any and all credits to home
+        console.log(over);
+        var i = 0;
+        
 
         // load cargo
-        var i = 0,
-        freeSpace = ship.cargoMax;
-        var mineOres = mine.ores.sort(sortPriority),
-        ore;
-        while (i < mine.ores.length) {
-            ore = mineOres[i];
-            // if ore amount is greater than or equal to feeSpace
-            // then I can just fill the free space with the ore
-            // and break out of this loop
-            if (ore.amount >= freeSpace) {
-                var delta = freeSpace;
-                freeSpace = 0;
-                ore.amount -= delta;
+        if(over.load){
+            var i = 0,
+            freeSpace = ship.cargoMax;
+            var mineOres = mine.ores.sort(sortPriority),
+            ore;
+            while (i < mine.ores.length) {
+                ore = mineOres[i];
+                // if ore amount is greater than or equal to feeSpace
+                // then I can just fill the free space with the ore
+                // and break out of this loop
+                if (ore.amount >= freeSpace) {
+                    var delta = freeSpace;
+                    freeSpace = 0;
+                    ore.amount -= delta;
+                    ship.cargo.push({
+                        index: ore.index,
+                        amount: delta
+                    });
+                    break;
+                }
+                // if ore amount is less than freeSpace
+                // then load what there is for that ore
+                // and continue
+                var delta = ore.amount;
+                freeSpace -= ore.amount;
+                ore.amount = 0;
                 ship.cargo.push({
                     index: ore.index,
                     amount: delta
                 });
-                break;
+                i += 1;
             }
-            // if ore amount is less than freeSpace
-            // then load what there is for that ore
-            // and continue
-            var delta = ore.amount;
-            freeSpace -= ore.amount;
-            ore.amount = 0;
-            ship.cargo.push({
-                index: ore.index,
-                amount: delta
-            });
-            i += 1;
         }
 
         // heading away from home with cargo!? credit it to home.

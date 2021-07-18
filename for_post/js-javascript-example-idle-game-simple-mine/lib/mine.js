@@ -18,6 +18,7 @@
             var oreData = home.OREDATA[oreProps.index];
             mine.ores.push({
                 name: oreData.name,
+                index: oreProps.index,
                 yeild: oreProps.points / totalOrePoints, // the ratio of ore rate to credit to amount on each update
                 loadPriority: i,
                 amount: 0 // current amount of this ore
@@ -80,8 +81,26 @@
         // add any and all credits to home
 
         // load cargo
-        var i = 0;
-        console.log(mine.ores.sort(sortPriority));
+        var i = 0,
+        freeSpace = ship.cargoMax;
+        var mineOres = mine.ores.sort(sortPriority),
+        ore;
+        while (i < mine.ores.length) {
+            ore = mineOres[i];
+            if (ore.amount > freeSpace) {
+                var delta = freeSpace;
+                freeSpace = 0;
+                ore.amount -= delta;
+                ship.cargo.push({
+                    index: ore.index,
+                    amount: delta
+                });
+                break;
+            }
+            i += 1;
+        }
+        console.log(ship.cargo)
+        //console.log(mineOres);
 
     };
 

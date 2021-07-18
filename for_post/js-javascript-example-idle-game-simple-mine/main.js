@@ -14,14 +14,23 @@ var mine = mineMod.create(home, {
             }
         ]
     });
-mine.ship.dir = 1;
-mine.ship.distance = 0;
-mineMod.update(home, mine, 23);
+mine.ship.dir = -1;
+mine.ship.distance = 20;
+
+mine.ship.cargo = [
+    {index: 0, amount: 5}
+];
+
+mineMod.update(home, mine, 1);
 
 var ship = mine.ship;
 console.log('ship distance: ', ship.distance);
-console.log('ship dir', ship.dir);
+console.log('ship dir: ', ship.dir);
 console.log('cargo: ', mine.ship.cargo);
+
+home.oreCollection.forEach(function(ore, i){
+    console.log('home ore ' + i + ': ', ore.name, ore.amount);
+});
 
 var over = ship.over;
 console.log('over dist: ' + over.distance);

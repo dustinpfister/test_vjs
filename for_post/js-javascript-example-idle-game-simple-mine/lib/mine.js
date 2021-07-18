@@ -59,11 +59,12 @@
         var ship = mine.ship,
         ores = mine.ores,
         over = ship.over;
-        console.log(ores);
-        console.log(ship);
-        console.log(over);
+		
+        //console.log(ores);
+        //console.log(ship);
+        //console.log(over);
 
-        // if the ship has cargo add that to home
+        // if the ship has cargo add the cargo to home, and clear out the cargo
         ship.cargo.forEach(function (cargo) {
             console.log(cargo);
         });

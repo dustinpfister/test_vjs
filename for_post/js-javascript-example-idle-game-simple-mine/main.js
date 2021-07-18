@@ -1,7 +1,13 @@
 
+var createShipPosString = function(mine){
+    var posArr = '--------------------'.split(''),
+    posIndex = Math.round(mine.ship.distance / mine.distance * 19);
+    posArr[posIndex] = mine.ship.dir === 1 ? '>' : '<';
+    return 'H) ' + posArr.join('') + ' (P';
+};
+
 // create and return html for a mine object
 var createMineObjectHTML = function(mine){
-
     var container = document.createElement('div');
     container.id = 'mine_' + mine.name;
     // header
@@ -10,10 +16,8 @@ var createMineObjectHTML = function(mine){
     container.appendChild(h1);
     // ship position
     var p = document.createElement('p');
-    var posArr = '--------------------'.split(''),
-    posIndex = Math.round(mine.ship.distance / mine.distance * 19);
-    posArr[posIndex] = mine.ship.dir === 1 ? '>' : '<';
-    p.innerHTML = posArr.join('');
+    p.className ='shippos';
+    p.innerHTML = createShipPosString(mine);
     container.appendChild(p);
     // disp elemets for each ore
     var ores = document.createElement('div');

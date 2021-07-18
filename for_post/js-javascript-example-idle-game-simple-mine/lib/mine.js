@@ -67,17 +67,21 @@
         return 0;
     };
 
+    var creditCargo = function (home, mine) {
+        mine.ship.cargo.forEach(function (cargo) {
+            var homeOre = home.oreCollection[cargo.index];
+            homeOre.amount += cargo.amount;
+        });
+        mine.ship.cargo = [];
+    };
+
     // process cargo for the mine with given credits and load boolean values
     var processOver = function (home, mine) {
         var ship = mine.ship,
         over = ship.over;
 
         // if the ship has cargo add the cargo to home, and clear out the cargo
-        ship.cargo.forEach(function (cargo) {
-            var homeOre = home.oreCollection[cargo.index];
-            homeOre.amount += cargo.amount;
-        });
-        ship.cargo = [];
+        creditCargo(home, mine);
 
         // add any and all credits to home
 
@@ -113,8 +117,6 @@
             });
             i += 1;
         }
-        console.log(ship.cargo)
-        //console.log(mineOres);
 
     };
 

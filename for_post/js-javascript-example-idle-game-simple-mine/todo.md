@@ -12,7 +12,10 @@
 ## () - 0.4.0 - Simple mine object display
 * start a very simple visual display of the state of the a mine object in main.js
 
-## () - 0.3.0 - ship over object
+## () - 0.3.1 - credit round trips
+* the processOver method will deduct from the mine and credit the home object
+
+## ( done 07/18/2021 ) - 0.3.0 - ship over object
 * (done) have a ship.over object that will contain data that was used to figure credits, cargo when the ship goes over
 * (done) ship.over.credits prop that is the number of times to credit the home object with assumed round trips
 * (done) ship.over.load is a boolean that if true means that the ship should have the cargo hold loaded
@@ -21,7 +24,6 @@
 * (done) processOver method: will load the cargo prop of the ship of over.load is true
 * (done) processOver method: more than one ore object in the event that there is still free space after first
 * (done) processOver method: fix problem where I end up with a Caro object heading away from home
-* the processOver method will deduct from the mine and credit the home object
 
 ## ( done 07/17/2021 ) - 0.2.0 - update ore method in mine.js
 * (done) start and update ore method in mine.js

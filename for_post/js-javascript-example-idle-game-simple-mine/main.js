@@ -21,7 +21,7 @@ mine.ship.cargo = [
     {index: 0, amount: 5}
 ];
 
-mineMod.update(home, mine, 1);
+mineMod.update(home, mine, 3);
 
 var ship = mine.ship;
 console.log('ship distance: ', ship.distance);

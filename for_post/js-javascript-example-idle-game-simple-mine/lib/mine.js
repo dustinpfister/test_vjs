@@ -59,15 +59,12 @@
         var ship = mine.ship,
         ores = mine.ores,
         over = ship.over;
-		
-        //console.log(ores);
-        //console.log(ship);
-        //console.log(over);
-
         // if the ship has cargo add the cargo to home, and clear out the cargo
         ship.cargo.forEach(function (cargo) {
-            console.log(cargo);
+            var homeOre = home.oreCollection[cargo.index];
+            homeOre.amount += cargo.amount;
         });
+        ship.cargo = [];
 
         // add any and all credits to home
 

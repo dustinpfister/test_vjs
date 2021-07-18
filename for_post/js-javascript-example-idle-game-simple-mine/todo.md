@@ -3,11 +3,14 @@
 ## Known Issues
 * mine.js - processOver method: The ore amounts loaded are at a point in time after the ship departed from the mine
 
-## () - 0.4.0 - basic vjs ui
+## () - 0.6.0 - basic vjs ui
 * just have a basic vjs user interface to create and work with a home object
 
-## () - 0.4.0 - collection of mine objects in home state object
+## () - 0.5.0 - collection of mine objects in home state object
 * update home.js so that it will create a mine object for each ore collection object
+
+## () - 0.4.0 - Simple mine object display
+* start a very simple visual display of the state of the a mine object in main.js
 
 ## () - 0.3.0 - ship over object
 * (done) have a ship.over object that will contain data that was used to figure credits, cargo when the ship goes over
@@ -18,9 +21,7 @@
 * (done) processOver method: will load the cargo prop of the ship of over.load is true
 * (done) processOver method: more than one ore object in the event that there is still free space after first
 * (done) processOver method: fix problem where I end up with a Caro object heading away from home
-
 * the processOver method will deduct from the mine and credit the home object
-* start a very simple visual display of the state of the a mine object in main.js
 
 ## ( done 07/17/2021 ) - 0.2.0 - update ore method in mine.js
 * (done) start and update ore method in mine.js

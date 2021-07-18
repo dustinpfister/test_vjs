@@ -1,13 +1,5 @@
 (function (api) {
 
-    var debug_ship = function (ship, overDist, trips, roundTrips) {
-        console.log('ship distance: ', ship.distance);
-        console.log('ship dir', ship.dir);
-        console.log('over dist: ', overDist);
-        console.log('trips: ', trips);
-        console.log('round trips: ', roundTrips);
-    }
-
     api.create = function (home, opt) {
         home = home || homeMod.create();
         opt = opt || {};
@@ -77,9 +69,6 @@
     // update the state of the ship, and also the given home object
     var updateShip = function (home, mine, secs) {
         var ship = mine.ship;
-        //overDist = 0,
-        //trips = 0,
-        //roundTrips = 0;
         ship.over.distance = 0;
         ship.over.trips = 0;
         ship.over.roundTrips = 0;
@@ -115,9 +104,6 @@
             }
             processCargo(home, mine, credits, loadCargo);
         }
-        // debug info
-        //console.log('\n\n');
-        //debug_ship(ship, overDist, trips, roundTrips);
     };
 
     // update the ore prop of the mine object

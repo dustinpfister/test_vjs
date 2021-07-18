@@ -4,17 +4,16 @@ var createMineObjectHTML = function(mine){
 
     var container = document.createElement('div');
     container.id = 'mine_' + mine.name;
-
     // header
     var h1 = document.createElement('h1');
     h1.innerHTML = mine.name;
     container.appendChild(h1);
-
-    console.log(mine.ores);
-    mine.ores.forEach(function(){
-
-    })
-
+    // disp elemets for each ore
+    mine.ores.forEach(function(ore){
+        var p = document.createElement('span');
+        p.innerHTML = ore.name + ' : ' + ore.amount + '<br>';
+        container.appendChild(p);
+    });
     return container;
 };
 

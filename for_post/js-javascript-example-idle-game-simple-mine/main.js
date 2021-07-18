@@ -17,11 +17,12 @@ var mine = mineMod.create(home, {
 mine.ship.dir = 1;
 mine.ship.distance = 0;
 
+mine.oreRate = 1.25;
 mine.ship.cargo = [
 //    {index: 0, amount: 3},
 //    {index: 1, amount: 2}
 ];
-mineMod.update(home, mine, 10);
+mineMod.update(home, mine, 12);
 
 var ship = mine.ship;
 console.log('ship distance: ', ship.distance);

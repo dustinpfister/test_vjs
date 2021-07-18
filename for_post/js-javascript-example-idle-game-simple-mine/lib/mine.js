@@ -87,7 +87,10 @@
         ore;
         while (i < mine.ores.length) {
             ore = mineOres[i];
-            if (ore.amount > freeSpace) {
+            // if ore amount is greater than or equal to feeSpace
+            // then I can just fill the free space with the ore
+            // and break out of this loop
+            if (ore.amount >= freeSpace) {
                 var delta = freeSpace;
                 freeSpace = 0;
                 ore.amount -= delta;
@@ -97,6 +100,16 @@
                 });
                 break;
             }
+            // if ore amount is less than freeSpace
+            // then load what there is for that ore
+            // and continue
+            var delta = ore.amount;
+            freeSpace -= ore.amount;
+            ore.amount = 0;
+            ship.cargo.push({
+                index: ore.index,
+                amount: delta
+            });
             i += 1;
         }
         console.log(ship.cargo)

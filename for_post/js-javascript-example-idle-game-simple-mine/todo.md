@@ -13,7 +13,11 @@
 * (done) rename processCargo to processOver in mine.js
 * (done) the processOver method will always credit anything in the ship cargo to the home object
 * the processOver method will deduct from the mine and credit the home object
-* the processOver method will load the cargo prop of the ship of over.load is true
+
+* (done) the processOver method will load the cargo prop of the ship of over.load is true
+* load more than one ore object in the event that there is still free space after first ore amount is loaded
+
+
 * start a very simple visual display of the state of the a mine object in main.js
 
 ## ( done 07/17/2021 ) - 0.2.0 - update ore method in mine.js

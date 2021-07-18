@@ -40,6 +40,15 @@
         // cargo
         mine.ship.cargoMax = opt.shipCargoMax || 5;
         mine.ship.cargo = 0;
+        // over object used to figure state of credits, and cargo
+        // when the ship goes out of bounds as a result of a large time
+        // delta from that last update.
+        mine.ship.over = {
+            distance: 0,
+            trips: 0,
+            roundTrips: 0
+        };
+
         return mine;
     };
 
@@ -109,9 +118,9 @@
     };
 
     // update the ore prop of the mine object
-    var updateOres = function(home, mine, secs){
+    var updateOres = function (home, mine, secs) {
         // update amounts ready for pick up by the ship
-        mine.ores.forEach(function(ore){
+        mine.ores.forEach(function (ore) {
             var amountDelta = ore.yeild * mine.oreRate * secs;
             ore.amount += amountDelta;
         });

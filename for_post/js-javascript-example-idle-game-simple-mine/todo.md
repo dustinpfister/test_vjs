@@ -4,6 +4,7 @@
 * just have a basic vjs user interface to create and work with a home object
 
 ## () - 0.3.0 - update home.js to create collection of mine objects
+* have a ship.over object that will contain data that was used to figure credits, cargo when the ship goes over
 * update home.js so that it will create a mine object for each ore collection object
 * in the process cargo method ore amounts need to be deducted from the ore object amount values and credited to home
 

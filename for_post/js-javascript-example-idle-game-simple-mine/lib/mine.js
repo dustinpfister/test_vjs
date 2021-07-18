@@ -76,8 +76,8 @@
         mine.ship.cargo = [];
     };
 
+    // process credits in the over object
     var processOverCredits = function(home, mine){
-        // add any and all credits to home
         var i = 0,
         ship = mine.ship,
         over = ship.over,
@@ -89,20 +89,21 @@
         while(i < mine.ores.length){
             ore = mineOres[i];
             // full?
-            delta = ship.cargoMax * over.credits;
-            if(delta < ore.amount && freeSpace >= delta){
+            delta = ore.amount;
+            if(delta <= ore.amount && freeSpace >= delta){
                 freeSpace -= delta;
                 ore.amount -= delta;
                 homeOre = home.oreCollection[ore.index];
                 homeOre.amount += delta;
             }
-            delta = ore.amount;
-            if(freeSpace >= delta){
+            // fill free space
+            delta = freeSpace;
+            if(delta <= ore.amount && freeSpace >= delta){
                 freeSpace -= delta;
                 ore.amount -= delta;
                 homeOre = home.oreCollection[ore.index];
                 homeOre.amount += delta;
-            }     
+            }  
             i += 1;
         }
     };
@@ -115,6 +116,7 @@
         // if the ship has cargo add the cargo to home, and clear out the cargo
         creditCargo(home, mine);
 
+        // add any and all credits to home
         processOverCredits(home, mine);
 
         // load cargo
@@ -163,10 +165,11 @@
     // update the state of the ship, and also the given home object
     var updateShip = function (home, mine, secs) {
         var ship = mine.ship;
+        // reset over values
         ship.over.distance = 0;
         ship.over.trips = 0;
         ship.over.roundTrips = 0;
-
+        // update fistance
         ship.distance += ship.speed * ship.dir * secs;
         // when past home out in space?
         if (ship.distance <= 0) {

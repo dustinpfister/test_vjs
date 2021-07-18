@@ -17,7 +17,7 @@ var mine = mineMod.create(home, {
 mine.ship.dir = 1;
 mine.ship.distance = 0;
 
-mine.oreRate = 0.8;
+mine.oreRate = 0.5;
 mine.ship.cargo = [];
 mineMod.update(home, mine, 40);
 

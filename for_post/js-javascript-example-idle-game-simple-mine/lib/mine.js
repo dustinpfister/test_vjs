@@ -6,7 +6,10 @@
         opt.name = opt.name || 'fooMine';
         opt.ores = opt.ores || [];
         var mine = {};
+
         mine.name = opt.name;
+        mine.index = opt.index;
+
         mine.distance = opt.distance || 100;
         mine.oreRate = opt.oreRate || 10;
         // set up ore objects for the mine

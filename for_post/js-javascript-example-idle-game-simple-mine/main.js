@@ -11,7 +11,7 @@ var createShipPosString = function(mine){
 // create and return HTML for a mine object
 var createMineObjectHTML = function(mine){
     var container = document.createElement('div');
-    container.id = 'minedisp_' + mine.name;
+    container.id = 'minedisp_' + mine.name + '_' + mine.index;
     container.className = 'minedisp';
     // header
     var h1 = document.createElement('h1');
@@ -43,6 +43,7 @@ var createMineObjectHTML = function(mine){
 var home = homeMod.create();
 var mine = mineMod.create(home, {
         name: 'Furea',
+        index: 0,
         distance: 100,
         ores: [{
                 index: 0,
@@ -85,4 +86,5 @@ mountPoint.appendChild(mineDiv);
 
 var nodes = mountPoint.querySelectorAll('.minedisp');
 console.log(nodes[0].id.split('_')[1]); // name of mine
+console.log(nodes[0].id.split('_')[2]); // index of mine
 

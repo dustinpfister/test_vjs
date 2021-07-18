@@ -14,12 +14,13 @@
         var totalOrePoints = opt.ores.reduce(function (total, oreProps) {
                 return total + oreProps.points;
             }, 0);
-        opt.ores.forEach(function (oreProps) {
+        opt.ores.forEach(function (oreProps, i) {
             var oreData = home.OREDATA[oreProps.index];
             mine.ores.push({
                 name: oreData.name,
-                yeild: oreProps.points / totalOrePoints,
-                amount: 0
+                yeild: oreProps.points / totalOrePoints, // the ratio of ore rate to credit to amount on each update
+                loadPriority: i,
+                amount: 0 // current amount of this ore
             });
         });
         // create ship object for the mine
@@ -57,7 +58,6 @@
     // process cargo for the mine with given credits and load boolean values
     var processOver = function (home, mine) {
         var ship = mine.ship,
-        ores = mine.ores,
         over = ship.over;
         // if the ship has cargo add the cargo to home, and clear out the cargo
         ship.cargo.forEach(function (cargo) {
@@ -69,9 +69,8 @@
         // add any and all credits to home
 
         // load cargo
-
-        //console.log('credits: ', credits);
-        //console.log('load cargo: ', loadCargo);
+		console.log(mine.ores);
+        
     };
 
     // update the state of the ship, and also the given home object

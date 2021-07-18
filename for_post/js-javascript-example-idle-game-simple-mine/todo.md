@@ -11,7 +11,7 @@
 * (done) ship.over.credits prop that is the number of times to credit the home object with assumed round trips
 * (done) ship.over.load is a boolen that if true means that the ship should have the cargo hold loaded
 * (done) rename processCargo to processOver in mine.js
-* the processOver method will always credit anything in the ship cargo to the home object
+* (done) the processOver method will always credit anything in the ship cargo to the home object
 * the processOver method will deduct from the mine and credit the home object
 * the processOver method will load the cargo prop of the ship of over.load is true
 * start a very simple visual display of the state of the a mine object in main.js

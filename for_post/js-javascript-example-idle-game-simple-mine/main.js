@@ -14,14 +14,14 @@ var mine = mineMod.create(home, {
             }
         ]
     });
-mine.ship.dir = -1;
-mine.ship.distance = 20;
+mine.ship.dir = 1;
+mine.ship.distance = 0;
 
 mine.ship.cargo = [
-    {index: 0, amount: 5}
+//    {index: 0, amount: 3},
+//    {index: 1, amount: 2}
 ];
-
-mineMod.update(home, mine, 3);
+mineMod.update(home, mine, 10);
 
 var ship = mine.ship;
 console.log('ship distance: ', ship.distance);

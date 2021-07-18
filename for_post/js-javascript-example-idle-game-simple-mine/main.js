@@ -1,7 +1,19 @@
 
+// create and return html for a mine object
+var createMineObjectHTML = function(mine){
+    var container = document.createElement('div');
+    container.id = 'mine_' + mine.name;
+    container.innerHTML = mine.name;
+    return container;
+};
+
+
+
+
+
+
 
 var home = homeMod.create();
-
 var mine = mineMod.create(home, {
         name: 'Furea',
         distance: 100,
@@ -40,5 +52,12 @@ console.log('');
 home.oreCollection.forEach(function(ore, i){
     console.log('home ore ' + i + ': ', ore.name, ore.amount);
 });
+
+
+
+var mountPoint = document.getElementById('app');
+
+var mineDiv = createMineObjectHTML(mine);
+mountPoint.appendChild(mineDiv);
 
 //console.log(ship.over);

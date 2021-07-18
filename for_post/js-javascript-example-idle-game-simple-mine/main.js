@@ -32,6 +32,7 @@ var loop = function(){
     if(secs >= 1){
         mineMod.update(home, mine, secs);
         html.updateMineObjectHTML(mountPoint, mine);
+        html.updateHomeObjectHTML(mountPoint, home);
         lt = now;
     }
 };

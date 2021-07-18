@@ -69,3 +69,13 @@ html.updateMineObjectHTML = function(mountPoint, mine){
         span.innerHTML = ore.name + ' : ' + ore.amount.toFixed(2) + '<br>';
     });
 };
+
+// update html for a home object
+html.updateHomeObjectHTML = function(mountPoint, home){
+    var div = mountPoint.querySelector('.homedisp');
+    var oreList = div.querySelector('.homedisp_orelist');
+    [].forEach.call(oreList.children, function(span, i){
+        var ore = home.oreCollection[i];	
+        span.innerHTML = ore.name + ' : ' + ore.amount.toFixed(2) + ' | ';
+    });
+};

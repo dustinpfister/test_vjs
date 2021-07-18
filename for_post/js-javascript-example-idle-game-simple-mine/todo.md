@@ -1,7 +1,7 @@
 # todo list for js-javascript-example-idle-game-simple-mine
 
 ## Known Issues
-* mine.js - processOver method: The ore amounts loaded are at a point in time after the ship departed from the mine
+* 0 - mine.js - processOver method: The ore amounts loaded are at a point in time after the ship departed from the mine, the distance prop of the over object count be used as a way to adjust for this.
 
 ## () - 0.6.0 - basic vjs ui
 * just have a basic vjs user interface to create and work with a home object

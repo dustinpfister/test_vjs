@@ -92,13 +92,21 @@
         mineOres = mine.ores.sort(sortPriority);
         while(i < mine.ores.length){
             ore = mineOres[i];
+            // full?
             delta = ship.cargoMax * over.credits;
             if(delta < ore.amount && freeSpace >= delta){
                 freeSpace -= delta;
                 ore.amount -= delta;
                 homeOre = home.oreCollection[ore.index];
                 homeOre.amount += delta;
-            }               
+            }
+            delta = ore.amount;
+            if(freeSpace >= delta){
+                freeSpace -= delta;
+                ore.amount -= delta;
+                homeOre = home.oreCollection[ore.index];
+                homeOre.amount += delta;
+            }     
             i += 1;
         }
 

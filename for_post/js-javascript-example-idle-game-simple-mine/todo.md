@@ -10,14 +10,14 @@
 ## () - 0.5.0 - collection of mine objects in home state object
 * update home.js so that it will create a mine object for each ore collection object
 
-## () - 0.4.0 - Simple mine object display
+## ( done 07/18/2021 ) - 0.4.0 - Simple mine object display
 * (done) start a very simple visual display of the state of the a mine object in main.js
 * (done) very basic ship position display using -<> chars
 * (done) update ore info in a loop
 * (done) render_html.js file started
-* home object display
+* (done) home object display
 
-## () - 0.3.1 - credit round trips
+## ( done 07/18/2021 ) - 0.3.1 - credit round trips
 * (done) the processOver method will deduct from the mine and credit the home object
 
 ## ( done 07/18/2021 ) - 0.3.0 - ship over object

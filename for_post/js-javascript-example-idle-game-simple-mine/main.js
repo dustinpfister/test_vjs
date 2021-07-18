@@ -1,9 +1,20 @@
 
 // create and return html for a mine object
 var createMineObjectHTML = function(mine){
+
     var container = document.createElement('div');
     container.id = 'mine_' + mine.name;
-    container.innerHTML = mine.name;
+
+    // header
+    var h1 = document.createElement('h1');
+    h1.innerHTML = mine.name;
+    container.appendChild(h1);
+
+    console.log(mine.ores);
+    mine.ores.forEach(function(){
+
+    })
+
     return container;
 };
 

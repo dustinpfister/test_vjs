@@ -118,6 +118,11 @@
             i += 1;
         }
 
+        // heading away from home with cargo!? credit it to home.
+        if (ship.cargo.length > 0 && ship.dir === 1) {
+            creditCargo(home, mine);
+        }
+
     };
 
     // update the state of the ship, and also the given home object

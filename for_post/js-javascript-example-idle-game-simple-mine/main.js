@@ -18,11 +18,8 @@ mine.ship.dir = 1;
 mine.ship.distance = 0;
 
 mine.oreRate = 1.25;
-mine.ship.cargo = [
-    {index: 0, amount: 3},
-    {index: 1, amount: 2}
-];
-mineMod.update(home, mine, 21);
+mine.ship.cargo = [];
+mineMod.update(home, mine, 10);
 
 var ship = mine.ship;
 console.log('ship distance: ', ship.distance);

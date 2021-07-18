@@ -1,5 +1,8 @@
 # todo list for js-javascript-example-idle-game-simple-mine
 
+## Known Issues
+* mine.js - processOver method: The ore amounts loaded are at a point in time after the ship departed from the mine
+
 ## () - 0.4.0 - basic vjs ui
 * just have a basic vjs user interface to create and work with a home object
 
@@ -12,12 +15,11 @@
 * (done) ship.over.load is a boolen that if true means that the ship should have the cargo hold loaded
 * (done) rename processCargo to processOver in mine.js
 * (done) the processOver method will always credit anything in the ship cargo to the home object
-* the processOver method will deduct from the mine and credit the home object
-
 * (done) processOver method: will load the cargo prop of the ship of over.load is true
 * (done) processOver method: more than one ore object in the event that there is still free space after first
-* processOver method: fix problem where I end up with a Caro object heading away from home
+* (done) processOver method: fix problem where I end up with a Caro object heading away from home
 
+* the processOver method will deduct from the mine and credit the home object
 * start a very simple visual display of the state of the a mine object in main.js
 
 ## ( done 07/17/2021 ) - 0.2.0 - update ore method in mine.js

@@ -3,6 +3,7 @@
 ## () - more examples
 * make an s3-add-elements example using array splice
 * make an s6-looping example on setTimeout
+* have an s12-length-count example on count and how it compares to length
 
 ## () - have section folders on all existing sections
 * (done) s3-add-elements

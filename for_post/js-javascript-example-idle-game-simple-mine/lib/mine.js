@@ -31,7 +31,7 @@
         mine.ship.speed = opt.shipSpeed || 10;
         // cargo
         mine.ship.cargoMax = opt.shipCargoMax || 5;
-        mine.ship.cargo = 0;
+        mine.ship.cargo = [];
         // over object used to figure state of credits, and cargo
         // when the ship goes out of bounds as a result of a large time
         // delta from that last update.
@@ -42,7 +42,6 @@
             credits: 0,
             load: false
         };
-
         return mine;
     };
 
@@ -57,10 +56,17 @@
 
     // process cargo for the mine with given credits and load boolean values
     var processOver = function (home, mine) {
-        var over = mine.ship.over;
+        var ship = mine.ship,
+        ores = mine.ores,
+        over = ship.over;
+        console.log(ores);
+        console.log(ship);
         console.log(over);
 
         // if the ship has cargo add that to home
+        ship.cargo.forEach(function (cargo) {
+            console.log(cargo);
+        });
 
         // add any and all credits to home
 

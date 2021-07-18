@@ -3,10 +3,18 @@
 ## () - 0.4.0 - basic vjs ui
 * just have a basic vjs user interface to create and work with a home object
 
-## () - 0.3.0 - update home.js to create collection of mine objects
-* have a ship.over object that will contain data that was used to figure credits, cargo when the ship goes over
+## () - 0.4.0 - collection of mine objects in home state object
 * update home.js so that it will create a mine object for each ore collection object
-* in the process cargo method ore amounts need to be deducted from the ore object amount values and credited to home
+
+## () - 0.3.0 - ship over object
+* (done) have a ship.over object that will contain data that was used to figure credits, cargo when the ship goes over
+* ship.over.credits prop that is the number of times to credit the home object with assumes round trips
+* ship.over.load is a boolen that if true means that the ship should have the cargo hold loaded
+* rename processCargo to processOver in mine.js
+* the processOver method will always credit anything in the ship cargo to the home object
+* the processOver method will deduct from the mine and credit the home object
+* the processOver method will load the cargo prop of the ship of over.load is true
+* start a very simple visual display of the state of the a mine object in main.js
 
 ## ( done 07/17/2021 ) - 0.2.0 - update ore method in mine.js
 * (done) start and update ore method in mine.js

@@ -8,6 +8,13 @@ var createMineObjectHTML = function(mine){
     var h1 = document.createElement('h1');
     h1.innerHTML = mine.name;
     container.appendChild(h1);
+    // ship position
+    var p = document.createElement('p');
+    var posArr = '--------------------'.split(''),
+    posIndex = Math.round(mine.ship.distance / mine.distance * 19);
+    posArr[posIndex] = mine.ship.dir === 1 ? '>' : '<';
+    p.innerHTML = posArr.join('');
+    container.appendChild(p);
     // disp elemets for each ore
     var ores = document.createElement('div');
     ores.className = 'orelist';
@@ -44,7 +51,7 @@ mine.ship.distance = 0;
 
 mine.oreRate = 0.5;
 mine.ship.cargo = [];
-mineMod.update(home, mine, 40);
+mineMod.update(home, mine, 10);
 
 var ship = mine.ship;
 console.log('ship distance: ', ship.distance);

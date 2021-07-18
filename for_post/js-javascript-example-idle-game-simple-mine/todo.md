@@ -11,7 +11,8 @@
 * update home.js so that it will create a mine object for each ore collection object
 
 ## () - 0.4.0 - Simple mine object display
-* start a very simple visual display of the state of the a mine object in main.js
+* (done) start a very simple visual display of the state of the a mine object in main.js
+* very basic ship position display using -<> chars
 
 ## () - 0.3.1 - credit round trips
 * (done) the processOver method will deduct from the mine and credit the home object

@@ -18,7 +18,7 @@ mine.oreRate = 1;
 
 var mountPoint = document.getElementById('app');
 
-var homeDiv = html.createHomeObjectHTML(mine);
+var homeDiv = html.createHomeObjectHTML(home);
 mountPoint.appendChild(homeDiv);
 
 var mineDiv = html.createMineObjectHTML(mine);

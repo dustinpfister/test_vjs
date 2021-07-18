@@ -18,6 +18,16 @@ html.createHomeObjectHTML = function(home){
     var h = document.createElement('h2');
     h.innerHTML = 'HOME OBJECT:';
     container.appendChild(h);
+    // ore counts
+    console.log(home);
+    var ores = document.createElement('div');
+    ores.className = 'homedisp_orelist';
+    home.oreCollection.forEach(function(ore){
+        var p = document.createElement('span');
+        p.innerHTML = ore.name + ' : ' + ore.amount + ' | ';
+        ores.appendChild(p);
+    });
+    container.appendChild(ores);
     return container;
 };
 

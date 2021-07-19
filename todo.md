@@ -6,6 +6,8 @@
 * write a post on the project thus far
 
 ## () - for 07/19/2021
+* new post on js-array-find
+* edit lodash_find
 * edit js-array-push
 * edit a js-array-from
 * edit a js-array-copy

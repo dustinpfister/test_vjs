@@ -5,17 +5,21 @@
 * finish js-javascript-example-orb-pool-module proto folder
 * write a post on the project thus far
 
-## () - for 07/19/2021
-* new post on js-array-find
-* edit lodash_find
+## () - for 07-20/2021
+* edit js-array expanding all thin sections on the subject
+
+## (done) - for 07/19/2021
+* (done) new post on js-array-find
+* (done) edit lodash_find
+* (done) edit js-array post to link to new post on js-array-find
 * edit js-array-push
 * edit a js-array-from
 * edit a js-array-copy
 
-## () - for 07/18/2021
+## (done) - for 07/18/2021
 * (done) work on source code for js-javascript-example-idle-game-simple-mine
 
-## () - for 07/17/2021
+## (done) - for 07/17/2021
 * (done) update todo list for js-javascript-example-idle-game-simple-mine
 
 ## (done) - for 07/16/2021

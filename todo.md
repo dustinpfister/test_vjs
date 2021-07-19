@@ -5,15 +5,16 @@
 * finish js-javascript-example-orb-pool-module proto folder
 * write a post on the project thus far
 
-## () - new javascript example post on simple mine idle game
-
-## () - for 07/18 2021
+## () - for 07/19/2021
 * edit js-array-push
-* edit a js-array-... post
-* edit a js-array-...post
+* edit a js-array-from
+* edit a js-array-copy
+
+## () - for 07/18/2021
+* (done) work on source code for js-javascript-example-idle-game-simple-mine
 
 ## () - for 07/17/2021
-* update todo list for js-javascript-example-idle-game-simple-mine
+* (done) update todo list for js-javascript-example-idle-game-simple-mine
 
 ## (done) - for 07/16/2021
 * (done) start a new folder on js-javascript-example-idle-game-simple-mine

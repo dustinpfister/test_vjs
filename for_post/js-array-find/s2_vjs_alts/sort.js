@@ -1,8 +1,3 @@
-
-var cb = function (n) {
-    return n > 2 && n < 6;
-};
-
 var sorter = function (a, b) {
     if (a > b) {
         return -1

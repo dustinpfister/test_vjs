@@ -14,10 +14,10 @@ var sorter = function (a, b) {
 };
 
 // and array of numbers
-var a = [1, 2, 3, 4, 5, 6, 7];
+var a = [3, 3, 0, 12, 0, -7, 37, 2];
 
+// if I want to find the greatest number
+var b = a.sort(sorter);
+console.log(b[0]); // 37
 
-// the array reverse method would be one way
-var b = a.reverse().find(cb);
-console.log(b); // 5
 

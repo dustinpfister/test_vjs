@@ -1,9 +1,12 @@
 # js-array-find todo list
 
-## () - first set of examples
+## () - use case examples section
+* s3 section on use case examples started
 
-* start an s1 section that will be just one or more basic examples of array find
-* start an s2 section that will contain alternative examples
-  * s2 example using filter
-  * s2 example using sort and filter
-* s3 section on use case examples
+## ( done 07/19/2021 ) - first set of examples
+* (done) start an s1 section that will be just one or more basic examples of array find
+* (done) start an s2 section that will contain alternative examples
+  * (done) s2 example using filter
+  * (done) s2 example on reverse
+  * (done) s2 example on Math.min and Math.max to fine biggest and smallest number  
+  * (done) s2 example using sort

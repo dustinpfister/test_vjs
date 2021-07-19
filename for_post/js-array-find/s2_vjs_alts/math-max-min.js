@@ -1,6 +1,5 @@
 // and array of numbers
 var a = [3, 3, 0, 12, 0, -7, 37, 2];
-
 var max = Math.max.apply(null, a),
 min = Math.min.apply(null, a);
 console.log(max); // 37
@@ -13,13 +12,11 @@ var objs = [
     {x: -3, y: 2},
     {x: 7, y: 4}
 ];
-
 var findMaxMinProp = function(objs, prop, maxMin){
     return Math[maxMin].apply( null, objs.map(function (obj) {
         return obj[prop];
     }));
 };
-
 console.log( findMaxMinProp(objs, 'x', 'min') ); // -3
 console.log( findMaxMinProp(objs, 'x', 'max') ); // 23
 console.log( findMaxMinProp(objs, 'y', 'min') ); // 1

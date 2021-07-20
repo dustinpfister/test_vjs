@@ -6,6 +6,9 @@
 * write a post on the project thus far
 
 ## () - for 07-20/2021
+* start an js-array-splice for post folder, and start post on subject
+* update js-array to link to new js-array-splice post
+
 * (done) update js-array for post folder
 * edit js-array expanding all thin sections on the subject
 * edit js-array-push

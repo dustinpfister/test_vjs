@@ -6,6 +6,7 @@
 * write a post on the project thus far
 
 ## () - for 07-20/2021
+* update js-array fo post folder
 * edit js-array expanding all thin sections on the subject
 * edit js-array-push
 * edit a js-array-from

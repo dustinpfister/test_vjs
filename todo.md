@@ -7,14 +7,14 @@
 
 ## () - for 07-20/2021
 * edit js-array expanding all thin sections on the subject
+* edit js-array-push
+* edit a js-array-from
+* edit a js-array-copy
 
 ## (done) - for 07/19/2021
 * (done) new post on js-array-find
 * (done) edit lodash_find
 * (done) edit js-array post to link to new post on js-array-find
-* edit js-array-push
-* edit a js-array-from
-* edit a js-array-copy
 
 ## (done) - for 07/18/2021
 * (done) work on source code for js-javascript-example-idle-game-simple-mine

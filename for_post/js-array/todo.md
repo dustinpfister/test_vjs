@@ -5,6 +5,8 @@
 * make an s6-looping example on setTimeout
 * make an s10-sort example that makes use of a sort function
 * have an s12-length-count example on count and how it compares to length
+* have an s12-length-count example that shows why length is not aways what is expected by setting the length
+* have an s12-length-count example that makes use of Object.keys, and Object own properties methods
 
 ## ( done 07/21/2021 ) - have section folders on all existing sections
 * (done) s3-add-elements

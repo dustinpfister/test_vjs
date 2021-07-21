@@ -13,12 +13,15 @@
 * start new post for 07/22/2021 on js-array-to-string
 * start new proto folder on js-javascript-example-idle-game-wild-plant-grid
 * work on js-javascript-example-exp-system-waypoints
+* edit js-array-splice
+* edit js-array-flat
+* edit js-array-fill
 
 ## () - for 07/21/2021
 * (done) start post for 07/23/2021 on js-array-find-index
 * (done) update post on js-array-find to link to js-array-find-index
 * (done) start new proto folder js-javascript-example-exp-system-waypoints
-* edit js-array-slice
+* (done) edit js-array-slice
 
 
 ## (done) - for 07-20/2021

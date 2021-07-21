@@ -28,7 +28,11 @@ weightObjects.sort(function(a, b){
     return 0;
 });
 var index = weightObjects[0].index;
-console.log(index);
+console.log(index); // 2
+console.log(people[index]);
+// { name: 'Phil', grade: 'B', gradeNumber: 83, bestSub: 'science' }
+
+
 /*
 [
     { weight: 99, index: 2 },

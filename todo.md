@@ -15,13 +15,13 @@
 * work on js-javascript-example-exp-system-waypoints
 
 ## () - for 07/21/2021
-* start post for 07/23/2021 on js-array-find-index
-* update post on js-array-find to like to js-array-find-index
+* (done) start post for 07/23/2021 on js-array-find-index
+* (done) update post on js-array-find to link to js-array-find-index
 * (done) start new proto folder js-javascript-example-exp-system-waypoints
 * edit js-array-slice
 
 
-## () - for 07-20/2021
+## (done) - for 07-20/2021
 * (done) start an js-array-splice for post folder, and start post on subject
 * (done) update js-array to link to new js-array-splice post
 * (done) update js-array for post folder

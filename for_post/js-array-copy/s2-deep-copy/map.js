@@ -17,7 +17,7 @@ var b = a.map(function (obj) {
         // for each element
         return {
             i: Math.pow(obj.i, 2)
-        }
+        };
     });
 // so now we have two arrays, and with two
 // independent sets of objects

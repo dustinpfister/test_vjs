@@ -5,15 +5,18 @@
 * finish js-javascript-example-orb-pool-module proto folder
 * write a post on the project thus far
 
-## () - for 07-20/2021
-* start an js-array-splice for post folder, and start post on subject
-* update js-array to link to new js-array-splice post
-
-* (done) update js-array for post folder
-* edit js-array expanding all thin sections on the subject
+## () - for 07/21/2021
+* new section for js-array on copying arrays
+* edit a js-array-copy
 * edit js-array-push
 * edit a js-array-from
-* edit a js-array-copy
+
+
+## () - for 07-20/2021
+* (done) start an js-array-splice for post folder, and start post on subject
+* (done) update js-array to link to new js-array-splice post
+* (done) update js-array for post folder
+* (done) edit js-array expanding all thin sections on the subject
 
 ## (done) - for 07/19/2021
 * (done) new post on js-array-find

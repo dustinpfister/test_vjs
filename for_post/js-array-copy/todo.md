@@ -1,10 +1,9 @@
 # js-array-copy
-* s3 section on lodash methods for cloning arrays
-* ass s3 section on lodash_clone
-* add s3 section on lodash_cloneDeep
-* add s3 section on lodash cloneDepth
-* add s4 section on making a copy array method
 
+
+## 3 - s4 section
+
+## (done 09/03/2020) - first set of examples
 
 * (done) add an s1 example that makes use of the spread operator
 * (done) add an s1 Object.assign example

@@ -5,12 +5,20 @@
 * finish js-javascript-example-orb-pool-module proto folder
 * write a post on the project thus far
 
+## () - for 07/23/2021
+* start post for 07/23/2021 on on js-javascript-example-exp-system-waypoints
+* work on js-javascript-example-idle-game-wild-plant-grid.
+
+## () - for 07/22/2021
+* start new post for 07/22/2021 on js-array-to-string
+* start new proto folder on js-javascript-example-idle-game-wild-plant-grid
+* work on js-javascript-example-exp-system-waypoints
+
 ## () - for 07/21/2021
-* new proto folder js-javascript-example-exp-system-waypoints
-* new section for js-array on copying arrays
-* edit a js-array-copy
-* edit js-array-push
-* edit a js-array-from
+* start post for 07/23/2021 on js-array-find-index
+* update post on js-array-find to like to js-array-find-index
+* (done) start new proto folder js-javascript-example-exp-system-waypoints
+* edit js-array-slice
 
 
 ## () - for 07-20/2021

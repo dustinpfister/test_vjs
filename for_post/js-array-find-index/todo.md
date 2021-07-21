@@ -1,5 +1,9 @@
 # js-array-find-index
 
+## () - additional examples for various sections
+* have an s2 example that will make use of the filter method
+* have an s3 example that will reset objects active flags to false when hp <=0
+
 ## (done 07/21/2021 ) - stat an s3 example for use case examples
 * (done) start a simple find my object prop method example
 

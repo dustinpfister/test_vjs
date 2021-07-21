@@ -6,6 +6,7 @@
 * write a post on the project thus far
 
 ## () - for 07/21/2021
+* new proto folder js-javascript-example-exp-system-waypoints
 * new section for js-array on copying arrays
 * edit a js-array-copy
 * edit js-array-push

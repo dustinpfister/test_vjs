@@ -5,3 +5,5 @@
 * (done) I will want a create method of the xp-waypoints module that will create and return a standard object
 * (done) have a create table method
 * (done) have a get p value helper
+* (done) parse by level and parse by xp methods working
+* better expression used to get xp values

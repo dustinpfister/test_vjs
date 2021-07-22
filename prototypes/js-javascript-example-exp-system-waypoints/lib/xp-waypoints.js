@@ -47,7 +47,6 @@
             len = xpObj.table.length;
             xpObj.level = 0;
             while (i < len) {
-                console.log(i);
                 if (xpObj.xp < xpObj.table[i].xpNeeded) {
                     break;
                 } else {

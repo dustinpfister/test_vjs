@@ -41,7 +41,22 @@
     };
 
     var parseBy = {
-        xp: function (xpObj) {},
+        // use xpObj to set level
+        xp: function (xpObj) {
+            var i = 0,
+            len = xpObj.table.length;
+            xpObj.level = 0;
+            while (i < len) {
+                console.log(i);
+                if (xpObj.xp < xpObj.table[i].xpNeeded) {
+                    break;
+                } else {
+                    xpObj.level = i;
+                }
+                i += 1;
+            }
+        },
+        // level is set, just set xp to value in table
         level: function (xpObj) {}
     }
 
@@ -69,6 +84,7 @@
         };
         // create table
         xpObj.table = createLevelTable(xpObj);
+        parseBy[opt.parseBy](xpObj);
         return xpObj;
     };
 

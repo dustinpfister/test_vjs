@@ -10,6 +10,12 @@ Stack.prototype.toString = function () {
         if (typeof el === 'number') {
             return String(el);
         }
+        // if object
+        if (typeof el === 'object' && el != null) {
+            return Object.keys(el).map(function (key) {
+                return key + ':' + el[key];
+            }).join(',');
+        }
         // string null for null
         if (el === null) {
             return 'null';

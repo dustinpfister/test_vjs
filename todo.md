@@ -13,7 +13,7 @@
 * (done) start new post for 07/22/2021 on js-array-to-string
 * (done) start new proto folder on js-javascript-example-idle-game-wild-plant-grid
 * (done) work on js-javascript-example-exp-system-waypoints
-* edit js-to-string
+* (done) edit js-to-string
 * edit js-array-splice
 * edit js-array-flat
 * edit js-array-fill

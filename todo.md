@@ -17,12 +17,11 @@
 * edit js-array-flat
 * edit js-array-fill
 
-## () - for 07/21/2021
+## (done) - for 07/21/2021
 * (done) start post for 07/23/2021 on js-array-find-index
 * (done) update post on js-array-find to link to js-array-find-index
 * (done) start new proto folder js-javascript-example-exp-system-waypoints
 * (done) edit js-array-slice
-
 
 ## (done) - for 07-20/2021
 * (done) start an js-array-splice for post folder, and start post on subject

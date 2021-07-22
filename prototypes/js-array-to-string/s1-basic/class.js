@@ -14,6 +14,10 @@ Stack.prototype.toString = function () {
         if (el === null) {
             return 'null';
         }
+        // string of undefined for undefined
+        if (el === undefined) {
+            return 'undefined';
+        }
         // default to just calling whatever the toString method is
         return el.toString();
     }).join(',');
@@ -35,7 +39,7 @@ Stack.prototype.valueOf = function () {
     }, 0);
 };
 
-var s = new Stack([null, 1, [1, 1], {
+var s = new Stack([null, undefined, 1, [1, 1], {
                 x: 3
             }
         ]);

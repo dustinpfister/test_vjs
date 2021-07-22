@@ -1,6 +1,6 @@
 
 var xpObj = XPWP.create();
 
-var table = XPWP.createLevelTable(xpObj);
+//var table = XPWP.createLevelTable(xpObj);
 
-console.log(table);
+console.log(xpObj);

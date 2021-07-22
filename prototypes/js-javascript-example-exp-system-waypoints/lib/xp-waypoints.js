@@ -57,7 +57,13 @@
             }
         },
         // level is set, just set xp to value in table
-        level: function (xpObj) {}
+        level: function (xpObj) {
+            xpObj.xp = 0;
+            var obj = xpObj.table[Math.floor(xpObj.level)];
+            if (obj) {
+                xpObj.xp = obj.xpNeeded;
+            }
+        }
     }
 
     // create a new xpObj

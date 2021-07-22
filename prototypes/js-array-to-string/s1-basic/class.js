@@ -45,9 +45,8 @@ Stack.prototype.valueOf = function () {
     }, 0);
 };
 
-var s = new Stack([null, undefined, 1, [1, 1], {
-                x: 3
-            }
-        ]);
+var s = new Stack([null, undefined, 1, [1, 1], {x: 3}]);
 console.log(s.toString());
-console.log(s.valueOf()); // 6
+//null,undefined,1,0:1,1:1,x:3
+console.log(s.valueOf());
+// 6

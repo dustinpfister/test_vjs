@@ -1,5 +1,9 @@
 # js-to-string todo list
 
+## () - new s4 section on monkey patching
+* new example that will monkey patch a built in class
+* new example that will monkey patch the Object class
+
 ## () - new s3 section on additional methods and features
 * new s3 section started
   * s3 example on JSON.stringify

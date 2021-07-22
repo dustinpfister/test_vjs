@@ -41,8 +41,8 @@
     };
 
     var parseBy = {
-
-        xp: function () {}
+        xp: function (xpObj) {},
+        level: function (xpObj) {}
     }
 
     // create a new xpObj
@@ -59,13 +59,15 @@
                     expPowDelta: 1.125
                 }
             ];
+        // starting xpObj
         var xpObj = {
-            xp: 0,
-            level: 0,
+            xp: opt.xp === undefined ? 0 : opt.xp,
+            level: opt.level === undefined ? 0 : opt.level,
             table: [],
             expBase: opt.expBase === undefined ? 2 : opt.expBase,
             wayPoints: opt.wayPoints
         };
+        // create table
         xpObj.table = createLevelTable(xpObj);
         return xpObj;
     };

@@ -10,7 +10,7 @@
 * work on js-javascript-example-idle-game-wild-plant-grid.
 
 ## () - for 07/22/2021
-* start new post for 07/22/2021 on js-array-to-string
+* (done) start new post for 07/22/2021 on js-array-to-string
 * start new proto folder on js-javascript-example-idle-game-wild-plant-grid
 * work on js-javascript-example-exp-system-waypoints
 * edit js-to-string

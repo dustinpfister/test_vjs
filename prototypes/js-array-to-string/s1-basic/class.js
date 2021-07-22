@@ -5,8 +5,17 @@ var Stack = function (a) {
 // the to string method is used to define what a string value should be for
 // this class of an object
 Stack.prototype.toString = function () {
-    return this.a.map(function (obj) {
-        return '{x:' + obj.x + ',y:' + obj.y + '}';
+    return this.a.map(function (el) {
+        // if el is a number
+        if (typeof el === 'number') {
+            return String(el);
+        }
+        // string null for null
+        if (el === null) {
+            return 'null';
+        }
+        // default to just calling whatever the toString method is
+        return el.toString();
     }).join(',');
 };
 // value of is used to define what a number value should be for this
@@ -26,6 +35,9 @@ Stack.prototype.valueOf = function () {
     }, 0);
 };
 
-var s = new Stack([1, [ 1, 1], { x: 3 }]);
-
+var s = new Stack([null, 1, [1, 1], {
+                x: 3
+            }
+        ]);
+console.log(s.toString());
 console.log(s.valueOf()); // 6

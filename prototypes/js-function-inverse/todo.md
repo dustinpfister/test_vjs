@@ -1,6 +1,6 @@
 # js-function-inverse
 
-## () - s2 section on distance and angles
+## () - Math.atan2 and s2 section on distance and angles
 * new s1 example working with Math.atan2
 * start an s2 section on the subject of distances and angles
   * s2 example where I have a distance, and and angle and I want a position + inverse

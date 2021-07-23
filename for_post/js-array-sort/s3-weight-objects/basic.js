@@ -7,14 +7,23 @@ var posts = [
 // create weight objects array
 var weightObjects = posts.map(function(post, index){
     var wcScore = 1000 * ( post.wc >= 1800 ? 1 : post.wc / 1800 ),
-    blScore = 1000 * ( post.bl >= 5 ? 1 : post.bl / 5 ),
-    freshScore = 0;
+    blScore = 1000 * ( post.bl >= 5 ? 1 : post.bl / 5 );
     return {
-        weight: wcScore + blScore + freshScore,
+        weight: wcScore + blScore,
         index: index
     };
 });
-
 console.log(weightObjects);
 
-// sort the weight objects
+// sort the weight objects by the weight property
+weightObjects.sort(function(a, b){
+    if(a.weight > b.weight){
+        return -1;
+    }
+    if(a.weight < b.weight){
+        return 1;
+    }
+    return 0;
+});
+
+console.log(weightObjects);

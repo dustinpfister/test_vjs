@@ -5,13 +5,12 @@
 * finish js-javascript-example-orb-pool-module proto folder
 * write a post on the project thus far
 
-## () - for 07/23/2021
-* (done) start post for 07/23/2021 on js-function-inverse
-* edit js-function to mention new post on inverse functions
-* edit js-array-splice
-* edit js-array-flat
-* edit js-array-fill
+## () - new javascript examaple post wild plant grid
 * work on js-javascript-example-idle-game-wild-plant-grid.
+
+## (done) - for 07/23/2021
+* (done) start post for 07/23/2021 on js-function-inverse
+* (done) edit js-function to mention new post on inverse functions
 
 ## (done) - for 07/22/2021
 * (done) start new post for 07/22/2021 on js-array-to-string

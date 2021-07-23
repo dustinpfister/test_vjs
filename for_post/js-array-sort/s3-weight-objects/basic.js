@@ -14,6 +14,14 @@ var weightObjects = posts.map(function(post, index){
     };
 });
 console.log(weightObjects);
+/*
+[
+  { weight: 1000, index: 0 },
+  { weight: 1565, index: 1 },
+  { weight: 1350, index: 2 }
+]
+*/
+
 
 // sort the weight objects by the weight property
 weightObjects.sort(function(a, b){
@@ -27,3 +35,13 @@ weightObjects.sort(function(a, b){
 });
 
 console.log(weightObjects);
+/*
+[
+  { weight: 1565, index: 1 },
+  { weight: 1350, index: 2 },
+  { weight: 1000, index: 0 }
+]
+*/
+
+// use the index prop, or attach objects references to get the best post
+console.log( posts[weightObjects[0].index] );

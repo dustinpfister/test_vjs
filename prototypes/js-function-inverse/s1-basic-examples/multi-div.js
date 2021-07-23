@@ -1,12 +1,10 @@
 // get x function with div
-var getX = function (y, a) {
-    a = a === undefined ? 5 : a;
-    return y * a;
+var getX = function (y) {
+    return y * 5;
 };
 
-var getY = function (x, a) {
-    a = a === undefined ? 5 : a;
-    return x / a;
+var getY = function (x) {
+    return x / 5;
 };
 
 // getting x when I know y

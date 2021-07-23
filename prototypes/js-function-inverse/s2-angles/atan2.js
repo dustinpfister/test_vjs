@@ -16,7 +16,6 @@ var getPos = function (d) {
 
 var d = getD(0.9396926207859084, 0.3420201433256687);
 console.log(d); // 20
-
 var pos = getPos(20);
 console.log(pos);
 // { x: 0.9396926207859084, y: 0.3420201433256687 }

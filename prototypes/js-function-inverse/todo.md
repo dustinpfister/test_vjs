@@ -4,9 +4,9 @@
 
 ## () - Math.atan2 and s2 section on distance and angles
 * start an s2 section on the subject of distances and angles
-  * s2 example working with Math.atan2
-  * s2 example where I have a distance, and and angle and I want a position + inverse
+  * (done) s2 example working with Math.atan2
   * s2 example getting radians from degrees + inverse
+  * s2 example where I have a distance, and and angle and I want a position + inverse
 
 ## ( done 07/23/2021 ) - first set of examples
 * (done) start an s1 section

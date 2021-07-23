@@ -6,7 +6,10 @@
 * write a post on the project thus far
 
 ## () - for 07/23/2021
-* start post for 07/23/2021 on on js-javascript-example-exp-system-waypoints
+* start post for 07/23/2021 on js-function-inverse
+* edit js-array-splice
+* edit js-array-flat
+* edit js-array-fill
 * work on js-javascript-example-idle-game-wild-plant-grid.
 
 ## () - for 07/22/2021
@@ -14,9 +17,6 @@
 * (done) start new proto folder on js-javascript-example-idle-game-wild-plant-grid
 * (done) work on js-javascript-example-exp-system-waypoints
 * (done) edit js-to-string
-* edit js-array-splice
-* edit js-array-flat
-* edit js-array-fill
 
 ## (done) - for 07/21/2021
 * (done) start post for 07/23/2021 on js-array-find-index

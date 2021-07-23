@@ -1,8 +1,16 @@
 # js-function todo list
 
-## () - new s7 section on inverse functions
-* start a new section on inverse functions
-* be sure to link to post on inverse functions
+## () - stand alone section on function expressions/declarations
+* start a new stand alone section of function expressions and declarations
+* s1 update basic section
+
+## () - request animation frame example for loop section
+* s6-loops have a request animation frame example for loops section
+* link to post on request animation frame
+
+## ( done 07/23/2021 ) - new s7 section on inverse functions
+* (done) s7 start a new section on inverse functions
+* (done) s7 be sure to link to post on inverse functions
 
 ## ( done 10/08/2020 ) - first set of examples
 * (done) s1 section on basics

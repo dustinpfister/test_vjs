@@ -1,0 +1,3 @@
+# game-orbmatch
+
+A simple game that I have made just for the sake of testing out this orb module and make sure that things are working the way they should be when it comes to using the module to make a game as intended. The general idea for this game is to just have a simple turn base style game that involves having two collections of orb objects, one of which is under player control, and the other under control of an AI opponent. Each player has four slots, and a collection of orbs from which they can swap orbs to and from when it is there turn. In addition to setting which orbs are in the slots, they can also choose and orb that will attack for the turn, and which target orb to attack.

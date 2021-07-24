@@ -10,7 +10,8 @@
 * start an orb-collection.js that will be used to create a main collection or orbs for the player
 
 ### () - main.js file and crude start of game
-* have a main sm object that will be the start of what will be a state machine instance
-* have a sm.game object that will be the start of the object that will be created and returned by a game module later on
+* (done) have a main sm object that will be the start of what will be a state machine instance
+* (done) have a canvas lib that will create and return a canvas element
+* (done) have a sm.game object that will be the start of the object that will be created and returned by a game module later on
 * have a draw object that will be the start of the draw module
 * have a main loop method

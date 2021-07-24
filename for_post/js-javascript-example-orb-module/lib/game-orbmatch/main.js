@@ -18,13 +18,15 @@
         });
 
     // game object
-    sm.game = {};
+    var game = sm.game = {};
 
-    console.log(sm);
+    // player orbs
+    game.playerOrbs = [orbMod.createFromLevel([1, 0, 2, 0], 3)];
+
+    game.update = function () {};
 
     draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
 
-    //var orb = orbMod.createFromLevel([1, 0, 2, 0], 3);
-    //console.log(orb);
+    console.log(sm);
 }
     ());

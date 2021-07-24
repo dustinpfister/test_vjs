@@ -1,13 +1,15 @@
 # js-javascript-example-orb-module
 
-## () - 0.3.0 - game-orbmatch lib folder
+
+## () - 0.3.0 - orb-client-collection lib
+* start a new lib folder that will be a collection of orbs
+
+## () - 0.2.0 - game-orbmatch lib folder
 * start a game-orbmatch folder that will be a basic game making use of the orb module used in main index.html
+* I will want a game-orbmatch/orb-collection.js module that will be used to create and update a collection of orbs
 * I will want a game-orbmatch/game.js module that will be used to create and update a main game object
 * I will want a game-orbmatch/draw.js module that will be used for view
 * I will want a game-orbmatch/main.js that will be the main app loop, and any additional code that is needed for ui, ect
-
-## () - 0.2.0 - orb-client-collection lib
-* start a new lib folder that will be a collection of orbs
 
 ## () - 0.1.0 - orb-client, and ratio-client lib folders
 * (done) start a new /lib/orb-client/folder that will be the current state of orb.js moving forward

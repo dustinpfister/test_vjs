@@ -5,4 +5,5 @@ var orbPool = orbPoolMod.create({
 
 var orb = orbPoolMod.newOrb(orbPool, {}, {points:[2,4,0,0]})
 
+console.log(orbPool);
 console.log(orb);

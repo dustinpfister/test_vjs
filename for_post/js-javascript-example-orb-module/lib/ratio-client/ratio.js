@@ -120,19 +120,3 @@ ratio.sum = function(arr){
     });
 };
 
-// is browser?
-ratio.isBrowser = (function(global){
-    return function () {
-        try {
-            return global === window;
-        } catch (e) {
-            return false;
-        }
-    };
-}(this));
-
-// if nodejs, export ratio
-if (!ratio.isBrowser()) {
-    module.exports = ratio;
-}
-

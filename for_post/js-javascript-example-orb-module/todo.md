@@ -7,8 +7,8 @@
 * start a new lib folder that will be a collection of orbs
 
 ## () - 0.1.0 - orb-client, and ratio-client lib folders
-* start a new /lib/orb-client/folder that will be the current state of orb.js moving forward
-* start a new /lib/ratio-client/folder that will be a client side only form of ratio.js used with /lib/orb-client
+* (done) start a new /lib/orb-client/folder that will be the current state of orb.js moving forward
+* (done) start a new /lib/ratio-client/folder that will be a client side only form of ratio.js used with /lib/orb-client
 * have README files for bolth new libs
 * have todo lists for both libs to park what needs to be added, fixed, or changed for each lib
 

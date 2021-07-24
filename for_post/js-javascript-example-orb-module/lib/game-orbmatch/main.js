@@ -20,8 +20,10 @@
     // game object
     var game = sm.game = {};
 
-    // player orbs
-    game.playerOrbs = [orbMod.createFromLevel([1, 0, 2, 0], 3)];
+    // player object
+    game.player = {};
+    game.player.orbs = [orbMod.createFromLevel([1, 0, 2, 0], 3)];
+    game.player.slots = [];
 
     game.update = function () {};
 

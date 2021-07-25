@@ -1,15 +1,25 @@
 # game-orbmatch - todo list
 
-### () 0.3.0 - Main state machine, and basic UI working
+### () 0.4.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
 * when the player wins or looses a game they return to gameConfig state
-* have a basic ui working when it comes to setting up a game state, and playing around with things in the game state
+* have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.2.0  - start of player object in game.js
+### () 0.3.0 - game states
+* a game object will need to have states like that of the main state machine so have a game.currentState prop
+* have a 'playerTurn' state that is a main state during a turn that allows for entering other states or end the turn
+* have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
+* I will want an 'aiTurn' game state
+* have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
+* have a 'gameOver' game state that will fire when the game is over
+
+### () 0.2.0  - start of player object in game.js, and basic UI working
 * the game.js file should have two objects that are 'player objects' one for a human controlled player and the other for the AI
 * the player object will have an orbCollection instance that is the players collection of orbs to work with for the game
 * the player object will have a slots array which are the four slots in the game area that will hold currently active orbs
+* For now I will want to have a way to just have four player orb slots in the canvas.
+* for now have a single orb that can move from one slot to another
 
 ### ( done 07/25/2021 ) 0.1.0 - start the orb-collection.js, game.js, and draw.js files
 * (done) start an orb-collection.js that will be used to create a main collection or orbs for a player human or ai

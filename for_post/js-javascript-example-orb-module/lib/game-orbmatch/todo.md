@@ -1,5 +1,11 @@
 # game-orbmatch - todo list
 
+### () - Main state machine, and basic UI working
+* start a main state machine in main.js that will have just a game, and gameConfig state for now
+* the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
+* when the player wins or looses a game they return to gameConfig state
+* have a basic ui working when it comes to setting up a game state, and playing around with things in the game state
+
 ### () - start of player object in game.js
 * the game.js file should have two objects that are 'player objects' one for a human controlled player and the other for the AI
 * the player object will have an orbCollection instance that is the players collection of orbs to work with for the game

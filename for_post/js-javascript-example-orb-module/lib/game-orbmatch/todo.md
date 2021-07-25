@@ -11,11 +11,11 @@
 * the player object will have an orbCollection instance that is the players collection of orbs to work with for the game
 * the player object will have a slots array which are the four slots in the game area that will hold currently active orbs
 
-### () 0.1.0 - start the orb-collection.js, game.js, and draw.js files
+### ( done 07/25/2021 ) 0.1.0 - start the orb-collection.js, game.js, and draw.js files
 * (done) start an orb-collection.js that will be used to create a main collection or orbs for a player human or ai
 * (done) start a game module that will create and return the game object
 * (done) start a draw.js that will be used to draw a view for the current state of a game object
-* have a local js folder for the game-orbmatch folder and have a folder for each javascript file in that folder
+* (done) have a local js folder for the game-orbmatch folder and have a folder for each JavaScript file in that folder
 
 ### ( done 07/24/2021 ) 0.0.0 - main.js file and very crude start of game
 * (done) have a main sm object that will be the start of what will be a state machine instance

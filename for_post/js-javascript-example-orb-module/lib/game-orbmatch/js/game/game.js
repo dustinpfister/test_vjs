@@ -16,6 +16,8 @@
 
         // the start of a player object
         game.player = createPlayerObject();
+        // start the ai object
+        game.ai = createPlayerObject();
 
         return game;
     };

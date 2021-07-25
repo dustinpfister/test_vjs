@@ -7,7 +7,7 @@
 * start a game module that will create and return the game object
 
 ### () - start the orb-collection.js file
-* start an orb-collection.js that will be used to create a main collection or orbs for the player
+* start an orb-collection.js that will be used to create a main collection or orbs for a player human or ai
 
 ### ( done 07/24/2021 ) - main.js file and very crude start of game
 * (done) have a main sm object that will be the start of what will be a state machine instance

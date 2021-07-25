@@ -30,13 +30,14 @@
 
     // player object
     game.player = {};
-    game.player.orbs = [orbMod.createFromLevel([1, 0, 2, 0], 3)];
+    //game.player.orbs = [orbMod.createFromLevel([1, 0, 2, 0], 3)];
+    game.player.orbCollection = OrbCollection.create();
     game.player.slots = [];
 
     game.update = function () {};
 
     draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
-    draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.orbs[0]);
+    draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.orbCollection.orbs[0]);
     console.log(sm);
 }
     ());

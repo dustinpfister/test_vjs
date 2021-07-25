@@ -3,7 +3,13 @@
     api.create = function (opt) {
         opt = opt || {};
         var game = {};
+
+        // the start of a player object
+        game.player = {};
+        game.player.orbCollection = OrbCollection.create();
+        game.player.slots = [];
+
         return game;
     };
 }
-    (this['GameMod'] = {}));
+    (this['gameMod'] = {}));

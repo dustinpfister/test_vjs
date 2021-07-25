@@ -16,7 +16,9 @@
         ctx.fillText('ratio: ' + orb.ratio.join(','), 10, 40);
     };
 
-    var sm = {};
+    var sm = {
+        game: gameMod.create()
+    };
 
     // canvas object
     sm.canvasObj = canvasMod.createCanvas({
@@ -26,15 +28,12 @@
         });
 
     // game object
-    var game = sm.game = {};
+    //var game = sm.game = {};
 
     // player object
-    game.player = {};
-    //game.player.orbs = [orbMod.createFromLevel([1, 0, 2, 0], 3)];
-    game.player.orbCollection = OrbCollection.create();
-    game.player.slots = [];
 
-    game.update = function () {};
+
+    //game.update = function () {};
 
     draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
     draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.orbCollection.orbs[0]);

@@ -13,7 +13,7 @@
 
 ### () - start the orb-collection.js, game.js, and draw.js files
 * (done) start an orb-collection.js that will be used to create a main collection or orbs for a player human or ai
-* start a game module that will create and return the game object
+* (done) start a game module that will create and return the game object
 * start a draw.js that will be used to draw a view for the current state of a game object
 
 ### ( done 07/24/2021 ) - main.js file and very crude start of game

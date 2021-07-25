@@ -3,7 +3,7 @@
     // state object
     var sm = {
         game: gameMod.create(),
-        canvasObj: canvasMod.createCanvas({
+        canvasObj: utils.createCanvas({
             width: 640,
             height: 480,
             container: document.getElementById('canvas-app')

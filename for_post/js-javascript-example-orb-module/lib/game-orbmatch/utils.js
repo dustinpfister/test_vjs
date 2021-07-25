@@ -1,8 +1,8 @@
 
-var canvasMod = {};
+var utils = {};
 
 // create a canvas element
-canvasMod.createCanvas = function (opt) {
+utils.createCanvas = function (opt) {
     opt = opt || {};
     opt.container = opt.container || document.getElementById('canvas-app') || document.body;
     opt.canvas = document.createElement('canvas');
@@ -23,7 +23,7 @@ canvasMod.createCanvas = function (opt) {
     return opt;
 };
 // get a canvas relative position that is adjusted for scale
-canvasMod.getCanvasRelative = function (e) {
+utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
     pos = {

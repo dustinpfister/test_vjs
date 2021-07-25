@@ -1,13 +1,14 @@
 # game-orbmatch - todo list
 
-### () - draw.js module
-* start a draw.js that will be used to draw a view for the current state of a game object
+### () - start of player object in game.js
+* the game.js file should have two objects that are 'player objects' one for a human controlled player and the other for the AI
+* the player object will have an orbCollection instance that is the players collection of orbs to work with for the game
+* the player object will have a slots array which are the four slots in the game area that will hold currently active orbs
 
-### () - start game module
+### () - start the orb-collection.js, game.js, and draw.js files
+* (done) start an orb-collection.js that will be used to create a main collection or orbs for a player human or ai
 * start a game module that will create and return the game object
-
-### () - start the orb-collection.js file
-* start an orb-collection.js that will be used to create a main collection or orbs for a player human or ai
+* start a draw.js that will be used to draw a view for the current state of a game object
 
 ### ( done 07/24/2021 ) - main.js file and very crude start of game
 * (done) have a main sm object that will be the start of what will be a state machine instance

@@ -26,10 +26,10 @@ I would like to keep working on my orb module, and also the basic game that I ha
 ## What to work on for today
 
 ### () - for 07/26/2021
-* start a folder for js-function-monotonic
+* (done) start a folder for js-function-monotonic
 * write new post for 07/26/2021 on js-function-monotonic
 
-### () - for 07/25/2021
+### (done) - for 07/25/2021
 * (done) work on js-javascript-example-orb-module
 
 ### (done) - for 07/24/2021

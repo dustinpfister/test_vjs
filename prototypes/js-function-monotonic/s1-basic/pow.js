@@ -1,11 +1,15 @@
-var pow = function (i) {
-    return Math.pow(2, i);
+var pow = function (x) {
+    return Math.pow(2, x);
 };
-var i = 0,
-len = 10,
+var x = 0,
+len = 5,
 results = [];
-while(i < len){
-    results.push( pow(i) );
-    i += 1;
+while (x < len) {
+    results.push({
+        x: x,
+        y: pow(x)
+    });
+    x += 1;
 }
-console.log(results);
+console.log(JSON.stringify(results));
+//[{"x":0,"y":1},{"x":1,"y":2},{"x":2,"y":4},{"x":3,"y":8},{"x":4,"y":16}]

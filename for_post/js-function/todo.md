@@ -1,5 +1,12 @@
 # js-function todo list
 
+## () - examples section
+* start a new section that is just a collection of examples of functions.
+* have a distance formula function example
+
+## () - section of high order functions
+* start a new section on the topic of using functions as arguments for other functions.
+
 ## () - stand alone section on function expressions/declarations
 * start a new stand alone section of function expressions and declarations
 * s1 update basic section

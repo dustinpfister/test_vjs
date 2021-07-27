@@ -5,3 +5,5 @@ var domains = [
     { x: [1000, 10000], i: 1250, p: 1.25 }
 ];
 
+console.log(domains);
+

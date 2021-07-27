@@ -8,15 +8,15 @@ var createDomain = function(sx, ex, step){
     }
     return domain;
 };
-// the function that I am cretaing a domain for.
+// the function that I am creating a domain for.
 var func1 = function(x){
    x = x < 0 ? 0: x;
    x = x > 10 ? 10 : x;
    return x / 10;
 };
 
-// cretaing an array for argumnets values that I
-// will act as a domian
+// creating an array for arguments values that I
+// will act as a domain
 var domain = createDomain(0, 11, 1);
 console.log(domain);
 // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]

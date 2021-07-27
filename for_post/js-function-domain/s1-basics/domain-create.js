@@ -12,7 +12,7 @@ var createDomain = function(sx, ex, step){
 var func1 = function(x){
    x = x < 0 ? 0: x;
    x = x > 10 ? 10 : x;
-   return x / 10;
+   return Math.round(x) / 10;
 };
 
 // creating an array for arguments values that I

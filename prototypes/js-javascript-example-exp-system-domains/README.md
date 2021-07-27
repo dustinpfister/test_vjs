@@ -1,0 +1,3 @@
+# js-javascript-example-exp-system-domains
+
+The idea came to me that maybe a good way to create an experence point system would be to create one or more arrays that define what the argumnet domain is for another. The domain does not need to be an array of all possible values mid you, but min and max ranges. In any case this is something that I wanted to explore at least, so I started a prototype folder.

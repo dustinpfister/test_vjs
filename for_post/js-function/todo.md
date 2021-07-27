@@ -8,6 +8,9 @@
 * s6-loops have a request animation frame example for loops section
 * link to post on request animation frame
 
+## () - new section of domain of a function
+* () new s8 section of function domain
+
 ## ( done 07/23/2021 ) - new s7 section on inverse functions
 * (done) s7 start a new section on inverse functions
 * (done) s7 be sure to link to post on inverse functions

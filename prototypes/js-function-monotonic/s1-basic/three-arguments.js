@@ -28,4 +28,3 @@ while (x < len) {
 console.log(results.map((obj) => {
         return obj.y
     }));
-//console.log(JSON.stringify(results));

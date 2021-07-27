@@ -25,9 +25,18 @@ I would like to keep working on my orb module, and also the basic game that I ha
 
 ## What to work on for today
 
-### () - for 07/26/2021
+### () - for 07/28/2021
+* () start a new proto folder on js-function-diminishing-returns
+* () write a new post on js-function-diminishing-returns for 07/28/2021
+
+### () - for 07/27/2021
+* () start a proto folder for js-function-domain
+* () write a new post on js-function-domain for 07/27/2021
+* (done) edit and expand post on js-function-monotonic
+
+### (done) - for 07/26/2021
 * (done) start a folder for js-function-monotonic
-* write new post for 07/26/2021 on js-function-monotonic
+* (done) write new post for 07/26/2021 on js-function-monotonic
 
 ### (done) - for 07/25/2021
 * (done) work on js-javascript-example-orb-module

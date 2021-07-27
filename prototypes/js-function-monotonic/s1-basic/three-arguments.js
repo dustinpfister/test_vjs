@@ -12,9 +12,8 @@ var monotonic = function (x) {
     b = Math.floor(x / 4) * 5,
     c = b + 5;
     return threeArguments(a, b, c);
-
 };
-
+// seems to work
 var x = 0,
 len = 12,
 results = [];
@@ -28,3 +27,4 @@ while (x < len) {
 console.log(results.map((obj) => {
         return obj.y
     }));
+//[ 0, 2.5, 3.33, 3.75, 5, 7.5, 8.33, 8.75, 10, 12.5, 13.33, 13.75 ]

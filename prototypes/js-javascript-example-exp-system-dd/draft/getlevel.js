@@ -4,11 +4,15 @@ var getXP = function(level){
     //return level * ( level - 1 ) * 500;
     //return level * ( level - 1 )
     //return 500 * Math.pow(level, 2) - 500 * level;
+    var a = Math.pow(level, 2),
+    b = 500 * a,
+    c = 500 * level,
+    xp = b - c; 
     return {
-        a: Math.pow(level, 2),
-        b: 500 * Math.pow(level, 2),
-        c: 500 * level,
-        d: 500 * Math.pow(level, 2) - 500 * level
+        a: a,
+        b: b,
+        c: c,
+        xp: xp
     };
 };
 
@@ -34,7 +38,7 @@ while(level <= levelCap){
         level: level,
         xp: xp,
         //diff: getXP(level) - getXP(level - 1),
-        inverse: getLevel(xp.d)
+        inverse: getLevel(xp.xp)
     });
     level += 1;
 }

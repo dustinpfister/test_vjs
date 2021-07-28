@@ -1,3 +1,8 @@
+// get xp
+var getXP2 = function(level){
+    return 500 * Math.pow(level, 2) - 500 * level;
+};
+
 var getObjByLevel = function(level){
     var a = Math.pow(level, 2),
     b = 500 * a,

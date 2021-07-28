@@ -28,11 +28,13 @@ I would like to keep working on my orb module, and also the basic game that I ha
 ### () - for 07/30/2021
 
 ### () - for 07/29/2021
+* edit js-function-diminishing-returns
 
-### () - for 07/28/2021
+
+### (done) - for 07/28/2021
 * (done) edit js-function-inverse
 * (done) start a new proto folder on js-function-diminishing-returns
-* () write a new post on js-function-diminishing-returns for 07/28/2021
+* (done) write a new post on js-function-diminishing-returns for 07/28/2021
 
 ### (done) - for 07/27/2021
 * (done) start a proto folder for js-function-domain

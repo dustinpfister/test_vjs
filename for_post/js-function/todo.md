@@ -1,5 +1,11 @@
 # js-function todo list
 
+
+Decent dpf on some basics
+```
+https://www.mesacc.edu/~scotz47781/mat120/notes/inverse/find_inverse/inverse_functions_intro.pdf
+```
+
 ## () - examples section
 * start a new section that is just a collection of examples of functions.
 * have a distance formula function example

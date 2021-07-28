@@ -1,6 +1,7 @@
 # js-function-inverse
 
-## () - s3 section on simple exp system
+## () - s3 section on first xp system
+* start a new section on the functions used for my first experience point system
 
 ## ( done 07/23/2021 ) - Math.atan2 and s2 section on distance and angles
 * (done) start an s2 section on the subject of distances and angles

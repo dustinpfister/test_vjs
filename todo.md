@@ -16,7 +16,7 @@ I would like to keep working on my orb module, and also the basic game that I ha
 * finish js-javascript-example-orb-pool-module proto folder
 * write a post on the project thus far
 
-### () - new javascript examaple post wild plant grid
+### () - new javascript example post wild plant grid
 * work on js-javascript-example-idle-game-wild-plant-grid.
 
 
@@ -25,11 +25,13 @@ I would like to keep working on my orb module, and also the basic game that I ha
 
 ## What to work on for today
 
+### () - for 07/30/2021
+
+### () - for 07/29/2021
+
 ### () - for 07/28/2021
 * () start a new proto folder on js-function-diminishing-returns
 * () write a new post on js-function-diminishing-returns for 07/28/2021
-* edit new post on js-function-domain
-* edit new post on js-function-monotonic
 
 ### (done) - for 07/27/2021
 * (done) start a proto folder for js-function-domain

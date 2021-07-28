@@ -12,6 +12,20 @@ var getObjByLevel = function(level){
     };
 };
 
+var getObjByXP = function(xp){
+    var a = 0,
+    b = 0,
+    c = 0,
+    level = 0;
+    return {
+        a: a,
+        b: b,
+        c: c,
+        level: level,
+        xp: xp
+    };
+};
+
 // create table
 var level = 1,
 levelCap = 10,
@@ -19,7 +33,8 @@ table = [];
 while(level <= levelCap){
     table.push({
         level: level,
-        obj: getObjByLevel(level)
+        objByLevel: getObjByLevel(level),
+        objByXP: getObjByXP( getObjByLevel(level).xp )
     });
     level += 1;
 }

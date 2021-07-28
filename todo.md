@@ -30,6 +30,7 @@ I would like to keep working on my orb module, and also the basic game that I ha
 ### () - for 07/29/2021
 
 ### () - for 07/28/2021
+* (done) edit js-function-inverse
 * () start a new proto folder on js-function-diminishing-returns
 * () write a new post on js-function-diminishing-returns for 07/28/2021
 

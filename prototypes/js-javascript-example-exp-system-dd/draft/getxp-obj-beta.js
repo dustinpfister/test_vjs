@@ -16,7 +16,7 @@ var getObjByXP = function(xp){
     var a = 0,
     b = 0,
     c = 0,
-    level = 0;
+    level = b + c;
     return {
         a: a,
         b: b,

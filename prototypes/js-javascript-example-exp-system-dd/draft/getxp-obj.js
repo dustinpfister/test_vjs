@@ -1,4 +1,4 @@
-var getObj = function(level){
+var getObjByLevel = function(level){
     var a = Math.pow(level, 2),
     b = 500 * a,
     c = 500 * level,
@@ -7,6 +7,7 @@ var getObj = function(level){
         a: a,
         b: b,
         c: c,
+        level: level,
         xp: xp
     };
 };
@@ -18,7 +19,7 @@ table = [];
 while(level <= levelCap){
     table.push({
         level: level,
-        obj: getObj(level)
+        obj: getObjByLevel(level)
     });
     level += 1;
 }

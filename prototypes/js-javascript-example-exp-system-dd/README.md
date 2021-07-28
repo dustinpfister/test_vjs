@@ -1,6 +1,6 @@
 # js-javascript-example-exp-system-dd
 
-The aim here is to make an experence point system based on the system used in the original Dungeons and Dragons
+The aim here is to make an experence point system based on the system used in the original Dungeons and Dragons. Just like many of my other experence point systems I have had a hard time making an inverse function for getting level when xp is known. So as of this writing I have not gotten far with this one also.
 
 
 ### resources

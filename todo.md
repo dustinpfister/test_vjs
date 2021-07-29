@@ -26,10 +26,13 @@ I would like to keep working on my orb module, and also the basic game that I ha
 ## What to work on for today
 
 ### () - for 07/30/2021
+* start a js-function-one-to-one proto folder
+* start a new post on js-function-many-to-one for 07/30/2021
 
 ### () - for 07/29/2021
+* start a js-function-many-to-one proto folder
+* start a new post on js-function-many-to-one for 07/29/2021
 * edit js-function-diminishing-returns
-
 
 ### (done) - for 07/28/2021
 * (done) edit js-function-inverse

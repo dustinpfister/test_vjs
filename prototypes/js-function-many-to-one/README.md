@@ -13,3 +13,11 @@ console.log( dSin(450) ); // 1
 ```
 
 So then if the d argument is thought of as x, and the return value is thought of as y, then it is not possible to create an inverse function of this kind of function. The reason why is becuase for any given y value there would be more than one possible value for x when it comes to the idea of thying to make an inverse function for soemthing like this.
+
+## Some resources
+
+Another term for this kind of function might be a surjective function
+
+```
+https://en.wikipedia.org/wiki/Surjective_function
+```

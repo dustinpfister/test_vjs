@@ -32,7 +32,7 @@ I would like to keep working on my orb module, and also the basic game that I ha
 * work on js-javascript-example-orb-module
 
 ### () - for 07/30/2021
-* start a js-function-one-to-one proto folder
+* (done) start a js-function-one-to-one proto folder
 * start a new post on js-function-many-to-one for 07/30/2021
 * edit js-function-many-to-one
 * edit js-function

@@ -1,5 +1,7 @@
 # js-function-one-to-one
 
+## () - section on testing
+* start a new section on the subject of testing if a function is one to one or not
 
 ## ( dome 7/30/2021 ) - 0.0.0 - first set of examples
 * (done) start an s1 section on basic one to one functions

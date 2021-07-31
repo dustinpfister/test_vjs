@@ -30,8 +30,8 @@ I would like to keep working on my orb module, and also the basic game that I ha
 
 ### () for 07/31/2021
 * work on js-javascript-example-orb-module
-* edit js-function-many-to-one
-* edit js-function-many-to-one
+* (done) edit js-function-one-to-one
+* (done) edit js-function-many-to-one
 * edit js-function
 * build
 

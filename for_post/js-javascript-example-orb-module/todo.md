@@ -5,6 +5,7 @@
 * start a new lib folder that will be a collection of orbs
 
 ## () - Have orbmatch game playable
+* see todo list for /lib/game-orbmatch
 
 ## ( done 07/26/2021 ) - game-orbmatch lib folder
 * (done) start a game-orbmatch folder that will be a basic game making use of the orb module used in main index.html

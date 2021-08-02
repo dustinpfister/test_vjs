@@ -10,10 +10,12 @@
         })
     };
 
-    
-
-    // draw
-    draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
-    draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.orbCollection.orbs[0]);
+    var loop = function(){
+        requestAnimationFrame(loop);
+        // draw
+        draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
+        draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.orbCollection.orbs[0]);
+    };
+    loop();
 }
     ());

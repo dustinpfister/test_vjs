@@ -10,6 +10,12 @@
         })
     };
 
+    sm.canvasObj.canvas.addEventListener('mousedown', function(e){
+        var pos = utils.getCanvasRelative(e);
+        console.log(pos);
+        // loop orbs
+    });
+
     var loop = function(){
         requestAnimationFrame(loop);
         // draw

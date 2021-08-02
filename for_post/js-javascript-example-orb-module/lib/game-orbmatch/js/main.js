@@ -10,9 +10,10 @@
         })
     };
 
+    
+
     // draw
     draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
     draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.orbCollection.orbs[0]);
-    console.log(sm);
 }
     ());

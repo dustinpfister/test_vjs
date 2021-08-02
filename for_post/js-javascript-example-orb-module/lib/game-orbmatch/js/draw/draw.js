@@ -5,6 +5,16 @@ draw.background = function (sm, ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
+
+// draw a single orb
+draw.orb = function(sm, ctx, canvas, orb){
+   ctx.fillStyle = 'white';
+   ctx.strokeStyle = 'black';
+   ctx.arc(orb.cx, orb.cy, orb.radius, 0, Math.PI * 2);
+   ctx.fill();
+   ctx.stroke();
+};
+
 // draw info of a single given orb
 draw.orbInfo = function (sm, ctx, canvas, orb) {
     ctx.fillStyle = 'white';

@@ -4,6 +4,8 @@
 ## () - orb-client-collection lib
 * start a new lib folder that will be a collection of orbs
 
+## () - Have a recipe type support
+
 ## () - Have orbmatch game playable
 * see todo list for /lib/game-orbmatch
 

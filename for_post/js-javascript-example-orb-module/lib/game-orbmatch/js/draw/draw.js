@@ -10,7 +10,7 @@ draw.background = function (sm, ctx, canvas) {
 draw.orb = function(sm, ctx, canvas, orb){
    ctx.fillStyle = 'white';
    ctx.strokeStyle = 'black';
-   ctx.arc(orb.cx, orb.cy, orb.radius, 0, Math.PI * 2);
+   ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
    ctx.fill();
    ctx.stroke();
 };

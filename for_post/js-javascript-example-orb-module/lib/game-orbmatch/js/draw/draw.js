@@ -1,5 +1,6 @@
 // draw module
 var draw = {};
+
 // draw background
 draw.background = function (sm, ctx, canvas) {
     ctx.fillStyle = 'black';
@@ -14,6 +15,13 @@ draw.orb = function (sm, ctx, canvas, orb) {
     ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+};
+
+// draw a single orb
+draw.slots = function (sm, ctx, canvas, slots) {
+    slots.orbs.forEach(function (orb) {
+        draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
+    });
 };
 
 // draw info of a single given orb

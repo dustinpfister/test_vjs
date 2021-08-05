@@ -38,6 +38,8 @@ console.log(orb.type); // 'quad'
         // draw
         draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
 
+        draw.slots(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.slots);
+
         sm.game.player.orbCollection.orbs.forEach(function (orb) {
             draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
         });

@@ -11,8 +11,8 @@
         })
     };
 
+    // event handlers are here in main for now
     var canvas = sm.canvasObj.canvas;
-
     canvas.addEventListener('mousedown', function (e) {
         var pos = utils.getCanvasRelative(e);
         sm.selectedOrb = OrbCollection.getOrbAtPos(sm.game.player.orbCollection, pos.x, pos.y);
@@ -29,6 +29,7 @@
         sm.selectedOrb = null;
     });
 
+    // main app loop
     var loop = function () {
         requestAnimationFrame(loop);
         // draw

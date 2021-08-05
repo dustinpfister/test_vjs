@@ -5,13 +5,14 @@
         opt = opt || {};
         opt.count = opt.count === undefined ? 1 : opt.count;
         var collection = {
-            orbs: []// the main array of orb objects in this orb collection
+            orbs: [] // the main array of orb objects in this orb collection
         };
         // populate orb pool
         var orb,
         i = 0;
         while (i < opt.count) {
-            orb = orbMod.createFromLevel([1, 0, 2, 0], 3);
+            orb = orbMod.createFromLevel([0, 0, 0, 0], 0);
+			console.log(orb)
             orb.x = 32 + (32 + 2) * i;
             orb.y = 400;
             orb.radius = 16;

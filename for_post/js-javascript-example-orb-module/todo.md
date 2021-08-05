@@ -9,6 +9,9 @@
 ## () - Have orbmatch game playable
 * see todo list for /lib/game-orbmatch
 
+## ( done 08/05/2021 ) - new null type orb
+* (done) A orb of type 'null' is possible if points are [0,0,0,0]
+
 ## ( done 07/26/2021 ) - game-orbmatch lib folder
 * (done) start a game-orbmatch folder that will be a basic game making use of the orb module used in main index.html
 

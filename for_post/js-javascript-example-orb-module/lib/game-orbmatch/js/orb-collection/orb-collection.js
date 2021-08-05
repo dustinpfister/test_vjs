@@ -12,8 +12,8 @@
         i = 0;
         while (i < opt.count) {
             orb = orbMod.createFromLevel([1, 0, 2, 0], 3);
-            orb.x = 64;
-            orb.y = 128;
+            orb.x = 32 + (32 + 2) * i;
+            orb.y = 400;
             orb.radius = 16;
             collection.orbs.push(orb);
             i += 1;

@@ -26,7 +26,7 @@
 * (done) have a utils.distance method
 * (done) have a main app loop started
 * (done) use the distance method to find out if an orb is being clicked or not
-* start an OrbCollection.getOrbAtPos method
+* (done) start an OrbCollection.getOrbAtPos method
 * move an orb around in the canvas
 
 ### ( done 07/25/2021 ) 0.1.0 - start the orb-collection.js, game.js, and draw.js files

@@ -7,12 +7,13 @@ draw.background = function (sm, ctx, canvas) {
 };
 
 // draw a single orb
-draw.orb = function(sm, ctx, canvas, orb){
-   ctx.fillStyle = 'white';
-   ctx.strokeStyle = 'black';
-   ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
-   ctx.fill();
-   ctx.stroke();
+draw.orb = function (sm, ctx, canvas, orb) {
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'black';
+    ctx.beginPath();
+    ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
 };
 
 // draw info of a single given orb

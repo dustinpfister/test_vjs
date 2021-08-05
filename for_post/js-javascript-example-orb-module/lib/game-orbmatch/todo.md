@@ -1,5 +1,7 @@
 # game-orbmatch - todo list
 
+### () 0.6.0 - orb snap to locations
+
 ### () 0.5.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done

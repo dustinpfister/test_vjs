@@ -1,13 +1,24 @@
 (function (api) {
+
+    // create an orbCollection object
     api.create = function (opt) {
         opt = opt || {};
-        var orb = orbMod.createFromLevel([1, 0, 2, 0], 3);
-        orb.x = 64;
-        orb.y = 128;
-        orb.radius = 16;
+        opt.count = opt.count === undefined ? 1 : opt.count;
         var collection = {
-            orbs: [orb]// the main array of orb objects in this orb collection
+            orbs: []// the main array of orb objects in this orb collection
         };
+        // populate orb pool
+        var orb,
+        i = 0;
+        while (i < opt.count) {
+            orb = orbMod.createFromLevel([1, 0, 2, 0], 3);
+            orb.x = 64;
+            orb.y = 128;
+            orb.radius = 16;
+            collection.orbs.push(orb);
+            i += 1;
+        }
+
         return collection;
     };
 

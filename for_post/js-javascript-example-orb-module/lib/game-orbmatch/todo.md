@@ -19,7 +19,7 @@
 * (done) One player object for a human controlled player and the other for the AI controlled player
 * (done) The player object will have an orbCollection instance that is the players collection of orbs to work with for the game
 * (done) The player object will have a slots array which are the four slots in the game area that will hold currently active orbs
-* the slots should also be an instance of orb collection
+* (done) the slots should also be an instance of orb collection
 * For now I will want to have a way to just have four player orb slots in the canvas for the player.
 * For now have a single orb that can move from one slot to another.
 

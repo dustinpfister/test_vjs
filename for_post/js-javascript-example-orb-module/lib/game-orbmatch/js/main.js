@@ -34,7 +34,11 @@
         requestAnimationFrame(loop);
         // draw
         draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
-        draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.orbCollection.orbs[0]);
+
+        sm.game.player.orbCollection.orbs.forEach(function (orb) {
+            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
+        });
+
         draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.orbCollection.orbs[0]);
     };
     loop();

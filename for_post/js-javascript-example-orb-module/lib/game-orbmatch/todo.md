@@ -14,12 +14,13 @@
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
 * have a 'gameOver' game state that will fire when the game is over
 
-### () 0.3.0  - start of player object
-* the game.js file should have two objects that are 'player objects' one for a human controlled player and the other for the AI
-* the player object will have an orbCollection instance that is the players collection of orbs to work with for the game
-* the player object will have a slots array which are the four slots in the game area that will hold currently active orbs
+### () 0.3.0  - The player object, and slots
+* (done) The game.js file should have two objects that are 'player objects'
+* (done) One player object for a human controlled player and the other for the AI controlled player
+* (done) The player object will have an orbCollection instance that is the players collection of orbs to work with for the game
+* (done) The player object will have a slots array which are the four slots in the game area that will hold currently active orbs
 * For now I will want to have a way to just have four player orb slots in the canvas for the player.
-* for now have a single orb that can move from one slot to another
+* For now have a single orb that can move from one slot to another.
 
 ### () 0.2.0 - draw.orb, utils.distance, canvas event hander, and app loop
 * (done) start a draw orb method

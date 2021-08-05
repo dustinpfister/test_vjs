@@ -1,5 +1,8 @@
 (function () {
 
+var orb = orbMod.createFromLevel([1,0,0,0], 7);
+console.log(orb.type); // null
+
     // state object
     var sm = {
         game: gameMod.create(),

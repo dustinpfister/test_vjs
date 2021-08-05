@@ -21,8 +21,9 @@
 * (done) The player object will have a slots array which are the four slots in the game area that will hold currently active orbs
 * (done) the slots should also be an instance of orb collection
 * (done) new null orb type
-* draw.js: I will want a draw.slots method
-* I will want to have a way to move one orb from the bottom to a slot and back again.
+* (done) draw.js: I will want a draw.slots method
+* draw.slots should show an empty brown square if the current type of orb is of type null
+* If I drag and drop an orb from the bottom to one of the slots, that values of the orb in the slot will be set to that orb.
 
 ### () 0.2.0 - draw.orb, utils.distance, canvas event hander, and app loop
 * (done) start a draw orb method

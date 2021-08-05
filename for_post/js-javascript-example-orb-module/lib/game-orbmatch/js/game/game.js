@@ -4,8 +4,21 @@
     var createPlayerObject = function (opt) {
         opt = opt || {};
         var playerObj = {};
-        playerObj.orbCollection = OrbCollection.create({count: 8});
-        playerObj.slots = OrbCollection.create({count:4, points:[0,0,0,0], level: 0});
+        playerObj.orbCollection = OrbCollection.create({
+                count: 8
+            });
+        playerObj.slots = OrbCollection.create({
+                count: 4,
+                points: [0, 0, 0, 0],
+                level: 0
+            });
+
+        // position slots
+        playerObj.slots.orbs.forEach(function (orb, i) {
+            orb.y = 240 + 60;
+            orb.x = 32 + (640 - 32) / 4 * i;
+        });
+
         return playerObj;
     };
 

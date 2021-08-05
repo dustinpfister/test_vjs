@@ -31,3 +31,17 @@ console.log(orb.type); // 'pure'
 var orb = orbMod.createFromLevel([1,0,1,0], 7);
 console.log(orb.type); // 'dual'
 ```
+
+### triple type
+
+```js
+var orb = orbMod.createFromLevel([1,0,1,1], 7);
+console.log(orb.type); // 'triple'
+```
+
+### quad
+
+```js
+var orb = orbMod.createFromLevel([1,1,1,1], 7);
+console.log(orb.type); // 'quad'
+```

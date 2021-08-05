@@ -20,7 +20,6 @@
             collection.orbs.push(orb);
             i += 1;
         }
-
         return collection;
     };
 

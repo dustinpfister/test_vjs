@@ -1,7 +1,7 @@
 (function () {
 
-var orb = orbMod.createFromLevel([1,0,0,0], 7);
-console.log(orb.type); // null
+var orb = orbMod.createFromLevel([1,0,1,1], 7);
+console.log(orb.type); // 'triple'
 
     // state object
     var sm = {

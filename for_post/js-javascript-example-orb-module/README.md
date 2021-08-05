@@ -11,16 +11,23 @@ The simple ratio can be used as a way to find what type of orb an orb is. This c
 
 This will be an overview of the various values for the type property of an orb
 
-### The null type
+### null type
 
 ```js
 var orb = orbMod.createFromLevel([0,0,0,0], 0);
 console.log(orb.type); // null
 ```
 
-### The pure type
+### pure type
 
 ```js
 var orb = orbMod.createFromLevel([1,0,0,0], 7);
 console.log(orb.type); // 'pure'
+```
+
+### dual type
+
+```js
+var orb = orbMod.createFromLevel([1,0,1,0], 7);
+console.log(orb.type); // 'dual'
 ```

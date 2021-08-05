@@ -9,7 +9,7 @@ var orbMod = (function (global) {
         binArr = ratio.isBinaryArray(orb.ratio),
         elCount = ratio.countNonZero(orb.ratio);
         if(binArr){
-           type = ['pure', 'dual', 'tripple', 'quad'][elCount - 1];
+           type = ['pure', 'dual', 'triple', 'quad'][elCount - 1];
         }
         return type;
     };

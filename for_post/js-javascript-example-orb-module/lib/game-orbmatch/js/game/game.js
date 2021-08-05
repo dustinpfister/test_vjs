@@ -4,8 +4,8 @@
     var createPlayerObject = function (opt) {
         opt = opt || {};
         var playerObj = {};
-        playerObj.orbCollection = OrbCollection.create();
-        playerObj.slots = [];
+        playerObj.orbCollection = OrbCollection.create({count: 8});
+        playerObj.slots = OrbCollection.create({count:4});
         return playerObj;
     };
 

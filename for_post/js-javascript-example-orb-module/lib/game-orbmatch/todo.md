@@ -1,7 +1,5 @@
 # game-orbmatch - todo list
 
-### () 0.6.0 - orb snap to locations
-
 ### () 0.5.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
@@ -20,7 +18,7 @@
 * the game.js file should have two objects that are 'player objects' one for a human controlled player and the other for the AI
 * the player object will have an orbCollection instance that is the players collection of orbs to work with for the game
 * the player object will have a slots array which are the four slots in the game area that will hold currently active orbs
-* For now I will want to have a way to just have four player orb slots in the canvas.
+* For now I will want to have a way to just have four player orb slots in the canvas for the player.
 * for now have a single orb that can move from one slot to another
 
 ### () 0.2.0 - draw.orb, utils.distance, canvas event hander, and app loop

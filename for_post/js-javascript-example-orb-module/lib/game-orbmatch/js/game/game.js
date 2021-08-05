@@ -3,7 +3,9 @@
     // create a player/ai object
     var createPlayerObject = function (opt) {
         opt = opt || {};
-        var playerObj = {};
+        var playerObj = {
+            faction: opt.faction || 'ai'
+        };
         playerObj.orbCollection = OrbCollection.create({
                 count: 8
             });
@@ -15,7 +17,7 @@
 
         // position slots
         playerObj.slots.orbs.forEach(function (orb, i) {
-            orb.y = 240 + 60 * (opt.faction === 'player' ? 1: -1);
+            orb.y = 240 + 60 * (playerObj.faction === 'player' ? 1 : -1);
             orb.x = 32 + (640 - 32) / 4 * i;
         });
 
@@ -27,9 +29,13 @@
         opt = opt || {};
         var game = {};
         // the start of a player object
-        game.player = createPlayerObject({faction:'player'});
+        game.player = createPlayerObject({
+                faction: 'player'
+            });
         // start the ai object
-        game.ai = createPlayerObject({faction:'ai'});
+        game.ai = createPlayerObject({
+                faction: 'ai'
+            });
         return game;
     };
 }

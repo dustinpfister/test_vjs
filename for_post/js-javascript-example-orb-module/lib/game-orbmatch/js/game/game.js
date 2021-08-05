@@ -5,7 +5,7 @@
         opt = opt || {};
         var playerObj = {};
         playerObj.orbCollection = OrbCollection.create({count: 8});
-        playerObj.slots = OrbCollection.create({count:4});
+        playerObj.slots = OrbCollection.create({count:4, points:[0,0,0,0], level: 0});
         return playerObj;
     };
 

@@ -20,6 +20,7 @@
 * (done) The player object will have an orbCollection instance that is the players collection of orbs to work with for the game
 * (done) The player object will have a slots array which are the four slots in the game area that will hold currently active orbs
 * (done) the slots should also be an instance of orb collection
+* (done) new null orb type
 * draw.js: I will want a draw.slots method
 * I will want to have a way to move one orb from the bottom to a slot and back again.
 

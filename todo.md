@@ -25,15 +25,11 @@ I would like to keep working on my orb module, and also the basic game that I ha
 
 ## What to work on for today
 
-### () for 08/01/2021
-* work on js-javascript-example-orb-module
-
-### () for 07/31/2021
+### (done) for 07/31/2021
 * work on js-javascript-example-orb-module
 * (done) edit js-function-one-to-one
 * (done) edit js-function-many-to-one
-* edit js-function
-* build
+* (done) build
 
 ### (done) - for 07/30/2021
 * (done) start a js-function-one-to-one proto folder

@@ -22,10 +22,11 @@
 * for now have a single orb that can move from one slot to another
 
 ### () 0.2.0 - draw.orb, utils.distance, canvas event hander, and app loop
-* start a draw orb methid
-* have a utils.distance method
-* have a main app loop started
-* use the distnace method to find out if an orb is being client or not
+* (done) start a draw orb method
+* (done) have a utils.distance method
+* (done) have a main app loop started
+* (done) use the distance method to find out if an orb is being clicked or not
+* start an OrbCollection.getOrbAtPos method
 * move an orb around in the canvas
 
 ### ( done 07/25/2021 ) 0.1.0 - start the orb-collection.js, game.js, and draw.js files

@@ -12,16 +12,8 @@
 
     sm.canvasObj.canvas.addEventListener('mousedown', function (e) {
         var pos = utils.getCanvasRelative(e);
-        var orbCollection = sm.game.player.orbCollection;
-        // loop orbs
-        var i = orbCollection.orbs.length;
-        while (i--) {
-            var orb = orbCollection.orbs[i];
-            var d = utils.distance(orb.x, orb.y, pos.x, pos.y);
-            if (d <= orb.radius) {
-                console.log(orb);
-            }
-        }
+        var orb = OrbCollection.getOrbAtPos(sm.game.player.orbCollection, pos.x, pos.y);
+        console.log(orb);
     });
 
     var loop = function () {

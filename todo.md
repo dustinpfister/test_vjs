@@ -9,14 +9,18 @@ I should have one "STICKY PROJECT" at any given moment that I will tend to work 
 I would like to keep working on my orb module, and also the basic game that I have started in that module called orb match that will be the first game making use of the orb module. Keep the game as simple as possible while working out what the features of orb.js should be for more complex games that might come to be later on with orb.js. If all goes well the orb match game might turn into a stand alone project outside of this repository.
 
 
-## new ideas for proto type folders
 
-### () - new javascript example post on orb pool module
-* start a todo list for the proto folder, outline what needs to be added and changed to get to MVP
-* finish js-javascript-example-orb-pool-module proto folder
-* write a post on the project thus far
 
-### () - new javascript example post wild plant grid
+
+## New for post folders
+
+As of 8/2021 I am going to think more in terms of just writing one new post per week on Friday of each week, and focus more so on improving the quality of posts that I have wrote before hand. Still I do not want to stop writing new posts while I figure out a better plan for doing things.
+
+### () - for 8/06/2021 - new javascript example post on utils lib
+* start a js-javascript-example-utils forposr folder
+* start a new post on js-javascript-example-utils
+
+### () - for 8/13/2021 new javascript example post wild plant grid
 * work on js-javascript-example-idle-game-wild-plant-grid.
 
 

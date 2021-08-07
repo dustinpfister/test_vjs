@@ -64,6 +64,7 @@ utils.canvasPointerEventHandler = function (state, events) {
     return function (e) {
         var pos = utils.getCanvasRelative(e),
         handler = null;
+        e.preventDefault();
         if (e.type === 'mousedown' || e.type === 'touchstart') {
             handler = events['pointerStart'];
         }

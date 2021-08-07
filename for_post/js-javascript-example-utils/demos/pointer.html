@@ -39,7 +39,7 @@ var draw = function(){
     ctx.fill();
 };
 var events = {
-    pointerStart: function(e, pos, state, canvasObj){
+    pointerStart: function(e, pos, state){
        var d = utils.distance(state.circle.x, state.circle.y, pos.x, pos.y);
        state.pointerDown = true;
        // if distance is less than or equal to circle radius step color index
@@ -48,7 +48,7 @@ var events = {
         }
         draw();
     },
-    pointerMove: function(e, pos, state, canvasObj){
+    pointerMove: function(e, pos, state){
         if(state.pointerDown && state.circle.active === true){
             state.circle.x = pos.x;
             state.circle.y = pos.y;
@@ -60,7 +60,7 @@ var events = {
         state.circle.active = false;
     }
 }
-var handler = utils.canvasPointerEventHandler(state.canvasObj, state, events);
+var handler = utils.canvasPointerEventHandler(state, events);
 state.canvasObj.canvas.addEventListener('mousedown', handler);
 state.canvasObj.canvas.addEventListener('mousemove', handler);
 state.canvasObj.canvas.addEventListener('mouseup', handler);

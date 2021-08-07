@@ -60,7 +60,7 @@ utils.getCanvasRelative = function (e) {
     return pos;
 };
 // canvas pointer events helper
-utils.canvasPointerEventHandler = function (canvasObj, state, events) {
+utils.canvasPointerEventHandler = function (state, events) {
     return function (e) {
         var pos = utils.getCanvasRelative(e),
         handler = null;
@@ -74,7 +74,7 @@ utils.canvasPointerEventHandler = function (canvasObj, state, events) {
             handler = events['pointerEnd'];
         }
         if (handler) {
-            handler.call(e, e, pos, state, canvasObj);
+            handler.call(e, e, pos, state);
         }
     };
 

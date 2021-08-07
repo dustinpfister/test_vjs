@@ -60,6 +60,8 @@ var events = {
         state.circle.active = false;
     }
 }
+utils.canvasEvents(state.canvasObj.canvas, state, events);
+/*
 var handler = utils.canvasPointerEventHandler(state, events),
 options = {passive: true}
 
@@ -69,6 +71,7 @@ state.canvasObj.canvas.addEventListener('mouseup', handler, options);
 state.canvasObj.canvas.addEventListener('touchstart', handler, options);
 state.canvasObj.canvas.addEventListener('touchmove', handler, options);
 state.canvasObj.canvas.addEventListener('touchend', handler, options);
+*/
 draw();
         </script>
     </body>

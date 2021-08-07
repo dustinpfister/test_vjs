@@ -52,16 +52,17 @@ utils.getCanvasRelative = function (e) {
         y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
         bx: bx
     };
-    // ajust for native canvas matrix size
+    // adjust for native canvas matrix size
     pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
     pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
     return pos;
 };
-// canvas pointer events helper
+// create and return a canvas pointer event handler
 utils.canvasPointerEventHandler = function (state, events) {
     return function (e) {
         var pos = utils.getCanvasRelative(e),
         handler = null;
+        e.preventDefault();
         if (e.type === 'mousedown' || e.type === 'touchstart') {
             handler = events['pointerStart'];
         }
@@ -75,5 +76,17 @@ utils.canvasPointerEventHandler = function (state, events) {
             handler.call(e, e, pos, state);
         }
     };
-
+};
+// attach canvas pointer events
+utils.canvasEvents = function (canvas, state, events) {
+    var handler = utils.canvasPointerEventHandler(state, events),
+    options = {
+        passive: false
+    }
+    canvas.addEventListener('mousedown', handler, options);
+    canvas.addEventListener('mousemove', handler, options);
+    canvas.addEventListener('mouseup', handler, options);
+    canvas.addEventListener('touchstart', handler, options);
+    canvas.addEventListener('touchmove', handler, options);
+    canvas.addEventListener('touchend', handler, options);
 };

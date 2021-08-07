@@ -78,7 +78,7 @@ utils.canvasPointerEventHandler = function (state, events) {
     };
 };
 // attach canvas pointer events
-utils.canvasEvents = function (canvas, state, events) {
+utils.canvasPointerEvents = function (canvas, state, events) {
     var handler = utils.canvasPointerEventHandler(state, events),
     options = {
         passive: false

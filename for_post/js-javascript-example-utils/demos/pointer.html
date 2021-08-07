@@ -6,15 +6,17 @@
         <div id="canvas-app"></div>
         <script src="../lib/utils.js"></script>
         <script>
-// using the utils.createCanvas method to create a canvasObj
-// with a canvas, and ctx ref
-var canvasObj = utils.createCanvas(),
-canvas = canvasObj.canvas,
-ctx = canvasObj.ctx,
+var state = {
+   pointerDown: false
+};
+state.canvasObj = utils.createCanvas(),
+canvas = state.canvasObj.canvas,
+ctx = state.canvasObj.ctx,
 circle = {
   x: 160,
   y: 120,
   r: 64,
+  active: false,
   colorIndex: 1,
   colors: ['yellow', 'green', 'blue']
 };
@@ -32,21 +34,26 @@ var draw = function(){
 var events = {
     pointerStart: function(e, pos, state, canvasObj){
        var d = utils.distance(circle.x, circle.y, pos.x, pos.y);
+       state.pointerDown = true;
        // if distance is less than or equal to circle radius step color index
        if(d <= circle.r){
-           circle.colorIndex -= 1;
-           // using utils.mod to wrap color index value
-           circle.colorIndex = utils.mod(circle.colorIndex, circle.colors.length);
+           circle.active = true;
         }
         draw();
     },
     pointerMove: function(e, pos, state, canvasObj){
-        circle.x = pos.x;
-        circle.y = pos.y;
+        if(state.pointerDown && circle.active === true){
+            circle.x = pos.x;
+            circle.y = pos.y;
+        }
         draw();
+    },
+    pointerEnd: function(e, pos, state){
+        state.pointerDown = false;
+        circle.active = false;
     }
 }
-var handler = utils.canvasPointerEventHandler(canvasObj, {}, events);
+var handler = utils.canvasPointerEventHandler(state.canvasObj, state, events);
 canvas.addEventListener('mousedown', handler);
 canvas.addEventListener('mousemove', handler);
 canvas.addEventListener('mouseup', handler);

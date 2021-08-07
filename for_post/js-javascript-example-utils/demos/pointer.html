@@ -16,7 +16,7 @@ circle = {
   y: 120,
   r: 64,
   colorIndex: 1,
-  colors: ['red', 'green', 'blue']
+  colors: ['yellow', 'green', 'blue']
 };
 // draw method
 var draw = function(){
@@ -29,20 +29,27 @@ var draw = function(){
     ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
     ctx.fill();
 };
-// attaching an event
-canvas.addEventListener('click', function(e){
-   // using the utils.getCanvasRelative method to get the position of the click
-   var pos = utils.getCanvasRelative(e);
-   // using utils.distance to get the distance between the click position and the center if the circle
-   var d = utils.distance(circle.x, circle.y, pos.x, pos.y);
-   // if distance is less than or equal to circle radius step color index
-   if(d <= circle.r){
-      circle.colorIndex -= 1;
-      // using utils.mod to wrap color index value
-      circle.colorIndex = utils.mod(circle.colorIndex, circle.colors.length);
-   }
-   draw();
-});
+var events = {
+    pointerStart: function(e, pos, state, canvasObj){
+       var d = utils.distance(circle.x, circle.y, pos.x, pos.y);
+       // if distance is less than or equal to circle radius step color index
+       if(d <= circle.r){
+           circle.colorIndex -= 1;
+           // using utils.mod to wrap color index value
+           circle.colorIndex = utils.mod(circle.colorIndex, circle.colors.length);
+        }
+        draw();
+    },
+    pointerMove: function(e, pos, state, canvasObj){
+        circle.x = pos.x;
+        circle.y = pos.y;
+        draw();
+    }
+}
+var handler = utils.canvasPointerEventHandler(canvasObj, {}, events);
+canvas.addEventListener('mousedown', handler);
+canvas.addEventListener('mousemove', handler);
+canvas.addEventListener('mouseup', handler);
 draw();
         </script>
     </body>

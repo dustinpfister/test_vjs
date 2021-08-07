@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="../lib/utils.js"></script>
+        <script>
+// using the utils.createCanvas method to create a canvasObj
+// with a canvas, and ctx ref
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx,
+circle = {
+  x: 160,
+  y: 120,
+  r: 64,
+  colorIndex: 1,
+  colors: ['red', 'green', 'blue']
+};
+// draw method
+var draw = function(){
+    // solid black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    // the circle
+    ctx.fillStyle = circle.colors[circle.colorIndex];
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
+    ctx.fill();
+};
+// attaching an event
+canvas.addEventListener('click', function(e){
+   // using the utils.getCanvasRelative method to get the position of the click
+   var pos = utils.getCanvasRelative(e);
+   // using utils.distance to get the distance between the click position and the center if the circle
+   var d = utils.distance(circle.x, circle.y, pos.x, pos.y);
+   // if distance is less than or equal to circle radius step color index
+   if(d <= circle.r){
+      circle.colorIndex -= 1;
+      // using utils.mod to wrap color index value
+      circle.colorIndex = utils.mod(circle.colorIndex, circle.colors.length);
+   }
+   draw();
+});
+draw();
+        </script>
+    </body>
+</html>

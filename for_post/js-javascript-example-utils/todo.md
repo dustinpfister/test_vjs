@@ -1,6 +1,7 @@
 # js-javascript-example-utils todo list
 
 ## () - utils.canvasPointerEvents method
+* start a utils.canvasPointerEvents method
 
 ## ( done 08/07/2021 ) - demos folder
 * (done) start a demos folder where the aim is to create one or more simple demo projects that make use of this utils lib

@@ -1,7 +1,7 @@
 var utils = {};
 
 // no operation ref
-utils.noop = function(){};
+utils.noop = function () {};
 
 // distance
 utils.distance = function (x1, y1, x2, y2) {
@@ -23,7 +23,7 @@ utils.mod = function (x, m) {
 };
 
 // create a canvas element
-utils.createCanvas = function(opt){
+utils.createCanvas = function (opt) {
     opt = opt || {};
     opt.container = opt.container || document.getElementById('canvas-app') || document.body;
     opt.canvas = document.createElement('canvas');
@@ -36,12 +36,14 @@ utils.createCanvas = function(opt){
     // translate by 0.5, 0.5
     opt.ctx.translate(0.5, 0.5);
     // disable default action for onselectstart
-    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.onselectstart = function () {
+        return false;
+    }
     // append canvas to container
     opt.container.appendChild(opt.canvas);
     return opt;
 };
-// get a canvas relative position that is ajusted for scale
+// get a canvas relative position that is adjusted for scale
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
@@ -56,4 +58,24 @@ utils.getCanvasRelative = function (e) {
     // prevent default
     e.preventDefault();
     return pos;
+};
+// canvas pointer events helper
+utils.canvasPointerEventHandler = function (canvasObj, state, events) {
+    return function (e) {
+        var pos = utils.getCanvasRelative(e),
+        handler = null;
+        if (e.type === 'mousedown' || e.type === 'touchstart') {
+            handler = events['pointerStart'];
+        }
+        if (e.type === 'mousemove' || e.type === 'touchmove') {
+            handler = events['pointerMove'];
+        }
+        if (e.type === 'mouseup' || e.type === 'touchend') {
+            handler = events['pointerEnd'];
+        }
+        if (handler) {
+            handler.call(e, e, pos, state, canvasObj);
+        }
+    };
+
 };

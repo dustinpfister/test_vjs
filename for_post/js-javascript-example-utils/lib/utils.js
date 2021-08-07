@@ -55,8 +55,6 @@ utils.getCanvasRelative = function (e) {
     // ajust for native canvas matrix size
     pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
     pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
-    // prevent default
-    e.preventDefault();
     return pos;
 };
 // canvas pointer events helper
@@ -64,7 +62,6 @@ utils.canvasPointerEventHandler = function (state, events) {
     return function (e) {
         var pos = utils.getCanvasRelative(e),
         handler = null;
-        e.preventDefault();
         if (e.type === 'mousedown' || e.type === 'touchstart') {
             handler = events['pointerStart'];
         }

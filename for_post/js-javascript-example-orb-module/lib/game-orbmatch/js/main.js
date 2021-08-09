@@ -14,6 +14,21 @@
         })
     };
 
+    // EVENTS AND HELPERS
+
+    // is the given orb, over an orb of the given collection?
+    // if so return a reference to that orb from the given collection
+    var isOverCollection = function (orbA, collection) {
+        var i = collection.orbs.length;
+        while (i--) {
+            var orbB = collection.orbs[i];
+            if (utils.distance(orbA.x, orbA.y, orbB.x, orbB.y) <= orbB.radius) {
+                return orbB
+            }
+        }
+        return null;
+    };
+
     var events = {
         pointerStart: function (e, pos, sm) {
             sm.selectedOrb = OrbCollection.getOrbAtPos(sm.game.player.pouch, pos.x, pos.y);
@@ -28,6 +43,7 @@
         pointerEnd: function (e, pos, sm) {
             // if ending with a selected orb
             if (sm.selectedOrb) {
+
                 //console.log(sm.selectedOrb);
                 var orbData = sm.selectedOrb.data,
                 playerObj = sm.game[orbData.faction],
@@ -35,7 +51,9 @@
                 // if the selected orb is from the pouch
                 if (collection.key === 'pouch') {
                     console.log('from pouch');
-                    console.log(sm.selectedOrb);
+                    //console.log(sm.selectedOrb);
+                    var slot = isOverCollection(sm.selectedOrb, playerObj.slots);
+                    console.log(slot);
                 }
             }
             sm.selectedOrb = null;

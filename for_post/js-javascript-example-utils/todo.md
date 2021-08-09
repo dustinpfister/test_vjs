@@ -7,6 +7,8 @@
 ## () - new section on objects pools module an utils
 * start a new section that has to do with using the utils module with an object pool module
 
+## () - sime mod method demo
+
 ## () - simple bounding box demo
 * bounding box demo
 

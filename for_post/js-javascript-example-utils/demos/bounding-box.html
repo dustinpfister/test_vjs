@@ -12,21 +12,22 @@ var createBox = function(x, y, w, h){
         x: x === undefined ? 0: x,
         y: y === undefined ? 0: y,
         w: w === undefined ? 32: w,
-        h: h === undefined ? 32: h
+        h: h === undefined ? 32: h,
+        color: 'lime'
     };
     return box;
 };
 
 var getOverlaping = function(boxArr, a){
     return boxArr.reduce(function(acc, b){
-	    if(a === b){
-		    return acc;
-		}
-	    if(utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h)){
-		    acc.push(b);
-		}
-		return acc;
-	}, []);
+        if(a === b){
+            return acc;
+        }
+        if(utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h)){
+            acc.push(b);
+        }
+        return acc;
+    }, []);
 };
 
 // using the utils.createCanvas method
@@ -42,14 +43,15 @@ boxArr.push(createBox(87, 105));
 
 console.log(getOverlaping(boxArr, boxArr[0]) );
 
+
 // draw method
 var draw = function(){
     // solid black background
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0,canvas.width, canvas.height);
     // the circle
-    ctx.fillStyle = 'red';
     boxArr.forEach(function(box){
+        ctx.fillStyle = box.color;
         ctx.beginPath();
         ctx.rect(box.x, box.y, box.w, box.h);
         ctx.fill();

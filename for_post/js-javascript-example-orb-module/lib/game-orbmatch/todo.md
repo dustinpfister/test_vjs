@@ -15,8 +15,9 @@
 * have a 'gameOver' game state that will fire when the game is over
 
 ### () 0.4.0 - Swap orbs to an from slots
+* I should be able to click and drag a slot orb, back to a location in the pouch that is null
 
-### () 0.3.0  - The player object, and slots
+### ( done 08/09/2021 ) 0.3.0  - The player object, and slots
 * (done) The game.js file should have two objects that are 'player objects'
 * (done) One player object for a human controlled player and the other for the AI controlled player
 * (done) The player object will have an orbCollection instance that is the players collection of orbs to work with for the game
@@ -25,7 +26,7 @@
 * (done) new null orb type
 * (done) draw.js: I will want a draw.slots method
 * (done) draw.slots should show an empty brown square if the current type of orb is of type null
-* If I drag and drop an orb from the bottom to one of the slots, that values of the orb in the slot will be set to that orb.
+* (done) If I drag and drop an orb from the bottom to one of the slots, that values of the orb in the slot will be set to that orb.
 
 ### ( done 08/05/2021 ) 0.2.0 - draw.orb, utils.distance, canvas event hander, and app loop
 * (done) start a draw orb method

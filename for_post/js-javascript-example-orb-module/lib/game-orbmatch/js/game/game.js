@@ -7,9 +7,11 @@
             faction: opt.faction || 'ai'
         };
         playerObj.orbCollection = OrbCollection.create({
+                faction: playerObj.faction,
                 count: 8
             });
         playerObj.slots = OrbCollection.create({
+                faction: playerObj.faction,
                 count: 4,
                 points: [0, 0, 0, 0],
                 level: 0

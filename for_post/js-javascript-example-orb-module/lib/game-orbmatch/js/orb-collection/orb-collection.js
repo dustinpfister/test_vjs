@@ -7,6 +7,7 @@
         opt.points = opt.points || [1, 0, 0, 0];
         opt.level = opt.level === undefined ? 1 : opt.level;
         var collection = {
+            faction: opt.faction || 'ai',
             orbs: []// the main array of orb objects in this orb collection
         };
         // populate orb pool
@@ -15,6 +16,7 @@
         while (i < opt.count) {
             orb = orbMod.createFromLevel(opt.points, opt.level);
             orb.data.i = i; // add index to user data object
+            orb.data.faction = collection.faction;
             orb.x = 32 + (32 + 2) * i;
             orb.y = 400;
             orb.radius = 16;

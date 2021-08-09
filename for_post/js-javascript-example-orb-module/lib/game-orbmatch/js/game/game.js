@@ -6,7 +6,7 @@
         var playerObj = {
             faction: opt.faction || 'ai'
         };
-        playerObj.orbCollection = OrbCollection.create({
+        playerObj.pouch = OrbCollection.create({
                 faction: playerObj.faction,
                 count: 8
             });

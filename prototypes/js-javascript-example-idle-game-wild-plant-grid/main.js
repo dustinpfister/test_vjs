@@ -7,10 +7,10 @@ draw.background = function (sm, ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-
 var sm = {
     canvasObj: utils.createCanvas(),
     game: {},
+    currentState: 'game',
     states: {}
 };
 
@@ -22,5 +22,9 @@ sm.states.game = {
     }
 };
 
-sm.states['game'].draw(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
+var loop = function () {
+    requestAnimationFrame(loop);
+    sm.states[sm.currentState].draw(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
+};
 
+loop();

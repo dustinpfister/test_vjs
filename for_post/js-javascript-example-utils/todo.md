@@ -1,5 +1,21 @@
 # js-javascript-example-utils todo list
 
+## () - new section on using a canvas Module
+
+## () - new section on using a state machine, along with object pool, and canvas lib
+
+## () - new section on objects pools module an utils
+* start a new section that has to do with using the utils module with an object pool module
+
+## () - simple bounding box demo
+* bounding box demo
+
+## () - simple get canvas relative demo
+* simple demo of get canvas relative
+
+## () - simple create canvas demo
+* have just a simple demo of the cerate canvas utils method
+
 ## ( done 08/07/2021 ) - utils.canvasPointerEvents method
 * (done) start a utils.canvasPointerEvents method
 

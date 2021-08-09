@@ -14,6 +14,7 @@
         i = 0;
         while (i < opt.count) {
             orb = orbMod.createFromLevel(opt.points, opt.level);
+            orb.data.i = i; // add index to user data object
             orb.x = 32 + (32 + 2) * i;
             orb.y = 400;
             orb.radius = 16;

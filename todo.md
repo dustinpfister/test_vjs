@@ -21,13 +21,14 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * (done) start a new post on js-javascript-example-utils
 
 ### () - for 8/13/2021 new javascript example post wild plant grid
-* start a js-javascript-example-idle-game-wild-plant-grid proto folder
+* (done) start a js-javascript-example-idle-game-wild-plant-grid proto folder
 * have a lib/utils.js
 * have a lib/grid.js
+* have a lib/grid-plant.js
 * have a lib/game.js
 * have a lib/draw.js
 * have a main.js file
-* have a readme file
+* (done) have a readme file
 * have a todo.md
 
 ### () - for 8/20/2021 new javascript example post on a canvas module

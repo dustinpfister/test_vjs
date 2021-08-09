@@ -8,8 +8,8 @@ draw.background = function (sm, ctx, canvas) {
 };
 
 // draw a single orb
-draw.orb = function (sm, ctx, canvas, orb) {
-    ctx.fillStyle = 'white';
+draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
+    ctx.fillStyle = fillStyle || 'white';
     ctx.strokeStyle = 'black';
     ctx.beginPath();
     ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
@@ -17,7 +17,7 @@ draw.orb = function (sm, ctx, canvas, orb) {
     ctx.stroke();
 };
 
-// draw a single orb
+// draw slots
 draw.slots = function (sm, ctx, canvas, slots) {
     slots.orbs.forEach(function (orb) {
         var r = orb.radius;
@@ -26,6 +26,20 @@ draw.slots = function (sm, ctx, canvas, slots) {
         // only bother drawing the orb if the type IS NOT null
         if (orb.type != 'null') {
             draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
+        }
+    });
+};
+// draw pouch
+draw.pouch = function (sm, ctx, canvas, pouch) {
+    pouch.orbs.forEach(function (orb) {
+        var r = orb.radius;
+        //ctx.fillStyle = 'brown';
+        //ctx.fillRect(orb.x - r, orb.y - r, r * 2, r * 2);
+        // only bother drawing the orb if the type IS NOT null
+        if (orb.type != 'null') {
+            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
+        } else {
+            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb, 'rgba(255,0,0,0.2)');
         }
     });
 };

@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="../lib/utils.js"></script>
+        <script>
+// using the utils.createCanvas method to create a canvasObj
+// with a canvas, and ctx ref
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx
+// solid black background
+ctx.fillStyle = 'black';
+ctx.fillRect(0,0,canvas.width, canvas.height);
+// some text
+ctx.fillStyle = 'white';
+ctx.textBaseline = 'middle';
+ctx.textAlign = 'center';
+ctx.font = '40px arial';
+ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
+
+        </script>
+    </body>
+</html>

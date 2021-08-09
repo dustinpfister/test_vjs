@@ -52,11 +52,19 @@
                 // if the selected orb is from the pouch
                 if (collection.key === 'pouch') {
                     var slot = OrbCollection.isOverCollection(sm.selectedOrb, playerObj.slots);
-                    console.log(slot);
                     if (slot) {
                         // set slot orb props to selected orb
                         OrbCollection.setOrbPropsToOrb(playerObj.slots, slot.data.i, orb);
                         // selected orb type set to null
+                        orb.type = 'null';
+                    }
+                }
+                // if the selected orb is from the slots
+                if (collection.key === 'slots') {
+                    var pouchOrb = OrbCollection.isOverCollection(sm.selectedOrb, playerObj.pouch);
+                    console.log(pouchOrb);
+                    if (pouchOrb) {
+                        OrbCollection.setOrbPropsToOrb(playerObj.pouch, pouchOrb.data.i, orb);
                         orb.type = 'null';
                     }
                 }

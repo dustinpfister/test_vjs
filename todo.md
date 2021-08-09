@@ -16,14 +16,22 @@ I would like to keep working on my orb module, and also the basic game that I ha
 
 As of 8/2021 I am going to think more in terms of just writing one new post per week on Friday of each week, and focus more so on improving the quality of posts that I have wrote before hand. Still I do not want to stop writing new posts while I figure out a better plan for doing things.
 
-### () - for 8/06/2021 - new javascript example post on utils lib
-* start a js-javascript-example-utils forpost folder
-* start a new post on js-javascript-example-utils
+### (done) - for 8/06/2021 - new javascript example post on utils lib
+* (done) start a js-javascript-example-utils forpost folder
+* (done) start a new post on js-javascript-example-utils
 
 ### () - for 8/13/2021 new javascript example post wild plant grid
-* work on js-javascript-example-idle-game-wild-plant-grid.
+* start a js-javascript-example-idle-game-wild-plant-grid proto folder
+* have a lib/utils.js
+* have a lib/grid.js
+* have a lib/game.js
+* have a lib/draw.js
+* have a main.js file
+* have a readme file
+* have a todo.md
 
-
+### () - for 8/20/2021 new javascript example post on a canvas module
+* start a js-javascript-example-canvas-module proto folder
 
 
 

@@ -32,6 +32,15 @@
         return collection;
     };
 
+    // set the proprieties of orb in the collection of the given index to the properties of the given orb
+    api.setOrbPropsToOrb = function (orbCollection, i, orbB) {
+        var orbA = orbCollection.orbs[i];
+        orbA.points = orbB.points;
+        orbA.ratio = orbB.ratio;
+        orbA.type = orbB.type;
+        return orbA;
+    };
+
     // get an orb at the given location or return null of no orb is there
     api.getOrbAtPos = function (orbCollection, x, y) {
         // loop orbs

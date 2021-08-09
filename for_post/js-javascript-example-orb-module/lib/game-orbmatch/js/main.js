@@ -53,7 +53,11 @@
                 if (collection.key === 'pouch') {
                     var slot = isOverCollection(sm.selectedOrb, playerObj.slots);
                     console.log(slot);
-                    if (slot) {}
+                    if (slot) {
+						
+						OrbCollection.setOrbPropsToOrb(playerObj.slots, slot.data.i, orb);
+						
+					}
                 }
             }
             // always send orb back to home location

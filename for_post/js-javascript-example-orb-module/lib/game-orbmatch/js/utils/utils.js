@@ -1,11 +1,8 @@
-
 var utils = {};
-
 // distance
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
-
 // create a canvas element
 utils.createCanvas = function (opt) {
     opt = opt || {};
@@ -42,4 +39,37 @@ utils.getCanvasRelative = function (e) {
     // prevent default
     e.preventDefault();
     return pos;
-}; ;
+};
+// create and return a canvas pointer event handler
+utils.canvasPointerEventHandler = function (state, events) {
+    return function (e) {
+        var pos = utils.getCanvasRelative(e),
+        handler = null;
+        e.preventDefault();
+        if (e.type === 'mousedown' || e.type === 'touchstart') {
+            handler = events['pointerStart'];
+        }
+        if (e.type === 'mousemove' || e.type === 'touchmove') {
+            handler = events['pointerMove'];
+        }
+        if (e.type === 'mouseup' || e.type === 'touchend') {
+            handler = events['pointerEnd'];
+        }
+        if (handler) {
+            handler.call(e, e, pos, state);
+        }
+    };
+};
+// attach canvas pointer events
+utils.canvasPointerEvents = function (canvas, state, events) {
+    var handler = utils.canvasPointerEventHandler(state, events),
+    options = {
+        passive: false
+    }
+    canvas.addEventListener('mousedown', handler, options);
+    canvas.addEventListener('mousemove', handler, options);
+    canvas.addEventListener('mouseup', handler, options);
+    canvas.addEventListener('touchstart', handler, options);
+    canvas.addEventListener('touchmove', handler, options);
+    canvas.addEventListener('touchend', handler, options);
+};

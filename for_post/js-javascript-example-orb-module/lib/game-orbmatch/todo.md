@@ -1,18 +1,20 @@
 # game-orbmatch - todo list
 
-### () 0.5.0 - Main state machine
+### () 0.6.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.4.0 - game states
+### () 0.5.0 - game states
 * a game object will need to have states like that of the main state machine so have a game.currentState prop
 * have a 'playerTurn' state that is a main state during a turn that allows for entering other states or end the turn
 * have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
 * have a 'gameOver' game state that will fire when the game is over
+
+### () 0.4.0 - Swap orbs to an from slots
 
 ### () 0.3.0  - The player object, and slots
 * (done) The game.js file should have two objects that are 'player objects'
@@ -22,7 +24,7 @@
 * (done) the slots should also be an instance of orb collection
 * (done) new null orb type
 * (done) draw.js: I will want a draw.slots method
-* draw.slots should show an empty brown square if the current type of orb is of type null
+* (done) draw.slots should show an empty brown square if the current type of orb is of type null
 * If I drag and drop an orb from the bottom to one of the slots, that values of the orb in the slot will be set to that orb.
 
 ### ( done 08/05/2021 ) 0.2.0 - draw.orb, utils.distance, canvas event hander, and app loop

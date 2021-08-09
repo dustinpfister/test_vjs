@@ -41,8 +41,12 @@ boxArr.push(createBox(22, 35));
 boxArr.push(createBox(147, 85));
 boxArr.push(createBox(87, 105));
 
-console.log(getOverlaping(boxArr, boxArr[0]) );
-
+// set color of overlapping box objects to red
+boxArr.forEach(function(a){
+    getOverlaping(boxArr, a).forEach(function(b){
+        b.color = 'red'
+    })
+});
 
 // draw method
 var draw = function(){

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="../lib/utils.js"></script>
+        <script>
+
+var createBox = function(x, y, w, h){
+    var box = {
+        x: x === undefined ? 0: x,
+        y: y === undefined ? 0: y,
+        w: w === undefined ? 32: w,
+        h: h === undefined ? 32: h
+    };
+    return box;
+};
+
+var getOverlaping = function(){
+
+};
+
+// using the utils.createCanvas method
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx,
+boxArr = [];
+
+boxArr.push(createBox(12, 17));
+boxArr.push(createBox(22, 35));
+
+// draw method
+var draw = function(){
+    // solid black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    // the circle
+    ctx.fillStyle = 'red';
+    boxArr.forEach(function(box){
+        ctx.beginPath();
+        ctx.rect(box.x, box.y, box.w, box.h);
+        ctx.fill();
+        ctx.stroke();
+    });
+};
+draw();
+        </script>
+    </body>
+</html>

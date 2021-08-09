@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="../lib/utils.js"></script>
+        <script>
+// using the utils.createCanvas method
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx,
+circle = {
+  x: 160,
+  y: 120,
+  r: 16
+};
+// draw method
+var draw = function(){
+    // solid black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    // the circle
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
+    ctx.fill();
+};
+// attaching an event
+canvas.addEventListener('click', function(e){
+   // using the utils.getCanvasRelative method to get the position of the click
+   var pos = utils.getCanvasRelative(e);
+   // setting the position of the circle to the position of the click
+   circle.x = pos.x;
+   circle.y = pos.y;
+   draw();
+});
+draw();
+        </script>
+    </body>
+</html>

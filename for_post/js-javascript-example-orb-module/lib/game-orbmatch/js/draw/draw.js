@@ -20,6 +20,9 @@ draw.orb = function (sm, ctx, canvas, orb) {
 // draw a single orb
 draw.slots = function (sm, ctx, canvas, slots) {
     slots.orbs.forEach(function (orb) {
+        var r = orb.radius;
+        ctx.fillStyle = 'brown';
+        ctx.fillRect(orb.x - r, orb.y - r, r * 2, r * 2);
         draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
     });
 };

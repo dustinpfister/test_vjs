@@ -25,7 +25,7 @@
 * draw.slots should show an empty brown square if the current type of orb is of type null
 * If I drag and drop an orb from the bottom to one of the slots, that values of the orb in the slot will be set to that orb.
 
-### () 0.2.0 - draw.orb, utils.distance, canvas event hander, and app loop
+### ( done 08/05/2021 ) 0.2.0 - draw.orb, utils.distance, canvas event hander, and app loop
 * (done) start a draw orb method
 * (done) have a utils.distance method
 * (done) have a main app loop started

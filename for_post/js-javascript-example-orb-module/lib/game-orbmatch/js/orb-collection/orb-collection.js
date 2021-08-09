@@ -16,7 +16,8 @@
         while (i < opt.count) {
             orb = orbMod.createFromLevel(opt.points, opt.level);
             orb.data.i = i; // add index to user data object
-            orb.data.faction = collection.faction;
+            orb.data.faction = collection.faction; // add faction string
+            orb.data.collection = collection; // ref to the collection
             orb.x = 32 + (32 + 2) * i;
             orb.y = 400;
             orb.radius = 16;

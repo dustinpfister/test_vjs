@@ -14,8 +14,8 @@
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
 * have a 'gameOver' game state that will fire when the game is over
 
-### () 0.4.0 - Swap orbs to an from slots
-* I should be able to click and drag a slot orb, back to a location in the pouch that is null
+### (done 08/09/2021 ) 0.4.0 - Swap orbs to an from slots
+* (done) I should be able to click and drag a slot orb, back to a location in the pouch that is null
 
 ### ( done 08/09/2021 ) 0.3.0  - The player object, and slots
 * (done) The game.js file should have two objects that are 'player objects'

@@ -9,6 +9,9 @@
 ## () - Have orbmatch game playable
 * see todo list for /lib/game-orbmatch
 
+## ( done 08/09/2021 ) - data object for an orb
+* (done) in orb-client add a data object that can be used to park user data
+
 ## ( done 08/05/2021 ) - new null type orb
 * (done) A orb of type 'null' is possible if points are [0,0,0,0]
 

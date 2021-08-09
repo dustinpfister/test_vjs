@@ -26,6 +26,10 @@
             }
         },
         pointerEnd: function (e, pos, sm) {
+            // if ending with a selected orb
+            if (sm.selectedOrb) {
+                console.log(sm.selectedOrb);
+            }
             sm.selectedOrb = null;
         }
     };

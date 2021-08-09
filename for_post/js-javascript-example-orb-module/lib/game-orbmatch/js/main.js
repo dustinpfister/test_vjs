@@ -17,7 +17,16 @@
     // EVENTS AND HELPERS
     var events = {
         pointerStart: function (e, pos, sm) {
+            // clicked a pouch orb
             var orb = OrbCollection.getOrbAtPos(sm.game.player.pouch, pos.x, pos.y);
+            if (orb) {
+                // can not select null orbs
+                if (orb.type != 'null') {
+                    sm.selectedOrb = orb;
+                }
+            }
+            // clicked a slot orb
+            var orb = OrbCollection.getOrbAtPos(sm.game.player.slots, pos.x, pos.y);
             if (orb) {
                 // can not select null orbs
                 if (orb.type != 'null') {

@@ -9,8 +9,8 @@
 
 ## () - simple mod method demo
 
-## () - simple bounding box demo
-* bounding box demo
+## ( done 08/09/2021 ) - simple bounding box demo
+* (done) bounding box demo
 
 ## ( done 08/09/2021 ) - simple get canvas relative demo
 * (done) simple demo of get canvas relative

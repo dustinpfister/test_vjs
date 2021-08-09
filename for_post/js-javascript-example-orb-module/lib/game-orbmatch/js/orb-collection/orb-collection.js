@@ -54,5 +54,18 @@
         }
         return null;
     };
+
+    // is the given orb, over an orb of the given collection?
+    // if so return a reference to that orb from the given collection
+    api.isOverCollection = function (orbA, collection) {
+        var i = collection.orbs.length;
+        while (i--) {
+            var orbB = collection.orbs[i];
+            if (utils.distance(orbA.x, orbA.y, orbB.x, orbB.y) <= orbB.radius) {
+                return orbB
+            }
+        }
+        return null;
+    };
 }
     (this['OrbCollection'] = {}));

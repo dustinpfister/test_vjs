@@ -15,25 +15,11 @@
     };
 
     // EVENTS AND HELPERS
-
-    // is the given orb, over an orb of the given collection?
-    // if so return a reference to that orb from the given collection
-    var isOverCollection = function (orbA, collection) {
-        var i = collection.orbs.length;
-        while (i--) {
-            var orbB = collection.orbs[i];
-            if (utils.distance(orbA.x, orbA.y, orbB.x, orbB.y) <= orbB.radius) {
-                return orbB
-            }
-        }
-        return null;
-    };
-
     var events = {
         pointerStart: function (e, pos, sm) {
             var orb = OrbCollection.getOrbAtPos(sm.game.player.pouch, pos.x, pos.y);
             if (orb) {
-                // can not selecte null orbs
+                // can not select null orbs
                 if (orb.type != 'null') {
                     sm.selectedOrb = orb;
                 }
@@ -56,7 +42,7 @@
                 collection = playerObj[orbData.key];
                 // if the selected orb is from the pouch
                 if (collection.key === 'pouch') {
-                    var slot = isOverCollection(sm.selectedOrb, playerObj.slots);
+                    var slot = OrbCollection.isOverCollection(sm.selectedOrb, playerObj.slots);
                     console.log(slot);
                     if (slot) {
                         // set slot orb props to selected orb

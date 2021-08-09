@@ -1,7 +1,7 @@
 (function () {
 
-var orb = orbMod.createFromLevel([1,1,1,1], 7);
-console.log(orb.type); // 'quad'
+    var orb = orbMod.createFromLevel([1, 1, 1, 1], 7);
+    console.log(orb.type); // 'quad'
 
     // state object
     var sm = {
@@ -14,23 +14,22 @@ console.log(orb.type); // 'quad'
         })
     };
 
-    // event handlers are here in main for now
-    var canvas = sm.canvasObj.canvas;
-    canvas.addEventListener('mousedown', function (e) {
-        var pos = utils.getCanvasRelative(e);
-        sm.selectedOrb = OrbCollection.getOrbAtPos(sm.game.player.orbCollection, pos.x, pos.y);
-    });
-    canvas.addEventListener('mousemove', function (e) {
-        var pos = utils.getCanvasRelative(e);
-        if (sm.selectedOrb) {
-            var orb = sm.selectedOrb;
-            orb.x = pos.x;
-            orb.y = pos.y;
+    var events = {
+        pointerStart: function (e, pos, sm) {
+            sm.selectedOrb = OrbCollection.getOrbAtPos(sm.game.player.orbCollection, pos.x, pos.y);
+        },
+        pointerMove: function (e, pos, sm) {
+            if (sm.selectedOrb) {
+                var orb = sm.selectedOrb;
+                orb.x = pos.x;
+                orb.y = pos.y;
+            }
+        },
+        pointerEnd: function (e, pos, sm) {
+            sm.selectedOrb = null;
         }
-    });
-    canvas.addEventListener('mouseup', function (e) {
-        sm.selectedOrb = null;
-    });
+    };
+    utils.canvasPointerEvents(sm.canvasObj.canvas, sm, events);
 
     // main app loop
     var loop = function () {

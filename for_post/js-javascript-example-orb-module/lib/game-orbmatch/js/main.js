@@ -31,7 +31,13 @@
 
     var events = {
         pointerStart: function (e, pos, sm) {
-            sm.selectedOrb = OrbCollection.getOrbAtPos(sm.game.player.pouch, pos.x, pos.y);
+            var orb = OrbCollection.getOrbAtPos(sm.game.player.pouch, pos.x, pos.y);
+            if (orb) {
+                // can not selecte null orbs
+                if (orb.type != 'null') {
+                    sm.selectedOrb = orb;
+                }
+            }
         },
         pointerMove: function (e, pos, sm) {
             if (sm.selectedOrb) {
@@ -74,12 +80,12 @@
         // draw
         draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
         draw.slots(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.slots);
-		draw.pouch(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch)
-		/*
+        draw.pouch(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch)
+        /*
         sm.game.player.pouch.orbs.forEach(function (orb) {
-            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
+        draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
         });
-		*/
+         */
         draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch.orbs[0]);
     };
     loop();

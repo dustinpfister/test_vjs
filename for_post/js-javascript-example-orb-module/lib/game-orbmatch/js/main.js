@@ -45,16 +45,20 @@
             if (sm.selectedOrb) {
 
                 //console.log(sm.selectedOrb);
-                var orbData = sm.selectedOrb.data,
+                var orb = sm.selectedOrb,
+                orbData = orb.data,
                 playerObj = sm.game[orbData.faction],
                 collection = playerObj[orbData.key];
                 // if the selected orb is from the pouch
                 if (collection.key === 'pouch') {
-                    console.log('from pouch');
                     var slot = isOverCollection(sm.selectedOrb, playerObj.slots);
                     console.log(slot);
+                    if (slot) {}
                 }
             }
+            // always send orb back to home location
+            orb.x = orb.data.homeX;
+            orb.y = orb.data.homeY;
             sm.selectedOrb = null;
         }
     };

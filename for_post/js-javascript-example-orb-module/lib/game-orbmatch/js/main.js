@@ -43,7 +43,6 @@
         pointerEnd: function (e, pos, sm) {
             // if ending with a selected orb
             if (sm.selectedOrb) {
-
                 //console.log(sm.selectedOrb);
                 var orb = sm.selectedOrb,
                 orbData = orb.data,
@@ -54,16 +53,14 @@
                     var slot = isOverCollection(sm.selectedOrb, playerObj.slots);
                     console.log(slot);
                     if (slot) {
-						
-						OrbCollection.setOrbPropsToOrb(playerObj.slots, slot.data.i, orb);
-						
-					}
+                        OrbCollection.setOrbPropsToOrb(playerObj.slots, slot.data.i, orb);
+                    }
                 }
+                // always send orb back to home location
+                orb.x = orb.data.homeX;
+                orb.y = orb.data.homeY;
+                sm.selectedOrb = null;
             }
-            // always send orb back to home location
-            orb.x = orb.data.homeX;
-            orb.y = orb.data.homeY;
-            sm.selectedOrb = null;
         }
     };
     utils.canvasPointerEvents(sm.canvasObj.canvas, sm, events);

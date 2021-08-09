@@ -31,8 +31,12 @@
                 //console.log(sm.selectedOrb);
                 var orbData = sm.selectedOrb.data,
                 playerObj = sm.game[orbData.faction],
-                collection = playerObj[orbData.key]
-                    console.log(collection.key);
+                collection = playerObj[orbData.key];
+                // if the selected orb is from the pouch
+                if (collection.key === 'pouch') {
+                    console.log('from pouch');
+                    console.log(sm.selectedOrb);
+                }
             }
             sm.selectedOrb = null;
         }

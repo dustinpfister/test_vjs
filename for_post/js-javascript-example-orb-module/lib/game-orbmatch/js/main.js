@@ -28,7 +28,11 @@
         pointerEnd: function (e, pos, sm) {
             // if ending with a selected orb
             if (sm.selectedOrb) {
-                console.log(sm.selectedOrb);
+                //console.log(sm.selectedOrb);
+                var orbData = sm.selectedOrb.data,
+                playerObj = sm.game[orbData.faction],
+                collection = playerObj[orbData.key]
+                    console.log(collection.key);
             }
             sm.selectedOrb = null;
         }

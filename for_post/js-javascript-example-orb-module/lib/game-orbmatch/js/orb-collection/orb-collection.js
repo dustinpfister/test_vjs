@@ -8,6 +8,7 @@
         opt.level = opt.level === undefined ? 1 : opt.level;
         var collection = {
             faction: opt.faction || 'ai',
+            key: opt.key || 'orbCollection',
             orbs: []// the main array of orb objects in this orb collection
         };
         // populate orb pool
@@ -17,7 +18,9 @@
             orb = orbMod.createFromLevel(opt.points, opt.level);
             orb.data.i = i; // add index to user data object
             orb.data.faction = collection.faction; // add faction string
-            orb.data.collection = collection; // ref to the collection
+            orb.data.key = collection.key; // add faction string
+            //??? I MAY NOT NEED TO ADD A REF To Collection
+            //orb.data.collection = collection; // ref to the collection
             orb.x = 32 + (32 + 2) * i;
             orb.y = 400;
             orb.radius = 16;

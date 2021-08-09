@@ -17,8 +17,16 @@ var createBox = function(x, y, w, h){
     return box;
 };
 
-var getOverlaping = function(){
-
+var getOverlaping = function(boxArr, a){
+    return boxArr.reduce(function(acc, b){
+	    if(a === b){
+		    return acc;
+		}
+	    if(utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h)){
+		    acc.push(b);
+		}
+		return acc;
+	}, []);
 };
 
 // using the utils.createCanvas method
@@ -29,6 +37,10 @@ boxArr = [];
 
 boxArr.push(createBox(12, 17));
 boxArr.push(createBox(22, 35));
+boxArr.push(createBox(147, 85));
+boxArr.push(createBox(87, 105));
+
+console.log(getOverlaping(boxArr, boxArr[0]) );
 
 // draw method
 var draw = function(){

@@ -19,10 +19,12 @@
             orb.data.i = i; // add index to user data object
             orb.data.faction = collection.faction; // add faction string
             orb.data.key = collection.key; // add faction string
+            orb.data.homeX = 32 + (32 + 2) * i;
+            orb.data.homeY = 400;
             //??? I MAY NOT NEED TO ADD A REF To Collection
             //orb.data.collection = collection; // ref to the collection
-            orb.x = 32 + (32 + 2) * i;
-            orb.y = 400;
+            orb.x = orb.data.homeX;
+            orb.y = orb.data.homeY;
             orb.radius = 16;
             collection.orbs.push(orb);
             i += 1;

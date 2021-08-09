@@ -51,7 +51,6 @@
                 // if the selected orb is from the pouch
                 if (collection.key === 'pouch') {
                     console.log('from pouch');
-                    //console.log(sm.selectedOrb);
                     var slot = isOverCollection(sm.selectedOrb, playerObj.slots);
                     console.log(slot);
                 }

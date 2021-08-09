@@ -1,4 +1,6 @@
 
+## () - grid-plants.js, basic features and single plant generation
+
 ## () - grid.js file basic features working
 * have a gridMod.create method that will create and return an object with a cells prop
 * the cells prop is a linear array of objects

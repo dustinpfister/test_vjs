@@ -11,7 +11,7 @@ var sm = {
 // game state
 sm.states.game = {
     update: function (sm, secs) {
-        console.log('tick');
+        
     },
     draw: function (sm, ctx, canvas) {
         draw.background(sm, ctx, canvas);

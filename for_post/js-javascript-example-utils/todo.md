@@ -13,8 +13,8 @@
 ## () - simple get canvas relative demo
 * simple demo of get canvas relative
 
-## () - simple create canvas demo
-* have just a simple demo of the cerate canvas utils method
+## ( done 08/09/2021 ) - simple create canvas demo
+* (done) have just a simple demo of the cerate canvas utils method
 
 ## ( done 08/07/2021 ) - utils.canvasPointerEvents method
 * (done) start a utils.canvasPointerEvents method

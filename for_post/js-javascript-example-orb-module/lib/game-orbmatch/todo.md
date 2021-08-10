@@ -14,7 +14,7 @@
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
 
-### () 0.5.0 - game.js states started with playerTurnOrbMenu state
+### ( done 08/09/2021 ) 0.5.0 - game.js states started with playerTurnOrbMenu state
 * (done) make selectedOrb path of the game object rather than sm
 * (done) a game object will need to have states like that of a main state machine so have a game.currentState prop
 * (done) have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
@@ -23,9 +23,9 @@
 * (done) have a separate draw.orbCollection method
 * (done) have a gameState.playerTurnOrbMenu.update method that will just flash the color of the player slot areas
 * (done) have a gameMod.update method, and call it in the main loop
-* have a secs value to use for gameMod.update
+* (done) have a secs value to use for gameMod.update
 
-### (done 08/09/2021 ) 0.4.0 - Swap orbs to an from slots
+### ( done 08/09/2021 ) 0.4.0 - Swap orbs to an from slots
 * (done) I should be able to click and drag a slot orb, back to a location in the pouch that is null
 
 ### ( done 08/09/2021 ) 0.3.0  - The player object, and slots

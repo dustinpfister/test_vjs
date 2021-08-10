@@ -38,6 +38,22 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 ## What to work on for today
 
+### () for 08/13/2021
+* work on js-javascript-example-idle-game-wild
+* start post on js-javascript-example-idle-game-wild
+
+### () for 08/12/2021
+* work on js-javascript-example-idle-game-wild
+
+### () for 08/11/2021
+* finish s6-examples for js-document-body
+* start new s7 section for js-document-body that has to do with style
+* work on js-javascript-example-idle-game-wild
+
+### () for 08/10/2021
+* (done) new s6 section started, and editing for js-document-body
+* work on js-javascript-example-idle-game-wild
+
 ### (done) for 07/31/2021
 * work on js-javascript-example-orb-module
 * (done) edit js-function-one-to-one

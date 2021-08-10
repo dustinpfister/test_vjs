@@ -4,7 +4,6 @@
         opt = opt || {};
         var grid = {
             cellSelected: null,
-            cellSelectedIndex: -1,
             cells: []
         };
         grid.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;

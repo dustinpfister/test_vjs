@@ -34,11 +34,6 @@
         draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
         draw.slots(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.slots);
         draw.pouch(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch)
-        /*
-        sm.game.player.pouch.orbs.forEach(function (orb) {
-        draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
-        });
-         */
         draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch.orbs[0]);
     };
     loop();

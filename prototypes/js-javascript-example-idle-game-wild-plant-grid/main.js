@@ -2,7 +2,7 @@ var sm = {
     secs: 0,
     fps: 30,
     lt: new Date(),
-    canvasObj: utils.createCanvas(),
+    canvasObj: utils.createCanvas({ width: 640, height: 480}),
     game: gameMod.create(),
     currentState: 'game',
     states: {}
@@ -17,6 +17,7 @@ sm.states.game = {
     },
     draw: function (sm, ctx, canvas) {
         draw.background(sm, ctx, canvas);
+		draw.grid(sm.game.grid, ctx, canvas);
     }
 };
 

@@ -8,6 +8,8 @@
 * (done) have a grid.xOffset and grid.yOffset that is the x and y starting position of the upper left corner
 * (done) have a draw.grid method
 * (done) have a getCellByPixlePos helper
+* (done) have state handlers working
+* use getCellByPixlePos in game state onPointerStart event
 
 ## ( done 08/09/021 ) - start with a few files
 * (done) start a js-javascript-example-idle-game-wild-plant-grid proto folder

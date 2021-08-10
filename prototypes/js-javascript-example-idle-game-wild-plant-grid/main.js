@@ -20,7 +20,9 @@ sm.states.game = {
     },
     events: {
         pointerStart: function (e, pos, sm) {
-            console.log(e, pos, sm);
+            //console.log(e, pos, sm);
+            var cell = gridMod.getCellByPixlePos(sm.game.grid, pos.x, pos.y);
+            console.log(cell);
         },
         pointerMove: function () {},
         pointerEnd: function () {}

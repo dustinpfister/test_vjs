@@ -8,10 +8,13 @@
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.5.0 - game.js states
+### () 0.5.0 - game.js states started
 * (done) make selectedOrb path of the game object rather than sm
 * (done) a game object will need to have states like that of a main state machine so have a game.currentState prop
-* have a 'playerTurn' state that is a main state during a turn that allows for entering other states or end the turn
+* (done) have a 'playerTurn' state object that is a main state during a turn that allows for entering other states or end the turn
+* have a gameMod.emitStateEvent method that will take and event key as an argument
+
+
 * have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.

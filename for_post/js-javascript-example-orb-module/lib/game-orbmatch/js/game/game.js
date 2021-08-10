@@ -76,6 +76,13 @@
         }
     };
 
+    api.emitStateEvent = function (eventKey, e, pos, game) {
+        var handler = gameStates[game.currentState].events[eventKey];
+        if (handler) {
+            handler.call(e, e, pos, game);
+        }
+    }
+
     // create and return an events object for the given game object
     api.onPointerStart = function (e, pos, game) {
         gameStates[game.currentState].events['onPointerStart'].call(e, e, pos, game);

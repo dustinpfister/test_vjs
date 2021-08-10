@@ -16,27 +16,7 @@
     // EVENTS AND HELPERS
     var events = {
         pointerStart: function (e, pos, sm) {
-			
-			gameMod.onPointerStart(e, pos, sm.game)
-			
-			/*
-            // clicked a pouch orb
-            var orb = OrbCollection.getOrbAtPos(sm.game.player.pouch, pos.x, pos.y);
-            if (orb) {
-                // can not select null orbs
-                if (orb.type != 'null') {
-                    sm.game.selectedOrb = orb;
-                }
-            }
-            // clicked a slot orb
-            var orb = OrbCollection.getOrbAtPos(sm.game.player.slots, pos.x, pos.y);
-            if (orb) {
-                // can not select null orbs
-                if (orb.type != 'null') {
-                    sm.game.selectedOrb = orb;
-                }
-            }
-			*/
+            gameMod.emitStateEvent('onPointerStart', e, pos, sm.game);
         },
         pointerMove: function (e, pos, sm) {
             if (sm.game.selectedOrb) {

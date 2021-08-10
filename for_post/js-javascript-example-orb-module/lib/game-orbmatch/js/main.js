@@ -16,6 +16,10 @@
     // EVENTS AND HELPERS
     var events = {
         pointerStart: function (e, pos, sm) {
+			
+			gameMod.onPointerStart(e, pos, sm.game)
+			
+			/*
             // clicked a pouch orb
             var orb = OrbCollection.getOrbAtPos(sm.game.player.pouch, pos.x, pos.y);
             if (orb) {
@@ -32,6 +36,7 @@
                     sm.game.selectedOrb = orb;
                 }
             }
+			*/
         },
         pointerMove: function (e, pos, sm) {
             if (sm.game.selectedOrb) {

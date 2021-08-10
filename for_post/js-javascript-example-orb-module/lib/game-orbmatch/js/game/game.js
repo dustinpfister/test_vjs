@@ -53,14 +53,33 @@
     // player turn state
     gameStates.playerTurn = {
         events: {
-            onPointerStart: function (e, pos, game) {},
+            onPointerStart: function (e, pos, game) {
+                // clicked a pouch orb
+                var orb = OrbCollection.getOrbAtPos(game.player.pouch, pos.x, pos.y);
+                if (orb) {
+                    // can not select null orbs
+                    if (orb.type != 'null') {
+                        game.selectedOrb = orb;
+                    }
+                }
+                // clicked a slot orb
+                var orb = OrbCollection.getOrbAtPos(game.player.slots, pos.x, pos.y);
+                if (orb) {
+                    // can not select null orbs
+                    if (orb.type != 'null') {
+                        game.selectedOrb = orb;
+                    }
+                }
+            },
             onPointerMove: function (e, pos, game) {},
             onPointerEnd: function (e, pos, game) {}
         }
     };
 
     // create and return an events object for the given game object
-    api.onPointerStart = function (e, pos, game) {};
+    api.onPointerStart = function (e, pos, game) {
+        gameStates[game.currentState].events['onPointerStart'].call(e, e, pos, game);
+    };
 
 }
     (this['gameMod'] = {}));

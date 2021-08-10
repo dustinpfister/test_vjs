@@ -20,19 +20,31 @@ draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
 // draw slots
 draw.slots = function (sm, ctx, canvas, slots) {
     slots.orbs.forEach(function (orb) {
-        var r = orb.radius;
-        ctx.fillStyle = 'brown';
-        ctx.fillRect(orb.x - r, orb.y - r, r * 2, r * 2);
+        //var r = orb.radius;
+        //ctx.fillStyle = 'brown';
+        //ctx.fillRect(orb.x - r, orb.y - r, r * 2, r * 2);
         // only bother drawing the orb if the type IS NOT null
         if (orb.type != 'null') {
             draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
         }
     });
 };
+
+draw.slotAreas = function (sm, ctx, canvas) {
+    ['player', 'ai'].forEach(function (faction) {
+        var slots = sm.game[faction].slots;
+        slots.orbs.forEach(function (orb) {
+            var r = orb.radius;
+            ctx.fillStyle = 'brown';
+            ctx.fillRect(orb.x - r, orb.y - r, r * 2, r * 2);
+        });
+    });
+};
+
 // draw pouch
 draw.pouch = function (sm, ctx, canvas, pouch) {
     pouch.orbs.forEach(function (orb) {
-        var r = orb.radius;
+        //var r = orb.radius;
         //ctx.fillStyle = 'brown';
         //ctx.fillRect(orb.x - r, orb.y - r, r * 2, r * 2);
         // only bother drawing the orb if the type IS NOT null

@@ -10,8 +10,12 @@
 * have a 'gameOver' game state that will fire when the game is over
 
 ### () 0.6.0 - game.js playerTurn, aiTurn, and process turn game states started
-* add utils.boundingBox to utils.js
+* (done) add utils.boundingBox to utils.js
+* have a draw.gameState method that will draw the current game state
 * have a 'playerTurn' game state object that is a main state during a turn that will allow for entering other states or end the turn
+* have a 'set orbs' button in playerTurn that will process to playerTurnOrbMenu state
+* have a draw.button method
+
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
 * have a done button in playerTurnOrbMenu state that will result in the the current state being set to playerTurn

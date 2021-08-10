@@ -57,6 +57,16 @@
     var gameStates = {};
 
     // player turn state
+    gameStates.playerTurn = {
+        update: function (game, secs) {},
+        events: {
+            onPointerStart: function (e, pos, game) {},
+            onPointerMove: function (e, pos, game) {},
+            onPointerEnd: function (e, pos, game) {}
+        }
+    };
+
+    // player turn orb menu state
     gameStates.playerTurnOrbMenu = {
         update: function (game, secs) {
             var psf = game.playerSlotFillStyle;

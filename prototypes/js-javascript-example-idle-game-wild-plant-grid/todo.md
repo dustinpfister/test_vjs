@@ -2,7 +2,7 @@
 ## () - grid-plants.js, basic features and single plant generation
 
 ## () - grid.js file basic features working
-* have a gridMod.create method that will create and return an object with a cells prop
+* (done) have a gridMod.create method that will create and return an object with a cells prop
 * the cells prop is a linear array of objects
 * each cell object has properties for index, x, and y pixel and X, and Y cell position values
 * have a grid.xOffset and grid.yOffset that is the x and y starting position of the upper left corner

@@ -37,6 +37,8 @@
             selectedOrb: null,
             playerSlotFillStyle: { // used for flashing effect and solid color
                 secs: 0,
+                colorIndex: 0,
+                colorArray: ['lime', 'red', 'brown'],
                 color: 'lime'
             }
         };
@@ -57,8 +59,14 @@
     // player turn state
     gameStates.playerTurnOrbMenu = {
         update: function (game, secs) {
-
-            game
+            var psf = game.playerSlotFillStyle;
+            psf.secs += secs;
+            if (psf.secs >= 0.5) {
+                psf.colorIndex += 1;
+                psf.colorIndex %= psf.colorArray.length;
+                psf.color = psf.colorArray[psf.colorIndex];
+                psf.secs %= 0.5;
+            }
 
         },
         events: {

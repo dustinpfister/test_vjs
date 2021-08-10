@@ -31,7 +31,7 @@
     var loop = function () {
         requestAnimationFrame(loop);
         // update
-        gameMod.update(sm.game, 0.5);
+        gameMod.update(sm.game, 0.05);
         // draw
         draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
         draw.slotAreas(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);

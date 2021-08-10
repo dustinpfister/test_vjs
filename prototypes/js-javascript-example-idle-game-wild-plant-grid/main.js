@@ -3,10 +3,12 @@ var sm = {
     fps: 30,
     lt: new Date(),
     canvasObj: utils.createCanvas(),
-    game: {},
+    game: gameMod.create(),
     currentState: 'game',
     states: {}
 };
+
+console.log(sm.game);
 
 // game state
 sm.states.game = {

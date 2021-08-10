@@ -1,8 +1,9 @@
 (function (api) {
 
     api.create = function () {
-        var grid = {};
-        return grid;
+        var game = {};
+        game.grid = gridMod.create();
+        return game;
     };
 
 }

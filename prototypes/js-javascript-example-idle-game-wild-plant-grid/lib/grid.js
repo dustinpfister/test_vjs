@@ -5,9 +5,9 @@
         var grid = {
             cells: []
         };
-        grid.cellSize = opt.cellSize === undefined ? 0 : opt.cellSize;
-        grid.w = opt.w === undefined ? 0 : opt.w;
-        grid.h = opt.h === undefined ? 0 : opt.h;
+        grid.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;
+        grid.w = opt.w === undefined ? 8 : opt.w;
+        grid.h = opt.h === undefined ? 8 : opt.h;
         grid.xOffset = opt.xOffset === undefined ? 0 : opt.xOffset;
         grid.yOffset = opt.yOffset === undefined ? 0 : opt.yOffset;
         var i = 0,

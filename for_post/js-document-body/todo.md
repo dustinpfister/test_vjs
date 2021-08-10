@@ -12,8 +12,8 @@ https://html.com/tags/body/
 ## () - new section on events
 * simple on click example of on body
 
-## () - new s2-other-ways section example on query selector
-* start a new other-ways section example on query selector
+## ( done 08/10/2021 ) - new s2-other-ways section example on query selector
+* (done) start a new other-ways section example on query selector
 
 ## ( done 01/03/2019 ) - first set of examples
 * (done) first set of examples done

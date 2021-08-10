@@ -6,6 +6,9 @@
     // state object
     var sm = {
         game: gameMod.create(),
+        fps: 30,
+        secs: 0,
+        lt: new Date(),
         canvasObj: utils.createCanvas({
             width: 640,
             height: 480,
@@ -29,15 +32,20 @@
 
     // main app loop
     var loop = function () {
+        var now = new Date();
+        sm.secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
-        // update
-        gameMod.update(sm.game, 0.05);
-        // draw
-        draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
-        draw.slotAreas(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
-        draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.slots);
-        draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch);
-        //draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch.orbs[0]);
+        if (sm.secs >= 1 / sm.fps) {
+            // update
+            gameMod.update(sm.game, sm.secs);
+            // draw
+            draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
+            draw.slotAreas(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
+            draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.slots);
+            draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch);
+            //draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch.orbs[0]);
+            sm.lt = now;
+        }
     };
     loop();
 }

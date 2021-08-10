@@ -3,6 +3,8 @@
     api.create = function (opt) {
         opt = opt || {};
         var grid = {
+            cellSelected: null,
+            cellSelectedIndex: -1,
             cells: []
         };
         grid.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;
@@ -15,10 +17,13 @@
         len = grid.w * grid.h;
         while (i < len) {
             cell = {
-                i: i,
-                X: i % grid.w,
-                Y: Math.floor(i / grid.w)
+                i: i, // store index for this cell
+                X: i % grid.w, // grid index pos values as uppercase X, and Y
+                Y: Math.floor(i / grid.w),
+                data: {}
+                // user data object
             };
+            // cell pixel pos values as lowercase x, and y
             cell.x = grid.xOffset + cell.X * grid.cellSize;
             cell.y = grid.yOffset + cell.Y * grid.cellSize;
             grid.cells.push(cell);
@@ -27,7 +32,7 @@
         return grid;
     };
     // get a cell by the given pixel position
-    api.getCellByPixlePos = function(grid, x, y) {
+    api.getCellByPixlePos = function (grid, x, y) {
         var i = 0,
         cell,
         len = grid.w * grid.h;

@@ -9,7 +9,10 @@
 * (done) have a draw.grid method
 * (done) have a getCellByPixlePos helper
 * (done) have state handlers working
-* use getCellByPixlePos in game state onPointerStart event
+* (done) use getCellByPixlePos in game state onPointerStart event
+* have a grid.selectedCell, and grid.selectedCellIndex prop
+* have a grid.data object for user data
+* have a selected cell be red
 
 ## ( done 08/09/021 ) - start with a few files
 * (done) start a js-javascript-example-idle-game-wild-plant-grid proto folder

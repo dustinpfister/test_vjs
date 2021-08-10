@@ -9,8 +9,8 @@
 https://html.com/tags/body/
 ```
 
-## () - new section on events
-* simple on click example of on body
+## () - new s6-events section on event attachment and the body element
+* simple on click example of body
 
 ## ( done 08/10/2021 ) - new s2-other-ways section example on query selector
 * (done) start a new other-ways section example on query selector

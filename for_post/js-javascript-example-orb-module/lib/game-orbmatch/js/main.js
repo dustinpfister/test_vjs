@@ -6,7 +6,6 @@
     // state object
     var sm = {
         game: gameMod.create(),
-        selectedOrb: null,
         canvasObj: utils.createCanvas({
             width: 640,
             height: 480,
@@ -22,7 +21,7 @@
             if (orb) {
                 // can not select null orbs
                 if (orb.type != 'null') {
-                    sm.selectedOrb = orb;
+                    sm.game.selectedOrb = orb;
                 }
             }
             // clicked a slot orb
@@ -30,28 +29,28 @@
             if (orb) {
                 // can not select null orbs
                 if (orb.type != 'null') {
-                    sm.selectedOrb = orb;
+                    sm.game.selectedOrb = orb;
                 }
             }
         },
         pointerMove: function (e, pos, sm) {
-            if (sm.selectedOrb) {
-                var orb = sm.selectedOrb;
+            if (sm.game.selectedOrb) {
+                var orb = sm.game.selectedOrb;
                 orb.x = pos.x;
                 orb.y = pos.y;
             }
         },
         pointerEnd: function (e, pos, sm) {
             // if ending with a selected orb
-            if (sm.selectedOrb) {
-                //console.log(sm.selectedOrb);
-                var orb = sm.selectedOrb,
+            if (sm.game.selectedOrb) {
+                //console.log(sm.game.selectedOrb);
+                var orb = sm.game.selectedOrb,
                 orbData = orb.data,
                 playerObj = sm.game[orbData.faction],
                 collection = playerObj[orbData.key];
                 // if the selected orb is from the pouch
                 if (collection.key === 'pouch') {
-                    var slot = OrbCollection.isOverCollection(sm.selectedOrb, playerObj.slots);
+                    var slot = OrbCollection.isOverCollection(sm.game.selectedOrb, playerObj.slots);
                     if (slot) {
                         // set slot orb props to selected orb
                         OrbCollection.setOrbPropsToOrb(playerObj.slots, slot.data.i, orb);
@@ -61,7 +60,7 @@
                 }
                 // if the selected orb is from the slots
                 if (collection.key === 'slots') {
-                    var pouchOrb = OrbCollection.isOverCollection(sm.selectedOrb, playerObj.pouch);
+                    var pouchOrb = OrbCollection.isOverCollection(sm.game.selectedOrb, playerObj.pouch);
                     console.log(pouchOrb);
                     if (pouchOrb) {
                         OrbCollection.setOrbPropsToOrb(playerObj.pouch, pouchOrb.data.i, orb);
@@ -71,7 +70,7 @@
                 // always send orb back to home location
                 orb.x = orb.data.homeX;
                 orb.y = orb.data.homeY;
-                sm.selectedOrb = null;
+                sm.game.selectedOrb = null;
             }
         }
     };

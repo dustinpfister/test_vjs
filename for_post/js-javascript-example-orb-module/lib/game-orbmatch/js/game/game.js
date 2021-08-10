@@ -33,7 +33,8 @@
         opt = opt || {};
         var game = {
             turnNumber: 0,
-            currentState: 'playerTurn'
+            currentState: 'playerTurn',
+            selectedOrb: null
         };
         // the start of a player object
         game.player = createPlayerObject({
@@ -45,5 +46,14 @@
             });
         return game;
     };
+	
+	// EVENTS
+	
+	// create and return an events object for the given game object
+	api.onPointerStart = function(e, pos, game){
+		
+		
+	};
+	
 }
     (this['gameMod'] = {}));

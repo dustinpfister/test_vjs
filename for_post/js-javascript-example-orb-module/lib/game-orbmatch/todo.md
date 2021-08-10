@@ -1,13 +1,16 @@
 # game-orbmatch - todo list
 
+### () 0.x.0 - main state machine
+
 ### () 0.6.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.5.0 - game states
-* a game object will need to have states like that of the main state machine so have a game.currentState prop
+### () 0.5.0 - game.js states
+* make selectedOrb path of the game object rather than sm
+* a game object will need to have states like that of a main state machine so have a game.currentState prop
 * have a 'playerTurn' state that is a main state during a turn that allows for entering other states or end the turn
 * have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
 * I will want an 'aiTurn' game state

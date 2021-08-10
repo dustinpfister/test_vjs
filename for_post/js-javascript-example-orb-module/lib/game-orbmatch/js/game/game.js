@@ -38,7 +38,11 @@
         var game = {
             turnNumber: 0,
             currentState: 'playerTurnOrbMenu',
-            selectedOrb: null
+            selectedOrb: null,
+            playerSlotFillStyle: { // used for flashing effect and solid color
+                secs: 0,
+                color: 'lime'
+            }
         };
         // the start of a player object
         game.player = createPlayerObject({
@@ -56,7 +60,11 @@
 
     // player turn state
     gameStates.playerTurnOrbMenu = {
-        update: function (game, secs) {},
+        update: function (game, secs) {
+
+            game
+
+        },
         events: {
             onPointerStart: function (e, pos, game) {
                 // clicked a pouch orb

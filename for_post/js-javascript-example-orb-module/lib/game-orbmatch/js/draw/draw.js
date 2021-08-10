@@ -31,7 +31,10 @@ draw.slotAreas = function (sm, ctx, canvas) {
         var slots = sm.game[faction].slots;
         slots.orbs.forEach(function (orb) {
             var r = orb.radius;
-            ctx.fillStyle = orb.data.slotFillStyle.color || 'gray';
+            ctx.fillStyle = 'brown';
+            if (faction === 'player' && sm.game.currentState === 'playerTurnOrbMenu') {
+                ctx.fillStyle = sm.game.playerSlotFillStyle.color || 'gray';
+            }
             ctx.fillRect(orb.data.homeX - r, orb.data.homeY - r, r * 2, r * 2);
         });
     });

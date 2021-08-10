@@ -1,7 +1,9 @@
 
 ## () - grid-plants.js, basic features and single plant generation
+* gridPlantsMod.create uses gridMod.create to create a base grid mod object
+* start using gridPlantsMod to create the grid object for game.grid
 
-## () - grid.js file basic features working
+## ( done 08/10/2021 ) - grid.js file basic features working
 * (done) have a gridMod.create method that will create and return an object with a cells prop
 * (done) the cells prop is a linear array of objects
 * (done) each cell object has properties for index, x, and y pixel and X, and Y cell position values
@@ -10,9 +12,9 @@
 * (done) have a getCellByPixlePos helper
 * (done) have state handlers working
 * (done) use getCellByPixlePos in game state onPointerStart event
-* have a grid.selectedCell, and grid.selectedCellIndex prop
-* have a grid.data object for user data
-* have a selected cell be red
+* (done) have a grid.selectedCell prop
+* (done) have a grid.data object for user data
+* (done) have a selected cell be red
 
 ## ( done 08/09/021 ) - start with a few files
 * (done) start a js-javascript-example-idle-game-wild-plant-grid proto folder

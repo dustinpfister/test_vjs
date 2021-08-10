@@ -7,7 +7,8 @@
         <script>
 document.body.addEventListener('click', function(e){
     var out = document.getElementById('out');
-    out.innerText = e.clientX + ', ' + e.clientY;
+    out.innerText = e.target.nodeName + ', ' + e.clientX + ', ' + e.clientY;
+    console.log(e.target.nodeName);
 });
         </script>
     </body>

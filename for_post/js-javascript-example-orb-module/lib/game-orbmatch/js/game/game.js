@@ -33,7 +33,7 @@
         opt = opt || {};
         var game = {
             turnNumber: 0,
-            currentState: 'playerTurn',
+            currentState: 'playerTurnOrbMenu',
             selectedOrb: null
         };
         // the start of a player object
@@ -51,7 +51,7 @@
     var gameStates = {};
 
     // player turn state
-    gameStates.playerTurn = {
+    gameStates.playerTurnOrbMenu = {
         events: {
             onPointerStart: function (e, pos, game) {
                 // clicked a pouch orb

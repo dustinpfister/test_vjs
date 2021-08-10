@@ -1,24 +1,24 @@
 # game-orbmatch - todo list
 
-### () 0.x.0 - main state machine
-
-### () 0.6.0 - Main state machine
+### () 0.8.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.5.0 - game.js states started
-* (done) make selectedOrb path of the game object rather than sm
-* (done) a game object will need to have states like that of a main state machine so have a game.currentState prop
-* (done) have a 'playerTurn' state object that is a main state during a turn that allows for entering other states or end the turn
-* have a gameMod.emitStateEvent method that will take and event key as an argument
+### () 0.7.0 - game over game state started
+* have a 'gameOver' game state that will fire when the game is over
 
-
-* have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
+### () 0.6.0 - game.js playerTurn, aiTurn, and process turn game states started
+* have a 'playerTurn' game state object that is a main state during a turn that allows for entering other states or end the turn
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
-* have a 'gameOver' game state that will fire when the game is over
+
+### () 0.5.0 - game.js states started with playerTurnOrbMenu state
+* (done) make selectedOrb path of the game object rather than sm
+* (done) a game object will need to have states like that of a main state machine so have a game.currentState prop
+* (done) have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
+* (done) have a gameMod.emitStateEvent method that will take and event key as an argument
 * have a separate draw.slotAreas method
 
 ### (done 08/09/2021 ) 0.4.0 - Swap orbs to an from slots

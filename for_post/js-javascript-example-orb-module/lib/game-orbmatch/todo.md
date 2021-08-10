@@ -21,7 +21,7 @@
 * (done) have a gameMod.emitStateEvent method that will take and event key as an argument
 * (done) have a separate draw.slotAreas method
 * (done) have a separate draw.orbCollection method
-* have a gameState.playerTurnOrbMenu.update method
+* have a gameState.playerTurnOrbMenu.update method that will just flash the color of the player slot areas
 * have a gameMod.update method, and call it in the main loop
 
 ### (done 08/09/2021 ) 0.4.0 - Swap orbs to an from slots

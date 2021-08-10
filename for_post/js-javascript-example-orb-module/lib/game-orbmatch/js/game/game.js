@@ -18,8 +18,12 @@
                 points: [0, 0, 0, 0],
                 level: 0
             });
-        // position slots
+        // set up orb data and position slots
         playerObj.slots.orbs.forEach(function (orb, i) {
+            orb.data.slotFillStyle = {
+                secs: 0,
+                color: 'brown'
+            };
             orb.data.homeX = 32 + (640 - 32) / 4 * i;
             orb.data.homeY = 240 + 60 * (playerObj.faction === 'player' ? 1 : -1);
             orb.x = orb.data.homeX;
@@ -124,8 +128,8 @@
     // update the current game state
     api.update = function (game, secs) {
         var updateMethod = gameStates[game.currentState].update;
-        if (update) {
-            update.call(game, game, secs);
+        if (updateMethod) {
+            updateMethod.call(game, game, secs);
         }
     };
 

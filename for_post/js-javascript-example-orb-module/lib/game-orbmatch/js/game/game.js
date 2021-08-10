@@ -71,8 +71,44 @@
                     }
                 }
             },
-            onPointerMove: function (e, pos, game) {},
-            onPointerEnd: function (e, pos, game) {}
+            onPointerMove: function (e, pos, game) {
+                if (game.selectedOrb) {
+                    var orb = game.selectedOrb;
+                    orb.x = pos.x;
+                    orb.y = pos.y;
+                }
+            },
+            onPointerEnd: function (e, pos, game) {
+                // if ending with a selected orb
+                if (game.selectedOrb) {
+                    var orb = game.selectedOrb,
+                    orbData = orb.data,
+                    playerObj = game[orbData.faction],
+                    collection = playerObj[orbData.key];
+                    // if the selected orb is from the pouch
+                    if (collection.key === 'pouch') {
+                        var slot = OrbCollection.isOverCollection(game.selectedOrb, playerObj.slots);
+                        if (slot) {
+                            // set slot orb props to selected orb
+                            OrbCollection.setOrbPropsToOrb(playerObj.slots, slot.data.i, orb);
+                            // selected orb type set to null
+                            orb.type = 'null';
+                        }
+                    }
+                    // if the selected orb is from the slots
+                    if (collection.key === 'slots') {
+                        var pouchOrb = OrbCollection.isOverCollection(game.selectedOrb, playerObj.pouch);
+                        if (pouchOrb) {
+                            OrbCollection.setOrbPropsToOrb(playerObj.pouch, pouchOrb.data.i, orb);
+                            orb.type = 'null';
+                        }
+                    }
+                    // always send orb back to home location
+                    orb.x = orb.data.homeX;
+                    orb.y = orb.data.homeY;
+                    game.selectedOrb = null;
+                }
+            }
         }
     };
 

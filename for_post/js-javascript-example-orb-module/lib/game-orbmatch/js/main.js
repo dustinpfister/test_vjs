@@ -19,44 +19,10 @@
             gameMod.emitStateEvent('onPointerStart', e, pos, sm.game);
         },
         pointerMove: function (e, pos, sm) {
-            if (sm.game.selectedOrb) {
-                var orb = sm.game.selectedOrb;
-                orb.x = pos.x;
-                orb.y = pos.y;
-            }
+            gameMod.emitStateEvent('onPointerMove', e, pos, sm.game);
         },
         pointerEnd: function (e, pos, sm) {
-            // if ending with a selected orb
-            if (sm.game.selectedOrb) {
-                //console.log(sm.game.selectedOrb);
-                var orb = sm.game.selectedOrb,
-                orbData = orb.data,
-                playerObj = sm.game[orbData.faction],
-                collection = playerObj[orbData.key];
-                // if the selected orb is from the pouch
-                if (collection.key === 'pouch') {
-                    var slot = OrbCollection.isOverCollection(sm.game.selectedOrb, playerObj.slots);
-                    if (slot) {
-                        // set slot orb props to selected orb
-                        OrbCollection.setOrbPropsToOrb(playerObj.slots, slot.data.i, orb);
-                        // selected orb type set to null
-                        orb.type = 'null';
-                    }
-                }
-                // if the selected orb is from the slots
-                if (collection.key === 'slots') {
-                    var pouchOrb = OrbCollection.isOverCollection(sm.game.selectedOrb, playerObj.pouch);
-                    console.log(pouchOrb);
-                    if (pouchOrb) {
-                        OrbCollection.setOrbPropsToOrb(playerObj.pouch, pouchOrb.data.i, orb);
-                        orb.type = 'null';
-                    }
-                }
-                // always send orb back to home location
-                orb.x = orb.data.homeX;
-                orb.y = orb.data.homeY;
-                sm.game.selectedOrb = null;
-            }
+            gameMod.emitStateEvent('onPointerEnd', e, pos, sm.game);
         }
     };
     utils.canvasPointerEvents(sm.canvasObj.canvas, sm, events);

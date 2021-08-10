@@ -61,11 +61,11 @@
         update: function (game, secs) {
             var psf = game.playerSlotFillStyle;
             psf.secs += secs;
-            if (psf.secs >= 0.5) {
+            if (psf.secs >= 0.2) {
                 psf.colorIndex += 1;
                 psf.colorIndex %= psf.colorArray.length;
                 psf.color = psf.colorArray[psf.colorIndex];
-                psf.secs %= 0.5;
+                psf.secs %= 0.2;
             }
 
         },

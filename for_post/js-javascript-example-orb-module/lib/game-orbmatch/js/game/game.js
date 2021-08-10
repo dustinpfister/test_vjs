@@ -58,6 +58,15 @@
 
     // player turn state
     gameStates.playerTurn = {
+        buttons: {
+            setOrbs: {
+                disp: 'Set Orbs',
+                x: 500,
+                y: 400,
+                w: 128,
+                h: 64
+            }
+        },
         update: function (game, secs) {},
         events: {
             onPointerStart: function (e, pos, game) {},
@@ -68,6 +77,7 @@
 
     // player turn orb menu state
     gameStates.playerTurnOrbMenu = {
+        buttons: {},
         update: function (game, secs) {
             var psf = game.playerSlotFillStyle;
             psf.secs += secs;

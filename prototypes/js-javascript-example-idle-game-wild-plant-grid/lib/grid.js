@@ -26,6 +26,20 @@
         }
         return grid;
     };
+    // get a cell by the given pixel position
+    api.getCellByPixlePos = funciton(grid, x, y) {
+        var i = 0,
+        cell,
+        len = grid.w * grid.h;
+        while (i < len) {
+            cell = grid.cells[i];
+            if (utils.boundingBox(cell.x, cell.y, grid.cellSize, grid.cellSize, x, y, 1, 1)) {
+                return cell;
+            }
+            i += 1;
+        }
+        return null;
+    };
 
 }
     (this['gridMod'] = {}))

@@ -52,6 +52,7 @@
 
     // player turn state
     gameStates.playerTurnOrbMenu = {
+        update: function (game, secs) {},
         events: {
             onPointerStart: function (e, pos, game) {
                 // clicked a pouch orb
@@ -112,12 +113,21 @@
         }
     };
 
+    // emit an event of the given eventKey with the given values for event, pos, and game
     api.emitStateEvent = function (eventKey, e, pos, game) {
         var handler = gameStates[game.currentState].events[eventKey];
         if (handler) {
             handler.call(e, e, pos, game);
         }
-    }
+    };
+
+    // update the current game state
+    api.update = function (game, secs) {
+        var updateMethod = gameStates[game.currentState].update;
+        if (update) {
+            update.call(game, game, secs);
+        }
+    };
 
 }
     (this['gameMod'] = {}));

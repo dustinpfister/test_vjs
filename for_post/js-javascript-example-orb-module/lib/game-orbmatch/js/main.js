@@ -34,7 +34,7 @@
         draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
         draw.slotAreas(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
         draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.slots);
-        draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch)
+        draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch);
         //draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch.orbs[0]);
     };
     loop();

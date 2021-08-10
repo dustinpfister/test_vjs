@@ -21,7 +21,8 @@
 * (done) have a gameMod.emitStateEvent method that will take and event key as an argument
 * (done) have a separate draw.slotAreas method
 * (done) have a separate draw.orbCollection method
-
+* have a gameState.playerTurnOrbMenu.update method
+* have a gameMod.update method, and call it in the main loop
 
 ### (done 08/09/2021 ) 0.4.0 - Swap orbs to an from slots
 * (done) I should be able to click and drag a slot orb, back to a location in the pouch that is null

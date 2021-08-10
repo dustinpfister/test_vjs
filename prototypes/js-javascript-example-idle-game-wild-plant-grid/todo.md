@@ -4,8 +4,9 @@
 ## () - grid.js file basic features working
 * (done) have a gridMod.create method that will create and return an object with a cells prop
 * (done) the cells prop is a linear array of objects
-* each cell object has properties for index, x, and y pixel and X, and Y cell position values
-* have a grid.xOffset and grid.yOffset that is the x and y starting position of the upper left corner
+* (done) each cell object has properties for index, x, and y pixel and X, and Y cell position values
+* (done) have a grid.xOffset and grid.yOffset that is the x and y starting position of the upper left corner
+* have a draw.grid method
 * have a getByPixlePos helper
 
 ## ( done 08/09/021 ) - start with a few files

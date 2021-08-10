@@ -1,12 +1,10 @@
 // draw module
 var draw = {};
-
 // draw background
 draw.background = function (sm, ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
-
 // draw a single orb
 draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
     ctx.fillStyle = fillStyle || 'white';
@@ -16,16 +14,7 @@ draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
     ctx.fill();
     ctx.stroke();
 };
-
-// draw slots
-draw.slots = function (sm, ctx, canvas, slots) {
-    slots.orbs.forEach(function (orb) {
-        if (orb.type != 'null') {
-            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
-        }
-    });
-};
-
+// draw slot areas
 draw.slotAreas = function (sm, ctx, canvas) {
     ['player', 'ai'].forEach(function (faction) {
         var slots = sm.game[faction].slots;
@@ -50,7 +39,6 @@ draw.orbCollection = function (sm, ctx, canvas, pouch) {
         }
     });
 };
-
 // draw info of a single given orb
 draw.orbInfo = function (sm, ctx, canvas, orb) {
     ctx.fillStyle = 'white';

@@ -119,10 +119,5 @@
         }
     }
 
-    // create and return an events object for the given game object
-    api.onPointerStart = function (e, pos, game) {
-        gameStates[game.currentState].events['onPointerStart'].call(e, e, pos, game);
-    };
-
 }
     (this['gameMod'] = {}));

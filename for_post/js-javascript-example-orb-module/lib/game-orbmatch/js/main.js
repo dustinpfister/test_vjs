@@ -13,7 +13,7 @@
         })
     };
 
-    // EVENTS AND HELPERS
+    // EVENTS
     var events = {
         pointerStart: function (e, pos, sm) {
             gameMod.emitStateEvent('onPointerStart', e, pos, sm.game);

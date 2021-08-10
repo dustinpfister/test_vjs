@@ -10,9 +10,14 @@
 * have a 'gameOver' game state that will fire when the game is over
 
 ### () 0.6.0 - game.js playerTurn, aiTurn, and process turn game states started
-* have a 'playerTurn' game state object that is a main state during a turn that allows for entering other states or end the turn
+* add utils.boundingBox to utils.js
+* have a 'playerTurn' game state object that is a main state during a turn that will allow for entering other states or end the turn
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
+* have a done button in playerTurnOrbMenu state that will result in the the current state being set to playerTurn
+* have an end turn button in playerTurn that will result in a change to aiTurn state
+* have aiTurn state be the state that will set the state to processTurn state
+* processState turn will then change to playerTurn state
 
 ### ( done 08/09/2021 ) 0.5.0 - game.js states started with playerTurnOrbMenu state
 * (done) make selectedOrb path of the game object rather than sm

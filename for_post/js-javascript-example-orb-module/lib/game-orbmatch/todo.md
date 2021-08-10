@@ -9,13 +9,14 @@
 * have a 'gameOptions' game state that can be used to leave game state
 
 ### () 0.5.0 - game.js states
-* make selectedOrb path of the game object rather than sm
-* a game object will need to have states like that of a main state machine so have a game.currentState prop
+* (done) make selectedOrb path of the game object rather than sm
+* (done) a game object will need to have states like that of a main state machine so have a game.currentState prop
 * have a 'playerTurn' state that is a main state during a turn that allows for entering other states or end the turn
 * have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
 * have a 'gameOver' game state that will fire when the game is over
+* have a separate draw.slotAreas method
 
 ### (done 08/09/2021 ) 0.4.0 - Swap orbs to an from slots
 * (done) I should be able to click and drag a slot orb, back to a location in the pouch that is null

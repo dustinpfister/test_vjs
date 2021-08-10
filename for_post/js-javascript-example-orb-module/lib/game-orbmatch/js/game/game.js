@@ -46,14 +46,21 @@
             });
         return game;
     };
-	
-	// EVENTS
-	
-	// create and return an events object for the given game object
-	api.onPointerStart = function(e, pos, game){
-		
-		
-	};
-	
+
+    // EVENTS
+    var gameStates = {};
+
+    // player turn state
+    gameStates.playerTurn = {
+        events: {
+            onPointerStart: function (e, pos, game) {},
+            onPointerMove: function (e, pos, game) {},
+            onPointerEnd: function (e, pos, game) {}
+        }
+    };
+
+    // create and return an events object for the given game object
+    api.onPointerStart = function (e, pos, game) {};
+
 }
     (this['gameMod'] = {}));

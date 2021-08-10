@@ -19,7 +19,9 @@
 * (done) a game object will need to have states like that of a main state machine so have a game.currentState prop
 * (done) have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
 * (done) have a gameMod.emitStateEvent method that will take and event key as an argument
-* have a separate draw.slotAreas method
+* (done) have a separate draw.slotAreas method
+* (done) have a separate draw.orbCollection method
+
 
 ### (done 08/09/2021 ) 0.4.0 - Swap orbs to an from slots
 * (done) I should be able to click and drag a slot orb, back to a location in the pouch that is null

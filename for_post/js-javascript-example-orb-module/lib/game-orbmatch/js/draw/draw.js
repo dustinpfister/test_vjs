@@ -32,7 +32,7 @@ draw.slotAreas = function (sm, ctx, canvas) {
         slots.orbs.forEach(function (orb) {
             var r = orb.radius;
             ctx.fillStyle = 'brown';
-            ctx.fillRect(orb.x - r, orb.y - r, r * 2, r * 2);
+            ctx.fillRect(orb.data.homeX - r, orb.data.homeY - r, r * 2, r * 2);
         });
     });
 };

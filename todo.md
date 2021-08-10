@@ -52,7 +52,9 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 ### () for 08/10/2021
 * (done) new s6 section started, and editing for js-document-body
-* work on js-javascript-example-idle-game-wild
+* (done) work on js-javascript-example-idle-game-wild
+* (done) edit js-javascript-let
+* edit js-math-pi
 
 ### (done) for 07/31/2021
 * work on js-javascript-example-orb-module

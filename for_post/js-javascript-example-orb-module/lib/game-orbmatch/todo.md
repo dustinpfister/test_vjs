@@ -11,6 +11,7 @@
 
 ### () 0.6.0 - game.js playerTurn, aiTurn, and process turn game states started
 * (done) add utils.boundingBox to utils.js
+* (done) buttons object should be part of state object
 * have a draw.gameState method that will draw the current game state
 * have a 'playerTurn' game state object that is a main state during a turn that will allow for entering other states or end the turn
 * have a 'set orbs' button in playerTurn that will process to playerTurnOrbMenu state

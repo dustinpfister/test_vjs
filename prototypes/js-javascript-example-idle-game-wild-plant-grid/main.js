@@ -2,24 +2,40 @@ var sm = {
     secs: 0,
     fps: 30,
     lt: new Date(),
-    canvasObj: utils.createCanvas({ width: 640, height: 480}),
+    canvasObj: utils.createCanvas({
+        width: 640,
+        height: 480
+    }),
     game: gameMod.create(),
     currentState: 'game',
     states: {}
 };
 
-console.log(sm.game);
-
 // game state
 sm.states.game = {
-    update: function (sm, secs) {
-        
-    },
+    update: function (sm, secs) {},
     draw: function (sm, ctx, canvas) {
         draw.background(sm, ctx, canvas);
-		draw.grid(sm.game.grid, ctx, canvas);
+        draw.grid(sm.game.grid, ctx, canvas);
+    },
+    events: {
+        pointerStart: function (e, pos, sm) {
+            console.log(e, pos, sm);
+        },
+        pointerMove: function () {},
+        pointerEnd: function () {}
     }
 };
+
+utils.canvasPointerEvents(sm.canvasObj.canvas, sm, {
+    pointerStart: function (e, pos, sm) {
+        var state = sm.states[sm.currentState];
+        var handler = state.events['pointerStart'];
+        if (handler) {
+            handler.call(e, e, pos, sm);
+        }
+    }
+});
 
 var loop = function () {
     var now = new Date(),

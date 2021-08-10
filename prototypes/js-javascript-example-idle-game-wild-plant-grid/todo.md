@@ -7,7 +7,7 @@
 * (done) each cell object has properties for index, x, and y pixel and X, and Y cell position values
 * (done) have a grid.xOffset and grid.yOffset that is the x and y starting position of the upper left corner
 * (done) have a draw.grid method
-* have a getCellByPixlePos helper
+* (done) have a getCellByPixlePos helper
 
 ## ( done 08/09/021 ) - start with a few files
 * (done) start a js-javascript-example-idle-game-wild-plant-grid proto folder

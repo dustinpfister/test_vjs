@@ -27,7 +27,7 @@
         return grid;
     };
     // get a cell by the given pixel position
-    api.getCellByPixlePos = funciton(grid, x, y) {
+    api.getCellByPixlePos = function(grid, x, y) {
         var i = 0,
         cell,
         len = grid.w * grid.h;

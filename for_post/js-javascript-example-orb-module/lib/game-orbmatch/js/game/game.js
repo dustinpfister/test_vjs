@@ -87,7 +87,7 @@
                 w: 128,
                 h: 64,
                 onClick: function(e, pos, game, button){
-                    console.log('click');
+                    game.currentState = 'playerTurnOrbMenu';
                 }
             }
         },

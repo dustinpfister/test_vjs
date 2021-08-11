@@ -1,13 +1,21 @@
 # game-orbmatch - todo list
 
-### () 0.9.0 - Main state machine
+### () 0.x.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.8.0 - game over game state started
+### () 0.x.0 - game over game state started
 * have a 'gameOver' game state that will fire when the game is over
+
+### () 0.x.0 - ai orbs setup in game.js
+* have the ai orbs slots, and pouch state set up when a new game object is created
+
+### () 0.x.0 - Player can set orbs in attack or defense mode
+* have a orb.data.attackMode that will be a boolen value
+* draw attack mode state of each orb in the draw.slots method
+* in playerTurn have it so the player can toggle attackMode by clicking the slots
 
 ### ( done 08/11/2021 ) - 0.7.0 - start aiturn, and processTurn state objects
 * (done) I will want an 'aiTurn' game state object started

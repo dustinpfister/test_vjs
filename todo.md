@@ -46,15 +46,16 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * work on js-javascript-example-idle-game-wild
 
 ### () for 08/11/2021
+* edit js-math-pi
 * finish s6-examples for js-document-body
 * start new s7 section for js-document-body that has to do with style
 * work on js-javascript-example-idle-game-wild
 
-### () for 08/10/2021
+
+### (done) for 08/10/2021
 * (done) new s6 section started, and editing for js-document-body
 * (done) work on js-javascript-example-idle-game-wild
 * (done) edit js-javascript-let
-* edit js-math-pi
 
 ### (done) for 07/31/2021
 * work on js-javascript-example-orb-module

@@ -14,6 +14,7 @@ https://www.omnicalculator.com/math/circumference
 ## ( done 08/11/2021 ) - new s1-basics examples
 * (done) have a basic example that follows pir2 for area of circle
 * (done) have an example that is c/d to get pi from circumference and diameter
+* (done) have a c-2-pi example
 ```
 https://en.wikipedia.org/wiki/List_of_formulae_involving_%CF%80
 ```

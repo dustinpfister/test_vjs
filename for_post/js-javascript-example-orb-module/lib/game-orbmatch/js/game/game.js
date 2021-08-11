@@ -24,6 +24,7 @@
         playerObj.slots.orbs.forEach(function (orb, i) {
             orb.data.homeX = 32 + (640 - 32) / 4 * i;
             orb.data.homeY = 240 + 60 * (playerObj.faction === 'player' ? 1 : -1);
+            orb.data.attackMode = true;
             orb.x = orb.data.homeX;
             orb.y = orb.data.homeY;
         });

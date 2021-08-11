@@ -21,24 +21,15 @@ sm.states.game = {
     events: {
         pointerStart: function (e, pos, sm) {
             //console.log(e, pos, sm);
-            var cell = gridMod.getCellByPixlePos(sm.game.grid, pos.x, pos.y);
-            if (cell) {
-                if (cell === sm.game.grid.cellSelected) {
-                    sm.game.grid.cellSelected.data.fillStyle = 'lime';
-                    sm.game.grid.cellSelected = null;
-                } else {
-                    if (sm.game.grid.cellSelected) {
-                        sm.game.grid.cellSelected.data.fillStyle = 'lime';
-                    }
-                    sm.game.grid.cellSelected = cell;
-                    cell.data.fillStyle = 'red';
-                }
-            } else {
-                if (sm.game.grid.cellSelected) {
-                    sm.game.grid.cellSelected.data.fillStyle = 'lime';
-                    sm.game.grid.cellSelected = null;
-                }
-            }
+            gridMod.selectedCheck(sm.game.grid, pos.x, pos.y,
+                // on select
+                function (cell) {
+                cell.data.fillStyle = 'red';
+            },
+                // on unselected
+                function (cell) {
+                cell.data.fillStyle = 'lime';
+            });
         },
         pointerMove: function () {},
         pointerEnd: function () {}

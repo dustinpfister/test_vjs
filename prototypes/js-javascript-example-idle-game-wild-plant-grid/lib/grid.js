@@ -44,6 +44,27 @@
         }
         return null;
     };
+    // selected cell check
+    api.selectedCheck = function (grid, x, y, onSelect, onUnselect) {
+        var cell = api.getCellByPixlePos(grid, x, y);
+        if (cell) {
+            if (cell === grid.cellSelected) {
+                onUnselect(cell);
+                grid.cellSelected = null;
+            } else {
+                if (grid.cellSelected) {
+                    onUnselect(grid.cellSelected);
+                }
+                grid.cellSelected = cell;
+                onSelect(cell);
+            }
+        } else {
+            if (grid.cellSelected) {
+                onUnselect(grid.cellSelected);
+                grid.cellSelected = null;
+            }
+        }
+    };
 
 }
     (this['gridMod'] = {}))

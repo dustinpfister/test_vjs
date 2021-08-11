@@ -7,6 +7,7 @@
             });
         // set some data for cells
         grid.cells.forEach(function (cell) {
+            // fill style
             cell.data.fillStyle = 'lime';
         });
         return grid;

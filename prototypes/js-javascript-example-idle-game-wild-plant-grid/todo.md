@@ -1,9 +1,10 @@
 
 ## () - fertPoints
-* the grid-plants module should have a grid.fertPoints property
-* start with just one fertPoint
-* cell.data.plantIndex prop
-* cell.data.fertPoints prop
+* (done) the grid-plants module should have a grid.fertPoints property
+* (done) start with just one fertPoint
+* (done) cell.data.plantIndex prop
+* (done) cell.data.fertPoints prop
+* (done) I will need a PLANTS const
 * start a gridPlantMod.update method
 * have a way to make it so the first fertPoint can be spent to increase fert of a cell
 * if fert of a cell is >= 1 for first plant type, that plant can grow there

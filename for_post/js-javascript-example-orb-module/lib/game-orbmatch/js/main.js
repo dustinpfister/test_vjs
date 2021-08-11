@@ -41,11 +41,7 @@
             // draw
             var ctx = sm.canvasObj.ctx,
             canvas = sm.canvasObj.canvas;
-            draw.background(sm, ctx, canvas);
-            draw.slotAreas(sm, ctx, canvas);
-            draw.orbCollection(sm, ctx, canvas, sm.game.player.slots);
-            draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
-            //draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch.orbs[0]);
+            draw.gameState(sm, ctx, canvas);
             sm.lt = now;
         }
     };

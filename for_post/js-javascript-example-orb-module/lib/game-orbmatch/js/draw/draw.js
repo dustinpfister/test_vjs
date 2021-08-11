@@ -40,7 +40,10 @@ draw.orbCollection = function (sm, ctx, canvas, pouch) {
 };
 // draw the current game state
 draw.gameState = function(sm, ctx, canvas){
-
+    draw.background(sm, ctx, canvas);
+    draw.slotAreas(sm, ctx, canvas);
+    draw.orbCollection(sm, ctx, canvas, sm.game.player.slots);
+    draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
 };
 // draw info of a single given orb
 draw.orbInfo = function (sm, ctx, canvas, orb) {

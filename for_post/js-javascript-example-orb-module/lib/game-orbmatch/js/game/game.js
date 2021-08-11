@@ -82,8 +82,8 @@
         buttons: {
             setOrbs: {
                 disp: 'Set Orbs',
-                x: 0,
-                y: 0,
+                x: 500,
+                y: 400,
                 w: 128,
                 h: 64
             }

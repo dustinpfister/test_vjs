@@ -41,6 +41,13 @@ draw.orbCollection = function (sm, ctx, canvas, pouch) {
 draw.button = function(button, ctx){
     ctx.fillStyle = 'red';
     ctx.fillRect(button.x, button.y, button.w, button.h);
+    ctx.fillStyle = 'black';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = '10px arial';
+    var x = button.x + button.w / 2,
+    y = button.y + button.h / 2;
+    ctx.fillText(button.disp, x, y);
 };
 // game state methods
 draw.forGameState = {

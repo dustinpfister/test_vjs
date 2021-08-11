@@ -56,6 +56,24 @@
     // EVENTS
     var gameStates = {};
 
+    // check if a button was clicked for the current state and if so which one
+    // will return a ref to the button, or null
+    var buttonCheck = function(game, x, y){
+        var state = gameStates[game.currentState];
+        var buttons = state.buttons;
+        var keys = Object.keys(buttons);
+        var i = 0,
+        buttonKey,
+        b,
+        len = keys.length;
+        while(i < len){
+            buttonKey = keys[i];
+            b = buttons[buttonKey];
+            console.log(b);
+            i += 1;
+        }
+    };
+
     // player turn state
     gameStates.playerTurn = {
         buttons: {
@@ -69,7 +87,9 @@
         },
         update: function (game, secs) {},
         events: {
-            onPointerStart: function (e, pos, game) {},
+            onPointerStart: function (e, pos, game) {
+                buttonCheck(game, pos.x, pos.y);
+            },
             onPointerMove: function (e, pos, game) {},
             onPointerEnd: function (e, pos, game) {}
         }

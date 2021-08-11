@@ -56,9 +56,9 @@
     // EVENTS
     var gameStates = {};
 
-    // check if a button was clicked for the current state and if so which one
-    // will return a ref to the button, or null
-    var buttonCheck = function(game, x, y){
+    // get a button that was clicked for the current state and if so which one.
+    // This will return a ref to the button, or null
+    var getButton = function(game, x, y){
         var state = gameStates[game.currentState];
         var buttons = state.buttons;
         var keys = Object.keys(buttons);
@@ -69,9 +69,12 @@
         while(i < len){
             buttonKey = keys[i];
             b = buttons[buttonKey];
-            console.log(b);
+            if(utils.boundingBox(b.x, b.x, b.w, b.h, x, y, 1, 1)){
+                return b;
+            }
             i += 1;
         }
+        return null;
     };
 
     // player turn state
@@ -79,8 +82,8 @@
         buttons: {
             setOrbs: {
                 disp: 'Set Orbs',
-                x: 500,
-                y: 400,
+                x: 0,
+                y: 0,
                 w: 128,
                 h: 64
             }
@@ -88,7 +91,8 @@
         update: function (game, secs) {},
         events: {
             onPointerStart: function (e, pos, game) {
-                buttonCheck(game, pos.x, pos.y);
+                var b = getButton(game, pos.x, pos.y);
+                console.log(b);
             },
             onPointerMove: function (e, pos, game) {},
             onPointerEnd: function (e, pos, game) {}

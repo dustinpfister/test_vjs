@@ -1,6 +1,6 @@
 
 ## () - fertPoints
-* the game module should have a game.fertPoints property
+* the grid-plants module should have a grid.fertPoints property
 * start with just one fertPoint
 * cell.data.plantIndex prop
 * cell.data.fertPoints prop

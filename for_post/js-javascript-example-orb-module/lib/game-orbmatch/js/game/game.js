@@ -195,10 +195,21 @@
         }
     };
 
-    // player turn state
+    // ai turn state
     gameStates.aiTurn = {
         buttons: {},
-        update: function (game, secs) {},
+        update: function (game, secs) {
+            game.currentState = 'processTurn';
+        },
+        events: {}
+    };
+
+    // process turn state
+    gameStates.processTurn = {
+        buttons: {},
+        update: function (game, secs) {
+            game.currentState = 'playerTurn';
+        },
         events: {}
     };
 

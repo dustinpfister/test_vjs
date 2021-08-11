@@ -57,6 +57,8 @@ draw.forGameState = {
         draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
     },
     aiTurn : function(sm, ctx, canvas){
+    },
+    processTurn : function(sm, ctx, canvas){
     }
 };
 // draw the current game state

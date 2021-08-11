@@ -1,8 +1,8 @@
 # js-math-pi
 
 ## () - new s1-basics examples
-* have a basic example that follows pir2
-* have an example that is c/d
+* (done) have a basic example that follows pir2 for area of circle
+* have an example that is c/d to get pi from circumference and diameter
 ```
 https://en.wikipedia.org/wiki/List_of_formulae_involving_%CF%80
 ```

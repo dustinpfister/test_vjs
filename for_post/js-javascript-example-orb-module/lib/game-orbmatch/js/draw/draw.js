@@ -21,13 +21,13 @@ draw.slotAreas = function (sm, ctx, canvas) {
         slots.orbs.forEach(function (orb) {
             var r = orb.radius;
             // fill base
-            ctx.fillStyle = 'brown';
+            ctx.fillStyle = 'gray';
             if (faction === 'player' && sm.game.currentState === 'playerTurnOrbMenu' && orb.type === 'null') {
                 ctx.fillStyle = sm.game.playerSlotFillStyle.color || 'gray';
             }
             ctx.fillRect(orb.data.homeX - r, orb.data.homeY - r, r * 2, r * 2);
             // draw attack mode arrow
-            ctx.fillStyle = 'blue';
+            ctx.fillStyle = orb.data.attackMode ? 'red' : 'blue';
             var radian = orb.data.attackMode ? Math.PI * 2 : Math.PI * 1;
             radian = faction === 'ai' ? radian += Math.PI : radian;
             ctx.save();

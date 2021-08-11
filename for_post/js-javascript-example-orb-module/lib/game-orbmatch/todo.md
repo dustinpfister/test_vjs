@@ -12,10 +12,10 @@
 ### () 0.x.0 - ai orbs setup in game.js
 * have the ai orbs slots, and pouch state set up when a new game object is created
 
-### () 0.x.0 - Player can set orbs in attack or defense mode
+### ( done 08/11/2021 ) 0.x.0 - Player can set orbs in attack or defense mode
 * (done) have a orb.data.attackMode that will be a boolen value
 * (done) draw attack mode state of each orb in the draw.slots method
-* in playerTurn have it so the player can toggle attackMode by clicking the slots
+* (done) in playerTurn have it so the player can toggle attackMode by clicking the slots
 
 ### ( done 08/11/2021 ) - 0.7.0 - start aiturn, and processTurn state objects
 * (done) I will want an 'aiTurn' game state object started

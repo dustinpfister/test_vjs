@@ -77,6 +77,13 @@
         return null;
     };
 
+    var buttonCheck = function(e, pos, game){
+        var b = getButton(game, pos.x, pos.y);
+        if(b){
+            b.onClick.call(b, e, pos, game, b);
+        }
+    };
+
     // player turn state
     gameStates.playerTurn = {
         buttons: {
@@ -94,11 +101,7 @@
         update: function (game, secs) {},
         events: {
             onPointerStart: function (e, pos, game) {
-                var b = getButton(game, pos.x, pos.y);
-                console.log(b);
-                if(b){
-                    b.onClick.call(b, e, pos, game, b);
-                }
+                buttonCheck(e, pos, game);
             },
             onPointerMove: function (e, pos, game) {},
             onPointerEnd: function (e, pos, game) {}
@@ -107,7 +110,18 @@
 
     // player turn orb menu state
     gameStates.playerTurnOrbMenu = {
-        buttons: {},
+        buttons: {
+            done: {
+                disp: 'Done',
+                x: 500,
+                y: 400,
+                w: 128,
+                h: 64,
+                onClick: function(e, pos, game, button){
+                    game.currentState = 'playerTurn';
+                }
+            }
+        },
         update: function (game, secs) {
             var psf = game.playerSlotFillStyle;
             psf.secs += secs;
@@ -121,6 +135,8 @@
         },
         events: {
             onPointerStart: function (e, pos, game) {
+                // button check
+                buttonCheck(e, pos, game);
                 // clicked a pouch orb
                 var orb = OrbCollection.getOrbAtPos(game.player.pouch, pos.x, pos.y);
                 if (orb) {

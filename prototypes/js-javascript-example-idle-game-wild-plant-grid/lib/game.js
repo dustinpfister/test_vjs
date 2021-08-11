@@ -6,7 +6,6 @@
                 xOffset: 32,
                 yOffset: 32
             });
-
         return game;
     };
 

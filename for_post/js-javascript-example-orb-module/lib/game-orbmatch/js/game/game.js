@@ -69,7 +69,7 @@
         while(i < len){
             buttonKey = keys[i];
             b = buttons[buttonKey];
-            if(utils.boundingBox(b.x, b.x, b.w, b.h, x, y, 1, 1)){
+            if(utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)){
                 return b;
             }
             i += 1;
@@ -85,7 +85,10 @@
                 x: 500,
                 y: 400,
                 w: 128,
-                h: 64
+                h: 64,
+                onClick: function(e, pos, game, button){
+                    console.log('click');
+                }
             }
         },
         update: function (game, secs) {},
@@ -93,6 +96,9 @@
             onPointerStart: function (e, pos, game) {
                 var b = getButton(game, pos.x, pos.y);
                 console.log(b);
+                if(b){
+                    b.onClick.call(b, e, pos, game, b);
+                }
             },
             onPointerMove: function (e, pos, game) {},
             onPointerEnd: function (e, pos, game) {}

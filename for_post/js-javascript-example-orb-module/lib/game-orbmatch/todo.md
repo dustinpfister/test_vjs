@@ -9,13 +9,12 @@
 ### () 0.8.0 - game over game state started
 * have a 'gameOver' game state that will fire when the game is over
 
-### () - 0.7.0 - start aiturn, and processTurn
+### ( done 08/11/2021 ) - 0.7.0 - start aiturn, and processTurn state objects
 * (done) I will want an 'aiTurn' game state object started
 * (done) have a processTurn game state object started
 * (done) have aiTurn state be the state that will set the state to processTurn state
 * (done) have processTrun game state process back to playerTurnState
-* have an end turn button in playerTurn that will result in a change to aiTurn state
-
+* (done) have an end turn button in playerTurn that will result in a change to aiTurn state
 
 ### ( done 08/11/2021 ) 0.6.0 - game.js playerTurn game state and buttons
 * (done) add utils.boundingBox to utils.js

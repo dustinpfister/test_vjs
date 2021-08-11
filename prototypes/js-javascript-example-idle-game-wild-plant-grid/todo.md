@@ -1,5 +1,14 @@
 
-## () - grid-plants.js, basic features and single plant generation
+## () - fertPoints
+* the game module should have a game.fertPoints property
+* start with just one fertPoint
+* cell.data.plantIndex prop
+* cell.data.fertPoints prop
+* start a gridPlantMod.update method
+* have a way to make it so the first fertPoint can be spent to increase fert of a cell
+* if fert of a cell is >= 1 for first plant type, that plant can grow there
+
+## (done 08/11/2021) - grid-plants.js started
 * (done) clicking the selected cell results in it being de-selected
 * (done) gridPlantsMod.create uses gridMod.create to create a base grid mod object
 * (done) have a gridMod.selectedCheck method that will just set cellSelected to null or cell

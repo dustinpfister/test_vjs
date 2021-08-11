@@ -11,12 +11,11 @@
 
 ### () - 0.7.0 - start aiturn, and processTurn
 * (done) I will want an 'aiTurn' game state object started
-* have a processTurn game state object started
-* have aiTurn state be the state that will set the state to processTurn state
-* have processTrun game state process back to playerTurnState
-
+* (done) have a processTurn game state object started
+* (done) have aiTurn state be the state that will set the state to processTurn state
+* (done) have processTrun game state process back to playerTurnState
 * have an end turn button in playerTurn that will result in a change to aiTurn state
-* processState turn will then change to playerTurn state
+
 
 ### ( done 08/11/2021 ) 0.6.0 - game.js playerTurn game state and buttons
 * (done) add utils.boundingBox to utils.js

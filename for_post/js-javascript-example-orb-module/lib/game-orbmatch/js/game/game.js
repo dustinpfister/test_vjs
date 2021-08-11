@@ -96,6 +96,16 @@
                 onClick: function(e, pos, game, button){
                     game.currentState = 'playerTurnOrbMenu';
                 }
+            },
+            endTrun: {
+                disp: 'End Turn',
+                x: 300,
+                y: 400,
+                w: 128,
+                h: 64,
+                onClick: function(e, pos, game, button){
+                    game.currentState = 'aiTurn';
+                }
             }
         },
         update: function (game, secs) {},

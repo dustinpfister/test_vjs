@@ -15,9 +15,10 @@
 * (done) have a draw.gameState method that will draw the current game state
 * (done) start a 'playerTurn' game state object that is a main state during a turn that will allow for entering other states or end the turn
 
-* have a 'set orbs' button in playerTurn that will process to playerTurnOrbMenu state
-* have a done button in playerTurnOrbMenu state that will result in the the current state being set to playerTurn
+* (done) have a getButton helper in game.js
+* (done) have a 'set orbs' button in playerTurn that will process to playerTurnOrbMenu state
 * have a draw.button method
+* have a done button in playerTurnOrbMenu state that will result in the the current state being set to playerTurn
 
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.

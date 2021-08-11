@@ -1,5 +1,7 @@
 (function (api) {
 
+    var gameStates = {};
+
     // create a player/ai object
     var createPlayerObject = function (opt) {
         opt = opt || {};
@@ -32,6 +34,7 @@
     api.create = function (opt) {
         opt = opt || {};
         var game = {
+            gameStates: gameStates,
             turnNumber: 0,
             currentState: 'playerTurn', //'playerTurnOrbMenu',
             selectedOrb: null,
@@ -52,9 +55,6 @@
             });
         return game;
     };
-
-    // EVENTS
-    var gameStates = {};
 
     // get a button that was clicked for the current state and if so which one.
     // This will return a ref to the button, or null

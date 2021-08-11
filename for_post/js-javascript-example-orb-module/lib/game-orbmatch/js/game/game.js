@@ -199,6 +199,7 @@
     gameStates.aiTurn = {
         buttons: {},
         update: function (game, secs) {
+            console.log('aiTurn');
             game.currentState = 'processTurn';
         },
         events: {}
@@ -208,6 +209,7 @@
     gameStates.processTurn = {
         buttons: {},
         update: function (game, secs) {
+            console.log('processTurn');
             game.currentState = 'playerTurn';
         },
         events: {}

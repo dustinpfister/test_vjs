@@ -13,5 +13,15 @@
         return grid;
     };
 
+    var onCellSelect = function (cell) {
+        cell.data.fillStyle = 'red';
+    };
+    var onCellUnSelect = function (cell) {
+        cell.data.fillStyle = 'lime';
+    };
+    api.selectedCheck = function (grid, x, y) {
+        gridMod.selectedCheck(sm.game.grid, x, y, onCellSelect, onCellUnSelect);
+    };
+
 }
     (this['gridPlantsMod'] = {}))

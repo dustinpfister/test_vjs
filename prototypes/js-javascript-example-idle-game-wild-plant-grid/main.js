@@ -12,12 +12,6 @@ var sm = {
 };
 
 // game state
-var onCellSelect = function (cell) {
-    cell.data.fillStyle = 'red';
-};
-var onCellUnSelect = function (cell) {
-    cell.data.fillStyle = 'lime';
-};
 sm.states.game = {
     update: function (sm, secs) {},
     draw: function (sm, ctx, canvas) {
@@ -26,8 +20,7 @@ sm.states.game = {
     },
     events: {
         pointerStart: function (e, pos, sm) {
-            //console.log(e, pos, sm);
-            gridMod.selectedCheck(sm.game.grid, pos.x, pos.y, onCellSelect, onCellUnSelect);
+            gridPlantsMod.selectedCheck(sm.game.grid, pos.x, pos.y);
         },
         pointerMove: function () {},
         pointerEnd: function () {}

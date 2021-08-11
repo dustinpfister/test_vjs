@@ -2,7 +2,7 @@
 ## () - grid-plants.js, basic features and single plant generation
 * (done) clicking the selected cell results in it being de-selected
 * (done) gridPlantsMod.create uses gridMod.create to create a base grid mod object
-* have a gridMod.selectedCheck method that will just set cellSelected to null or cell
+* (done) have a gridMod.selectedCheck method that will just set cellSelected to null or cell
 
 ## ( done 08/10/2021 ) - grid.js file basic features working
 * (done) have a gridMod.create method that will create and return an object with a cells prop

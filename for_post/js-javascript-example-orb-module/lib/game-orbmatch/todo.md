@@ -1,33 +1,32 @@
 # game-orbmatch - todo list
 
-### () 0.8.0 - Main state machine
+### () 0.9.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.7.0 - game over game state started
+### () 0.8.0 - game over game state started
 * have a 'gameOver' game state that will fire when the game is over
 
-### () 0.6.0 - game.js playerTurn, aiTurn, and process turn game states started
-* (done) add utils.boundingBox to utils.js
-* (done) buttons object should be part of state object
-* (done) have a draw.gameState method that will draw the current game state
-* (done) start a 'playerTurn' game state object that is a main state during a turn that will allow for entering other states or end the turn
-
-* (done) have a getButton helper in game.js
-* (done) have a 'set orbs' button in playerTurn that will process to playerTurnOrbMenu state
-* have a draw.button method
-* have a done button in playerTurnOrbMenu state that will result in the the current state being set to playerTurn
-
+### () - 0.7.0 - start aiturn, and processTurn
 * I will want an 'aiTurn' game state
 * have a 'processTurn' state that will process the current turn, mutate orb properties, step a turn number, and progress back to playerTurn.
-
 * have an end turn button in playerTurn that will result in a change to aiTurn state
 * have aiTurn state be the state that will set the state to processTurn state
 * processState turn will then change to playerTurn state
 
-### ( done 08/09/2021 ) 0.5.0 - game.js states started with playerTurnOrbMenu state
+### ( done 08/11/2021 ) 0.6.0 - game.js playerTurn game state and buttons
+* (done) add utils.boundingBox to utils.js
+* (done) buttons object should be part of state object
+* (done) have a draw.gameState method that will draw the current game state
+* (done) start a 'playerTurn' game state object that is a main state during a turn that will allow for entering other states or end the turn
+* (done) have a getButton helper in game.js
+* (done) have a 'set orbs' button in playerTurn that will process to playerTurnOrbMenu state
+* (done) have a draw.button method
+* (done) have a done button in playerTurnOrbMenu state that will result in the the current state being set to playerTurn
+
+### ( done 08/10/2021 ) 0.5.0 - game.js states started with playerTurnOrbMenu state
 * (done) make selectedOrb path of the game object rather than sm
 * (done) a game object will need to have states like that of a main state machine so have a game.currentState prop
 * (done) have a 'playerTurnOrbMenu' game state where the player is in a menu that allows for them to set what orbs are in the slots 
@@ -73,3 +72,4 @@
 * (done) have a draw object that will be the start of the draw module
 * (done) have a game.update method
 * (done) have a draw.info method that will just draw info of a single orb object
+

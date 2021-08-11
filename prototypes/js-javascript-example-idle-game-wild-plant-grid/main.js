@@ -23,11 +23,16 @@ sm.states.game = {
             //console.log(e, pos, sm);
             var cell = gridMod.getCellByPixlePos(sm.game.grid, pos.x, pos.y);
             if (cell) {
-                if (sm.game.grid.cellSelected) {
+                if (cell === sm.game.grid.cellSelected) {
                     sm.game.grid.cellSelected.data.fillStyle = 'lime';
+                    sm.game.grid.cellSelected = null;
+                } else {
+                    if (sm.game.grid.cellSelected) {
+                        sm.game.grid.cellSelected.data.fillStyle = 'lime';
+                    }
+                    sm.game.grid.cellSelected = cell;
+                    cell.data.fillStyle = 'red';
                 }
-                sm.game.grid.cellSelected = cell;
-                cell.data.fillStyle = 'red';
             } else {
                 if (sm.game.grid.cellSelected) {
                     sm.game.grid.cellSelected.data.fillStyle = 'lime';

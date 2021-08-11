@@ -1,5 +1,6 @@
 
 ## () - grid-plants.js, basic features and single plant generation
+* clicking the selected cell results in it being de-selected
 * gridPlantsMod.create uses gridMod.create to create a base grid mod object
 * start using gridPlantsMod to create the grid object for game.grid
 

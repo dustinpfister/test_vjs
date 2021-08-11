@@ -36,7 +36,7 @@
         var game = {
             gameStates: gameStates,
             turnNumber: 0,
-            currentState: 'playerTurn', //'playerTurnOrbMenu',
+            currentState: 'aiTurn', //'playerTurn', //'playerTurnOrbMenu',
             selectedOrb: null,
             playerSlotFillStyle: { // used for flashing effect and solid color
                 secs: 0,
@@ -193,6 +193,13 @@
                 }
             }
         }
+    };
+
+    // player turn state
+    gameStates.aiTurn = {
+        buttons: {},
+        update: function (game, secs) {},
+        events: {}
     };
 
     // emit an event of the given eventKey with the given values for event, pos, and game

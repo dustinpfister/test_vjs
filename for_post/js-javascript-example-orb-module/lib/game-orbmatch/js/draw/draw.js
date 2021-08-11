@@ -40,6 +40,8 @@ draw.orbCollection = function (sm, ctx, canvas, pouch) {
 };
 
 draw.forGameState = {
+    playerTurn : function(sm, ctx, canvas){
+    },
     playerTurnOrbMenu : function(sm, ctx, canvas){
         draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
     }
@@ -49,7 +51,9 @@ draw.forGameState = {
 draw.gameState = function(sm, ctx, canvas){
     draw.background(sm, ctx, canvas);
     draw.slotAreas(sm, ctx, canvas);
+
     draw.orbCollection(sm, ctx, canvas, sm.game.player.slots);
+    draw.orbCollection(sm, ctx, canvas, sm.game.ai.slots);
 
     // for current game state
     draw.forGameState[sm.game.currentState](sm, ctx, canvas);

@@ -33,7 +33,7 @@
         opt = opt || {};
         var game = {
             turnNumber: 0,
-            currentState: 'playerTurnOrbMenu',
+            currentState: 'playerTurn', //'playerTurnOrbMenu',
             selectedOrb: null,
             playerSlotFillStyle: { // used for flashing effect and solid color
                 secs: 0,

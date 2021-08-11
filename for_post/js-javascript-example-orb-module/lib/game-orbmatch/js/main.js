@@ -39,10 +39,12 @@
             // update
             gameMod.update(sm.game, sm.secs);
             // draw
-            draw.background(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
-            draw.slotAreas(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
-            draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.slots);
-            draw.orbCollection(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch);
+            var ctx = sm.canvasObj.ctx,
+            canvas = sm.canvasObj.canvas;
+            draw.background(sm, ctx, canvas);
+            draw.slotAreas(sm, ctx, canvas);
+            draw.orbCollection(sm, ctx, canvas, sm.game.player.slots);
+            draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
             //draw.orbInfo(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, sm.game.player.pouch.orbs[0]);
             sm.lt = now;
         }

@@ -28,7 +28,6 @@ draw.slotAreas = function (sm, ctx, canvas) {
         });
     });
 };
-
 // draw orbCollection
 draw.orbCollection = function (sm, ctx, canvas, pouch) {
     pouch.orbs.forEach(function (orb) {
@@ -38,6 +37,10 @@ draw.orbCollection = function (sm, ctx, canvas, pouch) {
             draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb, 'rgba(255,0,0,0.2)');
         }
     });
+};
+// draw the current game state
+draw.gameState = function(sm, ctx, canvas){
+
 };
 // draw info of a single given orb
 draw.orbInfo = function (sm, ctx, canvas, orb) {

@@ -26,9 +26,7 @@
 * (done) display current attack values for player and ai with a draw.slotsInfo method
 * (done) have a playerObj.totalHeal prop
 * (done) display playerObj.totalHeal as part of draw.slotsInfo
-
-* make it so that totalHeal is applied in processTurn
-
+* (done) make it so that totalHeal is applied in processTurn
 
 ### ( done 08/11/2021 ) 0.8.0 - Player can set orbs in attack or defense mode
 * (done) have a orb.data.attackMode that will be a boolen value

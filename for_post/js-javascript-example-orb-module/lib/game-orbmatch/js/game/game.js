@@ -238,8 +238,7 @@
 
     var getTotalAttack = function(game, faction){
         return game[faction].slots.orbs.reduce(function(acc, orb){
-            console.log(orb.data.attack.current);
-            if(orb.data.attackMode && orb.type != 'null'){
+            if(orb.data.attackMode && orb.type != 'null' && orb.data.hp.current > 0){
                 return acc + orb.data.attack.current;
             }
             return acc;

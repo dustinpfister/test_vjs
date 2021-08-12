@@ -27,20 +27,22 @@ draw.slotAreas = function (sm, ctx, canvas) {
             }
             ctx.fillRect(orb.data.homeX - r, orb.data.homeY - r, r * 2, r * 2);
             // draw attack mode arrow
-            ctx.fillStyle = orb.data.attackMode ? 'red' : 'blue';
-            var radian = orb.data.attackMode ? Math.PI * 2 : Math.PI * 1;
-            radian = faction === 'ai' ? radian += Math.PI : radian;
-            ctx.save();
-            ctx.translate(orb.x, orb.y);
-            ctx.rotate(radian);
-            ctx.beginPath();
-            ctx.moveTo(-16, -16);
-            ctx.lineTo(0, -32);
-            ctx.lineTo(16, -16);
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
-            ctx.restore();
+            if(orb.type != 'null'){
+                ctx.fillStyle = orb.data.attackMode ? 'red' : 'blue';
+                var radian = orb.data.attackMode ? Math.PI * 2 : Math.PI * 1;
+                radian = faction === 'ai' ? radian += Math.PI : radian;
+                ctx.save();
+                ctx.translate(orb.x, orb.y);
+                ctx.rotate(radian);
+                ctx.beginPath();
+                ctx.moveTo(-16, -16);
+                ctx.lineTo(0, -32);
+                ctx.lineTo(16, -16);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+            }
         });
     });
 };

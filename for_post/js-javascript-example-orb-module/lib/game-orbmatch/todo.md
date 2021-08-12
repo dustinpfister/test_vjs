@@ -13,9 +13,11 @@
 * have a orb.data.attack.targets array that will be all the enemy orbs to attack
 
 ### () 0.9.0 - ai orbs, hp object, attack object
+* only display orb attack mode arrows in draw.slots for types pf orbs that are not null
 * (done) have the ai orbs slots set up with starting orbs from the ai pouch on creation of game object and do the same for player slots
 * start an orb.data.hp object that contains current, max, and heal values
 * start an orb.data.attack object that contains just a current prop for now
+
 
 ### ( done 08/11/2021 ) 0.8.0 - Player can set orbs in attack or defense mode
 * (done) have a orb.data.attackMode that will be a boolen value

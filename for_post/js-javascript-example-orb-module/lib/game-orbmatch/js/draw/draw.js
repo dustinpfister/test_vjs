@@ -42,8 +42,10 @@ draw.slotAreas = function (sm, ctx, canvas) {
                 ctx.closePath();
                 ctx.fill();
                 ctx.stroke();
-                ctx.restore();
                 // draw hp bar
+                ctx.fillStyle = 'lime';
+                ctx.fillRect(-16, 16, 32 * orb.data.hp.per, 5);
+                ctx.restore();
             }
         });
     });

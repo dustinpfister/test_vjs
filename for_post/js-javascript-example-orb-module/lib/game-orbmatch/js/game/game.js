@@ -28,6 +28,7 @@
             orb.data.hp = {
                 current: 10,
                 max: 10,
+                per: 1,
                 heal: 0
             };
             orb.data.attack = {

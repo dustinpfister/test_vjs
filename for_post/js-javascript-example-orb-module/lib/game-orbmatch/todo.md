@@ -1,5 +1,11 @@
 # game-orbmatch - todo list
 
+### () 0.x.0 - move orbs from slot to slot
+* make it so orbs can be moved from slot to slot
+
+### () 0.x.0 - fix orb loss bug
+* fix bug where an orb can be placed in a slot that all ready has an orb
+
 ### () 0.x.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done

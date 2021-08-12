@@ -38,17 +38,19 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 ## What to work on for today
 
+### () for xx/xx/xxxx
+* finish s6-examples for js-document-body
+* start new s7 section for js-document-body that has to do with style
+* start circle app for js-math-pi
+
 ### () for 08/13/2021
 * work on js-javascript-example-idle-game-wild
 * start post on js-javascript-example-idle-game-wild
 
 ### () for 08/12/2021
-* edit js-math-pow
-* add utils.XP object for s4-section in js-math-pow to version of utils.js used in js-javascript-example-utils
-* finish s6-examples for js-document-body
-* start new s7 section for js-document-body that has to do with style
+* (done) edit js-math-pow
+* (done) add utils.XP object for s4-section in js-math-pow to version of utils.js used in js-javascript-example-utils
 * work on js-javascript-example-idle-game-wild
-* start circle app for js-math-pi
 
 ### (done) for 08/11/2021
 * (done) edit js-math-pi

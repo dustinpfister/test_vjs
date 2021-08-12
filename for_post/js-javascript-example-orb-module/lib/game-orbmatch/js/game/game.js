@@ -234,17 +234,23 @@
         events: {}
     };
 
-    // process turn state
-    var attackTargets = function(game, faction){
-        var enemyFaction = faction === 'ai' ? 'player' : 'ai';
-        // get total attack value of slots
-        var attack = game[faction].slots.orbs.reduce(function(acc, orb){
+    // process turn state and helpers
+
+    var getTotalAttack = function(game, faction){
+        return game[faction].slots.orbs.reduce(function(acc, orb){
             console.log(orb.data.attack.current);
             if(orb.data.attackMode && orb.type != 'null'){
                 return acc + orb.data.attack.current;
             }
             return acc;
         }, 0);
+    };
+
+    var attackTargets = function(game, faction){
+        var enemyFaction = faction === 'ai' ? 'player' : 'ai';
+        // get total attack value of slots
+        var attack = getTotalAttack(game, faction);
+        // attack emeny orbs in slots
         game[enemyFaction].slots.orbs.forEach(function(eOrb){
             if(eOrb.type != 'null'){
                 eOrb.data.hp.current -= attack;

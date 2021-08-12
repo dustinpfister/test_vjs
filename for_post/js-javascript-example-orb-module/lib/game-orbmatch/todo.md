@@ -9,10 +9,15 @@
 ### () 0.x.0 - game over game state started
 * have a 'gameOver' game state that will fire when the game is over
 
-### () 0.x.0 - ai orbs setup in game.js
-* have the ai orbs slots, and pouch state set up when a new game object is created
+### () 0.x.0 - targets
+* have a orb.data.attack.targets array that will be all the enemy orbs to attack
 
-### ( done 08/11/2021 ) 0.x.0 - Player can set orbs in attack or defense mode
+### () 0.9.0 - ai orbs, hp object, attack object
+* have the ai orbs slots set up with starting orbs from the ai pouch on creation of game object and do the same for player slots
+* start an orb.data.hp object that contains current, max, and heal values
+* start an orb.data.attack object that contains just a current prop for now
+
+### ( done 08/11/2021 ) 0.8.0 - Player can set orbs in attack or defense mode
 * (done) have a orb.data.attackMode that will be a boolen value
 * (done) draw attack mode state of each orb in the draw.slots method
 * (done) in playerTurn have it so the player can toggle attackMode by clicking the slots

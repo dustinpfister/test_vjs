@@ -316,6 +316,13 @@
         }); 
     };
 
+    // get a count or orbs where orb.data.type != null
+    var getActiveOrbCount = function(game, faction){
+        return game[faction].slots.orbs.reduce(function(acc, orb){
+            return orb.type != 'null' ? acc + 1 : acc;
+        }, 0);
+    };
+
     // process turn state object
     gameStates.processTurn = {
         buttons: {},
@@ -327,7 +334,15 @@
             // apply heal
             applyHeal(game, 'player');
             applyHeal(game, 'ai');
-            game.currentState = 'playerTurn';
+
+            // check active counts
+            var playerActive = getActiveOrbCount(game, 'player'),
+            aiActive = getActiveOrbCount(game, 'ai');
+            if(playerActive === 0 || aiActive === 0){
+                game.currentState = 'gameOver';
+            }else{
+                game.currentState = 'playerTurn';
+            }
         },
         events: {}
     };

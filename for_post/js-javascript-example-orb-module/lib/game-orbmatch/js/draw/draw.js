@@ -100,6 +100,11 @@ draw.forGameState = {
     processTurn : function(sm, ctx, canvas){
     },
     gameOver : function(sm, ctx, canvas){
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.font = '30px arial';
+        ctx.fillText('Game Over', 30, 30);
     }
 };
 // draw the current game state

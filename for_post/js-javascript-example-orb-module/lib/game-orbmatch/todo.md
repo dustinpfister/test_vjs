@@ -20,7 +20,7 @@
 
 ### () 0.x.0 - game over game state started
 * (done) have a 'gameOver' game state that will fire when the game is over
-* when an orb.hp.current value is <= 0 then the type of that orb should become 'null'
+* (done) when an orb.hp.current value is <= 0 then the type of that orb should become 'null'
 * if a faction has all 'null' type orbs in slots durrent processTurn state, that will result in gameOver
 
 ### ( done 08/12/2021 ) 0.9.0 - ai orbs, hp objects, and attack objects started

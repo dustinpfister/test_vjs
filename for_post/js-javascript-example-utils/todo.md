@@ -9,6 +9,9 @@
 
 ## () - simple mod method demo
 
+## ( done 08/12/2021 ) - added XP object
+* (done) just added XP object to utils.js
+
 ## ( done 08/09/2021 ) - simple bounding box demo
 * (done) bounding box demo
 

@@ -53,6 +53,7 @@
         return getOrbDataTotal(game, faction, 'hp', 'heal', false);
     };
 
+    // create a player object for game.player, or game.ai
     var createPlayerObject = function (opt) {
         opt = opt || {};
         var playerObj = {
@@ -327,6 +328,21 @@
         },
         events: {}
     };
+
+
+/********* ********** ********** *********/
+//  GAMEOVER STATE
+/********* ********** ********** *********/
+
+    // game over state object
+    gameStates.processTurn = {
+        buttons: {},
+        update: function (game, secs) {
+            console.log('Oame Over!');
+        },
+        events: {}
+    };
+
 
 /********* ********** ********** *********/
 //  EVENT

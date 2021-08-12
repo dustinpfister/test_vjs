@@ -98,6 +98,8 @@ draw.forGameState = {
     aiTurn : function(sm, ctx, canvas){
     },
     processTurn : function(sm, ctx, canvas){
+    },
+    gameOver : function(sm, ctx, canvas){
     }
 };
 // draw the current game state

@@ -49,7 +49,7 @@
         var game = {
             gameStates: gameStates,
             turnNumber: 0,
-            currentState: 'aiTurn', //'playerTurn', //'playerTurnOrbMenu',
+            currentState: 'playerTurn', //'playerTurnOrbMenu',
             selectedOrb: null,
             playerSlotFillStyle: { // used for flashing effect and solid color
                 secs: 0,
@@ -237,7 +237,14 @@
     // process turn state
     var attackTargets = function(game, faction){
         var enemyFaction = faction === 'ai' ? 'player' : 'ai';
-        var attack = 1;
+        // get total attack value of slots
+        var attack = game[faction].slots.orbs.reduce(function(acc, orb){
+            console.log(orb.data.attack.current);
+            if(orb.data.attackMode && orb.type != 'null'){
+                return acc + orb.data.attack.current;
+            }
+            return acc;
+        }, 0);
         game[enemyFaction].slots.orbs.forEach(function(eOrb){
             if(eOrb.type != 'null'){
                 eOrb.data.hp.current -= attack;

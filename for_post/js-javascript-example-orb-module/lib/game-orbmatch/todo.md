@@ -18,10 +18,10 @@
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.x.0 - game over game state started
+### ( done 08/12/2021 ) 0.10.0 - game over game state started
 * (done) have a 'gameOver' game state that will fire when the game is over
 * (done) when an orb.hp.current value is <= 0 then the type of that orb should become 'null'
-* if a faction has all 'null' type orbs in slots durrent processTurn state, that will result in gameOver
+* (done) if a faction has all 'null' type orbs in slots durrent processTurn state, that will result in gameOver
 
 ### ( done 08/12/2021 ) 0.9.0 - ai orbs, hp objects, and attack objects started
 * (done) only display orb attack mode arrows in draw.slots for types pf orbs that are not null

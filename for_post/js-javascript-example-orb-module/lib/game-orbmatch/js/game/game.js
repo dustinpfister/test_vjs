@@ -297,7 +297,10 @@
                 eOrb.data.hp.current -= game[faction].totalAttack;
                 eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
                 eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
-                
+                // set to null if dead
+                if(eOrb.data.hp.current <= 0){
+                    eOrb.type = 'null';
+                }
             }
         }); 
     };
@@ -335,7 +338,7 @@
 /********* ********** ********** *********/
 
     // game over state object
-    gameStates.processTurn = {
+    gameStates.gameOver = {
         buttons: {},
         update: function (game, secs) {
             console.log('Oame Over!');

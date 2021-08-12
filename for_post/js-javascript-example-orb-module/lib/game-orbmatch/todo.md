@@ -24,9 +24,10 @@
 * (done) getTotalAttack should not add up current attack values of orbs that have an hp <=0
 * (done) have a playerObj.totalAttack value and have that be what is set by the getTotalAttack helper
 * (done) display current attack values for player and ai with a draw.slotsInfo method
+* (done) have a playerObj.totalHeal prop
+* (done) display playerObj.totalHeal as part of draw.slotsInfo
 
-* have a playerObj.totalHeal prop
-* display playerObj.totalHeal as part of draw.slotsInfo
+* make it so that totalHeal is applied in processTurn
 
 
 ### ( done 08/11/2021 ) 0.8.0 - Player can set orbs in attack or defense mode

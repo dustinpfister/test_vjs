@@ -268,14 +268,13 @@
 
     // process turn state and helpers
 
+    // attack enemy targets for the given faction
     var attackTargets = function(game, faction){
         var enemyFaction = faction === 'ai' ? 'player' : 'ai';
-        // get total attack value of slots
-        //var attack = getTotalAttack(game, faction);
         // attack emeny orbs in slots
         game[enemyFaction].slots.orbs.forEach(function(eOrb){
             if(eOrb.type != 'null'){
-                eOrb.data.hp.current -= game[faction].totalAttack; //attack;
+                eOrb.data.hp.current -= game[faction].totalAttack;
                 eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
                 eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
                 
@@ -283,12 +282,28 @@
         }); 
     };
 
+    // apply totalHeal for the given faction
+    var applyHeal = function(game, faction){
+        game[faction].slots.orbs.forEach(function(orb){
+            if(orb.type != 'null'){
+                orb.data.hp.current += game[faction].totalHeal;
+                orb.data.hp.current = orb.data.hp.current > orb.data.hp.max ? orb.data.hp.max : orb.data.hp.current;
+                orb.data.hp.per = orb.data.hp.current / orb.data.hp.max;
+            }
+        }); 
+    };
+
+
     gameStates.processTurn = {
         buttons: {},
         update: function (game, secs) {
             console.log('processTurn');
+            // attack targets
             attackTargets(game, 'player');
             attackTargets(game, 'ai');
+            // apply heal
+            applyHeal(game, 'player');
+            applyHeal(game, 'ai');
             game.currentState = 'playerTurn';
         },
         events: {}

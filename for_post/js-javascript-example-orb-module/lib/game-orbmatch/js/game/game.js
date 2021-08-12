@@ -15,20 +15,19 @@
 
     // get total attack
     var getTotalAttack = function(game, faction){
-        //return game[faction].slots.orbs.reduce(function(acc, orb){
-        //    if(orb.data.attackMode && orb.type != 'null' && orb.data.hp.current > 0){
-        //        return acc + orb.data.attack.current;
-        //    }
-        //    return acc;
-        //}, 0);
         return getOrbDataTotal(game, faction, 'attack', 'current');
+    };
+    // get total heal
+    var getTotalHeal = function(game, faction){
+        return getOrbDataTotal(game, faction, 'hp', 'heal');
     };
 
     var createPlayerObject = function (opt) {
         opt = opt || {};
         var playerObj = {
             faction: opt.faction || 'ai',
-            totalAttack: 0
+            totalAttack: 0,
+            totalHeal: 0
         };
         playerObj.pouch = OrbCollection.create({
                 key: 'pouch',
@@ -51,7 +50,7 @@
                 current: 10,
                 max: 10,
                 per: 1,
-                heal: 0
+                heal: 1
             };
             orb.data.attack = {
                 current: 1
@@ -91,6 +90,8 @@
         // set total attack values for first time
         game.player.totalAttack = getTotalAttack(game, 'player');
         game.ai.totalAttack = getTotalAttack(game, 'ai');
+        game.player.totalHeal = getTotalHeal(game, 'player');
+        game.ai.totalHeal = getTotalHeal(game, 'ai');
         return game;
     };
 

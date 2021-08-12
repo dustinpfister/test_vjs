@@ -9,6 +9,10 @@
 
 ## () - simple mod method demo
 
+## () - XP Object demos
+* start a demo of the XP Object
+* be sure to mention canvas-example-game-beach, and js-math-pow posts when editiing
+
 ## ( done 08/12/2021 ) - added XP object
 * (done) just added XP object to utils.js based off of what I was using in the beach canvas game, refined in js-math-pow post
 

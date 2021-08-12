@@ -4,9 +4,9 @@
 
     // create a player/ai object
 
-    var getOrbDataTotal = function(game, faction, objKey, propKey){
+    var getOrbDataTotal = function(game, faction, objKey, propKey, attackMode){
         return game[faction].slots.orbs.reduce(function(acc, orb){
-            if(orb.data.attackMode && orb.type != 'null' && orb.data.hp.current > 0){
+            if(orb.data.attackMode === attackMode && orb.type != 'null' && orb.data.hp.current > 0){
                 return acc + orb.data[objKey][propKey];
             }
             return acc;
@@ -15,11 +15,11 @@
 
     // get total attack
     var getTotalAttack = function(game, faction){
-        return getOrbDataTotal(game, faction, 'attack', 'current');
+        return getOrbDataTotal(game, faction, 'attack', 'current', true);
     };
     // get total heal
     var getTotalHeal = function(game, faction){
-        return getOrbDataTotal(game, faction, 'hp', 'heal');
+        return getOrbDataTotal(game, faction, 'hp', 'heal', false);
     };
 
     var createPlayerObject = function (opt) {

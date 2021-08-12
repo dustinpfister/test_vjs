@@ -32,8 +32,8 @@ utils.XP = (function () {
     };
     return {
         // use getXP method and then pass that to parseXP for utils.XP.parseByLevel
-        parseByLevel: function (l, cap) {
-            return parseByXP(getXP(l), cap);
+        parseByLevel: function (l, cap, deltaNext) {
+            return parseByXP(getXP(l, deltaNext), cap);
         },
         // can just directly use parseByXP for utils.XP.parseByXP
         parseByXP: parseByXP
@@ -42,7 +42,7 @@ utils.XP = (function () {
     ());
 
 // seems to work okay
-var a = utils.XP.parseByLevel(80, 100);
-var b = utils.XP.parseByXP(a.xp, 100);
+var a = utils.XP.parseByLevel(80, 100, 75);
+var b = utils.XP.parseByXP(a.xp, 100, 75);
 console.log(a); // { level: 10, levelFrac: 10, xp: 2250, forNext: 2750, toNext: 500 }
 console.log(b); // { level: 10, levelFrac: 10, xp: 2250, forNext: 2750, toNext: 500 }

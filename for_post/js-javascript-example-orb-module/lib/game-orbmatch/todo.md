@@ -6,6 +6,12 @@
 ### () 0.x.0 - fix orb loss bug
 * fix bug where an orb can be placed in a slot that all ready has an orb
 
+### () 0.x.0 - targets
+* have a orb.data.attack.targets array that will be all the enemy orbs to attack
+
+### () 0.10.0 - On orb death event
+* have an on orb death event that fires when orb.data.hp <=0;
+
 ### () 0.x.0 - Main state machine
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
@@ -14,9 +20,6 @@
 
 ### () 0.x.0 - game over game state started
 * have a 'gameOver' game state that will fire when the game is over
-
-### () 0.x.0 - targets
-* have a orb.data.attack.targets array that will be all the enemy orbs to attack
 
 ### ( done 08/12/2021 ) 0.9.0 - ai orbs, hp objects, and attack objects started
 * (done) only display orb attack mode arrows in draw.slots for types pf orbs that are not null

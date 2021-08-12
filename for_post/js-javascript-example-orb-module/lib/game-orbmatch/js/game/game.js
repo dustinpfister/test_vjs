@@ -2,8 +2,39 @@
 
     var gameStates = {};
 
-    // create a player/ai object
+/********* ********** ********** *********/
+//  HELPERS
+/********* ********** ********** *********/
 
+    // get a button that was clicked for the current state and if so which one.
+    // This will return a ref to the button, or null
+    var getButton = function(game, x, y){
+        var state = gameStates[game.currentState];
+        var buttons = state.buttons;
+        var keys = Object.keys(buttons);
+        var i = 0,
+        buttonKey,
+        b,
+        len = keys.length;
+        while(i < len){
+            buttonKey = keys[i];
+            b = buttons[buttonKey];
+            if(utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)){
+                return b;
+            }
+            i += 1;
+        }
+        return null;
+    };
+
+    var buttonCheck = function(e, pos, game){
+        var b = getButton(game, pos.x, pos.y);
+        if(b){
+            b.onClick.call(b, e, pos, game, b);
+        }
+    };
+
+    // create a player/ai object
     var getOrbDataTotal = function(game, faction, objKey, propKey, attackMode){
         return game[faction].slots.orbs.reduce(function(acc, orb){
             if(orb.data.attackMode === attackMode && orb.type != 'null' && orb.data.hp.current > 0){
@@ -64,6 +95,10 @@
         return playerObj;
     };
 
+/********* ********** ********** *********/
+//  CREATE METHOD
+/********* ********** ********** *********/
+
     // create and return a new game object
     api.create = function (opt) {
         opt = opt || {};
@@ -95,35 +130,10 @@
         return game;
     };
 
-    // get a button that was clicked for the current state and if so which one.
-    // This will return a ref to the button, or null
-    var getButton = function(game, x, y){
-        var state = gameStates[game.currentState];
-        var buttons = state.buttons;
-        var keys = Object.keys(buttons);
-        var i = 0,
-        buttonKey,
-        b,
-        len = keys.length;
-        while(i < len){
-            buttonKey = keys[i];
-            b = buttons[buttonKey];
-            if(utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)){
-                return b;
-            }
-            i += 1;
-        }
-        return null;
-    };
+/********* ********** ********** *********/
+//  PLAYER TURN STATE
+/********* ********** ********** *********/
 
-    var buttonCheck = function(e, pos, game){
-        var b = getButton(game, pos.x, pos.y);
-        if(b){
-            b.onClick.call(b, e, pos, game, b);
-        }
-    };
-
-    // player turn state
     gameStates.playerTurn = {
         buttons: {
             setOrbs: {
@@ -166,7 +176,10 @@
         }
     };
 
-    // player turn orb menu state
+/********* ********** ********** *********/
+//  PLAYER TURN ORB MENU STATE
+/********* ********** ********** *********/
+
     gameStates.playerTurnOrbMenu = {
         buttons: {
             done: {
@@ -256,6 +269,10 @@
         }
     };
 
+/********* ********** ********** *********/
+//  AI TURN STATE
+/********* ********** ********** *********/
+
     // ai turn state
     gameStates.aiTurn = {
         buttons: {},
@@ -266,7 +283,9 @@
         events: {}
     };
 
-    // process turn state and helpers
+/********* ********** ********** *********/
+//  PROCESS TURN STATE
+/********* ********** ********** *********/
 
     // attack enemy targets for the given faction
     var attackTargets = function(game, faction){
@@ -293,7 +312,7 @@
         }); 
     };
 
-
+    // process turn state object
     gameStates.processTurn = {
         buttons: {},
         update: function (game, secs) {
@@ -309,6 +328,11 @@
         events: {}
     };
 
+/********* ********** ********** *********/
+//  EVENT
+/********* ********** ********** *********/
+
+
     // emit an event of the given eventKey with the given values for event, pos, and game
     api.emitStateEvent = function (eventKey, e, pos, game) {
         var handler = gameStates[game.currentState].events[eventKey];
@@ -316,6 +340,10 @@
             handler.call(e, e, pos, game);
         }
     };
+
+/********* ********** ********** *********/
+//  UPDATE
+/********* ********** ********** *********/
 
     // update the current game state
     api.update = function (game, secs) {

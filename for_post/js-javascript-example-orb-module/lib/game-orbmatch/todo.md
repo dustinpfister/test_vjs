@@ -18,7 +18,8 @@
 * (done) start an orb.data.hp object that contains current, max, and heal values
 * (done) start an orb.data.attack object that contains just a current prop for now
 * (done) update draw.slots so that the hp of an orb is dispaled
-* have an attackTargets helper function for processTrun state that will attack orbs of the other faction
+* (done) have an attackTargets helper function for processTrun state that will attack orbs of the other faction
+* have attack value in attackTargets be the some of the current propery of all orbs
 
 ### ( done 08/11/2021 ) 0.8.0 - Player can set orbs in attack or defense mode
 * (done) have a orb.data.attackMode that will be a boolen value

@@ -13,7 +13,7 @@
 * have a orb.data.attack.targets array that will be all the enemy orbs to attack
 
 ### () 0.9.0 - ai orbs, hp object, attack object
-* have the ai orbs slots set up with starting orbs from the ai pouch on creation of game object and do the same for player slots
+* (done) have the ai orbs slots set up with starting orbs from the ai pouch on creation of game object and do the same for player slots
 * start an orb.data.hp object that contains current, max, and heal values
 * start an orb.data.attack object that contains just a current prop for now
 

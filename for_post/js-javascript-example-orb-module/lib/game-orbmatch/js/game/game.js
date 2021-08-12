@@ -28,6 +28,9 @@
             orb.x = orb.data.homeX;
             orb.y = orb.data.homeY;
         });
+        // setting a starting orb
+        OrbCollection.setOrbPropsToOrb(playerObj.slots, 1,  playerObj.pouch.orbs[0]);
+        playerObj.pouch.orbs[0].type = 'null';
         return playerObj;
     };
 

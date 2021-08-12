@@ -57,10 +57,13 @@ draw.slotsInfo = function(sm, ctx, canvas){
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.font = '10px arial';
-        var y = sm.game.ai.slots.orbs[0].data.homeY;
-        ctx.fillText('attack: ' + sm.game.ai.totalAttack, 40, y - 32);
-        var y = sm.game.player.slots.orbs[0].data.homeY;
-        ctx.fillText('attack: ' + sm.game.player.totalAttack, 40, y + 32);
+        var yAI = sm.game.ai.slots.orbs[0].data.homeY;
+        var yP = sm.game.player.slots.orbs[0].data.homeY;
+        ctx.fillText('attack: ' + sm.game.ai.totalAttack, 40, yAI - 32);
+        ctx.fillText('attack: ' + sm.game.player.totalAttack, 40, yP + 32);
+        ctx.fillStyle = 'blue';
+        ctx.fillText('heal: ' + sm.game.ai.totalHeal, 40, yAI - 42);
+        ctx.fillText('heal: ' + sm.game.player.totalHeal, 40, yP + 42);
     });
 };
 // draw orbCollection

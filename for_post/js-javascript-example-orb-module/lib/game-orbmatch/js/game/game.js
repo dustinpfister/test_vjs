@@ -149,6 +149,7 @@
         },
         update: function (game, secs) {
             game.player.totalAttack = getTotalAttack(game, 'player');
+            game.player.totalHeal = getTotalHeal(game, 'player');
         },
         events: {
             onPointerStart: function (e, pos, game) {
@@ -191,6 +192,7 @@
             }
             // make sure totalAttack is up to date
             game.player.totalAttack = getTotalAttack(game, 'player');
+            game.player.totalHeal = getTotalHeal(game, 'player');
         },
         events: {
             onPointerStart: function (e, pos, game) {

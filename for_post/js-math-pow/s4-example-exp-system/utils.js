@@ -25,7 +25,7 @@ utils.XP = (function () {
     };
     return {
         parseByLevel: function (l, cap) {
-            return parseByXP(getXP(l, cap));
+            return parseByXP(getXP(l, cap), cap);
         },
         parseByXP: parseByXP
     };
@@ -33,7 +33,7 @@ utils.XP = (function () {
     ());
 
 // seems to work okay
-var a = utils.XP.parseByLevel(10, 100);
+var a = utils.XP.parseByLevel(120, 100);
 var b = utils.XP.parseByXP(a.xp + 0, 100);
 console.log(a); // { level: 10, levelFrac: 10, xp: 2250, forNext: 2750, toNext: 500 }
 console.log(b); // { level: 10, levelFrac: 10, xp: 2250, forNext: 2750, toNext: 500 }

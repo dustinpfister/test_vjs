@@ -17,8 +17,8 @@
 * (done) have the ai orbs slots set up with starting orbs from the ai pouch on creation of game object and do the same for player slots
 * (done) start an orb.data.hp object that contains current, max, and heal values
 * (done) start an orb.data.attack object that contains just a current prop for now
-* update draw.slots so that the hp of an orb is dispaled
-* have an attackTargets helper function for process trun that will attack orbs of the other faction
+* (done) update draw.slots so that the hp of an orb is dispaled
+* have an attackTargets helper function for processTrun state that will attack orbs of the other faction
 
 ### ( done 08/11/2021 ) 0.8.0 - Player can set orbs in attack or defense mode
 * (done) have a orb.data.attackMode that will be a boolen value

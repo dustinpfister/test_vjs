@@ -235,13 +235,25 @@
     };
 
     // process turn state
-    var attackTargets = function(){
+    var attackTargets = function(game, faction){
+        var enemyFaction = faction === 'ai' ? 'player' : 'ai';
+        var attack = 1;
+        game[enemyFaction].slots.orbs.forEach(function(eOrb){
+            if(eOrb.type != 'null'){
+                eOrb.data.hp.current -= attack;
+                eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
+                eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
+                
+            }
+        }); 
     };
 
     gameStates.processTurn = {
         buttons: {},
         update: function (game, secs) {
             console.log('processTurn');
+            attackTargets(game, 'player');
+            attackTargets(game, 'ai');
             game.currentState = 'playerTurn';
         },
         events: {}

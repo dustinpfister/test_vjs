@@ -9,6 +9,7 @@ utils.XP = (function () {
     var getXP = function (level) {
         return ((Math.pow(level, 2) - level) * 50) / 2;
     };
+    // parse a levelObj by XP
     var parseByXP = function (xp, cap) {
         var l = getLevel(xp);
         l = l > cap ? cap : l;
@@ -24,9 +25,11 @@ utils.XP = (function () {
         };
     };
     return {
+        // use getXP method and then pass that to parseXP for utils.XP.parseByLevel
         parseByLevel: function (l, cap) {
             return parseByXP(getXP(l, cap), cap);
         },
+        // can just directly use parseByXP for utils.XP.parseByXP
         parseByXP: parseByXP
     };
 }

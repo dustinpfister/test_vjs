@@ -32,7 +32,7 @@ draw.slotAreas = function (sm, ctx, canvas) {
                 var radian = orb.data.attackMode ? Math.PI * 2 : Math.PI * 1;
                 radian = faction === 'ai' ? radian += Math.PI : radian;
                 ctx.save();
-                ctx.translate(orb.x, orb.y);
+                ctx.translate(orb.data.homeX, orb.data.homeY);
                 ctx.rotate(radian);
                 ctx.beginPath();
                 ctx.moveTo(-16, -16);

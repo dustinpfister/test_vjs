@@ -226,6 +226,9 @@
     };
 
     // process turn state
+    var attackTargets = function(){
+    };
+
     gameStates.processTurn = {
         buttons: {},
         update: function (game, secs) {

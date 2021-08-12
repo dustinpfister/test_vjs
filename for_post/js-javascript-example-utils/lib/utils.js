@@ -90,3 +90,44 @@ utils.canvasPointerEvents = function (canvas, state, events) {
     canvas.addEventListener('touchmove', handler, options);
     canvas.addEventListener('touchend', handler, options);
 };
+// Basic experience point system methods
+utils.XP = (function () {
+    // default values
+    var default_deltaNext = 50,
+    defualt_cap = 100;
+    // get level with given xp
+    var getLevel = function (xp, deltaNext) {
+        deltaNext = deltaNext === undefined ? default_deltaNext : deltaNext;
+        return (1 + Math.sqrt(1 + 8 * xp / deltaNext)) / 2;
+    };
+    // get exp to the given level with given current_level and xp
+    var getXP = function (level, deltaNext) {
+        deltaNext = deltaNext === undefined ? default_deltaNext : deltaNext;
+        return ((Math.pow(level, 2) - level) * deltaNext) / 2;
+    };
+    // parse a levelObj by XP
+    var parseByXP = function (xp, cap, deltaNext) {
+        //cap = cap === undefined ? default_cap : cap;
+        var l = getLevel(xp);
+        l = l > cap ? cap : l;
+        var level = Math.floor(l),
+        forNext = getXP(level + 1);
+        return {
+            level: level,
+            levelFrac: l,
+            per: l % 1,
+            xp: xp,
+            forNext: l === cap ? Infinity : forNext,
+            toNext: l === cap ? Infinity : forNext - xp
+        };
+    };
+    return {
+        // use getXP method and then pass that to parseXP for utils.XP.parseByLevel
+        parseByLevel: function (l, cap, deltaNext) {
+            return parseByXP(getXP(l, deltaNext), cap);
+        },
+        // can just directly use parseByXP for utils.XP.parseByXP
+        parseByXP: parseByXP
+    };
+}
+    ());

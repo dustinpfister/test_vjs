@@ -53,7 +53,14 @@ draw.slotAreas = function (sm, ctx, canvas) {
 // draw slots info
 draw.slotsInfo = function(sm, ctx, canvas){
     ['player', 'ai'].forEach(function (faction) {
-        
+        ctx.fillStyle = 'red';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.font = '10px arial';
+        var y = sm.game.ai.slots.orbs[0].data.homeY;
+        ctx.fillText('attack: ' + sm.game.ai.totalAttack, 40, y - 32);
+        var y = sm.game.player.slots.orbs[0].data.homeY;
+        ctx.fillText('attack: ' + sm.game.player.totalAttack, 40, y + 32);
     });
 };
 // draw orbCollection
@@ -96,6 +103,7 @@ draw.gameState = function(sm, ctx, canvas){
     draw.slotAreas(sm, ctx, canvas);
     draw.orbCollection(sm, ctx, canvas, sm.game.player.slots);
     draw.orbCollection(sm, ctx, canvas, sm.game.ai.slots);
+    draw.slotsInfo(sm, ctx, canvas);
     // for current game state
     draw.forGameState[sm.game.currentState](sm, ctx, canvas);
     // buttons

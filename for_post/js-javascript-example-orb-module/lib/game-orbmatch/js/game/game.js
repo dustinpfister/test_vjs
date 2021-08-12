@@ -169,6 +169,7 @@
             }
         },
         update: function (game, secs) {
+            // flash player slots
             var psf = game.playerSlotFillStyle;
             psf.secs += secs;
             if (psf.secs >= 0.2) {
@@ -179,7 +180,6 @@
             }
             // make sure totalAttack is up to date
             game.player.totalAttack = getTotalAttack(game, 'player');
-
         },
         events: {
             onPointerStart: function (e, pos, game) {

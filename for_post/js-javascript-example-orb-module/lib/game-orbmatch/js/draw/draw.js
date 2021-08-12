@@ -26,8 +26,9 @@ draw.slotAreas = function (sm, ctx, canvas) {
                 ctx.fillStyle = sm.game.playerSlotFillStyle.color || 'gray';
             }
             ctx.fillRect(orb.data.homeX - r, orb.data.homeY - r, r * 2, r * 2);
-            // draw attack mode arrow
+
             if(orb.type != 'null'){
+                // draw attack mode arrow
                 ctx.fillStyle = orb.data.attackMode ? 'red' : 'blue';
                 var radian = orb.data.attackMode ? Math.PI * 2 : Math.PI * 1;
                 radian = faction === 'ai' ? radian += Math.PI : radian;
@@ -42,6 +43,7 @@ draw.slotAreas = function (sm, ctx, canvas) {
                 ctx.fill();
                 ctx.stroke();
                 ctx.restore();
+                // draw hp bar
             }
         });
     });

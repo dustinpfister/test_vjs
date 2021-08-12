@@ -50,6 +50,12 @@ draw.slotAreas = function (sm, ctx, canvas) {
         });
     });
 };
+// draw slots info
+draw.slotsInfo = function(sm, ctx, canvas){
+    ['player', 'ai'].forEach(function (faction) {
+        
+    });
+};
 // draw orbCollection
 draw.orbCollection = function (sm, ctx, canvas, pouch) {
     pouch.orbs.forEach(function (orb) {
@@ -60,6 +66,7 @@ draw.orbCollection = function (sm, ctx, canvas, pouch) {
         }
     });
 };
+// draw a button
 draw.button = function(button, ctx){
     ctx.fillStyle = 'red';
     ctx.fillRect(button.x, button.y, button.w, button.h);
@@ -99,6 +106,7 @@ draw.gameState = function(sm, ctx, canvas){
         draw.button(b, ctx);
     });
 };
+/*
 // draw info of a single given orb
 draw.orbInfo = function (sm, ctx, canvas, orb) {
     ctx.fillStyle = 'white';
@@ -107,3 +115,4 @@ draw.orbInfo = function (sm, ctx, canvas, orb) {
     ctx.fillText('points: ' + orb.points.join(','), 10, 30);
     ctx.fillText('ratio: ' + orb.ratio.join(','), 10, 40);
 };
+*/

@@ -3,10 +3,22 @@
     var gameStates = {};
 
     // create a player/ai object
+
+    // get total attack
+    var getTotalAttack = function(game, faction){
+        return game[faction].slots.orbs.reduce(function(acc, orb){
+            if(orb.data.attackMode && orb.type != 'null' && orb.data.hp.current > 0){
+                return acc + orb.data.attack.current;
+            }
+            return acc;
+        }, 0);
+    };
+
     var createPlayerObject = function (opt) {
         opt = opt || {};
         var playerObj = {
-            faction: opt.faction || 'ai'
+            faction: opt.faction || 'ai',
+            totalAttack: 0
         };
         playerObj.pouch = OrbCollection.create({
                 key: 'pouch',
@@ -66,6 +78,9 @@
         game.ai = createPlayerObject({
                 faction: 'ai'
             });
+        // set total attack values for first time
+        game.player.totalAttack = getTotalAttack(game, 'player');
+        game.ai.totalAttack = getTotalAttack(game, 'ai');
         return game;
     };
 
@@ -121,7 +136,9 @@
                 }
             }
         },
-        update: function (game, secs) {},
+        update: function (game, secs) {
+            game.player.totalAttack = getTotalAttack(game, 'player');
+        },
         events: {
             onPointerStart: function (e, pos, game) {
                 buttonCheck(e, pos, game);
@@ -160,6 +177,8 @@
                 psf.color = psf.colorArray[psf.colorIndex];
                 psf.secs %= 0.2;
             }
+            // make sure totalAttack is up to date
+            game.player.totalAttack = getTotalAttack(game, 'player');
 
         },
         events: {
@@ -228,7 +247,7 @@
     gameStates.aiTurn = {
         buttons: {},
         update: function (game, secs) {
-            console.log('aiTurn');
+            game.ai.totalAttack = getTotalAttack(game, 'ai');
             game.currentState = 'processTurn';
         },
         events: {}
@@ -236,23 +255,14 @@
 
     // process turn state and helpers
 
-    var getTotalAttack = function(game, faction){
-        return game[faction].slots.orbs.reduce(function(acc, orb){
-            if(orb.data.attackMode && orb.type != 'null' && orb.data.hp.current > 0){
-                return acc + orb.data.attack.current;
-            }
-            return acc;
-        }, 0);
-    };
-
     var attackTargets = function(game, faction){
         var enemyFaction = faction === 'ai' ? 'player' : 'ai';
         // get total attack value of slots
-        var attack = getTotalAttack(game, faction);
+        //var attack = getTotalAttack(game, faction);
         // attack emeny orbs in slots
         game[enemyFaction].slots.orbs.forEach(function(eOrb){
             if(eOrb.type != 'null'){
-                eOrb.data.hp.current -= attack;
+                eOrb.data.hp.current -= game[faction].totalAttack; //attack;
                 eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
                 eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
                 

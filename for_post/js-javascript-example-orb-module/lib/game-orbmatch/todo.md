@@ -22,7 +22,9 @@
 * (done) have attack value in attackTargets be the some of the current propery of all orbs
 * (done) have stand alone getTotalAttack helper function
 * (done) getTotalAttack should not add up current attack values of orbs that have an hp <=0
-* display attack values for player and ai
+
+* have a playerObj.totalAttack value and have that be what is set by the getTotalAttack helper
+* display current attack values for player and ai with a draw.slotsInfo method
 
 
 ### ( done 08/11/2021 ) 0.8.0 - Player can set orbs in attack or defense mode

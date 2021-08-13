@@ -51,5 +51,16 @@
         gridMod.selectedCheck(sm.game.grid, x, y, onCellSelect, onCellUnSelect);
     };
 
+    // update
+    api.update = function (grid, secs) {
+        grid.cells.forEach(function (cell) {
+            if (cell.data.plantIndex === 0 && cell.data.fertPoints >= 1) {
+
+                console.log(cell);
+
+            }
+        });
+    };
+
 }
     (this['gridPlantsMod'] = {}))

@@ -13,7 +13,11 @@ var sm = {
 
 // game state
 sm.states.game = {
-    update: function (sm, secs) {},
+    update: function (sm, secs) {
+
+        gridPlantsMod.update(sm.game.grid, secs);
+
+    },
     draw: function (sm, ctx, canvas) {
         draw.background(sm, ctx, canvas);
         draw.grid(sm.game.grid, ctx, canvas);
@@ -25,8 +29,7 @@ sm.states.game = {
             var delta = 1;
             if (cell && sm.game.grid.fertPoints >= delta) {
                 sm.game.grid.fertPoints -= delta;
-                cell.data.fertPoints += delta
-                console.log(cell.data.fertPoints);
+                cell.data.fertPoints += delta;
             }
         },
         pointerMove: function () {},

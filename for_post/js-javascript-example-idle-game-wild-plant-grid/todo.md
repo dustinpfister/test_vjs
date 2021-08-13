@@ -5,9 +5,9 @@
 * (done) cell.data.plantIndex prop
 * (done) cell.data.fertPoints prop
 * (done) I will need a PLANTS const
-* start a gridPlantMod.update method
-* have a way to make it so the first fertPoint can be spent to increase fert of a cell
-* if fert of a cell is >= 1 for first plant type, that plant can grow there
+* (done) start a gridPlantMod.update method
+* (done) have a way to make it so the first fertPoint can be spent to increase fert of a cell
+* (done) if fert of a cell is >= 1 for first plant type, that plant can grow there
 
 ## (done 08/11/2021) - grid-plants.js started
 * (done) clicking the selected cell results in it being de-selected

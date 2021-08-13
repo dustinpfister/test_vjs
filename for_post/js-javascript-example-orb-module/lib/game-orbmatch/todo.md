@@ -53,14 +53,13 @@
 ### () 0.12.0 - Orb.type based orb stats in orb-collection.js
 * have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
 * have it so that orb.level will impact stat values
-
-### () 0.11.0 - new playerTrunOrbConfig
-* (done) orb.data.attack, and orb.data.hp objects should be set up in orb-collection.js
-* (done) start a new playerTurnOrnConfig game state
-
-* in playerTurn game mode make it so that clicking on a player orb displays info about that orb
 * display basic info bout each orb as part of draw.slots, maybe just level.
 * make it so that the color of the orbs will differ based on the state of orb.ratio
+
+### ( done 08/13/2021 ) 0.11.0 - new playerTrunOrbConfig
+* (done) orb.data.attack, and orb.data.hp objects should be set up in orb-collection.js
+* (done) start a new playerTurnOrnConfig game state
+* (done) in playerTurn game mode make it so that clicking on a player orb displays info about that orb
 
 ### ( done 08/12/2021 ) 0.10.0 - game over game state started
 * (done) have a 'gameOver' game state that will fire when the game is over

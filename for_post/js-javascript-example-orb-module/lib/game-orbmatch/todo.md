@@ -53,6 +53,7 @@
 ### () 0.12.0 - Orb.type based orb stats in orb-collection.js
 * (done) display hp.heal if !orb.attackMode in draw.info
 * (done) orbCollection: have it so that I can pass an array of points values
+
 * have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
 * have it so that orb.level will impact stat values
 * display basic info bout each orb as part of draw.slots, maybe just level.

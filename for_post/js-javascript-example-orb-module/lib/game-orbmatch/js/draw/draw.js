@@ -24,7 +24,11 @@ draw.orbInfo = function(sm, ctx, canvas, orb, x, y){
     }else{
         ctx.fillText('heal: ' + orb.data.hp.heal, x, y);
     }
-    ctx.fillText('hp: ' + orb.data.hp.current + '/' + orb.data.hp.max, x, y + 10);
+    ctx.fillText('hp: ' + orb.data.hp.current + '/' + orb.data.hp.max, x, y + 15);
+    ctx.fillText('type: ' + orb.type, x, y + 30);
+    ctx.fillText('ratio: ' + orb.ratio.join('-'), x, y + 45);
+    ctx.fillText('points: ' + orb.points.join('-'), x, y + 60);
+    ctx.fillText('level: ' + orb.level, x, y + 75);
 };
 
 // draw slot areas

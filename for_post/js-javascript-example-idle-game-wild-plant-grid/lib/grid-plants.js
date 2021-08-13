@@ -5,7 +5,7 @@
         {
             desc: 'none',
             minFert: 0,
-            fillStyle: '#880088' // used as a base cell color
+            fillStyle: '#555500' // used as a base cell color
         },
         // 1 - grass
         {
@@ -18,7 +18,7 @@
     // create a new plant object for the given cell
     var createPlant = function (cell) {
         var plant = {
-            plantDef: PLANTS[cell.plantIndex]
+            def: PLANTS[cell.data.plantIndex]
         };
         return plant;
     };

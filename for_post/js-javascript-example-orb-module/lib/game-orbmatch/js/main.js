@@ -1,8 +1,5 @@
 (function () {
 
-    var orb = orbMod.createFromLevel([1, 1, 1, 1], 7);
-    console.log(orb.type); // 'quad'
-
     // state object
     var sm = {
         game: gameMod.create(),

@@ -68,6 +68,7 @@
         orbA.points = orbB.points;
         orbA.ratio = orbB.ratio;
         orbA.type = orbB.type;
+        orbA.level = orbB.level;
         return orbA;
     };
 

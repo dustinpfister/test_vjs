@@ -1,4 +1,7 @@
 
+## () - better get getCellByPixlePos grid method
+* make a better getCellByPixlePos method that makes use of a simple expression rather than looping
+
 ## ( done 08/13/2021 ) - fertPoints
 * (done) the grid-plants module should have a grid.fertPoints property
 * (done) start with just one fertPoint

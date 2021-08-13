@@ -261,6 +261,42 @@
     };
 
 /********* ********** ********** *********/
+//  PLAYER TURN ORB CONDIF STATE
+/********* ********** ********** *********/
+
+    gameStates.playerTrunOrbConfig = {
+        buttons: {
+            done: {
+                disp: 'Done',
+                x: 300,
+                y: 400,
+                w: 128,
+                h: 64,
+                onClick: function(e, pos, game, button){
+                    game.currentState = 'playerTrun';
+                }
+            }
+        },
+        update: function (game, secs) {
+            game.player.totalAttack = getTotalAttack(game, 'player');
+            game.player.totalHeal = getTotalHeal(game, 'player');
+        },
+        events: {
+            onPointerStart: function (e, pos, game) {
+                buttonCheck(e, pos, game);
+                var orb = OrbCollection.getOrbAtPos(game.player.slots, pos.x, pos.y);
+                if(orb){
+                    if(orb.type != 'null'){
+                        orb.data.attackMode = !orb.data.attackMode;
+                    }
+                }
+            },
+            onPointerMove: function (e, pos, game) {},
+            onPointerEnd: function (e, pos, game) {}
+        }
+    };
+
+/********* ********** ********** *********/
 //  AI TURN STATE
 /********* ********** ********** *********/
 

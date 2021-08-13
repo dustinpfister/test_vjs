@@ -55,9 +55,8 @@
     api.update = function (grid, secs) {
         grid.cells.forEach(function (cell) {
             if (cell.data.plantIndex === 0 && cell.data.fertPoints >= 1) {
-
-                console.log(cell);
-
+                cell.data.plantIndex = 1;
+                cell.data.plant = createPlant(cell);
             }
         });
     };

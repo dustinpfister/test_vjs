@@ -34,6 +34,7 @@
         grid.cells.forEach(function (cell) {
             // fill style
             cell.data.fillStyle = 'lime';
+            cell.data.fertPoints = 0;
             cell.data.plantIndex = 0; // the index of the current plant
             cell.data.plant = createPlant(cell);
         });

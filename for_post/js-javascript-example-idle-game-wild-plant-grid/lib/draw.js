@@ -7,8 +7,12 @@ draw.background = function (sm, ctx, canvas) {
 // draw the given grid object
 draw.grid = function (grid, ctx, canvas) {
     grid.cells.forEach(function (cell) {
-		var plant = cell.data.plant;
+        var plant = cell.data.plant;
         ctx.fillStyle = plant.def.fillStyle || 'white';
         ctx.fillRect(cell.x, cell.y, grid.cellSize, grid.cellSize);
+        // debug text
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'top';
+        ctx.fillText(cell.data.fertPoints, cell.x, cell.y);
     });
 };

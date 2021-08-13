@@ -165,12 +165,6 @@
         events: {
             onPointerStart: function (e, pos, game) {
                 buttonCheck(e, pos, game);
-                var orb = OrbCollection.getOrbAtPos(game.player.slots, pos.x, pos.y);
-                if(orb){
-                    if(orb.type != 'null'){
-                        orb.data.attackMode = !orb.data.attackMode;
-                    }
-                }
             },
             onPointerMove: function (e, pos, game) {},
             onPointerEnd: function (e, pos, game) {}

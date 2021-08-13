@@ -56,7 +56,7 @@
 
 ### () 0.11.0 - new playerTrunOrbConfig
 * (done) orb.data.attack, and orb.data.hp objects should be set up in orb-collection.js
-* start a new playerTurnOrnConfig game state
+* (done) start a new playerTurnOrnConfig game state
 * in playerTrunOrbConfig game mode make it so that clicking on a player orb displays info about that orb
 * display basic info bout each orb as part of draw.slots, maybe just level.
 * make it so that the color of the orbs will differ based on the state of orb.ratio

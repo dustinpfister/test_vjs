@@ -131,17 +131,27 @@
                 disp: 'Set Orbs',
                 x: 500,
                 y: 400,
-                w: 128,
+                w: 100,
                 h: 64,
                 onClick: function(e, pos, game, button){
                     game.currentState = 'playerTurnOrbMenu';
+                }
+            },
+            orbConfig: {
+                disp: 'Config Orbs',
+                x: 400,
+                y: 400,
+                w: 100,
+                h: 64,
+                onClick: function(e, pos, game, button){
+                    game.currentState = 'playerTurnOrbConfig';
                 }
             },
             endTrun: {
                 disp: 'End Turn',
                 x: 300,
                 y: 400,
-                w: 128,
+                w: 100,
                 h: 64,
                 onClick: function(e, pos, game, button){
                     game.currentState = 'aiTurn';
@@ -261,19 +271,19 @@
     };
 
 /********* ********** ********** *********/
-//  PLAYER TURN ORB CONDIF STATE
+//  PLAYER TURN ORB CONFIG STATE
 /********* ********** ********** *********/
 
-    gameStates.playerTrunOrbConfig = {
+    gameStates.playerTurnOrbConfig = {
         buttons: {
             done: {
                 disp: 'Done',
-                x: 300,
+                x: 500,
                 y: 400,
-                w: 128,
+                w: 100,
                 h: 64,
                 onClick: function(e, pos, game, button){
-                    game.currentState = 'playerTrun';
+                    game.currentState = 'playerTurn';
                 }
             }
         },

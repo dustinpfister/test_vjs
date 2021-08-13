@@ -103,6 +103,8 @@ draw.forGameState = {
     playerTurnOrbMenu : function(sm, ctx, canvas){
         draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
     },
+    playerTurnOrbConfig : function(sm, ctx, canvas){
+    },
     aiTurn : function(sm, ctx, canvas){
     },
     processTurn : function(sm, ctx, canvas){

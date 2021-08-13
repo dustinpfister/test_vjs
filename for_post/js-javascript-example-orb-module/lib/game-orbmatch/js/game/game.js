@@ -165,6 +165,14 @@
         events: {
             onPointerStart: function (e, pos, game) {
                 buttonCheck(e, pos, game);
+                // set selected orb, for the sake of displaying info
+                game.selectedOrb = null;
+                var orb = OrbCollection.getOrbAtPos(game.player.slots, pos.x, pos.y);
+                if(orb){
+                    if(orb.type != 'null'){
+                        game.selectedOrb = orb;
+                    }
+                }
             },
             onPointerMove: function (e, pos, game) {},
             onPointerEnd: function (e, pos, game) {}

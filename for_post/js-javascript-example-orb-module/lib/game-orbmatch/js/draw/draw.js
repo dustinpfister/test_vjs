@@ -99,6 +99,10 @@ draw.button = function(button, ctx){
 // game state methods
 draw.forGameState = {
     playerTurn : function(sm, ctx, canvas){
+        var orb = sm.game.selectedOrb;
+        if(orb){
+            draw.orbInfo(sm, ctx, canvas, orb, 10, 10);
+        }
     },
     playerTurnOrbMenu : function(sm, ctx, canvas){
         draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);

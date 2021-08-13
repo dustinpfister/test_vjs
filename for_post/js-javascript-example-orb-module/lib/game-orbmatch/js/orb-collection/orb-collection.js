@@ -18,7 +18,7 @@
             orb = orbMod.createFromLevel(opt.points, opt.level);
             orb.data.i = i; // add index to user data object
             orb.data.faction = collection.faction; // add faction string
-            orb.data.key = collection.key; // add faction string
+            orb.data.collectionkey = collection.key; // collectionKey
             orb.data.homeX = 32 + (32 + 2) * i;
             orb.data.homeY = 400;
             //??? I MAY NOT NEED TO ADD A REF To Collection

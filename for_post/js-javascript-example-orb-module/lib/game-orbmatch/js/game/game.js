@@ -242,7 +242,7 @@
                     var orb = game.selectedOrb,
                     orbData = orb.data,
                     playerObj = game[orbData.faction],
-                    collection = playerObj[orbData.key];
+                    collection = playerObj[orbData.collectionkey];
                     // if the selected orb is from the pouch
                     if (collection.key === 'pouch') {
                         var slot = OrbCollection.isOverCollection(game.selectedOrb, playerObj.slots);

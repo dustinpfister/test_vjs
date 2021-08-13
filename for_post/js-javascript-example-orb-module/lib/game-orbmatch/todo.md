@@ -9,7 +9,7 @@
 ### () 0.x.0 - targets
 * have a orb.data.attack.targets array that will be all the enemy orbs to attack
 
-### () 0.10.0 - On orb death event
+### () 0.x.0 - On orb death event
 * have an on orb death event that fires when orb.data.hp <=0;
 
 ### () 0.x.0 - Main state machine
@@ -17,6 +17,8 @@
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
+
+### () 0.11.0 -  
 
 ### ( done 08/12/2021 ) 0.10.0 - game over game state started
 * (done) have a 'gameOver' game state that will fire when the game is over

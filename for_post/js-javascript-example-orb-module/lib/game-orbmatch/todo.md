@@ -6,6 +6,8 @@
 ### () 0.x.0 - fix orb loss bug
 * fix bug where an orb can be placed in a slot that all ready has an orb
 
+### () 0.x.0 - recipe types
+
 ### () 0.x.0 - targets
 * have a orb.data.attack.targets array that will be all the enemy orbs to attack
 
@@ -17,6 +19,11 @@
 * the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
+
+### () 0.12.0 - display orb info
+* in playerTurn game mde make it so that clicking on any orb, player or ai, will display stats of that orb
+* display basic info bout each orb as part of draw.slots, maybe just level.
+* make it so that the color of the orbs will differ based on the state of orb.ratio
 
 ### () 0.11.0 - Orb.type based orb stats in orb-collection.js
 * orb.data.attack, and orb.data.hp objects should be set up in orb-collection.js

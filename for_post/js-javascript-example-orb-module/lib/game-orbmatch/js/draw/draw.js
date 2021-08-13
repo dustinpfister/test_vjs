@@ -14,6 +14,14 @@ draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
     ctx.fill();
     ctx.stroke();
 };
+draw.orbInfo = function(sm, ctx, canvas, orb, x, y){
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText(orb.data.attack.current, x, y);
+};
+
 // draw slot areas
 draw.slotAreas = function (sm, ctx, canvas) {
     ['player', 'ai'].forEach(function (faction) {

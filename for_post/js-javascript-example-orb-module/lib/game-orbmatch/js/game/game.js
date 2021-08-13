@@ -73,7 +73,7 @@
                 points: [0, 0, 0, 0],
                 level: 0
             });
-        // set up orb data and position slots
+        // set adjust positions for slots
         playerObj.slots.orbs.forEach(function (orb, i) {
             orb.data.homeX = 64 + (640 - 32) / 4 * i;
             orb.data.homeY = 240 + 60 * (playerObj.faction === 'player' ? 1 : -1);

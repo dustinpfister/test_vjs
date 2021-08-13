@@ -129,7 +129,7 @@
         buttons: {
             setOrbs: {
                 disp: 'Set Orbs',
-                x: 500,
+                x: 300,
                 y: 400,
                 w: 100,
                 h: 64,
@@ -149,7 +149,7 @@
             },
             endTrun: {
                 disp: 'End Turn',
-                x: 300,
+                x: 500,
                 y: 400,
                 w: 100,
                 h: 64,

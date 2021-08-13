@@ -18,7 +18,10 @@
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.11.0 -  
+### () 0.11.0 - Orb.type based orb stats in orb-collection.js
+* orb.data.attack, and orb.data.hp objects should be set up in orb-collection.js
+* have it so that orb.type will inpact stat values in orb.data.attack and orb.data.hp objects
+* have it so that orb.level will inpact stat values
 
 ### ( done 08/12/2021 ) 0.10.0 - game over game state started
 * (done) have a 'gameOver' game state that will fire when the game is over

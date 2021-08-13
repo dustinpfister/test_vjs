@@ -13,6 +13,14 @@
         }
     ]
 
+    // create a new plant object for the given cell
+    var createPlant = function (cell) {
+        var plant = {
+            plantDef: PLANTS[cell.plantIndex]
+        };
+        return plant;
+    };
+
     api.create = function () {
         var grid = gridMod.create({
                 xOffset: 32,
@@ -24,7 +32,8 @@
         grid.cells.forEach(function (cell) {
             // fill style
             cell.data.fillStyle = 'lime';
-            cell.data.plantIndex = 0;
+            cell.data.plantIndex = 0; // the index of the current plant
+            cell.data.plant = createPlant(cell);
         });
         return grid;
     };

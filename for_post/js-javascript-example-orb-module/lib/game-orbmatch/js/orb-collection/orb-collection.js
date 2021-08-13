@@ -13,9 +13,21 @@
         };
         // populate orb pool
         var orb,
-        i = 0;
+        i = 0,
+        points;
+
         while (i < opt.count) {
-            orb = orbMod.createFromLevel(opt.points, opt.level);
+
+            // parse points option
+            if(typeof opt.points[0] === 'number'){
+                points = opt.points;
+            }else{
+                points = opt.points[i];
+                points = points === undefined ? [1, 0, 0, 0]: points;
+            }
+
+            orb = orbMod.createFromLevel(points, opt.level);
+
             orb.data.i = i; // add index to user data object
             orb.data.faction = collection.faction; // add faction string
             orb.data.collectionkey = collection.key; // collectionKey

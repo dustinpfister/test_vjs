@@ -4,12 +4,14 @@
         // 0 - none
         {
             desc: 'none',
-            minFert: 0
+            minFert: 0,
+            fillStyle: '#880088' // used as a base cell color
         },
         // 1 - grass
         {
             desc: 'Grass',
-            minFert: 1
+            minFert: 1,
+            fillStyle: '#00aa00'
         }
     ]
 

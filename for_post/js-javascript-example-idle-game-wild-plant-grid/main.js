@@ -21,6 +21,13 @@ sm.states.game = {
     events: {
         pointerStart: function (e, pos, sm) {
             gridPlantsMod.selectedCheck(sm.game.grid, pos.x, pos.y);
+            var cell = sm.game.grid.cellSelected;
+            var delta = 1;
+            if (cell && sm.game.grid.fertPoints >= delta) {
+                sm.game.grid.fertPoints -= delta;
+                cell.data.fertPoints += delta
+                console.log(cell.data.fertPoints);
+            }
         },
         pointerMove: function () {},
         pointerEnd: function () {}

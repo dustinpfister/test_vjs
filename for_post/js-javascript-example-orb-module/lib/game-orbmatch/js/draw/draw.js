@@ -19,7 +19,8 @@ draw.orbInfo = function(sm, ctx, canvas, orb, x, y){
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     ctx.font = '10px arial';
-    ctx.fillText(orb.data.attack.current, x, y);
+    ctx.fillText('attack: ' + orb.data.attack.current, x, y);
+    ctx.fillText('hp: ' + orb.data.hp.current + '/' + orb.data.hp.max, x, y + 10);
 };
 
 // draw slot areas

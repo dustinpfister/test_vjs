@@ -1,20 +1,20 @@
 # game-orbmatch - todo list
 
-### () 0.20.0 - Main Menu, and Crafting states started
+### () 0.21.0 - Main Menu, and Crafting states started
 * start a new crafting state
 * have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
 
-### () 0.19.0 - Main state machine, game, and gameConfig state
+### () 0.20.0 - Main state machine, game, and gameConfig state
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
 * the gameConfig state can be used to set the state of the player, and AI pouch
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.18.0 - AI Improvements II
+### () 0.19.0 - AI Improvements II
 * The AI should swap orbs between slots as needed
 * in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
 
-### () 0.17.0 - target selection
+### () 0.18.0 - target selection
 * target section can be a feature of orb types
 * pure types can always select all orbs in range, and thus divide attack by target array length, and attack all targets pure turn
 * dual types can select a single target in range that is always the most powerful orb in terms of attack
@@ -22,7 +22,7 @@
 * quad types can select a random count of targets in range
 * recipe types can have these values set depeding on the state of the recipeDef object
 
-### () 0.16.0 - targets and range stat
+### () 0.17.0 - targets and range stat
 * have an orb.data.range stat object with a current prop that is the range of an orb
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side
@@ -30,18 +30,18 @@
 * have a orb.data.attack.targets array that will be all the enemy orbs to attack
 * for now just have orb.attack.current / orb.attack.targets.length
 
-### () 0.15.0 - On orb death event
+### () 0.16.0 - On orb death event
 * have an on orb death event that fires when orb.data.hp <=0;
 
-### () 0.14.0 - fix bugs
+### () 0.15.0 - fix bugs
 * make it so orbs can be moved from slot to slot
 * fix bug where an orb can be placed in a slot that all ready has an orb
 
-### () 0.13.0 - AI improvements I
+### () 0.14.0 - AI improvements I
 * The AI should swap in orbs from its pouch durring aiTurn game state
 * The AI should make choices when it comes to setting orbs in attackMode or not
 
-### () 0.12.0 - recipe types started
+### () 0.13.0 - recipe types started
 * orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
 * orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object
 * orb-client: a ref to the recipe object should be a top level prop of orb such as orb.recipeDef
@@ -57,7 +57,8 @@
 ### () 0.11.0 - new playerTrunOrbConfig
 * (done) orb.data.attack, and orb.data.hp objects should be set up in orb-collection.js
 * (done) start a new playerTurnOrnConfig game state
-* in playerTrunOrbConfig game mode make it so that clicking on a player orb displays info about that orb
+
+* in playerTurn game mode make it so that clicking on a player orb displays info about that orb
 * display basic info bout each orb as part of draw.slots, maybe just level.
 * make it so that the color of the orbs will differ based on the state of orb.ratio
 

@@ -206,6 +206,7 @@
             onPointerStart: function (e, pos, game) {
                 // button check
                 buttonCheck(e, pos, game);
+                game.selectedOrb = null;
                 // clicked a pouch orb
                 var orb = OrbCollection.getOrbAtPos(game.player.pouch, pos.x, pos.y);
                 if (orb) {

@@ -77,16 +77,6 @@
         playerObj.slots.orbs.forEach(function (orb, i) {
             orb.data.homeX = 64 + (640 - 32) / 4 * i;
             orb.data.homeY = 240 + 60 * (playerObj.faction === 'player' ? 1 : -1);
-            orb.data.attackMode = true;
-            orb.data.hp = {
-                current: 10,
-                max: 10,
-                per: 1,
-                heal: 1
-            };
-            orb.data.attack = {
-                current: 1
-            };
             orb.x = orb.data.homeX;
             orb.y = orb.data.homeY;
         });

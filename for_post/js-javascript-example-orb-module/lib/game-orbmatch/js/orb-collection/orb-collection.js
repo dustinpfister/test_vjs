@@ -21,6 +21,17 @@
             orb.data.collectionkey = collection.key; // collectionKey
             orb.data.homeX = 32 + (32 + 2) * i;
             orb.data.homeY = 400;
+            // 
+            orb.data.attackMode = true;
+            orb.data.hp = {
+                current: 10,
+                max: 10,
+                per: 1,
+                heal: 1
+            };
+            orb.data.attack = {
+                current: 1
+            };
             //??? I MAY NOT NEED TO ADD A REF To Collection
             //orb.data.collection = collection; // ref to the collection
             orb.x = orb.data.homeX;

@@ -21,6 +21,8 @@ draw.orbInfo = function(sm, ctx, canvas, orb, x, y){
     ctx.font = '10px arial';
     if(orb.data.attackMode){
         ctx.fillText('attack: ' + orb.data.attack.current, x, y);
+    }else{
+        ctx.fillText('heal: ' + orb.data.hp.heal, x, y);
     }
     ctx.fillText('hp: ' + orb.data.hp.current + '/' + orb.data.hp.max, x, y + 10);
 };

@@ -1,24 +1,54 @@
 # game-orbmatch - todo list
 
-### () 0.x.0 - move orbs from slot to slot
-* make it so orbs can be moved from slot to slot
+### () 0.21.0 - Main Menu, and Crafting states started
+* start a new crafting state
+* have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
 
-### () 0.x.0 - fix orb loss bug
-* fix bug where an orb can be placed in a slot that all ready has an orb
-
-### () 0.x.0 - recipe types
-
-### () 0.x.0 - targets
-* have a orb.data.attack.targets array that will be all the enemy orbs to attack
-
-### () 0.x.0 - On orb death event
-* have an on orb death event that fires when orb.data.hp <=0;
-
-### () 0.x.0 - Main state machine
+### () 0.20.0 - Main state machine, game, and gameConfig state
 * start a main state machine in main.js that will have just a game, and gameConfig state for now
-* the gameConfig state can be used to set certain stats for a new game, and enter the game state when done
+* the gameConfig state can be used to set the state of the player, and AI pouch
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
+
+### () 0.19.0 - AI Improvements II
+* The AI should swap orbs between slots as needed
+* in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
+
+### () 0.18.0 - target selection
+* target section can be a feature of orb types
+* pure types can always select all orbs in range, and thus divide attack by target array length, and attack all targets pure turn
+* dual types can select a single target in range that is always the most powerful orb in terms of attack
+* triple types can select a single target in range that is always the weakest
+* quad types can select a random count of targets in range
+* recipe types can have these values set depeding on the state of the recipeDef object
+
+### () 0.17.0 - targets and range stat
+* have an orb.data.range stat object with a current prop that is the range of an orb
+* a range of 1 means it can just attack the orb in front of it alone
+* a range of 2 means it can attack the orb in front, and on each side
+* So then the max range for the range prop would be 1 to 4
+* have a orb.data.attack.targets array that will be all the enemy orbs to attack
+* for now just have orb.attack.current / orb.attack.targets.length
+
+### () 0.16.0 - On orb death event
+* have an on orb death event that fires when orb.data.hp <=0;
+
+### () 0.15.0 - fix bugs
+* make it so orbs can be moved from slot to slot
+* fix bug where an orb can be placed in a slot that all ready has an orb
+
+### () 0.14.0 - AI improvements I
+* The AI should swap in orbs from its pouch durring aiTurn game state
+* The AI should make choices when it comes to setting orbs in attackMode or not
+
+### () 0.13.0 - recipe types started
+* orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
+* orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object
+* orb-client: a ref to the recipe object should be a top level prop of orb such as orb.recipeDef
+* orbCollection: calls of Orb.loadRecipe can be made here, and for now they can be hard coded object litereals
+* orbCollection: start out with a recipe where the focus is more on attack
+* orbCollection: have a recipe where the focus is more on hp
+* orbCollection: the state of orb.level, and orb.recipeDef should be what has an inpact on stat objects such as orb.data.attack
 
 ### () 0.12.0 - display orb info
 * in playerTurn game mde make it so that clicking on any orb, player or ai, will display stats of that orb

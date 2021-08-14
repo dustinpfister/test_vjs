@@ -63,8 +63,8 @@
 * orbCollection: have a recipe where the focus is more on hp
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an inpact on stat objects such as orb.data.attack
 
-### () 0.x.0 - Orb type stat deltas started
-* orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
+### ( done 08/14/2021 ) 0.x.0 - Orb type stat deltas started
+* (done) orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
 
 ### ( done 08/14/2021 ) 0.13.0 - ratio stat deltas
 * (done) make it so that the color of the orbs will differ based on the state of orb.ratio

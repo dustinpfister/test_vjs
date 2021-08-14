@@ -36,6 +36,7 @@
 ### () 0.17.0 - fix bugs
 * make it so orbs can be moved from slot to slot
 * fix bug where an orb can be placed in a slot that all ready has an orb
+* fix weird bug with orb.data.fillStyle where null type orbs are being colored wrong
 
 ### () 0.16.0 - AI improvements I
 * The AI should swap in orbs from its pouch during aiTurn game state
@@ -54,7 +55,7 @@
 * orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
 
 ### () 0.13.0 - Ratio stat deltas
-* make it so that the color of the orbs will differ based on the state of orb.ratio
+* (done) make it so that the color of the orbs will differ based on the state of orb.ratio
 * have a set of deltas that will apply just for the state of the ratio, raised by level
 
 ### ( done 08/14/2021 ) 0.12.0 - Orb Level deltas started in collection.js

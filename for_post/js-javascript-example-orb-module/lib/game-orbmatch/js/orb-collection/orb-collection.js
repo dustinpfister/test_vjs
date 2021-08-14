@@ -52,7 +52,9 @@
         deltas.push(forLevel(orb));
         deltas.forEach(function (deltaObj) {
             orb.data.attack.current += deltaObj.attack.current;
+            orb.data.hp.max += deltaObj.hp.max;
         });
+        orb.data.hp.per = orb.data.hp.current / orb.data.hp.max;
     };
 
     // create an orbCollection object

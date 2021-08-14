@@ -59,12 +59,17 @@
 
     var createFillStyle = function (orb) {
         var m = Math.max.apply(null, orb.ratio),
-        i = 5 + ( orb.ratio[3] + 1) / ( m + 1) * 10,
+        i = 5 + (orb.ratio[3] + 1) / (m + 1) * 10,
         r = 20 * (orb.ratio[0] / m) * i,
         g = 20 * (orb.ratio[1] / m) * i,
         b = 20 * (orb.ratio[2] / m) * i,
         a = orb.type === 'null' ? 0 : 1;
-		console.log(orb.type, a);
+        console.log(orb.type, a);
+
+        if (orb.type === 'null') {
+            return 'rgba(0,0,0,0)';
+        }
+
         return 'rgba(' + r + ',' + g + ',' + b + ', ' + a + ')';
     };
 

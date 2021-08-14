@@ -65,7 +65,7 @@
                 key: 'pouch',
                 faction: playerObj.faction,
                 count: 8,
-                points: [[1, 0, 1, 0], [2, 2, 0, 0], [2, 7, 0, 10], [4, 4, 4, 4],
+                points: [[4, 0, 0, 0], [2, 2, 0, 0], [2, 7, 0, 10], [4, 4, 4, 4],
                     [4, 0, 0, 0], [0, 4, 0, 0], [0, 0, 4, 0], [0, 0, 0, 4]]
             });
         playerObj.slots = OrbCollection.create({

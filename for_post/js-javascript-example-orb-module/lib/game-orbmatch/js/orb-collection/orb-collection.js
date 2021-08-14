@@ -125,6 +125,9 @@
         orbA.level = orbB.level;
         createStatObjects(orbA);
         orbA.data.fillStyle = createFillStyle(orbA);
+        // start off with full hp
+        orbA.data.hp.current = orbA.data.hp.max;
+        orbA.data.hp.per = 1;
         return orbA;
     };
 

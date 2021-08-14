@@ -64,7 +64,6 @@
         g = 20 * (orb.ratio[1] / m) * i,
         b = 20 * (orb.ratio[2] / m) * i,
         a = orb.type === 'null' ? 0 : 1;
-        console.log(orb.type, a);
         if (orb.type === 'null') {
             return 'rgba(0,0,0,0)';
         }

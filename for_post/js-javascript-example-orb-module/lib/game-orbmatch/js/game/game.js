@@ -401,7 +401,7 @@
     gameStates.gameOver = {
         buttons: {},
         update: function (game, secs) {
-            console.log('Oame Over!');
+            
         },
         events: {}
     };

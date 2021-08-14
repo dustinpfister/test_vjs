@@ -15,14 +15,41 @@
     };
 
     // create and return stat deltas based on type
-    var forType = {
-        null: function (orb) {},
-        pure: function (orb) {},
-        dual: function (orb) {},
-        triple: function (orb) {},
-        quad: function (orb) {},
-        composite: function (orb) {},
-        recipe: function (orb) {}
+    var forTypeMethods = {
+        null: function (orb) {
+            var deltas = createStatDeltaObject('type:null');
+            return deltas; 
+        },
+        pure: function (orb) {
+            var deltas = createStatDeltaObject('type:pure');
+            deltas.attack.current = orb.level * 0.5;
+            return deltas; 
+        },
+        dual: function (orb) {
+            var deltas = createStatDeltaObject('type:dual');
+            deltas.attack.current = orb.level * 1.75;
+            deltas.hp.max = orb.level * 25;
+            return deltas;             
+        },
+        triple: function (orb) {
+            var deltas = createStatDeltaObject('type:triple');
+            return deltas; 
+        },
+        quad: function (orb) {
+            var deltas = createStatDeltaObject('type:quad');
+            return deltas; 
+        },
+        composite: function (orb) {
+            var deltas = createStatDeltaObject('type:composite');
+            return deltas; 
+        },
+        recipe: function (orb) {
+            var deltas = createStatDeltaObject('type:recipe');
+            return deltas; 
+        }
+    };
+    var forType = function(orb){
+        return forTypeMethods[orb.type](orb);
     };
 
     // create and return stat deltas that are based on level, and ratio
@@ -34,7 +61,6 @@
         // element 2 - water - adds bonus to hp object
         deltas.hp.max = orb.ratio[2] * orb.level * 1.5;
         deltas.hp.heal = orb.ratio[2] * orb.level * 0.25;
-
         return deltas;
     };
 
@@ -61,6 +87,7 @@
         var deltas = orb.data.deltas = [];
         deltas.push(forLevel(orb));
         deltas.push(forRatio(orb));
+        deltas.push(forType(orb));
         deltas.forEach(function (deltaObj) {
             orb.data.attack.current += deltaObj.attack.current;
             orb.data.hp.max += deltaObj.hp.max;

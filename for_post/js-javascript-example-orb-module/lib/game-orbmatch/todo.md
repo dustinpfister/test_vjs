@@ -55,7 +55,7 @@
 
 ### () 0.13.0 - ratio stat deltas
 * (done) make it so that the color of the orbs will differ based on the state of orb.ratio
-* have a set of deltas that will apply just for the state of the ratio, raised by level
+* (done) have a set of deltas that will apply just for the state of the ratio, raised by level
 * have a aiPouch, and playerPouch options for gameMod.create
 
 ### ( done 08/14/2021 ) 0.12.0 - Orb Level deltas started in collection.js

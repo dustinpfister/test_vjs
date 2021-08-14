@@ -65,8 +65,7 @@
                 key: 'pouch',
                 faction: playerObj.faction,
                 count: 8,
-                points: [[4, 0, 0, 0], [2, 2, 0, 0], [2, 7, 0, 10], [4, 4, 4, 4],
-                    [4, 0, 0, 0], [0, 4, 0, 0], [0, 0, 4, 0], [0, 0, 0, 4]]
+                points: opt.pouchPoints || [[0,0,1,0]]
             });
         playerObj.slots = OrbCollection.create({
                 key: 'slots',
@@ -109,7 +108,9 @@
         };
         // the start of a player object
         game.player = createPlayerObject({
-                faction: 'player'
+                faction: 'player',
+                pouchPoints: [[4, 0, 0, 0], [2, 2, 0, 0], [2, 7, 0, 10], [4, 4, 4, 4],
+                    [4, 0, 0, 0], [0, 4, 0, 0], [0, 0, 4, 0], [0, 0, 0, 4]]
             });
         // start the ai object
         game.ai = createPlayerObject({

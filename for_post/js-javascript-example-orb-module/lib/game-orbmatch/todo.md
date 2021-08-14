@@ -54,8 +54,8 @@
 * orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
 
 ### () 0.13.0 - Ratio stat deltas
-* have a set of deltas that will apply just for the state of the ratio, raised by level
 * make it so that the color of the orbs will differ based on the state of orb.ratio
+* have a set of deltas that will apply just for the state of the ratio, raised by level
 
 ### ( done 08/14/2021 ) 0.12.0 - Orb Level deltas started in collection.js
 * (done) display hp.heal if !orb.attackMode in draw.info

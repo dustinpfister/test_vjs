@@ -73,7 +73,6 @@
         i = 0,
         points;
         while (i < opt.count) {
-
             // parse points option
             if (typeof opt.points[0] === 'number') {
                 points = opt.points;
@@ -81,9 +80,7 @@
                 points = opt.points[i];
                 points = points === undefined ? [1, 0, 0, 0] : points;
             }
-
             orb = orbMod.createFromLevel(points, opt.level);
-
             orb.data.i = i; // add index to user data object
             orb.data.faction = collection.faction; // add faction string
             orb.data.collectionkey = collection.key; // collectionKey
@@ -91,10 +88,9 @@
             orb.data.homeY = 400;
             orb.data.attackMode = true;
             orb.data.deltas = [];
-
+            orb.data.fillStyle = 'rgba(0,255,0, 1)';
             // create stat objects
             createStatObjects(orb);
-
             //??? I MAY NOT NEED TO ADD A REF To Collection
             //orb.data.collection = collection; // ref to the collection
             orb.x = orb.data.homeX;

@@ -7,7 +7,7 @@ draw.background = function (sm, ctx, canvas) {
 };
 // draw a single orb
 draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
-    ctx.fillStyle = fillStyle || 'white';
+    ctx.fillStyle = fillStyle || orb.data.fillStyle || 'white';
     ctx.strokeStyle = 'black';
     ctx.beginPath();
     ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);

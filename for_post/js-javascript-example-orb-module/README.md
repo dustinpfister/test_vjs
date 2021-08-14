@@ -13,12 +13,16 @@ This will be an overview of the various values for the type property of an orb
 
 ### null type
 
+The null type is what happens when all the point values for an orb are zero.
+
 ```js
 var orb = orbMod.createFromLevel([0,0,0,0], 0);
 console.log(orb.type); // null
 ```
 
 ### pure type
+
+A pure type of orb is any orb where the basic ratio is just 1 for a single element.
 
 ```js
 var orb = orbMod.createFromLevel([1,0,0,0], 7);
@@ -27,12 +31,16 @@ console.log(orb.type); // 'pure'
 
 ### dual type
 
+A dual type is any orb where the simple ratio is 1 to 1 for any two elements
+
 ```js
 var orb = orbMod.createFromLevel([1,0,1,0], 7);
 console.log(orb.type); // 'dual'
 ```
 
 ### triple type
+
+A triple orb is any orb that has a simple ratio of 1 to 1 to 1 for any three elemnts
 
 ```js
 var orb = orbMod.createFromLevel([1,0,1,1], 7);
@@ -41,7 +49,16 @@ console.log(orb.type); // 'triple'
 
 ### quad
 
+A quad type is an orb with a ratio of 1,1,1,1 for all four elements
+
 ```js
 var orb = orbMod.createFromLevel([1,1,1,1], 7);
 console.log(orb.type); // 'quad'
 ```
+
+### composite type
+
+A composite type is a type of orb that has any non-binary ratio, and is not reorganized as any recipe orb in a recipe database.
+
+### recipe type
+

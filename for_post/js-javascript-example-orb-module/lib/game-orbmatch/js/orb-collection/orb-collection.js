@@ -1,8 +1,9 @@
 (function (api) {
 
     // create and return a clean stat delta object
-    var createStatDeltaObject = function () {
+    var createStatDeltaObject = function (forWhat) {
         return {
+            forWhat: forWhat,
             attack: {
                 current: 0
             },
@@ -14,7 +15,7 @@
     };
 
     // create and return stat deltas based on type
-    var forType = function (orb) {
+    var forType = {
         null: function (orb) {},
         pure: function (orb) {},
         dual: function (orb) {},
@@ -29,9 +30,9 @@
 
     // create and return deltas for level
     var forLevel = function (orb) {
-        var deltas = createStatDeltaObject();
+        var deltas = createStatDeltaObject('level');
         deltas.attack.current = orb.level * 0.25;
-        deltas.attack.hp.max = 5 * orb.level;
+        deltas.hp.max = 5 * orb.level;
         return deltas;
     };
 
@@ -46,6 +47,12 @@
         orb.data.attack = {
             current: 1
         };
+        // apply deltas
+        var deltas = orb.data.deltas = [];
+        deltas.push(forLevel(orb));
+        deltas.forEach(function (deltaObj) {
+            orb.data.attack.current += deltaObj.attack.current;
+        });
     };
 
     // create an orbCollection object
@@ -81,6 +88,7 @@
             orb.data.homeX = 32 + (32 + 2) * i;
             orb.data.homeY = 400;
             orb.data.attackMode = true;
+            orb.data.deltas = [];
 
             // create stat objects
             createStatObjects(orb);
@@ -103,6 +111,7 @@
         orbA.ratio = orbB.ratio;
         orbA.type = orbB.type;
         orbA.level = orbB.level;
+        createStatObjects(orbA);
         return orbA;
     };
 

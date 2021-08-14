@@ -36,7 +36,6 @@
 ### () 0.17.0 - fix bugs
 * make it so orbs can be moved from slot to slot
 * fix bug where an orb can be placed in a slot that all ready has an orb
-* fix weird bug with orb.data.fillStyle where null type orbs are being colored wrong
 
 ### () 0.16.0 - AI improvements I
 * The AI should swap in orbs from its pouch during aiTurn game state

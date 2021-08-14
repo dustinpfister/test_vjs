@@ -2,13 +2,13 @@
 
     var gameStates = {};
 
-/********* ********** ********** *********/
-//  HELPERS
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  HELPERS
+    /********* ********** ********** *********/
 
     // get a button that was clicked for the current state and if so which one.
     // This will return a ref to the button, or null
-    var getButton = function(game, x, y){
+    var getButton = function (game, x, y) {
         var state = gameStates[game.currentState];
         var buttons = state.buttons;
         var keys = Object.keys(buttons);
@@ -16,10 +16,10 @@
         buttonKey,
         b,
         len = keys.length;
-        while(i < len){
+        while (i < len) {
             buttonKey = keys[i];
             b = buttons[buttonKey];
-            if(utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)){
+            if (utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)) {
                 return b;
             }
             i += 1;
@@ -27,17 +27,17 @@
         return null;
     };
 
-    var buttonCheck = function(e, pos, game){
+    var buttonCheck = function (e, pos, game) {
         var b = getButton(game, pos.x, pos.y);
-        if(b){
+        if (b) {
             b.onClick.call(b, e, pos, game, b);
         }
     };
 
     // create a player/ai object
-    var getOrbDataTotal = function(game, faction, objKey, propKey, attackMode){
-        return game[faction].slots.orbs.reduce(function(acc, orb){
-            if(orb.data.attackMode === attackMode && orb.type != 'null' && orb.data.hp.current > 0){
+    var getOrbDataTotal = function (game, faction, objKey, propKey, attackMode) {
+        return game[faction].slots.orbs.reduce(function (acc, orb) {
+            if (orb.data.attackMode === attackMode && orb.type != 'null' && orb.data.hp.current > 0) {
                 return acc + orb.data[objKey][propKey];
             }
             return acc;
@@ -45,11 +45,11 @@
     };
 
     // get total attack
-    var getTotalAttack = function(game, faction){
+    var getTotalAttack = function (game, faction) {
         return getOrbDataTotal(game, faction, 'attack', 'current', true);
     };
     // get total heal
-    var getTotalHeal = function(game, faction){
+    var getTotalHeal = function (game, faction) {
         return getOrbDataTotal(game, faction, 'hp', 'heal', false);
     };
 
@@ -64,7 +64,9 @@
         playerObj.pouch = OrbCollection.create({
                 key: 'pouch',
                 faction: playerObj.faction,
-                count: 8
+                count: 8,
+                points: [[1, 0, 1, 0], [2, 2, 0, 0], [2, 7, 0, 10], [4, 4, 4, 4],
+                    [4, 0, 0, 0], [0, 4, 0, 0], [0, 0, 4, 0], [0, 0, 0, 4]]
             });
         playerObj.slots = OrbCollection.create({
                 key: 'slots',
@@ -81,14 +83,14 @@
             orb.y = orb.data.homeY;
         });
         // setting a starting orb
-        OrbCollection.setOrbPropsToOrb(playerObj.slots, 1,  playerObj.pouch.orbs[0]);
+        OrbCollection.setOrbPropsToOrb(playerObj.slots, 1, playerObj.pouch.orbs[0]);
         playerObj.pouch.orbs[0].type = 'null';
         return playerObj;
     };
 
-/********* ********** ********** *********/
-//  CREATE METHOD
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  CREATE METHOD
+    /********* ********** ********** *********/
 
     // create and return a new game object
     api.create = function (opt) {
@@ -121,9 +123,9 @@
         return game;
     };
 
-/********* ********** ********** *********/
-//  PLAYER TURN STATE
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  PLAYER TURN STATE
+    /********* ********** ********** *********/
 
     gameStates.playerTurn = {
         buttons: {
@@ -133,7 +135,7 @@
                 y: 400,
                 w: 100,
                 h: 64,
-                onClick: function(e, pos, game, button){
+                onClick: function (e, pos, game, button) {
                     game.currentState = 'playerTurnOrbMenu';
                 }
             },
@@ -143,7 +145,7 @@
                 y: 400,
                 w: 100,
                 h: 64,
-                onClick: function(e, pos, game, button){
+                onClick: function (e, pos, game, button) {
                     game.currentState = 'playerTurnOrbConfig';
                 }
             },
@@ -153,7 +155,7 @@
                 y: 400,
                 w: 100,
                 h: 64,
-                onClick: function(e, pos, game, button){
+                onClick: function (e, pos, game, button) {
                     game.currentState = 'aiTurn';
                 }
             }
@@ -168,8 +170,8 @@
                 // set selected orb, for the sake of displaying info
                 game.selectedOrb = null;
                 var orb = OrbCollection.getOrbAtPos(game.player.slots, pos.x, pos.y);
-                if(orb){
-                    if(orb.type != 'null'){
+                if (orb) {
+                    if (orb.type != 'null') {
                         game.selectedOrb = orb;
                     }
                 }
@@ -179,9 +181,9 @@
         }
     };
 
-/********* ********** ********** *********/
-//  PLAYER TURN ORB MENU STATE
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  PLAYER TURN ORB MENU STATE
+    /********* ********** ********** *********/
 
     gameStates.playerTurnOrbMenu = {
         buttons: {
@@ -191,7 +193,7 @@
                 y: 400,
                 w: 128,
                 h: 64,
-                onClick: function(e, pos, game, button){
+                onClick: function (e, pos, game, button) {
                     game.currentState = 'playerTurn';
                 }
             }
@@ -273,9 +275,9 @@
         }
     };
 
-/********* ********** ********** *********/
-//  PLAYER TURN ORB CONFIG STATE
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  PLAYER TURN ORB CONFIG STATE
+    /********* ********** ********** *********/
 
     gameStates.playerTurnOrbConfig = {
         buttons: {
@@ -285,7 +287,7 @@
                 y: 400,
                 w: 100,
                 h: 64,
-                onClick: function(e, pos, game, button){
+                onClick: function (e, pos, game, button) {
                     game.currentState = 'playerTurn';
                 }
             }
@@ -298,8 +300,8 @@
             onPointerStart: function (e, pos, game) {
                 buttonCheck(e, pos, game);
                 var orb = OrbCollection.getOrbAtPos(game.player.slots, pos.x, pos.y);
-                if(orb){
-                    if(orb.type != 'null'){
+                if (orb) {
+                    if (orb.type != 'null') {
                         orb.data.attackMode = !orb.data.attackMode;
                     }
                 }
@@ -309,9 +311,9 @@
         }
     };
 
-/********* ********** ********** *********/
-//  AI TURN STATE
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  AI TURN STATE
+    /********* ********** ********** *********/
 
     // ai turn state
     gameStates.aiTurn = {
@@ -323,41 +325,41 @@
         events: {}
     };
 
-/********* ********** ********** *********/
-//  PROCESS TURN STATE
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  PROCESS TURN STATE
+    /********* ********** ********** *********/
 
     // attack enemy targets for the given faction
-    var attackTargets = function(game, faction){
+    var attackTargets = function (game, faction) {
         var enemyFaction = faction === 'ai' ? 'player' : 'ai';
         // attack emeny orbs in slots
-        game[enemyFaction].slots.orbs.forEach(function(eOrb){
-            if(eOrb.type != 'null'){
+        game[enemyFaction].slots.orbs.forEach(function (eOrb) {
+            if (eOrb.type != 'null') {
                 eOrb.data.hp.current -= game[faction].totalAttack;
                 eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
                 eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
                 // set to null if dead
-                if(eOrb.data.hp.current <= 0){
+                if (eOrb.data.hp.current <= 0) {
                     eOrb.type = 'null';
                 }
             }
-        }); 
+        });
     };
 
     // apply totalHeal for the given faction
-    var applyHeal = function(game, faction){
-        game[faction].slots.orbs.forEach(function(orb){
-            if(orb.type != 'null'){
+    var applyHeal = function (game, faction) {
+        game[faction].slots.orbs.forEach(function (orb) {
+            if (orb.type != 'null') {
                 orb.data.hp.current += game[faction].totalHeal;
                 orb.data.hp.current = orb.data.hp.current > orb.data.hp.max ? orb.data.hp.max : orb.data.hp.current;
                 orb.data.hp.per = orb.data.hp.current / orb.data.hp.max;
             }
-        }); 
+        });
     };
 
     // get a count or orbs where orb.data.type != null
-    var getActiveOrbCount = function(game, faction){
-        return game[faction].slots.orbs.reduce(function(acc, orb){
+    var getActiveOrbCount = function (game, faction) {
+        return game[faction].slots.orbs.reduce(function (acc, orb) {
             return orb.type != 'null' ? acc + 1 : acc;
         }, 0);
     };
@@ -377,19 +379,18 @@
             // check active counts
             var playerActive = getActiveOrbCount(game, 'player'),
             aiActive = getActiveOrbCount(game, 'ai');
-            if(playerActive === 0 || aiActive === 0){
+            if (playerActive === 0 || aiActive === 0) {
                 game.currentState = 'gameOver';
-            }else{
+            } else {
                 game.currentState = 'playerTurn';
             }
         },
         events: {}
     };
 
-
-/********* ********** ********** *********/
-//  GAMEOVER STATE
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  GAMEOVER STATE
+    /********* ********** ********** *********/
 
     // game over state object
     gameStates.gameOver = {
@@ -400,11 +401,9 @@
         events: {}
     };
 
-
-/********* ********** ********** *********/
-//  EVENT
-/********* ********** ********** *********/
-
+    /********* ********** ********** *********/
+    //  EVENT
+    /********* ********** ********** *********/
 
     // emit an event of the given eventKey with the given values for event, pos, and game
     api.emitStateEvent = function (eventKey, e, pos, game) {
@@ -414,9 +413,9 @@
         }
     };
 
-/********* ********** ********** *********/
-//  UPDATE
-/********* ********** ********** *********/
+    /********* ********** ********** *********/
+    //  UPDATE
+    /********* ********** ********** *********/
 
     // update the current game state
     api.update = function (game, secs) {

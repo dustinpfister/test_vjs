@@ -65,11 +65,9 @@
         b = 20 * (orb.ratio[2] / m) * i,
         a = orb.type === 'null' ? 0 : 1;
         console.log(orb.type, a);
-
         if (orb.type === 'null') {
             return 'rgba(0,0,0,0)';
         }
-
         return 'rgba(' + r + ',' + g + ',' + b + ', ' + a + ')';
     };
 
@@ -96,7 +94,8 @@
                 points = opt.points[i];
                 points = points === undefined ? [1, 0, 0, 0] : points;
             }
-            orb = orbMod.createFromLevel(points, opt.level);
+            //orb = orbMod.createFromLevel(points, opt.level);
+            orb = orbMod.createFromPoints(points);
             orb.data.i = i; // add index to user data object
             orb.data.faction = collection.faction; // add faction string
             orb.data.collectionkey = collection.key; // collectionKey

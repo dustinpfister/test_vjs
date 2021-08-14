@@ -66,10 +66,10 @@
 ### () 0.x.0 - Orb type stat deltas started
 * orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
 
-### () 0.13.0 - ratio stat deltas
+### ( done 08/14/2021 ) 0.13.0 - ratio stat deltas
 * (done) make it so that the color of the orbs will differ based on the state of orb.ratio
 * (done) have a set of deltas that will apply just for the state of the ratio, raised by level
-* have a aiPouch, and playerPouch options for gameMod.create
+* (done) have a aiPouch, and playerPouch options for gameMod.create
 
 ### ( done 08/14/2021 ) 0.12.0 - Orb Level deltas started in collection.js
 * (done) display hp.heal if !orb.attackMode in draw.info

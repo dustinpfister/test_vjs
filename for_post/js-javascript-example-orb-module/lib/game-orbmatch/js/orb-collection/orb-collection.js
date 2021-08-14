@@ -26,7 +26,17 @@
     };
 
     // create and return stat deltas that are based on level, and ratio
-    var forRatio = function (orb) {};
+    // [fire, earth, water, air]
+    var forRatio = function (orb) {
+        var deltas = createStatDeltaObject('ratio');
+        // element 0 - fire - adds bonus to attack
+        deltas.attack.current = orb.ratio[0] * orb.level * 1.5;
+        // element 2 - water - adds bonus to hp object
+        deltas.hp.max = orb.ratio[2] * orb.level * 1.5;
+        deltas.hp.heal = orb.ratio[2] * orb.level * 0.125;
+
+        return deltas;
+    };
 
     // create and return deltas for level
     var forLevel = function (orb) {
@@ -50,9 +60,11 @@
         // apply deltas
         var deltas = orb.data.deltas = [];
         deltas.push(forLevel(orb));
+        deltas.push(forRatio(orb));
         deltas.forEach(function (deltaObj) {
             orb.data.attack.current += deltaObj.attack.current;
             orb.data.hp.max += deltaObj.hp.max;
+            orb.data.hp.heal += deltaObj.hp.heal;
         });
         orb.data.hp.per = orb.data.hp.current / orb.data.hp.max;
     };
@@ -113,6 +125,7 @@
             collection.orbs.push(orb);
             i += 1;
         }
+        console.log(collection.orbs[6]);
         return collection;
     };
 

@@ -1,7 +1,17 @@
 (function (api) {
 
+    var forType = function (orb) {
+        null: function (orb) {},
+        pure: function (orb) {},
+        dual: function (orb) {},
+        triple: function (orb) {},
+        quad: function (orb) {},
+        composite: function (orb) {},
+        recipe: function (orb) {}
+    };
+
     // create stat objects based on type, level, and ratio
-    var createStatObjects = function(orb){
+    var createStatObjects = function (orb) {
         orb.data.hp = {
             current: 10,
             max: 10,
@@ -28,15 +38,14 @@
         var orb,
         i = 0,
         points;
-
         while (i < opt.count) {
 
             // parse points option
-            if(typeof opt.points[0] === 'number'){
+            if (typeof opt.points[0] === 'number') {
                 points = opt.points;
-            }else{
+            } else {
                 points = opt.points[i];
-                points = points === undefined ? [1, 0, 0, 0]: points;
+                points = points === undefined ? [1, 0, 0, 0] : points;
             }
 
             orb = orbMod.createFromLevel(points, opt.level);

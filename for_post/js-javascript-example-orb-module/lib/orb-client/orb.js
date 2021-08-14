@@ -15,7 +15,7 @@ var orbMod = (function (global) {
                 type = 'null';
             }
             if (i >= 0) {
-                type = ['pure', 'dual', 'tripple', 'quad'][i];
+                type = ['pure', 'dual', 'triple', 'quad'][i];
             }
         }
         return type;

@@ -63,7 +63,24 @@
 * orbCollection: have a recipe where the focus is more on hp
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an inpact on stat objects such as orb.data.attack
 
-### ( done 08/14/2021 ) 0.x.0 - Orb type stat deltas started
+### () 0.x.0 - TypeKey orb definition files
+
+```js
+{
+    typeKey: 'pure',
+    baseStats: {
+        attack: 1,
+        hp: 10,
+        heal: 0.25
+    },
+    baseMultiPerLevel:{
+        attack: 1,
+        hp: 2
+    }
+}
+```
+
+### ( done 08/14/2021 ) 0.14.0 - Orb type stat deltas started
 * (done) orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
 
 ### ( done 08/14/2021 ) 0.13.0 - ratio stat deltas

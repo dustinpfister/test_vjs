@@ -86,11 +86,11 @@ draw.slotsInfo = function(sm, ctx, canvas){
 // draw orbCollection
 draw.orbCollection = function (sm, ctx, canvas, pouch) {
     pouch.orbs.forEach(function (orb) {
-        if (orb.type != 'null') {
+        //if (orb.type != 'null') {
             draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
-        } else {
-            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb, 'rgba(255,0,0,0.2)');
-        }
+        //} else {
+        //    draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb, 'rgba(255,0,0,0.2)');
+        //}
     });
 };
 // draw a button

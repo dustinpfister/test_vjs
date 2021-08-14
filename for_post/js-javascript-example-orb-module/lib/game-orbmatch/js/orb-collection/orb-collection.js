@@ -57,6 +57,14 @@
         orb.data.hp.per = orb.data.hp.current / orb.data.hp.max;
     };
 
+    var createFillStyle = function (orb) {
+        var r = 255,
+        g = 255,
+        b = 255,
+        a = orb.type === 'null' ? 0 : 1;
+        return 'rgba(' + r + ',' + g + ',' + b + ', ' + a + ')';
+    };
+
     // create an orbCollection object
     api.create = function (opt) {
         opt = opt || {};
@@ -88,7 +96,7 @@
             orb.data.homeY = 400;
             orb.data.attackMode = true;
             orb.data.deltas = [];
-            orb.data.fillStyle = 'rgba(0,255,0, 1)';
+            orb.data.fillStyle = createFillStyle(orb);
             // create stat objects
             createStatObjects(orb);
             //??? I MAY NOT NEED TO ADD A REF To Collection
@@ -110,6 +118,7 @@
         orbA.type = orbB.type;
         orbA.level = orbB.level;
         createStatObjects(orbA);
+        orbA.data.fillStyle = createFillStyle(orbA);
         return orbA;
     };
 

@@ -55,6 +55,9 @@
 * (done) orbCollection: have it so that I can pass an array of points values
 * (done) start README file on orbCollection
 * (done) orbCollection: start a createStatObjects helper
+* orbCollection: forLevel helper that returns base stat value deltas that are based just on level only
+* createStatObjects starts all values on a set min value for each stat it is then a matter of what deltas apply
+
 * orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
 * orbCollection: have it so that orb.level will impact stat values
 

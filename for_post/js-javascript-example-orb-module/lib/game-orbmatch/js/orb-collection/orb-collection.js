@@ -1,5 +1,19 @@
 (function (api) {
 
+    // create and return a clean stat delta object
+    var createStatDeltaObject = function () {
+        return {
+            attack: {
+                current: 0
+            },
+            hp: {
+                max: 0,
+                heal: 0
+            }
+        };
+    };
+
+    // create and return stat deltas based on type
     var forType = function (orb) {
         null: function (orb) {},
         pure: function (orb) {},
@@ -8,6 +22,17 @@
         quad: function (orb) {},
         composite: function (orb) {},
         recipe: function (orb) {}
+    };
+
+    // create and return stat deltas that are based on level, and ratio
+    var forRatio = function (orb) {};
+
+    // create and return deltas for level
+    var forLevel = function (orb) {
+        var deltas = createStatDeltaObject();
+        deltas.attack.current = orb.level * 0.25;
+        deltas.attack.hp.max = 5 * orb.level;
+        return deltas;
     };
 
     // create stat objects based on type, level, and ratio

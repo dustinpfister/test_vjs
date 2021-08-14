@@ -110,7 +110,7 @@
         game.player = createPlayerObject({
                 faction: 'player',
                 pouchPoints: opt.playerPouch || [
-                    [6, 0, 16, 0]
+                    [1, 0, 0, 0]
                 ]
             });
         // start the ai object

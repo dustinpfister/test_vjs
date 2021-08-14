@@ -33,7 +33,7 @@
         deltas.attack.current = orb.ratio[0] * orb.level * 1.5;
         // element 2 - water - adds bonus to hp object
         deltas.hp.max = orb.ratio[2] * orb.level * 1.5;
-        deltas.hp.heal = orb.ratio[2] * orb.level * 0.125;
+        deltas.hp.heal = orb.ratio[2] * orb.level * 0.25;
 
         return deltas;
     };

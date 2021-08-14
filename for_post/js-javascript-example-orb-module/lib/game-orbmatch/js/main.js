@@ -2,7 +2,13 @@
 
     // state object
     var sm = {
-        game: gameMod.create(),
+        game: gameMod.create({
+            aiPouch: [[16,0,0,0]],
+            playerPouch: [
+                [2,0,0,0],[2,0,0,0],[2,0,0,0],[0,0,16,0],
+                [2,0,0,0],[2,0,0,0],[2,0,0,0],[2,0,0,0]
+            ]
+        }),
         fps: 30,
         secs: 0,
         lt: new Date(),

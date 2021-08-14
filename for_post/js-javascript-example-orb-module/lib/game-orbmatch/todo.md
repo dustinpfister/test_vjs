@@ -38,14 +38,14 @@
 * fix bug where an orb can be placed in a slot that all ready has an orb
 
 ### () 0.14.0 - AI improvements I
-* The AI should swap in orbs from its pouch durring aiTurn game state
+* The AI should swap in orbs from its pouch during aiTurn game state
 * The AI should make choices when it comes to setting orbs in attackMode or not
 
 ### () 0.13.0 - recipe types started
 * orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
 * orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object
 * orb-client: a ref to the recipe object should be a top level prop of orb such as orb.recipeDef
-* orbCollection: calls of Orb.loadRecipe can be made here, and for now they can be hard coded object litereals
+* orbCollection: calls of Orb.loadRecipe can be made here, and for now they can be hard coded object literals
 * orbCollection: start out with a recipe where the focus is more on attack
 * orbCollection: have a recipe where the focus is more on hp
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an inpact on stat objects such as orb.data.attack
@@ -53,9 +53,12 @@
 ### () 0.12.0 - Orb.type based orb stats in orb-collection.js
 * (done) display hp.heal if !orb.attackMode in draw.info
 * (done) orbCollection: have it so that I can pass an array of points values
+* start README file on orbCollection
 
-* have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
-* have it so that orb.level will impact stat values
+
+* orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects
+* orbCollection: have it so that orb.level will impact stat values
+
 * display basic info bout each orb as part of draw.slots, maybe just level.
 * make it so that the color of the orbs will differ based on the state of orb.ratio
 
@@ -67,7 +70,7 @@
 ### ( done 08/12/2021 ) 0.10.0 - game over game state started
 * (done) have a 'gameOver' game state that will fire when the game is over
 * (done) when an orb.hp.current value is <= 0 then the type of that orb should become 'null'
-* (done) if a faction has all 'null' type orbs in slots durrent processTurn state, that will result in gameOver
+* (done) if a faction has all 'null' type orbs in slots current processTurn state, that will result in gameOver
 
 ### ( done 08/12/2021 ) 0.9.0 - ai orbs, hp objects, and attack objects started
 * (done) only display orb attack mode arrows in draw.slots for types pf orbs that are not null

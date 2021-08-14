@@ -55,8 +55,9 @@
 
 ### () 0.13.0 - Ratio stat deltas
 * have a set of deltas that will apply just for the state of the ratio, raised by level
+* make it so that the color of the orbs will differ based on the state of orb.ratio
 
-### () 0.12.0 - Orb Level deltas started in collection.js
+### ( done 08/14/2021 ) 0.12.0 - Orb Level deltas started in collection.js
 * (done) display hp.heal if !orb.attackMode in draw.info
 * (done) orbCollection: have it so that I can pass an array of points values
 * (done) start README file on orbCollection
@@ -64,7 +65,6 @@
 * (done) orbCollection: forLevel helper that returns base stat value deltas that are based just on level only
 * (done) createStatObjects starts all values on a set min value for each stat it is then a matter of what deltas apply
 * (done) orbCollection: have it so that orb.level will impact stat values
-* make it so that the color of the orbs will differ based on the state of orb.ratio
 
 ### ( done 08/13/2021 ) 0.11.0 - new playerTrunOrbConfig
 * (done) orb.data.attack, and orb.data.hp objects should be set up in orb-collection.js

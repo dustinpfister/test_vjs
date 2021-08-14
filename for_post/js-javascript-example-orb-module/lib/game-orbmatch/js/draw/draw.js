@@ -2,7 +2,7 @@
 var draw = {};
 // draw background
 draw.background = function (sm, ctx, canvas) {
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#222222';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 // draw a single orb
@@ -86,11 +86,11 @@ draw.slotsInfo = function(sm, ctx, canvas){
 // draw orbCollection
 draw.orbCollection = function (sm, ctx, canvas, pouch) {
     pouch.orbs.forEach(function (orb) {
-        //if (orb.type != 'null') {
+        if (orb.type != 'null') {
             draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
-        //} else {
-        //    draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb, 'rgba(255,0,0,0.0)');
-        //}
+        } else {
+            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb, 'rgba(255,0,0,0.0)');
+        }
     });
 };
 // draw a button

@@ -1,6 +1,12 @@
 # orbCollection
 
-This is a module that is used to create and return an object that is a collection of Orb objects created with the orb client module.
+This is a module that is used to create and return an object that is a collection of Orb objects created with the orb client module. The module also appends custom data for the data objects of each orb object that is closely tied to the core game logic of my orb match game, and any additional games that follow the same logic when it comes to setting core orb status for properties such as attack, hp, range, ect.
+
+So then a list of features for this module are as follows
+
+* create and return an object that serves as a collection of orbs, rather than just a single orb object instance
+* create custom data for each data object of an orb in the collection that has to do with stats like attack, hp, ect
+* provide methods that are useful for working with a collection of orbs.
 
 ## Main object structure
 

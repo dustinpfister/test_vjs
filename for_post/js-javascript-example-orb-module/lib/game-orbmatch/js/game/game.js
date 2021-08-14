@@ -109,12 +109,16 @@
         // the start of a player object
         game.player = createPlayerObject({
                 faction: 'player',
-                pouchPoints: [[4, 0, 0, 0], [2, 2, 0, 0], [2, 7, 0, 10], [4, 4, 4, 4],
-                    [4, 0, 0, 0], [0, 4, 0, 0], [0, 0, 4, 0], [0, 0, 0, 4]]
+                pouchPoints: opt.playerPouch || [
+                    [6, 0, 16, 0]
+                ]
             });
         // start the ai object
         game.ai = createPlayerObject({
-                faction: 'ai'
+                faction: 'ai',
+                pouchPoints: opt.aiPouch || [
+                    [0, 1, 0, 0]
+                ]
             });
         // set total attack values for first time
         game.player.totalAttack = getTotalAttack(game, 'player');

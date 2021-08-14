@@ -1,5 +1,48 @@
 # game-orbmatch - todo list
 
+### () 0.x.0 - recipe types started
+* orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
+* orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object
+* orb-client: a ref to the recipe object should be a top level prop of orb such as orb.recipeDef
+* orbCollection: calls of Orb.loadRecipe can be made here, and for now they can be hard coded object literals
+* orbCollection: start out with a recipe where the focus is more on attack
+* orbCollection: have a recipe where the focus is more on hp
+* orbCollection: the state of orb.level, and orb.recipeDef should be what has an inpact on stat objects such as orb.data.attack
+
+### () 0.x.0 - TypeKey orb definition JSON.files
+* make a collection of JSON files the define what the stats are for each type, and when done this can be used for recipes too
+```js
+// pure typeKey example
+{
+    typeKey: 'pure',
+    baseStats: { // how base stats values will level up (these values are effected only by level and not ratio)
+        attack: {
+            startValue: 1,
+            deltaIncPerLevel: 1 // delta value that will be added per level
+        },
+        hpMax: {
+            startValue: 10,
+            deltaIncPerLevel: 10
+        },
+        heal: {
+            startValue: 0.25,
+            deltaIncPerLevel: 0.25
+        }
+    },
+    elementDeltas: { // additional deltas to stats that are applyed per element
+        0 : { // fire elements add to attack
+            attack: 0.25
+        },
+        1: {},
+        2: { // water elements add to hpMax, and heal
+            hpMax: 5,
+            heal: 0.25
+        },
+        3: {}
+    }
+}
+```
+
 ### () 0.x.0 - speed state object started
 
 ### () 0.x.0 - range.splashDamageMulti, and range.splashPer
@@ -53,32 +96,6 @@
 ### () 0.x.0 - AI improvements I
 * The AI should swap in orbs from its pouch during aiTurn game state
 * The AI should make choices when it comes to setting orbs in attackMode or not
-
-### () 0.x.0 - recipe types started
-* orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
-* orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object
-* orb-client: a ref to the recipe object should be a top level prop of orb such as orb.recipeDef
-* orbCollection: calls of Orb.loadRecipe can be made here, and for now they can be hard coded object literals
-* orbCollection: start out with a recipe where the focus is more on attack
-* orbCollection: have a recipe where the focus is more on hp
-* orbCollection: the state of orb.level, and orb.recipeDef should be what has an inpact on stat objects such as orb.data.attack
-
-### () 0.x.0 - TypeKey orb definition files
-
-```js
-{
-    typeKey: 'pure',
-    baseStats: {
-        attack: 1,
-        hp: 10,
-        heal: 0.25
-    },
-    baseMultiPerLevel:{
-        attack: 1,
-        hp: 2
-    }
-}
-```
 
 ### ( done 08/14/2021 ) 0.14.0 - Orb type stat deltas started
 * (done) orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects

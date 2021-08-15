@@ -4,7 +4,7 @@
 
 I should have one "STICKY PROJECT" at any given moment that I will tend to work on at least a little every day. It would be best to keep it as just one project, but I can also list some candidates here when it comes to changing what the current sticky project is.
 
-### js-javascript-example-orb-module
+### (active 07/2021 - ) js-javascript-example-orb-module
 
 I would like to keep working on my orb module, and also the basic game that I have started in that module called orb match that will be the first game making use of the orb module. Keep the game as simple as possible while working out what the features of orb.js should be for more complex games that might come to be later on with orb.js. If all goes well the orb match game might turn into a stand alone project outside of this repository.
 
@@ -42,14 +42,14 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start new s7 section for js-document-body that has to do with style
 * start circle app for js-math-pi
 
-### () for 08/13/2021
-* work on js-javascript-example-idle-game-wild
-* start post on js-javascript-example-idle-game-wild
+### (done) for 08/13/2021
+* (done) work on js-javascript-example-idle-game-wild
+* (done) start post on js-javascript-example-idle-game-wild
 
-### () for 08/12/2021
+### (done) for 08/12/2021
 * (done) edit js-math-pow
 * (done) add utils.XP object for s4-section in js-math-pow to version of utils.js used in js-javascript-example-utils
-* work on js-javascript-example-idle-game-wild
+* (done) work on js-javascript-example-idle-game-wild
 
 ### (done) for 08/11/2021
 * (done) edit js-math-pi

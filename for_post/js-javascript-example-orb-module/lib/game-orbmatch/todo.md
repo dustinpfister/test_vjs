@@ -43,7 +43,10 @@
 }
 ```
 
-### () 0.x.0 - speed state object started
+### () 0.x.0 - speed stat object started
+* start a speed stat object that will contain props that determine who attacks first, and damage/heal/effect multipliers
+* The speed of an orb determines which orb will attack/buff first
+* speed will not result in additional turns for an orb, but can result in additional attacks, and buffs per turn
 
 ### () 0.x.0 - range.splashDamageMulti, and range.splashPer
 * have a splash damage multi, and splash per prop added to the range stat object

@@ -1,5 +1,17 @@
 # game-orbmatch - todo list
 
+### () 0.x.0 - AI Improvements II
+* The AI should swap orbs between slots as needed
+* in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
+
+### () 0.x.0 - fix bugs
+* make it so orbs can be moved from slot to slot
+* fix bug where an orb can be placed in a slot that all ready has an orb
+
+### () 0.x.0 - AI improvements I
+* The AI should swap in orbs from its pouch during aiTurn game state
+* The AI should make choices when it comes to setting orbs in attackMode or not
+
 ### () 0.x.0 - recipe types started
 * orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
 * orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object
@@ -7,7 +19,7 @@
 * orbCollection: calls of Orb.loadRecipe can be made here, and for now they can be hard coded object literals
 * orbCollection: start out with a recipe where the focus is more on attack
 * orbCollection: have a recipe where the focus is more on hp
-* orbCollection: the state of orb.level, and orb.recipeDef should be what has an inpact on stat objects such as orb.data.attack
+* orbCollection: the state of orb.level, and orb.recipeDef should be what has an impact on stat objects such as orb.data.attack
 
 ### () 0.x.0 - TypeKey orb definition JSON.files
 * make a collection of JSON files the define what the stats are for each type, and when done this can be used for recipes too
@@ -43,14 +55,13 @@
 }
 ```
 
-### () 0.x.0 - speed stat object started
-* start a speed stat object that will contain props that determine who attacks first, and damage/heal/effect multipliers
+### () 0.x.0 - speed stat  started
+* start a speed stat that will contain props that determine who attacks first, and damage/heal/effect multipliers
 * The speed of an orb determines which orb will attack/buff first
 * speed will not result in additional turns for an orb, but can result in additional attacks, and buffs per turn
 
-### () 0.x.0 - range.splashDamageMulti, and range.splashPer
-* have a splash damage multi, and splash per prop added to the range stat object
-* If caps are hit for range.minRange, and range.plusOnePer more earth elements still makes sense becuase of range.splashDamageMulti
+### () 0.x.0 - single stat object
+* have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
 
 ### () 0.x.0 - Main Menu, and Crafting states started
 * start a new crafting state
@@ -62,10 +73,6 @@
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state
 
-### () 0.x.0 - AI Improvements II
-* The AI should swap orbs between slots as needed
-* in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
-
 ### () 0.x.0 - target selection
 * target section can be a feature of orb types
 * pure types can always select all orbs in range, and thus divide attack by target array length, and attack all targets pure turn
@@ -74,6 +81,10 @@
 * quad types can select a random count of targets in range
 * recipe types can have these values set depeding on the state of the recipeDef object
 
+### () 0.x.0 - orb.data.stat.splashDamageMulti, and orb.data.stat.splashPer
+* have a splash damage multi, and splash per prop added to the range stat object
+* If caps are hit for range.minRange, and range.plusOnePer more earth elements still makes sense because of range.splashDamageMulti
+
 ### () 0.x.0 - minRange, and plusOnePer chance
 * the range stat object can have a minRange prop which is the base range that will be set for a turn
 * the range stat object can have a plusOne prop that is the chance that the effictive range will be one more than the min
@@ -81,8 +92,8 @@
 * the plusOnePer change prop can then have a a rane between 0 and 1.
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 
-### () 0.x.0 - targets and range statObject
-* have an orb.data.range stat object with a current prop that is the range of an orb
+### () 0.x.0 - targets and range stat
+* have an orb.data.stat.range prop that is the current effective range of an orb
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side
 * So then the max range for the range prop would be 1 to 4
@@ -91,14 +102,6 @@
 
 ### () 0.x.0 - On orb death event
 * have an on orb death event that fires when orb.data.hp <=0;
-
-### () 0.x.0 - fix bugs
-* make it so orbs can be moved from slot to slot
-* fix bug where an orb can be placed in a slot that all ready has an orb
-
-### () 0.x.0 - AI improvements I
-* The AI should swap in orbs from its pouch during aiTurn game state
-* The AI should make choices when it comes to setting orbs in attackMode or not
 
 ### ( done 08/14/2021 ) 0.14.0 - Orb type stat deltas started
 * (done) orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects

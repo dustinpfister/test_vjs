@@ -60,9 +60,6 @@
 * The speed of an orb determines which orb will attack/buff first
 * speed will not result in additional turns for an orb, but can result in additional attacks, and buffs per turn
 
-### () 0.x.0 - single stat object
-* have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
-
 ### () 0.x.0 - Main Menu, and Crafting states started
 * start a new crafting state
 * have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
@@ -79,7 +76,7 @@
 * dual types can select a single target in range that is always the most powerful orb in terms of attack
 * triple types can select a single target in range that is always the weakest
 * quad types can select a random count of targets in range
-* recipe types can have these values set depeding on the state of the recipeDef object
+* recipe types can have these values set depending on the state of the recipeDef object
 
 ### () 0.x.0 - orb.data.stat.splashDamageMulti, and orb.data.stat.splashPer
 * have a splash damage multi, and splash per prop added to the range stat object
@@ -92,16 +89,18 @@
 * the plusOnePer change prop can then have a a rane between 0 and 1.
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 
+### () 0.x.0 - On orb death event
+* have an on orb death event that fires when orb.data.hp <=0;
+
 ### () 0.x.0 - targets and range stat
 * have an orb.data.stat.range prop that is the current effective range of an orb
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side
 * So then the max range for the range prop would be 1 to 4
 * have a orb.data.attack.targets array that will be all the enemy orbs to attack
-* for now just have orb.attack.current / orb.attack.targets.length
 
-### () 0.x.0 - On orb death event
-* have an on orb death event that fires when orb.data.hp <=0;
+### () 0.x.0 - single stat object
+* have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
 
 ### ( done 08/14/2021 ) 0.14.0 - Orb type stat deltas started
 * (done) orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects

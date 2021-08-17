@@ -92,14 +92,18 @@
 ### () 0.x.0 - On orb death event
 * have an on orb death event that fires when orb.data.hp <=0;
 
-### () 0.x.0 - targets and range stat
+### () 0.14.0 - targets and range stat
 * have an orb.data.stat.range prop that is the current effective range of an orb
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side
 * So then the max range for the range prop would be 1 to 4
-* have a orb.data.attack.targets array that will be all the enemy orbs to attack
+* have a orb.data.targets array that will be all the enemy orbs to attack
+* for now just have random target selection
+* for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
+* orb.data.stat.attack is now something that will be applied just to targets for the orb.
+* have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
 
-### () 0.x.0 - single stat object
+### () 0.13.0 - single stat object
 * have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
 
 ### ( done 08/14/2021 ) 0.14.0 - Orb type stat deltas started

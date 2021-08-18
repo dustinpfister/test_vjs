@@ -95,20 +95,17 @@
 * the minRange stat will then have a range between 1 and 3 depending on level
 * the plusOnePer change prop can then have a range between 0 and 1.
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
+* for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
 ### () 0.16.0 - targets array
 * (done) have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb
 * (done) have a startingOrbs option for gameMod.create
 * (done) have the default for the startingOrbs option be just setting pouchIndexs from left to right that are nt null types
 * (done) default orb type is now null
-
 * (done) have a getTargets helper for processTurn game state
 * (done) for now just selecting first target if any
-
-* attack targets in new processFactionTrun helper
-
-* have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
-* for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
+* (done) attack targets in new processFactionTrun helper
+* (done) have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
 
 ### () 0.15.0 - range stat started
 * (done) have an orb.data.range stat object with a current prop that is the current effective range of an orb

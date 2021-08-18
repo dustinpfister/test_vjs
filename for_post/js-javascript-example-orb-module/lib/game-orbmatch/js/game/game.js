@@ -179,8 +179,6 @@
                 if (orb) {
                     if (orb.type != 'null') {
                         game.selectedOrb = orb;
-                        console.log(orb);
-                        var rangeOrbs = OrbCollection.getRangeOrbs(orb, game.ai.slots);
                     }
                 }
             },

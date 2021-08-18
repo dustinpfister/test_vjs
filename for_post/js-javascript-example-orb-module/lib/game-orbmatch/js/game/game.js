@@ -89,6 +89,23 @@
             orb.y = orb.data.homeY;
         });
         // setting a starting orbs
+        // create default for opt.startOrbs if false
+        if (!opt.startOrbs) {
+            opt.startOrbs = [];
+            var i = 0,
+            len = playerObj.pouch.orbs.length;
+            while (i < len) {
+                var orb = playerObj.pouch.orbs[i];
+                if (orb.type != 'null') {
+                    opt.startOrbs.push(orb.data.i);
+                }
+                if (opt.startOrbs.length === playerObj.slots.orbs.length) {
+                    break;
+                }
+                i += 1;
+            }
+        }
+
         OrbCollection.setOrbPropsToOrb(playerObj.slots, 1, playerObj.pouch.orbs[0]);
         playerObj.pouch.orbs[0].type = 'null';
         return playerObj;

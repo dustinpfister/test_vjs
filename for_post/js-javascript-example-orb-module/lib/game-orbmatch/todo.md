@@ -105,7 +105,8 @@
 * (done) have a getTargets helper for processTurn game state
 * (done) for now just selecting first target if any
 
-* update attackTargets helper in game.js orb.data.stat.attack is now something that will be applied just to targets for the orb.
+* attack targets in new processFactionTrun helper
+
 * have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 

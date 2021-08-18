@@ -376,32 +376,34 @@
     /********* ********** ********** *********/
 
     // attack enemy targets for the given faction
+    /*
     var attackTargets = function (game, faction) {
-        var enemyFaction = faction === 'ai' ? 'player' : 'ai';
-        // attack enemy orbs in slots
-        game[enemyFaction].slots.orbs.forEach(function (eOrb) {
-            if (eOrb.type != 'null') {
-                eOrb.data.hp.current -= game[faction].totalAttack;
-                eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
-                eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
-                // set to null if dead
-                if (eOrb.data.hp.current <= 0) {
-                    eOrb.type = 'null';
-                }
-            }
-        });
+    var enemyFaction = faction === 'ai' ? 'player' : 'ai';
+    // attack enemy orbs in slots
+    game[enemyFaction].slots.orbs.forEach(function (eOrb) {
+    if (eOrb.type != 'null') {
+    eOrb.data.hp.current -= game[faction].totalAttack;
+    eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
+    eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
+    // set to null if dead
+    if (eOrb.data.hp.current <= 0) {
+    eOrb.type = 'null';
+    }
+    }
+    });
     };
 
     // apply totalHeal for the given faction
     var applyHeal = function (game, faction) {
-        game[faction].slots.orbs.forEach(function (orb) {
-            if (orb.type != 'null') {
-                orb.data.hp.current += game[faction].totalHeal;
-                orb.data.hp.current = orb.data.hp.current > orb.data.hp.max ? orb.data.hp.max : orb.data.hp.current;
-                orb.data.hp.per = orb.data.hp.current / orb.data.hp.max;
-            }
-        });
+    game[faction].slots.orbs.forEach(function (orb) {
+    if (orb.type != 'null') {
+    orb.data.hp.current += game[faction].totalHeal;
+    orb.data.hp.current = orb.data.hp.current > orb.data.hp.max ? orb.data.hp.max : orb.data.hp.current;
+    orb.data.hp.per = orb.data.hp.current / orb.data.hp.max;
+    }
+    });
     };
+     */
 
     // get a count of slot orbs where orb.data.type != null
     var getActiveOrbCount = function (game, faction) {

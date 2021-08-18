@@ -9,7 +9,8 @@
             playerPouch: [
                 [0, 0, 8, 0], [4, 0, 4, 0], [2, 0, 0, 0]
             ],
-            playerStartOrbs: [1, 0]
+            playerStartOrbs: [1, 0],
+            playerAttackModes: [true, false, false, false],
         }),
         fps: 30,
         secs: 0,

@@ -98,7 +98,8 @@
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
 ### () 0.17.0 - can target own orbs in !attackMode
-* have a aiStartAttackModes, and playerStartAttackModes options that can set starting values for slot attack modes
+* (done) have a aiAttackModes, and playerAttackModes options that can set starting values for slot attack modes
+* fix updateInRangeOrbs helper so that it will make friendly orbs inRange orbs with !attackMode
 
 ### () 0.16.0 - targets array
 * (done) have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb

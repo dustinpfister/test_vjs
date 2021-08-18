@@ -9,7 +9,11 @@
     // update in range orbs for the given orb
     var updateInRangeOrbs = function (game, orb) {
         var eSlots = orb.data.faction === 'ai' ? game.player.slots : game.ai.slots;
-        orb.data.inRangeOrbs = OrbCollection.getRangeOrbs(orb, eSlots);
+        if (orb.data.attackMode) {
+            orb.data.inRangeOrbs = OrbCollection.getRangeOrbs(orb, eSlots);
+        } else {
+            orb.data.inRangeOrbs = OrbCollection.getRangeOrbs(orb, game[orb.data.faction].slots);
+        }
         return orb.data.inRangeOrb;
     };
 
@@ -146,7 +150,8 @@
                 pouchPoints: opt.playerPouch || [
                     [1, 0, 0, 0]
                 ],
-                startOrbs: opt.playerStartOrbs || false
+                startOrbs: opt.playerStartOrbs || false,
+                attackModes: opt.playerAttackModes || []
             });
         // start the ai object
         game.ai = createPlayerObject({
@@ -431,7 +436,6 @@
         if (targets.length >= 1) {
             // just selecting first target for now
             orb.data.targets.push(targets[0]);
-            console.log(orb);
         }
     };
 
@@ -442,7 +446,6 @@
         // make sure in range slot array is up to date
         fObj.slots.orbs.forEach(function (orb) {
             updateInRangeOrbs(game, orb);
-            console.log(orb.data.inRangeOrbs);
         });
         fObj.slots.orbs.forEach(function (orb) {
             // get targets
@@ -453,6 +456,7 @@
                     // just attack all targets for now
                     var attack = orb.data.attack.current / orb.data.targets.length;
                     orb.data.targets.forEach(function (eOrb) {
+                        console.log(orb.data.inRangeOrbs);
                         eOrb.data.hp.current -= attack;
                         eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
                         eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
@@ -470,7 +474,6 @@
     gameStates.processTurn = {
         buttons: {},
         update: function (game, secs) {
-            console.log('processTurn');
             // attack targets
             //attackTargets(game, 'player');
             //attackTargets(game, 'ai');

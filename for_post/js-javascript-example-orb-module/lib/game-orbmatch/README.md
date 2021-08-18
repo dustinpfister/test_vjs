@@ -8,6 +8,8 @@ The game consists of a number of javaScript files in which I am separating certa
 
 ### utils.js
 
+This is the general utility library for this game that contains methods like the distance formula, and many other usual suspect type methods that are found in many games like this.
+
 ### ratio.js
 
 ### orb-client.js

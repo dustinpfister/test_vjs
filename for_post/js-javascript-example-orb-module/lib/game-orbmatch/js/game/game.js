@@ -176,7 +176,6 @@
         update: function (game, secs) {
             game.player.totalAttack = getTotalAttack(game, 'player');
             game.player.totalHeal = getTotalHeal(game, 'player');
-
             // for all player slots
             game.player.slots.orbs.forEach(function (orb) {
                 updateInRangeOrbs(game, orb);
@@ -340,6 +339,10 @@
         update: function (game, secs) {
             game.ai.totalAttack = getTotalAttack(game, 'ai');
             game.currentState = 'processTurn';
+            // for all ai slots
+            game.ai.slots.orbs.forEach(function (orb) {
+                updateInRangeOrbs(game, orb);
+            });
         },
         events: {}
     };

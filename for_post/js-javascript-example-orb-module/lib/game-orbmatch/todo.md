@@ -1,5 +1,12 @@
 # game-orbmatch - todo list
 
+### () 0.x.0 - single stat object
+* have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
+
+### () 0.x.0 - On orb death event
+* have an on orb death event that fires when orb.data.hp <=0;
+
+
 ### () 0.x.0 - AI Improvements II
 * The AI should swap orbs between slots as needed
 * in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
@@ -89,10 +96,7 @@
 * the plusOnePer change prop can then have a a rane between 0 and 1.
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 
-### () 0.x.0 - On orb death event
-* have an on orb death event that fires when orb.data.hp <=0;
-
-### () 0.14.0 - targets and range stat
+### () 0.15.0 - targets and range stat
 * have an orb.data.stat.range prop that is the current effective range of an orb
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side
@@ -102,9 +106,6 @@
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 * orb.data.stat.attack is now something that will be applied just to targets for the orb.
 * have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
-
-### () 0.13.0 - single stat object
-* have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
 
 ### ( done 08/14/2021 ) 0.14.0 - Orb type stat deltas started
 * (done) orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects

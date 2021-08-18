@@ -18,37 +18,37 @@
     var forTypeMethods = {
         null: function (orb) {
             var deltas = createStatDeltaObject('type:null');
-            return deltas; 
+            return deltas;
         },
         pure: function (orb) {
             var deltas = createStatDeltaObject('type:pure');
             deltas.attack.current = orb.level * 0.5;
-            return deltas; 
+            return deltas;
         },
         dual: function (orb) {
             var deltas = createStatDeltaObject('type:dual');
             deltas.attack.current = orb.level * 1.75;
             deltas.hp.max = orb.level * 25;
-            return deltas;             
+            return deltas;
         },
         triple: function (orb) {
             var deltas = createStatDeltaObject('type:triple');
-            return deltas; 
+            return deltas;
         },
         quad: function (orb) {
             var deltas = createStatDeltaObject('type:quad');
-            return deltas; 
+            return deltas;
         },
         composite: function (orb) {
             var deltas = createStatDeltaObject('type:composite');
-            return deltas; 
+            return deltas;
         },
         recipe: function (orb) {
             var deltas = createStatDeltaObject('type:recipe');
-            return deltas; 
+            return deltas;
         }
     };
-    var forType = function(orb){
+    var forType = function (orb) {
         return forTypeMethods[orb.type](orb);
     };
 
@@ -74,13 +74,19 @@
 
     // create stat objects based on type, level, and ratio
     var createStatObjects = function (orb) {
+        // the hp stat object
         orb.data.hp = {
             current: 10,
             max: 10,
             per: 1,
             heal: 1
         };
+        // the attack stat object
         orb.data.attack = {
+            current: 1
+        };
+        // range
+        orb.data.range = {
             current: 1
         };
         // apply deltas

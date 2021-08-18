@@ -91,19 +91,20 @@
 
 ### () 0.x.0 - minRange, and plusOnePer chance
 * the range stat object can have a minRange prop which is the base range that will be set for a turn
-* the range stat object can have a plusOne prop that is the chance that the effictive range will be one more than the min
+* the range stat object can have a plusOne prop that is the chance that the effective range will be one more than the min
 * the minRange stat will then have a range between 1 and 3 depending on level
 * the plusOnePer change prop can then have a a rane between 0 and 1.
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 
 ### () 0.15.0 - targets and range stat
-* have an orb.data.stat.range prop that is the current effective range of an orb
+* have an orb.data.range stat object with a current prop that is the current effective range of an orb
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side
-* So then the max range for the range prop would be 1 to 4
-* have a orb.data.targets array that will be all the enemy orbs to attack
-* for now just have random target selection
+* So then the fixed constant range for the data.range.current prop would be 1 to 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
+
+* have an orb.data.targets array that will be all the enemy orbs to attack
+* for now just have random target selection
 * orb.data.stat.attack is now something that will be applied just to targets for the orb.
 * have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
 

@@ -4,6 +4,8 @@ A simple game that I have made just for the sake of testing out this orb module 
 
 ## libs
 
+The game consists of a number of javaScript files in which I am separating certain concerns. I have a general utility module that contains methods like a distance formula and other basics tools, alone with the orb client module or course, and many other modules that have to do with the over all game logic.
+
 ### utils.js
 
 ### ratio.js

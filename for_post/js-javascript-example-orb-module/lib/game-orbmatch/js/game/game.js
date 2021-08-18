@@ -354,7 +354,7 @@
     // attack enemy targets for the given faction
     var attackTargets = function (game, faction) {
         var enemyFaction = faction === 'ai' ? 'player' : 'ai';
-        // attack emeny orbs in slots
+        // attack enemy orbs in slots
         game[enemyFaction].slots.orbs.forEach(function (eOrb) {
             if (eOrb.type != 'null') {
                 eOrb.data.hp.current -= game[faction].totalAttack;

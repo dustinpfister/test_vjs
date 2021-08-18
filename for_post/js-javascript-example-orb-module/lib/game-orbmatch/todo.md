@@ -99,7 +99,7 @@
 ### () 0.16.0 - targets array
 * have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb
 * for now just have random target selection
-* orb.data.stat.attack is now something that will be applied just to targets for the orb.
+* update attackTargets helper in game.js orb.data.stat.attack is now something that will be applied just to targets for the orb.
 * have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 

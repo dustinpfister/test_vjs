@@ -96,23 +96,22 @@
 * the plusOnePer change prop can then have a range between 0 and 1.
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 
-### () 0.15.0 - targets and range stat
+### () 0.16.0 - targets array
+* have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb
+* for now just have random target selection
+* orb.data.stat.attack is now something that will be applied just to targets for the orb.
+* have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
+* for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
+
+### () 0.15.0 - range stat started
 * (done) have an orb.data.range stat object with a current prop that is the current effective range of an orb
 * (done) in playerTurn game stat display the range of the current selected orb
 * (done) start an orbCollection.getRangeOrbs method that will return the slot orbs that are in range for a given orb
 * (done) have an orb.data.inRangeOrbs prop that is a collection of enemy orbs that are in range
-* have updateInRangeOrbs helper in game.js
-
-
-* a range of 1 means it can just attack the orb in front of it alone
-* a range of 2 means it can attack the orb in front, and on each side
-* So then the fixed constant range for the data.range.current prop would be 1 to 4
-* for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
-
-* have an orb.data.targets array that will be all the enemy orbs to attack
-* for now just have random target selection
-* orb.data.stat.attack is now something that will be applied just to targets for the orb.
-* have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
+* (done) have updateInRangeOrbs helper in game.js
+* (done) a range of 1 means it can just attack the orb in front of it alone
+* (done) a range of 2 means it can attack the orb in front, and on each side
+* (done) So then the fixed constant range for the data.range.current prop would be 1 to 4
 
 ### ( done 08/14/2021 ) 0.14.0 - Orb type stat deltas started
 * (done) orbCollection: have it so that orb.type will impact stat values in orb.data.attack and orb.data.hp objects

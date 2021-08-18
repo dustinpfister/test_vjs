@@ -88,7 +88,7 @@
             orb.x = orb.data.homeX;
             orb.y = orb.data.homeY;
         });
-        // setting a starting orb
+        // setting a starting orbs
         OrbCollection.setOrbPropsToOrb(playerObj.slots, 1, playerObj.pouch.orbs[0]);
         playerObj.pouch.orbs[0].type = 'null';
         return playerObj;
@@ -118,14 +118,16 @@
                 faction: 'player',
                 pouchPoints: opt.playerPouch || [
                     [1, 0, 0, 0]
-                ]
+                ],
+                startOrbs: opt.aiStartorbs || false
             });
         // start the ai object
         game.ai = createPlayerObject({
                 faction: 'ai',
                 pouchPoints: opt.aiPouch || [
                     [0, 1, 0, 0]
-                ]
+                ],
+                startOrbs: opt.playerStartorbs || false
             });
         // set total attack values for first time
         game.player.totalAttack = getTotalAttack(game, 'player');

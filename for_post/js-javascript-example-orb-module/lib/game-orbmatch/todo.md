@@ -99,7 +99,8 @@
 
 ### () 0.17.0 - can target own orbs in !attackMode
 * (done) have a aiAttackModes, and playerAttackModes options that can set starting values for slot attack modes
-* fix updateInRangeOrbs helper so that it will make friendly orbs inRange orbs with !attackMode
+* (done) fix updateInRangeOrbs helper so that it will make friendly orbs inRange orbs with !attackMode
+* apply heal to any friend orb in range when not in attackMode for an orb
 
 ### () 0.16.0 - targets array
 * (done) have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb

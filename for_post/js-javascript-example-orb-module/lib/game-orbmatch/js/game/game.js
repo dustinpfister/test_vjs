@@ -108,8 +108,10 @@
         console.log(playerObj.faction, opt.startOrbs);
         // apply starting orbs
         opt.startOrbs.forEach(function (pouchIndex, slotIndex) {
-            OrbCollection.setOrbPropsToOrb(playerObj.slots, slotIndex, playerObj.pouch.orbs[pouchIndex]);
-            playerObj.pouch.orbs[pouchIndex].type = 'null';
+            if (typeof pouchIndex === 'number') {
+                OrbCollection.setOrbPropsToOrb(playerObj.slots, slotIndex, playerObj.pouch.orbs[pouchIndex]);
+                playerObj.pouch.orbs[pouchIndex].type = 'null';
+            }
         });
         return playerObj;
     };
@@ -139,7 +141,7 @@
                 pouchPoints: opt.playerPouch || [
                     [1, 0, 0, 0]
                 ],
-                startOrbs: opt.aiStartorbs || false
+                startOrbs: opt.playerStartOrbs || false
             });
         // start the ai object
         game.ai = createPlayerObject({
@@ -147,7 +149,7 @@
                 pouchPoints: opt.aiPouch || [
                     [0, 1, 0, 0]
                 ],
-                startOrbs: opt.playerStartorbs || false
+                startOrbs: opt.aiStartOrbs || false
             });
         // set total attack values for first time
         game.player.totalAttack = getTotalAttack(game, 'player');

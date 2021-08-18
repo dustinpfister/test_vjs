@@ -3,10 +3,12 @@
     // state object
     var sm = {
         game: gameMod.create({
-            aiPouch: [[2,0,0,0]],
+            aiPouch: [[2, 0, 0, 0], [2, 0, 2, 0]],
+            aiStartOrbs: [ false, 0 ],
             playerPouch: [
-                [2,0,2,0],[2,0,0,0],[2,0,0,0]
-            ]
+                [0, 0, 2, 0], [4, 0, 4, 0], [2, 0, 0, 0]
+            ],
+            playerStartOrbs: [ 1, 0 ]
         }),
         fps: 30,
         secs: 0,

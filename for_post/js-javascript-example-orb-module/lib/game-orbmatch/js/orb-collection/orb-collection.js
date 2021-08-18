@@ -208,7 +208,9 @@
 
         var rangeOrbs = collection.orbs.reduce(function (acc, eOrb) {
                 var d = utils.distance(eOrb.data.i, 0, orbA.data.i, 0) + 1;
-                console.log(d <= orbA.data.range.current);
+                if (d <= orbA.data.range.current) {
+                    acc.push(eOrb);
+                }
                 return acc;
             }, []);
 

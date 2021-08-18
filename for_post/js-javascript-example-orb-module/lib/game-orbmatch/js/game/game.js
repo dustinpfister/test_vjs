@@ -155,7 +155,7 @@
                     [0, 1, 0, 0]
                 ],
                 startOrbs: opt.aiStartOrbs || false,
-                attackModes: [false, false, false, false]
+                attackModes: opt.aiAttackModes || []
             });
         // set total attack values for first time
         game.player.totalAttack = getTotalAttack(game, 'player');

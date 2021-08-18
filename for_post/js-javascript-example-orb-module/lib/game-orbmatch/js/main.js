@@ -5,7 +5,7 @@
         game: gameMod.create({
             aiPouch: [[2, 0, 0, 0], [2, 0, 2, 0]],
             aiStartOrbs: [null, 0, null, 1],
-            aiStartAttackModes: [false, false, false, false],
+            aiAttackModes: [false, false, false, false],
             playerPouch: [
                 [0, 0, 8, 0], [4, 0, 4, 0], [2, 0, 0, 0]
             ],

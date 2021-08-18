@@ -4,11 +4,12 @@
     var sm = {
         game: gameMod.create({
             aiPouch: [[2, 0, 0, 0], [2, 0, 2, 0]],
-            aiStartOrbs: [ null, 0, null, 1 ],
+            aiStartOrbs: [null, 0, null, 1],
+            aiStartAttackModes: [false, false, false, false],
             playerPouch: [
                 [0, 0, 8, 0], [4, 0, 4, 0], [2, 0, 0, 0]
             ],
-            playerStartOrbs: [ 1, 0 ]
+            playerStartOrbs: [1, 0]
         }),
         fps: 30,
         secs: 0,

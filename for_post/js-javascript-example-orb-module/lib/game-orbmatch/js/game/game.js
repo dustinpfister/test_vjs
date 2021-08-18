@@ -105,7 +105,6 @@
                 i += 1;
             }
         }
-        console.log(playerObj.faction, opt.startOrbs);
         // apply starting orbs
         opt.startOrbs.forEach(function (pouchIndex, slotIndex) {
             if (typeof pouchIndex === 'number') {
@@ -113,6 +112,12 @@
                 playerObj.pouch.orbs[pouchIndex].type = 'null';
             }
         });
+        // set up attackModes for first time
+        if (opt.attackModes) {
+            opt.attackModes.forEach(function (bool, i) {
+                playerObj.slots.orbs[i].data.attackMode = bool;
+            });
+        }
         return playerObj;
     };
 
@@ -149,7 +154,8 @@
                 pouchPoints: opt.aiPouch || [
                     [0, 1, 0, 0]
                 ],
-                startOrbs: opt.aiStartOrbs || false
+                startOrbs: opt.aiStartOrbs || false,
+                attackModes: [false, false, false, false]
             });
         // set total attack values for first time
         game.player.totalAttack = getTotalAttack(game, 'player');

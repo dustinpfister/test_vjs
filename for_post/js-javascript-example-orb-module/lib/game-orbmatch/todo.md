@@ -97,6 +97,9 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
+### () 0.17.0 - can target own orbs in !attackMode
+* have a aiStartAttackModes, and playerStartAttackModes options that can set starting values for slot attack modes
+
 ### () 0.16.0 - targets array
 * (done) have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb
 * (done) have a startingOrbs option for gameMod.create
@@ -106,7 +109,7 @@
 * (done) for now just selecting first target if any
 * (done) attack targets in new processFactionTrun helper
 * (done) have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
-* no longer display total Attack and heal values as they no longer apply
+* (done) no longer display total Attack and heal values as they no longer apply
 
 ### () 0.15.0 - range stat started
 * (done) have an orb.data.range stat object with a current prop that is the current effective range of an orb

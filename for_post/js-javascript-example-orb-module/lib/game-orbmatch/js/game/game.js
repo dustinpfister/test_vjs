@@ -176,6 +176,11 @@
         update: function (game, secs) {
             game.player.totalAttack = getTotalAttack(game, 'player');
             game.player.totalHeal = getTotalHeal(game, 'player');
+
+            // for all player slots
+            game.player.slots.orbs.forEach(function (orb) {
+                updateInRangeOrbs(game, orb);
+            });
         },
         events: {
             onPointerStart: function (e, pos, game) {
@@ -186,7 +191,6 @@
                 if (orb) {
                     if (orb.type != 'null') {
                         game.selectedOrb = orb;
-                        updateInRangeOrbs(game, orb);
                         console.log(orb);
                     }
                 }

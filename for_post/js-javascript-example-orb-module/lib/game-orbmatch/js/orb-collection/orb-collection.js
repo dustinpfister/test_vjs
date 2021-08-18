@@ -147,7 +147,9 @@
             orb.data.homeY = 400;
             orb.data.attackMode = true;
             orb.data.deltas = [];
+            // targets and range
             orb.data.inRangeOrbs = [];
+            orb.data.targets = [];
             orb.data.fillStyle = createFillStyle(orb);
             // create stat objects
             createStatObjects(orb);

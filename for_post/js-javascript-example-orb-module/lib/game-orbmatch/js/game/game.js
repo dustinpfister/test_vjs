@@ -403,11 +403,45 @@
         });
     };
 
-    // get a count or orbs where orb.data.type != null
+    // get a count of slot orbs where orb.data.type != null
     var getActiveOrbCount = function (game, faction) {
         return game[faction].slots.orbs.reduce(function (acc, orb) {
             return orb.type != 'null' ? acc + 1 : acc;
         }, 0);
+    };
+
+    // get targets for the given orb
+    var getTargets = function (game, orb) {
+        orb.data.targets = [];
+        // in range orbs prop allows for null orbs in collection, so be sure to filter them out
+        var targets = orb.data.inRangeOrbs.reduce(function (acc, orb) {
+                if (orb.type != 'null') {
+                    acc.push(orb);
+                }
+                return acc;
+            }, []);
+        if (targets.length >= 1) {
+            // just selecting first target for now
+            orb.data.targets.push(targets[0]);
+            console.log(orb);
+        }
+    };
+
+    var processFactionTurn = function (game, faction) {
+        var efString = faction === 'ai' ? 'player' : 'ai',
+        efObj = game[efString],
+        fObj = game[faction];
+
+        fObj.slots.orbs.forEach(function (orb) {
+            // get targets
+            if (orb.type != 'null') {
+                getTargets(game, orb);
+            }
+
+        });
+
+        console.log(faction, efString);
+
     };
 
     // process turn state object
@@ -416,11 +450,14 @@
         update: function (game, secs) {
             console.log('processTurn');
             // attack targets
-            attackTargets(game, 'player');
-            attackTargets(game, 'ai');
+            //attackTargets(game, 'player');
+            //attackTargets(game, 'ai');
             // apply heal
-            applyHeal(game, 'player');
-            applyHeal(game, 'ai');
+            //applyHeal(game, 'player');
+            //applyHeal(game, 'ai');
+
+            processFactionTurn(game, 'player');
+            processFactionTurn(game, 'ai');
 
             // check active counts
             var playerActive = getActiveOrbCount(game, 'player'),

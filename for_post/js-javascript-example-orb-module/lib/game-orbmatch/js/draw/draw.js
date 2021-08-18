@@ -44,8 +44,10 @@ draw.orbRange = function (sm, ctx, canvas, orb) {
     ctx.stroke();
 
     // range 2+ box
+	var x1 = orb.data.inRangeOrbs[0].data.homeX - 16,
+	x2 = orb.data.inRangeOrbs[orb.data.inRangeOrbs.length - 1].data.homeX - 16
     ctx.beginPath();
-    ctx.rect(x, y, 32, 32 + yDelta);
+    ctx.rect(x1, y, x2 - x1 + 32 , 32);
     ctx.stroke();
 
 };

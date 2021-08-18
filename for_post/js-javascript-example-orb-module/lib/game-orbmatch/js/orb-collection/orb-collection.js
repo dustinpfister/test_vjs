@@ -87,7 +87,7 @@
         };
         // range
         orb.data.range = {
-            current: 2
+            current: 3
         };
         // apply deltas
         var deltas = orb.data.deltas = [];

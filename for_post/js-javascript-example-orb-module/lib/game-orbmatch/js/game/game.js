@@ -105,10 +105,12 @@
                 i += 1;
             }
         }
-		console.log(opt.startOrbs);
-
-        OrbCollection.setOrbPropsToOrb(playerObj.slots, 0, playerObj.pouch.orbs[0]);
-        playerObj.pouch.orbs[0].type = 'null';
+        console.log(playerObj.faction, opt.startOrbs);
+        // apply starting orbs
+        opt.startOrbs.forEach(function (pouchIndex, slotIndex) {
+            OrbCollection.setOrbPropsToOrb(playerObj.slots, slotIndex, playerObj.pouch.orbs[pouchIndex]);
+            playerObj.pouch.orbs[pouchIndex].type = 'null';
+        });
         return playerObj;
     };
 

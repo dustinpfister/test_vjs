@@ -174,8 +174,10 @@
         createStatObjects(orbA);
         orbA.data.fillStyle = createFillStyle(orbA);
         // start off with full hp
-        orbA.data.hp.current = orbA.data.hp.max;
-        orbA.data.hp.per = 1;
+        //orbA.data.hp.current = orbA.data.hp.max;
+        //orbA.data.hp.per = 1;
+        orbA.data.hp.current = orbA.data.hp.max * 0.75;
+        orbA.data.hp.per = orbA.data.hp.current / orbA.data.hp.max;
         return orbA;
     };
 

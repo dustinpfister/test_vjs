@@ -97,7 +97,10 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 
 ### () 0.16.0 - targets array
-* have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb
+* (done) have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb
+* have a startingOrbs option for gameMod.create
+* have the default for the startingOrbs option be just setting pouchIndexs from left to right that are nt null types
+
 * for now just have random target selection
 * update attackTargets helper in game.js orb.data.stat.attack is now something that will be applied just to targets for the orb.
 * have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs

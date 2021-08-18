@@ -106,6 +106,7 @@
 * (done) for now just selecting first target if any
 * (done) attack targets in new processFactionTrun helper
 * (done) have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
+* no longer display total Attack and heal values as they no longer apply
 
 ### () 0.15.0 - range stat started
 * (done) have an orb.data.range stat object with a current prop that is the current effective range of an orb

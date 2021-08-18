@@ -44,10 +44,10 @@ draw.orbRange = function (sm, ctx, canvas, orb) {
     ctx.stroke();
 
     // range 2+ box
-	var x1 = orb.data.inRangeOrbs[0].data.homeX - 16,
-	x2 = orb.data.inRangeOrbs[orb.data.inRangeOrbs.length - 1].data.homeX - 16
+    var x1 = orb.data.inRangeOrbs[0].data.homeX - 16,
+    x2 = orb.data.inRangeOrbs[orb.data.inRangeOrbs.length - 1].data.homeX - 16;
     ctx.beginPath();
-    ctx.rect(x1, y, x2 - x1 + 32 , 32);
+    ctx.rect(x1, y, x2 - x1 + 32, 32);
     ctx.stroke();
 
 };
@@ -96,11 +96,11 @@ draw.slotsInfo = function (sm, ctx, canvas) {
         ctx.font = '10px arial';
         var yAI = sm.game.ai.slots.orbs[0].data.homeY;
         var yP = sm.game.player.slots.orbs[0].data.homeY;
-        ctx.fillText('attack: ' + sm.game.ai.totalAttack, 40, yAI - 32);
-        ctx.fillText('attack: ' + sm.game.player.totalAttack, 40, yP + 32);
-        ctx.fillStyle = 'blue';
-        ctx.fillText('heal: ' + sm.game.ai.totalHeal, 40, yAI - 42);
-        ctx.fillText('heal: ' + sm.game.player.totalHeal, 40, yP + 42);
+        //ctx.fillText('attack: ' + sm.game.ai.totalAttack, 40, yAI - 32);
+        //ctx.fillText('attack: ' + sm.game.player.totalAttack, 40, yP + 32);
+        //ctx.fillStyle = 'blue';
+        //ctx.fillText('heal: ' + sm.game.ai.totalHeal, 40, yAI - 42);
+        //ctx.fillText('heal: ' + sm.game.player.totalHeal, 40, yP + 42);
     });
 };
 // draw orbCollection

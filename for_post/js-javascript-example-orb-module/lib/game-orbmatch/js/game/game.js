@@ -448,6 +448,7 @@
             // get targets
             if (orb.type != 'null') {
                 getTargets(game, orb);
+                // if in attackMode and we have targets
                 if (orb.data.attackMode && orb.data.targets.length > 0) {
                     // just attack all targets for now
                     var attack = orb.data.attack.current / orb.data.targets.length;

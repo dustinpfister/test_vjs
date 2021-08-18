@@ -433,13 +433,11 @@
         var efString = faction === 'ai' ? 'player' : 'ai',
         efObj = game[efString],
         fObj = game[faction];
-
+        // make sure in range slot array is up to date
         fObj.slots.orbs.forEach(function (orb) {
             updateInRangeOrbs(game, orb);
-
             console.log(orb.data.inRangeOrbs);
         });
-
         fObj.slots.orbs.forEach(function (orb) {
             // get targets
             if (orb.type != 'null') {
@@ -459,9 +457,6 @@
                 }
             }
         });
-
-        console.log(faction, efString);
-
     };
 
     // process turn state object

@@ -435,22 +435,28 @@
         fObj = game[faction];
 
         fObj.slots.orbs.forEach(function (orb) {
+            updateInRangeOrbs(game, orb);
+
+            console.log(orb.data.inRangeOrbs);
+        });
+
+        fObj.slots.orbs.forEach(function (orb) {
             // get targets
             if (orb.type != 'null') {
                 getTargets(game, orb);
-            }
-            if (orb.data.attackMode && orb.data.targets.length > 0) {
-                // just attack all targets for now
-                var attack = orb.data.attack.current / orb.data.targets.length;
-                orb.data.targets.forEach(function (eOrb) {
-                    eOrb.data.hp.current -= attack;
-                    eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
-                    eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
-                    // set to null if dead
-                    if (eOrb.data.hp.current <= 0) {
-                        eOrb.type = 'null';
-                    }
-                });
+                if (orb.data.attackMode && orb.data.targets.length > 0) {
+                    // just attack all targets for now
+                    var attack = orb.data.attack.current / orb.data.targets.length;
+                    orb.data.targets.forEach(function (eOrb) {
+                        eOrb.data.hp.current -= attack;
+                        eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
+                        eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
+                        // set to null if dead
+                        if (eOrb.data.hp.current <= 0) {
+                            eOrb.type = 'null';
+                        }
+                    });
+                }
             }
         });
 

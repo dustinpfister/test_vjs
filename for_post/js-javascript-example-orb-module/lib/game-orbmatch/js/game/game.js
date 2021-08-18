@@ -6,6 +6,13 @@
     //  HELPERS
     /********* ********** ********** *********/
 
+    // update in range orbs for the given orb
+    var updateInRangeOrbs = function (game, orb) {
+        var eSlots = orb.data.faction === 'ai' ? game.player.slots : game.ai.slots;
+        orb.data.inRangeOrbs = OrbCollection.getRangeOrbs(orb, eSlots);
+        return orb.data.inRangeOrb;
+    };
+
     // get a button that was clicked for the current state and if so which one.
     // This will return a ref to the button, or null
     var getButton = function (game, x, y) {
@@ -179,6 +186,8 @@
                 if (orb) {
                     if (orb.type != 'null') {
                         game.selectedOrb = orb;
+                        updateInRangeOrbs(game, orb);
+                        console.log(orb);
                     }
                 }
             },

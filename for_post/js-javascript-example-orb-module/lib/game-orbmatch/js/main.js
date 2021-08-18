@@ -4,9 +4,9 @@
     var sm = {
         game: gameMod.create({
             aiPouch: [[2, 0, 0, 0], [2, 0, 2, 0]],
-            aiStartOrbs: [ false, 0 ],
+            aiStartOrbs: [ null, 0, null, 1 ],
             playerPouch: [
-                [0, 0, 2, 0], [4, 0, 4, 0], [2, 0, 0, 0]
+                [0, 0, 8, 0], [4, 0, 4, 0], [2, 0, 0, 0]
             ],
             playerStartOrbs: [ 1, 0 ]
         }),

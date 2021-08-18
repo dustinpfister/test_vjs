@@ -87,7 +87,7 @@
         };
         // range
         orb.data.range = {
-            current: 1
+            current: 3
         };
         // apply deltas
         var deltas = orb.data.deltas = [];
@@ -158,7 +158,6 @@
             collection.orbs.push(orb);
             i += 1;
         }
-        console.log(collection.orbs[6]);
         return collection;
     };
 
@@ -203,5 +202,18 @@
         }
         return null;
     };
+
+    // get range orbs in the given collection
+    api.getRangeOrbs = function(orbA, collection){
+		
+		var rangeOrbs = collection.orbs.reduce(function(acc, eOrb){
+			
+			console.log(utils.distance(eOrb.data.i, 0, orbA.data.i, 0) + 1);
+			
+			return acc;
+		},[]);
+		
+		console.log(rangeOrbs);
+	}
 }
     (this['OrbCollection'] = {}));

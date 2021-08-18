@@ -35,6 +35,7 @@ draw.orbInfo = function (sm, ctx, canvas, orb, x, y) {
 draw.orbRange = function (sm, ctx, canvas, orb) {
     var x = orb.data.homeX - 16,
     yDelta = 16 * 7 + 9,
+    xdelta = 0,
     y = orb.data.homeY - 16 - yDelta;
     ctx.strokeStyle = 'white';
     // range 1 box
@@ -43,9 +44,9 @@ draw.orbRange = function (sm, ctx, canvas, orb) {
     ctx.stroke();
 
     // range 2+ box
-    //ctx.beginPath();
-    //ctx.rect(x, y, 32, 32 + yDelta);
-    //ctx.stroke();
+    ctx.beginPath();
+    ctx.rect(x, y, 32, 32 + yDelta);
+    ctx.stroke();
 
 };
 // draw slot areas

@@ -93,12 +93,14 @@
 * the range stat object can have a minRange prop which is the base range that will be set for a turn
 * the range stat object can have a plusOne prop that is the chance that the effective range will be one more than the min
 * the minRange stat will then have a range between 1 and 3 depending on level
-* the plusOnePer change prop can then have a a rane between 0 and 1.
+* the plusOnePer change prop can then have a range between 0 and 1.
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 
 ### () 0.15.0 - targets and range stat
 * (done) have an orb.data.range stat object with a current prop that is the current effective range of an orb
-* in playerTurn game stat display the range of the current selected orb
+* (done) in playerTurn game stat display the range of the current selected orb
+
+* start an orbCollection.getRangeOrbs method that will return the slot orbs that are in range for a given orb
 
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side

@@ -205,7 +205,6 @@
 
     // get range orbs in the given collection
     api.getRangeOrbs = function (orbA, collection) {
-
         var rangeOrbs = collection.orbs.reduce(function (acc, eOrb) {
                 var d = utils.distance(eOrb.data.i, 0, orbA.data.i, 0) + 1;
                 if (d <= orbA.data.range.current) {
@@ -213,8 +212,6 @@
                 }
                 return acc;
             }, []);
-
-        console.log(rangeOrbs);
         return rangeOrbs;
     }
 }

@@ -99,8 +99,8 @@
 ### () 0.15.0 - targets and range stat
 * (done) have an orb.data.range stat object with a current prop that is the current effective range of an orb
 * (done) in playerTurn game stat display the range of the current selected orb
-
-* start an orbCollection.getRangeOrbs method that will return the slot orbs that are in range for a given orb
+* (done) start an orbCollection.getRangeOrbs method that will return the slot orbs that are in range for a given orb
+* have an orb.data.inRangeOrbs prop that is a collection of enemy orbs that are in range
 
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side

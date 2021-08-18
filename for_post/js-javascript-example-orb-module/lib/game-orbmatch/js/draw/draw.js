@@ -2,7 +2,7 @@
 var draw = {};
 // draw background
 draw.background = function (sm, ctx, canvas) {
-    ctx.fillStyle = '#222222';
+    ctx.fillStyle = '#444444';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 // draw a single orb

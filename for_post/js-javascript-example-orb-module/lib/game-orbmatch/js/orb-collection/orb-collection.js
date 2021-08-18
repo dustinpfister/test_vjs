@@ -136,7 +136,7 @@
                 points = opt.points;
             } else {
                 points = opt.points[i];
-                points = points === undefined ? [1, 0, 0, 0] : points;
+                points = points === undefined ? [0, 0, 0, 0] : points;
             }
             //orb = orbMod.createFromLevel(points, opt.level);
             orb = orbMod.createFromPoints(points);

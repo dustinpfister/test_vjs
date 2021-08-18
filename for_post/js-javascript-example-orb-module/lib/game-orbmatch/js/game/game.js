@@ -105,8 +105,9 @@
                 i += 1;
             }
         }
+		console.log(opt.startOrbs);
 
-        OrbCollection.setOrbPropsToOrb(playerObj.slots, 1, playerObj.pouch.orbs[0]);
+        OrbCollection.setOrbPropsToOrb(playerObj.slots, 0, playerObj.pouch.orbs[0]);
         playerObj.pouch.orbs[0].type = 'null';
         return playerObj;
     };

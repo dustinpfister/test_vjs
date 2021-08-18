@@ -95,7 +95,7 @@ draw.orbCollection = function (sm, ctx, canvas, pouch) {
 };
 // draw a button
 draw.button = function(button, ctx){
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = button.fillStyle || 'white';
     ctx.fillRect(button.x, button.y, button.w, button.h);
     ctx.fillStyle = 'black';
     ctx.textAlign = 'center';

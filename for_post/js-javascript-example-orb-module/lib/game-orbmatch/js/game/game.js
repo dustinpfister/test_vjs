@@ -65,7 +65,7 @@
                 key: 'pouch',
                 faction: playerObj.faction,
                 count: 8,
-                points: opt.pouchPoints || [[0,0,1,0]]
+                points: opt.pouchPoints || [[0, 0, 1, 0]]
             });
         playerObj.slots = OrbCollection.create({
                 key: 'slots',
@@ -136,7 +136,7 @@
         buttons: {
             setOrbs: {
                 disp: 'Set Orbs',
-                x: 300,
+                x: 250,
                 y: 400,
                 w: 100,
                 h: 64,
@@ -146,7 +146,7 @@
             },
             orbConfig: {
                 disp: 'Config Orbs',
-                x: 400,
+                x: 350,
                 y: 400,
                 w: 100,
                 h: 64,
@@ -156,6 +156,7 @@
             },
             endTrun: {
                 disp: 'End Turn',
+                fillStyle: 'red',
                 x: 500,
                 y: 400,
                 w: 100,
@@ -400,9 +401,7 @@
     // game over state object
     gameStates.gameOver = {
         buttons: {},
-        update: function (game, secs) {
-            
-        },
+        update: function (game, secs) {},
         events: {}
     };
 

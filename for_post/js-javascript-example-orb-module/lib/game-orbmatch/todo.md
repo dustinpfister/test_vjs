@@ -97,7 +97,9 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 
 ### () 0.15.0 - targets and range stat
-* have an orb.data.range stat object with a current prop that is the current effective range of an orb
+* (done) have an orb.data.range stat object with a current prop that is the current effective range of an orb
+* in playerTurn game stat display the range of the current selected orb
+
 * a range of 1 means it can just attack the orb in front of it alone
 * a range of 2 means it can attack the orb in front, and on each side
 * So then the fixed constant range for the data.range.current prop would be 1 to 4

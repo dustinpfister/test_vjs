@@ -14,14 +14,15 @@ draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
     ctx.fill();
     ctx.stroke();
 };
-draw.orbInfo = function(sm, ctx, canvas, orb, x, y){
+// draw basic info of an orb
+draw.orbInfo = function (sm, ctx, canvas, orb, x, y) {
     ctx.fillStyle = 'white';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     ctx.font = '10px arial';
-    if(orb.data.attackMode){
+    if (orb.data.attackMode) {
         ctx.fillText('attack: ' + orb.data.attack.current, x, y);
-    }else{
+    } else {
         ctx.fillText('heal: ' + orb.data.hp.heal, x, y);
     }
     ctx.fillText('hp: ' + orb.data.hp.current + '/' + orb.data.hp.max, x, y + 15);
@@ -30,9 +31,19 @@ draw.orbInfo = function(sm, ctx, canvas, orb, x, y){
     ctx.fillText('points: ' + orb.points.join('-'), x, y + 60);
     ctx.fillText('level: ' + orb.level, x, y + 75);
 };
+// draw what the range of an orb is
+draw.orbRange = function (sm, ctx, canvas, orb) {
+    var x = orb.data.homeX -16,
+    y = orb.data.homeY - 16;
+    ctx.strokeStyle = 'white';
+    ctx.beginPath();
+    ctx.rect(x, y, 32, 32);
+    ctx.stroke();
 
+};
 // draw slot areas
 draw.slotAreas = function (sm, ctx, canvas) {
+    ctx.strokeStyle = 'black';
     ['player', 'ai'].forEach(function (faction) {
         var slots = sm.game[faction].slots;
         slots.orbs.forEach(function (orb) {
@@ -43,8 +54,7 @@ draw.slotAreas = function (sm, ctx, canvas) {
                 ctx.fillStyle = sm.game.playerSlotFillStyle.color || 'gray';
             }
             ctx.fillRect(orb.data.homeX - r, orb.data.homeY - r, r * 2, r * 2);
-
-            if(orb.type != 'null'){
+            if (orb.type != 'null') {
                 // draw attack mode arrow
                 ctx.fillStyle = orb.data.attackMode ? 'red' : 'blue';
                 var radian = orb.data.attackMode ? Math.PI * 2 : Math.PI * 1;
@@ -68,7 +78,7 @@ draw.slotAreas = function (sm, ctx, canvas) {
     });
 };
 // draw slots info
-draw.slotsInfo = function(sm, ctx, canvas){
+draw.slotsInfo = function (sm, ctx, canvas) {
     ['player', 'ai'].forEach(function (faction) {
         ctx.fillStyle = 'red';
         ctx.textAlign = 'left';
@@ -94,7 +104,7 @@ draw.orbCollection = function (sm, ctx, canvas, pouch) {
     });
 };
 // draw a button
-draw.button = function(button, ctx){
+draw.button = function (button, ctx) {
     ctx.fillStyle = button.fillStyle || 'white';
     ctx.fillRect(button.x, button.y, button.w, button.h);
     ctx.fillStyle = 'black';
@@ -107,22 +117,20 @@ draw.button = function(button, ctx){
 };
 // game state methods
 draw.forGameState = {
-    playerTurn : function(sm, ctx, canvas){
+    playerTurn: function (sm, ctx, canvas) {
         var orb = sm.game.selectedOrb;
-        if(orb){
+        if (orb) {
             draw.orbInfo(sm, ctx, canvas, orb, 10, 10);
+            draw.orbRange(sm, ctx, canvas, orb);
         }
     },
-    playerTurnOrbMenu : function(sm, ctx, canvas){
+    playerTurnOrbMenu: function (sm, ctx, canvas) {
         draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
     },
-    playerTurnOrbConfig : function(sm, ctx, canvas){
-    },
-    aiTurn : function(sm, ctx, canvas){
-    },
-    processTurn : function(sm, ctx, canvas){
-    },
-    gameOver : function(sm, ctx, canvas){
+    playerTurnOrbConfig: function (sm, ctx, canvas) {},
+    aiTurn: function (sm, ctx, canvas) {},
+    processTurn: function (sm, ctx, canvas) {},
+    gameOver: function (sm, ctx, canvas) {
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
@@ -131,7 +139,7 @@ draw.forGameState = {
     }
 };
 // draw the current game state
-draw.gameState = function(sm, ctx, canvas){
+draw.gameState = function (sm, ctx, canvas) {
     draw.background(sm, ctx, canvas);
     draw.slotAreas(sm, ctx, canvas);
     draw.orbCollection(sm, ctx, canvas, sm.game.player.slots);
@@ -142,7 +150,7 @@ draw.gameState = function(sm, ctx, canvas){
     // buttons
     var state = sm.game.gameStates[sm.game.currentState],
     buttons = state.buttons;
-    Object.keys(buttons).forEach(function(buttonKey){
+    Object.keys(buttons).forEach(function (buttonKey) {
         var b = buttons[buttonKey];
         draw.button(b, ctx);
     });

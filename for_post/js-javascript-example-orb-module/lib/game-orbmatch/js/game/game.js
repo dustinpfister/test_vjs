@@ -427,7 +427,7 @@
             // get targets
             if (orb.type != 'null') {
                 // get targets
-                getTargets(game, orb);
+                game.gameStates.processTurn.events.onOrbGetTargets.call(game, game, orb);
                 // if in attackMode and we have targets
                 if (orb.data.attackMode && orb.data.targets.length > 0) {
                     // call on orb attack event
@@ -466,7 +466,11 @@
             }
         },
         events: {
-
+            // define how an orb is to get targets
+            onOrbGetTargets: function (game, orb) {
+                console.log('orbGetTargets: ', orb.data.faction, orb.data.i);
+                getTargets(game, orb);
+            },
             // on orb attack event when in attackMode
             onOrbAttack: function (game, orb) {
                 console.log('orbAttack: ', orb.data.faction, orb.data.i);
@@ -495,7 +499,6 @@
                 console.log('');
                 deadOrb.type = 'null';
             }
-
         }
     };
 

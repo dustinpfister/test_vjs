@@ -96,8 +96,8 @@
 ### () 0.18.0 - process turn events
 * (done) have an onOrbAttack event for processTurn game state
 * (done) have an onOrbBuff event for processTurn game state
-* have an on orb death event that fires when orb.data.hp <=0;
-
+* (done) have an on orb death event that fires when orb.data.hp <=0;
+* have an onOrbGetTargets event
 
 ### ( 08/19/2021 ) 0.17.0 - can target own orbs in !attackMode
 * (done) have a aiAttackModes, and playerAttackModes options that can set starting values for slot attack modes

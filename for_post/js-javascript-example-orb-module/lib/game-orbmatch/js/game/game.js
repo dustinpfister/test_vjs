@@ -414,6 +414,7 @@
         }
     };
 
+    // process faction turn
     var processFactionTurn = function (game, faction) {
         var efString = faction === 'ai' ? 'player' : 'ai',
         efObj = game[efString],
@@ -428,19 +429,12 @@
                 getTargets(game, orb);
                 // if in attackMode and we have targets
                 if (orb.data.attackMode && orb.data.targets.length > 0) {
-
                     // call on orb attack event
-                    game.gameStates[game.currentState].events.onOrbAttack.call(game, game, orb);
-
+                    game.gameStates.processTurn.events.onOrbAttack.call(game, game, orb);
                 }
                 // if not in attack mode apply buffs to what should be friend targets
                 if (!orb.data.attackMode && orb.data.targets.length > 0) {
-                    var heal = orb.data.hp.heal / orb.data.targets.length;
-                    orb.data.targets.forEach(function (eOrb) {
-                        eOrb.data.hp.current += heal;
-                        eOrb.data.hp.current = eOrb.data.hp.current > eOrb.data.hp.max ? eOrb.data.hp.max : eOrb.data.hp.current;
-                        eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
-                    });
+                    game.gameStates.processTurn.events.onOrbBuff.call(game, game, orb);
                 }
             }
         });
@@ -450,12 +444,6 @@
     gameStates.processTurn = {
         buttons: {},
         update: function (game, secs) {
-            // attack targets
-            //attackTargets(game, 'player');
-            //attackTargets(game, 'ai');
-            // apply heal
-            //applyHeal(game, 'player');
-            //applyHeal(game, 'ai');
 
             processFactionTurn(game, 'player');
             processFactionTurn(game, 'ai');
@@ -471,7 +459,7 @@
         },
         events: {
 
-            // on orb attack event
+            // on orb attack event when in attackMode
             onOrbAttack: function (game, orb) {
                 console.log('orbATtack: ' + orb.data.faction);
                 // just attack all targets for now
@@ -484,6 +472,15 @@
                     if (eOrb.data.hp.current <= 0) {
                         eOrb.type = 'null';
                     }
+                });
+            },
+            // on orb buff event when !attackMode
+            onOrbBuff: function (game, orb) {
+                var heal = orb.data.hp.heal / orb.data.targets.length;
+                orb.data.targets.forEach(function (eOrb) {
+                    eOrb.data.hp.current += heal;
+                    eOrb.data.hp.current = eOrb.data.hp.current > eOrb.data.hp.max ? eOrb.data.hp.max : eOrb.data.hp.current;
+                    eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
                 });
             }
 

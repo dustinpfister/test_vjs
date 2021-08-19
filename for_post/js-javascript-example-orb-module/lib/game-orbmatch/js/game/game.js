@@ -476,13 +476,6 @@
                     eOrb.data.hp.current -= attack;
                     eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
                     eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
-                    /*
-                    // set to null if dead
-                    if (eOrb.data.hp.current <= 0) {
-                    game.
-                    eOrb.type = 'null';
-                    }
-                     */
                 });
             },
             // on orb buff event when !attackMode

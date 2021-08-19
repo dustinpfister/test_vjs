@@ -461,7 +461,7 @@
 
             // on orb attack event when in attackMode
             onOrbAttack: function (game, orb) {
-                console.log('orbATtack: ' + orb.data.faction);
+                console.log('orbAttack: ', orb.data.faction, orb.data.i);
                 // just attack all targets for now
                 var attack = orb.data.attack.current / orb.data.targets.length;
                 orb.data.targets.forEach(function (eOrb) {
@@ -476,6 +476,7 @@
             },
             // on orb buff event when !attackMode
             onOrbBuff: function (game, orb) {
+                console.log('orbBuff: ', orb.data.faction, orb.data.i);
                 var heal = orb.data.hp.heal / orb.data.targets.length;
                 orb.data.targets.forEach(function (eOrb) {
                     eOrb.data.hp.current += heal;

@@ -428,17 +428,10 @@
                 getTargets(game, orb);
                 // if in attackMode and we have targets
                 if (orb.data.attackMode && orb.data.targets.length > 0) {
-                    // just attack all targets for now
-                    var attack = orb.data.attack.current / orb.data.targets.length;
-                    orb.data.targets.forEach(function (eOrb) {
-                        eOrb.data.hp.current -= attack;
-                        eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
-                        eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
-                        // set to null if dead
-                        if (eOrb.data.hp.current <= 0) {
-                            eOrb.type = 'null';
-                        }
-                    });
+
+                    // call on orb attack event
+                    game.gameStates[game.currentState].events.onOrbAttack.call(game, game, orb);
+
                 }
                 // if not in attack mode apply buffs to what should be friend targets
                 if (!orb.data.attackMode && orb.data.targets.length > 0) {
@@ -476,7 +469,25 @@
                 game.currentState = 'playerTurn';
             }
         },
-        events: {}
+        events: {
+
+            // on orb attack event
+            onOrbAttack: function (game, orb) {
+                console.log('orbATtack: ' + orb.data.faction);
+                // just attack all targets for now
+                var attack = orb.data.attack.current / orb.data.targets.length;
+                orb.data.targets.forEach(function (eOrb) {
+                    eOrb.data.hp.current -= attack;
+                    eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
+                    eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
+                    // set to null if dead
+                    if (eOrb.data.hp.current <= 0) {
+                        eOrb.type = 'null';
+                    }
+                });
+            }
+
+        }
     };
 
     /********* ********** ********** *********/

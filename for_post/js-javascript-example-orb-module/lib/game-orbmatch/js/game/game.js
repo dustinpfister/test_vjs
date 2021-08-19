@@ -465,6 +465,15 @@
                         }
                     });
                 }
+                // if not in attack mode apply buffs to what should be friend targets
+                if (!orb.data.attackMode && orb.data.targets.length > 0) {
+                    var heal = orb.data.hp.heal / orb.data.targets.length;
+                    orb.data.targets.forEach(function (eOrb) {
+                        eOrb.data.hp.current += heal;
+                        eOrb.data.hp.current = eOrb.data.hp.current > eOrb.data.hp.max ? eOrb.data.hp.max : eOrb.data.hp.current;
+                        eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
+                    });
+                }
             }
         });
     };

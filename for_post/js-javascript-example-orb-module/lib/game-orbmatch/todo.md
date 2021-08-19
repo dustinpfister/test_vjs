@@ -97,10 +97,10 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
-### () 0.17.0 - can target own orbs in !attackMode
+### ( 08/19/2021 ) 0.17.0 - can target own orbs in !attackMode
 * (done) have a aiAttackModes, and playerAttackModes options that can set starting values for slot attack modes
 * (done) fix updateInRangeOrbs helper so that it will make friendly orbs inRange orbs with !attackMode
-* apply heal to any friend orb in range when not in attackMode for an orb
+* (done) apply heal to any friend orb in range when not in attackMode for an orb
 
 ### ( 08/18/2021 ) 0.16.0 - targets array
 * (done) have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb

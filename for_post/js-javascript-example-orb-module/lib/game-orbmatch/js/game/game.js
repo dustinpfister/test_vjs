@@ -434,8 +434,13 @@
                 return acc;
             }, []);
         if (targets.length >= 1) {
-            // just selecting first target for now
-            orb.data.targets.push(targets[0]);
+            // just selecting first target for now when in attack mode
+            if (orb.data.attackMode) {
+                orb.data.targets.push(targets[0]);
+            } else {
+                // select all when in !attackMode
+                orb.data.targets = targets;
+            }
         }
     };
 

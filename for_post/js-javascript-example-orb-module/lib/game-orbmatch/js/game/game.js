@@ -426,6 +426,7 @@
         fObj.slots.orbs.forEach(function (orb) {
             // get targets
             if (orb.type != 'null') {
+                // get targets
                 getTargets(game, orb);
                 // if in attackMode and we have targets
                 if (orb.data.attackMode && orb.data.targets.length > 0) {
@@ -436,6 +437,13 @@
                 if (!orb.data.attackMode && orb.data.targets.length > 0) {
                     game.gameStates.processTurn.events.onOrbBuff.call(game, game, orb);
                 }
+                var deadOrbs = orb.data.targets.filter(function (orb) {
+                        return orb.data.hp.current <= 0;
+                    });
+                deadOrbs.forEach(function (deadOrb) {
+                    game.gameStates.processTurn.events.onOrbDeath.call(game, game, deadOrb);
+
+                });
             }
         });
     };
@@ -468,10 +476,13 @@
                     eOrb.data.hp.current -= attack;
                     eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
                     eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
+                    /*
                     // set to null if dead
                     if (eOrb.data.hp.current <= 0) {
-                        eOrb.type = 'null';
+                    game.
+                    eOrb.type = 'null';
                     }
+                     */
                 });
             },
             // on orb buff event when !attackMode
@@ -483,6 +494,13 @@
                     eOrb.data.hp.current = eOrb.data.hp.current > eOrb.data.hp.max ? eOrb.data.hp.max : eOrb.data.hp.current;
                     eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;
                 });
+            },
+            // on orb death
+            onOrbDeath: function (game, deadOrb) {
+                console.log('');
+                console.log('orbDeath: ', deadOrb.data.faction, deadOrb.data.i);
+                console.log('');
+                deadOrb.type = 'null';
             }
 
         }

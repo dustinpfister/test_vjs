@@ -95,7 +95,7 @@
 
 ### () 0.18.0 - process turn events
 * (done) have an onOrbAttack event for processTurn game state
-* have an onOrbBuff event for processTurn game state
+* (done) have an onOrbBuff event for processTurn game state
 * have an on orb death event that fires when orb.data.hp <=0;
 
 

@@ -452,10 +452,8 @@
     gameStates.processTurn = {
         buttons: {},
         update: function (game, secs) {
-
             processFactionTurn(game, 'player');
             processFactionTurn(game, 'ai');
-
             // check active counts
             var playerActive = getActiveOrbCount(game, 'player'),
             aiActive = getActiveOrbCount(game, 'ai');

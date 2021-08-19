@@ -3,6 +3,9 @@
 ### () 0.x.0 - single stat object
 * have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
 
+### () 0.x.0 - processTrun.events.onOrbChainAttack
+* what to do for a chain attack event
+
 ### () 0.x.0 - AI Improvements II
 * The AI should swap orbs between slots as needed
 * in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
@@ -93,11 +96,11 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
-### () 0.18.0 - process turn events
+### ( 08/19/2021 ) 0.18.0 - process turn events
 * (done) have an onOrbAttack event for processTurn game state
 * (done) have an onOrbBuff event for processTurn game state
 * (done) have an on orb death event that fires when orb.data.hp <=0;
-* have an onOrbGetTargets event
+* (done) have an onOrbGetTargets event
 
 ### ( 08/19/2021 ) 0.17.0 - can target own orbs in !attackMode
 * (done) have a aiAttackModes, and playerAttackModes options that can set starting values for slot attack modes

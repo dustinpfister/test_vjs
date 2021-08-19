@@ -456,7 +456,6 @@
                     // just attack all targets for now
                     var attack = orb.data.attack.current / orb.data.targets.length;
                     orb.data.targets.forEach(function (eOrb) {
-                        console.log(orb.data.inRangeOrbs);
                         eOrb.data.hp.current -= attack;
                         eOrb.data.hp.current = eOrb.data.hp.current < 0 ? 0 : eOrb.data.hp.current;
                         eOrb.data.hp.per = eOrb.data.hp.current / eOrb.data.hp.max;

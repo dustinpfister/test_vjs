@@ -102,7 +102,7 @@
 * (done) fix updateInRangeOrbs helper so that it will make friendly orbs inRange orbs with !attackMode
 * apply heal to any friend orb in range when not in attackMode for an orb
 
-### () 0.16.0 - targets array
+### ( 08/18/2021 ) 0.16.0 - targets array
 * (done) have an orb.data.targets array that will be all the enemy orbs to attack during a turn for an orb
 * (done) have a startingOrbs option for gameMod.create
 * (done) have the default for the startingOrbs option be just setting pouchIndexs from left to right that are nt null types
@@ -113,7 +113,7 @@
 * (done) have orb.data.attack / orb.data.targets be the damage that is applied to all target orbs
 * (done) no longer display total Attack and heal values as they no longer apply
 
-### () 0.15.0 - range stat started
+### ( 08/18/2021 ) 0.15.0 - range stat started
 * (done) have an orb.data.range stat object with a current prop that is the current effective range of an orb
 * (done) in playerTurn game stat display the range of the current selected orb
 * (done) start an orbCollection.getRangeOrbs method that will return the slot orbs that are in range for a given orb

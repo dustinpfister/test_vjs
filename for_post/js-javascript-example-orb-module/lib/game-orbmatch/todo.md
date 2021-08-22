@@ -3,6 +3,9 @@
 ### () 0.x.0 - single stat object
 * have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
 
+### 0.x.0 - button lib started
+* start a button lib that will be used by the main.js state machine and game.js
+
 ### () 0.x.0 - processTrun.events.onOrbChainAttack
 * what to do for a chain attack event
 

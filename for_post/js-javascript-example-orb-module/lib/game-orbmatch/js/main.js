@@ -56,6 +56,32 @@
             startHook.call(sm, sm);
         }
     };
+    // buttons
+    var getButton = function (game, x, y) {
+        var state = gameStates[game.currentState];
+        var buttons = state.buttons;
+        var keys = Object.keys(buttons);
+        var i = 0,
+        buttonKey,
+        b,
+        len = keys.length;
+        while (i < len) {
+            buttonKey = keys[i];
+            b = buttons[buttonKey];
+            if (utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)) {
+                return b;
+            }
+            i += 1;
+        }
+        return null;
+    };
+
+    var buttonCheck = function (e, pos, game) {
+        var b = getButton(game, pos.x, pos.y);
+        if (b) {
+            b.onClick.call(b, e, pos, game, b);
+        }
+    };
 
 
 
@@ -108,7 +134,8 @@
                 w: 100,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    setState(sm, 'game');
+console.log('click');
+                    //setState(sm, 'game');
                 }
             }
         },
@@ -118,11 +145,16 @@
         },
         update: function(sm, secs){},
         draw: function(sm, ctx, canvas){
+            var state = sm.states.gameConfig;
             draw.background(sm, ctx, canvas);
-            draw.button(sm.states.gameConfig.buttons.startGame, ctx);
+            draw.button(state.buttons.startGame, ctx);
         },
         events : {
-            pointerStart: function (e, pos, sm) {},
+            pointerStart: function (e, pos, sm) {
+
+                buttonCheck(e, pos, game);
+
+            },
             pointerMove: function (e, pos, sm) {},
             pointerEnd: function (e, pos, sm) {}
         }

@@ -99,7 +99,11 @@
         start: function(sm){},
         end: function(sm){},
         update: function(sm, secs){},
-        draw: function(sm, ctx, canvas){},
+        draw: function(sm, ctx, canvas){
+            var state = sm.states.mainMenu;
+            draw.background(sm, ctx, canvas);
+            //draw.button(state.buttons.startGame, ctx);
+        },
         events : {
             pointerStart: function (e, pos, sm) {
                 buttonCheck(e, pos, sm);
@@ -109,13 +113,17 @@
         }
     };
     // The Crafting State
-    sm.states.crating = {
+    sm.states.crafting = {
         buttons: {},
         start: function(sm){},
         end: function(sm){},
         update: function(sm, secs){
         },
-        draw: function(sm, ctx, canvas){},
+        draw: function(sm, ctx, canvas){
+            var state = sm.states.crafting;
+            draw.background(sm, ctx, canvas);
+            //draw.button(state.buttons.startGame, ctx);
+        },
         events : {
             pointerStart: function (e, pos, sm) {
                 buttonCheck(e, pos, sm);

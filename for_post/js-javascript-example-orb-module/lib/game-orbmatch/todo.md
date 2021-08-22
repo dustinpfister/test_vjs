@@ -103,12 +103,10 @@
 * the gameConfig state can be used to set the state of the AI pouch by clicking AI Level up down buttons
 
 ### () 0.20.0 - Main Menu, and Crafting states started
+* (done) when the player wins or looses a game they return to gameConfig state
 * show level for each orb
-* when the player wins or looses a game they return to gameConfig state
-
 * start a new crafting state
-* have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
-
+* start a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
 
 ### ( 08/22/2021 ) 0.19.0 - Main state machine, game, and gameConfig state started
 * (done) start a main state machine in main.js that will have just a game, and gameConfig state for now

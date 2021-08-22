@@ -18,6 +18,14 @@ draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
     ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+    // display level
+    ctx.fillStyle = '#ffffff';
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+    ctx.font = '10px arial';
+    if(orb.type != 'null'){
+        ctx.fillText(orb.level, orb.x, orb.y);
+    }
 };
 // draw basic info of an orb
 draw.orbInfo = function (sm, ctx, canvas, orb, x, y) {

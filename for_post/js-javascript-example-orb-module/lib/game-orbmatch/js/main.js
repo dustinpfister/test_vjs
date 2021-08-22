@@ -123,8 +123,8 @@
         draw: function(sm, ctx, canvas){
             var state = sm.states.mainMenu;
             draw.background(sm, ctx, canvas);
-            draw.button(state.buttons.newGame, ctx);
-            draw.button(state.buttons.crafting, ctx);
+            //draw.button(state.buttons.newGame, ctx);
+            draw.buttonCollection(state.buttons, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {

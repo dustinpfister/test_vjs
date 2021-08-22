@@ -143,6 +143,13 @@ draw.button = function (button, ctx) {
     y = button.y + button.h / 2;
     ctx.fillText(button.disp, x, y);
 };
+draw.buttonCollection = function(buttonCollection, ctx){
+    var keys = Object.keys(buttonCollection);
+    keys.forEach(function(buttonKey){
+        var button = buttonCollection[buttonKey];
+        draw.button(button, ctx);
+    });
+};
 // game state methods
 draw.forGameState = {
     playerTurn: function (sm, ctx, canvas) {

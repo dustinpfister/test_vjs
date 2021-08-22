@@ -95,14 +95,25 @@
 
     // The main menu State
     sm.states.mainMenu = {
-        buttons: {},
+        buttons: {
+            newGame: {
+                disp: 'New Game',
+                x: 220,
+                y: 200,
+                w: 200,
+                h: 64,
+                onClick: function (e, pos, game, button) {
+                    setState(sm, 'gameConfig');
+                }
+            }
+        },
         start: function(sm){},
         end: function(sm){},
         update: function(sm, secs){},
         draw: function(sm, ctx, canvas){
             var state = sm.states.mainMenu;
             draw.background(sm, ctx, canvas);
-            //draw.button(state.buttons.startGame, ctx);
+            draw.button(state.buttons.newGame, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {

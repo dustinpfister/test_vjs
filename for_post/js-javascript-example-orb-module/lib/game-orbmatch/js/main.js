@@ -168,17 +168,21 @@
     var loop = function () {
         var now = new Date();
         sm.secs = (now - sm.lt) / 1000;
-        requestAnimationFrame(loop);
+        requestAnimationFrame(loop),
+        state = sm.states[sm.currentState];
         if (sm.secs >= 1 / sm.fps) {
             // update
-            var update = sm.states[sm.currentState].update;
+            var update = state.update;
             if(update){
                 update.call(sm, sm, sm.secs);
             }
             // draw
             var ctx = sm.canvasObj.ctx,
             canvas = sm.canvasObj.canvas;
-            sm.states[sm.currentState].draw.call(sm, sm, ctx, canvas);
+            var draw = state.draw;
+            if(draw){
+                draw.call(sm, sm, ctx, canvas);
+            }
             sm.lt = now;
         }
     };

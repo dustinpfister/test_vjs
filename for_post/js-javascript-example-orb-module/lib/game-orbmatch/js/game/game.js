@@ -192,16 +192,29 @@
     };
 */
 
+    var orbTypers = {
+        randomPure : function(){
+             var arr = [0, 0, 0, 0];
+             arr[Math.floor(Math.random() * 4)] = 1;
+             return arr;
+        }
+    };
+
     api.createAIPouch = function(opt){
         opt = opt || {};
         opt.count = opt.count === undefined ? 1 : opt.count;
         opt.minOrbLevel = opt.minOrbLevel === undefined ? 1 : opt.minOrbLevel;
         opt.maxOrbLevel = opt.maxOrbLevel === undefined ? 1 : opt.maxOrbLevel;
+        opt.typer = opt.typer || 'randomPure';
+        // parse typer string
+        if(typeof opt.typer === 'string'){
+           opt.typer = orbTypers[opt.typer];
+        }
         var pouch = [],
         i = 0;
         while(i < opt.count){
             var orbLevel = opt.minOrbLevel;
-            var points = ratio.getRaisedRatio([2,0,0,0], orbLevel, 2);
+            var points = ratio.getRaisedRatio(opt.typer(), orbLevel, 2);
             pouch.push( points );
             i += 1;
         }

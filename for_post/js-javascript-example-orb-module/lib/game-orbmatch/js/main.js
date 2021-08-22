@@ -1,6 +1,12 @@
 (function () {
 
+
+
+
     // state object
+
+
+
     var sm = {
         game: gameMod.create({
             aiPouch: [[16, 0, 0, 0], [1, 0, 1, 0]],
@@ -25,7 +31,14 @@
         states : {}
     };
 
-    // EVENTS
+
+
+
+    // The Game State
+
+
+
+
     sm.states.game = {
         buttons: {},
         update: function(sm, secs){
@@ -43,6 +56,39 @@
             }
         }
     };
+
+
+
+
+    // The Game Config State
+
+
+
+
+    sm.states.gameConfig = {
+        buttons: {},
+        update: function(sm, secs){
+            gameMod.update(sm.game, sm.secs);
+        },
+        events : {
+            pointerStart: function (e, pos, sm) {
+                
+            },
+            pointerMove: function (e, pos, sm) {
+                
+            },
+            pointerEnd: function (e, pos, sm) {
+                
+            }
+        }
+    };
+
+
+
+    // EVENTS
+
+
+
 
     // attaching main pointer events to canvas element
     var mainPointerEvents = {
@@ -69,7 +115,14 @@
     };
     utils.canvasPointerEvents(sm.canvasObj.canvas, sm, mainPointerEvents.events);
 
+
+
+
     // main app loop
+
+
+
+
     var loop = function () {
         var now = new Date();
         sm.secs = (now - sm.lt) / 1000;

@@ -101,8 +101,8 @@
 * (done) game state object started in main.
 * (done) a state object should have an update method
 
+* start a gameConfig state
 * the gameConfig state can be used to set the state of the player, and AI pouch
-
 
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state

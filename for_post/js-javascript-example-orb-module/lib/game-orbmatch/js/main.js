@@ -123,7 +123,6 @@
         draw: function(sm, ctx, canvas){
             var state = sm.states.mainMenu;
             draw.background(sm, ctx, canvas);
-            //draw.button(state.buttons.newGame, ctx);
             draw.buttonCollection(state.buttons, ctx);
         },
         events : {
@@ -155,7 +154,7 @@
         draw: function(sm, ctx, canvas){
             var state = sm.states.crafting;
             draw.background(sm, ctx, canvas);
-            draw.button(state.buttons.back, ctx);
+            draw.buttonCollection(state.buttons, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {
@@ -185,7 +184,7 @@
         draw: function(sm, ctx, canvas){
             var state = sm.states.gameConfig;
             draw.background(sm, ctx, canvas);
-            draw.button(state.buttons.startGame, ctx);
+            draw.buttonCollection(state.buttons, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {

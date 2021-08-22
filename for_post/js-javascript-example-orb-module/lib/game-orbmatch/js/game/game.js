@@ -142,6 +142,9 @@
                 colorIndex: 0,
                 colorArray: ['lime', 'red', 'brown'],
                 color: 'lime'
+            },
+            onGameEnd: opt.onGameEnd || function(game){
+                console.log('game end');
             }
         };
         // the start of a player object
@@ -525,8 +528,14 @@
     // game over state object
     gameStates.gameOver = {
         buttons: {},
-        update: function (game, secs) {},
-        events: {}
+        update: function (game, secs) {
+
+        },
+        events: {
+            onPointerStart: function (e, pos, game) {
+                game.onGameEnd.call(game, game);
+            }
+        }
     };
 
     /********* ********** ********** *********/

@@ -67,19 +67,11 @@
 
     sm.states.gameConfig = {
         buttons: {},
-        update: function(sm, secs){
-            gameMod.update(sm.game, sm.secs);
-        },
+        update: function(sm, secs){},
         events : {
-            pointerStart: function (e, pos, sm) {
-                
-            },
-            pointerMove: function (e, pos, sm) {
-                
-            },
-            pointerEnd: function (e, pos, sm) {
-                
-            }
+            pointerStart: function (e, pos, sm) {},
+            pointerMove: function (e, pos, sm) {},
+            pointerEnd: function (e, pos, sm) {}
         }
     };
 

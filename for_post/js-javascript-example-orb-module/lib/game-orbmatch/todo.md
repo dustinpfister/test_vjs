@@ -100,9 +100,13 @@
 * (done) start a main state machine in main.js that will have just a game, and gameConfig state for now
 * (done) game state object started in main.
 * (done) a state object should have an update method
+* (done) start a gameConfig state object
 
-* start a gameConfig state
-* the gameConfig state can be used to set the state of the player, and AI pouch
+* I will want a gameMod.createAIPouch public method, that will create and return an array that can be used with gameMod.create
+* the gameMod.createAIPouch public method will take just a level number from 1 - 100 and return an array of points
+* the gameConfig state can be used to set the state of the AI pouch by clicking AI Level up down buttons
+* have a start game button in gameConfig state, when this button is clicked start a new game object and change to game state
+
 
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state

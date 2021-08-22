@@ -10,6 +10,7 @@
 
     var sm = {
         ver: '0.20.2',
+        aiPouchSettings:{},
         gameCreateOptions: {},
         game: {},
         fps: 30,
@@ -25,12 +26,13 @@
         states : {},
         stopLoop: false
     };
+    sm.aiPouchSettings = {
+        count: 4,
+        minOrbLevel: 1,
+        maxOrbLevel: 7
+    };
     sm.gameCreateOptions = {
-        aiPouch: gameMod.createAIPouch({
-            count: 4,
-            minOrbLevel: 5,
-            maxOrbLevel: 10
-        }),
+        aiPouch: gameMod.createAIPouch(sm.aiPouchSettings),
         aiStartOrbs: [3, 2, 1, 0],
         aiAttackModes: [false, false, false, true],
         playerPouch: [

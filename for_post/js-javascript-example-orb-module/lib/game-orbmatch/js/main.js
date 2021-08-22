@@ -5,10 +5,8 @@
 
     // state object
 
-
-
     var sm = {
-        game: gameMod.create({
+        gameCreateOptions: {
             aiPouch: gameMod.createAIPouch(1), //[[16, 0, 0, 0], [1, 0, 1, 0]],
             //aiStartOrbs: [0, 0, null, 1],
             aiAttackModes: [false, false, false, true],
@@ -17,7 +15,8 @@
             ],
             playerStartOrbs: [0, 1, null, 2],
             playerAttackModes: [false, true, false, false],
-        }),
+        },
+        game: {},
         fps: 30,
         secs: 0,
         lt: new Date(),
@@ -31,6 +30,7 @@
         states : {}
     };
 
+    sm.game = gameMod.create(sm.gameCreateOptions);
 
 
 

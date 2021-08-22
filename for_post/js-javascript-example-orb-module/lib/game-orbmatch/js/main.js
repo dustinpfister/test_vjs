@@ -9,7 +9,7 @@
 
 
     var sm = {
-        ver: '0.20.1',
+        ver: '0.20.2',
         gameCreateOptions: {
             aiPouch: gameMod.createAIPouch({
                 count: 4,
@@ -180,6 +180,26 @@
                 h: 64,
                 onClick: function (e, pos, game, button) {
                     setState(sm, 'game');
+                }
+            },
+            levelRangeUp: {
+                disp: 'level Range+',
+                x: 50,
+                y: 100,
+                w: 75,
+                h: 50,
+                onClick: function (e, pos, game, button) {
+                    
+                }
+            },
+            levelRangeDown: {
+                disp: 'level Range-',
+                x: 150,
+                y: 100,
+                w: 75,
+                h: 50,
+                onClick: function (e, pos, game, button) {
+                    
                 }
             }
         },

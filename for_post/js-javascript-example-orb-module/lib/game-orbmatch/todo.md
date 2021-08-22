@@ -102,16 +102,19 @@
 
 
 
-### 0.20.3 - crafting state ui
+### () 0.20.3 - crafting state ui
 * start a crafting ui that can be used to create orbs
 
-### 0.20.2 - gameConfig buttons
+### () 0.20.2 - gameConfig buttons
 * have buttons that can increase and decrease the count or ai orbs
 * have buttons that can be used to set the min and max level for orbs
 
-### 0.20.1 - gameConfig state createAIPouch arguments including typer methods
-* gameMod.createAIPouch method has count, minOrbLevel, maxOrbLevel, and typer methods are arguments
-* gameMod.createAIPouch method has a few hard coded typer methods that can be set with string values 
+### () 0.20.1 - gameConfig state createAIPouch arguments including typer methods
+* (done) gameMod.createAIPouch method has count, minOrbLevel, maxOrbLevel arguments
+* typer methods are arguments that can be functions or strings.
+* a typer function returns a base points ratio for an orb
+* random levels between min and max values
+* method has a few hard coded typer methods that can be set with string values 
 
 ### ( 08/22/2021 ) 0.20.0 - Main Menu, better gameConfig state, and Crafting states started
 * (done) when the player wins or looses a game they return to gameConfig state

@@ -54,7 +54,8 @@
     // helpers
 
 
-
+    var setAIPouchSettings = function(){
+    };
 
     // start a new state, calling any hook methods when doing so 
     var setState = function(sm, newState){

@@ -27,6 +27,7 @@
 
     // EVENTS
     sm.states.game = {
+        buttons: {},
         update: function(sm, secs){
             gameMod.update(sm.game, sm.secs);
         },
@@ -79,7 +80,6 @@
             if(update){
                 update.call(sm, sm, sm.secs);
             }
-
             // draw
             var ctx = sm.canvasObj.ctx,
             canvas = sm.canvasObj.canvas;

@@ -33,9 +33,7 @@ draw.orbInfo = function (sm, ctx, canvas, orb, x, y) {
 };
 // draw what the range of an orb is
 draw.orbRange = function (sm, ctx, canvas, orb) {
-
     if (orb.data.inRangeOrbs.length >= 1) {
-
         var x = orb.data.homeX - 16,
         y = orb.data.homeY - 16,
         h = 32;
@@ -43,15 +41,11 @@ draw.orbRange = function (sm, ctx, canvas, orb) {
             y = orb.data.inRangeOrbs[0].data.homeY - 16;
             h = 152;
         }
-        //yDelta = 16 * 7 + 9,
-        //xdelta = 0,
-        //y = orb.data.homeY - 16 - yDelta;
         ctx.strokeStyle = 'white';
         // range 1 box
         ctx.beginPath();
         ctx.rect(x, y, 32, h);
         ctx.stroke();
-
         // range 2+ box
         var x1 = orb.data.inRangeOrbs[0].data.homeX - 16,
         x2 = orb.data.inRangeOrbs[orb.data.inRangeOrbs.length - 1].data.homeX - 16,

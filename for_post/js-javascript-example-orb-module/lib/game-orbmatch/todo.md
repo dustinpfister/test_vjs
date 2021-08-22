@@ -108,7 +108,7 @@
 ### () 0.20.2 - gameConfig buttons
 * (done) have buttons that can will be used to increase and decrease the count of ai orbs
 * (done) have buttons that can will be used to set the min and max level for orbs
-* starting sm.createGameOptions object defined outside of starting object literal
+* (done) starting sm.createGameOptions object defined outside of starting object literal
 * have a sm.aiPouchSettings object
 * buttons in gameConfig state can be used to mutate state of sm.aiPouchSettings
 * display state of sm.aiPouchSettings in gameConfig

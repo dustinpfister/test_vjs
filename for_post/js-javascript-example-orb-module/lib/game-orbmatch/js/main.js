@@ -10,21 +10,7 @@
 
     var sm = {
         ver: '0.20.2',
-        gameCreateOptions: {
-            aiPouch: gameMod.createAIPouch({
-                count: 4,
-                minOrbLevel: 5,
-                maxOrbLevel: 10
-            }),
-            aiStartOrbs: [3, 2, 1, 0],
-            aiAttackModes: [false, false, false, true],
-            playerPouch: [
-                [0, 0, 128, 0], [2, 0, 2, 0], [0, 0, 128, 0]
-            ],
-            playerStartOrbs: [0, 1, null, 2],
-            playerAttackModes: [false, true, false, false],
-            onGameEnd: function(){}
-        },
+        gameCreateOptions: {},
         game: {},
         fps: 30,
         secs: 0,
@@ -38,6 +24,21 @@
         currentState: 'gameConfig', //'game', //'mainMenu',
         states : {},
         stopLoop: false
+    };
+    sm.gameCreateOptions = {
+        aiPouch: gameMod.createAIPouch({
+            count: 4,
+            minOrbLevel: 5,
+            maxOrbLevel: 10
+        }),
+        aiStartOrbs: [3, 2, 1, 0],
+        aiAttackModes: [false, false, false, true],
+        playerPouch: [
+            [0, 0, 128, 0], [2, 0, 2, 0], [0, 0, 128, 0]
+        ],
+        playerStartOrbs: [0, 1, null, 2],
+        playerAttackModes: [false, true, false, false],
+        onGameEnd: function(){}
     };
     sm.gameCreateOptions.onGameEnd = function(game){
         setState(sm, 'gameConfig');

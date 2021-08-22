@@ -4,6 +4,11 @@ var draw = {};
 draw.background = function (sm, ctx, canvas) {
     ctx.fillStyle = '#444444';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText(sm.ver, 10, canvas.height - 15);
 };
 // draw a single orb
 draw.orb = function (sm, ctx, canvas, orb, fillStyle) {

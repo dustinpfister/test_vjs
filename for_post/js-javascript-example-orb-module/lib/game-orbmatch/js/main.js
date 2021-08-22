@@ -9,6 +9,7 @@
 
 
     var sm = {
+        ver: '0.19.0',
         gameCreateOptions: {
             aiPouch: gameMod.createAIPouch(30),
             aiStartOrbs: [3, 2, 1, 0],

@@ -105,8 +105,10 @@
 ### () 0.20.0 - Main Menu, and Crafting states started
 * start a new crafting state
 * have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
+* show level for each orb
+* when the player wins or looses a game they return to gameConfig state
 
-### () 0.19.0 - Main state machine, game, and gameConfig state started
+### ( 08/22/2021 ) 0.19.0 - Main state machine, game, and gameConfig state started
 * (done) start a main state machine in main.js that will have just a game, and gameConfig state for now
 * (done) game state object started in main.
 * (done) a state object should have an update method
@@ -115,15 +117,7 @@
 * (done) a state object should have a draw method
 * (done) have a start game button in gameConfig state, when this button is clicked start a new game object and change to game state
 * (done) the gameMod.createAIPouch public method will take just a level number from 1 - 100 and return an array of points
-
-* when the player wins or looses a game they return to gameConfig state
-* have a sm.ver string and display that
-* show level for each orb
-
-
-
-
-
+* (done) have a sm.ver string and display that
 
 ### ( 08/19/2021 ) 0.18.0 - process turn events
 * (done) have an onOrbAttack event for processTurn game state

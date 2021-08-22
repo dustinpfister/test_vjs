@@ -176,11 +176,12 @@
         level = level < 0 ? 1 : level;
         level = level > 100 ? 100 : level;
         var pouch = [],
+        levelPer = (level / 100),
         // count of orbs
-        count = 1 + Math.round(7  * (level / 100)),
+        count = 1 + Math.round(7  * levelPer),
         i = 0;
         while(i < count){
-            var orbLevel = 4;
+            var orbLevel = 1 + Math.round(7  * levelPer);
             var points = ratio.getRaisedRatio([2,0,0,0], orbLevel, 2);
             pouch.push( points );
             i += 1;

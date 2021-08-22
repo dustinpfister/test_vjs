@@ -19,6 +19,7 @@
             ],
             playerStartOrbs: [0, 1, null, 2],
             playerAttackModes: [false, true, false, false],
+            onGameEnd: function(){}
         },
         game: {},
         fps: 30,
@@ -32,6 +33,9 @@
         // states object
         currentState: 'gameConfig',
         states : {}
+    };
+    sm.gameCreateOptions.onGameEnd = function(game){
+        setState(sm, 'gameConfig');
     };
     sm.game = gameMod.create(sm.gameCreateOptions);
 

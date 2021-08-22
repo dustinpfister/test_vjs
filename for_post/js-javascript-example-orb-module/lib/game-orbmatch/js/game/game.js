@@ -143,9 +143,7 @@
                 colorArray: ['lime', 'red', 'brown'],
                 color: 'lime'
             },
-            onGameEnd: opt.onGameEnd || function(game){
-                console.log('game end');
-            }
+            onGameEnd: opt.onGameEnd || function(game){}
         };
         // the start of a player object
         game.player = createPlayerObject({

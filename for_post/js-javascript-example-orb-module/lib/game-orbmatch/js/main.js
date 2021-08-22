@@ -19,22 +19,51 @@
             width: 640,
             height: 480,
             container: document.getElementById('canvas-app')
-        })
+        }),
+        // states object
+        currentState: 'game',
+        states : {}
     };
 
     // EVENTS
-    var events = {
-        pointerStart: function (e, pos, sm) {
-            gameMod.emitStateEvent('onPointerStart', e, pos, sm.game);
-        },
-        pointerMove: function (e, pos, sm) {
-            gameMod.emitStateEvent('onPointerMove', e, pos, sm.game);
-        },
-        pointerEnd: function (e, pos, sm) {
-            gameMod.emitStateEvent('onPointerEnd', e, pos, sm.game);
+    sm.states.game = {
+        events : {
+            pointerStart: function (e, pos, sm) {
+                gameMod.emitStateEvent('onPointerStart', e, pos, sm.game);
+            },
+            pointerMove: function (e, pos, sm) {
+                gameMod.emitStateEvent('onPointerMove', e, pos, sm.game);
+            },
+            pointerEnd: function (e, pos, sm) {
+                gameMod.emitStateEvent('onPointerEnd', e, pos, sm.game);
+            }
         }
     };
-    utils.canvasPointerEvents(sm.canvasObj.canvas, sm, events);
+
+    // attaching main pointer events to canvas element
+    var mainPointerEvents = {
+        events : {
+            pointerStart: function (e, pos, sm) {
+                var handler = sm.states[sm.currentState].events.pointerStart;
+                if(handler){
+                    handler.call(sm, e, pos, sm);
+                }
+            },
+            pointerMove: function (e, pos, sm) {
+                var handler = sm.states[sm.currentState].events.pointerMove;
+                if(handler){
+                    handler.call(sm, e, pos, sm);
+                }
+            },
+            pointerMove: function (e, pos, sm) {
+                var handler = sm.states[sm.currentState].events.pointerMove;
+                if(handler){
+                    handler.call(sm, e, pos, sm);
+                }
+            }
+        }
+    };
+    utils.canvasPointerEvents(sm.canvasObj.canvas, sm, mainPointerEvents.events);
 
     // main app loop
     var loop = function () {

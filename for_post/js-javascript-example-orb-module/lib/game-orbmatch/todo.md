@@ -106,7 +106,7 @@
 * start a crafting ui that can be used to create orbs
 
 ### () 0.20.2 - gameConfig buttons
-* have buttons that can increase and decrease the count or ai orbs
+* have buttons that can increase and decrease the count of ai orbs
 * have buttons that can be used to set the min and max level for orbs
 
 ### ( 08/22/2021 ) 0.20.1 - gameConfig state createAIPouch arguments including typer methods

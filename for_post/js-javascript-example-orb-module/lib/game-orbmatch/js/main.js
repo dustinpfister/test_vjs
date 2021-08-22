@@ -182,10 +182,30 @@
                     setState(sm, 'game');
                 }
             },
+            countUp: {
+                disp: 'Count+',
+                x: 50,
+                y: 100,
+                w: 75,
+                h: 50,
+                onClick: function (e, pos, game, button) {
+                    
+                }
+            },
+            countDown: {
+                disp: 'Count-',
+                x: 150,
+                y: 100,
+                w: 75,
+                h: 50,
+                onClick: function (e, pos, game, button) {
+                    
+                }
+            },
             levelRangeUp: {
                 disp: 'level Range+',
                 x: 50,
-                y: 100,
+                y: 200,
                 w: 75,
                 h: 50,
                 onClick: function (e, pos, game, button) {
@@ -195,7 +215,7 @@
             levelRangeDown: {
                 disp: 'level Range-',
                 x: 150,
-                y: 100,
+                y: 200,
                 w: 75,
                 h: 50,
                 onClick: function (e, pos, game, button) {

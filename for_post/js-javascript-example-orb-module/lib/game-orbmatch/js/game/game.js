@@ -172,8 +172,11 @@
 
     // create and return a value to use with the gameMod.create aiPouch option
     api.createAIPouch = function(level){
+        level = level === undefined ? 1 : level;
+        level = level < 0 ? 1 : level;
+        level = level > 100 ? 100 : level;
         var pouch = [],
-        count = 2,
+        count = 1 + Math.round(7  * (level / 100)),
         i = 0;
         while(i < count){
             pouch.push( [1,0,0,0] );

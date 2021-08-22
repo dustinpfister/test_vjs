@@ -177,12 +177,23 @@
         buttons: {
             startGame: {
                 disp: 'start game',
-                x: 250,
-                y: 400,
-                w: 100,
+                fillStyle: '#af0000',
+                x: 450,
+                y: 390,
+                w: 150,
                 h: 64,
                 onClick: function (e, pos, sm, button) {
                     setState(sm, 'game');
+                }
+            },
+            back: {
+                disp: 'Back',
+                x: 50,
+                y: 390,
+                w: 100,
+                h: 64,
+                onClick: function (e, pos, sm, button) {
+                    setState(sm, 'mainMenu');
                 }
             },
             countUp: {

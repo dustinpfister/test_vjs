@@ -113,8 +113,8 @@
 * (done) display state of sm.aiPouchSettings in gameConfig
 * (done) buttons in gameConfig state can be used to mutate state of sm.aiPouchSettings count prop
 * (done) use sm.aiPouchSettings to create new ai pouch in game state start hook
+* (done) back button in gameConfig state
 * mutate level settings
-* back button in gameConfig state
 
 ### ( 08/22/2021 ) 0.20.1 - gameConfig state createAIPouch arguments including typer methods
 * (done) gameMod.createAIPouch method has count, minOrbLevel, maxOrbLevel arguments

@@ -12,7 +12,9 @@
         ver: '0.20.1',
         gameCreateOptions: {
             aiPouch: gameMod.createAIPouch({
-                count: 4
+                count: 4,
+                minOrbLevel: 5,
+                maxOrbLevel: 10
             }),
             aiStartOrbs: [3, 2, 1, 0],
             aiAttackModes: [false, false, false, true],

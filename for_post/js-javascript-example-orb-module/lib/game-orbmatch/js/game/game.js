@@ -192,8 +192,11 @@
         var pouch = [],
         i = 0;
         while(i < opt.count){
-            var orbLevel = opt.minOrbLevel;
-            var points = ratio.getRaisedRatio(opt.typer(), orbLevel, 2);
+            var orbLevel = opt.minOrbLevel + Math.floor( Math.random() * ( opt.maxOrbLevel - opt.minOrbLevel ) );
+            var points = opt.typer().map(function(elCount){
+                return elCount * Math.pow(2, orbLevel - 1);
+            });
+            console.log(points);
             pouch.push( points );
             i += 1;
         }

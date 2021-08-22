@@ -27,6 +27,9 @@
 
     // EVENTS
     sm.states.game = {
+        update: function(sm, secs){
+            gameMod.update(sm.game, sm.secs);
+        },
         events : {
             pointerStart: function (e, pos, sm) {
                 gameMod.emitStateEvent('onPointerStart', e, pos, sm.game);
@@ -72,7 +75,11 @@
         requestAnimationFrame(loop);
         if (sm.secs >= 1 / sm.fps) {
             // update
-            gameMod.update(sm.game, sm.secs);
+            var update = sm.states[sm.currentState].update;
+            if(update){
+                update.call(sm, sm, sm.secs);
+            }
+
             // draw
             var ctx = sm.canvasObj.ctx,
             canvas = sm.canvasObj.canvas;

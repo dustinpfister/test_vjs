@@ -91,7 +91,9 @@
 * have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
 
 ### () 0.19.0 - Main state machine, game, and gameConfig state
-* start a main state machine in main.js that will have just a game, and gameConfig state for now
+* (done) start a main state machine in main.js that will have just a game, and gameConfig state for now
+* (done) game state object started in main.
+* a state object should have an update method
 * the gameConfig state can be used to set the state of the player, and AI pouch
 * when the player wins or looses a game they return to gameConfig state
 * have a 'gameOptions' game state that can be used to leave game state

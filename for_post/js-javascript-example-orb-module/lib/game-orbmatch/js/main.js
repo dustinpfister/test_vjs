@@ -32,7 +32,8 @@
         }),
         // states object
         currentState: 'mainMenu', //'gameConfig',
-        states : {}
+        states : {},
+        stopLoop: false
     };
     sm.gameCreateOptions.onGameEnd = function(game){
         setState(sm, 'gameConfig');
@@ -123,7 +124,7 @@
         draw: function(sm, ctx, canvas){
             var state = sm.states.mainMenu;
             draw.background(sm, ctx, canvas);
-            draw.buttonCollection(state.buttons, ctx);
+            draw.buttonCollection(state.buttons.foo, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {
@@ -263,9 +264,9 @@
 
     var loop = function () {
         var now = new Date();
-        sm.secs = (now - sm.lt) / 1000;
-        requestAnimationFrame(loop),
+        sm.secs = (now - sm.lt) / 1000,
         state = sm.states[sm.currentState];
+
         if (sm.secs >= 1 / sm.fps) {
             // update
             var update = state.update;
@@ -281,7 +282,21 @@
             }
             sm.lt = now;
         }
+
+        // if sm.stopLoop === false, then keep looping
+        if(!sm.stopLoop){
+            requestAnimationFrame(loop);
+        }
     };
     loop();
+
+
+    window.addEventListener('error', function(e) {
+        sm.stopLoop = true;
+        console.log('error: ' + e.message);
+        console.log('loop stoped');
+    });
+
+
 }
     ());

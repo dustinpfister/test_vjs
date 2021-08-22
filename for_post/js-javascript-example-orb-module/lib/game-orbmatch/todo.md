@@ -5,6 +5,10 @@
 
 ### 0.x.0 - button lib started
 * start a button lib that will be used by the main.js state machine and game.js
+* have a ButtonMod.create
+* have a ButonMod.get
+* have a ButtonMod.check
+* remove redundant old helpers getButton and buttonCheck in main.js and game.js
 
 ### () 0.x.0 - processTrun.events.onOrbChainAttack
 * what to do for a chain attack event

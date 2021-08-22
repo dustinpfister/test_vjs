@@ -29,7 +29,7 @@
             container: document.getElementById('canvas-app')
         }),
         // states object
-        currentState: 'game',
+        currentState: 'gameConfig',
         states : {}
     };
     sm.game = gameMod.create(sm.gameCreateOptions);
@@ -101,7 +101,7 @@
 
     sm.states.gameConfig = {
         buttons: {
-            start: {
+            startGame: {
                 disp: 'start game',
                 x: 250,
                 y: 400,
@@ -117,7 +117,10 @@
             console.log('config end');
         },
         update: function(sm, secs){},
-        draw: function(sm, ctx, canvas){},
+        draw: function(sm, ctx, canvas){
+            draw.background(sm, ctx, canvas);
+            draw.button(sm.states.gameConfig.buttons.startGame, ctx);
+        },
         events : {
             pointerStart: function (e, pos, sm) {},
             pointerMove: function (e, pos, sm) {},
@@ -179,9 +182,9 @@
             // draw
             var ctx = sm.canvasObj.ctx,
             canvas = sm.canvasObj.canvas;
-            var draw = state.draw;
-            if(draw){
-                draw.call(sm, sm, ctx, canvas);
+            var drawHook = state.draw;
+            if(drawHook){
+                drawHook.call(sm, sm, ctx, canvas);
             }
             sm.lt = now;
         }

@@ -86,13 +86,11 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
-### () 0.22.0 - gameOptions game state
+### () 0.21.0 - gameOptions game state
 * I should have a game options button in the upper right corner of the canvas
 * the game options button allows for entering into a game options state
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
-
-### () 0.21.0 - stateEnd hook, stateStart hook and changeState helper in main.js
 
 ### () 0.20.0 - Main Menu, and Crafting states started
 * start a new crafting state
@@ -104,12 +102,13 @@
 * (done) a state object should have an update method
 * (done) start a gameConfig state object
 * (done) I will want a gameMod.createAIPouch public method, that will create and return an array that can be used with gameMod.create
+* (done) a state object should have a draw method
 
-* a state object should have a draw method
+* have a start game button in gameConfig state, when this button is clicked start a new game object and change to game state
 
 * the gameMod.createAIPouch public method will take just a level number from 1 - 100 and return an array of points
 * the gameConfig state can be used to set the state of the AI pouch by clicking AI Level up down buttons
-* have a start game button in gameConfig state, when this button is clicked start a new game object and change to game state
+
 
 
 * when the player wins or looses a game they return to gameConfig state

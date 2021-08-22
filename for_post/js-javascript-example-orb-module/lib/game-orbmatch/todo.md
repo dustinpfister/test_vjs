@@ -111,10 +111,10 @@
 
 ### () 0.20.1 - gameConfig state createAIPouch arguments including typer methods
 * (done) gameMod.createAIPouch method has count, minOrbLevel, maxOrbLevel arguments
-* typer methods are arguments that can be functions or strings.
-* a typer function returns a base points ratio for an orb
+* (done) typer methods are arguments that can be functions or strings.
+* (done) a typer function returns a base points ratio for an orb
+* (done) randomPure hard coded default typer 
 * random levels between min and max values
-* method has a few hard coded typer methods that can be set with string values 
 
 ### ( 08/22/2021 ) 0.20.0 - Main Menu, better gameConfig state, and Crafting states started
 * (done) when the player wins or looses a game they return to gameConfig state

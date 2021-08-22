@@ -9,8 +9,8 @@
 
     var sm = {
         game: gameMod.create({
-            aiPouch: [[16, 0, 0, 0], [1, 0, 1, 0]],
-            aiStartOrbs: [null, 0, null, 1],
+            aiPouch: gameMod.createAIPouch(1), //[[16, 0, 0, 0], [1, 0, 1, 0]],
+            //aiStartOrbs: [0, 0, null, 1],
             aiAttackModes: [false, false, false, true],
             playerPouch: [
                 [0, 0, 128, 0], [2, 0, 2, 0], [0, 0, 128, 0]

@@ -5,10 +5,13 @@
 
     // state object
 
+
+
+
     var sm = {
         gameCreateOptions: {
             aiPouch: gameMod.createAIPouch(1), //[[16, 0, 0, 0], [1, 0, 1, 0]],
-            //aiStartOrbs: [0, 0, null, 1],
+            aiStartOrbs: [3, 0, 1, 2],
             aiAttackModes: [false, false, false, true],
             playerPouch: [
                 [0, 0, 128, 0], [2, 0, 2, 0], [0, 0, 128, 0]
@@ -29,8 +32,31 @@
         currentState: 'game',
         states : {}
     };
-
     sm.game = gameMod.create(sm.gameCreateOptions);
+
+
+
+    
+    // helpers
+
+
+
+
+    // start a new state, calling any hook methods when doing so 
+    var setState = function(sm, newState){
+        var oldState = sm.states[sm.currentState];
+        var endHook = oldState.end;
+        if(endHook){
+            endHook.call(sm, sm);
+        }
+        sm.currentState = newState;
+        var newState = sm.states[sm.currentState];
+        var startHook = oldState.start;
+        if(startHook){
+            startHook.call(sm, sm);
+        }
+    };
+
 
 
 
@@ -41,6 +67,11 @@
 
     sm.states.game = {
         buttons: {},
+        start: function(sm){
+            sm.game = gameMod.create(sm.gameCreateOptions);
+        },
+        end: function(sm){
+        },
         update: function(sm, secs){
             gameMod.update(sm.game, sm.secs);
         },
@@ -66,7 +97,22 @@
 
 
     sm.states.gameConfig = {
-        buttons: {},
+        buttons: {
+            start: {
+                disp: 'start game',
+                x: 250,
+                y: 400,
+                w: 100,
+                h: 64,
+                onClick: function (e, pos, game, button) {
+                    setState(sm, 'game');
+                }
+            }
+        },
+        start: function(sm){},
+        end: function(sm){
+            console.log('config end');
+        },
         update: function(sm, secs){},
         events : {
             pointerStart: function (e, pos, sm) {},

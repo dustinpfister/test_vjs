@@ -28,8 +28,9 @@
     };
     sm.aiPouchSettings = {
         count: 4,
+        level: 1, // used to set minOrbLevel and maxOrbLevel
         minOrbLevel: 1,
-        maxOrbLevel: 7
+        maxOrbLevel: 1
     };
     sm.gameCreateOptions = {
         aiPouch: gameMod.createAIPouch(sm.aiPouchSettings),
@@ -227,7 +228,12 @@
                 w: 75,
                 h: 50,
                 onClick: function (e, pos, sm, button) {
-                    
+                    var a = sm.aiPouchSettings;
+                    a.level += 1;
+                    a.level = a.level > 10 ? 10: a.level;
+
+                    a.maxOrbLevel = Math.floor(a.level / 10 * 32);
+                    a.minOrbLevel = Math.ceil(a.maxOrbLevel * 0.5) - 1;
                 }
             },
             levelRangeDown: {
@@ -237,7 +243,13 @@
                 w: 75,
                 h: 50,
                 onClick: function (e, pos, sm, button) {
-                    
+                    var a = sm.aiPouchSettings;
+                    a.level -= 1;
+                    a.level = a.level < 1 ? 1: a.level;    
+
+                    a.maxOrbLevel = Math.floor(a.level / 10 * 32);
+                    a.minOrbLevel = Math.ceil(a.maxOrbLevel * 0.5) - 1;
+                
                 }
             }
         },

@@ -172,6 +172,26 @@
     };
 
     // create and return a value to use with the gameMod.create aiPouch option
+/*
+    api.createAIPouch = function(level){
+        level = level === undefined ? 1 : level;
+        level = level < 0 ? 1 : level;
+        level = level > 100 ? 100 : level;
+        var pouch = [],
+        levelPer = (level / 100),
+        // count of orbs
+        count = 1 + Math.round(7  * levelPer),
+        i = 0;
+        while(i < count){
+            var orbLevel = 1 + Math.round(7  * levelPer);
+            var points = ratio.getRaisedRatio([2,0,0,0], orbLevel, 2);
+            pouch.push( points );
+            i += 1;
+        }
+        return pouch;
+    };
+*/
+
     api.createAIPouch = function(level){
         level = level === undefined ? 1 : level;
         level = level < 0 ? 1 : level;

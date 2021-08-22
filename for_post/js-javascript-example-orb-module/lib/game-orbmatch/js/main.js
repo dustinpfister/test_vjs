@@ -9,9 +9,9 @@
 
 
     var sm = {
-        ver: '0.20.0',
+        ver: '0.20.1',
         gameCreateOptions: {
-            aiPouch: gameMod.createAIPouch(30),
+            aiPouch: gameMod.createAIPouch(),
             aiStartOrbs: [3, 2, 1, 0],
             aiAttackModes: [false, false, false, true],
             playerPouch: [
@@ -31,7 +31,7 @@
             container: document.getElementById('canvas-app')
         }),
         // states object
-        currentState: 'mainMenu', //'gameConfig',
+        currentState: 'game', //'mainMenu', //'gameConfig',
         states : {},
         stopLoop: false
     };

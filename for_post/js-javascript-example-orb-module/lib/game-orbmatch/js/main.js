@@ -57,8 +57,8 @@
         }
     };
     // buttons
-    var getButton = function (game, x, y) {
-        var state = gameStates[game.currentState];
+    var getButton = function (sm, x, y) {
+        var state = sm.states[sm.currentState];
         var buttons = state.buttons;
         var keys = Object.keys(buttons);
         var i = 0,
@@ -75,11 +75,10 @@
         }
         return null;
     };
-
-    var buttonCheck = function (e, pos, game) {
-        var b = getButton(game, pos.x, pos.y);
+    var buttonCheck = function (e, pos, sm) {
+        var b = getButton(sm, pos.x, pos.y);
         if (b) {
-            b.onClick.call(b, e, pos, game, b);
+            b.onClick.call(sm, e, pos, sm, b);
         }
     };
 
@@ -152,7 +151,7 @@ console.log('click');
         events : {
             pointerStart: function (e, pos, sm) {
 
-                buttonCheck(e, pos, game);
+                buttonCheck(e, pos, sm);
 
             },
             pointerMove: function (e, pos, sm) {},

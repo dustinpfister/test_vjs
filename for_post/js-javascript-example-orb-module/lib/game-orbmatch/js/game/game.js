@@ -126,7 +126,7 @@
     };
 
     /********* ********** ********** *********/
-    //  CREATE METHOD
+    //  CREATE METHOD AND OTHER PUBLIC METHODS TO USE WITH CREATE
     /********* ********** ********** *********/
 
     // create and return a new game object
@@ -168,6 +168,13 @@
         game.player.totalHeal = getTotalHeal(game, 'player');
         game.ai.totalHeal = getTotalHeal(game, 'ai');
         return game;
+    };
+
+    // create and return a value to use with the gameMod.create aiPouch option
+    api.createAIPouch = function(){
+        var pouch = [];
+        pouch.push( [1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1] );
+        return pouch;
     };
 
     /********* ********** ********** *********/

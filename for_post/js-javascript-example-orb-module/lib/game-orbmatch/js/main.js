@@ -105,8 +105,8 @@
                     handler.call(sm, e, pos, sm);
                 }
             },
-            pointerMove: function (e, pos, sm) {
-                var handler = sm.states[sm.currentState].events.pointerMove;
+            pointerEnd: function (e, pos, sm) {
+                var handler = sm.states[sm.currentState].events.pointerEnd;
                 if(handler){
                     handler.call(sm, e, pos, sm);
                 }

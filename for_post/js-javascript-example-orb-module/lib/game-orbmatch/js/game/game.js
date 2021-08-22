@@ -171,9 +171,14 @@
     };
 
     // create and return a value to use with the gameMod.create aiPouch option
-    api.createAIPouch = function(){
-        var pouch = [];
-        pouch.push( [1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1] );
+    api.createAIPouch = function(level){
+        var pouch = [],
+        count = 2,
+        i = 0;
+        while(i < count){
+            pouch.push( [1,0,0,0] );
+            i += 1;
+        }
         return pouch;
     };
 

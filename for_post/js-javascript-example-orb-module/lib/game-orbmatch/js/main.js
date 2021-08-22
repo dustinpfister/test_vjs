@@ -133,8 +133,7 @@
                 w: 100,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-console.log('click');
-                    //setState(sm, 'game');
+                    setState(sm, 'game');
                 }
             }
         },

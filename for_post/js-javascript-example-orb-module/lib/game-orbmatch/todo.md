@@ -86,11 +86,13 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
-### () 0.21.0 - gameOptions game state
+### () 0.22.0 - gameOptions game state
 * I should have a game options button in the upper right corner of the canvas
 * the game options button allows for entering into a game options state
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
+
+### () 0.21.0 - stateEnd hook, stateStart hook and changeState helper in main.js
 
 ### () 0.20.0 - Main Menu, and Crafting states started
 * start a new crafting state

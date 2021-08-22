@@ -104,7 +104,7 @@
 
 ### () 0.20.0 - Main Menu, and Crafting states started
 * (done) when the player wins or looses a game they return to gameConfig state
-* show level for each orb
+* (done) show level for each orb
 * start a new crafting state
 * start a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
 

@@ -64,7 +64,7 @@
         }
         sm.currentState = newState;
         var newState = sm.states[sm.currentState];
-        var startHook = oldState.start;
+        var startHook = newState.start;
         if(startHook){
             startHook.call(sm, sm);
         }
@@ -258,6 +258,10 @@
     sm.states.game = {
         buttons: {},
         start: function(sm){
+            console.log('hello');
+            // update ai pouch based on am.aiPouchSettings state
+            sm.gameCreateOptions.aiPouch = gameMod.createAIPouch(sm.aiPouchSettings);
+            // create new game object
             sm.game = gameMod.create(sm.gameCreateOptions);
         },
         end: function(sm){

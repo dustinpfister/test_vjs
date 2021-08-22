@@ -111,8 +111,9 @@
 * (done) starting sm.createGameOptions object defined outside of starting object literal
 * (done) have a sm.aiPouchSettings object
 * (done) display state of sm.aiPouchSettings in gameConfig
-* buttons in gameConfig state can be used to mutate state of sm.aiPouchSettings
-* use sm.aiPouchSettings to create new ai pouch in game state start hook
+* (done) buttons in gameConfig state can be used to mutate state of sm.aiPouchSettings count prop
+* (done) use sm.aiPouchSettings to create new ai pouch in game state start hook
+* mutate level settings
 * back button in gameConfig state
 
 ### ( 08/22/2021 ) 0.20.1 - gameConfig state createAIPouch arguments including typer methods

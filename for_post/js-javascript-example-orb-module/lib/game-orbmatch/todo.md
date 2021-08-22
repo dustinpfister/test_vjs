@@ -116,11 +116,9 @@
 ### () 0.20.0 - Main Menu, better gameConfig state, and Crafting states started
 * (done) when the player wins or looses a game they return to gameConfig state
 * (done) show level for each orb
-* start a new crafting state
-* start a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
-
-
-
+* (done) start a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
+* (done) start a new crafting state with a button going to it in the main menu
+* have a draw.buttonCollection method and use it in all main state objects that use buttons
 
 
 ### ( 08/22/2021 ) 0.19.0 - Main state machine, game, and gameConfig state started

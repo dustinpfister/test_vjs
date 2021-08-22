@@ -105,6 +105,16 @@
                 onClick: function (e, pos, game, button) {
                     setState(sm, 'gameConfig');
                 }
+            },
+            crafting: {
+                disp: 'Crafting',
+                x: 220,
+                y: 300,
+                w: 200,
+                h: 64,
+                onClick: function (e, pos, game, button) {
+                    setState(sm, 'crafting');
+                }
             }
         },
         start: function(sm){},
@@ -114,6 +124,7 @@
             var state = sm.states.mainMenu;
             draw.background(sm, ctx, canvas);
             draw.button(state.buttons.newGame, ctx);
+            draw.button(state.buttons.crafting, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {
@@ -125,7 +136,18 @@
     };
     // The Crafting State
     sm.states.crafting = {
-        buttons: {},
+        buttons: {
+            back: {
+                disp: 'Back',
+                x: 220,
+                y: 200,
+                w: 200,
+                h: 64,
+                onClick: function (e, pos, game, button) {
+                    setState(sm, 'mainMenu');
+                }
+            }
+        },
         start: function(sm){},
         end: function(sm){},
         update: function(sm, secs){
@@ -133,7 +155,7 @@
         draw: function(sm, ctx, canvas){
             var state = sm.states.crafting;
             draw.background(sm, ctx, canvas);
-            //draw.button(state.buttons.startGame, ctx);
+            draw.button(state.buttons.back, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {

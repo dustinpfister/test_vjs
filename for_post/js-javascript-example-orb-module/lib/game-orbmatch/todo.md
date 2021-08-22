@@ -105,7 +105,7 @@
 ### () 0.20.3 - crafting state ui
 * start a crafting ui that can be used to create orbs
 
-### () 0.20.2 - gameConfig buttons
+### ( 08/22/2021 ) 0.20.2 - gameConfig buttons
 * (done) have buttons that can will be used to increase and decrease the count of ai orbs
 * (done) have buttons that can will be used to set the min and max level for orbs
 * (done) starting sm.createGameOptions object defined outside of starting object literal
@@ -114,7 +114,7 @@
 * (done) buttons in gameConfig state can be used to mutate state of sm.aiPouchSettings count prop
 * (done) use sm.aiPouchSettings to create new ai pouch in game state start hook
 * (done) back button in gameConfig state
-* mutate level settings
+* (done) mutate level settings
 
 ### ( 08/22/2021 ) 0.20.1 - gameConfig state createAIPouch arguments including typer methods
 * (done) gameMod.createAIPouch method has count, minOrbLevel, maxOrbLevel arguments

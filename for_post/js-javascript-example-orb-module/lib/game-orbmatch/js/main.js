@@ -9,7 +9,7 @@
 
 
     var sm = {
-        ver: '0.20.2',
+        ver: '0.20.3',
         aiPouchSettings:{},
         gameCreateOptions: {},
         game: {},

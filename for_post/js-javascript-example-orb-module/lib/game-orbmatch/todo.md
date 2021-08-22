@@ -103,8 +103,10 @@
 * (done) game state object started in main.
 * (done) a state object should have an update method
 * (done) start a gameConfig state object
+* (done) I will want a gameMod.createAIPouch public method, that will create and return an array that can be used with gameMod.create
 
-* I will want a gameMod.createAIPouch public method, that will create and return an array that can be used with gameMod.create
+* a state object should have a draw method
+
 * the gameMod.createAIPouch public method will take just a level number from 1 - 100 and return an array of points
 * the gameConfig state can be used to set the state of the AI pouch by clicking AI Level up down buttons
 * have a start game button in gameConfig state, when this button is clicked start a new game object and change to game state

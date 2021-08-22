@@ -75,6 +75,9 @@
         update: function(sm, secs){
             gameMod.update(sm.game, sm.secs);
         },
+        draw: function(sm, ctx, canvas){
+            draw.gameState(sm, ctx, canvas);
+        },
         events : {
             pointerStart: function (e, pos, sm) {
                 gameMod.emitStateEvent('onPointerStart', e, pos, sm.game);
@@ -114,6 +117,7 @@
             console.log('config end');
         },
         update: function(sm, secs){},
+        draw: function(sm, ctx, canvas){},
         events : {
             pointerStart: function (e, pos, sm) {},
             pointerMove: function (e, pos, sm) {},
@@ -174,7 +178,7 @@
             // draw
             var ctx = sm.canvasObj.ctx,
             canvas = sm.canvasObj.canvas;
-            draw.gameState(sm, ctx, canvas);
+            sm.states[sm.currentState].draw.call(sm, sm, ctx, canvas);
             sm.lt = now;
         }
     };

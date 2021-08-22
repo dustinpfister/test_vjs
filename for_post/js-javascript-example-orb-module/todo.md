@@ -6,7 +6,11 @@
 
 ## () - Have a recipe type support
 
-## () - Have orbmatch game playable
+## () - get game-orbmatch to 0.30.x - have standard for orb type objects
+* by 0.30.x I should have a standard worked out for orb type objects
+* make improvements to orb-client that allow for injection of orb type objects
+
+## () - Get game-orbmatch to 0.20.x - have a main state machine, and crfating state
 * see todo list for /lib/game-orbmatch
 
 ## ( done 08/09/2021 ) - data object for an orb

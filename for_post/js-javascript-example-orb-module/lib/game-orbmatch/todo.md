@@ -66,16 +66,6 @@
 * The speed of an orb determines which orb will attack/buff first
 * speed will not result in additional turns for an orb, but can result in additional attacks, and buffs per turn
 
-### () 0.x.0 - Main Menu, and Crafting states started
-* start a new crafting state
-* have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
-
-### () 0.x.0 - Main state machine, game, and gameConfig state
-* start a main state machine in main.js that will have just a game, and gameConfig state for now
-* the gameConfig state can be used to set the state of the player, and AI pouch
-* when the player wins or looses a game they return to gameConfig state
-* have a 'gameOptions' game state that can be used to leave game state
-
 ### () 0.x.0 - target selection
 * target section can be a feature of orb types
 * pure types can always select all orbs in range, and thus divide attack by target array length, and attack all targets pure turn
@@ -95,6 +85,16 @@
 * the plusOnePer change prop can then have a range between 0 and 1.
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
+
+### () 0.20.0 - Main Menu, and Crafting states started
+* start a new crafting state
+* have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
+
+### () 0.19.0 - Main state machine, game, and gameConfig state
+* start a main state machine in main.js that will have just a game, and gameConfig state for now
+* the gameConfig state can be used to set the state of the player, and AI pouch
+* when the player wins or looses a game they return to gameConfig state
+* have a 'gameOptions' game state that can be used to leave game state
 
 ### ( 08/19/2021 ) 0.18.0 - process turn events
 * (done) have an onOrbAttack event for processTurn game state

@@ -93,17 +93,23 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
-### () 0.23.0 - gameOptions game state
+### () 0.21.0 - gameOptions game state
 * I should have a game options button in the upper right corner of the canvas
 * the game options button allows for entering into a game options state
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
 
-### 0.22.0 - gameConfig buttons
+
+
+
+### 0.20.3 - crafting state ui
+* start a crafting ui that can be used to create orbs
+
+### 0.20.2 - gameConfig buttons
 * have buttons that can increase and decrease the count or ai orbs
 * have buttons that can be used to set the min and max level for orbs
 
-### 0.21.0 - gameConfig state createAIPouch arguments including typer methods
+### 0.20.1 - gameConfig state createAIPouch arguments including typer methods
 * gameMod.createAIPouch method has count, minOrbLevel, maxOrbLevel, and typer methods are arguments
 * gameMod.createAIPouch method has a few hard coded typer methods that can be set with string values 
 
@@ -112,6 +118,10 @@
 * (done) show level for each orb
 * start a new crafting state
 * start a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
+
+
+
+
 
 ### ( 08/22/2021 ) 0.19.0 - Main state machine, game, and gameConfig state started
 * (done) start a main state machine in main.js that will have just a game, and gameConfig state for now

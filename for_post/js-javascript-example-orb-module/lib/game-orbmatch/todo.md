@@ -93,17 +93,20 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
-### () 0.21.0 - gameOptions game state
+### () 0.22.0 - gameOptions game state
 * I should have a game options button in the upper right corner of the canvas
 * the game options button allows for entering into a game options state
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
 
+### () 0.21.0 - better gameConfig state options
+* the gameConfig state can be used to set the state of the AI pouch by clicking AI Level up down buttons
+
 ### () 0.20.0 - Main Menu, and Crafting states started
 * start a new crafting state
 * have a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
 
-### () 0.19.0 - Main state machine, game, and gameConfig state
+### () 0.19.0 - Main state machine, game, and gameConfig state started
 * (done) start a main state machine in main.js that will have just a game, and gameConfig state for now
 * (done) game state object started in main.
 * (done) a state object should have an update method
@@ -111,14 +114,16 @@
 * (done) I will want a gameMod.createAIPouch public method, that will create and return an array that can be used with gameMod.create
 * (done) a state object should have a draw method
 * (done) have a start game button in gameConfig state, when this button is clicked start a new game object and change to game state
-
-* the gameMod.createAIPouch public method will take just a level number from 1 - 100 and return an array of points
-* the gameConfig state can be used to set the state of the AI pouch by clicking AI Level up down buttons
-
-
+* (done) the gameMod.createAIPouch public method will take just a level number from 1 - 100 and return an array of points
 
 * when the player wins or looses a game they return to gameConfig state
-* have a 'gameOptions' game state that can be used to leave game state
+* have a sm.ver string and display that
+* show level for each orb
+
+
+
+
+
 
 ### ( 08/19/2021 ) 0.18.0 - process turn events
 * (done) have an onOrbAttack event for processTurn game state

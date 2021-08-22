@@ -150,7 +150,7 @@
                 y: 200,
                 w: 200,
                 h: 64,
-                onClick: function (e, pos, game, button) {
+                onClick: function (e, pos, sm, button) {
                     setState(sm, 'mainMenu');
                 }
             }
@@ -181,7 +181,7 @@
                 y: 400,
                 w: 100,
                 h: 64,
-                onClick: function (e, pos, game, button) {
+                onClick: function (e, pos, sm, button) {
                     setState(sm, 'game');
                 }
             },
@@ -191,8 +191,10 @@
                 y: 100,
                 w: 75,
                 h: 50,
-                onClick: function (e, pos, game, button) {
-                    
+                onClick: function (e, pos, sm, button) {
+                    var a = sm.aiPouchSettings;
+                    a.count += 1;
+                    a.count = a.count > 8 ? 8 : a.count;
                 }
             },
             countDown: {
@@ -201,8 +203,10 @@
                 y: 100,
                 w: 75,
                 h: 50,
-                onClick: function (e, pos, game, button) {
-                    
+                onClick: function (e, pos, sm, button) {
+                    var a = sm.aiPouchSettings;
+                    a.count -= 1;
+                    a.count = a.count < 1 ? 1 : a.count;                    
                 }
             },
             levelRangeUp: {
@@ -211,7 +215,7 @@
                 y: 200,
                 w: 75,
                 h: 50,
-                onClick: function (e, pos, game, button) {
+                onClick: function (e, pos, sm, button) {
                     
                 }
             },
@@ -221,7 +225,7 @@
                 y: 200,
                 w: 75,
                 h: 50,
-                onClick: function (e, pos, game, button) {
+                onClick: function (e, pos, sm, button) {
                     
                 }
             }

@@ -109,12 +109,12 @@
 * have buttons that can increase and decrease the count or ai orbs
 * have buttons that can be used to set the min and max level for orbs
 
-### () 0.20.1 - gameConfig state createAIPouch arguments including typer methods
+### ( 08/22/2021 ) 0.20.1 - gameConfig state createAIPouch arguments including typer methods
 * (done) gameMod.createAIPouch method has count, minOrbLevel, maxOrbLevel arguments
 * (done) typer methods are arguments that can be functions or strings.
 * (done) a typer function returns a base points ratio for an orb
 * (done) randomPure hard coded default typer 
-* random levels between min and max values
+* (done) random levels between min and max values
 
 ### ( 08/22/2021 ) 0.20.0 - Main Menu, better gameConfig state, and Crafting states started
 * (done) when the player wins or looses a game they return to gameConfig state

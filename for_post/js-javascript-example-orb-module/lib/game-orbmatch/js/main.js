@@ -35,7 +35,7 @@
             container: document.getElementById('canvas-app')
         }),
         // states object
-        currentState: 'game', //'mainMenu', //'gameConfig',
+        currentState: 'gameConfig', //'game', //'mainMenu',
         states : {},
         stopLoop: false
     };

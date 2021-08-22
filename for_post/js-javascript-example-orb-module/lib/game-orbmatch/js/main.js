@@ -124,7 +124,7 @@
         draw: function(sm, ctx, canvas){
             var state = sm.states.mainMenu;
             draw.background(sm, ctx, canvas);
-            draw.buttonCollection(state.buttons.foo, ctx);
+            draw.buttonCollection(state.buttons, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {

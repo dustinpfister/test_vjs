@@ -113,13 +113,13 @@
 * gameMod.createAIPouch method has count, minOrbLevel, maxOrbLevel, and typer methods are arguments
 * gameMod.createAIPouch method has a few hard coded typer methods that can be set with string values 
 
-### () 0.20.0 - Main Menu, better gameConfig state, and Crafting states started
+### ( 08/22/2021 ) 0.20.0 - Main Menu, better gameConfig state, and Crafting states started
 * (done) when the player wins or looses a game they return to gameConfig state
 * (done) show level for each orb
 * (done) start a mainMenu state that will just be a way to progress to gameConfig, or the new crafting state
 * (done) start a new crafting state with a button going to it in the main menu
 * (done) have a draw.buttonCollection method and use it in all main state objects that use buttons
-* have a global error hander in main.js
+* (done) have a global error hander in main.js
 
 ### ( 08/22/2021 ) 0.19.0 - Main state machine, game, and gameConfig state started
 * (done) start a main state machine in main.js that will have just a game, and gameConfig state for now

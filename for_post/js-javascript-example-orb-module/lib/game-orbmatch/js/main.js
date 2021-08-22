@@ -233,6 +233,14 @@
             var state = sm.states.gameConfig;
             draw.background(sm, ctx, canvas);
             draw.buttonCollection(state.buttons, ctx);
+            // display state of sm.aiPouchSettings
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'left';
+            ctx.textBaseline =  'top';
+            ctx.font = '20px arial';
+            var a = sm.aiPouchSettings;
+            ctx.fillText('count: ' + a.count, 350, 150);
+            ctx.fillText('level range: ' + a.minOrbLevel + ' - ' + a.maxOrbLevel, 350, 175);
         },
         events : {
             pointerStart: function (e, pos, sm) {

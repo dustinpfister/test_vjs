@@ -31,7 +31,7 @@
             container: document.getElementById('canvas-app')
         }),
         // states object
-        currentState: 'gameConfig',
+        currentState: 'mainMenu', //'gameConfig',
         states : {}
     };
     sm.gameCreateOptions.onGameEnd = function(game){
@@ -90,11 +90,71 @@
 
 
 
+
+
+
+    // The main menu State
+    sm.states.mainMenu = {
+        buttons: {},
+        start: function(sm){},
+        end: function(sm){},
+        update: function(sm, secs){},
+        draw: function(sm, ctx, canvas){},
+        events : {
+            pointerStart: function (e, pos, sm) {
+                buttonCheck(e, pos, sm);
+            },
+            pointerMove: function (e, pos, sm) {},
+            pointerEnd: function (e, pos, sm) {}
+        }
+    };
+    // The Crafting State
+    sm.states.crating = {
+        buttons: {},
+        start: function(sm){},
+        end: function(sm){},
+        update: function(sm, secs){
+        },
+        draw: function(sm, ctx, canvas){},
+        events : {
+            pointerStart: function (e, pos, sm) {
+                buttonCheck(e, pos, sm);
+            },
+            pointerMove: function (e, pos, sm) {},
+            pointerEnd: function (e, pos, sm) {}
+        }
+    };
+    // The Game Config State
+    sm.states.gameConfig = {
+        buttons: {
+            startGame: {
+                disp: 'start game',
+                x: 250,
+                y: 400,
+                w: 100,
+                h: 64,
+                onClick: function (e, pos, game, button) {
+                    setState(sm, 'game');
+                }
+            }
+        },
+        start: function(sm){},
+        end: function(sm){},
+        update: function(sm, secs){},
+        draw: function(sm, ctx, canvas){
+            var state = sm.states.gameConfig;
+            draw.background(sm, ctx, canvas);
+            draw.button(state.buttons.startGame, ctx);
+        },
+        events : {
+            pointerStart: function (e, pos, sm) {
+                buttonCheck(e, pos, sm);
+            },
+            pointerMove: function (e, pos, sm) {},
+            pointerEnd: function (e, pos, sm) {}
+        }
+    };
     // The Game State
-
-
-
-
     sm.states.game = {
         buttons: {},
         start: function(sm){
@@ -118,48 +178,6 @@
             pointerEnd: function (e, pos, sm) {
                 gameMod.emitStateEvent('onPointerEnd', e, pos, sm.game);
             }
-        }
-    };
-
-
-
-
-    // The Game Config State
-
-
-
-
-    sm.states.gameConfig = {
-        buttons: {
-            startGame: {
-                disp: 'start game',
-                x: 250,
-                y: 400,
-                w: 100,
-                h: 64,
-                onClick: function (e, pos, game, button) {
-                    setState(sm, 'game');
-                }
-            }
-        },
-        start: function(sm){},
-        end: function(sm){
-            console.log('config end');
-        },
-        update: function(sm, secs){},
-        draw: function(sm, ctx, canvas){
-            var state = sm.states.gameConfig;
-            draw.background(sm, ctx, canvas);
-            draw.button(state.buttons.startGame, ctx);
-        },
-        events : {
-            pointerStart: function (e, pos, sm) {
-
-                buttonCheck(e, pos, sm);
-
-            },
-            pointerMove: function (e, pos, sm) {},
-            pointerEnd: function (e, pos, sm) {}
         }
     };
 

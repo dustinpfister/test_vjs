@@ -191,6 +191,8 @@
             draw.buttonCollection(craft.states[craft.currentState].buttons, ctx);
             // draw state of current pouch
             draw.orbCollection(sm, ctx, canvas, craft.currentPouch);
+            // call draw method of current craft state
+            craft.states[craft.currentState].draw(craft, ctx, canvas);
             // disply current craft state
             ctx.fillStyle = 'white';
             ctx.textAlign = 'left';
@@ -202,7 +204,6 @@
         events : {
             pointerStart: function (e, pos, sm) {
                 buttonCheck(e, pos, sm);
-
                 craftingMod.emitStateEvent('pointerStart', e, pos, sm.craft);
             },
             pointerMove: function (e, pos, sm) {

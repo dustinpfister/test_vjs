@@ -115,6 +115,7 @@
                 }
             }
         },
+        draw: function(craft, ctx, canvas){},
         events: {
             pointerStart: function (e, pos, craft) {
                 buttonCheck(e, pos, craft);
@@ -135,6 +136,7 @@
                 }
             }
         },
+        draw: function(craft, ctx, canvas){},
         events: {
             pointerStart: function (e, pos, craft) {
                 buttonCheck(e, pos, craft);

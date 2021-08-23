@@ -115,7 +115,17 @@
                 }
             }
         },
-        draw: function(craft, ctx, canvas){},
+        draw: function(craft, ctx, canvas){
+            // draw state of craft.createByRatio
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'left';
+            ctx.textBaseline =  'top';
+            ctx.font = '20px arial';
+            var cbr = craft.createByRatio;
+            ctx.fillText('element Index: ' + cbr.elementIndex, 350, 40);
+            ctx.fillText('ratio: ' + cbr.ratio, 350, 60);
+            ctx.fillText('level: ' + cbr.level, 350, 80);
+        },
         events: {
             pointerStart: function (e, pos, craft) {
                 buttonCheck(e, pos, craft);

@@ -119,9 +119,10 @@
 * (done) I will want to display the state of the current pouch in all states
 
 * (done) have a craft.createByRatio object that contains settings for byRatio state
-* display state of craft.createByRatio object in byRatio state
-* have buttons in byRatio state that mutate values in craft.createByRatio
+* (done) display state of craft.createByRatio object in byRatio state
+* (done) have buttons in byRatio state that mutate values in craft.createByRatio
 * have a craft button that will push a new orb to the current pouch at the first null type based on values on
+* mutate level setting for craft.createByRatio
 
 * have an initial state of craft.currentPouch
 * craft.currentPouch should always be what is used to create the state of the player pouch when starting a new game

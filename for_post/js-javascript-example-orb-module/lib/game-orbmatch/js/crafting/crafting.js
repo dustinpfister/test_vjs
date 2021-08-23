@@ -126,7 +126,7 @@
                 }
             },
             elementUp: {
-                disp: '+',
+                disp: 'el+',
                 x: 130,
                 y: 50,
                 w: 80,
@@ -141,7 +141,7 @@
                 }
             },
             elementDown: {
-                disp: '-',
+                disp: 'el-',
                 x: 210,
                 y: 50,
                 w: 80,
@@ -152,6 +152,16 @@
                     el -= 1;
                     el = el < 0 ? 20 : el;
                     cbr.ratio[cbr.elementIndex] = el;
+                }
+            },
+            craft: {
+                disp: 'Craft',
+                x: 280,
+                y: 350,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, craft, button) {
+                   
                 }
             }
         },
@@ -219,7 +229,7 @@
                 faction: 'player',
                 count: 8,
                 homeXStart: 192,
-                homeYStart: 240,
+                homeYStart: 260,
                 points: [[0, 0, 1, 0]]
             }),
             currentState: 'pouchEdit',

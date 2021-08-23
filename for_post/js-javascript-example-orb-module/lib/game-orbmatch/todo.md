@@ -113,6 +113,8 @@
 * (done) I will need a craftingMod.emitStateEvent public method just like in gameMod
 * (done) use craftingMod.emitStateEvent in crafting state in main.js
 
+* display current state of craft as part of draw method in main.js crafting state
+* have back buttons in byRatio, and deleteOrb that bolth return to main menu
 
 ### ( 08/22/2021 ) 0.20.2 - gameConfig buttons
 * (done) have buttons that can will be used to increase and decrease the count of ai orbs

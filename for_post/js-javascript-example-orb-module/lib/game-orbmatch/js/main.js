@@ -187,6 +187,13 @@
             draw.buttonCollection(state.buttons, ctx);
             var craft = sm.craft
             draw.buttonCollection(craft.states[craft.currentState].buttons, ctx);
+            // disply current craft state
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'left';
+            ctx.textBaseline =  'top';
+            ctx.font = '20px arial';
+            ctx.fillText(craft.currentState, 20, 20);
+            
         },
         events : {
             pointerStart: function (e, pos, sm) {

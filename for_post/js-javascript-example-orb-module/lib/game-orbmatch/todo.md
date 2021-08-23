@@ -112,23 +112,19 @@
 
 
 
-
+### () 0.20.5 - apply craft pouch to game, and delete puch orbs in crafting state
+* mutate level setting for craft.createByRatio
+* have an initial state of craft.currentPouch
+* craft.currentPouch should always be what is used to create the state of the player pouch when starting a new game
+* In dleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection
 
 ### () 0.20.4 - craft object orb pouch started
 * (done) I will want to have a craft.currentPouch property that is an instance of OrbCollection
 * (done) I will want to display the state of the current pouch in all states
-
 * (done) have a craft.createByRatio object that contains settings for byRatio state
 * (done) display state of craft.createByRatio object in byRatio state
 * (done) have buttons in byRatio state that mutate values in craft.createByRatio
-* have a craft button that will push a new orb to the current pouch at the first null type based on values on
-* mutate level setting for craft.createByRatio
-
-* have an initial state of craft.currentPouch
-* craft.currentPouch should always be what is used to create the state of the player pouch when starting a new game
-
-* In dleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection
-
+* (done) have a craft button that will push a new orb to the current pouch at the first null type based on values on
 
 ### ( 08/23/2021 ) 0.20.3 - creafting.js, and crafting state ui started
 * (done) start a update ai puch settings helper

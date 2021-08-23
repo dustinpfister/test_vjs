@@ -23,9 +23,12 @@ sm.states.game = {
         draw.grid(sm.grid, ctx, canvas);
     },
     events: {
-        pointerStart: function (e, pos, sm) {},
-        pointerMove: function () {},
-        pointerEnd: function () {}
+        pointerStart: function (e, pos, sm) {
+            var cell = gridMod.getCellByPixlePos(sm.grid, pos.x, pos.y);
+            console.log(cell);
+        },
+        pointerMove: function (e, pos, sm) {},
+        pointerEnd: function (e, pos, sm) {}
     }
 };
 

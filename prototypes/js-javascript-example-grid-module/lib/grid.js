@@ -17,13 +17,13 @@
         while (i < len) {
             cell = {
                 i: i, // store index for this cell
-                X: i % grid.w, // grid index pos values as uppercase X, and Y
-                Y: Math.floor(i / grid.w),
+                cellX: i % grid.w, // grid index pos values as uppercase X, and Y
+                cellY: Math.floor(i / grid.w),
                 data: {} // user data object
             };
             // cell pixel pos values as lowercase x, and y
-            cell.x = grid.xOffset + cell.X * grid.cellSize;
-            cell.y = grid.yOffset + cell.Y * grid.cellSize;
+            cell.x = grid.xOffset + cell.cellX * grid.cellSize;
+            cell.y = grid.yOffset + cell.cellY * grid.cellSize;
             grid.cells.push(cell);
             i += 1;
         }
@@ -31,15 +31,11 @@
     };
     // get a cell by the given pixel position
     api.getCellByPixlePos = function (grid, x, y) {
-        var i = 0,
-        cell,
-        len = grid.w * grid.h;
-        while (i < len) {
-            cell = grid.cells[i];
-            if (utils.boundingBox(cell.x, cell.y, grid.cellSize, grid.cellSize, x, y, 1, 1)) {
-                return cell;
-            }
-            i += 1;
+        var cellX = Math.floor( (x - grid.xOffset) / grid.cellSize ),
+        cellY = Math.floor( (y - grid.yOffset) / grid.cellSize ),
+        cell;
+        if(cellX >= 0 && cellY >= 0 && cellX < grid.w && cellY < grid.h){
+            return grid.cells[cellY * grid.w + cellX];
         }
         return null;
     };

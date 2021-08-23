@@ -83,13 +83,43 @@
     };
 
     states.byRatio = {
-        buttons: {},
-        events: {}
+        buttons: {
+            back: {
+                disp: 'back',
+                x: 50,
+                y: 350,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, craft, button) {
+                    setState(craft, 'pouchEdit');
+                }
+            }
+        },
+        events: {
+            pointerStart: function (e, pos, craft) {
+                buttonCheck(e, pos, craft);
+            }
+        }
     };
 
     states.deleteOrb = {
-        buttons: {},
-        events: {}
+        buttons: {
+            back: {
+                disp: 'back',
+                x: 50,
+                y: 350,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, craft, button) {
+                    setState(craft, 'pouchEdit');
+                }
+            }
+        },
+        events: {
+            pointerStart: function (e, pos, craft) {
+                buttonCheck(e, pos, craft);
+            }
+        }
     };
 
 

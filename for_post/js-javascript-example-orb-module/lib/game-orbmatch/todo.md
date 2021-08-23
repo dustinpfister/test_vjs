@@ -104,7 +104,8 @@
 
 ### () 0.20.3 - crafting state ui
 * (done) start a update ai puch settings helper
-* start a crafting ui that can be used to create orbs
+* I will want to start a new crafting lib
+* I will want sup states just like with gameMod
 
 ### ( 08/22/2021 ) 0.20.2 - gameConfig buttons
 * (done) have buttons that can will be used to increase and decrease the count of ai orbs

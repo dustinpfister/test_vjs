@@ -1,5 +1,5 @@
 (function (api) {
-
+    // create a grid object
     api.create = function (opt) {
         opt = opt || {};
         var grid = {
@@ -19,8 +19,7 @@
                 i: i, // store index for this cell
                 X: i % grid.w, // grid index pos values as uppercase X, and Y
                 Y: Math.floor(i / grid.w),
-                data: {}
-                // user data object
+                data: {} // user data object
             };
             // cell pixel pos values as lowercase x, and y
             cell.x = grid.xOffset + cell.X * grid.cellSize;
@@ -65,6 +64,5 @@
             }
         }
     };
-
 }
     (this['gridMod'] = {}))

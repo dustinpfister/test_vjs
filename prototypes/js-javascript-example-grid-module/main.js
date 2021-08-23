@@ -20,9 +20,7 @@ sm.states.game = {
         draw.grid(sm.grid, ctx, canvas);
     },
     events: {
-        pointerStart: function (e, pos, sm) {
-
-        },
+        pointerStart: function (e, pos, sm) {},
         pointerMove: function () {},
         pointerEnd: function () {}
     }

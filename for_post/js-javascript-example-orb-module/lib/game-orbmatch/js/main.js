@@ -173,6 +173,7 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, sm, button) {
+                    sm.craft.currentState = 'pouchEdit';
                     setState(sm, 'mainMenu');
                 }
             }

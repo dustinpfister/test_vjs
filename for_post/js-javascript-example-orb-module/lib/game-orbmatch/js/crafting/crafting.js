@@ -53,8 +53,9 @@
                 y: 350,
                 w: 80,
                 h: 80,
-                onClick: function (e, pos, game, button) {
-                    console.log('create orb button click');
+                onClick: function (e, pos, craft, button) {
+                    //console.log('create orb button click');
+                    setState(craft, 'byRatio');
                 }
             },
             deleteOrb: {
@@ -63,7 +64,7 @@
                 y: 350,
                 w: 80,
                 h: 80,
-                onClick: function (e, pos, game, button) {
+                onClick: function (e, pos, craft, button) {
                     console.log('delete orb button click');
                 }
             }
@@ -81,7 +82,10 @@
         }
     };
 
-    states.byRatio = {};
+    states.byRatio = {
+        buttons: {},
+        events: {}
+    };
 
     states.deleteOrb = {};
 

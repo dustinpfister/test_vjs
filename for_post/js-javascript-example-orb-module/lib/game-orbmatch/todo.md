@@ -103,7 +103,7 @@
 
 
 ### () 0.20.3 - crafting state ui
-* start a set ai puch settings helper
+* (done) start a update ai puch settings helper
 * start a crafting ui that can be used to create orbs
 
 ### ( 08/22/2021 ) 0.20.2 - gameConfig buttons

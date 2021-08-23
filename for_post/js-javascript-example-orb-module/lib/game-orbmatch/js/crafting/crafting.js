@@ -54,7 +54,8 @@
         },
         events : {
             pointerStart: function (e, pos, sm) {
-                buttonCheck(e, pos, sm);
+                //buttonCheck(e, pos, sm);
+                console.log('crafting start');
             },
             pointerMove: function (e, pos, sm) {},
             pointerEnd: function (e, pos, sm) {}
@@ -98,6 +99,7 @@
     api.emitStateEvent = function (eventKey, e, pos, craft) {
         var state = craft.states[craft.currentState];
         var handler = state.events[eventKey];
+
         if (handler) {
             handler.call(craft, e, pos, craft);
         }

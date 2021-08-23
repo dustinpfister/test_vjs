@@ -110,8 +110,8 @@
 * (done) start a update ai puch settings helper
 * (done) I will want to start a new crafting lib
 * (done) I will want states just like with gameMod, only follow the same pattern worked out in main.js
-* I will need a craftingMod.emitStateEvent public method just like in gameMod
-* use craftingMod.emitStateEvent in crafting state in main.js
+* (done) I will need a craftingMod.emitStateEvent public method just like in gameMod
+* (done) use craftingMod.emitStateEvent in crafting state in main.js
 
 
 ### ( 08/22/2021 ) 0.20.2 - gameConfig buttons

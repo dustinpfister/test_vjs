@@ -109,8 +109,10 @@
         setState(sm, 'gameConfig');
     };
     updateAIPouchSettings(sm);
+    // first state of game object
     sm.game = gameMod.create(sm.gameCreateOptions);
-
+    // first state of crafting object
+    sm.craft = craftingMod.create();
 
 
     
@@ -187,9 +189,15 @@
         events : {
             pointerStart: function (e, pos, sm) {
                 buttonCheck(e, pos, sm);
+
+                craftingMod.emitStateEvent('pointerStart', e, pos, sm.craft);
             },
-            pointerMove: function (e, pos, sm) {},
-            pointerEnd: function (e, pos, sm) {}
+            pointerMove: function (e, pos, sm) {
+                craftingMod.emitStateEvent('pointerMove', e, pos, sm.craft);
+            },
+            pointerEnd: function (e, pos, sm) {
+                craftingMod.emitStateEvent('pointerEnd', e, pos, sm.craft);
+            }
         }
     };
     // The Game Config State

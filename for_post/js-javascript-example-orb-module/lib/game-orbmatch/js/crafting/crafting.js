@@ -155,9 +155,16 @@
     // create the main crafting object
     api.create = function(){
         var craft = {
+            currentPouch:  OrbCollection.create({
+                key: 'player-pouch-1',
+                faction: 'player',
+                count: 8,
+                points: [[0, 0, 1, 0]]
+            }),
             currentState: 'pouchEdit',
             states: states // ref to states objects
         };
+        console.log(craft);
         return craft;
     };
 

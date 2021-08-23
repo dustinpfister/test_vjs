@@ -94,7 +94,7 @@
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
 
-### () 0.20.1 - utils methods for creating sm style state objects
+### () 0.21.1 - utils methods for creating sm style state objects
 * have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
 * have a utils.SMSetState method that works like the setState method in main.js

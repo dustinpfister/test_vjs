@@ -161,12 +161,12 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
-                   console.log('craft');
                    var cbr = craft.createByRatio;
                    var points = cbr.ratio;
                    points = points.map(function(el){
                         return el * Math.pow(2, cbr.level - 1);
                    });
+                   // new orb collection
                    var noc = OrbCollection.create({
                           key: 'new-orb',
                           faction: 'player',
@@ -175,7 +175,20 @@
                           homeYStart: 0,
                           points: points
                      });
-                  console.log(noc.orbs[0]);
+                  // new orb
+                  var newOrb = noc.orbs[0];
+                  // get next null
+                  var i = 0;
+                  while(i < 8){
+                      if(craft.currentPouch.orbs[i].type === 'null'){
+                          break;
+                      }
+                      i += 1;
+                  }
+                  console.log(i);
+                  if(i < 8){
+                       OrbCollection.setOrbPropsToOrb(craft.currentPouch, i, newOrb);
+                  }
                 }
             }
         },

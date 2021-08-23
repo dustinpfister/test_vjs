@@ -65,6 +65,16 @@
 
     states.deleteOrb = {};
 
+
+
+
+    /********* ********** ********** *********/
+    //  CREATE 
+    /********* ********** ********** *********/
+
+
+
+
     // create the main crafting object
     api.create = function(){
         var craft = {
@@ -74,9 +84,15 @@
         return craft;
     };
 
+
+
+
     /********* ********** ********** *********/
     //  EVENT
     /********* ********** ********** *********/
+
+
+
 
     // emit an event of the given eventKey with the given values for event, pos, and craft
     api.emitStateEvent = function (eventKey, e, pos, craft) {

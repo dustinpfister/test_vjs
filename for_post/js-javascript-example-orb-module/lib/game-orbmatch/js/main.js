@@ -84,7 +84,7 @@
             container: document.getElementById('canvas-app')
         }),
         // states object
-        currentState: 'gameConfig', //'game', //'mainMenu',
+        currentState: 'crafting', //'gameConfig', //'game', //'mainMenu',
         states : {},
         stopLoop: false
     };
@@ -293,7 +293,6 @@
     sm.states.game = {
         buttons: {},
         start: function(sm){
-            console.log('hello');
             // update ai pouch based on am.aiPouchSettings state
             sm.gameCreateOptions.aiPouch = gameMod.createAIPouch(sm.aiPouchSettings);
             // create new game object

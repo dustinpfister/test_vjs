@@ -1,1 +1,1 @@
-# js-javascript-example-idle-game-wild-plant-grid
+# js-javascript-example-grid-module

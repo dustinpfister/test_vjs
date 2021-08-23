@@ -116,7 +116,7 @@
 
 ### () 0.20.4 - craft object orb pouch started
 * (done) I will want to have a craft.currentPouch property that is an instance of OrbCollection
-* I will want to display the state of the current pouch in all states
+* (done) I will want to display the state of the current pouch in all states
 
 * In byRatio craft state I should be able to push a new orb to the craft.currentPouch orbCollection
 * In dleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection

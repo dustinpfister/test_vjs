@@ -155,12 +155,20 @@
     // create the main crafting object
     api.create = function(){
         var craft = {
+
+            // create by raio settings
+            createByRatio:{
+                elementIndex: 0,
+                ratio: [1, 0, 0, 0],
+                level: 1
+            },
+            
             currentPouch:  OrbCollection.create({
                 key: 'player-pouch-1',
                 faction: 'player',
                 count: 8,
                 homeXStart: 192,
-                homeYStart: 200,
+                homeYStart: 240,
                 points: [[0, 0, 1, 0]]
             }),
             currentState: 'pouchEdit',

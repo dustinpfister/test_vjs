@@ -124,6 +124,35 @@
                    craft.createByRatio.elementIndex += 1;
                    craft.createByRatio.elementIndex %= 4;
                 }
+            },
+            elementUp: {
+                disp: '+',
+                x: 130,
+                y: 50,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, craft, button) {
+                    var cbr = craft.createByRatio;
+                    var el = cbr.ratio[cbr.elementIndex];
+                    el += 1;
+                    el %= 21;
+                    cbr.ratio[cbr.elementIndex] = el;
+
+                }
+            },
+            elementDown: {
+                disp: '-',
+                x: 210,
+                y: 50,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, craft, button) {
+                   var cbr = craft.createByRatio;
+                    var el = cbr.ratio[cbr.elementIndex];
+                    el -= 1;
+                    el = el < 0 ? 20 : el;
+                    cbr.ratio[cbr.elementIndex] = el;
+                }
             }
         },
         draw: function(craft, ctx, canvas){

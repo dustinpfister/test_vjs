@@ -104,7 +104,7 @@
 
 
 
-
+### () 0.20.4 - craft object orb pouch started
 
 ### () 0.20.3 - creafting.js, and crafting state ui started
 * (done) start a update ai puch settings helper
@@ -112,8 +112,7 @@
 * (done) I will want states just like with gameMod, only follow the same pattern worked out in main.js
 * (done) I will need a craftingMod.emitStateEvent public method just like in gameMod
 * (done) use craftingMod.emitStateEvent in crafting state in main.js
-
-* display current state of craft as part of draw method in main.js crafting state
+* (done) display current state of craft as part of draw method in main.js crafting state
 * have back buttons in byRatio, and deleteOrb that bolth return to main menu
 
 ### ( 08/22/2021 ) 0.20.2 - gameConfig buttons

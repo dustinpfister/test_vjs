@@ -35,12 +35,22 @@
         buttons: {
             createOrb: {
                 disp: 'Create Orb',
-                x: 220,
-                y: 200,
-                w: 200,
-                h: 64,
+                x: 50,
+                y: 350,
+                w: 80,
+                h: 80,
                 onClick: function (e, pos, game, button) {
                     console.log('create orb button click');
+                }
+            },
+            deleteOrb: {
+                disp: 'Delete Orb',
+                x: 280,
+                y: 350,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, game, button) {
+                    console.log('delete orb button click');
                 }
             }
         },

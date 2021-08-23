@@ -169,9 +169,9 @@
             back: {
                 disp: 'Main Menu',
                 x: 530,
-                y: 380,
-                w: 75,
-                h: 75,
+                y: 350,
+                w: 80,
+                h: 80,
                 onClick: function (e, pos, sm, button) {
                     setState(sm, 'mainMenu');
                 }

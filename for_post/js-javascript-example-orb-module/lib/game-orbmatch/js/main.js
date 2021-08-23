@@ -14,6 +14,11 @@
         // clamp count
         a.count = a.count > 8 ? 8 : a.count;
         a.count = a.count < 1 ? 1 : a.count;
+        // update level settings
+        a.level = a.level < 1 ? 1: a.level; 
+        a.level = a.level > 10 ? 10: a.level;
+        a.maxOrbLevel = Math.floor(a.level / 10 * 32);
+        a.minOrbLevel = Math.ceil(a.maxOrbLevel * 0.5) - 1;
     };
 
     // start a new state, calling any hook methods when doing so 
@@ -241,10 +246,7 @@
                 onClick: function (e, pos, sm, button) {
                     var a = sm.aiPouchSettings;
                     a.level += 1;
-                    a.level = a.level > 10 ? 10: a.level;
-
-                    a.maxOrbLevel = Math.floor(a.level / 10 * 32);
-                    a.minOrbLevel = Math.ceil(a.maxOrbLevel * 0.5) - 1;
+                    updateAIPouchSettings(sm);
                 }
             },
             levelRangeDown: {
@@ -256,11 +258,7 @@
                 onClick: function (e, pos, sm, button) {
                     var a = sm.aiPouchSettings;
                     a.level -= 1;
-                    a.level = a.level < 1 ? 1: a.level;    
-
-                    a.maxOrbLevel = Math.floor(a.level / 10 * 32);
-                    a.minOrbLevel = Math.ceil(a.maxOrbLevel * 0.5) - 1;
-                
+                    updateAIPouchSettings(sm);                 
                 }
             }
         },

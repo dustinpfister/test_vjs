@@ -101,7 +101,7 @@
             pointerEnd: function (e, pos, craft) {}
         }
     };
-
+    // create orbs by ratio
     states.byRatio = {
         buttons: {
             back: {
@@ -121,7 +121,7 @@
             }
         }
     };
-
+    // delete orbs
     states.deleteOrb = {
         buttons: {
             back: {

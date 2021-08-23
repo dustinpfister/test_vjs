@@ -99,11 +99,12 @@
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
 * have a utils.SMSetState method that works like the setState method in main.js
 
-### () 0.21.0 - button lib started
-* start a button lib that will be used by the main.js, game.js, and crafting.js
-* have a ButtonMod.create
-* have a ButonMod.get
-* have a ButtonMod.check
+### () 0.21.0 - utils methods to helper with buttons
+* start button utils methods that will be used by the main.js, game.js, and crafting.js
+* have a utils.buttonCreate method that will create and return a simgle button object
+* have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
+* have a utils.buttonGetByPos method to help with getting a single button in a collection by pos
+* have a utils.buttonClickCheck method that will call a button.onClick method
 * remove redundant old helpers getButton and buttonCheck in main.js, game.js, and crafting.js
 
 

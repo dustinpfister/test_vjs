@@ -62,7 +62,7 @@
     };
 
 
-    // state object
+    // main state machine object
 
 
 
@@ -105,14 +105,14 @@
     sm.gameCreateOptions.onGameEnd = function(game){
         setState(sm, 'gameConfig');
     };
+    updateAIPouchSettings(sm);
     sm.game = gameMod.create(sm.gameCreateOptions);
 
 
 
     
 
-
-
+    // state objects
 
 
 

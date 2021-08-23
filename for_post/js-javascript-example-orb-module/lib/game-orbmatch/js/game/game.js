@@ -196,7 +196,6 @@
             var points = opt.typer().map(function(elCount){
                 return elCount * Math.pow(2, orbLevel - 1);
             });
-            console.log(points);
             pouch.push( points );
             i += 1;
         }

@@ -1,5 +1,6 @@
 (function () {
 
+    var VER = '0.20.4';
 
 
 
@@ -71,7 +72,7 @@
 
 
     var sm = {
-        ver: '0.20.3',
+        ver: VER,
         aiPouchSettings:{},
         gameCreateOptions: {},
         game: {},

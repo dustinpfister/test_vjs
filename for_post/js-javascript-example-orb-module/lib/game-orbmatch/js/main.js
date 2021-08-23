@@ -189,6 +189,8 @@
             draw.buttonCollection(state.buttons, ctx);
             var craft = sm.craft
             draw.buttonCollection(craft.states[craft.currentState].buttons, ctx);
+            // draw state of current pouch
+            draw.orbCollection(sm, ctx, canvas, craft.currentPouch);
             // disply current craft state
             ctx.fillStyle = 'white';
             ctx.textAlign = 'left';

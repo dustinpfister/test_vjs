@@ -121,6 +121,10 @@
         opt.count = opt.count === undefined ? 1 : opt.count;
         opt.points = opt.points || [1, 0, 0, 0];
         opt.level = opt.level === undefined ? 1 : opt.level;
+
+        opt.homeXStart = opt.homeXStart === undefined ? 0: opt.homeXStart;
+        opt.homeYStart = opt.homeYStart === undefined ? 0: opt.homeYStart;
+
         var collection = {
             faction: opt.faction || 'ai',
             key: opt.key || 'orbCollection',
@@ -143,8 +147,8 @@
             orb.data.i = i; // add index to user data object
             orb.data.faction = collection.faction; // add faction string
             orb.data.collectionkey = collection.key; // collectionKey
-            orb.data.homeX = 32 + (32 + 2) * i;
-            orb.data.homeY = 400;
+            orb.data.homeX = opt.homeXStart + (32 + 2) * i;
+            orb.data.homeY = opt.homeYStart;
             orb.data.attackMode = true;
             orb.data.deltas = [];
             // targets and range

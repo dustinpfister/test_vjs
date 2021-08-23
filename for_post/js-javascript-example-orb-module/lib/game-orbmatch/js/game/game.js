@@ -76,6 +76,8 @@
                 key: 'pouch',
                 faction: playerObj.faction,
                 count: 8,
+                homeXStart: 32,
+                homeYStart: playerObj.faction === 'player' ? 400 : -32,
                 points: opt.pouchPoints || [[0, 0, 1, 0]]
             });
         playerObj.slots = OrbCollection.create({

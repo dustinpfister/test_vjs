@@ -103,14 +103,18 @@
 
 
 
-### () 0.20.5 - utils methods for createing sm style state objects
+
+### () 0.20.5 - utils methods for creating sm style state objects
 * have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
 * have a utils.SMSetState method that works like the setState method in main.js
 
 ### () 0.20.4 - craft object orb pouch started
-
-
+* I will want to have a craft.currentPouch property that is an instance of OrbCollection
+* In byRatio craft state I should be able to push a new orb to the craft.currentPouch orbCollection
+* In dleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection
+* have an initial state of craft.currentPouch
+* craft.currentPouch should always be what is used to create the state of the player pouch when starting a new game
 
 ### ( 08/23/2021 ) 0.20.3 - creafting.js, and crafting state ui started
 * (done) start a update ai puch settings helper

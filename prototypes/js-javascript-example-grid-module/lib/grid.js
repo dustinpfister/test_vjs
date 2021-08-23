@@ -44,18 +44,18 @@
         var cell = api.getCellByPixlePos(grid, x, y);
         if (cell) {
             if (cell === grid.cellSelected) {
-                onUnselect(cell);
+                onUnselect(cell, grid, x, y);
                 grid.cellSelected = null;
             } else {
                 if (grid.cellSelected) {
-                    onUnselect(grid.cellSelected);
+                    onUnselect(grid.cellSelected, grid, x, y);
                 }
                 grid.cellSelected = cell;
-                onSelect(cell);
+                onSelect(cell, grid, x, y);
             }
         } else {
             if (grid.cellSelected) {
-                onUnselect(grid.cellSelected);
+                onUnselect(grid.cellSelected, grid, x, y);
                 grid.cellSelected = null;
             }
         }

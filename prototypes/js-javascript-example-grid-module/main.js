@@ -14,6 +14,13 @@ var sm = {
     states: {}
 };
 
+var onSelected = function(cell, grid, x, y){
+    cell.data.fillStyle = 'red';
+};
+var onUnselected = function(cell, grid, x, y){
+    cell.data.fillStyle = 'white';
+};
+
 // game state
 sm.states.game = {
     update: function (sm, secs) {
@@ -24,8 +31,7 @@ sm.states.game = {
     },
     events: {
         pointerStart: function (e, pos, sm) {
-            var cell = gridMod.getCellByPixlePos(sm.grid, pos.x, pos.y);
-            console.log(cell);
+            gridMod.selectedCheck(sm.grid, pos.x, pos.y, onSelected, onUnselected);
         },
         pointerMove: function (e, pos, sm) {},
         pointerEnd: function (e, pos, sm) {}

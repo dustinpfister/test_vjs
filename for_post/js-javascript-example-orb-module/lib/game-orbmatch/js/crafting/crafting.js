@@ -40,25 +40,20 @@
                 w: 200,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    setState(sm, 'gameConfig');
+                    console.log('create orb button click');
                 }
             }
         },
         start: function(craft){},
         end: function(craft){},
         update: function(craft, secs){},
-        draw: function(craft, ctx, canvas){
-            var state = craft.states.pouchEdit;
-            draw.background(sm, ctx, canvas);
-            draw.buttonCollection(state.buttons, ctx);
-        },
+        draw: function(craft, ctx, canvas){},
         events : {
-            pointerStart: function (e, pos, sm) {
-                //buttonCheck(e, pos, sm);
-                console.log('crafting start');
+            pointerStart: function (e, pos, craft) {
+                buttonCheck(e, pos, craft);
             },
-            pointerMove: function (e, pos, sm) {},
-            pointerEnd: function (e, pos, sm) {}
+            pointerMove: function (e, pos, craft) {},
+            pointerEnd: function (e, pos, craft) {}
         }
     };
 
@@ -99,7 +94,6 @@
     api.emitStateEvent = function (eventKey, e, pos, craft) {
         var state = craft.states[craft.currentState];
         var handler = state.events[eventKey];
-
         if (handler) {
             handler.call(craft, e, pos, craft);
         }

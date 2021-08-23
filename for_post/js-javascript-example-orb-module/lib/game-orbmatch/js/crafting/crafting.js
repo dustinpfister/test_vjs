@@ -113,6 +113,17 @@
                 onClick: function (e, pos, craft, button) {
                     setState(craft, 'pouchEdit');
                 }
+            },
+            elementIndexLoop: {
+                disp: 'Next Index',
+                x: 50,
+                y: 50,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, craft, button) {
+                   craft.createByRatio.elementIndex += 1;
+                   craft.createByRatio.elementIndex %= 4;
+                }
             }
         },
         draw: function(craft, ctx, canvas){

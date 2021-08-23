@@ -94,6 +94,11 @@
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
 
+### () 0.20.1 - utils methods for creating sm style state objects
+* have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
+* have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
+* have a utils.SMSetState method that works like the setState method in main.js
+
 ### () 0.21.0 - button lib started
 * start a button lib that will be used by the main.js, game.js, and crafting.js
 * have a ButtonMod.create
@@ -104,10 +109,9 @@
 
 
 
-### () 0.20.5 - utils methods for creating sm style state objects
-* have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
-* have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
-* have a utils.SMSetState method that works like the setState method in main.js
+
+
+
 
 ### () 0.20.4 - craft object orb pouch started
 * I will want to have a craft.currentPouch property that is an instance of OrbCollection

@@ -16,11 +16,6 @@
 * The AI should make choices when it comes to setting orbs in attackMode or not
 * in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
 
-### () 0.29.1 - utils methods for createing sm style state objects
-* have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
-* have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
-* have a utils.SMSetState method that works like the setState method in main.js
-
 ### () 0.29.0 - fix bugs
 * make it so orbs can be moved from slot to slot
 * fix bug where an orb can be placed in a slot that all ready has an orb
@@ -108,6 +103,10 @@
 
 
 
+### () 0.20.5 - utils methods for createing sm style state objects
+* have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
+* have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
+* have a utils.SMSetState method that works like the setState method in main.js
 
 ### () 0.20.4 - craft object orb pouch started
 

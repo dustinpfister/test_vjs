@@ -27,6 +27,20 @@
             b.onClick.call(sm, e, pos, sm, b);
         }
     };
+    // start a new state, calling any hook methods when doing so 
+    var setState = function(sm, newState){
+        var oldState = sm.states[sm.currentState];
+        var endHook = oldState.end;
+        if(endHook){
+            endHook.call(sm, sm);
+        }
+        sm.currentState = newState;
+        var newState = sm.states[sm.currentState];
+        var startHook = newState.start;
+        if(startHook){
+            startHook.call(sm, sm);
+        }
+    };
 
     var states = {};
 

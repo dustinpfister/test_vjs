@@ -3,29 +3,49 @@
 ### () 0.x.0 - single stat object
 * have all stats like attack, hp, hpMax, heal, ect be props of a single object at orb.data.stats
 
-### 0.x.0 - button lib started
-* start a button lib that will be used by the main.js state machine and game.js
-* have a ButtonMod.create
-* have a ButonMod.get
-* have a ButtonMod.check
-* remove redundant old helpers getButton and buttonCheck in main.js and game.js
-
 ### () 0.x.0 - processTrun.events.onOrbChainAttack
 * what to do for a chain attack event
 
-### () 0.x.0 - AI Improvements II
+
+
+
+
+### () 0.30.0 - AI improvements I
+* The AI should swap in orbs from its pouch during aiTurn game state
 * The AI should swap orbs between slots as needed
+* The AI should make choices when it comes to setting orbs in attackMode or not
 * in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
 
-### () 0.x.0 - fix bugs
+### () 0.29.0 - fix bugs
 * make it so orbs can be moved from slot to slot
 * fix bug where an orb can be placed in a slot that all ready has an orb
 
-### () 0.x.0 - AI improvements I
-* The AI should swap in orbs from its pouch during aiTurn game state
-* The AI should make choices when it comes to setting orbs in attackMode or not
+### () 0.28.0 - target selection
+* target section can be a feature of orb types
+* pure types can always select all orbs in range, and thus divide attack by target array length, and attack all targets pure turn
+* dual types can select a single target in range that is always the most powerful orb in terms of attack
+* triple types can select a single target in range that is always the weakest
+* quad types can select a random count of targets in range
+* recipe types can have these values set depending on the state of the recipeDef object
 
-### () 0.x.0 - recipe types started
+### () 0.27.0 - speed stat  started
+* start a speed stat that will contain props that determine who attacks first, and damage/heal/effect multipliers
+* The speed of an orb determines which orb will attack/buff first
+* speed will not result in additional turns for an orb, but can result in additional attacks, and buffs per turn
+
+### () 0.26.0 - orb.data.stat.splashDamageMulti, and orb.data.stat.splashPer
+* have a splash damage multi, and splash per prop added to the range stat object
+* If caps are hit for range.minRange, and range.plusOnePer more earth elements still makes sense because of range.splashDamageMulti
+
+### () 0.25.0 - minRange, and plusOnePer chance
+* the range stat object can have a minRange prop which is the base range that will be set for a turn
+* the range stat object can have a plusOne prop that is the chance that the effective range will be one more than the min
+* the minRange stat will then have a range between 1 and 3 depending on level
+* the plusOnePer change prop can then have a range between 0 and 1.
+* if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
+* for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
+
+### () 0.24.0 - recipe types started
 * orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
 * orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object
 * orb-client: a ref to the recipe object should be a top level prop of orb such as orb.recipeDef
@@ -34,7 +54,7 @@
 * orbCollection: have a recipe where the focus is more on hp
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an impact on stat objects such as orb.data.attack
 
-### () 0.x.0 - TypeKey orb definition JSON.files
+### () 0.23.0 - TypeKey orb definition JSON.files
 * make a collection of JSON files the define what the stats are for each type, and when done this can be used for recipes too
 ```js
 // pure typeKey example
@@ -68,44 +88,31 @@
 }
 ```
 
-### () 0.x.0 - speed stat  started
-* start a speed stat that will contain props that determine who attacks first, and damage/heal/effect multipliers
-* The speed of an orb determines which orb will attack/buff first
-* speed will not result in additional turns for an orb, but can result in additional attacks, and buffs per turn
-
-### () 0.x.0 - target selection
-* target section can be a feature of orb types
-* pure types can always select all orbs in range, and thus divide attack by target array length, and attack all targets pure turn
-* dual types can select a single target in range that is always the most powerful orb in terms of attack
-* triple types can select a single target in range that is always the weakest
-* quad types can select a random count of targets in range
-* recipe types can have these values set depending on the state of the recipeDef object
-
-### () 0.x.0 - orb.data.stat.splashDamageMulti, and orb.data.stat.splashPer
-* have a splash damage multi, and splash per prop added to the range stat object
-* If caps are hit for range.minRange, and range.plusOnePer more earth elements still makes sense because of range.splashDamageMulti
-
-### () 0.x.0 - minRange, and plusOnePer chance
-* the range stat object can have a minRange prop which is the base range that will be set for a turn
-* the range stat object can have a plusOne prop that is the chance that the effective range will be one more than the min
-* the minRange stat will then have a range between 1 and 3 depending on level
-* the plusOnePer change prop can then have a range between 0 and 1.
-* if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
-* for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
-
-### () 0.21.0 - gameOptions game state
+### () 0.22.0 - gameOptions game state
 * I should have a game options button in the upper right corner of the canvas
 * the game options button allows for entering into a game options state
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
 
+### () 0.21.0 - button lib started
+* start a button lib that will be used by the main.js, game.js, and crafting.js
+* have a ButtonMod.create
+* have a ButonMod.get
+* have a ButtonMod.check
+* remove redundant old helpers getButton and buttonCheck in main.js, game.js, and crafting.js
 
 
 
-### () 0.20.3 - crafting state ui
+
+
+
+### () 0.20.3 - creafting.js, and crafting state ui started
 * (done) start a update ai puch settings helper
-* I will want to start a new crafting lib
-* I will want states just like with gameMod, only follow the same pattern worked out in main.js
+* (done) I will want to start a new crafting lib
+* (done) I will want states just like with gameMod, only follow the same pattern worked out in main.js
+* I will need a craftingMod.emitStateEvent public method just like in gameMod
+* use craftingMod.emitStateEvent in crafting state in main.js
+
 
 ### ( 08/22/2021 ) 0.20.2 - gameConfig buttons
 * (done) have buttons that can will be used to increase and decrease the count of ai orbs

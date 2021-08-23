@@ -68,9 +68,23 @@
     // create the main crafting object
     api.create = function(){
         var craft = {
+            currentState: 'pouchEdit',
             states: states // ref to states objects
         };
         return craft;
+    };
+
+    /********* ********** ********** *********/
+    //  EVENT
+    /********* ********** ********** *********/
+
+    // emit an event of the given eventKey with the given values for event, pos, and craft
+    api.emitStateEvent = function (eventKey, e, pos, craft) {
+        var state = craft.states[craft.currentState];
+        var handler = state.events[eventKey];
+        if (handler) {
+            handler.call(craft, e, pos, craft);
+        }
     };
 
 }

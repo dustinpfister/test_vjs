@@ -164,6 +164,9 @@
                    console.log('craft');
                    var cbr = craft.createByRatio;
                    var points = cbr.ratio;
+                   points = points.map(function(el){
+                        return el * Math.pow(2, cbr.level - 1);
+                   });
                    var noc = OrbCollection.create({
                           key: 'new-orb',
                           faction: 'player',
@@ -172,7 +175,7 @@
                           homeYStart: 0,
                           points: points
                      });
-                  console.log(noc);
+                  console.log(noc.orbs[0]);
                 }
             }
         },
@@ -232,7 +235,7 @@
             createByRatio:{
                 elementIndex: 0,
                 ratio: [1, 0, 0, 0],
-                level: 1
+                level: 3
             },
             // the current pouch
             currentPouch:  OrbCollection.create({

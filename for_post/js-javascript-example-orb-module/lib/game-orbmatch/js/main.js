@@ -167,7 +167,7 @@
     sm.states.crafting = {
         buttons: {
             back: {
-                disp: 'Back',
+                disp: 'Main Menu',
                 x: 530,
                 y: 380,
                 w: 75,
@@ -185,6 +185,8 @@
             var state = sm.states.crafting;
             draw.background(sm, ctx, canvas);
             draw.buttonCollection(state.buttons, ctx);
+            var craft = sm.craft
+            draw.buttonCollection(craft.states[craft.currentState].buttons, ctx);
         },
         events : {
             pointerStart: function (e, pos, sm) {

@@ -168,10 +168,10 @@
         buttons: {
             back: {
                 disp: 'Back',
-                x: 220,
-                y: 200,
-                w: 200,
-                h: 64,
+                x: 530,
+                y: 380,
+                w: 75,
+                h: 75,
                 onClick: function (e, pos, sm, button) {
                     setState(sm, 'mainMenu');
                 }

@@ -9,9 +9,5 @@ draw.grid = function (grid, ctx, canvas) {
     grid.cells.forEach(function (cell) {
         ctx.fillStyle = 'white';
         ctx.fillRect(cell.x, cell.y, grid.cellSize, grid.cellSize);
-        // debug text
-        //ctx.fillStyle = 'white';
-        //ctx.textBaseline = 'top';
-        //ctx.fillText(cell.data.fertPoints, cell.x, cell.y);
     });
 };

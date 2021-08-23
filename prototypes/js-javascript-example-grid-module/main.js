@@ -6,7 +6,10 @@ var sm = {
         width: 640,
         height: 480
     }),
-    grid: gridMod.create(),
+    grid: gridMod.create({
+        xOffset: 32,
+        yOffset: 32
+    }),
     currentState: 'game',
     states: {}
 };

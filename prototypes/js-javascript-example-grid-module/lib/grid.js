@@ -3,7 +3,7 @@
     api.create = function (opt) {
         opt = opt || {};
         var grid = {
-            cellSelected: null,
+            cellSelected: null, // selected cell ref
             cells: []
         };
         grid.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;

@@ -65,7 +65,7 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
-                    console.log('delete orb button click');
+                    setState(craft, 'deleteOrb');
                 }
             }
         },
@@ -87,7 +87,10 @@
         events: {}
     };
 
-    states.deleteOrb = {};
+    states.deleteOrb = {
+        buttons: {},
+        events: {}
+    };
 
 
 

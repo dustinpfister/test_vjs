@@ -159,6 +159,8 @@
                 key: 'player-pouch-1',
                 faction: 'player',
                 count: 8,
+                homeXStart: 192,
+                homeYStart: 200,
                 points: [[0, 0, 1, 0]]
             }),
             currentState: 'pouchEdit',

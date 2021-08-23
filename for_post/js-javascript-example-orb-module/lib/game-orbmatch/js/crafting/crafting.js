@@ -147,7 +147,7 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
-                   var cbr = craft.createByRatio;
+                    var cbr = craft.createByRatio;
                     var el = cbr.ratio[cbr.elementIndex];
                     el -= 1;
                     el = el < 0 ? 20 : el;
@@ -161,7 +161,18 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
-                   
+                   console.log('craft');
+                   var cbr = craft.createByRatio;
+                   var points = cbr.ratio;
+                   var noc = OrbCollection.create({
+                          key: 'new-orb',
+                          faction: 'player',
+                          count: 1,
+                          homeXStart: 0,
+                          homeYStart: 0,
+                          points: points
+                     });
+                  console.log(noc);
                 }
             }
         },

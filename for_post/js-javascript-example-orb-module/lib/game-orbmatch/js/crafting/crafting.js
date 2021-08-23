@@ -155,14 +155,13 @@
     // create the main crafting object
     api.create = function(){
         var craft = {
-
             // create by raio settings
             createByRatio:{
                 elementIndex: 0,
                 ratio: [1, 0, 0, 0],
                 level: 1
             },
-            
+            // the current pouch
             currentPouch:  OrbCollection.create({
                 key: 'player-pouch-1',
                 faction: 'player',
@@ -174,7 +173,6 @@
             currentState: 'pouchEdit',
             states: states // ref to states objects
         };
-        console.log(craft);
         return craft;
     };
 

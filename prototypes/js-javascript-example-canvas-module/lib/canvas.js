@@ -1,26 +1,36 @@
 
 (function(api){
-    // create a canvas element
-    api.createCanvas = function (opt) {
+
+    // create a single layer object
+    var createLayer = function(opt){
         opt = opt || {};
-        opt.container = opt.container || document.getElementById('canvas-app') || document.body;
-        opt.canvas = document.createElement('canvas');
-        opt.ctx = opt.canvas.getContext('2d');
-        // assign the 'canvas_example' className
-        opt.canvas.className = 'canvas_example';
+        var layer = {};
+        // a layer should have a container
+        layer.container = opt.container || document.getElementById('canvas-app') || document.body;
+        layer.canvas = document.createElement('canvas');
+        layer.ctx = layer.canvas.getContext('2d');
+        // assign the 'canvas_layer' className
+        layer.canvas.className = 'canvas_layer';
         // set native width
-        opt.canvas.width = opt.width === undefined ? 320 : opt.width;
-        opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+        layer.canvas.width = opt.width === undefined ? 320 : opt.width;
+        layer.canvas.height = opt.height === undefined ? 240 : opt.height;
         // translate by 0.5, 0.5
-        opt.ctx.translate(0.5, 0.5);
+        layer.ctx.translate(0.5, 0.5);
         // disable default action for onselectstart
-        opt.canvas.onselectstart = function () {
+        layer.canvas.onselectstart = function () {
             return false;
         }
         // append canvas to container
-        opt.container.appendChild(opt.canvas);
-        return opt;
+        layer.container.appendChild(layer.canvas);
+        return layer;
     };
+
+    // create just a single layer object
+    api.createLayer = function (opt) {
+         return createLayer(opt);
+    };
+
+/*
     // get a canvas relative position that is adjusted for scale
     api.getCanvasRelative = function (e) {
         var canvas = e.target,
@@ -68,4 +78,5 @@
         canvas.addEventListener('touchmove', handler, options);
         canvas.addEventListener('touchend', handler, options);
     };
+*/
 }(this['canvasMod'] = {}));

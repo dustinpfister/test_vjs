@@ -17,34 +17,6 @@
         return orb.data.inRangeOrb;
     };
 
-    // get a button that was clicked for the current state and if so which one.
-    // This will return a ref to the button, or null
-    var getButton = function (game, x, y) {
-        var state = gameStates[game.currentState];
-        var buttons = state.buttons;
-        var keys = Object.keys(buttons);
-        var i = 0,
-        buttonKey,
-        b,
-        len = keys.length;
-        while (i < len) {
-            buttonKey = keys[i];
-            b = buttons[buttonKey];
-            if (utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)) {
-                return b;
-            }
-            i += 1;
-        }
-        return null;
-    };
-
-    var buttonCheck = function (e, pos, game) {
-        var b = getButton(game, pos.x, pos.y);
-        if (b) {
-            b.onClick.call(b, e, pos, game, b);
-        }
-    };
-
     // create a player/ai object
     var getOrbDataTotal = function (game, faction, objKey, propKey, attackMode) {
         return game[faction].slots.orbs.reduce(function (acc, orb) {
@@ -252,7 +224,7 @@
         },
         events: {
             onPointerStart: function (e, pos, game) {
-                buttonCheck(e, pos, game);
+                utils.buttonCheck(e, pos, game);
                 // set selected orb, for the sake of displaying info
                 game.selectedOrb = null;
                 var orb = OrbCollection.getOrbAtPos(game.player.slots, pos.x, pos.y);
@@ -301,7 +273,7 @@
         events: {
             onPointerStart: function (e, pos, game) {
                 // button check
-                buttonCheck(e, pos, game);
+                utils.buttonCheck(e, pos, game);
                 game.selectedOrb = null;
                 // clicked a pouch orb
                 var orb = OrbCollection.getOrbAtPos(game.player.pouch, pos.x, pos.y);
@@ -384,7 +356,7 @@
         },
         events: {
             onPointerStart: function (e, pos, game) {
-                buttonCheck(e, pos, game);
+                utils.buttonCheck(e, pos, game);
                 var orb = OrbCollection.getOrbAtPos(game.player.slots, pos.x, pos.y);
                 if (orb) {
                     if (orb.type != 'null') {

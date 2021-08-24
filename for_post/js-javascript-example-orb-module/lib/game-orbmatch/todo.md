@@ -113,8 +113,7 @@
 * (done) have a utils.buttonCheck method that will call a button.onClick method
 * (done) use utils.buttonCheck in main.js
 * (done) use utils.buttonCheck in crafting.js
-
-* game.gameStates should just be game.states
+* (done) game.gameStates should just be game.states
 * use utils.buttonCheck in game.js
 
 * remove redundant old helpers getButton and buttonCheck in main.js, game.js, and crafting.js

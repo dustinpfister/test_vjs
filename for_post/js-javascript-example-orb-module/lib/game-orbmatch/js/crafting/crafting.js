@@ -1,6 +1,7 @@
 (function (api) {
 
 
+    var START_POUCH = [[8, 0, 8, 0],[0, 0, 16, 0],[64, 0, 0, 0]];
 
 
 
@@ -78,7 +79,7 @@
                 count: 8,
                 homeXStart: 192,
                 homeYStart: 260,
-                points: [[4, 0, 4, 0],[0, 0, 4, 0],[4, 0, 0, 0]]
+                points: START_POUCH
             }),
             currentState: 'pouchEdit',
             states: states // ref to states objects

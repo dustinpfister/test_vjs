@@ -4,6 +4,7 @@
     // create a single layer object
     var createLayer = function(opt){
         opt = opt || {};
+        opt.append = opt.append === undefined ? true : false;
         var layer = {};
         // a layer should have a container
         layer.container = opt.container || document.getElementById('canvas-app') || document.body;
@@ -21,12 +22,34 @@
             return false;
         }
         // append canvas to container
-        layer.container.appendChild(layer.canvas);
+        if(opt.append){
+            layer.container.appendChild(layer.canvas);
+        }
         return layer;
     };
 
     // create just a single layer object
     api.createLayer = function (opt) {
+         return createLayer(opt);
+    };
+
+    // create a stack of layers as an 'Array Like' Object
+    api.createLayerStack = function (opt) {
+         opt = opt || {};
+         // createing an array like object
+         var stack = {
+             length: opt.length === undefined ? 2 : opt.length,
+             container: opt.container || document.getElementById('canvas-app') || document.body
+         };
+         // layer options
+         var layerOpt = {
+             container: stack.container
+         };
+         var i = 0;
+         while(i < stack.length){
+             stack[i] = createLayer(layerOpt);
+             i += 1;
+         }
          return createLayer(opt);
     };
 

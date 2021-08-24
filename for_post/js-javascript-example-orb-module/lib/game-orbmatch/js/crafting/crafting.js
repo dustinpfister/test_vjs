@@ -78,7 +78,7 @@
                 count: 8,
                 homeXStart: 192,
                 homeYStart: 260,
-                points: [[0, 0, 1, 0]]
+                points: [[4, 0, 4, 0],[0, 0, 4, 0],[4, 0, 0, 0]]
             }),
             currentState: 'pouchEdit',
             states: states // ref to states objects

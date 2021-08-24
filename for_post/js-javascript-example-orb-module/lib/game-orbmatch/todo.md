@@ -98,18 +98,24 @@
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
 
+
+
+
+
 ### () 0.21.1 - utils methods for creating sm style state objects
 * have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
 * have a utils.SMSetState method that works like the setState method in main.js
 
-### () 0.21.0 - utils methods to helper with buttons
+### () 0.21.0 - utils methods to help with buttons
 * start button utils methods that will be used by the main.js, game.js, and crafting.js
 * have a utils.buttonCreate method that will create and return a simgle button object
 * have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
 * have a utils.buttonGetByPos method to help with getting a single button in a collection by pos
 * have a utils.buttonClickCheck method that will call a button.onClick method
 * remove redundant old helpers getButton and buttonCheck in main.js, game.js, and crafting.js
+
+
 
 
 

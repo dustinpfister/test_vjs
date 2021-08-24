@@ -1,6 +1,6 @@
 (function () {
 
-    var VER = '0.20.6';
+    var VER = '0.21.0';
 
 
 
@@ -85,7 +85,7 @@
             container: document.getElementById('canvas-app')
         }),
         // states object
-        currentState: 'crafting', //'crafting' 'game' 'gameConfig' 'mainMenu',
+        currentState: 'mainMenu', //'crafting' 'game' 'gameConfig' 'mainMenu',
         states : {},
         stopLoop: false
     };

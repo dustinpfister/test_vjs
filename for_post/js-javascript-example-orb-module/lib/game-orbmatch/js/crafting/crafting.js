@@ -12,32 +12,6 @@
 
 
 
-
-    // buttons
-    var getButton = function (sm, x, y) {
-        var state = sm.states[sm.currentState];
-        var buttons = state.buttons;
-        var keys = Object.keys(buttons);
-        var i = 0,
-        buttonKey,
-        b,
-        len = keys.length;
-        while (i < len) {
-            buttonKey = keys[i];
-            b = buttons[buttonKey];
-            if (utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)) {
-                return b;
-            }
-            i += 1;
-        }
-        return null;
-    };
-    var buttonCheck = function (e, pos, sm) {
-        var b = getButton(sm, pos.x, pos.y);
-        if (b) {
-            b.onClick.call(sm, e, pos, sm, b);
-        }
-    };
     // start a new state, calling any hook methods when doing so 
     var setState = function(sm, newState){
         var oldState = sm.states[sm.currentState];
@@ -128,7 +102,7 @@
         draw: function(craft, ctx, canvas){},
         events : {
             pointerStart: function (e, pos, craft) {
-                buttonCheck(e, pos, craft);
+                utils.buttonCheck(e, pos, craft);
             },
             pointerMove: function (e, pos, craft) {},
             pointerEnd: function (e, pos, craft) {}
@@ -270,7 +244,7 @@
         },
         events: {
             pointerStart: function (e, pos, craft) {
-                buttonCheck(e, pos, craft);
+                utils.buttonCheck(e, pos, craft);
             }
         }
     };
@@ -291,7 +265,7 @@
         draw: function(craft, ctx, canvas){},
         events: {
             pointerStart: function (e, pos, craft) {
-                buttonCheck(e, pos, craft);
+                utils.buttonCheck(e, pos, craft);
 console.log('click in delete state!');
 var orb = OrbCollection.getOrbAtPos(craft.currentPouch, pos.x, pos.y);
 console.log(orb);

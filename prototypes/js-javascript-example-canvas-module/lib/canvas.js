@@ -8,6 +8,9 @@
         var layer = {};
         // a layer should have a container
         layer.container = opt.container || document.getElementById('canvas-app') || document.body;
+        if(typeof layer.container === 'string'){
+            layer.container = document.querySelector(layer.container);
+        }
         layer.canvas = document.createElement('canvas');
         layer.ctx = layer.canvas.getContext('2d');
         // assign the 'canvas_layer' className
@@ -43,7 +46,8 @@
          };
          // layer options
          var layerOpt = {
-             container: stack.container
+             container: stack.container,
+             append: true
          };
          var i = 0;
          while(i < stack.length){

@@ -3,7 +3,9 @@ var sm = {
     fps: 30,
     lt: new Date(),
     currentState: 'game',
-    layers: canvasMod.createLayer(),
+    layers: canvasMod.createLayerStack({
+        container: '#canvas-app'
+    }),
     states: {}
 };
 

@@ -56,6 +56,38 @@
 
 
     /********* ********** ********** *********/
+    //  CREATE 
+    /********* ********** ********** *********/
+
+
+
+
+    // create the main crafting object
+    api.create = function(){
+        var craft = {
+            // create by raio settings
+            createByRatio:{
+                elementIndex: 0,
+                ratio: [1, 0, 0, 0],
+                level: 3
+            },
+            // the current pouch
+            currentPouch:  OrbCollection.create({
+                key: 'player-pouch-1',
+                faction: 'player',
+                count: 8,
+                homeXStart: 192,
+                homeYStart: 260,
+                points: [[0, 0, 1, 0]]
+            }),
+            currentState: 'pouchEdit',
+            states: states // ref to states objects
+        };
+        return craft;
+    };
+
+
+    /********* ********** ********** *********/
     //  STATES 
     /********* ********** ********** *********/
 
@@ -262,40 +294,6 @@
                 buttonCheck(e, pos, craft);
             }
         }
-    };
-
-
-
-
-    /********* ********** ********** *********/
-    //  CREATE 
-    /********* ********** ********** *********/
-
-
-
-
-    // create the main crafting object
-    api.create = function(){
-        var craft = {
-            // create by raio settings
-            createByRatio:{
-                elementIndex: 0,
-                ratio: [1, 0, 0, 0],
-                level: 3
-            },
-            // the current pouch
-            currentPouch:  OrbCollection.create({
-                key: 'player-pouch-1',
-                faction: 'player',
-                count: 8,
-                homeXStart: 192,
-                homeYStart: 260,
-                points: [[0, 0, 1, 0]]
-            }),
-            currentState: 'pouchEdit',
-            states: states // ref to states objects
-        };
-        return craft;
     };
 
 

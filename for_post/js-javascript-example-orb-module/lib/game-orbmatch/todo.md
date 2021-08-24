@@ -7,8 +7,12 @@
 * what to do for a chain attack event
 
 
-
-
+### () 0.x.0 - Array of Pouch collections, and Pouch mangament for crafting state
+* Make it so there is an array of craft.playerPouches in a craft object.
+* The currentPouch is then a refernce to a pouch in the craft.playerPouches
+* Make it so that the player can select a current pouch in the crafting state
+* the player should be able to delete a pouch
+* the player should be able to transfer an orb from one pouch to another
 
 ### () 0.30.0 - AI improvements I
 * The AI should swap in orbs from its pouch during aiTurn game state
@@ -111,9 +115,8 @@
 
 
 
-
 ### () 0.20.5 - apply craft pouch to game, and delete puch orbs in crafting state
-* mutate level setting for craft.createByRatio
+* (done) mutate level setting for craft.createByRatio
 * have an initial state of craft.currentPouch
 * craft.currentPouch should always be what is used to create the state of the player pouch when starting a new game
 * In dleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection

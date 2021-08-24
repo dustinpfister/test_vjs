@@ -10,7 +10,7 @@
 ## () - gridMod.createFromArray method
 * have a gridMod.createFromArray method that will create a grid object from an array of arrays
 
-## () gridMod.get method
+## () - gridMod.get method
 * have a basic gridMod.getMethod that can be used to get a cell by index, cell position
 
 ## ( done 08/23/2021 ) - first state of module

@@ -117,7 +117,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 
 
-utils.getButton = function (sm, x, y) {
+utils.buttonGet = function (sm, x, y) {
     var state = sm.states[sm.currentState];
     var buttons = state.buttons;
     var keys = Object.keys(buttons);
@@ -136,7 +136,7 @@ utils.getButton = function (sm, x, y) {
     return null;
 };
 utils.buttonCheck = function (e, pos, sm) {
-    var b = utils.getButton(sm, pos.x, pos.y);
+    var b = utils.buttonGet(sm, pos.x, pos.y);
     if (b) {
         b.onClick.call(sm, e, pos, sm, b);
     }

@@ -108,11 +108,12 @@
 * have a utils.SMSetState method that works like the setState method in main.js
 
 ### () 0.21.0 - utils methods to help with buttons
-* start button utils methods that will be used by the main.js, game.js, and crafting.js
+* (done) start button utils methods that will be used by the main.js, game.js, and crafting.js
+* (done) have a utils.buttonGet method to help with getting a single button in a collection by pos
+* (done) have a utils.buttonCheck method that will call a button.onClick method
+
 * have a utils.buttonCreate method that will create and return a simgle button object
 * have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
-* have a utils.buttonGetByPos method to help with getting a single button in a collection by pos
-* have a utils.buttonClickCheck method that will call a button.onClick method
 * remove redundant old helpers getButton and buttonCheck in main.js, game.js, and crafting.js
 
 

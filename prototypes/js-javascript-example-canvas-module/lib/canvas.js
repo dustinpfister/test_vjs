@@ -41,7 +41,6 @@
          opt = opt || {};
          // createing an array like object
          var stack = {
-             append: opt.append === undefined ? true : opt.append,
              length: opt.length === undefined ? 2 : opt.length,
              container: opt.container || document.getElementById('canvas-app') || document.body
          };

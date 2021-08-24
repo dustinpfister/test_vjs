@@ -1,6 +1,6 @@
 (function () {
 
-    var VER = '0.20.4';
+    var VER = '0.20.5';
 
 
 

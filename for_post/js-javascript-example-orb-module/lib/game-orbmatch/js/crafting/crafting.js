@@ -154,6 +154,30 @@
                     cbr.ratio[cbr.elementIndex] = el;
                 }
             },
+            levelUp: {
+                disp: 'level+',
+                x: 130,
+                y: 140,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, craft, button) {
+                    var cbr = craft.createByRatio;
+                    //var el = cbr.ratio[cbr.elementIndex];
+                    //el += 1;
+                    //el %= 21;
+                    //cbr.ratio[cbr.elementIndex] = el;
+
+                }
+            },
+            levelDown: {
+                disp: 'level-',
+                x: 210,
+                y: 140,
+                w: 80,
+                h: 80,
+                onClick: function (e, pos, craft, button) {
+                }
+            },
             craft: {
                 disp: 'Craft',
                 x: 280,

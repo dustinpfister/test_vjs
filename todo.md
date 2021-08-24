@@ -42,8 +42,28 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start new s7 section for js-document-body that has to do with style
 * start circle app for js-math-pi
 
-### () for 08/25/2021
+
+### (done) for 08/27/2021
+* work on js-javascript-example-orb-module
+* write new post onjs-javascript-example-canvas-module
+
+### (done) for 08/26/2021
+* work on js-javascript-example-orb-module
+* work on new js-javascript-example-canvas-module proto folder
+
+### (done) for 08/25/2021
+* work on js-javascript-example-orb-module
 * edit js-copying-vs-referencing-objects-in-javascript
+* work on new js-javascript-example-canvas-module proto folder
+
+### (done) for 08/24/2021
+* (done) edit js-copying-vs-referencing-objects-in-javascript
+* (done) work on new js-javascript-example-canvas-module proto folder
+* work on js-javascript-example-orb-module
+
+### (done) for 08/23/2021
+* (done) work on js-javascript-example-orb-module
+
 
 ### (done) for 08/13/2021
 * (done) work on js-javascript-example-idle-game-wild
@@ -64,7 +84,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * (done) edit js-javascript-let
 
 ### (done) for 07/31/2021
-* work on js-javascript-example-orb-module
+* (done) work on js-javascript-example-orb-module
 * (done) edit js-function-one-to-one
 * (done) edit js-function-many-to-one
 * (done) build

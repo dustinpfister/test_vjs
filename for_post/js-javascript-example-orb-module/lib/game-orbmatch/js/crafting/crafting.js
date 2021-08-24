@@ -162,6 +162,10 @@
                 h: 80,
                 onClick: function (e, pos, craft, button) {
                     var cbr = craft.createByRatio;
+                    var level = cbr.level;
+                    level += 1;
+                    level %= 100;
+                    cbr.level = level;
                     //var el = cbr.ratio[cbr.elementIndex];
                     //el += 1;
                     //el %= 21;
@@ -176,6 +180,11 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
+                    var cbr = craft.createByRatio;
+                    var level = cbr.level;
+                    level -= 1;
+                    level = level < 1 ? 1 : level;
+                    cbr.level = level;
                 }
             },
             craft: {

@@ -113,14 +113,14 @@
 
 
 
+### () 0.20.6 - delete puch orbs in crafting state
+* In deleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection
 
-
-### () 0.20.5 - apply craft pouch to game, and delete puch orbs in crafting state
+### ( 08/24/2021 ) 0.20.5 - apply craft pouch to game
 * (done) mutate level setting for craft.createByRatio
 * (done) have an initial state of craft.currentPouch
-* have a craftingMod.getCurrentPoints method
-* craft.currentPouch should always be what is used to create the state of the player pouch when starting a new game
-* In dleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection
+* (done) have a craftingMod.getCurrentPoints method
+* (done) craft.currentPouch should always be what is used to create the state of the player pouch when starting a new game
 
 ### ( 08/23/2021 ) 0.20.4 - craft object orb pouch started
 * (done) I will want to have a craft.currentPouch property that is an instance of OrbCollection

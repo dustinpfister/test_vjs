@@ -254,7 +254,6 @@
                   if(i < 8){
                        OrbCollection.setOrbPropsToOrb(craft.currentPouch, i, newOrb);
                   }
-console.log(api.getCurrentPoints(craft));
                 }
             }
         },

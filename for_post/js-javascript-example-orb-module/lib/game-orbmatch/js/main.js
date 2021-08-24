@@ -85,7 +85,7 @@
             container: document.getElementById('canvas-app')
         }),
         // states object
-        currentState: 'game', //'crafting' 'game' 'gameConfig' 'mainMenu',
+        currentState: 'crafting', //'crafting' 'game' 'gameConfig' 'mainMenu',
         states : {},
         stopLoop: false
     };
@@ -316,7 +316,7 @@
             // update ai pouch based on sm.aiPouchSettings state
             sm.gameCreateOptions.aiPouch = gameMod.createAIPouch(sm.aiPouchSettings);
             // set player pouch to what is set up in the craft object
-            sm.gameCreateOptions.aiPouch = gameMod.createAIPouch(sm.aiPouchSettings);
+             sm.gameCreateOptions.playerPouch = craftingMod.getCurrentPoints(sm.craft);
             // create new game object
             sm.game = gameMod.create(sm.gameCreateOptions);
         },

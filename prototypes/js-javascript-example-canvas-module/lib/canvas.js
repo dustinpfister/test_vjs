@@ -41,20 +41,29 @@
          opt = opt || {};
          // createing an array like object
          var stack = {
+             append: opt.append === undefined ? true : false,
              length: opt.length === undefined ? 2 : opt.length,
              container: opt.container || document.getElementById('canvas-app') || document.body
          };
+         if(typeof stack.container === 'string'){
+            stack.container = document.querySelector(stack.container);
+         }
+         // append
+         if(opt.append){
+            stack.container.appendChild(stack.canvas);
+         }
          // layer options
          var layerOpt = {
              container: stack.container,
              append: true
          };
+         // create layers for the stack
          var i = 0;
          while(i < stack.length){
              stack[i] = createLayer(layerOpt);
              i += 1;
          }
-         return createLayer(opt);
+         return stack;
     };
 
 /*

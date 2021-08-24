@@ -16,7 +16,8 @@ sm.states.game = {
     update: function (sm, secs) {
     },
     draw: function (sm, ctx, canvas) {
-        //draw.background(sm, ctx, canvas);
+        var layer = sm.layers[1];
+        draw.background(sm, ctx, canvas);
     },
     events: {
         pointerStart: function (e, pos, sm) {},
@@ -44,7 +45,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (secs >= 1 / sm.fps) {
         state.update(sm, secs);
-        //state.draw(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
+        state.draw(sm, sm.layers[1].ctx, sm.layers[1].canvas);
         sm.lt = now;
     }
 };

@@ -42,6 +42,9 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start new s7 section for js-document-body that has to do with style
 * start circle app for js-math-pi
 
+### () for 08/25/2021
+* edit js-copying-vs-referencing-objects-in-javascript
+
 ### (done) for 08/13/2021
 * (done) work on js-javascript-example-idle-game-wild
 * (done) start post on js-javascript-example-idle-game-wild

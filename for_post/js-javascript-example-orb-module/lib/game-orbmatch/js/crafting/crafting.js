@@ -316,6 +316,16 @@
         }
     };
 
+
+
+
+    /********* ********** ********** *********/
+    //  OTHER PUBLIC METHODS
+    /********* ********** ********** *********/
+
+
+
+
     api.getCurrentPoints = function(craft){
         return craft.currentPouch.orbs.map(function(orb){
             return orb.points;

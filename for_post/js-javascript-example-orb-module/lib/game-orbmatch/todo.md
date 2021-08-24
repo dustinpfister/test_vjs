@@ -100,14 +100,21 @@
 
 
 
-
+### () 0.21.2 - utils methods for creating button collections
+* have a utils.buttonCreate method that will create and return a simgle button object
+* have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
 
 ### () 0.21.1 - utils methods for creating sm style state objects
 * have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
 * have a utils.SMSetState method that works like the setState method in main.js
 
-### () 0.21.0 - utils methods to help with buttons
+
+
+
+
+
+### ( 08/24/2021 ) 0.21.0 - utils methods to help with buttons
 * (done) start button utils methods that will be used by the main.js, game.js, and crafting.js
 * (done) have a utils.buttonGet method to help with getting a single button in a collection by pos
 * (done) have a utils.buttonCheck method that will call a button.onClick method
@@ -116,13 +123,6 @@
 * (done) game.gameStates should just be game.states
 * (done) use utils.buttonCheck in game.js
 * (done) remove redundant old helpers getButton and buttonCheck in main.js, game.js, and crafting.js
-
-* have a utils.buttonCreate method that will create and return a simgle button object
-* have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
-
-
-
-
 
 ### ( 08/24/2021 ) 0.20.6 - delete puch orbs in crafting state
 * (done) In deleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection

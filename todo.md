@@ -26,7 +26,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * (done) have a todo.md
 * (done) start the post
 
-### () - for 8/20/2021 - new grid module example
+### (done) - for 8/20/2021 - new grid module example
 * start a new js-javascript-example-grid-module proto folder based off of the grid module in wild-plant-grid
 * update js-javascript-example-idle-game-wild-plant-grid with any improvements
 

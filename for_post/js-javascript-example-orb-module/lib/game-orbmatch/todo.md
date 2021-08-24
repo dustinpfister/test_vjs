@@ -112,9 +112,11 @@
 * (done) have a utils.buttonGet method to help with getting a single button in a collection by pos
 * (done) have a utils.buttonCheck method that will call a button.onClick method
 * (done) use utils.buttonCheck in main.js
+* (done) use utils.buttonCheck in crafting.js
 
-* use utils.buttonCheck in crafting.js
+* game.gameStates should just be game.states
 * use utils.buttonCheck in game.js
+
 * remove redundant old helpers getButton and buttonCheck in main.js, game.js, and crafting.js
 * have a utils.buttonCreate method that will create and return a simgle button object
 * have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects

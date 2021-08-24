@@ -135,7 +135,7 @@
     api.create = function (opt) {
         opt = opt || {};
         var game = {
-            gameStates: gameStates,
+            states: gameStates,
             turnNumber: 0,
             currentState: 'playerTurn', //'playerTurnOrbMenu',
             selectedOrb: null,
@@ -460,21 +460,21 @@
             // get targets
             if (orb.type != 'null') {
                 // get targets
-                game.gameStates.processTurn.events.onOrbGetTargets.call(game, game, orb);
+                game.states.processTurn.events.onOrbGetTargets.call(game, game, orb);
                 // if in attackMode and we have targets
                 if (orb.data.attackMode && orb.data.targets.length > 0) {
                     // call on orb attack event
-                    game.gameStates.processTurn.events.onOrbAttack.call(game, game, orb);
+                    game.states.processTurn.events.onOrbAttack.call(game, game, orb);
                 }
                 // if not in attack mode apply buffs to what should be friend targets
                 if (!orb.data.attackMode && orb.data.targets.length > 0) {
-                    game.gameStates.processTurn.events.onOrbBuff.call(game, game, orb);
+                    game.states.processTurn.events.onOrbBuff.call(game, game, orb);
                 }
                 var deadOrbs = orb.data.targets.filter(function (orb) {
                         return orb.data.hp.current <= 0;
                     });
                 deadOrbs.forEach(function (deadOrb) {
-                    game.gameStates.processTurn.events.onOrbDeath.call(game, game, deadOrb);
+                    game.states.processTurn.events.onOrbDeath.call(game, game, deadOrb);
 
                 });
             }

@@ -183,7 +183,7 @@ draw.gameState = function (sm, ctx, canvas) {
     // for current game state
     draw.forGameState[sm.game.currentState](sm, ctx, canvas);
     // buttons
-    var state = sm.game.gameStates[sm.game.currentState],
+    var state = sm.game.states[sm.game.currentState],
     buttons = state.buttons;
     Object.keys(buttons).forEach(function (buttonKey) {
         var b = buttons[buttonKey];

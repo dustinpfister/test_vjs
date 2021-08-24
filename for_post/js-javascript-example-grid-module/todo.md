@@ -3,6 +3,10 @@
 ## () - path finding example
 * have a gridMod.findPath method based on what I have in js-path-find
 
+## () - gridMod.getCellsInBox, and ## () - gridMod.getCellsInRadius
+* a get cells by area method will return a collection of references to cells in a given square area
+* have a get cells in radius method too.
+
 ## () - gridMod.createFromArray method
 * have a gridMod.createFromArray method that will create a grid object from an array of arrays
 

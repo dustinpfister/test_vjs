@@ -1,4 +1,17 @@
 var utils = {};
+
+
+
+
+
+    /********* ********** ********** *********/
+    //  DISTANCE AND BOUNDING BOX
+    /********* ********** ********** *********/
+
+
+
+
+
 // distance
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
@@ -11,6 +24,18 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
         (x1 + w1) < x2 ||
         x1 > (x2 + w2));
 };
+
+
+
+
+
+    /********* ********** ********** *********/
+    //  CANVAS METHODS
+    /********* ********** ********** *********/
+
+
+
+
 // create a canvas element
 utils.createCanvas = function (opt) {
     opt = opt || {};
@@ -80,4 +105,39 @@ utils.canvasPointerEvents = function (canvas, state, events) {
     canvas.addEventListener('touchstart', handler, options);
     canvas.addEventListener('touchmove', handler, options);
     canvas.addEventListener('touchend', handler, options);
+};
+
+
+
+
+    /********* ********** ********** *********/
+    //  BUTTON HELPERS
+    /********* ********** ********** *********/
+
+
+
+
+utils.getButton = function (sm, x, y) {
+    var state = sm.states[sm.currentState];
+    var buttons = state.buttons;
+    var keys = Object.keys(buttons);
+    var i = 0,
+    buttonKey,
+    b,
+    len = keys.length;
+    while (i < len) {
+        buttonKey = keys[i];
+        b = buttons[buttonKey];
+        if (utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)) {
+            return b;
+        }
+        i += 1;
+    }
+    return null;
+};
+utils.buttonCheck = function (e, pos, sm) {
+    var b = utils.getButton(sm, pos.x, pos.y);
+    if (b) {
+        b.onClick.call(sm, e, pos, sm, b);
+    }
 };

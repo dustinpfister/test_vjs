@@ -37,6 +37,7 @@
         }
     };
     // buttons
+/*
     var getButton = function (sm, x, y) {
         var state = sm.states[sm.currentState];
         var buttons = state.buttons;
@@ -61,7 +62,7 @@
             b.onClick.call(sm, e, pos, sm, b);
         }
     };
-
+*/
 
 
 
@@ -156,7 +157,7 @@
         },
         events : {
             pointerStart: function (e, pos, sm) {
-                buttonCheck(e, pos, sm);
+                utils.buttonCheck(e, pos, sm);
             },
             pointerMove: function (e, pos, sm) {},
             pointerEnd: function (e, pos, sm) {}
@@ -201,7 +202,7 @@
         },
         events : {
             pointerStart: function (e, pos, sm) {
-                buttonCheck(e, pos, sm);
+                utils.buttonCheck(e, pos, sm);
                 craftingMod.emitStateEvent('pointerStart', e, pos, sm.craft);
             },
             pointerMove: function (e, pos, sm) {
@@ -303,7 +304,7 @@
         },
         events : {
             pointerStart: function (e, pos, sm) {
-                buttonCheck(e, pos, sm);
+                utils.buttonCheck(e, pos, sm);
             },
             pointerMove: function (e, pos, sm) {},
             pointerEnd: function (e, pos, sm) {}

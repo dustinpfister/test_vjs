@@ -85,7 +85,7 @@
             container: document.getElementById('canvas-app')
         }),
         // states object
-        currentState: 'gameConfig', //'crafting' 'game' 'gameConfig' 'mainMenu',
+        currentState: 'game', //'crafting' 'game' 'gameConfig' 'mainMenu',
         states : {},
         stopLoop: false
     };
@@ -96,12 +96,10 @@
         maxOrbLevel: 1
     };
     sm.gameCreateOptions = {
-        aiPouch: gameMod.createAIPouch(sm.aiPouchSettings),
+        aiPouch: [], // set with gameMod.createAIPouch(sm.aiPouchSettings),
         aiStartOrbs: [3, 2, 1, 0],
         aiAttackModes: [false, false, false, true],
-        playerPouch: [
-            [0, 0, 128, 0], [2, 0, 2, 0], [0, 0, 128, 0]
-        ],
+        playerPouch: [], // set with craftingMod.getCurrentPoints method
         playerStartOrbs: [0, 1, null, 2],
         playerAttackModes: [false, true, false, false],
         onGameEnd: function(){}
@@ -110,13 +108,13 @@
         setState(sm, 'gameConfig');
     };
     updateAIPouchSettings(sm);
-    // first state of game object
-    sm.game = gameMod.create(sm.gameCreateOptions);
     // first state of crafting object
     sm.craft = craftingMod.create();
+    sm.gameCreateOptions.playerPouch = craftingMod.getCurrentPoints(sm.craft);
+    // first state of game object
+    sm.gameCreateOptions.aiPouch = gameMod.createAIPouch(sm.aiPouchSettings);
+    sm.game = gameMod.create(sm.gameCreateOptions);
 
-console.log( craftingMod.getCurrentPoints(sm.craft) );
-    
 
     // state objects
 
@@ -318,7 +316,7 @@ console.log( craftingMod.getCurrentPoints(sm.craft) );
             // update ai pouch based on sm.aiPouchSettings state
             sm.gameCreateOptions.aiPouch = gameMod.createAIPouch(sm.aiPouchSettings);
             // set player pouch to what is set up in the craft object
-            console.log(sm.craft);
+            sm.gameCreateOptions.aiPouch = gameMod.createAIPouch(sm.aiPouchSettings);
             // create new game object
             sm.game = gameMod.create(sm.gameCreateOptions);
         },

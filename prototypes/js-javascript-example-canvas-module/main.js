@@ -3,15 +3,18 @@ var sm = {
     fps: 30,
     lt: new Date(),
     currentState: 'game',
+    layers: canvasMod.createCanvas(),
     states: {}
 };
+
+console.log(sm.layers);
 
 // game state
 sm.states.game = {
     update: function (sm, secs) {
     },
     draw: function (sm, ctx, canvas) {
-        draw.background(sm, ctx, canvas);
+        //draw.background(sm, ctx, canvas);
     },
     events: {
         pointerStart: function (e, pos, sm) {},
@@ -20,6 +23,7 @@ sm.states.game = {
     }
 };
 
+/*
 utils.canvasPointerEvents(sm.canvasObj.canvas, sm, {
     pointerStart: function (e, pos, sm) {
         var state = sm.states[sm.currentState];
@@ -29,6 +33,7 @@ utils.canvasPointerEvents(sm.canvasObj.canvas, sm, {
         }
     }
 });
+*/
 
 var loop = function () {
     var now = new Date(),
@@ -37,7 +42,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (secs >= 1 / sm.fps) {
         state.update(sm, secs);
-        state.draw(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
+        //state.draw(sm, sm.canvasObj.ctx, sm.canvasObj.canvas);
         sm.lt = now;
     }
 };

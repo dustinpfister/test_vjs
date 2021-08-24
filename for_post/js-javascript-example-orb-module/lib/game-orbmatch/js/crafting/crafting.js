@@ -292,6 +292,15 @@
         events: {
             pointerStart: function (e, pos, craft) {
                 buttonCheck(e, pos, craft);
+console.log('click in delete state!');
+var orb = OrbCollection.getOrbAtPos(craft.currentPouch, pos.x, pos.y);
+console.log(orb);
+
+if(orb){
+   orb.type = 'null';
+}
+
+
             }
         }
     };
@@ -327,6 +336,10 @@
 
     api.getCurrentPoints = function(craft){
         return craft.currentPouch.orbs.map(function(orb){
+            // ensure [0,0,0,0] if null
+            if(orb.type === 'null'){
+                return [0, 0, 0, 0];
+            }
             return orb.points;
         });
     };

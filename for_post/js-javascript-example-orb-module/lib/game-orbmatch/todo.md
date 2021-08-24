@@ -113,8 +113,8 @@
 
 
 
-### () 0.20.6 - delete puch orbs in crafting state
-* In deleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection
+### ( 08/24/2021 ) 0.20.6 - delete puch orbs in crafting state
+* (done) In deleteOrb craft state I should be able to delete an orb from the craft.currentPouch orbCollection
 
 ### ( 08/24/2021 ) 0.20.5 - apply craft pouch to game
 * (done) mutate level setting for craft.createByRatio

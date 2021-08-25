@@ -1,0 +1,14 @@
+body{
+	background:red;
+}
+#canvas-app{
+	position:absolute;
+	background:green;
+	left:20px;
+	top:20px;
+}
+.canvas_layer{
+	position:absolute;
+	left:0px;
+	top:0px
+}

@@ -15,9 +15,8 @@ console.log(sm.layers);
 sm.states.game = {
     update: function (sm, secs) {
     },
-    draw: function (sm, ctx, canvas) {
-        var layer = sm.layers[1];
-        draw.background(sm, ctx, canvas);
+    draw: function (sm, stack) {
+        draw.background(sm, stack[0].ctx, stack[0].canvas);
     },
     events: {
         pointerStart: function (e, pos, sm) {},
@@ -45,7 +44,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (secs >= 1 / sm.fps) {
         state.update(sm, secs);
-        state.draw(sm, sm.layers[1].ctx, sm.layers[1].canvas);
+        state.draw(sm, sm.layers);
         sm.lt = now;
     }
 };

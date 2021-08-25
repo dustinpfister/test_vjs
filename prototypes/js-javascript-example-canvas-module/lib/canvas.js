@@ -20,7 +20,7 @@
     // create and return a canvas pointer event handler for a stack
     var canvasPointerEventHandler = function (stack, state, events) {
         return function (e) {
-            var pos = api.getCanvasRelative(e),
+            var pos = getCanvasRelative(e),
             handler = null;
             e.preventDefault();
             if (e.type === 'mousedown' || e.type === 'touchstart') {
@@ -39,9 +39,9 @@
     };
 
     // attach canvas pointer events
-    var attachCanvasPointerEvents = function (stackstate, events) {
-        var handler = api.canvasPointerEventHandler(stack, state, events),
-        canvas = stack[0].canvas,
+    var attachCanvasPointerEvents = function (stack) {
+        var handler = canvasPointerEventHandler(stack, stack.state, stack.events),
+        canvas = stack[stack.length - 1].canvas,
         options = {
             passive: false
         }
@@ -95,7 +95,8 @@
         var stack = {
             length: opt.length === undefined ? 2 : opt.length,
             container: opt.container || document.getElementById('canvas-app') || document.body,
-            events: {}
+            events: opt.events || {},
+            state: opt.state || {}
         };
         if (typeof stack.container === 'string') {
             stack.container = document.querySelector(stack.container);
@@ -111,6 +112,7 @@
             stack[i] = createLayer(layerOpt);
             i += 1;
         }
+		attachCanvasPointerEvents(stack);
         return stack;
     };
 

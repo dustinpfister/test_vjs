@@ -22,7 +22,8 @@ sm.events = {
 
 sm.layers = canvasMod.createLayerStack({
         container: '#canvas-app',
-        events: sm.events
+        events: sm.events,
+        state: sm
     });
 
 console.log(sm.layers);
@@ -34,23 +35,13 @@ sm.states.game = {
         draw.background(sm, stack[0].ctx, stack[0].canvas);
     },
     events: {
-        pointerStart: function (e, pos, sm) {},
+        pointerStart: function (e, pos, sm) {
+            console.log('Game State click');
+        },
         pointerMove: function (e, pos, sm) {},
         pointerEnd: function (e, pos, sm) {}
     }
 };
-
-/*
-utils.canvasPointerEvents(sm.canvasObj.canvas, sm, {
-pointerStart: function (e, pos, sm) {
-var state = sm.states[sm.currentState];
-var handler = state.events['pointerStart'];
-if (handler) {
-handler.call(e, e, pos, sm);
-}
-}
-});
- */
 
 var loop = function () {
     var now = new Date(),

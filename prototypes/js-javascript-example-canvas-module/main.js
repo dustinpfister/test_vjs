@@ -26,8 +26,6 @@ sm.layers = canvasMod.createLayerStack({
         state: sm
     });
 
-console.log(sm.layers);
-
 // game state
 sm.states.game = {
     update: function (sm, secs) {},

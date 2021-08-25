@@ -53,7 +53,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 ### () for 08/25/2021
 * (done) edit js-copying-vs-referencing-objects-in-javascript
-* work on new js-javascript-example-canvas-module proto folder
+* (done) work on new js-javascript-example-canvas-module proto folder
 * work on js-javascript-example-orb-module
 
 

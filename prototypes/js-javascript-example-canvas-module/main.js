@@ -3,18 +3,33 @@ var sm = {
     fps: 30,
     lt: new Date(),
     currentState: 'game',
-    layers: canvasMod.createLayerStack({
-        container: '#canvas-app'
-    }),
+    layers: {},
+    events: {},
     states: {}
 };
+
+sm.events = {
+    pointerStart: function (e, pos, sm) {
+        sm.states[sm.currentState].events.pointerStart.call(sm, e, pos, sm);
+    },
+    pointerMove: function (e, pos, sm) {
+        sm.states[sm.currentState].events.pointerMove.call(sm, e, pos, sm);
+    },
+    pointerEnd: function (e, pos, sm) {
+        sm.states[sm.currentState].events.pointerEnd.call(sm, e, pos, sm);
+    }
+};
+
+sm.layers = canvasMod.createLayerStack({
+        container: '#canvas-app',
+        events: sm.events
+    });
 
 console.log(sm.layers);
 
 // game state
 sm.states.game = {
-    update: function (sm, secs) {
-    },
+    update: function (sm, secs) {},
     draw: function (sm, stack) {
         draw.background(sm, stack[0].ctx, stack[0].canvas);
     },
@@ -27,15 +42,15 @@ sm.states.game = {
 
 /*
 utils.canvasPointerEvents(sm.canvasObj.canvas, sm, {
-    pointerStart: function (e, pos, sm) {
-        var state = sm.states[sm.currentState];
-        var handler = state.events['pointerStart'];
-        if (handler) {
-            handler.call(e, e, pos, sm);
-        }
-    }
+pointerStart: function (e, pos, sm) {
+var state = sm.states[sm.currentState];
+var handler = state.events['pointerStart'];
+if (handler) {
+handler.call(e, e, pos, sm);
+}
+}
 });
-*/
+ */
 
 var loop = function () {
     var now = new Date(),

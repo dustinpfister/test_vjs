@@ -2,6 +2,7 @@
 (function (api) {
 
     // EVENTS
+
     // get a canvas relative position that is adjusted for scale
     var getCanvasRelative = function (e) {
         var canvas = e.target,
@@ -81,11 +82,6 @@
             layer.container.appendChild(layer.canvas);
         }
         return layer;
-    };
-
-    // create just a single layer object
-    api.createLayer = function (opt) {
-        return createLayer(opt);
     };
 
     // create a stack of layers as an 'Array Like' Object

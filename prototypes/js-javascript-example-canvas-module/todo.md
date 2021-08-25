@@ -3,7 +3,7 @@
 ## () - virtual layer stack
 * have a way to create a stack of layers that does not need a hard coded html element as a container
 
-## () - Event attachment to a layer
+## ( done 08/25/2021 ) - Event attachment to a layer
 * (done) have a way to attach and events object to a top canvas layer of a stack
 
 ## ( done 08/24/2021 ) - LayerObject, createLayer, and createLayerStack

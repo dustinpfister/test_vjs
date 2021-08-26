@@ -106,19 +106,22 @@
     // create and return a new game object
     api.create = function (opt) {
         opt = opt || {};
-        var game = {
-            states: gameStates,
-            turnNumber: 0,
-            currentState: 'playerTurn', //'playerTurnOrbMenu',
-            selectedOrb: null,
-            playerSlotFillStyle: { // used for flashing effect and solid color
-                secs: 0,
-                colorIndex: 0,
-                colorArray: ['lime', 'red', 'brown'],
-                color: 'lime'
-            },
-            onGameEnd: opt.onGameEnd || function(game){}
+        // using utils.smCreateMin to make sure I am drealing with a base sm object
+        var game = utils.smCreateMin({
+            currentState: 'playerTurn',
+            states: gameStates
+        });
+        // non standard sm object props
+        game.selectedOrb = null;
+        // used for flashing effect and solid color
+        game.playerSlotFillStyle = { 
+            secs: 0,
+            colorIndex: 0,
+            colorArray: ['lime', 'red', 'brown'],
+            color: 'lime'
         };
+        // what to do on game end
+        game.onGameEnd = opt.onGameEnd || function(game){};
         // the start of a player object
         game.player = createPlayerObject({
                 faction: 'player',

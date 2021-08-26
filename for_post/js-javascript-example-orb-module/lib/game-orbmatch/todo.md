@@ -110,9 +110,8 @@
 * (done) use utils.SMCreateMain in main.js
 * (done) make the main loop in main.js be part of SMCreateMain
 * (done) pointer events in main.js should be the default
-
-* use utils.SMCreateMin in game.js and craft.js
-
+* (done) use utils.SMCreateMin in craft.js
+* use utils.SMCreateMin in game.js
 
 
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things

@@ -106,7 +106,7 @@
 
 ### () 0.21.3 - utils push state method
 * (done) have a utils.smPushState method that will push a new state object to an sm object, filling in blanks
-* use utils.smPushState in main.js
+* (done) use utils.smPushState in main.js
 * use utils.smPushState in craft.js
 * use utils.smPushState in game.js
 

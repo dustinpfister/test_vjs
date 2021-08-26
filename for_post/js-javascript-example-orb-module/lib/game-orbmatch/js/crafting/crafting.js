@@ -12,36 +12,7 @@
 
 
 
-    /********* ********** ********** *********/
-    //  CREATE 
-    /********* ********** ********** *********/
 
-
-
-
-    // create the main crafting object
-    api.create = function(){
-
-        var craft = utils.smCreateMin({
-            currentState: 'pouchEdit',
-            states : states
-        });
-        // non standard sm props for craft sm object
-        craft.createByRatio = {
-            elementIndex: 0,
-            ratio: [1, 0, 0, 0],
-            level: 3
-        };
-        craft.currentPouch =  OrbCollection.create({
-            key: 'player-pouch-1',
-            faction: 'player',
-            count: 8,
-            homeXStart: 192,
-            homeYStart: 260,
-            points: START_POUCH
-        });
-        return craft;
-    };
 
 
     /********* ********** ********** *********/
@@ -55,6 +26,7 @@
 
     // pouch edit state
     states.pouchEdit = {
+        name: 'pouchEdit',
         buttons: {
             createOrb: {
                 disp: 'Create Orb',
@@ -92,6 +64,7 @@
     };
     // create orbs by ratio
     states.byRatio = {
+        name: 'byRatio',
         buttons: {
             back: {
                 disp: 'back',
@@ -232,6 +205,7 @@
     };
     // delete orbs
     states.deleteOrb = {
+        name: 'deleteOrb',
         buttons: {
             back: {
                 disp: 'back',
@@ -248,17 +222,45 @@
         events: {
             pointerStart: function (e, pos, craft) {
                 utils.buttonCheck(e, pos, craft);
-console.log('click in delete state!');
-var orb = OrbCollection.getOrbAtPos(craft.currentPouch, pos.x, pos.y);
-console.log(orb);
-
-if(orb){
-   orb.type = 'null';
-}
-
-
+                var orb = OrbCollection.getOrbAtPos(craft.currentPouch, pos.x, pos.y);
+                if(orb){
+                    orb.type = 'null';
+                }
             }
         }
+    };
+
+
+
+
+    /********* ********** ********** *********/
+    //  CREATE 
+    /********* ********** ********** *********/
+
+
+
+
+    // create the main crafting object
+    api.create = function(){
+        var craft = utils.smCreateMin({
+            currentState: 'pouchEdit',
+            states : states
+        });
+        // non standard sm props for craft sm object
+        craft.createByRatio = {
+            elementIndex: 0,
+            ratio: [1, 0, 0, 0],
+            level: 3
+        };
+        craft.currentPouch =  OrbCollection.create({
+            key: 'player-pouch-1',
+            faction: 'player',
+            count: 8,
+            homeXStart: 192,
+            homeYStart: 260,
+            points: START_POUCH
+        });
+        return craft;
     };
 
 

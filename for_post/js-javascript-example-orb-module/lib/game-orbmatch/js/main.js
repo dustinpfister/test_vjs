@@ -56,7 +56,8 @@
 
     var sm = utils.smCreateMain({
         ver: VER,
-        currentState: 'mainMenu'
+        currentState: 'mainMenu',
+        debugMode: true // top loop on any page error
     });
     // non standard props for main sm object
     sm.aiPouchSettings = {
@@ -352,11 +353,11 @@
 
 
     /********* ********** ********** *********/
-    //  MAIN APP LOOP
+    //  START MAIN APP LOOP
     /********* ********** ********** *********/
 
-// start main loop
-sm.loop();
+    // start main loop
+    sm.loop();
 
 }
     ());

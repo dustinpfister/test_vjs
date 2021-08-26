@@ -172,6 +172,7 @@ utils.smCreateMain = function(opt){
         height: 480,
         container: document.getElementById('canvas-app')
     });
+    sm.debugMode = opt.debugMode || false;
     // value that should not be set by options
     sm.secs = 0;
     sm.stopLoop = false;
@@ -203,10 +204,12 @@ utils.smCreateMain = function(opt){
     };
     // stop loop on any page error
     window.addEventListener('error', function(e) {
-        sm.stopLoop = true;
-        console.log('error: ' + e.message);
-        console.log(e);
-        console.log('loop stoped');
+        if(sm.debugMode){
+            sm.stopLoop = true;
+            console.log('error: ' + e.message);
+            console.log(e);
+            console.log('loop stoped');
+        }
     });
     return sm;
 };

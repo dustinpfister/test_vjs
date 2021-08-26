@@ -192,7 +192,7 @@
                 w: 100,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    game.currentState = 'playerTurnOrbMenu';
+                    utils.smSetState(game, 'playerTurnOrbMenu');
                 }
             },
             orbConfig: {
@@ -202,7 +202,7 @@
                 w: 100,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    game.currentState = 'playerTurnOrbConfig';
+                    utils.smSetState(game, 'playerTurnOrbConfig');
                 }
             },
             endTrun: {
@@ -213,7 +213,7 @@
                 w: 100,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    game.currentState = 'aiTurn';
+                    utils.smSetState(game, 'aiTurn');
                 }
             }
         },
@@ -255,7 +255,7 @@
                 w: 128,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    game.currentState = 'playerTurn';
+                    utils.smSetState(game, 'playerTurn');
                 }
             }
         },
@@ -349,7 +349,7 @@
                 w: 100,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    game.currentState = 'playerTurn';
+                    utils.smSetState(game, 'playerTurn');
                 }
             }
         },
@@ -381,7 +381,7 @@
         buttons: {},
         update: function (game, secs) {
             game.ai.totalAttack = getTotalAttack(game, 'ai');
-            game.currentState = 'processTurn';
+            utils.smSetState(game, 'processTurn');
             // for all ai slots
             game.ai.slots.orbs.forEach(function (orb) {
                 updateInRangeOrbs(game, orb);
@@ -466,9 +466,9 @@
             var playerActive = getActiveOrbCount(game, 'player'),
             aiActive = getActiveOrbCount(game, 'ai');
             if (playerActive === 0 || aiActive === 0) {
-                game.currentState = 'gameOver';
+                utils.smSetState(game, 'gameOver');
             } else {
-                game.currentState = 'playerTurn';
+                utils.smSetState(game, 'playerTurn');
             }
         },
         events: {

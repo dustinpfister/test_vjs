@@ -104,13 +104,15 @@
 * have a utils.buttonCreate method that will create and return a simgle button object
 * have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
 
-### () 0.21.3 - utils push state method
+
+
+
+
+### ( 08/26/2021 ) 0.21.3 - utils push state method
 * (done) have a utils.smPushState method that will push a new state object to an sm object, filling in blanks
 * (done) use utils.smPushState in main.js
 * (done) use utils.smPushState in craft.js
-* use utils.smPushState in game.js
-
-
+* (done) use utils.smPushState in game.js
 
 ### ( 08/26/2021 ) 0.21.2 - set state method
 * (done) have a utils.SMSetState method that works like the setState method in main.js

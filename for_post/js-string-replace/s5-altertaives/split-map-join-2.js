@@ -20,6 +20,7 @@ var replace = function (opt) {
     }).join(opt.resultSep);
 };
 
+// use example 1
 var a = 'foo,bar,bar,foo,bar';
 var b = replace({
         source: a,
@@ -27,4 +28,16 @@ var b = replace({
         resultSep: ''
     });
 console.log(b);
+// barbarbar
+
+// use example 2 with function
+var c = 'foo,42,42,42,bar';
+var d = replace({
+        source: a,
+        what: function (el) {
+            return parseFloat(el) != 'NaN';
+        },
+        resultSep: ''
+    });
+console.log(d);
 // barbarbar

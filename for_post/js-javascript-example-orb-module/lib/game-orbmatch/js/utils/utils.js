@@ -239,6 +239,21 @@ utils.smCreateMain = function(opt){
     });
     return sm;
 };
+// push a new state object
+utils.smPushState = function(sm, opt){
+    var state = {
+        name: opt.name || 'state_' + Object.keys(sm.states).length
+    };
+    state.buttons = opt.buttons || {};
+    state.start = opt.start || function(){};
+    state.end = opt.end || function(){};
+    state.update = opt.update || function(){};
+    state.draw = opt.draw || function(){};
+    state.events = opt.events || {};
+    sm.states[state.name] = stateObj;
+    return state;
+
+};
 // set the current state
 utils.smSetState = function(sm, newState){
     // get a ref to the old state

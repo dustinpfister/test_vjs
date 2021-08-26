@@ -250,7 +250,7 @@ utils.smPushState = function(sm, opt){
     state.update = opt.update || function(){};
     state.draw = opt.draw || function(){};
     state.events = opt.events || {};
-    sm.states[state.name] = stateObj;
+    sm.states[state.name] = state;
     return state;
 
 };

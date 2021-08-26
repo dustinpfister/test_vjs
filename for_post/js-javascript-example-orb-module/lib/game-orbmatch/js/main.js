@@ -119,49 +119,9 @@
     });
 
 
-/*
-    sm.states.mainMenu = {
-        buttons: {
-            newGame: {
-                disp: 'New Game',
-                x: 220,
-                y: 200,
-                w: 200,
-                h: 64,
-                onClick: function (e, pos, game, button) {
-                    utils.smSetState(sm, 'gameConfig');
-                }
-            },
-            crafting: {
-                disp: 'Crafting',
-                x: 220,
-                y: 300,
-                w: 200,
-                h: 64,
-                onClick: function (e, pos, game, button) {
-                    utils.smSetState(sm, 'crafting');
-                }
-            }
-        },
-        start: function(sm){},
-        end: function(sm){},
-        update: function(sm, secs){},
-        draw: function(sm, ctx, canvas){
-            var state = sm.states.mainMenu;
-            draw.background(sm, ctx, canvas);
-            draw.buttonCollection(state.buttons, ctx);
-        },
-        events : {
-            pointerStart: function (e, pos, sm) {
-                utils.buttonCheck(e, pos, sm);
-            },
-            pointerMove: function (e, pos, sm) {},
-            pointerEnd: function (e, pos, sm) {}
-        }
-    };
-*/
     // The Crafting State
-    sm.states.crafting = {
+    utils.smPushState(sm, {
+        name: 'crafting',
         buttons: {
             back: {
                 disp: 'Main Menu',
@@ -174,10 +134,6 @@
                     utils.smSetState(sm, 'mainMenu');
                 }
             }
-        },
-        start: function(sm){},
-        end: function(sm){},
-        update: function(sm, secs){
         },
         draw: function(sm, ctx, canvas){
             var state = sm.states.crafting;
@@ -209,7 +165,8 @@
                 craftingMod.emitStateEvent('pointerEnd', e, pos, sm.craft);
             }
         }
-    };
+    });
+
     // The Game Config State
     sm.states.gameConfig = {
         buttons: {

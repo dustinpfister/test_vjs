@@ -20,11 +20,15 @@
 * The AI should make choices when it comes to setting orbs in attackMode or not
 * in the event that the AI has \< 4 orbs remaining it should swap orbs to make sure that no player orb is out of range
 
-### () 0.29.0 - fix bugs
+### () 0.29.0 - utils methods for creating button collections
+* have a utils.buttonCreate method that will create and return a simgle button object
+* have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
+
+### () 0.28.0 - fix bugs
 * make it so orbs can be moved from slot to slot
 * fix bug where an orb can be placed in a slot that all ready has an orb
 
-### () 0.28.0 - target selection
+### () 0.27.0 - target selection
 * target section can be a feature of orb types
 * pure types can always select all orbs in range, and thus divide attack by target array length, and attack all targets pure turn
 * dual types can select a single target in range that is always the most powerful orb in terms of attack
@@ -32,16 +36,16 @@
 * quad types can select a random count of targets in range
 * recipe types can have these values set depending on the state of the recipeDef object
 
-### () 0.27.0 - speed stat  started
+### () 0.26.0 - speed stat  started
 * start a speed stat that will contain props that determine who attacks first, and damage/heal/effect multipliers
 * The speed of an orb determines which orb will attack/buff first
 * speed will not result in additional turns for an orb, but can result in additional attacks, and buffs per turn
 
-### () 0.26.0 - orb.data.stat.splashDamageMulti, and orb.data.stat.splashPer
+### () 0.25.0 - orb.data.stat.splashDamageMulti, and orb.data.stat.splashPer
 * have a splash damage multi, and splash per prop added to the range stat object
 * If caps are hit for range.minRange, and range.plusOnePer more earth elements still makes sense because of range.splashDamageMulti
 
-### () 0.25.0 - minRange, and plusOnePer chance
+### () 0.24.0 - minRange, and plusOnePer chance
 * the range stat object can have a minRange prop which is the base range that will be set for a turn
 * the range stat object can have a plusOne prop that is the chance that the effective range will be one more than the min
 * the minRange stat will then have a range between 1 and 3 depending on level
@@ -49,7 +53,7 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
-### () 0.24.0 - recipe types started
+### () 0.23.0 - recipe types started
 * orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
 * orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object
 * orb-client: a ref to the recipe object should be a top level prop of orb such as orb.recipeDef
@@ -58,7 +62,7 @@
 * orbCollection: have a recipe where the focus is more on hp
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an impact on stat objects such as orb.data.attack
 
-### () 0.23.0 - TypeKey orb definition JSON.files
+### () 0.22.0 - TypeKey orb definition JSON.files
 * make a collection of JSON files the define what the stats are for each type, and when done this can be used for recipes too
 ```js
 // pure typeKey example
@@ -92,17 +96,11 @@
 }
 ```
 
-### () 0.22.0 - gameOptions game state
+### () 0.21.0 - gameOptions game state
 * I should have a game options button in the upper right corner of the canvas
 * the game options button allows for entering into a game options state
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game
-
-
-
-### () 0.21.4 - utils methods for creating button collections
-* have a utils.buttonCreate method that will create and return a simgle button object
-* have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
 
 
 

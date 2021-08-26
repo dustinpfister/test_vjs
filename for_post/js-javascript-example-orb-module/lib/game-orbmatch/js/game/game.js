@@ -1,6 +1,8 @@
 (function (api) {
 
-    var gameStates = {};
+    var gameStates = utils.smCreateMin({
+        currentState: 'playerTurn'
+    });
 
     /********* ********** ********** *********/
     //  HELPERS
@@ -109,7 +111,7 @@
         // using utils.smCreateMin to make sure I am drealing with a base sm object
         var game = utils.smCreateMin({
             currentState: 'playerTurn',
-            states: gameStates
+            states: gameStates.states
         });
         // non standard sm object props
         game.selectedOrb = null;
@@ -183,7 +185,8 @@
     //  PLAYER TURN STATE
     /********* ********** ********** *********/
 
-    gameStates.playerTurn = {
+    //gameStates.playerTurn = {
+    utils.smPushState(gameStates, {
         name: 'playerTurn',
         buttons: {
             setOrbs: {
@@ -237,17 +240,16 @@
                         game.selectedOrb = orb;
                     }
                 }
-            },
-            onPointerMove: function (e, pos, game) {},
-            onPointerEnd: function (e, pos, game) {}
+            }
         }
-    };
+    });
 
     /********* ********** ********** *********/
     //  PLAYER TURN ORB MENU STATE
     /********* ********** ********** *********/
 
-    gameStates.playerTurnOrbMenu = {
+    //gameStates.playerTurnOrbMenu = {
+    utils.smPushState(gameStates, {
         name: 'playerTurnOrbMenu',
         buttons: {
             done: {
@@ -336,13 +338,14 @@
                 }
             }
         }
-    };
+    });
 
     /********* ********** ********** *********/
     //  PLAYER TURN ORB CONFIG STATE
     /********* ********** ********** *********/
 
-    gameStates.playerTurnOrbConfig = {
+    //gameStates.playerTurnOrbConfig = {
+    utils.smPushState(gameStates, {
         name: 'playerTurnOrbConfig',
         buttons: {
             done: {
@@ -369,20 +372,18 @@
                         orb.data.attackMode = !orb.data.attackMode;
                     }
                 }
-            },
-            onPointerMove: function (e, pos, game) {},
-            onPointerEnd: function (e, pos, game) {}
+            }
         }
-    };
+    });
 
     /********* ********** ********** *********/
     //  AI TURN STATE
     /********* ********** ********** *********/
 
     // ai turn state
-    gameStates.aiTurn = {
+    //gameStates.aiTurn = {
+    utils.smPushState(gameStates, {
         name: 'aiTurn',
-        buttons: {},
         update: function (game, secs) {
             game.ai.totalAttack = getTotalAttack(game, 'ai');
             utils.smSetState(game, 'processTurn');
@@ -390,9 +391,8 @@
             game.ai.slots.orbs.forEach(function (orb) {
                 updateInRangeOrbs(game, orb);
             });
-        },
-        events: {}
-    };
+        }
+    });
 
     /********* ********** ********** *********/
     //  PROCESS TURN STATE
@@ -461,7 +461,8 @@
     };
 
     // process turn state object
-    gameStates.processTurn = {
+    //gameStates.processTurn = {
+    utils.smPushState(gameStates, {
         name: 'processTurn',
         buttons: {},
         update: function (game, secs) {
@@ -511,25 +512,21 @@
                 deadOrb.type = 'null';
             }
         }
-    };
+    });
 
     /********* ********** ********** *********/
     //  GAMEOVER STATE
     /********* ********** ********** *********/
 
     // game over state object
-    gameStates.gameOver = {
+    utils.smPushState(gameStates, {
         name: 'gameOver',
-        buttons: {},
-        update: function (game, secs) {
-
-        },
         events: {
             onPointerStart: function (e, pos, game) {
                 game.onGameEnd.call(game, game);
             }
         }
-    };
+    });
 
     /********* ********** ********** *********/
     //  EVENT
@@ -537,7 +534,7 @@
 
     // emit an event of the given eventKey with the given values for event, pos, and game
     api.emitStateEvent = function (eventKey, e, pos, game) {
-        var handler = gameStates[game.currentState].events[eventKey];
+        var handler = game.states[game.currentState].events[eventKey];
         if (handler) {
             handler.call(e, e, pos, game);
         }
@@ -549,7 +546,7 @@
 
     // update the current game state
     api.update = function (game, secs) {
-        var updateMethod = gameStates[game.currentState].update;
+        var updateMethod = game.states[game.currentState].update;
         if (updateMethod) {
             updateMethod.call(game, game, secs);
         }

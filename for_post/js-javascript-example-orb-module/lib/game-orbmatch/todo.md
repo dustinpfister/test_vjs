@@ -110,6 +110,8 @@
 * (done) use utils.SMCreateMain in main.js
 * (done) make the main loop in main.js be part of SMCreateMain
 
+* pointer events in main.js should be the default
+
 * use utils.SMCreateMin in game.js and craft.js
 
 

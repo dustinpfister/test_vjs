@@ -325,6 +325,7 @@
 
 
     // attaching main pointer events to canvas element
+/*
     var mainPointerEvents = {
         events : {
             pointerStart: function (e, pos, sm) {
@@ -348,7 +349,7 @@
         }
     };
     utils.canvasPointerEvents(sm.canvasObj.canvas, sm, mainPointerEvents.events);
-
+*/
 
 
 

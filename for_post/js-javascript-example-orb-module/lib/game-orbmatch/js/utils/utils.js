@@ -153,11 +153,12 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 utils.smCreateMin = function(opt){
     opt = opt || {};
     // return a base sm object
-    return {
+    var sm = {
         currentState: opt.currentState || '',
         states: {},
         events: {}
     };
+    return sm;
 };
 
 // create the main sm object
@@ -179,6 +180,28 @@ utils.smCreateMain = function(opt){
     sm.secs = 0;
     sm.stopLoop = false;
     sm.lt = new Date();
+    // events
+    sm.events = {
+        pointerStart: function (e, pos, sm) {
+            var handler = sm.states[sm.currentState].events.pointerStart;
+            if(handler){
+                handler.call(sm, e, pos, sm);
+            }
+        },
+        pointerMove: function (e, pos, sm) {
+            var handler = sm.states[sm.currentState].events.pointerMove;
+            if(handler){
+                handler.call(sm, e, pos, sm);
+            }
+        },
+        pointerEnd: function (e, pos, sm) {
+            var handler = sm.states[sm.currentState].events.pointerEnd;
+            if(handler){
+                handler.call(sm, e, pos, sm);
+            }
+        }
+    };
+    utils.canvasPointerEvents(sm.canvasObj.canvas, sm, sm.events);
     // main loop
     sm.loop = function () {
         var now = new Date();

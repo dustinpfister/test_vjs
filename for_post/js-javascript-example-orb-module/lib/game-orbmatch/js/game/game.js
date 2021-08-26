@@ -105,14 +105,11 @@
     //  CREATE METHOD AND OTHER PUBLIC METHODS TO USE WITH CREATE
     /********* ********** ********** *********/
 
-    // create and return a new game object
+    // create and return the game object
     api.create = function (opt) {
         opt = opt || {};
         // using utils.smCreateMin to make sure I am drealing with a base sm object
-        var game = utils.smCreateMin({
-            currentState: 'playerTurn',
-            states: gameStates.states
-        });
+        var game = utils.smCreateMin(gameStates);
         // non standard sm object props
         game.selectedOrb = null;
         // used for flashing effect and solid color

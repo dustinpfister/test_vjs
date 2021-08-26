@@ -108,10 +108,9 @@
 * (done) have a utils.SMCreateMin method that will create and return a clean object formatted like sm in main.js with states object
 * (done) have a utils.SMCreateMain method that will create and return a main sm object to be used in main.js
 * (done) use utils.SMCreateMain in main.js
+* (done) make the main loop in main.js be part of SMCreateMain
 
-* make the main loop in main.js be part of SMCreateMain
-
-* use utils.SMCReateMin in game.js and craft.js
+* use utils.SMCreateMin in game.js and craft.js
 
 
 

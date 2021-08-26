@@ -152,6 +152,7 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 // create a minamal sm object ( For setting up a nested sm object, and the base of a main sm object )
 utils.smCreateMin = function(opt){
     opt = opt || {};
+    // return a base sm object
     return {
         currentState: opt.currentState || '',
         states: {},
@@ -162,6 +163,7 @@ utils.smCreateMin = function(opt){
 // create the main sm object
 utils.smCreateMain = function(opt){
     opt = opt || {};
+    // create base sm object
     var sm = utils.smCreateMin(opt);
     // values that can be set by options
     sm.ver = opt.ver || '';

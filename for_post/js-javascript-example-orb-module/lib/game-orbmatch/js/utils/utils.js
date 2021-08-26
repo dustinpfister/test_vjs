@@ -239,4 +239,21 @@ utils.smCreateMain = function(opt){
     });
     return sm;
 };
+// set the current state
+utils.smSetState = function(sm, newState){
+    // get a ref to the old state
+    var oldState = sm.states[sm.currentState];
+    // call the on end hook for the old state if it has one
+    var endHook = oldState.end;
+    if(endHook){
+        endHook.call(sm, sm);
+    }
+    // change to the new state, and call the start hook it it has one
+    sm.currentState = newState;
+    var newState = sm.states[sm.currentState];
+    var startHook = newState.start;
+    if(startHook){
+        startHook.call(sm, sm);
+    }
+};
 

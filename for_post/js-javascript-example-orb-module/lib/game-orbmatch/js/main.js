@@ -29,21 +29,6 @@
         a.minOrbLevel = Math.ceil(a.maxOrbLevel * 0.5) - 1;
     };
 
-    // start a new state, calling any hook methods when doing so 
-    var setState = function(sm, newState){
-        var oldState = sm.states[sm.currentState];
-        var endHook = oldState.end;
-        if(endHook){
-            endHook.call(sm, sm);
-        }
-        sm.currentState = newState;
-        var newState = sm.states[sm.currentState];
-        var startHook = newState.start;
-        if(startHook){
-            startHook.call(sm, sm);
-        }
-    };
- 
 
 
 
@@ -76,7 +61,7 @@
         onGameEnd: function(){}
     };
     sm.gameCreateOptions.onGameEnd = function(game){
-        setState(sm, 'gameConfig');
+        utils.smSetState(sm, 'gameConfig');
     };
     updateAIPouchSettings(sm);
     // first state of crafting object
@@ -106,7 +91,7 @@
                 w: 200,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    setState(sm, 'gameConfig');
+                    utils.smSetState(sm, 'gameConfig');
                 }
             },
             crafting: {
@@ -116,7 +101,7 @@
                 w: 200,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    setState(sm, 'crafting');
+                    utils.smSetState(sm, 'crafting');
                 }
             }
         },
@@ -147,7 +132,7 @@
                 h: 80,
                 onClick: function (e, pos, sm, button) {
                     sm.craft.currentState = 'pouchEdit';
-                    setState(sm, 'mainMenu');
+                    utils.smSetState(sm, 'mainMenu');
                 }
             }
         },
@@ -197,7 +182,7 @@
                 w: 150,
                 h: 64,
                 onClick: function (e, pos, sm, button) {
-                    setState(sm, 'game');
+                    utils.smSetState(sm, 'game');
                 }
             },
             back: {
@@ -207,7 +192,7 @@
                 w: 100,
                 h: 64,
                 onClick: function (e, pos, sm, button) {
-                    setState(sm, 'mainMenu');
+                    utils.smSetState(sm, 'mainMenu');
                 }
             },
             countUp: {

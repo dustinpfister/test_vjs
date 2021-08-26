@@ -22,10 +22,13 @@
 
 
 
-    var states = {};
+    var craft = utils.smCreateMin({
+        currentState: 'pouchEdit'
+    });
 
     // pouch edit state
-    states.pouchEdit = {
+    //states.pouchEdit = {
+    utils.smPushState(craft, {
         name: 'pouchEdit',
         buttons: {
             createOrb: {
@@ -61,9 +64,10 @@
             pointerMove: function (e, pos, craft) {},
             pointerEnd: function (e, pos, craft) {}
         }
-    };
+    });
     // create orbs by ratio
-    states.byRatio = {
+    //states.byRatio = {
+    utils.smPushState(craft, {
         name: 'byRatio',
         buttons: {
             back: {
@@ -202,9 +206,10 @@
                 utils.buttonCheck(e, pos, craft);
             }
         }
-    };
+    });
     // delete orbs
-    states.deleteOrb = {
+    //states.deleteOrb = {
+    utils.smPushState(craft, {
         name: 'deleteOrb',
         buttons: {
             back: {
@@ -228,7 +233,7 @@
                 }
             }
         }
-    };
+    });
 
 
 
@@ -242,10 +247,10 @@
 
     // create the main crafting object
     api.create = function(){
-        var craft = utils.smCreateMin({
-            currentState: 'pouchEdit',
-            states : states
-        });
+        //var craft = utils.smCreateMin({
+        //    currentState: 'pouchEdit',
+        //    states : states
+        //});
         // non standard sm props for craft sm object
         craft.createByRatio = {
             elementIndex: 0,

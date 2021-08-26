@@ -65,17 +65,15 @@
 */
 
 
-
-
     // main state machine object
-
-
-
-
-    var sm = {
+    var sm = utils.smCreateMain({
         ver: VER,
-        aiPouchSettings:{},
-        gameCreateOptions: {},
+        currentState: 'mainMenu'
+    });
+/*
+    var sm = {
+        // main sm values
+        ver: VER,
         game: {},
         fps: 30,
         secs: 0,
@@ -85,11 +83,22 @@
             height: 480,
             container: document.getElementById('canvas-app')
         }),
-        // states object
+        stopLoop: false,
+
+        // core sm values
         currentState: 'mainMenu', //'crafting' 'game' 'gameConfig' 'mainMenu',
         states : {},
-        stopLoop: false
+        events: {},
+
+        // non standard values that have to do with setting up the game object
+        aiPouchSettings:{},
+        gameCreateOptions: {}
     };
+*/
+
+
+console.log(sm);
+
     sm.aiPouchSettings = {
         count: 4,
         level: 1, // used to set minOrbLevel and maxOrbLevel

@@ -3,28 +3,37 @@ var utils = {};
 
 
 
-
     /********* ********** ********** *********/
-    //  DISTANCE AND BOUNDING BOX
+    //  BUTTON METHODS
     /********* ********** ********** *********/
 
 
 
 
-
-// distance
-utils.distance = function (x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+utils.buttonGet = function (sm, x, y) {
+    var state = sm.states[sm.currentState];
+    var buttons = state.buttons;
+    var keys = Object.keys(buttons);
+    var i = 0,
+    buttonKey,
+    b,
+    len = keys.length;
+    while (i < len) {
+        buttonKey = keys[i];
+        b = buttons[buttonKey];
+        if (utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)) {
+            return b;
+        }
+        i += 1;
+    }
+    return null;
 };
-// bounding box
-utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
-    return !(
-        (y1 + h1) < y2 ||
-        y1 > (y2 + h2) ||
-        (x1 + w1) < x2 ||
-        x1 > (x2 + w2));
+utils.buttonCheck = function (e, pos, sm) {
+    var b = utils.buttonGet(sm, pos.x, pos.y);
+    if (b) {
+        b.onClick.call(sm, e, pos, sm, b);
+    }
 };
-
 
 
 
@@ -110,34 +119,64 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 
 
+
     /********* ********** ********** *********/
-    //  BUTTON HELPERS
+    //  DISTANCE AND BOUNDING BOX
     /********* ********** ********** *********/
 
 
 
 
-utils.buttonGet = function (sm, x, y) {
-    var state = sm.states[sm.currentState];
-    var buttons = state.buttons;
-    var keys = Object.keys(buttons);
-    var i = 0,
-    buttonKey,
-    b,
-    len = keys.length;
-    while (i < len) {
-        buttonKey = keys[i];
-        b = buttons[buttonKey];
-        if (utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)) {
-            return b;
-        }
-        i += 1;
-    }
-    return null;
+
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
-utils.buttonCheck = function (e, pos, sm) {
-    var b = utils.buttonGet(sm, pos.x, pos.y);
-    if (b) {
-        b.onClick.call(sm, e, pos, sm, b);
-    }
+// bounding box
+utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        (y1 + h1) < y2 ||
+        y1 > (y2 + h2) ||
+        (x1 + w1) < x2 ||
+        x1 > (x2 + w2));
 };
+
+
+
+
+    /********* ********** ********** *********/
+    //  State Machine Methods
+    /********* ********** ********** *********/
+
+
+// create a minamal sm object ( For setting up a nested sm object, and the base of a main sm object )
+utils.smCreateMin = function(opt){
+    opt = opt || {};
+    return {
+        currentState: opt.currentState || '',
+        states: {},
+        events: {}
+    };
+};
+
+// create the main sm object
+utils.smCreateMain = function(opt){
+    opt = opt || {};
+    var sm = utils.smCreateMin(opt);
+    // values that can be set by options
+    sm.ver = opt.ver || '';
+    sm.game = opt.game || {};
+    sm.fps = sm.fps === undefined ? 30 : opt.fps;
+    sm.canvasObj = opt.canvasObj || utils.createCanvas({
+        width: 640,
+        height: 480,
+        container: document.getElementById('canvas-app')
+    });
+    // value that should not be set by options
+    sm.secs = 0;
+    sm.stopLoop = false;
+    sm.lt = new Date();
+
+    return sm;
+};
+

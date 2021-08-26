@@ -105,7 +105,9 @@
 * have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
 
 ### () 0.21.1 - utils methods for creating sm style state objects
-* have a utils.SMCreate method that will create and return a clean object formatted like sm in main.js with states object
+* have a utils.SMCreateMin method that will create and return a clean object formatted like sm in main.js with states object
+* have a utils.SMCreateMain method that will create and return a main sm object to be used in main.js
+
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
 * have a utils.SMSetState method that works like the setState method in main.js
 

@@ -106,9 +106,6 @@
                 }
             }
         },
-        start: function(sm){},
-        end: function(sm){},
-        update: function(sm, secs){},
         draw: function(sm, ctx, canvas){
             var state = sm.states.mainMenu;
             draw.background(sm, ctx, canvas);
@@ -117,9 +114,7 @@
         events : {
             pointerStart: function (e, pos, sm) {
                 utils.buttonCheck(e, pos, sm);
-            },
-            pointerMove: function (e, pos, sm) {},
-            pointerEnd: function (e, pos, sm) {}
+            }
         }
     });
 

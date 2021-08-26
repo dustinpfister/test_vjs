@@ -36,33 +36,7 @@
             startHook.call(sm, sm);
         }
     };
-    // buttons
-/*
-    var getButton = function (sm, x, y) {
-        var state = sm.states[sm.currentState];
-        var buttons = state.buttons;
-        var keys = Object.keys(buttons);
-        var i = 0,
-        buttonKey,
-        b,
-        len = keys.length;
-        while (i < len) {
-            buttonKey = keys[i];
-            b = buttons[buttonKey];
-            if (utils.boundingBox(b.x, b.y, b.w, b.h, x, y, 1, 1)) {
-                return b;
-            }
-            i += 1;
-        }
-        return null;
-    };
-    var buttonCheck = function (e, pos, sm) {
-        var b = getButton(sm, pos.x, pos.y);
-        if (b) {
-            b.onClick.call(sm, e, pos, sm, b);
-        }
-    };
-*/
+ 
 
 
     // main state machine object
@@ -70,35 +44,7 @@
         ver: VER,
         currentState: 'mainMenu'
     });
-/*
-    var sm = {
-        // main sm values
-        ver: VER,
-        game: {},
-        fps: 30,
-        secs: 0,
-        lt: new Date(),
-        canvasObj: utils.createCanvas({
-            width: 640,
-            height: 480,
-            container: document.getElementById('canvas-app')
-        }),
-        stopLoop: false,
-
-        // core sm values
-        currentState: 'mainMenu', //'crafting' 'game' 'gameConfig' 'mainMenu',
-        states : {},
-        events: {},
-
-        // non standard values that have to do with setting up the game object
-        aiPouchSettings:{},
-        gameCreateOptions: {}
-    };
-*/
-
-
-console.log(sm);
-
+    // non standard props for main sm object
     sm.aiPouchSettings = {
         count: 4,
         level: 1, // used to set minOrbLevel and maxOrbLevel

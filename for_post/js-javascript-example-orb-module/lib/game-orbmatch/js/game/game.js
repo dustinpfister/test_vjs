@@ -184,6 +184,7 @@
     /********* ********** ********** *********/
 
     gameStates.playerTurn = {
+        name: 'playerTurn',
         buttons: {
             setOrbs: {
                 disp: 'Set Orbs',
@@ -247,6 +248,7 @@
     /********* ********** ********** *********/
 
     gameStates.playerTurnOrbMenu = {
+        name: 'playerTurnOrbMenu',
         buttons: {
             done: {
                 disp: 'Done',
@@ -341,6 +343,7 @@
     /********* ********** ********** *********/
 
     gameStates.playerTurnOrbConfig = {
+        name: 'playerTurnOrbConfig',
         buttons: {
             done: {
                 disp: 'Done',
@@ -378,6 +381,7 @@
 
     // ai turn state
     gameStates.aiTurn = {
+        name: 'aiTurn',
         buttons: {},
         update: function (game, secs) {
             game.ai.totalAttack = getTotalAttack(game, 'ai');
@@ -458,6 +462,7 @@
 
     // process turn state object
     gameStates.processTurn = {
+        name: 'processTurn',
         buttons: {},
         update: function (game, secs) {
             processFactionTurn(game, 'player');
@@ -514,6 +519,7 @@
 
     // game over state object
     gameStates.gameOver = {
+        name: 'gameOver',
         buttons: {},
         update: function (game, secs) {
 

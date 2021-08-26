@@ -12,24 +12,6 @@
 
 
 
-    // start a new state, calling any hook methods when doing so 
-    var setState = function(sm, newState){
-        var oldState = sm.states[sm.currentState];
-        var endHook = oldState.end;
-        if(endHook){
-            endHook.call(sm, sm);
-        }
-        sm.currentState = newState;
-        var newState = sm.states[sm.currentState];
-        var startHook = newState.start;
-        if(startHook){
-            startHook.call(sm, sm);
-        }
-    };
-
-
-
-
     /********* ********** ********** *********/
     //  CREATE 
     /********* ********** ********** *********/
@@ -82,7 +64,7 @@
                 h: 80,
                 onClick: function (e, pos, craft, button) {
                     //console.log('create orb button click');
-                    setState(craft, 'byRatio');
+                    utils.smSetState(craft, 'byRatio');
                 }
             },
             deleteOrb: {
@@ -92,7 +74,7 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
-                    setState(craft, 'deleteOrb');
+                    utils.smSetState(craft, 'deleteOrb');
                 }
             }
         },
@@ -118,7 +100,7 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
-                    setState(craft, 'pouchEdit');
+                    utils.smSetState(craft, 'pouchEdit');
                 }
             },
             elementIndexLoop: {
@@ -258,7 +240,7 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
-                    setState(craft, 'pouchEdit');
+                    utils.smSetState(craft, 'pouchEdit');
                 }
             }
         },

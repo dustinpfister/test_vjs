@@ -264,16 +264,13 @@
 
     utils.smPushState(sm, {
         name: 'game',
-        buttons: {},
         start: function(sm){
             // update ai pouch based on sm.aiPouchSettings state
             sm.gameCreateOptions.aiPouch = gameMod.createAIPouch(sm.aiPouchSettings);
             // set player pouch to what is set up in the craft object
-             sm.gameCreateOptions.playerPouch = craftingMod.getCurrentPoints(sm.craft);
+            sm.gameCreateOptions.playerPouch = craftingMod.getCurrentPoints(sm.craft);
             // create new game object
             sm.game = gameMod.create(sm.gameCreateOptions);
-        },
-        end: function(sm){
         },
         update: function(sm, secs){
             gameMod.update(sm.game, sm.secs);

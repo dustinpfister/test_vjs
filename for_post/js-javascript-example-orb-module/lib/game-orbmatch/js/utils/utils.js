@@ -176,7 +176,38 @@ utils.smCreateMain = function(opt){
     sm.secs = 0;
     sm.stopLoop = false;
     sm.lt = new Date();
-
+    // main loop
+    sm.loop = function () {
+        var now = new Date();
+        sm.secs = (now - sm.lt) / 1000,
+        state = sm.states[sm.currentState];
+        if (sm.secs >= 1 / sm.fps) {
+            // update
+            var update = state.update;
+            if(update){
+                update.call(sm, sm, sm.secs);
+            }
+            // draw
+            var ctx = sm.canvasObj.ctx,
+            canvas = sm.canvasObj.canvas;
+            var drawHook = state.draw;
+            if(drawHook){
+                drawHook.call(sm, sm, ctx, canvas);
+            }
+            sm.lt = now;
+        }
+        // if sm.stopLoop === false, then keep looping
+        if(!sm.stopLoop){
+            requestAnimationFrame(sm.loop);
+        }
+    };
+    // stop loop on any page error
+    window.addEventListener('error', function(e) {
+        sm.stopLoop = true;
+        console.log('error: ' + e.message);
+        console.log(e);
+        console.log('loop stoped');
+    });
     return sm;
 };
 

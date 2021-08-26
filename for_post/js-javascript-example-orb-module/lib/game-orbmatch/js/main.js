@@ -355,44 +355,8 @@
     //  MAIN APP LOOP
     /********* ********** ********** *********/
 
-
-
-
-    var loop = function () {
-        var now = new Date();
-        sm.secs = (now - sm.lt) / 1000,
-        state = sm.states[sm.currentState];
-
-        if (sm.secs >= 1 / sm.fps) {
-            // update
-            var update = state.update;
-            if(update){
-                update.call(sm, sm, sm.secs);
-            }
-            // draw
-            var ctx = sm.canvasObj.ctx,
-            canvas = sm.canvasObj.canvas;
-            var drawHook = state.draw;
-            if(drawHook){
-                drawHook.call(sm, sm, ctx, canvas);
-            }
-            sm.lt = now;
-        }
-
-        // if sm.stopLoop === false, then keep looping
-        if(!sm.stopLoop){
-            requestAnimationFrame(loop);
-        }
-    };
-    loop();
-
-
-    window.addEventListener('error', function(e) {
-        sm.stopLoop = true;
-        console.log('error: ' + e.message);
-        console.log('loop stoped');
-    });
-
+// start main loop
+sm.loop();
 
 }
     ());

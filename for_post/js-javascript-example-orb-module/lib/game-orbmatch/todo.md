@@ -105,8 +105,15 @@
 * have a utils.buttonCollectionCreate method to help with the creating of a collection of button objects
 
 ### () 0.21.1 - utils methods for creating sm style state objects
-* have a utils.SMCreateMin method that will create and return a clean object formatted like sm in main.js with states object
-* have a utils.SMCreateMain method that will create and return a main sm object to be used in main.js
+* (done) have a utils.SMCreateMin method that will create and return a clean object formatted like sm in main.js with states object
+* (done) have a utils.SMCreateMain method that will create and return a main sm object to be used in main.js
+* (done) use utils.SMCreateMain in main.js
+
+* make the main loop in main.js be part of SMCreateMain
+
+* use utils.SMCReateMin in game.js and craft.js
+
+
 
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
 * have a utils.SMSetState method that works like the setState method in main.js

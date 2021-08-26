@@ -39,25 +39,25 @@
 
     // create the main crafting object
     api.create = function(){
-        var craft = {
-            // create by raio settings
-            createByRatio:{
-                elementIndex: 0,
-                ratio: [1, 0, 0, 0],
-                level: 3
-            },
-            // the current pouch
-            currentPouch:  OrbCollection.create({
-                key: 'player-pouch-1',
-                faction: 'player',
-                count: 8,
-                homeXStart: 192,
-                homeYStart: 260,
-                points: START_POUCH
-            }),
+
+        var craft = utils.smCreateMin({
             currentState: 'pouchEdit',
-            states: states // ref to states objects
+            states : states
+        });
+        // non standard sm props for craft sm object
+        craft.createByRatio = {
+            elementIndex: 0,
+            ratio: [1, 0, 0, 0],
+            level: 3
         };
+        craft.currentPouch =  OrbCollection.create({
+            key: 'player-pouch-1',
+            faction: 'player',
+            count: 8,
+            homeXStart: 192,
+            homeYStart: 260,
+            points: START_POUCH
+        });
         return craft;
     };
 

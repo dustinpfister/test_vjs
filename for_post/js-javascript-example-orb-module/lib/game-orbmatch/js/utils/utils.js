@@ -155,8 +155,8 @@ utils.smCreateMin = function(opt){
     // return a base sm object
     var sm = {
         currentState: opt.currentState || '',
-        states: {},
-        events: {}
+        states: opt.states || {},
+        events: opt.events || {}
     };
     return sm;
 };

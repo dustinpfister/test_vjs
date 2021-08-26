@@ -16,18 +16,17 @@
 
 
     /********* ********** ********** *********/
-    //  STATES 
+    //  CRAFT OBJECT
     /********* ********** ********** *********/
 
 
 
-
+    // craft should be a clean sm Object
     var craft = utils.smCreateMin({
         currentState: 'pouchEdit'
     });
 
     // pouch edit state
-    //states.pouchEdit = {
     utils.smPushState(craft, {
         name: 'pouchEdit',
         buttons: {
@@ -38,7 +37,6 @@
                 w: 80,
                 h: 80,
                 onClick: function (e, pos, craft, button) {
-                    //console.log('create orb button click');
                     utils.smSetState(craft, 'byRatio');
                 }
             },
@@ -53,20 +51,13 @@
                 }
             }
         },
-        start: function(craft){},
-        end: function(craft){},
-        update: function(craft, secs){},
-        draw: function(craft, ctx, canvas){},
         events : {
             pointerStart: function (e, pos, craft) {
                 utils.buttonCheck(e, pos, craft);
-            },
-            pointerMove: function (e, pos, craft) {},
-            pointerEnd: function (e, pos, craft) {}
+            }
         }
     });
     // create orbs by ratio
-    //states.byRatio = {
     utils.smPushState(craft, {
         name: 'byRatio',
         buttons: {
@@ -132,11 +123,6 @@
                     level += 1;
                     level %= 100;
                     cbr.level = level;
-                    //var el = cbr.ratio[cbr.elementIndex];
-                    //el += 1;
-                    //el %= 21;
-                    //cbr.ratio[cbr.elementIndex] = el;
-
                 }
             },
             levelDown: {
@@ -207,8 +193,7 @@
             }
         }
     });
-    // delete orbs
-    //states.deleteOrb = {
+    // delete orbs state
     utils.smPushState(craft, {
         name: 'deleteOrb',
         buttons: {
@@ -223,7 +208,6 @@
                 }
             }
         },
-        draw: function(craft, ctx, canvas){},
         events: {
             pointerStart: function (e, pos, craft) {
                 utils.buttonCheck(e, pos, craft);
@@ -247,10 +231,6 @@
 
     // create the main crafting object
     api.create = function(){
-        //var craft = utils.smCreateMin({
-        //    currentState: 'pouchEdit',
-        //    states : states
-        //});
         // non standard sm props for craft sm object
         craft.createByRatio = {
             elementIndex: 0,

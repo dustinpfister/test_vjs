@@ -260,107 +260,10 @@
             }
         }
     });
-/*
-    sm.states.gameConfig = {
-        buttons: {
-            startGame: {
-                disp: 'start game',
-                fillStyle: '#af0000',
-                x: 450,
-                y: 390,
-                w: 150,
-                h: 64,
-                onClick: function (e, pos, sm, button) {
-                    utils.smSetState(sm, 'game');
-                }
-            },
-            back: {
-                disp: 'Back',
-                x: 50,
-                y: 390,
-                w: 100,
-                h: 64,
-                onClick: function (e, pos, sm, button) {
-                    utils.smSetState(sm, 'mainMenu');
-                }
-            },
-            countUp: {
-                disp: 'Count+',
-                x: 50,
-                y: 100,
-                w: 75,
-                h: 50,
-                onClick: function (e, pos, sm, button) {
-                    var a = sm.aiPouchSettings;
-                    a.count += 1;
-                    updateAIPouchSettings(sm);
-                }
-            },
-            countDown: {
-                disp: 'Count-',
-                x: 150,
-                y: 100,
-                w: 75,
-                h: 50,
-                onClick: function (e, pos, sm, button) {
-                    var a = sm.aiPouchSettings;
-                    a.count -= 1;
-                    updateAIPouchSettings(sm);                  
-                }
-            },
-            levelRangeUp: {
-                disp: 'level Range+',
-                x: 50,
-                y: 200,
-                w: 75,
-                h: 50,
-                onClick: function (e, pos, sm, button) {
-                    var a = sm.aiPouchSettings;
-                    a.level += 1;
-                    updateAIPouchSettings(sm);
-                }
-            },
-            levelRangeDown: {
-                disp: 'level Range-',
-                x: 150,
-                y: 200,
-                w: 75,
-                h: 50,
-                onClick: function (e, pos, sm, button) {
-                    var a = sm.aiPouchSettings;
-                    a.level -= 1;
-                    updateAIPouchSettings(sm);                 
-                }
-            }
-        },
-        start: function(sm){},
-        end: function(sm){},
-        update: function(sm, secs){},
-        draw: function(sm, ctx, canvas){
-            var state = sm.states.gameConfig;
-            draw.background(sm, ctx, canvas);
-            draw.buttonCollection(state.buttons, ctx);
-            // display state of sm.aiPouchSettings
-            ctx.fillStyle = 'white';
-            ctx.textAlign = 'left';
-            ctx.textBaseline =  'top';
-            ctx.font = '20px arial';
-            var a = sm.aiPouchSettings;
-            ctx.fillText('count: ' + a.count, 350, 150);
-            ctx.fillText('level range: ' + a.minOrbLevel + ' - ' + a.maxOrbLevel, 350, 175);
-        },
-        events : {
-            pointerStart: function (e, pos, sm) {
-                utils.buttonCheck(e, pos, sm);
-            },
-            pointerMove: function (e, pos, sm) {},
-            pointerEnd: function (e, pos, sm) {}
-        }
-    };
-*/
 
-    // The Game State
-    sm.states.game = {
+
+    utils.smPushState(sm, {
+        name: 'game',
         buttons: {},
         start: function(sm){
             // update ai pouch based on sm.aiPouchSettings state
@@ -389,8 +292,7 @@
                 gameMod.emitStateEvent('onPointerEnd', e, pos, sm.game);
             }
         }
-    };
-
+    });
 
 
 

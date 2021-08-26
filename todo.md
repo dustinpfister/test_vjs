@@ -44,13 +44,13 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 
 ### () for 08/27/2021
-* work on js-javascript-example-orb-module
-* write new post onjs-javascript-example-canvas-module
-
-### () for 08/26/2021
-* (done) work on js-javascript-example-orb-module
 * work on new js-javascript-example-canvas-module proto folder
-* edit js-string-replace
+* write new post onjs-javascript-example-canvas-module
+* work on js-javascript-example-orb-module
+
+### (done) for 08/26/2021
+* (done) work on js-javascript-example-orb-module
+* (done) edit js-string-replace
 
 ### (done) for 08/25/2021
 * (done) edit js-copying-vs-referencing-objects-in-javascript

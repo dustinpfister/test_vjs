@@ -10,6 +10,7 @@ var utils = {};
 
 
 
+// get a button object
 utils.buttonGet = function (sm, x, y) {
     var state = sm.states[sm.currentState];
     var buttons = state.buttons;
@@ -28,6 +29,7 @@ utils.buttonGet = function (sm, x, y) {
     }
     return null;
 };
+// check if a button was clicked
 utils.buttonCheck = function (e, pos, sm) {
     var b = utils.buttonGet(sm, pos.x, pos.y);
     if (b) {
@@ -160,7 +162,6 @@ utils.smCreateMin = function(opt){
     };
     return sm;
 };
-
 // create the main sm object
 utils.smCreateMain = function(opt){
     opt = opt || {};

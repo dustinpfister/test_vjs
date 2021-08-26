@@ -109,8 +109,9 @@
 
 ### () 0.21.2 - set state method
 * have a utils.SMSetState method that works like the setState method in main.js
-* use utils.SMSetState in main.js, craft.js, and game.js
-
+* use utils.SMSetState in main.js
+* use utils.SMSetState in craft.js
+* use utils.SMSetState in game.js
 
 
 

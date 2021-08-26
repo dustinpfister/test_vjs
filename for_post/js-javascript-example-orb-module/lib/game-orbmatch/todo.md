@@ -107,14 +107,15 @@
 ### () 0.21.3 - utils push state method
 * have a utils.SMPushState method that will push a new state object to an sm object, filling in blanks for things
 
-### () 0.21.2 - set state method
-* have a utils.SMSetState method that works like the setState method in main.js
-* use utils.SMSetState in main.js
-* use utils.SMSetState in craft.js
-* use utils.SMSetState in game.js
 
 
 
+
+### ( 08/26/2021 ) 0.21.2 - set state method
+* (done) have a utils.SMSetState method that works like the setState method in main.js
+* (done) use utils.SMSetState in main.js
+* (done) use utils.SMSetState in craft.js
+* (done) use utils.SMSetState in game.js
 
 ### ( 08/26/2021 ) 0.21.1 - utils methods for creating sm style state objects
 * (done) have a utils.SMCreateMin method that will create and return a clean object formatted like sm in main.js with states object

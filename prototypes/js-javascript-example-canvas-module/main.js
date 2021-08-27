@@ -1,5 +1,5 @@
 // helpers
-var updateGame = function(sm){
+var updateGame = function(sm, secs){
     sm.game.points = canvasMod.createPoints(sm.layers, 'box', sm.game.x, sm.game.y, sm.game.w, sm.game.h);
 };
 
@@ -38,18 +38,16 @@ sm.game = {
     h: 256,
     points: []
 };
-updateGame(sm);
+updateGame(sm, 0);
 
 // game state
 sm.states.game = {
     update: function (sm, secs) {
-        updateGame(sm);
+        updateGame(sm, secs);
     },
     draw: function (sm, stack) {
-        //draw.background(sm, stack[0].ctx, stack[0].canvas);
         canvasMod.draw(stack, 'background', 0, 'red');
-		canvasMod.draw(stack, 'points', 1, sm.game.points, 0, 0);
-        ///canvasMod.pointsDraw(stack[1].ctx, sm.game.points, 0, 0)
+        canvasMod.draw(stack, 'points', 1, sm.game.points, 0, 0);
     },
     events: {
         pointerStart: function (e, pos, sm) {

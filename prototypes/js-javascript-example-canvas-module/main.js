@@ -29,16 +29,12 @@ sm.layers = canvasMod.createLayerStack({
         state: sm
     });
 
-var points = canvasMod.createPoints(sm.layers, 'box', 160, 120, 128, 128);
-
-console.log(points);
-
 sm.game = {
-    points: points /*[
-        [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
-        [30, 80, 165, 55, 22, 200, 'fill:red']
-    ]*/
-}
+    x: 160,
+    y: 120,
+    points: []
+};
+sm.game.points = canvasMod.createPoints(sm.layers, 'box', sm.game.x, sm.game.y, 128, 128);
 
 // game state
 sm.states.game = {

@@ -104,7 +104,7 @@
             container: opt.container || document.getElementById('canvas-app') || document.body,
             events: opt.events || {},
             state: opt.state || {},
-            background: opt.background || 'lime'
+            background: opt.background || 'blue'
         };
         if (typeof stack.container === 'string') {
             stack.container = document.querySelector(stack.container);
@@ -185,8 +185,11 @@
 
     api.draw = function (stack, key, layerIndex) {
         var layerObj = stack[layerIndex];
-        var coreArguments = [stack, layerObj.ctx, layerObj.canvas, layerObj]
-        drawMethods[key].apply(stack, coreArguments);
+        // CORE ARGUMENTS created from stack, and layerIndex arguments of canvasMod.draw
+        var coreArgu = [stack, layerObj.ctx, layerObj.canvas, layerObj];
+        // ADDITIONAL ARGUMNETS that will change depending on the draw method used with key argument of canvasMod.draw
+        var addArgu = [];
+        drawMethods[key].apply(stack, coreArgu.concat(addArgu));
     }
 
 }

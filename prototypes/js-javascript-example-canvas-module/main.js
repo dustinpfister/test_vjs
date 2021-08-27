@@ -1,6 +1,6 @@
 // helpers
 var updateGame = function(sm){
-    sm.game.points = canvasMod.createPoints(sm.layers, 'box', sm.game.x, sm.game.y, 128, 128);
+    sm.game.points = canvasMod.createPoints(sm.layers, 'box', sm.game.x, sm.game.y, sm.game.w, sm.game.h);
 };
 
 
@@ -34,6 +34,8 @@ sm.events = {
 sm.game = {
     x: 160,
     y: 120,
+    w: 256,
+    h: 256,
     points: []
 };
 updateGame(sm);

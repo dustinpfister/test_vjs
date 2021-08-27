@@ -15,3 +15,64 @@ The format for points is an array of arrays that can be like this:
     ];
      */
 ```
+
+This is the format that I worked out for my other javaScript example post on a draw points method, which I added as a method to this canvas module.
+
+### The plugin format
+
+I added a canvas module load method that can be used as a way to extend the module with custom methods for drawing, and creating a collection of points. For now this is the format that I have togetaher for this sort of thing.
+
+```js
+canvasMod.load({
+    // points methods to add
+    pointsMethods : [
+        // a circle method
+        {
+            name: 'circle',
+            method: function(cx, cy, radius, pointCount){
+                pointCount = pointCount === undefined ? 100 : pointCount;
+                var points = [[]];
+                var i = 0, x, y, radian;
+                while(i < pointCount){
+                    radian = Math.PI * 2 / pointCount * i;
+                    x = cx + Math.cos(radian) * radius;
+                    y = cy + Math.sin(radian) * radius;
+                    points[0].push(x, y);
+                    i += 1;
+                }
+                return points;
+            }
+        },
+        // an oval method
+        {
+            name: 'oval',
+            method: function(cx, cy, radius1, radius2, pointCount){
+                pointCount = pointCount === undefined ? 100 : pointCount;
+                var points = [[]];
+                var i = 0, x, y, radian;
+                while(i < pointCount){
+                    radian = Math.PI * 2 / pointCount * i;
+                    x = cx + Math.cos(radian) * radius1;
+                    y = cy + Math.sin(radian) * radius2;
+                    points[0].push(x, y);
+                    i += 1;
+                }
+                return points;
+            }
+        }
+    ],
+    drawMethods: [
+        {
+            name: 'print',
+            method: function(stack, ctx, canvas, layerObj, text, x, y, opt){
+                opt = opt || {};
+                opt.fontSize = opt.fontSize || 10;
+                ctx.fillStyle = opt.fillStyle || 'black';
+                ctx.textBaseline = 'top';
+                ctx.font = opt.fontSize + 'px arial';
+                ctx.fillText(text, x, y);
+            }
+        }
+    ]
+});
+```

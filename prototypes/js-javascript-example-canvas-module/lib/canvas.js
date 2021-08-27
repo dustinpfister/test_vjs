@@ -5,8 +5,8 @@
     var drawMethods = {};
 
     // draw a background
-    drawMethods.background = function (stack, ctx, canvas, layerObj) {
-        ctx.fillStyle = stack.background || 'black';
+    drawMethods.background = function (stack, ctx, canvas, layerObj, background) {
+        ctx.fillStyle = background || stack.background || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
@@ -183,12 +183,27 @@
         ctx.restore();
     };
 
+    var parseDrawArguments = function () {
+        // CORE ARGUMENTS created from stack, and layerIndex arguments of canvasMod.draw
+        var coreArgu = [r1, r2, r3, 'foo'];
+        // ADDITIONAL ARGUMNETS that will change depending on the draw method used with key argument of canvasMod.draw
+        var addArgu = [];
+        if (arguments.length > 3) {
+            addArgu = Array.prototype.slice.call(arguments, 3, arguments.length);
+        }
+        return coreArgu.concat(addArgu);
+    };
+
     api.draw = function (stack, key, layerIndex) {
+        // layer object
         var layerObj = stack[layerIndex];
         // CORE ARGUMENTS created from stack, and layerIndex arguments of canvasMod.draw
         var coreArgu = [stack, layerObj.ctx, layerObj.canvas, layerObj];
         // ADDITIONAL ARGUMNETS that will change depending on the draw method used with key argument of canvasMod.draw
         var addArgu = [];
+        if (arguments.length > 3) {
+            addArgu = Array.prototype.slice.call(arguments, 3, arguments.length);
+        }
         drawMethods[key].apply(stack, coreArgu.concat(addArgu));
     }
 

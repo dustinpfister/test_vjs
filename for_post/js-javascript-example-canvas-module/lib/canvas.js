@@ -226,9 +226,11 @@
     // load additional FEATURES
     api.load = function(plugObj){
          Object.keys(plugObj).forEach(function(featureKey){
+             console.log(featureKey);
              var feature = plugObj[featureKey];
              FEATURES[featureKey][feature.name] = feature.method;   
          });
+         console.log(FEATURES);
     };
 }
     (this['canvasMod'] = {}));

@@ -27,11 +27,11 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * (done) start the post
 
 ### (done) - for 8/20/2021 - new grid module example
-* start a new js-javascript-example-grid-module proto folder based off of the grid module in wild-plant-grid
-* update js-javascript-example-idle-game-wild-plant-grid with any improvements
+* (done) start a new js-javascript-example-grid-module proto folder based off of the grid module in wild-plant-grid
+* (done) update js-javascript-example-idle-game-wild-plant-grid with any improvements
 
-### () - for 8/27/2021 new javascript example post on a canvas module
-* start a js-javascript-example-canvas-module proto folder
+### (done) - for 8/27/2021 new javascript example post on a canvas module
+* (done) start a js-javascript-example-canvas-module proto folder
 
 
 
@@ -44,7 +44,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 
 ### () for 08/27/2021
-* work on new js-javascript-example-canvas-module proto folder
+* (done) work on new js-javascript-example-canvas-module proto folder
 * write new post on js-javascript-example-canvas-module
 * edit js-javascript-global
 

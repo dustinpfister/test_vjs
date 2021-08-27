@@ -12,6 +12,11 @@
 
     var drawMethods = {};
 
+    // clear a layer
+    drawMethods.clear = function(stack, ctx, canvas, layerObj){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    };
+
     // draw a background
     drawMethods.background = function (stack, ctx, canvas, layerObj, background) {
         ctx.fillStyle = background || stack.background || 'black';

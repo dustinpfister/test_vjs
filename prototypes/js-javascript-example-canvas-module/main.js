@@ -62,6 +62,7 @@ sm.states.game = {
     },
     draw: function (sm, stack) {
         canvasMod.draw(stack, 'background', 0, 'red');
+        canvasMod.draw(stack, 'clear', 1);
         canvasMod.draw(stack, 'points', 1, sm.game.points, 0, 0);
     },
     events: {

@@ -9,12 +9,7 @@ var sm = {
     states: {}
 };
 
-sm.game = {
-    points: [
-        [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
-        [30, 80, 165, 55, 22, 200, 'fill:red']
-    ]
-}
+
 
 sm.events = {
     pointerStart: function (e, pos, sm) {
@@ -33,6 +28,17 @@ sm.layers = canvasMod.createLayerStack({
         events: sm.events,
         state: sm
     });
+
+var points = canvasMod.createPoints(sm.layers, 'box', 160, 120, 128, 128);
+
+console.log(points);
+
+sm.game = {
+    points: points /*[
+        [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
+        [30, 80, 165, 55, 22, 200, 'fill:red']
+    ]*/
+}
 
 // game state
 sm.states.game = {

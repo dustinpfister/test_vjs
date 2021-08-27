@@ -87,15 +87,14 @@
 
     var pointsMethods = {};
 
-    pointsMethods.box = function(w, h){
-        var points = [[]];
-        var i = 0, x, y;
-        while(i < 4){
-            x = w / 2 * -1 + i % 2 * w;
-            y = h / 2 * -1 + Math.floor(i / 2) * h;
-            points[0].push(x, y);
-            i += 1;
-        }
+    // create a box
+    pointsMethods.box = function(sx, sy, w, h){
+        var x = sx - w / 4,
+        y = sy - h / 4;
+        var points = [[
+            x, y, x + w / 2, y,
+            x + w / 2, y + h / 2, x, y + h / 2
+        ]];
         return points;
     };
 
@@ -231,6 +230,12 @@
             addArgu = Array.prototype.slice.call(arguments, 3, arguments.length);
         }
         drawMethods[key].apply(stack, coreArgu.concat(addArgu));
-    }
+    };
+    // create points
+    api.createPoints = function (stack, key) {
+        var coreArgu = Array.prototype.slice.call(arguments, 2, arguments.length);
+        var points = pointsMethods[key].apply(stack, coreArgu);
+        return points;
+    };
 }
     (this['canvasMod'] = {}));

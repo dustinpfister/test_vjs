@@ -21,7 +21,17 @@ var sm = {
     currentState: 'game',
     game: {},
     layers: {},
-    events: {},
+    events: {
+        pointerStart: function (e, pos, sm) {
+            sm.states[sm.currentState].events.pointerStart.call(sm, e, pos, sm);
+        },
+        pointerMove: function (e, pos, sm) {
+            sm.states[sm.currentState].events.pointerMove.call(sm, e, pos, sm);
+        },
+        pointerEnd: function (e, pos, sm) {
+            sm.states[sm.currentState].events.pointerEnd.call(sm, e, pos, sm);
+        }
+    },
     states: {}
 };
 sm.layers = canvasMod.createLayerStack({
@@ -29,17 +39,6 @@ sm.layers = canvasMod.createLayerStack({
     events: sm.events,
     state: sm
 });
-sm.events = {
-    pointerStart: function (e, pos, sm) {
-        sm.states[sm.currentState].events.pointerStart.call(sm, e, pos, sm);
-    },
-    pointerMove: function (e, pos, sm) {
-        sm.states[sm.currentState].events.pointerMove.call(sm, e, pos, sm);
-    },
-    pointerEnd: function (e, pos, sm) {
-        sm.states[sm.currentState].events.pointerEnd.call(sm, e, pos, sm);
-    }
-};
 sm.game = {
     x: 160,
     y: 120,
@@ -67,7 +66,9 @@ sm.states.game = {
     },
     events: {
         pointerStart: function (e, pos, sm) {
-            console.log('Game State click');
+            // change loction of box
+            sm.game.x = pos.x;
+            console.log(sm);
         },
         pointerMove: function (e, pos, sm) {},
         pointerEnd: function (e, pos, sm) {}

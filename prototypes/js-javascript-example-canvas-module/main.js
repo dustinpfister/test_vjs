@@ -4,6 +4,12 @@
 
 
 var updateGame = function(sm, secs){
+    sm.game.size += 32 * secs;
+    if(sm.game.size > 128){
+        sm.game.size = 64;
+    }
+    sm.game.w = sm.game.size;
+    sm.game.h = sm.game.size;
     sm.game.points = canvasMod.createPoints(sm.layers, 'box', sm.game.x, sm.game.y, sm.game.w, sm.game.h);
 };
 
@@ -44,6 +50,7 @@ sm.game = {
     y: 120,
     w: 256,
     h: 256,
+    size: 32,
     points: []
 };
 updateGame(sm, 0);

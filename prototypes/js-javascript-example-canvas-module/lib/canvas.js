@@ -185,7 +185,8 @@
 
     api.draw = function (stack, key, layerIndex) {
         var layerObj = stack[layerIndex];
-        drawMethods[key].call(stack, stack, layerObj.ctx, layerObj.canvas, layerObj)
+        var coreArguments = [stack, layerObj.ctx, layerObj.canvas, layerObj]
+        drawMethods[key].apply(stack, coreArguments);
     }
 
 }

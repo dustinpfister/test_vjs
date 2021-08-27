@@ -2,8 +2,10 @@
 
 ## () - virtual layer stack
 * have a way to create a stack of layers that does not need a hard coded html element as a container
+* this virtual layer stack class is what can be used to create sprite sheets with JavaScript code have an demo of this
 
-## () - 
+## () - draw points method
+* include a draw points method like that of the method worked out in my js-javascript-example-draw-points post
 
 ## ( done 08/25/2021 ) - Event attachment to a layer
 * (done) have a way to attach and events object to a top canvas layer of a stack

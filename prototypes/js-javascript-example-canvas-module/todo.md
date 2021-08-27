@@ -4,15 +4,17 @@
 * have a way to create a stack of layers that does not need a hard coded html element as a container
 * this virtual layer stack class is what can be used to create sprite sheets with JavaScript code have an demo of this
 
+## () - more pointsCreates methods 
+* have a built in shape for pointsCreate that is just a circle
+
 ## () - canvasMod.load method
 * have a canvasMod.load method
 * the external object format can be used to add Shapes, and Draw methods
 
-## () - canvasMod.pointsCreate
-* I will want some kind of canvasMod.pointsCreate method as a way to create the standard of object use with pointsDraw
-* have a pointsMethods object just like that of the drawMethods object
-* have a build in shape for pointsCreate that is just a Box
-* have a built in shape for pointsCreate that is just a circle
+## ( done 08/27/2021 ) - canvasMod.pointsCreate started
+* (done) I will want some kind of canvasMod.pointsCreate method as a way to create the standard of object use with pointsDraw
+* (done) have a pointsMethods object just like that of the drawMethods object
+* (done) have a build in shape for pointsCreate that is just a Box
 
 ## ( done 08/27/2021 ) - drawMethods object, and canvasMod.draw
 * (done) have a hard coded drawMethods object in canvas.js

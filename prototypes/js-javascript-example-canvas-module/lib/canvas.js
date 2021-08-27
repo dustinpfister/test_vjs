@@ -1,6 +1,14 @@
 
 (function (api) {
 
+    // draw methods to use with canvasMod.draw
+    var drawMethods = {};
+
+    drawMethods.background = function (stack, ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+
     // HELPERS
 
     // get a canvas relative position that is adjusted for scale
@@ -115,12 +123,12 @@
     };
 
     // draw a points collection
-/*
-var points = [
+    /*
+    var points = [
     [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
     [30, 80, 165, 55, 22, 200, 'fill:red']
-];
-*/
+    ];
+     */
     api.pointsDraw = function (ctx, points, cx, cy, opt) {
         opt = opt || {};
         ctx.save();

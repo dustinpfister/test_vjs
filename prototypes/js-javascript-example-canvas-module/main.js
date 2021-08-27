@@ -1,10 +1,19 @@
 // helpers
+
+
+
+
 var updateGame = function(sm, secs){
     sm.game.points = canvasMod.createPoints(sm.layers, 'box', sm.game.x, sm.game.y, sm.game.w, sm.game.h);
 };
 
 
+
+
 // state object
+
+
+
 var sm = {
     secs: 0,
     fps: 30,
@@ -40,7 +49,14 @@ sm.game = {
 };
 updateGame(sm, 0);
 
+
+
+
 // game state
+
+
+
+
 sm.states.game = {
     update: function (sm, secs) {
         updateGame(sm, secs);
@@ -58,6 +74,14 @@ sm.states.game = {
     }
 };
 
+
+
+
+// loop
+
+
+
+
 var loop = function () {
     var now = new Date(),
     secs = (now - sm.lt) / 1000,
@@ -69,5 +93,4 @@ var loop = function () {
         sm.lt = now;
     }
 };
-
 loop();

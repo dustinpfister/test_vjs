@@ -35,5 +35,18 @@ canvasMod.load({
                 return points;
             }
         }
+    ],
+    drawMethods: [
+        {
+            name: 'print',
+            method: function(stack, ctx, canvas, layerObj, text, x, y, opt){
+                opt = opt || {};
+                opt.fontSize = opt.fontSize || 10;
+                ctx.fillStyle = opt.fillStyle || 'black';
+                ctx.textBaseline = 'top';
+                ctx.font = opt.fontSize + 'px arial';
+                ctx.fillText(text, x, y);
+            }
+        }
     ]
 });

@@ -7,10 +7,10 @@
 ## () - more pointsCreates methods 
 * have a built in shape for pointsCreate that is just a circle
 
-## () - canvasMod.load method
+## ( done 08/27/2021 ) - canvasMod.load method
 * (done) have a canvasMod.load method
-* the external object format can be used to add pointsMethods start with a circle method
-* the exteranl object format can be used to add drawMethods have a demo of this
+* (done) the external object format can be used to add pointsMethods start with a circle method
+* (done) the exteranl object format can be used to add drawMethods have a demo of this
 
 ## ( done 08/27/2021  ) - basic animated demo
 * (done) have just a basic animated demo using what I have to work with thus far

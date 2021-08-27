@@ -1,14 +1,9 @@
 
 (function (api) {
 
-
-
-
-
-    // draw methods to use with canvasMod.draw
-
-
-
+/********* ********** *********
+ Draw Methods
+********** ********** *********/
 
     var drawMethods = {};
 
@@ -76,13 +71,9 @@
         ctx.restore();
     };
 
-
-
-
-    // Points methods
-
-
-
+/********* ********** *********
+ Points Methods
+********** ********** *********/
 
     var pointsMethods = {};
 
@@ -97,11 +88,9 @@
         return points;
     };
 
-
-    // HELPERS
-
-
-
+/********* ********** *********
+ HELPERS
+********** ********** *********/
 
     // get a canvas relative position that is adjusted for scale
     var getCanvasRelative = function (e) {
@@ -181,13 +170,9 @@
         return layer;
     };
 
-
-
-
-    // PUBLIC API
-
-
-
+/********* ********** *********
+ PUBLIC API
+********** ********** *********/
 
     // create a stack of layers as an 'Array Like' Object
     api.createLayerStack = function (opt) {

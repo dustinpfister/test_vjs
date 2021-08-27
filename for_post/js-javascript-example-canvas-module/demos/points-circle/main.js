@@ -10,7 +10,7 @@ var updateGame = function(sm, secs){
     }
     sm.game.w = sm.game.size;
     sm.game.h = sm.game.size;
-    sm.game.points = canvasMod.createPoints(sm.layers, 'circle', sm.game.x, sm.game.y, sm.game.w, 75);
+    sm.game.points = canvasMod.createPoints(sm.layers, 'oval', sm.game.x, sm.game.y, 25, 100, 75);
 };
 
 

@@ -11,9 +11,9 @@
 * have a canvasMod.load method
 * the external object format can be used to add Shapes, and Draw methods
 
-## () - basic animated demo
-* have just a basic animated demo using what I have to work with thus far
-* delete draw.js as I am not using it any more
+## ( done 08/27/2021  ) - basic animated demo
+* (done) have just a basic animated demo using what I have to work with thus far
+* (done) delete draw.js as I am not using it any more
 
 ## ( done 08/27/2021 ) - canvasMod.pointsCreate started
 * (done) I will want some kind of canvasMod.pointsCreate method as a way to create the standard of object use with pointsDraw

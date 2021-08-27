@@ -1,7 +1,7 @@
 
 (function (api) {
 
-    // EVENTS
+    // HELPERS
 
     // get a canvas relative position that is adjusted for scale
     var getCanvasRelative = function (e) {
@@ -84,6 +84,8 @@
         return layer;
     };
 
+    // PUBLIC API
+
     // create a stack of layers as an 'Array Like' Object
     api.createLayerStack = function (opt) {
         opt = opt || {};
@@ -108,7 +110,7 @@
             stack[i] = createLayer(layerOpt);
             i += 1;
         }
-		attachCanvasPointerEvents(stack);
+        attachCanvasPointerEvents(stack);
         return stack;
     };
 

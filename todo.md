@@ -45,7 +45,9 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 ### () for 08/27/2021
 * work on new js-javascript-example-canvas-module proto folder
-* write new post onjs-javascript-example-canvas-module
+* write new post on js-javascript-example-canvas-module
+* edit js-javascript-global
+
 * work on js-javascript-example-orb-module
 
 ### (done) for 08/26/2021
@@ -63,7 +65,6 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 ### (done) for 08/23/2021
 * (done) work on js-javascript-example-orb-module
-
 
 ### (done) for 08/13/2021
 * (done) work on js-javascript-example-idle-game-wild

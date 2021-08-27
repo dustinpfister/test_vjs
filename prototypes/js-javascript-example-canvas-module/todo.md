@@ -13,11 +13,11 @@
 * have a build in shape for pointsCreate that is just a Box
 * have a built in shape for pointsCreate that is just a circle
 
-## drawMethods object, and canvasMod.draw
-* have a hard coded drawMethods object in canvas.js
-* let drawMethods.background be a built in draw method for this object
-* let drawMethods.points be a built in draw method for this object
+## () - drawMethods object, and canvasMod.draw
+* (done) have a hard coded drawMethods object in canvas.js
+* (done) let drawMethods.background be a built in draw method for this object
 * have a canvasMod.draw method that will take a key to use as the first argument 'background', or 'points'
+* let drawMethods.points be a built in draw method for this object
 * remove canvasMod.pointsDraw as it is now canvasMod.draw(stack, 'points', layerIndex, sm.game.points, 0, 0, options)
 
 ## ( done 08/27/2021 ) - canvasMod.pointsDraw method

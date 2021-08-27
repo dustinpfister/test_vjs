@@ -38,8 +38,9 @@ sm.layers = canvasMod.createLayerStack({
 sm.states.game = {
     update: function (sm, secs) {},
     draw: function (sm, stack) {
-        draw.background(sm, stack[0].ctx, stack[0].canvas);
-		canvasMod.pointsDraw(stack[1].ctx, sm.game.points, 0, 0)
+        //draw.background(sm, stack[0].ctx, stack[0].canvas);
+        canvasMod.draw(stack, 'background', 0);
+        canvasMod.pointsDraw(stack[1].ctx, sm.game.points, 0, 0)
     },
     events: {
         pointerStart: function (e, pos, sm) {

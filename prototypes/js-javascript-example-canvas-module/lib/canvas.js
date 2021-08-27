@@ -5,7 +5,7 @@
     var drawMethods = {};
 
     // draw a background
-    drawMethods.background = function (stack, ctx, canvas) {
+    drawMethods.background = function (stack, ctx, canvas, layerObj) {
         ctx.fillStyle = stack.background || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
@@ -182,6 +182,11 @@
         });
         ctx.restore();
     };
+
+    api.draw = function (stack, key, layerIndex) {
+        var layerObj = stack[layerIndex];
+        drawMethods[key].call(stack, stack, layerObj.ctx, layerObj.canvas, layerObj)
+    }
 
 }
     (this['canvasMod'] = {}));

@@ -73,7 +73,7 @@ sm.states.game = {
         pointerStart: function (e, pos, sm) {
             // change loction of box
             sm.game.x = pos.x;
-            console.log(sm);
+            sm.game.y = pos.y;
         },
         pointerMove: function (e, pos, sm) {},
         pointerEnd: function (e, pos, sm) {}

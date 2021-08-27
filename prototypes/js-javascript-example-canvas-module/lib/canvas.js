@@ -14,7 +14,7 @@
 
     // clear a layer
     drawMethods.clear = function(stack, ctx, canvas, layerObj){
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(-1, -1, canvas.width + 1, canvas.height + 1);
     };
 
     // draw a background

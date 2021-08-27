@@ -1,11 +1,13 @@
 
 (function (api) {
 
+    var FEATURES = {};
+
 /********* ********** *********
  Draw Methods
 ********** ********** *********/
 
-    var drawMethods = {};
+    var drawMethods = FEATURES.drawMethods = {};
 
     // clear a layer
     drawMethods.clear = function(stack, ctx, canvas, layerObj){
@@ -75,7 +77,7 @@
  Points Methods
 ********** ********** *********/
 
-    var pointsMethods = {};
+    var pointsMethods = FEATURES.pointsMethods = {};
 
     // create a box
     pointsMethods.box = function(sx, sy, w, h){
@@ -213,13 +215,20 @@
         if (arguments.length > 3) {
             addArgu = Array.prototype.slice.call(arguments, 3, arguments.length);
         }
-        drawMethods[key].apply(stack, coreArgu.concat(addArgu));
+        FEATURES.drawMethods[key].apply(stack, coreArgu.concat(addArgu));
     };
     // create points
     api.createPoints = function (stack, key) {
         var coreArgu = Array.prototype.slice.call(arguments, 2, arguments.length);
         var points = pointsMethods[key].apply(stack, coreArgu);
         return points;
+    };
+    // load additional FEATURES
+    api.load = function(plugObj){
+         Object.keys(plugObj).forEach(function(featureKey){
+             var feature = plugObj[featureKey];
+             FEATURES[featureKey][feature.name] = feature.method;   
+         });
     };
 }
     (this['canvasMod'] = {}));

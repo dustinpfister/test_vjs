@@ -10,6 +10,13 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    // draw a points collection
+    /*
+    var points = [
+    [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
+    [30, 80, 165, 55, 22, 200, 'fill:red']
+    ];
+     */
     drawMethods.points = function (stack, ctx, canvas, layerObj, points, cx, cy, opt) {
         opt = opt || {};
         ctx.save();
@@ -78,7 +85,6 @@
         pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
         return pos;
     };
-
     // create and return a canvas pointer event handler for a stack
     var canvasPointerEventHandler = function (stack, state, events) {
         return function (e) {
@@ -99,7 +105,6 @@
             }
         };
     };
-
     // attach canvas pointer events
     var attachCanvasPointerEvents = function (stack) {
         var handler = canvasPointerEventHandler(stack, stack.state, stack.events),
@@ -114,7 +119,6 @@
         canvas.addEventListener('touchmove', handler, options);
         canvas.addEventListener('touchend', handler, options);
     };
-
     // create a single layer object
     var createLayer = function (opt) {
         opt = opt || {};
@@ -175,77 +179,7 @@
         attachCanvasPointerEvents(stack);
         return stack;
     };
-
-    // draw a points collection
-    /*
-    var points = [
-    [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
-    [30, 80, 165, 55, 22, 200, 'fill:red']
-    ];
-     */
-    api.pointsDraw = function (ctx, points, cx, cy, opt) {
-        opt = opt || {};
-        ctx.save();
-        ctx.translate(cx, cy);
-        points.forEach(function (pointArray) {
-            var len = pointArray.length,
-            close = opt.close === undefined ? true : opt.close,
-            fill = opt.fill === undefined ? 'black' : opt.fill,
-            stroke = opt.stroke === undefined ? 'white' : opt.stroke,
-            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
-            el,
-            i = 2;
-            ctx.beginPath();
-            ctx.moveTo(pointArray[0], pointArray[1]);
-            while (i < len) {
-                el = pointArray[i];
-                if (typeof el === 'number') {
-                    ctx.lineTo(el, pointArray[i + 1]);
-                    i += 2;
-                } else {
-                    var parts = el.split(':');
-                    if (parts[0] === 'close') {
-                        close = parts[1] === 'true' ? true : false;
-                    }
-                    if (parts[0] === 'stroke') {
-                        stroke = parts[1] || false;
-                    }
-                    if (parts[0] === 'fill') {
-                        fill = parts[1] || false;
-                    }
-                    if (parts[0] === 'lineWidth') {
-                        lineWidth = parts[1] || 1;
-                    }
-                    i += 1;
-                }
-            }
-            ctx.lineWidth = lineWidth;
-            if (close) {
-                ctx.closePath();
-            }
-            if (fill) {
-                ctx.fillStyle = fill;
-                ctx.fill();
-            }
-            if (stroke) {
-                ctx.strokeStyle = stroke;
-                ctx.stroke();
-            }
-        });
-        ctx.restore();
-    };
-
-    var parseDrawArguments = function () {
-        // CORE ARGUMENTS created from stack, and layerIndex arguments of canvasMod.draw
-        var coreArgu = [r1, r2, r3, 'foo'];
-        // ADDITIONAL ARGUMNETS that will change depending on the draw method used with key argument of canvasMod.draw
-        var addArgu = [];
-        if (arguments.length > 3) {
-            addArgu = Array.prototype.slice.call(arguments, 3, arguments.length);
-        }
-        return coreArgu.concat(addArgu);
-    };
-
+    // main draw method
     api.draw = function (stack, key, layerIndex) {
         // layer object
         var layerObj = stack[layerIndex];

@@ -24,12 +24,6 @@
     };
 
     // draw a points collection
-    /*
-    var points = [
-    [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
-    [30, 80, 165, 55, 22, 200, 'fill:red']
-    ];
-     */
     drawMethods.points = function (stack, ctx, canvas, layerObj, points, cx, cy, opt) {
         opt = opt || {};
         ctx.save();

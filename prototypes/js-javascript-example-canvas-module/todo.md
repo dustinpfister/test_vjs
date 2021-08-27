@@ -4,18 +4,25 @@
 * have a way to create a stack of layers that does not need a hard coded html element as a container
 * this virtual layer stack class is what can be used to create sprite sheets with JavaScript code have an demo of this
 
-## () - canvasMod.pointsLoadShape
-* have a pointsLoadShape method
-* let the methods that I worked out for my canvas draw star example be the first shape file plugin
+## () - canvasMod.load method
+* have a canvasMod.load method
+* the external object format can be used to add Shapes, and Draw methods
 
 ## () - canvasMod.pointsCreate
 * I will want some kind of canvasMod.pointsCreate method as a way to create the standard of object use with pointsDraw
 * have a build in shape for pointsCreate that is just a Box
 * have a built in shape for pointsCreate that is just a circle
 
-## () - canvasMod.pointsDraw method
+## drawMethods object, and canvasMod.draw
+* have a hard coded drawMethods object in canvas.js
+* let drawMethods.background be a built in draw method for this object
+* let drawMethods.points be a built in draw method for this object
+* have a canvasMod.draw method that will take a key to use as the first argument 'background', or 'points'
+* remove canvasMod.pointsDraw as it is now canvasMod.draw(stack, 'points', layerIndex, sm.game.points, 0, 0, options)
+
+## ( done 08/27/2021 ) - canvasMod.pointsDraw method
 * (done) include a canvasMod.pointsDraw method like that of the method worked out in my js-javascript-example-draw-points post
-* have at least some kind of demo of this feature when it comes to drawing
+* (done) have at least some kind of demo of this feature when it comes to drawing
 
 ## ( done 08/25/2021 ) - Event attachment to a layer
 * (done) have a way to attach and events object to a top canvas layer of a stack

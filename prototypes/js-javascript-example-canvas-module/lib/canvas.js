@@ -4,8 +4,9 @@
     // draw methods to use with canvasMod.draw
     var drawMethods = {};
 
+    // draw a background
     drawMethods.background = function (stack, ctx, canvas) {
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = stack.background || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
@@ -102,7 +103,8 @@
             length: opt.length === undefined ? 2 : opt.length,
             container: opt.container || document.getElementById('canvas-app') || document.body,
             events: opt.events || {},
-            state: opt.state || {}
+            state: opt.state || {},
+            background: opt.background || 'lime'
         };
         if (typeof stack.container === 'string') {
             stack.container = document.querySelector(stack.container);

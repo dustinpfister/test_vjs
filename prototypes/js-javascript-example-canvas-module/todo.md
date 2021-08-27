@@ -5,7 +5,7 @@
 * this virtual layer stack class is what can be used to create sprite sheets with JavaScript code have an demo of this
 
 ## () - draw points method
-* include a canvasMod.pointsDraw method like that of the method worked out in my js-javascript-example-draw-points post
+* (done) include a canvasMod.pointsDraw method like that of the method worked out in my js-javascript-example-draw-points post
 * I will want some kind of canvasMod.pointsCreate
 * have at least some kind of demo of this feature when it comes to drawing
 

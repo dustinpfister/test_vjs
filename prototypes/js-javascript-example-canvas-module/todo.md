@@ -4,9 +4,17 @@
 * have a way to create a stack of layers that does not need a hard coded html element as a container
 * this virtual layer stack class is what can be used to create sprite sheets with JavaScript code have an demo of this
 
-## () - draw points method
+## () - canvasMod.pointsLoadShape
+* have a pointsLoadShape method
+* let the methods that I worked out for my canvas draw star example be the first shape file plugin
+
+## () - canvasMod.pointsCreate
+* I will want some kind of canvasMod.pointsCreate method as a way to create the standard of object use with pointsDraw
+* have a build in shape for pointsCreate that is just a Box
+* have a built in shape for pointsCreate that is just a circle
+
+## () - canvasMod.pointsDraw method
 * (done) include a canvasMod.pointsDraw method like that of the method worked out in my js-javascript-example-draw-points post
-* I will want some kind of canvasMod.pointsCreate
 * have at least some kind of demo of this feature when it comes to drawing
 
 ## ( done 08/25/2021 ) - Event attachment to a layer

@@ -18,6 +18,7 @@ canvasMod.load({
                 return points;
             }
         },
+        // an oval method
         {
             name: 'oval',
             method: function(cx, cy, radius1, radius2, pointCount){

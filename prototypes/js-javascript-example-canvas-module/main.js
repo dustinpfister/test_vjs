@@ -1,3 +1,10 @@
+// helpers
+var updateGame = function(sm){
+    sm.game.points = canvasMod.createPoints(sm.layers, 'box', sm.game.x, sm.game.y, 128, 128);
+};
+
+
+// state object
 var sm = {
     secs: 0,
     fps: 30,
@@ -8,9 +15,11 @@ var sm = {
     events: {},
     states: {}
 };
-
-
-
+sm.layers = canvasMod.createLayerStack({
+    container: '#canvas-app',
+    events: sm.events,
+    state: sm
+});
 sm.events = {
     pointerStart: function (e, pos, sm) {
         sm.states[sm.currentState].events.pointerStart.call(sm, e, pos, sm);
@@ -22,23 +31,18 @@ sm.events = {
         sm.states[sm.currentState].events.pointerEnd.call(sm, e, pos, sm);
     }
 };
-
-sm.layers = canvasMod.createLayerStack({
-        container: '#canvas-app',
-        events: sm.events,
-        state: sm
-    });
-
 sm.game = {
     x: 160,
     y: 120,
     points: []
 };
-sm.game.points = canvasMod.createPoints(sm.layers, 'box', sm.game.x, sm.game.y, 128, 128);
+updateGame(sm);
 
 // game state
 sm.states.game = {
-    update: function (sm, secs) {},
+    update: function (sm, secs) {
+        updateGame(sm);
+    },
     draw: function (sm, stack) {
         //draw.background(sm, stack[0].ctx, stack[0].canvas);
         canvasMod.draw(stack, 'background', 0, 'red');

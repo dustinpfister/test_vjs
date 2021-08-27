@@ -115,7 +115,7 @@
     };
 
     // draw a points collection
-    api.drawPoints = function (ctx, points, cx, cy, opt) {
+    api.pointsDraw = function (ctx, points, cx, cy, opt) {
         opt = opt || {};
         ctx.save();
         ctx.translate(cx, cy);

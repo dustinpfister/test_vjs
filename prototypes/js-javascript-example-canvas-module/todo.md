@@ -10,6 +10,7 @@
 
 ## () - canvasMod.pointsCreate
 * I will want some kind of canvasMod.pointsCreate method as a way to create the standard of object use with pointsDraw
+* have a pointsMethods object just like that of the drawMethods object
 * have a build in shape for pointsCreate that is just a Box
 * have a built in shape for pointsCreate that is just a circle
 

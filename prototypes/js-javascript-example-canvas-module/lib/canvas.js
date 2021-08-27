@@ -1,7 +1,15 @@
 
 (function (api) {
 
+
+
+
+
     // draw methods to use with canvasMod.draw
+
+
+
+
     var drawMethods = {};
 
     // draw a background
@@ -69,7 +77,33 @@
         ctx.restore();
     };
 
+
+
+
+    // Points methods
+
+
+
+
+    var pointsMethods = {};
+
+    pointsMethods.box = function(w, h){
+        var points = [[]];
+        var i = 0, x, y;
+        while(i < 4){
+            x = w / 2 * -1 + i % 2 * w;
+            y = h / 2 * -1 + Math.floor(i / 2) * h;
+            points[0].push(x, y);
+            i += 1;
+        }
+        return points;
+    };
+
+
     // HELPERS
+
+
+
 
     // get a canvas relative position that is adjusted for scale
     var getCanvasRelative = function (e) {
@@ -149,7 +183,13 @@
         return layer;
     };
 
+
+
+
     // PUBLIC API
+
+
+
 
     // create a stack of layers as an 'Array Like' Object
     api.createLayerStack = function (opt) {
@@ -192,6 +232,5 @@
         }
         drawMethods[key].apply(stack, coreArgu.concat(addArgu));
     }
-
 }
     (this['canvasMod'] = {}));

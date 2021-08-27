@@ -57,11 +57,15 @@ updateGame(sm, 0);
 
 
 sm.states.game = {
+    // this start hook will be called just once
+    // here I can draw a static background to the canvas just once
+    start: function(sm){
+        canvasMod.draw(sm.layers, 'background', 0, 'red');
+    },
     update: function (sm, secs) {
         updateGame(sm, secs);
     },
     draw: function (sm, stack) {
-        canvasMod.draw(stack, 'background', 0, 'red');
         canvasMod.draw(stack, 'clear', 1);
         canvasMod.draw(stack, 'points', 1, sm.game.points, 0, 0);
     },
@@ -82,8 +86,8 @@ sm.states.game = {
 // loop
 
 
-
-
+// call start just once
+sm.states.game.start(sm);
 var loop = function () {
     var now = new Date(),
     secs = (now - sm.lt) / 1000,

@@ -9,7 +9,8 @@
 
 ## () - canvasMod.load method
 * have a canvasMod.load method
-* the external object format can be used to add Shapes, and Draw methods
+* the external object format can be used to add pointsMethods start with a circle method
+* the exteranl object format can be used to add drawMethods have a demo of this
 
 ## ( done 08/27/2021  ) - basic animated demo
 * (done) have just a basic animated demo using what I have to work with thus far

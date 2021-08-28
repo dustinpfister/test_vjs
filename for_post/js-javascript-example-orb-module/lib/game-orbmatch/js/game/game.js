@@ -531,6 +531,13 @@
 
     utils.smPushState(gameStates, {
         name: 'gameOver',
+        draw: function(game, ctx, canvas){
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            ctx.font = '30px arial';
+            ctx.fillText('Game Over', 30, 30);
+        },
         events: {
             onPointerStart: function (e, pos, game) {
                 // just calling the on game end method for any pointer event for now

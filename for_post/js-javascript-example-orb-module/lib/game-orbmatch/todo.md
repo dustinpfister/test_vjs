@@ -100,7 +100,7 @@
 
 ### () 0.21.5 - use draw methods in game.js
 * (done) the draw methods in draw.js for each game state should be in game.js start with the playerTurn game state
-* playerTurnOrbMenu
+* (done) playerTurnOrbMenu
 * gameOver
 * remove uneeded draw.forGameState object in draw.js
 

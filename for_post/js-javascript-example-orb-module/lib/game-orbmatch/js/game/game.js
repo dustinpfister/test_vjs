@@ -545,7 +545,17 @@
                 onClick: function (e, pos, game, button) {
                     utils.smSetState(game, 'playerTurn');
                 }
-            }
+            },
+            endGame: {
+                disp: 'End Game',
+                x: 320,
+                y: 240 - 32,
+                w: 100,
+                h: 64,
+                onClick: function (e, pos, game, button) {
+                    utils.smSetState(game, 'gameOver');
+                }
+            },
         },
         events: {
             onPointerStart: function (e, pos, game) {

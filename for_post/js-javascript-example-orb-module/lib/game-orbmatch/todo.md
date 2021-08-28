@@ -62,39 +62,15 @@
 * orbCollection: have a recipe where the focus is more on hp
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an impact on stat objects such as orb.data.attack
 
-### () 0.22.0 - TypeKey orb definition JSON.files
-* make a collection of JSON files the define what the stats are for each type, and when done this can be used for recipes too
-```js
-// pure typeKey example
-{
-    typeKey: 'pure',
-    baseStats: { // how base stats values will level up (these values are effected only by level and not ratio)
-        attack: {
-            startValue: 1,
-            deltaIncPerLevel: 1 // delta value that will be added per level
-        },
-        hpMax: {
-            startValue: 10,
-            deltaIncPerLevel: 10
-        },
-        heal: {
-            startValue: 0.25,
-            deltaIncPerLevel: 0.25
-        }
-    },
-    elementDeltas: { // additional deltas to stats that are applyed per element
-        0 : { // fire elements add to attack
-            attack: 0.25
-        },
-        1: {},
-        2: { // water elements add to hpMax, and heal
-            hpMax: 5,
-            heal: 0.25
-        },
-        3: {}
-    }
-}
-```
+### () 0.22.0 - OrbCollection.load, and TypeKey orb definition files started
+* I will need a OrbCollection.load method that can be called in an exteral file that will contain orb type data
+* make a collection of JSON files to define what the stats are for each type starting with pure.
+* have a dual typeKey file
+* have a tiple typekey file
+* have a quad typekey file
+* have a composite typekey file
+
+
 
 
 

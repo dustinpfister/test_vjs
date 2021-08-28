@@ -82,10 +82,9 @@
 * remove orbCollection.setOrbPropsToOrb if it is no longer being used
 
 ### () 0.22.0 - OrbMod.load, and orbDefinition files started
-* I will need a ORBDEFS object in orb-client.js
+* (done) I will need a ORBDEFS object in orb-client.js
+* (done) I will need a OrbMod.loadOrbDef method that can be called in an exteral file that will contain orb type data
 
-
-* I will need a OrbMod.load method that can be called in an exteral file that will contain orb type data
 * make a collection of files to define what the stats are for each type starting with pure.
 * have a dual orbDefinition file
 * have a tiple orbDefinition file

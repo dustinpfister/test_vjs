@@ -172,7 +172,7 @@ draw.forGameState = {
         ctx.font = '30px arial';
         ctx.fillText('Game Over', 30, 30);
     },
-    gameOver: function (sm, ctx, canvas) {}
+    gameOptions: function (sm, ctx, canvas) {}
 };
 // draw the current game state
 draw.gameState = function (sm, ctx, canvas) {

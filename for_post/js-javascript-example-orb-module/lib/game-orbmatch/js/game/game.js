@@ -1,8 +1,8 @@
 (function (api) {
 
     var gameStates = utils.smCreateMin({
-        currentState: 'playerTurn'
-    });
+            currentState: 'playerTurn'
+        });
 
     /********* ********** ********** *********/
     //  HELPERS
@@ -113,14 +113,14 @@
         // non standard sm object props
         game.selectedOrb = null;
         // used for flashing effect and solid color
-        game.playerSlotFillStyle = { 
+        game.playerSlotFillStyle = {
             secs: 0,
             colorIndex: 0,
             colorArray: ['lime', 'red', 'brown'],
             color: 'lime'
         };
         // what to do on game end
-        game.onGameEnd = opt.onGameEnd || function(game){};
+        game.onGameEnd = opt.onGameEnd || function (game) {};
         // the start of a player object
         game.player = createPlayerObject({
                 faction: 'player',
@@ -149,30 +149,30 @@
 
     // create and return a value to use with the gameMod.create aiPouch option
     var orbTypers = {
-        randomPure : function(){
-             var arr = [0, 0, 0, 0];
-             arr[Math.floor(Math.random() * 4)] = 1;
-             return arr;
+        randomPure: function () {
+            var arr = [0, 0, 0, 0];
+            arr[Math.floor(Math.random() * 4)] = 1;
+            return arr;
         }
     };
-    api.createAIPouch = function(opt){
+    api.createAIPouch = function (opt) {
         opt = opt || {};
         opt.count = opt.count === undefined ? 1 : opt.count;
         opt.minOrbLevel = opt.minOrbLevel === undefined ? 1 : opt.minOrbLevel;
         opt.maxOrbLevel = opt.maxOrbLevel === undefined ? 1 : opt.maxOrbLevel;
         opt.typer = opt.typer || 'randomPure';
         // parse typer string
-        if(typeof opt.typer === 'string'){
-           opt.typer = orbTypers[opt.typer];
+        if (typeof opt.typer === 'string') {
+            opt.typer = orbTypers[opt.typer];
         }
         var pouch = [],
         i = 0;
-        while(i < opt.count){
-            var orbLevel = opt.minOrbLevel + Math.floor( Math.random() * ( opt.maxOrbLevel - opt.minOrbLevel ) );
-            var points = opt.typer().map(function(elCount){
-                return elCount * Math.pow(2, orbLevel - 1);
-            });
-            pouch.push( points );
+        while (i < opt.count) {
+            var orbLevel = opt.minOrbLevel + Math.floor(Math.random() * (opt.maxOrbLevel - opt.minOrbLevel));
+            var points = opt.typer().map(function (elCount) {
+                    return elCount * Math.pow(2, orbLevel - 1);
+                });
+            pouch.push(points);
             i += 1;
         }
         return pouch;
@@ -214,6 +214,16 @@
                 h: 64,
                 onClick: function (e, pos, game, button) {
                     utils.smSetState(game, 'aiTurn');
+                }
+            },
+            options: {
+                disp: 'Options',
+                x: 565,
+                y: 10,
+                w: 64,
+                h: 64,
+                onClick: function (e, pos, game, button) {
+                    utils.smSetState(game, 'gameOver');
                 }
             }
         },
@@ -456,7 +466,6 @@
     // process turn state object
     utils.smPushState(gameStates, {
         name: 'processTurn',
-        buttons: {},
         update: function (game, secs) {
             processFactionTurn(game, 'player');
             processFactionTurn(game, 'ai');
@@ -526,9 +535,20 @@
 
     utils.smPushState(gameStates, {
         name: 'gameOptions',
-        events: {
-            onPointerStart: function (e, pos, game) {
+        buttons: {
+            continueGame: {
+                disp: 'Continue Game',
+                x: 320 - 128,
+                y: 400,
+                w: 100,
+                h: 64,
+                onClick: function (e, pos, game, button) {
+                    utils.smSetState(game, 'playerTurn');
+                }
             }
+        },
+        events: {
+            onPointerStart: function (e, pos, game) {}
         }
     });
 

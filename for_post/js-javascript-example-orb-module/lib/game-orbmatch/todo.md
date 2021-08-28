@@ -62,6 +62,12 @@
 * orbCollection: have a recipe where the focus is more on hp
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an impact on stat objects such as orb.data.attack
 
+
+
+### () 0.22.1 - Create Orb helper method in OrbCollection, and orbCollection.clone
+* I should have a create orb helper method in orb collection that will create a single orb with its data object setup
+* have an orbCollection.clone method that will return a single orb that is a clone of the given orb
+
 ### () 0.22.0 - OrbCollection.load, and TypeKey orb definition files started
 * I will need a OrbCollection.load method that can be called in an exteral file that will contain orb type data
 * make a collection of JSON files to define what the stats are for each type starting with pure.
@@ -69,7 +75,7 @@
 * have a tiple typekey file
 * have a quad typekey file
 * have a composite typekey file
-
+* see/update README for typeKey object format
 
 
 

@@ -101,16 +101,12 @@
 ### () 0.21.5 - use draw methods in game.js
 * the draw methods in draw.js for each game state should be in game.js
 
-### () 0.21.4 - gameOptions game state
+### ( 08/27/2021 ) 0.21.4 - gameOptions game state
 * (done) start a new gameOptions game state in game.js
 * (done) I should have a game options button in the upper right corner of the canvas
-* the game options button allows for entering into a game options state
-* the game options state can be used to quit the current game
-* the game options state can be used to continue the current game
-
-
-
-
+* (done) the game options button allows for entering into a game options state
+* (done) the game options state can be used to quit the current game
+* (done) the game options state can be used to continue the current game
 
 ### ( 08/26/2021 ) 0.21.3 - utils push state method
 * (done) have a utils.smPushState method that will push a new state object to an sm object, filling in blanks

@@ -38,7 +38,7 @@ OrbMod.loadOrbDef({
 ```js
 // recipe typeKey
 OrbMod.loadOrbDef({
-    typeKey: 'recipe:1-0-3-0'
+    typeKey: 'recipe_1_0_3_0' // 'recipe_1_0_3_0'.split('_').slice(-4).map(function(el){return parseInt(el);}); //[1,0,3,0]
 });
 ```
 

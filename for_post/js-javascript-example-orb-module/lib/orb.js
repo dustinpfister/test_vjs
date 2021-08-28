@@ -3,7 +3,7 @@ var orbMod = (function (global) {
     // PUBLIC API
     var api = {};
 
-    // fire the type of the orb
+    // find the type of the orb
     var findType = function(orb){
         var type = 'composite',
         binArr = ratio.isBinaryArray(orb.ratio),

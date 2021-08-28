@@ -70,28 +70,34 @@
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an impact on stat objects such as orb.data.attack
 
 
-### () 0.22.2 - draw.print
+### () 0.22.4 - draw.print
 * have a basic draw.print method for printing text in a standard way
 * use draw.print to create a crude title text in mainMenu state
 
-### () 0.22.1 - Create Orb helper method in OrbCollection, and orbCollection.clone
+### () 0.22.3 - Create Orb helper method in OrbCollection, and orbCollection.clone
 * I should have a create orb helper method in orb collection that will create a single orb with its data object setup
 * have an orbCollection.clone method that will return a single orb that is a clone of the given orb
 * see abount using OrbCollection.clone over that of orbCollection.setOrbPropsToOrb in game.js
 * see abount using OrbCollection.clone over that of orbCollection.setOrbPropsToOrb in crafting.js
 * remove orbCollection.setOrbPropsToOrb if it is no longer being used
 
-### () 0.22.0 - OrbMod.load, and orbDefinition files started
-* (done) I will need a ORBDEFS object in orb-client.js
-* (done) I will need a OrbMod.loadOrbDef method that can be called in an exteral file that will contain orb type data
 
-* make a collection of files to define what the stats are for each type starting with pure.
+### () 0.22.2 - More orb def files
 * have a dual orbDefinition file
 * have a tiple orbDefinition file
 * have a quad orbDefinition file
 * have a composite orbDefinition file
-* have a reference to the orbDef object as part of the core set of orb properties
 * see/update README for orbDefinition object format
+
+### () 0.22.1 - Get pure ORBDEF to have an effect in OrbCollection.js
+* add baseValue stats to orb_types/pure.js
+* make it so that the baseValue stats in orb/types/pure.js are used in Orbcollection.js
+
+### ( 08/28/2021 ) 0.22.0 - OrbMod.load, and orbDefinition files started
+* (done) I will need a ORBDEFS object in orb-client.js
+* (done) I will need a OrbMod.loadOrbDef method that can be called in an exteral file that will contain orb type data
+* (done) have a reference to the orbDef object as part of the core set of orb properties
+* (done) start a collection of files to define what the stats are for each type starting with pure.
 
 
 

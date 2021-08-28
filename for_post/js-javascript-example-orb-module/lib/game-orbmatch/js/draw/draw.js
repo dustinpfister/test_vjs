@@ -23,7 +23,7 @@ draw.orb = function (sm, ctx, canvas, orb, fillStyle) {
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
     ctx.font = '10px arial';
-    if(orb.type != 'null'){
+    if (orb.type != 'null') {
         ctx.fillText(orb.level, orb.x, orb.y);
     }
 };
@@ -143,9 +143,9 @@ draw.button = function (button, ctx) {
     y = button.y + button.h / 2;
     ctx.fillText(button.disp, x, y);
 };
-draw.buttonCollection = function(buttonCollection, ctx){
+draw.buttonCollection = function (buttonCollection, ctx) {
     var keys = Object.keys(buttonCollection);
-    keys.forEach(function(buttonKey){
+    keys.forEach(function (buttonKey) {
         var button = buttonCollection[buttonKey];
         draw.button(button, ctx);
     });
@@ -171,7 +171,8 @@ draw.forGameState = {
         ctx.textBaseline = 'middle';
         ctx.font = '30px arial';
         ctx.fillText('Game Over', 30, 30);
-    }
+    },
+    gameOver: function (sm, ctx, canvas) {}
 };
 // draw the current game state
 draw.gameState = function (sm, ctx, canvas) {

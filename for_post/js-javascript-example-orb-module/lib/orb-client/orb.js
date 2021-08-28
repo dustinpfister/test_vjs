@@ -1,9 +1,15 @@
 var orbMod = (function (global) {
 
+    var ORBDEFS = {
+        'pure': {
+             foo: 'bar'
+         }
+    };
+
     // PUBLIC API
     var api = {};
 
-    // fire the type of the orb
+    // find the type of the orb
     var findType = function (orb) {
         var type = 'composite',
         i,
@@ -28,8 +34,8 @@ var orbMod = (function (global) {
         orb.points = points;
         orb.ratio = ratio.getSimpleRatio(orb.points);
         orb.type = findType(orb);
+        orb.ORBDEF = ORBDEFS[orb.type] || {}; // ref to ORBDEF object if any
         orb.data = {}; // user-data object
-
         // LEVEL, and INCREMENTAL
         // The level of the orb is the power of the simple ratio to the power of 2
         // the ratio.getLevel method should use if the points array is given along with the
@@ -37,7 +43,6 @@ var orbMod = (function (global) {
         //  incremental by just setting base to 1
         orb.level = Math.floor(ratio.getLevel(orb.points, 2)) + 1;
         orb.incremental = ratio.getLevel(orb.points, 1);
-
         return orb
     };
 

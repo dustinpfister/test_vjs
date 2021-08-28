@@ -21,7 +21,6 @@ var orbMod = (function (global) {
         orb.points = points;
         orb.ratio = ratio.getSimpleRatio(orb.points);
         orb.type = findType(orb);
-
         // LEVEL, and INCREMENTAL
         // The level of the orb is the power of the simple ratio to the power of 2
         // the ratio.getLevel method should use if the points array is given along with the 

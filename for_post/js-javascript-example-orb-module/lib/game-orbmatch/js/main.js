@@ -307,6 +307,9 @@
 
 
     // start main loop
+
+console.log(orbMod.createFromPoints([1,0,0,0]));
+
     sm.loop();
 
 }

@@ -182,7 +182,6 @@
     //  PLAYER TURN STATE
     /********* ********** ********** *********/
 
-    //gameStates.playerTurn = {
     utils.smPushState(gameStates, {
         name: 'playerTurn',
         buttons: {
@@ -245,7 +244,6 @@
     //  PLAYER TURN ORB MENU STATE
     /********* ********** ********** *********/
 
-    //gameStates.playerTurnOrbMenu = {
     utils.smPushState(gameStates, {
         name: 'playerTurnOrbMenu',
         buttons: {
@@ -341,7 +339,6 @@
     //  PLAYER TURN ORB CONFIG STATE
     /********* ********** ********** *********/
 
-    //gameStates.playerTurnOrbConfig = {
     utils.smPushState(gameStates, {
         name: 'playerTurnOrbConfig',
         buttons: {
@@ -378,7 +375,6 @@
     /********* ********** ********** *********/
 
     // ai turn state
-    //gameStates.aiTurn = {
     utils.smPushState(gameStates, {
         name: 'aiTurn',
         update: function (game, secs) {
@@ -458,7 +454,6 @@
     };
 
     // process turn state object
-    //gameStates.processTurn = {
     utils.smPushState(gameStates, {
         name: 'processTurn',
         buttons: {},
@@ -512,15 +507,27 @@
     });
 
     /********* ********** ********** *********/
-    //  GAMEOVER STATE
+    //  GAME OVER STATE
     /********* ********** ********** *********/
 
-    // game over state object
     utils.smPushState(gameStates, {
         name: 'gameOver',
         events: {
             onPointerStart: function (e, pos, game) {
+                // just calling the on game end method for any pointer event for now
                 game.onGameEnd.call(game, game);
+            }
+        }
+    });
+
+    /********* ********** ********** *********/
+    //  GAME OPTIONS STATE
+    /********* ********** ********** *********/
+
+    utils.smPushState(gameStates, {
+        name: 'gameOptions',
+        events: {
+            onPointerStart: function (e, pos, game) {
             }
         }
     });

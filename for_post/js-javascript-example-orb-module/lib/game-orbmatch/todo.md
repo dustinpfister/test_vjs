@@ -81,14 +81,15 @@
 * see abount using OrbCollection.clone over that of orbCollection.setOrbPropsToOrb in crafting.js
 * remove orbCollection.setOrbPropsToOrb if it is no longer being used
 
-### () 0.22.0 - OrbCollection.load, and TypeKey orb definition files started
-* I will need a OrbCollection.load method that can be called in an exteral file that will contain orb type data
-* make a collection of JSON files to define what the stats are for each type starting with pure.
-* have a dual typeKey file
-* have a tiple typekey file
-* have a quad typekey file
-* have a composite typekey file
-* see/update README for typeKey object format
+### () 0.22.0 - OrbMod.load, and orbDefinition files started
+* I will need a OrbMod.load method that can be called in an exteral file that will contain orb type data
+* make a collection of files to define what the stats are for each type starting with pure.
+* have a dual orbDefinition file
+* have a tiple orbDefinition file
+* have a quad orbDefinition file
+* have a composite orbDefinition file
+* have a reference to the orbDef object as part of the core set of orb properties
+* see/update README for orbDefinition object format
 
 
 

@@ -235,6 +235,13 @@
                 updateInRangeOrbs(game, orb);
             });
         },
+        draw: function(game, ctx, canvas){
+            var orb = game.selectedOrb;
+            if (orb) {
+                draw.orbInfo(game, ctx, canvas, orb, 10, 10);
+                draw.orbRange(game, ctx, canvas, orb);
+            }
+        },
         events: {
             onPointerStart: function (e, pos, game) {
                 utils.buttonCheck(e, pos, game);

@@ -53,6 +53,13 @@
 * if minRange = 3 and plusOnePer = 1 then that will result in the range always being 4
 * for now have it so that the range prop starts at 1 and goes up to 4 by a given level say 100
 
+### () 0.23.1 - simple type overlays for draw.orb
+* have simple type overlays for draw.orb starting with pure type which will be just a thick black circle
+* null type should just have no overlay so use a noop function for it
+* dule, triple, and quad types can just be two, three, or four lines coming from the center of the orb
+* composite type can just have a ? over it
+* recipe orbs can just have a R over them for now.
+
 ### () 0.23.0 - recipe types started
 * orb-client: to allow for injection of orb recipe defs in the from of calling a public method Orb.loadRecipe
 * orb-client: make changes so that will result in orb.type being set to recipe if orb.ratio matches what is in a recipe object

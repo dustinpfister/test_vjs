@@ -67,6 +67,9 @@
 ### () 0.22.1 - Create Orb helper method in OrbCollection, and orbCollection.clone
 * I should have a create orb helper method in orb collection that will create a single orb with its data object setup
 * have an orbCollection.clone method that will return a single orb that is a clone of the given orb
+* see abount using OrbCollection.clone over that of orbCollection.setOrbPropsToOrb in game.js
+* see abount using OrbCollection.clone over that of orbCollection.setOrbPropsToOrb in crafting.js
+* remove orbCollection.setOrbPropsToOrb if it is no longer being used
 
 ### () 0.22.0 - OrbCollection.load, and TypeKey orb definition files started
 * I will need a OrbCollection.load method that can be called in an exteral file that will contain orb type data

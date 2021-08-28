@@ -277,6 +277,11 @@
         },
         draw: function(sm, ctx, canvas){
             draw.gameState(sm, ctx, canvas);
+            // call draw method of current game state in gameMod if it has one
+            var drawMethod = sm.game.states[sm.game.currentState].draw;
+            if(drawMethod){
+                drawMethod.call(sm.game, sm.game, ctx, canvas);
+            }
         },
         events : {
             pointerStart: function (e, pos, sm) {

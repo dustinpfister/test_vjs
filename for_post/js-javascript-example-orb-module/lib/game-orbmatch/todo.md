@@ -101,7 +101,7 @@
 ### () 0.21.5 - use draw methods in game.js
 * the draw methods in draw.js for each game state should be in game.js
 
-### ( 08/27/2021 ) 0.21.4 - gameOptions game state
+### ( 08/28/2021 ) 0.21.4 - gameOptions game state
 * (done) start a new gameOptions game state in game.js
 * (done) I should have a game options button in the upper right corner of the canvas
 * (done) the game options button allows for entering into a game options state

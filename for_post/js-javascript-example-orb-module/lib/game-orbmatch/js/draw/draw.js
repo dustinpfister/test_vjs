@@ -150,34 +150,6 @@ draw.buttonCollection = function (buttonCollection, ctx) {
         draw.button(button, ctx);
     });
 };
-// game state methods
-draw.forGameState = {
-    playerTurn: function (sm, ctx, canvas) {
-/*
-        var orb = sm.game.selectedOrb;
-        if (orb) {
-            draw.orbInfo(sm, ctx, canvas, orb, 10, 10);
-            draw.orbRange(sm, ctx, canvas, orb);
-        }
-*/
-    },
-    playerTurnOrbMenu: function (sm, ctx, canvas) {
-        //draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
-    },
-    playerTurnOrbConfig: function (sm, ctx, canvas) {},
-    aiTurn: function (sm, ctx, canvas) {},
-    processTurn: function (sm, ctx, canvas) {},
-    gameOver: function (sm, ctx, canvas) {
-/*
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'middle';
-        ctx.font = '30px arial';
-        ctx.fillText('Game Over', 30, 30);
-*/
-    },
-    gameOptions: function (sm, ctx, canvas) {}
-};
 // draw the current game state
 draw.gameState = function (sm, ctx, canvas) {
     draw.background(sm, ctx, canvas);
@@ -185,8 +157,6 @@ draw.gameState = function (sm, ctx, canvas) {
     draw.orbCollection(sm, ctx, canvas, sm.game.player.slots);
     draw.orbCollection(sm, ctx, canvas, sm.game.ai.slots);
     draw.slotsInfo(sm, ctx, canvas);
-    // for current game state
-    //draw.forGameState[sm.game.currentState](sm, ctx, canvas);
     // buttons
     var state = sm.game.states[sm.game.currentState],
     buttons = state.buttons;

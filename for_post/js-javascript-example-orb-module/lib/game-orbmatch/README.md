@@ -6,30 +6,29 @@ A simple game that I have made just for the sake of testing out this orb module 
 
 ```js
 // pure typeKey example
-OrbCollection.load({
+OrbCollection.loadTypeDef({
     typeKey: 'pure',
-    baseStats: { // how base stats values will level up (these values are effected only by level and not ratio)
+    // how base stats values will level up ( effected only by level, and incremental )
+    baseStats: { 
         attack: {
-            startValue: 1,
-            deltaIncPerLevel: 1 // delta value that will be added per level
-        },
-        hpMax: {
-            startValue: 10,
-            deltaIncPerLevel: 10
-        },
-        heal: {
-            startValue: 0.25,
-            deltaIncPerLevel: 0.25
+            startValue: 1,     // always just 1                                   =    1.0
+            levelBase: 1.075,  // if level cap is 30 then Math.pow(1.26, 30)      = 1025.9267494682863
+            perInc: 0.125      // if level cap is 30 then 0.00000125 * 536870912  =  671.08864
         }
     },
-    elementDeltas: { // additional deltas to stats that are applyed per element
+    // additional deltas to stats that are applyed per element ( effected by ratio, and level)
+    elementDeltas: {
         0 : { // fire elements add to attack
-            attack: 0.25
+            attack: {
+                levelBase: 1.03,
+                perInc:    0.025
+            }
         },
         1: {},
         2: { // water elements add to hpMax, and heal
-            hpMax: 5,
-            heal: 0.25
+            hpMax: {
+            },
+            heal: {}
         },
         3: {}
     }

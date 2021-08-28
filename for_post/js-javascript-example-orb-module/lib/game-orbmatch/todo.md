@@ -70,6 +70,9 @@
 * orbCollection: the state of orb.level, and orb.recipeDef should be what has an impact on stat objects such as orb.data.attack
 
 
+### () 0.22.2 - draw.print
+* have a basic draw.print method for printing text in a standard way
+* use draw.print to create a crude title text in mainMenu state
 
 ### () 0.22.1 - Create Orb helper method in OrbCollection, and orbCollection.clone
 * I should have a create orb helper method in orb collection that will create a single orb with its data object setup

@@ -103,7 +103,7 @@
 
 ### () 0.21.4 - gameOptions game state
 * (done) start a new gameOptions game state in game.js
-* I should have a game options button in the upper right corner of the canvas
+* (done) I should have a game options button in the upper right corner of the canvas
 * the game options button allows for entering into a game options state
 * the game options state can be used to quit the current game
 * the game options state can be used to continue the current game

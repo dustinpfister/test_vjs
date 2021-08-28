@@ -223,7 +223,7 @@
                 w: 64,
                 h: 64,
                 onClick: function (e, pos, game, button) {
-                    utils.smSetState(game, 'gameOver');
+                    utils.smSetState(game, 'gameOptions');
                 }
             }
         },
@@ -539,7 +539,7 @@
             continueGame: {
                 disp: 'Continue Game',
                 x: 320 - 128,
-                y: 400,
+                y: 240 - 32,
                 w: 100,
                 h: 64,
                 onClick: function (e, pos, game, button) {
@@ -548,7 +548,9 @@
             }
         },
         events: {
-            onPointerStart: function (e, pos, game) {}
+            onPointerStart: function (e, pos, game) {
+                utils.buttonCheck(e, pos, game);
+            }
         }
     });
 

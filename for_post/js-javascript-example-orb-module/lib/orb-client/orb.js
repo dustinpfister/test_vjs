@@ -73,6 +73,11 @@ var orbMod = (function (global) {
         return api.createFromPoints(points);
     };
 
+    // load an orb def
+    api.loadOrbDef = function(orbDef){
+         ORBDEFS[orbDef.typeKey] = orbDef;
+    };
+
     return api;
 
 }

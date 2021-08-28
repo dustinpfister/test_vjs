@@ -42,12 +42,37 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start new s7 section for js-document-body that has to do with style
 * start circle app for js-math-pi
 
+
+### () for for 09/03/2021
+* js-javascript-example-orb-module
+
+### () for for 09/02/2021
+* js-javascript-example-orb-module
+
+### () for for 09/01/2021
+* js-javascript-example-orb-module
+
+### () for for 08/31/2021
+* js-javascript-example-orb-module
+
+### () for for 08/30/2021
+* js-javascript-example-orb-module
+
+
+
+
+
+
 ### () for for 08/29/2021
 * js-javascript-example-orb-module
 
-### () for 08/28/2021
+### (done) for 08/28/2021
 * (done) edit js-javascript-example-canvas-module
-* work on js-javascript-example-orb-module
+* (done) work on js-javascript-example-orb-module
+
+
+
+
 
 ### (done) for 08/27/2021
 * (done) work on new js-javascript-example-canvas-module proto folder

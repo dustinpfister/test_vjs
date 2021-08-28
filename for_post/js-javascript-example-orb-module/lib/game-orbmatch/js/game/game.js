@@ -289,6 +289,9 @@
             game.player.totalAttack = getTotalAttack(game, 'player');
             game.player.totalHeal = getTotalHeal(game, 'player');
         },
+        draw: function(game, ctx, canvas){
+             draw.orbCollection(game, ctx, canvas, game.player.pouch);
+        },
         events: {
             onPointerStart: function (e, pos, game) {
                 // button check

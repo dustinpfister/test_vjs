@@ -125,9 +125,9 @@ draw.slotsInfo = function (sm, ctx, canvas) {
 draw.orbCollection = function (sm, ctx, canvas, pouch) {
     pouch.orbs.forEach(function (orb) {
         if (orb.type != 'null') {
-            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb);
+            draw.orb(sm, ctx, canvas, orb);
         } else {
-            draw.orb(sm, sm.canvasObj.ctx, sm.canvasObj.canvas, orb, 'rgba(255,0,0,0.0)');
+            draw.orb(sm, ctx, canvas, orb, 'rgba(255,0,0,0.0)');
         }
     });
 };
@@ -162,7 +162,7 @@ draw.forGameState = {
 */
     },
     playerTurnOrbMenu: function (sm, ctx, canvas) {
-        draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
+        //draw.orbCollection(sm, ctx, canvas, sm.game.player.pouch);
     },
     playerTurnOrbConfig: function (sm, ctx, canvas) {},
     aiTurn: function (sm, ctx, canvas) {},

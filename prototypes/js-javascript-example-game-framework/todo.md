@@ -19,3 +19,6 @@ gameframe.js:
 * (done) have a canvas stack created with the canvas mod as a property of the sm object in gameframe.js
 /demos/hello-world:
 * (done) start first demo folder called hello-world
+* display hello world text in demo
+* have the text move back and forth making use of a state update loop
+* have pointer events have an effect on game state

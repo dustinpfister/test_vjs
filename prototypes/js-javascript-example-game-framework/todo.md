@@ -1,9 +1,14 @@
 # todo list for js-javascript-example-game-framework
 
 ## () - object pool
+pool.js:
 * having an object pool lib for this will be a must mayvbe start with the canvas example on it
+canvas.js:
+* have a plugin for pool.js, and start off with a poolBox draw method
+/demos/pool:
+* start a demo of the new object pool feature
 
-## ( 08/29/2021 ) - first state of framework
+## ( done 08/29/2021 ) - first state of framework
 todo.md:
 * (done) start todo list
 * (done) have a /css folder for the css used for the canvas module
@@ -21,4 +26,4 @@ gameframe.js:
 * (done) start first demo folder called hello-world
 * (done) display hello world text in demo
 * (done) have the text move back and forth making use of a state update loop
-* have pointer events have an effect on game state
+* (done) have pointer events have an effect on game state

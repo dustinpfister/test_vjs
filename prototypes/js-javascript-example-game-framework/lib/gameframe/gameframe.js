@@ -50,30 +50,19 @@
         };
 
 
-// set up stack of canvas layers using the canvas module
-sm.layers = canvasMod.createLayerStack({
-    length: opt.canvasLayers === undefined ? 3 : opt.canvasLayers,
-    container: opt.canvasContainer || document.getElementById('canvas-app') || document.body,
-    events: sm.events,
-    state: sm
-});
-
-/*
-    sm.canvasObj = opt.canvasObj || api.createCanvas({
-        width: 640,
-        height: 480,
-        container: document.getElementById('canvas-app')
-    });
-*/
+        // set up stack of canvas layers using the canvas module
+        sm.layers = canvasMod.createLayerStack({
+            length: opt.canvasLayers === undefined ? 3 : opt.canvasLayers,
+            container: opt.canvasContainer || document.getElementById('canvas-app') || document.body,
+            events: sm.events,
+            state: sm
+        });
 
         sm.debugMode = opt.debugMode || false;
         // value that should not be set by options
         sm.secs = 0;
         sm.stopLoop = false;
         sm.lt = new Date();
-
-        //api.canvasPointerEvents(sm.canvasObj.canvas, sm, sm.events);
-
 
         // main loop
         sm.loop = function () {

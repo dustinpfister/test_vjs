@@ -64,8 +64,10 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 
 ### () for for 08/29/2021
-* update js-javascript-example-utils with SM utils methods used in js-javascript-example-orb-module
-* start js-javascript-example-game-framework proto folder
+* (done) start js-javascript-example-game-framework proto folder
+* (done) update js-javascript-example-utils with SM utils methods used in js-javascript-example-orb-module
+* edit post on js-javascript-example-utils
+
 * js-javascript-example-orb-module
 
 

@@ -26,7 +26,7 @@
         opt.fontSize = opt.fontSize || 10;
         ctx.fillStyle = opt.fillStyle || 'black';
         ctx.textBaseline = opt.baseLine || 'top';
-        ctx.textBaseline = opt.align || 'left';
+        ctx.textAlign = opt.align || 'left';
         ctx.font = opt.fontSize + 'px arial';
         ctx.fillText(text, x, y);    
     };

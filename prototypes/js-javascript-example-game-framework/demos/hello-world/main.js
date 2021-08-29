@@ -4,7 +4,12 @@ var sm = gameFrame.smCreateMain({
     game: {
         text: 'Hello World',
         x: 160,
-        y: 120
+        y: 120,
+        printOptions: {
+            align: 'center',
+            baseLine: 'middle',
+            fontSize: 30
+        }
     }
 });
 // add at least one state object
@@ -13,7 +18,7 @@ gameFrame.smPushState(sm, {
     draw: function(sm, layers){
         canvasMod.draw(layers, 'background', 0);
         canvasMod.draw(layers, 'clear', 1);
-        canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y);
+        canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
     }
 });
 // start the state machine

@@ -7,7 +7,8 @@
 * (done) start todo list
 * (done) I will want to use my new canvas module as part of this framework so add that to the /lib folder
 * (done) have a /css folder for the css used for the canvas module
-* start a utils.js file with what I have in js-javascript-example-utils in the lib folder
+* (done) start a utils.js file with what I have in js-javascript-example-utils in the lib folder
+* (done) remove the canvas methods from utils becuase I am using the canvas mod
 * start a /lib/gameframe folder that will contain the state of the game framework code so far
 * the utils sm methods should be a part of /lib/gameframe
-* remove the canvas methods from utils becuase I am using the canvas mod
+

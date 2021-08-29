@@ -20,6 +20,17 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    // built in print method
+    drawMethods.print = function(stack, ctx, canvas, layerObj, text, x, y, opt){
+        opt = opt || {};
+        opt.fontSize = opt.fontSize || 10;
+        ctx.fillStyle = opt.fillStyle || 'black';
+        ctx.textBaseline = opt.baseLine || 'top';
+        ctx.textBaseline = opt.align || 'left';
+        ctx.font = opt.fontSize + 'px arial';
+        ctx.fillText(text, x, y);    
+    };
+
     // draw a points collection
     drawMethods.points = function (stack, ctx, canvas, layerObj, points, cx, cy, opt) {
         opt = opt || {};

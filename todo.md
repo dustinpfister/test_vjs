@@ -44,18 +44,24 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 
 ### () for for 09/03/2021
+* write mew post on js-javascript-example-game-framework
+* edit js-javascript-example
 * js-javascript-example-orb-module
 
 ### () for for 09/02/2021
+* js-javascript-example-game-framework
 * js-javascript-example-orb-module
 
 ### () for for 09/01/2021
+* js-javascript-example-game-framework
 * js-javascript-example-orb-module
 
 ### () for for 08/31/2021
+* js-javascript-example-game-framework
 * js-javascript-example-orb-module
 
 ### () for for 08/30/2021
+* js-javascript-example-game-framework
 * js-javascript-example-orb-module
 
 
@@ -66,8 +72,8 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 ### () for for 08/29/2021
 * (done) start js-javascript-example-game-framework proto folder
 * (done) update js-javascript-example-utils with SM utils methods used in js-javascript-example-orb-module
-* edit post on js-javascript-example-utils
 
+* edit post on js-javascript-example-utils
 * js-javascript-example-orb-module
 
 

@@ -9,6 +9,6 @@
 * (done) have a /css folder for the css used for the canvas module
 * (done) start a utils.js file with what I have in js-javascript-example-utils in the lib folder
 * (done) remove the canvas methods from utils becuase I am using the canvas mod
-* start a /lib/gameframe folder that will contain the state of the game framework code so far
-* the utils sm methods should be a part of /lib/gameframe
-
+* (done) start a /lib/gameframe folder that will contain the state of the game framework code so far
+* (done) the utils sm methods should be a part of /lib/gameframe
+* start first demo folder called hello-world

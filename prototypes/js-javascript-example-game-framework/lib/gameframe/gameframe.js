@@ -60,7 +60,7 @@
                 }
             }
         };
-        api.canvasPointerEvents(sm.canvasObj.canvas, sm, sm.events);
+        //api.canvasPointerEvents(sm.canvasObj.canvas, sm, sm.events);
         // main loop
         sm.loop = function () {
             var now = new Date();
@@ -73,12 +73,14 @@
                     update.call(sm, sm, sm.secs);
                 }
                 // draw
+/*
                 var ctx = sm.canvasObj.ctx,
                 canvas = sm.canvasObj.canvas;
                 var drawHook = state.draw;
                 if(drawHook){
                     drawHook.call(sm, sm, ctx, canvas);
                 }
+*/
                 sm.lt = now;
             }
             // if sm.stopLoop === false, then keep looping

@@ -1,9 +1,9 @@
 
 (function (api) {
 
-/********* ********** ********** *********/
-//  State Machine Methods
- /********* ********** ********** *********/
+/********* ********** ********** ********** *********/
+//  CREATE State Machine PUBLIC Methods helpers
+/********* ********** ********** ********** *********/
 
     // create a minamal sm object ( For setting up a nested sm object, and the base of a main sm object )
     api.smCreateMin = function(opt){
@@ -28,7 +28,6 @@
             }
         }
     };
-
     // create the main sm object
     api.smCreateMain = function(opt){
         opt = opt || {};
@@ -38,8 +37,6 @@
         sm.ver = opt.ver || '';
         sm.game = opt.game || {};
         sm.fps = sm.fps === undefined ? 30 : opt.fps;
-
-
         // events
         sm.events = opt.events || {
             pointerStart: function (e, pos, sm) {
@@ -52,8 +49,6 @@
                 callStateObjectPointerEvent('pointerEnd', e, pos, sm); 
             }
         };
-
-
         // set up stack of canvas layers using the canvas module
         sm.layers = canvasMod.createLayerStack({
             length: opt.canvasLayers === undefined ? 3 : opt.canvasLayers,
@@ -61,13 +56,11 @@
             events: sm.events,
             state: sm
         });
-
         sm.debugMode = opt.debugMode || false;
         // value that should not be set by options
         sm.secs = 0;
         sm.stopLoop = false;
         sm.lt = new Date();
-
         // main loop
         sm.loop = function () {
             var now = new Date();
@@ -84,14 +77,6 @@
                 if(drawMethod){
                     drawMethod.call(sm, sm, sm.layers);
                 }                
-/*
-                var ctx = sm.canvasObj.ctx,
-                canvas = sm.canvasObj.canvas;
-                var drawHook = state.draw;
-                if(drawHook){
-                    drawHook.call(sm, sm, ctx, canvas);
-                }
-*/
                 sm.lt = now;
             }
             // if sm.stopLoop === false, then keep looping
@@ -110,6 +95,11 @@
         });
         return sm;
     };
+
+/********* ********** ********** ********** *********/
+//  PUSH NEW STATE OBJECTS, CHANGE STATE
+/********* ********** ********** ********** *********/
+
     // push a new state object
     api.smPushState = function(sm, opt){
         var state = {

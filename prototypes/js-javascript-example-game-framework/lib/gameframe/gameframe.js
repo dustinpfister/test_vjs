@@ -16,6 +16,15 @@
         };
         return sm;
     };
+
+    // helpers for main create method
+    var callStateObjectPointerEvent = function(){
+        var handler = sm.states[sm.currentState].events.pointerStart;
+            if(handler){
+            handler.call(sm, e, pos, sm);
+        }
+    };
+
     // create the main sm object
     api.smCreateMain = function(opt){
         opt = opt || {};
@@ -25,6 +34,29 @@
         sm.ver = opt.ver || '';
         sm.game = opt.game || {};
         sm.fps = sm.fps === undefined ? 30 : opt.fps;
+
+
+        // events
+        sm.events = {
+            pointerStart: function (e, pos, sm) {
+                console.log('yes');
+            },
+            pointerMove: function (e, pos, sm) {
+
+            },
+            pointerEnd: function (e, pos, sm) {
+ 
+            }
+        };
+
+
+// set up stack of canvas layers using the canvas module
+sm.layers = canvasMod.createLayerStack({
+    length: opt.canvasLayers === undefined ? 3 : opt.canvasLayers,
+    container: opt.canvasContainer || document.getElementById('canvas-app') || document.body,
+    events: sm.events,
+    state: sm
+});
 
 /*
     sm.canvasObj = opt.canvasObj || api.createCanvas({
@@ -39,28 +71,10 @@
         sm.secs = 0;
         sm.stopLoop = false;
         sm.lt = new Date();
-        // events
-        sm.events = {
-            pointerStart: function (e, pos, sm) {
-                var handler = sm.states[sm.currentState].events.pointerStart;
-                if(handler){
-                    handler.call(sm, e, pos, sm);
-                }
-            },
-            pointerMove: function (e, pos, sm) {
-                var handler = sm.states[sm.currentState].events.pointerMove;
-                if(handler){
-                    handler.call(sm, e, pos, sm);
-                }
-            },
-            pointerEnd: function (e, pos, sm) {
-                var handler = sm.states[sm.currentState].events.pointerEnd;
-                if(handler){
-                    handler.call(sm, e, pos, sm);
-                }
-            }
-        };
+
         //api.canvasPointerEvents(sm.canvasObj.canvas, sm, sm.events);
+
+
         // main loop
         sm.loop = function () {
             var now = new Date();

@@ -11,4 +11,5 @@
 * (done) remove the canvas methods from utils becuase I am using the canvas mod
 * (done) start a /lib/gameframe folder that will contain the state of the game framework code so far
 * (done) the utils sm methods should be a part of /lib/gameframe
-* start first demo folder called hello-world
+* (done) start first demo folder called hello-world
+* have a canvas stack created with the canvas mod as a property of the sm object in gameframe.js

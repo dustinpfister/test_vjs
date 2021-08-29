@@ -9,9 +9,13 @@
 
 ## () - simple mod method demo
 
+## () - SM Utils methods demos
+
 ## () - XP Object demos
 * start a demo of the XP Object
 
+## () - add SM utils methods made for js-javascript-example-orb-module
+* add new utils method from js-javascript-example-orb-module
 
 ## ( done 08/12/2021 ) - added XP object
 * (done) just added XP object to utils.js based off of what I was using in the beach canvas game, refined in js-math-pow post

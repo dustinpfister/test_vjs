@@ -16,23 +16,25 @@ I would like to keep working on my orb module, and also the basic game that I ha
 
 As of 8/2021 I am going to think more in terms of just writing one new post per week on Friday of each week, and focus more so on improving the quality of posts that I have wrote before hand. Still I do not want to stop writing new posts while I figure out a better plan for doing things.
 
-### (done) - for 8/06/2021 - new javascript example post on utils lib
+### (done) - for 08/06/2021 - new javascript example post on utils lib
 * (done) start a js-javascript-example-utils forpost folder
 * (done) start a new post on js-javascript-example-utils
 
-### (done) - for 8/13/2021 new javascript example post wild plant grid
+### (done) - for 08/13/2021 - new javascript example post wild plant grid
 * (done) start a js-javascript-example-idle-game-wild-plant-grid proto folder
 * (done) have a readme file
 * (done) have a todo.md
 * (done) start the post
 
-### (done) - for 8/20/2021 - new grid module example
+### (done) - for 08/20/2021 - new grid module example
 * (done) start a new js-javascript-example-grid-module proto folder based off of the grid module in wild-plant-grid
 * (done) update js-javascript-example-idle-game-wild-plant-grid with any improvements
 
-### (done) - for 8/27/2021 new javascript example post on a canvas module
+### (done) - for 08/27/2021 - new javascript example post on a canvas module
 * (done) start a js-javascript-example-canvas-module proto folder
 
+### (done) - for 09/03/2021 - javascript example of a game framework
+* (done) start js-javascript-example-game-framework proto folder
 
 
 ## What to work on for today
@@ -72,18 +74,12 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 ### () for for 08/29/2021
 * (done) start js-javascript-example-game-framework proto folder
 * (done) update js-javascript-example-utils with SM utils methods used in js-javascript-example-orb-module
-
-* edit post on js-javascript-example-utils
+* (done) edit post on js-javascript-example-utils
 * js-javascript-example-orb-module
-
 
 ### (done) for 08/28/2021
 * (done) edit js-javascript-example-canvas-module
 * (done) work on js-javascript-example-orb-module
-
-
-
-
 
 ### (done) for 08/27/2021
 * (done) work on new js-javascript-example-canvas-module proto folder

@@ -18,10 +18,14 @@
     };
 
     // helpers for main create method
-    var callStateObjectPointerEvent = function(){
-        var handler = sm.states[sm.currentState].events.pointerStart;
+    var callStateObjectPointerEvent = function(pointerType, e, pos, sm){
+        var state = sm.states[sm.currentState],
+        handler;
+        if(state){
+            handler = state.events[pointerType];
             if(handler){
-            handler.call(sm, e, pos, sm);
+                handler.call(sm, e, pos, sm);
+            }
         }
     };
 
@@ -37,15 +41,15 @@
 
 
         // events
-        sm.events = {
+        sm.events = opt.events || {
             pointerStart: function (e, pos, sm) {
-                console.log('yes');
+                callStateObjectPointerEvent('pointerStart', e, pos, sm);   
             },
             pointerMove: function (e, pos, sm) {
-
+                callStateObjectPointerEvent('pointerMove', e, pos, sm);
             },
             pointerEnd: function (e, pos, sm) {
- 
+                callStateObjectPointerEvent('pointerEnd', e, pos, sm); 
             }
         };
 
@@ -68,7 +72,7 @@
         sm.loop = function () {
             var now = new Date();
             sm.secs = (now - sm.lt) / 1000,
-            state = sm.states[sm.currentState];
+            state = sm.states[sm.currentState] || {};
             if (sm.secs >= 1 / sm.fps) {
                 // update
                 var update = state.update;
@@ -76,6 +80,10 @@
                     update.call(sm, sm, sm.secs);
                 }
                 // draw
+                var drawMethod = state.draw;
+                if(drawMethod){
+                    drawMethod.call(sm, sm, sm.layers);
+                }                
 /*
                 var ctx = sm.canvasObj.ctx,
                 canvas = sm.canvasObj.canvas;

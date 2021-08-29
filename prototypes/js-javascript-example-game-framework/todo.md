@@ -20,5 +20,5 @@ gameframe.js:
 /demos/hello-world:
 * (done) start first demo folder called hello-world
 * (done) display hello world text in demo
-* have the text move back and forth making use of a state update loop
+* (done) have the text move back and forth making use of a state update loop
 * have pointer events have an effect on game state

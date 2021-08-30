@@ -2,24 +2,10 @@
     <head>
         <title>Event Object</title>
         <style>
-div{
-  position:relative;
-  background-color:black;
-  outline:1px solid #ffffff;
-  cursor:hand
-}
-#one{
-  width:280px;
-  height:200px;
-}
-#two{
-  width:120px;
-  height:100px;
-}
-#three{
-  width:60px;
-  height:50px;
-}
+div{position:relative;background-color:black;outline:1px solid #ffffff;cursor:hand}
+#one{width:280px;height:200px;}
+#two{width:120px;height:100px;}
+#three{width:60px;height:50px;}
         </style>
     </head>
     <body>
@@ -30,8 +16,9 @@ div{
             </div>
         </div>
         <script>
+// div click handler
 var divClick = function(e){
-  var div = e.target,
+  var div = e.target, // selecting a div by e.target
   c = div.style.backgroundColor;
   e.stopPropagation();
   div.style.backgroundColor = c === 'grey' ? 'black': 'grey';

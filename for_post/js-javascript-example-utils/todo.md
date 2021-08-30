@@ -14,8 +14,14 @@
 ## () - XP Object demos
 * start a demo of the XP Object
 
-## () - add SM utils methods made for js-javascript-example-orb-module
-* add new utils method from js-javascript-example-orb-module
+## () - log once method
+* add a log once method
+
+## () - simulate click method
+* have a utils.simulateClick method based on what I have in js-event-object
+
+## ( done 08/29/2021 ) - add SM utils methods made for js-javascript-example-orb-module
+* (done) add new utils method from js-javascript-example-orb-module
 
 ## ( done 08/12/2021 ) - added XP object
 * (done) just added XP object to utils.js based off of what I was using in the beach canvas game, refined in js-math-pow post

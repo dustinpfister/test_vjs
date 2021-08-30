@@ -6,8 +6,8 @@
 * have a stand alone nested-stop-propagation example
 
 ## () new s1-basics examples
-* rename basic to basic-add-event-listener-mousedown
-* have a basic-add-event-listener example
+* (done) rename basic to basic-add-event-listener-mousedown
+* (done) have a basic-add-event-listener example
 * have a basic-add-event-listener-keyboard
 * have a basic-on-click example
 

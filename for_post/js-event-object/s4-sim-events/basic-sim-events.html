@@ -7,22 +7,17 @@
         <script>
 var el = document.getElementById('out');
 el.onclick = function(e){
-   e.target.innerText = e.clientX + ',' + e.clientY;
+    e.target.innerText = e.clientX + ',' + e.clientY;
 };
 // simulate a click method
-// https://stackoverflow.com/a/16509592
 var simClick = function(x, y){
-    var ev = document.createEvent("MouseEvent");
     var el = document.elementFromPoint(x,y);
-    ev.initMouseEvent(
-        "click",
-        true /* bubble */, 
-        true /* cancelable */,
-        window, null,
-        x, y, x, y, /* coordinates */
-        false, false, false, false, /* modifier keys */
-        0 /*left*/, null
-    );
+    var ev = new Event('click');
+    // setting clientX and clientY props
+    ev.clientX = x;
+    ev.clientY = y;
+    console.log(ev);
+    // dispatching the event
     el.dispatchEvent(ev);
 };
 // simulating a click

@@ -16,12 +16,13 @@ var simClick = function(x, y){
     var el = document.elementFromPoint(x,y);
     ev.initMouseEvent(
         "click",
-        true /* bubble */, 
-        true /* cancelable */,
+        true,
+        true,
         window, null,
-        x, y, x, y, /* coordinates */
-        false, false, false, false, /* modifier keys */
-        0 /*left*/, null
+        x, y, x, y,
+        false, false, false, false,
+        0, 
+        null
     );
     el.dispatchEvent(ev);
 };

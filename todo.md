@@ -59,14 +59,13 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * js-javascript-example-orb-module
 
 ### () for for 08/31/2021
-* edit js-document-queryselector with document.elementfrompoint example
 * js-javascript-example-game-framework
 * js-javascript-example-orb-module
 
 ### () for for 08/30/2021
 * (done) edit js-event-object
 * (done) edit js-document-getelementbyid with document.elementfrompoint example
-
+* (done) edit js-document-queryselector with document.elementfrompoint example
 
 
 

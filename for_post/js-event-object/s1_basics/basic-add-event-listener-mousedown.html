@@ -5,13 +5,46 @@
     <body>
         <div id="out" style="width:280px;height:200px;background-color:green;padding:20px;cursor:hand;"></div>
         <script>
-document.getElementById('out').addEventListener('mousedown', function(e){
+// ref to div
+var div = document.getElementById('out');
+// draw
+var draw = function(el, state){
+   el.innerText = 'down: ' + state.down + '; pos: ( ' + state.pos.x + ', ' + state.pos.y +' );';
+};
+// state object
+var state = {
+   down: false,
+   pos: {
+       x: -1,
+       y: -1
+   }
+};
+// handlers
+state.events = {};
+state.events.pointerDown = function(e){
    e.preventDefault();
-   e.target.innerText = e.target.id + 
-   ', ' + e.type +
-   ', ' + e.clientX + 
-   ', ' + e.clientY;
-});
+   state.down = true;
+   draw(e.target, state);
+};
+state.events.pointerMove = function(e){
+   e.preventDefault();
+   if(state.down){
+       state.pos.x = e.clientX;
+       state.pos.y = e.clientY;
+       draw(e.target, state);
+   }
+};
+state.events.pointerUp = function(e){
+   e.preventDefault();
+   state.down = false;
+   draw(e.target, state);
+};
+// attaching handlers
+div.addEventListener('mousedown', state.events.pointerDown);
+div.addEventListener('mousemove', state.events.pointerMove);
+div.addEventListener('mouseup', state.events.pointerUp);
+// draw for first time
+draw(div, state);
         </script>
     </body>
 </html>

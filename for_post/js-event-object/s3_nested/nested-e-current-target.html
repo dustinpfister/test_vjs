@@ -2,24 +2,10 @@
     <head>
         <title>Event Object</title>
         <style>
-div{
-  position:relative;
-  background-color:black;
-  outline:1px solid #ffffff;
-  cursor:hand
-}
-#one{
-  width:280px;
-  height:200px;
-}
-#two{
-  width:120px;
-  height:100px;
-}
-#three{
-  width:60px;
-  height:50px;
-}
+div{position:relative;background-color:black;outline:1px solid #ffffff;cursor:hand}
+#one{width:280px;height:200px;}
+#two{width:120px;height:100px;}
+#three{width:60px;height:50px;}
         </style>
     </head>
     <body>
@@ -30,18 +16,21 @@ div{
             </div>
         </div>
         <script>
+// div click handler
 var divClick = function(e){
-  var div = e.target, //e.currentTarget,
+  var div = e.currentTarget, // selecting a div by e.currentTarget
   c = div.style.backgroundColor;
-  e.stopPropagation();
+  e.stopPropagation(); // I will want to stop propagation for this
   div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
 };
 var get = function(id){
     return document.getElementById(id);
 };
+// becuase I am using current target I will want to attach for all divs
 get('one').addEventListener('mousedown',divClick);
-//get('two').addEventListener('mousedown',divClick);
-//get('three').addEventListener('mousedown',divClick);
+get('two').addEventListener('mousedown',divClick);
+get('three').addEventListener('mousedown',divClick);
+
         </script>
     </body>
 </html>

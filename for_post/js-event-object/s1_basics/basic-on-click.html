@@ -10,7 +10,7 @@ var el = document.getElementById('out');
 // attach for the onclick event
 el.onclick = function(e){
    // using the event object to get a reference to the target element,
-   // in this case the div again, and useing the e.clientX, and e.clientY
+   // in this case the div again, and using the e.clientX, and e.clientY
    // properties of the event object to get the position of the click 
    // relative to the window
    e.target.innerText = e.clientX + ',' + e.clientY;

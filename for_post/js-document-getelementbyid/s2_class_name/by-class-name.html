@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Demo</title>
+  </head>
+  <body>
+    <div>
+        <span class="foo">one</span>
+        <span>two</span>
+        <span class="foo">three</span>
+        <span class="foo">four</span>
+    </div>
+    <script>
+    
+    var foos = document.getElementsByClassName('foo');
+    
+    [].forEach.call(foos, function(foo){
+    
+        console.log(foo.innerText); // one, three, four
+    
+    });
+    
+    </script>
+  </body>
+</html>

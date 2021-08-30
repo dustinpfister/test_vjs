@@ -31,7 +31,7 @@ div{
         </div>
         <script>
 var divClick = function(e){
-  var div = e.target, //e.currentTarget,
+  var div = e.target,
   c = div.style.backgroundColor;
   e.stopPropagation();
   div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
@@ -40,8 +40,6 @@ var get = function(id){
     return document.getElementById(id);
 };
 get('one').addEventListener('mousedown',divClick);
-//get('two').addEventListener('mousedown',divClick);
-//get('three').addEventListener('mousedown',divClick);
         </script>
     </body>
 </html>

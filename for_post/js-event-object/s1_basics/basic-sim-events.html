@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Event Object</title>
+    </head>
+    <body>
+        <div id="out" style="width:280px;height:200px;background-color:green;padding:20px;cursor:hand;"></div>
+        <script>
+var el = document.getElementById('out');
+el.onclick = function(e){
+   e.target.innerText = e.clientX + ',' + e.clientY;
+};
+
+var simClick = function(x, y){
+    var ev = document.createEvent("MouseEvent");
+    var el = document.elementFromPoint(x,y);
+    ev.initMouseEvent(
+        "click",
+        true /* bubble */, 
+        true /* cancelable */,
+        window, null,
+        x, y, x, y, /* coordinates */
+        false, false, false, false, /* modifier keys */
+        0 /*left*/, null
+    );
+    el.dispatchEvent(ev);
+};
+// simulating a click
+simClick(35, 21);
+        </script>
+    </body>
+</html>

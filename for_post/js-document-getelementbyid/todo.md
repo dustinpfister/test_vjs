@@ -4,7 +4,7 @@
 * have a document.body example
 * have a document.title example
 
-## () - new s1-get-by-id example about the global bug
+## ( done 08/30/2021 ) - new s1-get-by-id example about the global bug
 * global bug example
 
 ## ( done 08/30/2021 ) - have a s6-document-element-from-point section

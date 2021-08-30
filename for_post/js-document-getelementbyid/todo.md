@@ -4,8 +4,8 @@
 * have a document.body example
 * have a document.title example
 
-## () - have a s6-document-element-by-point section
-* basic example of document.elementByPoint method example
+## ( done 08/30/2021 ) - have a s6-document-element-from-point section
+* basic example of document.elementFromPoint method example
 
 ## ( done 12/27/2018 ) - first set of examples
 * ( done ) - first set of examples done

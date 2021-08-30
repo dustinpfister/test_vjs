@@ -63,19 +63,17 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * js-javascript-example-orb-module
 
 ### () for for 08/30/2021
-* js-javascript-example-game-framework
-* js-javascript-example-orb-module
+* edit js-event-object
+* work on js-javascript-example-orb-module
+* work on js-javascript-example-game-framework
 
 
 
 
-
-
-### () for for 08/29/2021
+### (done) for for 08/29/2021
 * (done) start js-javascript-example-game-framework proto folder
 * (done) update js-javascript-example-utils with SM utils methods used in js-javascript-example-orb-module
 * (done) edit post on js-javascript-example-utils
-* js-javascript-example-orb-module
 
 ### (done) for 08/28/2021
 * (done) edit js-javascript-example-canvas-module

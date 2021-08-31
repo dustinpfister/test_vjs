@@ -3,10 +3,10 @@
 ## () - s7 section on export and import
 * finish section on import and export by making a simple sever script to serve examples over http
 
-## () - start s6 section on example modules
-* have an example from js-example-nodejs-browser-share-code-module
-* write about and link to my js-javascript-example-utils example
-* write about and link to mu js-javascript-example-canvas-module example
+## ( done 08/31/2021 ) - start s6 section on example modules
+* (done) write about and link to my js-example-nodejs-browser-share-code-module
+* (done) write about and link to my js-javascript-example-utils example
+* (done) write about and link to my js-javascript-example-canvas-module example
 
 ## ( done 08/31/2021 ) - s5 section on nodejs modules
 * (done) have one example on the built in fs module

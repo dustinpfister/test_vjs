@@ -62,7 +62,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 ### () for for 08/31/2021
 * (done) edit js-document-getelementbyid with new section on document props like document.body
-* edit js-javascript-module
+* (done) edit js-javascript-module
 * js-javascript-example-game-framework
 * js-javascript-example-orb-module
 

@@ -13,7 +13,7 @@
 ## ( done 08/31/2021 ) - sx import and export example section started
 * (done) start a sx-export-import section folder
 * (done) have an export.js and an import.html file
-* https://stackoverflow.com/questions/38296667/getting-unexpected-token-export
+* (done) fix by setting type="module" https://stackoverflow.com/questions/38296667/getting-unexpected-token-export
 
 ## ( done 03/12/2019 ) - first set of examples
 * (done) first set of examples for post done

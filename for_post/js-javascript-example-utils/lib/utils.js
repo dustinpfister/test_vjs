@@ -43,6 +43,10 @@ utils.deepClone = (function () {
             return utils.deepClone(val);
         }
     };
+    // default forRecursive
+    var forRecursive = function(cloneObj, sourceObj, sourceKey){
+        return clone;
+    };
     // return deep clone method
     return function (obj, opt) {
         var clone = {},
@@ -50,12 +54,13 @@ utils.deepClone = (function () {
         forIMethod; // clone is a new object
         opt = opt || {};
         opt.forInstance = opt.forInstance || {};
+        opt.forRecursive = opt.forRecursive || {};
         for (var i in obj) {
             // if the type is object and not null
             if (typeof(obj[i]) == "object" && obj[i] != null) {
                 // recursive check
                 if (obj[i] === obj) {
-                    clone[i] = clone;
+                    clone[i] = opt.forRecursive(clone, obj, i);
                 } else {
                     // if the constructor is supported, clone it
                     conName = obj[i].constructor.name;

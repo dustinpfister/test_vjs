@@ -56,12 +56,13 @@ utils.deepClone = (function(){
                 if(obj[i] === obj){
                     clone[i] = clone;
                 }else{
-                    forIMethod = forInstance[obj[i].constructor.name];
                     // if the construcor is supported, clone it
+                    forIMethod = forInstance[obj[i].constructor.name];
                     if(forIMethod){
                         clone[i] = forIMethod(obj[i], i); 
                     }else{
-                        // just ref and hope for the best then
+                        // not supported? Just ref the obejct,
+                        // and hope for the best then
                         clone[i] = obj[i];
                     }
                 }

@@ -1,9 +1,8 @@
 var utils = {};
 
-
 /********* ********** ********** *********/
 //  MISCELLANEOUS METHODS
- /********* ********** ********** *********/
+/********* ********** ********** *********/
 
 // no operation ref
 utils.noop = function () {};
@@ -28,54 +27,59 @@ utils.mod = function (x, m) {
 };
 
 // a deep clone method that should work in most situations
-utils.deepClone = (function(){
+utils.deepClone = (function () {
     // forInstance methods supporting Date, Array, and Object
     var forInstance = {
-        Date: function(val, key){
+        Date: function (val, key) {
             return new Date(val.getTime());
         },
-        Array: function(val, key){
+        Array: function (val, key) {
             // deep clone the object, and return as array
             var obj = utils.deepClone(val);
             obj.length = Object.keys(obj).length;
             return Array.from(obj);
         },
-        Object: function(val, key){
+        Object: function (val, key) {
             return utils.deepClone(val);
         }
     };
     // return deep clone method
-    return function(obj){
-        var clone = {}, forIMethod; // clone is a new object
-        for(var i in obj) {
+    return function (obj, extendedForInstance) {
+        var clone = {},
+        conName,
+        forIMethod; // clone is a new object
+        extendedForInstance = extendedForInstance || {};
+        for (var i in obj) {
             // if the type is object and not null
-            if( typeof(obj[i]) == "object" && obj[i] != null){
+            if (typeof(obj[i]) == "object" && obj[i] != null) {
                 // recursive check
-                if(obj[i] === obj){
+                if (obj[i] === obj) {
                     clone[i] = clone;
-                }else{
+                } else {
                     // if the constructor is supported, clone it
-                    forIMethod = forInstance[obj[i].constructor.name];
-                    if(forIMethod){
-                        clone[i] = forIMethod(obj[i], i); 
-                    }else{
+                    conName = obj[i].constructor.name;
+                    forIMethod = extendedForInstance[conName] || forInstance[conName];
+                    if (forIMethod) {
+                        clone[i] = forIMethod(obj[i], i);
+                    } else {
                         // not supported? Just ref the object,
                         // and hope for the best then
                         clone[i] = obj[i];
                     }
                 }
-            }else{
+            } else {
                 // should be a primitive so just assign
                 clone[i] = obj[i];
             }
         }
         return clone;
     };
-}());
+}
+    ());
 
 /********* ********** ********** *********/
 //  CANVAS
- /********* ********** ********** *********/
+/********* ********** ********** *********/
 
 // create a canvas element
 utils.createCanvas = function (opt) {
@@ -148,7 +152,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 /********* ********** ********** *********/
 //  BASIC EXP SYSTEM
- /********* ********** ********** *********/
+/********* ********** ********** *********/
 
 // Basic experience point system methods
 utils.XP = (function () {
@@ -192,13 +196,12 @@ utils.XP = (function () {
 }
     ());
 
-
 /********* ********** ********** *********/
 //  State Machine Methods
- /********* ********** ********** *********/
+/********* ********** ********** *********/
 
 // create a minamal sm object ( For setting up a nested sm object, and the base of a main sm object )
-utils.smCreateMin = function(opt){
+utils.smCreateMin = function (opt) {
     opt = opt || {};
     // return a base sm object
     var sm = {
@@ -209,7 +212,7 @@ utils.smCreateMin = function(opt){
     return sm;
 };
 // create the main sm object
-utils.smCreateMain = function(opt){
+utils.smCreateMain = function (opt) {
     opt = opt || {};
     // create base sm object
     var sm = utils.smCreateMin(opt);
@@ -218,10 +221,10 @@ utils.smCreateMain = function(opt){
     sm.game = opt.game || {};
     sm.fps = sm.fps === undefined ? 30 : opt.fps;
     sm.canvasObj = opt.canvasObj || utils.createCanvas({
-        width: 640,
-        height: 480,
-        container: document.getElementById('canvas-app')
-    });
+            width: 640,
+            height: 480,
+            container: document.getElementById('canvas-app')
+        });
     sm.debugMode = opt.debugMode || false;
     // value that should not be set by options
     sm.secs = 0;
@@ -231,19 +234,19 @@ utils.smCreateMain = function(opt){
     sm.events = {
         pointerStart: function (e, pos, sm) {
             var handler = sm.states[sm.currentState].events.pointerStart;
-            if(handler){
+            if (handler) {
                 handler.call(sm, e, pos, sm);
             }
         },
         pointerMove: function (e, pos, sm) {
             var handler = sm.states[sm.currentState].events.pointerMove;
-            if(handler){
+            if (handler) {
                 handler.call(sm, e, pos, sm);
             }
         },
         pointerEnd: function (e, pos, sm) {
             var handler = sm.states[sm.currentState].events.pointerEnd;
-            if(handler){
+            if (handler) {
                 handler.call(sm, e, pos, sm);
             }
         }
@@ -257,26 +260,26 @@ utils.smCreateMain = function(opt){
         if (sm.secs >= 1 / sm.fps) {
             // update
             var update = state.update;
-            if(update){
+            if (update) {
                 update.call(sm, sm, sm.secs);
             }
             // draw
             var ctx = sm.canvasObj.ctx,
             canvas = sm.canvasObj.canvas;
             var drawHook = state.draw;
-            if(drawHook){
+            if (drawHook) {
                 drawHook.call(sm, sm, ctx, canvas);
             }
             sm.lt = now;
         }
         // if sm.stopLoop === false, then keep looping
-        if(!sm.stopLoop){
+        if (!sm.stopLoop) {
             requestAnimationFrame(sm.loop);
         }
     };
     // stop loop on any page error
-    window.addEventListener('error', function(e) {
-        if(sm.debugMode){
+    window.addEventListener('error', function (e) {
+        if (sm.debugMode) {
             sm.stopLoop = true;
             console.log('error: ' + e.message);
             console.log(e);
@@ -286,34 +289,34 @@ utils.smCreateMain = function(opt){
     return sm;
 };
 // push a new state object
-utils.smPushState = function(sm, opt){
+utils.smPushState = function (sm, opt) {
     var state = {
         name: opt.name || 'state_' + Object.keys(sm.states).length
     };
     state.buttons = opt.buttons || {};
-    state.start = opt.start || function(){};
-    state.end = opt.end || function(){};
-    state.update = opt.update || function(){};
-    state.draw = opt.draw || function(){};
+    state.start = opt.start || function () {};
+    state.end = opt.end || function () {};
+    state.update = opt.update || function () {};
+    state.draw = opt.draw || function () {};
     state.events = opt.events || {};
     sm.states[state.name] = state;
     return state;
 
 };
 // set the current state
-utils.smSetState = function(sm, newState){
+utils.smSetState = function (sm, newState) {
     // get a ref to the old state
     var oldState = sm.states[sm.currentState];
     // call the on end hook for the old state if it has one
     var endHook = oldState.end;
-    if(endHook){
+    if (endHook) {
         endHook.call(sm, sm);
     }
     // change to the new state, and call the start hook it it has one
     sm.currentState = newState;
     var newState = sm.states[sm.currentState];
     var startHook = newState.start;
-    if(startHook){
+    if (startHook) {
         startHook.call(sm, sm);
     }
 };

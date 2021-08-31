@@ -7,7 +7,8 @@
 * have an example from js-example-nodejs-browser-share-code-module
 
 ## () - s5 section on nodejs modules
-* have one example on built in nodejs modules
+* (done) have one example on the built in fs module
+* (done) have one example on the built in path module
 * have on example on making a nodejs module
 
 ## ( done 08/31/2021 ) - sx import and export example section started

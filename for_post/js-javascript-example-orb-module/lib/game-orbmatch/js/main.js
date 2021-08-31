@@ -1,6 +1,21 @@
 (function () {
 
+// just checking what the result is of createing a new orb this way
+console.log(orbMod.createFromPoints([1,0,0,0]));
 
+// testing out utils.deepClone
+var a = {
+  pos: {
+     x: 2,
+     y: 5
+  },
+  foos: [1, 2, {x: 5}],
+  lt: new Date()
+};
+// creating clone
+var b = utils.deepClone(a);
+
+console.log(a, b );
 
 
 
@@ -307,9 +322,6 @@
 
 
     // start main loop
-
-console.log(orbMod.createFromPoints([1,0,0,0]));
-
     sm.loop();
 
 }

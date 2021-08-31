@@ -31,28 +31,37 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 
 // a deep clone method that should work in most situations
 utils.deepClone = (function(){
-
+    // forInstance methods supporing Date, Array, and Object
+    var forInstance = {
+        Date: function(val, key){
+            return new Date(val.getTime());
+        },
+        Array: function(val, key){
+            // deep clone the object, and return as array
+            var obj = utils.deepClone(val);
+            obj.length = Object.keys(obj).length;
+            return Array.from(obj);
+        },
+        Object: function(val, key){
+            return utils.deepClone(val);
+        }
+    };
+    // return deep clone method
     return function(obj){
-        var clone = {}; // clone is a new object
+        var clone = {}, forIMethod; // clone is a new object
         for(var i in obj) {
             // if the type is object and not null
             if( typeof(obj[i]) == "object" && obj[i] != null){
-                // Date
-                if(obj[i] instanceof Date){
-                    clone[i] = new Date(obj[i].getTime());
+                forIMethod = forInstance[obj[i].constructor.name];
+                // if the construcor is supported, clone it
+                if(forIMethod){
+                    clone[i] = forIMethod(obj[i], i); 
                 }else{
-                    // Object, Array
-                    if(obj[i] instanceof Object){
-                        // deep clone the object
-                        clone[i] = utils.deepClone(obj[i]);
-                        // create as Array if source object is Array
-                        if(obj[i] instanceof Array){
-                            clone[i].length = Object.keys(clone[i]).length;
-                            clone[i] = Array.from(clone[i]);
-                        }
-                    }
+                    // just ref and hope for the best then
+                    clone[i] = obj[i];
                 }
             }else{
+                // should be a primative so just assign
                 clone[i] = obj[i];
             }
         }

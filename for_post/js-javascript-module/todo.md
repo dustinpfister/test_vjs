@@ -1,16 +1,20 @@
 # js-javascript-module todo list
 
+## () - s8 section on examples
+* write about and link to my js-javascript-example-utils example
+* write about and link to mu js-javascript-example-canvas-module example
+
 ## () - s7 section on export and import
 * finish section on import and export by making a simple sever script to serve examples over http
 
 ## () - s6 section on nodejs/clientjs modules
 * have an example from js-example-nodejs-browser-share-code-module
 
-## () - s5 section on nodejs modules
+## ( done 08/31/2021 ) - s5 section on nodejs modules
 * (done) have one example on the built in fs module
 * (done) have one example on the built in path module
-* have on example on making a nodejs module
-* link to nodejs-module when editing
+* (done) have on example on making a nodejs module
+* (done) link to nodejs-module when editing
 
 ## ( done 08/31/2021 ) - sx import and export example section started
 * (done) start a sx-export-import section folder

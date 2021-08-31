@@ -44,8 +44,14 @@ utils.deepClone = (function () {
         }
     };
     // default forRecursive
-    var forRecursive = function(cloneObj, sourceObj, sourceKey){
+    var forRecursive = function (cloneObj, sourceObj, sourceKey) {
         return cloneObj;
+    };
+    // default method for unsupported types
+    var forUnsupported = function (cloneObj, sourceObj, sourceKey) {
+        // not supported? Just ref the object,
+        // and hope for the best then
+        return sourceObj[sourceKey];
     };
     // return deep clone method
     return function (obj, opt) {
@@ -55,6 +61,7 @@ utils.deepClone = (function () {
         opt = opt || {};
         opt.forInstance = opt.forInstance || {};
         opt.forRecursive = opt.forRecursive || forRecursive;
+        opt.forUnsupported = opt.forUnsupported || forUnsupported;
         for (var i in obj) {
             // if the type is object and not null
             if (typeof(obj[i]) == "object" && obj[i] != null) {
@@ -68,9 +75,7 @@ utils.deepClone = (function () {
                     if (forIMethod) {
                         clone[i] = forIMethod(obj[i], i);
                     } else {
-                        // not supported? Just ref the object,
-                        // and hope for the best then
-                        clone[i] = obj[i];
+                        clone[i] = opt.forUnsupported(clone, obj, i);
                     }
                 }
             } else {

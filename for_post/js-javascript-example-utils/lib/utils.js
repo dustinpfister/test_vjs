@@ -29,7 +29,7 @@ utils.mod = function (x, m) {
 
 // a deep clone method that should work in most situations
 utils.deepClone = (function(){
-    // forInstance methods supporing Date, Array, and Object
+    // forInstance methods supporting Date, Array, and Object
     var forInstance = {
         Date: function(val, key){
             return new Date(val.getTime());
@@ -54,18 +54,18 @@ utils.deepClone = (function(){
                 if(obj[i] === obj){
                     clone[i] = clone;
                 }else{
-                    // if the construcor is supported, clone it
+                    // if the constructor is supported, clone it
                     forIMethod = forInstance[obj[i].constructor.name];
                     if(forIMethod){
                         clone[i] = forIMethod(obj[i], i); 
                     }else{
-                        // not supported? Just ref the obejct,
+                        // not supported? Just ref the object,
                         // and hope for the best then
                         clone[i] = obj[i];
                     }
                 }
             }else{
-                // should be a primative so just assign
+                // should be a primitive so just assign
                 clone[i] = obj[i];
             }
         }

@@ -5,9 +5,9 @@
 * rename, and reorder all sections as this will be the new s2 section
 * expand this section with at least one additional example that shows why it is a bad idea to use this bug
 
-## () - have a s7-document properties section
-* have a document.body example
-* have a document.title example
+## (done 08/31/2021  ) - have a s7-document properties section
+* (done) have a document.body example
+* (done) have a document.title example
 
 ## ( done 08/30/2021 ) - new s1-get-by-id example about the global bug
 * (done) global bug example

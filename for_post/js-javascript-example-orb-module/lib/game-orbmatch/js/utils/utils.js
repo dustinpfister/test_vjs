@@ -30,29 +30,36 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 
 
 // a deep clone method that should work in most situations
-utils.deepClone = function(obj){
-    var clone = {}; // clone is a new object
-    for(var i in obj) {
-        // if the type is object and not null
-        if( typeof(obj[i]) == "object" && obj[i] != null){
-            // handle Date
-            if(obj[i] instanceof Date){
-                clone[i] = new Date(obj[i].getTime());
-            }else{
-                // deep clone the object
-                clone[i] = utils.deepClone(obj[i]);
-                // create as Array if source object is Array
-                if(obj[i].constructor.name === 'Array'){
-                    clone[i].length = Object.keys(clone[i]).length;
-                    clone[i] = Array.from(clone[i]);
+utils.deepClone = (function(){
+
+    return function(obj){
+        var clone = {}; // clone is a new object
+        for(var i in obj) {
+            // if the type is object and not null
+            if( typeof(obj[i]) == "object" && obj[i] != null){
+                // Date
+                if(obj[i] instanceof Date){
+                    clone[i] = new Date(obj[i].getTime());
+                }else{
+                    // Object, Array
+                    if(obj[i] instanceof Object){
+                        // deep clone the object
+                        clone[i] = utils.deepClone(obj[i]);
+                        // create as Array if source object is Array
+                        if(obj[i] instanceof Array){
+                            clone[i].length = Object.keys(clone[i]).length;
+                            clone[i] = Array.from(clone[i]);
+                        }
+                    }
                 }
+            }else{
+                clone[i] = obj[i];
             }
-        }else{
-            clone[i] = obj[i];
         }
-    }
-    return clone;
-};
+        return clone;
+    };
+
+}());
 
 
     /********* ********** ********** *********/

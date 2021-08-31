@@ -9,6 +9,7 @@
 
 ## () - s1 import and export example
 * have an s1_basics example on import and export as a way to make modules
+* https://stackoverflow.com/questions/38296667/getting-unexpected-token-export
 
 ## ( done 03/12/2019 ) - first set of examples
 * (done) first set of examples for post done

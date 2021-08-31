@@ -82,6 +82,8 @@
 * remove orbCollection.setOrbPropsToOrb if it is no longer being used
 
 
+
+
 ### () 0.22.2 - More orb def files
 * have a dual orbDefinition file
 * have a tiple orbDefinition file
@@ -90,17 +92,20 @@
 * see/update README for orbDefinition object format
 
 ### () 0.22.1 - Get pure ORBDEF to have an effect in OrbCollection.js
+* have hard coded defaults for stat objects in orb-collection.js
+* use new hard coded defaults for stat objects
 * add baseValue stats to orb_types/pure.js
 * make it so that the baseValue stats in orb/types/pure.js are used in Orbcollection.js
+
+
+
+
 
 ### ( 08/28/2021 ) 0.22.0 - OrbMod.load, and orbDefinition files started
 * (done) I will need a ORBDEFS object in orb-client.js
 * (done) I will need a OrbMod.loadOrbDef method that can be called in an exteral file that will contain orb type data
 * (done) have a reference to the orbDef object as part of the core set of orb properties
 * (done) start a collection of files to define what the stats are for each type starting with pure.
-
-
-
 
 ### ( 08/28/2021  ) 0.21.5 - use draw methods in game.js
 * (done) the draw methods in draw.js for each game state should be in game.js start with the playerTurn game state

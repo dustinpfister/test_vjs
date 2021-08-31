@@ -4,7 +4,7 @@
 ## () - orb-client-collection lib
 * start a new lib folder that will be a collection of orbs
 
-## () - Have a recipe type support
+## () - Have recipe orb type support
 
 ## () - get game-orbmatch to 0.30.x - have standard for orb type objects
 * by 0.30.x I should have a standard worked out for orb type objects

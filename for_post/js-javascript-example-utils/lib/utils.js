@@ -27,6 +27,52 @@ utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
 
+// a deep clone method that should work in most situations
+utils.deepClone = (function(){
+    // forInstance methods supporing Date, Array, and Object
+    var forInstance = {
+        Date: function(val, key){
+            return new Date(val.getTime());
+        },
+        Array: function(val, key){
+            // deep clone the object, and return as array
+            var obj = utils.deepClone(val);
+            obj.length = Object.keys(obj).length;
+            return Array.from(obj);
+        },
+        Object: function(val, key){
+            return utils.deepClone(val);
+        }
+    };
+    // return deep clone method
+    return function(obj){
+        var clone = {}, forIMethod; // clone is a new object
+        for(var i in obj) {
+            // if the type is object and not null
+            if( typeof(obj[i]) == "object" && obj[i] != null){
+                // recursive check
+                if(obj[i] === obj){
+                    clone[i] = clone;
+                }else{
+                    // if the construcor is supported, clone it
+                    forIMethod = forInstance[obj[i].constructor.name];
+                    if(forIMethod){
+                        clone[i] = forIMethod(obj[i], i); 
+                    }else{
+                        // not supported? Just ref the obejct,
+                        // and hope for the best then
+                        clone[i] = obj[i];
+                    }
+                }
+            }else{
+                // should be a primative so just assign
+                clone[i] = obj[i];
+            }
+        }
+        return clone;
+    };
+}());
+
 /********* ********** ********** *********/
 //  CANVAS
  /********* ********** ********** *********/

@@ -17,12 +17,12 @@
 ## () - log once method
 * add a log once method
 
-## () - deep and shallow clone object method
-* have a utils.clone method that can be used to shallow, and deep clone objects
-* update lodash posts on clone, and clone deep as well as array-copy
-
 ## () - simulate click method
 * have a utils.simulateClick method based on what I have in js-event-object
+
+## () - utils.deepClone method
+* (done) have a utils.deepClone method
+* update lodash posts on clone, and clone deep as well as array-copy
 
 ## ( done 08/29/2021 ) - add SM utils methods made for js-javascript-example-orb-module
 * (done) add new utils method from js-javascript-example-orb-module

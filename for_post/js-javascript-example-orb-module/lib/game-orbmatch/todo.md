@@ -92,8 +92,9 @@
 * see/update README for orbDefinition object format
 
 ### () 0.22.1 - Get pure ORBDEF to have an effect in OrbCollection.js
+* I will want a utils.cloneObject method
 * have hard coded defaults for stat objects in orb-collection.js
-* use new hard coded defaults for stat objects
+* use new hard coded defaults for stat objects using utils.cloneObject
 * add baseValue stats to orb_types/pure.js
 * make it so that the baseValue stats in orb/types/pure.js are used in Orbcollection.js
 

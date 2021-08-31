@@ -10,6 +10,7 @@
 * (done) have one example on the built in fs module
 * (done) have one example on the built in path module
 * have on example on making a nodejs module
+* link to nodejs-module when editing
 
 ## ( done 08/31/2021 ) - sx import and export example section started
 * (done) start a sx-export-import section folder

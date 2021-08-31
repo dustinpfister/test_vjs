@@ -12,6 +12,7 @@ var a = {
   foos: [1, 2, {x: 5}],
   lt: new Date()
 };
+a.a = a;
 // creating clone
 var b = utils.deepClone(a);
 
@@ -22,6 +23,7 @@ b.lt = null;
 
 console.log( a.pos.x, b.pos.x )
 console.log( a.foos, b.foos );
+console.log(b.a === b)
 
 
 

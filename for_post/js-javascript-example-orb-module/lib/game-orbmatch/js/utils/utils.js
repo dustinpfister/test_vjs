@@ -52,13 +52,18 @@ utils.deepClone = (function(){
         for(var i in obj) {
             // if the type is object and not null
             if( typeof(obj[i]) == "object" && obj[i] != null){
-                forIMethod = forInstance[obj[i].constructor.name];
-                // if the construcor is supported, clone it
-                if(forIMethod){
-                    clone[i] = forIMethod(obj[i], i); 
+                // recursive check
+                if(obj[i] === obj){
+                    clone[i] = clone;
                 }else{
-                    // just ref and hope for the best then
-                    clone[i] = obj[i];
+                    forIMethod = forInstance[obj[i].constructor.name];
+                    // if the construcor is supported, clone it
+                    if(forIMethod){
+                        clone[i] = forIMethod(obj[i], i); 
+                    }else{
+                        // just ref and hope for the best then
+                        clone[i] = obj[i];
+                    }
                 }
             }else{
                 // should be a primative so just assign

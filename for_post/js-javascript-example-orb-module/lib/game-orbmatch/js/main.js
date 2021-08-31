@@ -15,7 +15,13 @@ var a = {
 // creating clone
 var b = utils.deepClone(a);
 
-console.log(a, b );
+// mutating b
+b.pos.x = 0;
+b.foos[2].x = 10;
+b.lt = null;
+
+console.log( a.pos.x, b.pos.x )
+console.log( a.foos, b.foos );
 
 
 

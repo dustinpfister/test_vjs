@@ -44,11 +44,12 @@ utils.deepClone = (function () {
         }
     };
     // return deep clone method
-    return function (obj, extendedForInstance) {
+    return function (obj, opt) {
         var clone = {},
         conName,
         forIMethod; // clone is a new object
-        extendedForInstance = extendedForInstance || {};
+        opt = opt || {};
+        opt.forInstance = opt.forInstance || {};
         for (var i in obj) {
             // if the type is object and not null
             if (typeof(obj[i]) == "object" && obj[i] != null) {
@@ -58,7 +59,7 @@ utils.deepClone = (function () {
                 } else {
                     // if the constructor is supported, clone it
                     conName = obj[i].constructor.name;
-                    forIMethod = extendedForInstance[conName] || forInstance[conName];
+                    forIMethod = opt.forInstance[conName] || forInstance[conName];
                     if (forIMethod) {
                         clone[i] = forIMethod(obj[i], i);
                     } else {

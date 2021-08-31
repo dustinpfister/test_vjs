@@ -22,6 +22,7 @@
 
 ## () - utils.deepClone method
 * (done) have a utils.deepClone method
+* (done) have a demo for utils.deepClone
 * update lodash posts on clone, and clone deep as well as array-copy
 
 ## ( done 08/29/2021 ) - add SM utils methods made for js-javascript-example-orb-module

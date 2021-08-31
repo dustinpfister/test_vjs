@@ -14,7 +14,7 @@ I would like to keep working on my orb module, and also the basic game that I ha
 
 ## New for post folders
 
-As of 8/2021 I am going to think more in terms of just writing one new post per week on Friday of each week, and focus more so on improving the quality of posts that I have wrote before hand. Still I do not want to stop writing new posts while I figure out a better plan for doing things.
+As of 8/2021 I am going to think more in terms of just writing one new post per week on Friday of each week. I can then also focus more so on improving the quality of posts that I have wrote before hand. Still I do not want to stop writing new posts while I figure out a better plan for doing things of course, and as a result of having a lower count of new posts per week this should also result in better quality for the new posts.
 
 ### (done) - for 08/06/2021 - new javascript example post on utils lib
 * (done) start a js-javascript-example-utils forpost folder
@@ -55,11 +55,13 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * js-javascript-example-orb-module
 
 ### () for for 09/01/2021
+* edit js javascript-module-object-literal
 * js-javascript-example-game-framework
 * js-javascript-example-orb-module
 
 ### () for for 08/31/2021
 * edit js-document-getelementbyid with new section on document props like document.body
+* edit js-javascript-module
 * js-javascript-example-game-framework
 * js-javascript-example-orb-module
 
@@ -67,8 +69,6 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * (done) edit js-event-object
 * (done) edit js-document-getelementbyid with document.elementfrompoint example
 * (done) edit js-document-queryselector with document.elementfrompoint example
-
-
 
 ### (done) for for 08/29/2021
 * (done) start js-javascript-example-game-framework proto folder
@@ -208,3 +208,5 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * (done) s1 basic example of Array.every
 * (done) start a new post on js-array-every for 7/12/21
 * (done) edit a js-array-... post
+
+

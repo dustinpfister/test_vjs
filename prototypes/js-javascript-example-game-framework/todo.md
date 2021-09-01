@@ -27,12 +27,12 @@ canvas.js:
 * (done) have circle.js be the first plugin in the plugin folder
 * (done) I should be able to call oval points method from circle method
 * (done) have a coreArgu array for canvasMod.createPoints and have a ref to the plugin be one of the values along with stack
-
-* have a canvas mod plugin for pool.js, and start off with a pool draw method
+* (done) have a canvas mod plugin for pool.js, and start off with a pool draw method
 /demos/pool:
-* have a pool.secsCap option
-* have a pool.disableLifespan feature that will just disable lifespan all togetaher
-* start a demo of the new object pool feature
+* (done) have a pool.secsCap option
+* (done) have a pool.disableLifespan feature that will just disable lifespan all togetaher
+* (done) upadte hello world demo to make use of new object pool feature
+
 
 ## ( done 09/01/2021 ) - additional gameFrame.create options
 * (done) gameFrame.smCreateMain width and height options

@@ -55,8 +55,8 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * js-javascript-example-orb-module
 
 ### () for for 09/01/2021
+* (done) edit js-document-getelementbyid with additional document props
 * edit js javascript-module-object-literal
-* edit js-document-getelementbyid with additional document props
 * js-javascript-example-game-framework
 * js-javascript-example-orb-module
 

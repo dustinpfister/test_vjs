@@ -16,6 +16,19 @@ while(i--){
 }
 // hello 14
 
+var pool = [
+    {hp: 10, hpMax: 10},
+    {hp: -3, hpMax: 10},
+    {hp: 7, hpMax: 10},
+    {hp: 15, hpMax: 10},
+];
+
+pool.forEach(function(obj){
+    utils.logFor(obj, obj.hp < 0 || obj.hp > obj.hpMax );
+});
+// {hp: -3, hpMax: 10}
+// {hp: 15, hpMax: 10}
+
         </script>
     </body>
 </html>

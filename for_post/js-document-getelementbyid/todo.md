@@ -20,11 +20,11 @@
 * have a basic example of document.children
 * have an example that involves looping over all children
 
-## () - additional s7-document properties examples
+## ( done 09/01/2021 ) - additional s7-document properties examples
 * (done) example on document.head
-* example on document.documentElement 
+* (done) example on document.documentElement 
 
-## (done 08/31/2021  ) - have a s7-document properties section
+## ( done 08/31/2021 ) - have a s7-document properties section
 * (done) have a document.body example
 * (done) have a document.title example
 

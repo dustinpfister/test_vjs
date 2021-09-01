@@ -31,8 +31,18 @@ utils.mod = function (x, m) {
 /********* ********** ********** *********/
 
 // basic utils.log method
-utils.log = function(mess){
+utils.log = function (mess) {
     console.log(mess);
+};
+
+// log for test  ex: utils.logFor( obj.hp, obj.hp < 0 || obj.hp < obj.hpMax )
+utils.logFor = function (mess, test, opt) {
+    opt = opt || {};
+    opt.log = opt.log || utils.log;
+    if (test) {
+        opt.log(mess);
+    }
+
 };
 
 // log just once by default, but can be reset, and maxCount can be adjusted

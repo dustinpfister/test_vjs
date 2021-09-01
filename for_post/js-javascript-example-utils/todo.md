@@ -14,11 +14,11 @@
 ## () - XP Object demos
 * start a demo of the XP Object
 
-## () - log once method
-* add a log once method
-
 ## () - simulate click method
 * have a utils.simulateClick method based on what I have in js-event-object
+
+## () - log once method
+* add a log once method such as the one from js-javascript-module-object-literal
 
 ## ( done 08/31/2021 ) - utils.deepClone method
 * (done) have a utils.deepClone method

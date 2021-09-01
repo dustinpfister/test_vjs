@@ -15,6 +15,7 @@ var sm = gameFrame.smCreateMain({
         text: 'Hello World',
         pool: poolMod.create({
             count: 3,
+            secsCap: 0.5,
             update: function (obj, pool, sm, secs){
                obj.lifespan = 1;
                obj.x = 320;

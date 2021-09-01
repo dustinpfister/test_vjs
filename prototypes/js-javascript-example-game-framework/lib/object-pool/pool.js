@@ -20,6 +20,7 @@ var poolMod = (function () {
         var i = 0,
         pool = {
             objects: [],
+            secsCap: opt.secsCap === undefined ? Infinity : opt.secsCap,
             data: opt.data || {},
             spawn: opt.spawn || function (obj, pool, state, opt) {},
             purge: opt.purge || function (obj, pool, state) {},
@@ -61,6 +62,7 @@ var poolMod = (function () {
         var i = pool.objects.length,
         obj;
         state = state || {}; // your projects state object
+        secs = secs > pool.secsCap ? pool.secsCap : secs;
         while (i--) {
             obj = pool.objects[i];
             if (obj.active) {

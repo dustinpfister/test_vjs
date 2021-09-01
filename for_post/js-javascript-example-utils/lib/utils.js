@@ -26,6 +26,31 @@ utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
 
+/********* ********** ********** *********/
+//  LOGGING
+/********* ********** ********** *********/
+
+// log just once by default, but can be reset, and maxCount can be adjusted
+utils.logOnce = (function () {
+    var count = 0;
+    return function (mess, maxCount, resetCount) {
+        maxCount = maxCount === undefined ? 1 : maxCount;
+        resetCount = resetCount === undefined ? false : resetCount;
+        if (resetCount) {
+            count = 0;
+        }
+        if (count < maxCount) {
+            console.log(mess);
+            count += 1;
+        }
+    };
+}
+    ());
+
+/********* ********** ********** *********/
+//  OBJECTS
+/********* ********** ********** *********/
+
 // a deep clone method that should work in most situations
 utils.deepClone = (function () {
     // forInstance methods supporting Date, Array, and Object

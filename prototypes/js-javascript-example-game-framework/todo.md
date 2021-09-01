@@ -12,7 +12,7 @@ gameframe.js:
 pool.js:
 * having an object pool lib for this will be a must maybe start with the canvas example on it
 canvas.js:
-* have a canvas mod plugin for pool.js, and start off with a poolBox draw method
+* have a canvas mod plugin for pool.js, and start off with a pool draw method
 /demos/pool:
 * start a demo of the new object pool feature
 

@@ -19,7 +19,11 @@ gameframe.js:
 * just go with a system where we have 0.png, 1.png, ect
 * display a process bar while in load state
 
-## () - object pool
+## () - buttons
+* have a buttons property of a state object like that in orb match
+* start a menus demo that wil make use of buttons feature
+
+## ( done 09/01/2021 ) - object pool
 pool.js:
 * (done) having an object pool lib for this will be a must maybe start with the canvas example on it
 canvas.js:

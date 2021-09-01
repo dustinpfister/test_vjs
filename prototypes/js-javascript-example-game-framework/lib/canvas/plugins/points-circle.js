@@ -4,15 +4,15 @@ canvasMod.load({
         // a circle method
         {
             name: 'circle',
-            method: function(cx, cy, radius, pointCount){
+            method: function(stack, cx, cy, radius, pointCount){
                 pointCount = pointCount === undefined ? 100 : pointCount;
-                return canvasMod.createPoints(this, 'oval', cx, cy, radius, radius, pointCount);
+                return canvasMod.createPoints(stack, 'oval', cx, cy, radius, radius, pointCount);
             }
         },
         // an oval method
         {
             name: 'oval',
-            method: function(cx, cy, radius1, radius2, pointCount){
+            method: function(stack, cx, cy, radius1, radius2, pointCount){
                 pointCount = pointCount === undefined ? 100 : pointCount;
                 var points = [[]];
                 var i = 0, x, y, radian;

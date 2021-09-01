@@ -15,7 +15,7 @@ canvas.js:
 * (done) I will want a plugin folder for lib/canvas
 * (done) have circle.js be the first plugin in the plugin folder
 * (done) I should be able to call oval points method from circle method
-* have a coreArgu array for canvasMod.createPoints and have a ref to the plugin be one of the values along with stack
+* (done) have a coreArgu array for canvasMod.createPoints and have a ref to the plugin be one of the values along with stack
 
 * have a canvas mod plugin for pool.js, and start off with a pool draw method
 /demos/pool:

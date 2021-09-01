@@ -232,8 +232,9 @@
     };
     // create points
     api.createPoints = function (stack, key) {
+        var coreArgu = [stack]; 
         var addArgu = Array.prototype.slice.call(arguments, 2, arguments.length);
-        var points = pointsMethods[key].apply(stack, addArgu);
+        var points = pointsMethods[key].apply(stack, coreArgu.concat(addArgu));
         return points;
     };
     // load additional FEATURES

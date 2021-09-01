@@ -17,9 +17,10 @@ var sm = gameFrame.smCreateMain({
             count: 3,
             disableLifespan: true,
             update: function (obj, pool, sm, secs){
+               var radian = Math.PI * 2 / pool.objects.length * obj.i;
                obj.lifespan = 1;
-               obj.x = 320;
-               obj.y = 240;
+               obj.x = 320 - obj.w / 2 + Math.cos(radian) * 64;
+               obj.y = 240 - obj.h / 2 + Math.sin(radian) * 64;
             }
         }),
         cx: 320,
@@ -36,14 +37,6 @@ var sm = gameFrame.smCreateMain({
         pointerDown: false
     }
 });
-
-// creating points
-var points = canvasMod.createPoints(sm.layers, 'circle', 0, 0, 5);
-console.log(points);
-
-console.log(sm.game.pool);
-
-
 
 // add at least one state object
 gameFrame.smPushState(sm, {
@@ -76,8 +69,8 @@ gameFrame.smPushState(sm, {
     // draw will be called after each update
     draw: function(sm, layers){
         canvasMod.draw(layers, 'clear', 1);
-        canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
         canvasMod.draw(layers, 'pool', 1, sm.game.pool);
+        canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
     },
     // events for this state
     events: {
@@ -92,8 +85,8 @@ gameFrame.smPushState(sm, {
         },
         pointerEnd: function(e, pos, sm){
             sm.game.pointerDown = false;
-            sm.game.cx = 160;
-            sm.game.cy = 120;
+            sm.game.cx = 320;
+            sm.game.cy = 240;
         }
     }
 });

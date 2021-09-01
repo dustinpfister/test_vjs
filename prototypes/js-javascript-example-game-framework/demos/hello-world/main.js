@@ -38,12 +38,18 @@ console.log(points);
 console.log(sm.game.pool);
 
 
+
 // add at least one state object
 gameFrame.smPushState(sm, {
     name: 'game',
     // start hook will just fire once when the state object starts
     start: function(sm){
+        // draw background once
         canvasMod.draw(sm.layers, 'background', 0);
+        // spawn
+        poolMod.spawn(sm.game.pool, sm, {});
+        poolMod.spawn(sm.game.pool, sm, {});
+        poolMod.spawn(sm.game.pool, sm, {});
     },
     // what to do on each update
     update: function(sm, secs){
@@ -63,6 +69,7 @@ gameFrame.smPushState(sm, {
     draw: function(sm, layers){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
+        canvasMod.draw(layers, 'pool', 1, sm.game.pool);
     },
     // events for this state
     events: {

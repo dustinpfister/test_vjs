@@ -98,9 +98,9 @@ var poolMod = (function () {
         return true;
     };
     // bounding box
-    api.boundingBox = function (a, b) {
-        return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
-    };
+    //api.boundingBox = function (a, b) {
+    //    return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
+    //};
     // return public method
     return api;
 }

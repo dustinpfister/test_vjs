@@ -18,7 +18,9 @@
 * have a utils.simulateClick method based on what I have in js-event-object
 
 ## () - log once method
-* add a log once method such as the one from js-javascript-module-object-literal
+* (done) add a log once method such as the one from js-javascript-module-object-literal
+* (done) have a utils.log method
+* have a log.html demo
 
 ## ( done 08/31/2021 ) - utils.deepClone method
 * (done) have a utils.deepClone method

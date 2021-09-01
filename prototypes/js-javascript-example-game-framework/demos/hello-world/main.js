@@ -14,7 +14,8 @@ var sm = gameFrame.smCreateMain({
     game: {
         text: 'Hello World',
         pool: poolMod.create({
-            count: 3,
+            count: 8,
+            secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool){
                 obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
@@ -22,11 +23,12 @@ var sm = gameFrame.smCreateMain({
                 obj.data.radian = obj.data.homeRadian;
             },
             update: function (obj, pool, sm, secs){
-
-               var radian = obj.data.radian;
+               obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
+               obj.data.radian += obj.data.deltaRadian;
+               obj.data.radian = utils.mod(obj.data.radian, Math.PI * 2);  
                obj.lifespan = 1;
-               obj.x = 320 - obj.w / 2 + Math.cos(radian) * 64;
-               obj.y = 240 - obj.h / 2 + Math.sin(radian) * 64;
+               obj.x = 320 - obj.w / 2 + Math.cos(obj.data.radian) * 150;
+               obj.y = 240 - obj.h / 2 + Math.sin(obj.data.radian) * 150;
             }
         }),
         cx: 320,
@@ -52,9 +54,7 @@ gameFrame.smPushState(sm, {
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0);
         // spawn
-        poolMod.spawn(sm.game.pool, sm, {});
-        poolMod.spawn(sm.game.pool, sm, {});
-        poolMod.spawn(sm.game.pool, sm, {});
+        poolMod.spawnAll(sm.game.pool, sm, {});
     },
     // what to do on each update
     update: function(sm, secs){

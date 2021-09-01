@@ -58,6 +58,16 @@ var poolMod = (function () {
         }
         return false;
     };
+    api.spawnAll = function(pool, state, opt){
+        pool.objects.forEach(function(obj){
+            if (!obj.active) {
+                obj.active = true;
+                pool.spawn.call(pool, obj, pool, state, opt);
+                return obj;
+            }
+        });
+        return pool.objects;
+    };
     // update a pool object by a secs value
     api.update = function (pool, secs, state) {
         var i = pool.objects.length,

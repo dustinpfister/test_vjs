@@ -4,7 +4,6 @@ console.log( pool.objects.length ) // 10
 console.log( JSON.stringify( pool.objects[0] ) );
 // {"active":false,"i":0,"x":0,"y":0,"w":32,"h":32,"heading":0,"pps":32,"lifespan":3,"data":{}}
 
-
 // create an sm object
 var sm = gameFrame.smCreateMain({
     currentState: 'game', // set starting state object to use
@@ -26,6 +25,12 @@ var sm = gameFrame.smCreateMain({
         pointerDown: false
     }
 });
+
+// creating points
+var points = canvasMod.createPoints(sm.layers, 'circle', 0, 0, 5);
+console.log(points);
+
+
 // add at least one state object
 gameFrame.smPushState(sm, {
     name: 'game',

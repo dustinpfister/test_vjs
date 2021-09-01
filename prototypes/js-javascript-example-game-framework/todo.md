@@ -1,12 +1,23 @@
 # todo list for js-javascript-example-game-framework
 
+## () - Asset Loader started
+gameframe.js:
+* gameframe.js should include an asset loader that uses XMLHttpRequest
+* have a built in load state object that is created and added to sm.states when gameFrame.create is called
+* have an assets option for fameFrame.create
+* just go with a system where we have 0.png, 1.png, ect
+* display a process bar while in load state
+
 ## () - object pool
 pool.js:
-* having an object pool lib for this will be a must mayvbe start with the canvas example on it
+* having an object pool lib for this will be a must maybe start with the canvas example on it
 canvas.js:
-* have a plugin for pool.js, and start off with a poolBox draw method
+* have a canvas mod plugin for pool.js, and start off with a poolBox draw method
 /demos/pool:
 * start a demo of the new object pool feature
+
+## ( done 09/01/2021 ) - additional gameFrame.create options
+* (done) gameFrame.smCreateMain width and height options
 
 ## ( done 08/29/2021 ) - first state of framework
 todo.md:

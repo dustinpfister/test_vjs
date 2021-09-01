@@ -1,6 +1,8 @@
 // create an sm object
 var sm = gameFrame.smCreateMain({
-    currentState: 'game',
+    currentState: 'game', // set starting state object to use
+    width: 640,
+    height: 480,
     game: {
         text: 'Hello World',
         cx: 160,

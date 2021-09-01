@@ -54,7 +54,9 @@
             length: opt.canvasLayers === undefined ? 3 : opt.canvasLayers,
             container: opt.canvasContainer || document.getElementById('canvas-app') || document.body,
             events: sm.events,
-            state: sm
+            state: sm,
+            width: opt.width,
+            height: opt.height
         });
         sm.debugMode = opt.debugMode || false;
         // value that should not be set by options

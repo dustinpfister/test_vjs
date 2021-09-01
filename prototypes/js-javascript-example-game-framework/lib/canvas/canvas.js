@@ -11,13 +11,13 @@
 
     // clear a layer
     drawMethods.clear = function(stack, ctx, canvas, layerObj){
-        ctx.clearRect(-1, -1, canvas.width + 1, canvas.height + 1);
+        ctx.clearRect(-2, -2, canvas.width + 2, canvas.height + 2);
     };
 
     // draw a background
     drawMethods.background = function (stack, ctx, canvas, layerObj, background) {
         ctx.fillStyle = background || stack.background || 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(-2, -2, canvas.width + 2, canvas.height + 2);
     };
 
     // built in print method
@@ -204,7 +204,9 @@
         // layer options
         var layerOpt = {
             container: stack.container,
-            append: true
+            append: true,
+            width: opt.width || 320,
+            height: opt.height || 240
         };
         // create layers for the stack
         var i = 0;

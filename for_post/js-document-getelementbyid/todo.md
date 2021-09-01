@@ -6,6 +6,11 @@
 
 ## () - new section on Document.images
 
+## () - more s7 examples
+* example on document.activeElement
+* example on document.firstElementChild
+* example on document.lastElementChild
+
 ## () - new s2-global-bug section
 * remove the global bug example in s1-get-by-id and place it in its own new section
 * rename, and reorder all sections as this will be the new s2 section
@@ -17,10 +22,7 @@
 
 ## () - additional s7-document properties examples
 * example on document.head
-* example on document.activeElement
-* example on document.documentElement
-* example on document.firstElementChild
-* example on document.lastElementChild 
+* example on document.documentElement 
 
 ## (done 08/31/2021  ) - have a s7-document properties section
 * (done) have a document.body example

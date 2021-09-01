@@ -16,8 +16,14 @@ var sm = gameFrame.smCreateMain({
         pool: poolMod.create({
             count: 3,
             disableLifespan: true,
+            spawn: function(obj, pool){
+                obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
+                obj.data.deltaRadian = 0;
+                obj.data.radian = obj.data.homeRadian;
+            },
             update: function (obj, pool, sm, secs){
-               var radian = Math.PI * 2 / pool.objects.length * obj.i;
+
+               var radian = obj.data.radian;
                obj.lifespan = 1;
                obj.x = 320 - obj.w / 2 + Math.cos(radian) * 64;
                obj.y = 240 - obj.h / 2 + Math.sin(radian) * 64;

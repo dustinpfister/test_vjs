@@ -21,7 +21,7 @@
 * have an example that involves looping over all children
 
 ## () - additional s7-document properties examples
-* example on document.head
+* (done) example on document.head
 * example on document.documentElement 
 
 ## (done 08/31/2021  ) - have a s7-document properties section

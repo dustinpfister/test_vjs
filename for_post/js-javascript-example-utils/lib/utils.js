@@ -30,17 +30,24 @@ utils.mod = function (x, m) {
 //  LOGGING
 /********* ********** ********** *********/
 
+// basic utils.log method
+utils.log = function(mess){
+    console.log(mess);
+};
+
 // log just once by default, but can be reset, and maxCount can be adjusted
 utils.logOnce = (function () {
     var count = 0;
-    return function (mess, maxCount, resetCount) {
-        maxCount = maxCount === undefined ? 1 : maxCount;
-        resetCount = resetCount === undefined ? false : resetCount;
-        if (resetCount) {
+    return function (mess, opt) {
+        opt = opt || {};
+        opt.log = opt.log || utils.log;
+        opt.maxCount = opt.maxCount === undefined ? 1 : opt.maxCount;
+        opt.resetCount = opt.resetCount === undefined ? false : opt.resetCount;
+        if (opt.resetCount) {
             count = 0;
         }
-        if (count < maxCount) {
-            console.log(mess);
+        if (count < opt.maxCount) {
+            opt.log(mess);
             count += 1;
         }
     };

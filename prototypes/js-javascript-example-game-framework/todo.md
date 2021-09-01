@@ -37,7 +37,6 @@ canvas.js:
 * (done) have a pool.disableLifespan feature that will just disable lifespan all togetaher
 * (done) upadte hello world demo to make use of new object pool feature
 
-
 ## ( done 09/01/2021 ) - additional gameFrame.create options
 * (done) gameFrame.smCreateMain width and height options
 
@@ -60,3 +59,4 @@ gameframe.js:
 * (done) display hello world text in demo
 * (done) have the text move back and forth making use of a state update loop
 * (done) have pointer events have an effect on game state
+

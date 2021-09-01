@@ -21,14 +21,15 @@ var sm = gameFrame.smCreateMain({
                 obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
                 obj.data.deltaRadian = 0;
                 obj.data.radian = obj.data.homeRadian;
+                obj.data.radius = 200;
             },
             update: function (obj, pool, sm, secs){
                obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
                obj.data.radian += obj.data.deltaRadian;
                obj.data.radian = utils.mod(obj.data.radian, Math.PI * 2);  
                obj.lifespan = 1;
-               obj.x = 320 - obj.w / 2 + Math.cos(obj.data.radian) * 150;
-               obj.y = 240 - obj.h / 2 + Math.sin(obj.data.radian) * 150;
+               obj.x = 320 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
+               obj.y = 240 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
             }
         }),
         cx: 320,
@@ -40,7 +41,7 @@ var sm = gameFrame.smCreateMain({
         printOptions: {
             align: 'center',
             baseLine: 'middle',
-            fontSize: 30
+            fontSize: 40
         },
         pointerDown: false
     }

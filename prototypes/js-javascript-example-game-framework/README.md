@@ -5,6 +5,15 @@ The aim with this javascript example is to create the first of what might be a f
 There are many frameworks made all ready to choose from, but thus far I have found that I do not like the lack of control. So then if I want to have a framework, but maintain control, then it would seem that I just need to make my own framework.
 
 
+## Core Features of this framework
+
+This game framework has a number of core features that just about any grame framework should have which include.
+
+* a state machine
+* a stack of canvas layer objects using a canvas module
+* create points to be used in rendering using the canvas module
+* an object pool module
+
 ## links
 
 ```

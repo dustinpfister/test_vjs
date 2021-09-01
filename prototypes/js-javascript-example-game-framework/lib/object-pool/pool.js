@@ -21,6 +21,7 @@ var poolMod = (function () {
         pool = {
             objects: [],
             secsCap: opt.secsCap === undefined ? Infinity : opt.secsCap,
+            disableLifespan: opt.disableLifespan || false,
             data: opt.data || {},
             spawn: opt.spawn || function (obj, pool, state, opt) {},
             purge: opt.purge || function (obj, pool, state) {},
@@ -67,11 +68,14 @@ var poolMod = (function () {
             obj = pool.objects[i];
             if (obj.active) {
                 pool.update.call(pool, obj, pool, state, secs);
-                obj.lifespan -= secs;
-                obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
-                if (obj.lifespan === 0) {
-                    obj.active = false;
-                    pool.purge.call(pool, obj, pool, state);
+                if(pool.disableLifespan){
+                }else{
+                    obj.lifespan -= secs;
+                    obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
+                    if (obj.lifespan === 0) {
+                        obj.active = false;
+                        pool.purge.call(pool, obj, pool, state);
+                    }
                 }
             }
         }

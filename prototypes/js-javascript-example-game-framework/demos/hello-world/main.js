@@ -14,10 +14,15 @@ var sm = gameFrame.smCreateMain({
     game: {
         text: 'Hello World',
         pool: poolMod.create({
-            count: 3
+            count: 3,
+            update: function (obj, pool, sm, secs){
+               obj.lifespan = 1;
+               obj.x = 320;
+               obj.y = 240;
+            }
         }),
-        cx: 160,
-        cy: 120,
+        cx: 320,
+        cy: 240,
         x: 0,
         y: 0,
         dir: 1,
@@ -63,7 +68,9 @@ gameFrame.smPushState(sm, {
             sm.game.dir = 1;
         }
         sm.game.x = sm.game.cx + sm.game.dx;
-        sm.game.y = sm.game.cy;;
+        sm.game.y = sm.game.cy;
+        // update game.pool
+        poolMod.update(sm.game.pool, secs, sm);
     },
     // draw will be called after each update
     draw: function(sm, layers){

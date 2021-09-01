@@ -16,7 +16,6 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 
 // append box methods
 (function (api) {
-
     // private create helper
     var createDefaultDataObject = function () {
         return {
@@ -26,22 +25,27 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
             }
         };
     };
-
     // create
-    api.createBox = function (opt) {
+    api.boxCreate = function (opt) {
         opt = opt || {};
-        return {
-            x: 0,
-            y: 0,
-            w: 32,
-            h: 32,
+        var box = {
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            w: opt.w === undefined ? 32 : opt.w,
+            h: opt.h === undefined ? 32 : opt.h,
             data: opt.data || createDefaultDataObject()
         };
+        return box;
     };
+    // overlap check
+    api.boxOverlap = function (bx1, bx2) {
+        return utils.boundingBox(bx1.x, bx1.y, bx1.w, bx1.h, bx2.x, bx2.y, bx2.w, bx2.h);
+    };
+}(utils));
 
-}
-    (utils))
-
-var box = utils.createBox();
-
-console.log(box);
+// working good
+var a = utils.boxCreate();
+var b = utils.boxCreate({x: 5});
+console.log(utils.boxOverlap(a, b)); // true
+b.y = 64;
+console.log(utils.boxOverlap(a, b)); // false

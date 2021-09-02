@@ -4,7 +4,12 @@ canvasMod.load({
         {
             name: 'button',
             method: function(stack, ctx, canvas, layerObj, button){
-                
+                ctx.fillStyle = 'white';
+                ctx.strokeStyle = 'black';
+                ctx.beginPath();
+                ctx.rect(button.x, button.y, button.w, button.h);
+                ctx.fill();
+                ctx.stroke();
             }
         },
         // draw a button collection for the current state object

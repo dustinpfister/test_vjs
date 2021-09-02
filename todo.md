@@ -50,7 +50,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * js-javascript-example-orb-module
 
 ### () for for 09/02/2021
-* edit js-array-copy
+* (done) edit js-array-copy
 * js-javascript-example-game-framework
 * js-javascript-example-orb-module
 * edit js-array-slice

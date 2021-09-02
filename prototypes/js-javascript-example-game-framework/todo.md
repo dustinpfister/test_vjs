@@ -20,6 +20,7 @@ gameframe.js:
 * display a process bar while in load state
 
 ## () - buttons
+gameframe.js:
 * have a buttons property of a state object like that in orb match
 * start a menus demo that wil make use of buttons feature
 

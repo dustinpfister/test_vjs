@@ -31,6 +31,16 @@
     // check if a button was clicked for the current state, if so call the onClick method for it
     var buttonCheck = function(sm, pos){
 console.log('button check');
+        var state = sm.states[sm.currentState];
+        var buttonKeys = Object.keys(state.buttons);
+        var i = 0, len = buttonKeys.length, button;
+        while(i < len){
+            button = state.buttons[buttonKeys[i]];
+            if(utils.boundingBox(button.x, button.y, button.w, button.h, pos.x, pos.y, 1, 1)){
+                console.log(button);
+            }
+            i += 1;
+        }
     };
     // create the main sm object
     api.smCreateMain = function(opt){

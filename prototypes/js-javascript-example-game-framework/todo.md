@@ -19,12 +19,12 @@ gameframe.js:
 * just go with a system where we have 0.png, 1.png, ect
 * display a process bar while in load state
 
-## () - buttons
+## ( done 09/02/2021 ) - buttons started
 gameframe.js:
 * (done) have a buttons property of a state object like that in orb match
 * (done) start a menus demo that wil make use of buttons feature
 * (done) I will want to call a buttonCheck helper each time a global pointer event happens
-* I will want to have a draw buttons method in a buttons canvas plugin
+* (done) I will want to have a draw buttons method in a buttons canvas plugin
 
 ## ( done 09/01/2021 ) - object pool
 pool.js:

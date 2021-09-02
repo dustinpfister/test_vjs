@@ -8,7 +8,6 @@
 * use the utils.traverse method in an example where I am selectively referencing elements, but cloning other prop values
 
 ## (done 09/03/2020) - first set of examples
-
 * (done) add an s1 example that makes use of the spread operator
 * (done) add an s1 Object.assign example
 * (done) add an s1 Array.from example

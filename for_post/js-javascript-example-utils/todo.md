@@ -17,6 +17,9 @@
 ## () - simulate click method
 * have a utils.simulateClick method based on what I have in js-event-object
 
+## () - utils.traverse
+* I started a utils.traverse object method in js-array-copy add this to the utils.js here
+
 ## ( done 09/01/2021 ) - log once method
 * (done) add a log once method such as the one from js-javascript-module-object-literal
 * (done) have a utils.log method

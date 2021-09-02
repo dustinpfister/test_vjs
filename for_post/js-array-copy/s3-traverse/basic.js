@@ -12,8 +12,22 @@ utils.traverse = function (obj, forKey) {
     return null;
 };
 
+// basic example
 var arr = [1, 2, 3];
+utils.traverse(arr, function (val, key, arr) {
+    console.log(key, val);
+});
+/*
+0 1
+1 2,
+2 3
+*/
 
+console.log('');
+
+// nested loop example
+var arr = [ {x: 1, y: 2}, 3, 4],
+var copy = [];
 utils.traverse(arr, function (val, key, arr) {
     console.log(key, val);
 });

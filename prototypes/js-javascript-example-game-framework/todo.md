@@ -23,7 +23,8 @@ gameframe.js:
 gameframe.js:
 * (done) have a buttons property of a state object like that in orb match
 * (done) start a menus demo that wil make use of buttons feature
-* I will want to call a buttonCheck helper each time a global pointer event happens
+* (done) I will want to call a buttonCheck helper each time a global pointer event happens
+* I will want to have a draw buttons method in a buttons canvas plugin
 
 ## ( done 09/01/2021 ) - object pool
 pool.js:

@@ -10,9 +10,11 @@
 * start a section on my utils.deepClone method in js-javascript-example-utils
 * have at least on demo of this method
 
-## () - s3-traverse section
-* create a utils.traverse method
+## () - s3-traverse html example
 * use the utils.traverse method in an example where I am selectively referencing elements, but cloning other prop values
+
+## ( done 09/02/2021 ) - s3-traverse section started
+* (done) create a utils.traverse method, and have some basic example of it
 
 ## (done 09/03/2020) - first set of examples
 * (done) add an s1 example that makes use of the spread operator

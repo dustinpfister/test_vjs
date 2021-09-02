@@ -28,6 +28,10 @@
             }
         }
     };
+    // check if a button was clicked for the current state, if so call the onClick method for it
+    var buttonCheck = function(sm, pos){
+console.log('button check');
+    };
     // create the main sm object
     api.smCreateMain = function(opt){
         opt = opt || {};
@@ -40,6 +44,7 @@
         // events
         sm.events = opt.events || {
             pointerStart: function (e, pos, sm) {
+buttonCheck(sm, pos);
                 callStateObjectPointerEvent('pointerStart', e, pos, sm);   
             },
             pointerMove: function (e, pos, sm) {

@@ -53,6 +53,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * edit js-array-copy
 * js-javascript-example-game-framework
 * js-javascript-example-orb-module
+* edit js-array-slice
 
 ### (done) for for 09/01/2021
 * (done) edit js-document-getelementbyid with additional document props

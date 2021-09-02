@@ -44,7 +44,6 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start new s7 section for js-document-body that has to do with style
 * start circle app for js-math-pi
 
-
 ### () for for 09/03/2021
 * write mew post on js-javascript-example-game-framework
 * edit js-javascript-example

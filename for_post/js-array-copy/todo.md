@@ -1,7 +1,7 @@
 # js-array-copy
 
 
-## 3 - s4 section
+## () - s3- section
 
 ## (done 09/03/2020) - first set of examples
 

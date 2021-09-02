@@ -3,7 +3,9 @@
 ## () - s2- deep clone with slice
 * edit slice.js so that it also includes a code example that deep clones an array.
 
-## () - s3- section
+## () - s3-traverse section
+* create a utils.traverse method
+* use the utils.traverse method in an example where I am selectively referencing elements, but cloning other prop values
 
 ## (done 09/03/2020) - first set of examples
 

@@ -10,7 +10,7 @@ var sm = gameFrame.smCreateMain({
 gameFrame.smPushState(sm, {
     name: 'mainMenu',
     buttons: {
-        newGame: { x: 0, y: 0, w: 128, h:128, disp: 'New Game', onClick: function(e, pos, sm, button){
+        newGame: { x: 100, y: 100, w: 64, h:64, disp: 'New Game', onClick: function(e, pos, sm, button){
             gameFrame.smSetState(sm, 'game');
         }}
     },
@@ -20,13 +20,14 @@ gameFrame.smPushState(sm, {
     draw: function(sm, layers){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
+        canvasMod.draw(layers, 'stateButtons', 1, sm);
     }
 });
 // a game state
 gameFrame.smPushState(sm, {
     name: 'game',
     buttons: {
-        back: { x: 0, y: 0, w: 128, h:64, disp: 'New Game', onClick: function(e, pos, sm, button){
+        back: { x: 100, y: 100, w: 64, h:64, disp: 'New Game', onClick: function(e, pos, sm, button){
             gameFrame.smSetState(sm, 'mainMenu');
         }}
     },
@@ -39,6 +40,7 @@ gameFrame.smPushState(sm, {
     draw: function(sm, layers){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
+        canvasMod.draw(layers, 'stateButtons', 1, sm);
     },
     events: {
         pointerStart: function(e, pos, sm){},

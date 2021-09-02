@@ -17,7 +17,7 @@ canvasMod.load({
             name: 'stateButtons',
             method: function(stack, ctx, canvas, layerObj, sm){
                 var state = sm.states[sm.currentState];
-                Object.keys(buttonCollection).forEach(function(buttonKey){
+                Object.keys(state.buttons).forEach(function(buttonKey){
                     var button = state.buttons[buttonKey];
                     canvasMod.draw(stack, 'button', layerObj.i, button);
                 });

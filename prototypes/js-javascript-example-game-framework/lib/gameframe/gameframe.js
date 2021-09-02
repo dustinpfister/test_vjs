@@ -30,7 +30,6 @@
     };
     // check if a button was clicked for the current state, if so call the onClick method for it
     var buttonCheck = function(e, pos, sm){
-console.log('button check');
         var state = sm.states[sm.currentState];
         var buttonKeys = Object.keys(state.buttons);
         var i = 0, len = buttonKeys.length, button;
@@ -54,7 +53,7 @@ console.log('button check');
         // events
         sm.events = opt.events || {
             pointerStart: function (e, pos, sm) {
-buttonCheck(e, pos, sm);
+                buttonCheck(e, pos, sm);
                 callStateObjectPointerEvent('pointerStart', e, pos, sm);   
             },
             pointerMove: function (e, pos, sm) {

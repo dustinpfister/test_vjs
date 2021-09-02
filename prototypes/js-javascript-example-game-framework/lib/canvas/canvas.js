@@ -212,6 +212,8 @@
         var i = 0;
         while (i < stack.length) {
             stack[i] = createLayer(layerOpt);
+            stack[i].i = i;
+console.log(stack[i])
             i += 1;
         }
         attachCanvasPointerEvents(stack);

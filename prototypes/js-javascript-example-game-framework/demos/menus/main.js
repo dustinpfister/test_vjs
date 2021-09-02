@@ -10,7 +10,7 @@ var sm = gameFrame.smCreateMain({
 gameFrame.smPushState(sm, {
     name: 'mainMenu',
     buttons: {
-        newGame: { x: 5, y: 5, w: 128, h:128, disp: 'New Game', onClick: function(e, pos, sm, button){
+        newGame: { x: 0, y: 0, w: 128, h:128, disp: 'New Game', onClick: function(e, pos, sm, button){
             gameFrame.smSetState(sm, 'game');
         }}
     },
@@ -26,7 +26,7 @@ gameFrame.smPushState(sm, {
 gameFrame.smPushState(sm, {
     name: 'game',
     buttons: {
-        back: { x: 128, y: 128, w: 128, h:64, disp: 'New Game', onClick: function(e, pos, sm, button){
+        back: { x: 0, y: 0, w: 128, h:64, disp: 'New Game', onClick: function(e, pos, sm, button){
             gameFrame.smSetState(sm, 'mainMenu');
         }}
     },

@@ -1,7 +1,14 @@
 # js-array-copy
 
+## () - s5-simple-project examples
+* start a section of very simple project examples that involve cloning arrays.
+
 ## () - s2- deep clone with slice
 * edit slice.js so that it also includes a code example that deep clones an array.
+
+## () - s4-utils-deep-clone
+* start a section on my utils.deepClone method in js-javascript-example-utils
+* have at least on demo of this method
 
 ## () - s3-traverse section
 * create a utils.traverse method

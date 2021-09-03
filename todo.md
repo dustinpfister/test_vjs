@@ -45,15 +45,15 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start circle app for js-math-pi
 
 ### () for for 09/03/2021
+* work on js-javascript-example-game-framework
 * write mew post on js-javascript-example-game-framework
+* edit js-array-slice
 * edit js-javascript-example
 * js-javascript-example-orb-module
 
-### () for for 09/02/2021
+### (done) for for 09/02/2021
 * (done) edit js-array-copy
 * (done) js-javascript-example-game-framework
-* js-javascript-example-orb-module
-* edit js-array-slice
 
 ### (done) for for 09/01/2021
 * (done) edit js-document-getelementbyid with additional document props

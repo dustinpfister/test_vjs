@@ -47,6 +47,15 @@ gameFrame.smPushState(sm, {
         }
     },
     update: function(sm, secs){
+        
+        if(sm.loader.images){
+            if(sm.images.length === sm.loader.images.count){
+                gameFrame.smSetState(sm, 'game');
+            }
+        }else{
+            // no images just progress to game state
+            gameFrame.smSetState(sm, 'game');
+        }
 
     },
     draw: function(sm, layers){

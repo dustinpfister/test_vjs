@@ -4,6 +4,10 @@ utils.http({
     responseType: 'blob',
     onDone : function(res, xhr){
         console.log(res);
+        var imageURL = window.URL.createObjectURL(res);
+        var myImage = new Image();
+        myImage.src = imageURL;
+        document.body.appendChild(myImage);
     }
 });
 

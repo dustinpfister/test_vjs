@@ -1,14 +1,20 @@
 var utils = {};
 
+/********* ********** ********** *********/
+//  HTTP
+ /********* ********** ********** *********/
+
 // very simple http client
 utils.http = function(opt){
     var opt = opt || {};
+    // default options
     opt.url = url || '';
     opt.body = opt.body || 'GET';
     opt.async = opt.async === undefined ? true: opt.async;
     opt.body = opt.body === undefined ? null: opt.body;
     opt.onDone = opt.onDone || utils.noop;
     opt.onError = opt.onDone || utils.noop;
+    // create and set up xhr
     var xhr = new XMLHttpRequest();
     xhr.open(opt.method, opt.url, opt.async);
     xhr.onreadystatechange = function () {
@@ -20,6 +26,7 @@ utils.http = function(opt){
             }
         }
     };
+    // send
     xhr.send(opt.body);
 };
 

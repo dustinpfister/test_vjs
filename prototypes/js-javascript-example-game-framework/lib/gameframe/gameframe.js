@@ -45,6 +45,7 @@
     // create the main sm object
     api.smCreateMain = function(opt){
         opt = opt || {};
+        opt.loader = opt.loader || {};
         // create base sm object
         var sm = api.smCreateMin(opt);
         // values that can be set by options

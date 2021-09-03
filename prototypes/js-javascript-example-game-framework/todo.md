@@ -17,6 +17,8 @@ demos/loader:
 * (done) the demo will need an images folder
 utils.js:
 * (done) I will want a utils.http
+/node/serveDemo:
+* I am going to want a simple server script to just serve a demo by way of http
 gameframe.js:
 
 * gameframe.js should include an asset loader that uses utils.http

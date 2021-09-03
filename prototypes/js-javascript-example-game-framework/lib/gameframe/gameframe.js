@@ -8,16 +8,23 @@
     var loadFile = function(opt){
         var opt = opt || {};
         opt.url = url || '';
+        opt.body = opt.body || 'GET';
         opt.async = opt.async === undefined ? true: opt.async;
+        opt.body = opt.body === undefined ? null: opt.body;
         opt.onDone = opt.onDone || utils.noop;
         opt.onError = opt.onDone || utils.noop;
         var xhr = new XMLHttpRequest();
-        xhr.open(opt.method || 'GET', opt.url, opt.async);
+        xhr.open(opt.method, opt.url, opt.async);
         xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            document.getElementById('out').value += this.response;
-        }
+            if (xhr.readyState === 4) {
+                if(xhr.status >= 200 && xhr xhr.status < 400){
+                    opt.onDone.call(xhr, xhr);
+                }else{
+                    opt.onError.call(xhr, xhr);
+                }
+            }
         };
+        xhr.send(opt.body);
     };
 
 

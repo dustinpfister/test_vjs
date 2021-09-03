@@ -35,7 +35,7 @@ gameFrame.smPushState(sm, {
             while(i < 2){
                 (function(imageIndex){
                    utils.httpPNG({
-                       url: './img/' + imageIndex + '.png',
+                       url: sm.loader.images.baseURL + '/' + imageIndex + '.png',
                         onDone : function(image, xhr){
                             sm.images[imageIndex] = image;
                             document.body.appendChild(image);
@@ -46,9 +46,9 @@ gameFrame.smPushState(sm, {
             }
         }
     },
-    update: function(sm, secs){
-        
+    update: function(sm, secs){ 
         if(sm.loader.images){
+            // start game state when all images are loaded
             if(sm.images.length === sm.loader.images.count){
                 gameFrame.smSetState(sm, 'game');
             }
@@ -56,12 +56,13 @@ gameFrame.smPushState(sm, {
             // no images just progress to game state
             gameFrame.smSetState(sm, 'game');
         }
-
     },
     draw: function(sm, layers){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
-        canvasMod.draw(layers, 'print', 1, sm.images.length, 10, 30);
+        if(sm.loader.images){
+            canvasMod.draw(layers, 'print', 1, sm.images.length + ' / ' + sm.loader.images.count, 10, 30);
+        }
     }
 });
 

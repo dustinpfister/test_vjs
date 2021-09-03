@@ -1,14 +1,4 @@
 
-/*
-utils.httpPNG({
-    url: './img/0.png',
-    onDone : function(image, xhr){
-        document.body.appendChild(image);
-    }
-});
-*/
-
-
 // create an sm object
 var sm = gameFrame.smCreateMain({
     currentState: 'loader', 

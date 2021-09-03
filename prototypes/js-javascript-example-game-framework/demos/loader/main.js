@@ -8,7 +8,7 @@ var sm = gameFrame.smCreateMain({
     loader: {
         images: { // load 0.png, and 1.png at ./img
             baseURL: './img',
-            count: 3
+            count: 100
         }
     }
 });
@@ -56,6 +56,15 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'clear', 1);
         if(sm.loader.images){
             canvasMod.draw(layers, 'print', 1, sm.images.length + ' / ' + sm.loader.images.count, 10, 30);
+            var ctx = layers[1].ctx,
+            canvas = layers[1].canvas;
+
+            ctx.fillStyle = 'white'
+            ctx.strokeStyle = 'black';
+            ctx.beginPath();
+            ctx.rect(0, 80, canvas.width * (sm.images.length / sm.loader.images.count) , 10);
+            ctx.fill();
+            ctx.stroke();
         }
     }
 });

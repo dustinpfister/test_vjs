@@ -91,7 +91,7 @@
     var pointsMethods = FEATURES.pointsMethods = {};
 
     // create a box
-    pointsMethods.box = function(sx, sy, w, h){
+    pointsMethods.box = function(stack, sx, sy, w, h){
         var x = sx - w / 4,
         y = sy - h / 4;
         var points = [[

@@ -114,7 +114,7 @@
         // values that can be set by options
         sm.ver = opt.ver || '';
         sm.game = opt.game || {};
-        sm.fps = sm.fps === undefined ? 30 : opt.fps;
+        sm.fps = opt.fps === undefined ? 30 : opt.fps;
         sm.loader = opt.loader || {};
         sm.images = [];
         // events

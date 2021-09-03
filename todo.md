@@ -44,13 +44,16 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start new s7 section for js-document-body that has to do with style
 * start circle app for js-math-pi
 
-### () for for 09/03/2021
-* work on js-javascript-example-game-framework
-* write mew post on js-javascript-example-game-framework
+
+### () for 09/04/2021
 * edit js-array-slice
 * edit js-javascript-example
 * edit js-javascript-example-utils
 * js-javascript-example-orb-module
+
+### (done) for for 09/03/2021
+* (done) work on js-javascript-example-game-framework
+* (done) write mew post on js-javascript-example-game-framework
 
 ### (done) for for 09/02/2021
 * (done) edit js-array-copy

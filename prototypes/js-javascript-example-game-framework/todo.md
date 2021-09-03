@@ -14,7 +14,7 @@
 ## () - Asset Loader started
 demos/loader:
 * (done) start a loader demo based off of menus demo
-* the demo will need an images folder
+* (done) the demo will need an images folder
 utils.js:
 * (done) I will want a utils.http
 gameframe.js:

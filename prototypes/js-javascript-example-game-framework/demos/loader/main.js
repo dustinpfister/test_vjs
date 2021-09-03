@@ -1,3 +1,12 @@
+
+utils.http({
+    url: './img/0.png',
+    onDone : function(xhr){
+        console.log(xhr);
+    }
+});
+
+
 // create an sm object
 var sm = gameFrame.smCreateMain({
     //currentState: 'game', 

@@ -8,7 +8,7 @@ var utils = {};
 utils.http = function(opt){
     var opt = opt || {};
     // default options
-    opt.url = url || '';
+    opt.url = opt.url || '';
     opt.body = opt.body || 'GET';
     opt.async = opt.async === undefined ? true: opt.async;
     opt.body = opt.body === undefined ? null: opt.body;

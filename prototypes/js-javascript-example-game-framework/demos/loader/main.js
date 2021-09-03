@@ -13,69 +13,6 @@ var sm = gameFrame.smCreateMain({
     }
 });
 
-gameFrame.smPushState(sm, {
-    name: 'loader',
-    start: function(sm){
-        canvasMod.draw(sm.layers, 'background', 0);
-        // set up images array
-        sm.images = [];
-        var loaderObj = sm.loader;
-        // if we have images to load start the requests for them
-        if(sm.loader.images){
-            var i = 0;
-            while(i < sm.loader.images.count){
-                (function(imageIndex){
-                   utils.httpPNG({
-                        url: sm.loader.images.baseURL + '/' + imageIndex + '.png',
-                        // set to sm images if all goes well
-                        onDone : function(image, xhr){
-                            sm.images[imageIndex] = image;
-                        },
-                        // just a blank image for now if there is an error
-                        onError: function(){
-                            sm.images[imageIndex] = new Image();
-                        }
-                    });
-                }(i));
-                i += 1;
-            }
-        }
-    },
-    update: function(sm, secs){ 
-        if(sm.loader.images){
-            // start game state when all images are loaded
-            if(sm.images.length === sm.loader.images.count){
-                gameFrame.smSetState(sm, 'game');
-            }
-        }else{
-            // no images just progress to game state
-            gameFrame.smSetState(sm, 'game');
-        }
-    },
-    draw: function(sm, layers){
-        var ctx = layers[1].ctx,
-        canvas = layers[1].canvas,
-        cx = canvas.width / 2,
-        cy = canvas.height / 2;
-        // clear
-        canvasMod.draw(layers, 'clear', 1);
-        // if images
-        if(sm.loader.images){
-            ctx.fillStyle = 'white'
-            ctx.strokeStyle = 'black';
-            ctx.beginPath();
-            ctx.rect(0, cy - 10, canvas.width * (sm.images.length / sm.loader.images.count) , 10);
-            ctx.fill();
-            ctx.stroke();
-            canvasMod.draw(layers, 'print', 1, sm.images.length + ' / ' + sm.loader.images.count, cx, cy + 15, {
-                align: 'center',
-                fontSize: 30
-            });
-        }
-    }
-});
-
-
 // a game state
 gameFrame.smPushState(sm, {
     name: 'game',

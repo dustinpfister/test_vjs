@@ -11,23 +11,20 @@
 * have an hp stat object be part of the default data object
 * have a built in 'hp' purgeCondition
 
-## () - Asset Loader started
+## ( done 09/03/2021 ) - Asset Loader started
 demos/loader:
 * (done) start a loader demo based off of menus demo
 * (done) the demo will need an images folder
 utils.js:
 * (done) I will want a utils.http
 /node/serveDemo:
-* I am going to want a simple server script to just serve a demo by way of http
+* (done) I am going to want a simple server script to just serve a demo by way of http
 gameframe.js:
-
-* gameframe.js should include an asset loader that uses utils.http
-
-
-* have a built in load state object that is created and added to sm.states when gameFrame.create is called
-* have an assets option for fameFrame.create
-* just go with a system where we have 0.png, 1.png, ect
-* display a process bar while in load state
+* (done) gameframe.js should include an asset loader that uses utils.http
+* (done) have a built in load state object that is created and added to sm.states when gameFrame.create is called
+* (done) have an loader option for fameFrame.create
+* (done) just go with a system where we have 0.png, 1.png, ect
+* (done) display a process bar while in load state
 
 ## ( done 09/02/2021 ) - buttons started
 gameframe.js:

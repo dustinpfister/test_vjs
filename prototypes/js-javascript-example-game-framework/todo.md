@@ -16,6 +16,7 @@ demos/loader:
 * (done) start a loader demo based off of menus demo
 gameframe.js:
 * gameframe.js should include an asset loader that uses XMLHttpRequest
+
 * have a built in load state object that is created and added to sm.states when gameFrame.create is called
 * have an assets option for fameFrame.create
 * just go with a system where we have 0.png, 1.png, ect

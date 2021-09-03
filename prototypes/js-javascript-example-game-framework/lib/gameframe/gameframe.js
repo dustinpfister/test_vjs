@@ -2,7 +2,28 @@
 (function (api) {
 
 /********* ********** ********** ********** *********/
-//  CREATE State Machine PUBLIC Methods helpers
+//  BUILT IN HTTP CLIENT USED JUST FOR ASSET LOADER
+/********* ********** ********** ********** *********/
+
+    var loadFile = function(opt){
+        var opt = opt || {};
+        opt.url = url || '';
+        opt.async = opt.async === undefined ? true: opt.async;
+        opt.onDone = opt.onDone || utils.noop;
+        opt.onError = opt.onDone || utils.noop;
+        var xhr = new XMLHttpRequest();
+        xhr.open(opt.method || 'GET', opt.url, opt.async);
+        xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById('out').value += this.response;
+        }
+        };
+    };
+
+
+
+/********* ********** ********** ********** *********/
+//  CREATE State Machine PUBLIC Methods and helpers
 /********* ********** ********** ********** *********/
 
     // create a minamal sm object ( For setting up a nested sm object, and the base of a main sm object )
@@ -113,7 +134,7 @@
     };
 
 /********* ********** ********** ********** *********/
-//  PUSH NEW STATE OBJECTS, CHANGE STATE
+//  PUSH NEW STATE OBJECTS
 /********* ********** ********** ********** *********/
 
     // push a new state object
@@ -130,6 +151,11 @@
         sm.states[state.name] = state;
         return state;
     };
+
+/********* ********** ********** ********** *********/
+//  SET THE CURRENT STATE
+/********* ********** ********** ********** *********/
+
     // set the current state
     api.smSetState = function(sm, newState){
         // get a ref to the old state

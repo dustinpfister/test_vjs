@@ -12,6 +12,8 @@
 * have a built in 'hp' purgeCondition
 
 ## () - Asset Loader started
+demos/loader:
+* start a loader demo based off of menus demo
 gameframe.js:
 * gameframe.js should include an asset loader that uses XMLHttpRequest
 * have a built in load state object that is created and added to sm.states when gameFrame.create is called

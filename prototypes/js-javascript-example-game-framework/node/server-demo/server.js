@@ -3,18 +3,19 @@
  *
  *   This just provides a simple static server for the project.
  *
+ *   ex: $ node server ./ 8080
+ *
  */
 
 let http = require('http'),
 fs = require('fs'),
-path = require('path'),
+path = require('path');
 
-// set root with first argument, or assume a public folder in the current
-// working dir
-root = path.resolve(process.argv[2] || path.join(process.cwd(), './public')),
+// for this server-demo script the project folder will need to be root
+let root = path.join(__dirname, '../..');
 
-// set port with second argument, or 8888
-port = process.argv[3] || 8888; // port 8888 for now
+// set port with argument or hard coded default
+let port = process.argv[2] || 8080; // port 8888 for now
 
 // create and start the server
 let server = http.createServer(function (req, res) {

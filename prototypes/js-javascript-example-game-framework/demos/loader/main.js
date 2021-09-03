@@ -3,7 +3,13 @@ var sm = gameFrame.smCreateMain({
     //currentState: 'game', 
     width: 640,
     height: 480,
-    game: {}
+    game: {},
+    loader: {
+        images: { // load 0.png, and 1.png at ./img
+            baseURL: './img',
+            count: 2
+        }
+    }
 });
 
 // a game state

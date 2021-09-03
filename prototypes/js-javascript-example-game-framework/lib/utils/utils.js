@@ -32,6 +32,24 @@ utils.http = function(opt){
     xhr.send(opt.body);
 };
 
+// load just a png file, this calls utils.http with proper settings, and the response is an Image
+utils.httpPNG = function(opt){
+    opt = opt || {};
+    opt.onDone = opt.onDone || utils.noop;
+    opt.onError = opt.onError || utils.noop;
+    utils.http({
+        url: opt.url,
+        responseType: 'blob',
+        onDone : function(res, xhr){
+            var imageURL = window.URL.createObjectURL(res);
+            var image = new Image();
+            image.src = imageURL;
+            opt.onDone.call(xhr, image, xhr);
+        },
+        onError: opt.onError
+    });
+};
+
 /********* ********** ********** *********/
 //  MISCELLANEOUS METHODS
  /********* ********** ********** *********/

@@ -1,13 +1,8 @@
 
-utils.http({
+utils.httpPNG({
     url: './img/0.png',
-    responseType: 'blob',
-    onDone : function(res, xhr){
-        console.log(res);
-        var imageURL = window.URL.createObjectURL(res);
-        var myImage = new Image();
-        myImage.src = imageURL;
-        document.body.appendChild(myImage);
+    onDone : function(image, xhr){
+        document.body.appendChild(image);
     }
 });
 

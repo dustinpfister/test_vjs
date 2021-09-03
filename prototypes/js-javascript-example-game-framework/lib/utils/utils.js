@@ -14,8 +14,10 @@ utils.http = function(opt){
     opt.body = opt.body === undefined ? null: opt.body;
     opt.onDone = opt.onDone || utils.noop;
     opt.onError = opt.onDone || utils.noop;
+    opt.responseType = opt.responseType || '';  // set to 'blob' for png
     // create and set up xhr
     var xhr = new XMLHttpRequest();
+    xhr.responseType = opt.responseType;
     xhr.open(opt.method, opt.url, opt.async);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {

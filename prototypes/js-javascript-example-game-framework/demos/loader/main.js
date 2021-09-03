@@ -1,15 +1,17 @@
 
+/*
 utils.httpPNG({
     url: './img/0.png',
     onDone : function(image, xhr){
         document.body.appendChild(image);
     }
 });
+*/
 
 
 // create an sm object
 var sm = gameFrame.smCreateMain({
-    //currentState: 'game', 
+    currentState: 'loader', 
     width: 640,
     height: 480,
     game: {},
@@ -20,6 +22,22 @@ var sm = gameFrame.smCreateMain({
         }
     }
 });
+
+gameFrame.smPushState(sm, {
+    name: 'loader',
+    start: function(sm){
+        canvasMod.draw(sm.layers, 'background', 0);
+    },
+    update: function(sm, secs){
+
+    },
+    draw: function(sm, layers){
+        canvasMod.draw(layers, 'clear', 1);
+        canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
+        canvasMod.draw(layers, 'stateButtons', 1, sm);
+    }
+});
+
 
 // a game state
 gameFrame.smPushState(sm, {
@@ -46,5 +64,5 @@ gameFrame.smPushState(sm, {
     }
 });
 // start the state machine
-gameFrame.smSetState(sm, 'game');
+gameFrame.smSetState(sm, 'loader');
 sm.loop();

@@ -52,6 +52,7 @@
         sm.game = opt.game || {};
         sm.fps = sm.fps === undefined ? 30 : opt.fps;
         sm.loader = opt.loader || {};
+        sm.images = [];
         // events
         sm.events = opt.events || {
             pointerStart: function (e, pos, sm) {

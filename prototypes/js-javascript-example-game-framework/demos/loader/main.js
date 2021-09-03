@@ -27,8 +27,8 @@ gameFrame.smPushState(sm, {
     name: 'loader',
     start: function(sm){
         canvasMod.draw(sm.layers, 'background', 0);
+        // set up images array
         sm.images = [];
-
         var loaderObj = sm.loader;
         if(sm.loader.images){
             var i = 0;

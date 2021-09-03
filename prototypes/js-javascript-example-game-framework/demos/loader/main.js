@@ -27,6 +27,20 @@ gameFrame.smPushState(sm, {
     name: 'loader',
     start: function(sm){
         canvasMod.draw(sm.layers, 'background', 0);
+        sm.images = [];
+
+console.log(sm.loader)
+
+        var i = 0;
+        while(i < 2){
+            utils.httpPNG({
+                url: './img/' + i + '.png',
+                onDone : function(image, xhr){
+                    document.body.appendChild(image);
+                }
+            });
+            i += 1;
+        }
     },
     update: function(sm, secs){
 

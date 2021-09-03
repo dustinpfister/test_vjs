@@ -45,13 +45,13 @@
     // create the main sm object
     api.smCreateMain = function(opt){
         opt = opt || {};
-        opt.loader = opt.loader || {};
         // create base sm object
         var sm = api.smCreateMin(opt);
         // values that can be set by options
         sm.ver = opt.ver || '';
         sm.game = opt.game || {};
         sm.fps = sm.fps === undefined ? 30 : opt.fps;
+        sm.loader = opt.loader || {};
         // events
         sm.events = opt.events || {
             pointerStart: function (e, pos, sm) {

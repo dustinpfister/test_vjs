@@ -29,17 +29,18 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
         sm.images = [];
 
-console.log(sm.loader)
-
-        var i = 0;
-        while(i < 2){
-            utils.httpPNG({
-                url: './img/' + i + '.png',
-                onDone : function(image, xhr){
-                    document.body.appendChild(image);
-                }
-            });
-            i += 1;
+        var loaderObj = sm.loader;
+        if(sm.loader.images){
+            var i = 0;
+            while(i < 2){
+                utils.httpPNG({
+                    url: './img/' + i + '.png',
+                    onDone : function(image, xhr){
+                        document.body.appendChild(image);
+                    }
+                });
+                i += 1;
+            }
         }
     },
     update: function(sm, secs){

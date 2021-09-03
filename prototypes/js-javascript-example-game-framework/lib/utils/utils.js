@@ -13,7 +13,7 @@ utils.http = function(opt){
     opt.async = opt.async === undefined ? true: opt.async;
     opt.body = opt.body === undefined ? null: opt.body;
     opt.onDone = opt.onDone || utils.noop;
-    opt.onError = opt.onDone || utils.noop;
+    opt.onError = opt.onError || utils.noop;
     opt.responseType = opt.responseType || '';  // set to 'blob' for png
     // create and set up xhr
     var xhr = new XMLHttpRequest();
@@ -28,6 +28,8 @@ utils.http = function(opt){
             }
         }
     };
+
+
     // send
     xhr.send(opt.body);
 };
@@ -41,9 +43,11 @@ utils.httpPNG = function(opt){
         url: opt.url,
         responseType: 'blob',
         onDone : function(res, xhr){
+
             var imageURL = window.URL.createObjectURL(res);
             var image = new Image();
             image.src = imageURL;
+
             opt.onDone.call(xhr, image, xhr);
         },
         onError: opt.onError

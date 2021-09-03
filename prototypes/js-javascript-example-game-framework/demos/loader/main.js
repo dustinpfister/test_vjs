@@ -18,7 +18,7 @@ var sm = gameFrame.smCreateMain({
     loader: {
         images: { // load 0.png, and 1.png at ./img
             baseURL: './img',
-            count: 2
+            count: 3
         }
     }
 });
@@ -30,15 +30,19 @@ gameFrame.smPushState(sm, {
         // set up images array
         sm.images = [];
         var loaderObj = sm.loader;
+        // if we have images to load start the requests for them
         if(sm.loader.images){
             var i = 0;
-            while(i < 2){
+            while(i < sm.loader.images.count){
                 (function(imageIndex){
                    utils.httpPNG({
-                       url: sm.loader.images.baseURL + '/' + imageIndex + '.png',
+                        url: sm.loader.images.baseURL + '/' + imageIndex + '.png',
                         onDone : function(image, xhr){
                             sm.images[imageIndex] = image;
-                            document.body.appendChild(image);
+                        },
+                        onError: function(){
+                            // just a blank image for now if there is an error
+                            sm.images[imageIndex] = new Image();
                         }
                     });
                 }(i));

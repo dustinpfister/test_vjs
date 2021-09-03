@@ -8,7 +8,7 @@ var sm = gameFrame.smCreateMain({
     loader: {
         images: { // load 0.png, and 1.png at ./img
             baseURL: './img',
-            count: 100
+            count: 2
         }
     }
 });
@@ -53,18 +53,24 @@ gameFrame.smPushState(sm, {
         }
     },
     draw: function(sm, layers){
+        var ctx = layers[1].ctx,
+        canvas = layers[1].canvas,
+        cx = canvas.width / 2,
+        cy = canvas.height / 2;
+        // clear
         canvasMod.draw(layers, 'clear', 1);
+        // if images
         if(sm.loader.images){
-            canvasMod.draw(layers, 'print', 1, sm.images.length + ' / ' + sm.loader.images.count, 10, 30);
-            var ctx = layers[1].ctx,
-            canvas = layers[1].canvas;
-
             ctx.fillStyle = 'white'
             ctx.strokeStyle = 'black';
             ctx.beginPath();
-            ctx.rect(0, 80, canvas.width * (sm.images.length / sm.loader.images.count) , 10);
+            ctx.rect(0, cy - 10, canvas.width * (sm.images.length / sm.loader.images.count) , 10);
             ctx.fill();
             ctx.stroke();
+            canvasMod.draw(layers, 'print', 1, sm.images.length + ' / ' + sm.loader.images.count, cx, cy + 15, {
+                align: 'center',
+                fontSize: 30
+            });
         }
     }
 });

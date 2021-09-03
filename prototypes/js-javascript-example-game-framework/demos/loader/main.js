@@ -2,8 +2,8 @@
 utils.http({
     url: './img/0.png',
     responseType: 'blob',
-    onDone : function(xhr){
-        console.log(xhr.response);
+    onDone : function(res, xhr){
+        console.log(res);
     }
 });
 

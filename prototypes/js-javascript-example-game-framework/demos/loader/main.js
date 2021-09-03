@@ -27,11 +27,12 @@ gameFrame.smPushState(sm, {
                 (function(imageIndex){
                    utils.httpPNG({
                         url: sm.loader.images.baseURL + '/' + imageIndex + '.png',
+                        // set to sm images if all goes well
                         onDone : function(image, xhr){
                             sm.images[imageIndex] = image;
                         },
+                        // just a blank image for now if there is an error
                         onError: function(){
-                            // just a blank image for now if there is an error
                             sm.images[imageIndex] = new Image();
                         }
                     });
@@ -53,7 +54,6 @@ gameFrame.smPushState(sm, {
     },
     draw: function(sm, layers){
         canvasMod.draw(layers, 'clear', 1);
-        canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         if(sm.loader.images){
             canvasMod.draw(layers, 'print', 1, sm.images.length + ' / ' + sm.loader.images.count, 10, 30);
         }

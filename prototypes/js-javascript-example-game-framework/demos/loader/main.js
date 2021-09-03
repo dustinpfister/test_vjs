@@ -1,6 +1,6 @@
 // create an sm object
 var sm = gameFrame.smCreateMain({
-    currentState: 'game', 
+    //currentState: 'game', 
     width: 640,
     height: 480,
     game: {}

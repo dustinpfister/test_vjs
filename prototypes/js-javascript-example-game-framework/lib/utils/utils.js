@@ -19,7 +19,7 @@ utils.http = function(opt){
     xhr.open(opt.method, opt.url, opt.async);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            if(xhr.status >= 200 && xhr xhr.status < 400){
+            if(xhr.status >= 200 && xhr.status < 400){
                 opt.onDone.call(xhr, xhr);
             }else{
                 opt.onError.call(xhr, xhr);

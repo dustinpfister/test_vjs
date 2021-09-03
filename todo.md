@@ -49,6 +49,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * write mew post on js-javascript-example-game-framework
 * edit js-array-slice
 * edit js-javascript-example
+* edit js-javascript-example-utils
 * js-javascript-example-orb-module
 
 ### (done) for for 09/02/2021

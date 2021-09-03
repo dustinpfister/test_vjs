@@ -33,12 +33,15 @@ gameFrame.smPushState(sm, {
         if(sm.loader.images){
             var i = 0;
             while(i < 2){
-                utils.httpPNG({
-                    url: './img/' + i + '.png',
-                    onDone : function(image, xhr){
-                        document.body.appendChild(image);
-                    }
-                });
+                (function(imageIndex){
+                   utils.httpPNG({
+                       url: './img/' + imageIndex + '.png',
+                        onDone : function(image, xhr){
+                            sm.images[imageIndex] = image;
+                            document.body.appendChild(image);
+                        }
+                    });
+                }(i));
                 i += 1;
             }
         }
@@ -49,7 +52,7 @@ gameFrame.smPushState(sm, {
     draw: function(sm, layers){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
-        canvasMod.draw(layers, 'stateButtons', 1, sm);
+        canvasMod.draw(layers, 'print', 1, sm.images.length, 10, 30);
     }
 });
 

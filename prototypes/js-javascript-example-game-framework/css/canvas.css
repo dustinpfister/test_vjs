@@ -18,7 +18,7 @@
     height: 180px;
   }
 }
-@media (min-width: 600px) and (max-width: 999px) {
+@media (min-width: 600px) and (max-width: 499px) {
   #canvas-app {
     margin: 0px;
     width: 320px;
@@ -31,7 +31,7 @@
     height: 240px;
   }
 }
-@media (min-width: 1000px) {
+@media (min-width: 500px) {
   #canvas-app {
     margin: 0px;
     width: 640px;

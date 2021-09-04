@@ -16,7 +16,7 @@
 * draw desc values for buttons
 
 ## () - start a chicken-cooker demo
-* start a new demo called chicken-cooker based off of the loader demo as a start point
+* (done) start a new demo called chicken-cooker based off of the loader demo as a start point
 * have a chickens object pool
 * chickens will spawn in from outside of the canvas and then move into a radius inside the canvas
 * chickens start out in a 'live' state rather than a 'cooked' state

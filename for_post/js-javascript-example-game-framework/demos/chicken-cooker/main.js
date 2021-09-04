@@ -87,37 +87,13 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
         // spawn
         poolMod.spawnAll(sm.game.chickens, sm, {});
+        poolMod.spawnAll(sm.game.blasts, sm, {});
     },
     update: function(sm, secs){
 
-poolMod.update(sm.game.chickens, secs, sm);
+        poolMod.update(sm.game.chickens, secs, sm);
+        poolMod.update(sm.game.blasts, secs, sm);
 
-        // update chickens
-        sm.game.chickens.objects.forEach(function(obj){
-            // only update active chickens
-            if(obj.active){
-/*
-                // if we have a 'live' chicken
-                if(obj.data.state === 'live'){
-                    // get distance and angle to target position
-                    var d = utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
-                    a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
-                    // if distance > min stop distance move to target positon
-                    if(d > 10){
-                        obj.x += Math.cos(a) * 256 * secs;
-                        obj.y += Math.sin(a) * 256 * secs;
-                        obj.data.delay = 3;
-                    }else{
-                        // else subtract from delay, and get a new target pos of delay <= 0
-                        obj.data.delay -= secs;
-                        if(obj.data.delay <= 0){
-                            obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
-                        }
-                    }
-                }
-*/
-            }
-        });
     },
     draw: function(sm, layers){
         var canvas = layers[1].canvas,
@@ -127,6 +103,7 @@ poolMod.update(sm.game.chickens, secs, sm);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
         canvasMod.draw(layers, 'pool', 1, sm.game.chickens);
+        canvasMod.draw(layers, 'pool', 1, sm.game.blasts);
 
 
         // drawing images to the canvas

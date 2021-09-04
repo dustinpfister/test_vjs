@@ -39,6 +39,8 @@ sm.game = {
             obj.y = startPos.y;
             // set first target
             obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
+            // set delay
+            obj.data.delay = 3;
         },
         update: function (obj, pool, sm, secs){  
            obj.lifespan = 1;
@@ -63,6 +65,12 @@ gameFrame.smPushState(sm, {
                 if(d > 10){
                     obj.x += Math.cos(a) * 256 * secs;
                     obj.y += Math.sin(a) * 256 * secs;
+                    obj.data.delay = 3;
+                }else{
+                    obj.data.delay -= secs;
+                    if(obj.data.delay <= 0){
+                        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
+                    }
                 }
             }
 

@@ -12,7 +12,13 @@ var sm = gameFrame.smCreateMain({
     }
 });
 
+
 // create game object
+
+
+var rndRadian = function(){
+    return Math.PI * 2 * Math.random();
+};
 var getPosFromCenter = function(canvas, radius, a){
     return {
         x: canvas.width / 2 + Math.cos(a) * radius,
@@ -27,13 +33,12 @@ sm.game = {
         disableLifespan: true,
         spawn: function(obj, pool){
             obj.data.state = 'live'; // 'live' or 'cooked' state
-            //var radius = 100,
-            //a = Math.PI * 2 * Math.random();
-           // obj.x = 320 + Math.cos(a) * radius;
-           // obj.y = 240 + Math.sin(a) * radius;
-           var startPos = getPosFromCenter(sm.layers[0].canvas, 300, Math.PI * 2 * Math.random());
-           obj.x = startPos.x;
-           obj.y = startPos.y;
+            // set start position
+            var startPos = getPosFromCenter(sm.layers[0].canvas, 300, rndRadian());
+            obj.x = startPos.x;
+            obj.y = startPos.y;
+            // set first target
+            obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
         },
         update: function (obj, pool, sm, secs){  
            obj.lifespan = 1;
@@ -51,7 +56,17 @@ gameFrame.smPushState(sm, {
         poolMod.spawnAll(sm.game.chickens, sm, {});
     },
     update: function(sm, secs){
+        sm.game.chickens.objects.forEach(function(obj){
+            if(obj.active){
+                var d = utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
+                a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
+                if(d > 10){
+                    obj.x += Math.cos(a) * 256 * secs;
+                    obj.y += Math.sin(a) * 256 * secs;
+                }
+            }
 
+        });
     },
     draw: function(sm, layers){
         var canvas = layers[1].canvas,

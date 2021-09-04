@@ -100,12 +100,7 @@ sm.game.chickens = poolMod.create({
                     }
                     obj.data.imgD.sx = 32 * obj.data.cellIndex;
                 }
-/*
-                var over = getOverlaping(obj, sm.game.chickens);
-                if(over.length > 0){
-                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
-                }
-*/
+
             }else{
                 // else subtract from delay, and get a new target pos of delay <= 0
                 obj.data.delay -= secs;
@@ -117,13 +112,15 @@ sm.game.chickens = poolMod.create({
                 if(obj.data.delay <= 0){
                     obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
                 }
+/*
                 var over = getOverlaping(obj, sm.game.chickens);
                 if(over.length > 0){
-console.log(over.length);
-                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
+                    console.log(over.length);
+                    //obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
                 }else{
-console.log(over.length);
+                    console.log(over.length);
                 }
+*/
             }
         }
         if(obj.data.state === 'cooked'){

@@ -34,6 +34,7 @@ sm.game.chickens = poolMod.create({
     disableLifespan: true,
     spawn: function(obj, pool, sm, opt){
         obj.data.state = 'live'; // 'live' or 'cooked' state
+        obj.data.fillStyle = 'gray';
         // set start position
         var startPos = getPosFromCenter(sm.layers[0].canvas, 300, rndRadian());
         obj.x = startPos.x;
@@ -47,6 +48,7 @@ sm.game.chickens = poolMod.create({
         obj.lifespan = 1;
         // if we have a 'live' chicken
         if(obj.data.state === 'live'){
+            obj.data.fillStyle = 'gray';
             // get distance and angle to target position
             var d = utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
             a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
@@ -62,6 +64,9 @@ sm.game.chickens = poolMod.create({
                     obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
                 }
             }
+        }
+        if(obj.data.state === 'cooked'){
+            obj.data.fillStyle = 'red';
         }
     }
 });
@@ -121,7 +126,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
-        canvasMod.draw(layers, 'pool', 1, sm.game.chickens, {fillStyle: 'gray' });
+        canvasMod.draw(layers, 'pool', 1, sm.game.chickens, {});
         canvasMod.draw(layers, 'pool', 1, sm.game.blasts, {fillStyle: 'yellow' });
 
 

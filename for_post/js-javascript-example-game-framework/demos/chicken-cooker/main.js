@@ -54,6 +54,7 @@ sm.game.chickens = poolMod.create({
         // if we have a 'live' chicken
         if(obj.data.state === 'live'){
             obj.data.fillStyle = 'gray';
+            obj.data.image = sm.images[0];
             // get distance and angle to target position
             var d = utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
             a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
@@ -83,6 +84,8 @@ sm.game.chickens = poolMod.create({
         }
         if(obj.data.state === 'cooked'){
             obj.data.fillStyle = 'red';
+            obj.data.image = sm.images[1];
+            obj.data.imgD.sx = 0;
             obj.data.delay -= secs;
             if(obj.data.delay <= 0){
                 obj.active = false;

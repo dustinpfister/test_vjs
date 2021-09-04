@@ -11,6 +11,24 @@
 * have an hp stat object be part of the default data object
 * have a built in 'hp' purgeCondition
 
+
+## () - General improvements and new demo
+* draw desc values for buttons
+
+## () - start a chicken-cooker demo
+* start a new demo called chicken-cooker based off of the loader demo as a start point
+* have a chickens object pool
+* chickens will spawn in from outside of the canvas and then move into a radius inside the canvas
+* chickens start out in a 'live' state rather than a 'cooked' state
+* when inside the radius they will pause at a target location for a delay
+* once the delay is over they will move to a new radom target location in the radius
+* the player can click a location and when they do that will result in a blast
+* any chicken that is in the blast radius will be set to cooked state
+* after another delay in the cooked state the display object will no longer be active
+* have 0.png be four cells for a chicken, can use the one from link to the past
+* have 1.png be an image of a drum stick
+* skin display objects with images
+
 ## ( done 09/03/2021 ) - Asset Loader started
 demos/loader:
 * (done) start a loader demo based off of menus demo

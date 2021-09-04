@@ -31,14 +31,16 @@ var getOverlaping = function(obj, pool){
     obj2,
     overlap = [];
     len = pool.objects.length;
-    while(i < len){
-         obj2 = pool.objects[i];
-         if(obj != obj2 && obj2.active){
-             if(utils.boundingBox(obj.x, obj.x, obj.w, obj.h, obj.x2, obj.x2, obj.w2, obj2.h)){
-                 overlap.push(obj2);
-             }
-         }
-         i += 1;
+    if(obj.active){
+        while(i < len){
+            obj2 = pool.objects[i];
+            if(obj != obj2 && obj2.active){
+                if(utils.boundingBox(obj.x, obj.y, obj.w, obj.h, obj2.x, obj2.x, obj2.w, obj2.h)){
+                     overlap.push(obj2);
+                }
+            }
+        i += 1;
+        }
     }
     return overlap;
 };
@@ -114,6 +116,13 @@ sm.game.chickens = poolMod.create({
                 }
                 if(obj.data.delay <= 0){
                     obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
+                }
+                var over = getOverlaping(obj, sm.game.chickens);
+                if(over.length > 0){
+console.log(over.length);
+                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
+                }else{
+console.log(over.length);
                 }
             }
         }

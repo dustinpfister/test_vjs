@@ -67,18 +67,26 @@ sm.game.chickens = poolMod.create({
 });
 
 sm.game.blasts = poolMod.create({
-    count: 1,
+    count: 3,
     secsCap: 0.25,
     //disableLifespan: true,
     spawn: function(obj, pool, sm, opt){
-        obj.x = opt.pos.x - 5;
-        obj.y = opt.pos.y - 5;
+        obj.data.cx = opt.pos.x;
+        obj.data.cy = opt.pos.y;
         obj.w = 10;
         obj.h = 10;
-        obj.lifespan = 1;
+        obj.x = obj.data.cx - obj.w / 2;
+        obj.y = obj.data.cy - obj.h / 2;
+        obj.data.maxLife = 1;
+        obj.lifespan = obj.data.maxLife;
     },
     update: function (obj, pool, sm, secs){  
-       
+        var per = 1 - obj.lifespan / obj.data.maxLife;
+        var size = 10 + Math.round(90 * per);
+        obj.w = size;
+        obj.h = size;
+        obj.x = obj.data.cx - obj.w / 2;
+        obj.y = obj.data.cy - obj.h / 2;
     }
 });
 
@@ -116,6 +124,7 @@ gameFrame.smPushState(sm, {
     },
     events: {
         pointerStart: function(e, pos, sm){
+            // spawn a blast
             poolMod.spawn(sm.game.blasts, sm, { pos: pos });
         },
         pointerMove: function(e, pos, sm){},

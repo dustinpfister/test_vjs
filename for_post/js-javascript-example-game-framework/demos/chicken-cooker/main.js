@@ -32,7 +32,7 @@ sm.game.chickens = poolMod.create({
     count: 5,
     secsCap: 0.25,
     disableLifespan: true,
-    spawn: function(obj, pool){
+    spawn: function(obj, pool, sm, opt){
         obj.data.state = 'live'; // 'live' or 'cooked' state
         // set start position
         var startPos = getPosFromCenter(sm.layers[0].canvas, 300, rndRadian());
@@ -69,12 +69,16 @@ sm.game.chickens = poolMod.create({
 sm.game.blasts = poolMod.create({
     count: 1,
     secsCap: 0.25,
-    disableLifespan: true,
-    spawn: function(obj, pool){
-        
+    //disableLifespan: true,
+    spawn: function(obj, pool, sm, opt){
+        obj.x = opt.pos.x - 5;
+        obj.y = opt.pos.y - 5;
+        obj.w = 10;
+        obj.h = 10;
+        obj.lifespan = 1;
     },
     update: function (obj, pool, sm, secs){  
-       obj.lifespan = 1;
+       
     }
 });
 
@@ -87,7 +91,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
         // spawn
         poolMod.spawnAll(sm.game.chickens, sm, {});
-        poolMod.spawnAll(sm.game.blasts, sm, {});
+        //poolMod.spawnAll(sm.game.blasts, sm, {});
     },
     update: function(sm, secs){
 
@@ -102,8 +106,8 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
-        canvasMod.draw(layers, 'pool', 1, sm.game.chickens);
-        canvasMod.draw(layers, 'pool', 1, sm.game.blasts);
+        canvasMod.draw(layers, 'pool', 1, sm.game.chickens, {fillStyle: 'gray' });
+        canvasMod.draw(layers, 'pool', 1, sm.game.blasts, {fillStyle: 'yellow' });
 
 
         // drawing images to the canvas
@@ -111,7 +115,9 @@ gameFrame.smPushState(sm, {
         //ctx.drawImage(sm.images[1], 100.5, 29.5);
     },
     events: {
-        pointerStart: function(e, pos, sm){},
+        pointerStart: function(e, pos, sm){
+            poolMod.spawn(sm.game.blasts, sm, { pos: pos });
+        },
         pointerMove: function(e, pos, sm){},
         pointerEnd: function(e, pos, sm){}
     }

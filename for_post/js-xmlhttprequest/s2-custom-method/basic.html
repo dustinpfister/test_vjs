@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>XMLHttpRequest example</title>
+    </head>
+    <body>
+        <textarea id="out" cols="100" rows="25"></textarea>
+        <script src="./utils.js"></script>
+        <script>
+utils.http({
+    url: 'https://dustinpfister.github.io/',
+    method: 'GET',
+    onDone: function(res, xhr){
+        document.getElementById('out').value = res;
+    }
+});
+        </script>
+    </body>
+</html>

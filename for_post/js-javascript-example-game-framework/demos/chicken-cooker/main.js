@@ -73,16 +73,14 @@ sm.game.blasts = poolMod.create({
     spawn: function(obj, pool, sm, opt){
         obj.data.cx = opt.pos.x;
         obj.data.cy = opt.pos.y;
-        obj.w = 10;
-        obj.h = 10;
-        obj.x = obj.data.cx - obj.w / 2;
-        obj.y = obj.data.cy - obj.h / 2;
+        obj.w = 0;
+        obj.h = 0;
         obj.data.maxLife = 1;
         obj.lifespan = obj.data.maxLife;
     },
     update: function (obj, pool, sm, secs){  
         var per = 1 - obj.lifespan / obj.data.maxLife;
-        var size = 10 + Math.round(90 * per);
+        var size = Math.round(100 * per);
         obj.w = size;
         obj.h = size;
         obj.x = obj.data.cx - obj.w / 2;

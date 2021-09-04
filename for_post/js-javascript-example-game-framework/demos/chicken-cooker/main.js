@@ -25,6 +25,23 @@ var getPosFromCenter = function(canvas, radius, a){
         y: canvas.height / 2 + Math.sin(a) * radius
     };
 };
+// get overlaping helper
+var getOverlaping = function(obj, pool){
+    var i = 0,
+    obj2,
+    overlap = [];
+    len = pool.objects.length;
+    while(i < len){
+         obj2 = pool.objects[i];
+         if(obj != obj2 && obj2.active){
+             if(utils.boundingBox(obj.x, obj.x, obj.w, obj.h, obj.x2, obj.x2, obj.w2, obj2.h)){
+                 overlap.push(obj2);
+             }
+         }
+         i += 1;
+    }
+    return overlap;
+};
 
 sm.game = {};
 
@@ -74,7 +91,6 @@ sm.game.chickens = poolMod.create({
                 obj.data.imgSecs += secs;
                 if(obj.data.imgSecs >= 1 / 12){
                     obj.data.imgSecs = 0;
-
                     if(obj.data.cellDir === 0){
                         obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
                     }else{
@@ -82,6 +98,12 @@ sm.game.chickens = poolMod.create({
                     }
                     obj.data.imgD.sx = 32 * obj.data.cellIndex;
                 }
+/*
+                var over = getOverlaping(obj, sm.game.chickens);
+                if(over.length > 0){
+                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
+                }
+*/
             }else{
                 // else subtract from delay, and get a new target pos of delay <= 0
                 obj.data.delay -= secs;

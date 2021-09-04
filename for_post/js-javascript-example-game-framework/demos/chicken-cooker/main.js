@@ -103,7 +103,7 @@ sm.game.blasts = poolMod.create({
         obj.data.cy = opt.pos.y;
         obj.w = 0;
         obj.h = 0;
-        obj.data.maxLife = 1;
+        obj.data.maxLife = 0.5;
         obj.lifespan = obj.data.maxLife;
     },
     update: function (obj, pool, sm, secs){  
@@ -151,7 +151,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
         canvasMod.draw(layers, 'pool', 1, sm.game.chickens);
-        canvasMod.draw(layers, 'pool', 1, sm.game.blasts, {fillStyle: 'yellow' });
+        canvasMod.draw(layers, 'pool', 1, sm.game.blasts, {fillStyle: 'rgba(255, 255, 0, 0.5)' });
 
 
         // drawing images to the canvas

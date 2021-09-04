@@ -39,6 +39,8 @@ sm.game.chickens = poolMod.create({
         var startPos = getPosFromCenter(sm.layers[0].canvas, 300, rndRadian());
         obj.x = startPos.x;
         obj.y = startPos.y;
+        obj.w = 64;
+        obj.h = 64;
         // set first target
         obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
         // set delay
@@ -132,6 +134,7 @@ gameFrame.smPushState(sm, {
     name: 'game',
     buttons: {},
     start: function(sm){
+        sm.layers.background = '#afafaf';
         canvasMod.draw(sm.layers, 'background', 0);
         // spawn
         poolMod.spawnAll(sm.game.chickens, sm, {});

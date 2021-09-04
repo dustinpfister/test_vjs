@@ -1,5 +1,8 @@
 # js-xmlhttprequest
 
+## () - nodejs script and post request example
+* start a new section that involves a simple node script and post requests
+
 ## ( done 09/04/2021 ) - refine s2 section
 * (done) refine s2 section based on what I worked out for utils.http
 

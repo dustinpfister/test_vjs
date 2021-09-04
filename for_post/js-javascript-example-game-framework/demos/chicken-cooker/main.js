@@ -46,6 +46,7 @@ sm.game.chickens = poolMod.create({
         // set delay
         obj.data.delay = 3;
         // image data
+        obj.data.cellDir = 1; // 0 for facting left and 1 for facing right
         obj.data.cellIndex = 0;
         obj.data.imgSecs = 0;
         obj.data.image = sm.images[0];
@@ -71,14 +72,22 @@ sm.game.chickens = poolMod.create({
                 obj.data.imgSecs += secs;
                 if(obj.data.imgSecs >= 1 / 12){
                     obj.data.imgSecs = 0;
-                    obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
+
+                    if(obj.data.cellDir === 0){
+                        obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
+                    }else{
+                        obj.data.cellIndex = obj.data.cellIndex === 4 ? 5 : 4;
+                    }
                     obj.data.imgD.sx = 32 * obj.data.cellIndex;
                 }
             }else{
                 // else subtract from delay, and get a new target pos of delay <= 0
                 obj.data.delay -= secs;
                 // cell 3
-                obj.data.imgD.sx = 64
+                obj.data.imgD.sx = 64;
+                if(obj.data.cellDir === 1){
+                    obj.data.imgD.sx = 96;
+                }
                 if(obj.data.delay <= 0){
                     obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
                 }

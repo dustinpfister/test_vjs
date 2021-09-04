@@ -1,26 +1,9 @@
-
 // create an sm object
 var sm = gameFrame.smCreateMain({
     currentState: 'loader', 
     width: 640,
     height: 480,
-    game: {
-        chickens: poolMod.create({
-            count: 5,
-            secsCap: 0.25,
-            disableLifespan: true,
-            spawn: function(obj, pool){
-                obj.data.state = 'live'; // 'live' or 'cooked' state
-                var radius = 100,
-                a = Math.PI * 2 * Math.random();
-                obj.x = 320 + Math.cos(a) * radius;
-                obj.y = 240 + Math.sin(a) * radius;
-            },
-            update: function (obj, pool, sm, secs){  
-               obj.lifespan = 1;
-            }
-        })
-    },
+    game:{},
     loader: {
         images: { // load 0.png, and 1.png at ./img
             baseURL: './img',
@@ -28,6 +11,35 @@ var sm = gameFrame.smCreateMain({
         }
     }
 });
+
+// create game object
+var getPosFromCenter = function(canvas, radius, a){
+    return {
+        x: canvas.width / 2 + Math.cos(a) * radius,
+        y: canvas.height / 2 + Math.sin(a) * radius
+    };
+};
+
+sm.game = {
+   chickens: poolMod.create({
+        count: 5,
+        secsCap: 0.25,
+        disableLifespan: true,
+        spawn: function(obj, pool){
+            obj.data.state = 'live'; // 'live' or 'cooked' state
+            //var radius = 100,
+            //a = Math.PI * 2 * Math.random();
+           // obj.x = 320 + Math.cos(a) * radius;
+           // obj.y = 240 + Math.sin(a) * radius;
+           var startPos = getPosFromCenter(sm.layers[0].canvas, 300, Math.PI * 2 * Math.random());
+           obj.x = startPos.x;
+           obj.y = startPos.y;
+        },
+        update: function (obj, pool, sm, secs){  
+           obj.lifespan = 1;
+        }
+    })
+};
 
 // a game state
 gameFrame.smPushState(sm, {

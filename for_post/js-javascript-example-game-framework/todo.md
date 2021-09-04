@@ -20,11 +20,13 @@
 * the player can click a location and when they do that will result in a shot being fired at that location
 * when a shot reaches its target location it will explode
 
+## () - chicken-cooker both directions
+* have the live chicken sprite work with the right direction
 
-## () - chicken-cooker images
-* have 0.png be four cells for a chicken, can use the one from link to the past
-* have 1.png be an image of a drum stick
-* skin display objects with images
+## ( done 09/04/2021 ) - chicken-cooker images
+* (done) have 0.png be four cells for a chicken, can use the one from link to the past
+* (done) have 1.png be an image of a drum stick
+* (done) skin display objects with images
 
 ## ( done 09/04/2021 ) - start a chicken-cooker demo
 * (done) start a new demo called chicken-cooker based off of the loader demo as a start point

@@ -21,23 +21,22 @@
 * when a shot reaches its target location it will explode
 
 
-## () - start a chicken-cooker demo
+## () - chicken-cooker images
+* have 0.png be four cells for a chicken, can use the one from link to the past
+* have 1.png be an image of a drum stick
+* skin display objects with images
+
+## ( done 09/04/2021 ) - start a chicken-cooker demo
 * (done) start a new demo called chicken-cooker based off of the loader demo as a start point
 * (done) have a chickens object pool
 * (done) chickens will spawn in from outside of the canvas and then move into a radius inside the canvas
 * (done) chickens start out in a 'live' state rather than a 'cooked' state
 * (done) when inside the radius they will pause at a target location for a delay
 * (done) once the delay is over they will move to a new radom target location in the radius
-
-* have a blasts object pool
-* the player can click a location and at that location a blast will start
-* any chicken that is in the blast radius will be set to cooked state
-* after another delay in the cooked state the display object will no longer be active
-
-
-* have 0.png be four cells for a chicken, can use the one from link to the past
-* have 1.png be an image of a drum stick
-* skin display objects with images
+* (done) have a blasts object pool
+* (done) the player can click a location and at that location a blast will start
+* (done) any chicken that is in the blast radius will be set to cooked state
+* (done) after another delay in the cooked state the display object will no longer be active
 
 ## ( done 09/03/2021 ) - Asset Loader started
 demos/loader:

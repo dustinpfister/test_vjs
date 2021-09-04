@@ -9,7 +9,7 @@
     xhr.open('GET', 'https://dustinpfister.github.io/favicon.ico', true);
     xhr.responseType = 'blob';
     xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             var img = document.createElement('img')
             img.src = window.URL.createObjectURL(this.response);
             document.getElementById('out').appendChild(img);

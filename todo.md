@@ -46,7 +46,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 
 ### () for 09/04/2021
-* edit js-xmlhttprequest
+* (done) edit js-xmlhttprequest
 * edit js-setinterval
 * edit js-array-slice
 * edit js-javascript-example-utils

@@ -136,7 +136,7 @@ gameFrame.smPushState(sm, {
 
 
         // drawing images to the canvas
-        //ctx.drawImage(sm.images[0], 29.5, 29.5);
+        ctx.drawImage(sm.images[0], 0, 0, 32, 32, 10, 10, 64, 64);
         //ctx.drawImage(sm.images[1], 100.5, 29.5);
     },
     events: {

@@ -43,6 +43,9 @@ sm.game.chickens = poolMod.create({
         obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
         // set delay
         obj.data.delay = 3;
+        // image data
+        obj.data.image = sm.images[0];
+        obj.data.imgD = {sx: 0, sy: 0, sw: 32, sh: 32};
     },
     update: function (obj, pool, sm, secs){  
         obj.lifespan = 1;
@@ -131,12 +134,12 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
-        canvasMod.draw(layers, 'pool', 1, sm.game.chickens, {});
+        canvasMod.draw(layers, 'pool', 1, sm.game.chickens);
         canvasMod.draw(layers, 'pool', 1, sm.game.blasts, {fillStyle: 'yellow' });
 
 
         // drawing images to the canvas
-        ctx.drawImage(sm.images[0], 0, 0, 32, 32, 10, 10, 64, 64);
+        //ctx.drawImage(sm.images[0], 0, 0, 32, 32, 10, 10, 64, 64);
         //ctx.drawImage(sm.images[1], 100.5, 29.5);
     },
     events: {

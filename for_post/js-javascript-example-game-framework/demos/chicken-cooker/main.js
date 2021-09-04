@@ -67,6 +67,10 @@ sm.game.chickens = poolMod.create({
         }
         if(obj.data.state === 'cooked'){
             obj.data.fillStyle = 'red';
+            obj.data.delay -= secs;
+            if(obj.data.delay <= 0){
+                obj.active = false;
+            }
         }
     }
 });
@@ -94,6 +98,7 @@ sm.game.blasts = poolMod.create({
             if(chk.active){
                 if(chk.data.state === 'live'){
                     if(utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)){
+                        obj.data.delay = 3;
                         chk.data.state = 'cooked';
                     }
                 }
@@ -114,7 +119,7 @@ gameFrame.smPushState(sm, {
         //poolMod.spawnAll(sm.game.blasts, sm, {});
     },
     update: function(sm, secs){
-
+        poolMod.spawn(sm.game.chickens, sm, {});
         poolMod.update(sm.game.chickens, secs, sm);
         poolMod.update(sm.game.blasts, secs, sm);
 

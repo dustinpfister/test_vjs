@@ -85,6 +85,15 @@ sm.game.blasts = poolMod.create({
         obj.h = size;
         obj.x = obj.data.cx - obj.w / 2;
         obj.y = obj.data.cy - obj.h / 2;
+        sm.game.chickens.objects.forEach(function(chk){
+            if(chk.active){
+                if(chk.data.state === 'live'){
+                    if(utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)){
+                        chk.data.state = 'cooked';
+                    }
+                }
+            }
+        });
     }
 });
 

@@ -44,6 +44,8 @@ sm.game.chickens = poolMod.create({
         // set delay
         obj.data.delay = 3;
         // image data
+        obj.data.cellIndex = 0;
+        obj.data.imgSecs = 0;
         obj.data.image = sm.images[0];
         obj.data.imgD = {sx: 0, sy: 0, sw: 32, sh: 32};
     },
@@ -57,9 +59,18 @@ sm.game.chickens = poolMod.create({
             a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
             // if distance > min stop distance move to target positon
             if(d > 10){
-                obj.x += Math.cos(a) * 256 * secs;
-                obj.y += Math.sin(a) * 256 * secs;
+                // move
+                obj.x += Math.cos(a) * 128 * secs;
+                obj.y += Math.sin(a) * 128 * secs;
+                // set delay
                 obj.data.delay = 3;
+                // cell index
+                obj.data.imgSecs += secs;
+                if(obj.data.imgSecs >= 1 / 12){
+                    obj.data.imgSecs = 0;
+                    obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
+                    obj.data.imgD.sx = 32 * obj.data.cellIndex;
+                }
             }else{
                 // else subtract from delay, and get a new target pos of delay <= 0
                 obj.data.delay -= secs;

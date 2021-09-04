@@ -21,7 +21,7 @@
 * when a shot reaches its target location it will explode
 
 ## () - chicken-cooker on overlap with other chicken
-* check if a chicken is overlapying with another
+* (done) check if a chicken is overlapying with another
 * when one chicken is overlaping with another it wil get a new target position
 
 ## ( done 09/04/2021 ) - chicken-cooker both directions

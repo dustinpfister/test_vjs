@@ -74,6 +74,8 @@ sm.game.chickens = poolMod.create({
             }else{
                 // else subtract from delay, and get a new target pos of delay <= 0
                 obj.data.delay -= secs;
+                // cell 3
+                obj.data.imgD.sx = 64
                 if(obj.data.delay <= 0){
                     obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
                 }

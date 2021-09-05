@@ -45,9 +45,10 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start circle app for js-math-pi
 
 ## () for 09/05/2021
+* edit js-xmlhttprequest with fixed utils.httoPNG method in js-javascript-example-game-framework
 * edit js-setinterval
 * edit js-javascript-example-utils
-* work on js-javascript-example-game-framework
+* (done) work on js-javascript-example-game-framework
 * edit js-array-slice
 * js-javascript-example-orb-module
 

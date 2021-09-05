@@ -11,9 +11,9 @@ var sm = gameFrame.smCreateMain({
     height: 480,
     game:{},
     loader: {
-        images: { // load 0.png, and 1.png at ./img
+        images: { // load 0.png - 2.png at ./img
             baseURL: './img',
-            count: 2
+            count: 3
         }
     }
 });

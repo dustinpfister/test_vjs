@@ -2,7 +2,8 @@
 var CHICKENS_COUNT = 10,
 CHICKENS_RADIUS_START = 400,
 CHICKENS_RADIUS = 180,
-CHICKENS_PPS_MIN = 64;
+CHICKENS_PPS_MIN = 64,
+CHICKENS_PPS_MAX = 256;
 
 // create an sm object
 var sm = gameFrame.smCreateMain({
@@ -50,7 +51,7 @@ sm.game.chickens = poolMod.create({
         obj.w = 64;
         obj.h = 64;
         // set speed
-        obj.pps = CHICKENS_PPS_MIN;
+        obj.pps = CHICKENS_PPS_MIN + Math.round(( CHICKENS_PPS_MAX - CHICKENS_PPS_MIN) * Math.random());
         // set first target
         obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
         // set delay

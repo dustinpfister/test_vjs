@@ -35,7 +35,7 @@ var getOverlaping = function(obj, pool){
         while(i < len){
             obj2 = pool.objects[i];
             if(obj != obj2 && obj2.active){
-                if(utils.boundingBox(obj.x, obj.y, obj.w, obj.h, obj2.x, obj2.x, obj2.w, obj2.h)){
+                if(utils.boundingBox(obj.x, obj.y, obj.w, obj.h, obj2.x, obj2.y, obj2.w, obj2.h)){
                      overlap.push(obj2);
                 }
             }
@@ -48,7 +48,7 @@ var getOverlaping = function(obj, pool){
 sm.game = {};
 
 sm.game.chickens = poolMod.create({
-    count: 5,
+    count: 4,
     secsCap: 0.25,
     disableLifespan: true,
     spawn: function(obj, pool, sm, opt){
@@ -61,7 +61,7 @@ sm.game.chickens = poolMod.create({
         obj.w = 64;
         obj.h = 64;
         // set first target
-        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
+        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 200, rndRadian());
         // set delay
         obj.data.delay = 3;
         // image data
@@ -110,18 +110,17 @@ sm.game.chickens = poolMod.create({
                     obj.data.imgD.sx = 96;
                 }
                 if(obj.data.delay <= 0){
-                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
+                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 200, rndRadian());
                 }
-/*
                 var over = getOverlaping(obj, sm.game.chickens);
                 if(over.length > 0){
-                    console.log(over.length);
-                    //obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 100, rndRadian());
-                }else{
-                    console.log(over.length);
+                    //console.log(over.length);
+                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 200, rndRadian());
                 }
-*/
             }
+
+
+
         }
         if(obj.data.state === 'cooked'){
             obj.data.fillStyle = 'red';

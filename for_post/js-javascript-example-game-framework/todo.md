@@ -24,6 +24,7 @@
 * (done) check if a chicken is overlapying with another
 * when one chicken is overlaping with another it wil get a new target position
 
+
 ## ( done 09/04/2021 ) - chicken-cooker both directions
 * (done) have the live chicken sprite work with the right direction
 

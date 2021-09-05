@@ -11,10 +11,9 @@
 * have an hp stat object be part of the default data object
 * have a built in 'hp' purgeCondition
 
-## () - General improvements and new demo
+## () - General improvements
 * draw desc values for buttons
 * have a way to set what state the sm should change to when loading is done in the loader object
-
 
 ## (  done 09/05/2021 ) - chicken-cooker on overlap with other chicken
 * (done) check if a chicken is overlapying with another

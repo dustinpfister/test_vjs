@@ -160,13 +160,9 @@ gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {},
     start: function(sm){
-        sm.layers.background = '#afafaf';
+        sm.layers.background = sm.images[2];
 
-//console.log(sm.images[2])
-
-//sm.layers.background = sm.images[2];
-
-        canvasMod.draw(sm.layers, 'background', 0, sm.images[2]);
+        canvasMod.draw(sm.layers, 'background', 0);
         // spawn
         poolMod.spawnAll(sm.game.chickens, sm, {});
         //poolMod.spawnAll(sm.game.blasts, sm, {});

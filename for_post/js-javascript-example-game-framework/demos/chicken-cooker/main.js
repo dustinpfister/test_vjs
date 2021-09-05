@@ -65,7 +65,7 @@ sm.game.chickens = poolMod.create({
     },
     update: function (obj, pool, sm, secs){  
         obj.lifespan = 1;
-        // if we have a 'live' chicken
+        // if we have a 'live' state chicken
         if(obj.data.state === 'live'){
             obj.data.fillStyle = 'gray';
             obj.data.image = sm.images[0];
@@ -93,12 +93,12 @@ sm.game.chickens = poolMod.create({
                 }
 
             }else{
-                // set delay
+                // set delay and switch to rest state
                 obj.data.delay = 3;
                 obj.data.state = 'rest';
             }
         }
-
+        // rest state
         if(obj.data.state === 'rest'){
             // else subtract from delay, and get a new target pos of delay <= 0
             obj.data.delay -= secs;
@@ -117,8 +117,7 @@ sm.game.chickens = poolMod.create({
                 obj.data.state = 'live';
             }
         }
-
-
+        // cooked chicken state
         if(obj.data.state === 'cooked'){
             obj.data.fillStyle = 'red';
             obj.data.image = sm.images[1];
@@ -189,14 +188,8 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'clear', 1);
         //canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
-
         canvasMod.draw(layers, 'pool', 1, sm.game.chickens);
         canvasMod.draw(layers, 'pool', 1, sm.game.blasts, {fillStyle: 'rgba(255, 255, 0, 0.5)' });
-
-
-        // drawing images to the canvas
-        //ctx.drawImage(sm.images[0], 0, 0, 32, 32, 10, 10, 64, 64);
-        //ctx.drawImage(sm.images[1], 100.5, 29.5);
     },
     events: {
         pointerStart: function(e, pos, sm){

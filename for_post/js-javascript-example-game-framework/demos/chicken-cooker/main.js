@@ -1,3 +1,9 @@
+
+var CHICKENS_COUNT = 10,
+CHICKENS_RADIUS_START = 400,
+CHICKENS_RADIUS = 180,
+CHICKENS_PPS_MIN = 64;
+
 // create an sm object
 var sm = gameFrame.smCreateMain({
     currentState: 'loader', 
@@ -28,21 +34,24 @@ var getPosFromCenter = function(canvas, radius, a){
 
 sm.game = {};
 
+// chickens object pool
 sm.game.chickens = poolMod.create({
-    count: 4,
+    count: CHICKENS_COUNT,
     secsCap: 0.25,
     disableLifespan: true,
     spawn: function(obj, pool, sm, opt){
         obj.data.state = 'live'; // 'live' or 'cooked' state
         obj.data.fillStyle = 'gray';
         // set start position
-        var startPos = getPosFromCenter(sm.layers[0].canvas, 300, rndRadian());
+        var startPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS_START, rndRadian());
         obj.x = startPos.x;
         obj.y = startPos.y;
         obj.w = 64;
         obj.h = 64;
+        // set speed
+        obj.pps = CHICKENS_PPS_MIN;
         // set first target
-        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 200, rndRadian());
+        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
         // set delay
         obj.data.delay = 3;
         // image data
@@ -66,8 +75,8 @@ sm.game.chickens = poolMod.create({
             // if distance > min stop distance move to target positon
             if(d > 10){
                 // move
-                obj.x += Math.cos(a) * 128 * secs;
-                obj.y += Math.sin(a) * 128 * secs;
+                obj.x += Math.cos(a) * obj.pps * secs;
+                obj.y += Math.sin(a) * obj.pps * secs;
                 // set delay
                 obj.data.delay = 3;
                 // cell index
@@ -91,17 +100,14 @@ sm.game.chickens = poolMod.create({
                     obj.data.imgD.sx = 96;
                 }
                 if(obj.data.delay <= 0){
-                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 200, rndRadian());
+                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
                 }
                 var over = poolMod.getOverlaping(obj, sm.game.chickens);
                 if(over.length > 0){
                     //console.log(over.length);
-                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 200, rndRadian());
+                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
                 }
             }
-
-
-
         }
         if(obj.data.state === 'cooked'){
             obj.data.fillStyle = 'red';
@@ -115,6 +121,7 @@ sm.game.chickens = poolMod.create({
     }
 });
 
+// blasts object pool
 sm.game.blasts = poolMod.create({
     count: 3,
     secsCap: 0.25,

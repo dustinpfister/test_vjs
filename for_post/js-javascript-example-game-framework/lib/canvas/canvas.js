@@ -16,8 +16,18 @@
 
     // draw a background
     drawMethods.background = function (stack, ctx, canvas, layerObj, background) {
-        ctx.fillStyle = background || stack.background || 'black';
-        ctx.fillRect(-2, -2, canvas.width + 2, canvas.height + 2);
+        var bg = background || stack.background || 'black';
+        // if string assume it is a solid color
+        if(typeof bg === 'string'){
+            ctx.fillStyle = bg;
+            ctx.fillRect(-2, -2, canvas.width + 2, canvas.height + 2);
+        }
+        // if object assume image
+        if(typeof bg === 'object'){
+console.log('yes');
+console.log(bg);
+            ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+        }
     };
 
     // built in print method

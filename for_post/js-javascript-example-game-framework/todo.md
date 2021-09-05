@@ -20,10 +20,9 @@
 * the player can click a location and when they do that will result in a shot being fired at that location
 * when a shot reaches its target location it will explode
 
-## () - chicken-cooker on overlap with other chicken
+## (  done 09/05/2021 ) - chicken-cooker on overlap with other chicken
 * (done) check if a chicken is overlapying with another
-* when one chicken is overlaping with another it wil get a new target position
-
+* (done) when one chicken is overlaping with another it wil get a new target position
 
 ## ( done 09/04/2021 ) - chicken-cooker both directions
 * (done) have the live chicken sprite work with the right direction

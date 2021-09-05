@@ -104,7 +104,6 @@ sm.game.chickens = poolMod.create({
                 }
                 var over = poolMod.getOverlaping(obj, sm.game.chickens);
                 if(over.length > 0){
-                    //console.log(over.length);
                     obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
                 }
             }

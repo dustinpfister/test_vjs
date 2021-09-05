@@ -25,27 +25,6 @@ var getPosFromCenter = function(canvas, radius, a){
         y: canvas.height / 2 + Math.sin(a) * radius
     };
 };
-/*
-// get overlaping helper
-var getOverlaping = function(obj, pool){
-    var i = 0,
-    obj2,
-    overlap = [];
-    len = pool.objects.length;
-    if(obj.active){
-        while(i < len){
-            obj2 = pool.objects[i];
-            if(obj != obj2 && obj2.active){
-                if(utils.boundingBox(obj.x, obj.y, obj.w, obj.h, obj2.x, obj2.y, obj2.w, obj2.h)){
-                     overlap.push(obj2);
-                }
-            }
-        i += 1;
-        }
-    }
-    return overlap;
-};
-*/
 
 sm.game = {};
 

@@ -188,6 +188,21 @@ utils.deepClone = (function () {
 }
     ());
 
+// traverse an object
+utils.traverse = function (obj, forKey, level) {
+    level = level || 1;
+    for (var i in obj) {
+        // call forKey for every key found
+        forKey.call(obj[i], obj[i], i, typeof obj[i], level, obj);
+        // call utils.traverse recursively if type is object and not null
+        if (typeof obj[i] === 'object' && obj[i] != null) {
+            nextLevel = level + 1;
+            utils.traverse(obj[i], forKey, nextLevel);
+        }
+    }
+    return null;
+};
+
 /********* ********** ********** *********/
 //  CANVAS
 /********* ********** ********** *********/

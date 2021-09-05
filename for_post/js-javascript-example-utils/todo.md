@@ -20,8 +20,8 @@
 ## ( done 09/05/2021 ) - utils.http
 * (done) start a utils.http that is a basic http client
 
-## () - utils.traverse
-* I started a utils.traverse object method in js-array-copy add this to the utils.js here
+## ( done 09/05/2021 ) - utils.traverse
+* (done) I started a utils.traverse object method in js-array-copy add this to the utils.js here
 
 ## ( done 09/01/2021 ) - log once method
 * (done) add a log once method such as the one from js-javascript-module-object-literal

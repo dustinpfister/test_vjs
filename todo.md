@@ -44,13 +44,15 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start new s7 section for js-document-body that has to do with style
 * start circle app for js-math-pi
 
+## () for 09/05/2021
+* edit js-setinterval
+* edit js-javascript-example-utils
+* work on js-javascript-example-game-framework
+* edit js-array-slice
+* js-javascript-example-orb-module
 
 ### () for 09/04/2021
 * (done) edit js-xmlhttprequest
-* edit js-setinterval
-* edit js-array-slice
-* edit js-javascript-example-utils
-* js-javascript-example-orb-module
 
 ### (done) for for 09/03/2021
 * (done) work on js-javascript-example-game-framework

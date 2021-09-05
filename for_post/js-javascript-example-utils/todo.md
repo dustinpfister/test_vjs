@@ -17,8 +17,8 @@
 ## () - simulate click method
 * have a utils.simulateClick method based on what I have in js-event-object
 
-## () - utils.http
-* start a utils.http that is a basic http client
+## ( done 09/05/2021 ) - utils.http
+* (done) start a utils.http that is a basic http client
 
 ## () - utils.traverse
 * I started a utils.traverse object method in js-array-copy add this to the utils.js here

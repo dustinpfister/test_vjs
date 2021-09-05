@@ -44,12 +44,13 @@ utils.httpPNG = function(opt){
         url: opt.url,
         responseType: 'blob',
         onDone : function(res, xhr){
-
             var imageURL = window.URL.createObjectURL(res);
             var image = new Image();
             image.src = imageURL;
-
-            opt.onDone.call(xhr, image, xhr);
+            // need to do an unload for this
+            image.addEventListener('load', function(){
+                opt.onDone.call(xhr, image, xhr);
+            });
         },
         onError: opt.onError
     });

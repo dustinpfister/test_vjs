@@ -79,8 +79,7 @@ sm.game.chickens = poolMod.create({
                 // move
                 obj.x += Math.cos(a) * obj.pps * secs;
                 obj.y += Math.sin(a) * obj.pps * secs;
-                // set delay
-                obj.data.delay = 3;
+
                 // cell index
                 obj.data.imgSecs += secs;
                 if(obj.data.imgSecs >= 1 / 12){
@@ -94,22 +93,32 @@ sm.game.chickens = poolMod.create({
                 }
 
             }else{
-                // else subtract from delay, and get a new target pos of delay <= 0
-                obj.data.delay -= secs;
-                // cell 3
-                obj.data.imgD.sx = 64;
-                if(obj.data.cellDir === 1){
-                    obj.data.imgD.sx = 96;
-                }
-                if(obj.data.delay <= 0){
-                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
-                }
-                var over = poolMod.getOverlaping(obj, sm.game.chickens);
-                if(over.length > 0){
-                    obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
-                }
+                // set delay
+                obj.data.delay = 3;
+                obj.data.state = 'rest';
             }
         }
+
+        if(obj.data.state === 'rest'){
+            // else subtract from delay, and get a new target pos of delay <= 0
+            obj.data.delay -= secs;
+            // cell 3
+            obj.data.imgD.sx = 64;
+            if(obj.data.cellDir === 1){
+                obj.data.imgD.sx = 96;
+            }
+            if(obj.data.delay <= 0){
+                obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
+                obj.data.state = 'live';
+            }
+            var over = poolMod.getOverlaping(obj, sm.game.chickens);
+            if(over.length > 0){
+                obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
+                obj.data.state = 'live';
+            }
+        }
+
+
         if(obj.data.state === 'cooked'){
             obj.data.fillStyle = 'red';
             obj.data.image = sm.images[1];
@@ -144,7 +153,7 @@ sm.game.blasts = poolMod.create({
         obj.y = obj.data.cy - obj.h / 2;
         sm.game.chickens.objects.forEach(function(chk){
             if(chk.active){
-                if(chk.data.state === 'live'){
+                if(chk.data.state === 'live' || chk.data.state === 'rest'){
                     if(utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)){
                         obj.data.delay = 3;
                         chk.data.state = 'cooked';

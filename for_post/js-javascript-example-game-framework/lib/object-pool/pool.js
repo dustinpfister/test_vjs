@@ -58,6 +58,7 @@ var poolMod = (function () {
         }
         return false;
     };
+    // spawn all objects
     api.spawnAll = function(pool, state, opt){
         pool.objects.forEach(function(obj){
             if (!obj.active) {
@@ -116,9 +117,28 @@ var poolMod = (function () {
         return true;
     };
     // bounding box
-    //api.boundingBox = function (a, b) {
-    //    return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
-    //};
+    api.boundingBox = function (a, b) {
+        return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
+    };
+    // get a collection of overlaying active objects from a pool, that overlap with the gievn object
+    api.getOverlaping = function(obj, pool){
+        var i = 0,
+        obj2,
+        overlap = [];
+        len = pool.objects.length;
+        if(obj.active){
+            while(i < len){
+                obj2 = pool.objects[i];
+                if(obj != obj2 && obj2.active){
+                    if(utils.boundingBox(obj.x, obj.y, obj.w, obj.h, obj2.x, obj2.y, obj2.w, obj2.h)){
+                         overlap.push(obj2);
+                    }
+                }
+                i += 1;
+            }
+        }
+        return overlap;
+    };
     // return public method
     return api;
 }

@@ -25,6 +25,7 @@ var getPosFromCenter = function(canvas, radius, a){
         y: canvas.height / 2 + Math.sin(a) * radius
     };
 };
+/*
 // get overlaping helper
 var getOverlaping = function(obj, pool){
     var i = 0,
@@ -44,6 +45,7 @@ var getOverlaping = function(obj, pool){
     }
     return overlap;
 };
+*/
 
 sm.game = {};
 
@@ -112,7 +114,7 @@ sm.game.chickens = poolMod.create({
                 if(obj.data.delay <= 0){
                     obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 200, rndRadian());
                 }
-                var over = getOverlaping(obj, sm.game.chickens);
+                var over = poolMod.getOverlaping(obj, sm.game.chickens);
                 if(over.length > 0){
                     //console.log(over.length);
                     obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, 200, rndRadian());

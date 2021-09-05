@@ -11,6 +11,7 @@ var sm = gameFrame.smCreateMain({
     height: 480,
     game:{},
     loader: {
+        startState: 'gameTime',
         images: { // load 0.png - 2.png at ./img
             baseURL: './img',
             count: 3
@@ -156,7 +157,7 @@ sm.game.blasts = poolMod.create({
 
 // a game state
 gameFrame.smPushState(sm, {
-    name: 'game',
+    name: 'gameTime',
     buttons: {},
     start: function(sm){
         sm.layers.background = '#afafaf';

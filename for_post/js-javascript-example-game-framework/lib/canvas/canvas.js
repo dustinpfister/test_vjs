@@ -24,9 +24,7 @@
         }
         // if object assume image
         if(typeof bg === 'object'){
-console.log('yes');
-console.log(bg);
-            ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(bg, -1, -1, canvas.width + 2, canvas.height + 2);
         }
     };
 

@@ -76,12 +76,11 @@
                 if(sm.loader.images){
                     // start game state when all images are loaded
                     if(sm.images.length === sm.loader.images.count){
-console.log('starting now');
-                        gameFrame.smSetState(sm, 'game');
+                        gameFrame.smSetState(sm, sm.loader.startState || 'game');
                     }
                 }else{
                     // no images just progress to game state
-                    gameFrame.smSetState(sm, 'game');
+                    gameFrame.smSetState(sm, sm.loader.startState ||  'game');
                 }
             },
             draw: function(sm, layers){

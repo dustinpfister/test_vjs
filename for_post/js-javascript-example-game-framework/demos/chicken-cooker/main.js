@@ -175,7 +175,7 @@ gameFrame.smPushState(sm, {
         var canvas = layers[1].canvas,
         ctx = layers[1].ctx;
         canvasMod.draw(layers, 'clear', 1);
-        canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
+        //canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
         canvasMod.draw(layers, 'pool', 1, sm.game.chickens);

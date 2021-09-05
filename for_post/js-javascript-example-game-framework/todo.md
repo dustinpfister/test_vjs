@@ -11,14 +11,9 @@
 * have an hp stat object be part of the default data object
 * have a built in 'hp' purgeCondition
 
-
 ## () - General improvements and new demo
 * draw desc values for buttons
 
-## () - chicken-cooker shots pool
-* have a shots object pool
-* the player can click a location and when they do that will result in a shot being fired at that location
-* when a shot reaches its target location it will explode
 
 ## (  done 09/05/2021 ) - chicken-cooker on overlap with other chicken
 * (done) check if a chicken is overlapying with another

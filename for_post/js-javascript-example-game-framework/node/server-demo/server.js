@@ -21,6 +21,14 @@ let root = path.join(__dirname, '../..');
 // set port with argument or hard coded default
 let port = process.argv[2] || 8080; // port 8888 for now
 
+let createPathInfoObject = (req) => {
+    let pInfo = {
+        url : req.url,
+        uri : path.join(root, req.url)
+    };
+    return pInfo;
+};
+
 // create and start the server
 let server = http.createServer(function (req, res) {
     // get the path
@@ -31,7 +39,11 @@ let server = http.createServer(function (req, res) {
     let encoding = 'utf-8';
     let ext = path.extname(p).toLowerCase();
 
-console.log(p);
+
+    let pInfo = createPathInfoObject(req);
+
+console.log(pInfo);
+console.log('');
 
     // start promise chain
     lstat(p).then((stat)=>{

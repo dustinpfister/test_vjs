@@ -31,15 +31,27 @@ let createPathInfoObject = (req) => {
         mime: 'text/plain',
         ext: ''
     };
-    pInfo.ext = path.extname(pInfo.uri).toLowerCase();
-    pInfo.mime = pInfo.ext === '.html' ? 'text/html' : pInfo.mime;
-    pInfo.mime = pInfo.ext === '.css' ? 'text/css' : pInfo.mime;
-    pInfo.mime = pInfo.ext === '.js' ? 'text/javascript' : pInfo.mime;
-    // images
-    pInfo.mime = pInfo.ext === '.png' ? 'image/png' : pInfo.mime;
-    // binary encoding if...
-    pInfo.encoding = pInfo.ext === '.png' ? 'binary' : pInfo.encoding;
-    return pInfo;
+
+    //return pInfo;
+
+    return lstat(pInfo.uri)
+    .then((stat)=>{
+        pInfo.stat = stat;
+        if(pInfo.stat.isFile()){
+            pInfo.ext = path.extname(pInfo.uri).toLowerCase();
+            pInfo.ext = path.extname(pInfo.uri).toLowerCase();
+            pInfo.mime = pInfo.ext === '.html' ? 'text/html' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.css' ? 'text/css' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.js' ? 'text/javascript' : pInfo.mime;
+             // images
+            pInfo.mime = pInfo.ext === '.png' ? 'image/png' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.ico' ? 'image/x-icon' : pInfo.mime;
+            // binary encoding if...
+            pInfo.encoding = pInfo.ext === '.png' || pInfo.ext === '.ico' ? 'binary' : pInfo.encoding;
+        }
+        return pInfo
+    })
+
 };
 
 // create and start the server
@@ -53,10 +65,11 @@ let server = http.createServer(function (req, res) {
     let ext = path.extname(p).toLowerCase();
 
 
-    let pInfo = createPathInfoObject(req);
-
-console.log(pInfo);
-console.log('');
+    createPathInfoObject(req).then((pInfo)=>{
+console.log(pInfo)
+    }).catch((e)=>{
+console.log(e);
+    });
 
     // start promise chain
     lstat(p).then((stat)=>{

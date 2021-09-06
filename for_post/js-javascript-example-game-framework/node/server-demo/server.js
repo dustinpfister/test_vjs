@@ -12,7 +12,8 @@ fs = require('fs'),
 path = require('path'),
 promisify = require('util').promisify,
 lstat = promisify(fs.lstat),
-readFile = promisify(fs.readFile);
+readFile = promisify(fs.readFile),
+readdir = promisify(fs.readdir);
 
 
 // for this server-demo script the project folder will need to be root
@@ -21,21 +22,46 @@ let root = path.join(__dirname, '../..');
 // set port with argument or hard coded default
 let port = process.argv[2] || 8080; // port 8888 for now
 
+let createDirInfo = (pInfo) => {
+
+    // first check for an index.html
+    let uriIndex = path.join( pInfo.uri, 'index.html' );
+    return readFile(uriIndex)
+    // if all goes file we have an indrex file call createPathInfoObject with new uri
+    .then((file)=>{
+        pInfo.uri = uriIndex;
+        pInfo.ext = '.html'; 
+        return pInfo;
+    })
+    // else we do not get contents
+    .catch(()=>{
+        return readdir(pInfo.uri);
+    }).then((contents)=>{
+        if(contents){
+            pInfo.contents = contents;
+        }
+        return pInfo;
+    });
+
+};
+
 // create path info object
-let createPathInfoObject = (req) => {
+let createPathInfoObject = (url) => {
+
+//console.log(url);
+
+
     // starting state
     let pInfo = {
-        url : req.url,
-        uri : path.join(root, req.url),
+        url : url,
+        uri : path.join(root, url),
         encoding: 'utf-8',
         mime: 'text/plain',
         ext: '',
-        contents: '',
+        contents: [],
         html: ''
     };
-
     //return pInfo;
-
     return lstat(pInfo.uri)
     .then((stat)=>{
         pInfo.stat = stat;
@@ -50,13 +76,14 @@ let createPathInfoObject = (req) => {
             pInfo.mime = pInfo.ext === '.ico' ? 'image/x-icon' : pInfo.mime;
             // binary encoding if...
             pInfo.encoding = pInfo.ext === '.png' || pInfo.ext === '.ico' ? 'binary' : pInfo.encoding;
+            return pInfo;
         }
         if(pInfo.stat.isDirectory()){
             pInfo.ext = '';
             pInfo.mime = 'text/plain';
             pInfo.encoding = 'utf-8';
         }
-        return pInfo;
+        return createDirInfo(pInfo);
     });
 
 };
@@ -72,10 +99,10 @@ let server = http.createServer(function (req, res) {
     let ext = path.extname(p).toLowerCase();
 
 
-    createPathInfoObject(req).then((pInfo)=>{
-console.log(pInfo)
+    createPathInfoObject(req.url).then((pInfo)=>{
+        console.log(pInfo)
     }).catch((e)=>{
-console.log(e);
+        console.log(e);
     });
 
     // start promise chain

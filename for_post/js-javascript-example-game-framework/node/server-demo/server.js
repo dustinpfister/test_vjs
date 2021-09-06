@@ -9,7 +9,14 @@
 
 let http = require('http'),
 fs = require('fs'),
-path = require('path');
+path = require('path'),
+promisify = require('util').promisify;
+
+var lstat = promisify(fs.lstat);
+
+
+console.log(lstat);
+
 
 // for this server-demo script the project folder will need to be root
 let root = path.join(__dirname, '../..');

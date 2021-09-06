@@ -8,3 +8,6 @@
 * have a createPathInfoObject helper that will return a custom path object
 * the custom path object will contain the origional req.url property as pInfo.url
 * the pInfo.uri will then be the location to actually use to send a resource
+
+## () - use promises
+* use propies for fs methods

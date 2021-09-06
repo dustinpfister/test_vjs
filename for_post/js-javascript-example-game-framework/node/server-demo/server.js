@@ -37,7 +37,7 @@ let createDirInfo = (pInfo) => {
     .catch(()=>{
         return readdir(pInfo.uri);
     }).then((contents)=>{
-        if(contents){
+        if(contents && pInfo.ext === ''){
             pInfo.contents = contents;
             pInfo.html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
             pInfo.mime = 'text/html';
@@ -53,6 +53,8 @@ let createDirInfo = (pInfo) => {
 
 // create path info object
 let createPathInfoObject = (url) => {
+
+
 
     let urlArr = url.split('');
     if(urlArr[urlArr.length - 1] === '/'){
@@ -121,7 +123,6 @@ let server = http.createServer(function (req, res) {
         }else{
             // else we are sending a file
             readFile(pInfo.uri, pInfo.encoding).then((file)=>{
-                console.log(pInfo);
                 res.write(file, pInfo.encoding);
                 res.end();
             }).catch((e)=>{

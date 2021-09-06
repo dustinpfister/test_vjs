@@ -26,8 +26,19 @@ let createPathInfoObject = (req) => {
     // starting state
     let pInfo = {
         url : req.url,
-        uri : path.join(root, req.url)
+        uri : path.join(root, req.url),
+        encoding: 'utf-8',
+        mime: 'text/plain',
+        ext: ''
     };
+    pInfo.ext = path.extname(pInfo.uri).toLowerCase();
+    pInfo.mime = pInfo.ext === '.html' ? 'text/html' : pInfo.mime;
+    pInfo.mime = pInfo.ext === '.css' ? 'text/css' : pInfo.mime;
+    pInfo.mime = pInfo.ext === '.js' ? 'text/javascript' : pInfo.mime;
+    // images
+    pInfo.mime = pInfo.ext === '.png' ? 'image/png' : pInfo.mime;
+    // binary encoding if...
+    pInfo.encoding = pInfo.ext === '.png' ? 'binary' : pInfo.encoding;
     return pInfo;
 };
 

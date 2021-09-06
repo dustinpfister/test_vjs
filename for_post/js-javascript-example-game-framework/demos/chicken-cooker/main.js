@@ -1,7 +1,7 @@
 
 var CHICKENS_COUNT = 10,
 CHICKENS_RADIUS_START = 400,
-CHICKENS_RADIUS = 180,
+CHICKENS_RADIUS = 200,
 CHICKENS_PPS_MIN = 64,
 CHICKENS_PPS_MAX = 256;
 
@@ -29,8 +29,8 @@ var rndRadian = function(){
 };
 var getPosFromCenter = function(canvas, radius, a){
     return {
-        x: canvas.width / 2 + Math.cos(a) * radius,
-        y: canvas.height / 2 + Math.sin(a) * radius
+        x: canvas.width / 2 + Math.cos(a) * radius - 32,
+        y: canvas.height / 2 + Math.sin(a) * radius - 32
     };
 };
 

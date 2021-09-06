@@ -17,6 +17,9 @@
 ## () - simulate click method
 * have a utils.simulateClick method based on what I have in js-event-object
 
+## () - format number example
+* have a utils.formatNumber method like the one worked out for js-array-slice
+
 ## ( done 09/05/2021 ) - utils.http
 * (done) start a utils.http that is a basic http client
 

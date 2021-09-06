@@ -45,7 +45,7 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * start circle app for js-math-pi
 
 ## () for 09/06/2021
-* edit js-array-slice
+* (done) edit js-array-slice
 * edit js-booleans
 
 ## (done) for 09/05/2021

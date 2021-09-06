@@ -11,4 +11,4 @@ let formatCentValue = function (centValue) {
     return dollars.join('') + '.' + centsArray.join('');
 };
 
-console.log(formatCentValue(100000025)); // 1000.25
+console.log(formatCentValue(100000025)); // 1,000,000.25

@@ -23,7 +23,6 @@ let root = path.join(__dirname, '../..');
 let port = process.argv[2] || 8080; // port 8888 for now
 
 let createDirInfo = (pInfo) => {
-
     // first check for an index.html
     let uriIndex = path.join( pInfo.uri, 'index.html' );
     return readFile(uriIndex)
@@ -39,6 +38,12 @@ let createDirInfo = (pInfo) => {
     }).then((contents)=>{
         if(contents){
             pInfo.contents = contents;
+            pInfo.html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
+            pInfo.contents.forEach((itemName)=>{
+                let itemURL = pInfo.url + '/' + itemName;
+                pInfo.html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
+            });
+            pInfo.html += '</body></html>';
         }
         return pInfo;
     });
@@ -48,8 +53,11 @@ let createDirInfo = (pInfo) => {
 // create path info object
 let createPathInfoObject = (url) => {
 
-//console.log(url);
-
+    let urlArr = url.split('');
+    if(urlArr[urlArr.length - 1] === '/'){
+        urlArr.pop();
+        url = urlArr.join('');
+    }  
 
     // starting state
     let pInfo = {
@@ -100,7 +108,7 @@ let server = http.createServer(function (req, res) {
 
 
     createPathInfoObject(req.url).then((pInfo)=>{
-        console.log(pInfo)
+        console.log(pInfo);
     }).catch((e)=>{
         console.log(e);
     });

@@ -7,7 +7,7 @@ var sm = gameFrame.smCreateMain({
     game: {},
     loader: {
         images: { // load 0.png, and 1.png at ./img
-            baseURL: './img',
+            baseURL: '/demos/loader/img',
             count: 2
         }
     }

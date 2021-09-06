@@ -29,7 +29,9 @@ let createPathInfoObject = (req) => {
         uri : path.join(root, req.url),
         encoding: 'utf-8',
         mime: 'text/plain',
-        ext: ''
+        ext: '',
+        contents: '',
+        html: ''
     };
 
     //return pInfo;
@@ -49,8 +51,13 @@ let createPathInfoObject = (req) => {
             // binary encoding if...
             pInfo.encoding = pInfo.ext === '.png' || pInfo.ext === '.ico' ? 'binary' : pInfo.encoding;
         }
-        return pInfo
-    })
+        if(pInfo.stat.isDirectory()){
+            pInfo.ext = '';
+            pInfo.mime = 'text/plain';
+            pInfo.encoding = 'utf-8';
+        }
+        return pInfo;
+    });
 
 };
 

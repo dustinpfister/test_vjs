@@ -21,7 +21,9 @@ let root = path.join(__dirname, '../..');
 // set port with argument or hard coded default
 let port = process.argv[2] || 8080; // port 8888 for now
 
+// create path info object
 let createPathInfoObject = (req) => {
+    // starting state
     let pInfo = {
         url : req.url,
         uri : path.join(root, req.url)

@@ -31,13 +31,10 @@ let server = http.createServer(function (req, res) {
     let encoding = 'utf-8';
     let ext = path.extname(p).toLowerCase();
 
+console.log(p);
+
     // start promise chain
-    lstat(p).catch((e)=>{
-        // error getting path uri stats
-        res.writeHead(500);
-        res.write(JSON.stringify(e));
-        res.end();
-    }).then((stat)=>{
+    lstat(p).then((stat)=>{
         // if it is not a file append index.html to path, and try that
         if (!stat.isFile()) {
             p = path.join(p, 'index.html');
@@ -51,17 +48,17 @@ let server = http.createServer(function (req, res) {
         // binary encoding if...
         encoding = ext === '.png' ? 'binary' : encoding;
         return readFile(p, encoding);
-    }).catch((e)=>{
-        // error reading file
-        res.writeHead(500);
-        res.write(JSON.stringify(e));
-        res.end();
     }).then((file)=>{
         // send content
         res.writeHead(200, {
             'Content-Type': mime
         });
         res.write(file, encoding);
+        res.end();
+    }).catch((e)=>{
+        // error reading file
+        res.writeHead(500);
+        res.write(JSON.stringify(e));
         res.end();
     });
 });

@@ -9,5 +9,5 @@
 * the custom path object will contain the origional req.url property as pInfo.url
 * the pInfo.uri will then be the location to actually use to send a resource
 
-## () - use promises
-* use propies for fs methods
+## ( done 09/06/2021 ) - use promises
+* (done) use promises for fs methods

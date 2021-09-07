@@ -14,7 +14,17 @@
 ## () - more work on buttons and menus
 * draw desc values for buttons
 
-## ( done 09/07/2021 ) - More work on chicken-cooker
+## () - chicken-cooker purge methods for chickens pool
+* have an on pure method for the chckien cooker pool
+* have just a score value for the game object
+* display the score value of course
+* each pureged chicken that is cooked will add to game.score
+
+## () - chicken-cooker fine grain methods in game.js
+* have fine grain methids for spawn, and update for create chcken pool helper in game.js
+* have a create blasts helper.
+
+## ( done 09/07/2021 ) - chicken-cooker more work
 * (done) have a way to set what state the sm should change to when loading is done in the loader object
 * (done) have a 'live', 'rest', and 'cooked' state for a chicken
 * (done) start a game.js file that can be used to create and return a game object

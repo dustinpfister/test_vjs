@@ -11,9 +11,11 @@
 CREATE THE GAME OBJECT
 ********** ********** ********** *********/
     
+    // get a random radian
     var rndRadian = function(){
         return Math.PI * 2 * Math.random();
     };
+    // get a position from the center of a canvas with the given radius and angle in radians
     var getPosFromCenter = function(canvas, radius, a){
         return {
             x: canvas.width / 2 + Math.cos(a) * radius - 32,
@@ -153,7 +155,6 @@ CREATE THE GAME OBJECT
             }
         });
      
-
         return game;
    
     };

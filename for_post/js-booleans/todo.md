@@ -1,5 +1,8 @@
 # todo for js-booleans
 
+## () - new s6 section on the value of method
+* have one example where the value of method is used to return a boolen value for an object
+
 ## () - new s5 section on test functions that return booleans
 * object pool any overlapping method example if 1 or more disp objects overlap with a given display object
 

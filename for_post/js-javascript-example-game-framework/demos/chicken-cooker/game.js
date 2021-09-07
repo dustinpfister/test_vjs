@@ -131,7 +131,8 @@
         obj.data.imgD.sx = 0;
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
-            obj.active = false;
+            //obj.active = false;
+            poolMod.purge(pool, obj, sm);
         }
     };
     // main update chicken method
@@ -146,7 +147,10 @@
             secsCap: 0.25,
             disableLifespan: true,
             spawn: onSpawnedChicken,
-            update: updateChicken
+            update: updateChicken,
+            purge: function(obj, pool, sm){
+                console.log(obj);
+            }
         });
     };
 

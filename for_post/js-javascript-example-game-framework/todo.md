@@ -15,6 +15,7 @@
 * draw desc values for buttons
 
 ## () - chicken-cooker purge methods for chickens pool
+* have a poolMod.purge method
 * have an on pure method for the chckien cooker pool
 * have just a score value for the game object
 * display the score value of course

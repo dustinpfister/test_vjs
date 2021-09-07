@@ -69,6 +69,11 @@ var poolMod = (function () {
         });
         return pool.objects;
     };
+    // purge an object ( make it inactive and call the purge method for the pool )
+    api.purge = function(pool, obj, state){
+        obj.active = false;
+        pool.purge.call(pool, obj, pool, state);
+    };
     // update a pool object by a secs value
     api.update = function (pool, secs, state) {
         var i = pool.objects.length,
@@ -87,7 +92,8 @@ var poolMod = (function () {
                     obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
                     if (obj.lifespan === 0) {
                         obj.active = false;
-                        pool.purge.call(pool, obj, pool, state);
+                        //pool.purge.call(pool, obj, pool, state);
+                        api.purge.call(pool, pool, obj, state);
                     }
                 }
             }

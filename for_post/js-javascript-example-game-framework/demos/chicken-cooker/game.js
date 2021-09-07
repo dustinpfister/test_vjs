@@ -244,7 +244,9 @@
         game.spawn.secs += secs;
         if(game.spawn.secs >= game.spawn.rate){
             game.spawn.secs = 0;
+            console.log( poolMod.getActiveCount(sm.game.chickens) );
             poolMod.spawn(game.chickens, sm, {});
+
         }
         poolMod.update(game.chickens, secs, sm);
         poolMod.update(game.blasts, secs, sm);

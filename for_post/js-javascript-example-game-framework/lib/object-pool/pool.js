@@ -145,6 +145,12 @@ var poolMod = (function () {
         }
         return overlap;
     };
+    // get a current active count for a pool
+    api.getActiveCount = function(pool){
+        return pool.objects.reduce(function(acc, obj){
+            return obj.active ? acc += 1: acc;
+        }, 0);
+    };
     // return public method
     return api;
 }

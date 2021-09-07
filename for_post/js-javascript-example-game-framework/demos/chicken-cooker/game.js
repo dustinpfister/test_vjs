@@ -82,14 +82,7 @@ CREATE THE GAME OBJECT
         }
     };
 
-    var updateChicken = function (obj, pool, sm, secs){  
-        obj.lifespan = 1;
-        // if we have a 'live' state chicken
-        if(obj.data.state === 'live'){
-            chickenState.live(obj, pool, sm, secs);
-        }
-        // rest state
-        if(obj.data.state === 'rest'){
+    chickenState.rest = function(obj, pool, sm, secs){
                     // else subtract from delay, and get a new target pos of delay <= 0
                     obj.data.delay -= secs;
                     // cell 3
@@ -106,7 +99,18 @@ CREATE THE GAME OBJECT
                         obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
                         obj.data.state = 'live';
                     }
-                }
+    };
+
+    var updateChicken = function (obj, pool, sm, secs){  
+        obj.lifespan = 1;
+        // if we have a 'live' state chicken
+        if(obj.data.state === 'live'){
+            chickenState.live(obj, pool, sm, secs);
+        }
+        // rest state
+        if(obj.data.state === 'rest'){
+            chickenState.rest(obj, pool, sm, secs);
+        }
                 // cooked chicken state
                 if(obj.data.state === 'cooked'){
                     obj.data.fillStyle = 'red';

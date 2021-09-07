@@ -23,10 +23,8 @@ CREATE THE GAME OBJECT
         };
     };
 
+    // what to do for a chicken that is to be spanwed in
     var onSpawnedChicken = function(obj, pool, sm, opt){
-
-console.log('spawned chicken');
-
         obj.data.state = 'live'; // 'live' or 'cooked' state
         obj.data.fillStyle = 'gray';
         // set start position
@@ -49,48 +47,41 @@ console.log('spawned chicken');
         obj.data.imgD = {sx: 0, sy: 0, sw: 32, sh: 32};
     };
 
-    // create chicken pool helper
-    var createChickenPool = function(){
-        return poolMod.create({
-            count: CHICKENS_COUNT,
-            secsCap: 0.25,
-            disableLifespan: true,
-            spawn: onSpawnedChicken,
-            update: function (obj, pool, sm, secs){  
-                obj.lifespan = 1;
-                // if we have a 'live' state chicken
-                if(obj.data.state === 'live'){
-                    obj.data.fillStyle = 'gray';
-                    obj.data.image = sm.images[0];
-                    // get distance and angle to target position
-                    var d = utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
-                    a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
-                    // set obj.data.cellDir based on var 'a'
-                    obj.data.cellDir = Math.abs(a) > Math.PI * 0.5 ? 1 : 0;
-                    // if distance > min stop distance move to target positon
-                    if(d > 10){
-                        // move
-                        obj.x += Math.cos(a) * obj.pps * secs;
-                        obj.y += Math.sin(a) * obj.pps * secs;
-                        // cell index
-                        obj.data.imgSecs += secs;
-                        if(obj.data.imgSecs >= 1 / 12){
-                            obj.data.imgSecs = 0;
-                            if(obj.data.cellDir === 0){
-                                obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
-                            }else{
-                                obj.data.cellIndex = obj.data.cellIndex === 4 ? 5 : 4;
-                            }
-                            obj.data.imgD.sx = 32 * obj.data.cellIndex;
-                        }
+    var updateChicken = function (obj, pool, sm, secs){  
+        obj.lifespan = 1;
+        // if we have a 'live' state chicken
+        if(obj.data.state === 'live'){
+            obj.data.fillStyle = 'gray';
+            obj.data.image = sm.images[0];
+            // get distance and angle to target position
+            var d = utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
+            a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
+            // set obj.data.cellDir based on var 'a'
+            obj.data.cellDir = Math.abs(a) > Math.PI * 0.5 ? 1 : 0;
+            // if distance > min stop distance move to target positon
+            if(d > 10){
+                // move
+                obj.x += Math.cos(a) * obj.pps * secs;
+                obj.y += Math.sin(a) * obj.pps * secs;
+                // cell index
+                obj.data.imgSecs += secs;
+                 if(obj.data.imgSecs >= 1 / 12){
+                    obj.data.imgSecs = 0;
+                    if(obj.data.cellDir === 0){
+                        obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
                     }else{
-                        // set delay and switch to rest state
-                        obj.data.delay = 3;
-                        obj.data.state = 'rest';
+                        obj.data.cellIndex = obj.data.cellIndex === 4 ? 5 : 4;
                     }
-                }
-                // rest state
-                if(obj.data.state === 'rest'){
+                    obj.data.imgD.sx = 32 * obj.data.cellIndex;
+                 }
+            }else{
+                // set delay and switch to rest state
+                obj.data.delay = 3;
+                obj.data.state = 'rest';
+            }
+        }
+        // rest state
+        if(obj.data.state === 'rest'){
                     // else subtract from delay, and get a new target pos of delay <= 0
                     obj.data.delay -= secs;
                     // cell 3
@@ -118,7 +109,16 @@ console.log('spawned chicken');
                         obj.active = false;
                     }
                 }
-            }
+    };
+
+    // create chicken pool helper
+    var createChickenPool = function(){
+        return poolMod.create({
+            count: CHICKENS_COUNT,
+            secsCap: 0.25,
+            disableLifespan: true,
+            spawn: onSpawnedChicken,
+            update: updateChicken
         });
     };
 

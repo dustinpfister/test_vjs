@@ -7,6 +7,9 @@
 * have an example where there is a type index property where 0 means no type
 * have an example of an array of objects and the length being zero as a way to know to push in at least one
 
+## () - expand s1 basics section
+* have a very basic JavaScript literal example in plave of the set time out example
+
 ## ( done 09/07/2021 ) - new s4 section on using numbers in place of booleans
 * (done) one example using the while loop trick with an index number looping backward
 

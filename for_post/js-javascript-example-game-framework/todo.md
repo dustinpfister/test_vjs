@@ -16,7 +16,7 @@
 
 ## () - chicken-cooker purge methods for chickens pool
 * (done) have a poolMod.purge method
-* have an on purge method for the chicken pool
+* (done) have an on purge method for the chicken pool
 * have just a score value for the game object
 * display the score value of course
 * each pureged chicken that is cooked will add to game.score

@@ -213,7 +213,9 @@
 
     // create game state object
     api.create = function(){
-        var game = {};
+        var game = {
+            score: 0
+        };
         // chickens pool
         game.chickens = createChickenPool();
         // blasts object pool

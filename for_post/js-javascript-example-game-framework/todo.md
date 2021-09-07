@@ -1,25 +1,19 @@
 # todo list for js-javascript-example-game-framework
 
-## () - object pool purge condition array
-* make to so that a purge consition can also be an array of conditions
-
-## () - object pool purge condition feature
-* have a purgeCondition feature as an option for creating a pool
-* a purge condition can be a function, or a string for a built in purge condition
-* default purgeCondition is 'lifespan'
-* have a createDefaultDataObject helper function that will create a default data object.
-* have an hp stat object be part of the default data object
-* have a built in 'hp' purgeCondition
 
 ## () - more work on buttons and menus
 * draw desc values for buttons
 
-## () - chicken-cooker purge methods for chickens pool
+
+
+
+
+## ( done 09/07/2021 ) - chicken-cooker purge methods for chickens pool
 * (done) have a poolMod.purge method
 * (done) have an on purge method for the chicken pool
 * (done) have just a score value for the game object
 * (done) display the score value of course
-* each pureged chicken that is cooked will add to game.score
+* (done) each pureged chicken that is cooked will add to game.score
 
 ## ( done 09/07/2021 ) - chicken-cooker fine grain methods in game.js
 * (done) have fine grain methids for spawn, and update for create chcken pool helper in game.js

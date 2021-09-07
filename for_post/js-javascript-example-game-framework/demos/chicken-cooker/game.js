@@ -126,13 +126,8 @@ CREATE THE GAME OBJECT
         });
     };
 
-    // create game state object
-    api.create = function(){
-        var game = {};
-        // chickens pool
-        game.chickens = createChickenPool();
-        // blasts object pool
-        game.blasts = poolMod.create({
+    var createBlastsPool = function(){
+    return poolMod.create({
             count: 3,
             secsCap: 0.25,
             //disableLifespan: true,
@@ -162,7 +157,17 @@ CREATE THE GAME OBJECT
                     }
                 });
             }
-        });
+    });
+    };
+
+
+    // create game state object
+    api.create = function(){
+        var game = {};
+        // chickens pool
+        game.chickens = createChickenPool();
+        // blasts object pool
+        game.blasts = createBlastsPool();
      
         return game;
    

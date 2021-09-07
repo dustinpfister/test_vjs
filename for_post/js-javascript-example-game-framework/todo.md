@@ -22,7 +22,7 @@
 
 ## () - chicken-cooker fine grain methods in game.js
 * (done) have fine grain methids for spawn, and update for create chcken pool helper in game.js
-* have an object of methods for each chicken state and call the methods in update chicken
+* (done) have an object of methods for each chicken state and call the methods in update chicken
 * have a create blasts helper.
 
 ## ( done 09/07/2021 ) - chicken-cooker more work

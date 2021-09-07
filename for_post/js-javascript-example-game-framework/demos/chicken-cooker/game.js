@@ -23,34 +23,39 @@ CREATE THE GAME OBJECT
         };
     };
 
+    var onSpawnedChicken = function(obj, pool, sm, opt){
+
+console.log('spawned chicken');
+
+        obj.data.state = 'live'; // 'live' or 'cooked' state
+        obj.data.fillStyle = 'gray';
+        // set start position
+        var startPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS_START, rndRadian());
+        obj.x = startPos.x;
+        obj.y = startPos.y;
+        obj.w = 64;
+        obj.h = 64;
+        // set speed
+        obj.pps = CHICKENS_PPS_MIN + Math.round(( CHICKENS_PPS_MAX - CHICKENS_PPS_MIN) * Math.random());
+        // set first target
+        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
+        // set delay
+        obj.data.delay = 3;
+        // image data
+        obj.data.cellDir = 1; // 0 for facting left and 1 for facing right
+        obj.data.cellIndex = 0;
+        obj.data.imgSecs = 0;
+        obj.data.image = sm.images[0];
+        obj.data.imgD = {sx: 0, sy: 0, sw: 32, sh: 32};
+    };
+
     // create chicken pool helper
     var createChickenPool = function(){
         return poolMod.create({
             count: CHICKENS_COUNT,
             secsCap: 0.25,
             disableLifespan: true,
-            spawn: function(obj, pool, sm, opt){
-                obj.data.state = 'live'; // 'live' or 'cooked' state
-                obj.data.fillStyle = 'gray';
-                // set start position
-                var startPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS_START, rndRadian());
-                obj.x = startPos.x;
-                obj.y = startPos.y;
-                obj.w = 64;
-                obj.h = 64;
-                // set speed
-                obj.pps = CHICKENS_PPS_MIN + Math.round(( CHICKENS_PPS_MAX - CHICKENS_PPS_MIN) * Math.random());
-                // set first target
-                obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
-                // set delay
-                obj.data.delay = 3;
-                // image data
-                obj.data.cellDir = 1; // 0 for facting left and 1 for facing right
-                obj.data.cellIndex = 0;
-                obj.data.imgSecs = 0;
-                obj.data.image = sm.images[0];
-                obj.data.imgD = {sx: 0, sy: 0, sw: 32, sh: 32};
-            },
+            spawn: onSpawnedChicken,
             update: function (obj, pool, sm, secs){  
                 obj.lifespan = 1;
                 // if we have a 'live' state chicken

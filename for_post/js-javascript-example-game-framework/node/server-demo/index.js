@@ -1,9 +1,10 @@
+#!/usr/bin/env node
 /*
  *  index.js
  *
  *   start server to host the root of this project folder
  *
- *   ex: $ node index.js
+ *   ex: $ node index.js 8080
  *
  */
 
@@ -13,9 +14,7 @@ path = require('path'),
 uri_root = path.join(__dirname, '../../'),
 uri_server = path.join(__dirname, 'server.js')
 
-console.log(uri_server);
-
-let ls = spawn('node', [uri_server, '8080']);
+let ls = spawn('node', [uri_server, uri_root, process.argv[2] || '8080']);
 
 ls.stdout.on('data', function(data){
     console.log(data.toString());

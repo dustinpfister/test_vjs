@@ -16,11 +16,11 @@ readFile = promisify(fs.readFile),
 readdir = promisify(fs.readdir);
 
 
-// for this server-demo script the project folder will need to be root
-let root = path.join(__dirname, '../..');
+// the root folder to serve
+let root = process.argv[2] || path.join(__dirname, '../..');
 
 // set port with argument or hard coded default
-let port = process.argv[2] || 8080; // port 8888 for now
+let port = process.argv[3] || 8080; // port 8888 for now
 
 // create path info object
 let createPathInfoObject = (url) => {

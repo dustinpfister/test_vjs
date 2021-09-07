@@ -29,20 +29,10 @@ gameFrame.smPushState(sm, {
     buttons: {},
     start: function(sm){
         sm.layers.background = sm.images[2];
-
         canvasMod.draw(sm.layers, 'background', 0);
-        // spawn
-        poolMod.spawnAll(sm.game.chickens, sm, {});
-        //poolMod.spawnAll(sm.game.blasts, sm, {});
     },
     update: function(sm, secs){
-
         gameMod.update(sm.game, sm, secs);
-/*
-        poolMod.spawn(sm.game.chickens, sm, {});
-        poolMod.update(sm.game.chickens, secs, sm);
-        poolMod.update(sm.game.blasts, secs, sm);
-*/
     },
     draw: function(sm, layers){
         var canvas = layers[1].canvas,

@@ -126,8 +126,9 @@ CREATE THE GAME OBJECT
         });
     };
 
+    // create blasts pool helper
     var createBlastsPool = function(){
-    return poolMod.create({
+        return poolMod.create({
             count: 3,
             secsCap: 0.25,
             //disableLifespan: true,
@@ -157,7 +158,7 @@ CREATE THE GAME OBJECT
                     }
                 });
             }
-    });
+        });
     };
 
 
@@ -168,9 +169,7 @@ CREATE THE GAME OBJECT
         game.chickens = createChickenPool();
         // blasts object pool
         game.blasts = createBlastsPool();
-     
         return game;
-   
     };
 
 

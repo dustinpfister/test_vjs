@@ -14,12 +14,12 @@
 ## () - more work on buttons and menus
 * draw desc values for buttons
 
-## () - More work on chicken-cooker
+## ( done 09/07/2021 ) - More work on chicken-cooker
 * (done) have a way to set what state the sm should change to when loading is done in the loader object
 * (done) have a 'live', 'rest', and 'cooked' state for a chicken
-* start a game.js file that can be used to create and return a game object
+* (done) start a game.js file that can be used to create and return a game object
 
-## (  done 09/05/2021 ) - chicken-cooker on overlap with other chicken
+## ( done 09/05/2021 ) - chicken-cooker on overlap with other chicken
 * (done) check if a chicken is overlapying with another
 * (done) when one chicken is overlaping with another it wil get a new target position
 

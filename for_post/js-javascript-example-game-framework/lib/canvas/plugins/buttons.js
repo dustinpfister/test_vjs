@@ -10,6 +10,9 @@ canvasMod.load({
                 ctx.rect(button.x, button.y, button.w, button.h);
                 ctx.fill();
                 ctx.stroke();
+                var x = button.x + button.w / 2,
+                y = button.y + button.h / 2;
+                canvasMod.draw(stack, 'print', layerObj.i, button.desc, x, y, { align: 'center', baseLine: 'middle'})
             }
         },
         // draw a button collection for the current state object

@@ -1,8 +1,7 @@
 # todo list for server-demo script
 
-## () - createIndexHTML helper
-* start a createIndexHTML helper that will create and return an index of links for a given uri
-* update createPathInfoObject to use createIndexHTML for any uri that does not have an index.html file.
+## ( done 09/07/2021 ) - createIndexHTML helper
+* (done) start a createIndexHTML helper that will create and return an index of links for a given uri
 
 ## ( done 09/06/2021 ) - get lists for dirs
 * (done) if the uri is a full path to a resource:

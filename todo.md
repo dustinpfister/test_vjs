@@ -43,10 +43,31 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 * finish s6-examples for js-document-body
 * start new s7 section for js-document-body that has to do with style
 * start circle app for js-math-pi
+* edit js-parseint add 1+ internal links
+* edit js-javascript-getter add 1+ internal links
+* edit js-javascript-try add 1+ internal links
+* edit js-parseint add 1+ internal links
+* edit js-onvisibilitychange add 1+ internal links
+* edit js-nan add 1+ internal links
+* edit js-select-tag add 1+ internal links
+* edit js-javascript-alert add 1+ internal links
+* edit js-parseint add 1+ internal links
+* edit js-jaavscript-date-get-num-of-days-between-two-dates add 1+ internal links
+* edit js-javascript-undefined add 1+ internal links
+* edit js-eval add 1+ internal links
+* edit js-document-location add 1+ internal links
 
-## () for 09/06/2021
-* (done) edit js-array-slice
+
+
+
+## () for 09/07/2021
 * edit js-booleans
+* edit js-getting-started-javascript-console add 1+ internal links
+
+
+
+## (done) for 09/06/2021
+* (done) edit js-array-slice
 
 ## (done) for 09/05/2021
 * (done) edit js-xmlhttprequest with fixed utils.httoPNG method in js-javascript-example-game-framework

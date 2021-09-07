@@ -70,9 +70,9 @@ let createHTML = (pInfo) => {
     var html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
     pInfo.contents.forEach((itemName)=>{
         let itemURL = pInfo.url + '/' + itemName;
-        pInfo.html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
+        html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
     });
-    pInfo.html += '</body></html>';
+    html += '</body></html>';
     return html;
 };
 
@@ -95,8 +95,8 @@ let createDirInfo = (pInfo) => {
         if(contents && pInfo.ext === ''){
             pInfo.contents = contents;
             pInfo.mime = 'text/html';
-            //pInfo.html = createHTML(pInfo);
-
+            pInfo.html = createHTML(pInfo);
+/*
             pInfo.html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
             pInfo.mime = 'text/html';
             pInfo.contents.forEach((itemName)=>{
@@ -104,7 +104,7 @@ let createDirInfo = (pInfo) => {
                 pInfo.html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
             });
             pInfo.html += '</body></html>';
-
+*/
         }
         return pInfo;
     });

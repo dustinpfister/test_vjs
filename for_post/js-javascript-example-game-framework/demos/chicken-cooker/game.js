@@ -217,7 +217,11 @@
     // create game state object
     api.create = function(){
         var game = {
-            score: 0
+            score: 0,
+            spawn: {
+               secs: 0,
+               rate: 5
+            }
         };
         // chickens pool
         game.chickens = createChickenPool();
@@ -237,7 +241,11 @@
 
 
     api.update = function(game, sm, secs){
-        poolMod.spawn(game.chickens, sm, {});
+        game.spawn.secs += secs;
+        if(game.spawn.secs >= game.spawn.rate){
+            game.spawn.secs = 0;
+            poolMod.spawn(game.chickens, sm, {});
+        }
         poolMod.update(game.chickens, secs, sm);
         poolMod.update(game.blasts, secs, sm);
     };

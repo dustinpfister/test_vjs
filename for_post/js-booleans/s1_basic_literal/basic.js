@@ -1,10 +1,11 @@
-var firstRun = true;
-var loop = function () {
-    setTimeout(loop, 1000);
-    if (firstRun) {
-        console.log('first run!');
-        firstRun = false;
+var logging = true;
+
+var log = function (mess) {
+    if (logging) {
+        console.log(mess);
     }
-    console.log('tick');
-}
-loop();
+};
+
+log('foo');
+logging = false;
+log('bar');

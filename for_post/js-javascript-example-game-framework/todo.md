@@ -1,5 +1,7 @@
 # todo list for js-javascript-example-game-framework
 
+## ( done 09/07/2021 ) - chicken-cooker spawn rate
+* have a spawn rate feature
 
 ## ( done 09/07/2021 ) - more work on buttons and menus
 * (done) draw desc values for buttons

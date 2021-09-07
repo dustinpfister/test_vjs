@@ -17,8 +17,8 @@
 ## () - chicken-cooker purge methods for chickens pool
 * (done) have a poolMod.purge method
 * (done) have an on purge method for the chicken pool
-* have just a score value for the game object
-* display the score value of course
+* (done) have just a score value for the game object
+* (done) display the score value of course
 * each pureged chicken that is cooked will add to game.score
 
 ## ( done 09/07/2021 ) - chicken-cooker fine grain methods in game.js

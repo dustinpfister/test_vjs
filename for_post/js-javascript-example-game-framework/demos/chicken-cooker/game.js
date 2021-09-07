@@ -142,7 +142,10 @@
     };
     // on purge of chicken
     var onPurgedChicken = function(obj, pool, sm){
-         console.log(obj.data.state);
+         // if it is a cooked chicken add to score
+         if(obj.data.state === 'cooked'){
+             sm.game.score += 1;
+         };
     };
     // create chicken pool helper
     var createChickenPool = function(){

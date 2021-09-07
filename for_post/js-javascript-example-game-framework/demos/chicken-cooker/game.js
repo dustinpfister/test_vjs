@@ -125,7 +125,7 @@
         }
     };
     // 'cooked' chicken state
-    chickenState.rest = function(obj, pool, sm, secs){
+    chickenState.cooked = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'red';
         obj.data.image = sm.images[1];
         obj.data.imgD.sx = 0;

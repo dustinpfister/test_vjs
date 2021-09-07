@@ -22,46 +22,14 @@ let root = path.join(__dirname, '../..');
 // set port with argument or hard coded default
 let port = process.argv[2] || 8080; // port 8888 for now
 
-let createDirInfo = (pInfo) => {
-    // first check for an index.html
-    let uriIndex = path.join( pInfo.uri, 'index.html' );
-    return readFile(uriIndex)
-    // if all goes file we have an indrex file call createPathInfoObject with new uri
-    .then((file)=>{
-        pInfo.uri = uriIndex;
-        pInfo.ext = '.html';
-        pInfo.mime = 'text/html';
-        return pInfo;
-    })
-    // else we do not get contents
-    .catch(()=>{
-        return readdir(pInfo.uri);
-    }).then((contents)=>{
-        if(contents && pInfo.ext === ''){
-            pInfo.contents = contents;
-            pInfo.html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
-            pInfo.mime = 'text/html';
-            pInfo.contents.forEach((itemName)=>{
-                let itemURL = pInfo.url + '/' + itemName;
-                pInfo.html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
-            });
-            pInfo.html += '</body></html>';
-        }
-        return pInfo;
-    });
-};
-
 // create path info object
 let createPathInfoObject = (url) => {
-
-
-
+    // remove any extra / ( /foo/bar/  to /foo/bar )
     let urlArr = url.split('');
     if(urlArr[urlArr.length - 1] === '/'){
         urlArr.pop();
         url = urlArr.join('');
     }  
-
     // starting state
     let pInfo = {
         url : url,
@@ -96,22 +64,44 @@ let createPathInfoObject = (url) => {
         }
         return createDirInfo(pInfo);
     });
-
 };
 
+// create dir info for a pInfo object
+let createDirInfo = (pInfo) => {
+    // first check for an index.html
+    let uriIndex = path.join( pInfo.uri, 'index.html' );
+    return readFile(uriIndex)
+    // if all goes file we have an indrex file call createPathInfoObject with new uri
+    .then((file)=>{
+        pInfo.uri = uriIndex;
+        pInfo.ext = '.html';
+        pInfo.mime = 'text/html';
+        return pInfo;
+    })
+    // else we do not get contents
+    .catch(()=>{
+        return readdir(pInfo.uri);
+    }).then((contents)=>{
+        if(contents && pInfo.ext === ''){
+            pInfo.contents = contents;
+            pInfo.html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
+            pInfo.mime = 'text/html';
+            pInfo.contents.forEach((itemName)=>{
+                let itemURL = pInfo.url + '/' + itemName;
+                pInfo.html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
+            });
+            pInfo.html += '</body></html>';
+        }
+        return pInfo;
+    });
+};
 
-// create and start the server
+// create server object
 let server = http.createServer(function (req, res) {
-    // get the path
-    //let p = path.join(root, req.url);
-    // default mime to text/plain
-    //let mime = 'text/plain';
-    // default encoding to utf-8, and get file extension
-    //let encoding = 'utf-8';
-    //let ext = path.extname(p).toLowerCase();
-
-
-    createPathInfoObject(req.url).then((pInfo)=>{
+    // create path info object for req.url
+    createPathInfoObject(req.url)
+    // if we have a pinfo object without any problems
+    .then((pInfo)=>{
         // send content
         res.writeHead(200, {
             'Content-Type': pInfo.mime
@@ -142,89 +132,8 @@ let server = http.createServer(function (req, res) {
         res.write(e.message, 'utf8');
         res.end();
     });
-
-/*
-    // start promise chain
-    lstat(p).then((stat)=>{
-        // if it is not a file append index.html to path, and try that
-        if (!stat.isFile()) {
-            p = path.join(p, 'index.html');
-        }
-        // text
-        mime = ext === '.html' ? 'text/html' : mime;
-        mime = ext === '.css' ? 'text/css' : mime;
-        mime = ext === '.js' ? 'text/javascript' : mime;
-        // images
-        mime = ext === '.png' ? 'image/png' : mime;
-        // binary encoding if...
-        encoding = ext === '.png' ? 'binary' : encoding;
-        return readFile(p, encoding);
-    }).then((file)=>{
-        // send content
-        res.writeHead(200, {
-            'Content-Type': mime
-        });
-        res.write(file, encoding);
-        res.end();
-    }).catch((e)=>{
-        // error reading file
-        res.writeHead(500);
-        res.write(JSON.stringify(e));
-        res.end();
-    });
-*/
-
 });
 
-/*
-// create and start the server
-let server = http.createServer(function (req, res) {
-    // get the path
-    let p = path.join(root, req.url);
-    // default mime to text/plain
-    let mime = 'text/plain';
-    // default encoding to utf-8, and get file extension
-    let encoding = 'utf-8';
-    let ext = path.extname(p).toLowerCase();
-
-
-    createPathInfoObject(req.url).then((pInfo)=>{
-        console.log(pInfo);
-    }).catch((e)=>{
-        console.log(e);
-    });
-
-    // start promise chain
-    lstat(p).then((stat)=>{
-        // if it is not a file append index.html to path, and try that
-        if (!stat.isFile()) {
-            p = path.join(p, 'index.html');
-        }
-        // text
-        mime = ext === '.html' ? 'text/html' : mime;
-        mime = ext === '.css' ? 'text/css' : mime;
-        mime = ext === '.js' ? 'text/javascript' : mime;
-        // images
-        mime = ext === '.png' ? 'image/png' : mime;
-        // binary encoding if...
-        encoding = ext === '.png' ? 'binary' : encoding;
-        return readFile(p, encoding);
-    }).then((file)=>{
-        // send content
-        res.writeHead(200, {
-            'Content-Type': mime
-        });
-        res.write(file, encoding);
-        res.end();
-    }).catch((e)=>{
-        // error reading file
-        res.writeHead(500);
-        res.write(JSON.stringify(e));
-        res.end();
-    });
-});
-*/
- 
 // start server
 server.listen(port, function () {
     console.log('hosting a public folder at: ');

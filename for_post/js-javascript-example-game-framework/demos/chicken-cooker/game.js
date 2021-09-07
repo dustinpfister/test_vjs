@@ -50,7 +50,7 @@ CREATE THE GAME OBJECT
     // update a chicken
     var chickenState = {};
 
-    // live state
+    // 'live' chicken state
     chickenState.live = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'gray';
         obj.data.image = sm.images[0];
@@ -81,48 +81,40 @@ CREATE THE GAME OBJECT
             obj.data.state = 'rest';
         }
     };
-
+    // 'rest' chicken state
     chickenState.rest = function(obj, pool, sm, secs){
-                    // else subtract from delay, and get a new target pos of delay <= 0
-                    obj.data.delay -= secs;
-                    // cell 3
-                    obj.data.imgD.sx = 64;
-                    if(obj.data.cellDir === 1){
-                        obj.data.imgD.sx = 96;
-                    }
-                    if(obj.data.delay <= 0){
-                        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
-                        obj.data.state = 'live';
-                    }
-                    var over = poolMod.getOverlaping(obj, sm.game.chickens);
-                    if(over.length > 0){
-                        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
-                        obj.data.state = 'live';
-                    }
+        // else subtract from delay, and get a new target pos of delay <= 0
+        obj.data.delay -= secs;
+        // cell 3
+        obj.data.imgD.sx = 64;
+        if(obj.data.cellDir === 1){
+            obj.data.imgD.sx = 96;
+        }
+        if(obj.data.delay <= 0){
+            obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
+            obj.data.state = 'live';
+        }
+        var over = poolMod.getOverlaping(obj, sm.game.chickens);
+        if(over.length > 0){
+            obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
+            obj.data.state = 'live';
+        }
     };
-
+    // 'cooked' chicken state
+    chickenState.rest = function(obj, pool, sm, secs){
+        obj.data.fillStyle = 'red';
+        obj.data.image = sm.images[1];
+        obj.data.imgD.sx = 0;
+        obj.data.delay -= secs;
+        if(obj.data.delay <= 0){
+            obj.active = false;
+        }
+    };
+    // main update chicken method
     var updateChicken = function (obj, pool, sm, secs){  
         obj.lifespan = 1;
-        // if we have a 'live' state chicken
-        if(obj.data.state === 'live'){
-            chickenState.live(obj, pool, sm, secs);
-        }
-        // rest state
-        if(obj.data.state === 'rest'){
-            chickenState.rest(obj, pool, sm, secs);
-        }
-                // cooked chicken state
-                if(obj.data.state === 'cooked'){
-                    obj.data.fillStyle = 'red';
-                    obj.data.image = sm.images[1];
-                    obj.data.imgD.sx = 0;
-                    obj.data.delay -= secs;
-                    if(obj.data.delay <= 0){
-                        obj.active = false;
-                    }
-                }
+        chickenState[obj.data.state].call(obj, obj, pool, sm, secs);
     };
-
     // create chicken pool helper
     var createChickenPool = function(){
         return poolMod.create({

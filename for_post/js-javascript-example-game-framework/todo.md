@@ -20,10 +20,10 @@
 * display the score value of course
 * each pureged chicken that is cooked will add to game.score
 
-## () - chicken-cooker fine grain methods in game.js
+## ( done 09/07/2021 ) - chicken-cooker fine grain methods in game.js
 * (done) have fine grain methids for spawn, and update for create chcken pool helper in game.js
 * (done) have an object of methods for each chicken state and call the methods in update chicken
-* have a create blasts helper.
+* (done) have a create blasts helper.
 
 ## ( done 09/07/2021 ) - chicken-cooker more work
 * (done) have a way to set what state the sm should change to when loading is done in the loader object

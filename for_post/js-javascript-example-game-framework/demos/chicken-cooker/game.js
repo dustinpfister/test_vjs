@@ -1,16 +1,32 @@
 
 (function(api){
 
+
+
+
+/********* ********** ********** **********
+ HARD CODED VALUES
+********** ********** ********** *********/
+
+
+
+
     var CHICKENS_COUNT = 10,
     CHICKENS_RADIUS_START = 400,
     CHICKENS_RADIUS = 200,
     CHICKENS_PPS_MIN = 64,
     CHICKENS_PPS_MAX = 256;
 
+
+
+
 /********* ********** ********** **********
-CREATE THE GAME OBJECT
+ HELPERS
 ********** ********** ********** *********/
     
+
+
+
     // get a random radian
     var rndRadian = function(){
         return Math.PI * 2 * Math.random();
@@ -22,6 +38,16 @@ CREATE THE GAME OBJECT
             y: canvas.height / 2 + Math.sin(a) * radius - 32
         };
     };
+
+
+
+
+/********* ********** ********** **********
+ CHICKEN POOL
+********** ********** ********** *********/
+
+
+
 
     // what to do for a chicken that is to be spanwed in
     var onSpawnedChicken = function(obj, pool, sm, opt){
@@ -46,10 +72,8 @@ CREATE THE GAME OBJECT
         obj.data.image = sm.images[0];
         obj.data.imgD = {sx: 0, sy: 0, sw: 32, sh: 32};
     };
-
     // update a chicken
     var chickenState = {};
-
     // 'live' chicken state
     chickenState.live = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'gray';
@@ -126,6 +150,16 @@ CREATE THE GAME OBJECT
         });
     };
 
+
+
+
+/********* ********** ********** **********
+ BLASTS POOL
+********** ********** ********** *********/
+
+
+
+
     // create blasts pool helper
     var createBlastsPool = function(){
         return poolMod.create({
@@ -162,6 +196,15 @@ CREATE THE GAME OBJECT
     };
 
 
+
+
+/********* ********** ********** **********
+ CREATE METHOD
+********** ********** ********** *********/
+
+
+
+
     // create game state object
     api.create = function(){
         var game = {};
@@ -174,8 +217,9 @@ CREATE THE GAME OBJECT
 
 
 
+
 /********* ********** ********** **********
-UPDATE THE GAME OBJECT
+ UPDATE THE GAME OBJECT
 ********** ********** ********** *********/
 
 

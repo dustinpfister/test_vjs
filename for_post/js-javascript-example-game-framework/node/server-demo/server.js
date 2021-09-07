@@ -66,6 +66,16 @@ let createPathInfoObject = (url) => {
     });
 };
 
+let createHTML = (pInfo) => {
+    var html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
+    pInfo.contents.forEach((itemName)=>{
+        let itemURL = pInfo.url + '/' + itemName;
+        pInfo.html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
+    });
+    pInfo.html += '</body></html>';
+    return html;
+};
+
 // create dir info for a pInfo object
 let createDirInfo = (pInfo) => {
     // first check for an index.html
@@ -84,6 +94,9 @@ let createDirInfo = (pInfo) => {
     }).then((contents)=>{
         if(contents && pInfo.ext === ''){
             pInfo.contents = contents;
+            pInfo.mime = 'text/html';
+            //pInfo.html = createHTML(pInfo);
+
             pInfo.html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
             pInfo.mime = 'text/html';
             pInfo.contents.forEach((itemName)=>{
@@ -91,6 +104,7 @@ let createDirInfo = (pInfo) => {
                 pInfo.html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
             });
             pInfo.html += '</body></html>';
+
         }
         return pInfo;
     });

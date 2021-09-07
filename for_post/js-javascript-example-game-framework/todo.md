@@ -1,12 +1,8 @@
 # todo list for js-javascript-example-game-framework
 
 
-## () - more work on buttons and menus
-* draw desc values for buttons
-
-
-
-
+## ( done 09/07/2021 ) - more work on buttons and menus
+* (done) draw desc values for buttons
 
 ## ( done 09/07/2021 ) - chicken-cooker purge methods for chickens pool
 * (done) have a poolMod.purge method

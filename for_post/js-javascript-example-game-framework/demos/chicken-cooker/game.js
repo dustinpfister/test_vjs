@@ -194,7 +194,7 @@
                     if(chk.active){
                         if(chk.data.state === 'live' || chk.data.state === 'rest'){
                             if(utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)){
-                                obj.data.delay = 3;
+                                chk.data.delay = 3;
                                 chk.data.state = 'cooked';
                             }
                         }

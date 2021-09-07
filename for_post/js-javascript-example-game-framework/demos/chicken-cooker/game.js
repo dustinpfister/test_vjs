@@ -140,6 +140,10 @@
         obj.lifespan = 1;
         chickenState[obj.data.state].call(obj, obj, pool, sm, secs);
     };
+    // on purge of chicken
+    var onPurgedChicken = function(obj, pool, sm){
+         console.log(obj.data.state);
+    };
     // create chicken pool helper
     var createChickenPool = function(){
         return poolMod.create({
@@ -148,9 +152,7 @@
             disableLifespan: true,
             spawn: onSpawnedChicken,
             update: updateChicken,
-            purge: function(obj, pool, sm){
-                console.log(obj);
-            }
+            purge: onPurgedChicken
         });
     };
 

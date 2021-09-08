@@ -60,9 +60,12 @@ As of 8/2021 I am going to think more in terms of just writing one new post per 
 
 
 ## () for 09/08/2021
-* edit js-getting-started-javascript-console add 1+ internal links
+* (done) edit js-getting-started-javascript-console add 1+ internal links
+* update forpost folder for js-getting-started-javascript-console to reflect current state of page at least
+* have a todo list for js-getting-started-javascript-console
+* make at least one more s2 example for js-getting-started-javascript-console
 
-## () for 09/07/2021
+## (done) for 09/07/2021
 * (done) edit js-booleans
 
 ## (done) for 09/06/2021

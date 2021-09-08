@@ -10,7 +10,7 @@
     // get an upgrade 'a' element to click
     api.getUpgrade = function(index){ 
         var ugl = document.querySelectorAll('tbody')[0].children;
-        index = index === undefined ? ugl.length - 2: index;
+        index = index === undefined || index < 0 ? ugl.length - 2: index;
         return ugl[index].children[1];
     };
 
@@ -22,19 +22,24 @@
     };
 
     var autoClick = false,
-    ms = 1000,
+    ms = 10000,
+    upgradeIndex = -1, // -1 can be used to choose highest upgrade
     loopID;
 
     var clickLoop = function(){
         // click meat tab
         api.getTab(0).click();
         // get upgrade
-        api.getUpgrade().click();
+        api.getUpgrade(upgradeIndex).click();
         // click max button
         api.getMaxButton().click();
+        // mess
+        console.log('auto click');
     };
 
-    api.toggleAutoClick = function(){
+    api.toggleAutoClick = function(set_ui, set_ms){
+        ms = set_ms === undefined ? 10000 : set_ms;
+        upgradeIndex = set_ui === undefined ? -1 : set_ui;
         if(autoClick){
            clearInterval(loopID);
         }

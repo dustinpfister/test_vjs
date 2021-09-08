@@ -1,9 +1,10 @@
 
 (function(api){
 
+    // get tap 'a' element
     api.getTab = function(index){
         index = index === undefined ? 0: index;
-        return document.querySelectorAll('.tab-resource')[index];
+        return document.querySelectorAll('.nav')[0].children[index].children[0];
     };
 
     api.getUpgrade = function(index){ 
@@ -22,20 +23,22 @@
     loopID;
 
     var clickLoop = function(){
-        console.log('loop');
+        // click meat tab
+        api.getTab(0).click();
+        // get upgrade
+        //api.getUpgrade().click();
+        // click max button
+        //api.getMaxButton().click();
     };
 
     api.toggleAutoClick = function(){
-
         if(autoClick){
-           clearInterval(loopId);
-           autoClick = false;
+           clearInterval(loopID);
         }
         if(!autoClick){
            loopID = setInterval(clickLoop, ms);
-           autoClick = true;
         }
-
+        autoClick = !autoClick;
     };
 
     return api;

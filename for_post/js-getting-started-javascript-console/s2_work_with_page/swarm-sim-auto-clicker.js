@@ -1,12 +1,13 @@
 
 var sm = {};
 
-sm.getUpgrade = function(){
-    var ugl = document.querySelectorAll('tbody')[0].children,
-    ug = ugl[ugl.length - 2]
-
+sm.getUpgrade = function(index){ 
+    var ugl = document.querySelectorAll('tbody')[0].children;
+    index = index === undefined ? ugl.length - 2: index;
+    return ugl[index];
 };
 
 sm.getMaxButton = function(){
-    document.querySelectorAll('.btn')[3].click();
+    var buttons = document.querySelectorAll('.btn');
+    return buttons[buttons.length - 1];
 };

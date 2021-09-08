@@ -16,7 +16,8 @@
 
     // get the max button to click
     api.getMaxButton = function(){
-        var buttons = document.querySelectorAll('.btn');
+        var buttons = document.querySelectorAll('.btn-group')[0].children;
+        //var buttons = document.querySelectorAll('.btn');
         return buttons[buttons.length - 1];
     };
 

@@ -1,0 +1,1 @@
+document.querySelectorAll('.btn')[3].click();

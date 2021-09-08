@@ -1,7 +1,5 @@
 
-var sm = (function(){
-
-    var api = {};
+(function(api){
 
     api.getTab = function(index){
         index = index === undefined ? 0: index;
@@ -19,6 +17,27 @@ var sm = (function(){
         return buttons[buttons.length - 1];
     };
 
+    var autoClick = false,
+    ms = 1000,
+    loopID;
+
+    var clickLoop = function(){
+        console.log('loop');
+    };
+
+    api.toggleAutoClick = function(){
+
+        if(autoClick){
+           clearInterval(loopId);
+           autoClick = false;
+        }
+        if(!autoClick){
+           loopID = setInterval(clickLoop, ms);
+           autoClick = true;
+        }
+
+    };
+
     return api;
 
-}());
+}(this['sm'] = {}));

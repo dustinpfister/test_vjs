@@ -34,7 +34,7 @@
         // click max button
         api.getMaxButton().click();
         // mess
-        console.log('auto click');
+        console.log('auto click ( ms: ' + ms + '; ui: ' + upgradeIndex + ' )');
     };
 
     api.toggleAutoClick = function(set_ui, set_ms){
@@ -47,6 +47,7 @@
            loopID = setInterval(clickLoop, ms);
         }
         autoClick = !autoClick;
+        console.log('auto click is ' + (autoClick ? 'on' : 'off') );
     };
 
     return api;

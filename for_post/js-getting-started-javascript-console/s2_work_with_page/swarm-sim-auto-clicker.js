@@ -1,6 +1,11 @@
 
 var sm = {};
 
+sm.getTab = function(index){
+    index = index === undefined ? 0: index;
+    return document.querySelectorAll('.tab-resource').children[index];
+};
+
 sm.getUpgrade = function(index){ 
     var ugl = document.querySelectorAll('tbody')[0].children;
     index = index === undefined ? ugl.length - 2: index;

@@ -3,7 +3,7 @@ var sm = {};
 
 sm.getTab = function(index){
     index = index === undefined ? 0: index;
-    return document.querySelectorAll('.tab-resource').children[index];
+    return document.querySelectorAll('.tab-resource')[index];
 };
 
 sm.getUpgrade = function(index){ 

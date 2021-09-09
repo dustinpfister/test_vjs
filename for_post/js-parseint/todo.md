@@ -3,7 +3,7 @@
 ## () - can only parse string values s2 example
 * have an example where the focus is on the fact that parseInt will only parse string values
 
-## () - parseFloat s3 alternatives example
+## ( done 09/09/2021 ) - parseFloat s3 alternatives example
 * have a parseFloat example for the alternatives
 
 ## ( done 09/09/2021 ) - valueOf s3 alternatives example

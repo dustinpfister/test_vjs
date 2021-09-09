@@ -1,5 +1,8 @@
 # todo list for js-parseint
 
+## () - can only parse string values s2 example
+* have an example where the focus is on the fact that parseInt will only parse string values
+
 ## () - parseFloat s3 alternatives example
 * have a parseFloat example for the alternatives
 

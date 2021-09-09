@@ -8,3 +8,6 @@ let obj = {
 console.log( Number(obj) );  // 42
 console.log( obj.valueOf() ); // 42
 console.log( obj * 1 ); // 42
+
+// put it will not work with parseInt
+console.log( parseInt(obj) ); // NaN

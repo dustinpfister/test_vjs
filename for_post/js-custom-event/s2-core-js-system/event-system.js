@@ -30,8 +30,12 @@
     };
 
     // dispatch an event for the given object, passing the event key, and options
-    api.dispatch = function (obj, eventKey, opt) {
-
+    api.dispatch = function (obj, eventKey, dispatchOpt) {
+        var eventObj = obj.ue[eventKey];
+        eventObj.listeners.forEach(function (cb) {
+            // call the listener
+            cb.call(eventObj, eventObj.forDispatch.call(eventObj, obj, dispatchOpt));
+        });
         return obj;
     };
 

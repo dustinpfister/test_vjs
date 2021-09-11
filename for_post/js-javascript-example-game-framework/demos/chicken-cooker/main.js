@@ -10,7 +10,8 @@ var sm = gameFrame.smCreateMain({
             //baseURL: '/demos/chicken-cooker/img/skin-zelda-32',
             //baseURL: '/demos/chicken-cooker/img/skin-mine1-32',
             //baseURL: '/demos/chicken-cooker/img/skin-emme1-32',
-            baseURL: '/demos/chicken-cooker/img/skin-emme1-128',
+            //baseURL: '/demos/chicken-cooker/img/skin-emme1-128',
+            baseURL: '/demos/chicken-cooker/img/skin-emme1-128-color',
             count: 3
         }
     }

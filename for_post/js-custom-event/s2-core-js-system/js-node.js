@@ -7,11 +7,13 @@ var player = {
 
 let eventObj = {
     eventKey: 'hit',
-    forDispatch: function (obj) {
+    forDispatch: function (obj, dispatchOpt) {
+        obj.hp -= dispatchOpt.damage;
+        obj.hp = obj.hp < 0 ? 0 : opb.hp;
         // return an event object that will be in the listener
         return {
             target: obj, // ref to the object
-            dead: obj.hp < 0
+            dead: obj.hp === 0
         };
     }
 };
@@ -25,4 +27,6 @@ eventMod.addListener(player, 'hit', function (e) {
 
 });
 
-eventMod.dispatch(player, 'hit', { damage: 10 } );
+eventMod.dispatch(player, 'hit', {
+    damage: 10
+});

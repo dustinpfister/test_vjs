@@ -7,9 +7,9 @@ var sm = gameFrame.smCreateMain({
     loader: {
         startState: 'gameTime',
         images: { // load 0.png - 2.png at ./img
-            //baseURL: '/demos/chicken-cooker/img/skin-zelda',
-            //baseURL: '/demos/chicken-cooker/img/skin-mine1',
-            //baseURL: '/demos/chicken-cooker/img/skin-emme1',
+            //baseURL: '/demos/chicken-cooker/img/skin-zelda-32',
+            //baseURL: '/demos/chicken-cooker/img/skin-mine1-32',
+            //baseURL: '/demos/chicken-cooker/img/skin-emme1-32',
             baseURL: '/demos/chicken-cooker/img/skin-emme1-128',
             count: 3
         }

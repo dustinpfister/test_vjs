@@ -15,7 +15,8 @@
     CHICKENS_RADIUS_START = 400,
     CHICKENS_RADIUS = 200,
     CHICKENS_PPS_MIN = 64,
-    CHICKENS_PPS_MAX = 256;
+    CHICKENS_PPS_MAX = 256,
+    CHICKENS_CELL_SIZE = 32; // this will need to be adjusted when using a highher res sprit sheet
 
 
 
@@ -70,7 +71,7 @@
         obj.data.cellIndex = 0;
         obj.data.imgSecs = 0;
         obj.data.image = sm.images[0];
-        obj.data.imgD = {sx: 0, sy: 0, sw: 32, sh: 32};
+        obj.data.imgD = {sx: 0, sy: 0, sw: CHICKENS_CELL_SIZE, sh: CHICKENS_CELL_SIZE};
     };
     // update a chicken
     var chickenState = {};

@@ -16,6 +16,7 @@
     CHICKENS_RADIUS = 200,
     CHICKENS_PPS_MIN = 64,
     CHICKENS_PPS_MAX = 256,
+    CHICKENS_SIZE = 64,
     CHICKENS_CELL_SIZE = 128; // this will need to be adjusted when using a highher res sprit sheet
 
 
@@ -35,8 +36,8 @@
     // get a position from the center of a canvas with the given radius and angle in radians
     var getPosFromCenter = function(canvas, radius, a){
         return {
-            x: canvas.width / 2 + Math.cos(a) * radius - 32,
-            y: canvas.height / 2 + Math.sin(a) * radius - 32
+            x: canvas.width / 2 + Math.cos(a) * radius - CHICKENS_SIZE,
+            y: canvas.height / 2 + Math.sin(a) * radius - CHICKENS_SIZE
         };
     };
 
@@ -58,8 +59,8 @@
         var startPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS_START, rndRadian());
         obj.x = startPos.x;
         obj.y = startPos.y;
-        obj.w = 64;
-        obj.h = 64;
+        obj.w = CHICKENS_SIZE;
+        obj.h = CHICKENS_SIZE;
         // set speed
         obj.pps = CHICKENS_PPS_MIN + Math.round(( CHICKENS_PPS_MAX - CHICKENS_PPS_MIN) * Math.random());
         // set first target

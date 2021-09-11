@@ -20,6 +20,9 @@ let eventObj = {
 eventMod.addEvent(player, eventObj);
 
 eventMod.addListener(player, 'hit', function (e) {
-	
-	
+
+    console.log('yes');
+
 });
+
+eventMod.dispatch(player, 'hit', { damage: 10 } );

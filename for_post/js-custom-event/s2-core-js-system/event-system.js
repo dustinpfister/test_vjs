@@ -20,7 +20,12 @@
     // attach a listener for the object that will fire
     // when the event happens
     api.addListener = function (obj, eventKey, callBack) {
-
+        // get listeners for the eventKey
+        var listeners = obj.ue[eventKey].listeners;
+        // if we have listeners push the callback
+        if (listeners) {
+            listeners.push(callBack);
+        }
         return obj;
     };
 

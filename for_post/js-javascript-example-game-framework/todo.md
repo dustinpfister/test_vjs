@@ -3,8 +3,8 @@
 ## () - Event system
 * add an event system based off of what I made for js-custom-event
 
-## () - chiken-cooker image sets
-* have more than one set of images for skinning the demo
+## ( done 09/11/2021 ) - chiken-cooker image sets
+* (done) have more than one set of images for skinning the demo
 
 ## ( done 09/07/2021 ) - chicken-cooker spawn rate
 * have a spawn rate feature

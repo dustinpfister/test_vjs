@@ -11,12 +11,12 @@
 
 
 
-    var CHICKENS_COUNT = 10,
+    var CHICKENS_COUNT = 30,
     CHICKENS_RADIUS_START = 400,
     CHICKENS_RADIUS = 200,
     CHICKENS_PPS_MIN = 64,
     CHICKENS_PPS_MAX = 256,
-    CHICKENS_SIZE = 64,
+    CHICKENS_SIZE = 128,
     CHICKENS_CELL_SIZE = 128; // this will need to be adjusted when using a highher res sprit sheet
 
 
@@ -36,8 +36,8 @@
     // get a position from the center of a canvas with the given radius and angle in radians
     var getPosFromCenter = function(canvas, radius, a){
         return {
-            x: canvas.width / 2 + Math.cos(a) * radius - CHICKENS_SIZE,
-            y: canvas.height / 2 + Math.sin(a) * radius - CHICKENS_SIZE
+            x: canvas.width / 2 + Math.cos(a) * radius - CHICKENS_SIZE / 2,
+            y: canvas.height / 2 + Math.sin(a) * radius -CHICKENS_SIZE / 2
         };
     };
 
@@ -222,8 +222,8 @@
             score: 0,
             spawn: {
                secs: 0,
-               rate: 1,
-               maxActive: 5
+               rate: 1.75,
+               maxActive: 7
             }
         };
         // chickens pool

@@ -17,6 +17,9 @@
 ## () - simulate click method
 * have a utils.simulateClick method based on what I have in js-event-object
 
+## () - custom event system
+* have utils custom events methods based off of what I made for my js-custom-event post
+
 ## () - format number example
 * have a utils.formatNumber method like the one worked out for js-array-slice
 

@@ -1,0 +1,3 @@
+# js-custom-event
+
+These are some examples that have to do with creating user defined events mainly in a client side javaScript environment, but I also made a simple core javaScript system for creating custom events in both a client side and nodejs JavaScript environment also. These are source code examples that I write about in detail in my [blog post on this subject of custom events](https://dustinpfister.github.io/2019/07/03/js-custom-event/), but if you are looking for the latest version of this, or want to make a pull request for the source code this is the place to be.

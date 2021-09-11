@@ -1,21 +1,26 @@
-var myEvent = new CustomEvent(
-        'my-event', {
-        detail: {
-            message: 'custom event!',
-            time: new Date(),
-            n: 42
-        },
+(function (api) {
 
-        bubbles: true,
-        cancelable: true
-    });
+    //
+    api.addEvent = function (obj, opt) {
+        opt = opt || {};
 
-// define a handler for the event
-document.body.addEventListener('my-event', function (e) {
-    console.log(e.detail.message); // 'custom event!'
-    console.log(e.detail.n); // 42
+        return obj;
+    };
 
-});
+    // attach a listener for the object that will fire
+    // when the event happens
+    api.addListener = function (obj, eventKey, callBack) {
 
-// dispatch it
-document.body.dispatchEvent(myEvent)
+        return obj;
+    };
+
+    // dispatch an event for the given object, passing the event key, and options
+    api.dispatch = function (obj, eventKey, opt) {
+
+        return obj;
+    };
+
+    // this module should work well in nodejs, or client javaScript
+}
+    (typeof module === 'undefined' ? this['eventMod'] = {}
+        : module.exports));

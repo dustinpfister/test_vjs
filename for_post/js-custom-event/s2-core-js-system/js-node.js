@@ -14,6 +14,7 @@ let eventObj = {
         // return an event object that will be in the listener
         return {
             target: obj, // ref to the object
+            damage: dispatchOpt.damage,
             dead: obj.hp === 0
         };
     }

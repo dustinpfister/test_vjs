@@ -3,6 +3,7 @@
         <title>custom event in client side javaScript</title>
     </head>
     <body>
+        <textarea id="game-console" rows="20" cols="80"></textarea>
         <script src="./event-system.js"></script>
         <script>
 
@@ -19,6 +20,7 @@ let eventObj = {
         // return an event object that will be in the listener
         return {
             target: obj, // ref to the object
+            damage: dispatchOpt.damage,
             dead: obj.hp === 0
         };
     }
@@ -27,7 +29,12 @@ eventMod.addEvent(player, eventObj);
 
 // ATTACH A LISTNEER FOR THE 'HIT' EVENT
 eventMod.addListener(player, 'hit', function (e) {
-    console.log(e.dead, e.target.hp);
+    var el = document.querySelector('#game-console');
+    if(!e.dead){
+        el.value += 'The player was hit, taking ' + e.damage + ' damage.\n';
+    }else{
+        el.value += 'The player was hit, and has died from taking ' + e.damage + ' damage\n';
+    }
 });
 
 // DISPATCH THE EVENT

@@ -1,5 +1,8 @@
 # todo list for js-javascript-example-game-framework
 
+## () - Event system
+* add an event system based off of what I made for js-custom-event
+
 ## ( done 09/07/2021 ) - chicken-cooker spawn rate
 * have a spawn rate feature
 

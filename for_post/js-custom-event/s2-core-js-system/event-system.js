@@ -5,12 +5,15 @@
         opt = opt || {};
         // user Event Object
         var userEvent = {};
+        // MUST GIVE AN EVENT KEY
+        userEvent.eventKey = opt.eventKey;
         // need a forDispatch method
         userEvent.forDispatch = opt.forDispatch || function () {};
         // need an array of listeners
         userEvent.listeners = [];
         // attach to the objects own properties
-        obj.userEvent = userEvent;
+        obj.ue = obj.ue || {};
+        obj.ue[userEvent.eventKey] = userEvent;
         return obj;
     };
 

@@ -17,7 +17,7 @@
 * (done) each pureged chicken that is cooked will add to game.score
 
 ## ( done 09/07/2021 ) - chicken-cooker fine grain methods in game.js
-* (done) have fine grain methids for spawn, and update for create chcken pool helper in game.js
+* (done) have fine grain methods for spawn, and update for create chicken pool helper in game.js
 * (done) have an object of methods for each chicken state and call the methods in update chicken
 * (done) have a create blasts helper.
 
@@ -27,8 +27,8 @@
 * (done) start a game.js file that can be used to create and return a game object
 
 ## ( done 09/05/2021 ) - chicken-cooker on overlap with other chicken
-* (done) check if a chicken is overlapying with another
-* (done) when one chicken is overlaping with another it wil get a new target position
+* (done) check if a chicken is overlapping with another
+* (done) when one chicken is overlapping with another it will get a new target position
 
 ## ( done 09/04/2021 ) - chicken-cooker both directions
 * (done) have the live chicken sprite work with the right direction
@@ -44,7 +44,7 @@
 * (done) chickens will spawn in from outside of the canvas and then move into a radius inside the canvas
 * (done) chickens start out in a 'live' state rather than a 'cooked' state
 * (done) when inside the radius they will pause at a target location for a delay
-* (done) once the delay is over they will move to a new radom target location in the radius
+* (done) once the delay is over they will move to a new random target location in the radius
 * (done) have a blasts object pool
 * (done) the player can click a location and at that location a blast will start
 * (done) any chicken that is in the blast radius will be set to cooked state
@@ -68,7 +68,7 @@ gameframe.js:
 ## ( done 09/02/2021 ) - buttons started
 gameframe.js:
 * (done) have a buttons property of a state object like that in orb match
-* (done) start a menus demo that wil make use of buttons feature
+* (done) start a menus demo that will make use of buttons feature
 * (done) I will want to call a buttonCheck helper each time a global pointer event happens
 * (done) I will want to have a draw buttons method in a buttons canvas plugin
 
@@ -83,8 +83,8 @@ canvas.js:
 * (done) have a canvas mod plugin for pool.js, and start off with a pool draw method
 /demos/pool:
 * (done) have a pool.secsCap option
-* (done) have a pool.disableLifespan feature that will just disable lifespan all togetaher
-* (done) upadte hello world demo to make use of new object pool feature
+* (done) have a pool.disableLifespan feature that will just disable lifespan all together
+* (done) update hello world demo to make use of new object pool feature
 
 ## ( done 09/01/2021 ) - additional gameFrame.create options
 * (done) gameFrame.smCreateMain width and height options
@@ -95,7 +95,7 @@ todo.md:
 * (done) have a /css folder for the css used for the canvas module
 utils.js:
 * (done) start a utils.js file with what I have in js-javascript-example-utils in the lib folder
-* (done) remove the canvas methods from utils becuase I am using the canvas mod
+* (done) remove the canvas methods from utils because I am using the canvas mod
 canvas.js:
 * (done) I will want to use my new canvas module as part of this framework so add that to the /lib folder
 * (done) print draw method now built into canvas.js

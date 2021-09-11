@@ -16,7 +16,7 @@
     CHICKENS_RADIUS = 200,
     CHICKENS_PPS_MIN = 64,
     CHICKENS_PPS_MAX = 256,
-    CHICKENS_CELL_SIZE = 32; // this will need to be adjusted when using a highher res sprit sheet
+    CHICKENS_CELL_SIZE = 128; // this will need to be adjusted when using a highher res sprit sheet
 
 
 
@@ -98,7 +98,7 @@
                 }else{
                     obj.data.cellIndex = obj.data.cellIndex === 4 ? 5 : 4;
                 }
-                obj.data.imgD.sx = 32 * obj.data.cellIndex;
+                obj.data.imgD.sx = CHICKENS_CELL_SIZE * obj.data.cellIndex;
             }
         }else{
             // set delay and switch to rest state
@@ -111,9 +111,9 @@
         // else subtract from delay, and get a new target pos of delay <= 0
         obj.data.delay -= secs;
         // cell 3
-        obj.data.imgD.sx = 64;
+        obj.data.imgD.sx = CHICKENS_CELL_SIZE * 2;
         if(obj.data.cellDir === 1){
-            obj.data.imgD.sx = 96;
+            obj.data.imgD.sx = CHICKENS_CELL_SIZE * 3;
         }
         if(obj.data.delay <= 0){
             obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());

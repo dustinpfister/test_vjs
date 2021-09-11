@@ -1,10 +1,3 @@
-
-var CHICKENS_COUNT = 10,
-CHICKENS_RADIUS_START = 400,
-CHICKENS_RADIUS = 200,
-CHICKENS_PPS_MIN = 64,
-CHICKENS_PPS_MAX = 256;
-
 // create an sm object
 var sm = gameFrame.smCreateMain({
     currentState: 'loader', 
@@ -14,7 +7,7 @@ var sm = gameFrame.smCreateMain({
     loader: {
         startState: 'gameTime',
         images: { // load 0.png - 2.png at ./img
-            baseURL: '/demos/chicken-cooker/img',
+            baseURL: '/demos/chicken-cooker/img/skin-mine1',
             count: 3
         }
     }

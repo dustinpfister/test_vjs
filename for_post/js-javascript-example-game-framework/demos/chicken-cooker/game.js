@@ -220,8 +220,8 @@
             score: 0,
             spawn: {
                secs: 0,
-               rate: 5,
-               maxActive: 3
+               rate: 1,
+               maxActive: 5
             }
         };
         // chickens pool

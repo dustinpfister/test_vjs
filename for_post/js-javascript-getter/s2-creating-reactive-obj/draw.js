@@ -4,6 +4,14 @@ var draw = function (obj) {
 };
 
 var createReactiveProp = function (obj, key, value) {
+
+    if (!obj['_locals']) {
+        Object.defineProperty(obj, '_locals', {
+            enumerable: false,
+            value: {}
+        });
+    }
+
     Object.defineProperty(obj, key, {
         enumerable: false,
         set: function (value) {
@@ -17,7 +25,7 @@ var createReactiveProp = function (obj, key, value) {
 };
 
 var set = function (newValue, b) {
-    console.log(newValue, b);
+    //console.log(newValue, b);
     draw(this);
 };
 

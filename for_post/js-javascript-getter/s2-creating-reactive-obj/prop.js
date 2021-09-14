@@ -8,7 +8,7 @@ var makePropertyReactive = function (obj, key, draw) {
         },
         set: function (newVal) {
             val = newVal;
-            draw(key, val); // log
+            draw(obj, key, val); // log
         }
     });
     return obj;

@@ -13,14 +13,13 @@ var createReactiveProp = function (obj, key, value) {
     }
 
     Object.defineProperty(obj, key, {
-        enumerable: false,
+        enumerable: true,
         set: function (value) {
             // call draw each time the value is set
             draw(this);
         },
         get: function () {}
     });
-    obj.key = value;
     return obj;
 };
 

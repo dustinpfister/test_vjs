@@ -1,26 +1,34 @@
 // draw
-var draw = function (obj, key) {
+var draw_default = function (obj, key) {
     var val = obj[key];
     console.log(key, val);
 };
-
-// a make reactive method
-var makePropertyReactive = function (obj, key) {
+// a make reactive property of an object
+var makePropertyReactive = function (obj, key, draw) {
+    draw = draw || draw_default;
     var val = obj[key];
     Object.defineProperty(obj, key, {
-        get: function() {
+        get: function () {
             return val; // Simply return the cached value
         },
-        set: function(newVal) {
-            val = newVal; //
-            draw(obj, key) //
+        set: function (newVal) {
+            val = newVal;
+            draw(obj, key); // call the draw method
         }
+    });
+    return obj;
+};
+// make
+var makeObjectReative = function (obj) {
+    Object.keys(obj).forEach(function (key) {
+        makePropertyReactive(obj, key);
     });
     return obj;
 };
 
 var data = {
-    count: 0
+    count: 0,
+    name: 'Dustin'
 };
 makePropertyReactive(data, 'count');
 

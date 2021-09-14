@@ -1,3 +1,4 @@
+// draw
 var draw = function (obj, key) {
     var val = obj[key];
     console.log(key, val);
@@ -21,7 +22,6 @@ var makePropertyReactive = function (obj, key) {
 var data = {
     count: 0
 };
-
 makePropertyReactive(data, 'count');
 
 data.count += 1;

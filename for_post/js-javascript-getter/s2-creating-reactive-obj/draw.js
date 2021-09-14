@@ -1,37 +1,27 @@
-
-var draw = function (obj) {
-    console.log(obj);
+var draw = function (obj, key) {
+    var val = obj[key];
+    console.log(key, val);
 };
 
-var createReactiveProp = function (obj, key, value) {
-
-    if (!obj['_locals']) {
-        Object.defineProperty(obj, '_locals', {
-            enumerable: false,
-            value: {}
-        });
-    }
-
+// a make reactive method
+var makePropertyReactive = function (obj, key) {
+    var val = obj[key];
     Object.defineProperty(obj, key, {
-        enumerable: true,
-        set: function (value) {
-            // call draw each time the value is set
-            draw(this);
+        get() {
+            return val; // Simply return the cached value
         },
-        get: function () {}
+        set(newVal) {
+            val = newVal; //
+            draw(obj, key) //
+        }
     });
     return obj;
 };
 
-var set = function (newValue, b) {
-    //console.log(newValue, b);
-    draw(this);
+var data = {
+    count: 0
 };
 
-var get = function () {};
+makePropertyReactive(data, 'count');
 
-var obj = {};
-createReactiveProp(obj, 'count', 0, set, get);
-
-obj.count = 20;
-obj.count = 13;
+data.count += 1;

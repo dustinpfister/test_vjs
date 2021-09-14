@@ -30,6 +30,7 @@ var data = {
     count: 0,
     name: 'Dustin'
 };
-makePropertyReactive(data, 'count');
+makeObjectReative(data);
 
 data.count += 1;
+data.name = 'Stin'

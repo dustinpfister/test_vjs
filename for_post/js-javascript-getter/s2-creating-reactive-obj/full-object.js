@@ -1,11 +1,10 @@
 // draw
-var draw_default = function (obj, key) {
-    var val = obj[key];
+var draw = function (obj, key, val) {
     console.log(key, val);
 };
 // a make reactive property of an object
 var makePropertyReactive = function (obj, key, draw) {
-    draw = draw || draw_default;
+    draw = draw || console.log;
     var val = obj[key];
     Object.defineProperty(obj, key, {
         get: function () {
@@ -13,15 +12,15 @@ var makePropertyReactive = function (obj, key, draw) {
         },
         set: function (newVal) {
             val = newVal;
-            draw(obj, key); // call the draw method
+            draw(obj, key, val); // log
         }
     });
     return obj;
 };
 // make a full object reactive
-var makeObjectReative = function (obj) {
+var makeObjectReative = function (obj, draw) {
     Object.keys(obj).forEach(function (key) {
-        makePropertyReactive(obj, key);
+        makePropertyReactive(obj, key, draw);
     });
     return obj;
 };
@@ -30,7 +29,7 @@ var data = {
     count: 0,
     name: 'Dustin'
 };
-makeObjectReative(data);
+makeObjectReative(data, draw);
 
 data.count += 1;
 data.name = 'Stin'

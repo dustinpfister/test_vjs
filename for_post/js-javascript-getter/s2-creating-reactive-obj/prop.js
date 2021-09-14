@@ -1,5 +1,6 @@
 // a make reactive property of an object
-var makePropertyReactive = function (obj, key) {
+var makePropertyReactive = function (obj, key, draw) {
+    draw = draw || console.log;
     var val = obj[key];
     Object.defineProperty(obj, key, {
         get: function () {
@@ -7,7 +8,7 @@ var makePropertyReactive = function (obj, key) {
         },
         set: function (newVal) {
             val = newVal;
-            console.log(key, val); // log
+            draw(key, val); // log
         }
     });
     return obj;

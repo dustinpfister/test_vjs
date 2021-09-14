@@ -7,10 +7,10 @@ var draw = function (obj, key) {
 var makePropertyReactive = function (obj, key) {
     var val = obj[key];
     Object.defineProperty(obj, key, {
-        get() {
+        get: function() {
             return val; // Simply return the cached value
         },
-        set(newVal) {
+        set: function(newVal) {
             val = newVal; //
             draw(obj, key) //
         }

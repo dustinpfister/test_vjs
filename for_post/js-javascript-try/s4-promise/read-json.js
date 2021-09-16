@@ -24,4 +24,9 @@ readFile(uri_json, 'utf8')
         console.log('The JSON file at ' + uri_json + ' was not found');
     }
 
+    if(e.name === 'SyntaxError') {
+        console.log('looks like we have a syntax error');
+        console.log('a good reason for this is that the JSON file is no good');
+    }
+
 });

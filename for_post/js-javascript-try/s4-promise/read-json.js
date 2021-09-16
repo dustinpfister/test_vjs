@@ -6,7 +6,17 @@ readFile = promisify(fs.readFile);
 let uri_json = path.join(__dirname, 'conf.json');
 
 readFile(uri_json, 'utf8')
-.then((JSON_text) => {})
+.then((JSON_text) => {
+    try {
+        return JSON.parse(JSON_text);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+})
+.then((obj) => {
+    console.log('JSON FIle parsed succesfly');
+    console.log(obj);
+})
 .catch((e) => {
 
     // what to do if the file is not found

@@ -1,3 +1,3 @@
 # js-javascript-try
 
-These are the source code examples that I am using for my blog post on the [try catch statement](https://dustinpfister.github.io/2019/03/02/js-javascript-try/) in core javaScript, as well as error handing in general.
+These are the source code examples that I am using for my blog post on the [try catch statement](https://dustinpfister.github.io/2019/03/02/js-javascript-try/) in core javaScript, as well as error handing in general. The main focus of the post was of course the try catch statement, but I am also touching based on the use of the throw statement, and I have plains to expand this post with additional examples that have to do with Error handing in general.

@@ -5,7 +5,7 @@
 * have a random delta example between -10 and 10
 
 ## () - new s4-random-colors exmaples
-* have a concise method example
+* (done) have a concise method example
 * have an rgb example
 * have an array of color names example
 

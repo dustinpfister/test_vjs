@@ -26,7 +26,7 @@ var i = 0;
 while (i < 15) {
     var n = hat.pull();
     if (n === false) {
-        hat = createHat();
+        hat.start();
         n = hat.pull();
         console.log('');
         console.log('new hat');

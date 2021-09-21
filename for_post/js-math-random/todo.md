@@ -1,5 +1,10 @@
 # js-math-random todo list
 
+## () - new section on a canvas project
+* inject it in the top of the post
+
+## () - new section on order of operations
+
 ## () - more s1-basic examples
 * have a random delta example between -10 and 10
 

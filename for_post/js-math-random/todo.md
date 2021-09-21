@@ -8,11 +8,11 @@
 * start with a simple grid get cell function with a 10 by 10 grid size
 * randomly select the whole domain by getting cells without replacement
 
-## () - s6-no-replacement
-* start a no-replacement example
-* start with a function that will return a pull function for a given sample
+## ( done 09/21/2021 ) - s6-no-replacement
+* (done) start a no-replacement example
+* (done) start with a function that will return a pull function for a given sample
 
-## () - more s1-basic examples
+## ( done 09/21/2021 ) - more s1-basic examples
 * (done) have a basic-client.html file 
 * (done) have a basic-nodejs.js file 
 * (done) have a basic-js-console.txt file

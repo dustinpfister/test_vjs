@@ -1,0 +1,16 @@
+
+chrome javaScript console
+
+```
+> Math.random()
+```
+
+bash with node
+```
+$ node -e "console.log(Math.random())" 
+```
+
+cmd with node
+```
+C:\> node -e "console.log(Math.random())" 
+```

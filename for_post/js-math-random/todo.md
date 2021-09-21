@@ -1,6 +1,9 @@
 # js-math-random todo list
 
 ## () - more s1-basic examples
+* have a basic-client.html file 
+* have a basic-nodejs.js file 
+* have a basic-js-console.txt file
 * have a die method example where we are multiplying a random number by 6 and rounding
 * have a random delta example between -10 and 10
 

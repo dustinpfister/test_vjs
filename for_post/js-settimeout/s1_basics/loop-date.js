@@ -23,7 +23,6 @@ var loop = function () {
     setTimeout(loop, 100);
     if (secs >= 1 / state.FPS) {
         update(state, secs);
-        secs %= 1 / state.FPS;
         state.lt = now;
     }
 };

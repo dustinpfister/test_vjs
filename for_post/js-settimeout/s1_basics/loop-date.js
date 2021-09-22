@@ -1,17 +1,20 @@
-var lt = new Date(),
-FPS = 2;
+var update = function (state, secs) {
+    console.log('tick ' + secs.toFixed(2));
+};
+
+var state = {
+    lt : new Date(),
+    FPS : 2
+};
 var loop = function () {
     var now = new Date(),
-    secs = (now - lt) / 1000;
-
+    secs = (now - state.lt) / 1000;
     setTimeout(loop, 100);
-
-    if (secs >= 1 / FPS) {
-        console.log('tick ' + secs.toFixed(2));
-        secs %= 1 / FPS;
-        lt = now;
+    if (secs >= 1 / state.FPS) {
+        update(state, secs);
+        secs %= 1 / state.FPS;
+        state.lt = now;
     }
-
 };
 
 loop();

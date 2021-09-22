@@ -1,5 +1,17 @@
 # js-settimeout todo list
 
-* (done) start an s3 section on basic state change over time example
-* s4 example on comparing to requestAnimationFrame
+
+## (  ) - webWorker
 * s5 example on webWorker
+
+## (  ) - requestAnimationFrame
+* s4 example on comparing to requestAnimationFrame
+
+## (  ) - new s1 example
+* better loop example using date
+
+## ( done 09/04/2020 ) - change over time
+* (done) start an s3 section on basic state change over time example
+
+## (  done 12/06/2018 ) - first set of examples
+* (done) first set of examples

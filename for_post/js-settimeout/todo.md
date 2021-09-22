@@ -7,8 +7,8 @@
 ## (  ) - requestAnimationFrame
 * s4 example on comparing to requestAnimationFrame
 
-## (  ) - new s1 example
-* better loop example using date
+## ( done 09/22/2021 ) - new s1 example
+* (done) better loop example using date
 
 ## ( done 09/04/2020 ) - change over time
 * (done) start an s3 section on basic state change over time example

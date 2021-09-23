@@ -1,6 +1,7 @@
 # js-regex
 
-## () - start a new section on Quantifiers
+## (done 09/23/2021) - start a new section on Quantifiers
+* (done) ( basic count examples)
 ```
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers
 ```

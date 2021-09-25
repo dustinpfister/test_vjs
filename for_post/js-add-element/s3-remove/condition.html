@@ -11,14 +11,19 @@
             <li>Four</li>
         </ul>
         <script>
-var list = document.querySelectorAll('li');
-
-Array.prototype.filter.call(list, function(el){
+// remove all helper
+var removeAll = function(query, condition){
+    var list = document.querySelectorAll(query);
+    Array.prototype.filter.call(list, function(el){
+        return condition(el);
+    }).forEach(function(el){
+        el.remove();
+    });
+};
+// remove all by purge dataset prop
+removeAll('li', function(el){
     return Boolean(el.dataset.purge);
-}).forEach(function(el){
-    el.remove();
 });
-
         </script>
     </body>
 </html>

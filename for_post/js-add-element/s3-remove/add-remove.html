@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>javaScript Create Element</title>
+    </head>
+    <body>
+        <div id="add-list">
+            <input id="txt-list" type="text"><input type="button" value="add">
+        </div>
+        <ul id="the-list">
+            <li><input type="button" value="delete"><span>Hello</span></li>
+        </ul>
+        <script>
+var deleteItem = function(e){
+    var li = e.target.parentElement;
+    if(e.target.nodeName === 'INPUT' && e.target.value === 'delete'){
+        li.remove();
+    }
+};
+var addItem = function(e){
+    if(e.target.nodeName === 'INPUT' && e.target.type === 'button' && e.target.value === "add"){
+        var li = document.createElement('li'),
+        button_delete = document.createElement('input'),
+        span = document.createElement('span');
+        button_delete.type = 'button';
+        button_delete.value = 'delete';
+        span.innerText = document.getElementById('txt-list').value;
+        li.appendChild(button_delete);
+        li.appendChild(span);
+        document.getElementById('the-list').appendChild(li);
+    }
+};
+document.getElementById('the-list').addEventListener('click', deleteItem);
+document.getElementById('add-list').addEventListener('click', addItem);
+        </script>
+    </body>
+</html>

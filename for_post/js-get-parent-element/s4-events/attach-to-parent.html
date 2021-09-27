@@ -21,22 +21,35 @@
         </div>
         <script>
 
-var forParentChildren = function(parent){
+var forParentChildren = function(parent, opt){
+    opt = opt || {};
+    opt.forChild = opt.forChild || function(){};
+    opt.forParent = opt.forParent || function(){};
     // if parent is a string assume it is a query string to get one
     if(typeof parent === 'string'){
         parent = document.querySelector(parent);
     }
     // the listener
     var listener = function(e){
-	    
-    console.log(e.target); // the element that was clicked
-    console.log(e.currentTarget ); // the element this handler is attached to
-	};
-	parent.addEventListener('click', listener);
+        // call forChild only if e.target is not e.currentTarget
+        if(e.target != e.currentTarget){
+            opt.forChild.call(e, e.target, e.currentTarget, e, opt);
+        }
+        // always call forParent for what should be the parent element at e.currentTarget
+        opt.forParent.call(e, e.currentTarget, e.currentTarget.children, e, opt);
+    };
+    parent.addEventListener('click', listener);
 
 };
 
-forParentChildren('#wrap_main');
+forParentChildren('#wrap_main', {
+   forChild: function(child){
+       console.log(child);
+   },
+   forParent: function(parent){
+        console.log(parent.id)
+   }
+});
 
         </script>
     </body>

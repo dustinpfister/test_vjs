@@ -11,12 +11,30 @@
 #wrap_logo{
   width:120px;height:120px;background:blue;
 }
+#wrap_content{
+  width:360px;height:auto;background:red;
+  margin: 20px;padding:20px;
+}
+.block_div{
+  display:inline-block;width:64px;height:64px;background:cyan;
+  margin:10px;
+}
+canvas{
+  display:inline-block;width:64px;height:64px;background:black;
+  margin:10px;
+}
         </style>
     </head>
     <body>
         <div id="wrap_main">
             <div id="wrap_header" class="custom_action">
                 <div id="wrap_logo"></div>
+            </div>
+            <div id="wrap_content">
+                <div class="block_div custom_action"></div>
+                <div class="block_div"></div>
+                <div class="block_div custom_action"></div>
+                <canvas></canvas>
             </div>
         </div>
         <script>

@@ -10,17 +10,36 @@
             </div>
         </div>
         <script>
-var getParents = function (el) {
-    var parents = [],
-    node = el;
-    while (node != document) {
-        parents.push(node.parentNode);
+// loop parents function
+var loopParents = function (el, forParent) {
+    var node = el,i = 0;
+    while (node != null) {
         node = node.parentNode;
+        if(node){
+            if(forParent.call(node, node, i, el)){
+                return false;
+            }
+        }
+        i += 1;
     }
+    return true;
+};
+// get all parents method
+var getAllParents = function (child) {
+    var parents = [];
+    // loop back until body
+    loopParents(child, function(el, i){
+        if(el){
+            parents.push(el);
+        }else{
+            return true;
+        }
+        return false;
+    });
     return parents;
 }
 var el = document.getElementById('logo');
-getParents(el).forEach(function (el) {
+getAllParents(el).forEach(function (el) {
     console.log(el.nodeName, el.id || '');
 });
 // DIV header

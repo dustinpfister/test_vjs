@@ -34,11 +34,10 @@ canvas{
                 <div class="block_div custom_action"></div>
                 <div class="block_div"></div>
                 <div class="block_div custom_action"></div>
-                <canvas></canvas>
+                <canvas width="64" height="64"></canvas>
             </div>
         </div>
         <script>
-
 var forParentChildren = function(parent, opt){
     opt = opt || {};
     opt.forOnly = opt.forOnly || ['*']
@@ -92,21 +91,34 @@ var forParentChildren = function(parent, opt){
     };
     parent.addEventListener('click', listener);
 };
-
+// using the method
 forParentChildren('#wrap_main', {
    forOnly: ['.custom_action', '#wrap_logo', 'canvas'],
    forChild: function(child, parent, e, opt){
+        var colors = ['orange', 'white', 'lime'],
+        style = colors[Math.floor(Math.random() * colors.length)];
        // change color if div
        if(child.nodeName === 'DIV'){
-           var colors = ['orange', 'white', 'lime']
-           child.style.background = colors[Math.floor(Math.random() * colors.length)];
+           child.style.background = style
+       }
+       if(child.nodeName === 'CANVAS'){
+           var box = child.getBoundingClientRect(),
+           x = e.clientX - box.left,
+           y = e.clientY - box.top,
+           ctx = child.getContext('2d');
+           //child.width = 64;
+           //child.height = 64;
+           ctx.beginPath();
+           ctx.fillStyle = style;
+           ctx.arc(x,y,5,0, Math.PI * 2);
+           ctx.closePath();
+           ctx.fill();
        }
    },
    forParent: function(parent, children, e, opt){
         //console.log(parent.id)
    }
 });
-
         </script>
     </body>
 </html>

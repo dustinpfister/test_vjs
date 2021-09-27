@@ -52,6 +52,13 @@ var forParentChildren = function(parent, opt){
                     }
                 }
             }
+            // if first char === '#' check id prop
+            if(opt.forOnly[i][0] === '#'){
+                if(opt.forOnly[i] === '#' + child.id){
+                    callForChild = true;
+                    break;
+                }
+            }
         }
         // call forChild only if e.target is not e.currentTarget
         if(child != e.currentTarget && callForChild){
@@ -64,7 +71,7 @@ var forParentChildren = function(parent, opt){
 };
 
 forParentChildren('#wrap_main', {
-   forOnly: ['.custom_action'],
+   forOnly: ['#wrap_header'],
    forChild: function(child){
        console.log(child);
    },

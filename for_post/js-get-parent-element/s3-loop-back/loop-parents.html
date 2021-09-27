@@ -15,14 +15,25 @@ var loopParents = function (el, forParent) {
     while (node != null) {
         node = node.parentNode;
         if(node){
-            forParent.call(node, node, i, el);
+            if(forParent.call(node, node, i, el)){
+                return false;
+            }
         }
         i += 1;
     }
+    return true;
 };
-// loop back
+// getting ref to logo div
 var logo = document.getElementById('logo');
+// looping back all the way
 loopParents(logo, function(el, i, child){
+   console.log(el.nodeName, i, child.id);
+});
+// loop back until body
+loopParents(logo, function(el, i, child){
+   if(el.nodeName === 'BODY'){
+       return true;
+   }
    console.log(el.nodeName, i, child.id);
 });
 

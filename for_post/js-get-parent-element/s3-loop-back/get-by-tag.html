@@ -14,26 +14,32 @@
             </div>
         </div>
         <script>
+// loop parents function
 var loopParents = function (el, forParent) {
     var node = el,i = 0;
     while (node != null) {
         node = node.parentNode;
         if(node){
-            forParent.call(node, node, i, el);
+            if(forParent.call(node, node, i, el)){
+                return false;
+            }
         }
         i += 1;
     }
+    return true;
 };
+// get parent by tag
 var getParentByTag = function(child, tagName) {
-  var el = child;
-  tagName = tagName.toLowerCase();
-  while (el && el.parentNode) {
-    el = el.parentNode;
-    if (el.tagName && el.tagName.toLowerCase() == tagName) {
-      return el;
-    }
-  }
-  return null;
+    var parent = null;
+    // loop back until body
+    loopParents(child, function(el, i){
+        if(el.nodeName === tagName.toUpperCase()){
+            parent = el;
+            return true;
+        }
+        return false;
+    });
+    return parent;
 };
  
 var li = document.getElementById('li3');

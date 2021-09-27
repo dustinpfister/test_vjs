@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>parent node example</title>
+        <meta name="google" content="notranslate" />
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <div id="logo"></div>
+            </div>
+        </div>
+        <script>
+var loopParents = function (el, forParent) {
+    var node = el,i = 0;
+    while (node != null) {
+        node = node.parentNode;
+        if(node){
+            forParent.call(node, node, i, el);
+        }
+        i += 1;
+    }
+};
+// loop back
+var logo = document.getElementById('logo');
+loopParents(logo, function(el, i, child){
+   console.log(el.nodeName, i, child.id);
+});
+
+        </script>
+    </body>
+</html>

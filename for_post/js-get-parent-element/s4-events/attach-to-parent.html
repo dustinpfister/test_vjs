@@ -59,6 +59,11 @@ var forParentChildren = function(parent, opt){
                     break;
                 }
             }
+            // check node name
+            if(opt.forOnly[i].toUpperCase() === child.nodeName.toUpperCase()){
+                    callForChild = true;
+                    break;
+            }
         }
         // call forChild only if e.target is not e.currentTarget
         if(child != e.currentTarget && callForChild){
@@ -71,12 +76,12 @@ var forParentChildren = function(parent, opt){
 };
 
 forParentChildren('#wrap_main', {
-   forOnly: ['#wrap_header'],
+   forOnly: ['div'],
    forChild: function(child){
        console.log(child);
    },
    forParent: function(parent){
-        console.log(parent.id)
+        //console.log(parent.id)
    }
 });
 

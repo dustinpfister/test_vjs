@@ -33,6 +33,7 @@ var forParentChildren = function(parent, opt){
     // the listener
     var listener = function(e){
         var callForChild = false,
+        child = e.target,
         i = opt.forOnly.length;
         while(i--){
             // if first char === '*' set true and break
@@ -40,10 +41,21 @@ var forParentChildren = function(parent, opt){
                 callForChild = true;
                 break;
             }
+            // if first char === '.' check className prop
+            if(opt.forOnly[i][0] === '.'){
+                var classNames = child.className.split(' '),
+                ci = classNames.length;
+                while(ci--){
+                    if('.' + classNames[ci] === opt.forOnly[i]){
+                        callForChild = true;
+                        break;
+                    }
+                }
+            }
         }
         // call forChild only if e.target is not e.currentTarget
-        if(e.target != e.currentTarget && callForChild){
-            opt.forChild.call(e, e.target, e.currentTarget, e, opt);
+        if(child != e.currentTarget && callForChild){
+            opt.forChild.call(e, child, e.currentTarget, e, opt);
         }
         // always call forParent for what should be the parent element at e.currentTarget
         opt.forParent.call(e, e.currentTarget, e.currentTarget.children, e, opt);
@@ -52,7 +64,7 @@ var forParentChildren = function(parent, opt){
 };
 
 forParentChildren('#wrap_main', {
-   forOnly: ['*'],
+   forOnly: ['.custom_action'],
    forChild: function(child){
        console.log(child);
    },

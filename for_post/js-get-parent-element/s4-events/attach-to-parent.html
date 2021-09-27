@@ -95,10 +95,14 @@ var forParentChildren = function(parent, opt){
 
 forParentChildren('#wrap_main', {
    forOnly: ['.custom_action', '#wrap_logo', 'canvas'],
-   forChild: function(child){
-       console.log(child);
+   forChild: function(child, parent, e, opt){
+       // change color if div
+       if(child.nodeName === 'DIV'){
+           var colors = ['orange', 'white', 'lime']
+           child.style.background = colors[Math.floor(Math.random() * colors.length)];
+       }
    },
-   forParent: function(parent){
+   forParent: function(parent, children, e, opt){
         //console.log(parent.id)
    }
 });

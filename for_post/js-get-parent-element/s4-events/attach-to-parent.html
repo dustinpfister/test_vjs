@@ -15,8 +15,8 @@
     </head>
     <body>
         <div id="wrap_main">
-            <div id="wrap_header">
-                <div id="wrap_logo" class="custom_action"></div>
+            <div id="wrap_header" class="custom_action">
+                <div id="wrap_logo"></div>
             </div>
         </div>
         <script>
@@ -76,7 +76,7 @@ var forParentChildren = function(parent, opt){
 };
 
 forParentChildren('#wrap_main', {
-   forOnly: ['div'],
+   forOnly: ['.custom_action', '#wrap_logo', 'canvas'],
    forChild: function(child){
        console.log(child);
    },

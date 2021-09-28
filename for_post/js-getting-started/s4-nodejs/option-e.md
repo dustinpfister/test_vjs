@@ -4,16 +4,21 @@
 
 hello world
 ```
-$ node -e "console.log('hello world');"
-hello world
+$ node -e "console.log('hello world', 40 + 2);"
+hello world 42
+```
+
+```
+$ node -e "let os=require('os');console.log(os.platform());"
+linux
 ```
 
 ## Windows
 
 hello world
 ```
-C:\>node -e "console.log('hello world');"
-hello world
+C:\>node -e "console.log('hello world', 40 + 2);"
+hello world 42
 ```
 
 The os module

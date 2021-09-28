@@ -1,3 +1,3 @@
 # js-getting-started
 
-I [have wrote a main post on the topic of getting started with javaScript](https://dustinpfister.github.io/2018/11/27/js-getting-started/), these are the source code examples for that post.
+I [have wrote a main post on the topic of getting started with javaScript](https://dustinpfister.github.io/2018/11/27/js-getting-started/), these are the source code examples for that post. There are a wide range of different ways of getting started with javaScript so in this post the focus was just quickly going over all the various different ways of getting started with javaScipt that come to mind. There is the way of creating an html file with some script tags and just opening that file on a local file system up in a web browser, and then there is setting up a basic web sever to view that file by way of the http rather than the file protocol for example.

@@ -3,8 +3,8 @@
 ## () - new section on brackets
 * start a new section on brackets with at least one basic example
 
-## () - new array concat section examples
-* new concat example on flatten
+## ( done 09/29/2021 ) - new array concat section examples
+* (done) new concat example on flatten
 
 ## ( done 09/29/2021 ) - new s4-splice section
 * (done) start a new section on array splice

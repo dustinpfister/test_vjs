@@ -15,4 +15,4 @@ var unshift = function (array, what) {
 push(array, [7, 8, 9]);
 unshift(array, [1, 2, 3]);
 
-console.log(array); // 1-2-3
+console.log(array); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]

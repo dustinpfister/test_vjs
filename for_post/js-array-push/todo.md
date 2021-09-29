@@ -1,7 +1,13 @@
 # js-array-push todo list
 
-## () - new s4-splice section
-* start a new section on array splice
+## () - new section on brackets
+* start a new section on brackets with at least one basic example
+
+## () - new array concat section examples
+* new concat example on flatten
+
+## ( done 09/29/2021 ) - new s4-splice section
+* (done) start a new section on array splice
 
 ## ( done 06/17/2020 ) - first set of examples
 * (done) first set of examples done

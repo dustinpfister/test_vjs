@@ -23,5 +23,4 @@ Points.distance = function (point, a, b) {
 };
 
 var pt1 = Points.create(45, 20);
-
 console.log( Points.distance(pt1, 0, 0) );

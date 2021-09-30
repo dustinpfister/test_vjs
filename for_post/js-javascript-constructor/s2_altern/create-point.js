@@ -8,4 +8,4 @@ var createPointObj = function (x, y) {
 
 var point = createPointObj();
 
-console.log(point);
+console.log(point); // { x: 0, y: 0 }

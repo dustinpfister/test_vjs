@@ -23,7 +23,7 @@ utils.distance = function (obj, a, b) {
     var x2 = 0,
     y2 = 0,
     x1 = obj.x,
-    y2 = obj.y;
+    y1 = obj.y;
     // if disp object adjust to cx cy
     if (obj.w != undefined && obj.h != undefined) {
         x1 += obj.w / 2;
@@ -45,5 +45,5 @@ utils.distance = function (obj, a, b) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 
-var pt1 = utils.createPoint(45, 20);
-console.log(utils.distance(pt1, 0, 0));
+var pt1 = utils.createPoint(10, 15);
+console.log(utils.distance(pt1, utils.createPoint(10, 5))); // 10

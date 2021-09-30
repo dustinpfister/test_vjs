@@ -5,5 +5,5 @@ while (arr.push({}) < 10) {
     obj.n = 0;
 }
 arr.pop();
-
 console.log(arr);
+//[{n:0},{n:0},{n:0},{n:0},{n:0},{n:0},{n:0},{n:0},{n:0}]

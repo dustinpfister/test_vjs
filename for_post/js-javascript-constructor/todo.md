@@ -4,8 +4,8 @@
 * start a recursive constructor section
 
 ## () - new s2 alternatives section examples
-* have a new example that creates and returns a plain object with x and y props
-* update distance example with create point method.
+* (done) have a new example that creates and returns a plain object with x and y props
+* (done) update distance example with create point method.
 * have a create disp object example and add additional methods that will work with that
 
 ## ( done 02/27/2019 ) - first set of examples

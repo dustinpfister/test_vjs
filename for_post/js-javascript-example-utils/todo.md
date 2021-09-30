@@ -23,6 +23,9 @@
 ## () - format number example
 * have a utils.formatNumber method like the one worked out for js-array-slice
 
+## ( done 09/30/2021 ) - fixed XP system
+* (done) fixed xp system becuase of not calling deltaNext where needed
+
 ## ( done 09/05/2021 ) - utils.http
 * (done) start a utils.http that is a basic http client
 

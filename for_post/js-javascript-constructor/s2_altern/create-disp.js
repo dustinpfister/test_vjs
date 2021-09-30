@@ -45,5 +45,14 @@ utils.distance = function (obj, a, b) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 
+// points still work fine
 var pt1 = utils.createPoint(10, 15);
 console.log(utils.distance(pt1, utils.createPoint(10, 5))); // 10
+// works with disp objects
+var disp = utils.createDisp({
+        x: 10 - 16 + 10,
+        y: 15 - 16,
+        w: 32,
+        h: 32
+    });
+console.log(utils.distance(pt1, disp)); // 10

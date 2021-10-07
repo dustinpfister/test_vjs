@@ -9,7 +9,7 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
         x1 > (x2 + w2));
 };
 
-utils.deepClone = function (obj) {
+utils.deepCloneJSON = function (obj) {
     return JOSN.parse(JSON.strigify(obj));
 };
 

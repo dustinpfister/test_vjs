@@ -18,7 +18,18 @@ var sm = {
 //console.log(gridMod.get(sm.grid, 2, 2));
 //console.log(gridMod.getNeighbors(sm.grid, gridMod.get(sm.grid, 0, 0)));
 
-console.log(gridMod.getPath(sm.grid, 0, 0, 2, 2));
+console.log();
+
+//var path = gridMod.getPath(sm.grid, 0, 0, 2, 0); // ???
+var path = gridMod.getPath(sm.grid, 1, 4, 5, 0);
+
+path.forEach(function (pos) {
+    //console.log(pos);
+    var cell = gridMod.get(sm.grid, pos[0], pos[1]);
+    cell.data.fillStyle = 'lime';
+    console.log(cell);
+
+})
 
 var onSelected = function (cell, grid, x, y) {
     cell.data.fillStyle = 'red';

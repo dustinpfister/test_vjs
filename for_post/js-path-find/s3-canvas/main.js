@@ -15,6 +15,7 @@ var sm = {
 };
 
 console.log( gridMod.chunk(sm.grid) );
+console.log( gridMod.get(sm.grid, 2, 2) );
 
 var onSelected = function(cell, grid, x, y){
     cell.data.fillStyle = 'red';

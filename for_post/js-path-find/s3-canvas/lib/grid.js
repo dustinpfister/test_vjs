@@ -118,7 +118,7 @@
         return grid;
     };
     // get method
-    api.get = function (ix, y) {
+    api.get = function (grid, ix, y) {
         if (arguments.length === 1) {
             return grid.cells[ix];
         }
@@ -169,7 +169,7 @@
     };
 
     // return true if the given x and y position is in bounds
-    api.prototype.isInBounds = function (grid, x, y) {
+    api.isInBounds = function (grid, x, y) {
         return (x >= 0 && x < grid.w) && (y >= 0 && y < grid.h);
     };
 

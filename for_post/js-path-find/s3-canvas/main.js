@@ -14,11 +14,9 @@ var sm = {
     states: {}
 };
 
-//console.log(gridMod.chunk(sm.grid));
-//console.log(gridMod.get(sm.grid, 2, 2));
-//console.log(gridMod.getNeighbors(sm.grid, gridMod.get(sm.grid, 0, 0)));
-
-console.log();
+console.log(gridMod.chunk(sm.grid));
+console.log(gridMod.get(sm.grid, 2, 2));
+console.log(gridMod.getNeighbors(sm.grid, gridMod.get(sm.grid, 0, 0)));
 
 //var path = gridMod.getPath(sm.grid, 0, 0, 2, 0); // ???
 var path = gridMod.getPath(sm.grid, 1, 4, 5, 0);

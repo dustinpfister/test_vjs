@@ -189,18 +189,20 @@
         y = node.cellY,
         neighbors = [];
         if (api.isWalkable(grid, x, y - 1)) {
-
             //neighbors.push(this.nodes[y - 1][x]);
             neighbors.push(gridMod.get(grid, x, y - 1));
         }
         if (api.isWalkable(grid, x, y + 1)) {
             //neighbors.push(this.nodes[y + 1][x]);
+            neighbors.push(gridMod.get(grid, x, y + 1));
         }
         if (api.isWalkable(grid, x - 1, y)) {
             //neighbors.push(this.nodes[y][x - 1]);
+            neighbors.push(gridMod.get(grid, x - 1, y));
         }
         if (api.isWalkable(grid, x + 1, y)) {
             //neighbors.push(this.nodes[y][x + 1]);
+            neighbors.push(gridMod.get(grid, x + 1, y));
         }
         return neighbors;
     };

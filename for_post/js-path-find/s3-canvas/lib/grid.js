@@ -1,37 +1,37 @@
 (function (api) {
 
-/*
+    /*
     api.getPath = function (grid, sx, sy, ex, ey) {
-        // copy the given grid
-        var grid = Grid.fromMatrix(givenGrid.nodes),
-        path = [],
-        opened = [],
-        node;
-        // set startNode and End Node to copy of grid
-        var startNode = grid.nodes[sy][sx];
-        endNode = grid.nodes[ey][ex];
-        // push start Node to open list
-        opened.push(startNode);
-        startNode.opened = true;
-        startNode.weight = 0;
-        // start walking
-        while (opened.length > 0) {
-            // pop out next Node from open list
-            node = opened.pop();
-            node.closed = true;
-            // if the node is the end node
-            if (node === endNode) {
-                return buildPath(node);
-            }
-            // loop current neighbors
-            forNeighbors(grid, node, endNode, open);
-            // sort the list of nodes be weight value to end node
-            sortOpen(open);
-        }
-        // return an empty array if we get here (can not get to end node)
-        return [];
+    // copy the given grid
+    var grid = Grid.fromMatrix(givenGrid.nodes),
+    path = [],
+    opened = [],
+    node;
+    // set startNode and End Node to copy of grid
+    var startNode = grid.nodes[sy][sx];
+    endNode = grid.nodes[ey][ex];
+    // push start Node to open list
+    opened.push(startNode);
+    startNode.opened = true;
+    startNode.weight = 0;
+    // start walking
+    while (opened.length > 0) {
+    // pop out next Node from open list
+    node = opened.pop();
+    node.closed = true;
+    // if the node is the end node
+    if (node === endNode) {
+    return buildPath(node);
+    }
+    // loop current neighbors
+    forNeighbors(grid, node, endNode, open);
+    // sort the list of nodes be weight value to end node
+    sortOpen(open);
+    }
+    // return an empty array if we get here (can not get to end node)
+    return [];
     };
-*/
+     */
 
     // create a grid object
     api.create = function (opt) {
@@ -94,6 +94,18 @@
                 grid.cellSelected = null;
             }
         }
+    };
+    // get a chunk form of a grid
+    api.chunk = function (grid) {
+        var arr = [],
+        row,
+        i = 0;
+        while (i < grid.cells.length) {
+            row = grid.cells.slice(i, i + grid.w);
+            arr.push(row);
+            i += grid.w;
+        }
+        return arr;
     };
 }
     (this['gridMod'] = {}))

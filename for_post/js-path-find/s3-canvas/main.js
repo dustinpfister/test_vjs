@@ -14,6 +14,8 @@ var sm = {
     states: {}
 };
 
+console.log( gridMod.chunk(sm.grid) );
+
 var onSelected = function(cell, grid, x, y){
     cell.data.fillStyle = 'red';
 };

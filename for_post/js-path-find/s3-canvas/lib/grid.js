@@ -1,8 +1,8 @@
 (function (api) {
 
     // sort a list of open nodes
-    var sortOpen = function (open) {
-        return open.sort(function (nodeA, nodeB) {
+    var sortOpen = function (opened) {
+        return opened.sort(function (nodeA, nodeB) {
             if (nodeA.weight < nodeB.weight) {
                 return 1;
             }

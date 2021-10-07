@@ -106,6 +106,7 @@
                 i: i, // store index for this cell
                 cellX: i % grid.w, // grid index pos values as uppercase X, and Y
                 cellY: Math.floor(i / grid.w),
+                walkable: true,
                 data: {}
                 // user data object
             };
@@ -173,29 +174,33 @@
         return (x >= 0 && x < grid.w) && (y >= 0 && y < grid.h);
     };
 
-    api.isWalkable = function (x, y) {
-        if (grid.isInBounds(x, y)) {
-            return grid.nodes[y][x].walkable;
+    api.isWalkable = function (grid, x, y) {
+
+        if (api.isInBounds(grid, x, y)) {
+
+            return api.get(grid, x, y).walkable; //grid.nodes[y][x].walkable;
         }
         return false;
     };
 
     // get the four Neighbors of a node
     api.getNeighbors = function (grid, node) {
-        var x = node.x,
-        y = node.y,
+        var x = node.cellX,
+        y = node.cellY,
         neighbors = [];
-        if (this.isWalkable(x, y - 1)) {
-            neighbors.push(this.nodes[y - 1][x]);
+        if (api.isWalkable(grid, x, y - 1)) {
+
+            //neighbors.push(this.nodes[y - 1][x]);
+            neighbors.push(gridMod.get(grid, x, y - 1));
         }
-        if (this.isWalkable(x, y + 1)) {
-            neighbors.push(this.nodes[y + 1][x]);
+        if (api.isWalkable(grid, x, y + 1)) {
+            //neighbors.push(this.nodes[y + 1][x]);
         }
-        if (this.isWalkable(x - 1, y)) {
-            neighbors.push(this.nodes[y][x - 1]);
+        if (api.isWalkable(grid, x - 1, y)) {
+            //neighbors.push(this.nodes[y][x - 1]);
         }
-        if (this.isWalkable(x + 1, y)) {
-            neighbors.push(this.nodes[y][x + 1]);
+        if (api.isWalkable(grid, x + 1, y)) {
+            //neighbors.push(this.nodes[y][x + 1]);
         }
         return neighbors;
     };

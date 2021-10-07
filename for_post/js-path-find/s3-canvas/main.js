@@ -14,20 +14,21 @@ var sm = {
     states: {}
 };
 
-console.log( gridMod.chunk(sm.grid) );
-console.log( gridMod.get(sm.grid, 2, 2) );
+console.log(gridMod.chunk(sm.grid));
+console.log(gridMod.get(sm.grid, 2, 2));
 
-var onSelected = function(cell, grid, x, y){
+console.log(gridMod.getNeighbors(sm.grid, gridMod.get(sm.grid, 2, 2)));
+
+var onSelected = function (cell, grid, x, y) {
     cell.data.fillStyle = 'red';
 };
-var onUnselected = function(cell, grid, x, y){
+var onUnselected = function (cell, grid, x, y) {
     cell.data.fillStyle = 'white';
 };
 
 // game state
 sm.states.game = {
-    update: function (sm, secs) {
-    },
+    update: function (sm, secs) {},
     draw: function (sm, ctx, canvas) {
         draw.background(sm, ctx, canvas);
         draw.grid(sm.grid, ctx, canvas);

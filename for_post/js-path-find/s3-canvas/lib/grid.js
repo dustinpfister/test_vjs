@@ -15,7 +15,7 @@
 
     // set weight for a node
     var setWeight = function (endNode, neighbor) {
-        return Math.sqrt(Math.pow(endNode.x - neighbor.x, 2) + Math.pow(endNode.y - neighbor.y, 2))
+        return Math.sqrt(Math.pow(endNode.cellX - neighbor.cellY, 2) + Math.pow(endNode.cellY - neighbor.cellY, 2))
     };
 
     // build a path based an parent property
@@ -31,8 +31,9 @@
     };
 
     // for Each Neighbor for the given grid, node, and open list
-    var forNeighbors = function (grid, node, endNode, open) {
-        var neighbors = grid.getNeighbors(node);
+    var forNeighbors = function (grid, node, endNode, opened) {
+        //var neighbors = grid.getNeighbors(node);
+		var neighbors = gridMod.getNeighbors(grid, node);
         var ni = 0,
         nl = neighbors.length;
         while (ni < nl) {
@@ -47,7 +48,7 @@
             // if the node is not opened
             if (!neighbor.opened) {
                 neighbor.parent = node;
-                open.push(neighbor);
+                opened.push(neighbor);
                 neighbor.opened = true;
             }
             ni += 1;
@@ -56,8 +57,7 @@
 
     api.getPath = function (grid, sx, sy, ex, ey) {
         // copy the given grid
-        //var grid = Grid.fromMatrix(givenGrid.nodes),
-        var
+        var grid = Grid.fromMatrix(givenGrid.nodes),
         path = [],
         opened = [],
         node;
@@ -107,6 +107,7 @@
                 cellX: i % grid.w, // grid index pos values as uppercase X, and Y
                 cellY: Math.floor(i / grid.w),
                 walkable: true,
+                closed: false,
                 data: {}
                 // user data object
             };
@@ -156,6 +157,7 @@
             }
         }
     };
+
     // get a chunk form of a grid
     api.chunk = function (grid) {
         var arr = [],
@@ -174,10 +176,9 @@
         return (x >= 0 && x < grid.w) && (y >= 0 && y < grid.h);
     };
 
+    // is the given cell location walkable?
     api.isWalkable = function (grid, x, y) {
-
         if (api.isInBounds(grid, x, y)) {
-
             return api.get(grid, x, y).walkable; //grid.nodes[y][x].walkable;
         }
         return false;

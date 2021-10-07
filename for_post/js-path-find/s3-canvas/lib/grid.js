@@ -22,18 +22,17 @@
     var buildPath = function (node) {
         var path = [];
         while (node.parent) {
-            path.push([node.x, node.y]);
+            path.push([node.cellX, node.cellY]);
             node = node.parent;
         }
-        path.push([node.x, node.y]);
+        path.push([node.cellX, node.cellY]);
         return path;
-
     };
 
     // for Each Neighbor for the given grid, node, and open list
     var forNeighbors = function (grid, node, endNode, opened) {
         //var neighbors = grid.getNeighbors(node);
-		var neighbors = gridMod.getNeighbors(grid, node);
+        var neighbors = gridMod.getNeighbors(grid, node);
         var ni = 0,
         nl = neighbors.length;
         while (ni < nl) {
@@ -57,13 +56,16 @@
 
     api.getPath = function (grid, sx, sy, ex, ey) {
         // copy the given grid
-        var grid = Grid.fromMatrix(givenGrid.nodes),
+        //var grid = Grid.fromMatrix(givenGrid.nodes),
+        var grid = utils.deepCloneJSON(grid),
+        nodes = api.chunk(grid),
         path = [],
         opened = [],
         node;
         // set startNode and End Node to copy of grid
-        var startNode = grid.nodes[sy][sx];
-        endNode = grid.nodes[ey][ex];
+        var startNode = nodes[sy][sx];
+        endNode = nodes[ey][ex];
+		console.log(startNode, endNode);
         // push start Node to open list
         opened.push(startNode);
         startNode.opened = true;
@@ -78,9 +80,9 @@
                 return buildPath(node);
             }
             // loop current neighbors
-            forNeighbors(grid, node, endNode, open);
+            forNeighbors(grid, node, endNode, opened);
             // sort the list of nodes be weight value to end node
-            sortOpen(open);
+            sortOpen(opened);
         }
         // return an empty array if we get here (can not get to end node)
         return [];
@@ -119,6 +121,7 @@
         }
         return grid;
     };
+
     // get method
     api.get = function (grid, ix, y) {
         if (arguments.length === 1) {
@@ -126,6 +129,7 @@
         }
         return grid.cells[y * grid.w + ix];
     };
+
     // get a cell by the given pixel position
     api.getCellByPixlePos = function (grid, x, y) {
         var cellX = Math.floor((x - grid.xOffset) / grid.cellSize),
@@ -136,6 +140,7 @@
         }
         return null;
     };
+
     // selected cell check
     api.selectedCheck = function (grid, x, y, onSelect, onUnselect) {
         var cell = api.getCellByPixlePos(grid, x, y);

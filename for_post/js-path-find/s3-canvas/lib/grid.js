@@ -117,6 +117,13 @@
         }
         return grid;
     };
+    // get method
+    api.get = function (ix, y) {
+        if (arguments.length === 1) {
+            return grid.cells[ix];
+        }
+        return grid.cells[y * grid.w + ix];
+    };
     // get a cell by the given pixel position
     api.getCellByPixlePos = function (grid, x, y) {
         var cellX = Math.floor((x - grid.xOffset) / grid.cellSize),
@@ -159,6 +166,38 @@
             i += grid.w;
         }
         return arr;
+    };
+
+    // return true if the given x and y position is in bounds
+    api.prototype.isInBounds = function (grid, x, y) {
+        return (x >= 0 && x < grid.w) && (y >= 0 && y < grid.h);
+    };
+
+    api.isWalkable = function (x, y) {
+        if (grid.isInBounds(x, y)) {
+            return grid.nodes[y][x].walkable;
+        }
+        return false;
+    };
+
+    // get the four Neighbors of a node
+    api.getNeighbors = function (grid, node) {
+        var x = node.x,
+        y = node.y,
+        neighbors = [];
+        if (this.isWalkable(x, y - 1)) {
+            neighbors.push(this.nodes[y - 1][x]);
+        }
+        if (this.isWalkable(x, y + 1)) {
+            neighbors.push(this.nodes[y + 1][x]);
+        }
+        if (this.isWalkable(x - 1, y)) {
+            neighbors.push(this.nodes[y][x - 1]);
+        }
+        if (this.isWalkable(x + 1, y)) {
+            neighbors.push(this.nodes[y][x + 1]);
+        }
+        return neighbors;
     };
 }
     (this['gridMod'] = {}))

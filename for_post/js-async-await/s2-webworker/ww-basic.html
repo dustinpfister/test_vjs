@@ -6,6 +6,12 @@
         <textarea id="out" cols="60" rows="15"></textarea>
         <script>
 var out = document.getElementById('out');
+
+if (window.Worker) {
+    var myWorker = new Worker('ww-basic.js');
+}else{
+    out.value += 'Web Woker is not supported.\n'
+}
         </script>
     </body>
 </html>

@@ -4,10 +4,9 @@
 ### () - new s2-webworker example using async
 * I will want to start at least one example called ww-async
 
-### () - more s1-basics examples
+### ( done 10/10/2021 ) - more s1-basics examples
 * (done) have a very basic hello-world-async example
 * (done) have a very basic hello-world-promise example
-
 
 ### ( done 10/10/2021 ) - split section to into a web worker and child process section
 * (done) have an s2 section just for web worker

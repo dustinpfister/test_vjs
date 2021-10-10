@@ -7,3 +7,6 @@
 * (done) have a ww-basic.js file for the web worked file to be used for ww-basic
 * (done) looks like I will need a simple server script for the s2 folder
 * have an actual working web worker example
+```
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+```

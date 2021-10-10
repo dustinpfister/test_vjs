@@ -5,10 +5,16 @@
     <body>
         <textarea id="out" cols="60" rows="15"></textarea>
         <script>
-var out = document.getElementById('out');
-
+var out = document.getElementById('out'),
+workerBasic;
+// feature test
 if (window.Worker) {
-    var myWorker = new Worker('ww-basic.js');
+    workerBasic = new Worker('ww-basic.js');
+    workerBasic.onmessage = function(e) {
+       out.value += e.data + '\n';
+       console.log('Message received from worker');
+    };
+    workerBasic.postMessage(['foo']);
 }else{
     out.value += 'Web Woker is not supported.\n'
 }

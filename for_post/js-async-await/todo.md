@@ -5,8 +5,9 @@
 * I will want to start at least one example called ww-async
 
 ### () - more s1-basics examples
-* have a more simple set of hello world style functions comparing a plain function expression ans async functions return values
-* have an example using the setTimeout method and show how it can also be used as a way to delay calling a function
+* (done) have a very basic hello-world-async example
+* (done) have a very basic hello-world-promise example
+
 
 ### ( done 10/10/2021 ) - split section to into a web worker and child process section
 * (done) have an s2 section just for web worker

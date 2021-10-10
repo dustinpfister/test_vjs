@@ -1,5 +1,9 @@
 # js-async-await
 
+### () - more s1-basics examples
+* have a more simple set of hello world sytme functions comparing a plain function expression ans async functions return values
+* have an example using the settimeout method and show how it can also be used as a way to delay calling a function
+
 ### () - new s2-webworker example using async
 * I will want to start at least one example called ww-async
 

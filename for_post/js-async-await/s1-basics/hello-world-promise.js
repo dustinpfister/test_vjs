@@ -1,7 +1,7 @@
 var helloWorld = function () {
     return 'Hello World';
 };
-var helloWorldAsync = async function () {
+var helloWorldPromise = function () {
     return new Promise(function (resolve, reject) {
         setTimeout(() => {
             resolve('Hello World');
@@ -10,4 +10,4 @@ var helloWorldAsync = async function () {
 };
 
 console.log(typeof helloWorld()); // 'string'
-console.log(typeof helloWorldAsync()); // 'object'
+console.log(typeof helloWorldPromise()); // 'object'

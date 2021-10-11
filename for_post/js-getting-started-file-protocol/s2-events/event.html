@@ -4,21 +4,21 @@
     </head>
     <body>
         <div>
-            <p>count: <span id="disp_count"></span></p>
+            <p>count: <span id="disp_count">0</span></p>
             <input id="button_step" type="button" value="step">
         </div>
         <script>
 var count = 0,
-disp_count = document.getElementById('disp_count');
-var render = function(){
-    disp_count.innerText = count;
-};
+el_disp = document.getElementById('disp_count'),
+el_input = document.getElementById('button_step');
+// event hander
 var step = function(){
     count += 1;
-    render();
+    disp_count.innerText = count;
 };
-document.getElementById('button_step').addEventListener('click', step);
-render();
+// attaching a event hander to the 'click' event 
+// for the input element
+el_input.addEventListener('click', step);
         </script>
     </body>
 </html>

@@ -7,6 +7,7 @@
 * (done) have a new example that involves an example of a simple expression
 * (done) have a querySelector example
 * (done) arrays example
+* create element example
 * have an example that involves the use of a function
 * loop function example
 

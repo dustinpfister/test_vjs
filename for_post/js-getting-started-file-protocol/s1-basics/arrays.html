@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+        <style>
+p{
+  background: rgba(255,0,0,0.2);
+  padding:10px;
+  text-align: center;
+}
+        </style>
+    </head>
+    <body>
+        <div class="app"></div>
+        <div></div>
+        <script>
+var div = document.querySelector('.app');
+
+var arr = ['one', 'two', 'three'];
+
+arr.forEach(function(str){
+    var el = document.createElement('p');
+    el.innerText = str;
+    div.appendChild(el);
+});
+
+        </script>
+    </body>
+</html>

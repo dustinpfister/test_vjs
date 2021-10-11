@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <div class="app"></div>
+        <div></div>
+        <script>
+var div = document.querySelector('.app'),
+c = 0,
+ms = 1000 / 8;
+// a function with a return value
+var loop = function(a, b){
+    setTimeout(loop, ms)
+    c += 1;
+    div.innerText = c;
+};
+loop();
+        </script>
+    </body>
+</html>

@@ -4,7 +4,7 @@
 * start a new section on canvas elements
 
 ## () - new s1-basic examples
-* have a new example that involves an example of a simple expression
+* (done) have a new example that involves an example of a simple expression
 * have a querySelector example
 * have an example that involves the use of a function
 

@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>web storage</title>
+    </head>
+    <body>
+        <input id="the-text" type="text" placeholder="foo">
+        <script>
+var ws = {};
+// get an item with local storage
+ws.get = function(key){
+  var mess = localStorage.getItem(key);
+  if(mess){
+      return mess;
+  }else{
+      return '';
+  }
+};
+// set an item with local storage
+ws.set = function(key, value){
+    localStorage.setItem(key, value);
+};
+
+// DEMO
+var text = document.getElementById('the-text'),
+setMessHandler = function(e){
+   ws.set('mess', e.target.value);
+};
+text.addEventListener('change', setMessHandler);
+text.addEventListener('keyup', setMessHandler);
+var storeText = ws.get('mess');
+if(storeText != ''){
+   text.value = storeText;
+}
+        </script>
+    </body>
+</html>

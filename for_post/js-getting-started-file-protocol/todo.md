@@ -3,6 +3,11 @@
 ## () - more simple examples
 * create element example
 
+## () - local storage
+* local storage seems to still work via file protocol
+* what is weird is it seems to continue to work event when I disable cookies/local storage
+* see post on js-web-storage
+
 ## () - new section on canvas elements
 * start a new section on canvas elements
 

@@ -24,7 +24,7 @@ var test = function () {
         var pass = result.value === 'foo';
         console.log('Got an object and value test pass is: ' + pass);
         // in any case remove the item
-        localStorage.removeItem('test');
+        localStorage.removeItem('ws-test');
         // return result of pass boolean if all is well it should be true
         return pass;
     }

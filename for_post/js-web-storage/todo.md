@@ -9,8 +9,8 @@
 * the value that is saved is an object with a slots property that is an array of save states
 * the rest of the object can be used to store global app settings.
 
-## () - feature testing for local storage
-* have a section for feature testing for local storage and displaying info for when it is not working
+## ( done 10/12/2021 ) - feature testing for local storage
+* (done) have a section for feature testing for local storage and displaying info for when it is not working
 ```
 https://www.reddit.com/r/webdev/comments/d1erop/psa_if_you_are_using_localstorage_or/
 https://superuser.com/questions/298922/chrome-chromium-disable-html5-localstorage-and-databases-for-all-webpages-or

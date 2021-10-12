@@ -42,7 +42,7 @@
         if (test()) {
             return true;
         }
-        opt.onDisabled.call(opt, opt, key);
+        opt.onDisabled.call(opt, opt, 'ws-test');
         return false;
 
     };

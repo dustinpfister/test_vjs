@@ -7,17 +7,11 @@
         <script src="web-storage.js"></script>
         <script>
 var out = document.getElementById('out');
-out.innerText = 'We are good';
-var opt = {
-    onDisabled : function(){
-        console.log('web storage api is disabled');
-        out.innerText = 'web api is disabled';
-    }
-};
-ws.set('ws-feature-test-demo', {}, opt);
-
-var obj = ws.get('ws-feature-test-demo', {}, opt);
-console.log('hello');
+if(ws.test()){
+    out.innerText = 'We are good';
+}else{
+    out.innerText = 'local storage is not working';
+}
         </script>
     </body>
 </html>

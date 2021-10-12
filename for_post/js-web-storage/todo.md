@@ -1,7 +1,7 @@
 # js-web-storage todo list
 
 ## () - feature testing for local storage
-* have a section for feature testing for local storage and displaying info for when it is not wokring
+* have a section for feature testing for local storage and displaying info for when it is not working
 ```
 https://www.reddit.com/r/webdev/comments/d1erop/psa_if_you_are_using_localstorage_or/
 ```

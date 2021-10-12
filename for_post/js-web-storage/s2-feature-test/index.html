@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>web storage</title>
+    </head>
+    <body>
+        <input id="the-text" type="text" placeholder="foo">
+        <script src="web-storage"></script>
+        <script>
+var opt = {
+    onDisabled : function(){
+        console.log('web api is disabled');
+    }
+};
+ws.get('ws-feature-test-demo', opt)
+        </script>
+    </body>
+</html>

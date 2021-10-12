@@ -3,11 +3,21 @@
 ## () - session storage section
 * have at least one example on session storage
 
+## () - using filereader as a fall back
+* have a section where file reader is used as a fallback
+
 ## () - use python as a fall back?
 * there may be a way to use python as a fall back if possible
 
 ## () - Canvas trick as fall back?
 * there is a way to use canvas elements as a way to get and set a state they way to do it is to make sure the image generated is cashed.
+
+## () - text area element as fall back
+* start a section where a text area element is used as a fall back for local storage
+* have a system where a text area element can be appended to a page
+* the text area element value is updated with each call of ws.set
+* changing the state of the text area will trigger a 'validation' process
+* of the validation process checks out that will be loaded as a state for the project
 
 ## () - Save Slot system example
 * have a section that is going beyond just get and set methods by having a standard for save slots

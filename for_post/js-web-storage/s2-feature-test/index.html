@@ -3,15 +3,21 @@
         <title>web storage</title>
     </head>
     <body>
-        <input id="the-text" type="text" placeholder="foo">
-        <script src="web-storage"></script>
+        <div id="out"></div>
+        <script src="web-storage.js"></script>
         <script>
+var out = document.getElementById('out');
+out.innerText = 'We are good';
 var opt = {
     onDisabled : function(){
-        console.log('web api is disabled');
+        console.log('web storage api is disabled');
+        out.innerText = 'web api is disabled';
     }
 };
-ws.get('ws-feature-test-demo', opt)
+ws.set('ws-feature-test-demo', {}, opt);
+
+var obj = ws.get('ws-feature-test-demo', {}, opt);
+console.log('hello');
         </script>
     </body>
 </html>

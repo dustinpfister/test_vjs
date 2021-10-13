@@ -10,7 +10,7 @@
 * The text area system should still be an option
 * make use of localStorage as an option also
 
-### (  ) - New section on using a text area element system
+### ( done 10/13/2021 ) - New section on using a text area element system
 * (done) start a text area system example folder
 * (done) the system will involve a text area element
 * (done) I will want a storage.js file that will be a module for this kind of system

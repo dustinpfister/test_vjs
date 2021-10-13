@@ -22,5 +22,14 @@
         return storage;
     };
 
+    // save to the storage
+    StorageMod.save = function (storage, state) {
+        var textArea = storage.el.querySelector('textarea');
+        textArea.value = JSON.stringify(state);
+    };
+
+    // load from the storage
+    StorageMod.load = function (storage) {};
+
 }
     (this['StorageMod'] = {}));

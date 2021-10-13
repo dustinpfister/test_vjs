@@ -10,7 +10,10 @@ var storage = StorageMod.create({
     container: '#ui_storage',
     cols: 50, rows: 10
 });
-console.log(storage);
+var gameSave = {
+    count: 0
+};
+StorageMod.save(storage, gameSave);
         </script>
     </body>
 </html>

@@ -17,7 +17,13 @@ gameMod.create = function(){
     };
 };
 
+var draw = function(el, game){
+    el.innerText = 'money: ' + game.money;
+};
+
+var disp_game = document.querySelector('#disp_game');
 var game = {};
+
 // setting up a storage object
 var storage = StorageMod.create({
     container: '#ui_storage',
@@ -27,12 +33,12 @@ var storage = StorageMod.create({
     },
     onLoadState : function(stroage, state){
         game = state;
+        draw(disp_game, game);
     }
 });
 
-var disp_game = document.querySelector('#disp_game');
+draw(disp_game, game);
 
-disp_game.innerText = 'money: ' + game.money;
 
         </script>
     </body>

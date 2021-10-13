@@ -11,6 +11,10 @@
         textArea.cols = opt.cols || 60;
         textArea.rows = opt.rows || 15;
         opt.container.appendChild(textArea);
+        var loadButton = document.createElement('input');
+        loadButton.type = 'button';
+        loadButton.value = 'Load';
+        opt.container.appendChild(loadButton);
         return opt.container;
     };
 
@@ -19,7 +23,9 @@
         var storage = {};
         // create the UI for the given container or body
         storage.el = createUI(opt);
-        storage.onNoSaveFound = opt.onNoSaveFound || function () {};
+        storage.onNoSaveFound = opt.onNoSaveFound || function (storage) {};
+        storage.onLoadState = opt.onLoadState || function (storage, state) {};
+		StorageMod.load(storage);
         return storage;
     };
 
@@ -44,6 +50,8 @@
         // save what is loaded, OR CREATED in the event of an error
         // in any case this should update things like the text area element
         StorageMod.save(storage, state);
+        // call on load state callback
+        storage.onLoadState(storage, state);
         return state;
     };
 

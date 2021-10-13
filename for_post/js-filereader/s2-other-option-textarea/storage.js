@@ -19,6 +19,7 @@
         var storage = {};
         // create the UI for the given container or body
         storage.el = createUI(opt);
+        storage.onNoSaveFound = opt.onNoSaveFound || function () {};
         return storage;
     };
 
@@ -31,10 +32,15 @@
     // load from the storage
     StorageMod.load = function (storage) {
         var textArea = storage.el.querySelector('textarea');
-        var state = {};
+        var state = null;
         try {
             state = JSON.parse(textArea.value);
-        } catch (e) {}
+        } catch (e) {
+            console.log(e.message)
+            state = storage.onNoSaveFound.call(storage, storage);
+        }
+        // save what is loaded, this should update things like the text area element
+        StorageMod.save(storage, state);
         return state;
     };
 

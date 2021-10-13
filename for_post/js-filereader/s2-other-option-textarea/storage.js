@@ -6,7 +6,10 @@
         if (typeof opt.container === 'string') {
             opt.container = document.querySelector(opt.container);
         }
-        console.log(opt);
+        var textArea = document.createElement('textarea');
+        textArea.cols = 60;
+        textArea.rows = 15;
+        opt.container.appendChild(textArea);
     }
 
 }

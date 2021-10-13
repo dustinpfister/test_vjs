@@ -13,7 +13,10 @@ var storage = StorageMod.create({
 var gameSave = {
     count: 0
 };
+console.log( StorageMod.load(storage) );
 StorageMod.save(storage, gameSave);
+
+console.log( StorageMod.load(storage) );
         </script>
     </body>
 </html>

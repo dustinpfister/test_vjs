@@ -33,13 +33,16 @@
     StorageMod.load = function (storage) {
         var textArea = storage.el.querySelector('textarea');
         var state = null;
+        // try to load what should be json
         try {
             state = JSON.parse(textArea.value);
         } catch (e) {
-            console.log(e.message)
+            // if there is an error loading json call the no save found call back
+            // this method should return a new state
             state = storage.onNoSaveFound.call(storage, storage);
         }
-        // save what is loaded, this should update things like the text area element
+        // save what is loaded, OR CREATED in the event of an error
+        // in any case this should update things like the text area element
         StorageMod.save(storage, state);
         return state;
     };

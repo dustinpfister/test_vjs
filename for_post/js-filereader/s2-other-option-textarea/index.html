@@ -6,12 +6,14 @@
         <div id="ui_storage"></div>
         <script src="storage.js"></script>
         <script>
+// a crude game module
 var gameMod = {};
 gameMod.create = function(){
     return {
         money : 100
     };
 };
+// setting up a storage object
 var storage = StorageMod.create({
     container: '#ui_storage',
     cols: 50, rows: 10,
@@ -19,10 +21,8 @@ var storage = StorageMod.create({
         return gameMod.create();
     }
 });
-var gameSave = {
-    count: 0
-};
-console.log( StorageMod.load(storage) );
+
+var game = StorageMod.load(storage);
 
         </script>
     </body>

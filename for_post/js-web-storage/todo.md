@@ -12,13 +12,6 @@
 ## () - Canvas trick as fall back?
 * there is a way to use canvas elements as a way to get and set a state they way to do it is to make sure the image generated is cashed.
 
-## () - text area element as fall back
-* start a section where a text area element is used as a fall back for local storage
-* have a system where a text area element can be appended to a page
-* the text area element value is updated with each call of ws.set
-* changing the state of the text area will trigger a 'validation' process
-* of the validation process checks out that will be loaded as a state for the project
-
 ## () - Save Slot system example
 * have a section that is going beyond just get and set methods by having a standard for save slots
 * have a system where an app name is used as part of the key
@@ -33,6 +26,15 @@
 
 ## () - new s2-feature-test demo
 * have a new s2 feature test demo that uses the get and set methods of the ws module
+
+## () - text area element as fall back
+* maybe start out with what I made for js-filereader
+* start a section where a text area element is used as a fall back for local storage
+* have a system where a text area element can be appended to a page
+* the text area element value is updated with each call of ws.set
+* changing the state of the text area will trigger a 'validation' process
+* of the validation process checks out that will be loaded as a state for the project
+
 
 ## ( done 10/12/2021 ) - feature testing for local storage
 * (done) have a section for feature testing for local storage and displaying info for when it is not working

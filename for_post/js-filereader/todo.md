@@ -1,4 +1,4 @@
-## FIle READER
+# js-filereader todo list
 
 https://developer.mozilla.org/en-US/docs/Web/API/FileReader
 

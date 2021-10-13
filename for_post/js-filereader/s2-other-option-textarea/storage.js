@@ -1,7 +1,7 @@
 (function (StorageMod) {
 
     // create the UI
-    var createUI = function (opt) {
+    var createUI = function (opt, storage) {
         opt = opt || {};
         opt.container = opt.container || document.body;
         if (typeof opt.container === 'string') {
@@ -14,6 +14,9 @@
         var loadButton = document.createElement('input');
         loadButton.type = 'button';
         loadButton.value = 'Load';
+        loadButton.addEventListener('click', function(e){
+            StorageMod.load(storage);
+        });
         opt.container.appendChild(loadButton);
         return opt.container;
     };
@@ -21,11 +24,11 @@
     StorageMod.create = function (opt) {
         opt = opt || {};
         var storage = {};
-        // create the UI for the given container or body
-        storage.el = createUI(opt);
         storage.onNoSaveFound = opt.onNoSaveFound || function (storage) {};
         storage.onLoadState = opt.onLoadState || function (storage, state) {};
-		StorageMod.load(storage);
+        // create the UI for the given container or body
+        storage.el = createUI(opt, storage);
+        StorageMod.load(storage);
         return storage;
     };
 

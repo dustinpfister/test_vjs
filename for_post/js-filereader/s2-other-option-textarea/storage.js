@@ -7,8 +7,8 @@
             opt.container = document.querySelector(opt.container);
         }
         var textArea = document.createElement('textarea');
-        textArea.cols = 60;
-        textArea.rows = 15;
+        textArea.cols = opt.cols || 60;
+        textArea.rows = opt.rows || 15;
         opt.container.appendChild(textArea);
     }
 

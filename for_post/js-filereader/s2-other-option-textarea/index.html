@@ -1,32 +1,14 @@
-<input type = "file" id = "input_files">
-<div id = "out"></div>
-<script>
-
-var loadJSON = function (text) {
-    try {
-        var obj = JSON.parse(text);
-        obj.message = 'loaded file';
-        return obj;
-    } catch (e) {
-        return {
-            x: 0,
-            y: 0,
-            message: e.message
-        };
-    }
-};
-
-var el_files = document.getElementById('input_files');
-el_out = document.getElementById('out'),
-el_files.addEventListener('change', function (e) {
-    var files = this.files;
-    console.log(files);
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        var obj = loadJSON(e.target.result);
-        //console.log(obj);
-        out.innerText = 'state: ' + obj.x + ',' + obj.y + ' : ' + obj.message
-    };
-    reader.readAsText(files[0]);
+<html>
+    <head>
+        <title> Storage example </title>
+    </head>
+    <body>
+        <div id="ui_storage"></div>
+        <script src="storage.js"></script>
+        <script>
+StorageMod.createUI({
+    container: '#ui_storage'
 });
-</script>
+        </script>
+    </body>
+</html>

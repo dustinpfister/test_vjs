@@ -1,5 +1,6 @@
 (function (StorageMod) {
 
+    // create the UI
     var createUI = function (opt) {
         opt = opt || {};
         opt.container = opt.container || document.body;
@@ -10,11 +11,15 @@
         textArea.cols = opt.cols || 60;
         textArea.rows = opt.rows || 15;
         opt.container.appendChild(textArea);
+        return opt.container;
     };
 
     StorageMod.create = function (opt) {
         opt = opt || {};
-        createUI(opt);
+        var storage = {};
+        // create the UI for the given container or body
+        storage.el = createUI(opt);
+        return storage;
     };
 
 }

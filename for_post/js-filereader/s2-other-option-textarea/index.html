@@ -4,6 +4,9 @@
     </head>
     <body>
         <div id="ui_storage"></div>
+        <br><br>
+        <h3>Game State:</h3>
+        <div id="disp_game" style="padding:10px;background:gray;"></div>
         <script src="storage.js"></script>
         <script>
 // a crude game module
@@ -22,7 +25,9 @@ var storage = StorageMod.create({
     }
 });
 
+var disp_game = document.querySelector('#disp_game');
 var game = StorageMod.load(storage);
+disp_game.innerText = 'money: ' + game.money;
 
         </script>
     </body>

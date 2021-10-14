@@ -2,7 +2,8 @@
 var opt = {
     style: 'currency',
     currency: 'USD',
-    maximumFractionDigits: 2
+    minimumFractionDigits: 3,  // default should be 2
+    maximumFractionDigits: 4   // default should be 2
 };
 var formater = new Intl.NumberFormat('en-us', opt);
 

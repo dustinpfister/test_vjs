@@ -1,5 +1,6 @@
-// getFooIndex method using String.match that will
-// return -1 when null is returned
+// getFooIndices method using String.match that will
+// return [] when null is returned, else one or more index
+// values in an array for each match if global
 let getFooIndices = (str, patt) => {
     let m = str.match(patt);
     // if not null return index

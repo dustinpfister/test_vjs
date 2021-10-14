@@ -7,5 +7,7 @@
 * have a format money example using the Intl.NumberFormat
 
 ### () - More basic examples
-* have an example that involves getting random elements from an array
-* have an example that returns random points in an area
+* (done) have an example that involves getting random elements from an array Math.floor
+* (done) have an example that returns random points in an area Math.floor
+* have a random bit method example that will use Math.round
+* have a set price method example using Math.ceil

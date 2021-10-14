@@ -8,4 +8,6 @@ var opt = {
 var formater = new Intl.NumberFormat('en-us', opt);
 
 console.log(formater.format(1234.23456));
+//$1,234.2346
 console.log(formater.format(123));
+//$123.000

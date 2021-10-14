@@ -1,10 +1,7 @@
-let str1 = 'This string has a foobar here',
-str2 = 'this string does not have that',
-
 // getFooIndex method using String.match that will
 // return -1 when null is returned
-getFooIndex = (str) => {
-    let m = str.match(/foo/);
+let getFooIndex = (str, patt) => {
+    let m = str.match(patt);
     // if not null return index
     if (m) {
         return m.index;
@@ -13,5 +10,7 @@ getFooIndex = (str) => {
     return -1;
 };
 
-console.log(getFooIndex(str1)); // 18
-console.log(getFooIndex(str2)); // -1
+let str1 = 'This string has a foobar here';
+
+console.log(getFooIndex(str1, /foo/)); // 18
+console.log(getFooIndex(str1, /baz/)); // -1

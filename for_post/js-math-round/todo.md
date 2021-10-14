@@ -3,8 +3,8 @@
 ### () - First example using Math.round
 * have a simple client side project example involving rounding
 
-### () - New Section on Intl.NumberFormat
-* have a format money example using the Intl.NumberFormat
+### ( done 10/14/2021 ) - New Section on Intl.NumberFormat
+* (done) have a format money example using the Intl.NumberFormat
 
 ### ( done 10/14/2021 ) - Object.is
 * (done) use Object.is in the neg zero example

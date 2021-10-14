@@ -9,5 +9,5 @@
 ### () - More basic examples
 * (done) have an example that involves getting random elements from an array Math.floor
 * (done) have an example that returns random points in an area Math.floor
-* have a random bit method example that will use Math.round
+* (done) have a random bit method example that will use Math.round
 * have a set price method example using Math.ceil

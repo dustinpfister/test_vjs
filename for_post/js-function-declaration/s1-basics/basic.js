@@ -1,3 +1,4 @@
+// simple function declaration
 function foo() {
     return 'bar';
 };

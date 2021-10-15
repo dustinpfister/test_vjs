@@ -2,11 +2,10 @@
 function foo() {
     return 'bar';
 };
-
 console.log( foo() ); // 'bar'
 
-let foo = function() {
-    return 'bar';
+// simple function expression
+let bar = function() {
+    return 'foo';
 };
- 
-console.log( foo() ); // 'bar'
+console.log( bar() ); // 'foo'

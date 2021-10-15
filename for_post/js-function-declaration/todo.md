@@ -1,7 +1,11 @@
 # js-function-declaration todo list
 
+### () - section on generator functions ans yeild
+* start a new section on generator functions and the yeild keyword
+
 ### () - break down arrow function example
-* break down the single arrow function example into a few examples
+* (done) break down the single arrow function example into a few examples
+* no arguments object example
 
 ### ( done 10/15/2021 ) - More compare to expressions examples
 * (done) An example that has to do with high order functions and using a declaration

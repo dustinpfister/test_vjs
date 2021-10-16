@@ -46,7 +46,7 @@ After the basics section of the post I of course often like to have at least one
 
 ### The Event loop
 
-After the basics section I think a first more advanced section should at least touch base on the topic of what and Event loop is, and how this relates to the topic of Promises. That is that there is not just thinking in terms of what a Promise is, but also what it is not. A promise is a way to start doing something that may not delay the rest of a script, but in some cases it will, becuase when using a Promise one is still working within a single event loop. So then in this section the focus should still be the topic of resolving and rejecting, but also what kinds of things one can do in a promise that will and will not hold up the rest of the event loop. There is also looking into things that help to resolve issues that might cope up that will hold up the event loop such as WebWorker, and the child process module.
+After the basics section I think a first more advanced section should at least touch base on the topic of what and Event loop is, and how this relates to the topic of Promises. That is that there is not just thinking in terms of what a Promise is, but also what it is not. A promise is a way to start doing something that may not delay the rest of a script, but in some cases it will, because when using a Promise one is still working within a single event loop. So then in this section the focus should still be the topic of resolving and rejecting, but also what kinds of things one can do in a promise that will and will not hold up the rest of the event loop. There is also looking into things that help to resolve issues that might cope up that will hold up the event loop such as WebWorker, and the child process module.
 
 ### File IO
 

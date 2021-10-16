@@ -6,6 +6,8 @@ let uri_conf = countApp.parseURI();
 let start = (uri) => {
     return countApp.readConf(uri)
     .then((obj) => {
+        console.log('we have this object to work with: ');
+        console.log(obj);
         console.log('we are good staring, lets continue here...')
         return Promise.resolve(obj);
     })
@@ -18,7 +20,8 @@ let start = (uri) => {
             console.log('myCode error is DIR, writing new conf.json file there');
             return countApp.writeConf(path.join(uri, 'conf.json'), newState)
             .then(() => {
-                return start(path.join(uri, 'conf.json'));
+                uri_conf = path.join(uri, 'conf.json');
+                return start(uri_conf);
             })
         }
         if (myCode === 'NOTFOUND') {
@@ -36,6 +39,7 @@ start(uri_conf)
 .then((state) => {
     state.count += state.delta;
     console.log('new count: ' + state.count);
+	console.log(uri_conf);
     return countApp.writeConf(uri_conf, state)
 })
 .then(() => {

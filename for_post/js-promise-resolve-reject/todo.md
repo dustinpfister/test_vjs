@@ -24,8 +24,8 @@
 ### () - new s1-basics example using setTimeout
 * have at least one basic example using setTimeout
 
-### () - combine s2 section into s1 section
-* the one example in the s2 section should just be another basic example.
+### ( done 10/16/2021 ) - combine s2 section into s1 section
+* (done) the one example in the s2 section should just be another basic example.
 
 ### ( done 10/16/2021 ) - More s1-basics examples
 * (done) have a simple.js very simple promise Constructor example

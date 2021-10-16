@@ -8,11 +8,11 @@ let uri_file = path.resolve(process.argv[2] || process.cwd());
 // simple read file example that can result in an error
 readFile(uri_file)
 .catch((e) => {
-    console.warn(e.code);
-    console.wran(e.message);
+    console.warn('code: ' + e.code);
+    console.wran('message ' + e.message);
     console.wran('\n');
 })
 .then((data) => {
     console.log('all is good, got file data');
-    console.log(data.toString(16));
+    console.log('buffer length: ' + data.length);
 });

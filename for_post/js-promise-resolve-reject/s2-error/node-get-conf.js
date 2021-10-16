@@ -9,9 +9,14 @@ let HARD_SETTINGS = {
     appName: 'basic-count'
 };
 
+let parseURI = exports.parseURI = (str) => {
+    return path.resolve(str || process.argv[2] || path.join(process.cwd(), 'conf.json'))
+
+};
+
 // read what should be a conf.json file
 let readConf = exports.readConf = (uri_conf) => {
-    uri_conf = uri_conf || path.resolve(process.argv[2] || path.join(process.cwd(), 'conf.json'));
+    uri_conf = parseURI(uri_conf); // uri_conf || path.resolve(process.argv[2] || path.join(process.cwd(), 'conf.json'));
     // start out by reading what should be a file, but it might not be
     return readFile(uri_conf, 'utf8')
     // some kind of error happened while reading the file

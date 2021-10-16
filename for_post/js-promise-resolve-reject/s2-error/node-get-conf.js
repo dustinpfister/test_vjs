@@ -1,7 +1,8 @@
 let fs = require('fs'),
 path = require('path'),
 promisify = require('util').promisify,
-readFile = promisify(fs.readFile);
+readFile = promisify(fs.readFile),
+writeFile = promisify(fs.writeFile);
 
 let HARD_SETTINGS = {
     count: 0,
@@ -21,7 +22,7 @@ let newState = exports.newState = () => {
 
 // read what should be a conf.json file
 let readConf = exports.readConf = (uri_conf) => {
-    uri_conf = parseURI(uri_conf); // uri_conf || path.resolve(process.argv[2] || path.join(process.cwd(), 'conf.json'));
+    uri_conf = parseURI(uri_conf);
     // start out by reading what should be a file, but it might not be
     return readFile(uri_conf, 'utf8')
     // some kind of error happened while reading the file
@@ -53,4 +54,9 @@ let readConf = exports.readConf = (uri_conf) => {
         // if we make it this far, then we have a resolved promsie for this
         return Promise.resolve(obj);
     });
+};
+
+let writeConf = exports.writeConf = (uri_conf, state) => {
+    uri_conf = parseURI(uri_conf);
+    return writeFile(uri_conf, jsonText, 'utf8');
 };

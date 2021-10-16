@@ -1,5 +1,8 @@
 # js-promise-resolve-reject todo list
 
+### () - new 5-error-handing
+* start a new error handing section with at least one nodejs example maybe using file io
+
 ### () - new s1-basics call back example
 * have a basic example on callbacks and how that can be used to resolve and reject
 

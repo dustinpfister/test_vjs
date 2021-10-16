@@ -9,9 +9,14 @@ let HARD_SETTINGS = {
     appName: 'basic-count'
 };
 
+// parse a URI for a file
 let parseURI = exports.parseURI = (str) => {
     return path.resolve(str || process.argv[2] || path.join(process.cwd(), 'conf.json'))
+};
 
+// just return a new state object
+let newState = exports.newState = () => {
+    return JSON.parse(JSON.stringify(HARD_SETTINGS));
 };
 
 // read what should be a conf.json file

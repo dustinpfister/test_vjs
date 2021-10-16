@@ -40,6 +40,10 @@ Promise.reject(new Error('No Good'))
 
 I do not care to make my basics sections to thin though, and also these sections are often intended for people that are still fairly new to javaScript. So the rest of the Basic section of the post should also contain basic examples of Promises in general, as well as other related topics. Still there are some things that should be expanded on in more advanced sections of the post.
 
-## The Event loop
+## Advanced sections
+
+After the basics section of the post I of course often like to have at least one, if not more advanced sections where I am getting into more complex topics that should often stick to the central over all theme of the post. AFter that basics of resolve and reject when it comes to Promises there is just getting into other related topics such as the Event Loop and how to create more of them by way of WebWorker and the child process. There ar also other related topics that could prove to be an advanced topic such as file io, http, and error handling in both a client side and nodejs environment.
+
+### The Event loop
 
 After the basics section I think a first more advanced section should at least touch base on the topic of what and Event loop is, and how this relates to the topic of Promises. That is that there is not just thinking in terms of what a Promise is, but also what it is not. A promise is a way to start doing something that may not delay the rest of a script, but in some cases it will, becuase when using a Promise one is still working within a single event loop. So then in this section the focus should still be the topic of resolving and rejecting, but also what kinds of things one can do in a promise that will and will not hold up the rest of the event loop. There is also looking into things that help to resolve issues that might cope up that will hold up the event loop such as WebWorker, and the child process module.

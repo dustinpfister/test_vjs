@@ -1,6 +1,9 @@
 # js-promise-resolve-reject todo list
 
-### () - new s2-single-event-loop
+### () - new s2-error example that has to do with client side javaScript
+* have an s2-error example that is about something with client side javaScript
+
+### () - new s5-single-event-loop
 * start a new section that is on the subject of event loops
 * have a heavy example that will show that a promise will still bog down an event loop
 * have a webworker.html example that will solve the problem outlined in heavy.js
@@ -20,12 +23,12 @@
 ### () - new s3-file-io example for client side javaScript
 * have a filereader.html example that will be a client side example
 
-### () - new 2-error-handing
-* start a new error handing section with at least one nodejs example maybe using file io
-* rename s2-nodejs to s3-file-io
-
 ### () - new s1-basics example using setTimeout
 * have at least one basic example using setTimeout
+
+### ( done 10/16/2021 ) - new 2-error-handing
+* (done) start a new error handing section with at least one nodejs example maybe using file io
+* (done) rename s2-nodejs to s3-file-io
 
 ### ( done 10/16/2021 ) - combine s2 section into s1 section
 * (done) the one example in the s2 section should just be another basic example.

@@ -1,6 +1,4 @@
-new Promise(function (resolve, reject) {
-    resolve('foo');
-})
+Promise.resolve('foo')
 .then(function (str) {
     console.log(str);
 })

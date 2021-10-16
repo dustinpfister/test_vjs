@@ -11,18 +11,25 @@ let start = (uri) => {
     })
     .catch((e) => {
         let myCode = e.message.split(':')[0];
-        console.log(myCode);
+        let newState = countApp.newState();
         // in the event of a DIR error I can create a conf.json there
         if (myCode === 'DIR') {
             let newState = countApp.newState();
             console.log('myCode error is DIR, writing new conf.json file there');
             return countApp.writeConf(path.join(uri, 'conf.json'), newState)
             .then(() => {
-                return start(path.join(uri_conf, 'conf.json'));
+                return start(path.join(uri, 'conf.json'));
             })
         }
-		
-		
+        if (myCode === 'NOTFOUND') {
+            console.log('myCode error is NOTFOUND, so trying to write it.');
+            return countApp.writeConf(uri, newState)
+            .then(() => {
+                return start(uri);
+            })
+        }
+        // if we get here still start, just with a new state that will not get saved
+        return Promise.resolve(newState);
     });
 };
 start(uri_conf);

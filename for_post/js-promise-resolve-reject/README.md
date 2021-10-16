@@ -1,0 +1,3 @@
+# js-promise-resolve-reject
+
+These are some source code examples that have to do with the Promise.resolve and Promise.reject static methods as well as the resolve and reject methods called inside the body of functions that are passed to the Promise Constructor. I am also taking a moment to go over promises in general while I am at it in an effort to get more into depth about what the whole resolve and reject thing is with promises.

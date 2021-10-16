@@ -2,7 +2,7 @@ let path = require('path'),
 countApp = require(path.join(__dirname, 'node-get-conf.js'));
 
 let uri_conf = countApp.parseURI();
-
+// start method for this demo app on top of the countApp module
 let start = (uri) => {
     return countApp.readConf(uri)
     .then((obj) => {

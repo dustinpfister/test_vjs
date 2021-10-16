@@ -58,5 +58,6 @@ let readConf = exports.readConf = (uri_conf) => {
 
 let writeConf = exports.writeConf = (uri_conf, state) => {
     uri_conf = parseURI(uri_conf);
+    let jsonText = JSON.stringify(state);
     return writeFile(uri_conf, jsonText, 'utf8');
 };

@@ -6,8 +6,8 @@ let uri_conf = countApp.parseURI();
 let start = (uri) => {
     return countApp.readConf(uri)
     .then((obj) => {
-        console.log('we are good')
-        console.log(obj);
+        console.log('we are good staring, lets continue here...')
+        return Promise.resolve(obj);
     })
     .catch((e) => {
         let myCode = e.message.split(':')[0];
@@ -32,4 +32,15 @@ let start = (uri) => {
         return Promise.resolve(newState);
     });
 };
-start(uri_conf);
+start(uri_conf)
+.then((state) => {
+    state.count += state.delta;
+    console.log('new count: ' + state.count);
+    return countApp.writeConf(uri_conf, state)
+})
+.then(() => {
+    console.log('state updated.');
+})
+.catch((e) => {
+    console.warn(e.message);
+});

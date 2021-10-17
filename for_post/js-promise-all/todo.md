@@ -11,6 +11,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
 ```
 
+## () - new section on array prototype methods and Promise.all
+* have an example that uses array map and Promise all
+* have an example that uses array filter and promise all
+
 ## ( done 10/17/2021 ) - more basic examples
 * (done) have a simple.js file
 * (done) have a simple-text.js file that is a very basic example

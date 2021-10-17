@@ -21,12 +21,19 @@ let get_uri_array = (dir_posts) => {
 
 // read all files returning an array of markdown text
 let readAll = (dir_posts) => {
+    fileNames = [];
     return get_uri_array(dir_posts)
     .then((files) => {
+        fileNames = files;
         return Promise.all(files.map((fileName) => {
                 return readFile(path.join(dir_posts, fileName), 'utf8');
             }));
-    });
+    })
+    .then(() => {
+        return fileNames.map((fileName) => {
+            return fileName;
+        });
+    })
 };
 
 // try to get the given json file and if not found
@@ -55,10 +62,9 @@ let api = (dir_posts, uri_json) => {
         report = loadedReport;
         return readAll(dir_posts);
     })
-	.then(()=>{
-		
-		
-	})
+    .then((objects) => {
+        return objects;
+    })
 };
 
 module.exports = api;

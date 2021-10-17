@@ -6,11 +6,6 @@
 * start a web worker script for this example
 * have a sever file for the example
 
-## () - new nodejs project example section using readFile and writeFile
-* start a project example that will read all files in a folder
-* after reading all files in the folder it will then write a json file with an array that contains an object for each file
-* each object in the array contains info like last edited, word count ect.
-
 ## () - new client side javaScript project example section using fetch
 * create a simple image loader using fetch, and Promise.all
 
@@ -28,6 +23,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ## () - new section on array prototype methods and Promise.all
 * have an example that uses array map and Promise all
 * have an example that uses array filter and promise all
+
+## ( done 10/17/2021 ) - new nodejs project example section using readFile and writeFile
+* (done) start a project example that will read all files in a folder
+* (done) after reading all files in the folder it will then write a json file with an array that contains an object for each file
+* (done) each object in the array contains info like date, updated, fileName, ect
 
 ## ( done 10/17/2021 ) - more basic examples
 * (done) have a simple.js file

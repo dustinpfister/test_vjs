@@ -47,7 +47,6 @@ let setDates = (postObjects) => {
         let m = postObj.md.match(patt);
         if (m) {
             m[0].split('\r\n').forEach((str) => {
-                console.log(str)
                 if (str.match(/^date/)) {
                     postObj.date = str.replace(/^date:/, '').trim();
                 }
@@ -89,7 +88,9 @@ let api = (dir_posts, uri_json) => {
         return readAll(dir_posts);
     })
     .then((objects) => {
-        return setDates(objects);
+        var posts = setDates(objects);
+        report.posts = posts;
+        return writeFile(uri_json, JSON.stringify(report), 'utf8');
     })
 };
 

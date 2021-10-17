@@ -15,8 +15,9 @@ let get_uri_array = (dir_posts) => {
     })
 };
 
-module.exports = (dir_posts, uri_json) => {
-
+// export
+let api = (dir_posts, uri_json) => {
     return get_uri_array(dir_posts);
+};
 
-}
+module.exports = api;

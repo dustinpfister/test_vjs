@@ -1,5 +1,11 @@
 # js-promise-all todo list
 
+## () - new Promise.any section
+* start a new section on Promise.any that will resolve if just one Promise object in an array resolves
+```
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
+```
+
 ## ( done 10/17/2021 ) - more basic examples
 * (done) have a simple.js file
 * (done) have a simple-text.js file that is a very basic example

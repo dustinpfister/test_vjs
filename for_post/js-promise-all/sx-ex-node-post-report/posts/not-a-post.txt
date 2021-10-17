@@ -1,0 +1,1 @@
+This is a file other than a mark down file, so then this should be filtred out

@@ -1,7 +1,7 @@
 Promise.all(['Hello', 'world'])
 .then((array) => {
-    console.log('all good');
+    console.log(array.join(' '));
 })
 .catch((e) => {
-    console.log(e.message);
+    console.warn(e.message);
 });

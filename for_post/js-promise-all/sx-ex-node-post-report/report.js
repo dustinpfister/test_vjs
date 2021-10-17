@@ -26,14 +26,15 @@ let readAll = (dir_posts) => {
     .then((files) => {
         fileNames = files;
         return Promise.all(files.map((fileName) => {
-                return readFile(path.join(dir_posts, fileName), 'utf8');
+                return readFile(path.join(dir_posts, fileName), 'utf8')
+                .then((md) => {
+                    return {
+                        fileName: fileName,
+                        md: md
+                    };
+                })
             }));
-    })
-    .then(() => {
-        return fileNames.map((fileName) => {
-            return fileName;
-        });
-    })
+    });
 };
 
 // try to get the given json file and if not found

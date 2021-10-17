@@ -19,23 +19,47 @@ let get_uri_array = (dir_posts) => {
     })
 };
 
-// read all files returning an array of markdown text
+// read all files returning an array of objects with fileName, and md for each post
+// like this: [{fileName: foo.md, md: 'markdown text of foo.md'}]
 let readAll = (dir_posts) => {
     fileNames = [];
     return get_uri_array(dir_posts)
     .then((files) => {
         fileNames = files;
         let array = files.map((fileName) => {
-            return readFile(path.join(dir_posts, fileName), 'utf8')
-            .then((md) => {
-                return {
-                    fileName: fileName,
-                    md: md
-                };
+                return readFile(path.join(dir_posts, fileName), 'utf8')
+                .then((md) => {
+                    return {
+                        fileName: fileName,
+                        md: md
+                    };
+                });
             });
-        });
         return Promise.all(array);
     });
+};
+
+// set dates for the array of post objects
+// deleting any md key for each object in any case
+let setDates = (postObjects) => {
+    let patt = /---[\s|\S]*?---/g;
+    return postObjects.map((postObj) => {
+        let m = postObj.md.match(patt);
+        if (m) {
+            m[0].split('\r\n').forEach((str) => {
+                console.log(str)
+                if (str.match(/^date/)) {
+                    postObj.date = str.replace(/^date:/, '').trim();
+                }
+                if (str.match(/^updated/)) {
+                    postObj.updated = str.replace(/^updated:/, '').trim();
+                }
+            });
+        }
+        // delete md
+        delete postObj.md;
+        return postObj;
+    })
 };
 
 // try to get the given json file and if not found
@@ -65,7 +89,7 @@ let api = (dir_posts, uri_json) => {
         return readAll(dir_posts);
     })
     .then((objects) => {
-        return objects;
+        return setDates(objects);
     })
 };
 

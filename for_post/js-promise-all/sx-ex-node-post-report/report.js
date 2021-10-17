@@ -5,6 +5,7 @@ readFile = util.promisify(fs.readFile),
 writeFile = util.promisify(fs.writeFile),
 readdir = util.promisify(fs.readdir);
 
+// just get a filtered list of posts for the given dir
 let get_uri_array = (dir_posts) => {
     return readdir(dir_posts)
     .then((files) => {
@@ -14,9 +15,8 @@ let get_uri_array = (dir_posts) => {
     })
 };
 
-get_uri_array(path.join(__dirname, 'posts'))
-.then((files) => {
+module.exports = (dir_posts, uri_json) => {
 
-    console.log(files);
+    return get_uri_array(dir_posts);
 
-})
+}

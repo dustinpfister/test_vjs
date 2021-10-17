@@ -1,8 +1,13 @@
 # js-promise-all todo list
 
-## () - new Promise.any section
+## () - new Other promise methods secton
 * start a new section on Promise.any that will resolve if just one Promise object in an array resolves
+* start a section on the Promise.allSettled method
+* promise.race example
+
 ```
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
 ```
 

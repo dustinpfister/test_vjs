@@ -15,9 +15,19 @@ let get_uri_array = (dir_posts) => {
     })
 };
 
+// read all files returning an array of markdown text
+let readAll = (dir_posts) => {
+    return get_uri_array(dir_posts)
+    .then((files) => {
+        return Promise.all(files.map((fileName) => {
+                return readFile(path.join(dir_posts, fileName), 'utf8');
+            }));
+    });
+};
+
 // export
 let api = (dir_posts, uri_json) => {
-    return get_uri_array(dir_posts);
+    return readAll(dir_posts);
 };
 
 module.exports = api;

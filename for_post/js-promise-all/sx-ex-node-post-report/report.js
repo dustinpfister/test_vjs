@@ -25,15 +25,16 @@ let readAll = (dir_posts) => {
     return get_uri_array(dir_posts)
     .then((files) => {
         fileNames = files;
-        return Promise.all(files.map((fileName) => {
-                return readFile(path.join(dir_posts, fileName), 'utf8')
-                .then((md) => {
-                    return {
-                        fileName: fileName,
-                        md: md
-                    };
-                })
-            }));
+        let array = files.map((fileName) => {
+            return readFile(path.join(dir_posts, fileName), 'utf8')
+            .then((md) => {
+                return {
+                    fileName: fileName,
+                    md: md
+                };
+            });
+        });
+        return Promise.all(array);
     });
 };
 

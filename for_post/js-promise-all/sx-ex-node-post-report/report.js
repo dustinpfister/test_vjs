@@ -49,7 +49,16 @@ let getReport = function (uri_json) {
 
 // export
 let api = (dir_posts, uri_json) => {
-    return getReport(uri_json); //readAll(dir_posts);
+    let report = {};
+    return getReport(uri_json)
+    .then((loadedReport) => {
+        report = loadedReport;
+        return readAll(dir_posts);
+    })
+	.then(()=>{
+		
+		
+	})
 };
 
 module.exports = api;

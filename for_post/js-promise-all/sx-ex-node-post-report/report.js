@@ -5,6 +5,10 @@ readFile = util.promisify(fs.readFile),
 writeFile = util.promisify(fs.writeFile),
 readdir = util.promisify(fs.readdir);
 
+let NEW_REPORT = {
+    posts: []
+};
+
 // just get a filtered list of posts for the given dir
 let get_uri_array = (dir_posts) => {
     return readdir(dir_posts)
@@ -25,9 +29,27 @@ let readAll = (dir_posts) => {
     });
 };
 
+// try to get the given json file and if not found
+// write a new one, in any case return an object that
+// is the parsed json, or a default object used for a new report
+let getReport = function (uri_json) {
+    return readFile(uri_json, 'utf8')
+    .catch((e) => {
+        let json = JSON.stringify(NEW_REPORT);
+        console.log('report not found writing new one');
+        return writeFile(uri_json, json, 'utf8')
+        .then(() => {
+            return Promise.resolve(json);
+        })
+    })
+    .then((json) => {
+        return JSON.parse(json);
+    });
+};
+
 // export
 let api = (dir_posts, uri_json) => {
-    return readAll(dir_posts);
+    return getReport(uri_json); //readAll(dir_posts);
 };
 
 module.exports = api;

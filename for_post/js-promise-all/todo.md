@@ -1,5 +1,19 @@
 # js-promise-all todo list
 
+
+## () - new full stack project example section using an object pool and nodeje
+* start with a simple object pool
+* start a web worker script for this example
+* have a sever file for the example
+
+## () - new nodejs project example section using readFile and writeFile
+* start a project example that will read all files in a folder
+* after reading all files in the folder it will then write a json file with an array that contains an object for each file
+* each object in the array contains info like last edited, word count ect.
+
+## () - new client side javaScript project example section using fetch
+* create a simple image loader using fetch, and Promise.all
+
 ## () - new Other promise methods secton
 * start a new section on Promise.any that will resolve if just one Promise object in an array resolves
 * start a section on the Promise.allSettled method

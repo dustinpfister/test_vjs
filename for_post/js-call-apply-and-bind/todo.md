@@ -12,7 +12,12 @@
 * have a example that involves what is going on in the basic example only in another method
 * have a call example that is a very simple custom api
 
-### () - new s3-apply example
+### () - more s3-apply examples
+* have a Math.min, and Math.max example
+* have a sum example
+* have an array concat method with an array of arrays
+
+### ( done 10/18/2021 ) - new s3-apply example
 * (done) new basic example
 * (done) new push example
 * (done) have a new apply example that involves core and additional arguments

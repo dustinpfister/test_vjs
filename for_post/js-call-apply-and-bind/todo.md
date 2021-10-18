@@ -1,5 +1,10 @@
 # js-call-apply-and-bind todo list
 
+
+### () - new section on why Function methods will not always work as exspected
+* have an example involving an array like object with array.concat
+* create a class that will also show why Function prototype will not always work because there is a method that calls another proto method.
+
 ### () - new s1-basics class example
 * have an example that involves making a class method that uses the this keyword
 

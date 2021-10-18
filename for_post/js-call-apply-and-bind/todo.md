@@ -13,7 +13,9 @@
 * have a call example that is a very simple custom api
 
 ### () - new s3-apply example
-* have a new apply example that involves core and additional arguments
+* (done) new basic example
+* (done) new push example
+* (done) have a new apply example that involves core and additional arguments
 
 ### ( done 10/18/2021 ) - new s1-basic section examples
 * (done) have an example that is a stand alone method that takes just arguments.

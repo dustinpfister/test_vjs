@@ -8,12 +8,14 @@
 * have a example that involves what is going on in the basic example only in another method
 * have a call example that is a very simple custom api
 
-### () - new section on why Function methods will not always work as expected
-* have an example involving an array like object with array.concat
+### () - new s7-problems-with-protos example
+* create a class that will also show why Function prototype will not always work because there is a method that calls another proto method.
+
+### ( done 10/18/2021 ) - new section on why Function methods will not always work as expected
+* (done) have an example involving an array like object with array.concat
 ```
 https://stackoverflow.com/questions/48097695/get-concat-to-work-with-an-array-like-object
 ```
-* create a class that will also show why Function prototype will not always work because there is a method that calls another proto method.
 
 ### ( done 10/18/2021 ) - new s6-using-proto section example
 * (done) have at least one more example using a string method

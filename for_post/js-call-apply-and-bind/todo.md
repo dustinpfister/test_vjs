@@ -14,7 +14,7 @@
 
 ### () - more s3-apply examples
 * (done) have a Math.min, and Math.max example
-* have a sum example
+* (done) have a sum example
 * have an array concat method with an array of arrays
 
 ### ( done 10/18/2021 ) - new s3-apply example

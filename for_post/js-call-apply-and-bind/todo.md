@@ -3,6 +3,9 @@
 
 ### () - new section on why Function methods will not always work as expected
 * have an example involving an array like object with array.concat
+```
+https://stackoverflow.com/questions/48097695/get-concat-to-work-with-an-array-like-object
+```
 * create a class that will also show why Function prototype will not always work because there is a method that calls another proto method.
 
 ### () - new s1-basics class example

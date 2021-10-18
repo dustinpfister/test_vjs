@@ -3,6 +3,13 @@
 ### () - new s1-basics class example
 * have an example that involves making a class method that uses the this keyword
 
+### () - new s2-call examples
+* have a example that involves what is going on in the basic example only in another method
+* have a call example that is a very simple custom api
+
+### () - new s3-apply example
+* have a new apply example that involves core and additional arguments
+
 ### ( done 10/18/2021 ) - new s1-basic section examples
 * (done) have an example that is a stand alone method that takes just arguments.
 * (done) have an example that involves a single stand alone method than uses this keyword

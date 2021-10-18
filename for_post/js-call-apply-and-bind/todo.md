@@ -15,6 +15,9 @@ https://stackoverflow.com/questions/48097695/get-concat-to-work-with-an-array-li
 * have a example that involves what is going on in the basic example only in another method
 * have a call example that is a very simple custom api
 
+### ( done 10/18/2021 ) - new s6-using-proto section example
+* (done) have at least one more example using a string method
+
 ### ( done 10/18/2021 ) - more s3-apply examples
 * (done) have a Math.min, and Math.max example
 * (done) have a sum example

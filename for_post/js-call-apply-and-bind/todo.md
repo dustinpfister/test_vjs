@@ -1,7 +1,7 @@
 # js-call-apply-and-bind todo list
 
 
-### () - new section on why Function methods will not always work as exspected
+### () - new section on why Function methods will not always work as expected
 * have an example involving an array like object with array.concat
 * create a class that will also show why Function prototype will not always work because there is a method that calls another proto method.
 

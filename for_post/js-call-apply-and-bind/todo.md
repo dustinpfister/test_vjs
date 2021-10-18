@@ -13,7 +13,7 @@
 * have a call example that is a very simple custom api
 
 ### () - more s3-apply examples
-* have a Math.min, and Math.max example
+* (done) have a Math.min, and Math.max example
 * have a sum example
 * have an array concat method with an array of arrays
 

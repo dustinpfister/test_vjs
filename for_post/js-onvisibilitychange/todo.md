@@ -1,5 +1,8 @@
 # js-onvisibilitychange todo list
 
+## () - new s3-web-worker section
+* start a new section on webworkers with at least one simple example
+
 ## () - new s2-app-loop example using canvas
 * basic example that involves requestAnimationFrame and canvas elements
 

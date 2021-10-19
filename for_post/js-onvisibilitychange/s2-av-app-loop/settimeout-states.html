@@ -5,46 +5,47 @@
     <body>
         <script>
 // state object
-var state = {
+var sm = {
     fps: 0,
     secs: 0,
     lt: new Date(),
     currentState: 'visible',
     states: {
         hidden: {
-            update: function (state, secs) {
-                document.title = 'fps: ' + state.fps;
+            update: function (sm, state, secs) {
+                document.title = 'fps: ' + sm.fps;
             }
         },
         visible: {
-            update: function (state, secs) {
+            update: function (sm, state, secs) {
                 document.title = 'App Loop Demo';
             }
         }
     }
 };
 // update method
-var update = function (state) {
+var update = function (sm) {
     var now = new Date();
-    state.secs = (now - state.lt) / 1000;
-    state.fps = 1 / state.secs;
+    sm.secs = (now - sm.lt) / 1000;
+    sm.fps = 1 / sm.secs;
     // update fps value
-    state.fps = state.fps < 1 ? state.fps.toFixed(2) : Math.floor(state.fps);
-    state.lt = now;
+    sm.fps = sm.fps < 1 ? sm.fps.toFixed(2) : Math.floor(sm.fps);
+    sm.lt = now;
     // call the update method for the current state
-    state.states[state.currentState].update(state, state.secs);
+    var state = sm.states[sm.currentState];
+    state.update(sm, state, sm.secs);
 };
 // on visibility change event can be used to switch current states
 document.addEventListener("visibilitychange", function () {
-    state.currentState = 'visible'
-        if (document.visibilityState === 'hidden') {
-            state.currentState = 'hidden';
-        }
+    sm.currentState = 'visible';
+    if (document.visibilityState === 'hidden') {
+        sm.currentState = 'hidden';
+    }
 });
 // app loop using setTimeout
 var loop = function () {
     setTimeout(loop, 33);
-    update(state);
+    update(sm);
 };
 loop(); // call update for first time
 

@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+// date
+var lt = new Date(),
+active = true;
+// on visibility change event
+document.addEventListener("visibilitychange", function(){
+    active = document.visibilityState === 'hidden' ? false: true;
+});
+// loop using setTiemout
+var loop = function(a){
+    var now = new Date();
+    setTimeout(loop, 33);
+    document.title = 'ms: ' + (now - lt) + ', active: ' + active;
+    lt = now;
+};
+loop();
+        </script>
+    </body>
+</html>

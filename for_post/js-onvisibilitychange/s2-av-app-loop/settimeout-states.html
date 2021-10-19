@@ -10,22 +10,27 @@ var sm = {
     fps: 0,
     secs: 0,
     lt: new Date(),
+    game: {
+        count: 0
+    },
     titleDefault: document.title,
     currentState: 'visible',
     states: {
         hidden: {
             update: function (sm, state, secs) {
+                sm.game.count += 1;
                 // just update title text
-                document.title = 'fps: ' + sm.fps;
+                document.title = 'fps: ' + sm.fps + ', count: ' + sm.game.count;
             }
         },
         visible: {
             update: function (sm, state, secs) {
+                sm.game.count += 1;
                 // update title text with default text
                 document.title = sm.titleDefault;
                 // update disp div with fps info
                 var disp = document.querySelector('#disp');
-                disp.innerText = 'fps: ' + sm.fps;
+                disp.innerText = 'fps: ' + sm.fps + ', count: ' + sm.game.count;
             }
         }
     }

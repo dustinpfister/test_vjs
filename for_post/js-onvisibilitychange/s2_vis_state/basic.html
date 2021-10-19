@@ -5,17 +5,14 @@
     <body>
         <p id="disp"></p>
         <script>
- 
 var state = {
     money : 0,
     moneyPerSecond : 1,
     lt : new Date()
 };
- 
 var moneyStr = function(state){
    return state.money.toFixed(2) + '$'
 };
- 
 var update = function(e){
     var now = new Date(),
     t = now - state.lt,

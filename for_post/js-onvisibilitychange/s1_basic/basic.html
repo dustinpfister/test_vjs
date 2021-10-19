@@ -4,11 +4,14 @@
     </head>
     <body>
         <script>
-var updateTitle = function(e){
+// update the title text with the document.visibilityState value
+var update = function(){
     document.title = document.visibilityState;
 };
-document.addEventListener("visibilitychange", updateTitle);
-updateTitle();
+// attach an event hander for the on visibility change event
+document.addEventListener("visibilitychange", update);
+// call update for first time
+update();
         </script>
     </body>
 </html>

@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+var active = false;
+var update = function(){
+    active = !active;
+    document.title = active;
+};
+// attach an event hander for the on visibility change event
+document.addEventListener("visibilitychange", update);
+// call update for first time
+update();
+        </script>
+    </body>
+</html>

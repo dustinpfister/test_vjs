@@ -7,42 +7,31 @@
 var state = {
    fps: 0,
    secs: 0,
-   titleText: document.title,
    lt: new Date()
 };
 // draw method
 var drawTitle = function(state){
-   // default to the state.titleText string
-   document.title = state.titleText;
-   // if hidden display fps as title text
-   if(document.visibilityState === 'hidden'){
-       document.title = 'fps: ' + state.fps;
-   }
+    document.title = 'fps: ' + state.fps;
 };
 // update method
 var update = function(state){
    var now = new Date();
    state.secs = (now - state.lt) / 1000;
    state.fps = 1 / state.secs;
-   if(state.fps <= 1){
-       state.fps = state.fps.toFixed(2);
-   }else{
-       state.fps = Math.floor(state.fps);
-   }
-
+   // update fps value
+   state.fps = state.fps < 1 ? state.fps.toFixed(2) : Math.floor(state.fps);
    state.lt = now;
 };
-// attach an event hander for the on visibility change event
+// on visibility change event
 document.addEventListener("visibilitychange", function(){
 });
-
+// app loop using setTimeout
 var loop = function(){
     setTimeout(loop, 33);
     update(state);
     drawTitle(state);
 };
-// call update for first time
-loop();
+loop(); // call update for first time
         </script>
     </body>
 </html>

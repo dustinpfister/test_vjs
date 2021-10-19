@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Document title loop demo</title>
+  </head>
+  <body>
+    <script>
+var c = 0;
+var loop = function(){
+   setTimeout(loop, 100);
+   c += 1;
+   document.title = c;
+}
+loop();
+    </script>
+  </body>
+</html>

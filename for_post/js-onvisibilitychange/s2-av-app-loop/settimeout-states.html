@@ -5,6 +5,10 @@
     <body>
         <div id="disp" style="background:gray;margin:10px;padding:10px;text-align:center;"></div>
         <script>
+// info text helper
+var infoText = function(sm){
+   return 'fps: ' + sm.fps + ', count: ' + sm.game.count;
+};
 // State Machine (sm) object
 var sm = {
     fps: 0,
@@ -20,7 +24,7 @@ var sm = {
             update: function (sm, state, secs) {
                 sm.game.count += 1;
                 // just update title text
-                document.title = 'fps: ' + sm.fps + ', count: ' + sm.game.count;
+                document.title = infoText(sm);
             }
         },
         visible: {
@@ -30,7 +34,7 @@ var sm = {
                 document.title = sm.titleDefault;
                 // update disp div with fps info
                 var disp = document.querySelector('#disp');
-                disp.innerText = 'fps: ' + sm.fps + ', count: ' + sm.game.count;
+                disp.innerText = infoText(sm);
             }
         }
     }

@@ -3,15 +3,18 @@
         <title>javaScript mouse basic example</title>
     </head>
     <body>
-        <input class="c_button" data-count="0" type="button" value="count: 0">
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
         <script>
-
+// step a button
 var stepButton = function(e){
     var button = e.target,
     count = parseInt(button.dataset.count);
     e.target.value = 'count: ' + ( button.dataset.count =  count += 1 );
 };
-
+// for all buttons of class '.c_button'
 var buttons = document.querySelectorAll('.c_button');
 [].forEach.call(buttons, function(button){
     button.addEventListener('click', stepButton);

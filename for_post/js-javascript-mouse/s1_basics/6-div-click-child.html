@@ -42,9 +42,14 @@ var randomChildPos = function(child){
    child.style.top = y + 'px';
 };
 
-[].forEach.call(container.children, function(child){
-    randomChildPos(child)
-})
+// random position for all children
+var randomParentChildren = function(parent){
+    [].forEach.call(parent.children, function(child){
+        randomChildPos(child);
+    });
+};
+
+randomParentChildren(container);
 
 /*
 document.querySelector('.parent').addEventListener('click', function(e){

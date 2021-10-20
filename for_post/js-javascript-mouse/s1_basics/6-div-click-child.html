@@ -52,17 +52,10 @@ var randomParentChildren = function(parent){
 };
 // call random parent children helper for the first time
 randomParentChildren(PARENT);
-// click event using e.currentTarget and e.target along with
-// e.clientX, and e.clientY
+// click event using e.currentTarget and e.target
 PARENT.addEventListener('click', function(e){
     var parent = e.currentTarget,
-    child = e.target,
-    bx = parent.getBoundingClientRect(),
-    pos = {
-      x : e.clientX - bx.left,
-      y : e.clientY - bx.top,
-      bx: bx
-    };
+    child = e.target;
     if(child === parent){
         randomParentChildren(parent);
     }else{

@@ -18,16 +18,16 @@ div{
     <body>
         <div class="parent" style="background:gray;"><div>
         <script>
-
+// some values
 var PARENT = document.querySelector('.parent');
 PARENT_WIDTH = 800,
 PARENT_HEIGHT = 600,
 CHILD_COUNT = 15,
 CHILD_SIZE = 64;
-
+// set with and height of parent by way of style api
 PARENT.style.width = PARENT_WIDTH + 'px';
 PARENT.style.height = PARENT_HEIGHT + 'px';
-
+// set up children
 var i = CHILD_COUNT;
 while(i--){
    var child = document.createElement('div');
@@ -35,8 +35,7 @@ while(i--){
    child.id="child_" + ( CHILD_COUNT - i );
    PARENT.appendChild(child);
 }
-
-// random child position for the given child
+// random child position for the given child helper function
 var randomChildPos = function(child){
    var x = Math.floor((PARENT_WIDTH - CHILD_SIZE) * Math.random());
    var y = Math.floor((PARENT_HEIGHT - CHILD_SIZE) * Math.random());
@@ -45,18 +44,16 @@ var randomChildPos = function(child){
    child.style.width = CHILD_SIZE + 'px';
    child.style.height = CHILD_SIZE + 'px';
 };
-
-// random position for all children
+// random position for all children helper function
 var randomParentChildren = function(parent){
     [].forEach.call(parent.children, function(child){
         randomChildPos(child);
     });
 };
-
 // call random parent children helper for the first time
 randomParentChildren(PARENT);
-
-
+// click event using e.currentTarget and e.target along with
+// e.clientX, and e.clientY
 PARENT.addEventListener('click', function(e){
     var parent = e.currentTarget,
     child = e.target,

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out" style="background:gray;padding:10px;text-align:center;">0<div>
+        <script>
+var c = 0,
+colors = ['red', 'green', 'blue'],
+out = document.getElementById('out');
+// adding an event listener to window for the click event
+window.addEventListener('click', function(e){
+    c += 1;
+    out.innerText = c;
+});
+// adding another one
+window.addEventListener('click', function(e){
+    out.style.background = colors[c % colors.length];
+});
+        </script>
+    </body>
+</html>

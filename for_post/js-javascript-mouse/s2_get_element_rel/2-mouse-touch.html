@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+        <style>
+.parent{
+  position:absolute;
+  left:50px;
+  top: 50px;
+  background:gray;
+  width:640px;
+  height:480px;
+}
+.child{
+  position:relative;
+  top:20px;
+  background: #afafaf;
+  padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="parent" style="background:gray;"><div>
+        <script>
+
+// get pos object with values relative to the given event object, 
+// and element that defaults to e.target by default
+var getElementRelative = function (e, elTarget) {
+    var el= e.target,
+    bx = el.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // adjust for native canvas matrix size if a canvas element
+    if(el.nodeName === 'CANVAS'){
+        pos.x = Math.floor((pos.x / el.scrollWidth) * el.width);
+        pos.y = Math.floor((pos.y / el.scrollHeight) * el.height);
+    }
+    return pos;
+};
+
+document.querySelector('.parent').addEventListener('click', function(e){
+    var parent = e.currentTarget,
+    bx = parent.getBoundingClientRect(),
+    pos = getElementRelative(e, parent);
+    parent.innerHTML = '<div class="child">' + pos.x + ', ' + pos.y + '</div>';
+});
+        </script>
+    </body>
+</html>

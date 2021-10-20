@@ -13,8 +13,6 @@ div{
 .child{
   top:0px;
   left:0px;
-  width:32px;
-  height: 32px;
   background: #afafaf;
 }
         </style>
@@ -24,7 +22,8 @@ div{
         <script>
 
 var PARENT = document.querySelector('.parent');
-CHILD_COUNT = 10;
+CHILD_COUNT = 10,
+CHILD_SIZE = 32;
 
 var i = CHILD_COUNT;
 while(i--){
@@ -36,10 +35,12 @@ while(i--){
 
 // random child position for the given child
 var randomChildPos = function(child){
-   var x = Math.floor((640 - 32) * Math.random());
-   var y = Math.floor((480 - 32) * Math.random());
+   var x = Math.floor((640 - CHILD_SIZE) * Math.random());
+   var y = Math.floor((480 - CHILD_SIZE) * Math.random());
    child.style.left = x + 'px';
    child.style.top = y + 'px';
+   child.style.width = CHILD_SIZE + 'px';
+   child.style.height = CHILD_SIZE + 'px';
 };
 
 // random position for all children

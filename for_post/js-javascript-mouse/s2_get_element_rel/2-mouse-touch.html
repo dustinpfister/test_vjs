@@ -20,7 +20,7 @@
 // get pos object with values relative to the given event object, 
 // and element that defaults to e.target by default
 var getElementRelative = function (e, elTarget) {
-    var el= e.target,
+    var el = elTarget || e.target,
     bx = el.getBoundingClientRect(),
     pos = {
         x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,

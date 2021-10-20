@@ -1,5 +1,28 @@
 # js-javascript-example-utils todo list
 
+## () - new getElementRelative method based off of what I made for my js-javascript-mouse post
+* Start a new utils method based off of this:
+```js
+// get pos object with values relative to the given event object, 
+// and element that defaults to e.target by default
+var getElementRelative = function (e, elTarget) {
+    var el = elTarget || e.target,
+    bx = el.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // adjust for native canvas matrix size if a canvas element
+    if(el.nodeName === 'CANVAS'){
+        pos.x = Math.floor((pos.x / el.scrollWidth) * el.width);
+        pos.y = Math.floor((pos.y / el.scrollHeight) * el.height);
+    }
+    return pos;
+};
+```
+* the utils.getCanvasRelative method can then just call this passing what should be a canvas for elTarget
+
 ## () - new section on using a canvas Module
 
 ## () - new section on using a state machine, along with object pool, and canvas lib

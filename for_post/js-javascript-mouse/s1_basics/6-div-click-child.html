@@ -23,15 +23,15 @@ div{
         <div class="parent" style="background:gray;"><div>
         <script>
 
-var CHILD_COUNT = 10;
+var PARENT = document.querySelector('.parent');
+CHILD_COUNT = 10;
 
-var i = CHILD_COUNT,
-container = document.querySelector('.parent');
+var i = CHILD_COUNT;
 while(i--){
    var child = document.createElement('div');
    child.className = 'child';
    child.id="child_" + ( CHILD_COUNT - i );
-   container.appendChild(child);
+   PARENT.appendChild(child);
 }
 
 // random child position for the given child
@@ -50,10 +50,10 @@ var randomParentChildren = function(parent){
 };
 
 // call random parent children helper for the first time
-randomParentChildren(container);
+randomParentChildren(PARENT);
 
 
-document.querySelector('.parent').addEventListener('click', function(e){
+PARENT.addEventListener('click', function(e){
     var parent = e.currentTarget,
     child = e.target,
     bx = parent.getBoundingClientRect(),

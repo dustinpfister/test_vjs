@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <input id="in_button" type="button" value="0">
+        <script>
+var c = 0;
+document.getElementById('in_button').addEventListener('click', function(e){
+    c += 1;
+    e.target.value = c;
+});
+        </script>
+    </body>
+</html>

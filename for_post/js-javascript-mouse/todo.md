@@ -13,8 +13,10 @@
 * have an example that involves simulating a click
 
 ## () - new s2-get-element-relative section examples
-* s1-5 div click example should actually be a part of this section
+* (done) s1-5 div click example should actually be a part of this section
 * have an example that will work with both touch and mouse events
+* rename rel.html to canvas.html
+* canvas.html should use new method that will work with pointer events in general.
 
 ## ( done 10/20/2021 ) - update s1-4-input-click example
 * (done) update the s1-4-input-click example to have more than one input element

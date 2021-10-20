@@ -2,20 +2,24 @@
     <head>
         <title>javaScript mouse basic example</title>
         <style>
-#the_div{
+.parent{
+  position:absolute;
   background:gray;
   width:640px;
   height:480px;
 }
-.pos_div{
+.child{
+  position:relative;
+  top:20px;
+  background: #afafaf;
   padding:20px;
 }
         </style>
     </head>
     <body>
-        <div id="the_div" style="background:gray;"><div>
+        <div class="parent" style="background:gray;"><div>
         <script>
-document.getElementById('the_div').addEventListener('click', function(e){
+document.querySelector('.parent').addEventListener('click', function(e){
     var parent = e.currentTarget,
     bx = parent.getBoundingClientRect(),
     pos = {
@@ -23,7 +27,7 @@ document.getElementById('the_div').addEventListener('click', function(e){
       y : e.clientY - bx.top,
       bx: bx
     };
-    parent.innerHTML = '<div class="pos_div">' + pos.x + ', ' + pos.y + '</div>';
+    parent.innerHTML = '<div class="child">' + pos.x + ', ' + pos.y + '</div>';
 
 });
         </script>

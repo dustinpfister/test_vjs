@@ -2,23 +2,39 @@
     <head>
         <title>javaScript mouse basic example</title>
         <style>
-.parent{
+div{
   position:absolute;
+}
+.parent{
   background:gray;
   width:640px;
   height:480px;
 }
 .child{
-  position:relative;
-  top:20px;
+  top:0px;
+  left:0px;
+  width:32px;
+  height: 32px;
   background: #afafaf;
-  padding:20px;
 }
         </style>
     </head>
     <body>
         <div class="parent" style="background:gray;"><div>
         <script>
+
+var CHILD_COUNT = 10;
+
+var i = CHILD_COUNT,
+container = document.querySelector('.parent');
+while(i--){
+   var child = document.createElement('div');
+   child.className = 'child';
+   child.id="child_" + ( CHILD_COUNT - i );
+   container.appendChild(child);
+}
+
+/*
 document.querySelector('.parent').addEventListener('click', function(e){
     var parent = e.currentTarget,
     bx = parent.getBoundingClientRect(),
@@ -29,6 +45,7 @@ document.querySelector('.parent').addEventListener('click', function(e){
     };
     parent.innerHTML = '<div class="child">' + pos.x + ', ' + pos.y + '</div>';
 });
+*/
         </script>
     </body>
 </html>

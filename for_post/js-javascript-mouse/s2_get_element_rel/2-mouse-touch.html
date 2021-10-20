@@ -6,15 +6,10 @@
   position:absolute;
   left:50px;
   top: 50px;
+  padding:50px;
+  width:540px;
+  height:380px;
   background:gray;
-  width:640px;
-  height:480px;
-}
-.child{
-  position:relative;
-  top:20px;
-  background: #afafaf;
-  padding:20px;
 }
         </style>
     </head>
@@ -40,12 +35,17 @@ var getElementRelative = function (e, elTarget) {
     return pos;
 };
 
-document.querySelector('.parent').addEventListener('click', function(e){
+// pointer move
+var pointerMove = function(e){
     var parent = e.currentTarget,
     bx = parent.getBoundingClientRect(),
-    pos = getElementRelative(e, parent);
-    parent.innerHTML = '<div class="child">' + pos.x + ', ' + pos.y + '</div>';
-});
+    pos = getElementRelative(e, e.target);
+    parent.innerText = pos.x + ', ' + pos.y;
+};
+
+var parent = document.querySelector('.parent');
+parent.addEventListener('mousemove', pointerMove);
+parent.addEventListener('touchmove', pointerMove);
         </script>
     </body>
 </html>

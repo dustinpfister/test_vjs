@@ -49,20 +49,25 @@ var randomParentChildren = function(parent){
     });
 };
 
+// call random parent children helper for the first time
 randomParentChildren(container);
 
-/*
+
 document.querySelector('.parent').addEventListener('click', function(e){
     var parent = e.currentTarget,
+    child = e.target,
     bx = parent.getBoundingClientRect(),
     pos = {
       x : e.clientX - bx.left,
       y : e.clientY - bx.top,
       bx: bx
     };
-    parent.innerHTML = '<div class="child">' + pos.x + ', ' + pos.y + '</div>';
+    if(child === parent){
+        randomParentChildren(parent);
+    }else{
+        randomChildPos(child);
+    }
 });
-*/
         </script>
     </body>
 </html>

@@ -2,3 +2,6 @@
 
 This is an outline for what I would like to do with my [post on using a mouse when making a vanilla javaScript project](https://dustinpfister.github.io/2020/06/25/js-javascript-mouse/). I am thinking that these readme files should have a tone that has more to do with what the current state of editing is when it comes to improving the quality of the post in terms of what should happen with future edits of the content. Otherwise writing these readme files would prove to be fairly redundant, and I should stop wasting time writing them.
 
+## The Basics section of the post
+
+The Basics section of the post should contain some very simple examples that involve event attachment to the window object, as well as various kinds of elements. They should also contain examples that make use of the mouse client, down, up and move events at least. While I am at it there is at least touching base on all kinds of other relevant topics such as the clientX, and clientY properties of an event object for one of these events, as well as the target and currentTarget properties. However the examples should remain fairly simple as this kind of section is intended for javaScript developers that are fairly new, as well as giving a quick refresher of the simple things with mouse related tasks in client side javaScript.

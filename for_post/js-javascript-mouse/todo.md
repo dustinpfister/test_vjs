@@ -1,8 +1,24 @@
 # js-javascript-mouse todo list
 
-## () - update s1-4-input-click example
-* update the s1-4-input-click example to have more than one input element
-* have the event hander function be a stand alone function
+## () - new s6 example section - grid
+* start an example involving a canvas element and a grid
+* the user can pan around the grid my doing a click and drag
+* the user can pan around by clicking direction buttons on the sides of the canvas
+* the user can select a cell in the grid
+
+## () - new s5 section on touch events
+* have an example that involves creating an onPointer object with onPointer.start, move, and end props
+
+## () - new s3-onclick section examples
+* have an example that involves simulating a click
+
+## () - new s2-get-element-relative section examples
+* s1-5 div click example should actually be a part of this section
+* have an example that will work with both touch and mouse events
+
+## ( done 10/20/2021 ) - update s1-4-input-click example
+* (done) update the s1-4-input-click example to have more than one input element
+* (done) have the event hander function be a stand alone function
 
 ## ( done 10/20/2021 ) - more s1-basics examples
 * (done) have a window-onclick.html file

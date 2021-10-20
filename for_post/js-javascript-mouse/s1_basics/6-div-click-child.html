@@ -34,6 +34,13 @@ while(i--){
    container.appendChild(child);
 }
 
+[].forEach.call(container.children, function(child){
+   var x = Math.floor((640 - 32) * Math.random());
+   var y = Math.floor((480 - 32) * Math.random());
+   child.style.left = x + 'px';
+   child.style.top = y + 'px';
+})
+
 /*
 document.querySelector('.parent').addEventListener('click', function(e){
     var parent = e.currentTarget,

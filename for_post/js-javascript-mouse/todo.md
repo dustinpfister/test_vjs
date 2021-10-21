@@ -1,5 +1,8 @@
 # js-javascript-mouse todo list
 
+## () new s5-sv-get-elements-by-pos example
+* have an example that will get an array of elements in the event that they overlap
+
 ## () - new example section - grid
 * start an example involving a canvas element and a grid
 * the user can pan around the grid my doing a click and drag
@@ -20,13 +23,12 @@
 * at least one basic example of a pointer event
 * an example that shows that the click event has a pointer event object
 
-## () - new advanced section on getting an element by window relative position
+## ( done 10/21/2021 ) - new advanced section on getting an element by window relative position
 * (done) have an example that just uses window and target prop of event object
-* have an example that makes use of the elementFromPoint method
+* (done) have an example that makes use of the elementFromPoint method
 ```
 https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
 ```
-* have an example that will get an array of elements in the event that they overlap
 
 ## ( done 10/21/2021 ) - new s4-av-mouse-button examples
 * (done) new example on stopping the right click context menu

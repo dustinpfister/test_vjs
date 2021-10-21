@@ -7,23 +7,26 @@
         <script>
 var out = document.getElementById('out');
 var state = {
-    on: false
+    disp: 'Click or touch here',
+    color: 'gray'
 };
 var render = function (state) {
-    out.innerText = 'on: ' + state.on;
-    out.style.background = state.on ? 'green': 'red';
+    out.innerText = state.disp;
+    out.style.background = state.color;;
 };
 
 var handler = function(e){
-    console.log(e.type);
-    // e.preventDefault will suppress an additional mousedown when 
-    e.preventDefault();
+    console.log(e.type); // 'click'
+    state.disp = e.pointerType;
+    state.color = 'lime';
+    if(e.pointerType === 'touch'){
+       state.color = 'blue';
+    }
     state.on = !state.on;
     render(state);
 };
 
-out.addEventListener('touchstart', handler);
-out.addEventListener('mousedown', handler);
+out.addEventListener('click', handler);
 
 render(state);
         </script>

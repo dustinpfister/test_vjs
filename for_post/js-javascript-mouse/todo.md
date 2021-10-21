@@ -1,5 +1,10 @@
 # js-javascript-mouse todo list
 
+
+## () - new s6-av-mouse-wheel section examples
+* see if there is a way to disable browser default with this
+* how about in a child element rather than window?
+
 ## () new s5-sv-get-elements-by-pos example
 * have an example that will get an array of elements in the event that they overlap
 
@@ -23,8 +28,8 @@
 * at least one basic example of a pointer event
 * an example that shows that the click event has a pointer event object
 
-## () - new advanced section on wheel event
-* start a new advanced section on the wheel event
+## ( done 10/21/2021 ) - new advanced section on wheel event
+* (done) start a new advanced section on the wheel event
 ```js
 https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event
 ```

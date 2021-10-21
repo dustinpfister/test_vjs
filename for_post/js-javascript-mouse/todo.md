@@ -1,19 +1,12 @@
 # js-javascript-mouse todo list
 
-## () - new advanced section on getting an element by window relative position
-* have an example that makes use of the elementFromPoint method
-```
-https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
-```
-* have an example that will get an array of elements in the event that they overlap
-
 ## () - new example section - grid
 * start an example involving a canvas element and a grid
 * the user can pan around the grid my doing a click and drag
 * the user can pan around by clicking direction buttons on the sides of the canvas
 * the user can select a cell in the grid
 
-## () - new section on touch events
+## () - new advanced section on touch events
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
 
 ## () - new advanced section on simulating mouse, touch, and pointer events
@@ -26,6 +19,13 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
 ## () - new advanced section on pointer events
 * at least one basic example of a pointer event
 * an example that shows that the click event has a pointer event object
+
+## () - new advanced section on getting an element by window relative position
+* have an example that makes use of the elementFromPoint method
+```
+https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
+```
+* have an example that will get an array of elements in the event that they overlap
 
 ## ( done 10/21/2021 ) - new s4-av-mouse-button examples
 * (done) new example on stopping the right click context menu

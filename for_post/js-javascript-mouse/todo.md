@@ -9,13 +9,6 @@
 * the user can pan around by clicking direction buttons on the sides of the canvas
 * the user can select a cell in the grid
 
-
-## () - new advanced section on wheel event
-* start a new advanced section on the wheel event
-```js
-https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event
-```
-
 ## () - new advanced section on touch events
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
 
@@ -29,6 +22,12 @@ https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event
 ## () - new advanced section on pointer events
 * at least one basic example of a pointer event
 * an example that shows that the click event has a pointer event object
+
+## () - new advanced section on wheel event
+* start a new advanced section on the wheel event
+```js
+https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event
+```
 
 ## ( done 10/21/2021 ) - new advanced section on getting an element by window relative position
 * (done) have an example that just uses window and target prop of event object

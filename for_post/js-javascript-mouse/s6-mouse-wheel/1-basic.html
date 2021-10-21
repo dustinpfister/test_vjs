@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out">0<div>
+        <script>
+var y = 0,
+out = document.getElementById('out');
+window.addEventListener('wheel', function(e){
+    y += e.deltaY;
+    out.innerText = y;
+});
+        </script>
+    </body>
+</html>

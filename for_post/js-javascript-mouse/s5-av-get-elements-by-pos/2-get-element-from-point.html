@@ -3,25 +3,42 @@
         <title>javascript mouse example</title>
         <style>
 div{
-  position:absolute;
+  position:relative;
 }
 .parent{
-  width:640px;height:480px;background:gray;
+  width:640px;height:480px;background:gray;top:20px;
 }
 .child{
-  width:32px;height:32px;background:lime;
+  position:absolute;width:128px;height:128px;background:lime;
 }
         </style>
     </head>
     <body>
+        <div id="disp_node">0,0</div>
         <div class="parent">
-            <div class="child" style="left:50px;top:20px;">
+            <div class="child" style="left:50px;top:20px;"></div>
+            <div class="child" style="left:85px;top:40px;"></div>
+            <div class="child" style="left:235px;top:240px;"></div>
         <div>
         <script>
-window.addEventListener('click', function(e){
-    var el = document.elementFromPoint(e.clientX, e.clientY);
-    console.log(el === e.target);
-});
+var colors = ['red', 'lime', 'blue', 'gray'],
+dispNode = document.getElementById('disp_node');
+var cycleColor = function(node){
+    colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
+    colorIndex += 1;
+    colorIndex %= colors.length;
+    node.dataset.colorIndex = colorIndex;
+    node.style.background = colors[colorIndex];
+};
+
+var setAt = function(x, y){
+    var node = document.elementFromPoint(x, y);
+    dispNode.innerText = x + ',' + y;
+    cycleColor(node);
+};
+
+setAt(100, 75);
+
         </script>
     </body>
 </html>

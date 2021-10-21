@@ -21,6 +21,7 @@
 * an example that shows that the click event has a pointer event object
 
 ## () - new advanced section on getting an element by window relative position
+* (done) have an example that just uses window and target prop of event object
 * have an example that makes use of the elementFromPoint method
 ```
 https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint

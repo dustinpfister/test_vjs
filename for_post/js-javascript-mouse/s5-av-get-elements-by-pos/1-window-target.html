@@ -18,13 +18,15 @@ div{
             <div class="child" style="left:50px;top:20px;">
         <div>
         <script>
+var colors = ['red', 'lime', 'blue', 'gray'];
 window.addEventListener('click', function(e){
-    var node = e.target;
-	var colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
-	colorIndex += 1;
-	node.dataset.colorIndex = colorIndex;
-	node.dataset.color = 'red';
-	console.log(node.dataset.colorIndex);
+    var node = e.target,
+    colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
+    colorIndex += 1;
+    colorIndex %= colors.length;
+    node.dataset.colorIndex = colorIndex;
+    node.dataset.color = 'red';
+    console.log(node.dataset.colorIndex);
 });
         </script>
     </body>

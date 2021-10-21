@@ -14,9 +14,8 @@ div{
         </style>
     </head>
     <body>
-        <div class="parent">
-            foo
-            <div class="child" style="left:50px;top:20px;"></div>
+        <div class="parent">foo
+            <div class="child" style="left:50px;top:20px;">foo</div>
             <div class="child" style="left:85px;top:40px;"></div>
             <div class="child" style="left:235px;top:240px;"></div>
         <div>
@@ -29,16 +28,6 @@ var cycleColor = function(node){
     node.dataset.colorIndex = colorIndex;
     node.style.background = colors[colorIndex];
 };
-var getTextNode = function(node){
-    var i = 0,
-	len = node.children.length;
-	while(i < len){
-	   i += 1;
-	   var child = node.childNodes[i];
-	   console.log(child)
-	}
-}
-getTextNode(document.querySelector('.parent'))
 window.addEventListener('click', function(e){
     var node = e.target;
     node.innerText = e.clientX + ',' + e.clientY;

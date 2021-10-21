@@ -27,6 +27,12 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
 * at least one basic example of a pointer event
 * an example that shows that the click event has a pointer event object
 
+## () - new s4-av-mouse-button examples
+* new example on stopping the right click context menu
+```
+https://stackoverflow.com/questions/381795/how-to-disable-right-click-context-menu-in-javascript
+```
+
 ## ( done 10/21/2021 ) - new s3-onclick section examples
 * (done) have an example that uses the type property of an event object
 * (done) prevent default example with mousedown and touchstart

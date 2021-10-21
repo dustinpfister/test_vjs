@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>javascript mouse buttons example</title>
+    </head>
+    <body>
+        <div id="out" style="width:240px;height:240px;background:gray;"><div>
+        <script>
+var out = document.getElementById('out');
+var render = function (button) {
+    out.innerText = 'button: ' + button;
+};
+out.addEventListener('mousedown', function(e){
+    e.preventDefault();
+    render(e.button);
+    return false;
+});
+        </script>
+    </body>
+</html>

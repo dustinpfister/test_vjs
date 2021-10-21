@@ -1,5 +1,12 @@
 # js-javascript-mouse todo list
 
+## () - new advanced section on getting an element by window relative position
+* have an example that makes use of the elementFromPoint method
+```
+https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
+```
+* have an example that will get an array of elements in the event that they overlap
+
 ## () - new s6 example section - grid
 * start an example involving a canvas element and a grid
 * the user can pan around the grid my doing a click and drag

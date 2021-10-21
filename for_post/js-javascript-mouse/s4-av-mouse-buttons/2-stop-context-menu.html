@@ -9,11 +9,22 @@ var out = document.getElementById('out');
 var render = function (button) {
     out.innerText = 'button: ' + button;
 };
-out.addEventListener('mousedown', function(e){
-    e.preventDefault();
+// for a pointer down event handler
+var pointerdown = function(e){
     render(e.button);
+};
+// on context event handler
+var oncontext = function(e){
+    e.preventDefault();
+    if (event.stopPropagation){
+        event.stopPropagation();
+    }
+    event.cancelBubble = true;
+    //render(e.button);
     return false;
-});
+};
+out.addEventListener('mousedown', pointerdown);
+out.addEventListener('contextmenu', oncontext);
         </script>
     </body>
 </html>

@@ -18,7 +18,10 @@ div{
             <div class="child" style="left:50px;top:20px;">
         <div>
         <script>
-
+window.addEventListener('click', function(e){
+    var el = document.elementFromPoint(e.clientX, e.clientY);
+    console.log(el === e.target);
+});
         </script>
     </body>
 </html>

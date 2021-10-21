@@ -25,7 +25,7 @@ window.addEventListener('click', function(e){
     colorIndex += 1;
     colorIndex %= colors.length;
     node.dataset.colorIndex = colorIndex;
-    node.dataset.color = 'red';
+    node.style.background = colors[colorIndex];
     console.log(node.dataset.colorIndex);
 });
         </script>

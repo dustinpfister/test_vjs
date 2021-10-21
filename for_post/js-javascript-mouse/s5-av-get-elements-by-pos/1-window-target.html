@@ -3,24 +3,26 @@
         <title>javascript mouse example</title>
         <style>
 div{
-  position:absolute;
+  position:relative;
 }
 .parent{
-  width:640px;height:480px;background:gray;
+  width:640px;height:480px;background:gray;top:20px;
 }
 .child{
-  width:128px;height:128px;background:lime;
+  position:absolute;width:128px;height:128px;background:lime;
 }
         </style>
     </head>
     <body>
-        <div class="parent">foo
-            <div class="child" style="left:50px;top:20px;">foo</div>
+        <div id="disp_node">0,0</div>
+        <div class="parent">
+            <div class="child" style="left:50px;top:20px;"></div>
             <div class="child" style="left:85px;top:40px;"></div>
             <div class="child" style="left:235px;top:240px;"></div>
         <div>
         <script>
-var colors = ['red', 'lime', 'blue', 'gray'];
+var colors = ['red', 'lime', 'blue', 'gray'],
+dispNode = document.getElementById('disp_node');
 var cycleColor = function(node){
     colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
     colorIndex += 1;
@@ -30,7 +32,7 @@ var cycleColor = function(node){
 };
 window.addEventListener('click', function(e){
     var node = e.target;
-    node.innerText = e.clientX + ',' + e.clientY;
+    dispNode.innerText = e.clientX + ',' + e.clientY;
     cycleColor(node);
 });
         </script>

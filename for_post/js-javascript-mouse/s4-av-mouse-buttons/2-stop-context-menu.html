@@ -6,12 +6,20 @@
         <div id="out" style="width:240px;height:240px;background:gray;"><div>
         <script>
 var out = document.getElementById('out');
+// render to the div
 var render = function (button) {
     out.innerText = 'button: ' + button;
 };
-// for a pointer down event handler
+// for a pointer down event handler to be used with
+// touchstart and mousedown events.
+// button# 0:left click, 1:center click, 2:right click, -1: touch
 var pointerdown = function(e){
-    render(e.button);
+    console.log(e);
+    if(e.type === 'touchstart'){
+        render(-1);
+    }else{
+        render(e.button);
+    }
 };
 // on context event handler
 var oncontext = function(e){
@@ -23,6 +31,7 @@ var oncontext = function(e){
     //render(e.button);
     return false;
 };
+out.addEventListener('touchstart', pointerdown);
 out.addEventListener('mousedown', pointerdown);
 out.addEventListener('contextmenu', oncontext);
         </script>

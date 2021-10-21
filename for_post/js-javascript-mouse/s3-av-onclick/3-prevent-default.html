@@ -13,7 +13,6 @@ var render = function (state) {
     out.innerText = 'on: ' + state.on;
     out.style.background = state.on ? 'green': 'red';
 };
-
 var handler = function(e){
     console.log(e.type);
     // e.preventDefault will suppress an additional mousedown when 
@@ -21,10 +20,8 @@ var handler = function(e){
     state.on = !state.on;
     render(state);
 };
-
 out.addEventListener('touchstart', handler);
 out.addEventListener('mousedown', handler);
-
 render(state);
         </script>
     </body>

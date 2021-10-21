@@ -21,14 +21,16 @@ div{
         <div>
         <script>
 var colors = ['red', 'lime', 'blue', 'gray'];
-window.addEventListener('click', function(e){
-    var node = e.target,
+var cycleColor = function(node){
     colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
     colorIndex += 1;
     colorIndex %= colors.length;
     node.dataset.colorIndex = colorIndex;
     node.style.background = colors[colorIndex];
-    console.log(node.dataset.colorIndex);
+};
+window.addEventListener('click', function(e){
+    var node = e.target;
+    cycleColor(node);
 });
         </script>
     </body>

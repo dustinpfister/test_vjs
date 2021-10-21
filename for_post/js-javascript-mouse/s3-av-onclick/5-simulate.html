@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>js mouse onclick example</title>
+    </head>
+    <body>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <script>
+// step button handler
+var stepButton = function(e){
+    var button = e.target,
+    count = parseInt(button.dataset.count);
+    e.target.value = 'count: ' + ( button.dataset.count =  count += 1 );
+};
+// attach handler to input elements
+var buttons = document.querySelectorAll('.c_button');
+[].forEach.call(buttons, function(button){
+    button.addEventListener('click', stepButton);
+});
+// simulate a click for button 1 event 1000ms
+setInterval(function(){
+    buttons[1].click();
+}, 1000);
+        </script>
+    </body>
+</html>

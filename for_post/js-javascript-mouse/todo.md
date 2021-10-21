@@ -7,20 +7,20 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
 ```
 * have an example that will get an array of elements in the event that they overlap
 
-## () - new s6 example section - grid
+## () - new example section - grid
 * start an example involving a canvas element and a grid
 * the user can pan around the grid my doing a click and drag
 * the user can pan around by clicking direction buttons on the sides of the canvas
 * the user can select a cell in the grid
 
-## () - new s5 section on touch events
+## () - new section on touch events
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
 
 ## () - new s3-onclick section examples
 * (done) have an example that uses the type property of an event object
 * (done) prevent default example with mousedown and touchstart
-* s1-4-input-click example should actually be a part of this section
-* have an example that involves simulating a click
+* (done) s1-4-input-click example should actually be a part of this section
+* (done) have an example that involves simulating a click
 
 ## ( done 10/20/2021 ) - new s2-get-element-relative section examples
 * (done) s1-5 div click example should actually be a part of this section

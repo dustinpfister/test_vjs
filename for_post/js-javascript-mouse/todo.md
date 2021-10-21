@@ -9,6 +9,13 @@
 * the user can pan around by clicking direction buttons on the sides of the canvas
 * the user can select a cell in the grid
 
+
+## () - new advanced section on wheel event
+* start a new advanced section on the wheel event
+```js
+https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event
+```
+
 ## () - new advanced section on touch events
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
 

@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>javascript mouse example</title>
+        <style>
+div{
+  position:absolute;
+}
+.parent{
+  width:640px;height:480px;background:gray;
+}
+.child{
+  width:32px;height:32px;background:lime;
+}
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child" style="left:50px;top:20px;">
+        <div>
+        <script>
+window.addEventListener('click', function(e){
+    var node = e.target;
+	var colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
+	colorIndex += 1;
+	node.dataset.colorIndex = colorIndex;
+	node.dataset.color = 'red';
+	console.log(node.dataset.colorIndex);
+});
+        </script>
+    </body>
+</html>

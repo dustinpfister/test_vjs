@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>js mouse onclick example</title>
+    </head>
+    <body>
+        <div id="out" style="width:200px;height:200px;background:gray;padding:20px;"><div>
+        <script>
+var out = document.getElementById('out');
+var state = {
+    on: false
+};
+var render = function (state) {
+    out.innerText = 'on: ' + state.on;
+    out.style.background = state.on ? 'green': 'red';
+};
+
+var handler = function(e){
+    console.log(e.type);
+    // e.preventDefault will suppress an additional mousedown when 
+    e.preventDefault();
+    state.on = !state.on;
+    render(state);
+};
+
+out.addEventListener('touchstart', handler);
+out.addEventListener('mousedown', handler);
+
+render(state);
+        </script>
+    </body>
+</html>

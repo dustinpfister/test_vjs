@@ -17,6 +17,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
 
 ## () - new s3-onclick section examples
+* have an example that uses the type property of an event object
 * have an example that involves simulating a click
 
 ## ( done 10/20/2021 ) - new s2-get-element-relative section examples

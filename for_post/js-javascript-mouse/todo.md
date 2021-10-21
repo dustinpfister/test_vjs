@@ -16,6 +16,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
 ## () - new section on touch events
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
 
+## () - new advanced section on simulating mouse, touch, and pointer events
+
+## () - new advanced section on pointer events
+
 ## () - new s3-onclick section examples
 * (done) have an example that uses the type property of an event object
 * (done) prevent default example with mousedown and touchstart

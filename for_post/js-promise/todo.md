@@ -34,9 +34,9 @@ js-javascript-callback
 
 ### () - new av section on promise chains
 * (done) have a basic example for a promise chain
-* have an example that shows what the deal is with the order or then and catch function calls
-* have an example that involves two or more methods that return a promise
-* have an example of a funciton that returns a promsie that will call itself
+* (done) have an example that shows what the deal is with the order or then and catch function calls
+* have an example that involves two or more methods that return a promise, nodejs fs.stat, fs.readFile, and fs.writeFile
+* have an example of a funciton that returns a promsie that will call itself, fs.readdir path.join ..
 
 ### ( done 10/22/2021 ) - more basic examples
 * (done) have a simple.js example of the Promise constructor

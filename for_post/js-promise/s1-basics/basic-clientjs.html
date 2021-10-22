@@ -6,7 +6,6 @@
     <div><textarea id="json_in" cols="60" rows="20">{ "foo": 42, "bar": [0, [1, 2], 3] }</textarea><br><br></div>
     <div id="json_out"></div>
     <script>
-
 // parse json helper that returns a promsie
 var parseJSON = function(text){
     return new Promise(function(resolve, reject){
@@ -17,27 +16,40 @@ var parseJSON = function(text){
         }
     });
 };
-
+// get method that just wraps document.querySelector
 var get = function(str){
     return document.querySelector(str);
 };
-
+// update method that calls parseJSON method
 var update = function(node){
     var out = get('#json_out');
-    parseJSON(node.value)
+    return parseJSON(node.value)
     .then(function(obj){
         out.innerText = 'top level keys in above VAILD JSON! : ' + Object.keys(obj);
+        return Promise.resolve('vaild json');
     })
     .catch(function(e){
-        out.innerText = e.message
+        out.innerText = e.message;
+        return promise.reject(e);
     });
-}
+};
 
+// call update for each key up event for the textarea
 get('#json_in').addEventListener('keyup', function(e){
-console.log('yes')
-    update(e.target);
+    update(e.target)
+    .then(function(){
+        console.log('vail json input!');
+    })
+    .catch(function(){
+        console.log('json not vaild');
+    });
 });
-update(get('#json_in'));
+
+// call update for first time
+update(get('#json_in'))
+.then(function(){
+   console.log('hard coded demo json is good');
+});
 
 
     </script>

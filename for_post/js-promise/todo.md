@@ -14,16 +14,28 @@ js-async-await
 js-javascript-callback
 ```
 
-### () - new av section on bluebrid
+### () - new av section on bluebird.js
+* a simple example of using bluebird.js
 
-### () - new av section on Promise.resolve + Promise.reject
+### () - new av section on Error handing
+* have at least one example that does something for one or more specific errors
 
 ### () - new av section on async await
+* a basic example of a async function
 
-### () - new av section on Promise.all
+### () - new av section on Promise Object methods
+* one example on Promise.resolve/reject
+* one exmaple on Promise.all
+* one example on Promise.race
+* one example on Promise.any
 
 ### () - new av section on fetch
 * start an sx-av-fetch section on the fetch api in client side javaScript with at least one basic example
+
+### () - more basic examples
+* have a simple.js example of the Promise constructor
+* have a simple-cb.js example of a callback function with setTimeout
+* have a simple-cb-promise.js exmaple using the Promise constructor with setTimeout
 
 ### ( done 10/22/2021 ) - First set of examples
 * (done) start a basic section with a basic-nodejs.js file using the Promise constructor

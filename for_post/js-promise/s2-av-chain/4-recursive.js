@@ -4,20 +4,26 @@ promisify = require('util').promisify,
 readdir = promisify(fs.readdir);
 
 // loop back method
-let loopBack = (dir_start, forFolder) => {
-    forFolder = forFolder || function(files, dir){ console.log(dir + ' : ', files.join(', '), '\r\n') };
+let loopBack = (dir_start, forFolder, acc) => {
+    acc = acc || [];
+    forFolder = forFolder || function(files, dir, acc){ acc.push({files: files, dir: dir}) };
+    // if we are at root
     if(dir_start.toLowerCase() === 'c:\\' || dir_start === '/' ){
         return readdir(dir_start)
         .then((files)=>{
-            forFolder(files, dir_start);
-            return Promise.resolve('done');
+            forFolder(files, dir_start, acc);
+            return Promise.resolve(acc);
         });
     }
     return readdir(dir_start)
     .then((files)=>{
-        forFolder(files, dir_start);
-        return loopBack( path.join(dir_start, '..') );
+        forFolder(files, dir_start, acc);
+        // calling loopBack itself as long as we are not at root
+        return loopBack( path.join(dir_start, '..'), forFolder, acc );
     });
 };
 
-loopBack(process.cwd());
+loopBack(process.cwd())
+.then((result) => {
+    console.log(result);
+})

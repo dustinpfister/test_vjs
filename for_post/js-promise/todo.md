@@ -14,6 +14,10 @@ js-async-await
 js-javascript-callback
 ```
 
+### () - additional s4-av-recustive section example
+* have an example that has a method that can be used to prefrom some kind of test for each parent folder, stoping the loop on true
+* have an exmaple that will stop if the current folder is a git folder using child process module
+
 ### () - new av section on bluebird.js
 * a simple example of using bluebird.js
 

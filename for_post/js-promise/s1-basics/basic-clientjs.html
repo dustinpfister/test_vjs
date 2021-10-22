@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>javascript promise</title>
+  </head>
+  <body>
+    <div><textarea id="json_in" cols="60" rows="20">{ "foo": 42, "bar": [0, [1, 2], 3] }</textarea><br><br></div>
+    <div id="json_out"></div>
+    <script>
+
+// parse json helper that returns a promsie
+var parseJSON = function(text){
+    return new Promise(function(resolve, reject){
+        try{
+            resolve(JSON.parse(text));
+        }catch(e){
+            reject(e);
+        }
+    });
+};
+
+var get = function(str){
+    return document.querySelector(str);
+};
+
+var update = function(node){
+    var out = get('#json_out');
+    parseJSON(node.value)
+    .then(function(obj){
+        out.innerText = 'top level keys in above VAILD JSON! : ' + Object.keys(obj);
+    })
+    .catch(function(e){
+        out.innerText = e.message
+    });
+}
+
+get('#json_in').addEventListener('keyup', function(e){
+console.log('yes')
+    update(e.target);
+});
+update(get('#json_in'));
+
+
+    </script>
+  </body>
+</html>

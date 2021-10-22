@@ -33,7 +33,6 @@ var update = function(node){
         return promise.reject(e);
     });
 };
-
 // call update for each key up event for the textarea
 get('#json_in').addEventListener('keyup', function(e){
     update(e.target)
@@ -44,14 +43,11 @@ get('#json_in').addEventListener('keyup', function(e){
         console.log('json not vaild');
     });
 });
-
 // call update for first time
 update(get('#json_in'))
 .then(function(){
    console.log('hard coded demo json is good');
 });
-
-
     </script>
   </body>
 </html>

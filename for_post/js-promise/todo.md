@@ -25,8 +25,8 @@ js-javascript-callback
 ### () - new av section on fetch
 * start an sx-av-fetch section on the fetch api in client side javaScript with at least one basic example
 
-### () - First set of examples
+### ( done 10/22/2021 ) - First set of examples
 * (done) start a basic section with a basic-nodejs.js file using the Promise constructor
-* start a basic-client.html file that is a basic example of the Promise constructor in client side javaScript
+* (done) start a basic-client.html file that is a basic example of the Promise constructor in client side javaScript
 * (done) start an s2-av-node-util-promisify section with at least one example, using the util modules promisify method
 * (done) start an s2-av-node-util-promisify example that does not use promisify that will work in late versions of node but fail in older ones

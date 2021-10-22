@@ -33,7 +33,7 @@ js-javascript-callback
 * start an sx-av-fetch section on the fetch api in client side javaScript with at least one basic example
 
 ### () - new av section on promise chains
-* have a basic example for a promise chain
+* (done) have a basic example for a promise chain
 * have an example that shows what the deal is with the order or then and catch function calls
 * have an example that involves two or more methods that return a promise
 * have an example of a funciton that returns a promsie that will call itself

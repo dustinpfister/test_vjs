@@ -32,10 +32,16 @@ js-javascript-callback
 ### () - new av section on fetch
 * start an sx-av-fetch section on the fetch api in client side javaScript with at least one basic example
 
-### () - more basic examples
-* have a simple.js example of the Promise constructor
-* have a simple-cb.js example of a callback function with setTimeout
-* have a simple-cb-promise.js exmaple using the Promise constructor with setTimeout
+### () - new av section on promise chains
+* have a basic example for a promise chain
+* have an example that shows what the deal is with the order or then and catch function calls
+* have an example that involves two or more methods that return a promise
+* have an example of a funciton that returns a promsie that will call itself
+
+### ( done 10/22/2021 ) - more basic examples
+* (done) have a simple.js example of the Promise constructor
+* (done) have a simple-cb.js example of a callback function with setTimeout
+* (done) have a simple-cb-promise.js exmaple using the Promise constructor with setTimeout
 
 ### ( done 10/22/2021 ) - First set of examples
 * (done) start a basic section with a basic-nodejs.js file using the Promise constructor

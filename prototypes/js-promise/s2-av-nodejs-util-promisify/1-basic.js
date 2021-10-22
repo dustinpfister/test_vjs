@@ -2,7 +2,7 @@
 let fs = require('fs'),
 promisify = require('util').promisify,
 readFile = promisify(fs.readFile);
-
+// read file method should return a promise in node 8+
 readFile(process.argv[2], 'utf8')
 .then((data)=>{
     console.log(data);

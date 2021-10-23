@@ -2,7 +2,6 @@
 
 process.on('uncaughtException', (e) => {
     console.log('An Error has happend: ' + e.message);
-    //process.exit(1);
 });
 
 // loop using setInterval

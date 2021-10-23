@@ -2,7 +2,7 @@
 // setting an new uncaughtException handler to which
 // I AM NOT calling process.exit
 process.on('uncaughtException', (e) => {
-    console.log('An Error has happend: ' + e.message);
+    console.log('An Error has happened: ' + e.message);
 });
 // loop using setInterval
 let count = 5;

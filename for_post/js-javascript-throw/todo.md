@@ -1,5 +1,9 @@
 # js-javascript-throw todo list
 
+### () - new av section on global error handers
+* have a global.html file that is a client side example
+* have a global.js file that is a node.js example
+
 ### () - new av section on promises and throw statement
 * have one basic example of using a promise and the throw statement
 

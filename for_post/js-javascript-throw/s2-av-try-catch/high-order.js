@@ -14,7 +14,6 @@ var highOrder = function (func, resolve, reject) {
     }
     return result;
 };
-
 // resolve and reject methods
 var resolve = function (res) {
     return res;
@@ -22,7 +21,6 @@ var resolve = function (res) {
 var reject = function (e) {
     return e.message;
 };
-
 // error demo
 var result = highOrder(function () {
         throw new Error('Causing an error in the first function');

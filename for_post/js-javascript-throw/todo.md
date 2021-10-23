@@ -1,8 +1,11 @@
 # js-javascript-throw todo list
 
-### () - new av section on global error handers
+### () - expand s5-global-handers with new clientSide example
 * have a global.html file that is a client side example
-* have a global.js file that is a node.js example
+
+### ( done 10/23/2021 ) - new av section on global error handers
+* have a global-1.js file that is a node.js example that will be the default of using throw in a script
+* have a global-2.js file that is what happens when a handler is attached before calling throw
 
 ### ( done 10/23/2021 ) - new av section on promises and throw statement
 * (done) have one basic example of using a promise and the throw statement

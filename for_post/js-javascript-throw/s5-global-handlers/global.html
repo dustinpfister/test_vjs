@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>js throw</title>
+    </head>
+    <body>
+        <script>
+// make sure to attach first
+window.addEventListener('error', function(e){
+    console.log(e.error.code);
+    console.log(e.error.message);
+});
+// then throw
+var err = new Error('user error');
+err.code = 'EUDERR'
+throw err;
+        </script>
+    </body>
+</html>

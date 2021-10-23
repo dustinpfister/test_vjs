@@ -1,25 +1,18 @@
 // high order function that takes functions as arguments
 // and uses a try catch when calling them
 var highOrder = function (func, resolve, reject) {
+    var result = { pass: false, mess: '' };
     try {
-        return {
-            pass: true,
-            mess: resolve(func())
-        };
+        result.mess = resolve( func() );
+        result.pass = true;
     } catch (e) {
         try {
-            return {
-                pass: false,
-                mess: reject(e)
-            };
+            result.mess = reject(e);
         } catch (e) {
-
-            return {
-                pass: false,
-                mess: e.message
-            }
+            result.mess = e.message || 'reject method error with no message';
         }
     }
+    return result;
 };
 
 // resolve and reject methods
@@ -27,16 +20,15 @@ var resolve = function (res) {
     return res;
 };
 var reject = function (e) {
-    throw new Error('error in reject function');
     return e.message;
 };
 
 // error demo
 var result = highOrder(function () {
-        throw new Error('Just causing an error');
+        throw new Error('Causing an error in the first function');
         return 'foo'
     }, resolve, reject);
-console.log(result); // { pass: false, mess: 'Just causing an error' }
+console.log(result); // { pass: false, mess: 'Causing an error in the first function' }
 // no error demo
 var result = highOrder(function () {
         return 'foo'

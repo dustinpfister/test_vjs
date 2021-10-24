@@ -13,8 +13,11 @@
         <script>
 var out = document.getElementById('out');
 out.addEventListener('pointermove', function(e){
-    var node = e.target;
-    out.innerText = '( ' + e.clientX + ',' + e.clientY + ')';
+    var node = e.target,
+    bx = node.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
+    out.innerText = '( ' + x + ',' + y + ')';
 });
         </script>
     </body>

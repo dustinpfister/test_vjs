@@ -1,5 +1,6 @@
 # js-javascript-alert todo list
 
-## () - new s3-av-alt example that is a create table example
-* new example that involves creating a table of values rather than just logging once
+## () - expand s3-av-alt with more examples
+* new example that involves creating a table of values rather than using alert for each value
+* textarea element example
 

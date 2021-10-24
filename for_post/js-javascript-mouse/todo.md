@@ -24,9 +24,8 @@
 * simulate touch events
 * simulate pointer event
 
-## () - new advanced section on pointer events
-* at least one basic example of a pointer event
-* an example that shows that the click event has a pointer event object
+## ( done 10/24/2021 ) - new advanced section on pointer events
+* (done) at least one basic example of a pointer event such as pointer down
 
 ## ( done 10/21/2021 ) - new advanced section on wheel event
 * (done) start a new advanced section on the wheel event

@@ -24,9 +24,9 @@
 * simulate touch events
 * simulate pointer event
 
-## () - expand s7-av-pointer-events
-* have an example on pointerID and pointerType
-* have an example on pointerdown, pointermove, and pointerup
+## ( done 10/24/2021 ) - expand s7-av-pointer-events
+* (done) have an example on pointerID and pointerType
+* (done) have an example on pointermove
 
 ## ( done 10/24/2021 ) - new advanced section on pointer events
 * (done) at least one basic example of a pointer event such as pointer down

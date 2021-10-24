@@ -1,9 +1,15 @@
 <html>
     <head>
         <title>javaScript mouse basic example</title>
+        <style>
+#out{
+  touch-action: none;
+  background:gray;width:200px;height:200px;padding:20px;
+}
+        </style>
     </head>
     <body>
-        <div id="out" style="background:gray;width:200px;height:200px;padding:20px;"></div>
+        <div id="out"></div>
         <script>
 var out = document.getElementById('out');
 out.addEventListener('pointermove', function(e){

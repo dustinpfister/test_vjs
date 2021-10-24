@@ -4,14 +4,12 @@
     </head>
     <body>
         <div id="out" style="background:gray;width:200px;height:200px;padding:20px;"></div>
-		<div id="disp">What the?</div>
+        <div id="disp"></div>
         <script>
 var out = document.getElementById('out');
 disp = document.getElementById('disp');
-out.addEventListener('pointermove', function(e){
+out.addEventListener('pointerdown', function(e){
     var node = e.target;
-	console.log(e);
-	e.preventDefault();
     disp.innerText = e.pointerId + ' : ' + e.pointerType + ' ( ' + e.clientX + ',' + e.clientY + ')';
 });
         </script>

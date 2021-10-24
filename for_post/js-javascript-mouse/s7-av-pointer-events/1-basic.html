@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out" data-count="0" style="background:gray;width:200px;height:200px;padding:20px;">0<div>
+        <script>
+window.addEventListener('pointerdown', function(e){
+    var node = e.target;
+    if(node.dataset.count){
+        var c = parseInt(node.dataset.count);
+        c+= 1;
+        node.dataset.count = c;
+        node.innerText = c;
+    }
+});
+        </script>
+    </body>
+</html>

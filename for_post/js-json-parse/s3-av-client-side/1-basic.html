@@ -3,7 +3,7 @@
         <title>JSON parse</title>
     </head>
     <body>
-        <textarea>
+        <textarea id="json_in"cols="60" rows="15">
 {
     "foo": "bar",
     "n" : 42,
@@ -14,7 +14,40 @@
     ]
 }
         </textarea>
+        <div id="json_disp"></disp>
         <script>
+var json_in = document.querySelector('#json_in'),
+json_disp = document.querySelector('#json_disp');
+
+var parse = function(text){
+    try{
+        return JSON.parse(text);
+    }catch(e){
+        return false;
+    }
+};
+
+var isValid = function(text){
+    if(parse(text)){
+        return true;
+    }
+    return false;
+};
+
+var jsonCheck = function(){
+    if(isValid(json_in.value)){
+	    json_disp.innerText = 'Valid JSON';
+	}else{
+	   json_disp.innerText = 'JSON Not Valid';
+	}
+}
+
+json_in.addEventListener('keyup', function(){
+
+});
+
+jsonCheck();
+
         </script>
     </body>
 </html>

@@ -12,8 +12,8 @@
 * rename 4-promise to 5-promise
 
 ### () - expand av-client-side section
-* new 2-game-state example started
-* the s2-game-state example will preform additional checks such as the value types
+* (done) new 2-game-state example started
+* the 2-game-state example will preform additional checks such as the value types
 * have a new state button that will create a new create state in the textarea element
 * have a canvas element that will serve as a way to show the current effect of the state
 

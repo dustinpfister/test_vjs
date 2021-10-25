@@ -36,14 +36,14 @@ var isValid = function(text){
 
 var jsonCheck = function(){
     if(isValid(json_in.value)){
-	    json_disp.innerText = 'Valid JSON';
-	}else{
-	   json_disp.innerText = 'JSON Not Valid';
-	}
-}
+        json_disp.innerText = 'Valid JSON';
+    }else{
+       json_disp.innerText = 'JSON Not Valid';
+    }
+};
 
 json_in.addEventListener('keyup', function(){
-
+    jsonCheck();
 });
 
 jsonCheck();

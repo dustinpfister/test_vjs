@@ -13,6 +13,6 @@
 * new 3-dir.js example that will default to one or more default locations for a json file of no positional is given
 * renamed index.js example to 4-promise.js
 
-### () - new av-client-side section
-* start a new client side javascript section with at least one basic.html example
-* the basic.html example can just involve a textarea element
+### ( done 10/25/2021 ) - new av-client-side section
+* (done) start a new client side javascript section with at least one basic.html example
+* (done) the basic.html example can just involve a textarea element

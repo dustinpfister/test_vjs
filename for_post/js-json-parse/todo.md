@@ -7,6 +7,12 @@
 * start with a 2-post folder that will contain a sever.js and index.html file
 * the 2-post example will involve using post requests
 
+### () - expand av-client-side section
+* new 2-game-state example started
+* the s2-game-state example will preform additional checks such as the value types
+* have a new state button that will create a new create state in the textarea element
+* have a canvas element that will serve as a way to show the current effect of the state
+
 ### () - expand av-nodejs-examples section
 * new 1-require.js example that will just user require to load in json
 * new 2-positions.js example that can be used to load a json file by way of a positional argument
@@ -15,4 +21,4 @@
 
 ### ( done 10/25/2021 ) - new av-client-side section
 * (done) start a new client side javascript section with at least one basic.html example
-* (done) the basic.html example can just involve a textarea element
+* (done) the 1-basic.html example can just involve a textarea element

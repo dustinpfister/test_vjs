@@ -5,13 +5,7 @@
     <body>
         <textarea id="json_in"cols="60" rows="15">
 {
-    "foo": "bar",
-    "n" : 42,
-    "grid" : [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]
+    "appName": "BoxGame"
 }
         </textarea>
         <div id="json_disp"></disp>
@@ -19,8 +13,7 @@
 var json_in = document.querySelector('#json_in'),
 json_disp = document.querySelector('#json_disp');
 
-// parse a JSON string and return the object
-// of an error object if something goes wrong doing so
+// parse method
 var parse = function(text){
     try{
         return JSON.parse(text);
@@ -28,12 +21,13 @@ var parse = function(text){
         return e;
     }
 };
-// check if the given text is valid json or not by checking 
-// for a 'SyntaxError' object as the constructor when calling parse
-// valid json should be just a plain 'Object'
+// additional checks now
 var isValid = function(text){
     var result = parse(text);
     if(result.constructor.name === 'SyntaxError'){
+        return false;
+    }
+    if(result.appName != 'BoxGame'){
         return false;
     }
     return true;

@@ -1,3 +1,3 @@
 # js-json-parse
 
-These are the source code example for my post on the [JSON.parse method](https://dustinpfister.github.io/2020/02/28/js-json-parse/) as well as various other topics that will branch off from the method such as try catch, promises, reviver functions and so forth.
+These are the source code example for my post on the [JSON.parse method](https://dustinpfister.github.io/2020/02/28/js-json-parse/) as well as various other topics that will branch off from the method such as try catch, promises, reviver functions and so forth. There are also a wide range of things to cover that might not have to do with the JSON.parse method alone, but is something that is closely related to the topic of parsing JSON such as the require object in nodejs that can also be used to parse JSON, and how to work with and validate JSON in a text area element in client side javaScript.

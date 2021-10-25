@@ -19,21 +19,26 @@
 var json_in = document.querySelector('#json_in'),
 json_disp = document.querySelector('#json_disp');
 
+// parse a JSON string and return the object
+// of an error object if something goes wrong doing so
 var parse = function(text){
     try{
         return JSON.parse(text);
     }catch(e){
+        return e;
+    }
+};
+// check if the given text is valid json or not by checking 
+// for a 'SyntaxError' object as the constructor when calling parse
+// valid json should be just a plain 'Object'
+var isValid = function(text){
+    var result = parse(text);
+    if(result.constructor.name === 'SyntaxError'){
         return false;
     }
+    return true;
 };
-
-var isValid = function(text){
-    if(parse(text)){
-        return true;
-    }
-    return false;
-};
-
+// Check the JSON in the textarea and set the inner text of the display div
 var jsonCheck = function(){
     if(isValid(json_in.value)){
         json_disp.innerText = 'Valid JSON';
@@ -41,11 +46,11 @@ var jsonCheck = function(){
        json_disp.innerText = 'JSON Not Valid';
     }
 };
-
+// attach and event hander for the 'keyup' event
 json_in.addEventListener('keyup', function(){
     jsonCheck();
 });
-
+// call JSON check for the first time
 jsonCheck();
 
         </script>

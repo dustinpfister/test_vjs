@@ -14,7 +14,7 @@
 * have a canvas element that will serve as a way to show the current effect of the state
 
 ### () - expand av-nodejs-examples section
-* new 1-require.js example that will just user require to load in json
+* (done) new 1-require.js example that will just user require to load in json
 * new 2-positions.js example that can be used to load a json file by way of a positional argument
 * new 3-dir.js example that will default to one or more default locations for a json file of no positional is given
 * renamed index.js example to 4-promise.js

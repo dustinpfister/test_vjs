@@ -1,3 +1,3 @@
 # js-javascript-return
 
-These are the source code examples for my post on the [javaScript return](https://dustinpfister.github.io/2019/03/01/js-javascript-return/) keyword.
+These are the source code examples for my post on the [javaScript return](https://dustinpfister.github.io/2019/03/01/js-javascript-return/) keyword. This return keyword is what to use in order to define some kind of return value for a function, which will default to an undefined value otherwise. There are many other topics that branch off from the return keyword though such as [implicit return values](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#comparing_traditional_functions_to_arrow_functions) in arrow functions.

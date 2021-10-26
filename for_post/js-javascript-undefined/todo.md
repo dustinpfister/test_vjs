@@ -15,7 +15,8 @@
 * fix 2-function-expression so that I am calling undefined
 
 ### ( done 10/27/2021 ) - expand s7-av-sparse-arrays
-* add an example on Object.keys
+* (done) add an array from example as a way to create a sprase array
+* (done) add an example on Object.keys
 
 ### ( done 10/26/2021 ) - new av section on sparse arrays
 * (done) basic example on sparse arrays

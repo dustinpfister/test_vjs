@@ -1,4 +1,4 @@
 # js-array-map todo list
 
-## () - sparse array section
-* start a sparse array section like the one in js-javaScript-undefined
+## ( done 10/26/2021 ) - sparse array section
+* (done) start a sparse array section like the one in js-javaScript-undefined

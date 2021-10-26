@@ -1,5 +1,9 @@
 # js-javascript-undefined todo list
 
+### () - new av section on undefined and undeclared
+* basic example of an error that happens when accessing an undeclared value
+* using the this['name'] trick as a way to test if something is not declared
+
 ### () expand s7-av-sparse-arrays section
 * isSparse methods
 * new sparse array example involving an image loader and testing for all images loaded

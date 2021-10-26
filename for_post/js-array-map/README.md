@@ -1,0 +1,3 @@
+# js-array-map
+
+These are a few source code examples on the array map prototype method in core javaScript to which I have wrote a post on that can be found [here](https://dustinpfister.github.io/2020/06/16/js-array-map/). I have also wrote a post on the [lodash map method](https://dustinpfister.github.io/2018/02/02/lodash_map/) that will do more or less the same thing, but will work with collection objects in general.

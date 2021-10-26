@@ -5,16 +5,17 @@ function func1() {
 };
 console.log(func1()); // 'foo'
 
+var obj = {};
 // calling a function expression before is it define
 try {
-    console.log(func2());
+    console.log(obj.func2());
 } catch (e) {
     console.log(e.message); // func2 is not a function
-    console.log(func2 === undefined); // true
+    console.log(obj.func2 === undefined); // true
 }
 // defining the expression here
-var func2 = function () {
+obj.func2 = function () {
     return 'bar';
 };
 // works fine now
-console.log(func2()); // 'bar'
+console.log(obj.func2()); // 'bar'

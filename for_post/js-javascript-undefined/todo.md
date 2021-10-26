@@ -5,4 +5,6 @@
 
 ### () - new av section on sparse arrays
 * (done) basic example on sparse arrays
-* basic example involving a sparse array and array map
+* (done) basic example involving a sparse array and array map
+* an example using a while loop and a sparse array
+

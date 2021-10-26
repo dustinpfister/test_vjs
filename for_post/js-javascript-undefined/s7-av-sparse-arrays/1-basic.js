@@ -1,5 +1,3 @@
-
-
 var a = [];
 a[9] = 42;
 console.log(a.length); // 10

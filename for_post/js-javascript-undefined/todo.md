@@ -9,7 +9,7 @@
 ### () - new av section on boolean functions and undefined
 * basic example of a function that only returns true for a condition, so the default is still undefined
 
-### ( doen 10/26/2021 ) - new av section on sparse arrays
+### ( done 10/26/2021 ) - new av section on sparse arrays
 * (done) basic example on sparse arrays
 * (done) basic example involving a sparse array and array map
 * (done) an example using a while loop and a sparse array

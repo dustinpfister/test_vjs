@@ -5,6 +5,5 @@ var b = a.map(function (el) {
         c += 1;
         return el * 2;
     });
-
 console.log(b); // [ <9 empty items>, 84 ]
 console.log(c); // 1

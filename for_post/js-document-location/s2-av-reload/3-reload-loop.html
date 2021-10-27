@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>document location</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+// state object
+var state={
+    n : Math.random().toFixed(2),
+    st : new Date(),
+    delay : 3,
+    secs: 0
+};
+// loop
+var loop = function(){
+    var now = new Date(),
+    secsDelta = (now - state.st) / 1000;
+ 
+    setTimeout(loop, 33);
+ 
+    state.secs += secsDelta;
+    state.secs = state.secs > state.delay ? state.delay: state.secs;
+    if(state.secs === state.delay){
+        location.reload();
+    }
+ 
+    // display text
+    document.getElementById('out').innerHTML = state.n + ' : ' + state.secs + ' / ' + state.delay;
+ 
+};
+loop();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>document location</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+// random display text
+document.getElementById('out').innerHTML = Math.random();
+// using setTiemout
+setTimeout(function(){
+    location.reload();
+}, 3000);
+
+        </script>
+    </body>
+</html>

@@ -6,11 +6,11 @@
         <div id="out"></div>
         <input type="button" id="button_reload" value="reload">
         <script>
+// random display text
 document.getElementById('out').innerHTML = Math.random();
-document.getElementById('button_reload')
-.addEventListener('click', function(){
-console.log('yes');
-  location.reload();
+// event handler that will reload the page
+document.getElementById('button_reload').addEventListener('click', function(){
+    location.reload();
 });
         </script>
     </body>

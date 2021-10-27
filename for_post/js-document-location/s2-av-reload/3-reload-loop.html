@@ -8,14 +8,14 @@
 // state object
 var state={
     n : Math.random().toFixed(2),
-    st : new Date(),
-    delay : 3,
+    lt : new Date(),
+    delay : 10,
     secs: 0
 };
 // loop
 var loop = function(){
     var now = new Date(),
-    secsDelta = (now - state.st) / 1000;
+    secsDelta = (now - state.lt) / 1000;
  
     setTimeout(loop, 33);
  
@@ -24,9 +24,10 @@ var loop = function(){
     if(state.secs === state.delay){
         location.reload();
     }
- 
+    state.lt = now;
     // display text
-    document.getElementById('out').innerHTML = state.n + ' : ' + state.secs + ' / ' + state.delay;
+    document.getElementById('out').innerHTML = 'n = ' + state.n + ' , ' +
+        'reload in: '+ Math.round(state.secs) + ' / ' + state.delay;
  
 };
 loop();

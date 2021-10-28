@@ -8,11 +8,11 @@ var Model = (function (api) {
             canvas: canvas,
             x: 0,
             y: 0,
-            r: 15,
+            r: 25,
             f: 0,
             frame: 0,
-            maxFrame: 100,
-            fps: 10
+            maxFrame: 120,
+            fps: 30
         };
         return state;
     };

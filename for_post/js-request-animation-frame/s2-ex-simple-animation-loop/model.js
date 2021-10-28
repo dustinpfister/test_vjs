@@ -1,7 +1,8 @@
+// A simple Model example
 var Model = (function (api) {
-
+    // public api
     var api = {};
-
+    // create a new state
     api.create = function (canvas) {
         var state = {
             canvas: canvas,
@@ -15,7 +16,7 @@ var Model = (function (api) {
         };
         return state;
     };
-
+    // update the state
     api.update = function (state, secs) {
         var per = state.frame / state.maxFrame,
         bias = 1 - Math.abs(0.5 - per) / 0.5,
@@ -30,8 +31,7 @@ var Model = (function (api) {
         state.f = state.f % state.maxFrame;
         state.frame = Math.floor(state.f);
     };
-
+    // return the public api
     return api;
-
 }
     ());

@@ -1,8 +1,12 @@
 # js-request-animation-frame
 
-### () - break down and clean up and rename s2-example
-* break down basic.js into modle.js, view.js and main.js files
-* rename s2-example to s2-ex-simple-ani-loop
+### () - new av-capping-secs-delta value section
+* start a new section on capping a secs delta value
+* just have a 1-basic.html file that is the general idea of this
+
+### ( done 10/28/2021 ) - break down and clean up and rename s2-example
+* (done) break down basic.js into modle.js, draw.js and main.js files
+* (done) rename s2-example to s2-ex-simple-animation-loop
 
 ### ( done 10/28/2021 ) - expand s1-basics section
 * (done) rename index.html to 2-move-by-pps

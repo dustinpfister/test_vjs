@@ -11,9 +11,9 @@
 * make sure you are using a cap on the secs delta
 * have display objects move to a center object, and have the center object shoot objects at the invading objects.
 
-### () - new av-capping-secs-delta value section
-* start a new section on capping a secs delta value
-* just have a 1-basic.html file that is the general idea of this
+### ( done 10/28/2021 ) - new av-capping-secs-delta value section
+* (done) start a new section on capping a secs delta value
+* (done) just have a 1-basic.html file that is the general idea of this
 
 ### ( done 10/28/2021 ) - break down and clean up and rename s2-example
 * (done) break down basic.js into modle.js, draw.js and main.js files

@@ -1,5 +1,16 @@
 # js-request-animation-frame
 
+
+
+### () - some improvements to ex-simple-animation-loop
+* create method options
+* options for the radius and start angle
+
+### () - new ex-object-pool example
+* start a new object pool example
+* make sure you are using a cap on the secs delta
+* have display objects move to a center object, and have the center object shoot objects at the invading objects.
+
 ### () - new av-capping-secs-delta value section
 * start a new section on capping a secs delta value
 * just have a 1-basic.html file that is the general idea of this

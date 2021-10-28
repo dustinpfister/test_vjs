@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>request animation frame</title>
+    </head>
+    <body>
+        <canvas id="the_canvas" width="640" height="480"></canvas>
+        <script>
+var canvas = document.getElementById('the_canvas'),
+ctx = canvas.getContext('2d'),
+x = 0;
+var loop = function(now){
+    requestAnimationFrame(loop);
+    // update x
+    x += 5; x %= canvas.width;
+    // draw to the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(x, 240 - 32, 64, 64);
+};
+loop();
+        </script>
+    </body>
+</html>

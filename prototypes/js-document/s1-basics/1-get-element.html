@@ -1,16 +1,12 @@
 <html>
     <head>
-        <title>javaScript example</title>
+        <title>javaScript document object example</title>
     </head>
     <body>
-        <div><button onclick="speak()">Speak</button></div>
+        <div id="out">Hello </div>
         <script>
-var speak = function(){
-console.log('hello');
-console.log(speechSynthesis.getVoices());
-let utterance = new SpeechSynthesisUtterance("Hello world!");
-speechSynthesis.speak(utterance);
-};
+var el = document.getElementById('out');
+el.innerText += 'World';
         </script>
     </body>
 </html>

@@ -1,16 +1,20 @@
 <html>
     <head>
-        <title>javaScript example</title>
+        <title>js document object example</title>
     </head>
     <body>
-        <div><button onclick="speak()">Speak</button></div>
+        <div>
+            <div class="foo"></div>
+            <div class="foo"></div>
+            <div class="foo"></div>
+        </div>
         <script>
-var speak = function(){
-console.log('hello');
-console.log(speechSynthesis.getVoices());
-let utterance = new SpeechSynthesisUtterance("Hello world!");
-speechSynthesis.speak(utterance);
-};
+var divs = document.querySelectorAll('.foo');
+var i = divs.length;
+while(i--){
+   var d = divs[i];
+   d.innerText = 'Hello World';
+}
         </script>
     </body>
 </html>

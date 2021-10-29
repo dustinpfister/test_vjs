@@ -26,9 +26,9 @@
 * 1-vis.html : an example of on visibility change event
 * 2-fullscreen.html : an on full screen change event example
 
-### (   ) - new 3-av-element-create-remove section
-* 1-create-element.html : example of the document.createElement method
-* 2-remove.html : example that involves removing one or more elements
+### ( done 10/29/2021 ) - new 3-av-element-create-remove section
+* (done) 1-create-element.html : example of the document.createElement method
+* (done) 2-remove.html : example that involves removing one or more elements
 
 ### ( done 10/29/2021 ) - new 2-av-element-reference sections
 * (done) 1-by-id-class

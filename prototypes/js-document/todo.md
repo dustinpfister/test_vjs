@@ -1,7 +1,7 @@
 # js-document todo list
 
 ### (   ) - basics folder
-* get element example
-* get html collection example
+* (done) get element example
+* (done) get html collection example
 * attach event hander example
 * find location set location

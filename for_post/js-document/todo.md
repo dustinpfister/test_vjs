@@ -4,15 +4,15 @@
 * get and set location example
 * reload example
 
-### (   ) - new av create element section
-* have at least one example of the document.createElement method
-
 ### (   ) - new av events section on various events
 * have an example of on visibility change event
 * have an on full screen change event example
 * have an example on bubbling
 
-### (   ) - new av section on element refernces
+### (   ) - new av create element section
+* have at least one example of the document.createElement method
+
+### (   ) - new av section on element references
 * 1-by-id
 * 2-by-class
 * 3-by-tag-name

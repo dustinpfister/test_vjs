@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>javaScript document object example</title>
+    </head>
+    <body>
+        <div>
+            <h1 id="header-title">The title of this</h1>
+            <h2 class="header-subject">Subject One</h2>
+            <p>I am some text on subject one</p>
+            <h2 class="header-subject">Subject Two</h2>
+            <p>I am some text on subject Two</p>
+        </div>
+        <script>
+// getting an element reference by id
+var header = document.getElementById('header-title');
+header.style.color = 'red';
+// getting an HTMLCollection by way of the document.getElementsByClassName method
+var subjectHeaders = document.getElementsByClassName('header-subject');
+var i = subjectHeaders.length;
+while(i--){
+    var h = subjectHeaders[i];
+    h.style.color = 'orange';
+}
+        </script>
+    </body>
+</html>

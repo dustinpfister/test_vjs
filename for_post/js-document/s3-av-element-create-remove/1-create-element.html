@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>javaScript document object example</title>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        <script>
+// getting a reference to a container element by id, or document.body
+// if I change the id or remove the element
+var container = document.getElementById('wrap') || document.body;
+// CREATING A CANVAS ELEMENT with the document.createElement method
+var canvas = document.createElement('canvas'),
+// I can now do things with this element all ready such as getting the
+// drawing content, and setting the native image size
+ctx = canvas.getContext('2d');
+canvas.width = 640;
+canvas.height = 480;
+// I will want to append the crated element to a container if I want to see anything
+container.appendChild(canvas);
+// drawing to the canvas
+ctx.fillStyle = '#008f8f';
+ctx.fillRect(0,0, canvas.width, canvas.height);
+ctx.fillStyle = '#ffffff';
+ctx.textBaseline = 'middle';
+ctx.textAlign = 'center';
+ctx.font = '40px arial';
+ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
+        </script>
+    </body>
+</html>

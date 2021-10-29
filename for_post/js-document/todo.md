@@ -1,5 +1,8 @@
 # js-document todo list
 
+### (   ) - expand av-element-references
+* 4-children
+
 ### (   ) - new av section on location
 * get and set location example
 * reload example
@@ -13,11 +16,9 @@
 * have at least one example of the document.createElement method
 
 ### (   ) - new av section on element references
-* 1-by-id
-* 2-by-class
-* 3-by-tag-name
-* 4-query-selector
-* 5-query-selector-all
+* 1-by-id-class
+* 2-by-tag-name
+* 3-query-selector
 
 ### ( done 10/29/2021 ) - basics folder
 * (done) get element example

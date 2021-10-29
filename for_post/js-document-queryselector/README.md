@@ -1,0 +1,3 @@
+# js-document-queryselector
+
+These are the source code example that I have together thus far for my blog post on the [query selector methods](https://dustinpfister.github.io/2020/06/23/js-document-queryselector/) of the document object. These methods allow for a client side javaScript developer to set references to one or more elements by way of an id, class name, or tag name by way of a query string. The return value of the query selector method is an element object if an element object is found, and the return value of the query selector all method is an node list rather than a love html collection.

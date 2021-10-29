@@ -4,19 +4,23 @@
     </head>
     <body>
         <div>
-            <h1 id="header-title">The title of this</h1>
-            <h2 class="header-subject">Subject One</h2>
-            <p>I am some text on subject one</p>
-            <h2 class="header-subject">Subject Two</h2>
-            <p>I am some text on subject Two</p>
+           <span class="num">5</span><br>
+           <span class="num">7</span><br>
+           <span class="num">BAR</span><br>
+           <span class="num">3</span><br><br>
         </div>
+        <div id="out"></div>
         <script>
-var nodes = document.querySelectorAll('.header-subject');
-var i = nodes.length;
+var nodes = document.querySelectorAll('.num'),
+out = document.querySelector('#out'),
+i = nodes.length,
+sum = 0;
 while(i--){
-   var d = nodes[i];
-   d.style.background = 'lime';
+   var d = nodes[i],
+   n = parseInt(d.innerText);
+   sum += String(n) === 'NaN' ? 0 : n;
 }
+out.innerText = 'total: ' + sum;
         </script>
     </body>
 </html>

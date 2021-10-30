@@ -1,21 +1,15 @@
-let str = [255, 250, 32, 255].map((n) => {
-    return String.fromCharCode(n);
-}).join('');
-console.log(str);
-
-let counts = Uint8Array.of(0, 0, 0);
 
 /*
 let stepCounts = (counts, n, ci) => {
-    ci = ci === undefined ? 0 : ci;
-    var c = counts[ci], // the current count
-    s = c + n, // the sum of current count + n
-    oc = Math.floor(s / 256), // over count
-    r = s % 256; // remainder
-    console.log(c, s, oc, r);
+ci = ci === undefined ? 0 : ci;
+var c = counts[ci], // the current count
+s = c + n, // the sum of current count + n
+oc = Math.floor(s / 256), // over count
+r = s % 256; // remainder
+console.log(c, s, oc, r);
 };
 stepCounts([0], 255)
-*/
+ */
 
 let stepCountsForChar = (counts, ci, ch) => {
     var n = typeof ch === 'string' ? ch.charCodeAt(0) : ch;
@@ -35,9 +29,27 @@ let stepCountsForChar = (counts, ci, ch) => {
     }
 };
 
-let ch, i = 0;
-while (ch = str[i]) {
-    stepCountsForChar(counts, 0, ch);
-    i += 1;
+let stringToCounts = (str) => {
+    let counts = Uint8Array.of(0, 0, 0);
+    let ch,
+    i = 0;
+    while (ch = str[i]) {
+        stepCountsForChar(counts, 0, ch);
+        i += 1;
+    }
+    return counts;
+};
+
+
+let str = [255, 250, 32, 255].map((n) => {
+    return String.fromCharCode(n);
+}).join('');
+console.log(stringToCounts(str));
+
+
+// test
+var n = 0;
+while (n < 100) {
+
+    n += 1;
 }
-console.log(counts)

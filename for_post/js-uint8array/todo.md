@@ -1,6 +1,10 @@
 # js-unit8array todo list
 
-### () - new ex-hash-code-methods
+### () - expand s1-basics section
+* rename files so they are numbered
+* 4-of { example of the of method
+
+### ( done 10/30/2021 ) - new ex-hash-code-methods
 * (done) have an example that uses a Unit8Array to create a hash code from a source string
 * (done) start an example that involves creating a sum from a string
-* have an example that uses the sum-char-codes method to get byte values using Math.pow
+* (done) have an example that uses the sum-char-codes method to get byte values using Math.pow

@@ -1,11 +1,11 @@
 # js-unit8array todo list
 
-### () - rename av-map to av-instance-methods and expand
+### ( done 10/30/2021) - rename av-map to av-instance-methods and expand
 * (done) rename section to av-instance-methods
-* add a 2-filter example
-* add a 3-join example
+* (done) add a 2-filter example
+* (done) add a 3-join example
 
-### ( done 10/20/2021 ) - expand s1-basics section
+### ( done 10/30/2021 ) - expand s1-basics section
 * (done) rename files so they are numbered
 * (done) 4-of { example of the of method
 * (done) 5-byte-length example

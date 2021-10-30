@@ -1,9 +1,14 @@
 # js-unit8array todo list
 
-### () - expand s1-basics section
-* rename files so they are numbered
-* 4-of { example of the of method
-* 5-byte-length example
+### () - rename av-map to av-instance-methods and expand
+* (done) rename section to av-instance-methods
+* add a 2-filter example
+* add a 3-join example
+
+### ( done 10/20/2021 ) - expand s1-basics section
+* (done) rename files so they are numbered
+* (done) 4-of { example of the of method
+* (done) 5-byte-length example
 
 ### ( done 10/30/2021 ) - new ex-hash-code-methods
 * (done) have an example that uses a Unit8Array to create a hash code from a source string

@@ -15,8 +15,12 @@ let stepCountsForChar = (counts, ci, ch) => {
     var n = typeof ch === 'string' ? ch.charCodeAt(0) : ch;
     var c = counts[ci],
     d = c + n,
-    e = 0;
-    if (d > 256) {
+    e = 0,
+    oc = d / 255;
+
+    console.log('e: ' + e);
+    console.log('oc: ' + oc);
+    if (d >= 256) {
         e = d % 255;
         counts[ci] = 0;
     } else {
@@ -30,7 +34,7 @@ let stepCountsForChar = (counts, ci, ch) => {
 };
 
 let stringToCounts = (str) => {
-    let counts = Uint8Array.of(0, 0, 0);
+    let counts = Uint8Array.of(255, 250, 0);
     let ch,
     i = 0;
     while (ch = str[i]) {
@@ -40,16 +44,7 @@ let stringToCounts = (str) => {
     return counts;
 };
 
-
-let str = [255, 250, 32, 255].map((n) => {
+let str = [9, 255].map((n) => {
     return String.fromCharCode(n);
 }).join('');
 console.log(stringToCounts(str));
-
-
-// test
-var n = 0;
-while (n < 100) {
-
-    n += 1;
-}

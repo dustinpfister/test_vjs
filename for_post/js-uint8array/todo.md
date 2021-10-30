@@ -3,6 +3,7 @@
 ### () - expand s1-basics section
 * rename files so they are numbered
 * 4-of { example of the of method
+* 5-byte-length example
 
 ### ( done 10/30/2021 ) - new ex-hash-code-methods
 * (done) have an example that uses a Unit8Array to create a hash code from a source string

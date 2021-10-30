@@ -1,4 +1,4 @@
-
+// just sum all the char codes for a string
 let sumCharCodes = (str) => {
     var n = 0,
     i = 0,
@@ -10,8 +10,8 @@ let sumCharCodes = (str) => {
     return n;
 };
 
+// can get a sum for some text
 let sum = sumCharCodes('So then this is some text that can add up to a large number, by just adding up the char codes.');
-
 console.log(sum); // 8443
 
 // can break it down into some values like this:

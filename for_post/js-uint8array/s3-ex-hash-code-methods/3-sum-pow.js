@@ -4,7 +4,7 @@ let sumCharCodes = (str) => {
     i = 0,
     len = str.length;
     while (i < len) {
-        n += str[i].charCodeAt(0)
+        n += str[i].charCodeAt(0);
         i += 1;
     }
     return n;
@@ -23,5 +23,11 @@ let createSumBytes = (str, byteCount) => {
 }
 
 // can get a sum for some text
-let bytes = createSumBytes('Hello World', 8);
-console.log(bytes); // 8443
+let bytes = createSumBytes('This seems to work okay', 3);
+console.log(bytes); // Uint8Array [ 143, 8, 0 ]
+
+// however this might not work well if I want unique
+// values for each possible string value
+let a = createSumBytes('ab', 3).join(''),
+b = createSumBytes('ba', 3).join('');
+console.log(a === b); // true

@@ -3,21 +3,15 @@
         <title>on change</title>
     </head>
     <body>
-        <input class="pow" type="text" placeholder="4">
+        <input id="user_text" type="text">
         <p id="out"></p>
         <script>
-        var inputPow = document.querySelector('input.pow'),
-        out = document.querySelector('#out');
-        // set to the giver power
-        var set = function(pow){
-            out.innerText = Math.pow(2,pow);
-        };
-        // set the new power when input changes
-        inputPow.addEventListener('change', function(e){
-           set(e.target.value);
+        var get = function(str){ return document.querySelector(str); },
+        userOut = get('#out'),
+        userIn = get('#user_text');
+        userIn.addEventListener('change', function(e){
+            userOut.innerText = userIn.value.toUpperCase();
         });
-        // start out at placeholder
-        set(inputPow.placeholder);
         </script>
     </body>
 </html>

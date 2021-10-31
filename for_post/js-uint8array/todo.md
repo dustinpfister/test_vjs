@@ -1,5 +1,8 @@
 # js-unit8array todo list
 
+### () - expand ex-hash-code-methods
+* new 4-sum-pow-step example that will step
+
 ### ( done 10/30/2021) - rename av-map to av-instance-methods and expand
 * (done) rename section to av-instance-methods
 * (done) add a 2-filter example

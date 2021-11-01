@@ -6,22 +6,23 @@
         <textarea id = "out" cols="100" rows="15"></textarea>
         <script>
 let out = document.getElementById('out');
-fetch('localhost:8080/data', {
+fetch('http://localhost:8080/data', {
   method: 'POST', // or 'PUT'
   headers: {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-     action: 'search',
-     query: 'foo'
+     action: 'add',
+     a: 5,
+     b: 6
   })
 })
 .then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
+.then((obj) => {
+   out.value += 'action: ' + obj.body.action + ', result: ' + obj.result;
 })
 .catch((error) => {
-  console.error('Error:', error);
+  console.log('Error:', error);
 });
         </script>
     </body>

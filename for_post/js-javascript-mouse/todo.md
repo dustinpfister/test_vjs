@@ -21,8 +21,8 @@
 * simulate touch events
 * simulate pointer event
 
-### () - expand s5-av-get-elements-by-pos
-* 3-get-all-at-point : new example using document.elementsFromPoint
+### ( done 11/02/2021 ) - expand s5-av-get-elements-by-pos
+* (done) 3-get-all-at-point : new example using document.elementsFromPoint
 
 ## ( done 10/24/2021 ) - expand s7-av-pointer-events
 * (done) have an example on pointerID and pointerType

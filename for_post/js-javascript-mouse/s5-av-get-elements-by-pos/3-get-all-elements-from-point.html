@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>javascript mouse example</title>
+        <style>
+div{
+  position:relative;
+}
+.parent{
+  width:640px;height:480px;background:gray;top:20px;
+}
+.child{
+  position:absolute;width:128px;height:128px;background:lime;
+}
+        </style>
+    </head>
+    <body>
+        <div id="disp_node">0,0</div>
+        <div class="parent">
+            <div class="child" style="left:50px;top:20px;"></div>
+            <div class="child" style="left:85px;top:40px;"></div>
+            <div class="child" style="left:235px;top:240px;"></div>
+        <div>
+        <script>
+var colors = ['red', 'lime', 'blue', 'gray'],
+dispNode = document.getElementById('disp_node');
+var cycleColor = function(node){
+    colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
+    colorIndex += 1;
+    colorIndex %= colors.length;
+    node.dataset.colorIndex = colorIndex;
+    node.style.background = colors[colorIndex];
+};
+
+var setAt = function(x, y){
+    var nodeCollection = document.elementsFromPoint(x, y);
+    dispNode.innerText = x + ',' + y;
+    console.log(nodeCollection)
+    nodeCollection.forEach(function(node){
+        console.log(node.nodeName);
+        if(node.nodeName === 'DIV' && node.className === 'child'){
+            console.log(node);
+            cycleColor(node);
+        }
+    });
+};
+
+setAt(180, 105);
+
+        </script>
+    </body>
+</html>

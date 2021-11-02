@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out">0<div>
+        <script>
+var simClickFor = function(el, x, y){
+    el = el || document.body;
+    var event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        clientX: x === undefined ? 0 : x,
+        clientY: y === undefined ? 0 : y
+    });
+    el.dispatchEvent(event);
+};
+// hander on window
+window.onclick = function(e){
+    document.getElementById('out').innerText = e.clientX + ',' + e.clientY;
+};
+// simulating a click with position
+simClickFor(document.body, 37, 8);
+
+        </script>
+    </body>
+</html>

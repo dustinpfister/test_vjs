@@ -14,12 +14,14 @@
 ## () - new av-touch section on touch events
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
 
-## () - new av-sim section on simulating mouse, touch, and pointer events
-* basic simulate click example like then one in the on click section
-* simulate a click with clientX, and Y values
+### () - expand av-sim section
 * simulate mousedown, move, and up
 * simulate touch events
 * simulate pointer event
+
+## () - new av-sim section on simulating mouse, touch, and pointer events
+* basic simulate click example like then one in the on click section
+* simulate a click with clientX, and Y values
 
 ### ( done 11/02/2021 ) - expand s5-av-get-elements-by-pos
 * (done) 3-get-all-at-point : new example using document.elementsFromPoint

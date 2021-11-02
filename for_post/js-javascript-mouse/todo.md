@@ -19,9 +19,9 @@
 * simulate touch events
 * simulate pointer event
 
-## () - new av-sim section on simulating mouse, touch, and pointer events
-* basic simulate click example like then one in the on click section
-* simulate a click with clientX, and Y values
+## ( done 11/02/2021 ) - new av-sim section on simulating mouse, touch, and pointer events
+* (done) basic simulate click example like then one in the on click section
+* (done) simulate a click with clientX, and Y values
 
 ### ( done 11/02/2021 ) - expand s5-av-get-elements-by-pos
 * (done) 3-get-all-at-point : new example using document.elementsFromPoint

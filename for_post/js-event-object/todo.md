@@ -1,5 +1,9 @@
 # js-event-object todo list
 
+## () - expand av-pointer section
+* example from utils/clucker JavaScript example that is my getElementRelative method
+* menting and link to canvas post on getting canvas relative position
+
 ## () - new av-touch section
 * 1-touchstart : touch event example
 

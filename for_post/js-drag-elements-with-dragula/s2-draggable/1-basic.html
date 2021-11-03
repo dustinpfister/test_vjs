@@ -6,16 +6,23 @@
     </head>
     <body>
         <div id="top">
-            <div draggable="true"><span>item1</span></div>
-            <div draggable="true"><span>item2</span></div>
-            <div draggable="true"><span>item3</span></div>
-            <div draggable="true"><span>item4</span></div>
-        </div>
-        <br><br><br>
-        <div id="bottom">
-            <div draggable="true"><span>item5</span></div>
+            <div class="item" draggable="true"><span>item1</span></div>
+            <div class="item" draggable="true"><span>item2</span></div>
+            <div class="item" draggable="true"><span>item3</span></div>
         </div>
         <script>
+
+
+var dragStart = function(e) {
+   console.log('drag starts...');
+}
+
+// select the item element
+var items = document.querySelectorAll('.item');
+
+items.forEach(function(item){
+    item.addEventListener('dragstart', dragStart);
+});
 
         </script>
     </body>

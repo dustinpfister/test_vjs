@@ -1,5 +1,11 @@
 # js-event-object todo list
 
+## () - new av-touch section
+* 1-touchstart : touch event example
+
+## () - new av-mouse section
+* 1-mousedown : mouse event example
+
 ## () - more s7-av-propagation
 * have a stand alone nested-stop-propagation example
 * write about 'attach-to-parent' example in js-get-parent-element-node and link to post
@@ -8,9 +14,8 @@
 * 1-keydown : single example of the key down event and the event object
 
 ## () - s5 section on events objects and pointer events
-* 1-pointer - pointer event example
-* 2-mouse : mouse event example
-* 3-touch : touch event example
+* (done) 1-pointerdown - pointer event example
+* 2-pointermove - pointer move example with proper css
 
 ## ( done 08/30/2021 ) - new s4 section on simulating events
 * (done) simulate events example

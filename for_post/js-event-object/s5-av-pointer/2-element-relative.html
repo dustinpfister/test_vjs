@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+#out{
+  touch-action:none;
+  position:relative;left:100px;top:50px;
+  width:280px;height:200px;background-color:green;padding:20px;cursor:hand;
+}
+        </style>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var el = document.getElementById('out');
+el.addEventListener('pointerdown', function(e){
+   var bx = e.target.getBoundingClientRect(),
+   x = e.clientX - bx.left,
+   y = e.clientY - bx.top,
+   html = '<span>el relative pos: ( ' + x + ',' + y + ' )</span><br>';
+   html += '<span>window rel pos: ( ' + e.clientX + ',' + e.clientY + ' )</span><br>';
+   html += '<span>box t,l,r,b   :  ' + bx.top + ',' + bx.left + ',' + bx.right + ',' + bx.bottom +'</span><br>';
+   e.target.innerHTML = html;
+});
+        </script>
+    </body>
+</html>

@@ -15,7 +15,8 @@
 
 ## () - s5 section on events objects and pointer events
 * (done) 1-pointerdown - pointer event example
-* 2-pointermove - pointer move example with proper css
+* 2-element-relative-pos - using e.target, e.clientX, and e.clientY to get element relative position
+* (done) 3-pointermove - pointer move example with proper css
 
 ## ( done 08/30/2021 ) - new s4 section on simulating events
 * (done) simulate events example

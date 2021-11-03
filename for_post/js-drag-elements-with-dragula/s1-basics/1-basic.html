@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+    <title> Dragula </title>
+    <!-- Although it will work without it, you will want the css -->
+    <link rel="stylesheet" href="node_modules/dragula/dist/dragula.css">
+    </head>
+    <body>
+        <!-- be sure dragula is loaded in the client before using it-->
+        <script src="node_modules/dragula/dist/dragula.min.js"></script>
+        <!-- just need to containers with some elements in them like this: -->
+        <div id="top">
+            <div><span>item1</span></div>
+            <div><span>item2</span></div>
+            <div><span>item3</span></div>
+            <div><span>item4</span></div>
+        </div>
+        <br><br><br>
+        <div id="bottom">
+            <div><span>item5</span></div>
+        </div>
+        <!-- here is the most basic example -->
+        <script>
+            var get = function(id){
+                return document.getElementById(id);
+            };
+            dragula([get('top'), get('bottom')]);
+        </script>
+    </body>
+</html>

@@ -13,9 +13,9 @@
 ## () - s6 section on event objects and keyboard events
 * 1-keydown : single example of the key down event and the event object
 
-## () - s5 section on events objects and pointer events
+## ( done 11/03/2021 ) - s5 section on events objects and pointer events
 * (done) 1-pointerdown - pointer event example
-* 2-element-relative-pos - using e.target, e.clientX, and e.clientY to get element relative position
+* (done) 2-element-relative-pos - using e.target, e.clientX, and e.clientY to get element relative position
 * (done) 3-pointermove - pointer move example with proper css
 
 ## ( done 08/30/2021 ) - new s4 section on simulating events

@@ -14,7 +14,11 @@
         <script>
 var el = document.getElementById('out');
 el.addEventListener('pointermove', function(e){
-   e.target.innerText = e.clientX + ',' + e.clientY;
+   var bx = e.target.getBoundingClientRect(),
+   x = e.clientX - bx.left,
+   y = e.clientY - bx.top,
+   html = '<span>el relative pos: ( ' +x + ',' + y + ' )</span><br>';
+   e.target.innerHTML = html;
 });
         </script>
     </body>

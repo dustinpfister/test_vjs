@@ -3,25 +3,47 @@
     <head>
     <title> Dragula </title>
     <meta name="google" content="notranslate" />
+    <style>
+.item{
+    background:blue;
+    padding:5px;margin:5px;
+}
+.item_box{
+    padding:5px;
+    background:gray;
+    width:200px;height:200px;
+}
+    </style>
     </head>
     <body>
-        <div id="top">
+        <div id="top" class="item_box">
             <div class="item" draggable="true"><span>item1</span></div>
             <div class="item" draggable="true"><span>item2</span></div>
             <div class="item" draggable="true"><span>item3</span></div>
+        </div>
+        <br><br><br>
+        <div id="bottom"  class="item_box">
+            <div class="item" draggable="true"><span>item4</span></div>
         </div>
         <script>
 
 
 var dragStart = function(e) {
+   e.dataTransfer.setData('text/plain', e.target.id);
    console.log('drag starts...');
+};
+
+var dragDrop = function(e){
+e.preventDefault();
+    console.log('drop');
 }
 
 // select the item element
 var items = document.querySelectorAll('.item');
 
 items.forEach(function(item){
-    item.addEventListener('dragstart', dragStart);
+    item.addEventListener('dragstart', dragStart, false);
+    item.addEventListener('drop', dragDrop, false);
 });
 
         </script>

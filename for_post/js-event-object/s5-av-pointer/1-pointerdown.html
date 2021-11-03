@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Event Object</title>
+    </head>
+    <body>
+        <div id="out" style="width:280px;height:200px;background-color:green;padding:20px;cursor:hand;"></div>
+        <script>
+var el = document.getElementById('out');
+el.addEventListener('pointerdown', function(e){
+   e.target.innerText = e.clientX + ',' + e.clientY;
+});
+        </script>
+    </body>
+</html>

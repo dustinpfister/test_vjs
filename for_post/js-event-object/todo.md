@@ -1,7 +1,8 @@
 # js-event-object todo list
 
-## () - more s3-nested examples
+## () - more s7-av-propagation
 * have a stand alone nested-stop-propagation example
+* write about 'attach-to-parent' example in js-get-parent-element-node and link to post
 
 ## () - s6 section on event objects and keyboard events
 * have a basic-add-event-listener-keyboard

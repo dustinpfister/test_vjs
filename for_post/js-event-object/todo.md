@@ -16,6 +16,7 @@
 
 ## () - s6 section on event objects and keyboard events
 * 1-keydown : single example of the key down event and the event object
+* 2-key-bools : using key up and down events and key prop to set an array of boolens
 
 ## ( done 11/03/2021 ) - s5 section on events objects and pointer events
 * (done) 1-pointerdown - pointer event example

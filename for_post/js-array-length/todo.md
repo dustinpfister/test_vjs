@@ -1,6 +1,6 @@
 # js-array-length todo list
 
-### () - new av-sparse section
+### () - expand av-set-length section
 * 1-sparse-basic : just a basic example sparse array example compared to one that is not
 * 2-sparse-foreach example with sprase array
 * 3-sparse-map: with sparse array

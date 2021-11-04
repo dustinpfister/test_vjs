@@ -1,13 +1,13 @@
 <html>
     <head>
-        <title>Event Object</title>
+        <title>javascript event object</title>
     </head>
     <body>
-        <div id="out"></div>
+        <div id="out">Press a key any key</div>
         <script>
 
 window.addEventListener('keydown', function(e){
-    console.log(e.key);
+    document.getElementById('out').innerText = 'key: ' + e.key;
 });
         </script>
     </body>

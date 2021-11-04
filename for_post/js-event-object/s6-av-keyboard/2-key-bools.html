@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>js e object</title>
+    </head>
+    <body>
+        <div id="out">Press a key any key</div>
+        <script>
+var keys = [];
+
+var printKeyArray = function(keys){
+    var text = '';
+    keys.forEach(function(keyBool, i){
+        text += i + ':' + keyBool + ', '
+    });
+    document.getElementById('out').innerText = text;
+};
+
+window.addEventListener('keydown', function(e){
+    keys[e.keyCode] = true;
+    printKeyArray(keys);
+});
+window.addEventListener('keyup', function(e){
+    keys[e.keyCode] = false;
+    printKeyArray(keys);
+});
+        </script>
+    </body>
+</html>

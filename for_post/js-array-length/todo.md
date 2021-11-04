@@ -1,5 +1,11 @@
 # js-array-length todo list
 
+### () - new av-sparse section
+* 1-sparse-basic : just a basic example sparse array example compared to one that is not
+* 2-sparse-foreach example with sprase array
+* 3-sparse-map: with sparse array
+* 4-sparse-vjs-map : a sparse map method example
+
 ### () - expand av-count section
 * 1-count-as-defined : getting a count of elements that are just simply defined, but can be any value
 * 2-count-as-not-undefined : getting a count of elements that are just not undefined

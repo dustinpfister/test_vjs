@@ -1,5 +1,4 @@
 let count = (arr) => {
-
     let i = arr.length,
     ct = 0;
     while (i--) {

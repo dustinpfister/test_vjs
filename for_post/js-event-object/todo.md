@@ -1,5 +1,11 @@
 # js-event-object todo list
 
+## () - expand basic section
+* have a 'js e' example on the typical names given for event objects in handers
+```
+https://stackoverflow.com/questions/10323392/in-javascript-jquery-what-does-e-mean
+```
+
 ## () - expand av-pointer section
 * example from utils/clucker JavaScript example that is my getElementRelative method
 * menting and link to canvas post on getting canvas relative position

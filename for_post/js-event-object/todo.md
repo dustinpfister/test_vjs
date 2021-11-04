@@ -14,9 +14,9 @@
 * have a stand alone nested-stop-propagation example
 * write about 'attach-to-parent' example in js-get-parent-element-node and link to post
 
-## () - s6 section on event objects and keyboard events
+## ( done 11/04/2021 ) - s6 section on event objects and keyboard events
 * (done) 1-keydown : single example of the key down event and the event object
-* 2-key-bools : using key up and down events and key prop to set an array of boolens
+* (done) 2-key-bools : using key up and down events and key prop to set an array of boolens
 
 ## ( done 11/03/2021 ) - s5 section on events objects and pointer events
 * (done) 1-pointerdown - pointer event example

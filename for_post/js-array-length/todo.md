@@ -1,4 +1,5 @@
 # js-array-length todo list
 
-### () - expand av-set-length section
-* 1-basic-set : just a very simple example
+### ( done 11/04/2021 ) - expand av-set-length section
+* (done) 1-basic-set : just a very simple example
+* (done) renamed 1-print to 2-print

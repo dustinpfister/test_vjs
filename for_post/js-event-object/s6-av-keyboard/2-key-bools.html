@@ -14,9 +14,6 @@ var printKeyArray = function(keys){
     document.getElementById('out').innerText = text;
 };
 window.addEventListener('keydown', function(e){
-
-console.log(e.code);
-
     keys[e.key.charCodeAt(0)] = true;
     printKeyArray(keys);
 });

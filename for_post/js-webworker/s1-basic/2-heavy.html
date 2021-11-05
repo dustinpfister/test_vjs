@@ -13,7 +13,7 @@ if (window.Worker) {
     worker = new Worker('heavy.js');
     // what to do for a message from the worker
     worker.onmessage = function(e) {
-       out.value += e.data.sum + '\n';
+       out.value += 'sum: ' + e.data.sum + ', secs: ' + e.data.secs + '\n';
     };
     // post a message to it
     worker.postMessage({w: 10000, h: 1000});

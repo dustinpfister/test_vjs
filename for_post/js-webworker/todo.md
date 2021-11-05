@@ -1,5 +1,5 @@
 # js-webworker
 
-## () - basic section
+## ( done 11/05/2021 ) - basic section
 * (done) 1-hello-world
-* 2-heavy
+* (done) 2-heavy

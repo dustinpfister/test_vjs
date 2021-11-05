@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>webWorker example</title>
+    </head>
+    <body>
+        <textarea id="out" cols="60" rows="15"></textarea>
+        <script>
+var out = document.getElementById('out'),
+worker;
+// feature test
+if (window.Worker) {
+    // create the web worker instance
+    worker = new Worker('heavy.js');
+    // what to do for a message from the worker
+    worker.onmessage = function(e) {
+       out.value += e.data.sum + '\n';
+    };
+    // post a message to it
+    worker.postMessage({w: 10000, h: 1000});
+}else{
+    out.value += 'Web Woker is not supported.\n'
+}
+        </script>
+    </body>
+</html>

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>webWorker example</title>
+        <title>Web Worker example</title>
     </head>
     <body>
         <textarea id="out" cols="60" rows="15"></textarea>
@@ -18,7 +18,7 @@ if (window.Worker) {
     // post a message to it
     worker.postMessage({w: 10000, h: 1000});
 }else{
-    out.value += 'Web Woker is not supported.\n'
+    out.value += 'Web Worker is not supported.\n'
 }
         </script>
     </body>

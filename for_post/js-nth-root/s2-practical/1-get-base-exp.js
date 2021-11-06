@@ -6,9 +6,17 @@ var nthRoot = function (n, degree) {
 var getBase = function (n, exp) {
     return nthRoot(n, exp);
 };
+// get exp of a value if the base is known
+var getExp = function (n, base) {
+    return Math.log(n) / Math.log(base);
+};
 
-    var base = 7,
-    exp = 6;
-    a = Math.pow(base, exp);
+// demos of getBase
+console.log(getBase(Math.pow(7, 4), 4)); // 7
+console.log(getBase(Math.pow(7, 5), 5)); // 7.000000000000001
+console.log(getBase(Math.pow(7, 6), 6)); // 6.999999999999999
 
-console.log( getBase( Math.pow(7, 6), 6 ) );
+// demos of getExp
+console.log(getExp(Math.pow(7, 4), 7)); // 7
+console.log(getExp(Math.pow(7, 5), 7)); // 5.000000000000001
+console.log(getExp(Math.pow(7, 6), 7)); // 6.000000000000001

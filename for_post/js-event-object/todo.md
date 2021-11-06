@@ -16,10 +16,10 @@ https://stackoverflow.com/questions/10323392/in-javascript-jquery-what-does-e-me
 ## () - new av-mouse section
 * 1-mousedown : mouse event example
 
-## () - more s7-av-propagation
+## ( done 11/06/2021 ) - more s7-av-propagation
 * (done) have a 1-basic example
-* have a stand alone 2-stop example using the stop propagation method
-* 3-attach-to-parent example in js-get-parent-element-node and link to post
+* (done) have a stand alone 2-stop example using the stop propagation method
+* (done) 3-attach-to-parent example in js-get-parent-element-node and link to post
 
 ## ( done 11/04/2021 ) - s6 section on event objects and keyboard events
 * (done) 1-keydown : single example of the key down event and the event object

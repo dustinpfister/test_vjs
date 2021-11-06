@@ -13,15 +13,16 @@ div{position:relative;}
             <div class="child" style="left:25px;top:70px;"></div>
             <div class="child" style="left:98px;top:12px;"></div>
         </div>
-        <div>out</div>
+        <div class="out"></div>
         <script>
-var parent = document.querySelector('.parent');
+var parent = document.querySelector('.parent'),
+out = document.querySelector('.out');
 parent.addEventListener('click', function(e){
     if(e.target.className === 'child'){
-        console.log('clicked child');
+        out.innerText = 'clicked child';
     }
     if(e.target === e.currentTarget){
-        console.log('clicked parent');
+        out.innerText = 'clicked parent';
     }
 });
         </script>

@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>Get parent element on event</title>
+        <style>
+#wrap_main{
+  width:640px;height:480px;background:black;
+}
+#wrap_header{
+  height:120px;background:green;
+}
+#wrap_logo{
+  width:120px;height:120px;background:blue;
+}
+#wrap_content{
+  width:360px;height:auto;background:red;
+  margin: 20px;padding:20px;
+}
+.block_div{
+  display:inline-block;width:64px;height:64px;background:cyan;
+  margin:10px;
+}
+canvas{
+  display:inline-block;width:64px;height:64px;background:black;
+  margin:10px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="wrap_main">
+            <div id="wrap_header" class="custom_action">
+                <div id="wrap_logo"></div>
+            </div>
+            <div id="wrap_content">
+                <div class="block_div custom_action"></div>
+                <div class="block_div"></div>
+                <div class="block_div custom_action"></div>
+                <canvas width="64" height="64"></canvas>
+            </div>
+        </div>
+        <script>
+var forParentChildren = function(parent, opt){
+    opt = opt || {};
+    opt.forOnly = opt.forOnly || ['*']
+    opt.forChild = opt.forChild || function(){};
+    opt.forParent = opt.forParent || function(){};
+    // if parent is a string assume it is a query string to get one
+    if(typeof parent === 'string'){
+        parent = document.querySelector(parent);
+    }
+    // the listener
+    var listener = function(e){
+        var callForChild = false,
+        child = e.target,
+        i = opt.forOnly.length;
+        while(i--){
+            // if first char === '*' set true and break
+            if(opt.forOnly[i][0] === '*'){
+                callForChild = true;
+                break;
+            }
+            // if first char === '.' check className prop
+            if(opt.forOnly[i][0] === '.'){
+                var classNames = child.className.split(' '),
+                ci = classNames.length;
+                while(ci--){
+                    if('.' + classNames[ci] === opt.forOnly[i]){
+                        callForChild = true;
+                        break;
+                    }
+                }
+            }
+            // if first char === '#' check id prop
+            if(opt.forOnly[i][0] === '#'){
+                if(opt.forOnly[i] === '#' + child.id){
+                    callForChild = true;
+                    break;
+                }
+            }
+            // check node name
+            if(opt.forOnly[i].toUpperCase() === child.nodeName.toUpperCase()){
+                    callForChild = true;
+                    break;
+            }
+        }
+        // call forChild only if e.target is not e.currentTarget
+        if(child != e.currentTarget && callForChild){
+            opt.forChild.call(e, child, e.currentTarget, e, opt);
+        }
+        // always call forParent for what should be the parent element at e.currentTarget
+        opt.forParent.call(e, e.currentTarget, e.currentTarget.children, e, opt);
+    };
+    parent.addEventListener('click', listener);
+};
+// using the method
+forParentChildren('#wrap_main', {
+   forOnly: ['.custom_action', '#wrap_logo', 'canvas'],
+   forChild: function(child, parent, e, opt){
+        var colors = ['orange', 'white', 'lime'],
+        style = colors[Math.floor(Math.random() * colors.length)];
+       // change color if div
+       if(child.nodeName === 'DIV'){
+           child.style.background = style
+       }
+       if(child.nodeName === 'CANVAS'){
+           var box = child.getBoundingClientRect(),
+           x = e.clientX - box.left,
+           y = e.clientY - box.top,
+           ctx = child.getContext('2d');
+           //child.width = 64;
+           //child.height = 64;
+           ctx.beginPath();
+           ctx.fillStyle = style;
+           ctx.arc(x,y,5,0, Math.PI * 2);
+           ctx.closePath();
+           ctx.fill();
+       }
+   },
+   forParent: function(parent, children, e, opt){
+        //console.log(parent.id)
+   }
+});
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Get parent element on event</title>
+        <style>
+div{position:relative;}
+.parent{width:200px;height:200px;background:gray;}
+.child{width:32px;height:32px;background:lime;}
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child" style="left:157px;top:0px;"></div>
+            <div class="child" data-mess="Hello I have something to say!" style="left:25px;top:70px;"></div>
+            <div class="child" style="left:98px;top:12px;"></div>
+        </div>
+        <div class="out"></div>
+        <script>
+var parent = document.querySelector('.parent'),
+out = document.querySelector('.out');
+
+var clickChild = function(e){
+    if(e.target.dataset.mess){
+        out.innerText = e.target.dataset.mess;
+        e.stopPropagation();
+    }
+};
+
+var clickParent = function(e){
+    if(e.target.className === 'child'){
+        out.innerText = 'Nothing here!';
+    }
+    if(e.target === e.currentTarget){
+        out.innerText = 'clicked parent net';
+    }
+};
+
+[].forEach.call(parent.children, function(child){
+    console.log(child);
+	child.addEventListener('click', clickChild);
+});
+
+parent.addEventListener('click', clickParent);
+        </script>
+    </body>
+</html>

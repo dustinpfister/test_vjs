@@ -17,14 +17,14 @@ div{position:relative;}
         <script>
 var parent = document.querySelector('.parent'),
 out = document.querySelector('.out');
-
+// click hander for a child
 var clickChild = function(e){
     if(e.target.dataset.mess){
         out.innerText = e.target.dataset.mess;
         e.stopPropagation();
     }
 };
-
+// click hander for a parent
 var clickParent = function(e){
     if(e.target.className === 'child'){
         out.innerText = 'Nothing here!';
@@ -33,12 +33,12 @@ var clickParent = function(e){
         out.innerText = 'clicked parent net';
     }
 };
-
+// attaching for each child
 [].forEach.call(parent.children, function(child){
     console.log(child);
-	child.addEventListener('click', clickChild);
+    child.addEventListener('click', clickChild);
 });
-
+// attaching just once for the parent
 parent.addEventListener('click', clickParent);
         </script>
     </body>

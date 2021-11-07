@@ -7,6 +7,7 @@ var createChildren = function (div) {
         child.id = 'child_' + i;
         child.dataset.x = 100;
         child.dataset.y = 100;
+        child.dataset.pps = 32 + Math.round(64 * Math.random());
         child.dataset.heading = Math.PI * 2 * Math.random();
         div.appendChild(child);
     }
@@ -16,10 +17,11 @@ var updateChildren = function (div, secs) {
     [].forEach.call(div.children, function (child) {
         var x = parseFloat(child.dataset.x),
         y = parseFloat(child.dataset.y),
-        heading = child.dataset.heading;
+        heading = child.dataset.heading,
+        pps = parseInt(child.dataset.pps);
         // move by heading and pps
-        x += Math.cos(heading) * 50 * secs;
-        y = y += Math.sin(heading) * 50 * secs;
+        x += Math.cos(heading) * pps * secs;
+        y = y += Math.sin(heading) * pps * secs;
         // wrap
         x = x < 0 ? parseInt(div.scrollWidth) - 20 : x;
         x = x > parseInt(div.scrollWidth) - 20 ? 0 : x;

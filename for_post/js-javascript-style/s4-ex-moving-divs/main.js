@@ -1,3 +1,4 @@
+// create children
 var createChildren = function (div) {
     var i = 10;
     while (i--) {
@@ -9,7 +10,7 @@ var createChildren = function (div) {
         div.appendChild(child);
     }
 };
-
+// update children using the STYLE API
 var updateChildren = function (div) {
     [].forEach.call(div.children, function (child) {
         var x = child.dataset.x,
@@ -19,22 +20,20 @@ var updateChildren = function (div) {
 
     });
 };
-
 // get ref to parent div
 var div_parent = document.querySelector('.div_parent');
 // create and append child divs to the parent div
 createChildren(div_parent);
-
 var lt = new Date();
 var loop = function () {
     var now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-
     if (secs >= 1 / 30) {
         updateChildren(div_parent);
         lt = now;
     }
 };
-
 loop();
+
+

@@ -17,8 +17,18 @@ var updateChildren = function (div, secs) {
         var x = parseFloat(child.dataset.x),
         y = parseFloat(child.dataset.y),
         heading = child.dataset.heading;
-        child.dataset.x = x += Math.cos(heading) * 50 * secs;
-        child.dataset.y = y += Math.sin(heading) * 50 * secs;
+        // move by heading and pps
+        x += Math.cos(heading) * 50 * secs;
+        y = y += Math.sin(heading) * 50 * secs;
+        // wrap
+        x = x < 0 ? parseInt(div.scrollWidth) - 20 : x;
+        x = x > parseInt(div.scrollWidth) - 20 ? 0 : x;
+        y = y < 0 ? parseInt(div.scrollHeight) - 20 : y;
+        y = y > parseInt(div.scrollHeight) - 20 ? 0 : y;
+        // update dataset
+        child.dataset.x = x;
+        child.dataset.y = y;
+        // use style api to update CSS of div
         child.style.left = x + 'px';
         child.style.top = y + 'px';
     });

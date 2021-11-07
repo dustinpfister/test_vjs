@@ -5,19 +5,22 @@ var createChildren = function (div) {
         var child = document.createElement('div');
         child.className = 'div_child';
         child.id = 'child_' + i;
-        child.dataset.x = 10;
-        child.dataset.y = 10;
+        child.dataset.x = 100;
+        child.dataset.y = 100;
+        child.dataset.heading = Math.PI * 2 * Math.random();
         div.appendChild(child);
     }
 };
 // update children using the STYLE API
-var updateChildren = function (div) {
+var updateChildren = function (div, secs) {
     [].forEach.call(div.children, function (child) {
-        var x = child.dataset.x,
-        y = child.dataset.y;
+        var x = parseFloat(child.dataset.x),
+        y = parseFloat(child.dataset.y),
+        heading = child.dataset.heading;
+        child.dataset.x = x += Math.cos(heading) * 50 * secs;
+        child.dataset.y = y += Math.sin(heading) * 50 * secs;
         child.style.left = x + 'px';
         child.style.top = y + 'px';
-
     });
 };
 // get ref to parent div
@@ -30,10 +33,8 @@ var loop = function () {
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if (secs >= 1 / 30) {
-        updateChildren(div_parent);
+        updateChildren(div_parent, secs);
         lt = now;
     }
 };
 loop();
-
-

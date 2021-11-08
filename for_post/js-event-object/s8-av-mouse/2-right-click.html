@@ -15,10 +15,10 @@ var el = document.getElementById('wrap');
 // context menu handler
 el.addEventListener('contextmenu', function(e){
     e.preventDefault();
-    if (event.stopPropagation){
-        event.stopPropagation();
+    if (e.stopPropagation){
+        e.stopPropagation();
     }
-    event.cancelBubble = true;
+    e.cancelBubble = true;
     return false;
 });
 // on mouse down

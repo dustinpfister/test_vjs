@@ -57,6 +57,9 @@
     };
     // end event
     EVENTS.touchend = function (e) {
+        if (pinch.active) {
+            pinch.onPinchEnd.call(pinch, pinch, pinch.multi, pinch.radian);
+        }
         pinch.active = false;
     };
     /********* **********
@@ -84,7 +87,8 @@
                     y: 0
                 },
             },
-            onPinchActive: opt.onPinchActive || function (pinch, multi, radian) {}
+            onPinchActive: opt.onPinchActive || function (pinch, multi, radian) {},
+            onPinchEnd: opt.onPinchEnd || function (pinch, multi, radian) {}
         };
         // attach to the given canvas
         canvas.addEventListener('touchstart', EVENTS.createFor('touchstart', pinch));

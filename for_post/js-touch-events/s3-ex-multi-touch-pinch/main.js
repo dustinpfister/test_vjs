@@ -17,13 +17,17 @@ var pinch = pinchMod.create(canvas, {
     });
 // what to do when pinch is active
 pinch.onPinchActive = function (pinch, multi, radian) {
-    console.log(multi);
     draw.background(ctx, canvas);
     state.obj.size = 50 * (1 + (1 - multi));
     state.obj.size = state.obj.size < 50 ? 50 : state.obj.size;
     state.obj.r = radian;
     draw.state(ctx, canvas, state);
     draw.debugPinch(ctx, canvas, pinch);
+};
+// when pinch is done
+pinch.onPinchEnd = function (pinch, multi, radian) {
+    draw.background(ctx, canvas);
+    draw.state(ctx, canvas, state);
 };
 // draw background fro first time
 draw.background(ctx, canvas);

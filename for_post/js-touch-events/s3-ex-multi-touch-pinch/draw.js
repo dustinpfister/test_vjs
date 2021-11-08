@@ -15,6 +15,7 @@ draw.state = function (ctx, canvas, state) {
     ctx.save();
     ctx.translate(obj.cx, obj.cy);
     ctx.rotate(obj.r);
+    ctx.beginPath();
     ctx.rect(obj.size / 2 * -1, obj.size / 2 * -1, obj.size, obj.size);
     ctx.fill();
     ctx.stroke();

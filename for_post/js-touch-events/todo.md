@@ -2,5 +2,6 @@
 
 ### (   ) - new ex-multi-touch-pinch section
 * (done) start a new multi touch pinch example section
-* have a onPichActive callback method option
+* (done) have a onPichActive callback method option
+* have a minActiveDist option
 

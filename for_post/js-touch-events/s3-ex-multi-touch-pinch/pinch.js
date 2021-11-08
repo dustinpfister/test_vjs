@@ -27,6 +27,8 @@
     };
     // start
     EVENTS.touchstart = function (e) {
+
+        pinch.active = false;
         if (e.touches.length >= 2) {
             e.preventDefault();
             var points = setPinchPoints(e, pinch);
@@ -39,14 +41,19 @@
             var points = setPinchPoints(e, pinch);
             pinch.distance = utils.distance(points.p1.x, points.p1.y, points.p2.x, points.p2.y);
             pinch.distanceDelta = pinch.startDistance - pinch.distance;
-
-            var multi = pinch.distanceDelta / 32;
-            pinch.onPinchActive.call(pinch, pinch, multi);
-
+            if (Math.abs(pinch.distanceDelta) >= pinch.minActiveDist) {
+                pinch.active = true;
+            }
+            if (pinch.active) {
+                pinch.multi = pinch.distanceDelta / 32;
+                pinch.onPinchActive.call(pinch, pinch, pinch.multi);
+            }
         }
     };
     // end event
-    EVENTS.touchend = function (e) {};
+    EVENTS.touchend = function (e) {
+        pinch.active = false;
+    };
     /********* **********
     PUBLIC METHODS
      ********** *********/
@@ -58,6 +65,7 @@
             startDistance: 0,
             distance: 0,
             distanceDelta: 0,
+            minActiveDist: 50,
             multi: 0,
             points: {
                 p1: {

@@ -4,19 +4,11 @@ ctx = canvas.getContext('2d');
 
 var pinch = pinchMod.create(canvas, {});
 
-// attach a touch events
-/*
-canvas.addEventListener('touchstart', function (e) {
-    touchStart(e);
-});
-canvas.addEventListener('touchend', function (e) {
-    touchEnd(e);
-});
-*/
-canvas.addEventListener('touchmove', function (e) {
-    //touchMove(e);
+pinch.onPinchActive = function (pinch, multi) {
+    console.log(multi);
     draw.background(ctx, canvas);
     draw.debugPinch(ctx, canvas, pinch);
-});
+
+};
 
 draw.background(ctx, canvas);

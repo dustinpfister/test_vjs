@@ -19,36 +19,32 @@ var pinch = {
     }
 };
 
+var setPinchPoints = function (e, pinch) {
+    var pos = utils.getElementRelative(e, e.target, 0);
+    var p1 = pinch.points.p1 = {
+        x: pos.x,
+        y: pos.y
+    }
+    var pos = utils.getElementRelative(e, e.target, 1);
+    var p2 = pinch.points.p2 = {
+        x: pos.x,
+        y: pos.y
+    }
+    return pinch.points;
+};
+
 var touchStart = function (e) {
     if (e.touches.length >= 2) {
         e.preventDefault();
-        var pos = utils.getElementRelative(e, e.target, 0);
-        var p1 = pinch.points.p1 = {
-            x: pos.x,
-            y: pos.y
-        }
-        var pos = utils.getElementRelative(e, e.target, 1);
-        var p2 = pinch.points.p2 = {
-            x: pos.x,
-            y: pos.y
-        }
-        pinch.startDistance = utils.distance(p1.x, p1.y, p2.x, p2.y);
+        var points = setPinchPoints(e, pinch);
+        pinch.startDistance = utils.distance(points.p1.x, points.p1.y, points.p2.x, points.p2.y);
     }
 };
 
 var touchMove = function (e) {
     if (e.touches.length >= 2) {
-        var pos = utils.getElementRelative(e, e.target, 0);
-        var p1 = pinch.points.p1 = {
-            x: pos.x,
-            y: pos.y
-        }
-        var pos = utils.getElementRelative(e, e.target, 1);
-        var p2 = pinch.points.p2 = {
-            x: pos.x,
-            y: pos.y
-        }
-        pinch.distance = utils.distance(p1.x, p1.y, p2.x, p2.y);
+        var points = setPinchPoints(e, pinch);
+        pinch.distance = utils.distance(points.p1.x, points.p1.y, points.p2.x, points.p2.y);
         pinch.distanceDelta = pinch.startDistance - pinch.distance;
     }
 };

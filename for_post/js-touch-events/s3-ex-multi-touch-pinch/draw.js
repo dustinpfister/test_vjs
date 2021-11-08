@@ -7,6 +7,20 @@ draw.background = function (ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
+draw.state = function (ctx, canvas, state) {
+    // fill black
+    ctx.fillStyle = 'cyan';
+    ctx.strokeStyle = 'white';
+    var obj = state.obj;
+    ctx.save();
+    ctx.translate(obj.cx, obj.cy);
+    ctx.rotate(obj.r);
+    ctx.rect(obj.size / 2 * -1, obj.size / 2 * -1, obj.size, obj.size);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+};
+
 // debug pinch
 draw.debugPinch = function (ctx, canvas, pinch) {
     ctx.fillStyle = 'white';

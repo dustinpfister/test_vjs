@@ -45,8 +45,10 @@
                 pinch.active = true;
             }
             if (pinch.active) {
+                // figure multi value
                 var dd = pinch.distanceDelta + pinch.minActiveDist;
-                pinch.multi = dd / 32;
+                pinch.multi = dd / pinch.multiRate;
+                // call on pinch active callback
                 pinch.onPinchActive.call(pinch, pinch, pinch.multi);
             }
         }
@@ -66,7 +68,8 @@
             startDistance: 0,
             distance: 0,
             distanceDelta: 0,
-            minActiveDist: 50,
+            minActiveDist: opt.minActiveDist === undefined ? 40 : opt.minActiveDist,
+            multiRate: opt.multiRate === undefined ? 16 : opt.multiRate,
             multi: 0,
             points: {
                 p1: {

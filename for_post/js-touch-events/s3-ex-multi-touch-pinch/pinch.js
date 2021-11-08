@@ -45,7 +45,8 @@
                 pinch.active = true;
             }
             if (pinch.active) {
-                pinch.multi = pinch.distanceDelta / 32;
+                var dd = pinch.distanceDelta + pinch.minActiveDist;
+                pinch.multi = dd / 32;
                 pinch.onPinchActive.call(pinch, pinch, pinch.multi);
             }
         }

@@ -13,6 +13,7 @@ draw.debugPinch = function (ctx, canvas, pinch) {
     ctx.font = '15px arial';
     ctx.textBaseline = 'top';
     ctx.fillText('multi: ' + pinch.multi.toFixed(2), 10, 10);
+    ctx.fillText('radian: ' + pinch.radian.toFixed(2), 10, 25);
     // draw points
     ctx.strokeStyle = 'white';
     ctx.fillStyle = 'lime';

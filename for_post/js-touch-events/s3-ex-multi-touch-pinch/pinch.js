@@ -48,8 +48,10 @@
                 // figure multi value
                 var dd = pinch.distanceDelta + pinch.minActiveDist;
                 pinch.multi = dd / pinch.multiRate;
+                // get radian using Math.atan2
+                pinch.radian = Math.atan2(points.p1.y - points.p2.y, points.p1.x - points.p2.x);
                 // call on pinch active callback
-                pinch.onPinchActive.call(pinch, pinch, pinch.multi);
+                pinch.onPinchActive.call(pinch, pinch, pinch.multi, pinch.radian);
             }
         }
     };
@@ -71,6 +73,7 @@
             minActiveDist: opt.minActiveDist === undefined ? 40 : opt.minActiveDist,
             multiRate: opt.multiRate === undefined ? 16 : opt.multiRate,
             multi: 0,
+            radian: 0,
             points: {
                 p1: {
                     x: 0,
@@ -81,7 +84,7 @@
                     y: 0
                 },
             },
-            onPinchActive: opt.onPinchActive || function (pinch, multi) {}
+            onPinchActive: opt.onPinchActive || function (pinch, multi, radian) {}
         };
         // attach to the given canvas
         canvas.addEventListener('touchstart', EVENTS.createFor('touchstart', pinch));

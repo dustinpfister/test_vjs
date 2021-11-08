@@ -18,9 +18,18 @@ var pinch = {
 
 var touchStart = function (e) {
     if (e.touches.length >= 2) {
+        var pos = utils.getElementRelative(e, e.target, 0);
         pinch.points.p1 = {
-            x:
+            x: pos.x,
+            y: pos.y
         }
+        var pos = utils.getElementRelative(e, e.target, 1);
+        pinch.points.p2 = {
+            x: pos.x,
+            y: pos.y
+        }
+		console.log(e);
+        console.log(pinch);
     }
 };
 
@@ -33,4 +42,3 @@ canvas.addEventListener('touchstart', touchStart);
 canvas.addEventListener('touchend', touchEnd);
 canvas.addEventListener('touchmove', touchMove);
 
-cls();

@@ -15,6 +15,11 @@ var state = {
    secs: 0
 };
 var el = document.getElementById('wrap');
+// prevent default for touch start as I want this to only
+// apply to the mouse
+el.addEventListener('touchstart', function(e){
+    e.preventDefault();
+});
 // on mouse down
 el.addEventListener('mousedown', function(e){
     state.dst = new Date();

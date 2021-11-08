@@ -21,6 +21,11 @@ el.addEventListener('contextmenu', function(e){
     e.cancelBubble = true;
     return false;
 });
+// prevent default for touch start as I want this to only
+// apply to the mouse
+el.addEventListener('touchstart', function(e){
+    e.preventDefault();
+});
 // on mouse down
 el.addEventListener('mousedown', function(e){
    e.preventDefault();

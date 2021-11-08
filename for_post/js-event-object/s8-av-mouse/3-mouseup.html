@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+#wrap{
+  width:280px;height:200px;background-color:green;padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="wrap" style=""></div>
+        <script>
+var state = {
+   dst : null,
+   secs: 0
+};
+var el = document.getElementById('wrap');
+// on mouse down
+el.addEventListener('mousedown', function(e){
+    state.dst = new Date();
+    e.target.innerText = 'down';
+});
+el.addEventListener('mouseup', function(e){
+   state.secs = (new Date() - state.dst) / 1000;
+   e.target.innerText = 'up, secs: ' + state.secs.toFixed(2);
+});
+// context menu handler
+el.addEventListener('contextmenu', function(e){
+    e.preventDefault();
+    if (e.stopPropagation){
+        e.stopPropagation();
+    }
+    e.cancelBubble = true;
+    return false;
+});
+        </script>
+    </body>
+</html>

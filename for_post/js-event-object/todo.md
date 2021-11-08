@@ -14,9 +14,9 @@ https://stackoverflow.com/questions/10323392/in-javascript-jquery-what-does-e-me
 * be sure to link to js-touch events
 * 1-touchstart : touch event example
 
-## () - new av-mouse section
-* be sure to link to js-javascript-mouse
-* 1-mousedown : mouse event example
+## ( done 11/08/2021 ) - new av-mouse section
+* (done) be sure to link to js-javascript-mouse
+* (done) 1-mousedown : mouse event example
 
 ## ( done 11/06/2021 ) - more s7-av-propagation
 * (done) have a 1-basic example

@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+#wrap{
+  width:280px;height:200px;background-color:green;padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="wrap" style=""></div>
+        <script>
+// get a ref to the element one way or another
+var el = document.getElementById('wrap');
+el.addEventListener('mousedown', function(e){
+   e.preventDefault();
+   e.target.innerText = e.button + ',' + e.clientX + ',' + e.clientY;
+});
+        </script>
+    </body>
+</html>

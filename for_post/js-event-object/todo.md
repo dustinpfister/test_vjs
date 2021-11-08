@@ -11,9 +11,11 @@ https://stackoverflow.com/questions/10323392/in-javascript-jquery-what-does-e-me
 * menting and link to canvas post on getting canvas relative position
 
 ## () - new av-touch section
+* be sure to link to js-touch events
 * 1-touchstart : touch event example
 
 ## () - new av-mouse section
+* be sure to link to js-javascript-mouse
 * 1-mousedown : mouse event example
 
 ## ( done 11/06/2021 ) - more s7-av-propagation

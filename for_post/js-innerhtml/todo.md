@@ -11,10 +11,10 @@
 ## () - expand av-alternatives section
 * new 4-document-write example
 
-## () - expand alternatives section
-* new 1-create-element example that is of a 
-* new 2-inner-text example using create element to make a p element and using the inner text prop to set the text
-* 3-create-text-node
+## ( done 11/09/2021 ) - expand alternatives section
+* (done) new 1-create-element example that is of a 
+* (done) new 2-inner-text example using create element to make a p element and using the inner text prop to set the text
+* (done) 3-create-text-node
 
 ## ( done 07/13/2021 ) - folders for each current section started
 * (done) create new folders for each section in the post

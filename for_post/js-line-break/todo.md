@@ -3,5 +3,5 @@
 ### () - new av-client-side section
 * have an example using a test area element
 
-### () - example s1-basics section
-* new basic example on escape sequences in general
+### ( done 11/09/2021 ) - example s1-basics section
+* (done) new basic example on escape sequences in general

@@ -6,7 +6,10 @@
 * the html file also has a simple ui for creating and posting a comment to the server side database.
 
 ## () - expand av-alternatives section
-* new  4-canvas example that showcases the use of a canvas element as a way to inject content
+* new  5-canvas example that showcases the use of a canvas element as a way to inject content
+
+## () - expand av-alternatives section
+* new 4-document-write example
 
 ## () - expand alternatives section
 * new 1-create-element example that is of a 

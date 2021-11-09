@@ -1,9 +1,7 @@
-var eol = {
-    win: '\r\n',
-    posix: '\n'
-},
-os = 'win',
 
-str = 'So this is one line. ' + eol[os] + 'And this is a new one. ' + eol[os];
+// This will result in a SyntaxError
+//    let a = "This is a "String" ";
 
-console.log(str);
+// so in order to place quotes they much be escaped
+let b = "This is a \"String\"";
+console.log(b);

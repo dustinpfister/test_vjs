@@ -8,8 +8,8 @@
 ## () - expand av-alternatives section
 * new  5-canvas example that showcases the use of a canvas element as a way to inject content
 
-## () - expand av-alternatives section
-* new 4-document-write example
+## ( done 11/09/2021 ) - expand av-alternatives section
+* (done) new 4-document-write example
 
 ## ( done 11/09/2021 ) - expand alternatives section
 * (done) new 1-create-element example that is of a 

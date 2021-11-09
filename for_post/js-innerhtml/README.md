@@ -1,0 +1,3 @@
+# js-innerhtml
+
+The inner html property is a way to get and set the inner html of an element in client side javaScript by way of a string of html markup. The main alternative to the inner html property would be to use the document.createElement method to create a new element object. Anything and everything that can be done with an element object reference can then be done to the element that is returned by the create method, and then it is just a matter iof appending the element to the hard coded html by one of several options for doing so such as the append child element of an element object reference.

@@ -8,15 +8,16 @@
 * 5-s-dot-new-line
 * 6-u-unicode
 
-
 ### () expand av-flags section
 * 3-i-case
 * 4-m-multi-line
 
 ### () - expand av-quantifiers
-* 1-asterisk on the use of \*
 * 2-plus On the use of a +
 * 3-question On the use of a ?
+
+### ( done 11/10/2021 ) - expand av-quantifiers
+* (done) 1-asterisk on the use of \*
 * (done) 6-bracket-min-max renamed from basic count example
 
 ### ( done 11/10/2021 ) expand av-flags section

@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>javascript svg inline</title>
+    </head>
+    <body>
+        <svg version="1.1"
+             width="320" height="240"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+            <circle cx="160" cy="120" r="120" fill="red" />
+        </svg>
+        <script>
+var circle = document.getElementsByTagName('circle')[0];
+circle.setAttributeNS(null, 'r', 75);
+        </script>
+    </body>
+</html>

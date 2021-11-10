@@ -17,7 +17,7 @@
 * 1-asterisk on the use of \*
 * 2-plus On the use of a +
 * 3-question On the use of a ?
-* 6-bracket-min-max reanmed from basic count example
+* (done) 6-bracket-min-max renamed from basic count example
 
 ### ( done 11/10/2021 ) expand av-flags section
 * (done) 1-d-index-values

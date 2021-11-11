@@ -36,3 +36,14 @@ let d = a.map((el) => {
     });
 console.log(d); // [ 1, 0, 2, 0 ]
 
+// native javaScript loops work fine too
+var len = a.length, i = 0;
+while(i < len){
+    console.log(a[i], i);
+    i += 1;
+}
+// 1   0
+// 'a' 1
+// 2   2
+// 'b' 3
+

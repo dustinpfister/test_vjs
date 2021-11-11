@@ -1,3 +1,5 @@
 # js-javascript-foreach todo list
 
-These are the source code examples for my post on the [array for each method](https://dustinpfister.github.io/2019/02/16/js-javascript-foreach/), and many related topics.
+These are the source code examples for my post on the [array for each method](https://dustinpfister.github.io/2019/02/16/js-javascript-foreach/), and many related topics. The array for each method seems to be one of those topics where just about everyone that writes a blog on javaScript will get to at one point or another, but there is not always a great number of people that really get into the depth of what array for each is really about, not just with the method itself, but also the many alternatives to using the array for each method.
+
+There are a few good reason what using array for each might be a good idea, and then a whole lot or reasons why it is not such a good idea. Maybe one of the best reasons why would be for the sake or readability, and a major reasons why not would be that while loops seem to be way faster when working with a large array at least. There are also a lot of other array prototype methods also that might prove to be a better choice with certain tasks also on top of that.

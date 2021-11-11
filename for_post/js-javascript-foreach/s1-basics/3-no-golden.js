@@ -17,3 +17,22 @@ let b = a.filter((el) => {
         return typeof el === 'number';
     });
 console.log(b); // [1,2]
+
+// the reduce method can be used to create a value that
+// is a sum create from each element, or each element that meets
+// a condition.
+let c = a.reduce((acc, el) => {
+        if (typeof el === 'number') {
+            acc += el;
+        }
+        return acc;
+    }, 0);
+console.log(c); // 3
+
+// the array map can preform an action for each element, and return a
+// new array that is the result of some code that is run for each element.
+let d = a.map((el) => {
+        return typeof el === 'string' ? 0 : el;
+    });
+console.log(d); // [ 1, 0, 2, 0 ]
+

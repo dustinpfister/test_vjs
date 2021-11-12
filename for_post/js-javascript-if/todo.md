@@ -4,20 +4,23 @@
 * rename state.js to 1-state.js
 * 2-create-sm that is a create state machine method, along with other methods such as start, stop
 
-### () - new av-loops secton on while and for loops as control statements
+### () - new av-loops section on while and for loops as control statements
 * 1-while while loop example of control flow
 * 2-for for loop example of control flow
 * 3-for-in for in loop example
+
+### () - expand av-functions section
+* 3-conditions example with an object of nested objects where each object has a condition function
 
 ### () - expand av-conditional-operator
 * rename con-op to 1-con-op, and con-op2 to 2-con-op
 * 3-iife in which an IIFE is used to get the same result as an con op
 * 4-func example in which a function call can be used in an expression in place of con-op
 
-### () - rename av-else-nope to av-functions and expand
+### ( done 11/12/2021 ) - rename av-else-nope to av-functions and expand
 * (done) rename av-else-nope to av-functions
 * (done) 1-no-else from else-nope.js
-* 2-object-keys example just like the one in the basic section
+* (done) 2-object-keys example just like the one in the basic section
 
 ### ( done 11/12/2021 ) - expand basics section
 * (done) 1-basic just renamed from basic.js

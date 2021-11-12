@@ -15,8 +15,8 @@
 * 4-func example in which a function call can be used in an expression in place of con-op
 
 ### () - rename av-else-nope to av-functions and expand
-* rename av-else-nope to av-functions
-* 1-no-else from else-nope.js
+* (done) rename av-else-nope to av-functions
+* (done) 1-no-else from else-nope.js
 * 2-object-keys example just like the one in the basic section
 
 ### ( done 11/12/2021 ) - expand basics section

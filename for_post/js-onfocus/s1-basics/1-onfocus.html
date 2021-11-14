@@ -1,3 +1,12 @@
+<html>
+    <head>
+        <title>onfocus</title>
+    </head>
+    <body>
+        <input id="foo" type="text" placeholder="foo">
+        <input id="bar" type="text" placeholder="bar">
+        <p id="out"></p>
+        <script>
 // get a reference to the element
 var el = document.getElementById('foo');
 // a single focus event can be attached this way
@@ -8,3 +17,6 @@ el.onfocus = function (e) {
 el.addEventListener('focus', function () {
     console.log('foo');
 });
+        </script>
+    </body>
+</html>

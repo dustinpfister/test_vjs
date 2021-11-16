@@ -5,7 +5,7 @@ var addCommas = function(nStr) {
     x = nStr.split('.');                  // split '1234.56' to ['1234', '56']
     x1 = x[0];                            // '1234' from '1234.56'
     x2 = x.length > 1 ? '.' + x[1] : '';  // '56' from '1234.56'
-    var rgx = /(\d+)(\d{3})/;             // regex pattern
+    var rgx = /(\d+)(\d{3})/;             // regex pattern to test for
     while (rgx.test(x1)) {
         x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }

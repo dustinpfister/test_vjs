@@ -5,7 +5,7 @@
 
 ### () - expand basics section
 * rename input.html to 2-input-text.html
-* new 1-button.html example
-* new 2-text-area.html example
-* new 3-select-menu.html example
+* new 1-input-button.html example
+* new 2-input-text-area.html example
+* new 3-input-select-menu.html example
 

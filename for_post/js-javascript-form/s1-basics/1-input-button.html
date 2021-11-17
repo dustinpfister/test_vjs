@@ -3,17 +3,25 @@
         <title>javaScript form input example</title>
     </head>
     <body>
-        <input id="seed" type="text" value="1234"><br><br>
+        <input id="button_1" type="button" data-c="0" value=""><br><br>
         <div id="out"></div>
         <script>
-var disp = function(text){
-    document.getElementById('out').innerText = text;
+// ref to the button
+var b = document.getElementById('button_1');
+// update the value of the button
+var draw = function(){
+    b.value = 'click me (' + b.dataset.c + ')';
 };
-var input = document.getElementById('seed');
-input.addEventListener('keyup', function(e){
-    disp(e.target.value);
+//
+b.addEventListener('click', function(e){
+    var d = e.target.dataset,
+    c = parseInt(d.c);
+    c += 1;
+    d.c = c;
+    draw();
 });
-disp(input.value);
+// call draw for the first time
+draw();
         </script>
     </body>
 </html>

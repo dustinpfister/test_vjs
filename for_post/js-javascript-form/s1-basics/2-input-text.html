@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>javaScript form input example</title>
+    </head>
+    <body>
+        <input id="seed" type="text" value="1234"><br><br>
+        <div id="out"></div>
+        <script>
+var draw = function(text){
+    document.getElementById('out').innerText = text;
+};
+var input = document.getElementById('seed');
+input.addEventListener('keyup', function(e){
+    draw(e.target.value);
+});
+draw(input.value);
+        </script>
+    </body>
+</html>

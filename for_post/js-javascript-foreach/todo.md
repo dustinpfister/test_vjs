@@ -1,5 +1,9 @@
 # js-javascript-foreach todo list
 
+### () - expand sv-named-keys
+* 1 - for in loop example
+* 4 - getOwnPropertyNames
+
 ### ( done 11/11/2021 ) - expand basics section
 * (done) 5-preform - example in speed and forEach
 * (done) 6-monkey-patch - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach

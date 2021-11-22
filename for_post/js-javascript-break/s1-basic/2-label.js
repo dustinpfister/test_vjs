@@ -32,5 +32,5 @@ outer: while (ia < arr.length) {
     }
     ia += 1;
 }
+console.log(sum); // 42
 
-console.log(sum);

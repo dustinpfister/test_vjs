@@ -4,6 +4,5 @@ while (i--) {
     if (typeof arr[i] === 'string') {
         break;
     }
-
 }
 console.log(i, arr[i]); // 1 'foo'

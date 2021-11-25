@@ -1,4 +1,11 @@
 
+## () - new canvas example of reduce
+* start a new canvas example section of array reduce
+* The example should have an object 'pool', and reduce is used to manage a 'active' selection of objects
+* any active object will have its radius, and alpha values to up to a max
+* any pool object that is not active will have alpha and radius values reduce to zero
+* calls of reduce will on occasions actuality increase the size of the active array, but only up to  max that is the length of the pool
+
 ## ( done 11/25/2021 ) - expand basic section
 * (done) new filter array example
 

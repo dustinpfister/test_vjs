@@ -7,9 +7,9 @@ let obj = {
     2: 3,
     length: 3
 };
-// The Call Function prototype method can be used with these kinds of objects
-// to get the array reduce method to work with them
-let sum = Array.prototype.reduce.call(obj, (acc, el) => {
+// The Array.from method would be another option when it comes
+// to creating an array from this kind of 'array like' object
+let sum = Array.from(obj).reduce((acc, el) => {
     return acc + el;
 }, 0);
 console.log(sum); // 6

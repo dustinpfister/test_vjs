@@ -1,4 +1,7 @@
 
+## () - expand basic section
+* new filter array example
+
 ## ( done 11/25/2021 ) - new av-as-collection-method
 * (done) start new section on using array reduce as a collection method like lodash reduce
 * (done) 1-function-call

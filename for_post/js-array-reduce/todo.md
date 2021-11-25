@@ -2,7 +2,7 @@
 ## () - new av-as-collection-method
 * (done) start new section on using array reduce as a collection method like lodash reduce
 * (done) 1-function-call
-* 2-array-from
+* (done) 2-array-from
 * 3-object-values
 * 4-object-keys
 * 5-string

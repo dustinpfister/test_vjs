@@ -3,8 +3,8 @@
 * (done) start new section on using array reduce as a collection method like lodash reduce
 * (done) 1-function-call
 * (done) 2-array-from
-* 3-object-values
-* 4-object-keys
+* (done) 3-object-values
+* (done) 4-object-keys
 * 5-string
 
 ## ( done 07/13/2021 ) - first set of examples

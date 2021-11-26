@@ -7,5 +7,8 @@
 * start a.Fill.random method
 
 ### () - expand av-while
-* fill range example using a while loop
+* (done) fill range example using a while loop
+* fill example that makes use of a filler function to create the value
+* while-range example
+* while-random example
 

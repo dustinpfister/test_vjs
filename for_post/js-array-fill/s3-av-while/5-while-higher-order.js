@@ -18,8 +18,15 @@ var fill = (function () {
         // create and return an array using the filter function
         var i = 0,
         arr = [];
+        // core and additional arguments for the filler function
+        coreArgu = [i, arr],
+        addArgu = [].slice.call(arguments, 2, arguments.length);
         while (i < len) {
-            arr[i] = filler.apply(arr, [i, arr]);
+            // call filler function using apply for the current index using
+            // the array for the value of this and passing an array of arguments
+            // that is a concatenation of core arguments for all filler functions and
+            // any additional arguments that will change depending on the filler function.
+            arr[i] = filler.apply(arr, coreArgu.concat(addArgu));
             i += 1;
         }
         return arr;
@@ -27,6 +34,4 @@ var fill = (function () {
 }
     ());
 
-
-console.log( fill(10, 'prim', 1) );
-
+console.log(fill(10, 'prim', 1));

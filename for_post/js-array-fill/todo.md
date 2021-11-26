@@ -14,6 +14,6 @@
 
 ### () - expand av-while
 * (done) fill range example using a while loop
-* while-range example
-* while-random example
+* 3-while-range example
+* 4-while-random example
 

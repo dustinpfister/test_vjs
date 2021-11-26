@@ -5,3 +5,6 @@
 * start a Fill.static method that will return a new array with a filled static value
 * start a Fill.range method
 * start a.Fill.random method
+
+### () - expand av-while
+* fill range example using a while loop

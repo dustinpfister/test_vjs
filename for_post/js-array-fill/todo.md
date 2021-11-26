@@ -18,6 +18,9 @@
 * have a apply example with a plain object to help better show what the situation is
 * have an array from example
 
+### () - expand av-while - fill higher order function, and filler methods
+* 5-while-higher-order example
+
 ### ( done 11/26/2021 ) - expand av-while
 * (done) fill range example using a while loop
 * (done) 3-while-range example

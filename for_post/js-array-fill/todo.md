@@ -16,11 +16,11 @@
 * have a apply example with a plain object to help better show what the situation is
 * have an array from example
 
-### () - expand and rename av-string-split
+### ( done 11/26/2021 ) - expand and rename av-string-split
 * (done) rename av-string-split to av-fill-with-string
 * (done) 1-split
-* 2-split-comma
-* 3-split-map-join
+* (done) 2-split-comma
+* (done) 3-split-map-join
 
 ### ( done 11/26/2021 ) - expand av-while - fill higher order function, and filler methods
 * (done) 5-while-higher-order example

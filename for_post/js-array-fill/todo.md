@@ -7,6 +7,9 @@
 * a Fill random method
 * a Fill randomFromSections method
 
+### () - expand av-fill-with-string
+* 4-match
+
 ### () - expand and rename av-apply-map
 * rename av-apply-map to av-apply-from-map
 * have an example that showcases the problem using Array constructor with new keyword and map
@@ -14,10 +17,10 @@
 * have an array from example
 
 ### () - expand and rename av-string-split
-* rename av-string-split to av-fill-with-string
-* 1-split
-* 2-split-chars
-* 3-match
+* (done) rename av-string-split to av-fill-with-string
+* (done) 1-split
+* 2-split-comma
+* 3-split-map-join
 
 ### ( done 11/26/2021 ) - expand av-while - fill higher order function, and filler methods
 * (done) 5-while-higher-order example

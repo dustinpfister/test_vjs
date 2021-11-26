@@ -12,6 +12,12 @@
 * have a static filler method example
 * have a random filler method example
 
+### () - expand and rename av-apply-map
+* rename av-apply-map to av-apply-from-map
+* have an example that showcases the problem using Array constructor with new keyword and map
+* have a apply example with a plain object to help better show what the situation is
+* have an array from example
+
 ### ( done 11/26/2021 ) - expand av-while
 * (done) fill range example using a while loop
 * (done) 3-while-range example

@@ -12,8 +12,8 @@
 * have a static filler method example
 * have a random filler method example
 
-### () - expand av-while
+### ( done 11/26/2021 ) - expand av-while
 * (done) fill range example using a while loop
 * (done) 3-while-range example
-* 4-while-random example
+* (done) 4-while-random example
 

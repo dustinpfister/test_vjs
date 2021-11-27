@@ -1,5 +1,9 @@
 # js-array-to-string todo list
 
+## () -  new av-string-pro
+* 1-split-join example that will split a string into an array, preform an action, and then join back to a string
+* 2-match example
+
 ## () - expand av-json section
 * 3-try-catch
 * 4-promise
@@ -8,7 +12,6 @@
 * example using the node util.inspect method
 
 ## ( ) - expand av-array-proto
-* 3-split-join example that will split a string into an array, preform an action, and then join back to a string
 * 4-filter-join example
 * 5-sort-join example
 

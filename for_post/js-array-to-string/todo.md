@@ -3,13 +3,16 @@
 ## () - new av-nodejs-util-inspect section
 * example using the node util.inspect method
 
-## () - new av-json section
-* 1-json basic example of JSON.stringify
+
 
 ## ( ) - expand av-array-proto
 * 3-split-join example that will split a string into an array, preform an action, and then join back to a string
 * 4-filter-join example
 * 5-sort-join example
+
+## () - new av-json section
+* 1-stringify basic example of JSON.stringify
+* 2-parse basic example
 
 ## ( done 11/27/2021 ) - new av-array-proto section
 * (done) 1-join basic example of array join

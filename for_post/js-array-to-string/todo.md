@@ -10,9 +10,9 @@
 * 4-filter-join example
 * 5-sort-join example
 
-## () - new av-json section
-* 1-stringify basic example of JSON.stringify
-* 2-parse basic example
+## ( done 11/27/2021 ) - new av-json section
+* (done) 1-stringify basic example of JSON.stringify
+* (done) 2-parse basic example
 
 ## ( done 11/27/2021 ) - new av-array-proto section
 * (done) 1-join basic example of array join

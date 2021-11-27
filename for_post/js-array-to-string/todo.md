@@ -1,9 +1,11 @@
 # js-array-to-string todo list
 
+## () - expand av-json section
+* 3-try-catch
+* 4-promise
+
 ## () - new av-nodejs-util-inspect section
 * example using the node util.inspect method
-
-
 
 ## ( ) - expand av-array-proto
 * 3-split-join example that will split a string into an array, preform an action, and then join back to a string

@@ -12,8 +12,8 @@
 * example using the node util.inspect method
 
 ## ( ) - expand av-array-proto
-* 4-filter-join example
-* 5-sort-join example
+* 3-filter-join example
+* 4-sort-join example
 
 ## ( done 11/27/2021 ) - new av-json section
 * (done) 1-stringify basic example of JSON.stringify

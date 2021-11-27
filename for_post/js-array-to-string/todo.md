@@ -1,5 +1,8 @@
 # js-array-to-string todo list
 
+## () - new av-multidim section
+* 1-flat example using flat method to create a flat array and then just map and join
+
 ## () -  new av-string-pro
 * 1-split-join example that will split a string into an array, preform an action, and then join back to a string
 * 2-match example

@@ -6,10 +6,14 @@
 ## () - new av-json section
 * 1-json basic example of JSON.stringify
 
-## () - new av-array-join section
-* 1-join basic example of array join
+## ( ) - expand av-array-join
+* 3-split-join example that will split a string into an array, preform an action, and then join back to a string
 
-## (done 07/22/2021) - first set of examples
+## ( done 11/27/2021 ) - new av-array-join section
+* (done) 1-join basic example of array join
+* (done) 2-join-objects example
+
+## ( done 07/22/2021 ) - first set of examples
 * (done) start an s1 section on the basics of array to string
   * (done) s1 nums example on just an array of numbers
   * (done) s1 objs example on an array of objects

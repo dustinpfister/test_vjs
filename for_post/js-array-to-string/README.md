@@ -1,3 +1,3 @@
 # js-array-to-string
 
-These are some source code examples for my [post on the to string method of the array prototype](https://dustinpfister.github.io/2021/07/22/js-array-to-string/), as well as various other ways to go about creating a string value from an array.
+These are some source code examples for my [post on the to string method of the array prototype](https://dustinpfister.github.io/2021/07/22/js-array-to-string/), as well as various other ways to go about creating a string value from an array. For example often I do not use the to string method, or define a custom to string method for an object, or the prototype of a class of objects. More often than not I use the array join prototype method in conjunction with many other array prototype methods to create the string value that I want from an array.

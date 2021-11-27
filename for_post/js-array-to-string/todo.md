@@ -1,10 +1,13 @@
 # js-array-to-string todo list
 
-## () - s2 section on other features for creating a string from an array
-  * start s2 section folder
-    * s2 example using array join method
-    * s2 example using the JSON.stringify method
-    * s2 example using the node util.inspect method
+## () - new av-nodejs-util-inspect section
+* example using the node util.inspect method
+
+## () - new av-json section
+* 1-json basic example of JSON.stringify
+
+## () - new av-array-join section
+* 1-join basic example of array join
 
 ## (done 07/22/2021) - first set of examples
 * (done) start an s1 section on the basics of array to string

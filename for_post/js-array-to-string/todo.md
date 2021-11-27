@@ -11,6 +11,10 @@
 ## () - new av-nodejs-util-inspect section
 * example using the node util.inspect method
 
+## () - expand av-array-proto
+* 5-foreach
+* 6-reduce
+
 ## ( done 11/27/2021 ) - expand av-array-proto
 * (done) 3-filter-join example
 * (done) 4-sort-join example

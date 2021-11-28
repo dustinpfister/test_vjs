@@ -1,5 +1,9 @@
 # js-array todo list
 
+## () - new av-copy-combine section
+* 1-map
+* 2-json
+
 ## () - exapnd av-add
 * make an s3-add-elements example using array splice
 

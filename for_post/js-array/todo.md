@@ -1,22 +1,25 @@
 # js-array todo list
 
+## () - new ex-grid-module-example
+* 1 - a Simple grid module
+* 2 - grid.html
+
+## () - new ex-object-pool-module
+* 1 - An object pool module
+* 2 - canvas html example
+
+## () - new ex-simple-html-examples section
+* 1 - create elements
+
+## () - new ex-simple-node-examples section
+* 1 - read dir example
+
+## () - rename av-add to av-get-add-set and expand
+* 2 - set function that takes and x, y, and value argument to set a value in an array
+
 ## () - new av-copy-combine section
 * 1-map
 * 2-json
-
-## () - exapnd av-add
-* make an s3-add-elements example using array splice
-
-## () - expand av-looping
-* make an s6-looping example on setTimeout
-
-## () - expand av-sort
-* make an s10-sort example that makes use of a sort function
-
-## () - expand av-length-count
-* have an s12-length-count example on count and how it compares to length
-* have an s12-length-count example that shows why length is not aways what is expected by setting the length
-* have an s12-length-count example that makes use of Object.keys, and Object own properties methods
 
 ## () - new av-objects
 * 1-object-keys
@@ -35,22 +38,24 @@
 * 1-map example with space arrays
 * 2-while loop method to help with space problem
 
-## () - new ex-grid-module-example
-* 1 - a Simple grid module
-* 2 - grid.html
+## () - expand av-length-count
+* have an s12-length-count example on count and how it compares to length
+* have an s12-length-count example that shows why length is not aways what is expected by setting the length
+* have an s12-length-count example that makes use of Object.keys, and Object own properties methods
 
-## () - new ex-object-pool-module
-* 1 - An object pool module
-* 2 - canvas html example
+## () - expand av-prototype
+* 10 - join
+* 11 - concat
+* 12 - slice
+* 13 - splice
 
-## () - new ex-simple-html-examples section
-* 1 - create elements
+## () - expand av-prototype
+* 7 - flat
+* 8 - every
+* 9 - some
 
-## () - new ex-simple-node-examples section
-* 1 - read dir example
-
-## () - rename av-add to av-get-add-set and expand
-* 2 - set function that takes and x, y, and value argument to set a value in an array
+## () - expand av-looping
+* make an s6-looping example on setTimeout
 
 ## ( done 11/28/2021 ) - expand av-prrototype
 * (done) 5-reduce

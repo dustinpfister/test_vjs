@@ -34,7 +34,7 @@
 ## () - new basic section folder
 * (done) 1-basic
 * (done) 2-while
-* 3-map
+* (done) 3-map
 * 4-object-keys 
 
 ## ( done 07/21/2021 ) - have section folders on all existing sections

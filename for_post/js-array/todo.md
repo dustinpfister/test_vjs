@@ -32,9 +32,9 @@
 * 2-while loop method to help with space problem
 
 ## () - new basic section folder
-* 1-basic
-* 2-while
-* 3-forEach
+* (done) 1-basic
+* (done) 2-while
+* 3-map
 * 4-object-keys 
 
 ## ( done 07/21/2021 ) - have section folders on all existing sections

@@ -1,12 +1,41 @@
 # js-array-todo
 
-## () - more examples
+## () - exapnd av-add
 * make an s3-add-elements example using array splice
+
+## () - expand av-looping
 * make an s6-looping example on setTimeout
+
+## () - expand av-sort
 * make an s10-sort example that makes use of a sort function
+
+## () - expand av-length-count
 * have an s12-length-count example on count and how it compares to length
 * have an s12-length-count example that shows why length is not aways what is expected by setting the length
 * have an s12-length-count example that makes use of Object.keys, and Object own properties methods
+
+## () - new av-objects
+* 1-object-keys
+* 2-object-values
+* 3-custom-foreach - example of a for each method that will work with collections in general
+* 4-object-get-own-property-names
+
+## () - new av-strings
+* 1-array-to-string
+* 2-array-join
+* 3-array-reduce
+* 4-string-split
+* 5-string-match
+
+## () - new av-sparse section
+* 1-map example with space arrays
+* 2-while loop method to help with space problem
+
+## () - new basic section folder
+* 1-basic
+* 2-while
+* 3-forEach
+* 4-object-keys 
 
 ## ( done 07/21/2021 ) - have section folders on all existing sections
 * (done) s3-add-elements

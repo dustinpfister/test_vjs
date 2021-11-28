@@ -31,11 +31,11 @@
 * 1-map example with space arrays
 * 2-while loop method to help with space problem
 
-## () - new basic section folder
+## ( done 11/28/2021 ) - new basic section folder
 * (done) 1-basic
 * (done) 2-while
 * (done) 3-map
-* 4-object-keys 
+* (done) 4-object-keys 
 
 ## ( done 07/21/2021 ) - have section folders on all existing sections
 * (done) s3-add-elements

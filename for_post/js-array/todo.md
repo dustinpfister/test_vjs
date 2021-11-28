@@ -31,10 +31,6 @@
 * 1-map example with space arrays
 * 2-while loop method to help with space problem
 
-## () - new av-length section
-* 1-length
-* 2-count
-
 ## () - new ex-grid-module-example
 * 1 - a Simple grid module
 * 2 - grid.html
@@ -48,6 +44,16 @@
 
 ## () - new ex-simple-node-examples section
 * 1 - read dir example
+
+## () - expand av-prrototype
+* reduce
+
+## () - consolation of proto sections into new av-prototype section
+* consolidate all prototype sections into a new av-prototype section
+
+## () - expand create section
+* 4 - object-keys-values
+* 5 - array-from
 
 ## ( done 11/28/2021 ) - new basic section folder
 * (done) 1-basic

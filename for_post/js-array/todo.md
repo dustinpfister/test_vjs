@@ -51,9 +51,9 @@
 ## () - consolation of proto sections into new av-prototype section
 * consolidate all prototype sections into a new av-prototype section
 
-## () - expand create section
-* 4 - object-keys-values
-* 5 - array-from
+## ( done 11/28/2021 ) - expand create section
+* (done) 4 - object-keys-values
+* (done) 5 - array-from
 
 ## ( done 11/28/2021 ) - new basic section folder
 * (done) 1-basic

@@ -49,6 +49,9 @@
 ## () - new ex-simple-node-examples section
 * 1 - read dir example
 
+## () - rename av-add to av-get-add-set and expand
+* 2 - set function that takes and x, y, and value argument to set a value in an array
+
 ## () - expand av-prrototype
 * reduce
 

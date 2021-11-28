@@ -31,6 +31,24 @@
 * 1-map example with space arrays
 * 2-while loop method to help with space problem
 
+## () - new av-length section
+* 1-length
+* 2-count
+
+## () - new ex-grid-module-example
+* 1 - a Simple grid module
+* 2 - grid.html
+
+## () - new ex-object-pool-module
+* 1 - An object pool module
+* 2 - canvas html example
+
+## () - new ex-simple-html-examples section
+* 1 - create elements
+
+## () - new ex-simple-node-examples section
+* 1 - read dir example
+
 ## ( done 11/28/2021 ) - new basic section folder
 * (done) 1-basic
 * (done) 2-while

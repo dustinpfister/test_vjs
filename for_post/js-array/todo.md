@@ -54,8 +54,8 @@
 * 8 - every
 * 9 - some
 
-## () - expand av-looping
-* make an s6-looping example on setTimeout
+## ( done 11/28/2021 ) - expand av-looping
+* (done) 3-settimeout make an s6-looping example on setTimeout
 
 ## ( done 11/28/2021 ) - expand av-prrototype
 * (done) 5-reduce

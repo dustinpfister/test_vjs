@@ -1,4 +1,4 @@
-# js-array-todo
+# js-array todo list
 
 ## () - exapnd av-add
 * make an s3-add-elements example using array splice

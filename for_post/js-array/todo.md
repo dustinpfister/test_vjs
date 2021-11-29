@@ -50,9 +50,11 @@
 * 13 - splice
 
 ## () - expand av-multidimensional
-* 2-chunk example like lodash chunk
-* rename 2-linear to 4-grid.js
-* new 3-linear is a basic example of what is going on in 4-grid.js
+* 1-array-of-arrays
+* 2-linear
+* 3-flat
+* 4-chunk example like lodash chunk
+* 5-grid example
 
 ## ( done 11/29/2021 ) - expand av-prototype
 * (done) 7 - flat

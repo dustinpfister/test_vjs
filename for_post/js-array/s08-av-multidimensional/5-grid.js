@@ -1,9 +1,7 @@
-
+// Grid Module
 var gridMod = (function () {
-
     // public api
     var api = {};
-
     // Polly fill the flat method ( if needed as always )
     // https://www.npmjs.com/package/array-flat-polyfill
     if (!Array.prototype.flat) {
@@ -23,7 +21,6 @@ var gridMod = (function () {
             writable: true
         });
     }
-
     // create a new grid method
     api.create = function (w, h) {
         // defaults for arguments
@@ -41,13 +38,25 @@ var gridMod = (function () {
             grid.cells.push({
                 i: i,
                 x: i % grid.w,
-                y: Math.floor(i / grid.w)
+                y: Math.floor(i / grid.w),
+                data: {}
             });
             i += 1;
         }
         return grid;
     };
-
+    // create from arrays method
+    api.createFromArrays = function (arrays) {
+        var w = arrays[0].length,
+        h = arrays.length,
+        grid = api.create(w, h);
+        var sourceNodes = arrays.flat(1);
+        grid.cells = grid.cells.map(function (cell, i) {
+            cell.data = sourceNodes[i] || {};
+            return cell;
+        });
+        return grid;
+    };
     // get method
     api.get = function (grid, ix, y) {
         // if one argument is given
@@ -62,14 +71,22 @@ var gridMod = (function () {
         // returns the last cell by default
         return grid[grid.cells.length - 1];
     };
-
+    // return the public api
     return api;
-
 }
     ());
-
+// DEMOS
+// create new
 var grid = gridMod.create(3, 3);
-console.log(gridMod.get(grid, 1, 2)); // { i: 7, x: 1, y: 2 }
+console.log(gridMod.get(grid, 1, 2)); // { i: 7, x: 1, y: 2, data: {} }
+// from array of arrays
+var arrays = [
+    [{money: 0},{money: 0},{money: 0}],
+    [{money: 0},{money: 0},{money: 0}],
+    [{money: 7},{money: 0},{money: 0}]
+];
+var grid = gridMod.createFromArrays(arrays);
+console.log( gridMod.get(grid, 0, 2) ); // { i: 6, x: 0, y: 2, data: { money: 7 } }
 
 /*
 var createGrid = function (w, h) {

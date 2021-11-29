@@ -49,10 +49,15 @@
 * 12 - slice
 * 13 - splice
 
-## () - expand av-prototype
+## () - expand av-multidimensional
+* 2-chunk example like lodash chunk
+* rename 2-linear to 4-grid.js
+* new 3-linear is a basic example of what is going on in 4-grid.js
+
+## ( done 11/29/2021 ) - expand av-prototype
 * (done) 7 - flat
-* 8 - every
-* 9 - some
+* (done) 8 - every
+* (done) 9 - some
 
 ## ( done 11/28/2021 ) - expand av-looping
 * (done) 3-settimeout make an s6-looping example on setTimeout

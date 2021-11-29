@@ -66,6 +66,10 @@ var gridMod = (function () {
         // using a formula to get the desired
         // element
         if (arguments.length === 3) {
+            ix = ix >= grid.w ? grid.w - 1 : ix;
+            ix = ix < 0 ? 0 : ix;
+            y = y >= grid.h ? grid.h - 1 : y;
+            y = y < 0 ? 0 : y;
             return grid.cells[y * grid.w + ix];
         }
         // returns the last cell by default

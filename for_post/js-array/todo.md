@@ -50,7 +50,7 @@
 * 13 - splice
 
 ## () - expand av-prototype
-* 7 - flat
+* (done) 7 - flat
 * 8 - every
 * 9 - some
 

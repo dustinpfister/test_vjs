@@ -50,11 +50,11 @@
 * 13 - splice
 
 ## () - expand av-multidimensional
-* 1-array-of-arrays
-* 2-linear
-* 3-flat
+* (done) 1-array-of-arrays same as old example
+* (done) 2-linear - new simple example of the idea
+* 3-flat - full examples with pollyfill
 * 4-chunk example like lodash chunk
-* 5-grid example
+* (done) 5-grid example started
 
 ## ( done 11/29/2021 ) - expand av-prototype
 * (done) 7 - flat

@@ -61,6 +61,8 @@ var gridMod = (function () {
     api.get = function (grid, ix, y) {
         // if one argument is given
         if (arguments.length === 2) {
+            ix = ix >= grid.cells.length ? grid.cells.length - 1 : ix;
+            ix = ix < 0 ? 0 : ix;
             return grid.cells[ix];
         }
         // using a formula to get the desired

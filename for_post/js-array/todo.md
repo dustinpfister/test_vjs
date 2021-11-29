@@ -52,7 +52,7 @@
 ## () - expand av-multidimensional
 * (done) 1-array-of-arrays same as old example
 * (done) 2-linear - new simple example of the idea
-* 3-flat - full examples with pollyfill
+* (done) 3-flat - full examples with pollyfill
 * 4-chunk example like lodash chunk
 * (done) 5-grid example started
 

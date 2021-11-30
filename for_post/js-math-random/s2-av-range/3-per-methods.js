@@ -22,7 +22,6 @@ var rangeRandomElement = function (array, si, ei) {
     si = si === undefined ? 0 : si;
     ei = ei === undefined ? array.length : ei;
     var index = rangeRandomInt(si, ei);
-	console.log(index);
     return array[index];
 };
 // can get a raw random range like this

@@ -19,8 +19,8 @@
 https://stackoverflow.com/questions/52089553/what-are-the-chances-of-math-random-returning-0
 ```
 
-## () - expand av-range section
-* 2-range-per example that is a range function that takes an 0-1 argument
+## (done 11/30/2021 ) - expand av-range section
+* (done) 2-range-per example that is a range function that takes an 0-1 argument
 
 ## ( done 09/21/2021 ) - s6-no-replacement
 * (done) start a no-replacement example

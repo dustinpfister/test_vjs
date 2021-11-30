@@ -13,6 +13,12 @@
 * start with a simple grid get cell function with a 10 by 10 grid size
 * randomly select the whole domain by getting cells without replacement
 
+## () - new av-getting-zero section on the chances of getting 0 with Math.random?
+* basic example
+```
+https://stackoverflow.com/questions/52089553/what-are-the-chances-of-math-random-returning-0
+```
+
 ## ( done 09/21/2021 ) - s6-no-replacement
 * (done) start a no-replacement example
 * (done) start with a function that will return a pull function for a given sample

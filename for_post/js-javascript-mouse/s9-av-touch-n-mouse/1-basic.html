@@ -1,28 +1,48 @@
 <html>
     <head>
-        <title>js mouse onclick example</title>
+        <title>js mouse and touch events</title>
+        <style>
+
+        </style>
     </head>
     <body>
-        <div id="out" style="width:200px;height:200px;background:gray;padding:20px;"><div>
+        <div id="canvas-app"><div>
         <script>
-var out = document.getElementById('out');
-var state = {
-    on: false
+var draw = {};
+
+draw.back = function(ctx, canvas, sm){
+    ctx.fillStyle = 'black';
+	ctx.fillRect(0,0,canvas.width, canvas.height);
+
+}
+
+
+var container = document.getElementById('canvas-app'),
+canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+
+canvas.width = 640;
+canvas.height = 480;
+
+container.appendChild(canvas);
+
+var sm = {
+  canvas: canvas,
+  ctx: ctx
 };
-var render = function (state) {
-    out.innerText = 'on: ' + state.on;
-    out.style.background = state.on ? 'green': 'red';
-};
-var handler = function(e){
-    console.log(e.type);
-    // e.preventDefault will suppress an additional mousedown when 
+
+
+
+
+var down = function(e){
+    // e.preventDefault will suppress an additional mouse down when 
     e.preventDefault();
-    state.on = !state.on;
-    render(state);
 };
-out.addEventListener('touchstart', handler);
-out.addEventListener('mousedown', handler);
-render(state);
+canvas.addEventListener('touchstart', down);
+canvas.addEventListener('mousedown', down);
+
+draw.back(ctx, canvas, sm);
+
         </script>
     </body>
 </html>

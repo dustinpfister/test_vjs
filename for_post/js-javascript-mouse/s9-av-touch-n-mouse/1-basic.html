@@ -59,10 +59,14 @@ var touchStart = function(e){
     e.preventDefault();
 };
 var mouseDown = function(e){
-    sm.pool = [];
     var obj = getElRel(e.target, e.clientX, e.clientY);
     obj.r = 64;
-    obj.fillStyle = 'cyan';
+    obj.fillStyle = 'red';
+    // if left click start a new pool
+    if(e.button === 0){
+        obj.fillStyle = 'cyan';
+        sm.pool = [];
+    }
     sm.pool.push(obj);
     // draw pool
     draw.pool(ctx, canvas, sm);

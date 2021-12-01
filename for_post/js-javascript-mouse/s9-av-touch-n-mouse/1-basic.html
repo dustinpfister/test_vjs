@@ -2,7 +2,6 @@
     <head>
         <title>js mouse and touch events</title>
         <style>
-
         </style>
     </head>
     <body>
@@ -24,13 +23,13 @@ draw.back = function(ctx, canvas, sm){
 }
 draw.pool = function(ctx, canvas, sm){
     draw.back(ctx, canvas, sm);
-	sm.pool.forEach(function(obj){
-	   ctx.beginPath();
-	   ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2)
-	   ctx.fillStyle = obj.fillStyle || 'lime';
-	   ctx.fill();
-	   ctx.stroke();
-	})
+    sm.pool.forEach(function(obj){
+       ctx.beginPath();
+       ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2)
+       ctx.fillStyle = obj.fillStyle || 'lime';
+       ctx.fill();
+       ctx.stroke();
+    })
 };
 // CANVAS SETUP
 var container = document.getElementById('canvas-app'),
@@ -47,22 +46,26 @@ var sm = {
 };
 // EVENTS
 var touchDown = function(e){
-    console.log(e.touches.length);
-	
-	sm.pool = [].map.call(e.touches, function(touch){
-	    var obj = getElRel(e.target, touch.clientX, touch.clientY);
-		obj.r = 64;
-		return obj;
-	});
-	
-	draw.pool(ctx, canvas, sm);
-	
+    // create pool of objects from touch array
+    sm.pool = [].map.call(e.touches, function(touch){
+        var obj = getElRel(e.target, touch.clientX, touch.clientY);
+        obj.r = 64;
+        return obj;
+    });
+    // draw pool
+    draw.pool(ctx, canvas, sm);
     // e.preventDefault will suppress an additional mouse down event
     // that will fire if not suppresses
     e.preventDefault();
 };
 var mouseDown = function(e){
-    console.log(e.type);
+    sm.pool = [];
+    var obj = getElRel(e.target, e.clientX, e.clientY);
+    obj.r = 64;
+    obj.fillStyle = 'cyan';
+    sm.pool.push(obj);
+    // draw pool
+    draw.pool(ctx, canvas, sm);
 };
 canvas.addEventListener('touchstart', touchDown);
 canvas.addEventListener('mousedown', mouseDown);

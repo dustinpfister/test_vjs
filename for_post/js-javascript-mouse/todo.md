@@ -1,5 +1,9 @@
 # js-javascript-mouse todo list
 
+### () - expand av-sim section
+* simulate mousedown, move, and up
+* simulate touch events
+* simulate pointer event
 
 ## () - expand s6-av-mouse-wheel section examples
 * see if there is a way to disable browser default with this
@@ -13,11 +17,6 @@
 
 ## () - new av-touch section on touch events
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
-
-### () - expand av-sim section
-* simulate mousedown, move, and up
-* simulate touch events
-* simulate pointer event
 
 ## ( done 11/02/2021 ) - new av-sim section on simulating mouse, touch, and pointer events
 * (done) basic simulate click example like then one in the on click section

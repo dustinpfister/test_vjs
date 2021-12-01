@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div><br><br></div>
+        <div id="out" style="width:600px;height:440px;outline:1px solid #000000;padding:20px;">0</div>
+        <div style="height:1000px;width:100px;background:gray;"></div>
+        <script>
+var y = 0,
+out = document.getElementById('out');
+// attaching to the out div
+out.addEventListener('wheel', function(e){
+    e.preventDefault();
+    y += e.deltaY;
+    out.innerText = y;
+    return;
+});
+        </script>
+    </body>
+</html>

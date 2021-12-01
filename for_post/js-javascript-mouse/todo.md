@@ -19,10 +19,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
 * the user can pan around by clicking direction buttons on the sides of the canvas
 * the user can select a cell in the grid
 
-### () - new av-touch section on touch events
-* have an example that involves creating an onPointer object with onPointer.start, move, and end props
+### ( done 12/01/2021 ) - new av-touch section on touch events
+* (done) 1-basic have an example that involves using mouse down and touch start events
 
-### ( done 12/01/2021) - expand s6-av-mouse-wheel section examples
+### ( done 12/01/2021 ) - expand s6-av-mouse-wheel section examples
 * (done) 2-prevent-default see if there is a way to disable browser default with this, and using a child element rather than window.
 * (done) 3-full-window example
 

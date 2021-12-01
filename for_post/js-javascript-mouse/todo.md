@@ -5,10 +5,6 @@
 * simulate touch events
 * simulate pointer event
 
-## () - expand s6-av-mouse-wheel section examples
-* see if there is a way to disable browser default with this
-* how about in a child element rather than window?
-
 ## () - new ex-grid section
 * start an example involving a canvas element and a grid
 * the user can pan around the grid my doing a click and drag
@@ -17,6 +13,9 @@
 
 ## () - new av-touch section on touch events
 * have an example that involves creating an onPointer object with onPointer.start, move, and end props
+
+## ( done 12/01/2021) - expand s6-av-mouse-wheel section examples
+* (done) 2-prevent-default see if there is a way to disable browser default with this, and using a child element rather than window.
 
 ## ( done 11/02/2021 ) - new av-sim section on simulating mouse, touch, and pointer events
 * (done) basic simulate click example like then one in the on click section

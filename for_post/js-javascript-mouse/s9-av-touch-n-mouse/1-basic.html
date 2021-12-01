@@ -44,8 +44,8 @@ var sm = {
   ctx: ctx,
   pool: []
 };
-// EVENTS
-var touchDown = function(e){
+// WHAT TO DO FOR A TOUCH START EVENT
+var touchStart = function(e){
     // create pool of objects from touch array
     sm.pool = [].map.call(e.touches, function(touch){
         var obj = getElRel(e.target, touch.clientX, touch.clientY);
@@ -67,8 +67,19 @@ var mouseDown = function(e){
     // draw pool
     draw.pool(ctx, canvas, sm);
 };
-canvas.addEventListener('touchstart', touchDown);
+// on context event handler
+var oncontext = function(e){
+    e.preventDefault();
+    if (event.stopPropagation){
+        event.stopPropagation();
+    }
+    event.cancelBubble = true;
+    //render(e.button);
+    return false;
+};
+canvas.addEventListener('touchstart', touchStart);
 canvas.addEventListener('mousedown', mouseDown);
+canvas.addEventListener('contextmenu', oncontext);
 // draw for first time
 draw.back(ctx, canvas, sm);
         </script>

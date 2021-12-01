@@ -8,12 +8,30 @@
     <body>
         <div id="canvas-app"><div>
         <script>
+// HELPERS
+var getElRel = function(el, clientX, clientY){
+    var bx = el.getBoundingClientRect();
+    return  {
+      x : clientX - bx.left,
+      y : clientY - bx.top
+    };
+}
 // DRAW
 var draw = {};
 draw.back = function(ctx, canvas, sm){
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0,canvas.width, canvas.height);
 }
+draw.pool = function(ctx, canvas, sm){
+    draw.back(ctx, canvas, sm);
+	sm.pool.forEach(function(obj){
+	   ctx.beginPath();
+	   ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2)
+	   ctx.fillStyle = obj.fillStyle || 'lime';
+	   ctx.fill();
+	   ctx.stroke();
+	})
+};
 // CANVAS SETUP
 var container = document.getElementById('canvas-app'),
 canvas = document.createElement('canvas'),
@@ -24,11 +42,21 @@ container.appendChild(canvas);
 // STATE
 var sm = {
   canvas: canvas,
-  ctx: ctx
+  ctx: ctx,
+  pool: []
 };
 // EVENTS
 var touchDown = function(e){
-    console.log(e.type);
+    console.log(e.touches.length);
+	
+	sm.pool = [].map.call(e.touches, function(touch){
+	    var obj = getElRel(e.target, touch.clientX, touch.clientY);
+		obj.r = 64;
+		return obj;
+	});
+	
+	draw.pool(ctx, canvas, sm);
+	
     // e.preventDefault will suppress an additional mouse down event
     // that will fire if not suppresses
     e.preventDefault();

@@ -8,41 +8,38 @@
     <body>
         <div id="canvas-app"><div>
         <script>
+// DRAW
 var draw = {};
-
 draw.back = function(ctx, canvas, sm){
     ctx.fillStyle = 'black';
-	ctx.fillRect(0,0,canvas.width, canvas.height);
-
+    ctx.fillRect(0,0,canvas.width, canvas.height);
 }
-
-
+// CANVAS SETUP
 var container = document.getElementById('canvas-app'),
 canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
-
 canvas.width = 640;
 canvas.height = 480;
-
 container.appendChild(canvas);
-
+// STATE
 var sm = {
   canvas: canvas,
   ctx: ctx
 };
-
-
-
-
-var down = function(e){
-    // e.preventDefault will suppress an additional mouse down when 
+// EVENTS
+var touchDown = function(e){
+    console.log(e.type);
+    // e.preventDefault will suppress an additional mouse down event
+    // that will fire if not suppresses
     e.preventDefault();
 };
-canvas.addEventListener('touchstart', down);
-canvas.addEventListener('mousedown', down);
-
+var mouseDown = function(e){
+    console.log(e.type);
+};
+canvas.addEventListener('touchstart', touchDown);
+canvas.addEventListener('mousedown', mouseDown);
+// draw for first time
 draw.back(ctx, canvas, sm);
-
         </script>
     </body>
 </html>

@@ -13,7 +13,12 @@
 
     var sm = {
         ver: '0.1.0',
-        game: gameMod.create(),
+        game: gameMod.create({
+            marginX : 14,
+            marginY : 7,
+            w: 9,
+            h: 7
+        }),
         canvas: canvas,
         ctx: ctx,
         input: {

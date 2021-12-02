@@ -50,10 +50,10 @@ var gameMod = (function () {
             player: createPlayerUnit()
         };
         game.maps.push(mapMod.create({
-                marginX: 32,
-                marginY: 32,
-                w: 8,
-                h: 6
+                marginX: opt.marginX === undefined ? 32 : opt.marginX,
+                marginY: opt.marginY === undefined ? 32 : opt.marginY,
+                w:  opt.w === undefined ? 4 : opt.w,
+                h:  opt.h === undefined ? 4 : opt.h
             }));
         setupGame(game);
         return game;

@@ -32,6 +32,10 @@
 
     var pointerHanders = {
         start: function (sm, e) {
+            if(e.type === 'touchstart'){
+                e.preventDefault();
+            }
+            sm.input.pos = utils.getCanvasRelative(e);
             var pos = sm.input.pos;
             sm.input.pointerDown = true;
             var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
@@ -39,7 +43,9 @@
                 sm.game.targetCell = cell;
             }
         },
-        move: function (sm, e) {},
+        move: function (sm, e) {
+            sm.input.pos = utils.getCanvasRelative(e);
+        },
         end: function (sm, e) {
             sm.input.pointerDown = false;
         }
@@ -47,7 +53,6 @@
 
     var createPointerHandler = function (sm, type) {
         return function (e) {
-            sm.input.pos = utils.getCanvasRelative(e);
             pointerHanders[type](sm, e);
         };
     };

@@ -10,6 +10,7 @@ utils.angleToPoint = function (x1, y1, x2, y2, scale) {
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
+	console.log(e.type, e.touches)
     return {
         x: (e.touches ? e.touches[0].clientX : e.clientX) - bx.left,
         y: (e.touches ? e.touches[0].clientY : e.clientY) - bx.top,

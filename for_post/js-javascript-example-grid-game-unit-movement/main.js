@@ -12,7 +12,9 @@
     canvas.onselectstart = function () { return false; }
 
     var sm = {
-        ver: '0.1.0',
+        ver: '0.2.0',
+        fps: 12,
+        lt: new Date(),
         game: gameMod.create({
             marginX : 14,
             marginY : 7,
@@ -60,17 +62,22 @@
     canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
     canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
-
     canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
     canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
 
+    // loop with frame capping set by sm.fps value
     var loop = function () {
+        var now = new Date(),
+        secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
-        gameMod.update(sm.game);
-        draw.back(sm);
-        draw.map(sm);
-        draw.info(sm);
+        if(secs >= 1 / sm.fps){
+            gameMod.update(sm.game);
+            draw.back(sm);
+            draw.map(sm);
+            draw.info(sm);
+            sm.lt = now;
+        }
     };
 
     loop();

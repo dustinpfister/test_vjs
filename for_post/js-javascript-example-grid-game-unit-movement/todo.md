@@ -1,8 +1,16 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
-## () 0.2.0 - Other units
+## () - 0.5.0 - Other units
 * add other units in the example
 * other units move to the player unit on each turn
+
+## () - 0.4.0 - more than one map
+* have more than one map object in game.js
+* have wall around the ediges of a map but with openings that allow the player to move to another map
+
+## () - 0.3.0 - path detection and objects
+* add path detection to map.js and use that as a way to move
+* have objects in the map that are just objects in the way such as wall blocks
 
 ## ( done 12/02/2021 ) - 0.2.0 - frame rate cap
 * (done) have a frame rate cap for the main loop

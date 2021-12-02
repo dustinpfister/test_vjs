@@ -4,7 +4,7 @@
 * add other units in the example
 * other units move to the player unit on each turn
 
-## () 0.1.0 - touch support, text selection stoped
+## ( done 12/02/2021 ) 0.1.0 - touch support, text selection stoped
 * (done) fix isshue where text in a page is being selected when clicking the canvas
 * (done) marginX and marginY options for gameMod.create
 * (done) add touch support in main.js

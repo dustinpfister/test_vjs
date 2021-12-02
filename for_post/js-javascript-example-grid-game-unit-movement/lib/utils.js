@@ -20,6 +20,36 @@ utils.getCanvasRelative = function (e) {
 utils.deepCloneJSON = function (obj) {
     return JSON.parse(JSON.stringify(obj));
 };
+
+// https://stackoverflow.com/questions/7582001/is-there-a-way-to-test-circular-reference-in-javascript
+utils.isCircularObject = function(node, parents){
+    parents = parents || [];
+
+    if(!node || typeof node != "object"){
+        return false;
+    }
+
+    var keys = Object.keys(node), i, value;
+
+    parents.push(node); // add self to current path      
+    for(i = keys.length-1; i>=0; i--){
+        value = node[keys[i]];
+        if(value && typeof value == "object"){
+            if(parents.indexOf(value)>=0){
+                // circularity detected!
+                return true;
+            }
+            // check child nodes
+            if(arguments.callee(value, parents)){
+                return true;
+            }
+
+        }
+    }
+    parents.pop(node);
+    return false;
+};
+
 // a deep clone method that should work in most situations
 utils.deepClone = (function () {
     // forInstance methods supporting Date, Array, and Object
@@ -66,10 +96,16 @@ utils.deepClone = (function () {
                 // recursive check
                 //if (obj[i] == obj || i === 'currentCell') {
                 if (obj[i] === obj || i === 'currentCell') {
+                //if (obj[i] === obj || utils.isCircularObject(obj[i])) {
+
 // what is going on
 console.log(i);
 console.log(obj[i]);
 console.log(obj);
+console.log(utils.isCircularObject(obj));
+console.log(utils.isCircularObject(obj[i]));
+
+
                     clone[i] = opt.forRecursive(clone, obj, i);
                 } else {
                     // if the constructor is supported, clone it

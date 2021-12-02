@@ -47,7 +47,6 @@
 //sm.game.maps[0].cells[0].unit = false;
 
 var clone = utils.deepClone(sm.game.maps[0], {});
-
 console.log(clone);
 
 //var path = mapMod.getPath(sm.game.maps[0], 0, 0, cell.x, cell.y);

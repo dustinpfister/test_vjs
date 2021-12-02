@@ -12,7 +12,7 @@
     canvas.onselectstart = function () { return false; }
 
     var sm = {
-        ver: '0.2.0',
+        ver: '0.3.0',
         fps: 12,
         lt: new Date(),
         game: gameMod.create({
@@ -42,6 +42,11 @@
             sm.input.pointerDown = true;
             var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
             if (cell) {
+
+//sm.game.maps[0].cells[0].unit = false;
+//var path = mapMod.getPath(sm.game.maps[0], 0, 0, cell.x, cell.y);
+//console.log(path);
+
                 sm.game.targetCell = cell;
             }
         },

@@ -52,6 +52,10 @@
         };
     };
 
+    canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
+    canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
+    canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
+
     canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
     canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));

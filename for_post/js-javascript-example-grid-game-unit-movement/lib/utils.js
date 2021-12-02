@@ -11,8 +11,8 @@ utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
     return {
-        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        x: (e.touches ? e.touches[0].clientX : e.clientX) - bx.left,
+        y: (e.touches ? e.touches[0].clientY : e.clientY) - bx.top,
         bx: bx
     };
 };

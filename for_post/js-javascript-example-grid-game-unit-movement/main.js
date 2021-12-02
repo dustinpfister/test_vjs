@@ -43,6 +43,7 @@
             var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
             if (cell) {
 
+// THIS IS WHERE I AM WITH PATH DETECTION
 //sm.game.maps[0].cells[0].unit = false;
 //var path = mapMod.getPath(sm.game.maps[0], 0, 0, cell.x, cell.y);
 //console.log(path);

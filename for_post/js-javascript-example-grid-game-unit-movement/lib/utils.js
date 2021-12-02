@@ -20,3 +20,64 @@ utils.getCanvasRelative = function (e) {
 utils.deepCloneJSON = function (obj) {
     return JSON.parse(JSON.stringify(obj));
 };
+// a deep clone method that should work in most situations
+utils.deepClone = (function () {
+    // forInstance methods supporting Date, Array, and Object
+    var forInstance = {
+        Date: function (val, key) {
+            return new Date(val.getTime());
+        },
+        Array: function (val, key) {
+            // deep clone the object, and return as array
+            var obj = utils.deepClone(val);
+            obj.length = Object.keys(obj).length;
+            return Array.from(obj);
+        },
+        Object: function (val, key) {
+            return utils.deepClone(val);
+        }
+    };
+    // default forRecursive
+    var forRecursive = function (cloneObj, sourceObj, sourceKey) {
+        return cloneObj;
+    };
+    // default method for unsupported types
+    var forUnsupported = function (cloneObj, sourceObj, sourceKey) {
+        // not supported? Just ref the object,
+        // and hope for the best then
+        return sourceObj[sourceKey];
+    };
+    // return deep clone method
+    return function (obj, opt) {
+        var clone = {},
+        conName,
+        forIMethod; // clone is a new object
+        opt = opt || {};
+        opt.forInstance = opt.forInstance || {};
+        opt.forRecursive = opt.forRecursive || forRecursive;
+        opt.forUnsupported = opt.forUnsupported || forUnsupported;
+        for (var i in obj) {
+            // if the type is object and not null
+            if (typeof(obj[i]) == "object" && obj[i] != null) {
+                // recursive check
+                if (obj[i] === obj) {
+                    clone[i] = opt.forRecursive(clone, obj, i);
+                } else {
+                    // if the constructor is supported, clone it
+                    conName = obj[i].constructor.name;
+                    forIMethod = opt.forInstance[conName] || forInstance[conName];
+                    if (forIMethod) {
+                        clone[i] = forIMethod(obj[i], i);
+                    } else {
+                        clone[i] = opt.forUnsupported(clone, obj, i);
+                    }
+                }
+            } else {
+                // should be a primitive so just assign
+                clone[i] = obj[i];
+            }
+        }
+        return clone;
+    };
+}
+    ());

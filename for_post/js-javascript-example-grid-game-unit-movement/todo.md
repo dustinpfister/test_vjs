@@ -9,7 +9,8 @@
 * have wall around the ediges of a map but with openings that allow the player to move to another map
 
 ## () - 0.3.0 - path detection and objects
-* add path detection to map.js and use that as a way to move
+* (done) add path detection to map.js from what I worked out on my post on this subject
+* see about fixing the problem with circlular refernces
 * have objects in the map that are just objects in the way such as wall blocks
 
 ## ( done 12/02/2021 ) - 0.2.0 - frame rate cap

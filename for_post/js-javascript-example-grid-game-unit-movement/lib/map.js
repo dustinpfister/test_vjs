@@ -110,6 +110,7 @@ PATHS
         // copy the given grid
         //var grid = Grid.fromMatrix(givenGrid.nodes),
         var grid = utils.deepCloneJSON(grid),
+        //var grid = utils.deepClone(grid),
         nodes = api.chunk(grid),
         path = [],
         opened = [],

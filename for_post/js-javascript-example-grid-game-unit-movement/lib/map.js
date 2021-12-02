@@ -30,7 +30,7 @@ var mapMod = (function () {
             },
             cells: []
         };
-        map.cells = createCells(map);
+        map.cells = opt.cells || createCells(map);
         return map;
     };
     // return a cell at the given position, or false for out of bounds values
@@ -110,7 +110,9 @@ PATHS
         // copy the given grid
         //var grid = Grid.fromMatrix(givenGrid.nodes),
         var grid = utils.deepCloneJSON(grid),
-        //var grid = utils.deepClone(grid),
+        //var grid = utils.deepClone(grid, {
+        //    forRecursive: function(){ return {} }
+        //}),
         nodes = api.chunk(grid),
         path = [],
         opened = [],

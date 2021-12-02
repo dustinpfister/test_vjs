@@ -24,17 +24,18 @@ utils.deepCloneJSON = function (obj) {
 utils.deepClone = (function () {
     // forInstance methods supporting Date, Array, and Object
     var forInstance = {
-        Date: function (val, key) {
+        Date: function (val, key, opt) {
             return new Date(val.getTime());
         },
-        Array: function (val, key) {
+        Array: function (val, key, opt) {
             // deep clone the object, and return as array
-            var obj = utils.deepClone(val);
+            var obj = utils.deepClone(val, opt);
             obj.length = Object.keys(obj).length;
             return Array.from(obj);
         },
-        Object: function (val, key) {
-            return utils.deepClone(val);
+        Object: function (val, key, opt) {
+console.log(opt.foo)
+            return utils.deepClone(val, opt);
         }
     };
     // default forRecursive
@@ -56,18 +57,22 @@ utils.deepClone = (function () {
         opt.forInstance = opt.forInstance || {};
         opt.forRecursive = opt.forRecursive || forRecursive;
         opt.forUnsupported = opt.forUnsupported || forUnsupported;
+
+
+
         for (var i in obj) {
             // if the type is object and not null
             if (typeof(obj[i]) == "object" && obj[i] != null) {
+
                 // recursive check
-                if (obj[i] === obj) {
+                if (obj[i] === obj || i === 'currentCell') {
                     clone[i] = opt.forRecursive(clone, obj, i);
                 } else {
                     // if the constructor is supported, clone it
                     conName = obj[i].constructor.name;
                     forIMethod = opt.forInstance[conName] || forInstance[conName];
                     if (forIMethod) {
-                        clone[i] = forIMethod(obj[i], i);
+                        clone[i] = forIMethod(obj[i], i, opt);
                     } else {
                         clone[i] = opt.forUnsupported(clone, obj, i);
                     }

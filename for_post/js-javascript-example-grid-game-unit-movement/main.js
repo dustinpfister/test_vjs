@@ -8,8 +8,11 @@
     canvas.height = 240;
     ctx.translate(0.5, 0.5);
 
+    // disable default action for onselectstart
+    canvas.onselectstart = function () { return false; }
+
     var sm = {
-        ver: '0.0.1',
+        ver: '0.1.0',
         game: gameMod.create(),
         canvas: canvas,
         ctx: ctx,

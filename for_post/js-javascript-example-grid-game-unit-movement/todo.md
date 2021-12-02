@@ -1,9 +1,10 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
-## () 0.1.0 - Other units, and select text 
+## () 0.1.0 - Other units, and select text
+* (done) fix isshue where text in a page is being selected when clicking the canvas
 * add other units in the example
 * other units move to the player unit on each turn
-* fix isshue where text in a page is being selected when clicking the canvas
+
 
 ## ( done 04/02/2021 ) - 0.0.1 - some clean up
 * (done) removed unused code from utils.js

@@ -46,8 +46,7 @@
 // THIS IS WHERE I AM WITH PATH DETECTION
 //sm.game.maps[0].cells[0].unit = false;
 
-var clone = utils.deepClone(sm.game.maps[0], {
-});
+var clone = utils.deepClone(sm.game.maps[0], {});
 
 console.log(clone);
 

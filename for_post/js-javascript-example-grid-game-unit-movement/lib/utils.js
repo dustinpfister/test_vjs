@@ -34,7 +34,6 @@ utils.deepClone = (function () {
             return Array.from(obj);
         },
         Object: function (val, key, opt) {
-console.log(opt.foo)
             return utils.deepClone(val, opt);
         }
     };
@@ -65,7 +64,12 @@ console.log(opt.foo)
             if (typeof(obj[i]) == "object" && obj[i] != null) {
 
                 // recursive check
+                //if (obj[i] == obj || i === 'currentCell') {
                 if (obj[i] === obj || i === 'currentCell') {
+// what is going on
+console.log(i);
+console.log(obj[i]);
+console.log(obj);
                     clone[i] = opt.forRecursive(clone, obj, i);
                 } else {
                     // if the constructor is supported, clone it

@@ -82,7 +82,11 @@ var gameMod = (function () {
         }
     };
     // get player cell
-    //api.getPlayerCell
+    api.getPlayerCell = function(game){
+        var p = game.player,
+        map = game.maps[game.mapIndex];
+        return map.cells[p.currentCellIndex];
+    };
     // return the public API
     return api;
 }

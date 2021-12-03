@@ -42,9 +42,7 @@ var draw = (function () {
         info: function (sm) {
             var ctx = sm.ctx,
             pos = sm.input.pos,
-            p = sm.game.player,
-            map = sm.game.maps[0],
-            pCell = map.cells[p.currentCellIndex],
+            pCell = gameMod.getPlayerCell(sm.game),
             canvas = sm.canvas;
             // text style
             ctx.fillStyle = 'white';

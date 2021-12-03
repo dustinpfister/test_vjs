@@ -5,8 +5,7 @@ var gameMod = (function () {
             HP: 100,
             maxHP: 100,
             weaponIndex: 0,
-            sheetIndex: 1,
-            //currentCell: false,
+            sheetIndex: 0,
             currentCellIndex: null,
             active: false
         }
@@ -15,7 +14,7 @@ var gameMod = (function () {
     var createPlayerUnit = function () {
         var player = createBaseUnit();
         player.active = true;
-        player.sheetIndex = 0; // player sheet
+        player.sheetIndex = 2; // player sheet
         return player;
     };
     // place a unit at the given location
@@ -23,13 +22,6 @@ var gameMod = (function () {
         var map = game.maps[game.mapIndex];
         var newCell = mapMod.get(map, x, y);
         if (newCell) {
-            // clear old position if any
-            //if (unit.currentCell) {
-            //    map.cells[unit.currentCell.i].unit = false;
-            //}
-            // update to new location
-            //unit.currentCell = newCell; // unit ref to cell
-            //map.cells[unit.currentCell.i].unit = unit; // map ref to unit
             if (unit.currentCellIndex != null) {
                 map.cells[unit.currentCellIndex].unit = false;
             }
@@ -71,7 +63,7 @@ var gameMod = (function () {
         target;
         // move player
         if (target = game.targetCell) {
-            cell = game.maps[0].cells[game.player.currentCellIndex];
+            cell = game.maps[game.mapIndex].cells[game.player.currentCellIndex];
             if (target != cell) {
                 radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
                 var cx = Math.round(cell.x + Math.cos(radian)),

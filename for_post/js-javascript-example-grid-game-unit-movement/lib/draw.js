@@ -1,5 +1,5 @@
 var draw = (function () {
-    var unitColors = ['blue', 'red'];
+    var unitColors = ['green', 'gray', 'blue', 'red'];
     return {
         // draw background
         back: function (sm) {

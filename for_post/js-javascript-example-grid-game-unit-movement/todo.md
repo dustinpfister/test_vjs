@@ -8,28 +8,14 @@
 * have more than one map object in game.js
 * have wall around the ediges of a map but with openings that allow the player to move to another map
 
-## () - 0.3.0 - path detection and objects
+## ( done 12/03/2021 ) - 0.3.0 - path detection and objects
 * (done) add path detection to map.js from what I worked out on my post on this subject
 * (done) see about fixing the problem with circlular refernces by going with index values rather than refs
 * (done) have objects in the map that are just objects in the way such as wall blocks
 * (done) get player cell helper in game.js
 * (done) playerPointer gameMod method
 * (done) change all instances of game.maps\[0\] to game.maps\[game.mapIndex\]
-* () system for map data
-
-```
-
-// array of arrays
-['200100000',
-'000111100',
-'000001000',
-'000101000',
-'000100100',
-'000100000']
-
-// single string
-'200100000000111100000001000000101000000100100000100000'
-```
+* (done) system for map data
 
 ## ( done 12/02/2021 ) - 0.2.0 - frame rate cap
 * (done) have a frame rate cap for the main loop

@@ -12,6 +12,8 @@
 * (done) add path detection to map.js from what I worked out on my post on this subject
 * (done) see about fixing the problem with circlular refernces by going with index values rather than refs
 * (done) have objects in the map that are just objects in the way such as wall blocks
+* get player cell helper in game.js
+* change all instances of game.maps\[0\] to game.maps\[game.mapIndex\]
 
 ## ( done 12/02/2021 ) - 0.2.0 - frame rate cap
 * (done) have a frame rate cap for the main loop

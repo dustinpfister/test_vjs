@@ -81,6 +81,8 @@ var gameMod = (function () {
             }
         }
     };
+    // get player cell
+    //api.getPlayerCell
     // return the public API
     return api;
 }

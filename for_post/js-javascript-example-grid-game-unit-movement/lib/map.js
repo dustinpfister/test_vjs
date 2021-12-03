@@ -9,6 +9,9 @@ var mapMod = (function () {
                 i: i,
                 x: i % map.w,
                 y: Math.floor(i / map.w),
+                walkable: true,
+                closed: false,
+                data: {},
                 unit: false // reference to current unit here or false if empty
             });
             i += 1;
@@ -67,17 +70,17 @@ PATHS
 
     // set weight for a node
     var setWeight = function (endNode, neighbor) {
-        return Math.sqrt(Math.pow(endNode.cellX - neighbor.cellY, 2) + Math.pow(endNode.cellY - neighbor.cellY, 2))
+        return Math.sqrt(Math.pow(endNode.x - neighbor.y, 2) + Math.pow(endNode.y - neighbor.y, 2))
     };
 
     // build a path based an parent property
     var buildPath = function (node) {
         var path = [];
         while (node.parent) {
-            path.push([node.cellX, node.cellY]);
+            path.push([node.x, node.y]);
             node = node.parent;
         }
-        path.push([node.cellX, node.cellY]);
+        path.push([node.x, node.y]);
         return path;
     };
 
@@ -170,24 +173,24 @@ PATHS
 
     // get the four Neighbors of a node
     api.getNeighbors = function (grid, node) {
-        var x = node.cellX,
-        y = node.cellY,
+        var x = node.x,
+        y = node.y,
         neighbors = [];
         if (api.isWalkable(grid, x, y - 1)) {
             //neighbors.push(this.nodes[y - 1][x]);
-            neighbors.push(gridMod.get(grid, x, y - 1));
+            neighbors.push(mapMod.get(grid, x, y - 1));
         }
         if (api.isWalkable(grid, x, y + 1)) {
             //neighbors.push(this.nodes[y + 1][x]);
-            neighbors.push(gridMod.get(grid, x, y + 1));
+            neighbors.push(mapMod.get(grid, x, y + 1));
         }
         if (api.isWalkable(grid, x - 1, y)) {
             //neighbors.push(this.nodes[y][x - 1]);
-            neighbors.push(gridMod.get(grid, x - 1, y));
+            neighbors.push(mapMod.get(grid, x - 1, y));
         }
         if (api.isWalkable(grid, x + 1, y)) {
             //neighbors.push(this.nodes[y][x + 1]);
-            neighbors.push(gridMod.get(grid, x + 1, y));
+            neighbors.push(mapMod.get(grid, x + 1, y));
         }
         return neighbors;
     };

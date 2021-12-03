@@ -41,17 +41,21 @@ var draw = (function () {
         },
         info: function (sm) {
             var ctx = sm.ctx,
+            pos = sm.input.pos,
+            p = sm.game.player,
+            map = sm.game.maps[0],
+            pCell = map.cells[p.currentCellIndex],
             canvas = sm.canvas;
-/*
+            // text style
             ctx.fillStyle = 'white';
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
-            var pos = sm.input.pos;
-            ctx.fillText('down: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 5, 5);
-            var p = sm.game.player;
-            ctx.fillText('player pos: ' + p.currentCell.x + ',' + p.currentCell.y, 5, 15);
+            // draw current pointer position
+            ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, 5);
+            // player cell pos
+            ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, 15);
+            // version number
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
-*/
         }
     }
 }

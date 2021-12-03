@@ -1,5 +1,8 @@
 # js-path-find todo list
 
+### () - fix weight problem
+* fix the weight problem that was fixed in js-javascript-example-grid-unit-movement
+
 ### ( 10/07/2021 ) - new s3 section on canvas
 * (done) start a new client side javaScript section folder that uses canvas
 * (done) I will need a gridMod.chunk method for the grid module

@@ -70,7 +70,7 @@ PATHS
 
     // set weight for a node
     var setWeight = function (endNode, neighbor) {
-        return Math.sqrt(Math.pow(endNode.x - neighbor.y, 2) + Math.pow(endNode.y - neighbor.y, 2))
+        return utils.distance(endNode.x, endNode.y, neighbor.x, neighbor.y);
     };
 
     // build a path based an parent property

@@ -1,5 +1,10 @@
 // UTILS
 var utils = {};
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
 // angle from one point to another
 utils.angleToPoint = function (x1, y1, x2, y2, scale) {
     scale = scale === undefined ? Math.PI * 2 : scale;

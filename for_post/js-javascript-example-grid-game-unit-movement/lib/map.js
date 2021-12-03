@@ -12,7 +12,7 @@ var mapMod = (function () {
                 walkable: true,
                 closed: false,
                 data: {},
-                unit: false // reference to current unit here or false if empty
+                unit: null // reference to current unit here or null if empty
             });
             i += 1;
         }

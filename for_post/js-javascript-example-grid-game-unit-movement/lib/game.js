@@ -1,4 +1,7 @@
 var gameMod = (function () {
+/********** **********
+     UNITS
+*********** *********/
     // create a base unit
     var createBaseUnit = function () {
         return {
@@ -17,25 +20,63 @@ var gameMod = (function () {
         player.sheetIndex = 2; // player sheet
         return player;
     };
+    // create a player unit
+    var createWallUnit = function () {
+        var wall = createBaseUnit();
+        wall.active = true;
+        wall.sheetIndex = 1;
+        return wall;
+    };
     // place a unit at the given location
     var placeUnit = function (game, unit, x, y) {
         var map = game.maps[game.mapIndex];
         var newCell = mapMod.get(map, x, y);
         if (newCell) {
+            // any old cellIndex that may need to have walkable
+            // set back to true?
             if (unit.currentCellIndex != null) {
-                map.cells[unit.currentCellIndex].unit = false;
+                var oldCell = map.cells[unit.currentCellIndex];
+                oldCell.walkable = true;
+                // set unit ref back to null
+                map.cells[unit.currentCellIndex].unit = null;
             }
+            // set new cell to not walkable as a unit is now located here
+            newCell.walkable = false;
+            // set current cell index for the unit
             unit.currentCellIndex = newCell.i;
+            // place a ref to the unit in the map cell
             map.cells[unit.currentCellIndex].unit = unit; // map ref to unit
         }
     };
-    // start game helper
-    var setupGame = function (game) {
+/********** **********
+     SETUP GAME
+*********** *********/
+    // setUp game helper with game object, and given maps
+    var setupGame = function (game, mapStrings) {
         game.mapIndex = 0;
-        var map = game.maps[game.mapIndex];
-        placeUnit(game, game.player, 0, 0);
+        game.maps = game.maps.map(function(map, mi){
+            var mapStr = mapStrings[mi] || '';
+            map.cells = map.cells.map(function(cell, ci){
+                var cellIndex = parseInt(mapStr[ci] || '0'),
+                x = ci % map.w,
+                y = Math.floor(ci / map.w);
+                // wall block
+                if(cellIndex === 1){
+                    var wall = createWallUnit();
+                    placeUnit(game, wall, x, y);
+                }
+                // player
+                if(cellIndex === 2){
+                    placeUnit(game, game.player, x, y);
+                }
+                return cell;
+            });
+            return map;
+        });
     };
-    // PUBLIC API
+/********** **********
+     PUBLIC API
+*********** *********/
     var api = {};
     // create a new game state
     api.create = function (opt) {
@@ -53,7 +94,7 @@ var gameMod = (function () {
                 w:  opt.w === undefined ? 4 : opt.w,
                 h:  opt.h === undefined ? 4 : opt.h
             }));
-        setupGame(game);
+        setupGame(game, opt.maps || ['2']);
         return game;
     };
     // update a game object

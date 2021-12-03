@@ -19,7 +19,10 @@
             marginX : 14,
             marginY : 7,
             w: 9,
-            h: 7
+            h: 7,
+            maps: [
+                '000100000000111100000001000020101000000100100000100000000100000'
+            ]
         }),
         canvas: canvas,
         ctx: ctx,
@@ -31,13 +34,6 @@
             }
         }
     };
-
-    var map = sm.game.maps[sm.game.mapIndex];
-    map.cells[3].walkable = false;
-    map.cells[12].walkable = false;
-    map.cells[13].walkable = false;
-    map.cells[14].walkable = false;
-    map.cells[15].walkable = false;
 
     var pointerHanders = {
         start: function (sm, e) {

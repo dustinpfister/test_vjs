@@ -15,6 +15,21 @@
 * (done) get player cell helper in game.js
 * (done) playerPointer gameMod method
 * (done) change all instances of game.maps\[0\] to game.maps\[game.mapIndex\]
+* () system for map data
+
+```
+
+// array of arrays
+['200100000',
+'000111100',
+'000001000',
+'000101000',
+'000100100',
+'000100000']
+
+// single string
+'200100000000111100000001000000101000000100100000100000'
+```
 
 ## ( done 12/02/2021 ) - 0.2.0 - frame rate cap
 * (done) have a frame rate cap for the main loop

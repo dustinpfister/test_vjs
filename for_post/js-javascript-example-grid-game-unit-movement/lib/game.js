@@ -87,6 +87,21 @@ var gameMod = (function () {
         map = game.maps[game.mapIndex];
         return map.cells[p.currentCellIndex];
     };
+
+    api.playerPointer = function(game, x, y){
+        var cell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
+        map = game.maps[game.mapIndex];
+        if (cell) {
+            //var p = sm.game.player;
+            var pCell = api.getPlayerCell(game); //map.cells[p.currentCellIndex];
+            var path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y);     
+            var pos = path.pop();
+            if(pos){
+               var tCell = mapMod.get(map, pos[0], pos[1]);
+               game.targetCell = tCell;
+            }
+        }
+    };
     // return the public API
     return api;
 }

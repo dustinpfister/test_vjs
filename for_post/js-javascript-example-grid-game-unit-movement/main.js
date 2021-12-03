@@ -41,24 +41,13 @@
 
     var pointerHanders = {
         start: function (sm, e) {
-            var map = sm.game.maps[sm.game.mapIndex];
+            var pos = sm.input.pos = utils.getCanvasRelative(e);
             if(e.type === 'touchstart'){
                 e.preventDefault();
             }
-            sm.input.pos = utils.getCanvasRelative(e);
-            var pos = sm.input.pos;
             sm.input.pointerDown = true;
-            var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
-            if (cell) {
-                var p = sm.game.player;
-                var pCell = map.cells[p.currentCellIndex];
-                var path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y);     
-                var pos = path.pop();
-                if(pos){
-                   var tCell = mapMod.get(map, pos[0], pos[1]);
-                   sm.game.targetCell = tCell;
-                }
-            }
+            // call player pointer method in gameMod
+            gameMod.playerPointer(sm.game, pos.x, pos.y);
         },
         move: function (sm, e) {
             sm.input.pos = utils.getCanvasRelative(e);

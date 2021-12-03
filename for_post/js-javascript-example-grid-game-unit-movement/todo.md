@@ -10,8 +10,8 @@
 
 ## () - 0.3.0 - path detection and objects
 * (done) add path detection to map.js from what I worked out on my post on this subject
-* see about fixing the problem with circlular refernces
-* have objects in the map that are just objects in the way such as wall blocks
+* (done) see about fixing the problem with circlular refernces by going with index values rather than refs
+* (done) have objects in the map that are just objects in the way such as wall blocks
 
 ## ( done 12/02/2021 ) - 0.2.0 - frame rate cap
 * (done) have a frame rate cap for the main loop

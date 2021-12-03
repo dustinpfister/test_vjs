@@ -25,18 +25,17 @@ var draw = (function () {
                 y = map.margin.y + cell.y * cs;
                 // draw base cell
                 ctx.fillStyle = 'green';
+                if(!cell.walkable){
+                    ctx.fillStyle = 'gray';
+                }
+                // if we have a unit
+                if (cell.unit) {
+                    ctx.fillStyle = unitColors[cell.unit.sheetIndex];
+                }
                 ctx.beginPath();
                 ctx.rect(x, y, 32, 32);
                 ctx.fill();
                 ctx.stroke();
-                // if we have a unit
-                if (cell.unit) {
-                    ctx.fillStyle = unitColors[cell.unit.sheetIndex];
-                    ctx.beginPath();
-                    ctx.rect(x, y, 32, 32);
-                    ctx.fill();
-                    ctx.stroke();
-                }
                 i += 1;
             }
         },

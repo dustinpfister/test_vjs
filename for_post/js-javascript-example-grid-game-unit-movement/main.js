@@ -32,6 +32,13 @@
         }
     };
 
+    var map = sm.game.maps[0];
+    map.cells[3].walkable = false;
+    map.cells[12].walkable = false;
+    map.cells[13].walkable = false;
+    map.cells[14].walkable = false;
+    map.cells[15].walkable = false;
+
     var pointerHanders = {
         start: function (sm, e) {
             if(e.type === 'touchstart'){

@@ -80,7 +80,7 @@ PATHS
             path.push([node.x, node.y]);
             node = node.parent;
         }
-        path.push([node.x, node.y]);
+        //path.push([node.x, node.y]);
         return path;
     };
 

@@ -42,17 +42,14 @@
             sm.input.pointerDown = true;
             var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
             if (cell) {
-
-// THIS IS WHERE I AM WITH PATH DETECTION
-//sm.game.maps[0].cells[0].unit = false;
-
-//var clone = utils.deepClone(sm.game.maps[0], {});
-//console.log(clone);
-
-var path = mapMod.getPath(sm.game.maps[0], 0, 0, cell.x, cell.y);
-console.log(path);
-
-                sm.game.targetCell = cell;
+                var p = sm.game.player;
+                var pCell = sm.game.maps[0].cells[p.currentCellIndex];
+                var path = mapMod.getPath(sm.game.maps[0], pCell.x, pCell.y, cell.x, cell.y);     
+                var pos = path.pop();
+                if(pos){
+                   var tCell = mapMod.get(sm.game.maps[0], pos[0], pos[1]);
+                   sm.game.targetCell = tCell;
+                }
             }
         },
         move: function (sm, e) {

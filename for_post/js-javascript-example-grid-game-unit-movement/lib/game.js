@@ -53,10 +53,12 @@ var gameMod = (function () {
 *********** *********/
     // setUp game helper with game object, and given maps
     var setupGame = function (game, mapStrings) {
-        var playerPlaced = false;
+        var playerPlaced = false,
+        startMapIndex = 0;
         game.mapIndex = 0;
         game.maps = game.maps.map(function(map, mi){
             var mapStr = mapStrings[mi] || '';
+            game.mapIndex = mi;
             map.cells = map.cells.map(function(cell, ci){
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
@@ -69,7 +71,7 @@ var gameMod = (function () {
                 // player
                 if(cellIndex === 2){
                     playerPlaced = true;
-                    game.mapIndex = mi;
+                    startMapIndex = mi;
                     placeUnit(game, game.player, x, y);
                 }
                 return cell;
@@ -89,6 +91,7 @@ var gameMod = (function () {
                }
             }
         }
+        game.mapIndex = startMapIndex;
     };
 /********** **********
      PUBLIC API
@@ -97,6 +100,7 @@ var gameMod = (function () {
     // create a new game state
     api.create = function (opt) {
         opt = opt || {};
+        var mapStrings = opt.maps || ['2'];
         var game = {
             mode: 'map',
             maps: [],
@@ -104,13 +108,15 @@ var gameMod = (function () {
             targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit()
         };
-        game.maps.push(mapMod.create({
+        mapStrings.forEach(function(){
+            game.maps.push(mapMod.create({
                 marginX: opt.marginX === undefined ? 32 : opt.marginX,
                 marginY: opt.marginY === undefined ? 32 : opt.marginY,
                 w:  opt.w === undefined ? 4 : opt.w,
                 h:  opt.h === undefined ? 4 : opt.h
             }));
-        setupGame(game, opt.maps || ['2']);
+        });
+        setupGame(game, mapStrings);
         return game;
     };
     // update a game object

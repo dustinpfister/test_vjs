@@ -32,7 +32,7 @@
         }
     };
 
-    var map = sm.game.maps[0];
+    var map = sm.game.maps[sm.game.mapIndex];
     map.cells[3].walkable = false;
     map.cells[12].walkable = false;
     map.cells[13].walkable = false;
@@ -41,6 +41,7 @@
 
     var pointerHanders = {
         start: function (sm, e) {
+            var map = sm.game.maps[sm.game.mapIndex];
             if(e.type === 'touchstart'){
                 e.preventDefault();
             }
@@ -50,11 +51,11 @@
             var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
             if (cell) {
                 var p = sm.game.player;
-                var pCell = sm.game.maps[0].cells[p.currentCellIndex];
-                var path = mapMod.getPath(sm.game.maps[0], pCell.x, pCell.y, cell.x, cell.y);     
+                var pCell = map.cells[p.currentCellIndex];
+                var path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y);     
                 var pos = path.pop();
                 if(pos){
-                   var tCell = mapMod.get(sm.game.maps[0], pos[0], pos[1]);
+                   var tCell = mapMod.get(map, pos[0], pos[1]);
                    sm.game.targetCell = tCell;
                 }
             }

@@ -53,6 +53,7 @@ var gameMod = (function () {
 *********** *********/
     // setUp game helper with game object, and given maps
     var setupGame = function (game, mapStrings) {
+        var playerPlaced = false;
         game.mapIndex = 0;
         game.maps = game.maps.map(function(map, mi){
             var mapStr = mapStrings[mi] || '';
@@ -67,12 +68,27 @@ var gameMod = (function () {
                 }
                 // player
                 if(cellIndex === 2){
+                    playerPlaced = true;
+                    game.mapIndex = mi;
                     placeUnit(game, game.player, x, y);
                 }
                 return cell;
             });
             return map;
         });
+        // if player is not palced then place the player unit
+        // at a null cell
+        if(!playerPlaced){
+            var map = game.maps[game.mapIndex],
+            i = map.cells.length;
+            while(i--){
+               var cell = map.cells[i];
+               if(cell.unit === null){
+                    placeUnit(game, game.player, cell.x, cell.y);
+                    break;
+               }
+            }
+        }
     };
 /********** **********
      PUBLIC API

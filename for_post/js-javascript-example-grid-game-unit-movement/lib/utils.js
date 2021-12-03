@@ -24,13 +24,10 @@ utils.deepCloneJSON = function (obj) {
 // https://stackoverflow.com/questions/7582001/is-there-a-way-to-test-circular-reference-in-javascript
 utils.isCircularObject = function(node, parents){
     parents = parents || [];
-
     if(!node || typeof node != "object"){
         return false;
     }
-
     var keys = Object.keys(node), i, value;
-
     parents.push(node); // add self to current path      
     for(i = keys.length-1; i>=0; i--){
         value = node[keys[i]];
@@ -94,18 +91,7 @@ utils.deepClone = (function () {
             if (typeof(obj[i]) == "object" && obj[i] != null) {
 
                 // recursive check
-                //if (obj[i] == obj || i === 'currentCell') {
-                if (obj[i] === obj || i === 'currentCell') {
-                //if (obj[i] === obj || utils.isCircularObject(obj[i])) {
-
-// what is going on
-console.log(i);
-console.log(obj[i]);
-console.log(obj);
-console.log(utils.isCircularObject(obj));
-console.log(utils.isCircularObject(obj[i]));
-
-
+                if (obj[i] === obj) {
                     clone[i] = opt.forRecursive(clone, obj, i);
                 } else {
                     // if the constructor is supported, clone it

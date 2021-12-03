@@ -43,6 +43,7 @@ var draw = (function () {
         info: function (sm) {
             var ctx = sm.ctx,
             canvas = sm.canvas;
+/*
             ctx.fillStyle = 'white';
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
@@ -51,6 +52,7 @@ var draw = (function () {
             var p = sm.game.player;
             ctx.fillText('player pos: ' + p.currentCell.x + ',' + p.currentCell.y, 5, 15);
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
+*/
         }
     }
 }

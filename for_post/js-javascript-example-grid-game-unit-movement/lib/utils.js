@@ -83,13 +83,9 @@ utils.deepClone = (function () {
         opt.forInstance = opt.forInstance || {};
         opt.forRecursive = opt.forRecursive || forRecursive;
         opt.forUnsupported = opt.forUnsupported || forUnsupported;
-
-
-
         for (var i in obj) {
             // if the type is object and not null
             if (typeof(obj[i]) == "object" && obj[i] != null) {
-
                 // recursive check
                 if (obj[i] === obj) {
                     clone[i] = opt.forRecursive(clone, obj, i);

@@ -105,6 +105,8 @@ var gameMod = (function () {
             mode: 'map',
             maps: [],
             mapIndex: 0,
+            mapWorldWidth: 3, // used to find toIndex
+            toIndex: null,
             targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit()
         };
@@ -119,6 +121,17 @@ var gameMod = (function () {
         setupGame(game, mapStrings);
         return game;
     };
+
+    var getToIndex = function(game){
+        var toIndex = null,
+        p = game.player,
+        mwx = game.mapIndex % game.mapWorldWidth,
+        mwy = Math.floor(game.mapIndex / game.mapWorldWidth);
+        console.log(mwx, mwy);
+
+        return toIndex;
+    };
+
     // update a game object
     api.update = function (game, secs) {
         var cell,
@@ -131,7 +144,9 @@ var gameMod = (function () {
                 radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
                 var cx = Math.round(cell.x + Math.cos(radian)),
                 cy = Math.round(cell.y + Math.sin(radian));
+                // change place unit
                 placeUnit(game, game.player, cx, cy);
+                game.toIndex = getToIndex(game);
                 game.targetCell = false;
             }
         }

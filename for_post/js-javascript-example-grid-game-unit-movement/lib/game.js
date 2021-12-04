@@ -121,14 +121,38 @@ var gameMod = (function () {
         setupGame(game, mapStrings);
         return game;
     };
-
+    // get to index helper
     var getToIndex = function(game){
         var toIndex = null,
         p = game.player,
-        mwx = game.mapIndex % game.mapWorldWidth,
-        mwy = Math.floor(game.mapIndex / game.mapWorldWidth);
-        console.log(mwx, mwy);
-
+        map = game.maps[game.mapIndex],
+        pCell = api.getPlayerCell(game),
+        mwx = game.mapIndex % game.mapWorldWidth,                 // map world x and y
+        mwy = Math.floor(game.mapIndex / game.mapWorldWidth );   
+        // if player cell x equals 0 ( left side )
+        if(pCell.x === 0){
+            var x = mwx - 1;
+            x = x < 0 ? game.mapWorldWidth - 1 : x;
+            return mwy * game.mapWorldWidth + x;
+        }
+        // if player cell x equals map.w - 1 ( right side )
+        if(pCell.x === map.w - 1){
+            var x = mwx + 1;
+            x = x >= game.mapWorldWidth ? 0 : x;
+            return mwy * game.mapWorldWidth + x;
+        }
+        // if player cell y equals 0 ( top side )
+        if(pCell.y === 0){
+            var y = mwy - 1;
+            y = y < 0 ? game.maps.length / game.mapWorldWidth - 1 : y;
+            return y * game.mapWorldWidth + mwx;
+        }
+        // if player cell y map.h - 1 ( bottom side )
+        if(pCell.y === map.h - 1){
+            var y = mwy + 1;
+            y = y >= game.maps.length / game.mapWorldWidth ? 0 : y;
+            return y * game.mapWorldWidth + mwx;
+        }
         return toIndex;
     };
 

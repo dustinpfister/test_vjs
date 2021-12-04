@@ -1,8 +1,11 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
-## () - 0.5.0 - Other units
+## () - 0.6.0 - Other units
 * add other units in the example
 * other units move to the player unit on each turn
+
+## () - 0.5.0 - Unit cellsPerMove prop
+* have a cellsPerMove prop for a base unit object that is the max number of cells a unit can move per turn
 
 ## ( done 12/04/2021 ) - 0.4.0 - more than one map
 * (done) have more than one map object in game.js

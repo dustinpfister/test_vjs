@@ -62,6 +62,7 @@ var gameMod = (function () {
         if(toCell){
             if(!toCell.unit){
                 placeUnit(game, game.player, toCell.x, toCell.y);
+                game.toMap = getToMap(game);
                 return;
             }
         }
@@ -70,10 +71,10 @@ var gameMod = (function () {
             var cell = map.cells[i];
             if(cell.unit === null){
                 placeUnit(game, game.player, cell.x, cell.y);
+                game.toMap = getToMap(game);
                 return;
             }
         }
-        
     }
 /********** **********
      SETUP GAME

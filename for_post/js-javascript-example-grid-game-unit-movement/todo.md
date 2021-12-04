@@ -5,6 +5,7 @@
 * other units move to the player unit on each turn
 
 ## () - 0.5.0 - Unit cellsPerMove prop
+* (done) fix to map glitch when going back to that map that the player just came from
 * have a cellsPerMove prop for a base unit object that is the max number of cells a unit can move per turn
 
 ## ( done 12/04/2021 ) - 0.4.0 - more than one map

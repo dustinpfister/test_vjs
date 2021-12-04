@@ -179,9 +179,14 @@ var gameMod = (function () {
     // get to map object
     var getToMap = function(game){
         var toMap = {};
+        var map = game.maps[game.mapIndex];
+        var pCell = api.getPlayerCell(game);
         var mi = toMap.index = getToIndex(game);
-        toMap.x = null;
-        toMap.y = null;
+        // set toMap.x, and toMap.y
+        toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
+        toMap.y = pCell.y === 0 ? map.h - 1 : pCell.y;
+        toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
+        toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
         return toMap;
     };
 
@@ -197,10 +202,11 @@ var gameMod = (function () {
                 radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
                 var cx = Math.round(cell.x + Math.cos(radian)),
                 cy = Math.round(cell.y + Math.sin(radian));
-                // change place unit
+                // change player unit postion
                 placeUnit(game, game.player, cx, cy);
+                // upfate tpMap and target cell
                 game.toIndex = getToIndex(game);
-game.toMap = getToMap(game);
+                game.toMap = getToMap(game);
                 game.targetCell = false;
             }
         }

@@ -51,14 +51,29 @@ var gameMod = (function () {
     // place player helper
     var placePlayer = function(game){
         var map = game.maps[game.mapIndex],
+        toMap = game.toMap,
+        toCell = null,
         i = map.cells.length;
-        while(i--){
-           var cell = map.cells[i];
-           if(cell.unit === null){
-                placeUnit(game, game.player, cell.x, cell.y);
-                break;
-           }
+        // get a toCell ref if we have a pos in game.toMap
+        if(toMap.x != null && toMap.y != null){
+            toCell = mapMod.get(map, toMap.x, toMap.y);
         }
+        // if we have a toCell
+        if(toCell){
+            if(!toCell.unit){
+                placeUnit(game, game.player, toCell.x, toCell.y);
+                return;
+            }
+        }
+
+        while(i--){
+            var cell = map.cells[i];
+            if(cell.unit === null){
+                placeUnit(game, game.player, cell.x, cell.y);
+                return;
+            }
+        }
+        
     }
 /********** **********
      SETUP GAME
@@ -229,6 +244,7 @@ var gameMod = (function () {
             if(cell === pCell && game.toIndex != null){
                 console.log('map index change');
                 game.mapIndex = game.toIndex;
+                game.toMap = getToMap(game);
                 pCell.unit = null;
                 pCell.walkable = true;
                 game.player.currentCellIndex = null;

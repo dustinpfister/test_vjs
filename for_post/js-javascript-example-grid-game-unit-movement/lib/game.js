@@ -48,6 +48,18 @@ var gameMod = (function () {
             map.cells[unit.currentCellIndex].unit = unit; // map ref to unit
         }
     };
+    // place player helper
+    var placePlayer = function(game){
+        var map = game.maps[game.mapIndex],
+        i = map.cells.length;
+        while(i--){
+           var cell = map.cells[i];
+           if(cell.unit === null){
+                placeUnit(game, game.player, cell.x, cell.y);
+                break;
+           }
+        }
+    }
 /********** **********
      SETUP GAME
 *********** *********/
@@ -81,6 +93,8 @@ var gameMod = (function () {
         // if player is not palced then place the player unit
         // at a null cell
         if(!playerPlaced){
+            placePlayer(game);
+/*
             var map = game.maps[game.mapIndex],
             i = map.cells.length;
             while(i--){
@@ -90,6 +104,7 @@ var gameMod = (function () {
                     break;
                }
             }
+*/
         }
         game.mapIndex = startMapIndex;
     };
@@ -189,9 +204,20 @@ var gameMod = (function () {
             var pCell = api.getPlayerCell(game),
             path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y),     
             pos = path.pop();
-            if(pos){
-               var tCell = mapMod.get(map, pos[0], pos[1]);
-               game.targetCell = tCell;
+            // if player cell is clicked and there is a toIndex value
+            if(cell === pCell && game.toIndex != null){
+                console.log('map index change');
+                game.mapIndex = game.toIndex;
+                pCell.unit = null;
+                pCell.walkable = true;
+                game.player.currentCellIndex = null;
+                placePlayer(game);
+                game.toIndex = getToIndex(game);
+            }else{
+                if(pos){
+                    var tCell = mapMod.get(map, pos[0], pos[1]);
+                    game.targetCell = tCell;
+                }
             }
         }
     };

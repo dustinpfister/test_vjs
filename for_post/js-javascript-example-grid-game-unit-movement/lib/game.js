@@ -123,6 +123,7 @@ var gameMod = (function () {
 */
         }
         game.mapIndex = startMapIndex;
+        game.toMap = getToMap(game);
     };
 /********** **********
      PUBLIC API

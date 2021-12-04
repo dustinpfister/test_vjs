@@ -52,8 +52,9 @@ var draw = (function () {
             ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, 5);
             // player cell pos
             ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, 15);
-            ctx.fillText('toIndex: ' + sm.game.toIndex, 5, 25);
-            ctx.fillText('toMap: ' + JSON.stringify(sm.game.toMap), 5, 35);
+            //ctx.fillText('toIndex: ' + sm.game.toIndex, 5, 25);
+            var tm = sm.game.toMap;
+            ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, 25);
             // version number
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }

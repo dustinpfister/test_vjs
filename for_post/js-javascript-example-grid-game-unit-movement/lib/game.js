@@ -136,7 +136,6 @@ var gameMod = (function () {
             maps: [],
             mapIndex: 0,
             mapWorldWidth: 3, // used to find toIndex
-            toIndex: null,
             toMap: {
                 index: null,
                 x: null,
@@ -219,8 +218,7 @@ var gameMod = (function () {
                 cy = Math.round(cell.y + Math.sin(radian));
                 // change player unit postion
                 placeUnit(game, game.player, cx, cy);
-                // upfate tpMap and target cell
-                game.toIndex = getToIndex(game);
+                // update toMap and target cell
                 game.toMap = getToMap(game);
                 game.targetCell = false;
             }
@@ -241,15 +239,14 @@ var gameMod = (function () {
             path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y),     
             pos = path.pop();
             // if player cell is clicked and there is a toIndex value
-            if(cell === pCell && game.toIndex != null){
+            if(cell === pCell && game.toMap.index != null){
                 console.log('map index change');
-                game.mapIndex = game.toIndex;
+                game.mapIndex = game.toMap.index;
                 game.toMap = getToMap(game);
                 pCell.unit = null;
                 pCell.walkable = true;
                 game.player.currentCellIndex = null;
                 placePlayer(game);
-                game.toIndex = getToIndex(game);
             }else{
                 if(pos){
                     var tCell = mapMod.get(map, pos[0], pos[1]);

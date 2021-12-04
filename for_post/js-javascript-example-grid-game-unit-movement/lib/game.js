@@ -122,6 +122,11 @@ var gameMod = (function () {
             mapIndex: 0,
             mapWorldWidth: 3, // used to find toIndex
             toIndex: null,
+            toMap: {
+                index: null,
+                x: null,
+                y: null
+            },
             targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit()
         };
@@ -148,27 +153,36 @@ var gameMod = (function () {
         if(pCell.x === 0){
             var x = mwx - 1;
             x = x < 0 ? game.mapWorldWidth - 1 : x;
-            return mwy * game.mapWorldWidth + x;
+            toIndex = mwy * game.mapWorldWidth + x;
         }
         // if player cell x equals map.w - 1 ( right side )
         if(pCell.x === map.w - 1){
             var x = mwx + 1;
             x = x >= game.mapWorldWidth ? 0 : x;
-            return mwy * game.mapWorldWidth + x;
+            toIndex = mwy * game.mapWorldWidth + x;
         }
         // if player cell y equals 0 ( top side )
         if(pCell.y === 0){
             var y = mwy - 1;
             y = y < 0 ? game.maps.length / game.mapWorldWidth - 1 : y;
-            return y * game.mapWorldWidth + mwx;
+            toIndex = y * game.mapWorldWidth + mwx;
         }
         // if player cell y map.h - 1 ( bottom side )
         if(pCell.y === map.h - 1){
             var y = mwy + 1;
             y = y >= game.maps.length / game.mapWorldWidth ? 0 : y;
-            return y * game.mapWorldWidth + mwx;
+            toIndex = y * game.mapWorldWidth + mwx;
         }
         return toIndex;
+    };
+
+    // get to map object
+    var getToMap = function(game){
+        var toMap = {};
+        var mi = toMap.index = getToIndex(game);
+        toMap.x = null;
+        toMap.y = null;
+        return toMap;
     };
 
     // update a game object
@@ -186,6 +200,7 @@ var gameMod = (function () {
                 // change place unit
                 placeUnit(game, game.player, cx, cy);
                 game.toIndex = getToIndex(game);
+game.toMap = getToMap(game);
                 game.targetCell = false;
             }
         }

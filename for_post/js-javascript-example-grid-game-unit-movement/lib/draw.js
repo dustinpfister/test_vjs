@@ -53,6 +53,7 @@ var draw = (function () {
             // player cell pos
             ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, 15);
             ctx.fillText('toIndex: ' + sm.game.toIndex, 5, 25);
+            ctx.fillText('toMap: ' + JSON.stringify(sm.game.toMap), 5, 35);
             // version number
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }

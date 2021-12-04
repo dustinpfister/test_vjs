@@ -110,17 +110,6 @@ var gameMod = (function () {
         // at a null cell
         if(!playerPlaced){
             placePlayer(game);
-/*
-            var map = game.maps[game.mapIndex],
-            i = map.cells.length;
-            while(i--){
-               var cell = map.cells[i];
-               if(cell.unit === null){
-                    placeUnit(game, game.player, cell.x, cell.y);
-                    break;
-               }
-            }
-*/
         }
         game.mapIndex = startMapIndex;
         game.toMap = getToMap(game);

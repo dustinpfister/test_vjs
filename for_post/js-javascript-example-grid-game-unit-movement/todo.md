@@ -8,8 +8,9 @@
 * (done) have more than one map object in game.js
 * (done) have wall around the border of a map but with openings that allow the player to move to another map
 * (done) have a way to detect if the player unit is at a map border and if so clicking a player unit will cause a map index change
-* place player unit in right location when switching to new map by having a toMap object in place of toIndex
-* the toMap object can contain a map index along with a desired position in the map.
+* (done) place player unit in right location when switching to new map by having a toMap object in place of toIndex
+* (done) the toMap object can contain a map index along with a desired position in the map.
+* break down draw.js
 
 
 ## ( done 12/03/2021 ) - 0.3.0 - path detection and objects

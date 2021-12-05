@@ -14,7 +14,6 @@ var gameMod = (function () {
             moveCells: [], // array of cells to move
             currentCellIndex: null,
 
-
             active: false
         }
     };
@@ -137,7 +136,6 @@ var gameMod = (function () {
                 x: null,
                 y: null
             },
-            targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit()
         };
         mapStrings.forEach(function(){
@@ -222,32 +220,14 @@ var gameMod = (function () {
 
     // update a game object
     api.update = function (game, secs) {
-        var cell,
-        radian,
-        target = game.targetCell,
-        p = game.player,
+        var p = game.player,
         pCell = api.getPlayerCell(game);
-/*
-        // if target cell is not player cell
-        if (target != pCell) {
-            radian = utils.angleToPoint(pCell.x, pCell.y, target.x, target.y);
-            var cx = Math.round(pCell.x + Math.cos(radian)),
-            cy = Math.round(pCell.y + Math.sin(radian));
-            // change player unit postion
-            placeUnit(game, game.player, cx, cy);
-            // update toMap and target cell
-            game.toMap = getToMap(game);
-            game.targetCell = false;
-        }
-*/
         if(p.moveCells.length > 0){
             var ci = p.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
             placeUnit(game, game.player,moveToCell.x, moveToCell.y);
             game.toMap = getToMap(game);
         }
-
-
     };
     // get player cell
     api.getPlayerCell = function(game){
@@ -293,16 +273,8 @@ var gameMod = (function () {
                 game.player.currentCellIndex = null;
                 placePlayer(game);
             }else{
-                // player unit was not clicked see about moving
-                //var path = getMovePath(game, game.player, cell);
-                //var path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y);
-                //var pos = path.pop();
                 // set moveCells
                 game.player.moveCells = getMoveCells(game, game.player, cell);
-                //if(pos){
-                //    var tCell = mapMod.get(map, pos[0], pos[1]);
-                //    game.targetCell = tCell;
-                //}
             }
         }
     };

@@ -1,5 +1,8 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
+## () - 0.7.0 - Cell movment animation
+* see about having a move animation where the unit cell moves on a pps basis to the new cell location
+
 ## () - 0.6.0 - Other units
 * add other units in the example
 * other units move to the player unit on each turn
@@ -11,7 +14,6 @@
 * (done) move player unit by a max of CellsPerMove on each click
 * (done) see about fixing corner cell toMap bug
 
-* see about having a move animation where the unit cell moves on a pps basis to the new cell location
 * remove all game.targetCell code as I am not using that any more
 
 ## ( done 12/04/2021 ) - 0.4.0 - more than one map

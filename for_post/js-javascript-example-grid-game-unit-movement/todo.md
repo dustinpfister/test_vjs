@@ -7,14 +7,13 @@
 * add other units in the example
 * other units move to the player unit on each turn
 
-## () - 0.5.0 - Unit cellsPerMove prop
+## ( done 12/05/2021 ) - 0.5.0 - Unit cellsPerMove prop
 * (done) fix to map glitch when going back to that map that the player just came from
 * (done) have a cellsPerMove prop for a base unit object that is the max number of cells a unit can move per turn
 * (done) have a unit.moveCells prop that is used to store an array of cell index vlaues to move
 * (done) move player unit by a max of CellsPerMove on each click
 * (done) see about fixing corner cell toMap bug
-
-* remove all game.targetCell code as I am not using that any more
+* (done) remove all game.targetCell code as I am not using that any more
 
 ## ( done 12/04/2021 ) - 0.4.0 - more than one map
 * (done) have more than one map object in game.js

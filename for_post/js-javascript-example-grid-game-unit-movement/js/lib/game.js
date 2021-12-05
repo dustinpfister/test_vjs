@@ -256,7 +256,7 @@ var getCellsByUnitType = function(map, type){
         if(p.moveCells.length > 0){
             var ci = p.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
-            placeUnit(game, game.player,moveToCell.x, moveToCell.y);
+            placeUnit(game, game.player, moveToCell.x, moveToCell.y);
             game.toMap = getToMap(game);
         }
     };
@@ -269,6 +269,7 @@ var getCellsByUnitType = function(map, type){
 
     // get an array of cells to move pased on a units
     // maxCellsPerTurn value and the given target cell location
+/*
     var getMovePath = function(game, unit, targetCell){
         // get current map
         var map = game.maps[game.mapIndex],
@@ -280,10 +281,41 @@ var getCellsByUnitType = function(map, type){
         // return the path
         return path;
     };
+*/
+    var getMovePath = function(game, startCell, targetCell){
+        // get current map
+        var map = game.maps[game.mapIndex],
+        unit = startCell.unit || null;
+
+if(unit.type === 'enemy'){
+console.log(startCell.x, startCell.y, targetCell.x, targetCell.y);
+}
+
+        // get the raw path to that target cell
+        var path = mapMod.getPath(map, startCell.x, startCell.y, targetCell.x, targetCell.y);
+
+
+        // get a slice of the raw path up to unit.maxCellsPerTurn
+        if(unit){
+            path = path.reverse().slice(0, unit.maxCellsPerTurn);
+        }
+        // return the path
+        return path;
+    };
+
     // get an arary of cell index values
+/*
     var getMoveCells = function(game, unit, targetCell){
         var map = game.maps[game.mapIndex];
         return getMovePath(game, unit, targetCell).map(function(pos){
+            var cell = mapMod.get(map, pos[0], pos[1]);
+            return cell.i;
+        });
+    };
+*/
+    var getMoveCells = function(game, startCell, targetCell){
+        var map = game.maps[game.mapIndex];
+        return getMovePath(game, startCell, targetCell).map(function(pos){
             var cell = mapMod.get(map, pos[0], pos[1]);
             return cell.i;
         });
@@ -305,11 +337,34 @@ var getCellsByUnitType = function(map, type){
                 placePlayer(game);
             }else{
                 // set moveCells
-                game.player.moveCells = getMoveCells(game, game.player, cell);
+                //game.player.moveCells = getMoveCells(game, game.player, cell);
+
+game.player.moveCells = getMoveCells(game, pCell, cell);
+
+
+
+
+            // set moveCells for enemies
+
+            var eCells = getCellsByUnitType(map, 'enemy');
+
+            eCells.forEach(function(eCell){
+
+                var pCellNeighbors = mapMod.getNeighbors(map, pCell).filter(function(cell){
+console.log(cell);
+                    return cell.walkable;
+                });
+console.log(pCellNeighbors);
+
+                //eCell.unit.moveCells = getMoveCells(game, eCell, pCell);                
+            });
+
+
+
+
             }
 
-var eCells = getCellsByUnitType(map, 'enemy');
-console.log(eCells);
+
 
 
         }

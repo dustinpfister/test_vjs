@@ -1,5 +1,119 @@
 var gameMod = (function () {
 /********** **********
+     TO MAP OBJECT
+*********** *********/
+    // get to index helper use to get the map index to go to for the game.toMap object
+    var getToIndex = function(game){
+        var toIndex = null,
+        p = game.player,
+        map = game.maps[game.mapIndex],
+        pCell = api.getPlayerCell(game),
+        mwx = game.mapIndex % game.mapWorldWidth,                 // map world x and y
+        mwy = Math.floor(game.mapIndex / game.mapWorldWidth );   
+        // if player cell x equals 0 ( left side )
+        if(pCell.x === 0){
+            var x = mwx - 1;
+            x = x < 0 ? game.mapWorldWidth - 1 : x;
+            toIndex = mwy * game.mapWorldWidth + x;
+        }
+        // if player cell x equals map.w - 1 ( right side )
+        if(pCell.x === map.w - 1){
+            var x = mwx + 1;
+            x = x >= game.mapWorldWidth ? 0 : x;
+            toIndex = mwy * game.mapWorldWidth + x;
+        }
+        // if player cell y equals 0 ( top side )
+        if(pCell.y === 0){
+            var y = mwy - 1;
+            y = y < 0 ? game.maps.length / game.mapWorldWidth - 1 : y;
+            toIndex = y * game.mapWorldWidth + mwx;
+        }
+        // if player cell y map.h - 1 ( bottom side )
+        if(pCell.y === map.h - 1){
+            var y = mwy + 1;
+            y = y >= game.maps.length / game.mapWorldWidth ? 0 : y;
+            toIndex = y * game.mapWorldWidth + mwx;
+        }
+        return toIndex;
+    };
+    // Is a given cell at a corner? Used to get adjust goto point for game.toMap object
+    var isAtCorner = function(game, cell){
+        var map = game.maps[game.mapIndex],
+        w = map.w - 1,
+        h = map.h - 1;
+        return (cell.x === 0 && cell.y === 0) || 
+            (cell.x === w && cell.y === h) || 
+            (cell.x === 0 && cell.y === h) || 
+            (cell.x === w && cell.y === 0);
+    };
+    // get a toMap object that can be set to the game.toMap propery
+    var getToMap = function(game){
+        var toMap = {};
+        var map = game.maps[game.mapIndex];
+        var pCell = api.getPlayerCell(game);
+        var mi = toMap.index = getToIndex(game);
+        // at corner?
+        if(isAtCorner(game, pCell)){
+           if(pCell.y === map.h - 1){
+               toMap.x = pCell.x;
+               toMap.y = 0;
+           }else{
+               toMap.x = pCell.x;
+               toMap.y = map.h - 1;
+           }
+        }else{
+            // not at corner
+            toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
+            toMap.y = pCell.y === 0 ? map.h - 1 : pCell.y;
+            toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
+            toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
+        }
+        return toMap;
+    };
+/********** **********
+     MOVEMENT PATHS
+*********** *********/
+    // get a move path in the from of a path created using mapMod.getPath that is cut
+    // based on the maxCellsPerTurn value of the unit in the given start cell if any
+    var getMovePath = function(game, startCell, targetCell){
+        // get current map
+        var map = game.maps[game.mapIndex],
+        unit = startCell.unit || null;
+        // get the raw path to that target cell
+        var path = mapMod.getPath(map, startCell.x, startCell.y, targetCell.x, targetCell.y);
+        // get a slice of the raw path up to unit.maxCellsPerTurn
+        if(unit){
+            path = path.reverse().slice(0, unit.maxCellsPerTurn);
+        }
+        // return the path
+        return path;
+    };
+    // get an arary of cell index values
+    var getMoveCells = function(game, startCell, targetCell){
+        var map = game.maps[game.mapIndex];
+        return getMovePath(game, startCell, targetCell).map(function(pos){
+            var cell = mapMod.get(map, pos[0], pos[1]);
+            return cell.i;
+        });
+    };
+    // get enemy move cells options
+    var getEnemeyMoveCells = function(game, eCell){
+        var pCell = api.getPlayerCell(game),
+        map = game.maps[game.mapIndex];
+        // get neighbor cells of the player unit
+        var pCellNeighbors = mapMod.getNeighbors(map, pCell).filter(function(cell){
+            return cell.walkable;
+        });
+        // get an array of path options 
+        var mtcOptions = pCellNeighbors.map(function(cell){
+            return getMoveCells(game, eCell, cell)
+        }).filter(function(mtcOptions){
+            return mtcOptions.length > 0;
+        });
+        // rteurn first path or empty array
+        return mtcOptions[0] || [];
+    };
+/********** **********
      UNITS
 *********** *********/
     // create a base unit
@@ -43,7 +157,7 @@ var gameMod = (function () {
         wall.sheetIndex = 1;
         return wall;
     };
-    // place a unit at the given location
+    // place a unit at the given location in the current map
     var placeUnit = function (game, unit, x, y) {
         var map = game.maps[game.mapIndex];
         var newCell = mapMod.get(map, x, y);
@@ -64,7 +178,8 @@ var gameMod = (function () {
             map.cells[unit.currentCellIndex].unit = unit; // map ref to unit
         }
     };
-    // place player helper
+    // place player helper that is called when setting up a new game, and when the player
+    // moves to a new map
     var placePlayer = function(game){
         var map = game.maps[game.mapIndex],
         toMap = game.toMap,
@@ -112,8 +227,7 @@ var gameMod = (function () {
 /********** **********
      MAP HELPERS
 *********** *********/
-
-// get an array of cell objects by a given unit type string
+// get an array of cell objects by a given unit type string in the given map
 var getCellsByUnitType = function(map, type){
     return map.cells.reduce(function(acc, cell){
         if(cell.unit){
@@ -124,7 +238,6 @@ var getCellsByUnitType = function(map, type){
         return acc;
     },[]);
 };
-
 /********** **********
      SETUP GAME
 *********** *********/
@@ -199,102 +312,16 @@ var getCellsByUnitType = function(map, type){
         setupGame(game, mapStrings);
         return game;
     };
-    // get to index helper
-    var getToIndex = function(game){
-        var toIndex = null,
-        p = game.player,
-        map = game.maps[game.mapIndex],
-        pCell = api.getPlayerCell(game),
-        mwx = game.mapIndex % game.mapWorldWidth,                 // map world x and y
-        mwy = Math.floor(game.mapIndex / game.mapWorldWidth );   
-        // if player cell x equals 0 ( left side )
-        if(pCell.x === 0){
-            var x = mwx - 1;
-            x = x < 0 ? game.mapWorldWidth - 1 : x;
-            toIndex = mwy * game.mapWorldWidth + x;
-        }
-        // if player cell x equals map.w - 1 ( right side )
-        if(pCell.x === map.w - 1){
-            var x = mwx + 1;
-            x = x >= game.mapWorldWidth ? 0 : x;
-            toIndex = mwy * game.mapWorldWidth + x;
-        }
-        // if player cell y equals 0 ( top side )
-        if(pCell.y === 0){
-            var y = mwy - 1;
-            y = y < 0 ? game.maps.length / game.mapWorldWidth - 1 : y;
-            toIndex = y * game.mapWorldWidth + mwx;
-        }
-        // if player cell y map.h - 1 ( bottom side )
-        if(pCell.y === map.h - 1){
-            var y = mwy + 1;
-            y = y >= game.maps.length / game.mapWorldWidth ? 0 : y;
-            toIndex = y * game.mapWorldWidth + mwx;
-        }
-        return toIndex;
-    };
-    // is at corner
-    var isAtCorner = function(game, cell){
-        var map = game.maps[game.mapIndex],
-        w = map.w - 1,
-        h = map.h - 1;
-        return (cell.x === 0 && cell.y === 0) || 
-            (cell.x === w && cell.y === h) || 
-            (cell.x === 0 && cell.y === h) || 
-            (cell.x === w && cell.y === 0);
-    };
-    // get to map object
-    var getToMap = function(game){
-        var toMap = {};
-        var map = game.maps[game.mapIndex];
-        var pCell = api.getPlayerCell(game);
-        var mi = toMap.index = getToIndex(game);
-        // at corner?
-        if(isAtCorner(game, pCell)){
-           if(pCell.y === map.h - 1){
-               toMap.x = pCell.x;
-               toMap.y = 0;
-           }else{
-               toMap.x = pCell.x;
-               toMap.y = map.h - 1;
-           }
-        }else{
-            // not at corner
-            toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
-            toMap.y = pCell.y === 0 ? map.h - 1 : pCell.y;
-            toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
-            toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
-        }
-        return toMap;
-    };
-
-
-
     // update a game object
     api.update = function (game, secs) {
-var map = game.maps[game.mapIndex]
-        //var p = game.player,
-        //pCell = api.getPlayerCell(game);
-
+        var map = game.maps[game.mapIndex]
         // move player unit
         moveUnit(game, game.player);
-
-                var eCells = getCellsByUnitType(map, 'enemy');
-                eCells.forEach(function(eCell){
-
-                    moveUnit(game, eCell.unit);
-
-                });
-
-
-/*
-        if(p.moveCells.length > 0){
-            var ci = p.moveCells.shift();
-            var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
-            placeUnit(game, game.player, moveToCell.x, moveToCell.y);
-            game.toMap = getToMap(game);
-        }
-*/
+        // move enemy units
+        var eCells = getCellsByUnitType(map, 'enemy');
+        eCells.forEach(function(eCell){
+            moveUnit(game, eCell.unit);
+        });
     };
     // get player cell
     api.getPlayerCell = function(game){
@@ -302,71 +329,6 @@ var map = game.maps[game.mapIndex]
         map = game.maps[game.mapIndex];
         return map.cells[p.currentCellIndex];
     };
-
-    // get an array of cells to move pased on a units
-    // maxCellsPerTurn value and the given target cell location
-/*
-    var getMovePath = function(game, unit, targetCell){
-        // get current map
-        var map = game.maps[game.mapIndex],
-        pCell = api.getPlayerCell(game);
-        // get the raw path to that target cell
-        var path = mapMod.getPath(map, pCell.x, pCell.y, targetCell.x, targetCell.y);
-        // get a slice of the raw path up to unit.maxCellsPerTurn
-        path = path.reverse().slice(0, unit.maxCellsPerTurn);
-        // return the path
-        return path;
-    };
-*/
-    var getMovePath = function(game, startCell, targetCell){
-        // get current map
-        var map = game.maps[game.mapIndex],
-        unit = startCell.unit || null;
-        // get the raw path to that target cell
-        var path = mapMod.getPath(map, startCell.x, startCell.y, targetCell.x, targetCell.y);
-        // get a slice of the raw path up to unit.maxCellsPerTurn
-        if(unit){
-            path = path.reverse().slice(0, unit.maxCellsPerTurn);
-        }
-        // return the path
-        return path;
-    };
-
-    // get an arary of cell index values
-/*
-    var getMoveCells = function(game, unit, targetCell){
-        var map = game.maps[game.mapIndex];
-        return getMovePath(game, unit, targetCell).map(function(pos){
-            var cell = mapMod.get(map, pos[0], pos[1]);
-            return cell.i;
-        });
-    };
-*/
-    var getMoveCells = function(game, startCell, targetCell){
-        var map = game.maps[game.mapIndex];
-        return getMovePath(game, startCell, targetCell).map(function(pos){
-            var cell = mapMod.get(map, pos[0], pos[1]);
-            return cell.i;
-        });
-    };
-    // get enemy move cells options
-    var getEnemeyMoveCells = function(game, eCell){
-        var pCell = api.getPlayerCell(game),
-        map = game.maps[game.mapIndex];
-        // get neighbor cells of the player unit
-        var pCellNeighbors = mapMod.getNeighbors(map, pCell).filter(function(cell){
-            return cell.walkable;
-        });
-        // get an array of path options 
-        var mtcOptions = pCellNeighbors.map(function(cell){
-            return getMoveCells(game, eCell, cell)
-        }).filter(function(mtcOptions){
-            return mtcOptions.length > 0;
-        });
-        // rteurn first path or empty array
-        return mtcOptions[0] || [];
-    };
-
     // preform what needs to happen for a player pointer event for the given pixel positon
     api.playerPointer = function(game, x, y){
         var cell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),

@@ -4,8 +4,8 @@
 * see about having a move animation where the unit cell moves on a pps basis to the new cell location
 
 ## () - 0.7.0 - unit baseAttack stat, and Melee Attack
+* (done) move draw.js and game.js to root of js folder
 * code clean up of all files
-* move draw.js and game.js to root of js folder
 * have a baseAttack stat for units
 * Melee Attack working with player and enemy units
 * when the player dies set up a new game.

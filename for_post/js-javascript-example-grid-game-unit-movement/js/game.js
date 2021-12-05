@@ -331,12 +331,12 @@ var getCellsByUnitType = function(map, type){
     };
     // preform what needs to happen for a player pointer event for the given pixel positon
     api.playerPointer = function(game, x, y){
-        var cell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
+        var clickedCell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
         map = game.maps[game.mapIndex],
         pCell = api.getPlayerCell(game);
-        if (cell) {
+        if (clickedCell) {
             // if player cell is clicked and there is a toIndex value
-            if(cell === pCell && game.toMap.index != null){
+            if(clickedCell === pCell && game.toMap.index != null){
                 game.mapIndex = game.toMap.index;
                 game.toMap = getToMap(game);
                 pCell.unit = null;
@@ -345,7 +345,7 @@ var getCellsByUnitType = function(map, type){
                 placePlayer(game);
             }else{
                 // set moveCells
-                game.player.moveCells = getMoveCells(game, pCell, cell);
+                game.player.moveCells = getMoveCells(game, pCell, clickedCell);
                 // move for first time so that the we are getting up to date cells
                 // for figuring enemey paths
                 moveUnit(game, game.player);

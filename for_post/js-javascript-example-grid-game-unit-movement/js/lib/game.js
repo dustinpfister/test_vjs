@@ -23,7 +23,7 @@ var gameMod = (function () {
         var player = createBaseUnit();
         player.type = 'player';
         player.active = true;
-        player.maxCellsPerTurn = 2;
+        player.maxCellsPerTurn = 3;
         player.sheetIndex = 2; // player sheet
         return player;
     };    // create a player unit
@@ -31,7 +31,7 @@ var gameMod = (function () {
         var enemy = createBaseUnit();
         enemy.type = 'enemy';
         enemy.active = true;
-        enemy.maxCellsPerTurn = 4;
+        enemy.maxCellsPerTurn = 2;
         enemy.sheetIndex = 3;
         return enemy;
     };

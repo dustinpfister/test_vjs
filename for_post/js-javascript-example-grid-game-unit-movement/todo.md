@@ -1,16 +1,20 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
-## () - 0.7.0 - Cell movment animation
+## () - 0.x.0 - Cell movement animation
 * see about having a move animation where the unit cell moves on a pps basis to the new cell location
 
-## () - 0.6.0 - Other units
+## () - 0.7.0 - unit baseAttack stat, and Melee Attack
+* have a baseAttack stat for units
+* Melee Attack working with player and enemy units
+* when the player dies set up a new game.
+
+## ( done 12/05/2021 ) - 0.6.0 - Other units
 * (done) add other enemey units in the example
 * (done) have a new type propery for baseUnit that defaults to null
 * (done) have a getUnitsByType helper that will get all units in a map that match a given type
 * (done) moveUnit helper function
-
-* start an update cycle in gameMod.update for enemy units
-* enemy units move to the player unit on each turn
+* (done) start an update cycle in gameMod.update for enemy units
+* (done) enemy units move to the player unit on each turn
 
 ## ( done 12/05/2021 ) - 0.5.0 - Unit cellsPerMove prop
 * (done) fix to map glitch when going back to that map that the player just came from

@@ -89,7 +89,21 @@ var gameMod = (function () {
                 return;
             }
         }
-    }
+    };
+    // move a unit by way of any cell index values in unit.moveCells
+    var moveUnit = function(game, unit){
+        if(unit.moveCells.length > 0){
+            var ci = unit.moveCells.shift();
+            var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
+            placeUnit(game, unit, moveToCell.x, moveToCell.y);
+            // !!! might not hurt to do this for all units
+            // also this might not belong here but where this method
+            // is called for the player unit maybe
+            if(unit.type === 'player'){
+                game.toMap = getToMap(game);
+            }
+        }
+    };
 /********** **********
      MAP HELPERS
 *********** *********/
@@ -249,16 +263,24 @@ var getCellsByUnitType = function(map, type){
         return toMap;
     };
 
+
+
     // update a game object
     api.update = function (game, secs) {
-        var p = game.player,
-        pCell = api.getPlayerCell(game);
+        //var p = game.player,
+        //pCell = api.getPlayerCell(game);
+
+        // move player unit
+        moveUnit(game, game.player);
+
+/*
         if(p.moveCells.length > 0){
             var ci = p.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
             placeUnit(game, game.player, moveToCell.x, moveToCell.y);
             game.toMap = getToMap(game);
         }
+*/
     };
     // get player cell
     api.getPlayerCell = function(game){
@@ -286,15 +308,8 @@ var getCellsByUnitType = function(map, type){
         // get current map
         var map = game.maps[game.mapIndex],
         unit = startCell.unit || null;
-
-if(unit.type === 'enemy'){
-console.log(startCell.x, startCell.y, targetCell.x, targetCell.y);
-}
-
         // get the raw path to that target cell
         var path = mapMod.getPath(map, startCell.x, startCell.y, targetCell.x, targetCell.y);
-
-
         // get a slice of the raw path up to unit.maxCellsPerTurn
         if(unit){
             path = path.reverse().slice(0, unit.maxCellsPerTurn);

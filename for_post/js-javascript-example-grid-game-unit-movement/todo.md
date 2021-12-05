@@ -4,8 +4,12 @@
 * see about having a move animation where the unit cell moves on a pps basis to the new cell location
 
 ## () - 0.6.0 - Other units
-* add other units in the example
-* other units move to the player unit on each turn
+* (done) add other enemey units in the example
+* (done) have a new type propery for baseUnit that defaults to null
+
+* have a getUnitsByType helper that will get all units in a map that match a given type
+* start an update cycle in gameMod.update for enemy units
+* enemy units move to the player unit on each turn
 
 ## ( done 12/05/2021 ) - 0.5.0 - Unit cellsPerMove prop
 * (done) fix to map glitch when going back to that map that the player just came from

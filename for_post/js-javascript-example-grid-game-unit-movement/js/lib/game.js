@@ -12,6 +12,7 @@ var gameMod = (function () {
             HP: 100,
             weaponIndex: 0,
             sheetIndex: 0,
+            type: null,
             moveCells: [], // array of cells to move
             currentCellIndex: null,
             active: false
@@ -20,12 +21,14 @@ var gameMod = (function () {
     // create a player unit
     var createPlayerUnit = function () {
         var player = createBaseUnit();
+        player.type = 'player';
         player.active = true;
         player.sheetIndex = 2; // player sheet
         return player;
     };    // create a player unit
     var createEnemyUnit = function () {
         var enemy = createBaseUnit();
+        enemy.type = 'enemy';
         enemy.active = true;
         enemy.sheetIndex = 3;
         return enemy;
@@ -33,6 +36,7 @@ var gameMod = (function () {
     // create a player unit
     var createWallUnit = function () {
         var wall = createBaseUnit();
+        wall.type = 'enemy';
         wall.active = true;
         wall.sheetIndex = 1;
         return wall;

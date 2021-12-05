@@ -5,7 +5,7 @@
 
 ## () - 0.7.0 - unit baseAttack stat, and Melee Attack
 * (done) move draw.js and game.js to root of js folder
-* code clean up of all files
+* (done) code clean up of game.js
 * have a baseAttack stat for units
 * Melee Attack working with player and enemy units
 * when the player dies set up a new game.

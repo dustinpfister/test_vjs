@@ -345,8 +345,6 @@ var getCellsByUnitType = function(map, type){
                 placePlayer(game);
             }else{
                 // set moveCells
-                //game.player.moveCells = getMoveCells(game, game.player, cell);
-
                 game.player.moveCells = getMoveCells(game, pCell, cell);
                 // move for first time so that the we are getting up to date cells
                 // for figuring enemey paths

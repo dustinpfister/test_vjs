@@ -112,6 +112,8 @@ PATHS
     api.getPath = function (grid, sx, sy, ex, ey) {
         // copy the given grid
         //var grid = Grid.fromMatrix(givenGrid.nodes),
+
+
         var grid = utils.deepCloneJSON(grid),
         //var grid = utils.deepClone(grid, {
         //    forRecursive: function(){ return {} }

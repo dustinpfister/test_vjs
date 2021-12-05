@@ -23,7 +23,15 @@ utils.getCanvasRelative = function (e) {
 };
 // deep clone using JSON
 utils.deepCloneJSON = function (obj) {
-    return JSON.parse(JSON.stringify(obj));
+
+    try{
+       return JSON.parse(JSON.stringify(obj));
+    }catch(e){
+
+        console.log(e.message);
+        console.log(obj);
+        return {};
+    }
 };
 /*
 // https://stackoverflow.com/questions/7582001/is-there-a-way-to-test-circular-reference-in-javascript

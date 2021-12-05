@@ -36,7 +36,7 @@ var gameMod = (function () {
     // create a player unit
     var createWallUnit = function () {
         var wall = createBaseUnit();
-        wall.type = 'enemy';
+        wall.type = 'wall';
         wall.active = true;
         wall.sheetIndex = 1;
         return wall;
@@ -90,6 +90,22 @@ var gameMod = (function () {
             }
         }
     }
+/********** **********
+     MAP HELPERS
+*********** *********/
+
+// get an array of cell objects by a given unit type string
+var getCellsByUnitType = function(map, type){
+    return map.cells.reduce(function(acc, cell){
+        if(cell.unit){
+            if(cell.unit.type === type){
+                acc.push(cell);
+            }
+        }
+        return acc;
+    },[]);
+};
+
 /********** **********
      SETUP GAME
 *********** *********/
@@ -291,6 +307,11 @@ var gameMod = (function () {
                 // set moveCells
                 game.player.moveCells = getMoveCells(game, game.player, cell);
             }
+
+var eCells = getCellsByUnitType(map, 'enemy');
+console.log(eCells);
+
+
         }
     };
     // return the public API

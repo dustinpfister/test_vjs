@@ -10,7 +10,7 @@ var gameMod = (function () {
             weaponIndex: 0,
             sheetIndex: 0,
 
-            maxCellsPerTurn: 2,
+            maxCellsPerTurn: 3,
             moveCells: [], // array of cells to move
             currentCellIndex: null,
 
@@ -205,7 +205,9 @@ var gameMod = (function () {
         var cell,
         radian,
         target = game.targetCell,
+        p = game.player,
         pCell = api.getPlayerCell(game);
+/*
         // if target cell is not player cell
         if (target != pCell) {
             radian = utils.angleToPoint(pCell.x, pCell.y, target.x, target.y);
@@ -217,6 +219,14 @@ var gameMod = (function () {
             game.toMap = getToMap(game);
             game.targetCell = false;
         }
+*/
+        if(p.moveCells.length > 0){
+            var ci = p.moveCells.shift();
+            var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
+            placeUnit(game, game.player,moveToCell.x, moveToCell.y);
+            game.toMap = getToMap(game);
+        }
+
 
     };
     // get player cell
@@ -235,7 +245,7 @@ var gameMod = (function () {
         // get the raw path to that target cell
         var path = mapMod.getPath(map, pCell.x, pCell.y, targetCell.x, targetCell.y);
         // get a slice of the raw path up to unit.maxCellsPerTurn
-        //path = path.slice(0, unit.maxCellsPerTurn);
+        path = path.reverse().slice(0, unit.maxCellsPerTurn);
         // return the path
         return path;
     };
@@ -267,8 +277,6 @@ var gameMod = (function () {
                 // player unit was not clicked see about moving
                 //var path = getMovePath(game, game.player, cell);
                 var path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y);
-
-
                 var pos = path.pop();
                 // set moveCells
                 game.player.moveCells = getMoveCells(game, game.player, cell);

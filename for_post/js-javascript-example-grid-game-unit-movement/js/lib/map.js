@@ -37,11 +37,14 @@ var mapMod = (function () {
         return map;
     };
     // return a cell at the given position, or false for out of bounds values
-    api.get = function (map, x, y) {
-        if (x < 0 || y < 0 || x >= map.w || y >= map.h) {
+    api.get = function (map, xi, y) {
+        if(arguments.length === 2){
+            return map.cells[xi];
+        }
+        if (xi < 0 || y < 0 || xi >= map.w || y >= map.h) {
             return false;
         }
-        return map.cells[y * map.w + x];
+        return map.cells[y * map.w + xi];
     };
     // get a cell in the current map by way of
     // a canvas relative x and y pixel pos

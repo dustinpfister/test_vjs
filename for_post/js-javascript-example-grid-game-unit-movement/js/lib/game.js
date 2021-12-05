@@ -203,7 +203,6 @@ var gameMod = (function () {
         var mi = toMap.index = getToIndex(game);
         // at corner?
         if(isAtCorner(game, pCell)){
-           console.log('at corner');
            if(pCell.y === map.h - 1){
                toMap.x = pCell.x;
                toMap.y = 0;
@@ -287,7 +286,6 @@ var gameMod = (function () {
         if (cell) {
             // if player cell is clicked and there is a toIndex value
             if(cell === pCell && game.toMap.index != null){
-                console.log('map index change');
                 game.mapIndex = game.toMap.index;
                 game.toMap = getToMap(game);
                 pCell.unit = null;
@@ -297,17 +295,14 @@ var gameMod = (function () {
             }else{
                 // player unit was not clicked see about moving
                 //var path = getMovePath(game, game.player, cell);
-                var path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y);
-                var pos = path.pop();
+                //var path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y);
+                //var pos = path.pop();
                 // set moveCells
                 game.player.moveCells = getMoveCells(game, game.player, cell);
-                console.log(game.player.moveCells);
-
-
-                if(pos){
-                    var tCell = mapMod.get(map, pos[0], pos[1]);
-                    game.targetCell = tCell;
-                }
+                //if(pos){
+                //    var tCell = mapMod.get(map, pos[0], pos[1]);
+                //    game.targetCell = tCell;
+                //}
             }
         }
     };

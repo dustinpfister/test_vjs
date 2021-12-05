@@ -7,7 +7,7 @@ var gameMod = (function () {
         return {
             // current unit stats
             maxHP: 100,           // max number of hit points for the unit
-            maxCellsPerTurn: 3,   // the max number of cells a unit can move
+            maxCellsPerTurn: 0,   // the max number of cells a unit can move
             // current values
             HP: 100,
             weaponIndex: 0,
@@ -23,6 +23,7 @@ var gameMod = (function () {
         var player = createBaseUnit();
         player.type = 'player';
         player.active = true;
+        player.maxCellsPerTurn = 2;
         player.sheetIndex = 2; // player sheet
         return player;
     };    // create a player unit
@@ -30,6 +31,7 @@ var gameMod = (function () {
         var enemy = createBaseUnit();
         enemy.type = 'enemy';
         enemy.active = true;
+        enemy.maxCellsPerTurn = 4;
         enemy.sheetIndex = 3;
         return enemy;
     };
@@ -95,7 +97,10 @@ var gameMod = (function () {
         if(unit.moveCells.length > 0){
             var ci = unit.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
-            placeUnit(game, unit, moveToCell.x, moveToCell.y);
+            // if no unit at the move to cell
+            if(!moveToCell.unit){
+                placeUnit(game, unit, moveToCell.x, moveToCell.y);
+            }
             // !!! might not hurt to do this for all units
             // also this might not belong here but where this method
             // is called for the player unit maybe
@@ -267,11 +272,20 @@ var getCellsByUnitType = function(map, type){
 
     // update a game object
     api.update = function (game, secs) {
+var map = game.maps[game.mapIndex]
         //var p = game.player,
         //pCell = api.getPlayerCell(game);
 
         // move player unit
         moveUnit(game, game.player);
+
+                var eCells = getCellsByUnitType(map, 'enemy');
+                eCells.forEach(function(eCell){
+
+                    moveUnit(game, eCell.unit);
+
+                });
+
 
 /*
         if(p.moveCells.length > 0){
@@ -335,14 +349,22 @@ var getCellsByUnitType = function(map, type){
             return cell.i;
         });
     };
-
+    // get enemy move cells options
     var getEnemeyMoveCells = function(game, eCell){
         var pCell = api.getPlayerCell(game),
         map = game.maps[game.mapIndex];
+        // get neighbor cells of the player unit
         var pCellNeighbors = mapMod.getNeighbors(map, pCell).filter(function(cell){
             return cell.walkable;
         });
-        return pCellNeighbors;
+        // get an array of path options 
+        var mtcOptions = pCellNeighbors.map(function(cell){
+            return getMoveCells(game, eCell, cell)
+        }).filter(function(mtcOptions){
+            return mtcOptions.length > 0;
+        });
+        // rteurn first path or empty array
+        return mtcOptions[0] || [];
     };
 
     // preform what needs to happen for a player pointer event for the given pixel positon
@@ -367,28 +389,13 @@ var getCellsByUnitType = function(map, type){
                 // move for first time so that the we are getting up to date cells
                 // for figuring enemey paths
                 moveUnit(game, game.player);
-
-
-
-
-            // set moveCells for enemies
-
-            var eCells = getCellsByUnitType(map, 'enemy');
-
-            eCells.forEach(function(eCell){
-
-                console.log( getEnemeyMoveCells(game, eCell) );
-              
-            });
-
-
-
-
+                // set moveCells for enemies
+                var eCells = getCellsByUnitType(map, 'enemy');
+                eCells.forEach(function(eCell){
+                    eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
+                    console.log(eCell.unit.moveCells);
+                });
             }
-
-
-
-
         }
     };
     // return the public API

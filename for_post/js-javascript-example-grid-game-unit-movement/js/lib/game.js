@@ -200,21 +200,20 @@ var gameMod = (function () {
     api.update = function (game, secs) {
         var cell,
         radian,
-        target;
-        // move player
-        if (target = game.targetCell) {
-            cell = game.maps[game.mapIndex].cells[game.player.currentCellIndex];
-            if (target != cell) {
-                radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
-                var cx = Math.round(cell.x + Math.cos(radian)),
-                cy = Math.round(cell.y + Math.sin(radian));
-                // change player unit postion
-                placeUnit(game, game.player, cx, cy);
-                // update toMap and target cell
-                game.toMap = getToMap(game);
-                game.targetCell = false;
-            }
+        target = game.targetCell,
+        pCell = api.getPlayerCell(game);
+        // if target cell is not player cell
+        if (target != pCell) {
+            radian = utils.angleToPoint(pCell.x, pCell.y, target.x, target.y);
+            var cx = Math.round(pCell.x + Math.cos(radian)),
+            cy = Math.round(pCell.y + Math.sin(radian));
+            // change player unit postion
+            placeUnit(game, game.player, cx, cy);
+            // update toMap and target cell
+            game.toMap = getToMap(game);
+            game.targetCell = false;
         }
+
     };
     // get player cell
     api.getPlayerCell = function(game){
@@ -223,19 +222,19 @@ var gameMod = (function () {
         return map.cells[p.currentCellIndex];
     };
 
-// get an array of cells to move pased on a units
-// maxCellsPerTurn value and the given target cell location
-var getMoveCells = function(game, unit, targetCell){
-   // get current map
-   var map = game.maps[game.mapIndex],
-   pCell = api.getPlayerCell(game);
-   // get the raw path to that target cell
-   var path = mapMod.getPath(map, pCell.x, pCell.y, targetCell.x, targetCell.y);
-   // get a slice of the raw path up to unit.maxCellsPerTurn
-   path = path.slice(0, unit.maxCellsPerTurn);
-   // return the path
-   return path;
-};
+    // get an array of cells to move pased on a units
+    // maxCellsPerTurn value and the given target cell location
+    var getMoveCells = function(game, unit, targetCell){
+        // get current map
+        var map = game.maps[game.mapIndex],
+        pCell = api.getPlayerCell(game);
+        // get the raw path to that target cell
+        var path = mapMod.getPath(map, pCell.x, pCell.y, targetCell.x, targetCell.y);
+        // get a slice of the raw path up to unit.maxCellsPerTurn
+        path = path.slice(0, unit.maxCellsPerTurn);
+        // return the path
+        return path;
+    };
 
     // preform what needs to happen for a player pointer event for the given pixel positon
     api.playerPointer = function(game, x, y){
@@ -243,7 +242,6 @@ var getMoveCells = function(game, unit, targetCell){
         map = game.maps[game.mapIndex],
         pCell = api.getPlayerCell(game);
         if (cell) {
-
             // if player cell is clicked and there is a toIndex value
             if(cell === pCell && game.toMap.index != null){
                 console.log('map index change');

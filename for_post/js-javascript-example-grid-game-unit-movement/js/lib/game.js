@@ -185,18 +185,39 @@ var gameMod = (function () {
         }
         return toIndex;
     };
-
+    // is at corner
+    var isAtCorner = function(game, cell){
+        var map = game.maps[game.mapIndex],
+        w = map.w - 1,
+        h = map.h - 1;
+        return (cell.x === 0 && cell.y === 0) || 
+            (cell.x === w && cell.y === h) || 
+            (cell.x === 0 && cell.y === h) || 
+            (cell.x === w && cell.y === 0);
+    };
     // get to map object
     var getToMap = function(game){
         var toMap = {};
         var map = game.maps[game.mapIndex];
         var pCell = api.getPlayerCell(game);
         var mi = toMap.index = getToIndex(game);
-        // set toMap.x, and toMap.y
-        toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
-        toMap.y = pCell.y === 0 ? map.h - 1 : pCell.y;
-        toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
-        toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
+        // at corner?
+        if(isAtCorner(game, pCell)){
+           console.log('at corner');
+           if(pCell.y === map.h - 1){
+               toMap.x = pCell.x;
+               toMap.y = 0;
+           }else{
+               toMap.x = pCell.x;
+               toMap.y = map.h - 1;
+           }
+        }else{
+            // not at corner
+            toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
+            toMap.y = pCell.y === 0 ? map.h - 1 : pCell.y;
+            toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
+            toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
+        }
         return toMap;
     };
 

@@ -7,8 +7,7 @@
 * (done) add other enemey units in the example
 * (done) have a new type propery for baseUnit that defaults to null
 * (done) have a getUnitsByType helper that will get all units in a map that match a given type
-
-* moveUnit helper function
+* (done) moveUnit helper function
 
 * start an update cycle in gameMod.update for enemy units
 * enemy units move to the player unit on each turn

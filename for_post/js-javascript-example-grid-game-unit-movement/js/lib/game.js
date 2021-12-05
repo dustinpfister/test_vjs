@@ -336,6 +336,15 @@ var getCellsByUnitType = function(map, type){
         });
     };
 
+    var getEnemeyMoveCells = function(game, eCell){
+        var pCell = api.getPlayerCell(game),
+        map = game.maps[game.mapIndex];
+        var pCellNeighbors = mapMod.getNeighbors(map, pCell).filter(function(cell){
+            return cell.walkable;
+        });
+        return pCellNeighbors;
+    };
+
     // preform what needs to happen for a player pointer event for the given pixel positon
     api.playerPointer = function(game, x, y){
         var cell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
@@ -354,7 +363,10 @@ var getCellsByUnitType = function(map, type){
                 // set moveCells
                 //game.player.moveCells = getMoveCells(game, game.player, cell);
 
-game.player.moveCells = getMoveCells(game, pCell, cell);
+                game.player.moveCells = getMoveCells(game, pCell, cell);
+                // move for first time so that the we are getting up to date cells
+                // for figuring enemey paths
+                moveUnit(game, game.player);
 
 
 
@@ -365,13 +377,8 @@ game.player.moveCells = getMoveCells(game, pCell, cell);
 
             eCells.forEach(function(eCell){
 
-                var pCellNeighbors = mapMod.getNeighbors(map, pCell).filter(function(cell){
-console.log(cell);
-                    return cell.walkable;
-                });
-console.log(pCellNeighbors);
-
-                //eCell.unit.moveCells = getMoveCells(game, eCell, pCell);                
+                console.log( getEnemeyMoveCells(game, eCell) );
+              
             });
 
 

@@ -5,15 +5,15 @@ var gameMod = (function () {
     // create a base unit
     var createBaseUnit = function () {
         return {
+            // current unit stats
+            maxHP: 100,           // max number of hit points for the unit
+            maxCellsPerTurn: 3,   // the max number of cells a unit can move
+            // current values
             HP: 100,
-            maxHP: 100,
             weaponIndex: 0,
             sheetIndex: 0,
-
-            maxCellsPerTurn: 3,
             moveCells: [], // array of cells to move
             currentCellIndex: null,
-
             active: false
         }
     };
@@ -23,6 +23,12 @@ var gameMod = (function () {
         player.active = true;
         player.sheetIndex = 2; // player sheet
         return player;
+    };    // create a player unit
+    var createEnemyUnit = function () {
+        var enemy = createBaseUnit();
+        enemy.active = true;
+        enemy.sheetIndex = 3;
+        return enemy;
     };
     // create a player unit
     var createWallUnit = function () {
@@ -70,7 +76,7 @@ var gameMod = (function () {
                 return;
             }
         }
-
+        // if we get this far just find a spot
         while(i--){
             var cell = map.cells[i];
             if(cell.unit === null){
@@ -105,6 +111,11 @@ var gameMod = (function () {
                     playerPlaced = true;
                     startMapIndex = mi;
                     placeUnit(game, game.player, x, y);
+                }
+                // player
+                if(cellIndex === 3){
+                    var enemy = createEnemyUnit();
+                    placeUnit(game, enemy, x, y);
                 }
                 return cell;
             });

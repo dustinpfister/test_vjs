@@ -34,10 +34,12 @@
 * (done) after 'move' state is done the game.turnSate should change to 'melee'
 * (done) I should have a unit.meleeTarget prop that is a cellIndex to attack
 * (done) if a player or enemy unit is still at that location a melee attak will be prefromed on it, else it ran away and the turn is lost
+* (done) enemy units can also attack by way of melee
 
-* enemy units can also attack by way of melee
+
+* when the player dies call setupGame but do not do a new setup
+* when all enemy units in all maps are dead call setupGame and do a new setup
 * have a baseAttack stat for units
-* when all enemy units in all maps are dead start a new game
 
 ## ( done 12/05/2021 ) - 0.6.0 - Other units
 * (done) add other enemey units in the example

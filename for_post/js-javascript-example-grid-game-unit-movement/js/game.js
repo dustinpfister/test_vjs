@@ -364,7 +364,6 @@ var getCellsByUnitType = function(map, type){
                     // in melee range player
                     eCell.unit.meleeTarget = pCell.i;
                 }else{
-                    console.log(d);
                     // not in melee range of player
                     eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
                 }
@@ -444,7 +443,6 @@ var getCellsByUnitType = function(map, type){
             if(clickedCell.unit){
                 var unit = clickedCell.unit; 
                 if(unit.type === 'enemy'){
-                    console.log('enemy cell clicked');
                     // set meleeTarget index
                     game.player.meleeTarget = clickedCell.i;
                     game.turnState = 'start';

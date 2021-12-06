@@ -334,6 +334,7 @@ var getCellsByUnitType = function(map, type){
         var clickedCell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
         map = game.maps[game.mapIndex],
         pCell = api.getPlayerCell(game);
+        // if we have a cell
         if (clickedCell) {
             // if player cell is clicked and there is a toIndex value
             if(clickedCell === pCell && game.toMap.index != null){
@@ -343,19 +344,29 @@ var getCellsByUnitType = function(map, type){
                 pCell.walkable = true;
                 game.player.currentCellIndex = null;
                 placePlayer(game);
-            }else{
-                // set moveCells
-                game.player.moveCells = getMoveCells(game, pCell, clickedCell);
-                // move for first time so that the we are getting up to date cells
-                // for figuring enemey paths
-                moveUnit(game, game.player);
-                // set moveCells for enemies
-                var eCells = getCellsByUnitType(map, 'enemy');
-                eCells.forEach(function(eCell){
-                    eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
-                    console.log(eCell.unit.moveCells);
-                });
+                return;
             }
+
+            // if cell has a unit on it
+            if(clickedCell.unit){
+                var unit = clickedCell.unit; 
+                if(unit.type === 'enemy'){
+                    console.log('enemy cell clicked');
+                    return;
+                }
+            }
+   
+            // default action is to try to move to the cell
+            game.player.moveCells = getMoveCells(game, pCell, clickedCell);
+            // move for first time so that the we are getting up to date cells
+            // for figuring enemey paths
+            moveUnit(game, game.player);
+            // set moveCells for enemies
+            var eCells = getCellsByUnitType(map, 'enemy');
+            eCells.forEach(function(eCell){
+                eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
+                console.log(eCell.unit.moveCells);
+            });
         }
     };
     // return the public API

@@ -3,9 +3,16 @@
 ## () - 0.x.0 - Cell movement animation
 * see about having a move animation where the unit cell moves on a pps basis to the new cell location
 
+## () - 0.x.0 - custom events
+* start a new lib/events.js file that will be used by map.js
+* new on method
+
 ## () - 0.7.0 - unit baseAttack stat, and Melee Attack
 * (done) move draw.js and game.js to root of js folder
 * (done) code clean up of game.js
+
+* have an if block for when an enemy unit is clicked in gameMod.playerPointer 
+
 * have a baseAttack stat for units
 * Melee Attack working with player and enemy units
 * when the player dies set up a new game.

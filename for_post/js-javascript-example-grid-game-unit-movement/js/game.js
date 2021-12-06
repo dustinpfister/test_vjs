@@ -120,10 +120,10 @@ var gameMod = (function () {
     var createBaseUnit = function () {
         return {
             // current unit stats
-            maxHP: 100,           // max number of hit points for the unit
+            maxHP: 10,           // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
             // current values
-            HP: 100,
+            HP: 5,
             weaponIndex: 0,
             sheetIndex: 0,
             type: null,

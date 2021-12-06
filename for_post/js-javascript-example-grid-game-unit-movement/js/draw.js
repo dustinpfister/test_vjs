@@ -8,6 +8,33 @@ var draw = (function () {
      HELPERS
 *********** *********/
 
+// draw an hp bar for the given cell, if it has a vaild unit
+var drawHPBar = function(sm, cell){
+    var unit = cell.unit;
+    var ctx = sm.ctx;
+    var map = sm.game.maps[sm.game.mapIndex];
+    var cs = map.cellSize;
+    var x = map.margin.x + cell.x * cs;
+    var y = map.margin.y + cell.y * cs;
+    if (unit) {
+        if(unit.type == 'player' || unit.type === 'enemy'){
+             // hp bar back
+             ctx.fillStyle = 'gray';
+             ctx.beginPath();
+             ctx.rect(x, y, cs, 5);
+             ctx.fill();
+             ctx.stroke();
+             // current hp
+             var per = unit.HP / unit.maxHP;
+             ctx.fillStyle = 'lime';
+             ctx.beginPath();
+             ctx.rect(x, y, cs * per, 5);
+             ctx.fill();
+             ctx.stroke();
+        }
+    }
+};
+
 // draw a cell helper
 var drawCell = function(sm, cell){
     var map = sm.game.maps[sm.game.mapIndex];
@@ -16,18 +43,16 @@ var drawCell = function(sm, cell){
     var x = map.margin.x + cell.x * cs;
     var y = map.margin.y + cell.y * cs;
     // draw base cell
-    ctx.fillStyle = 'green';
-    if(!cell.walkable){
-        ctx.fillStyle = 'gray';
-    }
+    ctx.fillStyle = unitColors[0];
     // if we have a unit
     if (cell.unit) {
         ctx.fillStyle = unitColors[cell.unit.sheetIndex];
     }
     ctx.beginPath();
-    ctx.rect(x, y, 32, 32);
+    ctx.rect(x, y, cs, cs);
     ctx.fill();
     ctx.stroke();
+    drawHPBar(sm, cell);
 };
 
 /********** **********

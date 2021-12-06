@@ -365,17 +365,19 @@ var getCellsByUnitType = function(map, type){
         }
         // melee attack
         if(game.turnState === 'melee'){
-            //game.player.HP -= 1;
-            //game.player.HP = game.player.HP < 0 ? 0 : game.player.HP;
+            // process any player melee attack
             var pTargetIndex = game.player.meleeTarget; 
             if(pTargetIndex != null){
                 var pTarget = mapMod.get(map, pTargetIndex),
                 eUnit = pTarget.unit;
                 if(eUnit){
-                    console.log('player target unit');
-                    console.log(eUnit);
                     eUnit.HP -= 1;
                     eUnit.HP = eUnit.HP < 0 ? 0 : eUnit.HP;
+                    // enemy unit death check
+                    if(eUnit.HP <= 0){
+                        pTarget.walkable = true;
+                        pTarget.unit = null;
+                    }
                 }
                 game.player.meleeTarget = null;
             }

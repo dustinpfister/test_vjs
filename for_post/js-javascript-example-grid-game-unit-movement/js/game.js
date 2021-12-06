@@ -323,6 +323,24 @@ var getCellsByUnitType = function(map, type){
 /********** **********
      gameMod.update PUBLIC METHOD
 *********** *********/
+    var processMeele = function(game, unit){
+        var targetUnitIndex = unit.meleeTarget,
+        map = game.maps[game.mapIndex];
+        if(targetUnitIndex != null){
+            var targetCell = mapMod.get(map, targetUnitIndex),
+            tUnit = targetCell.unit;
+            if(tUnit){
+                tUnit.HP -= 1;
+                tUnit.HP = tUnit.HP < 0 ? 0 : tUnit.HP;
+                // enemy unit death check
+                if(tUnit.HP <= 0 && tUnit.type === 'enemy'){
+                    targetCell.walkable = true;
+                    targetCell.unit = null;
+                }
+            }
+            unit.meleeTarget = null;
+        }
+    };
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){
         var map = game.maps[game.mapIndex],
@@ -366,6 +384,8 @@ var getCellsByUnitType = function(map, type){
         // melee attack
         if(game.turnState === 'melee'){
             // process any player melee attack
+            processMeele(game, game.player);
+/*
             var pTargetIndex = game.player.meleeTarget; 
             if(pTargetIndex != null){
                 var pTarget = mapMod.get(map, pTargetIndex),
@@ -381,6 +401,7 @@ var getCellsByUnitType = function(map, type){
                 }
                 game.player.meleeTarget = null;
             }
+*/
             game.turnState = 'end';
         }
         // for end state step game.turn and set game.turnState back to wait
@@ -390,6 +411,8 @@ var getCellsByUnitType = function(map, type){
             // check for player death
             if(game.player.HP <= 0){
                 // !!! for now just call setupGame
+                pCell.unit = null;
+                pCell.walkable = true;
                 setupGame(game);
             }
         }

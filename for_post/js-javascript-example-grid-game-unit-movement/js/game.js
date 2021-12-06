@@ -264,12 +264,12 @@ var getCellsByUnitType = function(map, type){
                     cell.unit = null;
                     cell.walkable = true;
                 }
-                // wall block
-                if(cellIndex === 1 && newGame){
+                // wall blocks set for new games and not
+                if(cellIndex === 1){
                     var wall = createWallUnit();
                     placeUnit(game, wall, x, y);
                 }
-                // player
+                // player always set
                 if(cellIndex === 2){
                     playerPlaced = true;
                     startMapIndex = mi;

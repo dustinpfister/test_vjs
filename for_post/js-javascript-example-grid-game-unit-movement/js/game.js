@@ -352,6 +352,13 @@ var getCellsByUnitType = function(map, type){
             unit.meleeTarget = null;
         }
     };
+    // get remaining Enemies helper used to update game.remainingEnemies in 'end' process turn state
+    var getRemainingEnemies = function(game){
+        return game.maps.reduce(function(acc, map){
+            var eCells = getCellsByUnitType(map, 'enemy');
+            return acc + eCells.length;
+        }, 0);
+    };
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){
         var map = game.maps[game.mapIndex],
@@ -413,6 +420,11 @@ var getCellsByUnitType = function(map, type){
                 pCell.unit = null;
                 pCell.walkable = true;
                 setupGame(game, false);
+            }
+            // check for all enemies dead
+            game.remainingEnemies = getRemainingEnemies(game);
+            if(game.remainingEnemies === 0){
+                setupGame(game, true);
             }
         }
     };

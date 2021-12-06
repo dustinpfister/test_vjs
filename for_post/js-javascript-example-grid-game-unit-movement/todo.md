@@ -7,11 +7,15 @@
 * start a new lib/events.js file that will be used by map.js
 * new on method
 
-## () - 0.7.0 - unit baseAttack stat, and Melee Attack
+## () - 0.7.0 - game.turnNumber, processTrun method unit baseAttack stat, and Melee Attack
 * (done) move draw.js and game.js to root of js folder
 * (done) code clean up of game.js
-
-* have an if block for when an enemy unit is clicked in gameMod.playerPointer 
+* (done) have an if block for when an enemy unit is clicked in gameMod.playerPointer 
+* have a game.turnNumber value and display that
+* game.turnNumber will step forward when the player moves, or clicks and enemy unit
+* have a processTrun method that is called in gameMod.update when moving forward to a new turn
+* enemy units should figure movement as part of their own update process
+* enmey units should choose to fight rather than move when in range of the player
 
 * have a baseAttack stat for units
 * Melee Attack working with player and enemy units

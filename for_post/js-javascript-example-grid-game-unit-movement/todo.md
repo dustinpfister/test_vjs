@@ -21,19 +21,21 @@
 * (done) have a game.turnNumber value and display that
 * (done) game.turnNumber will step forward when the player moves, or clicks and enemy unit
 * (done) have a processTrun method that is called in gameMod.update when moving forward to a new turn
+* (done) I will want a game.turnState value that can be 'wait', 'start', 'move', 'melee', or 'end' for now
+* (done) the 'wait' state just means that no action of any kind is to happen
+* (done) the 'start' state means that the player has made a choice and a turn can start to be processed
+* (done) the 'move' state will be prefromed first after start, all units that have moveTo values will have those values processed
+* (done) the 'end' state will result in the game.turn number being steped by 1, and state will be set back to wait
+* (done) the 'wait' turnState means that no action of any kind will be prefromed in the processTurn helper
 
-* I will want a game.turnState value that can be 'wait', 'start', 'move', 'melee', or 'end' for now
-* the 'wait' state just means that no action of any kind is to happen
-* the 'start' state means that the player has made a choice and a turn can start to be processed
-* the 'move' state will be prefromed first after start, all units that have moveTo values will have those values processed
-* the 'end' state will result in the game.turn number being steped by 1, and state will be set back to wait
+* display hp bars for player and enemey units with new drawHpBar helper in draw.js
 
-* the wait turnState means that no action of any kind will be prefromed in the processTurn helper
-
-* enmey units should choose to fight rather than move when in range of the player
+* in 'start' state enemy units should choose to fight rather than move when in range of the player
+* after 'move' state is done the game.turnSate should change to 'melee'
+* I should have a unit.meleeTarget prop that is a cellIndex to attack
+* if a player or enemy unit is still at that location a melee attak will be prefromed on it, else it ran away and the turn is lost
 
 * have a baseAttack stat for units
-* Melee Attack working with player and enemy units
 * when the player dies set up a new game.
 * see about fixing bug where the player, or any unit can 'jump' over a unit in the way
 

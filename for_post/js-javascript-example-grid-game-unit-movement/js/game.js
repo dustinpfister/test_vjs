@@ -319,29 +319,35 @@ var getCellsByUnitType = function(map, type){
 *********** *********/
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){
-
-        var map = game.maps[game.mapIndex];
+        var map = game.maps[game.mapIndex],
+        eCells = getCellsByUnitType(map, 'enemy');
         // do nothing for 'wait' state
         if(game.turnState === 'wait'){
             return;
         }
-
-        // move player unit
-        moveUnit(game, game.player);
-
-        // let enemy units figure paths
-        var eCells = getCellsByUnitType(map, 'enemy');
-        eCells.forEach(function(eCell){
-            eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
-            console.log(eCell.unit.moveCells);
-        });
-
-        eCells.forEach(function(eCell){
-            moveUnit(game, eCell.unit);
-        });
-
-        game.turn += 1;
-        game.turnState = 'wait';
+        // starting a new turn
+        if(game.turnState === 'start'){
+            // let enemy units figure paths
+            eCells.forEach(function(eCell){
+                eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
+                console.log(eCell.unit.moveCells);
+            });
+            game.turnState = 'move';
+        }
+        // move state
+        if(game.turnState === 'move'){
+            // move player unit
+            moveUnit(game, game.player);
+            eCells.forEach(function(eCell){
+                moveUnit(game, eCell.unit);
+            });
+            game.turnState = 'end';
+        }
+        // for end state step game.turn and set game.turnState back to wait
+        if(game.turnState === 'end'){
+            game.turn += 1;
+            game.turnState = 'wait';
+        }
     };
     // update a game object
     api.update = function (game, secs) {

@@ -22,10 +22,11 @@
 * (done) game.turnNumber will step forward when the player moves, or clicks and enemy unit
 * (done) have a processTrun method that is called in gameMod.update when moving forward to a new turn
 
-* I will want a game.turnState value that can be 'wait', 'start', 'move', or 'melee' for now
+* I will want a game.turnState value that can be 'wait', 'start', 'move', 'melee', or 'end' for now
 * the 'wait' state just means that no action of any kind is to happen
 * the 'start' state means that the player has made a choice and a turn can start to be processed
 * the 'move' state will be prefromed first after start, all units that have moveTo values will have those values processed
+* the 'end' state will result in the game.turn number being steped by 1, and state will be set back to wait
 
 * the wait turnState means that no action of any kind will be prefromed in the processTurn helper
 

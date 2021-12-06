@@ -11,7 +11,7 @@
 * have a new 'spell' turnState in which all units that have chosen to use a spell for there turn
 * have spell turn state be prefromed last
 
-## () - 0.x.0 - range turnState
+## () - 0.8.0 - range turnState
 * have a new 'range' turnState in which all units that have chosen to use a ranged attack will have there turn processed
 * have a baseAttack stat for units
 * use unit.baseAttack for melee and range attacks

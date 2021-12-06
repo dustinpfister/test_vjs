@@ -96,6 +96,8 @@ var drawCell = function(sm, cell){
         ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, 5 + dy * 2);
         // turn number and turnChange bool
         ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, 5 + dy * 3);
+        // enemies
+        ctx.fillText('enemies:' + sm.game.remainingEnemies, 5, 5 + dy * 4);
 
         // version number
         ctx.fillText('v' + sm.ver, 1, canvas.height - 11);

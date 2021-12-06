@@ -35,9 +35,10 @@
 * (done) I should have a unit.meleeTarget prop that is a cellIndex to attack
 * (done) if a player or enemy unit is still at that location a melee attak will be prefromed on it, else it ran away and the turn is lost
 * (done) enemy units can also attack by way of melee
+* (done) when the player dies call setupGame but do not do a new setup
 
+* have a game.remainingEnemies prop and update on each process turn 'end' state
 
-* when the player dies call setupGame but do not do a new setup
 * when all enemy units in all maps are dead call setupGame and do a new setup
 * have a baseAttack stat for units
 

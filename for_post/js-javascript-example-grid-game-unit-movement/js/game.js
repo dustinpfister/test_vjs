@@ -120,10 +120,10 @@ var gameMod = (function () {
     var createBaseUnit = function () {
         return {
             // current unit stats
-            maxHP: 10,           // max number of hit points for the unit
+            maxHP: 1,           // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
             // current values
-            HP: 10,
+            HP: 1,
             weaponIndex: 0,
             sheetIndex: 0,
             type: null,
@@ -251,6 +251,9 @@ var getCellsByUnitType = function(map, type){
         game.mapIndex = 0;
         // set player HP to max
         game.player.HP = game.player.maxHP;
+        if(newGame){
+            game.remainingEnemies = 0;
+        }
         // set up maps
         game.maps = game.maps.map(function(map, mi){
             var mapStr = game.mapStrings[mi] || '';
@@ -277,6 +280,7 @@ var getCellsByUnitType = function(map, type){
                 }
                 // enemy
                 if(cellIndex === 3 && newGame){
+                    game.remainingEnemies += 1;
                     var enemy = createEnemyUnit();
                     placeUnit(game, enemy, x, y);
                 }
@@ -313,7 +317,8 @@ var getCellsByUnitType = function(map, type){
                 y: null
             },
             mapStrings: opt.maps || ['2'],
-            player: createPlayerUnit()
+            player: createPlayerUnit(),
+            remainingEnemies: 0
         };
         game.mapStrings.forEach(function(){
             game.maps.push(mapMod.create({

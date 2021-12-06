@@ -324,10 +324,18 @@ var getCellsByUnitType = function(map, type){
      gameMod.update PUBLIC METHOD
 *********** *********/
     var processMeele = function(game, unit){
-        var targetUnitIndex = unit.meleeTarget,
+        var targetCellIndex = unit.meleeTarget,
         map = game.maps[game.mapIndex];
-        if(targetUnitIndex != null){
-            var targetCell = mapMod.get(map, targetUnitIndex),
+
+if(unit.type === 'enemy'){
+    console.log(targetCellIndex)
+}
+
+        if(targetCellIndex != null){
+
+console.log('processing melee for a unti of type ' + unit.type);
+
+            var targetCell = mapMod.get(map, targetCellIndex),
             tUnit = targetCell.unit;
             if(tUnit){
                 tUnit.HP -= 1;
@@ -357,6 +365,7 @@ var getCellsByUnitType = function(map, type){
                 var d = utils.distance(eCell.x + 16, eCell.y + 16, pCell.x + 16, pCell.y + 16);
                 if( d <= 1.5){
                     // in melee range player
+                    eCell.unit.meleeTarget = pCell.i;
                 }else{
                     console.log(d);
                     // not in melee range of player
@@ -385,23 +394,11 @@ var getCellsByUnitType = function(map, type){
         if(game.turnState === 'melee'){
             // process any player melee attack
             processMeele(game, game.player);
-/*
-            var pTargetIndex = game.player.meleeTarget; 
-            if(pTargetIndex != null){
-                var pTarget = mapMod.get(map, pTargetIndex),
-                eUnit = pTarget.unit;
-                if(eUnit){
-                    eUnit.HP -= 1;
-                    eUnit.HP = eUnit.HP < 0 ? 0 : eUnit.HP;
-                    // enemy unit death check
-                    if(eUnit.HP <= 0){
-                        pTarget.walkable = true;
-                        pTarget.unit = null;
-                    }
-                }
-                game.player.meleeTarget = null;
-            }
-*/
+            // process melee attacks for enemy units
+            var eCells = getCellsByUnitType(map, 'enemy');
+            eCells.forEach(function(eCell){
+                processMeele(game, eCell.unit);
+            });
             game.turnState = 'end';
         }
         // for end state step game.turn and set game.turnState back to wait

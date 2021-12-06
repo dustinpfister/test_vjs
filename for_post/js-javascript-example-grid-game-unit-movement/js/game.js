@@ -356,7 +356,6 @@ var getCellsByUnitType = function(map, type){
                 game.turnState = 'melee';
             }
         }
-
         // melee attack
         if(game.turnState === 'melee'){
             //game.player.HP -= 1;
@@ -375,7 +374,6 @@ var getCellsByUnitType = function(map, type){
             }
             game.turnState = 'end';
         }
-
         // for end state step game.turn and set game.turnState back to wait
         if(game.turnState === 'end'){
             game.turn += 1;

@@ -292,7 +292,7 @@ var getCellsByUnitType = function(map, type){
         var game = {
             // mode: 'map', // not using game.mode at this time
             turn: 0,
-            turnChange: false,
+            turnState: 'wait',
             maps: [],
             mapIndex: 0,
             mapWorldWidth: 3, // used to find toIndex
@@ -321,6 +321,10 @@ var getCellsByUnitType = function(map, type){
     var processTurn = function(game, secs){
 
         var map = game.maps[game.mapIndex];
+        // do nothing for 'wait' state
+        if(game.turnState === 'wait'){
+            return;
+        }
 
         // move player unit
         moveUnit(game, game.player);
@@ -337,14 +341,14 @@ var getCellsByUnitType = function(map, type){
         });
 
         game.turn += 1;
-        game.turnChange = false;
+        game.turnState = 'wait';
     };
     // update a game object
     api.update = function (game, secs) {
 
-        if(game.turnChange){
-            processTurn(game, secs);
-        }
+        //if(game.turnChange){
+        processTurn(game, secs);
+        //}
 
 /*
         var map = game.maps[game.mapIndex]
@@ -386,14 +390,14 @@ var getCellsByUnitType = function(map, type){
                 var unit = clickedCell.unit; 
                 if(unit.type === 'enemy'){
                     console.log('enemy cell clicked');
-                    game.turnChange = true;
+                    game.turnState = 'start';
                     return;
                 }
             }
    
             // default action is to try to move to the cell
             game.player.moveCells = getMoveCells(game, pCell, clickedCell);
-            game.turnChange = true;
+            game.turnState = 'start';
 
             // move for first time so that the we are getting up to date cells
             // for figuring enemey paths

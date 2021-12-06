@@ -70,7 +70,7 @@ var drawCell = function(sm, cell){
         var tm = sm.game.toMap;
         ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, 5 + dy * 2);
         // turn number and turnChange bool
-        ctx.fillText('turn:' + sm.game.turn + ', turnChange: ' + sm.game.turnChange, 5, 5 + dy * 3);
+        ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, 5 + dy * 3);
 
         // version number
         ctx.fillText('v' + sm.ver, 1, canvas.height - 11);

@@ -246,6 +246,9 @@ var getCellsByUnitType = function(map, type){
         var playerPlaced = false,
         startMapIndex = 0;
         game.mapIndex = 0;
+        // set player HP to max
+        game.player.HP = game.player.maxHP;
+        // set up maps
         game.maps = game.maps.map(function(map, mi){
             var mapStr = game.mapStrings[mi] || '';
             game.mapIndex = mi;
@@ -339,6 +342,8 @@ var getCellsByUnitType = function(map, type){
         if(game.turnState === 'move'){
             // move player unit
             moveUnit(game, game.player);
+            game.player.HP -= 1;
+            game.player.HP = game.player.HP < 0 ? 0 : game.player.HP;
             eCells.forEach(function(eCell){
                 moveUnit(game, eCell.unit);
             });
@@ -356,7 +361,8 @@ var getCellsByUnitType = function(map, type){
             game.turnState = 'wait';
             // check for player death
             if(game.player.HP <= 0){
-
+                // !!! for now just call setupGame
+                setupGame(game);
             }
         }
     };

@@ -244,7 +244,8 @@ var getCellsByUnitType = function(map, type){
      SETUP GAME
 *********** *********/
     // setUp game helper with game object, and given maps
-    var setupGame = function (game) {
+    var setupGame = function (game, newGame) {
+        newGame = newGame === undefined ? true : newGame;
         var playerPlaced = false,
         startMapIndex = 0;
         game.mapIndex = 0;
@@ -258,13 +259,13 @@ var getCellsByUnitType = function(map, type){
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
                 y = Math.floor(ci / map.w);
-                if(cellIndex === 0){
+                if(cellIndex === 0 && newGame){
                     var cell = mapMod.get(map, ci);
                     cell.unit = null;
                     cell.walkable = true;
                 }
                 // wall block
-                if(cellIndex === 1){
+                if(cellIndex === 1 && newGame){
                     var wall = createWallUnit();
                     placeUnit(game, wall, x, y);
                 }
@@ -274,8 +275,8 @@ var getCellsByUnitType = function(map, type){
                     startMapIndex = mi;
                     placeUnit(game, game.player, x, y);
                 }
-                // player
-                if(cellIndex === 3){
+                // enemy
+                if(cellIndex === 3 && newGame){
                     var enemy = createEnemyUnit();
                     placeUnit(game, enemy, x, y);
                 }
@@ -322,7 +323,7 @@ var getCellsByUnitType = function(map, type){
                 h:  opt.h === undefined ? 4 : opt.h
             }));
         });
-        setupGame(game);
+        setupGame(game, true);
         return game;
     };
 /********** **********
@@ -406,7 +407,7 @@ var getCellsByUnitType = function(map, type){
                 // !!! for now just call setupGame
                 pCell.unit = null;
                 pCell.walkable = true;
-                setupGame(game);
+                setupGame(game, false);
             }
         }
     };
@@ -438,7 +439,6 @@ var getCellsByUnitType = function(map, type){
                 placePlayer(game);
                 return;
             }
-
             // if cell has a unit on it
             if(clickedCell.unit){
                 var unit = clickedCell.unit; 
@@ -449,7 +449,6 @@ var getCellsByUnitType = function(map, type){
                     return;
                 }
             }
-   
             // default action is to try to move to the cell
             game.player.moveCells = getMoveCells(game, pCell, clickedCell);
             game.turnState = 'start';

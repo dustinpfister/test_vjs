@@ -290,7 +290,9 @@ var getCellsByUnitType = function(map, type){
         opt = opt || {};
         var mapStrings = opt.maps || ['2'];
         var game = {
-            mode: 'map',
+            // mode: 'map', // not using game.mode at this time
+            turn: 0,
+            turnChange: false,
             maps: [],
             mapIndex: 0,
             mapWorldWidth: 3, // used to find toIndex

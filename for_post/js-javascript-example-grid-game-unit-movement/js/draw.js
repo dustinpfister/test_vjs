@@ -56,18 +56,22 @@ var drawCell = function(sm, cell){
         var ctx = sm.ctx,
         pos = sm.input.pos,
         pCell = gameMod.getPlayerCell(sm.game),
-        canvas = sm.canvas;
+        canvas = sm.canvas,
+        dy = 14;
         // text style
-        ctx.fillStyle = 'white';
-        ctx.font = '10px courier';
+        ctx.fillStyle = 'yellow';
+        ctx.font = '12px courier';
         ctx.textBaseline = 'top';
         // draw current pointer position
-        ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, 5);
+        ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, 5 + dy * 0);
         // player cell pos
-        ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, 15);
-        //ctx.fillText('toIndex: ' + sm.game.toIndex, 5, 25);
+        ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, 5 + dy * 1);
+        // to map values
         var tm = sm.game.toMap;
-        ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, 25);
+        ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, 5 + dy * 2);
+        // turn number and turnChange bool
+        ctx.fillText('turn:' + sm.game.turn + ', turnChange: ' + sm.game.turnChange, 5, 5 + dy * 3);
+
         // version number
         ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
     };

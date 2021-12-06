@@ -13,6 +13,7 @@
 
 ## () - 0.x.0 - range turnState
 * have a new 'range' turnState in which all units that have chosen to use a ranged attack will have there turn processed
+* see about fixing bug where the player, or any unit can 'jump' over a unit in the way
 
 ## () - 0.7.0 - game.turnNumber, processTrun method unit baseAttack stat, and Melee Attack
 * (done) move draw.js and game.js to root of js folder
@@ -27,19 +28,16 @@
 * (done) the 'move' state will be prefromed first after start, all units that have moveTo values will have those values processed
 * (done) the 'end' state will result in the game.turn number being steped by 1, and state will be set back to wait
 * (done) the 'wait' turnState means that no action of any kind will be prefromed in the processTurn helper
-
 * (done) display hp bars for player and enemey units with new drawHpBar helper in draw.js
-
 * (done) when the player dies set up a new game.
+* (done) in 'start' state enemy units only move when not in melee range
+* (done) after 'move' state is done the game.turnSate should change to 'melee'
+* (done) I should have a unit.meleeTarget prop that is a cellIndex to attack
+* (done) if a player or enemy unit is still at that location a melee attak will be prefromed on it, else it ran away and the turn is lost
 
-* in 'start' state enemy units should choose to fight rather than move when in range of the player
-* after 'move' state is done the game.turnSate should change to 'melee'
-* I should have a unit.meleeTarget prop that is a cellIndex to attack
-* if a player or enemy unit is still at that location a melee attak will be prefromed on it, else it ran away and the turn is lost
-
+* enemy units can also attack by way of melee
 * have a baseAttack stat for units
-* when the player dies set up a new game.
-* see about fixing bug where the player, or any unit can 'jump' over a unit in the way
+* when all enemy units in all maps are dead start a new game
 
 ## ( done 12/05/2021 ) - 0.6.0 - Other units
 * (done) add other enemey units in the example

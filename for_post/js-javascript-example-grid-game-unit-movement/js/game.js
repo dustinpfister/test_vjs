@@ -127,7 +127,8 @@ var gameMod = (function () {
             weaponIndex: 0,
             sheetIndex: 0,
             type: null,
-            moveCells: [], // array of cells to move
+            meleeTarget: null, // cell index to attack in 'melee' processTurn state
+            moveCells: [], // array of cells to move in 'move' processTurn state
             currentCellIndex: null,
             active: false
         }
@@ -334,8 +335,9 @@ var getCellsByUnitType = function(map, type){
         if(game.turnState === 'start'){
             // let enemy units figure paths
             eCells.forEach(function(eCell){
-                eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
-                console.log(eCell.unit.moveCells);
+
+                //eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
+                //console.log(eCell.unit.moveCells);
             });
             game.turnState = 'move';
         }
@@ -343,8 +345,6 @@ var getCellsByUnitType = function(map, type){
         if(game.turnState === 'move'){
             // move player unit
             moveUnit(game, game.player);
-            //game.player.HP -= 1;
-            //game.player.HP = game.player.HP < 0 ? 0 : game.player.HP;
             eCells.forEach(function(eCell){
                 moveUnit(game, eCell.unit);
             });
@@ -353,9 +353,29 @@ var getCellsByUnitType = function(map, type){
             if(game.player.moveCells.length === 0 && eCells.every(function(eCell){
                 return eCell.unit.moveCells.length === 0;
             })){
-                game.turnState = 'end';
+                game.turnState = 'melee';
             }
         }
+
+        // melee attack
+        if(game.turnState === 'melee'){
+            //game.player.HP -= 1;
+            //game.player.HP = game.player.HP < 0 ? 0 : game.player.HP;
+            var pTargetIndex = game.player.meleeTarget; 
+            if(pTargetIndex != null){
+                var pTarget = mapMod.get(map, pTargetIndex),
+                eUnit = pTarget.unit;
+                if(eUnit){
+                    console.log('player target unit');
+                    console.log(eUnit);
+                    eUnit.HP -= 1;
+                    eUnit.HP = eUnit.HP < 0 ? 0 : eUnit.HP;
+                }
+                game.player.meleeTarget = null;
+            }
+            game.turnState = 'end';
+        }
+
         // for end state step game.turn and set game.turnState back to wait
         if(game.turnState === 'end'){
             game.turn += 1;
@@ -401,6 +421,8 @@ var getCellsByUnitType = function(map, type){
                 var unit = clickedCell.unit; 
                 if(unit.type === 'enemy'){
                     console.log('enemy cell clicked');
+                    // set meleeTarget index
+                    game.player.meleeTarget = clickedCell.i;
                     game.turnState = 'start';
                     return;
                 }
@@ -410,17 +432,6 @@ var getCellsByUnitType = function(map, type){
             game.player.moveCells = getMoveCells(game, pCell, clickedCell);
             game.turnState = 'start';
 
-            // move for first time so that the we are getting up to date cells
-            // for figuring enemey paths
-            //moveUnit(game, game.player);
-            // set moveCells for enemies
-/*
-            var eCells = getCellsByUnitType(map, 'enemy');
-            eCells.forEach(function(eCell){
-                eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
-                console.log(eCell.unit.moveCells);
-            });
-*/
         }
     };
     // return the public API

@@ -28,7 +28,9 @@
 * (done) the 'end' state will result in the game.turn number being steped by 1, and state will be set back to wait
 * (done) the 'wait' turnState means that no action of any kind will be prefromed in the processTurn helper
 
-* display hp bars for player and enemey units with new drawHpBar helper in draw.js
+* (done) display hp bars for player and enemey units with new drawHpBar helper in draw.js
+
+* when the player dies set up a new game.
 
 * in 'start' state enemy units should choose to fight rather than move when in range of the player
 * after 'move' state is done the game.turnSate should change to 'melee'

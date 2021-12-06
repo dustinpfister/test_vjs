@@ -242,12 +242,12 @@ var getCellsByUnitType = function(map, type){
      SETUP GAME
 *********** *********/
     // setUp game helper with game object, and given maps
-    var setupGame = function (game, mapStrings) {
+    var setupGame = function (game) {
         var playerPlaced = false,
         startMapIndex = 0;
         game.mapIndex = 0;
         game.maps = game.maps.map(function(map, mi){
-            var mapStr = mapStrings[mi] || '';
+            var mapStr = game.mapStrings[mi] || '';
             game.mapIndex = mi;
             map.cells = map.cells.map(function(cell, ci){
                 var cellIndex = parseInt(mapStr[ci] || '0'),
@@ -288,7 +288,7 @@ var getCellsByUnitType = function(map, type){
     // create a new game state
     api.create = function (opt) {
         opt = opt || {};
-        var mapStrings = opt.maps || ['2'];
+        //var mapStrings = opt.maps || ['2'];
         var game = {
             // mode: 'map', // not using game.mode at this time
             turn: 0,
@@ -301,9 +301,10 @@ var getCellsByUnitType = function(map, type){
                 x: null,
                 y: null
             },
+            mapStrings: opt.maps || ['2'],
             player: createPlayerUnit()
         };
-        mapStrings.forEach(function(){
+        game.mapStrings.forEach(function(){
             game.maps.push(mapMod.create({
                 marginX: opt.marginX === undefined ? 32 : opt.marginX,
                 marginY: opt.marginY === undefined ? 32 : opt.marginY,
@@ -311,7 +312,7 @@ var getCellsByUnitType = function(map, type){
                 h:  opt.h === undefined ? 4 : opt.h
             }));
         });
-        setupGame(game, mapStrings);
+        setupGame(game);
         return game;
     };
 /********** **********
@@ -353,6 +354,10 @@ var getCellsByUnitType = function(map, type){
         if(game.turnState === 'end'){
             game.turn += 1;
             game.turnState = 'wait';
+            // check for player death
+            if(game.player.HP <= 0){
+
+            }
         }
     };
     // update a game object

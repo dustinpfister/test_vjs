@@ -258,6 +258,11 @@ var getCellsByUnitType = function(map, type){
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
                 y = Math.floor(ci / map.w);
+                if(cellIndex === 0){
+                    var cell = mapMod.get(map, ci);
+                    cell.unit = null;
+                    cell.walkable = true;
+                }
                 // wall block
                 if(cellIndex === 1){
                     var wall = createWallUnit();
@@ -326,15 +331,7 @@ var getCellsByUnitType = function(map, type){
     var processMeele = function(game, unit){
         var targetCellIndex = unit.meleeTarget,
         map = game.maps[game.mapIndex];
-
-if(unit.type === 'enemy'){
-    console.log(targetCellIndex)
-}
-
         if(targetCellIndex != null){
-
-console.log('processing melee for a unti of type ' + unit.type);
-
             var targetCell = mapMod.get(map, targetCellIndex),
             tUnit = targetCell.unit;
             if(tUnit){

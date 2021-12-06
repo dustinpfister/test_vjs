@@ -13,6 +13,8 @@
 
 ## () - 0.x.0 - range turnState
 * have a new 'range' turnState in which all units that have chosen to use a ranged attack will have there turn processed
+* have a baseAttack stat for units
+* use unit.baseAttack for melee and range attacks
 * see about fixing bug where the player, or any unit can 'jump' over a unit in the way
 
 ## () - 0.7.0 - game.turnNumber, processTrun method unit baseAttack stat, and Melee Attack
@@ -36,11 +38,8 @@
 * (done) if a player or enemy unit is still at that location a melee attak will be prefromed on it, else it ran away and the turn is lost
 * (done) enemy units can also attack by way of melee
 * (done) when the player dies call setupGame but do not do a new setup
-
-* have a game.remainingEnemies prop and update on each process turn 'end' state
-
-* when all enemy units in all maps are dead call setupGame and do a new setup
-* have a baseAttack stat for units
+* (done) have a game.remainingEnemies prop and update on each process turn 'end' state
+* (done) when all enemy units in all maps are dead call setupGame and do a new setup
 
 ## ( done 12/05/2021 ) - 0.6.0 - Other units
 * (done) add other enemey units in the example

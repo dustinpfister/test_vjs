@@ -149,6 +149,7 @@ var gameMod = (function () {
         enemy.active = true;
         enemy.maxCellsPerTurn = 2;
         enemy.sheetIndex = 3;
+        enemy.maxHP = 5;
         return enemy;
     };
     // create a player unit
@@ -282,6 +283,7 @@ var getCellsByUnitType = function(map, type){
                 if(cellIndex === 3 && newGame){
                     game.remainingEnemies += 1;
                     var enemy = createEnemyUnit();
+                    enemy.HP = enemy.maxHP;
                     placeUnit(game, enemy, x, y);
                 }
                 return cell;

@@ -17,7 +17,7 @@
 * use unit.baseAttack for melee and range attacks
 * see about fixing bug where the player, or any unit can 'jump' over a unit in the way
 
-## () - 0.7.0 - game.turnNumber, processTrun method unit baseAttack stat, and Melee Attack
+## ( done 12/06/2021 ) - 0.7.0 - game.turnNumber, processTrun method unit baseAttack stat, and Melee Attack
 * (done) move draw.js and game.js to root of js folder
 * (done) code clean up of game.js
 * (done) have an if block for when an enemy unit is clicked in gameMod.playerPointer 

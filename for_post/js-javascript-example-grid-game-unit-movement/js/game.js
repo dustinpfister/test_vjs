@@ -282,7 +282,7 @@ var getCellsByUnitType = function(map, type){
         game.toMap = getToMap(game);
     };
 /********** **********
-     PUBLIC API
+     gameMod.create PUBLIC METHOD
 *********** *********/
     var api = {};
     // create a new game state
@@ -314,8 +314,39 @@ var getCellsByUnitType = function(map, type){
         setupGame(game, mapStrings);
         return game;
     };
+/********** **********
+     gameMod.update PUBLIC METHOD
+*********** *********/
+    // process turn method used in gameMod.update
+    var processTurn = function(game, secs){
+
+        var map = game.maps[game.mapIndex];
+
+        // move player unit
+        moveUnit(game, game.player);
+
+        // let enemy units figure paths
+        var eCells = getCellsByUnitType(map, 'enemy');
+        eCells.forEach(function(eCell){
+            eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
+            console.log(eCell.unit.moveCells);
+        });
+
+        eCells.forEach(function(eCell){
+            moveUnit(game, eCell.unit);
+        });
+
+        game.turn += 1;
+        game.turnChange = false;
+    };
     // update a game object
     api.update = function (game, secs) {
+
+        if(game.turnChange){
+            processTurn(game, secs);
+        }
+
+/*
         var map = game.maps[game.mapIndex]
         // move player unit
         moveUnit(game, game.player);
@@ -324,6 +355,7 @@ var getCellsByUnitType = function(map, type){
         eCells.forEach(function(eCell){
             moveUnit(game, eCell.unit);
         });
+*/
     };
     // get player cell
     api.getPlayerCell = function(game){
@@ -354,21 +386,26 @@ var getCellsByUnitType = function(map, type){
                 var unit = clickedCell.unit; 
                 if(unit.type === 'enemy'){
                     console.log('enemy cell clicked');
+                    game.turnChange = true;
                     return;
                 }
             }
    
             // default action is to try to move to the cell
             game.player.moveCells = getMoveCells(game, pCell, clickedCell);
+            game.turnChange = true;
+
             // move for first time so that the we are getting up to date cells
             // for figuring enemey paths
-            moveUnit(game, game.player);
+            //moveUnit(game, game.player);
             // set moveCells for enemies
+/*
             var eCells = getCellsByUnitType(map, 'enemy');
             eCells.forEach(function(eCell){
                 eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
                 console.log(eCell.unit.moveCells);
             });
+*/
         }
     };
     // return the public API

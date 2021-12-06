@@ -326,6 +326,7 @@ var getCellsByUnitType = function(map, type){
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){
         var map = game.maps[game.mapIndex],
+        pCell = api.getPlayerCell(game),
         eCells = getCellsByUnitType(map, 'enemy');
         // do nothing for 'wait' state
         if(game.turnState === 'wait'){
@@ -335,8 +336,14 @@ var getCellsByUnitType = function(map, type){
         if(game.turnState === 'start'){
             // let enemy units figure paths
             eCells.forEach(function(eCell){
-
-                //eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
+                var d = utils.distance(eCell.x + 16, eCell.y + 16, pCell.x + 16, pCell.y + 16);
+                if( d <= 1.5){
+                    // in melee range player
+                }else{
+                    console.log(d);
+                    // not in melee range of player
+                    eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
+                }
                 //console.log(eCell.unit.moveCells);
             });
             game.turnState = 'move';

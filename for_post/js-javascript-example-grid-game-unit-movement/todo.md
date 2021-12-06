@@ -35,6 +35,7 @@
 * have a baseAttack stat for units
 * Melee Attack working with player and enemy units
 * when the player dies set up a new game.
+* see about fixing bug where the player, or any unit can 'jump' over a unit in the way
 
 ## ( done 12/05/2021 ) - 0.6.0 - Other units
 * (done) add other enemey units in the example

@@ -341,7 +341,13 @@ var getCellsByUnitType = function(map, type){
             eCells.forEach(function(eCell){
                 moveUnit(game, eCell.unit);
             });
-            game.turnState = 'end';
+            var eCells = getCellsByUnitType(map, 'enemy');
+            // if moveCells array length of all units === 0 the move state is over
+            if(game.player.moveCells.length === 0 && eCells.every(function(eCell){
+                return eCell.unit.moveCells.length === 0;
+            })){
+                game.turnState = 'end';
+            }
         }
         // for end state step game.turn and set game.turnState back to wait
         if(game.turnState === 'end'){
@@ -351,21 +357,8 @@ var getCellsByUnitType = function(map, type){
     };
     // update a game object
     api.update = function (game, secs) {
-
-        //if(game.turnChange){
+        // just call process turn for now
         processTurn(game, secs);
-        //}
-
-/*
-        var map = game.maps[game.mapIndex]
-        // move player unit
-        moveUnit(game, game.player);
-        // move enemy units
-        var eCells = getCellsByUnitType(map, 'enemy');
-        eCells.forEach(function(eCell){
-            moveUnit(game, eCell.unit);
-        });
-*/
     };
     // get player cell
     api.getPlayerCell = function(game){

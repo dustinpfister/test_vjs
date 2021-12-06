@@ -123,7 +123,7 @@ var gameMod = (function () {
             maxHP: 10,           // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
             // current values
-            HP: 5,
+            HP: 10,
             weaponIndex: 0,
             sheetIndex: 0,
             type: null,
@@ -139,6 +139,7 @@ var gameMod = (function () {
         player.active = true;
         player.maxCellsPerTurn = 3;
         player.sheetIndex = 2; // player sheet
+        player.maxHP = 30;
         return player;
     };    // create a player unit
     var createEnemyUnit = function () {
@@ -342,8 +343,8 @@ var getCellsByUnitType = function(map, type){
         if(game.turnState === 'move'){
             // move player unit
             moveUnit(game, game.player);
-            game.player.HP -= 1;
-            game.player.HP = game.player.HP < 0 ? 0 : game.player.HP;
+            //game.player.HP -= 1;
+            //game.player.HP = game.player.HP < 0 ? 0 : game.player.HP;
             eCells.forEach(function(eCell){
                 moveUnit(game, eCell.unit);
             });

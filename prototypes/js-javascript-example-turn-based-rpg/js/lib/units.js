@@ -41,7 +41,7 @@ var unitMod = (function () {
         create : function(enemy){
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
-            enemy.maxHP = 5;
+            enemy.maxHP = 8;
             enemy.baseAttack = [1, 3];
         }
     };

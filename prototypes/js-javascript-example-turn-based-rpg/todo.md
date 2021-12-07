@@ -21,7 +21,31 @@
     UNITS
 ********** *******-->
 
-## () - 0.3.0 - unit Enemy sub-types
+## () - 0.4.0 - unit sub-types starting with enemy unit type
+* I will want to have more than one type of the unit.type 'enemy' of course so then I am goinf to want to have some kind of sub type system
+* maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
+* when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
+* I think I will also want to have a way to set level by a type string also like 'enemy.blob.red.5'
+
+```
+{
+  type : "enemy",                   // the unit type to append to "enemy"
+  subType : "blob",                 // the sub type for the type collection "enemy.blob"
+  variants : ["red", "green"],      // possible variants "enemy.blob.red", "enemy.blob.green"
+  variantDefault : 1,               // default index in variants array to use if no variant type is given (default 0)
+  rangeWeapons: [null, "fireball"], // ranged wepaons in the "items.weapon.ranged" db
+  meleeWeapons: [null]
+  sheetIndex: 5,                    // the sprite sheet index to use
+  cellIndex: [0, 1],                // cell index values in the sheet for each variant
+  create: function(api, enemy){     // what to do when unit is created for first time
+      // by default a blob has no ranged weapon (rangeWeapons[0] === null)
+      // but a red blob will be equiped with a 'fireball' ranged weapon
+      if(blob.variant === "red"){
+          blob.rangeWeapon = api.createRanged(1);
+      }
+  }
+}
+```
 
 ## () - 0.2.0 - unit.meleeWeapon Object
 * unit can have a unit.meleeWeapon object as a value that defaults to null for unarmed

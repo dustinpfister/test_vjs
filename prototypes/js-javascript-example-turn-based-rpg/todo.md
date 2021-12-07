@@ -21,11 +21,16 @@
     UNITS
 ********** *******-->
 
-## () - 0.3.0 - Enemy types
+## () - 0.3.0 - unit Enemy sub-types
 
 ## () - 0.2.0 - unit.meleeWeapon Object
-* unit can have a unit.meleeWeapon object as a value
-* use meleeWeapon object in unitMod.meleeAttack method
+* unit can have a unit.meleeWeapon object as a value that defaults to null for unarmed
+* use meleeWeapon object in unitMod.meleeAttack method to figure additional deltas for a final attack range
+* meleeWeapon object has an array property just like baseAttack of the unit object
+* final unit.attack value is just the sum of baseAttack, and the attackProp of the weapon
+* start a setAttack helper in unitMod that set a final attack value for a unit
+* call setAttack in unitMod.create
+* call setAttack in each call of unitMod.meleeAttack
 
 ## ( done 12/07/2021 ) - 0.1.0 - unitMod.meleeAttack method, baseAttack, baseDefense 
 * (done) have a baseAttack stat for units in the from of an array such as [5, 8] which means a base attack of 5 to 8

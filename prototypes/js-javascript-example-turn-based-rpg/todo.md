@@ -21,17 +21,21 @@
     UNITS
 ********** *******-->
 
+## () - 0.3.0 - Enemy types
 
+## () - 0.2.0 - unit.meleeWeapon Object
+* unit can have a unit.meleeWeapon object as a value
+* use meleeWeapon object in unitMod.meleeAttack method
 
-## () - 0.1.0 - unitMod.meleeAttack method, baseAttack, baseDefense 
+## ( done 12/07/2021 ) - 0.1.0 - unitMod.meleeAttack method, baseAttack, baseDefense 
 * (done) have a baseAttack stat for units in the from of an array such as [5, 8] which means a base attack of 5 to 8
 * (done) start a unitMod.meeleeAttack method that takes a attacker a target argument
 * (done) use unitMod.meeleeAttack and unit.baseAttack for melee attacks
 * (done) have an roll for each attack and use a random attack value between the range of baseAttack
-* have a baseDefense stat for units just like baseAttack
-* figure a defense value for the target just like with base attack
-* subtract defelse value from attack value to get a final attack value
-* final attack value can not go below zero
+* (done) have a baseDefense stat for units just like baseAttack
+* (done) figure a defense value for the target just like with base attack
+* (done) subtract defelse value from attack value to get a final attack value
+* (done) final attack value can not go below zero
 
 ## ( done 12/07/2021 ) - 0.0.0 - units.js lib
 * (done) start out with the source code from js-javascript-example-grid-unit-movement r7

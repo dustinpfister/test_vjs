@@ -20,7 +20,7 @@
 * use unit.baseAttack for melee attacks
 * start a unitMod.meeleeAttack method
 
-## () - 0.0.0 - units.js lib
+## ( done 12/07/2021 ) - 0.0.0 - units.js lib
 * (done) start out with the source code from js-javascript-example-grid-unit-movement r7
 * (done) start a new unit.js lib
 * (done) start with using a unitMod.create('player') method in place of createPlayerUnit

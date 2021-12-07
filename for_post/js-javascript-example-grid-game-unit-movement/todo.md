@@ -11,8 +11,11 @@
 * have a new 'spell' turnState in which all units that have chosen to use a spell for there turn
 * have spell turn state be prefromed last
 
-## () - 0.8.0 - range turnState
+## () - 0.x.0 - range turnState
 * have a new 'range' turnState in which all units that have chosen to use a ranged attack will have there turn processed
+
+## () - 0.x.0 - units.js lib
+* see about moving logic from game.js into a new lib units.js file
 * have a baseAttack stat for units
 * use unit.baseAttack for melee and range attacks
 * see about fixing bug where the player, or any unit can 'jump' over a unit in the way

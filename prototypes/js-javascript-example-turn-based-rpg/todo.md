@@ -47,6 +47,10 @@
 }
 ```
 
+## () - 0.3.0 - new unit type "item" Collection
+* start a new type of unit called an 'item' as an item can be a drop that will be shown in the grid along with "wall", and "enemy" types
+
+
 ## () - 0.2.0 - unit.meleeWeapon Object
 * unit can have a unit.meleeWeapon object as a value that defaults to null for unarmed
 * use meleeWeapon object in unitMod.meleeAttack method to figure additional deltas for a final attack range

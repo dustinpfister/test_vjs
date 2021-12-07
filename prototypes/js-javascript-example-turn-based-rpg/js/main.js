@@ -12,7 +12,7 @@
     canvas.onselectstart = function () { return false; }
 
     var sm = {
-        ver: '0.8.0',
+        ver: '0.0.0',
         fps: 12,
         lt: new Date(),
         game: gameMod.create({

@@ -299,6 +299,16 @@ var getCellsByUnitType = function(map, type){
             var targetCell = mapMod.get(map, targetCellIndex),
             tUnit = targetCell.unit;
             if(tUnit){
+                // unitMod meleeAttack method
+                unitMod.meleeAttack(unit, tUnit);
+
+                // enemy unit death check
+                if(tUnit.HP <= 0 && tUnit.type === 'enemy'){
+                    targetCell.walkable = true;
+                    targetCell.unit = null;
+                }
+
+/*
                 tUnit.HP -= 1;
                 tUnit.HP = tUnit.HP < 0 ? 0 : tUnit.HP;
                 // enemy unit death check
@@ -306,6 +316,7 @@ var getCellsByUnitType = function(map, type){
                     targetCell.walkable = true;
                     targetCell.unit = null;
                 }
+*/
             }
             unit.meleeTarget = null;
         }

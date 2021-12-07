@@ -11,8 +11,9 @@ var unitMod = (function () {
     var createBaseUnit = function () {
         return {
             // current unit stats
-            maxHP: 1,           // max number of hit points for the unit
+            maxHP: 1,             // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
+            baseAttack: [1, 1],   // base attack
             // current values
             HP: 1,
             weaponIndex: 0,
@@ -32,6 +33,7 @@ var unitMod = (function () {
             player.maxCellsPerTurn = 3;
             player.sheetIndex = 2; // player sheet
             player.maxHP = 50;
+            player.baseAttack = [3, 7];
         }
     };
     // enemy type
@@ -40,6 +42,7 @@ var unitMod = (function () {
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
             enemy.maxHP = 5;
+            enemy.baseAttack = [1, 3];
         }
     };
     // wall type
@@ -59,6 +62,17 @@ var unitMod = (function () {
         return unit;
     };
 
+
+/********** **********
+     MELEE ATTACK
+*********** *********/
+
+    // do a melee attack with the given units
+    api.meleeAttack = function(attacker, target){
+        console.log('melee attack for ' + attacker.type);
+        target.HP -= 1;
+        target.HP = target.HP < 0 ? 0 : target.HP;
+    };
 
     // return the public API
     return api;

@@ -270,7 +270,7 @@ var getCellsByUnitType = function(map, type){
                 }
                 // wall blocks set for new games and not
                 if(cellIndex === 1){
-                    var wall = createWallUnit();
+                    var wall = unitMod.createUnit('wall'); //createWallUnit();
                     placeUnit(game, wall, x, y);
                 }
                 // player always set
@@ -282,7 +282,7 @@ var getCellsByUnitType = function(map, type){
                 // enemy
                 if(cellIndex === 3 && newGame){
                     game.remainingEnemies += 1;
-                    var enemy = createEnemyUnit();
+                    var enemy = unitMod.createUnit('enemy'); //createEnemyUnit();
                     enemy.HP = enemy.maxHP;
                     placeUnit(game, enemy, x, y);
                 }

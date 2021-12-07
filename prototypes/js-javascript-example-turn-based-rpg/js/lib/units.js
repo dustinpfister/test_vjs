@@ -14,22 +14,36 @@ var unitMod = (function () {
             meleeTarget: null, // cell index to attack in 'melee' processTurn state
             moveCells: [], // array of cells to move in 'move' processTurn state
             currentCellIndex: null,
-            active: false
+            active: true
         }
     };
 
     var UNIT_TYPES = {};
+    // player type
     UNIT_TYPES.player = {
         create : function(player){
-            player.active = true;
             player.maxCellsPerTurn = 3;
             player.sheetIndex = 2; // player sheet
             player.maxHP = 50;
         }
-    }
+    };
+    // enemy type
+    UNIT_TYPES.enemy = {
+        create : function(enemy){
+            enemy.maxCellsPerTurn = 2;
+            enemy.sheetIndex = 3;
+            enemy.maxHP = 5;
+        }
+    };
+    // wall type
+    UNIT_TYPES.wall = {
+        create : function(wall){
+            wall.sheetIndex = 1;
+        }
+    };
 
 
-
+/*
     // create a player unit
     var createPlayerUnit = function () {
         var player = createBaseUnit();
@@ -57,6 +71,7 @@ var unitMod = (function () {
         wall.sheetIndex = 1;
         return wall;
     };
+*/
 
 
     // PUBLIC API

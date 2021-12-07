@@ -17,10 +17,11 @@
 ## () - 0.0.0 - units.js lib
 * (done) start out with the source code from js-javascript-example-grid-unit-movement r7
 * (done) start a new unit.js lib
+* (done) start with using a unitMod.create('player') method in place of createPlayerUnit
 
-* start with using a unitMod.create('player') method in place of createPlayerUnit
-* use a unitMod.create('enemy') method in place of createEnemyUnit
-* use a unitMod.create('wall') method in place of createWallUnit
+* use a unitMod.create('enemy') method in place of createEnemyUnit in game.js
+* use a unitMod.create('wall') method in place of createWallUnit in game.js
+* remove old create unit code from game.js
 
 * have a baseAttack stat for units
 * use unit.baseAttack for melee and range attacks

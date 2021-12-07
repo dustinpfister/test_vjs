@@ -1,10 +1,16 @@
 // UTILS
 var utils = {};
+// get a value by way of a per value (0-1), and a min and max value
+utils.valueByRange = function(per, nMin, nMax){
+    per = per === undefined ? 0 : per;
+    nMin = nMin === undefined ? 0 : nMin;
+    nMax = nMax === undefined ? 1 : nMax;
+    return nMin + Math.round(per * (nMax - nMin));
+};
 // distance
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
-
 // angle from one point to another
 utils.angleToPoint = function (x1, y1, x2, y2, scale) {
     scale = scale === undefined ? Math.PI * 2 : scale;
@@ -23,7 +29,6 @@ utils.getCanvasRelative = function (e) {
 };
 // deep clone using JSON
 utils.deepCloneJSON = function (obj) {
-
     try{
        return JSON.parse(JSON.stringify(obj));
     }catch(e){

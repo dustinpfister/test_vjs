@@ -69,8 +69,14 @@ var unitMod = (function () {
 
     // do a melee attack with the given units
     api.meleeAttack = function(attacker, target){
+        var ba = attacker.baseAttack,
+        a = utils.valueByRange(Math.random(), ba[0], ba[1]);
         console.log('melee attack for ' + attacker.type);
-        target.HP -= 1;
+        console.log('base attack: ' + ba);
+        console.log('attack: ' + a);
+        console.log('****');
+        // take hp from target
+        target.HP -= a;
         target.HP = target.HP < 0 ? 0 : target.HP;
     };
 

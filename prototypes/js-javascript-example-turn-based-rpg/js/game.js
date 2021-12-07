@@ -319,7 +319,7 @@ var getCellsByUnitType = function(map, type){
                 y: null
             },
             mapStrings: opt.maps || ['2'],
-            player: createPlayerUnit(),
+            player: unitMod.createUnit('player'), //createPlayerUnit(),
             remainingEnemies: 0
         };
         game.mapStrings.forEach(function(){

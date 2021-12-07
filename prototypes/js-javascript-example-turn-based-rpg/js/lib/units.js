@@ -1,6 +1,6 @@
 var unitMod = (function () {
     
-    // create a base unit
+    // create a base unit object
     var createBaseUnit = function () {
         return {
             // current unit stats
@@ -17,6 +17,19 @@ var unitMod = (function () {
             active: false
         }
     };
+
+    var UNIT_TYPES = {};
+    UNIT_TYPES.player = {
+        create : function(player){
+            player.active = true;
+            player.maxCellsPerTurn = 3;
+            player.sheetIndex = 2; // player sheet
+            player.maxHP = 50;
+        }
+    }
+
+
+
     // create a player unit
     var createPlayerUnit = function () {
         var player = createBaseUnit();
@@ -49,8 +62,13 @@ var unitMod = (function () {
     // PUBLIC API
     var api = {};
 
+    // Public unitMod.create method
     api.createUnit = function(type){
         var unit = createBaseUnit();
+        unit.type = type;
+        // call create method for the type
+        UNIT_TYPES[type].create(unit);
+        // return the unit
         return unit;
     };
 

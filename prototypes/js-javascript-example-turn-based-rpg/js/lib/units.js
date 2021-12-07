@@ -14,6 +14,7 @@ var unitMod = (function () {
             maxHP: 1,             // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
             baseAttack: [1, 1],   // base attack
+            baseDefense: [0, 0],  // base defense
             // current values
             HP: 1,
             weaponIndex: 0,
@@ -34,6 +35,7 @@ var unitMod = (function () {
             player.sheetIndex = 2; // player sheet
             player.maxHP = 50;
             player.baseAttack = [3, 7];
+            player.baseDefense = [1, 2];
         }
     };
     // enemy type
@@ -42,7 +44,8 @@ var unitMod = (function () {
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
             enemy.maxHP = 8;
-            enemy.baseAttack = [1, 3];
+            enemy.baseAttack = [2, 5];
+            enemy.baseDefense = [1, 2];
         }
     };
     // wall type
@@ -69,12 +72,16 @@ var unitMod = (function () {
 
     // do a melee attack with the given units
     api.meleeAttack = function(attacker, target){
+        // figure raw attack
         var ba = attacker.baseAttack,
-        a = utils.valueByRange(Math.random(), ba[0], ba[1]);
-        console.log('melee attack for ' + attacker.type);
-        console.log('base attack: ' + ba);
-        console.log('attack: ' + a);
-        console.log('****');
+        ra = utils.valueByRange(Math.random(), ba[0], ba[1]);
+        // figure target defense
+        var bd = target.baseDefense,
+        d = utils.valueByRange(Math.random(), bd[0], bd[1]);
+        // figure attack value
+        var a = ra - d;
+        // attack can not go below zero
+        a = a < 0 ? 0 : a;
         // take hp from target
         target.HP -= a;
         target.HP = target.HP < 0 ? 0 : target.HP;

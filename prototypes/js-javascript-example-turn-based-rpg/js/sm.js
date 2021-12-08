@@ -122,7 +122,17 @@
         sm.stateObj = sm.states[sm.currentState];
     };
 
+    // call the given eventKey in the events object of the current state object
+    sm.callStateEvent = function(eventKey, e, opt){
+        var events = sm.stateObj.events;
+        if(events){
+            if(events[eventKey]){
+                events[eventKey].call(sm, e, opt, sm)
+            }
+        }
+    };
 
+    // pointer events
     var pointerHanders = {
         start: function (sm, e) {
             var pos = sm.input.pos = utils.getCanvasRelative(e);
@@ -130,15 +140,7 @@
                 e.preventDefault();
             }
             sm.input.pointerDown = true;
-
-            // get current state object and call any event for
-            // the current state object if there is one
-            //var state = sm.states[sm.currentState];
-            if(sm.stateObj.events){
-                if(sm.stateObj.events.pointerStart){
-                    sm.stateObj.events.pointerStart.call(sm, e, pos, sm)
-                }
-            }
+            sm.callStateEvent('pointerStart', e, pos);
 
         },
         move: function (sm, e) {
@@ -148,13 +150,11 @@
             sm.input.pointerDown = false;
         }
     };
-
     var createPointerHandler = function (sm, type) {
         return function (e) {
             pointerHanders[type](sm, e);
         };
     };
-
     canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
     canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));

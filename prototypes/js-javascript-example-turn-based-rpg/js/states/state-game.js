@@ -1,4 +1,4 @@
-sm.states.push({
+sm.states.game = {
     update: function(sm, secs){
         gameMod.update(sm.game);
     },
@@ -12,4 +12,4 @@ sm.states.push({
             gameMod.playerPointer(sm.game, pos.x, pos.y);
         }
     }
-});
+};

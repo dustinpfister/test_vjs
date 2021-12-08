@@ -68,7 +68,20 @@ var drawCell = function(sm, cell){
     };
     api.options = function (sm) {
         var canvas = sm.canvas,
+        pool = sm.game.options,
         ctx = sm.ctx;
+        opt = opt || {};
+        // from mod-pool.js in Clucker
+        pool.objects.forEach(function (obj) {
+            ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';
+            ctx.strokeStyle = opt.strokeStyle || obj.data.strokeStyle || 'black';
+            if (obj.active || opt.drawAll) {
+                ctx.beginPath();
+                ctx.arc(obj.x + obj.w / 2, obj.y + obj.h / 2,  (obj.w + obj.h) / 2 / 2 , 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+            }
+        });
     };
     // bland place holder title text
     api.titleText = function(sm){

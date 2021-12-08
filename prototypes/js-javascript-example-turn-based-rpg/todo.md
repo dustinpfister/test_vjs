@@ -21,7 +21,7 @@
     UNITS
 ********** *******-->
 
-## () - 0.7.0 - unit sub-types starting with enemy unit type
+## () - 0.8.0 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am goinf to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -47,37 +47,38 @@
 }
 ```
 
-## () - 0.6.0 - inventory and drops
+## () - 0.7.0 - inventory and drops
 * an item can be a drop that will be shown in the grid along with "wall", and "enemy" types
 * a unit will then need to have an unit.inventory property that will be another kind of standard object
 * an inventory object should contain a slotCount property that is the max number of items a unit can carry.
 
-## () - 0.5.0 - new unit type "item" Collection, weapons
+## () - 0.6.0 - new unit type "item" Collection, weapons
 * start a new type of unit called an 'item'
+
+## () - 0.5.0 - keyboard events
 
 ## () - 0.4.0 - Game mode property, with 'map', and 'menu' mode
 * (done) add an object pool librray to the js lib folder
 * (done) start using the game.map mode to have more than one game mode in gameMod
 * (done) the current game as it stands can be called 'map' mode
 * (done) start a new 'menu' mode that can be used to switch between various 'options'
+* (done) gameMod.update will need to be updated to take an sm object, not a game object
+* (done) an sm object will need to be the 'state' inside spawn, and update methods for the options pool
+* (done) draw.options method added to draw.js
+* (done) I will want a gameMod.pointerEnd method that will be called in the game state pointerEnd event
+* (done) rename gameMod.playerPointer to gameMod.pointerStart
+* (done) the player can switch to the menu mode by long pressing anywhere for now
+* (done) the player can switch back to the game by just not clicking a button when in menu mode
 
-* draw.options method started
-
-* gameMod.update will need to be updated to take an sm object, not a game object
-* and sm object will need to be the 'state' inside spawn, and update methods for the options pool
-
-* I will want a gameMod.pointerEnd method that will be called in the game state pointerEnd event
-* rename gameMod.playerPointer to gameMod.pointerStart
-* the player can switch to the menu mode by long clicking the player
-* the player can switch back to the game by just not clicking a button
-
+* spawn buttons in gameMod.pointerEnd for now
+* the menu will show up as a collection of objects in a circle around the center of the canvas
+* the circles will then move out to a outer and or inner radius
 
 * a back button will also have a simular effect to just clicking outside of the button circle
-
-
-* the menu will show up as a collection of objects in a circle around the center of the canvas
-* with pointer events I can just click the option that I want
+* with pointer events I can just click the option that I want in the circle of buttons
 * in the menu have a 'quit' option that will cause a return to the title state
+
+
 * clicking the button in title state goes to the game state
 * when at the edege of a 'inner circle' options show up to go to the next map
 * if at a corner the menu will always show up even with a short click

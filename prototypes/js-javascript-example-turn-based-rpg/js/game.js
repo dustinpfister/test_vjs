@@ -262,6 +262,7 @@ var menuPool = {
     disableLifespan: true,
     data: {
         outerRadius: 50,
+        outerTotal: 1,
         frame: 0,
         maxFrame: 15
     }
@@ -275,10 +276,13 @@ menuPool.spawn = function(button, options, sm, spawnOpt){
     bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
     bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
     bd.radius = 0;
+    bd.a = 0;
+    bd.ta = spawnOpt.ta === undefined ? Math.PI * 2: spawnOpt.ta;
     bd.outer = spawnOpt.outer === undefined ? true : spawnOpt;
     bd.onClick = spawnOpt.onClick || function(){};
     // pool data
     pd.frame = 0;
+    pd.outerTotal = spawnOpt.outerTotal === undefined ? 1 : spawnOpt.outerTotal
 };
 
 menuPool.update = function(button, options, sm, secs){
@@ -292,7 +296,9 @@ menuPool.update = function(button, options, sm, secs){
 
     var per = pd.frame / pd.maxFrame;
     var radius = pd.outerRadius;
-    button.x = bd.cx + Math.cos(0) * radius * per;
+    bd.a = bd.ta * per;
+    button.x = bd.cx + Math.cos(bd.a) * radius * per;
+    button.y = bd.cy + Math.sin(bd.a) * radius * per;
 };
 
 /********** **********

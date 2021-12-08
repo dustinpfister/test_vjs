@@ -89,6 +89,18 @@ var drawCell = function(sm, cell){
             i += 1;
         }
     };
+    // draw version number
+    api.ver = function(sm, style){
+        var ctx = sm.ctx,
+        canvas = sm.canvas;
+        // text style
+        ctx.fillStyle = style || 'white';
+        ctx.font = '8px courier';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        // version number
+        ctx.fillText('v' + sm.ver, 1, canvas.height - 10);
+    };
     // draw info
     api.info = function (sm) {
         var ctx = sm.ctx,
@@ -112,9 +124,6 @@ var drawCell = function(sm, cell){
         ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, 5 + dy * 3);
         // enemies
         ctx.fillText('enemies:' + sm.game.remainingEnemies, 5, 5 + dy * 4);
-
-        // version number
-        ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
     };
     // return the public api to draw variable
     return api;

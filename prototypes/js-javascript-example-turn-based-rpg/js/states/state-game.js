@@ -7,6 +7,7 @@ sm.states.game = {
         draw.back(sm);
         draw.map(sm);
         draw.info(sm);
+        draw.ver(sm);
     },
     events: {
         pointerStart: function(e, pos, sm){

@@ -15,7 +15,11 @@
         ver: '0.3.0',
         fps: 12,
         lt: new Date(),
+
+        // states
         states:{},
+        currentState: 'game',
+
         game: gameMod.create({
             marginX : 14,
             marginY : 7,
@@ -118,7 +122,17 @@
             }
             sm.input.pointerDown = true;
             // call player pointer method in gameMod
-            gameMod.playerPointer(sm.game, pos.x, pos.y);
+            //gameMod.playerPointer(sm.game, pos.x, pos.y);
+
+            // get current state object and call any event for
+            // the current state object if there is one
+            var state = sm.states[sm.currentState];
+            if(state.events){
+                if(state.events.pointerStart){
+                    state.events.pointerStart.call(sm, e, pos, sm)
+                }
+            }
+
         },
         move: function (sm, e) {
             sm.input.pos = utils.getCanvasRelative(e);

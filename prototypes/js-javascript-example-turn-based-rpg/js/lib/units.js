@@ -57,8 +57,11 @@ var unitMod = (function () {
             player.maxCellsPerTurn = 3;
             player.sheetIndex = 2; // player sheet
             player.maxHP = 50;
-            player.baseAttack = [3, 7];
+            player.baseAttack = [1, 3];
             player.baseDefense = [1, 2];
+            player.currentWeapon = {
+                attack: [5, 7]
+            };
             setStat.attack(player);
         }
     };
@@ -98,9 +101,9 @@ var unitMod = (function () {
     // do a melee attack with the given units
     api.meleeAttack = function(attacker, target){
         // figure raw attack
-        var ba = attacker.baseAttack,
-        ra = utils.valueByRange(Math.random(), ba[0], ba[1]);
-        console.log(attacker.attack)
+        console.log(attacker.attack);
+        var fa = attacker.attack,
+        ra = utils.valueByRange(Math.random(), fa[0], fa[1]);
         // figure target defense
         var bd = target.baseDefense,
         d = utils.valueByRange(Math.random(), bd[0], bd[1]);

@@ -258,17 +258,37 @@ var getCellsByUnitType = function(map, type){
      MENU POOL
 *********** *********/
 var menuPool = {
-    count: 8
+    count: 8,
+    disableLifespan: true,
+    data: {
+        outerRadius: 50,
+        frame: 0,
+        maxFrame: 30
+    }
 };
 
 menuPool.spawn = function(button, options, sm, spawnOpt){
-    
-
+    var bd = button.data,
+    pd = options.data;
+    bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
+    bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
+    bd.radius = 0;
+    bd.outer = spawnOpt.outer === undefined ? true : spawnOpt;
+    pd.frame = 0;
 };
 
 menuPool.update = function(button, options, sm, secs){
-    
+    var pd = options.data,
+    bd = button.data;
+    // !!! updating pool data here is not so great
+    if(button.i === options.objects.length - 1){
+        pd.frame += 30 * secs;
+        pd.frame = pd.frame >= pd.maxFrame ? pd.maxFrame : pd.frame;
+    }
 
+    var per = pd.frame / pd.maxFrame;
+    var radius = pd.outerRadius;
+    button.x = bd.cx + Math.cos(0) * radius * per;
 };
 
 /********** **********
@@ -473,15 +493,26 @@ menuPool.update = function(button, options, sm, secs){
         pCell = api.getPlayerCell(game);
         secs = (now - game.pointerDownTime) / 1000;
         // long press
-        if(secs >= 1){
+        if( secs >= 0.5 ){
             console.log('long press!');
             if(game.mode === 'map'){
                 game.mode = 'menu';
+                // purge all first
+                game.options.objects.forEach(function(button){
+                    button.active = false;
+                });
+                // spawn buttons
+                poolMod.spawn(game.options, sm, {
+                    desc: 'quit',
+                    onClick: function(sm, button){
+                       sm.setState('title');
+                    }
+                });
+
             }
         }
         // short press
-        if(secs < 1 ){
-
+        if(secs < 0.5 ){
             if (game.mode === 'map' && clickedCell) {
                 // if player cell is clicked and there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){

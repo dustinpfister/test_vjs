@@ -74,6 +74,16 @@ var poolMod = (function () {
         obj.active = false;
         pool.purge.call(pool, obj, pool, state);
     };
+    // spawn all objects
+    api.purgeAll = function(pool, state, opt){
+        pool.objects.forEach(function(obj){
+            if (!obj.active) {
+                obj.active =  false;
+                pool.purge.call(pool, obj, pool, state);
+            }
+        });
+        return pool.objects;
+    };
     // update a pool object by a secs value
     api.update = function (pool, secs, state) {
         var i = pool.objects.length,

@@ -130,15 +130,13 @@
                 e.preventDefault();
             }
             sm.input.pointerDown = true;
-            // call player pointer method in gameMod
-            //gameMod.playerPointer(sm.game, pos.x, pos.y);
 
             // get current state object and call any event for
             // the current state object if there is one
-            var state = sm.states[sm.currentState];
-            if(state.events){
-                if(state.events.pointerStart){
-                    state.events.pointerStart.call(sm, e, pos, sm)
+            //var state = sm.states[sm.currentState];
+            if(sm.stateObj.events){
+                if(sm.stateObj.events.pointerStart){
+                    sm.stateObj.events.pointerStart.call(sm, e, pos, sm)
                 }
             }
 

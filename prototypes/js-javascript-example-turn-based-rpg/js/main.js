@@ -16,7 +16,7 @@
             //draw.map(sm);
             //draw.info(sm);
 
-            var state = sm.states[sm.currentState];
+            var state = sm.stateObj;
             state.update.call(sm, sm, secs);
             state.draw.call(sm, sm, {}); // empty object for 'layers' at least for now
 

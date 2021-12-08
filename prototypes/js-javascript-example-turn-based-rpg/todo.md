@@ -62,10 +62,12 @@
 * in the menu have a 'quit' option that till case a return to the title state
 
 ## () - 0.3.0 - state machine with title, and game states
-* start a state machine in main.js for now
-* have a /js/states folder with a state-title.js and state-game.js files
+* start a state machine as \/js\/sm.js for now
+* have a \/js\/states folder with a state-title.js and state-game.js files
 * state-game.js is just the game as it is before
 * state-title.js is just a plain text title screen with a single button that goes to the game state for now
+* \/js\/main.js is now just a loop that works with a final sm object
+* update build.sh and index.html files to work with new collection of files
 
 ## ( done 12/08/2021 ) - 0.2.0 - unit.currentWeapon Object
 * (done) adjust for canvas scale

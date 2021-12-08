@@ -4,17 +4,38 @@ var unitMod = (function () {
     var api = {};
 
 /********** **********
+     SET STAT HELPER
+*********** *********/
+
+   var setStat = {};
+   
+   setStat.attack = function(unit){
+       unit.attack = unit.baseAttack.map(function(ba, i){
+           // ref to 'current' weapon if any
+           var cw = unit.currentWeapon != null ? unit.currentWeapon.attack[i]: 0;
+           // base attack value + current attack
+           return ba + cw;
+           
+       });
+   };
+
+
+/********** **********
      CREATE A UNIT
 *********** *********/
 
     // create a base unit object
     var createBaseUnit = function () {
-        return {
+        var unit = {
             // current unit stats
             maxHP: 1,             // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
             baseAttack: [1, 1],   // base attack
             baseDefense: [0, 0],  // base defense
+            attack: [0, 0],
+            // equipment
+            meleeWeapon: null,
+            currentWeapon: null,  // the current active weapon
             // current values
             HP: 1,
             weaponIndex: 0,
@@ -24,7 +45,9 @@ var unitMod = (function () {
             moveCells: [], // array of cells to move in 'move' processTurn state
             currentCellIndex: null,
             active: true
-        }
+        };
+        setStat.attack(unit);
+        return unit;
     };
 
     var UNIT_TYPES = {};
@@ -36,6 +59,7 @@ var unitMod = (function () {
             player.maxHP = 50;
             player.baseAttack = [3, 7];
             player.baseDefense = [1, 2];
+            setStat.attack(player);
         }
     };
     // enemy type
@@ -46,6 +70,7 @@ var unitMod = (function () {
             enemy.maxHP = 8;
             enemy.baseAttack = [2, 5];
             enemy.baseDefense = [1, 2];
+            setStat.attack(enemy);
         }
     };
     // wall type
@@ -75,6 +100,7 @@ var unitMod = (function () {
         // figure raw attack
         var ba = attacker.baseAttack,
         ra = utils.valueByRange(Math.random(), ba[0], ba[1]);
+        console.log(attacker.attack)
         // figure target defense
         var bd = target.baseDefense,
         d = utils.valueByRange(Math.random(), bd[0], bd[1]);

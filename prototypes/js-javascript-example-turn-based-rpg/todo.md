@@ -65,6 +65,8 @@
 * unit can have a unit.meleeWeapon object as a value that defaults to null for unarmed
 * use meleeWeapon object in unitMod.meleeAttack method to figure additional deltas for a final attack array
 * meleeWeapon object has an array property just like baseAttack of the unit object
+
+
 * final unit.attack value is just the sum of baseAttack, and the attackProp of the weapon
 * start a setAttack helper in unitMod that set a final attack value for a unit
 * call setAttack in unitMod.create

@@ -60,6 +60,15 @@
 * (done) add a back button that will also have a simular effect to just clicking outside of the button circle
 * (done) get oc and ic count in createMenu
 
+* update getToMap helper to append and array of objects that contain mi,x,y, and dir like this:
+```
+[
+  {mi:7, x:8, y:0, dir: 'south'},
+  {mi:5, x:0, y:6, dir: 'east'}
+]
+```
+* use new toMap object array to crate proper buttons in menu
+
 * when at an edge of a corner relavent wasd key press will result in a map change
 * if at a corner the menu will always show up even with a short click
 * when a button is clicked prefrom the animation is reverse and then call the button.onClick method

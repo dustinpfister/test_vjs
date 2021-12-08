@@ -481,6 +481,43 @@ menuPool.update = function(button, options, sm, secs){
         }
     };
 
+    BUTTON.map_south = {
+        desc: 'South',
+        outer: false,
+        ta: Math.PI * 0.5,
+        onClick: function(sm, button){
+           
+        }
+    };
+
+    BUTTON.map_north = {
+        desc: 'North',
+        outer: false,
+        ta: Math.PI * 1.5,
+        onClick: function(sm, button){
+           
+        }
+    };
+
+    BUTTON.map_east = {
+        desc: 'East',
+        outer: false,
+        ta: Math.PI * 2,
+        onClick: function(sm, button){
+           
+        }
+    };
+
+    BUTTON.map_west = {
+        desc: 'West',
+        outer: false,
+        ta: Math.PI * 1,
+        onClick: function(sm, button){
+           
+        }
+    };
+
+
     BUTTON.dum1 = {
         desc: 'dummy1',
         outer: true,
@@ -522,7 +559,7 @@ menuPool.update = function(button, options, sm, secs){
             button.active = false;
         });
         // default buttonKeys array
-        var buttonKeys = ['quit', 'resume', 'dum1', 'dum2', 'dum3'];
+        var buttonKeys = ['quit', 'resume', 'map_south', 'map_north', 'map_east', 'map_west'];
 
         var oi = 0, 
         ii = 0,
@@ -532,13 +569,16 @@ menuPool.update = function(button, options, sm, secs){
         buttonKeys.forEach(function(buttonKey){
             var buttonDATA = BUTTON[buttonKey],
             len = (buttonDATA.outer ? oc : ic),
-            i = (buttonDATA.outer ? oi : ii)
+            i = (buttonDATA.outer ? oi : ii),
+            ta = Math.PI * 2 / len * (i + 1);
+            // use buttonDATA.ta if there is one
+            ta = buttonDATA.ta != undefined ? buttonDATA.ta : ta;
             // spawn buttons
             poolMod.spawn(game.options, sm, {
                 desc: buttonDATA.desc,
                 onClick: buttonDATA.onClick,
                 outer: buttonDATA.outer,
-                ta: Math.PI * 2 / len * (i + 1)
+                ta: ta
             });
             if(buttonDATA.outer){
                oi += 1;

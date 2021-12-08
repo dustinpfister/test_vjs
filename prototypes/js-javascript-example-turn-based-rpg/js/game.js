@@ -505,6 +505,16 @@ menuPool.update = function(button, options, sm, secs){
         }
     };
 
+    var getButtonKeyValueCount = function(buttonKeys, prop, value){
+        return buttonKeys.reduce(function(acc, buttonKey){
+            var buttonDATA = BUTTON[buttonKey];
+            if(buttonDATA[prop] === value){
+                acc += 1;
+            }
+            return acc;
+        }, 0);
+    };
+
     // create a menu for the current game state
     var createMenu = function(game){
         // purge all buttons first
@@ -514,12 +524,13 @@ menuPool.update = function(button, options, sm, secs){
         // default buttonKeys array
         var buttonKeys = ['quit', 'resume', 'dum1', 'dum2', 'dum3'];
 
-        var oi = 0, ii = 0;
+        var oi = 0, 
+        ii = 0,
+        oc = getButtonKeyValueCount(buttonKeys, 'outer', true), //3,
+        ic = getButtonKeyValueCount(buttonKeys, 'outer', false); //2;
         // spawn buttons 
         buttonKeys.forEach(function(buttonKey){
             var buttonDATA = BUTTON[buttonKey],
-            oc = 3,
-            ic = 2,
             len = (buttonDATA.outer ? oc : ic),
             i = (buttonDATA.outer ? oi : ii)
             // spawn buttons

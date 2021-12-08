@@ -270,11 +270,14 @@ var menuPool = {
 menuPool.spawn = function(button, options, sm, spawnOpt){
     var bd = button.data,
     pd = options.data;
+    // button data
+    bd.desc = spawnOpt.desc || false;
     bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
     bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
     bd.radius = 0;
     bd.outer = spawnOpt.outer === undefined ? true : spawnOpt;
     bd.onClick = spawnOpt.onClick || function(){};
+    // pool data
     pd.frame = 0;
 };
 

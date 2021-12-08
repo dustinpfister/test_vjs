@@ -75,9 +75,10 @@
 * (done) with pointer events I can just click the option that I want in the circle of buttons
 * (done) in the menu have a 'quit' option that will cause a return to the title state
 
+* draw desc for a button
 
 * a back button will also have a simular effect to just clicking outside of the button circle
-* clicking the button in title state goes to the game state
+
 * when at the edege of a 'inner circle' options show up to go to the next map
 * if at a corner the menu will always show up even with a short click
 

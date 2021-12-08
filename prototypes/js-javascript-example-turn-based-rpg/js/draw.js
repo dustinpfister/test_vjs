@@ -71,15 +71,23 @@ var drawCell = function(sm, cell){
         pool = sm.game.options,
         ctx = sm.ctx,
         opt = {};
-        // from mod-pool.js in Clucker
+        // based off of pool-solid draw method in mod-pool.js in Clucker
         pool.objects.forEach(function (obj) {
             ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';
             ctx.strokeStyle = opt.strokeStyle || obj.data.strokeStyle || 'black';
             if (obj.active || opt.drawAll) {
+                var cx = obj.x + obj.w / 2,
+                cy = obj.y + obj.h / 2;
                 ctx.beginPath();
-                ctx.arc(obj.x + obj.w / 2, obj.y + obj.h / 2,  (obj.w + obj.h) / 2 / 2 , 0, Math.PI * 2);
+                ctx.arc(cx, cy,  (obj.w + obj.h) / 2 / 2 , 0, Math.PI * 2);
                 ctx.fill();
                 ctx.stroke();
+                if(obj.data.desc){
+                    ctx.fillStyle = 'black';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(obj.data.desc, cx, cy);
+                }
             }
         });
     };

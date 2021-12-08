@@ -70,7 +70,8 @@
 * (done) the player can switch to the menu mode by long pressing anywhere for now
 * (done) the player can switch back to the game by just not clicking a button when in menu mode
 
-* spawn buttons in gameMod.pointerEnd for now
+* (done) spawn buttons in gameMod.pointerEnd for now
+
 * the menu will show up as a collection of objects in a circle around the center of the canvas
 * the circles will then move out to a outer and or inner radius
 

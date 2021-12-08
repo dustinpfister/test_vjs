@@ -263,7 +263,7 @@ var menuPool = {
     data: {
         outerRadius: 50,
         frame: 0,
-        maxFrame: 30
+        maxFrame: 15
     }
 };
 
@@ -274,6 +274,7 @@ menuPool.spawn = function(button, options, sm, spawnOpt){
     bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
     bd.radius = 0;
     bd.outer = spawnOpt.outer === undefined ? true : spawnOpt;
+    bd.onClick = spawnOpt.onClick || function(){};
     pd.frame = 0;
 };
 
@@ -495,6 +496,7 @@ menuPool.update = function(button, options, sm, secs){
         // long press
         if( secs >= 0.5 ){
             console.log('long press!');
+            // if we are in map mode switch to menu mode
             if(game.mode === 'map'){
                 game.mode = 'menu';
                 // purge all first
@@ -508,7 +510,6 @@ menuPool.update = function(button, options, sm, secs){
                        sm.setState('title');
                     }
                 });
-
             }
         }
         // short press
@@ -540,7 +541,15 @@ menuPool.update = function(button, options, sm, secs){
             }
 
             if(game.mode === 'menu'){
-                game.mode = 'map';
+
+                var clicked = poolMod.getOverlaping({active: true, w:1, h:1, x: x, y: y}, game.options);
+                if(clicked.length >= 1){
+                    clicked[0].data.onClick(sm, clicked[0]);
+                }else{
+                   // no button was clicked
+                   game.mode = 'map';
+                }
+
             }
         }
     };

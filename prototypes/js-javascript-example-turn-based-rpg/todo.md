@@ -58,9 +58,15 @@
 ## () - 0.4.0 - Game mode property, with 'map', and 'menu' mode
 * start using the game.map mode to have more than one game mode in gameMod
 * the current game as it stands can be called 'map' mode
+* add an object pool librray to the js lib folder
 * start a new 'menu' mode that can be used to switch between various 'options'
-* in the menu have a 'quit' option that till case a return to the title state
+* the player can switch to the menu mode by long clicking the player
+* the menu will show up as a collection of objects in a circle around the center of the canvas
+* with pointer events I can just click the option that I want
+* in the menu have a 'quit' option that will cause a return to the title state
 * clicking the button in title state goes to the game state
+* when at the edege of a 'inner circle' options show up to go to the next map
+* if at a corner the menu will always show up even with a short click
 
 ## ( done 12/08/2021 ) - 0.3.0 - state machine started with title, and game states
 * (done) start a state machine as \/js\/sm.js for now

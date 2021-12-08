@@ -52,6 +52,7 @@
 
 
 ## () - 0.2.0 - unit.meleeWeapon Object
+* (done) adjust for canvas scale
 * unit can have a unit.meleeWeapon object as a value that defaults to null for unarmed
 * use meleeWeapon object in unitMod.meleeAttack method to figure additional deltas for a final attack range
 * meleeWeapon object has an array property just like baseAttack of the unit object

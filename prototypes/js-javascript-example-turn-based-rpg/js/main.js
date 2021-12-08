@@ -6,6 +6,7 @@
     container.appendChild(canvas);
     canvas.width = 320;
     canvas.height = 240;
+    canvas.className = 'canvas-layer'
     ctx.translate(0.5, 0.5);
 
     // disable default action for onselectstart

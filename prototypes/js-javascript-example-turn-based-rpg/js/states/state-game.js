@@ -1,4 +1,5 @@
 sm.states.game = {
+    key: 'game',
     update: function(sm, secs){
         gameMod.update(sm.game);
     },

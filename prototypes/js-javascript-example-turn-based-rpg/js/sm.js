@@ -11,14 +11,16 @@
     // disable default action for onselectstart
     canvas.onselectstart = function () { return false; }
 
+    // state machine object
     var sm = {
         ver: '0.3.0',
         fps: 12,
         lt: new Date(),
 
         // states
-        states:{},
-        currentState: 'game',
+        states:{},            // collection of state objects
+        stateObj: null,       // ref to current state object
+        currentState: 'game', // current state object key name
 
         game: gameMod.create({
             marginX : 14,
@@ -113,6 +115,13 @@
             }
         }
     };
+
+    // set the current state
+    sm.setState = function(newStateKey){
+        sm.currentState = newStateKey;
+        sm.stateObj = sm.states[sm.currentState];
+    };
+
 
     var pointerHanders = {
         start: function (sm, e) {

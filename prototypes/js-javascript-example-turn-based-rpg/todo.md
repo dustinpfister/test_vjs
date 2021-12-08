@@ -68,8 +68,10 @@
 * (done) state-game.js is just the game as it is before
 * (done) update build.sh and index.html files to work with new collection of files
 * (done) \/js\/main.js is now just a loop that works with a final sm object
+* (done) add utils.boundingBox
+* have a sm.setState method, and a sm.stateObj prop that is a ref to the current state object
 
-* add utils.boundingBox
+
 * have a state-title.js for the sake of just having more than one state object for now
 * state-title.js is just a plain text title screen with a single button
 * clicking the button in title state goes to the game state

@@ -1,5 +1,10 @@
 (function () {
 
+    console.log(sm.stateObj);
+    sm.setState('game');
+    console.log(sm.stateObj);
+
+
     // loop with frame capping set by sm.fps value
     var loop = function () {
         var now = new Date(),

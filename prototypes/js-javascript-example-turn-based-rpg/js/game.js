@@ -461,6 +461,41 @@ menuPool.update = function(button, options, sm, secs){
         game.pointerDownTime = new Date();
     };
 
+
+    var BUTTON = {};
+
+    BUTTON.quit = {
+        desc: 'quit',
+        onClick: function(sm, button){
+           sm.setState('title');
+        }
+    };
+
+    BUTTON.resume = {
+        desc: 'resume',
+        onClick: function(sm, button){
+           sm.game.mode = 'map';
+        }
+    };
+
+    // create a menu for the current game state
+    var createMenu = function(game){
+        // purge all first
+        game.options.objects.forEach(function(button){
+            button.active = false;
+        });
+        ['quit', 'resume'].forEach(function(buttonKey, i){
+            var buttonDATA = BUTTON[buttonKey]
+            // spawn buttons
+            poolMod.spawn(game.options, sm, {
+                desc: buttonDATA.desc,
+                onClick: buttonDATA.onClick,
+                ta: Math.PI * 2 / 2 * (i + 1)
+            });
+
+        });
+    };
+
     // call when a pointer has ended
     api.pointerEnd = function(sm, x, y){
         var game = sm.game,
@@ -475,17 +510,8 @@ menuPool.update = function(button, options, sm, secs){
             // if we are in map mode switch to menu mode
             if(game.mode === 'map'){
                 game.mode = 'menu';
-                // purge all first
-                game.options.objects.forEach(function(button){
-                    button.active = false;
-                });
-                // spawn buttons
-                poolMod.spawn(game.options, sm, {
-                    desc: 'quit',
-                    onClick: function(sm, button){
-                       sm.setState('title');
-                    }
-                });
+                createMenu(game);
+
             }
         }
         // short press

@@ -56,12 +56,15 @@
 * start a new type of unit called an 'item'
 
 ## () - 0.5.0 - keyboard events and more work on menu game mode
+* (done) createMenu helper and BUTTON const in game.js
+* (done) add a back button that will also have a simular effect to just clicking outside of the button circle
+
 * add keyboard events
 * use wasd keys to move a cell selector, and use the 'j' key to 'click' that cell
 * when at an edge of a corner relavent wasd key press will result in a map change
 * in menu game mode the 'ad' keys can be used to select an option and 'j' will result in a click
 * in menu game mode the 'ws' keys can be used to switch between inner and outer rings
-* a back button will also have a simular effect to just clicking outside of the button circle
+
 * if at a corner the menu will always show up even with a short click
 * when a button is clicked prefrom the animation is reverse and then call the button.onClick method
 * when at the edege of a 'inner circle' options show up to go to the next map

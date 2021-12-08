@@ -541,7 +541,6 @@ menuPool.update = function(button, options, sm, secs){
             }
 
             if(game.mode === 'menu'){
-
                 var clicked = poolMod.getOverlaping({active: true, w:1, h:1, x: x, y: y}, game.options);
                 if(clicked.length >= 1){
                     clicked[0].data.onClick(sm, clicked[0]);
@@ -549,7 +548,6 @@ menuPool.update = function(button, options, sm, secs){
                    // no button was clicked
                    game.mode = 'map';
                 }
-
             }
         }
     };

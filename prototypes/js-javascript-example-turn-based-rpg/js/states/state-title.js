@@ -8,7 +8,8 @@ sm.states.title = {
         draw.ver(sm);
     },
     events: {
-        pointerStart: function(e, pos, sm){
+        pointerEnd: function(e, pos, sm){
+            sm.game.mode = 'map';
             sm.setState('game');
         }
     }

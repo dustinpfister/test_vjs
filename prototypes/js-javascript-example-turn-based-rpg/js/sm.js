@@ -150,7 +150,7 @@
         },
         end: function (sm, e) {
             sm.input.pointerDown = false;
-            sm.callStateEvent('pointerEnd', e, {});
+            sm.callStateEvent('pointerEnd', e, sm.input.pos);
         }
     };
     var createPointerHandler = function (sm, type) {

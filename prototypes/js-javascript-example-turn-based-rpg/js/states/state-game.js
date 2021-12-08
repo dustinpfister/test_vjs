@@ -25,6 +25,9 @@ sm.states.game = {
         },
         pointerEnd: function(e, pos, sm){
             //gameMod.playerPointer(sm.game, pos.x, pos.y);
+
+
+
             gameMod.pointerEnd(sm, pos.x, pos.y);
         }
     }

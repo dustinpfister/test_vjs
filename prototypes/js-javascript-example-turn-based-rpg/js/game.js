@@ -294,7 +294,8 @@ menuPool.update = function(button, options, game, secs){
             mapStrings: opt.maps || ['2'],
             player: unitMod.createUnit('player'),
             remainingEnemies: 0,
-            options: new poolMod.create(menuPool)
+            options: new poolMod.create(menuPool),
+            pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
         };
         game.mapStrings.forEach(function(){
             game.maps.push(mapMod.create({
@@ -458,40 +459,50 @@ menuPool.update = function(button, options, game, secs){
 
     api.pointerStart = function(sm, x, y){
         var game = sm.game;
-        var clickedCell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
-        map = game.maps[game.mapIndex],
-        pCell = api.getPlayerCell(game);
-        // if we have a cell
-        if (clickedCell) {
-            // if player cell is clicked and there is a toIndex value
-            if(clickedCell === pCell && game.toMap.index != null){
-                game.mapIndex = game.toMap.index;
-                game.toMap = getToMap(game);
-                pCell.unit = null;
-                pCell.walkable = true;
-                game.player.currentCellIndex = null;
-                placePlayer(game);
-                return;
-            }
-            // if cell has a unit on it
-            if(clickedCell.unit){
-                var unit = clickedCell.unit; 
-                if(unit.type === 'enemy'){
-                    // set meleeTarget index
-                    game.player.meleeTarget = clickedCell.i;
-                    game.turnState = 'start';
-                    return;
-                }
-            }
-            // default action is to try to move to the cell
-            game.player.moveCells = getMoveCells(game, pCell, clickedCell);
-            game.turnState = 'start';
-
-        }
+        // pointerDownTime should start at now
+        game.pointerDownTime = new Date();
     };
 
+    // call when a pointer has ended
     api.pointerEnd = function(sm, x, y){
-        console.log('game pointer end');
+        var game = sm.game,
+        now = new Date(),
+        clickedCell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
+        map = game.maps[game.mapIndex],
+        pCell = api.getPlayerCell(game);
+        secs = (now - game.pointerDownTime) / 1000;
+        // long press
+        if(secs >= 1){
+            console.log('long press!')
+        }
+        // short press
+        if(secs < 1 ){
+            if (clickedCell) {
+                // if player cell is clicked and there is a toIndex value
+                if(clickedCell === pCell && game.toMap.index != null){
+                    game.mapIndex = game.toMap.index;
+                    game.toMap = getToMap(game);
+                    pCell.unit = null;
+                    pCell.walkable = true;
+                    game.player.currentCellIndex = null;
+                    placePlayer(game);
+                    return;
+                }
+                // if cell has a unit on it
+                if(clickedCell.unit){
+                    var unit = clickedCell.unit; 
+                    if(unit.type === 'enemy'){
+                        // set meleeTarget index
+                        game.player.meleeTarget = clickedCell.i;
+                        game.turnState = 'start';
+                        return;
+                    }
+                }
+                // default action is to try to move to the cell
+                game.player.moveCells = getMoveCells(game, pCell, clickedCell);
+                game.turnState = 'start';
+            }
+        }
     };
 
     // return the public API

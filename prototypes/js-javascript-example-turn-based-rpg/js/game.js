@@ -455,41 +455,6 @@ menuPool.update = function(button, options, sm, secs){
         return map.cells[p.currentCellIndex];
     };
     // preform what needs to happen for a player pointer event for the given pixel positon
-/*
-    api.playerPointer = function(game, x, y){
-        var clickedCell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
-        map = game.maps[game.mapIndex],
-        pCell = api.getPlayerCell(game);
-        // if we have a cell
-        if (clickedCell) {
-            // if player cell is clicked and there is a toIndex value
-            if(clickedCell === pCell && game.toMap.index != null){
-                game.mapIndex = game.toMap.index;
-                game.toMap = getToMap(game);
-                pCell.unit = null;
-                pCell.walkable = true;
-                game.player.currentCellIndex = null;
-                placePlayer(game);
-                return;
-            }
-            // if cell has a unit on it
-            if(clickedCell.unit){
-                var unit = clickedCell.unit; 
-                if(unit.type === 'enemy'){
-                    // set meleeTarget index
-                    game.player.meleeTarget = clickedCell.i;
-                    game.turnState = 'start';
-                    return;
-                }
-            }
-            // default action is to try to move to the cell
-            game.player.moveCells = getMoveCells(game, pCell, clickedCell);
-            game.turnState = 'start';
-
-        }
-    };
-*/
-
     api.pointerStart = function(sm, x, y){
         var game = sm.game;
         // pointerDownTime should start at now

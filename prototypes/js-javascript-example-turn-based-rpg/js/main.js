@@ -1,30 +1,20 @@
-(function () {
 
-    console.log(sm.stateObj);
-    sm.setState('game');
-    console.log(sm.stateObj);
+console.log(sm.stateObj);
+sm.setState('game');
+console.log(sm.stateObj);
 
 
-    // loop with frame capping set by sm.fps value
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - sm.lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs >= 1 / sm.fps){
-            //gameMod.update(sm.game);
-            //draw.back(sm);
-            //draw.map(sm);
-            //draw.info(sm);
+// loop with frame capping set by sm.fps value
+var loop = function () {
+    var now = new Date(),
+    secs = (now - sm.lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs >= 1 / sm.fps){
+        sm.stateObj.update.call(sm, sm, secs);
+        sm.stateObj.draw.call(sm, sm, {}); // empty object for 'layers' at least for now
+        sm.lt = now;
+    }
+};
+loop();
 
-            var state = sm.stateObj;
-            state.update.call(sm, sm, secs);
-            state.draw.call(sm, sm, {}); // empty object for 'layers' at least for now
 
-            sm.lt = now;
-        }
-    };
-
-    loop();
-
-}
-    ());

@@ -60,11 +60,15 @@ var drawCell = function(sm, cell){
 *********** *********/
 
     // draw background
-    api.back = function (sm) {
+    api.back = function (sm, style) {
         var canvas = sm.canvas,
         ctx = sm.ctx;
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = style || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+    api.options = function (sm) {
+        var canvas = sm.canvas,
+        ctx = sm.ctx;
     };
     // bland place holder title text
     api.titleText = function(sm){

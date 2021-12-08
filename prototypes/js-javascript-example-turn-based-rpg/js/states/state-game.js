@@ -6,7 +6,16 @@ sm.states.game = {
     draw: function(sm, layers){
         draw.back(sm);
         draw.map(sm);
-        draw.info(sm);
+  
+        if(sm.game.mode === 'map'){
+            draw.info(sm);
+        }
+
+        if(sm.game.mode === 'menu'){
+            draw.back(sm, 'rgba(0,0,0,0.5)');
+            draw.options(sm);
+        }
+
         draw.ver(sm);
     },
     events: {

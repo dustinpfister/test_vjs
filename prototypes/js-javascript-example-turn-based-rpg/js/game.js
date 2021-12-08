@@ -474,7 +474,10 @@ menuPool.update = function(button, options, sm, secs){
         secs = (now - game.pointerDownTime) / 1000;
         // long press
         if(secs >= 1){
-            console.log('long press!')
+            console.log('long press!');
+            if(game.mode === 'map'){
+                game.mode = 'menu';
+            }
         }
         // short press
         if(secs < 1 ){

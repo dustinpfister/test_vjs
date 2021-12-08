@@ -69,8 +69,8 @@ var drawCell = function(sm, cell){
     api.options = function (sm) {
         var canvas = sm.canvas,
         pool = sm.game.options,
-        ctx = sm.ctx;
-        opt = opt || {};
+        ctx = sm.ctx,
+        opt = {};
         // from mod-pool.js in Clucker
         pool.objects.forEach(function (obj) {
             ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';

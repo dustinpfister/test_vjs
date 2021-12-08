@@ -20,7 +20,12 @@ sm.states.game = {
     },
     events: {
         pointerStart: function(e, pos, sm){
-            gameMod.playerPointer(sm.game, pos.x, pos.y);
+            //gameMod.playerPointer(sm.game, pos.x, pos.y);
+            gameMod.pointerStart(sm, pos.x, pos.y);
+        },
+        pointerEnd: function(e, pos, sm){
+            //gameMod.playerPointer(sm.game, pos.x, pos.y);
+            gameMod.pointerEnd(sm, pos.x, pos.y);
         }
     }
 };

@@ -13,14 +13,14 @@
 
     // state machine object
     var sm = {
-        ver: '0.3.0',
+        ver: '0.4.0',
         fps: 12,
         lt: new Date(),
 
         // states
         states:{},            // collection of state objects
         stateObj: null,       // ref to current state object
-        currentState: 'game', // current state object key name
+        currentState: '',     // current state object key name (see setState call in main.js)
 
         game: gameMod.create({
             marginX : 14,

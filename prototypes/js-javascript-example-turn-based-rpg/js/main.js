@@ -1,6 +1,6 @@
 
-sm.setState('title');
-
+// set the current state
+sm.setState('game');
 
 // loop with frame capping set by sm.fps value
 var loop = function () {

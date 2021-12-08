@@ -1,4 +1,5 @@
 var gameMod = (function () {
+    var api = {};
 /********** **********
      TO MAP OBJECT
 *********** *********/
@@ -201,7 +202,7 @@ var getCellsByUnitType = function(map, type){
      SETUP GAME
 *********** *********/
     // setUp game helper with game object, and given maps
-    var setupGame = function (game, newGame) {
+    var setupGame = api.setupGame = function (game, newGame) {
         newGame = newGame === undefined ? true : newGame;
         var playerPlaced = false,
         startMapIndex = 0;
@@ -211,6 +212,8 @@ var getCellsByUnitType = function(map, type){
         if(newGame){
             game.remainingEnemies = 0;
         }
+        // make sure mode starts out on map mode
+        game.mode = 'map';
         // set up maps
         game.maps = game.maps.map(function(map, mi){
             var mapStr = game.mapStrings[mi] || '';
@@ -304,7 +307,6 @@ menuPool.update = function(button, options, sm, secs){
 /********** **********
      gameMod.create PUBLIC METHOD
 *********** *********/
-    var api = {};
     // create a new game state
     api.create = function (opt) {
         opt = opt || {};

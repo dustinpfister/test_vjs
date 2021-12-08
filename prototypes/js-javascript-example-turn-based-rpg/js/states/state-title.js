@@ -9,7 +9,9 @@ sm.states.title = {
     },
     events: {
         pointerEnd: function(e, pos, sm){
-            sm.game.mode = 'map';
+            // set up a new game
+            gameMod.setupGame(sm.game, true);
+            // change to game state
             sm.setState('game');
         }
     }

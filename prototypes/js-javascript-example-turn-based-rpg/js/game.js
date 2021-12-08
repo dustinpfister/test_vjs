@@ -255,6 +255,23 @@ var getCellsByUnitType = function(map, type){
         game.toMap = getToMap(game);
     };
 /********** **********
+     MENU POOL
+*********** *********/
+var menuPool = {
+    count: 8
+};
+
+menuPool.spawn = function(button, options, sm, spawnOpt){
+    
+
+};
+
+menuPool.update = function(button, options, sm, secs){
+    
+
+};
+
+/********** **********
      gameMod.create PUBLIC METHOD
 *********** *********/
     var api = {};
@@ -263,7 +280,7 @@ var getCellsByUnitType = function(map, type){
         opt = opt || {};
         //var mapStrings = opt.maps || ['2'];
         var game = {
-            // mode: 'map', // not using game.mode at this time
+            mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
             turn: 0,
             turnState: 'wait',
             maps: [],
@@ -276,7 +293,8 @@ var getCellsByUnitType = function(map, type){
             },
             mapStrings: opt.maps || ['2'],
             player: unitMod.createUnit('player'),
-            remainingEnemies: 0
+            remainingEnemies: 0,
+            options: new poolMod.create(menuPool)
         };
         game.mapStrings.forEach(function(){
             game.maps.push(mapMod.create({

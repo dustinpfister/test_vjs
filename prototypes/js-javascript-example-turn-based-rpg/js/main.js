@@ -13,7 +13,7 @@
     canvas.onselectstart = function () { return false; }
 
     var sm = {
-        ver: '0.2.0',
+        ver: '0.3.0',
         fps: 12,
         lt: new Date(),
         game: gameMod.create({

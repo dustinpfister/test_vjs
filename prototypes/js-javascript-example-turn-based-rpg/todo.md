@@ -21,7 +21,7 @@
     UNITS
 ********** *******-->
 
-## () - 0.6.0 - unit sub-types starting with enemy unit type
+## () - 0.7.0 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am goinf to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -47,18 +47,25 @@
 }
 ```
 
-## () - 0.5.0 - inventory and drops
+## () - 0.6.0 - inventory and drops
 * an item can be a drop that will be shown in the grid along with "wall", and "enemy" types
 * a unit will then need to have an unit.inventory property that will be another kind of standard object
 * an inventory object should contain a slotCount property that is the max number of items a unit can carry.
 
-## () - 0.4.0 - new unit type "item" Collection, weapons
+## () - 0.5.0 - new unit type "item" Collection, weapons
 * start a new type of unit called an 'item'
 
-## () - 0.3.0 - Game mode property, with 'map', and 'menu' mode
+## () - 0.4.0 - Game mode property, with 'map', and 'menu' mode
 * start using the game.map mode to have more than one game mode in gameMod
 * the current game as it stands can be called 'map' mode
 * start a new 'menu' mode that can be used to switch between various 'options'
+* in the menu have a 'quit' option that till case a return to the title state
+
+## () - 0.3.0 - state machine with title, and game states
+* start a state machine in main.js for now
+* have a /js/states folder with a state-title.js and state-game.js files
+* state-game.js is just the game as it is before
+* state-title.js is just a plain text title screen with a single button that goes to the game state for now
 
 ## ( done 12/08/2021 ) - 0.2.0 - unit.currentWeapon Object
 * (done) adjust for canvas scale

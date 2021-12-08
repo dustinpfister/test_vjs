@@ -261,12 +261,12 @@ var menuPool = {
     count: 8
 };
 
-menuPool.spawn = function(button, options, game, spawnOpt){
+menuPool.spawn = function(button, options, sm, spawnOpt){
     
 
 };
 
-menuPool.update = function(button, options, game, secs){
+menuPool.update = function(button, options, sm, secs){
     
 
 };
@@ -406,13 +406,14 @@ menuPool.update = function(button, options, game, secs){
         }
     };
     // update a game object
-    api.update = function (game, secs) {
+    api.update = function (sm, secs) {
+        var game = sm.game;
         // in map mode just call process turn
         if(game.mode === 'map'){
             processTurn(game, secs);
         }
         if(game.mode === 'menu'){
-            poolMod.update(game.options, secs, game);
+            poolMod.update(game.options, secs, sm);
         }
     };
     // get player cell

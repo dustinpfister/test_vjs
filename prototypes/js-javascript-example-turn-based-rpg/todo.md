@@ -61,7 +61,7 @@
 * (done) the current game as it stands can be called 'map' mode
 * (done) start a new 'menu' mode that can be used to switch between various 'options'
 
-* draw.options method
+* draw.options method started
 
 * gameMod.update will need to be updated to take an sm object, not a game object
 * and sm object will need to be the 'state' inside spawn, and update methods for the options pool

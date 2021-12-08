@@ -1,7 +1,7 @@
 sm.states.game = {
     key: 'game',
     update: function(sm, secs){
-        gameMod.update(sm.game);
+        gameMod.update(sm);
     },
     draw: function(sm, layers){
         draw.back(sm);

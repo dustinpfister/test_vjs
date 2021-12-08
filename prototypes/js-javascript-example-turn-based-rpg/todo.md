@@ -60,8 +60,9 @@
 * the current game as it stands can be called 'map' mode
 * start a new 'menu' mode that can be used to switch between various 'options'
 * in the menu have a 'quit' option that till case a return to the title state
+* clicking the button in title state goes to the game state
 
-## () - 0.3.0 - state machine started with title, and game states
+## ( done 12/08/2021 ) - 0.3.0 - state machine started with title, and game states
 * (done) start a state machine as \/js\/sm.js for now
 * (done) have a \/js\/states folder with a state-game.js files
 * (done) use sm.js in main loop to call update and draw method for a current state object.
@@ -71,10 +72,9 @@
 * (done) add utils.boundingBox
 * (done) have a sm.setState method, and a sm.stateObj prop that is a ref to the current state object
 * (done) have a callStateEvent helper in sm.js
-
-* have a state-title.js for the sake of just having more than one state object for now
-* state-title.js is just a plain text title screen with a single button
-* clicking the button in title state goes to the game state
+* (done) have a state-title.js for the sake of just having more than one state object for now
+* (done) state-title.js is just a plain text title screen
+* (done) just clicking on the title screen will case the app to progress to the game state for now
 
 ## ( done 12/08/2021 ) - 0.2.0 - unit.currentWeapon Object
 * (done) adjust for canvas scale

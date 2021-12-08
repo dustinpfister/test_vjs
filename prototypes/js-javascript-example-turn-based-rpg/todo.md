@@ -64,7 +64,7 @@
 ## () - 0.3.0 - state machine started with title, and game states
 * (done) start a state machine as \/js\/sm.js for now
 * (done) have a \/js\/states folder with a state-game.js files
-* use state-game.js in main loop.
+* use sm.js in main loop to call update and draw method for a current state object.
 * state-game.js is just the game as it is before
 * have a state-title.js for the sake of just having more than one state object for now
 * state-title.js is just a plain text title screen with a single button that goes to the game state for now

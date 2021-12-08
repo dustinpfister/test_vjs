@@ -6,10 +6,15 @@
         secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
         if(secs >= 1 / sm.fps){
-            gameMod.update(sm.game);
-            draw.back(sm);
-            draw.map(sm);
-            draw.info(sm);
+            //gameMod.update(sm.game);
+            //draw.back(sm);
+            //draw.map(sm);
+            //draw.info(sm);
+
+            var state = sm.states[sm.currentState];
+            state.update.call(sm, sm, secs);
+            state.draw.call(sm, sm, {}); // empty object for 'layers' at least for now
+
             sm.lt = now;
         }
     };

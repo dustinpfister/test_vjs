@@ -124,10 +124,12 @@
 
     // call the given eventKey in the events object of the current state object
     sm.callStateEvent = function(eventKey, e, opt){
-        var events = sm.stateObj.events;
-        if(events){
-            if(events[eventKey]){
-                events[eventKey].call(sm, e, opt, sm)
+        if(sm.stateObj){
+            var events = sm.stateObj.events;
+            if(events){
+                if(events[eventKey]){
+                    events[eventKey].call(sm, e, opt, sm)
+                }
             }
         }
     };

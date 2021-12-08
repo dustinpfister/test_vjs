@@ -1,7 +1,5 @@
 
-console.log(sm.stateObj);
-sm.setState('game');
-console.log(sm.stateObj);
+sm.setState('title');
 
 
 // loop with frame capping set by sm.fps value

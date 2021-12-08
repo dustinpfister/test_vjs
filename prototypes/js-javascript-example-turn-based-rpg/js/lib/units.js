@@ -100,8 +100,9 @@ var unitMod = (function () {
 
     // do a melee attack with the given units
     api.meleeAttack = function(attacker, target){
+        // make sure attack stat is up to date
+        setStat.attack(attacker);
         // figure raw attack
-        console.log(attacker.attack);
         var fa = attacker.attack,
         ra = utils.valueByRange(Math.random(), fa[0], fa[1]);
         // figure target defense

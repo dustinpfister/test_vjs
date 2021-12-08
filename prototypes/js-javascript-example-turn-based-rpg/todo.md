@@ -60,17 +60,15 @@
 * the current game as it stands can be called 'map' mode
 * start a new 'menu' mode that can be used to switch between various 'options'
 
-## () - 0.2.0 - unit.meleeWeapon Object
+## ( done 12/08/2021 ) - 0.2.0 - unit.currentWeapon Object
 * (done) adjust for canvas scale
-* unit can have a unit.meleeWeapon object as a value that defaults to null for unarmed
-* use meleeWeapon object in unitMod.meleeAttack method to figure additional deltas for a final attack array
-* meleeWeapon object has an array property just like baseAttack of the unit object
-
-
-* final unit.attack value is just the sum of baseAttack, and the attackProp of the weapon
-* start a setAttack helper in unitMod that set a final attack value for a unit
-* call setAttack in unitMod.create
-* call setAttack in each call of unitMod.meleeAttack
+* (done) unit can have a unit.currentWeapon object as a value that defaults to null for unarmed
+* (done) use currentWeapon object in unitMod.meleeAttack method to figure additional deltas for a final attack array
+* (done) currentWeapon object has an array property just like baseAttack of the unit object
+* (done) final unit.attack value is just the sum of baseAttack, and the attack prop of the current weapon
+* (done) start a setAttack helper in unitMod that set a final attack value for a unit
+* (done) call setAttack in unitMod.create
+* (done) call setAttack in each call of unitMod.meleeAttack
 
 ## ( done 12/07/2021 ) - 0.1.0 - unitMod.meleeAttack method, baseAttack, baseDefense 
 * (done) have a baseAttack stat for units in the from of an array such as [5, 8] which means a base attack of 5 to 8

@@ -141,13 +141,14 @@
             }
             sm.input.pointerDown = true;
             sm.callStateEvent('pointerStart', e, pos);
-
         },
         move: function (sm, e) {
-            sm.input.pos = utils.getCanvasRelative(e);
+            var pos = sm.input.pos = utils.getCanvasRelative(e);
+            sm.callStateEvent('pointerMove', e, pos);
         },
         end: function (sm, e) {
             sm.input.pointerDown = false;
+            sm.callStateEvent('pointerEnd', e, {});
         }
     };
     var createPointerHandler = function (sm, type) {

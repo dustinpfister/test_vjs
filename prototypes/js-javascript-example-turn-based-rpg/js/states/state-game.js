@@ -11,6 +11,12 @@ sm.states.game = {
     events: {
         pointerStart: function(e, pos, sm){
             gameMod.playerPointer(sm.game, pos.x, pos.y);
+        },
+        pointerMove: function(e, pos, sm){
+            console.log('move');
+        },
+        pointerEnd: function(e, pos, sm){
+            console.log('end');
         }
     }
 };

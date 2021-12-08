@@ -481,7 +481,8 @@ menuPool.update = function(button, options, sm, secs){
         }
         // short press
         if(secs < 1 ){
-            if (clickedCell) {
+
+            if (game.mode === 'map' && clickedCell) {
                 // if player cell is clicked and there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
                     game.mapIndex = game.toMap.index;
@@ -505,6 +506,10 @@ menuPool.update = function(button, options, sm, secs){
                 // default action is to try to move to the cell
                 game.player.moveCells = getMoveCells(game, pCell, clickedCell);
                 game.turnState = 'start';
+            }
+
+            if(game.mode === 'menu'){
+                game.mode = 'map';
             }
         }
     };

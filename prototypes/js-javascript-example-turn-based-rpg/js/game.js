@@ -264,7 +264,8 @@ var menuPool = {
     count: 8,
     disableLifespan: true,
     data: {
-        outerRadius: 50,
+        outerRadius: 75,
+        innerRadius: 25,
         outerTotal: 1,
         frame: 0,
         maxFrame: 15
@@ -281,7 +282,7 @@ menuPool.spawn = function(button, options, sm, spawnOpt){
     bd.radius = 0;
     bd.a = 0;
     bd.ta = spawnOpt.ta === undefined ? Math.PI * 2: spawnOpt.ta;
-    bd.outer = spawnOpt.outer === undefined ? true : spawnOpt;
+    bd.outer = spawnOpt.outer === undefined ? true : spawnOpt.outer;
     bd.onClick = spawnOpt.onClick || function(){};
     // pool data
     pd.frame = 0;
@@ -298,7 +299,7 @@ menuPool.update = function(button, options, sm, secs){
     }
 
     var per = pd.frame / pd.maxFrame;
-    var radius = pd.outerRadius;
+    var radius = bd.outer ? pd.outerRadius : pd.innerRadius;
     bd.a = bd.ta * per;
     button.x = bd.cx + Math.cos(bd.a) * radius * per;
     button.y = bd.cy + Math.sin(bd.a) * radius * per;
@@ -466,6 +467,7 @@ menuPool.update = function(button, options, sm, secs){
 
     BUTTON.quit = {
         desc: 'quit',
+        outer: true,
         onClick: function(sm, button){
            sm.setState('title');
         }
@@ -473,26 +475,65 @@ menuPool.update = function(button, options, sm, secs){
 
     BUTTON.resume = {
         desc: 'resume',
+        outer: true,
         onClick: function(sm, button){
            sm.game.mode = 'map';
         }
     };
 
+    BUTTON.dum1 = {
+        desc: 'dummy1',
+        outer: true,
+        onClick: function(sm, button){
+           
+        }
+    };
+
+    BUTTON.dum2 = {
+        desc: 'dummy2',
+        outer: false,
+        onClick: function(sm, button){
+           
+        }
+    };
+
+    BUTTON.dum3 = {
+        desc: 'dummy2',
+        outer: false,
+        onClick: function(sm, button){
+           
+        }
+    };
+
     // create a menu for the current game state
     var createMenu = function(game){
-        // purge all first
+        // purge all buttons first
         game.options.objects.forEach(function(button){
             button.active = false;
         });
-        ['quit', 'resume'].forEach(function(buttonKey, i){
-            var buttonDATA = BUTTON[buttonKey]
+        // default buttonKeys array
+        var buttonKeys = ['quit', 'resume', 'dum1', 'dum2', 'dum3'];
+
+        var oi = 0, ii = 0;
+        // spawn buttons 
+        buttonKeys.forEach(function(buttonKey){
+            var buttonDATA = BUTTON[buttonKey],
+            oc = 3,
+            ic = 2,
+            len = (buttonDATA.outer ? oc : ic),
+            i = (buttonDATA.outer ? oi : ii)
             // spawn buttons
             poolMod.spawn(game.options, sm, {
                 desc: buttonDATA.desc,
                 onClick: buttonDATA.onClick,
-                ta: Math.PI * 2 / 2 * (i + 1)
+                outer: buttonDATA.outer,
+                ta: Math.PI * 2 / len * (i + 1)
             });
-
+            if(buttonDATA.outer){
+               oi += 1;
+            }else{
+               ii += 1;
+            }
         });
     };
 

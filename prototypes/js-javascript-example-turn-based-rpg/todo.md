@@ -64,12 +64,15 @@
 ## () - 0.3.0 - state machine started with title, and game states
 * (done) start a state machine as \/js\/sm.js for now
 * (done) have a \/js\/states folder with a state-game.js files
-* use sm.js in main loop to call update and draw method for a current state object.
-* state-game.js is just the game as it is before
+* (done) use sm.js in main loop to call update and draw method for a current state object.
+* (done) state-game.js is just the game as it is before
+* (done) update build.sh and index.html files to work with new collection of files
+* (done) \/js\/main.js is now just a loop that works with a final sm object
+
+* add utils.boundingBox
 * have a state-title.js for the sake of just having more than one state object for now
-* state-title.js is just a plain text title screen with a single button that goes to the game state for now
-* \/js\/main.js is now just a loop that works with a final sm object
-* update build.sh and index.html files to work with new collection of files
+* state-title.js is just a plain text title screen with a single button
+* clicking the button in title state goes to the game state
 
 ## ( done 12/08/2021 ) - 0.2.0 - unit.currentWeapon Object
 * (done) adjust for canvas scale

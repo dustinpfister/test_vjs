@@ -4,6 +4,7 @@ sm.states.title = {
     },
     draw: function(sm, layers){
         draw.back(sm);
+        draw.titleText(sm);
     },
     events: {
         pointerStart: function(e, pos, sm){

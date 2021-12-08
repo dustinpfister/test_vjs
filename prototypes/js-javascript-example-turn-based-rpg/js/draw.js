@@ -66,6 +66,19 @@ var drawCell = function(sm, cell){
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
+    // bland place holder title text
+    api.titleText = function(sm){
+        var canvas = sm.canvas,
+        ctx = sm.ctx;
+        // text style
+        ctx.fillStyle = 'white';
+        ctx.font = '20px courier';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'center';
+        var x = canvas.width / 2,
+        y = canvas.height * 0.25;
+        ctx.fillText('Turn Based RPG Prototype', x, y);
+    };
     // draw the map
     api.map = function (sm) {
         var map = sm.game.maps[sm.game.mapIndex],
@@ -87,6 +100,7 @@ var drawCell = function(sm, cell){
         ctx.fillStyle = 'yellow';
         ctx.font = '12px courier';
         ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
         // draw current pointer position
         ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, 5 + dy * 0);
         // player cell pos

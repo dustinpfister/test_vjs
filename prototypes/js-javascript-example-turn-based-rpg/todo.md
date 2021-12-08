@@ -69,17 +69,14 @@
 * (done) rename gameMod.playerPointer to gameMod.pointerStart
 * (done) the player can switch to the menu mode by long pressing anywhere for now
 * (done) the player can switch back to the game by just not clicking a button when in menu mode
-
 * (done) spawn buttons in gameMod.pointerEnd for now
+* (done) the menu will show up as a collection of objects in a circle around the center of the canvas
+* (done) the circles will then move out to a outer and or inner radius
+* (done) with pointer events I can just click the option that I want in the circle of buttons
+* (done) in the menu have a 'quit' option that will cause a return to the title state
 
-* the menu will show up as a collection of objects in a circle around the center of the canvas
-* the circles will then move out to a outer and or inner radius
 
 * a back button will also have a simular effect to just clicking outside of the button circle
-* with pointer events I can just click the option that I want in the circle of buttons
-* in the menu have a 'quit' option that will cause a return to the title state
-
-
 * clicking the button in title state goes to the game state
 * when at the edege of a 'inner circle' options show up to go to the next map
 * if at a corner the menu will always show up even with a short click

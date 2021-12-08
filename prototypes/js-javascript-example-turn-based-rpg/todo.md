@@ -56,11 +56,23 @@
 * start a new type of unit called an 'item'
 
 ## () - 0.4.0 - Game mode property, with 'map', and 'menu' mode
-* start using the game.map mode to have more than one game mode in gameMod
-* the current game as it stands can be called 'map' mode
 * (done) add an object pool librray to the js lib folder
-* start a new 'menu' mode that can be used to switch between various 'options'
+* (done) start using the game.map mode to have more than one game mode in gameMod
+* (done) the current game as it stands can be called 'map' mode
+* (done) start a new 'menu' mode that can be used to switch between various 'options'
+
+* gameMod.update will need to be updated to take an sm object, not a game object
+* and sm object will need to be the 'state' inside spawn, and update methods for the options pool
+
+* I will want a gameMod.pointerEnd method that will be called in the game state pointerEnd event
+* rename gameMod.playerPointer to gameMod.pointerStart
 * the player can switch to the menu mode by long clicking the player
+* the player can switch back to the game by just not clicking a button
+
+
+* a back button will also have a simular effect to just clicking outside of the button circle
+
+
 * the menu will show up as a collection of objects in a circle around the center of the canvas
 * with pointer events I can just click the option that I want
 * in the menu have a 'quit' option that will cause a return to the title state

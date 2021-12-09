@@ -50,6 +50,33 @@ utils.deepCloneJSON = function (obj) {
         return {};
     }
 };
+// very simple http client
+utils.http = function(opt){
+    var opt = opt || {};
+    // default options
+    opt.url = opt.url || '';
+    opt.method = opt.method || 'GET';
+    opt.async = opt.async === undefined ? true: opt.async;
+    opt.body = opt.body === undefined ? null: opt.body;
+    opt.onDone = opt.onDone || utils.noop;
+    opt.onError = opt.onError || utils.noop;
+    opt.responseType = opt.responseType || '';  // set to 'blob' for png
+    // create and set up xhr
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = opt.responseType;
+    xhr.open(opt.method, opt.url, opt.async);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if(xhr.status >= 200 && xhr.status < 400){
+                opt.onDone.call(xhr, xhr.response, xhr);
+            }else{
+                opt.onError.call(xhr, xhr);
+            }
+        }
+    };
+    // send
+    xhr.send(opt.body);
+};
 /*
 // https://stackoverflow.com/questions/7582001/is-there-a-way-to-test-circular-reference-in-javascript
 utils.isCircularObject = function(node, parents){

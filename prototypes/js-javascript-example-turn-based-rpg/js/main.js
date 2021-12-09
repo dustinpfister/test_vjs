@@ -2,6 +2,19 @@
 // set the current state
 sm.setState('game');
 
+
+utils.http({
+    url: './json/world-home.json',
+    onDone: function(res, xhr){
+        try{
+            var map = JSON.parse(res);
+        }catch(e){
+            var map = {};
+        }
+        console.log(map);
+    },
+});
+
 // loop with frame capping set by sm.fps value
 var loop = function () {
     var now = new Date(),

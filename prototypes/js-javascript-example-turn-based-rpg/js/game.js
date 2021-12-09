@@ -603,7 +603,13 @@ menuPool.update = function(button, options, sm, secs){
             button.active = false;
         });
         // default buttonKeys array
-        var buttonKeys = ['quit', 'resume', 'map_south', 'map_north', 'map_east', 'map_west'];
+        //var buttonKeys = ['quit', 'resume', 'map_south', 'map_north', 'map_east', 'map_west'];
+        var buttonKeys = ['quit', 'resume'];
+
+        // appending options
+        buttonKeys = buttonKeys.concat(game.toMap.options.map(function(opt){
+             return 'map_' + opt.dir;
+        }));
 
         var oi = 0, 
         ii = 0,

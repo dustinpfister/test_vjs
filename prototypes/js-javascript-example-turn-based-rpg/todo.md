@@ -84,12 +84,17 @@
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
 
-## () - r6 - loader state
+## () - r6 - JSON folder, server.js, loader state
 * (done) mapStrings generator helper for gameMod.create for when no map String is given for now
+* (done) start a root json folder that will contain all the json files for the game
+* (done) start a new world map json file standard
 
 * start a new states-loader.js file that will be a simple json file loader state
-* start a root json folder that will contain all the json files for the game
-* start a new world map json file standard
+
+* have a standard hard coded 'void world'
+* use the location object to see if the script is running in the file protocol, if so drop into the voild world
+* if one or more erros happen while loading files in the loader state drop into the void world.
+
 
 <!--****** **********
     UI

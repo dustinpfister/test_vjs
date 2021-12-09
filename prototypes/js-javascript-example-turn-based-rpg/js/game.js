@@ -16,7 +16,7 @@ var gameMod = (function () {
     // return a toIndexOptions array for the given map position in the current game map
     var getToIndexOptions = function(game, x, y, ox, oy){
         var toIndex = null,
-        dir,
+        dir = '',
         p = game.player,
         map = game.maps[game.mapIndex],
         cell = mapMod.get(map, x, y),
@@ -65,18 +65,18 @@ var gameMod = (function () {
                 toIndex = y * game.mapWorldWidth + mwx;
                 dir = 'south';
             }
-            // return array with index and dir text
-            return [{
-               mi: toIndex,
-               dir: dir || '',
-               x: ox === undefined ? x : ox,
-               y: oy === undefined ? y : oy
-            }];
         }
+        // return array with index and dir text
+        return dir === '' ? [] : [{
+           mi: toIndex,
+           dir: dir,
+           x: ox === undefined ? x : ox,
+           y: oy === undefined ? y : oy
+        }];
     };
     // get a toMap object that can be set to the game.toMap propery
     var getToMap = function(game){
-        var toMap = {};
+        var toMap = {index: null, x: null, y: null};
         var pCell = api.getPlayerCell(game);
         var map = game.maps[game.mapIndex];
         var options = toMap.options = getToIndexOptions(game, pCell.x, pCell.y);
@@ -96,9 +96,11 @@ var gameMod = (function () {
             return opt;
         });
         // assume first index
-        toMap.index = options[0].mi;
-        toMap.x = options[0].x;
-        toMap.y = options[0].y;
+        if(options.length >= 1){
+            toMap.index = options[0].mi;
+            toMap.x = options[0].x;
+            toMap.y = options[0].y;
+        }
         return toMap;
     };
 /********** **********
@@ -606,10 +608,14 @@ menuPool.update = function(button, options, sm, secs){
 
     var getButtonKeyValueCount = function(buttonKeys, prop, value){
         return buttonKeys.reduce(function(acc, buttonKey){
+try{
             var buttonDATA = BUTTON[buttonKey];
             if(buttonDATA[prop] === value){
                 acc += 1;
             }
+}catch(e){
+ console.log(buttonKey);
+}
             return acc;
         }, 0);
     };

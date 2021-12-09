@@ -75,7 +75,7 @@
     UI
 ********** *******-->
 
-## () - 0.5.0 - More work on menu game mode
+## ( done 12/09/2021 ) - 0.5.0 - More work on menu game mode
 * (done) createMenu helper and BUTTON const in game.js
 * (done) add a back button that will also have a simular effect to just clicking outside of the button circle
 * (done) get oc and ic count in createMenu
@@ -90,7 +90,7 @@
 * (done) use new toMap options array in place of older system
 * (done) use new toMap options array to crate proper dir buttons in menu
 * (done) remove old code that has to do with to map object in game.js
-* if at a corner the menu will always show up even with a short click
+* (done) if at a corner the menu will always show up even with a short click
 
 ## ( done 12/08/2021 ) - 0.4.0 - Game mode property, with 'map', and 'menu' mode
 * (done) add an object pool librray to the js lib folder

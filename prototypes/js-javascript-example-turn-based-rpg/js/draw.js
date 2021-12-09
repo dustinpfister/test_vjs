@@ -132,10 +132,10 @@ var drawCell = function(sm, cell){
         pos = sm.input.pos,
         pCell = gameMod.getPlayerCell(sm.game),
         canvas = sm.canvas,
-        dy = 10;
+        dy = 12;
         // text style
         ctx.fillStyle = 'yellow';
-        ctx.font = '8px courier';
+        ctx.font = '10px courier';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         // draw current pointer position

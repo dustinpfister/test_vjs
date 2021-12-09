@@ -69,8 +69,8 @@ var gameMod = (function () {
             return [{
                mi: toIndex,
                dir: dir || '',
-               x: null,
-               y: null
+               x: x,
+               y: y
             }];
         }
     };
@@ -130,6 +130,14 @@ var gameMod = (function () {
         //var options = toMap.options = [];
 
 var options = toMap.options = getToIndexOptions(game, pCell.x, pCell.y);
+
+options = options.map(function(opt){
+            opt.x = pCell.x === 0 ? map.w - 1 : pCell.x;
+            opt.y = pCell.y === 0 ? map.h - 1 : pCell.y;
+            opt.x = pCell.x === map.w - 1 ? 0 : opt.x;
+            opt.y = pCell.y === map.h - 1 ? 0 : opt.y;
+   return opt;
+});
 
         // at corner? if so we have two options
         if(isAtCorner(game, pCell)){

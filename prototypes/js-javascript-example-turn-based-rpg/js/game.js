@@ -127,32 +127,22 @@ var gameMod = (function () {
         var toIndexObj = getToIndex(game);
         var mi = toMap.index = toIndexObj.mi;
         // to map options array
-        //var options = toMap.options = [];
-
-var options = toMap.options = getToIndexOptions(game, pCell.x, pCell.y);
-
-options = options.map(function(opt){
-
-   if(opt.dir === 'north'){
-      opt.y = map.h - 1;
-   }
-   if(opt.dir === 'south'){
-      opt.y = 0;
-   }
-   if(opt.dir === 'east'){
-      opt.x = 0;
-   }
-   if(opt.dir === 'west'){
-      opt.x = map.w - 1;
-   }
-
-   //opt.x = pCell.x === 0 ? map.w - 1 : pCell.x;
-   //opt.y = pCell.y === 0 ? map.h - 1 : pCell.y;
-   //opt.x = pCell.x === map.w - 1 ? 0 : opt.x;
-   //opt.y = pCell.y === map.h - 1 ? 0 : opt.y;
-   return opt;
-});
-
+        var options = toMap.options = getToIndexOptions(game, pCell.x, pCell.y);
+        options = options.map(function(opt){
+            if(opt.dir === 'north'){
+                opt.y = map.h - 1;
+            }
+            if(opt.dir === 'south'){
+                opt.y = 0;
+            }
+            if(opt.dir === 'east'){
+                opt.x = 0;
+            }
+            if(opt.dir === 'west'){
+                opt.x = map.w - 1;
+            }
+            return opt;
+        });
         // at corner? if so we have two options
         if(isAtCorner(game, pCell)){
            if(pCell.y === map.h - 1){
@@ -162,26 +152,12 @@ options = options.map(function(opt){
                toMap.x = pCell.x;
                toMap.y = map.h - 1;
            }
-           // toMapOptions array should have to objects
-           //options.push({
-           //     x: toMap.x,
-           //     y: toMap.y,
-           //     mi: mi,
-           //     dir: ''
-           // });
         }else{
             // not at corner
             toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
             toMap.y = pCell.y === 0 ? map.h - 1 : pCell.y;
             toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
             toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
-            // to map options array should have just the one object
-            //options.push({
-            //    x: toMap.x,
-            //    y: toMap.y,
-            //    mi: mi,
-            //    dir: toIndexObj.dir
-            //});
         }
         return toMap;
     };

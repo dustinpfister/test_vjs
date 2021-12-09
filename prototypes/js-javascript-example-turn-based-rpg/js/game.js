@@ -143,6 +143,12 @@ var gameMod = (function () {
             }
             return opt;
         });
+
+
+        toMap.x = options[0].x;
+        toMap.y = options[0].y;
+
+/*
         // at corner? if so we have two options
         if(isAtCorner(game, pCell)){
            if(pCell.y === map.h - 1){
@@ -159,6 +165,7 @@ var gameMod = (function () {
             toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
             toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
         }
+*/
         return toMap;
     };
 /********** **********
@@ -722,7 +729,8 @@ console.log( getToIndexOptions(game, 8, 6) );
             if (game.mode === 'map' && clickedCell) {
                 // if player cell is clicked and there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
-                    game.mapIndex = game.toMap.index;
+                    //game.mapIndex = game.toMap.index;
+game.mapIndex = game.toMap.options[0].mi;
                     game.toMap = getToMap(game);
                     pCell.unit = null;
                     pCell.walkable = true;

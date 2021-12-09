@@ -86,6 +86,7 @@ var drawCell = function(sm, cell){
                     ctx.fillStyle = 'black';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
+                    ctx.font = '9px courier';
                     ctx.fillText(obj.data.desc, cx, cy);
                 }
             }

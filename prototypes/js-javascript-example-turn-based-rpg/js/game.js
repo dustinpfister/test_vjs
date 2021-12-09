@@ -305,10 +305,12 @@ var getCellsByUnitType = function(map, type){
 *********** *********/
 var menuPool = {
     count: 8,
+    w: 40,
+    h: 40,
     disableLifespan: true,
     data: {
-        outerRadius: 75,
-        innerRadius: 25,
+        outerRadius: 85,
+        innerRadius: 35,
         outerTotal: 1,
         frame: 0,
         maxFrame: 15,

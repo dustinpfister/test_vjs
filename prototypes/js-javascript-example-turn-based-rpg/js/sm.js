@@ -27,7 +27,8 @@
             marginY : 7,
             w: 9,
             h: 7,
-            maps: [
+
+            mapStrings: [
                 // TOP
                 '111111111' + 
                 '100000000' + 
@@ -104,6 +105,7 @@
                 '111111111'
                 
             ]
+
         }),
         canvas: canvas,
         ctx: ctx,

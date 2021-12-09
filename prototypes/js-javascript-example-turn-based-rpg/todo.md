@@ -85,6 +85,9 @@
 ********** *******-->
 
 ## () - r6 - loader state
+
+* mapStrings generator helper for gameMod.create
+
 * start a new states-loader.js file that will be a simple json file loader state
 * start a root json folder that will contain all the json files for the game
 * start a new world map json file standard

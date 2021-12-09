@@ -241,65 +241,7 @@ var getCellsByUnitType = function(map, type){
         game.toMap = getToMap(game);
     };
 
-/********** **********
-     SETUP GAME
-*********** *********/
-    // setUp game helper with game object, and given maps
-    var setupGame = api.setupGame = function (game, newGame) {
-        newGame = newGame === undefined ? true : newGame;
-        var playerPlaced = false,
-        startMapIndex = 0;
-        game.mapIndex = 0;
-        // set player HP to max
-        game.player.HP = game.player.maxHP;
-        if(newGame){
-            game.remainingEnemies = 0;
-        }
-        // make sure mode starts out on map mode
-        game.mode = 'map';
-        // set up maps
-        game.maps = game.maps.map(function(map, mi){
-            var mapStr = game.mapStrings[mi] || '';
-            game.mapIndex = mi;
-            map.cells = map.cells.map(function(cell, ci){
-                var cellIndex = parseInt(mapStr[ci] || '0'),
-                x = ci % map.w,
-                y = Math.floor(ci / map.w);
-                if(cellIndex === 0 && newGame){
-                    var cell = mapMod.get(map, ci);
-                    cell.unit = null;
-                    cell.walkable = true;
-                }
-                // wall blocks set for new games and not
-                if(cellIndex === 1){
-                    var wall = unitMod.createUnit('wall');
-                    placeUnit(game, wall, x, y);
-                }
-                // player always set
-                if(cellIndex === 2){
-                    playerPlaced = true;
-                    startMapIndex = mi;
-                    placeUnit(game, game.player, x, y);
-                }
-                // enemy
-                if(cellIndex === 3 && newGame){
-                    game.remainingEnemies += 1;
-                    var enemy = unitMod.createUnit('enemy');
-                    enemy.HP = enemy.maxHP;
-                    placeUnit(game, enemy, x, y);
-                }
-                return cell;
-            });
-            return map;
-        });
-        // if player is not palced then place the player unit
-        // at a null cell
-        if(!playerPlaced){
-            placePlayer(game);
-        }
-        game.mapIndex = startMapIndex;
-        game.toMap = getToMap(game);
-    };
+
 /********** **********
      MENU POOL
 *********** *********/
@@ -365,20 +307,21 @@ menuPool.update = function(button, options, sm, secs){
 };
 
 /********** **********
-     gameMod.create PUBLIC METHOD
+     gameMod.create PUBLIC METHOD and helpers
 *********** *********/
     // create a new game state
     api.create = function (opt) {
         opt = opt || {};
-        //var mapStrings = opt.maps || ['2'];
+        opt.mapWorldWidth = opt.mapWorldWidth === undefined ? 3 : opt.mapWorldWidth;
+        opt.mapStrings = opt.mapStrings || null;
         var game = {
             mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
             turn: 0,
             turnState: 'wait',
-            maps: [],                      // current WORKABLE STATE of the CURRENT WORLD MAP
-            mapStrings: opt.maps || ['2'], // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
-            mapWorldWidth: 3,              // the WORLD MAP width
-            mapIndex: 0,                   // current map index in the CURRENT WORLD MAP
+            maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
+            mapStrings: opt.mapStrings || ['2'],     // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
+            mapWorldWidth: opt.mapWorldWidth,        // the WORLD MAP width
+            mapIndex: 0,                             // current map index in the CURRENT WORLD MAP
             toMap: {
                 index: null,
                 x: null,
@@ -399,6 +342,62 @@ menuPool.update = function(button, options, sm, secs){
         });
         setupGame(game, true);
         return game;
+    };
+    // setUp game helper with game object, and given maps
+    var setupGame = api.setupGame = function (game, newGame) {
+        newGame = newGame === undefined ? true : newGame;
+        var playerPlaced = false,
+        startMapIndex = 0;
+        game.mapIndex = 0;
+        // set player HP to max
+        game.player.HP = game.player.maxHP;
+        if(newGame){
+            game.remainingEnemies = 0;
+        }
+        // make sure mode starts out on map mode
+        game.mode = 'map';
+        // set up maps
+        game.maps = game.maps.map(function(map, mi){
+            var mapStr = game.mapStrings[mi] || '';
+            game.mapIndex = mi;
+            map.cells = map.cells.map(function(cell, ci){
+                var cellIndex = parseInt(mapStr[ci] || '0'),
+                x = ci % map.w,
+                y = Math.floor(ci / map.w);
+                if(cellIndex === 0 && newGame){
+                    var cell = mapMod.get(map, ci);
+                    cell.unit = null;
+                    cell.walkable = true;
+                }
+                // wall blocks set for new games and not
+                if(cellIndex === 1){
+                    var wall = unitMod.createUnit('wall');
+                    placeUnit(game, wall, x, y);
+                }
+                // player always set
+                if(cellIndex === 2){
+                    playerPlaced = true;
+                    startMapIndex = mi;
+                    placeUnit(game, game.player, x, y);
+                }
+                // enemy
+                if(cellIndex === 3 && newGame){
+                    game.remainingEnemies += 1;
+                    var enemy = unitMod.createUnit('enemy');
+                    enemy.HP = enemy.maxHP;
+                    placeUnit(game, enemy, x, y);
+                }
+                return cell;
+            });
+            return map;
+        });
+        // if player is not palced then place the player unit
+        // at a null cell
+        if(!playerPlaced){
+            placePlayer(game);
+        }
+        game.mapIndex = startMapIndex;
+        game.toMap = getToMap(game);
     };
 /********** **********
      gameMod.update PUBLIC METHOD

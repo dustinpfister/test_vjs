@@ -1,5 +1,9 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
+<!--****** **********
+    MISC IMPROVEMENTS
+********** *******-->
+
 ## () - rx - Cell movement animation
 * see about having a move animation where the unit cell moves on a pps basis to the new cell location
 
@@ -16,27 +20,27 @@
 * see about fixing bug where the player, or any unit can 'jump' over a unit in the way
 
 <!--****** **********
-    MENU UI
+    MENU UI IMPROVEMENTS
 ********** *******-->
 
-## () - r10 - keyboard events
+## () - rx - keyboard events
 * add keyboard events
 * when at an edge of a corner relavent wasd key press will result in a map change
 * use wasd keys to move a cell selector, and use the 'j' key to 'click' that cell
 * in menu game mode the 'ad' keys can be used to select an option and 'j' will result in a click
 * in menu game mode the 'ws' keys can be used to switch between inner and outer rings
 
-## () - r9 - lib menu-circle.js, and pool.js improvements
+## () - rx - lib menu-circle.js, and pool.js improvements
 * take code in game.js that has to do with the circle menu, and turn it into its own lin file
 * use new menu-circle.js lib file in game.js
 * have a main update loop for a pool object created with pool.js
 * remove old curcle menu code from game.js that is no longer used
 
 <!--****** **********
-    UNITS
+    UNIT SUB-TYPES - unit json files
 ********** *******-->
 
-## () - r8 - unit sub-types starting with enemy unit type
+## () - rx - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am goinf to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -62,14 +66,27 @@
 }
 ```
 
-## () - r7 - inventory and drops
+<!--****** **********
+    ITEMS AND DROPS - item json files
+********** *******-->
+
+## () - rx - inventory and drops
 * an item can be a drop that will be shown in the grid along with "wall", and "enemy" types
 * a unit will then need to have an unit.inventory property that will be another kind of standard object
 * an inventory object should contain a slotCount property that is the max number of items a unit can carry.
 
-## () - r6 - new unit type "item" Collection, weapons
-* start a new type of unit called an 'item'
+## () - rx - new unit type "item" Collection, weapons
+* start a new type of unit called an 'item' in lib\/units.js
 
+
+
+<!--****** **********
+    JSON LOADER - world map json files, pixmap json files 
+********** *******-->
+
+## () - r6 - loader state
+* start a new states-loader.sj file that will be a simple json file loader state
+* start a root json folder that will contain all the json files for the game
 
 <!--****** **********
     UI

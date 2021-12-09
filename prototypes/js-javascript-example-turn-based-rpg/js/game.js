@@ -375,15 +375,15 @@ menuPool.update = function(button, options, sm, secs){
             mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
             turn: 0,
             turnState: 'wait',
-            maps: [],
-            mapIndex: 0,
-            mapWorldWidth: 3, // used to find toIndex
+            maps: [],                      // current WORKABLE STATE of the CURRENT WORLD MAP
+            mapStrings: opt.maps || ['2'], // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
+            mapWorldWidth: 3,              // the WORLD MAP width
+            mapIndex: 0,                   // current map index in the CURRENT WORLD MAP
             toMap: {
                 index: null,
                 x: null,
                 y: null
             },
-            mapStrings: opt.maps || ['2'],
             player: unitMod.createUnit('player'),
             remainingEnemies: 0,
             options: new poolMod.create(menuPool), // pool of objects used for the circle menu

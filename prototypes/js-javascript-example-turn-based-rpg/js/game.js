@@ -536,50 +536,47 @@ menuPool.update = function(button, options, sm, secs){
         }
     };
 
+    var createMapButtonOnClick = function(dir){
+        return function(sm, button){
+            var tm = sm.game.toMap;
+            sm.game.mode = 'map';
+            tm.options.forEach(function(opt){
+                if(opt.dir === dir){
+                   tm.index = opt.mi;
+                   tm.x = opt.x;
+                   tm.y = opt.y;
+                }
+            });
+            changeMap(sm.game);
+        };
+    };
+
     BUTTON.map_south = {
         desc: 'South',
         outer: false,
         ta: Math.PI * 0.5,
-        onClick: function(sm, button){
-            var tm = sm.game.toMap;
-            sm.game.mode = 'map';
-            tm.options.forEach(function(opt){
-                if(opt.dir === 'south'){
-                   tm.index = opt.mi;
-                   tm.x = opt.x;
-                   tm.y = opt.y;
-console.log(tm.x, tm.y);
-                }
-            });
-            changeMap(sm.game);
-        }
+        onClick: createMapButtonOnClick('south')
     };
 
     BUTTON.map_north = {
         desc: 'North',
         outer: false,
         ta: Math.PI * 1.5,
-        onClick: function(sm, button){
-            sm.game.mode = 'map';          
-        }
+        onClick: createMapButtonOnClick('north')
     };
 
     BUTTON.map_east = {
         desc: 'East',
         outer: false,
         ta: Math.PI * 2,
-        onClick: function(sm, button){
-           sm.game.mode = 'map';           
-        }
+        onClick: createMapButtonOnClick('east')
     };
 
     BUTTON.map_west = {
         desc: 'West',
         outer: false,
         ta: Math.PI * 1,
-        onClick: function(sm, button){
-           sm.game.mode = 'map';           
-        }
+        onClick: createMapButtonOnClick('west')
     };
 
 

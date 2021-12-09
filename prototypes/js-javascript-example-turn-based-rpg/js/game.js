@@ -144,7 +144,7 @@ var gameMod = (function () {
             return opt;
         });
 
-
+        toMap.index = options[0].mi;
         toMap.x = options[0].x;
         toMap.y = options[0].y;
 
@@ -729,8 +729,7 @@ console.log( getToIndexOptions(game, 8, 6) );
             if (game.mode === 'map' && clickedCell) {
                 // if player cell is clicked and there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
-                    //game.mapIndex = game.toMap.index;
-game.mapIndex = game.toMap.options[0].mi;
+                    game.mapIndex = game.toMap.index;
                     game.toMap = getToMap(game);
                     pCell.unit = null;
                     pCell.walkable = true;

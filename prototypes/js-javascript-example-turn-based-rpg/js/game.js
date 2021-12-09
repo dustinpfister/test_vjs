@@ -232,11 +232,11 @@ var getCellsByUnitType = function(map, type){
     var changeMap = function(game){
         var pCell = api.getPlayerCell(game);
         game.mapIndex = game.toMap.index;
-        game.toMap = getToMap(game);
         pCell.unit = null;
         pCell.walkable = true;
         game.player.currentCellIndex = null;
         placePlayer(game);
+        game.toMap = getToMap(game);
     };
 
 /********** **********
@@ -548,8 +548,10 @@ menuPool.update = function(button, options, sm, secs){
                    tm.index = opt.mi;
                    tm.x = opt.x;
                    tm.y = opt.y;
+console.log(tm.x, tm.y);
                 }
-            });  
+            });
+            changeMap(sm.game);
         }
     };
 
@@ -681,14 +683,7 @@ menuPool.update = function(button, options, sm, secs){
             if (game.mode === 'map' && clickedCell) {
                 // if player cell is clicked and there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
-                    /*game.mapIndex = game.toMap.index;
-                    game.toMap = getToMap(game);
-                    pCell.unit = null;
-                    pCell.walkable = true;
-                    game.player.currentCellIndex = null;
-                    placePlayer(game);
-*/
-changeMap(game);
+                    changeMap(game);
                     return;
                 }
                 // if cell has a unit on it

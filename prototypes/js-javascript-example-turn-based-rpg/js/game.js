@@ -268,7 +268,9 @@ var menuPool = {
         innerRadius: 25,
         outerTotal: 1,
         frame: 0,
-        maxFrame: 15
+        maxFrame: 15,
+        activeButton: null, // a ref to the active button to use on 'exit' mode end
+        mode: 'enter'       // current mode of the menuPool 'enter', 'exit'
     }
 };
 
@@ -294,8 +296,20 @@ menuPool.update = function(button, options, sm, secs){
     bd = button.data;
     // !!! updating pool data here is not so great
     if(button.i === options.objects.length - 1){
-        pd.frame += 30 * secs;
-        pd.frame = pd.frame >= pd.maxFrame ? pd.maxFrame : pd.frame;
+        // if we are in enter mode
+        if(pd.mode === 'enter'){
+            pd.frame += 30 * secs;
+            pd.frame = pd.frame >= pd.maxFrame ? pd.maxFrame : pd.frame;
+        }
+        // if we are in exit mode
+        if(pd.mode === 'exit'){
+            pd.frame -= 30 * secs;
+            pd.frame = pd.frame < 0 ? 0 : pd.frame;
+            if(pd.frame === 0 && pd.activeButton){
+
+                pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+            }
+        }
     }
 
     var per = pd.frame / pd.maxFrame;
@@ -327,7 +341,7 @@ menuPool.update = function(button, options, sm, secs){
             mapStrings: opt.maps || ['2'],
             player: unitMod.createUnit('player'),
             remainingEnemies: 0,
-            options: new poolMod.create(menuPool),
+            options: new poolMod.create(menuPool), // pool of objects used for the circle menu
             pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
         };
         game.mapStrings.forEach(function(){
@@ -486,7 +500,7 @@ menuPool.update = function(button, options, sm, secs){
         outer: false,
         ta: Math.PI * 0.5,
         onClick: function(sm, button){
-           
+            sm.game.mode = 'map';           
         }
     };
 
@@ -495,7 +509,7 @@ menuPool.update = function(button, options, sm, secs){
         outer: false,
         ta: Math.PI * 1.5,
         onClick: function(sm, button){
-           
+            sm.game.mode = 'map';          
         }
     };
 
@@ -504,7 +518,7 @@ menuPool.update = function(button, options, sm, secs){
         outer: false,
         ta: Math.PI * 2,
         onClick: function(sm, button){
-           
+           sm.game.mode = 'map';           
         }
     };
 
@@ -513,7 +527,7 @@ menuPool.update = function(button, options, sm, secs){
         outer: false,
         ta: Math.PI * 1,
         onClick: function(sm, button){
-           
+           sm.game.mode = 'map';           
         }
     };
 
@@ -522,7 +536,7 @@ menuPool.update = function(button, options, sm, secs){
         desc: 'dummy1',
         outer: true,
         onClick: function(sm, button){
-           
+           sm.game.mode = 'map';           
         }
     };
 
@@ -530,7 +544,7 @@ menuPool.update = function(button, options, sm, secs){
         desc: 'dummy2',
         outer: false,
         onClick: function(sm, button){
-           
+           sm.game.mode = 'map';           
         }
     };
 
@@ -538,7 +552,7 @@ menuPool.update = function(button, options, sm, secs){
         desc: 'dummy2',
         outer: false,
         onClick: function(sm, button){
-           
+           sm.game.mode = 'map';           
         }
     };
 
@@ -602,6 +616,7 @@ menuPool.update = function(button, options, sm, secs){
             // if we are in map mode switch to menu mode
             if(game.mode === 'map'){
                 game.mode = 'menu';
+                game.options.data.mode = 'enter';
                 createMenu(game);
 
             }
@@ -637,7 +652,9 @@ menuPool.update = function(button, options, sm, secs){
             if(game.mode === 'menu'){
                 var clicked = poolMod.getOverlaping({active: true, w:1, h:1, x: x, y: y}, game.options);
                 if(clicked.length >= 1){
-                    clicked[0].data.onClick(sm, clicked[0]);
+                    game.options.data.mode = 'exit';
+                    game.options.data.activeButton = clicked[0];
+                    //clicked[0].data.onClick(sm, clicked[0]);
                 }else{
                    // no button was clicked
                    game.mode = 'map';

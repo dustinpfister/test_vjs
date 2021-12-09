@@ -59,6 +59,8 @@
 * (done) createMenu helper and BUTTON const in game.js
 * (done) add a back button that will also have a simular effect to just clicking outside of the button circle
 * (done) get oc and ic count in createMenu
+* (done) when a button is clicked prefrom the animation is reverse and then call the button.onClick method
+
 
 * update getToMap helper to append and array of objects that contain mi,x,y, and dir like this:
 ```
@@ -71,7 +73,7 @@
 
 * when at an edge of a corner relavent wasd key press will result in a map change
 * if at a corner the menu will always show up even with a short click
-* when a button is clicked prefrom the animation is reverse and then call the button.onClick method
+
 
 * add keyboard events
 * use wasd keys to move a cell selector, and use the 'j' key to 'click' that cell

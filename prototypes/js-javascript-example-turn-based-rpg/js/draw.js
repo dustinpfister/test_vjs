@@ -120,7 +120,7 @@ var drawCell = function(sm, cell){
         canvas = sm.canvas;
         // text style
         ctx.fillStyle = style || 'white';
-        ctx.font = '8px courier';
+        ctx.font = '10px courier';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         // version number

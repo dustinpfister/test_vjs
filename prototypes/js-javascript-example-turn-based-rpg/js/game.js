@@ -309,11 +309,37 @@ menuPool.update = function(button, options, sm, secs){
 /********** **********
      gameMod.create PUBLIC METHOD and helpers
 *********** *********/
+    // generate map strings helper
+    var genMapStrings = function(opt){
+        opt = opt || {};
+        opt.mapWorldWidth = opt.mapWorldWidth || 1;
+        opt.mapWorldHeight = opt.mapWorldHeight || 1;
+        var w = opt.w || 9, h = opt.h || 7;
+        var strLength = w * h;
+        var blankStr = Array.from({length: strLength}).map(function(){ return 0; }).join('');
+        var i = 0, mapStrings = [],
+        len = opt.mapWorldWidth * opt.mapWorldHeight;
+        while(i < len){
+            mapStrings.push(blankStr);
+            i += 1;
+        }
+        var str = mapStrings[0];
+        var arr = str.split('');
+        arr[0] = '2';
+        mapStrings[0] = arr.join('');
+        var str = mapStrings[1];
+        var arr = str.split('');
+        arr[7] = '3';
+        mapStrings[1] = arr.join('');
+        return mapStrings;
+    };
     // create a new game state
     api.create = function (opt) {
         opt = opt || {};
+        opt.w = opt.w || 9;
+        opt.h = opt.h || 7;
         opt.mapWorldWidth = opt.mapWorldWidth === undefined ? 3 : opt.mapWorldWidth;
-        opt.mapStrings = opt.mapStrings || null;
+        opt.mapStrings = opt.mapStrings || genMapStrings(opt);
         var game = {
             mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
             turn: 0,

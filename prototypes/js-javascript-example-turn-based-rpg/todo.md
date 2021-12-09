@@ -21,6 +21,12 @@
     UNITS
 ********** *******-->
 
+## () - 0.9.0 - lib menu-circle.js, and pool.js improvements
+* take code in game.js that has to do with the circle menu, and turn it into its own lin file
+* use new menu-circle.js lib file in game.js
+* have a main update loop for a pool object created with pool.js
+* remove old curcle menu code from game.js that is no longer used
+
 ## () - 0.8.0 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am goinf to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'

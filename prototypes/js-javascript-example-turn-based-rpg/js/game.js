@@ -672,7 +672,6 @@ menuPool.update = function(button, options, sm, secs){
                 game.mode = 'menu';
                 game.options.data.mode = 'enter';
                 createMenu(game);
-
             }
         }
         // short press
@@ -680,7 +679,13 @@ menuPool.update = function(button, options, sm, secs){
             if (game.mode === 'map' && clickedCell) {
                 // if player cell is clicked and there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
-                    changeMap(game);
+                    if(game.toMap.options.length > 1){
+                        game.mode = 'menu';
+                        game.options.data.mode = 'enter';
+                        createMenu(game);
+                    }else{
+                        changeMap(game);
+                    }
                     return;
                 }
                 // if cell has a unit on it

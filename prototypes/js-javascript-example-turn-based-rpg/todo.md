@@ -19,6 +19,13 @@
     MENU UI
 ********** *******-->
 
+## () - 0.10.0 - keyboard events
+* add keyboard events
+* when at an edge of a corner relavent wasd key press will result in a map change
+* use wasd keys to move a cell selector, and use the 'j' key to 'click' that cell
+* in menu game mode the 'ad' keys can be used to select an option and 'j' will result in a click
+* in menu game mode the 'ws' keys can be used to switch between inner and outer rings
+
 ## () - 0.9.0 - lib menu-circle.js, and pool.js improvements
 * take code in game.js that has to do with the circle menu, and turn it into its own lin file
 * use new menu-circle.js lib file in game.js
@@ -68,7 +75,7 @@
     UI
 ********** *******-->
 
-## () - 0.5.0 - keyboard events and more work on menu game mode
+## () - 0.5.0 - More work on menu game mode
 * (done) createMenu helper and BUTTON const in game.js
 * (done) add a back button that will also have a simular effect to just clicking outside of the button circle
 * (done) get oc and ic count in createMenu
@@ -80,17 +87,10 @@
   {mi:5, x:0, y:6, dir: 'east'}
 ]
 ```
-* use new toMap options array in place of older system
-* use new toMap options array to crate proper dir buttons in menu
-* when at an edge of a corner relavent wasd key press will result in a map change
+* (done) use new toMap options array in place of older system
+* (done) use new toMap options array to crate proper dir buttons in menu
+* (done) remove old code that has to do with to map object in game.js
 * if at a corner the menu will always show up even with a short click
-* remove old code that has to do with to map object in game.js
-
-* add keyboard events
-* use wasd keys to move a cell selector, and use the 'j' key to 'click' that cell
-* in menu game mode the 'ad' keys can be used to select an option and 'j' will result in a click
-* in menu game mode the 'ws' keys can be used to switch between inner and outer rings
-
 
 ## ( done 12/08/2021 ) - 0.4.0 - Game mode property, with 'map', and 'menu' mode
 * (done) add an object pool librray to the js lib folder

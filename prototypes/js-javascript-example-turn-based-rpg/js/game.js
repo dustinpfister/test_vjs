@@ -74,59 +74,11 @@ var gameMod = (function () {
             }];
         }
     };
-
-    // get to index helper used to get the map index to go to for the game.toMap object
-    var getToIndex = function(game){
-        var toIndex = null,
-        dir,
-        p = game.player,
-        map = game.maps[game.mapIndex],
-        pCell = api.getPlayerCell(game),
-        mwx = game.mapIndex % game.mapWorldWidth,                 // map world x and y
-        mwy = Math.floor(game.mapIndex / game.mapWorldWidth );   
-        // if player cell x equals 0 ( left side )
-        if(pCell.x === 0){
-            var x = mwx - 1;
-            x = x < 0 ? game.mapWorldWidth - 1 : x;
-            toIndex = mwy * game.mapWorldWidth + x;
-            dir = 'west';
-        }
-        // if player cell x equals map.w - 1 ( right side )
-        if(pCell.x === map.w - 1){
-            var x = mwx + 1;
-            x = x >= game.mapWorldWidth ? 0 : x;
-            toIndex = mwy * game.mapWorldWidth + x;
-            dir = 'east';
-        }
-        // if player cell y equals 0 ( top side )
-        if(pCell.y === 0){
-            var y = mwy - 1;
-            y = y < 0 ? game.maps.length / game.mapWorldWidth - 1 : y;
-            toIndex = y * game.mapWorldWidth + mwx;
-            dir = 'north';
-        }
-        // if player cell y map.h - 1 ( bottom side )
-        if(pCell.y === map.h - 1){
-            var y = mwy + 1;
-            y = y >= game.maps.length / game.mapWorldWidth ? 0 : y;
-            toIndex = y * game.mapWorldWidth + mwx;
-            dir = 'south';
-        }
-        // return object with index and dir text
-        return {
-           mi: toIndex,
-           dir: dir
-        };
-    };
     // get a toMap object that can be set to the game.toMap propery
     var getToMap = function(game){
         var toMap = {};
-        var map = game.maps[game.mapIndex];
         var pCell = api.getPlayerCell(game);
-        // get to index obj
-        var toIndexObj = getToIndex(game);
-        var mi = toMap.index = toIndexObj.mi;
-        // to map options array
+        var map = game.maps[game.mapIndex];
         var options = toMap.options = getToIndexOptions(game, pCell.x, pCell.y);
         options = options.map(function(opt){
             if(opt.dir === 'north'){
@@ -143,29 +95,10 @@ var gameMod = (function () {
             }
             return opt;
         });
-
+        // assume first index
         toMap.index = options[0].mi;
         toMap.x = options[0].x;
         toMap.y = options[0].y;
-
-/*
-        // at corner? if so we have two options
-        if(isAtCorner(game, pCell)){
-           if(pCell.y === map.h - 1){
-               toMap.x = pCell.x;
-               toMap.y = 0;
-           }else{
-               toMap.x = pCell.x;
-               toMap.y = map.h - 1;
-           }
-        }else{
-            // not at corner
-            toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
-            toMap.y = pCell.y === 0 ? map.h - 1 : pCell.y;
-            toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
-            toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
-        }
-*/
         return toMap;
     };
 /********** **********
@@ -450,12 +383,6 @@ menuPool.update = function(button, options, sm, secs){
             }));
         });
         setupGame(game, true);
-// testing out my new getToIndexOptions helper
-console.log( getToIndexOptions(game, 0, 0) );
-console.log( getToIndexOptions(game, 8, 0) );
-console.log( getToIndexOptions(game, 0, 6) );
-console.log( getToIndexOptions(game, 8, 6) );
-
         return game;
     };
 /********** **********

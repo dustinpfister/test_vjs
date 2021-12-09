@@ -14,7 +14,7 @@ var gameMod = (function () {
             (cell.x === w && cell.y === 0);
     };
     // return a toIndexOptions array for the given map position in the current game map
-    var getToIndexOptions = function(game, x, y){
+    var getToIndexOptions = function(game, x, y, ox, oy){
         var toIndex = null,
         dir,
         p = game.player,
@@ -25,16 +25,16 @@ var gameMod = (function () {
         options = [];
         if(isAtCorner(game, cell)){
             if(x === 0 && y === 0){
-                return getToIndexOptions(game, 0, 1).concat(getToIndexOptions(game, 1, 0));
+                return getToIndexOptions(game, 0, 1, x, y).concat(getToIndexOptions(game, 1, 0, x, y));
             }
             if(x === map.w - 1 && y === 0){
-                return getToIndexOptions(game, map.w - 1, 1).concat(getToIndexOptions(game, map.w - 2, 0));
+                return getToIndexOptions(game, map.w - 1, 1, x, y).concat(getToIndexOptions(game, map.w - 2, 0, x, y));
             }
             if(x === map.w - 1 && y === map.h - 1){
-                return getToIndexOptions(game, map.w - 1, map.h - 2).concat(getToIndexOptions(game, map.w - 2, map.h - 1));
+                return getToIndexOptions(game, map.w - 1, map.h - 2, x, y).concat(getToIndexOptions(game, map.w - 2, map.h - 1, x, y));
             }
             if(x === 0 && y === map.h - 1){
-                return getToIndexOptions(game, 0, map.h - 2).concat(getToIndexOptions(game, map.w - 2, map.h - 1));
+                return getToIndexOptions(game, 0, map.h - 2, x, y).concat(getToIndexOptions(game, map.w - 2, map.h - 1, x, y));
             }
         }else{
             // if player cell x equals 0 ( left side )
@@ -69,8 +69,8 @@ var gameMod = (function () {
             return [{
                mi: toIndex,
                dir: dir || '',
-               x: x,
-               y: y
+               x: ox === undefined ? x : ox,
+               y: oy === undefined ? y : oy
             }];
         }
     };
@@ -132,10 +132,24 @@ var gameMod = (function () {
 var options = toMap.options = getToIndexOptions(game, pCell.x, pCell.y);
 
 options = options.map(function(opt){
-            opt.x = pCell.x === 0 ? map.w - 1 : pCell.x;
-            opt.y = pCell.y === 0 ? map.h - 1 : pCell.y;
-            opt.x = pCell.x === map.w - 1 ? 0 : opt.x;
-            opt.y = pCell.y === map.h - 1 ? 0 : opt.y;
+
+   if(opt.dir === 'north'){
+      opt.y = map.h - 1;
+   }
+   if(opt.dir === 'south'){
+      opt.y = 0;
+   }
+   if(opt.dir === 'east'){
+      opt.x = 0;
+   }
+   if(opt.dir === 'west'){
+      opt.x = map.w - 1;
+   }
+
+   //opt.x = pCell.x === 0 ? map.w - 1 : pCell.x;
+   //opt.y = pCell.y === 0 ? map.h - 1 : pCell.y;
+   //opt.x = pCell.x === map.w - 1 ? 0 : opt.x;
+   //opt.y = pCell.y === map.h - 1 ? 0 : opt.y;
    return opt;
 });
 

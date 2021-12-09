@@ -15,10 +15,8 @@
 * have a new 'range' turnState in which all units that have chosen to use a ranged attack will have there turn processed
 * see about fixing bug where the player, or any unit can 'jump' over a unit in the way
 
-
-
 <!--****** **********
-    UNITS
+    MENU UI
 ********** *******-->
 
 ## () - 0.9.0 - lib menu-circle.js, and pool.js improvements
@@ -26,6 +24,10 @@
 * use new menu-circle.js lib file in game.js
 * have a main update loop for a pool object created with pool.js
 * remove old curcle menu code from game.js that is no longer used
+
+<!--****** **********
+    UNITS
+********** *******-->
 
 ## () - 0.8.0 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am goinf to want to have some kind of sub type system
@@ -60,6 +62,11 @@
 
 ## () - 0.6.0 - new unit type "item" Collection, weapons
 * start a new type of unit called an 'item'
+
+
+<!--****** **********
+    UI
+********** *******-->
 
 ## () - 0.5.0 - keyboard events and more work on menu game mode
 * (done) createMenu helper and BUTTON const in game.js

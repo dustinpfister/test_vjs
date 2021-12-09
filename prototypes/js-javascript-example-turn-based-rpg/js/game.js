@@ -53,7 +53,9 @@ var gameMod = (function () {
         var map = game.maps[game.mapIndex];
         var pCell = api.getPlayerCell(game);
         var mi = toMap.index = getToIndex(game);
-        // at corner?
+        // to map options array
+        var options = toMap.options = [];
+        // at corner? if so we have two options
         if(isAtCorner(game, pCell)){
            if(pCell.y === map.h - 1){
                toMap.x = pCell.x;
@@ -62,12 +64,26 @@ var gameMod = (function () {
                toMap.x = pCell.x;
                toMap.y = map.h - 1;
            }
+           // toMapOptions array should have to objects
+           options.push({
+                x: toMap.x,
+                y: toMap.y,
+                mi: mi,
+                dir: ''
+            });
         }else{
             // not at corner
             toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
             toMap.y = pCell.y === 0 ? map.h - 1 : pCell.y;
             toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
             toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
+            // to map options array should have just the one object
+            options.push({
+                x: toMap.x,
+                y: toMap.y,
+                mi: mi,
+                dir: ''
+            });
         }
         return toMap;
     };

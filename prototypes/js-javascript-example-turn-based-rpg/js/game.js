@@ -6,6 +6,7 @@ var gameMod = (function () {
     // get to index helper use to get the map index to go to for the game.toMap object
     var getToIndex = function(game){
         var toIndex = null,
+        dir,
         p = game.player,
         map = game.maps[game.mapIndex],
         pCell = api.getPlayerCell(game),
@@ -16,26 +17,34 @@ var gameMod = (function () {
             var x = mwx - 1;
             x = x < 0 ? game.mapWorldWidth - 1 : x;
             toIndex = mwy * game.mapWorldWidth + x;
+            dir = 'west';
         }
         // if player cell x equals map.w - 1 ( right side )
         if(pCell.x === map.w - 1){
             var x = mwx + 1;
             x = x >= game.mapWorldWidth ? 0 : x;
             toIndex = mwy * game.mapWorldWidth + x;
+            dir = 'east';
         }
         // if player cell y equals 0 ( top side )
         if(pCell.y === 0){
             var y = mwy - 1;
             y = y < 0 ? game.maps.length / game.mapWorldWidth - 1 : y;
             toIndex = y * game.mapWorldWidth + mwx;
+            dir = 'north';
         }
         // if player cell y map.h - 1 ( bottom side )
         if(pCell.y === map.h - 1){
             var y = mwy + 1;
             y = y >= game.maps.length / game.mapWorldWidth ? 0 : y;
             toIndex = y * game.mapWorldWidth + mwx;
+            dir = 'south';
         }
-        return toIndex;
+        // return object with index and dir text
+        return {
+           mi: toIndex,
+           dir: dir
+        };
     };
     // Is a given cell at a corner? Used to get adjust goto point for game.toMap object
     var isAtCorner = function(game, cell){
@@ -52,7 +61,9 @@ var gameMod = (function () {
         var toMap = {};
         var map = game.maps[game.mapIndex];
         var pCell = api.getPlayerCell(game);
-        var mi = toMap.index = getToIndex(game);
+        // get to index obj
+        var toIndexObj = getToIndex(game);
+        var mi = toMap.index = toIndexObj.mi;
         // to map options array
         var options = toMap.options = [];
         // at corner? if so we have two options
@@ -82,7 +93,7 @@ var gameMod = (function () {
                 x: toMap.x,
                 y: toMap.y,
                 mi: mi,
-                dir: ''
+                dir: toIndexObj.dir
             });
         }
         return toMap;

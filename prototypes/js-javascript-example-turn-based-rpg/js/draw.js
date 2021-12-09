@@ -132,10 +132,10 @@ var drawCell = function(sm, cell){
         pos = sm.input.pos,
         pCell = gameMod.getPlayerCell(sm.game),
         canvas = sm.canvas,
-        dy = 14;
+        dy = 10;
         // text style
         ctx.fillStyle = 'yellow';
-        ctx.font = '12px courier';
+        ctx.font = '8px courier';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         // draw current pointer position
@@ -145,10 +145,11 @@ var drawCell = function(sm, cell){
         // to map values
         var tm = sm.game.toMap;
         ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, 5 + dy * 2);
+        ctx.fillText('toMap.options:' + JSON.stringify(tm.options) , 5, 5 + dy * 3);
         // turn number and turnChange bool
-        ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, 5 + dy * 3);
+        ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, 5 + dy * 4);
         // enemies
-        ctx.fillText('enemies:' + sm.game.remainingEnemies, 5, 5 + dy * 4);
+        ctx.fillText('enemies:' + sm.game.remainingEnemies, 5, 5 + dy * 5);
     };
     // return the public api to draw variable
     return api;

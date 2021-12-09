@@ -68,7 +68,9 @@ var gameMod = (function () {
             // return array with index and dir text
             return [{
                mi: toIndex,
-               dir: dir
+               dir: dir || '',
+               x: null,
+               y: null
             }];
         }
     };
@@ -125,7 +127,10 @@ var gameMod = (function () {
         var toIndexObj = getToIndex(game);
         var mi = toMap.index = toIndexObj.mi;
         // to map options array
-        var options = toMap.options = [];
+        //var options = toMap.options = [];
+
+var options = toMap.options = getToIndexOptions(game, pCell.x, pCell.y);
+
         // at corner? if so we have two options
         if(isAtCorner(game, pCell)){
            if(pCell.y === map.h - 1){
@@ -136,12 +141,12 @@ var gameMod = (function () {
                toMap.y = map.h - 1;
            }
            // toMapOptions array should have to objects
-           options.push({
-                x: toMap.x,
-                y: toMap.y,
-                mi: mi,
-                dir: ''
-            });
+           //options.push({
+           //     x: toMap.x,
+           //     y: toMap.y,
+           //     mi: mi,
+           //     dir: ''
+           // });
         }else{
             // not at corner
             toMap.x = pCell.x === 0 ? map.w - 1 : pCell.x;
@@ -149,12 +154,12 @@ var gameMod = (function () {
             toMap.x = pCell.x === map.w - 1 ? 0 : toMap.x;
             toMap.y = pCell.y === map.h - 1 ? 0 : toMap.y;
             // to map options array should have just the one object
-            options.push({
-                x: toMap.x,
-                y: toMap.y,
-                mi: mi,
-                dir: toIndexObj.dir
-            });
+            //options.push({
+            //    x: toMap.x,
+            //    y: toMap.y,
+            //    mi: mi,
+            //    dir: toIndexObj.dir
+            //});
         }
         return toMap;
     };

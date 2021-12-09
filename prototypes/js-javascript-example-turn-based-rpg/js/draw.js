@@ -145,7 +145,9 @@ var drawCell = function(sm, cell){
         // to map values
         var tm = sm.game.toMap;
         ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, 5 + dy * 2);
-        ctx.fillText('toMap.options:' + JSON.stringify(tm.options) , 5, 5 + dy * 3);
+        ctx.fillText('toMap.options:' + JSON.stringify(tm.options.map(function(opt){ 
+            return opt.dir + '(' + opt.x + ',' + opt.y + ');' + opt.mi;
+        })) , 5, 5 + dy * 3);
         // turn number and turnChange bool
         ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, 5 + dy * 4);
         // enemies

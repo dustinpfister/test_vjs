@@ -3,7 +3,77 @@ var gameMod = (function () {
 /********** **********
      TO MAP OBJECT
 *********** *********/
-    // get to index helper use to get the map index to go to for the game.toMap object
+    // Is a given cell at a corner? Used to get adjust goto point for game.toMap object
+    var isAtCorner = function(game, cell){
+        var map = game.maps[game.mapIndex],
+        w = map.w - 1,
+        h = map.h - 1;
+        return (cell.x === 0 && cell.y === 0) || 
+            (cell.x === w && cell.y === h) || 
+            (cell.x === 0 && cell.y === h) || 
+            (cell.x === w && cell.y === 0);
+    };
+    // return a toIndexOptions array for the given map position in the current game map
+    var getToIndexOptions = function(game, x, y){
+        var toIndex = null,
+        dir,
+        p = game.player,
+        map = game.maps[game.mapIndex],
+        cell = mapMod.get(map, x, y),
+        mwx = game.mapIndex % game.mapWorldWidth,                 // map world x and y
+        mwy = Math.floor(game.mapIndex / game.mapWorldWidth ),
+        options = [];
+        if(isAtCorner(game, cell)){
+            if(x === 0 && y === 0){
+                return getToIndexOptions(game, 0, 1).concat(getToIndexOptions(game, 1, 0));
+            }
+            if(x === map.w - 1 && y === 0){
+                return getToIndexOptions(game, map.w - 1, 1).concat(getToIndexOptions(game, map.w - 2, 0));
+            }
+            if(x === map.w - 1 && y === map.h - 1){
+                return getToIndexOptions(game, map.w - 1, map.h - 2).concat(getToIndexOptions(game, map.w - 2, map.h - 1));
+            }
+            if(x === 0 && y === map.h - 1){
+                return getToIndexOptions(game, 0, map.h - 2).concat(getToIndexOptions(game, map.w - 2, map.h - 1));
+            }
+        }else{
+            // if player cell x equals 0 ( left side )
+            if(x === 0){
+                var x = mwx - 1;
+                x = x < 0 ? game.mapWorldWidth - 1 : x;
+                toIndex = mwy * game.mapWorldWidth + x;
+                dir = 'west';
+            }
+            // if player cell x equals map.w - 1 ( right side )
+            if(x === map.w - 1){
+                var x = mwx + 1;
+                x = x >= game.mapWorldWidth ? 0 : x;
+                toIndex = mwy * game.mapWorldWidth + x;
+                dir = 'east';
+            }
+            // if player cell y equals 0 ( top side )
+            if(y === 0){
+                var y = mwy - 1;
+                y = y < 0 ? game.maps.length / game.mapWorldWidth - 1 : y;
+                toIndex = y * game.mapWorldWidth + mwx;
+                dir = 'north';
+            }
+            // if player cell y map.h - 1 ( bottom side )
+            if(y === map.h - 1){
+                var y = mwy + 1;
+                y = y >= game.maps.length / game.mapWorldWidth ? 0 : y;
+                toIndex = y * game.mapWorldWidth + mwx;
+                dir = 'south';
+            }
+            // return array with index and dir text
+            return [{
+               mi: toIndex,
+               dir: dir
+            }];
+        }
+    };
+
+    // get to index helper used to get the map index to go to for the game.toMap object
     var getToIndex = function(game){
         var toIndex = null,
         dir,
@@ -45,16 +115,6 @@ var gameMod = (function () {
            mi: toIndex,
            dir: dir
         };
-    };
-    // Is a given cell at a corner? Used to get adjust goto point for game.toMap object
-    var isAtCorner = function(game, cell){
-        var map = game.maps[game.mapIndex],
-        w = map.w - 1,
-        h = map.h - 1;
-        return (cell.x === 0 && cell.y === 0) || 
-            (cell.x === w && cell.y === h) || 
-            (cell.x === 0 && cell.y === h) || 
-            (cell.x === w && cell.y === 0);
     };
     // get a toMap object that can be set to the game.toMap propery
     var getToMap = function(game){
@@ -380,6 +440,12 @@ menuPool.update = function(button, options, sm, secs){
             }));
         });
         setupGame(game, true);
+// testing out my new getToIndexOptions helper
+console.log( getToIndexOptions(game, 0, 0) );
+console.log( getToIndexOptions(game, 8, 0) );
+console.log( getToIndexOptions(game, 0, 6) );
+console.log( getToIndexOptions(game, 8, 6) );
+
         return game;
     };
 /********** **********

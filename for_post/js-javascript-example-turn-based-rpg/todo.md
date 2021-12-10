@@ -1,6 +1,13 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
 <!--****** **********
+    The Librray game world
+********** *******-->
+
+## () rx - Start the libray game world
+The idea of the library game world is to have a game world that acts as a portal to at least one of not more compain type modes that follow some kind of story.
+
+<!--****** **********
     MISC IMPROVEMENTS
 ********** *******-->
 
@@ -42,6 +49,10 @@
 
 ## () - rx - The forest game world
   continue work on the world-forest.json file to make the kind of game mode that I have in mind with this. The general idea of the forest game world is that the player can enter at the main game level at home, and the enemies found in the forest will be of a simular level to that of the player. The units are all unarmed beast like units, but the player can take whatever gear that they want with them from the home world. So then the idea is to just have a world where the player can go to just do a little easy grinding if they would like to.
+
+## () - rx - The caves game world
+
+## () - rx - The home game world
 
 <!--****** **********
     UNIT SUB-TYPES - unit json files

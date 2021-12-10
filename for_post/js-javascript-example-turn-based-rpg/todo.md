@@ -37,6 +37,13 @@
 * remove old curcle menu code from game.js that is no longer used
 
 <!--****** **********
+    GAME WORLDS - world json files that make use of built in features the present differnt kinds of games
+********** *******-->
+
+## () - rx - The forest game world
+  continue work on the world-forest.json file to make the kind of game mode that I have in mind with this. The general idea of the forest game world is that the player can enter at the main game level at home, and the enemies found in the forest will be of a simular level to that of the player. The units are all unarmed beast like units, but the player can take whatever gear that they want with them from the home world. So then the idea is to just have a world where the player can go to just do a little easy grinding if they would like to.
+
+<!--****** **********
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
@@ -91,6 +98,8 @@
 <!-- World map standard -->
 * (done) start a root json folder that will contain all the json files for the game
 * (done) start a new world map json file standard
+* (done) have a world-home.json file that will be the start of the main home start world for the game
+* have a world-forest.json file that is the start of a forest game mode idea that I will be working on it a future revision
 
 <!-- Portals -->
 * have a way to define one or more portals in a game map, given them an id at least

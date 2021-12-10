@@ -4,7 +4,7 @@ These are a bunch of original vanilla javaScript demos that I worked out for con
 
 ## The for post folder
 
-This folder contains javaScript examples that should be featured in a corresponding blog post on my website. As such these examples should be more or less done, and in decent working order. However it is still possible that there might be a few bugs in the code.
+This folder contains javaScript examples that should be featured in a corresponding blog post on my website. As such these examples should be more or less done, and in decent working order, or failing that are at least in a state of compleation that I can write a one thousand plus word post on. So it is still possible that there might be at least a few bugs in the code of these various examples that I have not got around to adressing just yet. Speaking of that I do get around to editing both the blog post as well as take a second look at the source code examples also now and then, and as such I do get around to fixing things. With that said if you do fine something there is making a pull request here, as well as leaving a comment in the coresponding blog post also as another option when it comes to bring soemthing up.
 
 ## The prototypes folder
 

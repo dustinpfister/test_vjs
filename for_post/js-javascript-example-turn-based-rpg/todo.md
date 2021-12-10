@@ -84,13 +84,25 @@
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
 
-## () - r6 - JSON folder, server.js, loader state
-* (done) mapStrings generator helper for gameMod.create for when no map String is given for now
+
+
+## () - r6 - JSON folder, server.js, loader state, world maps
+
+<!-- World map standard -->
 * (done) start a root json folder that will contain all the json files for the game
 * (done) start a new world map json file standard
 
-* start a new states-loader.js file that will be a simple json file loader state
+<!-- Portals -->
+* have a way to define one or more portals in a game map, given them an id at least
 
+<!-- loader state -->
+* start a new states-loader.js file that will be a simple json file loader state
+* have an sm.loader object that contains a base url, and a list of files to load at that base url
+* just base the states-loader off of what I worked out in gamframe.ja in Clucker for now as that seems to work well
+
+
+<!-- The void world that game drops into when running in file protocol, or if there is an loading error -->
+* (done) mapStrings generator helper for gameMod.create for when no map String is given for now
 * have a standard hard coded 'void world'
 * use the location object to see if the script is running in the file protocol, if so drop into the voild world
 * if one or more erros happen while loading files in the loader state drop into the void world.

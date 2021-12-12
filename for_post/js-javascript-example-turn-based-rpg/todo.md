@@ -120,13 +120,13 @@ The idea of the library game world is to have a game world that acts as a portal
 * have a world-forest.json file that is the start of a forest game mode idea that I will be working on it a future revision
 
 <!-- Portals -->
-* have a way to define one or more portals in a game map, given them an id at least
+* have a way to define one or more portals in a game map, giving them an id at least
 
 <!-- The void world that game drops into when running in file protocol, or if there is an loading error -->
 * (done) mapStrings generator helper for gameMod.create for when no map String is given for now
 * have a standard hard coded 'void world'
 * use the location object to see if the script is running in the file protocol, if so drop into the voild world
-* if one or more erros happen while loading files in the loader state drop into the void world.
+* if one or more errors happen while loading files in the loader state drop into the void world.
 
 <!-- boot.js file -->
 * start a boot.js file that will just set a relative path to assets and start the main app loop

@@ -106,6 +106,13 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - r6 - JSON folder, server.js, loader state, world maps
 
+<!-- loader state -->
+* (done) I will want end and start hooks for the sm object
+* (done) start a sm.data object that will contain all data objects loaded by way of json
+* (done) have an sm.loader object that contains a base url, and a list of files to load at that base url
+* (done) start a new states-loader.js file that will be a simple json file loader state
+* (done) just base the states-loader off of what I worked out in gamframe.ja in Clucker for now as that seems to work well
+
 <!-- World map standard -->
 * (done) start a root json folder that will contain all the json files for the game
 * (done) start a new world map json file standard
@@ -114,15 +121,6 @@ The idea of the library game world is to have a game world that acts as a portal
 
 <!-- Portals -->
 * have a way to define one or more portals in a game map, given them an id at least
-
-<!-- loader state -->
-* (done) I will want end and start hooks for the sm object
-* (done) start a sm.data object that will contain all data objects loaded by way of json
-* (done) have an sm.loader object that contains a base url, and a list of files to load at that base url
-
-* start a new states-loader.js file that will be a simple json file loader state
-* just base the states-loader off of what I worked out in gamframe.ja in Clucker for now as that seems to work well
-
 
 <!-- The void world that game drops into when running in file protocol, or if there is an loading error -->
 * (done) mapStrings generator helper for gameMod.create for when no map String is given for now

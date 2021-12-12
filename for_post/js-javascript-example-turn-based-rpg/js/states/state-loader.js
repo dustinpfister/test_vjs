@@ -41,8 +41,7 @@ sm.states.loader = {
     },
     update: function(sm, secs){
 
-    
-
+   
     },
     draw: function(sm, layers){
         draw.back(sm);

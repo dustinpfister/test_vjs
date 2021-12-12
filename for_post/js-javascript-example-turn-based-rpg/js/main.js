@@ -1,6 +1,6 @@
 
 // set the current state
-sm.setState('game');
+sm.setState('loader');
 
 // start loop helper
 var startLoop = function(){
@@ -18,6 +18,9 @@ var startLoop = function(){
     loop();
 };
 
+startLoop();
+
+/*
 // load world map
 utils.http({
     url: './json/world-home.json',
@@ -47,7 +50,7 @@ utils.http({
 
     }
 });
-
+*/
 
 
 

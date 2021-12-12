@@ -22,6 +22,16 @@
         stateObj: null,       // ref to current state object
         currentState: '',     // current state object key name (see setState call in main.js)
 
+        data: {},
+        loader: {
+            json: {
+                baseURL: './json',
+                fileNames: [
+                    'world-home.json'
+                ]
+            }
+        },
+
         game: gameMod.create({
             marginX : 14,
             marginY : 7,

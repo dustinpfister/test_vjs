@@ -117,8 +117,10 @@ The idea of the library game world is to have a game world that acts as a portal
 
 <!-- loader state -->
 * (done) I will want end and start hooks for the sm object
+* (done) start a sm.data object that will contain all data objects loaded by way of json
+* (done) have an sm.loader object that contains a base url, and a list of files to load at that base url
+
 * start a new states-loader.js file that will be a simple json file loader state
-* have an sm.loader object that contains a base url, and a list of files to load at that base url
 * just base the states-loader off of what I worked out in gamframe.ja in Clucker for now as that seems to work well
 
 

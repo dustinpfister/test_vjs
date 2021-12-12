@@ -19,38 +19,3 @@ var startLoop = function(){
 };
 
 startLoop();
-
-/*
-// load world map
-utils.http({
-    url: './json/world-home.json',
-    onDone: function(res, xhr){
-        // parse world map
-        try{
-            var map = JSON.parse(res);
-        }catch(e){
-            var map = {};
-        }
-        // Crude yet effective way of loading json world map
-        sm.game = gameMod.create({
-            marginX : 14,
-            marginY : 7,
-            w: 9,
-            h: 7,
-            mapStrings : map.mapStrings
-        });
-        // now start the loop
-        startLoop();
-    },
-    onError: function(){
-        console.log('error loading home world map!');
-        console.log('are you using this by way of the file protocol?');
-        // now start the loop
-        startLoop();
-
-    }
-});
-*/
-
-
-

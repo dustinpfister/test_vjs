@@ -27,7 +27,7 @@
             json: {
                 baseURL: './json',
                 fileNames: [
-                    'world-home.json'
+                    'world-home'
                 ]
             }
         },

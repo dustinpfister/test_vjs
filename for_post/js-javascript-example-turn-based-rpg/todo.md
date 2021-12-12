@@ -128,6 +128,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * use the location object to see if the script is running in the file protocol, if so drop into the voild world
 * if one or more erros happen while loading files in the loader state drop into the void world.
 
+<!-- boot.js file -->
+* start a boot.js file that will just set a relative path to assets and start the main app loop
+* path to json will be './json' for main index.html files, and will need to be '../json' for pkg_rx.html files
+
 
 <!--****** **********
     UI

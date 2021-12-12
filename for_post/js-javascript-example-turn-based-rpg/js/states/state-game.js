@@ -2,7 +2,7 @@ sm.states.game = {
     key: 'game',
     start: function(sm){
 
-        var map = sm.data.wm_home || {
+        var map = sm.data.wm_forest || {
             mapStrings: [
     "111111111120000003100000000100000000100000000100000000100000000",
     "111111111000000000000000000000000000000000000000000000000000000",

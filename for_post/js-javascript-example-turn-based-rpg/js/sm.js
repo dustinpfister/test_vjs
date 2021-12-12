@@ -150,8 +150,20 @@
 
     // set the current state
     sm.setState = function(newStateKey){
+        // call any end hook for the old state of any
+        var oldState = sm.states[sm.currentState];
+        if(oldState){
+            if(oldState.end){
+                oldState.end.call(sm, sm);
+            }
+        }
+        // update sm.currentState string and sm.stateObj and call the
+        // start hook for this if any.
         sm.currentState = newStateKey;
         sm.stateObj = sm.states[sm.currentState];
+        if(sm.stateObj.start){
+            sm.stateObj.start.call(sm, sm);
+        }
     };
 
     // call the given eventKey in the events object of the current state object

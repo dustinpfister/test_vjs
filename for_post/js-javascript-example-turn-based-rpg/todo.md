@@ -116,6 +116,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * have a way to define one or more portals in a game map, given them an id at least
 
 <!-- loader state -->
+* (done) I will want end and start hooks for the sm object
 * start a new states-loader.js file that will be a simple json file loader state
 * have an sm.loader object that contains a base url, and a list of files to load at that base url
 * just base the states-loader off of what I worked out in gamframe.ja in Clucker for now as that seems to work well

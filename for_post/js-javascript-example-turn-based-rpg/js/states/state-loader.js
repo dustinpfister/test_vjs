@@ -9,9 +9,11 @@ sm.states.loader = {
             count = jl.count = jl.fileNames.length;
             jl.loaded = 0;
             jl.errorCount = 0;
+            jl.errors = [];
             // file protocol? Then do not even try
             if(location.protocol === 'file:'){
                 jl.errorCount = 1;
+                jl.errors.push('Game is running under file protocol.');
                 return;
             }
             // http or https assumed at this point
@@ -32,12 +34,13 @@ sm.states.loader = {
                                 }
                             }catch(e){
                                 jl.errorCount += 1;
+                                jl.errors.push('failed to parse JSON for file ' + fileName + '.json');
                             }
                         },
                         // what to do for an error
-                        onError: function () {
+                        onError: function (xhr) {
                             jl.errorCount += 1;
-                            // !!! should do something for any errors
+                            jl.errors.push('did not get a 200 status for file ' + fileName + '.json');
                         }
                     });
                 }(i));
@@ -46,6 +49,7 @@ sm.states.loader = {
         }else{
             // no json object in loader object
             jl.errorCount = 1;
+            jl.errors.push('no json object in sm.loader.');
         }
     },
     end: function(sm){
@@ -53,6 +57,7 @@ sm.states.loader = {
         console.log('loader state over: ');
         console.log('loaded: ' + jl.loaded + ' / ' + jl.count);
         console.log('errors: ' + jl.errorCount);
+        console.log(jl.errors);
     },
     update: function(sm, secs){
         // if we have so much as just one error

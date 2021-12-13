@@ -117,10 +117,14 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) start a root json folder that will contain all the json files for the game
 * (done) start a new world map json file standard
 * (done) have a world-home.json file that will be the start of the main home start world for the game
-* have a world-forest.json file that is the start of a forest game mode idea that I will be working on it a future revision
+* (done) have a world-forest.json file that is the start of a forest game mode idea that I will be working on it a future revision
 
 <!-- Portals -->
-* have a way to define one or more portals in a game map, giving them an id at least
+* (done) have a way to define portals in a game map, giving them data that defines what worldmap, mapindex and location to use
+* have a unit type for portals
+* update gameMod.create and gameMod.setupGame to work with world map portals objects
+* get portals working using word-home and world-forest world map files
+
 
 <!-- The void world that game drops into when running in file protocol, or if there is an loading error -->
 * (done) mapStrings generator helper for gameMod.create for when no map String is given for now

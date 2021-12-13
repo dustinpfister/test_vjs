@@ -715,14 +715,10 @@ if(portal){
 
     var getButtonKeyValueCount = function(buttonKeys, prop, value){
         return buttonKeys.reduce(function(acc, buttonKey){
-try{
             var buttonDATA = BUTTON[buttonKey];
             if(buttonDATA[prop] === value){
                 acc += 1;
             }
-}catch(e){
- console.log(buttonKey);
-}
             return acc;
         }, 0);
     };

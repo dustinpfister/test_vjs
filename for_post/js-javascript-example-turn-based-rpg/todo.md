@@ -102,6 +102,22 @@ The idea of the library game world is to have a game world that acts as a portal
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
 
+## () - r9 - pixmaps
+* see about using the pixmap json standard that I worked out, as a way to add images
+
+## () - r8 - new conditions for end game, player death, spawning
+* a worldMap.onPlayerDeath prop should be added to maps to define what should happen on player death
+* a worldMap.onNoEnemies prop should be used to define what happens when there are no enemeis in the map
+* default for worldMap.onNoEnemies could be 'resetMap' which is what the deal is all ready
+
+<!-- world-home.json -->
+* worldMap.onPlayerDeath should just reset the map
+* worldMap.onNoEnemies should be 'doNothing'
+
+<!-- world-forest.json -->
+* use worldMap.onPlayerDeath to send the player back to the home map on death
+* worldMap.onNoEnemies should be 'doNothing'
+
 ## ( done 12/13/2021 ) - r7 - JSON - loader improvements, gameMOD.VOID\_WORLD object
 <!-- state.loader -->
 * (done) switch directly to title state in the event of any error in update hook in loader state

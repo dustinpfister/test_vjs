@@ -102,21 +102,21 @@ The idea of the library game world is to have a game world that acts as a portal
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
 
-## () - r7 - JSON - loader improvements, gameMOD.VOID\_WORLD
+## () - r7 - JSON - loader improvements, gameMOD.VOID\_WORLD object
 <!-- state.loader -->
 * (done) switch directly to title state in the event of any error in update hook in loader state
 * (done) make sure that the void world will be used if error count is greater than zero in game state
-* in start hook check location object to see if the script is running in the file protocol, if so jump to title
-
-<!-- sm lib -->
-* turn main.js and sm.js into lib\/sm.js
-* have a smMod.createSM method that is what will be called in index.html and \/pkg\/bottom.txt
-
-
+* (done) in start hook check location object to see if the script is running in the file protocol, if so jump to title
 <!-- The void world that game drops into when running in file protocol, or if there is an loading error -->
 * (done) mapStrings generator helper for gameMod.create for when no map String is given for now
 * (done) have a standard hard coded gameMod.VOID\_WORLD
-* if one or more errors happen while loading files in the loader state drop into the void world.
+* (done) if one or more errors happen while loading files in the loader state drop into the void world.
+
+<!-- sm lib -->
+* turn main.js and sm.js into lib\/sm.js
+* have a smMod.createSM method that is what will be called in index.html and \/pkg\/bottom.txt script tags
+
+
 
 ## ( done 12/13/2021 ) - r6 - JSON folder, server.js, loader state, world maps
 <!-- loader state -->

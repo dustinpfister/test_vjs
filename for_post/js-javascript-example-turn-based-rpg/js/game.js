@@ -163,16 +163,12 @@ var gameMod = (function () {
                 // set unit ref back to null
                 map.cells[unit.currentCellIndex].unit = null;
             }
-
             // set new cell to NOT walkable (as default) as a unit is now located here
             newCell.walkable = false;
             // if the unit is a portal then it is possible for a unit to walk over that
             if(unit.type === 'portal'){
-console.log('hello');
                 newCell.walkable = true;
             }
-
-
             // set current cell index for the unit
             unit.currentCellIndex = newCell.i;
             // place a ref to the unit in the map cell
@@ -223,8 +219,9 @@ console.log('hello');
                 // the player unit can go threw portals
                 if(moveToCell.unit){
                     if(moveToCell.unit.type === 'portal'){
-
-                        console.log('entering portal');
+                        var portalUnit = moveToCell.unit;
+                        console.log('entering portal:');
+                        console.log(portalUnit);
                         placeUnit(game, unit, moveToCell.x, moveToCell.y);
                     }
                 }
@@ -415,9 +412,12 @@ menuPool.update = function(button, options, sm, secs){
 // wMap portals
 wMap.mapPortals.forEach(function(portal){
     game.mapIndex = portal.mi;
-    var pUnit = unitMod.createUnit('portal');
-    placeUnit(game, pUnit, portal.x, portal.y);
+    var portalUnit = unitMod.createUnit('portal');
+    placeUnit(game, portalUnit, portal.x, portal.y);
 
+portalUnit.data = portal;
+console.log('creating portal unit');
+console.log(portalUnit);
 console.log(mapMod.get(game.maps[game.mapIndex], portal.x, portal.y));
 
 });

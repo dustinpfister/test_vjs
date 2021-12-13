@@ -206,6 +206,7 @@ var gameMod = (function () {
     };
     // move a unit by way of any cell index values in unit.moveCells
     var moveUnit = function(game, unit){
+
         if(unit.moveCells.length > 0){
             var ci = unit.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
@@ -224,6 +225,7 @@ var gameMod = (function () {
                         console.log(portalUnit.data);
 var newWorldMap = game.sm.data[portalUnit.data.dataKey];
 game.worldMap = newWorldMap;
+game.turnState = 'wait';
 setupGame(game, true);
 
                         //placeUnit(game, unit, moveToCell.x, moveToCell.y);
@@ -532,6 +534,7 @@ wMap.mapPortals.forEach(function(portal){
         if(game.turnState === 'move'){
             // move player unit
             moveUnit(game, game.player);
+            eCells = getCellsByUnitType(map, 'enemy');
             eCells.forEach(function(eCell){
                 moveUnit(game, eCell.unit);
             });

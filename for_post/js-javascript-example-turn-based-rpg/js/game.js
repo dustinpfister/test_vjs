@@ -362,7 +362,7 @@ menuPool.update = function(button, options, sm, secs){
         }
         // make sure mode starts out on map mode
         game.mode = 'map';
-        // set up maps
+        // set up maps with data from mapStrings array first
         game.maps = game.maps.map(function(map, mi){
             var mapStr = wMap.mapStrings[mi] || '';
             game.mapIndex = mi;
@@ -397,6 +397,14 @@ menuPool.update = function(button, options, sm, secs){
             });
             return map;
         });
+
+// wMap portals
+wMap.mapPortals.forEach(function(portal){
+    game.mapIndex = portal.mi;
+    var pUnit = unitMod.createUnit('portal');
+   placeUnit(game, pUnit, portal.x, portal.y);
+});
+
         // if player is not palced then place the player unit
         // at a null cell
         if(!playerPlaced){

@@ -17,6 +17,7 @@
     "100000001000000001000000001000030001000000001000000001111111111"              
   ],
   "mapPortals": [
+      {"mi": 4, "x": 1, "y": 1, "dataKey": "wm_forest", "dmi": 2, "dx": 7, "dy" : 3},
       {"mi": 0, "x": 1, "y": 3, "dataKey": "wm_forest", "dmi": 2, "dx": 7, "dy" : 3}
   ],
   "mapWorldUnits" : [

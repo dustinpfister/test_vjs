@@ -84,8 +84,9 @@ var unitMod = (function () {
     };
     // portal type
     UNIT_TYPES.portal = {
-        create : function(wall){
-            wall.sheetIndex = 4;
+        create : function(portal){
+            portal.sheetIndex = 4;
+            portal.data = {}; // !!! portal data set in gameMmod.setUpGame
         }
     };
 

@@ -121,6 +121,11 @@ The idea of the library game world is to have a game world that acts as a portal
 
 <!-- Portals -->
 * (done) have a way to define portals in a game map, giving them data that defines what worldmap, mapindex and location to use
+* (done) take a worldMap object as an argument for gameMod.create
+
+* update setupGame helper to use props like game.worldMap.mapStrings over props like game.mapStrings
+* update createCleanMaps helper to use game.worldMap over options object given to gameMod.create
+
 * have a unit type for portals
 * update gameMod.create and gameMod.setupGame to work with world map portals objects
 * get portals working using word-home and world-forest world map files

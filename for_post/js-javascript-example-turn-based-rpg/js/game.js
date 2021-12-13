@@ -334,14 +334,15 @@ menuPool.update = function(button, options, sm, secs){
         return mapStrings;
     };
     // create clean maps
-    var createCleanMaps = function(game, opt){
+    var createCleanMaps = function(game){
+        var wMap = game.worldMap;
         game.maps = [];
         game.mapStrings.forEach(function(){
             game.maps.push(mapMod.create({
-                marginX: opt.marginX === undefined ? 32 : opt.marginX,
-                marginY: opt.marginY === undefined ? 32 : opt.marginY,
-                w:  opt.w === undefined ? 4 : opt.w,
-                h:  opt.h === undefined ? 4 : opt.h
+                marginX: game.marginX, //opt.marginX === undefined ? 32 : opt.marginX,
+                marginY: game.marginY, //opt.marginY === undefined ? 32 : opt.marginY,
+                w:  wMap.mapWidth, //opt.w === undefined ? 4 : opt.w,
+                h:  wMap.mapHeight//opt.h === undefined ? 4 : opt.h
             }));
         });
     };
@@ -406,6 +407,8 @@ menuPool.update = function(button, options, sm, secs){
         opt = opt || {};
         opt.w = opt.w || 9;
         opt.h = opt.h || 7;
+        opt.marginX = opt.marginX === undefined ? 0 : opt.marginX;
+        opt.marginY = opt.marginY === undefined ? 0 : opt.marginY;
         // !!! a 'void world' object should be the default for this
         var wMap = opt.worldMap = opt.worldMap || null;
         // create game state object
@@ -413,6 +416,9 @@ menuPool.update = function(button, options, sm, secs){
             mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
             turn: 0,
             turnState: 'wait',
+            worldMap: wMap,
+            marginX: opt.marginY,                    // margins from the upper left corner of the canvas
+            marginX: opt.marginY,
             maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
             mapStrings: wMap.mapStrings || ['2'],    // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
             mapWorldWidth: wMap.mapWorldWidth,       // the WORLD MAP width
@@ -429,7 +435,7 @@ menuPool.update = function(button, options, sm, secs){
             pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
         };
         // create clean maps
-        createCleanMaps(game, opt);
+        createCleanMaps(game);
         // set up game for first time as new game
         setupGame(game, true);
         // return the game object

@@ -406,15 +406,17 @@ menuPool.update = function(button, options, sm, secs){
         opt = opt || {};
         opt.w = opt.w || 9;
         opt.h = opt.h || 7;
-        opt.mapWorldWidth = opt.mapWorldWidth === undefined ? 3 : opt.mapWorldWidth;
-        opt.mapStrings = opt.mapStrings || genMapStrings(opt);
+        // !!! a 'void world' object should be the default for this
+        var wMap = opt.worldMap = opt.worldMap || null;
+        // create game state object
         var game = {
             mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
             turn: 0,
             turnState: 'wait',
             maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
-            mapStrings: opt.mapStrings || ['2'],     // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
-            mapWorldWidth: opt.mapWorldWidth,        // the WORLD MAP width
+            mapStrings: wMap.mapStrings || ['2'],    // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
+            mapWorldWidth: wMap.mapWorldWidth,       // the WORLD MAP width
+            mapWorldHeight: wMap.mapWorldHeight,     // the WORLD MAP height
             mapIndex: 0,                             // current map index in the CURRENT WORLD MAP
             toMap: {
                 index: null,
@@ -426,10 +428,11 @@ menuPool.update = function(button, options, sm, secs){
             options: new poolMod.create(menuPool), // pool of objects used for the circle menu
             pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
         };
-
+        // create clean maps
         createCleanMaps(game, opt);
-
+        // set up game for first time as new game
         setupGame(game, true);
+        // return the game object
         return game;
     };
 /********** **********

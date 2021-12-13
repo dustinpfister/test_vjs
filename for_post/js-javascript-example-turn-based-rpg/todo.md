@@ -102,7 +102,7 @@ The idea of the library game world is to have a game world that acts as a portal
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
 
-## () - r7 - JSON - loader improvements, gameMOD.VOID\_WORLD object
+## ( done 12/13/2021 ) - r7 - JSON - loader improvements, gameMOD.VOID\_WORLD object
 <!-- state.loader -->
 * (done) switch directly to title state in the event of any error in update hook in loader state
 * (done) make sure that the void world will be used if error count is greater than zero in game state
@@ -115,7 +115,6 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) sm.startLoop method in place of loop in main.js
 * (done) have a main-pkg.js in place of hard coded script tag in bottom.txt
 * (done) have a main-index.js in place of hard coded script tag in index.html
-
 
 ## ( done 12/13/2021 ) - r6 - JSON folder, server.js, loader state, world maps
 <!-- loader state -->

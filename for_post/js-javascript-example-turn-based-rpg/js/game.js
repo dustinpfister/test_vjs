@@ -222,7 +222,8 @@ var gameMod = (function () {
                         var portalUnit = moveToCell.unit;
                         console.log('entering portal:');
                         console.log(portalUnit.data);
-
+var newWorldMap = game.sm.data[portalUnit.data.dataKey];
+game.worldMap = newWorldMap;
 setupGame(game, true);
 
                         //placeUnit(game, unit, moveToCell.x, moveToCell.y);

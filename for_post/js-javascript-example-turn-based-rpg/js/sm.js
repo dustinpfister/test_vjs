@@ -57,8 +57,10 @@
         // start hook for this if any.
         sm.currentState = newStateKey;
         sm.stateObj = sm.states[sm.currentState];
-        if(sm.stateObj.start){
-            sm.stateObj.start.call(sm, sm);
+        if(sm.stateObj){
+            if(sm.stateObj.start){
+                sm.stateObj.start.call(sm, sm);
+            }
         }
     };
 

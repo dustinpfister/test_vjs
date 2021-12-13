@@ -18,4 +18,4 @@ var startLoop = function(){
     loop();
 };
 
-startLoop();
+//startLoop();

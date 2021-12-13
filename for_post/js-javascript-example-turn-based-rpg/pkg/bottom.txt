@@ -1,4 +1,7 @@
 
 </script>
-
+<script>
+sm.loader.json.baseURL = '../json';
+startLoop();
+</script>
 </body></html>

@@ -1,8 +1,15 @@
 sm.states.game = {
     key: 'game',
     start: function(sm){
+
         // figure out what the starting world map should be
-        var worldMap = sm.data.wm_home || gameMod.VOID_WORLD;
+        // defaulting to gameMOD.VOID_WORLD and only bothering
+        // to try data.wm_home if there where no errors when loading
+        var worldMap = gameMod.VOID_WORLD;
+        if(sm.loader.json.errorCount === 0){
+            worldMap = sm.data.wm_home || gameMod.VOID_WORLD;
+        }
+
         // create game object
         sm.game = gameMod.create({
             sm: sm,

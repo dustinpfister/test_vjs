@@ -110,7 +110,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * use the location object to see if the script is running in the file protocol, if so drop into the voild world
 * if one or more errors happen while loading files in the loader state drop into the void world.
 
-## () - r6 - JSON folder, server.js, loader state, world maps
+## ( done 12/13/2021 ) - r6 - JSON folder, server.js, loader state, world maps
 <!-- loader state -->
 * (done) I will want end and start hooks for the sm object
 * (done) start a sm.data object that will contain all data objects loaded by way of json
@@ -138,10 +138,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) use game.sm.data in moveUnit helper to set game.worldMap to the map given in portalUnit.data
 * (done) get portals working using word-home and world-forest world map files
 * (done) have a way to make it so the player unit spawns near the portal rather than the ushual start location of the world map
-
-<!-- boot.js file -->
-* start a boot.js file that will just set a relative path to assets and start the main app loop
-* path to json will be './json' for main index.html files, and will need to be '../json' for pkg_rx.html files
+<!-- booting for index.html and pkg.html files -->
+* (done) start a boot script tag that will just set a relative path to JSON assets and start the main app loop
+* (done) path to json will be './json' for main index.html files, and will need to be '../json' for pkg_rx.html files
 
 
 <!--****** **********

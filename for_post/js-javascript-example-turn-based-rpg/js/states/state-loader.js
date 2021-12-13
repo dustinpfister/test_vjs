@@ -27,6 +27,7 @@ sm.states.loader = {
                         },
                         // what to do for an error
                         onError: function () {
+console.log('error');
                             // !!! should do something for any errors
                         }
                     });

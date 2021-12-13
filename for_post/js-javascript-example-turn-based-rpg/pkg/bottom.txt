@@ -2,6 +2,8 @@
 </script>
 <script>
 sm.loader.json.baseURL = '../json';
+// set the current state
+sm.setState('loader');
 startLoop();
 </script>
 </body></html>

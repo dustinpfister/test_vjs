@@ -1,7 +1,4 @@
 
-// set the current state
-sm.setState('loader');
-
 // start loop helper
 var startLoop = function(){
        // loop with frame capping set by sm.fps value

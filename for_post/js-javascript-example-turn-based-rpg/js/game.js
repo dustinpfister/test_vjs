@@ -333,6 +333,18 @@ menuPool.update = function(button, options, sm, secs){
         mapStrings[1] = arr.join('');
         return mapStrings;
     };
+    // create clean maps
+    var createCleanMaps = function(game, opt){
+        game.maps = [];
+        game.mapStrings.forEach(function(){
+            game.maps.push(mapMod.create({
+                marginX: opt.marginX === undefined ? 32 : opt.marginX,
+                marginY: opt.marginY === undefined ? 32 : opt.marginY,
+                w:  opt.w === undefined ? 4 : opt.w,
+                h:  opt.h === undefined ? 4 : opt.h
+            }));
+        });
+    };
     // start over with same state, or setUp a new game for the given game object
     var setupGame = api.setupGame = function (game, newGame) {
         newGame = newGame === undefined ? true : newGame;
@@ -389,17 +401,6 @@ menuPool.update = function(button, options, sm, secs){
         game.mapIndex = startMapIndex;
         game.toMap = getToMap(game);
     };
-    var setupMaps = function(game, opt){
-        game.maps = [];
-        game.mapStrings.forEach(function(){
-            game.maps.push(mapMod.create({
-                marginX: opt.marginX === undefined ? 32 : opt.marginX,
-                marginY: opt.marginY === undefined ? 32 : opt.marginY,
-                w:  opt.w === undefined ? 4 : opt.w,
-                h:  opt.h === undefined ? 4 : opt.h
-            }));
-        });
-    };
     // create a new game state
     api.create = function (opt) {
         opt = opt || {};
@@ -426,7 +427,7 @@ menuPool.update = function(button, options, sm, secs){
             pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
         };
 
-setupMaps(game, opt);
+        createCleanMaps(game, opt);
 
         setupGame(game, true);
         return game;

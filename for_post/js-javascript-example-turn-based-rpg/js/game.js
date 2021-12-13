@@ -20,8 +20,9 @@ var gameMod = (function () {
         p = game.player,
         map = game.maps[game.mapIndex],
         cell = mapMod.get(map, x, y),
-        mwx = game.mapIndex % game.mapWorldWidth,                 // map world x and y
-        mwy = Math.floor(game.mapIndex / game.mapWorldWidth ),
+        mww = game.worldMap.mapWorldWidth,
+        mwx = game.mapIndex % mww,                 // map world x and y
+        mwy = Math.floor(game.mapIndex / mww ),
         options = [];
         if(isAtCorner(game, cell)){
             if(x === 0 && y === 0){
@@ -40,29 +41,29 @@ var gameMod = (function () {
             // if player cell x equals 0 ( left side )
             if(x === 0){
                 var x = mwx - 1;
-                x = x < 0 ? game.mapWorldWidth - 1 : x;
-                toIndex = mwy * game.mapWorldWidth + x;
+                x = x < 0 ? mww - 1 : x;
+                toIndex = mwy * mww + x;
                 dir = 'west';
             }
             // if player cell x equals map.w - 1 ( right side )
             if(x === map.w - 1){
                 var x = mwx + 1;
-                x = x >= game.mapWorldWidth ? 0 : x;
-                toIndex = mwy * game.mapWorldWidth + x;
+                x = x >= mww ? 0 : x;
+                toIndex = mwy * mww + x;
                 dir = 'east';
             }
             // if player cell y equals 0 ( top side )
             if(y === 0){
                 var y = mwy - 1;
-                y = y < 0 ? game.maps.length / game.mapWorldWidth - 1 : y;
-                toIndex = y * game.mapWorldWidth + mwx;
+                y = y < 0 ? game.maps.length / mww - 1 : y;
+                toIndex = y * mww + mwx;
                 dir = 'north';
             }
             // if player cell y map.h - 1 ( bottom side )
             if(y === map.h - 1){
                 var y = mwy + 1;
-                y = y >= game.maps.length / game.mapWorldWidth ? 0 : y;
-                toIndex = y * game.mapWorldWidth + mwx;
+                y = y >= game.maps.length / mww ? 0 : y;
+                toIndex = y * mww + mwx;
                 dir = 'south';
             }
         }
@@ -350,7 +351,9 @@ menuPool.update = function(button, options, sm, secs){
     var setupGame = api.setupGame = function (game, newGame) {
         newGame = newGame === undefined ? true : newGame;
         var playerPlaced = false,
-        startMapIndex = 0;
+        startMapIndex = 0,
+        // always use game.worldMap to set map values
+        wMap = game.worldMap;
         game.mapIndex = 0;
         // set player HP to max
         game.player.HP = game.player.maxHP;
@@ -361,7 +364,7 @@ menuPool.update = function(button, options, sm, secs){
         game.mode = 'map';
         // set up maps
         game.maps = game.maps.map(function(map, mi){
-            var mapStr = game.mapStrings[mi] || '';
+            var mapStr = wMap.mapStrings[mi] || '';
             game.mapIndex = mi;
             map.cells = map.cells.map(function(cell, ci){
                 var cellIndex = parseInt(mapStr[ci] || '0'),

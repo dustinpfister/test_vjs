@@ -333,43 +333,7 @@ menuPool.update = function(button, options, sm, secs){
         mapStrings[1] = arr.join('');
         return mapStrings;
     };
-    // create a new game state
-    api.create = function (opt) {
-        opt = opt || {};
-        opt.w = opt.w || 9;
-        opt.h = opt.h || 7;
-        opt.mapWorldWidth = opt.mapWorldWidth === undefined ? 3 : opt.mapWorldWidth;
-        opt.mapStrings = opt.mapStrings || genMapStrings(opt);
-        var game = {
-            mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
-            turn: 0,
-            turnState: 'wait',
-            maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
-            mapStrings: opt.mapStrings || ['2'],     // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
-            mapWorldWidth: opt.mapWorldWidth,        // the WORLD MAP width
-            mapIndex: 0,                             // current map index in the CURRENT WORLD MAP
-            toMap: {
-                index: null,
-                x: null,
-                y: null
-            },
-            player: unitMod.createUnit('player'),
-            remainingEnemies: 0,
-            options: new poolMod.create(menuPool), // pool of objects used for the circle menu
-            pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
-        };
-        game.mapStrings.forEach(function(){
-            game.maps.push(mapMod.create({
-                marginX: opt.marginX === undefined ? 32 : opt.marginX,
-                marginY: opt.marginY === undefined ? 32 : opt.marginY,
-                w:  opt.w === undefined ? 4 : opt.w,
-                h:  opt.h === undefined ? 4 : opt.h
-            }));
-        });
-        setupGame(game, true);
-        return game;
-    };
-    // setUp game helper with game object, and given maps
+    // start over with same state, or setUp a new game for the given game object
     var setupGame = api.setupGame = function (game, newGame) {
         newGame = newGame === undefined ? true : newGame;
         var playerPlaced = false,
@@ -424,6 +388,48 @@ menuPool.update = function(button, options, sm, secs){
         }
         game.mapIndex = startMapIndex;
         game.toMap = getToMap(game);
+    };
+    var setupMaps = function(game, opt){
+        game.maps = [];
+        game.mapStrings.forEach(function(){
+            game.maps.push(mapMod.create({
+                marginX: opt.marginX === undefined ? 32 : opt.marginX,
+                marginY: opt.marginY === undefined ? 32 : opt.marginY,
+                w:  opt.w === undefined ? 4 : opt.w,
+                h:  opt.h === undefined ? 4 : opt.h
+            }));
+        });
+    };
+    // create a new game state
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.w = opt.w || 9;
+        opt.h = opt.h || 7;
+        opt.mapWorldWidth = opt.mapWorldWidth === undefined ? 3 : opt.mapWorldWidth;
+        opt.mapStrings = opt.mapStrings || genMapStrings(opt);
+        var game = {
+            mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
+            turn: 0,
+            turnState: 'wait',
+            maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
+            mapStrings: opt.mapStrings || ['2'],     // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
+            mapWorldWidth: opt.mapWorldWidth,        // the WORLD MAP width
+            mapIndex: 0,                             // current map index in the CURRENT WORLD MAP
+            toMap: {
+                index: null,
+                x: null,
+                y: null
+            },
+            player: unitMod.createUnit('player'),
+            remainingEnemies: 0,
+            options: new poolMod.create(menuPool), // pool of objects used for the circle menu
+            pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
+        };
+
+setupMaps(game, opt);
+
+        setupGame(game, true);
+        return game;
     };
 /********** **********
      gameMod.update PUBLIC METHOD

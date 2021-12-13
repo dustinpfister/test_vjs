@@ -338,7 +338,7 @@ menuPool.update = function(button, options, sm, secs){
     var createCleanMaps = function(game){
         var wMap = game.worldMap;
         game.maps = [];
-        game.mapStrings.forEach(function(){
+        wMap.mapStrings.forEach(function(){
             game.maps.push(mapMod.create({
                 marginX: game.marginX, //opt.marginX === undefined ? 32 : opt.marginX,
                 marginY: game.marginY, //opt.marginY === undefined ? 32 : opt.marginY,
@@ -423,9 +423,9 @@ menuPool.update = function(button, options, sm, secs){
             marginX: opt.marginY,                    // margins from the upper left corner of the canvas
             marginX: opt.marginY,
             maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
-            mapStrings: wMap.mapStrings || ['2'],    // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
-            mapWorldWidth: wMap.mapWorldWidth,       // the WORLD MAP width
-            mapWorldHeight: wMap.mapWorldHeight,     // the WORLD MAP height
+            //mapStrings: wMap.mapStrings || ['2'],    // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
+           // mapWorldWidth: wMap.mapWorldWidth,       // the WORLD MAP width
+           // mapWorldHeight: wMap.mapWorldHeight,     // the WORLD MAP height
             mapIndex: 0,                             // current map index in the CURRENT WORLD MAP
             toMap: {
                 index: null,

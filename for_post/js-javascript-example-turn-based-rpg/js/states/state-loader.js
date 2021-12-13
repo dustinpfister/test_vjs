@@ -1,53 +1,65 @@
 sm.states.loader = {
     key: 'loader',
     start: function(sm){
+        // check for sm.loader.json
         if (sm.loader.json) {
-            var i = 0,
-            count = sm.loader.json.count = sm.loader.json.fileNames.length;
-            sm.loader.json.loaded = 0;
-            sm.loader.json.errorCount = 0;
+            // defaults for sm.loader.json
+            var jl = sm.loader.json;
+            i = 0,
+            count = jl.count = jl.fileNames.length;
+            jl.loaded = 0;
+            jl.errorCount = 0;
+            // file protocol? Then do not even try
+            if(location.protocol === 'file:'){
+                jl.errorCount = 1;
+                return;
+            }
+            // http or https assumed at this point
             while (i < count) {
                 (function (imageIndex) {
-                    var fileName = sm.loader.json.fileNames[i];
+                    var fileName = jl.fileNames[i];
                     utils.http({
-                        url: sm.loader.json.baseURL + '/' + fileName + '.json',
+                        url: jl.baseURL + '/' + fileName + '.json',
                         // set to sm images if all goes well
                         onDone: function (json, xhr) {
-
                             try{
                                 var dataObj = JSON.parse(json);
                                 var dataKey = dataObj.dataKey || Object.keys(sm.data).length;
                                 sm.data[dataKey] = dataObj;
-                                sm.loader.json.loaded += 1;
-                                if(sm.loader.json.loaded === count){
+                                jl.loaded += 1;
+                                if(jl.loaded === count){
                                     sm.setState('title');
                                 }
                             }catch(e){
-                                sm.loader.json.errorCount += 1;
+                                jl.errorCount += 1;
                             }
                         },
                         // what to do for an error
                         onError: function () {
-                            sm.loader.json.errorCount += 1;
-console.log('error');
+                            jl.errorCount += 1;
                             // !!! should do something for any errors
                         }
                     });
                 }(i));
                 i += 1;
             }
+        }else{
+            // no json object in loader object
+            jl.errorCount = 1;
         }
     },
     end: function(sm){
-        console.log('loader state over');
-        console.log(sm.data);
+        var jl = sm.loader.json;
+        console.log('loader state over: ');
+        console.log('loaded: ' + jl.loaded + ' / ' + jl.count);
+        console.log('errors: ' + jl.errorCount);
     },
     update: function(sm, secs){
-
-if(sm.loader.json.errorCount > 0){
- sm.setState('title');
-}
-   
+        // if we have so much as just one error
+        // switch to title and go with hard coded stuff
+        if(sm.loader.json.errorCount > 0){
+            sm.setState('title');
+        }
     },
     draw: function(sm, layers){
         draw.back(sm);

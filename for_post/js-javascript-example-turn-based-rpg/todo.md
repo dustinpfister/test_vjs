@@ -111,11 +111,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) mapStrings generator helper for gameMod.create for when no map String is given for now
 * (done) have a standard hard coded gameMod.VOID\_WORLD
 * (done) if one or more errors happen while loading files in the loader state drop into the void world.
-
-<!-- sm lib -->
-* turn main.js and sm.js into lib\/sm.js
-* have a smMod.createSM method that is what will be called in index.html and \/pkg\/bottom.txt script tags
-
+<!-- sm.js -->
+* (done) sm.startLoop method in place of loop in main.js
+* (done) have a main-pkg.js in place of hard coded script tag in bottom.txt
+* (done) have a main-index.js in place of hard coded script tag in index.html
 
 
 ## ( done 12/13/2021 ) - r6 - JSON folder, server.js, loader state, world maps

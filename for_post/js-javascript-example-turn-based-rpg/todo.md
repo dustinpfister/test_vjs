@@ -102,23 +102,26 @@ The idea of the library game world is to have a game world that acts as a portal
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
 
+## () - r7 - JSON - pixmaps
 
+<!-- The void world that game drops into when running in file protocol, or if there is an loading error -->
+* (done) mapStrings generator helper for gameMod.create for when no map String is given for now
+* have a standard hard coded 'void world'
+* use the location object to see if the script is running in the file protocol, if so drop into the voild world
+* if one or more errors happen while loading files in the loader state drop into the void world.
 
 ## () - r6 - JSON folder, server.js, loader state, world maps
-
 <!-- loader state -->
 * (done) I will want end and start hooks for the sm object
 * (done) start a sm.data object that will contain all data objects loaded by way of json
 * (done) have an sm.loader object that contains a base url, and a list of files to load at that base url
 * (done) start a new states-loader.js file that will be a simple json file loader state
 * (done) just base the states-loader off of what I worked out in gamframe.ja in Clucker for now as that seems to work well
-
 <!-- World map standard -->
 * (done) start a root json folder that will contain all the json files for the game
 * (done) start a new world map json file standard
 * (done) have a world-home.json file that will be the start of the main home start world for the game
 * (done) have a world-forest.json file that is the start of a forest game mode idea that I will be working on it a future revision
-
 <!-- Portals -->
 * (done) have a way to define portals in a game map, giving them data that defines what worldmap, mapindex and location to use
 * (done) take a worldMap object as an argument for gameMod.create
@@ -134,15 +137,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a game.sm ref
 * (done) use game.sm.data in moveUnit helper to set game.worldMap to the map given in portalUnit.data
 * (done) get portals working using word-home and world-forest world map files
-
-* have a way to make it so the player unit spawns near the portal rather than the ushual start location of the world map
-
-
-<!-- The void world that game drops into when running in file protocol, or if there is an loading error -->
-* (done) mapStrings generator helper for gameMod.create for when no map String is given for now
-* have a standard hard coded 'void world'
-* use the location object to see if the script is running in the file protocol, if so drop into the voild world
-* if one or more errors happen while loading files in the loader state drop into the void world.
+* (done) have a way to make it so the player unit spawns near the portal rather than the ushual start location of the world map
 
 <!-- boot.js file -->
 * start a boot.js file that will just set a relative path to assets and start the main app loop

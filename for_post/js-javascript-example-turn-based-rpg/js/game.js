@@ -221,12 +221,11 @@ var gameMod = (function () {
                 if(moveToCell.unit){
                     if(moveToCell.unit.type === 'portal'){
                         var portalUnit = moveToCell.unit;
-                        console.log('entering portal:');
-                        console.log(portalUnit.data);
+// setting game.map to new world map
 var newWorldMap = game.sm.data[portalUnit.data.dataKey];
 game.worldMap = newWorldMap;
 game.turnState = 'wait';
-setupGame(game, true);
+setupGame(game, true, portalUnit.data);
 
                         //placeUnit(game, unit, moveToCell.x, moveToCell.y);
                     }
@@ -365,8 +364,9 @@ menuPool.update = function(button, options, sm, secs){
         });
     };
     // start over with same state, or setUp a new game for the given game object
-    var setupGame = api.setupGame = function (game, newGame) {
+    var setupGame = api.setupGame = function (game, newGame, portal) {
         newGame = newGame === undefined ? true : newGame;
+        portal = portal || null;
         var playerPlaced = false,
         startMapIndex = 0,
         // always use game.worldMap to set map values
@@ -397,8 +397,8 @@ menuPool.update = function(button, options, sm, secs){
                     var wall = unitMod.createUnit('wall');
                     placeUnit(game, wall, x, y);
                 }
-                // player always set
-                if(cellIndex === 2){
+                // set player by mapString (if no portal object is given only though)
+                if(cellIndex === 2 && !portal){
                     playerPlaced = true;
                     startMapIndex = mi;
                     placeUnit(game, game.player, x, y);
@@ -414,26 +414,27 @@ menuPool.update = function(button, options, sm, secs){
             });
             return map;
         });
-
-// wMap portals
-wMap.mapPortals.forEach(function(portal){
-    game.mapIndex = portal.mi;
-    var portalUnit = unitMod.createUnit('portal');
-    placeUnit(game, portalUnit, portal.x, portal.y);
-    // setting data object of portal
-    portalUnit.data = portal;
-
-//console.log('creating portal unit');
-//console.log(portalUnit);
-//console.log(mapMod.get(game.maps[game.mapIndex], portal.x, portal.y));
-
-});
-
+        // wMap portals
+        wMap.mapPortals.forEach(function(portal){
+            game.mapIndex = portal.mi;
+            var portalUnit = unitMod.createUnit('portal');
+            placeUnit(game, portalUnit, portal.x, portal.y);
+            // setting data object of portal
+            portalUnit.data = portal;
+        });
         // if player is not palced then place the player unit
         // at a null cell
         if(!playerPlaced){
             placePlayer(game);
         }
+// if a portal data object is given, use that to set player location
+// and startMapIndex
+if(portal){
+    startMapIndex = portal.dmi;
+    game.mapIndex = startMapIndex;
+    placeUnit(game, game.player, portal.dx, portal.dy);
+}
+
         game.mapIndex = startMapIndex;
         game.toMap = getToMap(game);
     };

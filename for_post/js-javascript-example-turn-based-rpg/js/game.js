@@ -471,8 +471,8 @@ if(portal){
         opt.h = opt.h || 7;
         opt.marginX = opt.marginX === undefined ? 0 : opt.marginX;
         opt.marginY = opt.marginY === undefined ? 0 : opt.marginY;
-        // !!! a 'void world' object should be the default for this
-        var wMap = opt.worldMap = opt.worldMap || null;
+        // use the given start map, or default to gameMod.WOID_WORLD
+        var wMap = opt.worldMap = opt.worldMap || api.VOID_WORLD;
         // create game state object
         var game = {
             sm: opt.sm || {},

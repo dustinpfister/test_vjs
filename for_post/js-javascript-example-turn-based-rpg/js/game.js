@@ -221,8 +221,11 @@ var gameMod = (function () {
                     if(moveToCell.unit.type === 'portal'){
                         var portalUnit = moveToCell.unit;
                         console.log('entering portal:');
-                        console.log(portalUnit);
-                        placeUnit(game, unit, moveToCell.x, moveToCell.y);
+                        console.log(portalUnit.data);
+
+setupGame(game, true);
+
+                        //placeUnit(game, unit, moveToCell.x, moveToCell.y);
                     }
                 }
             }
@@ -351,10 +354,10 @@ menuPool.update = function(button, options, sm, secs){
         game.maps = [];
         wMap.mapStrings.forEach(function(){
             game.maps.push(mapMod.create({
-                marginX: game.marginX, //opt.marginX === undefined ? 32 : opt.marginX,
-                marginY: game.marginY, //opt.marginY === undefined ? 32 : opt.marginY,
-                w:  wMap.mapWidth, //opt.w === undefined ? 4 : opt.w,
-                h:  wMap.mapHeight//opt.h === undefined ? 4 : opt.h
+                marginX: game.marginX,
+                marginY: game.marginY,
+                w:  wMap.mapWidth,
+                h:  wMap.mapHeight
             }));
         });
     };
@@ -414,11 +417,12 @@ wMap.mapPortals.forEach(function(portal){
     game.mapIndex = portal.mi;
     var portalUnit = unitMod.createUnit('portal');
     placeUnit(game, portalUnit, portal.x, portal.y);
+    // setting data object of portal
+    portalUnit.data = portal;
 
-portalUnit.data = portal;
-console.log('creating portal unit');
-console.log(portalUnit);
-console.log(mapMod.get(game.maps[game.mapIndex], portal.x, portal.y));
+//console.log('creating portal unit');
+//console.log(portalUnit);
+//console.log(mapMod.get(game.maps[game.mapIndex], portal.x, portal.y));
 
 });
 
@@ -441,6 +445,7 @@ console.log(mapMod.get(game.maps[game.mapIndex], portal.x, portal.y));
         var wMap = opt.worldMap = opt.worldMap || null;
         // create game state object
         var game = {
+            sm: opt.sm || {},
             mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
             turn: 0,
             turnState: 'wait',

@@ -132,6 +132,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) update gameMod.create and gameMod.setupGame to use worldMap.portals array to create portal units
 * (done) updated moveUnit helper in gameMod to allow the player object to move over a portal
 
+* have a game.sm ref
+* use game.sm.data in moveUnit helper to set game.worldMap to the map given in portalUnit.data
+
 * get portals working using word-home and world-forest world map files
 
 

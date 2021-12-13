@@ -18,6 +18,7 @@ sm.states.game = {
 
 
         sm.game = gameMod.create({
+            sm: sm,
             worldMap: worldMap,
             marginX : 14,
             marginY : 7,

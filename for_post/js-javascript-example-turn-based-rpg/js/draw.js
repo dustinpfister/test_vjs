@@ -2,7 +2,7 @@ var draw = (function () {
     // public api
     var api = {};
     // unit colors
-    var unitColors = ['green', 'gray', 'blue', 'red'];
+    var unitColors = ['green', 'gray', 'blue', 'red', 'purple'];
 
 /********** **********
      HELPERS

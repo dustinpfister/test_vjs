@@ -82,6 +82,12 @@ var unitMod = (function () {
             wall.sheetIndex = 1;
         }
     };
+    // portal type
+    UNIT_TYPES.portal = {
+        create : function(wall){
+            wall.sheetIndex = 4;
+        }
+    };
 
     // Public unitMod.create method
     api.createUnit = function(type){

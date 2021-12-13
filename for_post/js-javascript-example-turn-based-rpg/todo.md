@@ -103,6 +103,12 @@ The idea of the library game world is to have a game world that acts as a portal
 ********** *******-->
 
 ## () - r7 - JSON - pixmaps
+<!-- sm lib -->
+* turn main.js and sm.js into lib\/sm.js
+* have a smMod.createSM method that is what will be called in index.html and \/pkg\/bottom.txt
+<!-- state.loader -->
+* switch directly to game state in the event of any error
+
 
 <!-- The void world that game drops into when running in file protocol, or if there is an loading error -->
 * (done) mapStrings generator helper for gameMod.create for when no map String is given for now

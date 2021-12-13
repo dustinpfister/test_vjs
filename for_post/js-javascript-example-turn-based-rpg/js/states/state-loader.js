@@ -13,6 +13,7 @@ sm.states.loader = {
                         url: sm.loader.json.baseURL + '/' + fileName + '.json',
                         // set to sm images if all goes well
                         onDone: function (json, xhr) {
+
                             try{
                                 var dataObj = JSON.parse(json);
                                 var dataKey = dataObj.dataKey || Object.keys(sm.data).length;
@@ -27,6 +28,7 @@ sm.states.loader = {
                         },
                         // what to do for an error
                         onError: function () {
+                            sm.loader.json.errorCount += 1;
 console.log('error');
                             // !!! should do something for any errors
                         }
@@ -42,6 +44,9 @@ console.log('error');
     },
     update: function(sm, secs){
 
+if(sm.loader.json.errorCount > 0){
+ sm.setState('title');
+}
    
     },
     draw: function(sm, layers){

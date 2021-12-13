@@ -163,8 +163,16 @@ var gameMod = (function () {
                 // set unit ref back to null
                 map.cells[unit.currentCellIndex].unit = null;
             }
-            // set new cell to not walkable as a unit is now located here
+
+            // set new cell to NOT walkable (as default) as a unit is now located here
             newCell.walkable = false;
+            // if the unit is a portal then it is possible for a unit to walk over that
+            if(unit.type === 'portal'){
+console.log('hello');
+                newCell.walkable = true;
+            }
+
+
             // set current cell index for the unit
             unit.currentCellIndex = newCell.i;
             // place a ref to the unit in the map cell
@@ -205,15 +213,21 @@ var gameMod = (function () {
         if(unit.moveCells.length > 0){
             var ci = unit.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
-            // if no unit at the move to cell
+            // if no unit at the cell move to cell
             if(!moveToCell.unit){
                 placeUnit(game, unit, moveToCell.x, moveToCell.y);
             }
-            // !!! might not hurt to do this for all units
-            // also this might not belong here but where this method
-            // is called for the player unit maybe
+            // what needs to hapen when just the player moves
             if(unit.type === 'player'){
                 game.toMap = getToMap(game);
+                // the player unit can go threw portals
+                if(moveToCell.unit){
+                    if(moveToCell.unit.type === 'portal'){
+
+                        console.log('entering portal');
+                        placeUnit(game, unit, moveToCell.x, moveToCell.y);
+                    }
+                }
             }
         }
     };
@@ -402,7 +416,10 @@ menuPool.update = function(button, options, sm, secs){
 wMap.mapPortals.forEach(function(portal){
     game.mapIndex = portal.mi;
     var pUnit = unitMod.createUnit('portal');
-   placeUnit(game, pUnit, portal.x, portal.y);
+    placeUnit(game, pUnit, portal.x, portal.y);
+
+console.log(mapMod.get(game.maps[game.mapIndex], portal.x, portal.y));
+
 });
 
         // if player is not palced then place the player unit

@@ -127,10 +127,11 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) use game.worldMap.mapWorldWidth over game.mapWorldWidth in getToIndexOptions helper
 * (done) do alway with game.mapStrings, and game.mapWorldWidth in favor of game.worldMap object
 * (done) update createCleanMaps helper to use game.worldMap over options object given to gameMod.create
+* (done) have a unit type for portals
+* (done) update draw.js to display a portal as a purple box for now
+* (done) update gameMod.create and gameMod.setupGame to use worldMap.portals array to create portal units
+* (done) updated moveUnit helper in gameMod to allow the player object to move over a portal
 
-* have a unit type for portals
-* update draw.js to display a portal as a purple box for now
-* update gameMod.create and gameMod.setupGame to use worldMap.portals array to create portal units
 * get portals working using word-home and world-forest world map files
 
 

@@ -2,7 +2,7 @@ sm.states.game = {
     key: 'game',
     start: function(sm){
 
-        var map = sm.data.wm_forest || {
+        var worldMap = sm.data.wm_home || {
             mapStrings: [
     "111111111120000003100000000100000000100000000100000000100000000",
     "111111111000000000000000000000000000000000000000000000000000000",
@@ -18,11 +18,12 @@ sm.states.game = {
 
 
         sm.game = gameMod.create({
+            worldMap: worldMap,
             marginX : 14,
             marginY : 7,
             w: 9,
             h: 7,
-            mapStrings : map.mapStrings
+            mapStrings : worldMap.mapStrings
         });
 
     },

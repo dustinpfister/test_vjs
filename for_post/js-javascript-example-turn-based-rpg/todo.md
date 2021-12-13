@@ -131,11 +131,11 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) update draw.js to display a portal as a purple box for now
 * (done) update gameMod.create and gameMod.setupGame to use worldMap.portals array to create portal units
 * (done) updated moveUnit helper in gameMod to allow the player object to move over a portal
+* (done) have a game.sm ref
+* (done) use game.sm.data in moveUnit helper to set game.worldMap to the map given in portalUnit.data
+* (done) get portals working using word-home and world-forest world map files
 
-* have a game.sm ref
-* use game.sm.data in moveUnit helper to set game.worldMap to the map given in portalUnit.data
-
-* get portals working using word-home and world-forest world map files
+* have a way to make it so the player unit spawns near the portal rather than the ushual start location of the world map
 
 
 <!-- The void world that game drops into when running in file protocol, or if there is an loading error -->

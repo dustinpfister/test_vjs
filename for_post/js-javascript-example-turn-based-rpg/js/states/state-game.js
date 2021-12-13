@@ -1,34 +1,9 @@
 sm.states.game = {
     key: 'game',
     start: function(sm){
-
-// void world object
-var voidWorld = {
-    dataKey: "wm_void",
-    mapName: "Void World",
-    mapWidth: 9,
-    mapHeight: 7,
-    mapWorldWidth: 3,
-    mapWorldHeight: 3,
-    mapStrings: [
-        "111111111120000003100000000100000000100000000100000000100000000",
-        "111111111000000000000000000000000000000000000000000000000000000",
-        "111111111000000001000000001000000001000000001000000001000000001",
-        "100000000100000000100000000100000000100000000100000000100000000",
-        "000000000000000000000000000000000000000000000000000000000000000",
-        "000000001000000001000000001000000001000000001000000001000000001",
-        "100000000100000000100000000100000000100000000100000000111111111",
-        "000000000000000000000000000000000000000000000000000000111111111",
-        "000000001000000001000000001000000001000000001000000001111111111"
-    ],
-    mapPortals: [],
-    mapWorldUnits: [] 
-};
-
-
-        var worldMap = sm.data.wm_home || voidWorld;
-
-
+        // figure out what the starting world map should be
+        var worldMap = sm.data.wm_home || gameMod.VOID_WORLD;
+        // create game object
         sm.game = gameMod.create({
             sm: sm,
             worldMap: worldMap,
@@ -38,7 +13,6 @@ var voidWorld = {
             h: 7,
             mapStrings : worldMap.mapStrings
         });
-
     },
     update: function(sm, secs){
         gameMod.update(sm, secs);

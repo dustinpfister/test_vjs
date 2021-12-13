@@ -16,6 +16,7 @@ sm.states.game = {
             ]
         };
 
+
         sm.game = gameMod.create({
             marginX : 14,
             marginY : 7,

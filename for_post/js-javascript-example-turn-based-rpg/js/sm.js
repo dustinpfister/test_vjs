@@ -32,13 +32,7 @@
                 ]
             }
         },
-
-        game: gameMod.create({
-            marginX : 14,
-            marginY : 7,
-            w: 9,
-            h: 7
-        }),
+        game: {},
         canvas: canvas,
         ctx: ctx,
         input: {

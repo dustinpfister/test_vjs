@@ -115,7 +115,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * worldMap.onNoEnemies should be 'doNothing'
 
 <!-- world-forest.json -->
-* redo the layout of world-forest.json
+* (done) redo the layout of world-forest.json
 * use worldMap.onPlayerDeath to send the player back to the home map on death
 * worldMap.onNoEnemies should be 'doNothing'
 

@@ -125,22 +125,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) default for worldMap.onPlayerDeath cound be a 'softMapReset of the current world map
 * (done) I will want to have 'nothing' option for onNoEnemies and onPlayerDeath
 
-* have a parseMapEventString helper
-* the parseMapEvent helper will return an object from a string
-```
-// the string
-'toMap:wm_home,0,2,3'
-// becomes the object
-{
-  method: 'wm_home',
-  opt: [0,2,3]
-}
-// which can then be used to call the hard coded map Event like so
-var mapEventObj = parseMapEvent('toMap:wm_home,0,2,3');
-var mapEvent = MAP_EVENTS[mapEventObj.method];
-var opt = mapEventObj.opt || {};
-mapEvent.call(game, game, secs, 'onNoEnemies', opt);
-```
+* have a parseMapEvent helper
+* the parseMapEvent helper will return an object from a string contaning a method, options, and so forth
 
 
 * I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods

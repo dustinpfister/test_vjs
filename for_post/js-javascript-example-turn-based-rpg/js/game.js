@@ -3,17 +3,22 @@ var gameMod = (function () {
     // hard coded map events
     var MAP_EVENTS = {};
     // hard map reset
-    MAP_EVENTS.hardMapReset = function(game, secs, type){
+    MAP_EVENTS.hardMapReset = function(game, secs, type, opt){
         console.log('doing a hard world map reset');
         setupGame(game, true);
     };
     // soft map reset
-    MAP_EVENTS.softMapReset = function(game, secs, type){
+    MAP_EVENTS.softMapReset = function(game, secs, type, opt){
         console.log('doing a soft world map reset');
         setupGame(game, false);
     };
-    MAP_EVENTS.nothing = function(game, secs, type){
+    MAP_EVENTS.nothing = function(game, secs, type, opt){
         console.log('doing nothing for ' + type + ' map event');
+    };
+    MAP_EVENTS.toMap = function(game, secs, type, opt){
+console.log('this is to map! options: ');
+console.log(opt);
+console.log(game, secs, type);
     };
 
     // public API
@@ -548,6 +553,30 @@ if(portal){
             return acc + eCells.length;
         }, 0);
     };
+
+    var parseMapEvent = function(game, type, defaultMethod){
+        var mapEvent = game.worldMap[type] || defaultMethod || MAP_EVENTS.softMapReset;
+        // if map event is a string
+        if(typeof mapEvent === 'string'){
+            var arr = mapEvent.split(':'),
+            opt = [];
+            if(arr[1]){
+                opt = arr[1].split(',');
+            }
+            return {
+                type: type,
+                method: MAP_EVENTS[arr[0]],
+                opt: opt
+            };
+        }
+        // else mapEvent should be a function
+        return {
+            type: type,
+            method: mapEvent,
+            opt: []
+        };
+    };
+
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){
         var map = game.maps[game.mapIndex],
@@ -604,6 +633,12 @@ if(portal){
         if(game.turnState === 'end'){
             game.turn += 1;
             game.turnState = 'wait';
+
+var mapEventObj = parseMapEvent(game, 'onMapChange', MAP_EVENTS.softMapReset);
+mapEventObj.method.call(game, game, 0, mapEventObj.type, mapEventObj.opt);
+
+
+
             // check for player death
             if(game.player.HP <= 0){
                 // get a map event method to call

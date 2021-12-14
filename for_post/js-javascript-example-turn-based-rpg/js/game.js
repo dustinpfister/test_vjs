@@ -16,9 +16,11 @@ var gameMod = (function () {
         console.log('doing nothing for ' + type + ' map event');
     };
     MAP_EVENTS.toMap = function(game, secs, type, opt){
+
 console.log('this is to map! options: ');
 console.log(opt);
 console.log(game, secs, type);
+
     };
 
     // public API
@@ -253,7 +255,6 @@ console.log(game, secs, type);
     };
     // move a unit by way of any cell index values in unit.moveCells
     var moveUnit = function(game, unit){
-
         if(unit.moveCells.length > 0){
             var ci = unit.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
@@ -269,10 +270,12 @@ console.log(game, secs, type);
                     if(moveToCell.unit.type === 'portal'){
                         var portalUnit = moveToCell.unit;
 // setting game.map to new world map
-var newWorldMap = game.sm.data[portalUnit.data.dataKey];
-game.worldMap = newWorldMap;
-game.turnState = 'wait';
-setupGame(game, true, portalUnit.data);
+//var newWorldMap = game.sm.data[portalUnit.data.dataKey];
+//game.worldMap = newWorldMap;
+//game.turnState = 'wait';
+//setupGame(game, true, portalUnit.data);
+
+changeWorldMap(game, portalUnit.data);
 
                         //placeUnit(game, unit, moveToCell.x, moveToCell.y);
                     }
@@ -294,16 +297,25 @@ var getCellsByUnitType = function(map, type){
         return acc;
     },[]);
 };
-
-    var changeMap = function(game){
-        var pCell = api.getPlayerCell(game);
-        game.mapIndex = game.toMap.index;
-        pCell.unit = null;
-        pCell.walkable = true;
-        game.player.currentCellIndex = null;
-        placePlayer(game);
-        game.toMap = getToMap(game);
-    };
+// change the current world map
+var changeWorldMap = function(game, portalData){
+console.log('change world map:');
+console.log(portalData);
+    var newWorldMap = game.sm.data[portalData.dataKey];
+    game.worldMap = newWorldMap;
+    game.turnState = 'wait';
+    setupGame(game, true, portalData);
+};
+// change the current map
+var changeMap = function(game){
+    var pCell = api.getPlayerCell(game);
+    game.mapIndex = game.toMap.index;
+    pCell.unit = null;
+    pCell.walkable = true;
+    game.player.currentCellIndex = null;
+    placePlayer(game);
+    game.toMap = getToMap(game);
+};
 
 
 /********** **********

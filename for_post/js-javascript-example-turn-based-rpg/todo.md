@@ -126,10 +126,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) I will want to have 'nothing' option for onNoEnemies and onPlayerDeath
 * (done) have a parseMapEvent helper
 * (done) the parseMapEvent helper will return an object from a string contaning a method, options, and so forth
+* (done) callMapEvent helper
+* (done) change world map helper
 
-* callMapEvent helper
-
-* I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods
+* I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods along with a toMap method
 * I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
 * I will want 'respawnEnemies', 'respawnPlayer', and 'respawnAll' options
 <!-- world-home.json -->

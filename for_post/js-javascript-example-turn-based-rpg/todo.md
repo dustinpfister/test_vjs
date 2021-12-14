@@ -55,6 +55,13 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - rx - The home game world
 
 <!--****** **********
+    JSON - pixmap json files 
+********** *******-->
+
+## () - rx - pixmaps
+* see about using the pixmap json standard that I worked out, as a way to add images
+
+<!--****** **********
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
@@ -88,22 +95,29 @@ The idea of the library game world is to have a game world that acts as a portal
     ITEMS AND DROPS - item json files
 ********** *******-->
 
-## () - rx - inventory and drops
+## () - rx - drops, and enemy unit inventory
+* when the player moves over an 'item' or 'itemStack' this should cause the 'circle menu' to show up
+* a new button should show up in the circle menu called 'drops'
+* clicking drops
+
+## () - rx - player inventory
 * an item can be a drop that will be shown in the grid along with "wall", and "enemy" types
 * a unit will then need to have an unit.inventory property that will be another kind of standard object
-* an inventory object should contain a slotCount property that is the max number of items a unit can carry.
+* in the 'circle menu' have an inventory button
+* clicking the inventory button should change the circle menu to buttons for each item in the inventory
+* there should be a back button in this inventory menu
 
-## () - rx - new unit type "item" Collection, weapons
+## () - rx - item json files, weapons
+* start a new type of json file format for defining one or more items
+
+## () - rx - new unit type "item", 'itemStack'
 * start a new type of unit called an 'item' in lib\/units.js
-
-
+* start a new type of unit called an 'itemStack'
+* an itemStack should allow for more than one item to be located on a single cell.
 
 <!--****** **********
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
-
-## () - r10 - pixmaps
-* see about using the pixmap json standard that I worked out, as a way to add images
 
 ## () - r9 - onMapChange prop for world maps
 <!-- js/game.js -->

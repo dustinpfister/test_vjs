@@ -127,11 +127,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods
 * I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
 * I will want 'respawnEnemies', 'respawnPlayer', and 'respawnAll' options
-
 <!-- world-home.json -->
 * worldMap.onPlayerDeath should be a 'softMapReset'
 * worldMap.onNoEnemies should be 'nothing'
-
 <!-- world-forest.json -->
 * (done) redo the layout of world-forest.json
 * set worldMap.onPlayerDeath to 'toMap:wm_home,0,2,3'

@@ -1,5 +1,18 @@
 var gameMod = (function () {
 
+    // hard coded map events
+    var MAP_EVENTS = {};
+    // hard map reset
+    MAP_EVENTS.hardMapReset = function(game, secs){
+        console.log('doing a hard world map reset');
+        setupGame(game, true);
+    };
+    // soft map reset
+    MAP_EVENTS.softMapReset = function(game, secs){
+        console.log('doing a soft world map reset');
+        setupGame(game, false);
+    };
+
     // public API
     var api = {};
 
@@ -22,7 +35,7 @@ var gameMod = (function () {
             "000000001000000001000000001000000001000000001000000001111111111"
         ],
         mapPortals: [],
-        mapWorldUnits: [] 
+        mapWorldUnits: []
     };
 
 
@@ -590,10 +603,15 @@ if(portal){
             game.turnState = 'wait';
             // check for player death
             if(game.player.HP <= 0){
-                // !!! for now just call setupGame
+                // get a map event method to call
+                var mapEvent = game.worldMap.onPlayerDeath || MAP_EVENTS.softMapReset;
+                mapEvent = typeof mapEvent === 'string' ? MAP_EVENTS[mapEvent] : mapEvent;
+                // I think I will always want to clear the player cell
                 pCell.unit = null;
                 pCell.walkable = true;
-                setupGame(game, false);
+                // call the map event passing a ref to the game
+                mapEvent.call(game, game, secs);
+                
             }
             // check for all enemies dead
             game.remainingEnemies = getRemainingEnemies(game);

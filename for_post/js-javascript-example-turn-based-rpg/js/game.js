@@ -16,10 +16,19 @@ var gameMod = (function () {
         console.log('doing nothing for ' + type + ' map event');
     };
     MAP_EVENTS.toMap = function(game, secs, type, opt){
-
 console.log('this is to map! options: ');
 console.log(opt);
 console.log(game, secs, type);
+// custom portalData object
+var portalData = {
+    mi:0,x:0,y:0,
+    dataKey: opt[0],
+    dmi: parseInt(opt[1]),
+    dx: parseInt(opt[2]),
+    dy: parseInt(opt[3])
+};
+
+changeWorldMap(game, portalData);
 
     };
 

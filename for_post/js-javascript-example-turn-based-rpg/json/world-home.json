@@ -27,5 +27,5 @@
       "y": 2
     }
   ],
-  "onPlayerDeath": "hardMapReset"
+  "onPlayerDeath": "softMapReset"
 }

@@ -3,14 +3,17 @@ var gameMod = (function () {
     // hard coded map events
     var MAP_EVENTS = {};
     // hard map reset
-    MAP_EVENTS.hardMapReset = function(game, secs){
+    MAP_EVENTS.hardMapReset = function(game, secs, type){
         console.log('doing a hard world map reset');
         setupGame(game, true);
     };
     // soft map reset
-    MAP_EVENTS.softMapReset = function(game, secs){
+    MAP_EVENTS.softMapReset = function(game, secs, type){
         console.log('doing a soft world map reset');
         setupGame(game, false);
+    };
+    MAP_EVENTS.nothing = function(game, secs, type){
+        console.log('doing nothing for ' + type + ' map event');
     };
 
     // public API
@@ -610,13 +613,16 @@ if(portal){
                 pCell.unit = null;
                 pCell.walkable = true;
                 // call the map event passing a ref to the game
-                mapEvent.call(game, game, secs);
+                mapEvent.call(game, game, secs, 'onPlayerDeath');
                 
             }
             // check for all enemies dead
             game.remainingEnemies = getRemainingEnemies(game);
             if(game.remainingEnemies === 0){
-                setupGame(game, true);
+                var mapEvent = game.worldMap.onNoEnemies || MAP_EVENTS.hardMapReset;
+                mapEvent = typeof mapEvent === 'string' ? MAP_EVENTS[mapEvent] : mapEvent;
+                //setupGame(game, true);
+                mapEvent.call(game, game, secs, 'onNoEnemies');
             }
         }
     };

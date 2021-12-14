@@ -102,22 +102,40 @@ The idea of the library game world is to have a game world that acts as a portal
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
 
-## () - r9 - pixmaps
+## () - r10 - pixmaps
 * see about using the pixmap json standard that I worked out, as a way to add images
 
-## () - r8 - new conditions for end game, player death, spawning
-* a worldMap.onPlayerDeath prop should be added to maps to define what should happen on player death
-* a worldMap.onNoEnemies prop should be used to define what happens when there are no enemeis in the map
-* default for worldMap.onNoEnemies could be 'resetMap' which is what the deal is all ready
+## () - r9 - onMapChange prop for world maps
+<!-- js/game.js -->
+* add support for a worldMap.onMapChange method that will fire each time the player moved to a new map
+* default value for this should be a 'nothing' option
+* have a 'respawnEnemies' option for worldMap.onMapChange
 
 <!-- world-home.json -->
-* worldMap.onPlayerDeath should just reset the map
-* worldMap.onNoEnemies should be 'doNothing'
+* worldMap.onMapChange should be 'nothing' for world-home.json
+
+<!-- world-forest.json -->
+* worldMap.onMapChange should be 'respawnEnemies' for world-forest.json
+
+## () - r8 - new conditions for end game, player death, spawning
+<!-- js/game.js -->
+* processTurn end turnState should make use of a worldMap.onPlayerDeath prop
+* processTurn end turnState should make use of a worldMap.onNoEnemies
+* default for worldMap.onNoEnemies could be 'hardMapReset' which is what the deal is all ready
+* default for worldMap.onPlayerDeath cound be a 'softMapReset of the current world map
+* I will want to have 'nothing' option for onNoEnemies and onPlayerDeath
+* I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods
+* I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
+* I will want 'respawnEnemies', 'respawnPlayer', and 'respawnAll' options
+
+<!-- world-home.json -->
+* worldMap.onPlayerDeath should be a 'softMapReset'
+* worldMap.onNoEnemies should be 'nothing'
 
 <!-- world-forest.json -->
 * (done) redo the layout of world-forest.json
-* use worldMap.onPlayerDeath to send the player back to the home map on death
-* worldMap.onNoEnemies should be 'doNothing'
+* set worldMap.onPlayerDeath to 'toMap:wm_home,0,2,3'
+* worldMap.onNoEnemies should be 'respawnEnemies'
 
 ## ( done 12/13/2021 ) - r7 - JSON - loader improvements, gameMOD.VOID\_WORLD object
 <!-- state.loader -->

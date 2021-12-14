@@ -27,5 +27,6 @@
       "y": 2
     }
   ],
-  "onPlayerDeath": "softMapReset"
+  "onPlayerDeath": "softMapReset",
+  "onNoEnemies": "nothing"
 }

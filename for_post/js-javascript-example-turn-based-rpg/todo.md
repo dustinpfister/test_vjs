@@ -120,16 +120,16 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - r8 - new conditions for end game, player death, spawning
 <!-- js/game.js -->
 * (done) processTurn end turnState should make use of a worldMap.onPlayerDeath prop
-* processTurn end turnState should make use of a worldMap.onNoEnemies
-* default for worldMap.onNoEnemies could be 'hardMapReset' which is what the deal is all ready
+* (done) processTurn end turnState should make use of a worldMap.onNoEnemies
+* (done) default for worldMap.onNoEnemies could be 'hardMapReset' which is what the deal is all ready
 * (done) default for worldMap.onPlayerDeath cound be a 'softMapReset of the current world map
-* I will want to have 'nothing' option for onNoEnemies and onPlayerDeath
+* (done) I will want to have 'nothing' option for onNoEnemies and onPlayerDeath
 * I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods
 * I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
 * I will want 'respawnEnemies', 'respawnPlayer', and 'respawnAll' options
 <!-- world-home.json -->
-* worldMap.onPlayerDeath should be a 'softMapReset'
-* worldMap.onNoEnemies should be 'nothing'
+* (done) worldMap.onPlayerDeath should be a 'softMapReset'
+* (done) worldMap.onNoEnemies should be 'nothing'
 <!-- world-forest.json -->
 * (done) redo the layout of world-forest.json
 * set worldMap.onPlayerDeath to 'toMap:wm_home,0,2,3'

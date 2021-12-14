@@ -110,12 +110,13 @@ The idea of the library game world is to have a game world that acts as a portal
 * add support for a worldMap.onMapChange method that will fire each time the player moved to a new map
 * default value for this should be a 'nothing' option
 * have a 'respawnEnemies' option for worldMap.onMapChange
-
+* I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
+* I will want 'respawnEnemies', 'respawnPlayer', and 'respawnAll' options
 <!-- world-home.json -->
 * worldMap.onMapChange should be 'nothing' for world-home.json
-
 <!-- world-forest.json -->
 * worldMap.onMapChange should be 'respawnEnemies' for world-forest.json
+* worldMap.onNoEnemies should be 'respawnEnemies'
 
 ## () - r8 - new conditions for end game, player death, spawning
 <!-- js/game.js -->
@@ -128,17 +129,13 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) the parseMapEvent helper will return an object from a string contaning a method, options, and so forth
 * (done) callMapEvent helper
 * (done) change world map helper
-
-* I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods along with a toMap method
-* I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
-* I will want 'respawnEnemies', 'respawnPlayer', and 'respawnAll' options
+* (done) I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods along with a toMap method
 <!-- world-home.json -->
 * (done) worldMap.onPlayerDeath should be a 'softMapReset'
 * (done) worldMap.onNoEnemies should be 'nothing'
 <!-- world-forest.json -->
 * (done) redo the layout of world-forest.json
-* set worldMap.onPlayerDeath to 'toMap:wm_home,0,2,3'
-* worldMap.onNoEnemies should be 'respawnEnemies'
+* (done) set worldMap.onPlayerDeath to 'toMap:wm_home,0,2,3'
 
 ## ( done 12/13/2021 ) - r7 - JSON - loader improvements, gameMOD.VOID\_WORLD object
 <!-- state.loader -->

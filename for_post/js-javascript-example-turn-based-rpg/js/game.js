@@ -12,24 +12,19 @@ var gameMod = (function () {
         console.log('doing a soft world map reset');
         setupGame(game, false);
     };
+    // do nothing
     MAP_EVENTS.nothing = function(game, secs, type, opt){
         console.log('doing nothing for ' + type + ' map event');
     };
+    // go to a new world map ( toMap:dataKey,dmi,dx,dy )
     MAP_EVENTS.toMap = function(game, secs, type, opt){
-console.log('this is to map! options: ');
-console.log(opt);
-console.log(game, secs, type);
-// custom portalData object
-var portalData = {
-    mi:0,x:0,y:0,
-    dataKey: opt[0],
-    dmi: parseInt(opt[1]),
-    dx: parseInt(opt[2]),
-    dy: parseInt(opt[3])
-};
-
-changeWorldMap(game, portalData);
-
+        // custom portalData object
+        var portalData = {
+            mi:0,x:0,y:0,
+            dataKey: opt[0],
+            dmi: parseInt(opt[1]), dx: parseInt(opt[2]), dy: parseInt(opt[3])
+        };
+        changeWorldMap(game, portalData);
     };
 
     // public API
@@ -308,8 +303,6 @@ var getCellsByUnitType = function(map, type){
 };
 // change the current world map
 var changeWorldMap = function(game, portalData){
-console.log('change world map:');
-console.log(portalData);
     var newWorldMap = game.sm.data[portalData.dataKey];
     game.worldMap = newWorldMap;
     game.turnState = 'wait';
@@ -624,7 +617,6 @@ if(portal){
                     // not in melee range of player
                     eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
                 }
-                //console.log(eCell.unit.moveCells);
             });
             game.turnState = 'move';
         }
@@ -858,7 +850,6 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
         secs = (now - game.pointerDownTime) / 1000;
         // long press
         if( secs >= 0.5 ){
-            console.log('long press!');
             // if we are in map mode switch to menu mode
             if(game.mode === 'map'){
                 game.mode = 'menu';

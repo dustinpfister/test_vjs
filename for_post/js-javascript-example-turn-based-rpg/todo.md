@@ -124,10 +124,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) default for worldMap.onNoEnemies could be 'hardMapReset' which is what the deal is all ready
 * (done) default for worldMap.onPlayerDeath cound be a 'softMapReset of the current world map
 * (done) I will want to have 'nothing' option for onNoEnemies and onPlayerDeath
+* (done) have a parseMapEvent helper
+* (done) the parseMapEvent helper will return an object from a string contaning a method, options, and so forth
 
-* have a parseMapEvent helper
-* the parseMapEvent helper will return an object from a string contaning a method, options, and so forth
-
+* callMapEvent helper
 
 * I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods
 * I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic

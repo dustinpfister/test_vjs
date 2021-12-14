@@ -27,5 +27,6 @@
       "y": 2
     }
   ],
-  "onPlayerDeath": "hardMapReset"
+  "onPlayerDeath": "hardMapReset",
+  "onNoEnemies": "hardMapReset"
 }

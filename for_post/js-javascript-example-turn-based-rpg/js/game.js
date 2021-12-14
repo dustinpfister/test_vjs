@@ -577,6 +577,11 @@ if(portal){
         };
     };
 
+    var callMapEvent = function(game, secs, type, defaultMethod){
+        var mapEventObj = parseMapEvent(game, type, defaultMethod);
+        mapEventObj.method.call(game, game, secs, mapEventObj.type, mapEventObj.opt);
+    };
+
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){
         var map = game.maps[game.mapIndex],
@@ -633,31 +638,29 @@ if(portal){
         if(game.turnState === 'end'){
             game.turn += 1;
             game.turnState = 'wait';
-
-var mapEventObj = parseMapEvent(game, 'onMapChange', MAP_EVENTS.softMapReset);
-mapEventObj.method.call(game, game, 0, mapEventObj.type, mapEventObj.opt);
-
-
-
             // check for player death
             if(game.player.HP <= 0){
                 // get a map event method to call
-                var mapEvent = game.worldMap.onPlayerDeath || MAP_EVENTS.softMapReset;
-                mapEvent = typeof mapEvent === 'string' ? MAP_EVENTS[mapEvent] : mapEvent;
+                //var mapEvent = game.worldMap.onPlayerDeath || MAP_EVENTS.softMapReset;
+                //mapEvent = typeof mapEvent === 'string' ? MAP_EVENTS[mapEvent] : mapEvent;
                 // I think I will always want to clear the player cell
                 pCell.unit = null;
                 pCell.walkable = true;
                 // call the map event passing a ref to the game
-                mapEvent.call(game, game, secs, 'onPlayerDeath');
+                //mapEvent.call(game, game, secs, 'onPlayerDeath');
+
+callMapEvent(game, secs, 'onPlayerDeath', MAP_EVENTS.softMapReset);
                 
             }
             // check for all enemies dead
             game.remainingEnemies = getRemainingEnemies(game);
             if(game.remainingEnemies === 0){
-                var mapEvent = game.worldMap.onNoEnemies || MAP_EVENTS.hardMapReset;
-                mapEvent = typeof mapEvent === 'string' ? MAP_EVENTS[mapEvent] : mapEvent;
+                //var mapEvent = game.worldMap.onNoEnemies || MAP_EVENTS.hardMapReset;
+                //mapEvent = typeof mapEvent === 'string' ? MAP_EVENTS[mapEvent] : mapEvent;
                 //setupGame(game, true);
-                mapEvent.call(game, game, secs, 'onNoEnemies');
+                //mapEvent.call(game, game, secs, 'onNoEnemies');
+
+callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
             }
         }
     };

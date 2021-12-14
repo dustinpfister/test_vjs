@@ -118,7 +118,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * worldMap.onMapChange should be 'respawnEnemies' for world-forest.json
 * worldMap.onNoEnemies should be 'respawnEnemies'
 
-## () - r8 - new conditions for end game, player death, spawning
+## ( done 12/14/2021 ) - r8 - new conditions for end game, player death, spawning
 <!-- js/game.js -->
 * (done) processTurn end turnState should make use of a worldMap.onPlayerDeath prop
 * (done) processTurn end turnState should make use of a worldMap.onNoEnemies

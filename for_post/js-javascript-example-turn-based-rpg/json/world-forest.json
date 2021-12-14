@@ -28,5 +28,6 @@
     }
   ],
   "onPlayerDeath": "toMap:wm_home,0,2,3",
-  "onNoEnemies": "hardMapReset"
+  "onNoEnemies": "hardMapReset",
+  "onMapChange": "nothing"
 }

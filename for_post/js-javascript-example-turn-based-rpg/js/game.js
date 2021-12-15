@@ -25,7 +25,6 @@ var gameMod = (function () {
         };
         changeWorldMap(game, portalData);
     };
-
     // public API
     var api = {};
     // THE VOID WORLD OBJECT
@@ -279,6 +278,11 @@ var gameMod = (function () {
 /********** **********
      MAP HELPERS
 *********** *********/
+    // call map event helper
+    var callMapEvent = function(game, secs, type, defaultMethod){
+        var mapEventObj = parseMapEvent(game, type, defaultMethod);
+        mapEventObj.method.call(game, game, secs, mapEventObj.type, mapEventObj.opt);
+    };
     // get an array of cell objects by a given unit type string in the given map
     var getCellsByUnitType = function(map, type){
         return map.cells.reduce(function(acc, cell){
@@ -292,10 +296,15 @@ var gameMod = (function () {
     };
     // change the current world map
     var changeWorldMap = function(game, portalData){
+        // call onWorldMapLeave
+        callMapEvent(game, 0, 'onWorldMapLeave', MAP_EVENTS.nothing);
         var newWorldMap = game.sm.data[portalData.dataKey];
         game.worldMap = newWorldMap;
         game.turnState = 'wait';
         setupGame(game, true, portalData);
+        // call onWorldMapLeave
+        callMapEvent(game, 0, 'onWorldMapEnter', MAP_EVENTS.nothing);
+
     };
     // change the current map
     var changeMap = function(game){
@@ -306,6 +315,7 @@ var gameMod = (function () {
         game.player.currentCellIndex = null;
         placePlayer(game);
         game.toMap = getToMap(game);
+        callMapEvent(game, 0, 'onMapChange', MAP_EVENTS.nothing);
     };
 /********** **********
      MENU POOL
@@ -568,11 +578,6 @@ var gameMod = (function () {
             method: mapEvent,
             opt: []
         };
-    };
-    // call map event helper
-    var callMapEvent = function(game, secs, type, defaultMethod){
-        var mapEventObj = parseMapEvent(game, type, defaultMethod);
-        mapEventObj.method.call(game, game, secs, mapEventObj.type, mapEventObj.opt);
     };
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){

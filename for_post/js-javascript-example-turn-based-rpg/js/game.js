@@ -478,7 +478,7 @@ var gameMod = (function () {
     menuPool.update = function(button, options, sm, secs){
         var pd = options.data,
         bd = button.data;
-        // !!! updating pool data here is not so great
+        // !!! updating pool data here is not so great I should maybe have a main update method for pools
         if(button.i === options.objects.length - 1){
             // if we are in enter mode
             if(pd.mode === 'enter'){
@@ -513,12 +513,10 @@ var gameMod = (function () {
             portalUnit.data = portal;
         });
     };
+    // setup method 2 - !!! I should only need one method like this
     var setupGame2 = function(game){
         var pCell = api.getPlayerCell(game),
         wMap = game.worldMap;
-
-        //var result = applyMapStringsToMaps(game, false, false, {2:true});
-
         game.maps = game.maps.map(function(map, mi){
             var mapStr = wMap.mapStrings[mi] || '';
             //game.mapIndex = mi;
@@ -569,10 +567,10 @@ var gameMod = (function () {
         var result = applyMapStringsToMaps(game, newGame, portal, {});
         playerPlaced = result.playerPlaced;
         startMapIndex = result.startMapIndex;
-        // set up portals
+        // set up portals 
         //setupPortals(game);
-
         game.worldMap.mapPortals.forEach(function(portal){
+            // !!! for some reason I need to set game.mapIndex = portal.mi if I do not I get a werid wall block bug
             game.mapIndex = portal.mi;
             var portalUnit = unitMod.createUnit('portal');
             placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);

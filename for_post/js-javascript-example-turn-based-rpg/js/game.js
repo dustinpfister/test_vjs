@@ -13,7 +13,9 @@ var gameMod = (function () {
     };
     // do nothing
     MAP_EVENTS.nothing = function(game, secs, type, opt){
-        console.log('doing nothing for ' + type + ' map event for worldMap ' + game.worldMap.dataKey);
+        console.log('doing nothing for ' + type + ' map event in worldMap ' + game.worldMap.dataKey);
+        console.log('at mapIndex: ' + game.mapIndex);
+        console.log('');
     };
     // go to a new world map ( toMap:dataKey,dmi,dx,dy )
     MAP_EVENTS.toMap = function(game, secs, type, opt){

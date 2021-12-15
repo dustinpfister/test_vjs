@@ -331,6 +331,7 @@ var gameMod = (function () {
     };
     // change the current map
     var changeMap = function(game){
+        callMapEvent(game, 0, 'onMapLeave', MAP_EVENTS.nothing);
         var pCell = api.getPlayerCell(game);
         game.mapIndex = game.toMap.index;
         pCell.unit = null;
@@ -338,7 +339,7 @@ var gameMod = (function () {
         game.player.currentCellIndex = null;
         placePlayer(game);
         game.toMap = getToMap(game);
-        callMapEvent(game, 0, 'onMapChange', MAP_EVENTS.nothing);
+        callMapEvent(game, 0, 'onMapEnter', MAP_EVENTS.nothing);
     };
 /********** **********
      MENU POOL

@@ -29,5 +29,6 @@
   ],
   "onPlayerDeath": "softMapReset",
   "onNoEnemies": "nothing",
-  "onMapChange": "nothing"
+  "onMapLeave": "nothing",
+  "onMapEnter": "nothing"
 }

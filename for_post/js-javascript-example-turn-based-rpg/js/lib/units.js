@@ -72,7 +72,7 @@ var unitMod = (function () {
         create : function(player){
             player.maxCellsPerTurn = 3;
             player.sheetIndex = 2; // player sheet
-            player.maxHP = 30;
+            //player.maxHP = 30;
             player.baseAttack = [1, 3];
             player.baseDefense = [1, 2];
             player.currentWeapon = {
@@ -86,8 +86,8 @@ var unitMod = (function () {
         create : function(enemy){
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
-            enemy.maxHP = 10;
-            enemy.baseAttack = [2, 5];
+            //enemy.maxHP = 10;
+            enemy.baseAttack = [1, 3];
             enemy.baseDefense = [1, 2];
             setStat.attack(enemy);
         }

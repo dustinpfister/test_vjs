@@ -128,11 +128,26 @@ The idea of the library game world is to have a game world that acts as a portal
 * start a new type of unit called an 'itemStack'
 * an itemStack should allow for more than one item to be located on a single cell.
 
+
+<!--****** **********
+    utils.XP - level objects for player and enemey units
+********** *******-->
+
+## () - r10 - level objects for player and enemy units
+<!-- js/lib/utils.js -->
+
+
+<!-- js/lib/units.js -->
+
+<!-- js/draw.js -->
+* change debug info
+* display level for player and enemy units
+
 <!--****** **********
     JSON LOADER - world map json files
 ********** *******-->
 
-## () - r9 - onMapLeave, onMapEnter, onWorldMapLeave, and onWorldMapEnter map events
+## ( done 12/15/2021 ) - r9 - onMapLeave, onMapEnter, onWorldMapLeave, and onWorldMapEnter map events
 <!-- js/game.js -->
 * (done) add support for a worldMap.onMapLeave and enter methods
 * (done) add support for worldMap.onWorldMapLeave and enter methods

@@ -1,18 +1,19 @@
 var unitMod = (function () {
     
     var LEVEL_CAP = 100,
-    LEVEL_DELTA_NEXT = 200;
+    LEVEL_DELTA_NEXT = 50;
 
 
     // PUBLIC API
     var api = {};
 
 /********** **********
-     SET STAT HELPER
+     SET STAT HELPERS
 *********** *********/
 
    var setStat = {};
    
+   // figure out what the raw attack value is for a turn
    setStat.attack = function(unit){
        // set the raw attack value for a unit
        unit.attack = unit.baseAttack.map(function(ba, i){
@@ -23,6 +24,13 @@ var unitMod = (function () {
            
        });
    };
+
+    // set unit stats based on level
+    var setUnitStats = function(unit){
+        var level = unit.levelObj.level;
+        // just Hit points for now
+        unit.maxHP = 30 + 15 * ( level - 1 );
+    };
 
 
 /********** **********
@@ -104,22 +112,28 @@ var unitMod = (function () {
         unit.type = type;
         // call create method for the type
         UNIT_TYPES[type].create(unit);
+        // set unit stats
+        setUnitStats(unit);
         // return the unit
         return unit;
     };
 
-// give xp to a unit
-api.giveXP = function(unit, xp){
-    // get current XP for unit
-    var lObj = unit.levelObj,
-    cXP = lObj.xp;
-    // add to current
-    cXP += xp;
-    // new level object
-    unit.levelObj = utils.XP.parseByXP(cXP, LEVEL_CAP, LEVEL_DELTA_NEXT);
-};
+/********** **********
+     GIVE XP TO PLAYER
+*********** *********/
 
-
+    // give xp to a unit
+    api.giveXP = function(unit, xp){
+        // get current XP for unit
+        var lObj = unit.levelObj,
+        cXP = lObj.xp;
+        // add to current
+        cXP += xp;
+        // new level object
+        unit.levelObj = utils.XP.parseByXP(cXP, LEVEL_CAP, LEVEL_DELTA_NEXT);
+        // set unit stats
+        setUnitStats(unit);
+    };
 
 /********** **********
      MELEE ATTACK

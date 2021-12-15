@@ -131,12 +131,13 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) add support for worldMap.onWorldMapLeave and enter methods
 * (done) logging more into for built in 'nothing' map event
 
-* have a applyMapString helper and use that in setUpGame first
+* have a applyMapStringsToMaps helper and use that in setUpGame first
 
 
 * start a MAP_EVENTS.respawnWorldEnemies event that by default will respawn all world enemies except the current map
 
-* see about using applyMapString helper in MAP_EVENTS.respawnWorldEnemies with arguments that define what should and should not change
+* see about using applyMapStringsToMaps helper in MAP_EVENTS.respawnWorldEnemies
+* use applyMapStringsToMaps with arguments that define what should and should not change
 
 * MAP_EVENTS.respawnWorldEnemies:true can be used to spawn all enemies even with the current map
 

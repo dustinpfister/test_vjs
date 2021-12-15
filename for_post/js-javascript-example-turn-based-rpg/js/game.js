@@ -408,6 +408,21 @@ var gameMod = (function () {
 /********** **********
      gameMod.create PUBLIC METHOD and helpers
 *********** *********/
+
+var getRemainingEnemies = function(game){
+// set remainingEnemies count
+return game.remainingEnemies = game.maps.reduce(function(acc, map, mi){
+    return acc + map.cells.reduce(function(acc, cell, ci){
+        if(cell.unit){
+            var n = cell.unit.type === 'enemy' ? 1 : 0;
+            return acc + n;
+        }
+        return acc;
+    }, 0);
+}, 0);
+
+};
+
     // generate map strings helper
     var genMapStrings = function(opt){
         opt = opt || {};
@@ -456,9 +471,9 @@ var gameMod = (function () {
         game.mapIndex = 0;
         // set player HP to max
         game.player.HP = game.player.maxHP;
-        if(newGame){
-            game.remainingEnemies = 0;
-        }
+        //if(newGame){
+        //    game.remainingEnemies = 0;
+        //}
         // make sure mode starts out on map mode
         game.mode = 'map';
         // set up maps with data from mapStrings array first
@@ -487,7 +502,7 @@ var gameMod = (function () {
                 }
                 // enemy
                 if(cellIndex === 3 && newGame){
-                    game.remainingEnemies += 1;
+                    //game.remainingEnemies += 1;
                     var enemy = unitMod.createUnit('enemy');
                     enemy.HP = enemy.maxHP;
                     placeUnit(game, enemy, x, y);
@@ -519,6 +534,8 @@ var gameMod = (function () {
         // setting mapIndex and toMap objects
         game.mapIndex = startMapIndex;
         game.toMap = getToMap(game);
+        // set remainingEnemies count
+        game.remainingEnemies = getRemainingEnemies(game);
     };
     // create a new game state
     api.create = function (opt) {

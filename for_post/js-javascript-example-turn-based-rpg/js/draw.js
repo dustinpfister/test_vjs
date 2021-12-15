@@ -142,20 +142,8 @@ var drawCell = function(sm, cell){
         ctx.font = '10px courier';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
-        // draw current pointer position
-        ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, getY(0));
-        // player cell pos
-        ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, getY(1));
-        // to map values
-        var tm = sm.game.toMap;
-        ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, getY(2));
-        ctx.fillText('toMap.options:' + JSON.stringify(tm.options.map(function(opt){ 
-            return opt.dir + '(' + opt.x + ',' + opt.y + ');' + opt.mi;
-        })) , 5, getY(3));
-        // turn number and turnChange bool
-        ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, getY(4));
-        // enemies
-        ctx.fillText('enemies:' + sm.game.remainingEnemies, 5, getY(5));
+        // debug info
+        ctx.fillText('turn:' + sm.game.turn, 5, getY(0));
     };
 /*
     api.info = function (sm) {

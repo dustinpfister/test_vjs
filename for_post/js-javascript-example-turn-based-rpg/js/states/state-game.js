@@ -7,7 +7,7 @@ sm.states.game = {
         // to try data.wm_home if there where no errors when loading
         var worldMap = gameMod.VOID_WORLD;
         if(sm.loader.json.errorCount === 0){
-            worldMap = sm.data.wm_forest || gameMod.VOID_WORLD;
+            worldMap = sm.data.wm_home || gameMod.VOID_WORLD;
         }
 
         // create game object

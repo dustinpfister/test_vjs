@@ -19,12 +19,17 @@ The idea of the library game world is to have a game world that acts as a portal
     MISC IMPROVEMENTS
 ********** *******-->
 
+## () - rx - Custom MAP EVENTS
+* I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
+
+## () - rx - respawnPlayer map event
+* respawnPlayer map event
+
 ## () - rx - Cell movement animation
 * see about having a move animation where the unit cell moves on a pps basis to the new cell location
 
-## () - rx - custom events
+## () - rx - custom events.js file
 * start a new lib/events.js file that will be used by map.js
-* new on method
 
 ## () - rx - spell turnState
 * have a new 'spell' turnState in which all units that have chosen to use a spell for there turn
@@ -124,14 +129,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * an itemStack should allow for more than one item to be located on a single cell.
 
 <!--****** **********
-    JSON LOADER - world map json files, pixmap json files 
+    JSON LOADER - world map json files
 ********** *******-->
-
-## () - rx - Custom MAP EVENTS
-* I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
-
-## () - rx - respawnPlayer map event
-* respawnPlayer map event
 
 ## () - r9 - onMapLeave, onMapEnter, onWorldMapLeave, and onWorldMapEnter map events
 <!-- js/game.js -->

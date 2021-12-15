@@ -13,9 +13,9 @@ var gameMod = (function () {
     };
     // do nothing
     MAP_EVENTS.nothing = function(game, secs, type, opt){
-        console.log('doing nothing for ' + type + ' map event in worldMap ' + game.worldMap.dataKey);
-        console.log('at mapIndex: ' + game.mapIndex);
-        console.log('');
+        //console.log('doing nothing for ' + type + ' map event in worldMap ' + game.worldMap.dataKey);
+        //console.log('at mapIndex: ' + game.mapIndex);
+        //console.log('');
     };
     // go to a new world map ( toMap:dataKey,dmi,dx,dy )
     MAP_EVENTS.toMap = function(game, secs, type, opt){
@@ -340,11 +340,16 @@ var gameMod = (function () {
         // update game.maps
         game.maps = game.maps.map(function(map, mi){
             var mapStr = wMap.mapStrings[mi] || '';
+
             //game.mapIndex = mi;
             map.cells = map.cells.map(function(cell, ci){
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
                 y = Math.floor(ci / map.w);
+
+
+
+
                 if(cellIndex === 0 && newGame && !skipCI[0]){
                     var cell = mapMod.get(map, ci);
                     cell.unit = null;
@@ -421,6 +426,7 @@ var gameMod = (function () {
     var changeWorldMap = function(game, portalData){
         // call onWorldMapLeave
         callMapEvent(game, 0, 'onWorldMapLeave', MAP_EVENTS.nothing);
+
         var newWorldMap = game.sm.data[portalData.dataKey];
         game.worldMap = newWorldMap;
         game.turnState = 'wait';
@@ -583,13 +589,18 @@ var gameMod = (function () {
         if(!playerPlaced){
             placePlayer(game);
         }
+
+// !!! bug has to do with placing the player here
+console.log( mapMod.get(game.maps[2], 7, 6).unit );
         // if a portal data object is given, use that to set player location
         // and startMapIndex
         if(portal){
             startMapIndex = portal.dmi;
             game.mapIndex = startMapIndex;
-            placeUnit(game, game.player, portal.dx, portal.dy);
+            placeUnit(game, game.player, portal.dx, portal.dy, portal.dmi);
         }
+console.log( mapMod.get(game.maps[2], 7, 6).unit );
+
         // setting mapIndex and toMap objects
         game.mapIndex = startMapIndex;
         game.toMap = getToMap(game);

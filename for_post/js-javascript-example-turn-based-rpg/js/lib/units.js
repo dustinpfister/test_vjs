@@ -1,5 +1,9 @@
 var unitMod = (function () {
     
+    var LEVEL_CAP = 100,
+    LEVEL_DELTA_NEXT = 200;
+
+
     // PUBLIC API
     var api = {};
 
@@ -27,6 +31,7 @@ var unitMod = (function () {
     // create a base unit object
     var createBaseUnit = function () {
         var unit = {
+            levelObj: utils.XP.parseByLevel(1, LEVEL_CAP, LEVEL_DELTA_NEXT),
             // current unit stats
             maxHP: 1,             // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move

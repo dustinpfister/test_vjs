@@ -140,8 +140,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * use utils.XP to create a unit.levelObj for all base units
 * have unit.levelObj have an inpact on hit points
 <!-- js/draw.js -->
-* change debug info
-* display level for player and enemy units
+* (done) draw getY helper for draw.info method
+* display level for player in draw.info
 
 <!--****** **********
     JSON LOADER - world map json files

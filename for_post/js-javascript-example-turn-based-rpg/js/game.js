@@ -283,6 +283,96 @@ var gameMod = (function () {
 /********** **********
      MAP HELPERS
 *********** *********/
+    // get remaining Enemies helper used to update game.remainingEnemies in 'end' process turn state
+    var getRemainingEnemies = function(game){
+        return game.maps.reduce(function(acc, map){
+            var eCells = getCellsByUnitType(map, 'enemy');
+            return acc + eCells.length;
+        }, 0);
+    };
+    // generate map strings helper
+    var genMapStrings = function(opt){
+        opt = opt || {};
+        opt.mapWorldWidth = opt.mapWorldWidth || 1;
+        opt.mapWorldHeight = opt.mapWorldHeight || 1;
+        var w = opt.w || 9, h = opt.h || 7;
+        var strLength = w * h;
+        var blankStr = Array.from({length: strLength}).map(function(){ return 0; }).join('');
+        var i = 0, mapStrings = [],
+        len = opt.mapWorldWidth * opt.mapWorldHeight;
+        while(i < len){
+            mapStrings.push(blankStr);
+            i += 1;
+        }
+        var str = mapStrings[0];
+        var arr = str.split('');
+        arr[0] = '2';
+        mapStrings[0] = arr.join('');
+        var str = mapStrings[1];
+        var arr = str.split('');
+        arr[7] = '3';
+        mapStrings[1] = arr.join('');
+        return mapStrings;
+    };
+    // create clean maps
+    var createCleanMaps = function(game){
+        var wMap = game.worldMap;
+        game.maps = [];
+        wMap.mapStrings.forEach(function(){
+            game.maps.push(mapMod.create({
+                marginX: game.marginX,
+                marginY: game.marginY,
+                w:  wMap.mapWidth,
+                h:  wMap.mapHeight
+            }));
+        });
+    };
+    // apply map strings helper
+    var applyMapStringsToMaps = function(game, newGame, portal){
+        var wMap = game.worldMap,
+        playerPlaced = false,
+        startMapIndex = false;
+        // update game.maps
+        game.maps = game.maps.map(function(map, mi){
+            var mapStr = wMap.mapStrings[mi] || '';
+            game.mapIndex = mi;
+            map.cells = map.cells.map(function(cell, ci){
+                var cellIndex = parseInt(mapStr[ci] || '0'),
+                x = ci % map.w,
+                y = Math.floor(ci / map.w);
+                if(cellIndex === 0 && newGame){
+                    var cell = mapMod.get(map, ci);
+                    cell.unit = null;
+                    cell.walkable = true;
+                }
+                // wall blocks set for new games and not
+                if(cellIndex === 1){
+                    var wall = unitMod.createUnit('wall');
+                    placeUnit(game, wall, x, y);
+                }
+                // set player by mapString (if no portal object is given only though)
+                if(cellIndex === 2 && !portal){
+                    playerPlaced = true;
+                    startMapIndex = mi;
+                    placeUnit(game, game.player, x, y);
+                }
+                // enemy
+                if(cellIndex === 3 && newGame){
+                    //game.remainingEnemies += 1;
+                    var enemy = unitMod.createUnit('enemy');
+                    enemy.HP = enemy.maxHP;
+                    placeUnit(game, enemy, x, y);
+                }
+                return cell;
+            });
+            return map;
+        });
+        // return an object with info about what happended
+        return {
+            playerPlaced: playerPlaced,
+            startMapIndex: startMapIndex
+        };
+    };
     // parse map event helper
     var parseMapEvent = function(game, type, defaultMethod){
         var mapEvent = game.worldMap[type] || defaultMethod || MAP_EVENTS.softMapReset;
@@ -408,98 +498,6 @@ var gameMod = (function () {
 /********** **********
      gameMod.create PUBLIC METHOD and helpers
 *********** *********/
-
-    // get remaining Enemies helper used to update game.remainingEnemies in 'end' process turn state
-    var getRemainingEnemies = function(game){
-        return game.maps.reduce(function(acc, map){
-            var eCells = getCellsByUnitType(map, 'enemy');
-            return acc + eCells.length;
-        }, 0);
-    };
-
-    // generate map strings helper
-    var genMapStrings = function(opt){
-        opt = opt || {};
-        opt.mapWorldWidth = opt.mapWorldWidth || 1;
-        opt.mapWorldHeight = opt.mapWorldHeight || 1;
-        var w = opt.w || 9, h = opt.h || 7;
-        var strLength = w * h;
-        var blankStr = Array.from({length: strLength}).map(function(){ return 0; }).join('');
-        var i = 0, mapStrings = [],
-        len = opt.mapWorldWidth * opt.mapWorldHeight;
-        while(i < len){
-            mapStrings.push(blankStr);
-            i += 1;
-        }
-        var str = mapStrings[0];
-        var arr = str.split('');
-        arr[0] = '2';
-        mapStrings[0] = arr.join('');
-        var str = mapStrings[1];
-        var arr = str.split('');
-        arr[7] = '3';
-        mapStrings[1] = arr.join('');
-        return mapStrings;
-    };
-    // create clean maps
-    var createCleanMaps = function(game){
-        var wMap = game.worldMap;
-        game.maps = [];
-        wMap.mapStrings.forEach(function(){
-            game.maps.push(mapMod.create({
-                marginX: game.marginX,
-                marginY: game.marginY,
-                w:  wMap.mapWidth,
-                h:  wMap.mapHeight
-            }));
-        });
-    };
-    // apply map strings helper
-    var applyMapStringsToMaps = function(game, newGame, portal){
-        var wMap = game.worldMap,
-        playerPlaced = false,
-        startMapIndex = false;
-        // update game.maps
-        game.maps = game.maps.map(function(map, mi){
-            var mapStr = wMap.mapStrings[mi] || '';
-            game.mapIndex = mi;
-            map.cells = map.cells.map(function(cell, ci){
-                var cellIndex = parseInt(mapStr[ci] || '0'),
-                x = ci % map.w,
-                y = Math.floor(ci / map.w);
-                if(cellIndex === 0 && newGame){
-                    var cell = mapMod.get(map, ci);
-                    cell.unit = null;
-                    cell.walkable = true;
-                }
-                // wall blocks set for new games and not
-                if(cellIndex === 1){
-                    var wall = unitMod.createUnit('wall');
-                    placeUnit(game, wall, x, y);
-                }
-                // set player by mapString (if no portal object is given only though)
-                if(cellIndex === 2 && !portal){
-                    playerPlaced = true;
-                    startMapIndex = mi;
-                    placeUnit(game, game.player, x, y);
-                }
-                // enemy
-                if(cellIndex === 3 && newGame){
-                    //game.remainingEnemies += 1;
-                    var enemy = unitMod.createUnit('enemy');
-                    enemy.HP = enemy.maxHP;
-                    placeUnit(game, enemy, x, y);
-                }
-                return cell;
-            });
-            return map;
-        });
-        // return an object with info about what happended
-        return {
-            playerPlaced: playerPlaced,
-            startMapIndex: startMapIndex
-        };
-    };
     // start over with same state, or setUp a new game for the given game object
     var setupGame = api.setupGame = function (game, newGame, portal) {
         newGame = newGame === undefined ? true : newGame;

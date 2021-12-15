@@ -34,7 +34,11 @@ var unitMod = (function () {
         // base attack
         var ba = unit.baseAttack = [1, 2];
         ba[0] = 2 + Math.floor(1.25 * l);
-        ba[1] = ba[0] + 2 + Math.floor(1.45 * l);  
+        ba[1] = ba[0] + 2 + Math.floor(1.45 * l);
+        // base defense
+        var bd = unit.baseDefense = [1, 2];
+        bd[0] = 1 + Math.floor(0.125 * l);
+        bd[1] = bd[0] + 1 + Math.floor(0.25 * l);
     };
 
 
@@ -79,10 +83,11 @@ var unitMod = (function () {
             player.sheetIndex = 2; // player sheet
             //player.maxHP = 30;
             //player.baseAttack = [1, 3];
-            player.baseDefense = [1, 2];
+            //player.baseDefense = [1, 2];
             player.currentWeapon = {
                 attack: [5, 7]
             };
+            //api.giveXP(player, 0)
             setStat.attack(player);
         }
     };
@@ -93,7 +98,7 @@ var unitMod = (function () {
             enemy.sheetIndex = 3;
             //enemy.maxHP = 10;
             //enemy.baseAttack = [1, 3];
-            enemy.baseDefense = [1, 2];
+            //enemy.baseDefense = [1, 2];
             setStat.attack(enemy);
         }
     };

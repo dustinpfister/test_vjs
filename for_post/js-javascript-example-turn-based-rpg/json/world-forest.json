@@ -29,5 +29,8 @@
   ],
   "onPlayerDeath": "toMap:wm_home,0,2,3",
   "onNoEnemies": "hardMapReset",
-  "onMapChange": "nothing"
+  "onMapLeave": "nothing",
+  "onMapEnter": "nothing",
+  "onWorldMapLeave": "nothing",
+  "onWorldMapEnter": "nothing"
 }

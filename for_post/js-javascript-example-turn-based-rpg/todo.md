@@ -119,18 +119,27 @@ The idea of the library game world is to have a game world that acts as a portal
     JSON LOADER - world map json files, pixmap json files 
 ********** *******-->
 
-## () - r9 - onMapChange prop for world maps
-<!-- js/game.js -->
-* add support for a worldMap.onMapChange method that will fire each time the player has moved to a new map
-* default value for this should be a 'nothing' option
-* have a 'respawnEnemies' option for worldMap.onMapChange
+## () - rx - Custom MAP EVENTS
 * I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
-* I will want 'respawnEnemies', 'respawnPlayer', and 'respawnAll' options
+
+## () - rx - respawnPlayer map event
+* respawnPlayer map event
+
+## () - r9 - onMapLeave, onMapEnter, onWorldMapLeave, and onWorldMapEnter map events
+<!-- js/game.js -->
+* (done) add support for a worldMap.onMapLeave and enter methods
+* (done) add support for worldMap.onWorldMapLeave and enter methods
+* (done) logging more into for built in 'nothing' map event
+
+* have a MAP_EVENTS.respawnWorldEnemies event that by default will respawn all world enemies except the current map
+* MAP_EVENTS.respawnWorldEnemies:true can be used to spawn all enemies even with the current map
+
+
 <!-- world-home.json -->
-* worldMap.onMapChange should be 'nothing' for world-home.json
+* (done) worldMap.onMapLeave and enter events should be 'nothing' for world-home.json
 <!-- world-forest.json -->
-* worldMap.onMapChange should be 'respawnEnemies' for world-forest.json
-* worldMap.onNoEnemies should be 'respawnEnemies'
+* worldMap.onMapLeave should be 'respawnWorldEnemies' for world-forest.json
+* worldMap.onNoEnemies should be 'nothing'
 
 ## ( done 12/14/2021 ) - r8 - new conditions for end game, player death, spawning
 <!-- js/game.js -->

@@ -27,9 +27,15 @@ var unitMod = (function () {
 
     // set unit stats based on level
     var setUnitStats = function(unit){
-        var level = unit.levelObj.level;
-        // just Hit points for now
-        unit.maxHP = 30 + 15 * ( level - 1 );
+        var level = unit.levelObj.level,
+        l = ( level - 1 );
+        // hit points
+        unit.maxHP = 30 + 15 * l;
+        // base attack
+        var ba = unit.baseAttack = [1, 2];
+        ba[0] = 2 + Math.floor(1.25 * l);
+        ba[1] = ba[0] + 2 + Math.floor(1.45 * l);
+        
     };
 
 
@@ -73,7 +79,7 @@ var unitMod = (function () {
             player.maxCellsPerTurn = 3;
             player.sheetIndex = 2; // player sheet
             //player.maxHP = 30;
-            player.baseAttack = [1, 3];
+            //player.baseAttack = [1, 3];
             player.baseDefense = [1, 2];
             player.currentWeapon = {
                 attack: [5, 7]
@@ -87,7 +93,7 @@ var unitMod = (function () {
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
             //enemy.maxHP = 10;
-            enemy.baseAttack = [1, 3];
+            //enemy.baseAttack = [1, 3];
             enemy.baseDefense = [1, 2];
             setStat.attack(enemy);
         }

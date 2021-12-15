@@ -143,8 +143,10 @@ var drawCell = function(sm, cell){
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         // debug info
-        var pl = sm.game.player.levelObj;
+        var p = sm.game.player,
+        pl = p.levelObj;
         ctx.fillText('level: ' + pl.level + ', xp: ' + pl.xp + ', xp to next: ' + pl.toNext, 5, getY(0));
+        ctx.fillText('HP: ' + p.HP + ' / ' + p.maxHP, 5, getY(1));
     };
 /*
     api.info = function (sm) {

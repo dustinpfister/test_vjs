@@ -137,11 +137,15 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/lib/utils.js -->
 * (done) add utils.XP from Clucker 0.7.1
 <!-- js/lib/units.js -->
-* use utils.XP to create a unit.levelObj for all base units
+* (done) use utils.XP to create a unit.levelObj for all base units
+* (done) have a unitMod.giveXP public method
 * have unit.levelObj have an inpact on hit points
+<!-- js/game.js -->
+* (done) use unitMod.giveXP in processMelee in gameMod
 <!-- js/draw.js -->
 * (done) draw getY helper for draw.info method
-* display level for player in draw.info
+* (done) display level for player in draw.info
+* display hp / maxHp for player
 
 <!--****** **********
     JSON LOADER - world map json files

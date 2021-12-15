@@ -1,5 +1,4 @@
 var gameMod = (function () {
-
     // hard coded map events
     var MAP_EVENTS = {};
     // hard map reset
@@ -29,7 +28,7 @@ var gameMod = (function () {
 
     // public API
     var api = {};
-
+    // THE VOID WORLD OBJECT
     api.VOID_WORLD = {
         dataKey: "wm_void",
         mapName: "Void World",
@@ -51,8 +50,6 @@ var gameMod = (function () {
         mapPortals: [],
         mapWorldUnits: []
     };
-
-
 /********** **********
      TO MAP OBJECT
 *********** *********/
@@ -273,15 +270,7 @@ var gameMod = (function () {
                 if(moveToCell.unit){
                     if(moveToCell.unit.type === 'portal'){
                         var portalUnit = moveToCell.unit;
-// setting game.map to new world map
-//var newWorldMap = game.sm.data[portalUnit.data.dataKey];
-//game.worldMap = newWorldMap;
-//game.turnState = 'wait';
-//setupGame(game, true, portalUnit.data);
-
-changeWorldMap(game, portalUnit.data);
-
-                        //placeUnit(game, unit, moveToCell.x, moveToCell.y);
+                        changeWorldMap(game, portalUnit.data);
                     }
                 }
             }
@@ -290,100 +279,93 @@ changeWorldMap(game, portalUnit.data);
 /********** **********
      MAP HELPERS
 *********** *********/
-// get an array of cell objects by a given unit type string in the given map
-var getCellsByUnitType = function(map, type){
-    return map.cells.reduce(function(acc, cell){
-        if(cell.unit){
-            if(cell.unit.type === type){
-                acc.push(cell);
+    // get an array of cell objects by a given unit type string in the given map
+    var getCellsByUnitType = function(map, type){
+        return map.cells.reduce(function(acc, cell){
+            if(cell.unit){
+                if(cell.unit.type === type){
+                    acc.push(cell);
+                }
             }
-        }
-        return acc;
-    },[]);
-};
-// change the current world map
-var changeWorldMap = function(game, portalData){
-    var newWorldMap = game.sm.data[portalData.dataKey];
-    game.worldMap = newWorldMap;
-    game.turnState = 'wait';
-    setupGame(game, true, portalData);
-};
-// change the current map
-var changeMap = function(game){
-    var pCell = api.getPlayerCell(game);
-    game.mapIndex = game.toMap.index;
-    pCell.unit = null;
-    pCell.walkable = true;
-    game.player.currentCellIndex = null;
-    placePlayer(game);
-    game.toMap = getToMap(game);
-};
-
-
+            return acc;
+        },[]);
+    };
+    // change the current world map
+    var changeWorldMap = function(game, portalData){
+        var newWorldMap = game.sm.data[portalData.dataKey];
+        game.worldMap = newWorldMap;
+        game.turnState = 'wait';
+        setupGame(game, true, portalData);
+    };
+    // change the current map
+    var changeMap = function(game){
+        var pCell = api.getPlayerCell(game);
+        game.mapIndex = game.toMap.index;
+        pCell.unit = null;
+        pCell.walkable = true;
+        game.player.currentCellIndex = null;
+        placePlayer(game);
+        game.toMap = getToMap(game);
+    };
 /********** **********
      MENU POOL
 *********** *********/
-var menuPool = {
-    count: 8,
-    w: 40,
-    h: 40,
-    disableLifespan: true,
-    data: {
-        outerRadius: 85,
-        innerRadius: 35,
-        outerTotal: 1,
-        frame: 0,
-        maxFrame: 15,
-        activeButton: null, // a ref to the active button to use on 'exit' mode end
-        mode: 'enter'       // current mode of the menuPool 'enter', 'exit'
-    }
-};
-
-menuPool.spawn = function(button, options, sm, spawnOpt){
-    var bd = button.data,
-    pd = options.data;
-    // button data
-    bd.desc = spawnOpt.desc || false;
-    bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
-    bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
-    bd.radius = 0;
-    bd.a = 0;
-    bd.ta = spawnOpt.ta === undefined ? Math.PI * 2: spawnOpt.ta;
-    bd.outer = spawnOpt.outer === undefined ? true : spawnOpt.outer;
-    bd.onClick = spawnOpt.onClick || function(){};
-    // pool data
-    pd.frame = 0;
-    pd.outerTotal = spawnOpt.outerTotal === undefined ? 1 : spawnOpt.outerTotal
-};
-
-menuPool.update = function(button, options, sm, secs){
-    var pd = options.data,
-    bd = button.data;
-    // !!! updating pool data here is not so great
-    if(button.i === options.objects.length - 1){
-        // if we are in enter mode
-        if(pd.mode === 'enter'){
-            pd.frame += 30 * secs;
-            pd.frame = pd.frame >= pd.maxFrame ? pd.maxFrame : pd.frame;
+    var menuPool = {
+        count: 8,
+        w: 40,
+        h: 40,
+        disableLifespan: true,
+        data: {
+            outerRadius: 85,
+            innerRadius: 35,
+            outerTotal: 1,
+            frame: 0,
+            maxFrame: 15,
+            activeButton: null, // a ref to the active button to use on 'exit' mode end
+            mode: 'enter'       // current mode of the menuPool 'enter', 'exit'
         }
-        // if we are in exit mode
-        if(pd.mode === 'exit'){
-            pd.frame -= 30 * secs;
-            pd.frame = pd.frame < 0 ? 0 : pd.frame;
-            if(pd.frame === 0 && pd.activeButton){
-
-                pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+    };
+    menuPool.spawn = function(button, options, sm, spawnOpt){
+        var bd = button.data,
+        pd = options.data;
+        // button data
+        bd.desc = spawnOpt.desc || false;
+        bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
+        bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
+        bd.radius = 0;
+        bd.a = 0;
+        bd.ta = spawnOpt.ta === undefined ? Math.PI * 2: spawnOpt.ta;
+        bd.outer = spawnOpt.outer === undefined ? true : spawnOpt.outer;
+        bd.onClick = spawnOpt.onClick || function(){};
+        // pool data
+        pd.frame = 0;
+        pd.outerTotal = spawnOpt.outerTotal === undefined ? 1 : spawnOpt.outerTotal
+    };
+    menuPool.update = function(button, options, sm, secs){
+        var pd = options.data,
+        bd = button.data;
+        // !!! updating pool data here is not so great
+        if(button.i === options.objects.length - 1){
+            // if we are in enter mode
+            if(pd.mode === 'enter'){
+                pd.frame += 30 * secs;
+                pd.frame = pd.frame >= pd.maxFrame ? pd.maxFrame : pd.frame;
+            }
+            // if we are in exit mode
+            if(pd.mode === 'exit'){
+                pd.frame -= 30 * secs;
+                pd.frame = pd.frame < 0 ? 0 : pd.frame;
+                if(pd.frame === 0 && pd.activeButton){
+                    pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+                }
             }
         }
-    }
-
-    var per = pd.frame / pd.maxFrame;
-    var radius = bd.outer ? pd.outerRadius : pd.innerRadius;
-    bd.a = bd.ta * per;
-    button.x = bd.cx + Math.cos(bd.a) * radius * per;
-    button.y = bd.cy + Math.sin(bd.a) * radius * per;
-};
-
+        var per = pd.frame / pd.maxFrame;
+        var radius = bd.outer ? pd.outerRadius : pd.innerRadius;
+        bd.a = bd.ta * per;
+        button.x = bd.cx + Math.cos(bd.a) * radius * per;
+        button.y = bd.cy + Math.sin(bd.a) * radius * per;
+    };
 /********** **********
      gameMod.create PUBLIC METHOD and helpers
 *********** *********/
@@ -488,14 +470,14 @@ menuPool.update = function(button, options, sm, secs){
         if(!playerPlaced){
             placePlayer(game);
         }
-// if a portal data object is given, use that to set player location
-// and startMapIndex
-if(portal){
-    startMapIndex = portal.dmi;
-    game.mapIndex = startMapIndex;
-    placeUnit(game, game.player, portal.dx, portal.dy);
-}
-
+        // if a portal data object is given, use that to set player location
+        // and startMapIndex
+        if(portal){
+            startMapIndex = portal.dmi;
+            game.mapIndex = startMapIndex;
+            placeUnit(game, game.player, portal.dx, portal.dy);
+        }
+        // setting mapIndex and toMap objects
         game.mapIndex = startMapIndex;
         game.toMap = getToMap(game);
     };
@@ -518,9 +500,6 @@ if(portal){
             marginX: opt.marginY,                    // margins from the upper left corner of the canvas
             marginX: opt.marginY,
             maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
-            //mapStrings: wMap.mapStrings || ['2'],    // the CURRENT WORLD MAP as a fixed arary of strings where each string is a map
-           // mapWorldWidth: wMap.mapWorldWidth,       // the WORLD MAP width
-           // mapWorldHeight: wMap.mapWorldHeight,     // the WORLD MAP height
             mapIndex: 0,                             // current map index in the CURRENT WORLD MAP
             toMap: {
                 index: null,
@@ -567,7 +546,7 @@ if(portal){
             return acc + eCells.length;
         }, 0);
     };
-
+    // parse map event helper
     var parseMapEvent = function(game, type, defaultMethod){
         var mapEvent = game.worldMap[type] || defaultMethod || MAP_EVENTS.softMapReset;
         // if map event is a string
@@ -590,12 +569,11 @@ if(portal){
             opt: []
         };
     };
-
+    // call map event helper
     var callMapEvent = function(game, secs, type, defaultMethod){
         var mapEventObj = parseMapEvent(game, type, defaultMethod);
         mapEventObj.method.call(game, game, secs, mapEventObj.type, mapEventObj.opt);
     };
-
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){
         var map = game.maps[game.mapIndex],
@@ -653,27 +631,18 @@ if(portal){
             game.turnState = 'wait';
             // check for player death
             if(game.player.HP <= 0){
-                // get a map event method to call
-                //var mapEvent = game.worldMap.onPlayerDeath || MAP_EVENTS.softMapReset;
-                //mapEvent = typeof mapEvent === 'string' ? MAP_EVENTS[mapEvent] : mapEvent;
                 // I think I will always want to clear the player cell
                 pCell.unit = null;
                 pCell.walkable = true;
-                // call the map event passing a ref to the game
-                //mapEvent.call(game, game, secs, 'onPlayerDeath');
-
-callMapEvent(game, secs, 'onPlayerDeath', MAP_EVENTS.softMapReset);
+                // call on player Death event
+                callMapEvent(game, secs, 'onPlayerDeath', MAP_EVENTS.softMapReset);
                 
             }
             // check for all enemies dead
             game.remainingEnemies = getRemainingEnemies(game);
             if(game.remainingEnemies === 0){
-                //var mapEvent = game.worldMap.onNoEnemies || MAP_EVENTS.hardMapReset;
-                //mapEvent = typeof mapEvent === 'string' ? MAP_EVENTS[mapEvent] : mapEvent;
-                //setupGame(game, true);
-                //mapEvent.call(game, game, secs, 'onNoEnemies');
-
-callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
+                // call on no Enemies event
+                callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
             }
         }
     };
@@ -700,26 +669,7 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
         // pointerDownTime should start at now
         game.pointerDownTime = new Date();
     };
-
-
-    var BUTTON = {};
-
-    BUTTON.quit = {
-        desc: 'quit',
-        outer: true,
-        onClick: function(sm, button){
-           sm.setState('title');
-        }
-    };
-
-    BUTTON.resume = {
-        desc: 'resume',
-        outer: true,
-        onClick: function(sm, button){
-           sm.game.mode = 'map';
-        }
-    };
-
+    // helper to create on click events for buttons
     var createMapButtonOnClick = function(dir){
         return function(sm, button){
             var tm = sm.game.toMap;
@@ -734,60 +684,48 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
             changeMap(sm.game);
         };
     };
-
+    // hard coded BUTTONS
+    var BUTTON = {};
+    BUTTON.quit = {
+        desc: 'quit',
+        outer: true,
+        onClick: function(sm, button){
+           sm.setState('title');
+        }
+    };
+    BUTTON.resume = {
+        desc: 'resume',
+        outer: true,
+        onClick: function(sm, button){
+           sm.game.mode = 'map';
+        }
+    };
     BUTTON.map_south = {
         desc: 'South',
         outer: false,
         ta: Math.PI * 0.5,
         onClick: createMapButtonOnClick('south')
     };
-
     BUTTON.map_north = {
         desc: 'North',
         outer: false,
         ta: Math.PI * 1.5,
         onClick: createMapButtonOnClick('north')
     };
-
     BUTTON.map_east = {
         desc: 'East',
         outer: false,
         ta: Math.PI * 2,
         onClick: createMapButtonOnClick('east')
     };
-
     BUTTON.map_west = {
         desc: 'West',
         outer: false,
         ta: Math.PI * 1,
         onClick: createMapButtonOnClick('west')
     };
-
-
-    BUTTON.dum1 = {
-        desc: 'dummy1',
-        outer: true,
-        onClick: function(sm, button){
-           sm.game.mode = 'map';           
-        }
-    };
-
-    BUTTON.dum2 = {
-        desc: 'dummy2',
-        outer: false,
-        onClick: function(sm, button){
-           sm.game.mode = 'map';           
-        }
-    };
-
-    BUTTON.dum3 = {
-        desc: 'dummy2',
-        outer: false,
-        onClick: function(sm, button){
-           sm.game.mode = 'map';           
-        }
-    };
-
+    // get a count of buttons with the given prop and value, this is used in createMenu
+    // to help with creating menu buttons in the 'circle menu feature' 
     var getButtonKeyValueCount = function(buttonKeys, prop, value){
         return buttonKeys.reduce(function(acc, buttonKey){
             var buttonDATA = BUTTON[buttonKey];
@@ -797,7 +735,6 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
             return acc;
         }, 0);
     };
-
     // create a menu for the current game state
     var createMenu = function(game){
         // purge all buttons first
@@ -805,19 +742,16 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
             button.active = false;
         });
         // default buttonKeys array
-        //var buttonKeys = ['quit', 'resume', 'map_south', 'map_north', 'map_east', 'map_west'];
         var buttonKeys = ['quit', 'resume'];
-
         // appending options
         buttonKeys = buttonKeys.concat(game.toMap.options.map(function(opt){
              return 'map_' + opt.dir;
         }));
-
+        // spawn buttons 
         var oi = 0, 
         ii = 0,
         oc = getButtonKeyValueCount(buttonKeys, 'outer', true), //3,
         ic = getButtonKeyValueCount(buttonKeys, 'outer', false); //2;
-        // spawn buttons 
         buttonKeys.forEach(function(buttonKey){
             var buttonDATA = BUTTON[buttonKey],
             len = (buttonDATA.outer ? oc : ic),
@@ -839,7 +773,6 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
             }
         });
     };
-
     // call when a pointer has ended
     api.pointerEnd = function(sm, x, y){
         var game = sm.game,
@@ -859,6 +792,7 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
         }
         // short press
         if(secs < 0.5 ){
+            // if we are in map mode
             if (game.mode === 'map' && clickedCell) {
                 // if player cell is clicked and there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
@@ -885,13 +819,12 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
                 game.player.moveCells = getMoveCells(game, pCell, clickedCell);
                 game.turnState = 'start';
             }
-
+            // if we are in menu mode      
             if(game.mode === 'menu'){
                 var clicked = poolMod.getOverlaping({active: true, w:1, h:1, x: x, y: y}, game.options);
                 if(clicked.length >= 1){
                     game.options.data.mode = 'exit';
                     game.options.data.activeButton = clicked[0];
-                    //clicked[0].data.onClick(sm, clicked[0]);
                 }else{
                    // no button was clicked
                    game.mode = 'map';
@@ -899,7 +832,6 @@ callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
             }
         }
     };
-
     // return the public API
     return api;
 }

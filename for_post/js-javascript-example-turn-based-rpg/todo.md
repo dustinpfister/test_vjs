@@ -121,7 +121,7 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - r9 - onMapChange prop for world maps
 <!-- js/game.js -->
-* add support for a worldMap.onMapChange method that will fire each time the player moved to a new map
+* add support for a worldMap.onMapChange method that will fire each time the player has moved to a new map
 * default value for this should be a 'nothing' option
 * have a 'respawnEnemies' option for worldMap.onMapChange
 * I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic

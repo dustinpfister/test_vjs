@@ -654,6 +654,8 @@ var gameMod = (function () {
                 unitMod.meleeAttack(unit, tUnit);
                 // enemy unit death check
                 if(tUnit.HP <= 0 && tUnit.type === 'enemy'){
+console.log('enemy dead!');
+unitMod.giveXP(game.player, tUnit.xpValue);
                     targetCell.walkable = true;
                     targetCell.unit = null;
                 }

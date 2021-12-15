@@ -32,14 +32,15 @@ var unitMod = (function () {
     // create a base unit object
     var createBaseUnit = function () {
         var unit = {
+            // level
             levelObj: utils.XP.parseByLevel(1, LEVEL_CAP, LEVEL_DELTA_NEXT),
+            xpValue: 25,           // xp value that the unit will award when killed
             // current unit stats
             maxHP: 1,             // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
             baseAttack: [1, 1],   // base attack
             baseDefense: [0, 0],  // base defense
             attack: [0, 0],       // an actual attack value to use ( set by the setAttack helper)
-            xpValue: 1,
             // equipment
             meleeWeapon: null,
             currentWeapon: null,  // the current active weapon
@@ -107,6 +108,18 @@ var unitMod = (function () {
         return unit;
     };
 
+// give xp to a unit
+api.giveXP = function(unit, xp){
+    // get current XP for unit
+    var lObj = unit.levelObj,
+    cXP = lObj.xp;
+    // add to current
+    cXP += xp;
+    // new level object
+    unit.levelObj = utils.XP.parseByXP(cXP, LEVEL_CAP, LEVEL_DELTA_NEXT);
+};
+
+
 
 /********** **********
      MELEE ATTACK
@@ -119,10 +132,6 @@ var unitMod = (function () {
         // figure raw attack
         var fa = attacker.attack,
         ra = utils.valueByRange(Math.random(), fa[0], fa[1]);
-
-console.log('raw attack for ' + attacker.type);
-console.log(ra)
-
         // figure target defense
         var bd = target.baseDefense,
         d = utils.valueByRange(Math.random(), bd[0], bd[1]);

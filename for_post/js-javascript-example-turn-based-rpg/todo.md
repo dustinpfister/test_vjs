@@ -133,7 +133,7 @@ The idea of the library game world is to have a game world that acts as a portal
     utils.XP - level objects for player and enemey units
 ********** *******-->
 
-## () - r10 - level objects for player and enemy units
+## ( done 12/15/2021 ) - r10 - level objects for player and enemy units
 <!-- js/lib/utils.js -->
 * (done) add utils.XP from Clucker 0.7.1
 <!-- js/lib/units.js -->
@@ -141,7 +141,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a unitMod.giveXP public method
 * (done) have unit.levelObj have an inpact on hit points
 * (done) have unit.levelObj effect base Attack
-* have unit.levelObj effect base defense
+* (done) have unit.levelObj effect base defense
 <!-- js/game.js -->
 * (done) use unitMod.giveXP in processMelee in gameMod
 <!-- js/draw.js -->
@@ -149,7 +149,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) display level for player in draw.info
 * (done) display hp / maxHp for player
 * (done) display base attack
-* display base defense for player
+* (done) display base defense for player
 
 <!--****** **********
     JSON LOADER - world map json files

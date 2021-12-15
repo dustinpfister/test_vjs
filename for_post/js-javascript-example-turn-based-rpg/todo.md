@@ -135,10 +135,10 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - r10 - level objects for player and enemy units
 <!-- js/lib/utils.js -->
-
-
+* (done) add utils.XP from Clucker 0.7.1
 <!-- js/lib/units.js -->
-
+* use utils.XP to create a unit.levelObj for all base units
+* have unit.levelObj have an inpact on hit points
 <!-- js/draw.js -->
 * change debug info
 * display level for player and enemy units

@@ -409,19 +409,13 @@ var gameMod = (function () {
      gameMod.create PUBLIC METHOD and helpers
 *********** *********/
 
-var getRemainingEnemies = function(game){
-// set remainingEnemies count
-return game.remainingEnemies = game.maps.reduce(function(acc, map, mi){
-    return acc + map.cells.reduce(function(acc, cell, ci){
-        if(cell.unit){
-            var n = cell.unit.type === 'enemy' ? 1 : 0;
-            return acc + n;
-        }
-        return acc;
-    }, 0);
-}, 0);
-
-};
+    // get remaining Enemies helper used to update game.remainingEnemies in 'end' process turn state
+    var getRemainingEnemies = function(game){
+        return game.maps.reduce(function(acc, map){
+            var eCells = getCellsByUnitType(map, 'enemy');
+            return acc + eCells.length;
+        }, 0);
+    };
 
     // generate map strings helper
     var genMapStrings = function(opt){
@@ -595,13 +589,7 @@ return game.remainingEnemies = game.maps.reduce(function(acc, map, mi){
             unit.meleeTarget = null;
         }
     };
-    // get remaining Enemies helper used to update game.remainingEnemies in 'end' process turn state
-    var getRemainingEnemies = function(game){
-        return game.maps.reduce(function(acc, map){
-            var eCells = getCellsByUnitType(map, 'enemy');
-            return acc + eCells.length;
-        }, 0);
-    };
+
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){
         var map = game.maps[game.mapIndex],

@@ -340,7 +340,7 @@ var gameMod = (function () {
         // update game.maps
         game.maps = game.maps.map(function(map, mi){
             var mapStr = wMap.mapStrings[mi] || '';
-            game.mapIndex = mi;
+            //game.mapIndex = mi;
             map.cells = map.cells.map(function(cell, ci){
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
@@ -353,20 +353,20 @@ var gameMod = (function () {
                 // wall blocks set for new games and not
                 if(cellIndex === 1 && !skipCI[1] ){
                     var wall = unitMod.createUnit('wall');
-                    placeUnit(game, wall, x, y);
+                    placeUnit(game, wall, x, y, mi);
                 }
                 // set player by mapString (if no portal object is given only though)
                 if(cellIndex === 2 && !portal && !skipCI[2]){
                     playerPlaced = true;
                     startMapIndex = mi;
-                    placeUnit(game, game.player, x, y);
+                    placeUnit(game, game.player, x, y, mi);
                 }
                 // enemy
                 if(cellIndex === 3 && newGame && !skipCI[3]){
                     //game.remainingEnemies += 1;
                     var enemy = unitMod.createUnit('enemy');
                     enemy.HP = enemy.maxHP;
-                    placeUnit(game, enemy, x, y);
+                    placeUnit(game, enemy, x, y, mi);
                 }
                 return cell;
             });
@@ -516,6 +516,9 @@ var gameMod = (function () {
     var setupGame2 = function(game){
         var pCell = api.getPlayerCell(game),
         wMap = game.worldMap;
+
+        //var result = applyMapStringsToMaps(game, false, false, {2:true});
+
         game.maps = game.maps.map(function(map, mi){
             var mapStr = wMap.mapStrings[mi] || '';
             //game.mapIndex = mi;
@@ -523,7 +526,6 @@ var gameMod = (function () {
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
                 y = Math.floor(ci / map.w);
-
                 // enemy
                 if(cellIndex === 0){
                     var cell = mapMod.get(map, ci);
@@ -544,6 +546,7 @@ var gameMod = (function () {
             });
             return map;
         });
+
         // set up portals
         setupPortals(game);
         // set remainingEnemies count
@@ -567,7 +570,16 @@ var gameMod = (function () {
         playerPlaced = result.playerPlaced;
         startMapIndex = result.startMapIndex;
         // set up portals
-        setupPortals(game);
+        //setupPortals(game);
+
+        game.worldMap.mapPortals.forEach(function(portal){
+            game.mapIndex = portal.mi;
+            var portalUnit = unitMod.createUnit('portal');
+            placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
+            // setting data object of portal
+            portalUnit.data = portal;
+        });
+
         // if player is not palced then place the player unit
         // at a null cell
         if(!playerPlaced){

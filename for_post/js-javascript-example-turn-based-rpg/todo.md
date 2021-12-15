@@ -123,7 +123,7 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - rx - item json files, weapons
 * start a new type of json file format for defining one or more items
 
-## () - rx - new unit type "item", 'itemStack'
+## () - r11 - new unit type "item", 'itemStack'
 * start a new type of unit called an 'item' in lib\/units.js
 * start a new type of unit called an 'itemStack'
 * an itemStack should allow for more than one item to be located on a single cell.

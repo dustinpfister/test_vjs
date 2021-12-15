@@ -34,8 +34,7 @@ var unitMod = (function () {
         // base attack
         var ba = unit.baseAttack = [1, 2];
         ba[0] = 2 + Math.floor(1.25 * l);
-        ba[1] = ba[0] + 2 + Math.floor(1.45 * l);
-        
+        ba[1] = ba[0] + 2 + Math.floor(1.45 * l);  
     };
 
 

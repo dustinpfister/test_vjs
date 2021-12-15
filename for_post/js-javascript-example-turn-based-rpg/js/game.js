@@ -13,7 +13,7 @@ var gameMod = (function () {
     };
     // do nothing
     MAP_EVENTS.nothing = function(game, secs, type, opt){
-        console.log('doing nothing for ' + type + ' map event');
+        console.log('doing nothing for ' + type + ' map event for worldMap ' + game.worldMap.dataKey);
     };
     // go to a new world map ( toMap:dataKey,dmi,dx,dy )
     MAP_EVENTS.toMap = function(game, secs, type, opt){
@@ -278,6 +278,29 @@ var gameMod = (function () {
 /********** **********
      MAP HELPERS
 *********** *********/
+    // parse map event helper
+    var parseMapEvent = function(game, type, defaultMethod){
+        var mapEvent = game.worldMap[type] || defaultMethod || MAP_EVENTS.softMapReset;
+        // if map event is a string
+        if(typeof mapEvent === 'string'){
+            var arr = mapEvent.split(':'),
+            opt = [];
+            if(arr[1]){
+                opt = arr[1].split(',');
+            }
+            return {
+                type: type,
+                method: MAP_EVENTS[arr[0]],
+                opt: opt
+            };
+        }
+        // else mapEvent should be a function
+        return {
+            type: type,
+            method: mapEvent,
+            opt: []
+        };
+    };
     // call map event helper
     var callMapEvent = function(game, secs, type, defaultMethod){
         var mapEventObj = parseMapEvent(game, type, defaultMethod);
@@ -555,29 +578,6 @@ var gameMod = (function () {
             var eCells = getCellsByUnitType(map, 'enemy');
             return acc + eCells.length;
         }, 0);
-    };
-    // parse map event helper
-    var parseMapEvent = function(game, type, defaultMethod){
-        var mapEvent = game.worldMap[type] || defaultMethod || MAP_EVENTS.softMapReset;
-        // if map event is a string
-        if(typeof mapEvent === 'string'){
-            var arr = mapEvent.split(':'),
-            opt = [];
-            if(arr[1]){
-                opt = arr[1].split(',');
-            }
-            return {
-                type: type,
-                method: MAP_EVENTS[arr[0]],
-                opt: opt
-            };
-        }
-        // else mapEvent should be a function
-        return {
-            type: type,
-            method: mapEvent,
-            opt: []
-        };
     };
     // process turn method used in gameMod.update
     var processTurn = function(game, secs){

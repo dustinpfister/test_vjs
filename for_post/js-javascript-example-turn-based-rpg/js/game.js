@@ -571,7 +571,7 @@ var gameMod = (function () {
         //setupPortals(game);
         game.worldMap.mapPortals.forEach(function(portal){
             // !!! for some reason I need to set game.mapIndex = portal.mi if I do not I get a werid wall block bug
-            game.mapIndex = portal.mi;
+            //game.mapIndex = portal.mi;
             var portalUnit = unitMod.createUnit('portal');
             placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
             // setting data object of portal

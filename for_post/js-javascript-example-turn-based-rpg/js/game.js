@@ -583,24 +583,20 @@ var gameMod = (function () {
             // setting data object of portal
             portalUnit.data = portal;
         });
-
-        // if player is not palced then place the player unit
-        // at a null cell
-        if(!playerPlaced){
-            placePlayer(game);
-        }
-
-// !!! bug has to do with placing the player here
-console.log( mapMod.get(game.maps[2], 7, 6).unit );
         // if a portal data object is given, use that to set player location
         // and startMapIndex
         if(portal){
             startMapIndex = portal.dmi;
             game.mapIndex = startMapIndex;
+            game.player.currentCellIndex = null;
             placeUnit(game, game.player, portal.dx, portal.dy, portal.dmi);
+            playerPlaced = true;
         }
-console.log( mapMod.get(game.maps[2], 7, 6).unit );
-
+        // if player is not palced then place the player unit
+        // at a null cell
+        if(!playerPlaced){
+            placePlayer(game);
+        }
         // setting mapIndex and toMap objects
         game.mapIndex = startMapIndex;
         game.toMap = getToMap(game);

@@ -1,10 +1,11 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
 <!--****** **********
-    KNOWN BUGS
+    KNOWN BUGS/ISSHUES
 ********** *******-->
-* weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
-* I should not have to have a setupGame2 method in gameMod
+* (#0 fixed in r9) weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
+* (#1) I should not have to have a setupGame2 method in gameMod
+* (#2) I should have a main update loop for object pools
 
 
 <!--****** **********
@@ -146,6 +147,8 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- world-forest.json -->
 * (done) worldMap.onMapLeave should be 'respawnWorldEnemies' for world-forest.json
 * (done) worldMap.onNoEnemies should be 'nothing'
+<!-- bugs -->
+* (done) fixed bug #0 
 
 ## ( done 12/14/2021 ) - r8 - new conditions for end game, player death, spawning
 <!-- js/game.js -->

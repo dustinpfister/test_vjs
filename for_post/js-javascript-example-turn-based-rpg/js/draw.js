@@ -128,6 +128,36 @@ var drawCell = function(sm, cell){
         ctx.fillText('v' + sm.ver, 1, canvas.height - 10);
     };
     // draw info
+    var getY = function(yi){
+        return 5 + 12 * yi;
+    };
+    api.info = function (sm) {
+        var ctx = sm.ctx,
+        pos = sm.input.pos,
+        pCell = gameMod.getPlayerCell(sm.game),
+        canvas = sm.canvas,
+        dy = 12;
+        // text style
+        ctx.fillStyle = 'yellow';
+        ctx.font = '10px courier';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        // draw current pointer position
+        ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, getY(0));
+        // player cell pos
+        ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, getY(1));
+        // to map values
+        var tm = sm.game.toMap;
+        ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, getY(2));
+        ctx.fillText('toMap.options:' + JSON.stringify(tm.options.map(function(opt){ 
+            return opt.dir + '(' + opt.x + ',' + opt.y + ');' + opt.mi;
+        })) , 5, getY(3));
+        // turn number and turnChange bool
+        ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, getY(4));
+        // enemies
+        ctx.fillText('enemies:' + sm.game.remainingEnemies, 5, getY(5));
+    };
+/*
     api.info = function (sm) {
         var ctx = sm.ctx,
         pos = sm.input.pos,
@@ -154,6 +184,7 @@ var drawCell = function(sm, cell){
         // enemies
         ctx.fillText('enemies:' + sm.game.remainingEnemies, 5, 5 + dy * 5);
     };
+*/
     // return the public api to draw variable
     return api;
 }

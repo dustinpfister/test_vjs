@@ -503,6 +503,16 @@ var gameMod = (function () {
 /********** **********
      gameMod.create PUBLIC METHOD and helpers
 *********** *********/
+    var setupPortals = function(game){
+        // wMap portals
+        game.worldMap.mapPortals.forEach(function(portal){
+            //game.mapIndex = portal.mi;
+            var portalUnit = unitMod.createUnit('portal');
+            placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
+            // setting data object of portal
+            portalUnit.data = portal;
+        });
+    };
     var setupGame2 = function(game){
         var pCell = api.getPlayerCell(game),
         wMap = game.worldMap;
@@ -534,14 +544,8 @@ var gameMod = (function () {
             });
             return map;
         });
-        // wMap portals
-        wMap.mapPortals.forEach(function(portal){
-            //game.mapIndex = portal.mi;
-            var portalUnit = unitMod.createUnit('portal');
-            placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
-            // setting data object of portal
-            portalUnit.data = portal;
-        });
+        // set up portals
+        setupPortals(game);
         // set remainingEnemies count
         game.remainingEnemies = getRemainingEnemies(game);
     };
@@ -562,14 +566,8 @@ var gameMod = (function () {
         var result = applyMapStringsToMaps(game, newGame, portal, {});
         playerPlaced = result.playerPlaced;
         startMapIndex = result.startMapIndex;
-        // wMap portals
-        wMap.mapPortals.forEach(function(portal){
-            game.mapIndex = portal.mi;
-            var portalUnit = unitMod.createUnit('portal');
-            placeUnit(game, portalUnit, portal.x, portal.y);
-            // setting data object of portal
-            portalUnit.data = portal;
-        });
+        // set up portals
+        setupPortals(game);
         // if player is not palced then place the player unit
         // at a null cell
         if(!playerPlaced){

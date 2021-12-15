@@ -63,13 +63,15 @@ var gameMod = (function () {
         });
 
         // wMap portals
+
         wMap.mapPortals.forEach(function(portal){
-            game.mapIndex = portal.mi;
+            //game.mapIndex = portal.mi;
             var portalUnit = unitMod.createUnit('portal');
-            placeUnit(game, portalUnit, portal.x, portal.y);
+            placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
             // setting data object of portal
             portalUnit.data = portal;
         });
+
         // set remainingEnemies count
         game.remainingEnemies = getRemainingEnemies(game);
 

@@ -139,13 +139,14 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/lib/units.js -->
 * (done) use utils.XP to create a unit.levelObj for all base units
 * (done) have a unitMod.giveXP public method
-* have unit.levelObj have an inpact on hit points
+* (done) have unit.levelObj have an inpact on hit points
 <!-- js/game.js -->
 * (done) use unitMod.giveXP in processMelee in gameMod
 <!-- js/draw.js -->
 * (done) draw getY helper for draw.info method
 * (done) display level for player in draw.info
-* display hp / maxHp for player
+* (done) display hp / maxHp for player
+* display base attack
 
 <!--****** **********
     JSON LOADER - world map json files

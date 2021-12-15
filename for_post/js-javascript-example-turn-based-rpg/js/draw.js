@@ -147,6 +147,7 @@ var drawCell = function(sm, cell){
         pl = p.levelObj;
         ctx.fillText('level: ' + pl.level + ', xp: ' + pl.xp + ', xp to next: ' + pl.toNext, 5, getY(0));
         ctx.fillText('HP: ' + p.HP + ' / ' + p.maxHP, 5, getY(1));
+        ctx.fillText('attack: ' + p.attack[0] + ' - ' + p.attack[1], 5, getY(2));
     };
 /*
     api.info = function (sm) {

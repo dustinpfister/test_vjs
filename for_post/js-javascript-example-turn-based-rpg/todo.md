@@ -133,14 +133,12 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a applyMapStringsToMaps helper and use that in setUpGame first
 * (done) start a MAP_EVENTS.respawnWorldEnemies event that by default will respawn all world enemies except the current map
 * (done) had to work out a whole other kind of setupGame block of code in MAP_EVENTS.respawnWorldEnemies
-
-* see if the werid bug with the wall in map index 0 can be fixed
-
+* (done) see if the werid bug with the wall in map index 0 can be fixed
 <!-- world-home.json -->
 * (done) worldMap.onMapLeave and enter events should be 'nothing' for world-home.json
 <!-- world-forest.json -->
-* worldMap.onMapLeave should be 'respawnWorldEnemies' for world-forest.json
-* worldMap.onNoEnemies should be 'nothing'
+* (done) worldMap.onMapLeave should be 'respawnWorldEnemies' for world-forest.json
+* (done) worldMap.onNoEnemies should be 'nothing'
 
 ## ( done 12/14/2021 ) - r8 - new conditions for end game, player death, spawning
 <!-- js/game.js -->

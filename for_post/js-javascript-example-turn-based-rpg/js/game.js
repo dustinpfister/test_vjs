@@ -29,52 +29,8 @@ var gameMod = (function () {
     };
     MAP_EVENTS.respawnWorldEnemies = function(game, secs, type, opt){
         console.log('respawn world enemies ' + opt);
-        
-        var pCell = api.getPlayerCell(game),
-        wMap = game.worldMap;
-
-        game.maps = game.maps.map(function(map, mi){
-            var mapStr = wMap.mapStrings[mi] || '';
-            //game.mapIndex = mi;
-            map.cells = map.cells.map(function(cell, ci){
-                var cellIndex = parseInt(mapStr[ci] || '0'),
-                x = ci % map.w,
-                y = Math.floor(ci / map.w);
-
-                // enemy
-                if(cellIndex === 0){
-                    var cell = mapMod.get(map, ci);
-                    cell.unit = null;
-                    cell.walkable = true;
-                }
-                if(cellIndex === 1){
-                    var wall = unitMod.createUnit('wall');
-                    placeUnit(game, wall, x, y, mi);
-                }
-                // enemy
-                if(cellIndex === 3){
-                    var enemy = unitMod.createUnit('enemy');
-                    enemy.HP = enemy.maxHP;
-                    placeUnit(game, enemy, x, y, mi);
-                }
-                return cell;
-            });
-            return map;
-        });
-
-        // wMap portals
-
-        wMap.mapPortals.forEach(function(portal){
-            //game.mapIndex = portal.mi;
-            var portalUnit = unitMod.createUnit('portal');
-            placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
-            // setting data object of portal
-            portalUnit.data = portal;
-        });
-
-        // set remainingEnemies count
-        game.remainingEnemies = getRemainingEnemies(game);
-
+        // call setup game 2
+        setupGame2(game);
     };
     // public API
     var api = {};
@@ -282,10 +238,6 @@ var gameMod = (function () {
         toMap = game.toMap,
         toCell = null,
         i = map.cells.length;
-
-//console.log(map === undefined);
-//console.log(game.mapIndex);
-
         // get a toCell ref if we have a pos in game.toMap
         if(toMap.x != null && toMap.y != null){
             toCell = mapMod.get(map, toMap.x, toMap.y);
@@ -551,6 +503,48 @@ var gameMod = (function () {
 /********** **********
      gameMod.create PUBLIC METHOD and helpers
 *********** *********/
+    var setupGame2 = function(game){
+        var pCell = api.getPlayerCell(game),
+        wMap = game.worldMap;
+        game.maps = game.maps.map(function(map, mi){
+            var mapStr = wMap.mapStrings[mi] || '';
+            //game.mapIndex = mi;
+            map.cells = map.cells.map(function(cell, ci){
+                var cellIndex = parseInt(mapStr[ci] || '0'),
+                x = ci % map.w,
+                y = Math.floor(ci / map.w);
+
+                // enemy
+                if(cellIndex === 0){
+                    var cell = mapMod.get(map, ci);
+                    cell.unit = null;
+                    cell.walkable = true;
+                }
+                if(cellIndex === 1){
+                    var wall = unitMod.createUnit('wall');
+                    placeUnit(game, wall, x, y, mi);
+                }
+                // enemy
+                if(cellIndex === 3){
+                    var enemy = unitMod.createUnit('enemy');
+                    enemy.HP = enemy.maxHP;
+                    placeUnit(game, enemy, x, y, mi);
+                }
+                return cell;
+            });
+            return map;
+        });
+        // wMap portals
+        wMap.mapPortals.forEach(function(portal){
+            //game.mapIndex = portal.mi;
+            var portalUnit = unitMod.createUnit('portal');
+            placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
+            // setting data object of portal
+            portalUnit.data = portal;
+        });
+        // set remainingEnemies count
+        game.remainingEnemies = getRemainingEnemies(game);
+    };
     // start over with same state, or setUp a new game for the given game object
     var setupGame = api.setupGame = function (game, newGame, portal) {
         newGame = newGame === undefined ? true : newGame;

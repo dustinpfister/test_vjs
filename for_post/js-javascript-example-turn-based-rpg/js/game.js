@@ -329,6 +329,10 @@ var gameMod = (function () {
     };
     // apply map strings helper
     var applyMapStringsToMaps = function(game, newGame, portal){
+
+        newGame = newGame === undefined ? true : newGame;
+        portal = portal === undefined ? false : portal;
+
         var wMap = game.worldMap,
         playerPlaced = false,
         startMapIndex = false;

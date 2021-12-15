@@ -132,13 +132,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) logging more into for built in 'nothing' map event
 * (done) have a applyMapStringsToMaps helper and use that in setUpGame first
 * (done) start a MAP_EVENTS.respawnWorldEnemies event that by default will respawn all world enemies except the current map
-
-* see about using applyMapStringsToMaps helper in MAP_EVENTS.respawnWorldEnemies
-* use applyMapStringsToMaps with arguments that define what should and should not change
-
-* MAP_EVENTS.respawnWorldEnemies:true can be used to spawn all enemies even with the current map
-
-
+* (done) had to work out a whole other kind of setupGame block of code in MAP_EVENTS.respawnWorldEnemies
 <!-- world-home.json -->
 * (done) worldMap.onMapLeave and enter events should be 'nothing' for world-home.json
 <!-- world-forest.json -->

@@ -29,6 +29,50 @@ var gameMod = (function () {
     };
     MAP_EVENTS.respawnWorldEnemies = function(game, secs, type, opt){
         console.log('respawn world enemies ' + opt);
+        
+        var pCell = api.getPlayerCell(game),
+        wMap = game.worldMap;
+
+        game.maps = game.maps.map(function(map, mi){
+            var mapStr = wMap.mapStrings[mi] || '';
+            //game.mapIndex = mi;
+            map.cells = map.cells.map(function(cell, ci){
+                var cellIndex = parseInt(mapStr[ci] || '0'),
+                x = ci % map.w,
+                y = Math.floor(ci / map.w);
+
+                // enemy
+                if(cellIndex === 0){
+                    var cell = mapMod.get(map, ci);
+                    cell.unit = null;
+                    cell.walkable = true;
+                }
+                if(cellIndex === 1){
+                    var wall = unitMod.createUnit('wall');
+                    placeUnit(game, wall, x, y, mi);
+                }
+                // enemy
+                if(cellIndex === 3){
+                    var enemy = unitMod.createUnit('enemy');
+                    enemy.HP = enemy.maxHP;
+                    placeUnit(game, enemy, x, y, mi);
+                }
+                return cell;
+            });
+            return map;
+        });
+
+        // wMap portals
+        wMap.mapPortals.forEach(function(portal){
+            game.mapIndex = portal.mi;
+            var portalUnit = unitMod.createUnit('portal');
+            placeUnit(game, portalUnit, portal.x, portal.y);
+            // setting data object of portal
+            portalUnit.data = portal;
+        });
+        // set remainingEnemies count
+        game.remainingEnemies = getRemainingEnemies(game);
+
     };
     // public API
     var api = {};
@@ -205,8 +249,8 @@ var gameMod = (function () {
      UNITS
 *********** *********/
     // place a unit at the given location in the current map
-    var placeUnit = function (game, unit, x, y) {
-        var map = game.maps[game.mapIndex];
+    var placeUnit = function (game, unit, x, y, mi) {
+        var map = game.maps[mi === undefined ? game.mapIndex: mi];
         var newCell = mapMod.get(map, x, y);
         if (newCell) {
             // any old cellIndex that may need to have walkable
@@ -236,6 +280,10 @@ var gameMod = (function () {
         toMap = game.toMap,
         toCell = null,
         i = map.cells.length;
+
+//console.log(map === undefined);
+//console.log(game.mapIndex);
+
         // get a toCell ref if we have a pos in game.toMap
         if(toMap.x != null && toMap.y != null){
             toCell = mapMod.get(map, toMap.x, toMap.y);
@@ -328,11 +376,10 @@ var gameMod = (function () {
         });
     };
     // apply map strings helper
-    var applyMapStringsToMaps = function(game, newGame, portal){
-
+    var applyMapStringsToMaps = function(game, newGame, portal, skipCI ){
         newGame = newGame === undefined ? true : newGame;
         portal = portal === undefined ? false : portal;
-
+        skipCI = skipCI === undefined ? {} : skipCI;
         var wMap = game.worldMap,
         playerPlaced = false,
         startMapIndex = false;
@@ -344,24 +391,24 @@ var gameMod = (function () {
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
                 y = Math.floor(ci / map.w);
-                if(cellIndex === 0 && newGame){
+                if(cellIndex === 0 && newGame && !skipCI[0]){
                     var cell = mapMod.get(map, ci);
                     cell.unit = null;
                     cell.walkable = true;
                 }
                 // wall blocks set for new games and not
-                if(cellIndex === 1){
+                if(cellIndex === 1 && !skipCI[1] ){
                     var wall = unitMod.createUnit('wall');
                     placeUnit(game, wall, x, y);
                 }
                 // set player by mapString (if no portal object is given only though)
-                if(cellIndex === 2 && !portal){
+                if(cellIndex === 2 && !portal && !skipCI[2]){
                     playerPlaced = true;
                     startMapIndex = mi;
                     placeUnit(game, game.player, x, y);
                 }
                 // enemy
-                if(cellIndex === 3 && newGame){
+                if(cellIndex === 3 && newGame && !skipCI[3]){
                     //game.remainingEnemies += 1;
                     var enemy = unitMod.createUnit('enemy');
                     enemy.HP = enemy.maxHP;
@@ -516,7 +563,7 @@ var gameMod = (function () {
         // make sure mode starts out on map mode
         game.mode = 'map';
         // set up maps with data from mapStrings array first
-        var result = applyMapStringsToMaps(game, newGame, portal);
+        var result = applyMapStringsToMaps(game, newGame, portal, {});
         playerPlaced = result.playerPlaced;
         startMapIndex = result.startMapIndex;
         // wMap portals

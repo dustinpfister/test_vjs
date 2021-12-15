@@ -29,7 +29,7 @@
   ],
   "onPlayerDeath": "softMapReset",
   "onNoEnemies": "nothing",
-  "onMapLeave": "respawnWorldEnemies:false,0",
+  "onMapLeave": "respawnWorldEnemies",
   "onMapEnter": "nothing",
   "onWorldMapLeave": "nothing",
   "onWorldMapEnter": "nothing"

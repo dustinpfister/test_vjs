@@ -14,6 +14,7 @@ var unitMod = (function () {
    var setStat = {};
    
    setStat.attack = function(unit){
+       // set the raw attack value for a unit
        unit.attack = unit.baseAttack.map(function(ba, i){
            // ref to 'current' weapon if any
            var cw = unit.currentWeapon != null ? unit.currentWeapon.attack[i]: 0;
@@ -37,7 +38,8 @@ var unitMod = (function () {
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
             baseAttack: [1, 1],   // base attack
             baseDefense: [0, 0],  // base defense
-            attack: [0, 0],
+            attack: [0, 0],       // an actual attack value to use ( set by the setAttack helper)
+            xpValue: 1,
             // equipment
             meleeWeapon: null,
             currentWeapon: null,  // the current active weapon
@@ -117,6 +119,10 @@ var unitMod = (function () {
         // figure raw attack
         var fa = attacker.attack,
         ra = utils.valueByRange(Math.random(), fa[0], fa[1]);
+
+console.log('raw attack for ' + attacker.type);
+console.log(ra)
+
         // figure target defense
         var bd = target.baseDefense,
         d = utils.valueByRange(Math.random(), bd[0], bd[1]);

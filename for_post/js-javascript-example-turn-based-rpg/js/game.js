@@ -27,6 +27,9 @@ var gameMod = (function () {
         };
         changeWorldMap(game, portalData);
     };
+    MAP_EVENTS.respawnWorldEnemies = function(game, secs, type, opt){
+        console.log('respawn world enemies ' + opt);
+    };
     // public API
     var api = {};
     // THE VOID WORLD OBJECT

@@ -7,8 +7,9 @@
 * 1-large-arrays example that compares times for while loop and Array.forEach using large arrays
 
 ### () - expand av-forEach section
-* 3-own-prop example that will loop private keys
-* 4-traverse method example
+* 3-for-empty-return example that is based off of 2-sparse but I can give a for empty method and it has a return value
+* 4-own-prop example that will loop private keys
+* 5-traverse method example
 
 ### () - new av-multidimensional section
 * 1-basic example based off of the 4-nested-and-return example in av-while section

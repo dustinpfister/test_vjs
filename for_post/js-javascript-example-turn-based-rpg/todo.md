@@ -108,25 +108,31 @@ The idea of the library game world is to have a game world that acts as a portal
     ITEMS AND DROPS - item json files
 ********** *******-->
 
-## () - rx - drops, and enemy unit inventory
+## () - rxx - drops, and enemy unit inventory
 * when the player moves over an 'item' or 'itemStack' this should cause the 'circle menu' to show up
 * a new button should show up in the circle menu called 'drops'
 * clicking drops
 
-## () - rx - player inventory
+## () - rxx - player inventory
 * an item can be a drop that will be shown in the grid along with "wall", and "enemy" types
 * a unit will then need to have an unit.inventory property that will be another kind of standard object
 * in the 'circle menu' have an inventory button
 * clicking the inventory button should change the circle menu to buttons for each item in the inventory
 * there should be a back button in this inventory menu
 
-## () - rx - item json files, weapons
+## () - rxx - item json files, weapons
 * start a new type of json file format for defining one or more items
 
-## () - r11 - new unit type "item", 'itemStack'
-* start a new type of unit called an 'item' in lib\/units.js
-* start a new type of unit called an 'itemStack'
+## () - rxx - new unit type 'item-chest'
+* start a new type of unit called an 'item-chest' that is just a colletion or group of items
 * an itemStack should allow for more than one item to be located on a single cell.
+
+## () - rxx - new unit type 'item'
+* start a new type of unit called an 'item' in lib\/units.js
+
+## () - r11 - new unit type 'group' that is a kind of unit container
+* start a new 'group' unit type that will act as a container to allow more than one unit on a cell
+* a group may or may not set the walkable value of the cell that it is on to false depeding on what is in the group 
 
 
 <!--****** **********

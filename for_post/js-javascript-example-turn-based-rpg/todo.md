@@ -141,7 +141,9 @@ The idea of the library game world is to have a game world that acts as a portal
 
 * a group that just has children should be walkable like portals
 
-<!-- js/game.js --> 
+<!-- js/game.js -->
+* I will want a setUp groups helper just like with setupPortals
+* make to so that adding groups from a world map is part of the setup process
 * when a player or enemey unit moves over a group, that group should be in the children prop of that unit
 * see about doing the same with porals as with groups where the portal becomes a child of the unit
 

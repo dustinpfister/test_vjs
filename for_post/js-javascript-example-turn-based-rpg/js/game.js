@@ -517,6 +517,15 @@ var gameMod = (function () {
             portalUnit.data = portal;
         });
     };
+    var setupGroups = function(game){
+        // wMap portals
+        game.worldMap.mapGroups.forEach(function(opt){
+            //game.mapIndex = portal.mi;
+            var gUnit = unitMod.createUnit('group', opt);
+            placeUnit(game, gUnit, opt.x, opt.y, opt.mi);
+            gUnit.data = {};
+        });
+    };
     // setup method 2 - !!! I should only need one method like this
     var setupGame2 = function(game){
         var pCell = api.getPlayerCell(game),
@@ -548,7 +557,8 @@ var gameMod = (function () {
             });
             return map;
         });
-
+// groups
+setupGroups(game);
         // set up portals
         setupPortals(game);
         // set remainingEnemies count
@@ -571,6 +581,8 @@ var gameMod = (function () {
         var result = applyMapStringsToMaps(game, newGame, portal, {});
         playerPlaced = result.playerPlaced;
         startMapIndex = result.startMapIndex;
+// groups
+setupGroups(game);
         // set up portals 
         setupPortals(game);
         // if a portal data object is given, use that to set player location

@@ -19,6 +19,16 @@
   "mapPortals": [
     {"mi": 0, "x": 1, "y": 3, "dataKey": "wm_forest", "dmi": 2, "dx": 6, "dy" : 3}
   ],
+  "mapGroups": [
+    {
+      "mi": 4,
+      "x": 4,
+      "y": 1,
+      "children":[
+        {"type": "weapon", "attack": [10, 17]}
+      ]
+    }
+  ],
   "mapWorldUnits" : [
     {
       "mi": 4,

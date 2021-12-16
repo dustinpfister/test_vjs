@@ -139,8 +139,11 @@ The idea of the library game world is to have a game world that acts as a portal
 * start a new 'item' unit type
 * a group may or may not set the walkable value of the cell that it is on to false depeding on what is in the group 
 <!-- js/lib/draw.js -->
+* update draw.js to make it so that a group is shown as a black rec outline for now
 
 <!-- world-home.json -->
+* have a worldMap.mapGroups array just like worldMap.mapPortals but with groups
+* have first group be a chest of items in the starting map location
 
 <!--****** **********
     utils.XP - level objects for player and enemey units

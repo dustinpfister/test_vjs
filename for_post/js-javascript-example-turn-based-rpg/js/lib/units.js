@@ -63,6 +63,7 @@ var unitMod = (function () {
             currentWeapon: null,  // the current active weapon
             // current values
             HP: 1,
+            children: [],
             weaponIndex: 0,
             sheetIndex: 0,
             type: null,

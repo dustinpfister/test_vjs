@@ -74,7 +74,7 @@ var unitMod = (function () {
             currentCellIndex: null,
             active: true
         };
-        setStat.attack(unit);
+        setUnitStats(unit);
         return unit;
     };
     // types

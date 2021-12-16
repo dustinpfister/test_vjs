@@ -6,6 +6,9 @@
 ### () - new av-multidimensional section
 * 1-arrays-of-arrays based off of what I started with my 4-nested-and-return example in av-while section
 
+### () - new av-speed section
+* 1-large-arrays example that compares times for while loop and Array.forEach using large arrays
+
 ### () - expand av-forEach section
 * 3- traverse method example
 

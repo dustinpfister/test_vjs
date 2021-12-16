@@ -136,22 +136,19 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) start a new 'group' unit type that will act as a container to allow more than one unit on a cell
 * (done) unit.children prop is now a base unit prop
 * (done) start a new 'item' unit type
-
-* I will want to have a walkable prop for all units
-* a group should be walkable like portals
-
+* (done) I will want to have a walkable prop for all units
+* (done) a group should be walkable like portals
 <!-- js/game.js -->
 * (done) I will want a setUp groups helper just like with setupPortals
 * (done) make to so that adding groups from a world map is part of the setup process
-* when a player or enemey unit moves over a group, that group should be in the children prop of that unit
+* (done) when a player or enemey unit moves over a group, that group should be in the children prop of that unit
+* (done) each time a unit moves to a new cell it will unload a child that it has to the cell it is leaving
 * see about doing the same with porals as with groups where the portal becomes a child of the unit
-
 <!-- js/lib/draw.js -->
 * (done) update drawCell helper to make it so it will draw stroke lines for all units
-* update draw.js to make it so that a group is shown as a black rec outline for now
-
+* (done) update draw.js to make it so that a group is shown as a black rec outline for now
 <!-- world-home.json -->
-* have a worldMap.mapGroups array just like worldMap.mapPortals but with groups
+* (done) have a worldMap.mapGroups array just like worldMap.mapPortals but with groups
 * have first group be a chest of items in the starting map location
 
 <!--****** **********

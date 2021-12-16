@@ -209,7 +209,9 @@ var gameMod = (function () {
     // place a unit at the given location in the current map
     var placeUnit = function (game, unit, x, y, mi) {
         var map = game.maps[mi === undefined ? game.mapIndex: mi];
+        // get new cell location
         var newCell = mapMod.get(map, x, y);
+        // if we have a cell object returned by mapMod.get
         if (newCell) {
             // any old cellIndex that may need to have walkable
             // set back to true?
@@ -346,10 +348,6 @@ var gameMod = (function () {
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
                 y = Math.floor(ci / map.w);
-
-
-
-
                 if(cellIndex === 0 && newGame && !skipCI[0]){
                     var cell = mapMod.get(map, ci);
                     cell.unit = null;
@@ -897,7 +895,11 @@ var gameMod = (function () {
                 }
                 // if cell has a unit on it
                 if(clickedCell.unit){
-                    var unit = clickedCell.unit; 
+                    var unit = clickedCell.unit;
+
+console.log('clicked cell: ');
+console.log(clickedCell);
+
                     if(unit.type === 'enemy'){
                         // set meleeTarget index
                         game.player.meleeTarget = clickedCell.i;

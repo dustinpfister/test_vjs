@@ -181,10 +181,12 @@ var gameMod = (function () {
     // get an arary of cell index values
     var getMoveCells = function(game, startCell, targetCell){
         var map = game.maps[game.mapIndex];
-        return getMovePath(game, startCell, targetCell).map(function(pos){
+        var path = getMovePath(game, startCell, targetCell).map(function(pos){
             var cell = mapMod.get(map, pos[0], pos[1]);
             return cell.i;
         });
+        console.log(path);
+        return path;
     };
     // get enemy move cells options
     var getEnemeyMoveCells = function(game, eCell){
@@ -221,12 +223,14 @@ var gameMod = (function () {
                 // set unit ref back to null
                 map.cells[unit.currentCellIndex].unit = null;
             }
+            // unit.walkable should be what is used to set cell.walkable
+            newCell.walkable = unit.walkable
             // set new cell to NOT walkable (as default) as a unit is now located here
-            newCell.walkable = false;
+            //newCell.walkable = false;
             // if the unit is a portal then it is possible for a unit to walk over that
-            if(unit.type === 'portal'){
-                newCell.walkable = true;
-            }
+            //if(unit.type === 'portal'){
+            //    newCell.walkable = true;
+            //}
             // set current cell index for the unit
             unit.currentCellIndex = newCell.i;
             // place a ref to the unit in the map cell
@@ -268,9 +272,20 @@ var gameMod = (function () {
             var ci = unit.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
             // if no unit at the cell move to cell
-            if(!moveToCell.unit){
-                placeUnit(game, unit, moveToCell.x, moveToCell.y);
-            }
+            //if(!moveToCell.unit){
+            //    placeUnit(game, unit, moveToCell.x, moveToCell.y);
+            //}
+
+if(moveToCell.unit){
+   // !!! this should be the case to begin with at this point
+   if(moveToCell.unit.walkable){
+      unit.children = moveToCell.unit;
+      placeUnit(game, unit, moveToCell.x, moveToCell.y);
+   }
+}else{
+   placeUnit(game, unit, moveToCell.x, moveToCell.y);
+}
+
             // what needs to hapen when just the player moves
             if(unit.type === 'player'){
                 game.toMap = getToMap(game);
@@ -899,11 +914,11 @@ setupGroups(game);
                 }
                 // if cell has a unit on it
                 if(clickedCell.unit){
+
+console.log('unit at this cell:');
+console.log(clickedCell.unit);
+
                     var unit = clickedCell.unit;
-
-console.log('clicked cell: ');
-console.log(clickedCell);
-
                     if(unit.type === 'enemy'){
                         // set meleeTarget index
                         game.player.meleeTarget = clickedCell.i;

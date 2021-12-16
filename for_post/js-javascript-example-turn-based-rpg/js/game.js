@@ -220,8 +220,20 @@ var gameMod = (function () {
             if (unit.currentCellIndex != null) {
                 var oldCell = map.cells[unit.currentCellIndex];
                 oldCell.walkable = true;
-                // set unit ref back to null
+                // set unit ref back to null (by default)
                 map.cells[unit.currentCellIndex].unit = null;
+                // if the unit has children, unload them back to the cell
+                if(unit.children.type === 'group'){
+                    oldCell.unit = unit.children;
+                    unit.children = [];
+                }
+            }
+            // save a unit that may be there as a child to be unloaded later
+            if(newCell.unit){
+               // !!! this should be the case to begin with at this point
+               if(newCell.unit.walkable){
+                   unit.children = newCell.unit;
+               }
             }
             // unit.walkable should be what is used to set cell.walkable
             newCell.walkable = unit.walkable
@@ -279,12 +291,14 @@ var gameMod = (function () {
 if(moveToCell.unit){
    // !!! this should be the case to begin with at this point
    if(moveToCell.unit.walkable){
-      unit.children = moveToCell.unit;
+      //unit.children = moveToCell.unit;
       placeUnit(game, unit, moveToCell.x, moveToCell.y);
    }
 }else{
    placeUnit(game, unit, moveToCell.x, moveToCell.y);
 }
+
+//placeUnit(game, unit, moveToCell.x, moveToCell.y);
 
             // what needs to hapen when just the player moves
             if(unit.type === 'player'){

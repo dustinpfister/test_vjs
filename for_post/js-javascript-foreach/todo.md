@@ -4,7 +4,7 @@
 * 1-readdir
 
 ### () - new av-multidimensional section
-* 1-arrays-of-arrays
+* 1-arrays-of-arrays based off of what I started with my 4-nested-and-return example in av-while section
 
 ### () - expand av-forEach section
 * 3- traverse method example

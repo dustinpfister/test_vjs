@@ -23,5 +23,4 @@ let grid = {
 var a = findInGrid(grid, (n) => {
         return n != 0;
     });
-
 console.log(a); // null

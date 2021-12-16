@@ -3,15 +3,26 @@
 ### () - new ex-nodejs-for-each-file
 * 1-readdir
 
-### () - new av-multidimensional section
-* 1-arrays-of-arrays based off of what I started with my 4-nested-and-return example in av-while section
-
 ### () - new av-speed section
 * 1-large-arrays example that compares times for while loop and Array.forEach using large arrays
 
 ### () - expand av-forEach section
 * 3-own-prop example that will loop private keys
 * 4-traverse method example
+
+### () - new av-multidimensional section
+* 1-basic example based off of the 4-nested-and-return example in av-while section
+* the 1-basic example can provide index, x, and y values by way of an argument object
+* 2-strings example that is a gird of sub strings like this:
+```
+let grid = {
+    w: 3,
+    h: 3,
+    tileKeys: ['hp', 'walkable'],
+    tiles: ['8:1', '6:1', '3:1', '1:1', '1:0', '2:1', '3:1', '7:1', '3:1']
+};
+```
+* 2-strings is then a forEachTile method that will parse and return an object based off of these substrings
 
 ### ( done 12/16/2021 ) - new av-vjs-foreach method section
 * (done) 1-object-keys example based off 4-userspace example from basic section

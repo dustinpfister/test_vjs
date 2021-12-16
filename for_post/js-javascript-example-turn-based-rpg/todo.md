@@ -138,8 +138,15 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) start a new 'group' unit type that will act as a container to allow more than one unit on a cell
 * (done) unit.children prop is now a base unit prop
 * (done) start a new 'item' unit type
-* a group may or may not set the walkable value of the cell that it is on to false depeding on what is in the group 
+
+* a group that just has children should be walkable like portals
+
+<!-- js/game.js --> 
+* when a player or enemey unit moves over a group, that group should be in the children prop of that unit
+* see about doing the same with porals as with groups where the portal becomes a child of the unit
+
 <!-- js/lib/draw.js -->
+* (done) update drawCell helper to make it so it will draw stroke lines for all units
 * update draw.js to make it so that a group is shown as a black rec outline for now
 
 <!-- world-home.json -->

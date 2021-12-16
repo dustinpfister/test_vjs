@@ -39,6 +39,8 @@ var unitMod = (function () {
         var bd = unit.baseDefense = [1, 2];
         bd[0] = 1 + Math.floor(0.125 * l);
         bd[1] = bd[0] + 1 + Math.floor(0.25 * l);
+        // call setState.attack
+        setStat.attack(unit);
     };
 
 
@@ -78,9 +80,15 @@ var unitMod = (function () {
     // types
     var UNIT_TYPES = {};
     // group type
-    UNIT_TYPES.wall = {
-        create : function(wall){
-            wall.sheetIndex = 5;
+    UNIT_TYPES.group = {
+        create : function(group, opt){
+            group.sheetIndex = 5;
+        }
+    };
+    // group type
+    UNIT_TYPES.item = {
+        create : function(item, opt){
+            item.sheetIndex = 6;
         }
     };
     // player type
@@ -118,11 +126,11 @@ var unitMod = (function () {
     };
 
     // Public unitMod.create method
-    api.createUnit = function(type){
+    api.createUnit = function(type, opt){
         var unit = createBaseUnit();
         unit.type = type;
         // call create method for the type
-        UNIT_TYPES[type].create(unit);
+        UNIT_TYPES[type].create(unit, opt);
         // set unit stats
         setUnitStats(unit);
         // return the unit

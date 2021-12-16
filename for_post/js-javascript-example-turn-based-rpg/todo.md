@@ -136,6 +136,7 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - r11 - new unit types 'group', and 'item' started
 <!-- js/lib/units.js -->
 * (done) start a new 'group' unit type that will act as a container to allow more than one unit on a cell
+* (done) unit.children prop is now a base unit prop
 * start a new 'item' unit type
 * a group may or may not set the walkable value of the cell that it is on to false depeding on what is in the group 
 <!-- js/lib/draw.js -->

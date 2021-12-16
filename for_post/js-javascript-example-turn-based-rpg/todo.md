@@ -134,10 +134,13 @@ The idea of the library game world is to have a game world that acts as a portal
 * start a unit.over prop that is a collection of walkable units that non walkable unit is over
 
 ## () - r11 - new unit types 'group', and 'item' started
-* start a new 'group' unit type that will act as a container to allow more than one unit on a cell
+<!-- js/lib/units.js -->
+* (done) start a new 'group' unit type that will act as a container to allow more than one unit on a cell
 * start a new 'item' unit type
 * a group may or may not set the walkable value of the cell that it is on to false depeding on what is in the group 
+<!-- js/lib/draw.js -->
 
+<!-- world-home.json -->
 
 <!--****** **********
     utils.XP - level objects for player and enemey units

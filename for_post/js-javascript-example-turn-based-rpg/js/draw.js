@@ -2,7 +2,8 @@ var draw = (function () {
     // public api
     var api = {};
     // unit colors
-    var unitColors = ['green', 'gray', 'blue', 'red', 'purple'];
+    // 0:green:null 1:gray:wall 2:blue:player 3:red:enemy 4:purple:portal 5:black:group 6:white:item
+    var unitColors = ['green', 'gray', 'blue', 'red', 'purple', 'black', 'white'];
 
 /********** **********
      HELPERS
@@ -42,17 +43,29 @@ var drawCell = function(sm, cell){
     var cs = map.cellSize;
     var x = map.margin.x + cell.x * cs;
     var y = map.margin.y + cell.y * cs;
-    // draw base cell
+    // default fill style
     ctx.fillStyle = unitColors[0];
-    // if we have a unit
+    // if we have a unit change fill style
     if (cell.unit) {
-        ctx.fillStyle = unitColors[cell.unit.sheetIndex];
+        // spechal case for group
+        if(cell.unit.type != 'group'){
+           ctx.fillStyle = unitColors[cell.unit.sheetIndex];
+        }
     }
     ctx.beginPath();
     ctx.rect(x, y, cs, cs);
     ctx.fill();
-    ctx.stroke();
-    drawHPBar(sm, cell);
+    // stroke?
+    if(cell.unit){
+        ctx.beginPath();
+        ctx.rect(x + 2, y + 2, cs - 4, cs - 4);
+        ctx.strokeStyle = '#222222';
+        if(cell.unit.type === 'group'){
+           ctx.strokeStyle = unitColors[cell.unit.sheetIndex];
+        }
+        ctx.stroke();
+        drawHPBar(sm, cell);
+    }
 };
 
 /********** **********

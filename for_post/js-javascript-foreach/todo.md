@@ -1,5 +1,18 @@
 # js-javascript-foreach todo list
 
+### () - new ex-nodejs-for-each-file
+* 1-readdir
+
+### () - new av-multidimensional section
+* 1-arrays-of-arrays
+
+### () - expand av-forEach section
+* 3- traverse method example
+
+### () - new av-vjs-forEach method section
+* 1-object-keys example based off 4-userspace example from basic section
+* 2-own-prop example that will loop private keys
+
 ### ( done 11/18/2021 ) - expand sv-named-keys
 * (done) 1 - for in loop example
 * (done) 4 - getOwnPropertyNames

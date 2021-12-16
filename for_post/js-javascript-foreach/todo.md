@@ -10,11 +10,12 @@
 * 1-large-arrays example that compares times for while loop and Array.forEach using large arrays
 
 ### () - expand av-forEach section
-* 3- traverse method example
+* 3-own-prop example that will loop private keys
+* 4-traverse method example
 
-### () - new av-vjs-forEach method section
-* 1-object-keys example based off 4-userspace example from basic section
-* 2-own-prop example that will loop private keys
+### ( done 12/16/2021 ) - new av-vjs-foreach method section
+* (done) 1-object-keys example based off 4-userspace example from basic section
+* (done) 2-sparse example that uses a while loop and has an options object that allows for a sparse array mode
 
 ### ( done 11/18/2021 ) - expand sv-named-keys
 * (done) 1 - for in loop example

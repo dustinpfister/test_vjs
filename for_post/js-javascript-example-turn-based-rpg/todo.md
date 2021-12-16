@@ -130,8 +130,6 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - rxx - new unit type 'item'
 * start a new type of unit called an 'item' in lib\/units.js
 
-## () - rxx - unit.walkable, unit.over prop
-* start a unit.over prop that is a collection of walkable units that non walkable unit is over
 
 ## () - r11 - new unit types 'group', and 'item' started
 <!-- js/lib/units.js -->
@@ -139,11 +137,12 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) unit.children prop is now a base unit prop
 * (done) start a new 'item' unit type
 
-* a group that just has children should be walkable like portals
+* I will want to have a walkable prop for all units
+* a group should be walkable like portals
 
 <!-- js/game.js -->
-* I will want a setUp groups helper just like with setupPortals
-* make to so that adding groups from a world map is part of the setup process
+* (done) I will want a setUp groups helper just like with setupPortals
+* (done) make to so that adding groups from a world map is part of the setup process
 * when a player or enemey unit moves over a group, that group should be in the children prop of that unit
 * see about doing the same with porals as with groups where the portal becomes a child of the unit
 

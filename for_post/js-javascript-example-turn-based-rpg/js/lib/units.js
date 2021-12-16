@@ -66,6 +66,7 @@ var unitMod = (function () {
             // current values
             HP: 1,
             children: [],
+            walkable: false,     // used to set if the cell should be walkable or not if this unit is the actual unit of a cell
             weaponIndex: 0,
             sheetIndex: 0,
             type: null,
@@ -83,12 +84,14 @@ var unitMod = (function () {
     UNIT_TYPES.group = {
         create : function(group, opt){
             group.sheetIndex = 5;
+            group.walkable = true;
         }
     };
     // group type
     UNIT_TYPES.item = {
         create : function(item, opt){
             item.sheetIndex = 6;
+            item.walkable = true;
         }
     };
     // player type
@@ -121,6 +124,7 @@ var unitMod = (function () {
     UNIT_TYPES.portal = {
         create : function(portal){
             portal.sheetIndex = 4;
+            portal.walkable = true;
             portal.data = {}; // !!! portal data set in gameMmod.setUpGame
         }
     };

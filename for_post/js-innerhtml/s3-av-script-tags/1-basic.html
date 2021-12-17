@@ -8,22 +8,20 @@
         </div>
         <script>
 // https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml
-function makeScriptsExecutable(el) {
+var makeScriptsExecutable = function(el) {
   el.querySelectorAll("script").forEach(script => {
-    const clone = document.createElement("script")
-    for (const attr of script.attributes) {
+    var clone = document.createElement("script")
+    for (var attr of script.attributes) {
       clone.setAttribute(attr.name, attr.value)
     }
     clone.text = script.innerHTML
     script.parentNode?.replaceChild(clone, script)
   })
 };
-
+// seems to work on chrome 96
 var div = document.getElementById('injected_scripts');
 div.innerHTML += '\<script\>alert(\'yes\')\<\/script\>';
-
 makeScriptsExecutable(div);
-
         </script>
     </body>
 </html>

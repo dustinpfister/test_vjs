@@ -8,9 +8,9 @@
 ## () - expand av-alternatives section
 * new  5-canvas example that showcases the use of a canvas element as a way to inject content
 
-## () - expand and rename av-eval to av-script-tags
-* rename av-eval to av-script-tags
-* new 1-basic example
+## ( done 12/17/2021 ) - expand and rename av-eval to av-script-tags
+* (done) rename av-eval to av-script-tags
+* (done) new 1-basic example
 
 ## ( done 11/09/2021 ) - expand av-alternatives section
 * (done) new 4-document-write example

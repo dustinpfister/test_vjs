@@ -43,6 +43,10 @@ var getElementRelative = function (e, elTarget) {
 ## () - custom event system
 * have utils custom events methods based off of what I made for my js-custom-event post
 
+## () - new wrap and clamp methods
+* add a utils.clampNumber method
+* add a utils.wrapNumber method based off of the one used in phaser
+
 ## ( done 09/30/2021 ) - format number example
 * (done) have a utils.formatNumber method like the one worked out for js-array-slice
 

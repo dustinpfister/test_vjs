@@ -26,6 +26,24 @@ utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
 
+// clamp a number
+utils.clampNumber = function(n, min, max, zeroRel){
+    zeroRel = zeroRel === undefined ? true : zeroRel;
+    if(n < min){return min;}
+    if(n < max){return max;}
+    // special case for n === max if in zeroRel mode
+    if(n === max && zeroRel){
+        return max - 1;
+    }
+    return n;
+};
+
+// wrap a number
+utils.wrapNumber = function(n, min, max){
+    var r = max - min;
+    return (min + ((((n - min) % r) + r) % r));
+};
+
 // format money method
 utils.formatNumber = function(number){
     var formatter = new Intl.NumberFormat('en-US', {

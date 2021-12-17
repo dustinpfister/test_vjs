@@ -120,6 +120,8 @@ The idea of the library game world is to have a game world that acts as a portal
 
 
 ## () - r12 - player inventory, type 'item' unit, pick up, and drop items
+<!-- js/lib/utils.js -->
+* (done) added a utils.js file
 <!-- js/game.js -->
 * when the player is over a group have a pickup button show up in the circle menu
 * Use the pickup button in the circle menu to pick up an item in the current cell if any

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <h1>Script Tag Injection by way of innerHTML</h1>
+        <div id="injected_scripts">
+        </div>
+        <script>
+// https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml
+function makeScriptsExecutable(el) {
+  el.querySelectorAll("script").forEach(script => {
+    const clone = document.createElement("script")
+    for (const attr of script.attributes) {
+      clone.setAttribute(attr.name, attr.value)
+    }
+    clone.text = script.innerHTML
+    script.parentNode?.replaceChild(clone, script)
+  })
+};
+
+var div = document.getElementById('injected_scripts');
+div.innerHTML += '\<script\>alert(\'yes\')\<\/script\>';
+
+makeScriptsExecutable(div);
+
+        </script>
+    </body>
+</html>

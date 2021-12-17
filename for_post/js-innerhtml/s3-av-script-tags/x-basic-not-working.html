@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <h1>Script Tag Injection by way of innerHTML</h1>
+        <script>
+try{
+    document.body.innerHTML += '\<script\>alert(\'yes\')\<\/script\>';
+}catch(e){
+   document.body.innerHTML += '<p>Nope</p>';
+}
+        </script>
+    </body>
+</html>

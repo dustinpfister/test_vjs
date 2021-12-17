@@ -11,9 +11,9 @@ var gameMod = (function () {
     };
     // do nothing
     MAP_EVENTS.nothing = function(game, secs, type, opt){
-        console.log('doing nothing for ' + type + ' map event in worldMap ' + game.worldMap.dataKey);
-        console.log('at mapIndex: ' + game.mapIndex);
-        console.log('');
+        utils.log('doing nothing for ' + type + ' map event in worldMap ' + game.worldMap.dataKey, 'info');
+        utils.log('at mapIndex: ' + game.mapIndex, 'info');
+        utils.log('', 'info');
     };
     // go to a new world map ( toMap:dataKey,dmi,dx,dy )
     MAP_EVENTS.toMap = function(game, secs, type, opt){
@@ -183,7 +183,6 @@ var gameMod = (function () {
             var cell = mapMod.get(map, pos[0], pos[1]);
             return cell.i;
         });
-        console.log(path);
         return path;
     };
     // get enemy move cells options
@@ -917,10 +916,6 @@ setupGroups(game);
                 }
                 // if cell has a unit on it
                 if(clickedCell.unit){
-
-console.log('unit at this cell:');
-console.log(clickedCell.unit);
-
                     var unit = clickedCell.unit;
                     if(unit.type === 'enemy'){
                         // set meleeTarget index

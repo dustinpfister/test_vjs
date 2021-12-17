@@ -54,10 +54,12 @@ sm.states.loader = {
     },
     end: function(sm){
         var jl = sm.loader.json;
-        console.log('loader state over: ');
-        console.log('loaded: ' + jl.loaded + ' / ' + jl.count);
-        console.log('errors: ' + jl.errorCount);
-        console.log(jl.errors);
+        utils.log('**********');
+        utils.log('loader state over: ');
+        utils.log('loaded: ' + jl.loaded + ' / ' + jl.count);
+        utils.log('errors: ' + jl.errorCount);
+        utils.log(jl.errors);
+        utils.log('**********');
     },
     update: function(sm, secs){
         // if we have so much as just one error

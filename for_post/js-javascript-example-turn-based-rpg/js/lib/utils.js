@@ -49,9 +49,6 @@ utils.deepCloneJSON = function (obj) {
     try{
        return JSON.parse(JSON.stringify(obj));
     }catch(e){
-
-        console.log(e.message);
-        console.log(obj);
         return {};
     }
 };
@@ -63,8 +60,13 @@ utils.deepCloneJSON = function (obj) {
 // basic log function
 utils.log = function(mess, type){
     type = type || 'info';
-    // if inot type use console.log
+    // if info type use console.log
     if(type === 'info'){
+        console.log(mess);
+        return;
+    }
+    // using console.log for debug also for now
+    if(type === 'debug'){
         console.log(mess);
         return;
     }

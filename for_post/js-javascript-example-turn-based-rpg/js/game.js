@@ -3,19 +3,17 @@ var gameMod = (function () {
     var MAP_EVENTS = {};
     // hard map reset
     MAP_EVENTS.hardMapReset = function(game, secs, type, opt){
-        console.log('doing a hard world map reset');
         setupGame(game, true);
     };
     // soft map reset
     MAP_EVENTS.softMapReset = function(game, secs, type, opt){
-        console.log('doing a soft world map reset');
         setupGame(game, false);
     };
     // do nothing
     MAP_EVENTS.nothing = function(game, secs, type, opt){
-        //console.log('doing nothing for ' + type + ' map event in worldMap ' + game.worldMap.dataKey);
-        //console.log('at mapIndex: ' + game.mapIndex);
-        //console.log('');
+        console.log('doing nothing for ' + type + ' map event in worldMap ' + game.worldMap.dataKey);
+        console.log('at mapIndex: ' + game.mapIndex);
+        console.log('');
     };
     // go to a new world map ( toMap:dataKey,dmi,dx,dy )
     MAP_EVENTS.toMap = function(game, secs, type, opt){
@@ -28,7 +26,6 @@ var gameMod = (function () {
         changeWorldMap(game, portalData);
     };
     MAP_EVENTS.respawnWorldEnemies = function(game, secs, type, opt){
-        console.log('respawn world enemies ' + opt);
         // call setup game 2
         setupGame2(game);
     };

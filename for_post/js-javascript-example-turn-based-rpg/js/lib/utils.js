@@ -57,6 +57,22 @@ utils.deepCloneJSON = function (obj) {
 };
 
 /********* ********** ********** *********/
+// log
+/********* ********** ********** *********/
+
+// basic log function
+utils.log = function(mess, type){
+    type = type || 'info';
+    // if inot type use console.log
+    if(type === 'info'){
+        console.log(mess);
+        return;
+    }
+    // if we get here use console.warn
+    console.warn(mess);
+};
+
+/********* ********** ********** *********/
 // HTTP
 /********* ********** ********** *********/
 

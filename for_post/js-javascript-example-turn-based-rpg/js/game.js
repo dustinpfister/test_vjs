@@ -224,7 +224,7 @@ var gameMod = (function () {
                 // set unit ref back to null (by default)
                 map.cells[unit.currentCellIndex].unit = null;
                 // if the unit has children, unload them back to the cell
-                if(unit.children.type === 'group'){
+                if(unit.children.type === 'group' || unit.children.type === 'portal'){
                     oldCell.unit = unit.children;
                     unit.children = [];
                 }
@@ -284,32 +284,23 @@ var gameMod = (function () {
         if(unit.moveCells.length > 0){
             var ci = unit.moveCells.shift();
             var moveToCell = mapMod.get(game.maps[game.mapIndex], ci);
-            // if no unit at the cell move to cell
-            //if(!moveToCell.unit){
-            //    placeUnit(game, unit, moveToCell.x, moveToCell.y);
-            //}
-
-if(moveToCell.unit){
-   // !!! this should be the case to begin with at this point
-   if(moveToCell.unit.walkable){
-      //unit.children = moveToCell.unit;
-      placeUnit(game, unit, moveToCell.x, moveToCell.y);
-   }
-}else{
-   placeUnit(game, unit, moveToCell.x, moveToCell.y);
-}
-
-//placeUnit(game, unit, moveToCell.x, moveToCell.y);
-
+            // if we have a move to cell
+            if(moveToCell.unit){
+                // !!! this should be the case to begin with at this point
+                if(moveToCell.unit.walkable){
+                    placeUnit(game, unit, moveToCell.x, moveToCell.y);
+                }
+            }else{
+                placeUnit(game, unit, moveToCell.x, moveToCell.y);
+            }
             // what needs to hapen when just the player moves
             if(unit.type === 'player'){
                 game.toMap = getToMap(game);
                 // the player unit can go threw portals
-                if(moveToCell.unit){
-                    if(moveToCell.unit.type === 'portal'){
-                        var portalUnit = moveToCell.unit;
-                        changeWorldMap(game, portalUnit.data);
-                    }
+                if(unit.children.type === 'portal'){
+                    var portalUnit = unit.children;
+                    unit.children = [];
+                    changeWorldMap(game, portalUnit.data);
                 }
             }
         }

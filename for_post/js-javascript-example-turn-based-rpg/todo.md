@@ -108,32 +108,34 @@ The idea of the library game world is to have a game world that acts as a portal
     ITEMS AND DROPS - item json files
 ********** *******-->
 
-## () - rxx - drops, and enemy unit inventory
+## () - rxx - enemy unit item drops, and enemy unit inventory
 * when the player moves over an 'item' or 'itemStack' this should cause the 'circle menu' to show up
 * a new button should show up in the circle menu called 'drops'
 * clicking drops
 
-## () - rxx - player inventory
-* an item can be a drop that will be shown in the grid along with "wall", and "enemy" types
-* a unit will then need to have an unit.inventory property that will be another kind of standard object
-* in the 'circle menu' have an inventory button
-* clicking the inventory button should change the circle menu to buttons for each item in the inventory
-* there should be a back button in this inventory menu
 
 ## () - rxx - item json files, weapons
 * start a new type of json file format for defining one or more items
 
-## () - rxx - new unit type 'item-chest'
-* start a new type of unit called an 'item-chest' that is just a colletion or group of items
-* an itemStack should allow for more than one item to be located on a single cell.
 
-## () - rxx - new unit type 'item'
+
+## () - r12 - player inventory, type 'item' unit, pick up, and drop items
+<!-- js/game.js -->
+* when the player is over a group have a pickup button show up in the circle menu
+* Use the pickup button in the circle menu to pick up an item in the current cell if any
+* in the event that a group is empty set the cell unit back to null
+* if the player has one or more items in the pouch a pouch button will show up in the circle menu
+* the player can drop an item to the current cell, cretaing a new group if needed
 <!-- js/lib/units.js -->
+* have a unit.pouch prop that will serve as an inventory for a unit
 * start a new type of unit called an 'item' in lib\/units.js
 <!-- world-home.json -->
 * have first group be a chest of items in the starting map location
 
-## ( done 12/15/2021 ) - r11 - new unit types 'group', and 'item' started
+
+
+
+## ( done 12/16/2021 ) - r11 - new unit types 'group', and 'item' started
 <!-- js/lib/units.js -->
 * (done) start a new 'group' unit type that will act as a container to allow more than one unit on a cell
 * (done) unit.children prop is now a base unit prop

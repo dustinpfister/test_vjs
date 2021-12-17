@@ -128,10 +128,12 @@ The idea of the library game world is to have a game world that acts as a portal
 * an itemStack should allow for more than one item to be located on a single cell.
 
 ## () - rxx - new unit type 'item'
+<!-- js/lib/units.js -->
 * start a new type of unit called an 'item' in lib\/units.js
+<!-- world-home.json -->
+* have first group be a chest of items in the starting map location
 
-
-## () - r11 - new unit types 'group', and 'item' started
+## ( done 12/15/2021 ) - r11 - new unit types 'group', and 'item' started
 <!-- js/lib/units.js -->
 * (done) start a new 'group' unit type that will act as a container to allow more than one unit on a cell
 * (done) unit.children prop is now a base unit prop
@@ -149,7 +151,6 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) update draw.js to make it so that a group is shown as a black rec outline for now
 <!-- world-home.json -->
 * (done) have a worldMap.mapGroups array just like worldMap.mapPortals but with groups
-* have first group be a chest of items in the starting map location
 
 <!--****** **********
     utils.XP - level objects for player and enemey units

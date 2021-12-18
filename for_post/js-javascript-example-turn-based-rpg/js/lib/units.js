@@ -170,7 +170,7 @@ var unitMod = (function () {
             // per level object for player
             var perLevel = player.perLevel = {};
             // min value, incremental values
-            perLevel.baseAttack = { min: [2, 1], inc: [0.75, 0.5] }
+            perLevel.baseAttack = { min: [2, 1], inc: [0.75, 0.5] };
             //perLevel.baseAttack = { min: 1, inc: [1.05, 0.025] }
 
             //player.currentWeapon = {
@@ -178,7 +178,7 @@ var unitMod = (function () {
             //};
 
             // starting weapon for the player
-            player.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 5})
+            player.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 5});
 
             //api.giveXP(player, 0)
             setUnitStats(player);
@@ -191,7 +191,11 @@ var unitMod = (function () {
             enemy.sheetIndex = 3;
             var perLevel = enemy.perLevel = {};
             // min value, incremental values
-            perLevel.baseAttack = { min: [1, 0], inc: [0.25, 0.125] }
+            perLevel.baseAttack = { min: [1, 0], inc: [0.25, 0.125] };
+
+            // starting weapon for enemy
+            enemy.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
+
             setUnitStats(enemy);
         }
     };

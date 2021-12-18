@@ -112,7 +112,6 @@ var unitMod = (function () {
             currentCellIndex: null,
             active: true
         };
-        setUnitStats(unit);
         return unit;
     };
     // types
@@ -143,11 +142,8 @@ var unitMod = (function () {
             item.subType = itemOpt.subType;
             // get item rect object
             var itemRec = utils.getPath(ITEMS, itemOpt.subType, null);
-
             item.levelObj = utils.XP.parseByLevel(itemOpt.level, LEVEL_CAP, LEVEL_DELTA_NEXT);
             item.perLevel = itemRec.perLevel;
-
-            setUnitStats(item);
         }
     };
     // player type
@@ -163,8 +159,6 @@ var unitMod = (function () {
             };
             // starting weapon for the player
             player.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 5});
-            // set unit stats
-            setUnitStats(player);
         }
     };
     // enemy type
@@ -177,7 +171,6 @@ var unitMod = (function () {
             perLevel.baseAttack = { min: [2, 1], inc: [0.25, 0.125] };
             // starting weapon for enemy
             enemy.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
-            setUnitStats(enemy);
         }
     };
     // wall type

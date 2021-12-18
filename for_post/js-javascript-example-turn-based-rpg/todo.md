@@ -117,23 +117,18 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - rxx - item json files, weapons
 * start a new type of json file format for defining one or more items
 
-
-
-## () - r12 - player inventory, type 'item' unit, pick up, and drop items
-<!-- js/lib/utils.js -->
-* (done) new utils.getPath method
-
+## () - r13 - player pouch pick up and drop
 <!-- js/game.js -->
-
-
 * when the player is over a group have a pickup button show up in the circle menu
 * Use the pickup button in the circle menu to pick up an item in the current cell if any
 * in the event that a group is empty set the cell unit back to null
 * if the player has one or more items in the pouch a pouch button will show up in the circle menu
 * the player can drop an item to the current cell, cretaing a new group if needed
-
 * see about having an out animation when not clicking a buton in menu mode
 
+## () - r12 - ITEM global and perLevel object in units.js
+<!-- js/lib/utils.js -->
+* (done) new utils.getPath method
 <!-- js/lib/units.js -->
 * (done) have a unit.pouch prop that will serve as an inventory for a unit
 * (done) start a new type of unit called an 'item' in lib\/units.js
@@ -151,8 +146,6 @@ The idea of the library game world is to have a game world that acts as a portal
 
 <!-- world-home.json -->
 * (done) work out new object standard to define the nature of a mapGroup
-
-
 
 
 ## ( done 12/16/2021 ) - r11 - new unit types 'group', and 'item' started

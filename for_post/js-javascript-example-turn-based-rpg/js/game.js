@@ -298,6 +298,10 @@ var gameMod = (function () {
                     unit.children = [];
                     changeWorldMap(game, portalUnit.data);
                 }
+                // the player is over a group
+                if(unit.children.type === 'group'){
+                    utils.log(unit.children, 'debug');
+                }
             }
         }
     };

@@ -118,8 +118,6 @@ var unitMod = (function () {
                     group.pouch.push(api.createUnit('item', itemOpt));
                 });
             }
-            console.log('group');
-            console.log(group);
         }
     };
     // group type
@@ -129,8 +127,6 @@ var unitMod = (function () {
             item.walkable = true;
             item.subType = itemOpt.subType;
             var itemRec = utils.getPath(ITEMS, itemOpt.subType, null);
-            console.log('itemRec:');
-            console.log(itemRec);
         }
     };
     // player type

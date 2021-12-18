@@ -132,7 +132,7 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/lib/units.js -->
 * rename unit.children to unit.over and make the changes in gameMod also
 
-## () - r12 - ITEM global and perLevel object in units.js
+## ( done 12/18/2021 ) - r12 - ITEM global and perLevel object in units.js
 <!-- js/lib/utils.js -->
 * (done) new utils.getPath method
 <!-- js/lib/units.js -->

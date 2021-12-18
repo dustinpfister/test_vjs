@@ -11,10 +11,18 @@ var unitMod = (function () {
     var ITEMS = {};
 
     // weapon Items
-    ITEMS.weapons = {};
+    ITEMS.weapon = {};
 
     // melee weapons
-    ITEMS.weapons.melee = {};
+    ITEMS.weapon.melee = {};
+
+    ITEMS.weapon.melee.sword = {
+        variants: ['short', 'long'],
+        defaultVariant: 0,
+        stats: {
+        
+        }
+    };
 
     
 
@@ -91,6 +99,26 @@ var unitMod = (function () {
     };
     // types
     var UNIT_TYPES = {};
+
+// get path helper
+var getPath = function(sourceObj, pathStr, def){
+   var propNames = pathStr.split('.');
+   var node = sourceObj[propNames[0]];
+   var i = 1, len = propNames.length;
+   while(i < len){
+      try{
+          node = node[propNames[i]];
+          if(node === undefined){
+              return def;
+          }
+      }catch(e){
+          return def;
+      }
+      i += 1;
+   }
+   return node;
+};
+
     // group type
     UNIT_TYPES.group = {
         create : function(group, opt){
@@ -98,6 +126,14 @@ var unitMod = (function () {
             group.walkable = true;
             // defaults to empty pouch
             group.pouch = [];
+
+var pouch = opt.pouch;
+if(pouch){
+pouch.forEach(function(itemOpt){
+   console.log( getPath(ITEMS, itemOpt.subType, null) );
+});
+}
+
         }
     };
     // group type

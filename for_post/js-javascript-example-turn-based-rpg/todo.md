@@ -146,8 +146,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) the perLevel object should be part of an itemRect object in the ITEMS global
 * (done) use itemRect data and itemOpt level prop to set base attack of a weapon in the group
 * (done) starting weapon for the player using new subType and level options
+* (done) starting weapon for all enemies
 
-* starting weapon for all enemies
 * I will want a setStat.baseDefense method
 
 * rename unit.children to unit.over and make the changes in gameMod also

@@ -52,6 +52,14 @@ var unitMod = (function () {
             ba[1] = (ba[0] + baOpt.min[1]) + Math.floor(baOpt.inc[1] * l);
         } 
     };
+    setStat.baseDefense = function(unit, l, bdOpt){
+        // base defense defaults to [0, 0] for all units
+        var bd = unit.baseDefense = [0, 0];
+        if(bdOpt){
+            bd[0] = bdOpt.min[0] + Math.floor(bdOpt.inc[0] * l);
+            bd[1] = (bd[0] + bdOpt.min[1]) + Math.floor(bdOpt.inc[1] * l);
+        } 
+    };
 
     // set unit stats based on level
 /*
@@ -79,10 +87,10 @@ var unitMod = (function () {
         l = ( level - 1 );
         // hit points
         unit.maxHP = 30 + 15 * l;
-
         // set base attack for this unit based on level
         setStat.baseAttack(unit, l, perLevel.baseAttack);
-
+        // set base defense for all units
+        setStat.baseDefense(unit, l, perLevel.baseDefense);
         // call setState.attack
         setStat.attack(unit);
     };
@@ -168,14 +176,17 @@ var unitMod = (function () {
             player.maxCellsPerTurn = 3;
             player.sheetIndex = 2; // player sheet
             // per level object for player
-            var perLevel = player.perLevel = {};
+            //var perLevel = player.perLevel = {};
             // min value, incremental values
-            perLevel.baseAttack = { min: [2, 1], inc: [0.75, 0.5] };
+            //perLevel.baseAttack = { min: [2, 1], inc: [0.75, 0.5] };
             //perLevel.baseAttack = { min: 1, inc: [1.05, 0.025] }
-
             //player.currentWeapon = {
             //    attack: [5, 7]
             //};
+player.perLevel = {
+     baseAttack: { min: [2, 1], inc: [0.75, 0.5] },
+     baseDefense: { min: [1, 1], inc: [0.125, 0.025] }
+};
 
             // starting weapon for the player
             player.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 5});
@@ -191,7 +202,7 @@ var unitMod = (function () {
             enemy.sheetIndex = 3;
             var perLevel = enemy.perLevel = {};
             // min value, incremental values
-            perLevel.baseAttack = { min: [1, 0], inc: [0.25, 0.125] };
+            perLevel.baseAttack = { min: [2, 1], inc: [0.25, 0.125] };
 
             // starting weapon for enemy
             enemy.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});

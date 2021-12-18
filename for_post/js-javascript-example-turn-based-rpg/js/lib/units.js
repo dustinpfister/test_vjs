@@ -83,6 +83,8 @@ var unitMod = (function () {
             currentWeapon: null,  // the current active weapon
             // current values
             HP: 1,
+            subType: '',
+            data: {},
             children: [],
             pouch:[],             // a collection of item units for this unit AKA and inventory
             walkable: false,      // used to set if the cell should be walkable or not if this unit is the actual unit of a cell
@@ -108,21 +110,26 @@ var unitMod = (function () {
             group.walkable = true;
             // defaults to empty pouch
             group.pouch = [];
-
-var pouch = opt.pouch;
-if(pouch){
-pouch.forEach(function(itemOpt){
-   console.log( utils.getPath(ITEMS, itemOpt.subType, null) );
-});
-}
-
+            // create and add items to the group
+            var pouch = opt.pouch;
+            if(pouch){
+                pouch.forEach(function(itemOpt){
+                    group.pouch.push(api.createUnit('item', itemOpt));
+                });
+            }
+            console.log('group');
+console.log(group);
         }
     };
     // group type
     UNIT_TYPES.item = {
-        create : function(item, opt){
+        create : function(item, itemOpt){
             item.sheetIndex = 6;
             item.walkable = true;
+            item.subType = itemOpt.subType;
+            var itemRec = utils.getPath(ITEMS, itemOpt.subType, null);
+            console.log('itemRec:');
+            console.log(itemRec);
         }
     };
     // player type

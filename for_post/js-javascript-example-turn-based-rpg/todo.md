@@ -121,7 +121,7 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - r12 - player inventory, type 'item' unit, pick up, and drop items
 <!-- js/lib/utils.js -->
-* (done) added a utils.js file
+* (done) new utils.getPath method
 
 <!-- js/game.js -->
 
@@ -137,7 +137,7 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/lib/units.js -->
 * (done) have a unit.pouch prop that will serve as an inventory for a unit
 * (done) start a new type of unit called an 'item' in lib\/units.js
-
+* (done) start an ITEMS global
 * update UNIT_TYPES.group.create so that it will create and append Items based on what is given by way of an options object
 
 * rename unit.children to unit.over and make the changes in gameMod also
@@ -149,8 +149,6 @@ The idea of the library game world is to have a game world that acts as a portal
 
 
 ## ( done 12/16/2021 ) - r11 - new unit types 'group', and 'item' started
-<!-- js/lib/utils.js -->
-* (done) new utils.getPath method
 <!-- js/lib/units.js -->
 * (done) start a new 'group' unit type that will act as a container to allow more than one unit on a cell
 * (done) unit.children prop is now a base unit prop

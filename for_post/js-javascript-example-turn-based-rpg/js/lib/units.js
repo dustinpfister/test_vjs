@@ -100,24 +100,6 @@ var unitMod = (function () {
     // types
     var UNIT_TYPES = {};
 
-// get path helper
-var getPath = function(sourceObj, pathStr, def){
-   var propNames = pathStr.split('.');
-   var node = sourceObj[propNames[0]];
-   var i = 1, len = propNames.length;
-   while(i < len){
-      try{
-          node = node[propNames[i]];
-          if(node === undefined){
-              return def;
-          }
-      }catch(e){
-          return def;
-      }
-      i += 1;
-   }
-   return node;
-};
 
     // group type
     UNIT_TYPES.group = {
@@ -130,7 +112,7 @@ var getPath = function(sourceObj, pathStr, def){
 var pouch = opt.pouch;
 if(pouch){
 pouch.forEach(function(itemOpt){
-   console.log( getPath(ITEMS, itemOpt.subType, null) );
+   console.log( utils.getPath(ITEMS, itemOpt.subType, null) );
 });
 }
 

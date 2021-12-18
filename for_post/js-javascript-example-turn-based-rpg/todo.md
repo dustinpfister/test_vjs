@@ -149,6 +149,8 @@ The idea of the library game world is to have a game world that acts as a portal
 
 
 ## ( done 12/16/2021 ) - r11 - new unit types 'group', and 'item' started
+<!-- js/lib/utils.js -->
+* (done) new utils.getPath method
 <!-- js/lib/units.js -->
 * (done) start a new 'group' unit type that will act as a container to allow more than one unit on a cell
 * (done) unit.children prop is now a base unit prop

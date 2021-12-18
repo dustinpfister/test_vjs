@@ -52,7 +52,24 @@ utils.deepCloneJSON = function (obj) {
         return {};
     }
 };
-
+// get a nested object node from a source object by path string
+utils.getPath = function(sourceObj, pathStr, def){
+   var propNames = pathStr.split('.');
+   var node = sourceObj[propNames[0]];
+   var i = 1, len = propNames.length;
+   while(i < len){
+      try{
+          node = node[propNames[i]];
+          if(node === undefined){
+              return def;
+          }
+      }catch(e){
+          return def;
+      }
+      i += 1;
+   }
+   return node;
+};
 /********* ********** ********** *********/
 // log
 /********* ********** ********** *********/

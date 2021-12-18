@@ -129,6 +129,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * if the player has one or more items in the pouch a pouch button will show up in the circle menu
 * the player can drop an item to the current cell, cretaing a new group if needed
 * see about having an out animation when not clicking a buton in menu mode
+<!-- js/lib/units.js -->
+* rename unit.children to unit.over and make the changes in gameMod also
 
 ## () - r12 - ITEM global and perLevel object in units.js
 <!-- js/lib/utils.js -->
@@ -147,14 +149,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) use itemRect data and itemOpt level prop to set base attack of a weapon in the group
 * (done) starting weapon for the player using new subType and level options
 * (done) starting weapon for all enemies
-
-* I will want a setStat.baseDefense method
-
-* rename unit.children to unit.over and make the changes in gameMod also
-
+* (done) I will want a setStat.baseDefense method
 <!-- world-home.json -->
 * (done) work out new object standard to define the nature of a mapGroup
-
 
 ## ( done 12/16/2021 ) - r11 - new unit types 'group', and 'item' started
 <!-- js/lib/units.js -->

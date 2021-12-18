@@ -17,10 +17,10 @@ var unitMod = (function () {
     ITEMS.weapon.melee = {};
 
     ITEMS.weapon.melee.sword = {
-        variants: ['short', 'long'],
-        defaultVariant: 0,
+        //variants: ['short', 'long'],
+        //defaultVariant: 0,
         perLevel: {
-        
+          baseAttack: { min: [1, 1], inc: [1, 0.5] }
         }
     };
 
@@ -151,13 +151,19 @@ var unitMod = (function () {
             item.sheetIndex = 6;
             item.walkable = true;
             item.subType = itemOpt.subType;
+            // get item rect object
             var itemRec = utils.getPath(ITEMS, itemOpt.subType, null);
+
+            item.levelObj = utils.XP.parseByLevel(itemOpt.level, LEVEL_CAP, LEVEL_DELTA_NEXT);
+            item.perLevel = itemRec.perLevel;
+
+            setUnitStats(item);
         }
     };
     // player type
     UNIT_TYPES.player = {
         create : function(player){
-            player.levelObj = utils.XP.parseByLevel(1, LEVEL_CAP, LEVEL_DELTA_NEXT)
+            player.levelObj = utils.XP.parseByLevel(1, LEVEL_CAP, LEVEL_DELTA_NEXT);
             player.maxCellsPerTurn = 3;
             player.sheetIndex = 2; // player sheet
             // per level object for player

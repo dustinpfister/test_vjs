@@ -145,6 +145,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) single perLevel object for enemies (for now)
 
 * the perLevel object should be part of an itemRect object in the ITEMS global
+* use itemRect data and itemOpt level prop to set base attack of a weapon in the group
+
 * rename unit.children to unit.over and make the changes in gameMod also
 
 <!-- world-home.json -->

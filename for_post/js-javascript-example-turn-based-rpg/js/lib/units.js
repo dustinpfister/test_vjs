@@ -43,6 +43,7 @@ var unitMod = (function () {
         });
     };
 
+    // base attack
     setStat.baseAttack = function(unit, l, baOpt){
         // base attack defaults to [0, 0] for all units
         var ba = unit.baseAttack = [0, 0];

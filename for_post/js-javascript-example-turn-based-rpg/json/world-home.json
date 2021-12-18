@@ -24,8 +24,8 @@
       "mi": 4,
       "x": 4,
       "y": 1,
-      "children":[
-        {"type": "item", "level": 3}
+      "pouch":[
+        {"subType": "weapon.melee.sword", "level": 3}
       ]
     }
   ],

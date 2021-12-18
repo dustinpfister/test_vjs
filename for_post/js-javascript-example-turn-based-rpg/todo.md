@@ -122,17 +122,28 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - r12 - player inventory, type 'item' unit, pick up, and drop items
 <!-- js/lib/utils.js -->
 * (done) added a utils.js file
+
 <!-- js/game.js -->
+
+
 * when the player is over a group have a pickup button show up in the circle menu
 * Use the pickup button in the circle menu to pick up an item in the current cell if any
 * in the event that a group is empty set the cell unit back to null
 * if the player has one or more items in the pouch a pouch button will show up in the circle menu
 * the player can drop an item to the current cell, cretaing a new group if needed
+
+* see about having an out animation when not clicking a buton in menu mode
+
 <!-- js/lib/units.js -->
-* have a unit.pouch prop that will serve as an inventory for a unit
-* start a new type of unit called an 'item' in lib\/units.js
+* (done) have a unit.pouch prop that will serve as an inventory for a unit
+* (done) start a new type of unit called an 'item' in lib\/units.js
+
+* update UNIT_TYPES.group.create so that it will create and append Items based on what is given by way of an options object
+
+* rename unit.children to unit.over and make the changes in gameMod also
+
 <!-- world-home.json -->
-* have first group be a chest of items in the starting map location
+* (done) work out new object standard to define the nature of a mapGroup
 
 
 

@@ -7,23 +7,33 @@ var unitMod = (function () {
     // PUBLIC API
     var api = {};
 
+    // built in ITEMS
+    var ITEMS = {};
+
+    // weapon Items
+    ITEMS.weapons = {};
+
+    // melee weapons
+    ITEMS.weapons.melee = {};
+
+    
+
 /********** **********
      SET STAT HELPERS
 *********** *********/
 
-   var setStat = {};
+    var setStat = {};
    
-   // figure out what the raw attack value is for a turn
-   setStat.attack = function(unit){
-       // set the raw attack value for a unit
-       unit.attack = unit.baseAttack.map(function(ba, i){
-           // ref to 'current' weapon if any
-           var cw = unit.currentWeapon != null ? unit.currentWeapon.attack[i]: 0;
-           // base attack value + current attack
-           return ba + cw;
-           
-       });
-   };
+    // figure out what the raw attack value is for a turn
+    setStat.attack = function(unit){
+        // set the raw attack value for a unit
+        unit.attack = unit.baseAttack.map(function(ba, i){
+            // ref to 'current' weapon if any
+            var cw = unit.currentWeapon != null ? unit.currentWeapon.attack[i]: 0;
+            // base attack value + current attack
+            return ba + cw;
+        });
+    };
 
     // set unit stats based on level
     var setUnitStats = function(unit){
@@ -66,7 +76,8 @@ var unitMod = (function () {
             // current values
             HP: 1,
             children: [],
-            walkable: false,     // used to set if the cell should be walkable or not if this unit is the actual unit of a cell
+            pouch:[],             // a collection of item units for this unit AKA and inventory
+            walkable: false,      // used to set if the cell should be walkable or not if this unit is the actual unit of a cell
             weaponIndex: 0,
             sheetIndex: 0,
             type: null,
@@ -85,6 +96,8 @@ var unitMod = (function () {
         create : function(group, opt){
             group.sheetIndex = 5;
             group.walkable = true;
+            // defaults to empty pouch
+            group.pouch = [];
         }
     };
     // group type

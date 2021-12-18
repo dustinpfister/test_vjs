@@ -463,321 +463,8 @@ var gameMod = (function () {
         callMapEvent(game, 0, 'onMapEnter', MAP_EVENTS.nothing);
     };
 /********** **********
-     MENU POOL
+     CIRCLE MENU
 *********** *********/
-    var menuPool = {
-        count: 8,
-        w: 40,
-        h: 40,
-        disableLifespan: true,
-        data: {
-            outerRadius: 85,
-            innerRadius: 35,
-            outerTotal: 1,
-            frame: 0,
-            maxFrame: 15,
-            activeButton: null, // a ref to the active button to use on 'exit' mode end
-            mode: 'enter'       // current mode of the menuPool 'enter', 'exit'
-        }
-    };
-    menuPool.spawn = function(button, options, sm, spawnOpt){
-        var bd = button.data,
-        pd = options.data;
-        // button data
-        bd.desc = spawnOpt.desc || false;
-        bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
-        bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
-        bd.radius = 0;
-        bd.a = 0;
-        bd.ta = spawnOpt.ta === undefined ? Math.PI * 2: spawnOpt.ta;
-        bd.outer = spawnOpt.outer === undefined ? true : spawnOpt.outer;
-        bd.onClick = spawnOpt.onClick || function(){};
-        // pool data
-        pd.frame = 0;
-        pd.outerTotal = spawnOpt.outerTotal === undefined ? 1 : spawnOpt.outerTotal
-    };
-    menuPool.update = function(button, options, sm, secs){
-        var pd = options.data,
-        bd = button.data;
-        // !!! updating pool data here is not so great I should maybe have a main update method for pools
-        if(button.i === options.objects.length - 1){
-            // if we are in enter mode
-            if(pd.mode === 'enter'){
-                pd.frame += 30 * secs;
-                pd.frame = pd.frame >= pd.maxFrame ? pd.maxFrame : pd.frame;
-            }
-            // if we are in exit mode
-            if(pd.mode === 'exit'){
-                pd.frame -= 30 * secs;
-                pd.frame = pd.frame < 0 ? 0 : pd.frame;
-                if(pd.frame === 0 && pd.activeButton){
-                    pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
-                }
-            }
-        }
-        var per = pd.frame / pd.maxFrame;
-        var radius = bd.outer ? pd.outerRadius : pd.innerRadius;
-        bd.a = bd.ta * per;
-        button.x = bd.cx + Math.cos(bd.a) * radius * per;
-        button.y = bd.cy + Math.sin(bd.a) * radius * per;
-    };
-/********** **********
-     gameMod.create PUBLIC METHOD and helpers
-*********** *********/
-    var setupPortals = function(game){
-        // wMap portals
-        game.worldMap.mapPortals.forEach(function(portal){
-            //game.mapIndex = portal.mi;
-            var portalUnit = unitMod.createUnit('portal');
-            placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
-            // setting data object of portal
-            portalUnit.data = portal;
-        });
-    };
-    var setupGroups = function(game){
-        // wMap portals
-        game.worldMap.mapGroups.forEach(function(opt){
-            //game.mapIndex = portal.mi;
-            var gUnit = unitMod.createUnit('group', opt);
-            placeUnit(game, gUnit, opt.x, opt.y, opt.mi);
-            gUnit.data = {};
-        });
-    };
-    // setup method 2 - !!! I should only need one method like this
-    var setupGame2 = function(game){
-        var pCell = api.getPlayerCell(game),
-        wMap = game.worldMap;
-        game.maps = game.maps.map(function(map, mi){
-            var mapStr = wMap.mapStrings[mi] || '';
-            //game.mapIndex = mi;
-            map.cells = map.cells.map(function(cell, ci){
-                var cellIndex = parseInt(mapStr[ci] || '0'),
-                x = ci % map.w,
-                y = Math.floor(ci / map.w);
-                // enemy
-                if(cellIndex === 0){
-                    var cell = mapMod.get(map, ci);
-                    cell.unit = null;
-                    cell.walkable = true;
-                }
-                if(cellIndex === 1){
-                    var wall = unitMod.createUnit('wall');
-                    placeUnit(game, wall, x, y, mi);
-                }
-                // enemy
-                if(cellIndex === 3){
-                    var enemy = unitMod.createUnit('enemy');
-                    enemy.HP = enemy.maxHP;
-                    placeUnit(game, enemy, x, y, mi);
-                }
-                return cell;
-            });
-            return map;
-        });
-// groups
-setupGroups(game);
-        // set up portals
-        setupPortals(game);
-        // set remainingEnemies count
-        game.remainingEnemies = getRemainingEnemies(game);
-    };
-    // start over with same state, or setUp a new game for the given game object
-    var setupGame = api.setupGame = function (game, newGame, portal) {
-        newGame = newGame === undefined ? true : newGame;
-        portal = portal || null;
-        var playerPlaced = true,
-        startMapIndex = 0,
-        // always use game.worldMap to set map values
-        wMap = game.worldMap;
-        game.mapIndex = 0;
-        // set player HP to max
-        game.player.HP = game.player.maxHP;
-        // make sure mode starts out on map mode
-        game.mode = 'map';
-        // set up maps with data from mapStrings array first
-        var result = applyMapStringsToMaps(game, newGame, portal, {});
-        playerPlaced = result.playerPlaced;
-        startMapIndex = result.startMapIndex;
-// groups
-setupGroups(game);
-        // set up portals 
-        setupPortals(game);
-        // if a portal data object is given, use that to set player location
-        // and startMapIndex
-        if(portal){
-            startMapIndex = portal.dmi;
-            game.mapIndex = startMapIndex;
-            game.player.currentCellIndex = null;
-            placeUnit(game, game.player, portal.dx, portal.dy, portal.dmi);
-            playerPlaced = true;
-        }
-        // if player is not palced then place the player unit
-        // at a null cell
-        if(!playerPlaced){
-            placePlayer(game);
-        }
-        // setting mapIndex and toMap objects
-        game.mapIndex = startMapIndex;
-        game.toMap = getToMap(game);
-        // set remainingEnemies count
-        game.remainingEnemies = getRemainingEnemies(game);
-    };
-    // create a new game state
-    api.create = function (opt) {
-        opt = opt || {};
-        opt.w = opt.w || 9;
-        opt.h = opt.h || 7;
-        opt.marginX = opt.marginX === undefined ? 0 : opt.marginX;
-        opt.marginY = opt.marginY === undefined ? 0 : opt.marginY;
-        // use the given start map, or default to gameMod.WOID_WORLD
-        var wMap = opt.worldMap = opt.worldMap || api.VOID_WORLD;
-        // create game state object
-        var game = {
-            sm: opt.sm || {},
-            mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
-            turn: 0,
-            turnState: 'wait',
-            worldMap: wMap,
-            marginX: opt.marginY,                    // margins from the upper left corner of the canvas
-            marginX: opt.marginY,
-            maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
-            mapIndex: 0,                             // current map index in the CURRENT WORLD MAP
-            toMap: {
-                index: null,
-                x: null,
-                y: null
-            },
-            player: unitMod.createUnit('player'),
-            remainingEnemies: 0,
-            options: new poolMod.create(menuPool), // pool of objects used for the circle menu
-            pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
-        };
-        // create clean maps
-        createCleanMaps(game);
-        // set up game for first time as new game
-        setupGame(game, true);
-        // return the game object
-        return game;
-    };
-/********** **********
-     gameMod.update PUBLIC METHOD
-*********** *********/
-    var processMeele = function(game, unit){
-        var targetCellIndex = unit.meleeTarget,
-        map = game.maps[game.mapIndex];
-        if(targetCellIndex != null){
-            var targetCell = mapMod.get(map, targetCellIndex),
-            tUnit = targetCell.unit;
-            if(tUnit){
-                // unitMod meleeAttack method
-                unitMod.meleeAttack(unit, tUnit);
-                // enemy unit death check
-                if(tUnit.HP <= 0 && tUnit.type === 'enemy'){
-                    // give xp value to player
-                    unitMod.giveXP(game.player, tUnit.xpValue);
-                    targetCell.walkable = true;
-                    targetCell.unit = null;
-                }
-            }
-            unit.meleeTarget = null;
-        }
-    };
-
-    // process turn method used in gameMod.update
-    var processTurn = function(game, secs){
-        var map = game.maps[game.mapIndex],
-        pCell = api.getPlayerCell(game),
-        eCells = getCellsByUnitType(map, 'enemy');
-        // do nothing for 'wait' state
-        if(game.turnState === 'wait'){
-            return;
-        }
-        // starting a new turn
-        if(game.turnState === 'start'){
-            // let enemy units figure paths
-            eCells.forEach(function(eCell){
-                var d = utils.distance(eCell.x + 16, eCell.y + 16, pCell.x + 16, pCell.y + 16);
-                if( d <= 1.5){
-                    // in melee range player
-                    eCell.unit.meleeTarget = pCell.i;
-                }else{
-                    // not in melee range of player
-                    eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
-                }
-            });
-            game.turnState = 'move';
-        }
-        // move state
-        if(game.turnState === 'move'){
-            // move player unit
-            moveUnit(game, game.player);
-            eCells = getCellsByUnitType(map, 'enemy');
-            eCells.forEach(function(eCell){
-                moveUnit(game, eCell.unit);
-            });
-            var eCells = getCellsByUnitType(map, 'enemy');
-            // if moveCells array length of all units === 0 the move state is over
-            if(game.player.moveCells.length === 0 && eCells.every(function(eCell){
-                return eCell.unit.moveCells.length === 0;
-            })){
-                game.turnState = 'melee';
-            }
-        }
-        // melee attack
-        if(game.turnState === 'melee'){
-            // process any player melee attack
-            processMeele(game, game.player);
-            // process melee attacks for enemy units
-            var eCells = getCellsByUnitType(map, 'enemy');
-            eCells.forEach(function(eCell){
-                processMeele(game, eCell.unit);
-            });
-            game.turnState = 'end';
-        }
-        // for end state step game.turn and set game.turnState back to wait
-        if(game.turnState === 'end'){
-            game.turn += 1;
-            game.turnState = 'wait';
-            // check for player death
-            if(game.player.HP <= 0){
-                // I think I will always want to clear the player cell
-                pCell.unit = null;
-                pCell.walkable = true;
-                // call on player Death event
-                callMapEvent(game, secs, 'onPlayerDeath', MAP_EVENTS.softMapReset);
-                
-            }
-            // check for all enemies dead
-            game.remainingEnemies = getRemainingEnemies(game);
-            if(game.remainingEnemies === 0){
-                // call on no Enemies event
-                callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
-            }
-        }
-    };
-    // update a game object
-    api.update = function (sm, secs) {
-        var game = sm.game;
-        // in map mode just call process turn
-        if(game.mode === 'map'){
-            processTurn(game, secs);
-        }
-        if(game.mode === 'menu'){
-            poolMod.update(game.options, secs, sm);
-        }
-    };
-    // get player cell
-    api.getPlayerCell = function(game){
-        var p = game.player,
-        map = game.maps[game.mapIndex];
-        return map.cells[p.currentCellIndex];
-    };
-    // preform what needs to happen for a player pointer event for the given pixel positon
-    api.pointerStart = function(sm, x, y){
-        var game = sm.game;
-        // pointerDownTime should start at now
-        game.pointerDownTime = new Date();
-    };
     // helper to create on click events for buttons
     var createMapButtonOnClick = function(dir){
         return function(sm, button){
@@ -881,6 +568,321 @@ setupGroups(game);
                ii += 1;
             }
         });
+    };
+    // the menu object pool
+    var menuPool = {
+        count: 8,
+        w: 40,
+        h: 40,
+        disableLifespan: true,
+        data: {
+            outerRadius: 85,
+            innerRadius: 35,
+            outerTotal: 1,
+            frame: 0,
+            maxFrame: 15,
+            activeButton: null, // a ref to the active button to use on 'exit' mode end
+            mode: 'enter'       // current mode of the menuPool 'enter', 'exit'
+        }
+    };
+    // buttons spawn
+    menuPool.spawn = function(button, options, sm, spawnOpt){
+        var bd = button.data,
+        pd = options.data;
+        // button data
+        bd.desc = spawnOpt.desc || false;
+        bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
+        bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
+        bd.radius = 0;
+        bd.a = 0;
+        bd.ta = spawnOpt.ta === undefined ? Math.PI * 2: spawnOpt.ta;
+        bd.outer = spawnOpt.outer === undefined ? true : spawnOpt.outer;
+        bd.onClick = spawnOpt.onClick || function(){};
+        // pool data
+        pd.frame = 0;
+        pd.outerTotal = spawnOpt.outerTotal === undefined ? 1 : spawnOpt.outerTotal
+    };
+    // button update
+    menuPool.update = function(button, options, sm, secs){
+        var pd = options.data,
+        bd = button.data;
+        // !!! updating pool data here is not so great I should maybe have a main update method for pools
+        if(button.i === options.objects.length - 1){
+            // if we are in enter mode
+            if(pd.mode === 'enter'){
+                pd.frame += 30 * secs;
+                pd.frame = pd.frame >= pd.maxFrame ? pd.maxFrame : pd.frame;
+            }
+            // if we are in exit mode
+            if(pd.mode === 'exit'){
+                pd.frame -= 30 * secs;
+                pd.frame = pd.frame < 0 ? 0 : pd.frame;
+                if(pd.frame === 0 && pd.activeButton){
+                    pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+                }
+            }
+        }
+        var per = pd.frame / pd.maxFrame;
+        var radius = bd.outer ? pd.outerRadius : pd.innerRadius;
+        bd.a = bd.ta * per;
+        button.x = bd.cx + Math.cos(bd.a) * radius * per;
+        button.y = bd.cy + Math.sin(bd.a) * radius * per;
+    };
+/********** **********
+     gameMod.create PUBLIC METHOD and helpers
+*********** *********/
+    var setupPortals = function(game){
+        // wMap portals
+        game.worldMap.mapPortals.forEach(function(portal){
+            //game.mapIndex = portal.mi;
+            var portalUnit = unitMod.createUnit('portal');
+            placeUnit(game, portalUnit, portal.x, portal.y, portal.mi);
+            // setting data object of portal
+            portalUnit.data = portal;
+        });
+    };
+    var setupGroups = function(game){
+        // wMap portals
+        game.worldMap.mapGroups.forEach(function(opt){
+            //game.mapIndex = portal.mi;
+            var gUnit = unitMod.createUnit('group', opt);
+            placeUnit(game, gUnit, opt.x, opt.y, opt.mi);
+            gUnit.data = {};
+        });
+    };
+    // setup method 2 - !!! I should only need one method like this
+    var setupGame2 = function(game){
+        var pCell = api.getPlayerCell(game),
+        wMap = game.worldMap;
+        game.maps = game.maps.map(function(map, mi){
+            var mapStr = wMap.mapStrings[mi] || '';
+            //game.mapIndex = mi;
+            map.cells = map.cells.map(function(cell, ci){
+                var cellIndex = parseInt(mapStr[ci] || '0'),
+                x = ci % map.w,
+                y = Math.floor(ci / map.w);
+                // enemy
+                if(cellIndex === 0){
+                    var cell = mapMod.get(map, ci);
+                    cell.unit = null;
+                    cell.walkable = true;
+                }
+                if(cellIndex === 1){
+                    var wall = unitMod.createUnit('wall');
+                    placeUnit(game, wall, x, y, mi);
+                }
+                // enemy
+                if(cellIndex === 3){
+                    var enemy = unitMod.createUnit('enemy');
+                    enemy.HP = enemy.maxHP;
+                    placeUnit(game, enemy, x, y, mi);
+                }
+                return cell;
+            });
+            return map;
+        });
+        // groups
+        setupGroups(game);
+        // set up portals
+        setupPortals(game);
+        // set remainingEnemies count
+        game.remainingEnemies = getRemainingEnemies(game);
+    };
+    // start over with same state, or setUp a new game for the given game object
+    var setupGame = api.setupGame = function (game, newGame, portal) {
+        newGame = newGame === undefined ? true : newGame;
+        portal = portal || null;
+        var playerPlaced = true,
+        startMapIndex = 0,
+        // always use game.worldMap to set map values
+        wMap = game.worldMap;
+        game.mapIndex = 0;
+        // set player HP to max
+        game.player.HP = game.player.maxHP;
+        // make sure mode starts out on map mode
+        game.mode = 'map';
+        // set up maps with data from mapStrings array first
+        var result = applyMapStringsToMaps(game, newGame, portal, {});
+        playerPlaced = result.playerPlaced;
+        startMapIndex = result.startMapIndex;
+        // groups
+        setupGroups(game);
+        // set up portals 
+        setupPortals(game);
+        // if a portal data object is given, use that to set player location
+        // and startMapIndex
+        if(portal){
+            startMapIndex = portal.dmi;
+            game.mapIndex = startMapIndex;
+            game.player.currentCellIndex = null;
+            placeUnit(game, game.player, portal.dx, portal.dy, portal.dmi);
+            playerPlaced = true;
+        }
+        // if player is not palced then place the player unit
+        // at a null cell
+        if(!playerPlaced){
+            placePlayer(game);
+        }
+        // setting mapIndex and toMap objects
+        game.mapIndex = startMapIndex;
+        game.toMap = getToMap(game);
+        // set remainingEnemies count
+        game.remainingEnemies = getRemainingEnemies(game);
+    };
+    // create a new game state
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.w = opt.w || 9;
+        opt.h = opt.h || 7;
+        opt.marginX = opt.marginX === undefined ? 0 : opt.marginX;
+        opt.marginY = opt.marginY === undefined ? 0 : opt.marginY;
+        // use the given start map, or default to gameMod.WOID_WORLD
+        var wMap = opt.worldMap = opt.worldMap || api.VOID_WORLD;
+        // create game state object
+        var game = {
+            sm: opt.sm || {},
+            mode: 'map', // 'map' for the game in action, and 'menu' for the circle options menu
+            turn: 0,
+            turnState: 'wait',
+            worldMap: wMap,
+            marginX: opt.marginY,                    // margins from the upper left corner of the canvas
+            marginX: opt.marginY,
+            maps: [],                                // current WORKABLE STATE of the CURRENT WORLD MAP
+            mapIndex: 0,                             // current map index in the CURRENT WORLD MAP
+            toMap: {
+                index: null,
+                x: null,
+                y: null
+            },
+            player: unitMod.createUnit('player'),
+            remainingEnemies: 0,
+            options: new poolMod.create(menuPool), // pool of objects used for the circle menu
+            pointerDownTime: new Date()            // used to find out if we are dealing with a long press or not
+        };
+        // create clean maps
+        createCleanMaps(game);
+        // set up game for first time as new game
+        setupGame(game, true);
+        // return the game object
+        return game;
+    };
+/********** **********
+     gameMod.update PUBLIC METHOD
+*********** *********/
+    var processMeele = function(game, unit){
+        var targetCellIndex = unit.meleeTarget,
+        map = game.maps[game.mapIndex];
+        if(targetCellIndex != null){
+            var targetCell = mapMod.get(map, targetCellIndex),
+            tUnit = targetCell.unit;
+            if(tUnit){
+                // unitMod meleeAttack method
+                unitMod.meleeAttack(unit, tUnit);
+                // enemy unit death check
+                if(tUnit.HP <= 0 && tUnit.type === 'enemy'){
+                    // give xp value to player
+                    unitMod.giveXP(game.player, tUnit.xpValue);
+                    targetCell.walkable = true;
+                    targetCell.unit = null;
+                }
+            }
+            unit.meleeTarget = null;
+        }
+    };
+    // process turn method used in gameMod.update
+    var processTurn = function(game, secs){
+        var map = game.maps[game.mapIndex],
+        pCell = api.getPlayerCell(game),
+        eCells = getCellsByUnitType(map, 'enemy');
+        // do nothing for 'wait' state
+        if(game.turnState === 'wait'){
+            return;
+        }
+        // starting a new turn
+        if(game.turnState === 'start'){
+            // let enemy units figure paths
+            eCells.forEach(function(eCell){
+                var d = utils.distance(eCell.x + 16, eCell.y + 16, pCell.x + 16, pCell.y + 16);
+                if( d <= 1.5){
+                    // in melee range player
+                    eCell.unit.meleeTarget = pCell.i;
+                }else{
+                    // not in melee range of player
+                    eCell.unit.moveCells = getEnemeyMoveCells(game, eCell);
+                }
+            });
+            game.turnState = 'move';
+        }
+        // move state
+        if(game.turnState === 'move'){
+            // move player unit
+            moveUnit(game, game.player);
+            eCells = getCellsByUnitType(map, 'enemy');
+            eCells.forEach(function(eCell){
+                moveUnit(game, eCell.unit);
+            });
+            var eCells = getCellsByUnitType(map, 'enemy');
+            // if moveCells array length of all units === 0 the move state is over
+            if(game.player.moveCells.length === 0 && eCells.every(function(eCell){
+                return eCell.unit.moveCells.length === 0;
+            })){
+                game.turnState = 'melee';
+            }
+        }
+        // melee attack
+        if(game.turnState === 'melee'){
+            // process any player melee attack
+            processMeele(game, game.player);
+            // process melee attacks for enemy units
+            var eCells = getCellsByUnitType(map, 'enemy');
+            eCells.forEach(function(eCell){
+                processMeele(game, eCell.unit);
+            });
+            game.turnState = 'end';
+        }
+        // for end state step game.turn and set game.turnState back to wait
+        if(game.turnState === 'end'){
+            game.turn += 1;
+            game.turnState = 'wait';
+            // check for player death
+            if(game.player.HP <= 0){
+                // I think I will always want to clear the player cell
+                pCell.unit = null;
+                pCell.walkable = true;
+                // call on player Death event
+                callMapEvent(game, secs, 'onPlayerDeath', MAP_EVENTS.softMapReset);
+                
+            }
+            // check for all enemies dead
+            game.remainingEnemies = getRemainingEnemies(game);
+            if(game.remainingEnemies === 0){
+                // call on no Enemies event
+                callMapEvent(game, secs, 'onNoEnemies', MAP_EVENTS.hardMapReset);
+            }
+        }
+    };
+    // update a game object
+    api.update = function (sm, secs) {
+        var game = sm.game;
+        // in map mode just call process turn
+        if(game.mode === 'map'){
+            processTurn(game, secs);
+        }
+        if(game.mode === 'menu'){
+            poolMod.update(game.options, secs, sm);
+        }
+    };
+    // get player cell
+    api.getPlayerCell = function(game){
+        var p = game.player,
+        map = game.maps[game.mapIndex];
+        return map.cells[p.currentCellIndex];
+    };
+    // preform what needs to happen for a player pointer event for the given pixel positon
+    api.pointerStart = function(sm, x, y){
+        var game = sm.game;
+        // pointerDownTime should start at now
+        game.pointerDownTime = new Date();
     };
     // call when a pointer has ended
     api.pointerEnd = function(sm, x, y){

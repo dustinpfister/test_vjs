@@ -909,6 +909,8 @@ var gameMod = (function () {
         if(secs < 0.5 ){
             // if we are in map mode
             if (game.mode === 'map' && clickedCell) {
+                // log cell to console
+                utils.log(clickedCell, 'debug');
                 // if player cell is clicked and there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
                     if(game.toMap.options.length > 1){

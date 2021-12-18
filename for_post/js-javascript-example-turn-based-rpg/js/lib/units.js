@@ -43,7 +43,17 @@ var unitMod = (function () {
         });
     };
 
+    setStat.baseAttack = function(unit, l, baOpt){
+        // base attack defaults to [0, 0] for all units
+        var ba = unit.baseAttack = [0, 0];
+        if(baOpt){
+            ba[0] = baOpt.min[0] + Math.floor(baOpt.inc[0] * l);
+            ba[1] = (ba[0] + baOpt.min[1]) + Math.floor(baOpt.inc[1] * l);
+        } 
+    };
+
     // set unit stats based on level
+/*
     var setUnitStats = function(unit){
         var level = unit.levelObj.level,
         l = ( level - 1 );
@@ -57,6 +67,21 @@ var unitMod = (function () {
         var bd = unit.baseDefense = [1, 2];
         bd[0] = 1 + Math.floor(0.125 * l);
         bd[1] = bd[0] + 1 + Math.floor(0.25 * l);
+        // call setState.attack
+        setStat.attack(unit);
+    };
+*/
+
+    var setUnitStats = function(unit){
+        var level = unit.levelObj.level,
+        perLevel = unit.perLevel,
+        l = ( level - 1 );
+        // hit points
+        unit.maxHP = 30 + 15 * l;
+
+        // set base attack for this unit based on level
+        setStat.baseAttack(unit, l, perLevel.baseAttack);
+
         // call setState.attack
         setStat.attack(unit);
     };
@@ -76,7 +101,7 @@ var unitMod = (function () {
             // current unit stats
             maxHP: 1,             // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
-            baseAttack: [1, 1],   // base attack
+            baseAttack: [0, 0],   // base attack
             baseDefense: [0, 0],  // base defense
             attack: [0, 0],       // actual attack (baseAttack + weapons + buffs + ect) ( see setAttack helper)
             // equipment
@@ -132,13 +157,20 @@ var unitMod = (function () {
     // player type
     UNIT_TYPES.player = {
         create : function(player){
+            player.levelObj = utils.XP.parseByLevel(1, LEVEL_CAP, LEVEL_DELTA_NEXT)
             player.maxCellsPerTurn = 3;
             player.sheetIndex = 2; // player sheet
-            player.currentWeapon = {
-                attack: [5, 7]
-            };
+            // per level object for player
+            var perLevel = player.perLevel = {};
+            // min value, incremental values
+            perLevel.baseAttack = { min: [2, 1], inc: [0.75, 0.5] }
+            //perLevel.baseAttack = { min: 1, inc: [1.05, 0.025] }
+
+            //player.currentWeapon = {
+            //    attack: [5, 7]
+            //};
             //api.giveXP(player, 0)
-            setStat.attack(player);
+            setUnitStats(player);
         }
     };
     // enemy type
@@ -146,7 +178,10 @@ var unitMod = (function () {
         create : function(enemy){
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
-            setStat.attack(enemy);
+            var perLevel = enemy.perLevel = {};
+            // min value, incremental values
+            perLevel.baseAttack = { min: [1, 0], inc: [0.25, 0.125] }
+            setUnitStats(enemy);
         }
     };
     // wall type

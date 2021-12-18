@@ -140,12 +140,11 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) item.subType and item.data are now base item object props
 * (done) update UNIT_TYPES.group.create so that it will create and append Items to the pouch array of the group
 * (done) the contents of a group is based on what is given by way of an options object when calling create
+* (done) I am going to need a new perLevel object for a unit that contains values that will be used to set stats based on level
+* (done) single perLevel object for player
+* (done) single perLevel object for enemies (for now)
 
-* I am going to need a new perLevel object for a unit that contains values that will be used to set stats
-* single perLevel object for player
-* single perLevel object for enemies (for now)
 * the perLevel object should be part of an itemRect object in the ITEMS global
-
 * rename unit.children to unit.over and make the changes in gameMod also
 
 <!-- world-home.json -->

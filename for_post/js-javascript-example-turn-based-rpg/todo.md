@@ -117,6 +117,10 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - rxx - item json files, weapons
 * start a new type of json file format for defining one or more items
 
+## () - r14 - player pouch equip
+<!-- js/game.js -->
+* have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
+
 ## () - r13 - player pouch pick up and drop
 <!-- js/game.js -->
 * when the player is over a group have a pickup button show up in the circle menu

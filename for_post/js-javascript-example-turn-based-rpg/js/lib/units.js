@@ -175,6 +175,10 @@ var unitMod = (function () {
             //player.currentWeapon = {
             //    attack: [5, 7]
             //};
+
+            // starting weapon for the player
+            player.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 5})
+
             //api.giveXP(player, 0)
             setUnitStats(player);
         }

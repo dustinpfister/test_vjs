@@ -138,7 +138,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a unit.pouch prop that will serve as an inventory for a unit
 * (done) start a new type of unit called an 'item' in lib\/units.js
 * (done) start an ITEMS global
-* update UNIT_TYPES.group.create so that it will create and append Items based on what is given by way of an options object
+* (done) item.subType and item.data are now base item object props
+* (done) update UNIT_TYPES.group.create so that it will create and append Items to the pouch array of the group
+* (done) the contents of a group is based on what is given by way of an options object when calling create
 
 * rename unit.children to unit.over and make the changes in gameMod also
 

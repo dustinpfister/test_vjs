@@ -19,7 +19,7 @@ var unitMod = (function () {
     ITEMS.weapon.melee.sword = {
         variants: ['short', 'long'],
         defaultVariant: 0,
-        stats: {
+        perLevel: {
         
         }
     };
@@ -71,13 +71,14 @@ var unitMod = (function () {
         var unit = {
             // level
             levelObj: utils.XP.parseByLevel(1, LEVEL_CAP, LEVEL_DELTA_NEXT),
-            xpValue: 25,           // xp value that the unit will award when killed
+            perLevel: {},         // per level values to use to set stats 
+            xpValue: 25,          // xp value that the unit will award when killed
             // current unit stats
             maxHP: 1,             // max number of hit points for the unit
             maxCellsPerTurn: 0,   // the max number of cells a unit can move
             baseAttack: [1, 1],   // base attack
             baseDefense: [0, 0],  // base defense
-            attack: [0, 0],       // an actual attack value to use ( set by the setAttack helper)
+            attack: [0, 0],       // actual attack (baseAttack + weapons + buffs + ect) ( see setAttack helper)
             // equipment
             meleeWeapon: null,
             currentWeapon: null,  // the current active weapon
@@ -118,7 +119,7 @@ var unitMod = (function () {
                 });
             }
             console.log('group');
-console.log(group);
+            console.log(group);
         }
     };
     // group type

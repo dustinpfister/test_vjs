@@ -128,7 +128,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * the player can drop an item to the current cell, cretaing a new group if needed
 
 
-## () - r13 - new circle menu system with more than one menu
+## ( done 12/19/2021 ) - r13 - new circle menu system with more than one menu
 <!-- js/game.js -->
 * (done) see about having an out animation when not clicking a buton in menu mode
 * (done) when the player is over a group have a pickup button show up in the circle menu

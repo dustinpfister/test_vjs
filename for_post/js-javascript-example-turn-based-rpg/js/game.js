@@ -591,6 +591,15 @@ buttons.push({
         }, 0);
     };
 
+var getCollectionKeyValueCount = function(objects, prop, value){
+    return objects.reduce(function(acc, obj){
+        if(obj[prop] === value){
+            acc += 1;
+        }
+        return acc;
+    }, 0);
+};
+
 var createButtonDataObjects = function(game){
     // current menu key
     var menuKey = menuPool.data.menuKey,
@@ -599,6 +608,9 @@ var createButtonDataObjects = function(game){
     var buttonDataObjects = menu.buttonKeys(game).map(function(bKey){
         return BUTTON[bKey];
     });
+    var genButtons = menu.genButtons(game);
+    buttonDataObjects = buttonDataObjects.concat(genButtons);
+    // call genButtons
     return buttonDataObjects;
 };
 
@@ -619,6 +631,9 @@ var createButtonDataObjects = function(game){
 var buttonDataObjects = createButtonDataObjects(game);
 
 console.log(buttonDataObjects);
+console.log( getCollectionKeyValueCount(buttonDataObjects, 'outer', true) );
+console.log( getCollectionKeyValueCount(buttonDataObjects, 'outer', false) );
+
 
         // spawn buttons
         var oi = 0, 

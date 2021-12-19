@@ -20,7 +20,6 @@ div{position:relative;background-color:black;outline:1px solid #ffffff;cursor:ha
 var divClick = function(e){
   var div = e.target, // selecting a div by e.target
   c = div.style.backgroundColor;
-  e.stopPropagation();
   div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
 };
 var get = function(id){

@@ -463,7 +463,7 @@ var gameMod = (function () {
 /********** **********
      CIRCLE MENU
 *********** *********/
-    // helper to create on click events for buttons
+    // helper to create on click events for direction buttons
     var createMapButtonOnClick = function(dir){
         return function(sm, button){
             var tm = sm.game.toMap;
@@ -480,6 +480,7 @@ var gameMod = (function () {
     };
     // hard coded BUTTONS
     var BUTTON = {};
+    // quit and resume buttons
     BUTTON.quit = {
         desc: 'quit',
         outer: true,
@@ -494,6 +495,7 @@ var gameMod = (function () {
            sm.game.mode = 'map';
         }
     };
+    // direction buttons
     BUTTON.map_south = {
         desc: 'South',
         outer: false,
@@ -518,6 +520,15 @@ var gameMod = (function () {
         ta: Math.PI * 1,
         onClick: createMapButtonOnClick('west')
     };
+    // player inventory buttons
+    BUTTON.pickup = {
+        desc: 'Pick Up',
+        outer: true,
+        onClick: function(sm, button){
+           console.log('pick up button clicked');
+        }
+    };
+
     // get a count of buttons with the given prop and value, this is used in createMenu
     // to help with creating menu buttons in the 'circle menu feature' 
     var getButtonKeyValueCount = function(buttonKeys, prop, value){
@@ -537,10 +548,17 @@ var gameMod = (function () {
         });
         // default buttonKeys array
         var buttonKeys = ['quit', 'resume'];
-        // appending options
+        // appending direction buttons
         buttonKeys = buttonKeys.concat(game.toMap.options.map(function(opt){
              return 'map_' + opt.dir;
         }));
+
+        // check if the player has items that they can pick up if they want
+        if(game.player.children.type === 'group'){
+            buttonKeys.push('pickup');
+        }
+
+
         // spawn buttons 
         var oi = 0, 
         ii = 0,

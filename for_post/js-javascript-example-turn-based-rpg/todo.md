@@ -123,12 +123,15 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - r13 - player pouch pick up and drop
 <!-- js/game.js -->
+* (done) see about having an out animation when not clicking a buton in menu mode
+
 * when the player is over a group have a pickup button show up in the circle menu
 * Use the pickup button in the circle menu to pick up an item in the current cell if any
+
+
 * in the event that a group is empty set the cell unit back to null
 * if the player has one or more items in the pouch a pouch button will show up in the circle menu
 * the player can drop an item to the current cell, cretaing a new group if needed
-* see about having an out animation when not clicking a buton in menu mode
 <!-- js/lib/units.js -->
 * rename unit.children to unit.over and make the changes in gameMod also
 

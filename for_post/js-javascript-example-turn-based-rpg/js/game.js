@@ -234,12 +234,6 @@ var gameMod = (function () {
             }
             // unit.walkable should be what is used to set cell.walkable
             newCell.walkable = unit.walkable
-            // set new cell to NOT walkable (as default) as a unit is now located here
-            //newCell.walkable = false;
-            // if the unit is a portal then it is possible for a unit to walk over that
-            //if(unit.type === 'portal'){
-            //    newCell.walkable = true;
-            //}
             // set current cell index for the unit
             unit.currentCellIndex = newCell.i;
             // place a ref to the unit in the map cell
@@ -950,7 +944,6 @@ var gameMod = (function () {
                     game.options.data.activeButton = clicked[0];
                 }else{
                    // no button was clicked
-                   //game.mode = 'map';
                     game.options.data.mode = 'exit';
                     game.options.data.activeButton = null;
                 }
@@ -961,3 +954,5 @@ var gameMod = (function () {
     return api;
 }
     ());
+
+

@@ -136,7 +136,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) changes will need to be made to the createMenu helper to make use of a genButtons method as another way to create menu buttons
 * (done) remove old code for cretaing buttons that is no longer used
 
-* in pickup menu key, generate a button for each item in the group
+* (done) in pickup menu key, generate a button for each item in the group
 * have a backToMain button
 
 * when an item button is clicked that item should be transferd to the players pouch and the menu will exit

@@ -535,6 +535,15 @@ var gameMod = (function () {
             createMenu(sm.game);
         }
     };
+    BUTTON.to_main = {
+        desc: 'To Main',
+        outer: true,
+        onClick: function(sm, button){
+            sm.game.options.data.menuKey = 'main';
+            sm.game.options.data.mode = 'enter';
+            createMenu(sm.game);
+        }
+    };
 
     // MENUS
     var MENUS = {};
@@ -573,7 +582,7 @@ var gameMod = (function () {
         // create an array of keys for hard coded buttons to use
         buttonKeys : function(game){
             // default buttonKeys array
-            var buttonKeys = ['resume'];
+            var buttonKeys = ['to_main'];
             return buttonKeys;
         },
         genButtons: function(game){

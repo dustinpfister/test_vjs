@@ -529,6 +529,26 @@ var gameMod = (function () {
         }
     };
 
+    // MENUS
+    var MENUS = {};
+
+    MENUS.main = {
+        // create an array of keys for hard coded buttons to use
+        buttonKeys : function(game){
+            // default buttonKeys array
+            var buttonKeys = ['quit', 'resume'];
+            // appending direction buttons
+            buttonKeys = buttonKeys.concat(game.toMap.options.map(function(opt){
+                 return 'map_' + opt.dir;
+            }));
+            // check if the player has items that they can pick up if they want
+            if(game.player.children.type === 'group'){
+                buttonKeys.push('pickup');
+            }
+            return buttonKeys;
+        }
+    };
+
     // get a count of buttons with the given prop and value, this is used in createMenu
     // to help with creating menu buttons in the 'circle menu feature' 
     var getButtonKeyValueCount = function(buttonKeys, prop, value){
@@ -540,6 +560,9 @@ var gameMod = (function () {
             return acc;
         }, 0);
     };
+
+
+
     // create a menu for the current game state
     var createMenu = function(game){
 
@@ -549,24 +572,14 @@ var gameMod = (function () {
             button.active = false;
         });
 
-        // default buttonKeys array
-        var buttonKeys = ['quit', 'resume'];
-        // appending direction buttons
-        buttonKeys = buttonKeys.concat(game.toMap.options.map(function(opt){
-             return 'map_' + opt.dir;
-        }));
+        // create button keys
+        var buttonKeys = MENUS.main.buttonKeys(game);
 
-        // check if the player has items that they can pick up if they want
-        if(game.player.children.type === 'group'){
-            buttonKeys.push('pickup');
-        }
-
-
-        // spawn buttons 
+        // spawn buttons
         var oi = 0, 
         ii = 0,
-        oc = getButtonKeyValueCount(buttonKeys, 'outer', true), //3,
-        ic = getButtonKeyValueCount(buttonKeys, 'outer', false); //2;
+        oc = getButtonKeyValueCount(buttonKeys, 'outer', true),
+        ic = getButtonKeyValueCount(buttonKeys, 'outer', false);
         buttonKeys.forEach(function(buttonKey){
             var buttonDATA = BUTTON[buttonKey],
             len = (buttonDATA.outer ? oc : ic),

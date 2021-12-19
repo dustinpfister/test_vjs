@@ -126,6 +126,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) see about having an out animation when not clicking a buton in menu mode
 * (done) when the player is over a group have a pickup button show up in the circle menu
 
+* new MENUS const
 * I will want a menuPool.data.menuKey prop that will default to 'main'
 * the createMenu helper will need to be a main method that will call one of several menus in a new MENUS const
 * have a MENUS.main.create that will create the main menu

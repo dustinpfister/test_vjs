@@ -542,10 +542,13 @@ var gameMod = (function () {
     };
     // create a menu for the current game state
     var createMenu = function(game){
+
+
         // purge all buttons first
         game.options.objects.forEach(function(button){
             button.active = false;
         });
+
         // default buttonKeys array
         var buttonKeys = ['quit', 'resume'];
         // appending direction buttons

@@ -124,9 +124,16 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - r13 - player pouch pick up and drop
 <!-- js/game.js -->
 * (done) see about having an out animation when not clicking a buton in menu mode
+* (done) when the player is over a group have a pickup button show up in the circle menu
 
-* when the player is over a group have a pickup button show up in the circle menu
-* Use the pickup button in the circle menu to pick up an item in the current cell if any
+* I will want a menuPool.data.menuKey prop that will default to 'main'
+* the createMenu helper will need to be a main method that will call one of several menus in a new MENUS const
+* have a MENUS.main.create that will create the main menu
+* have a MENUS.pickup.create that will be a new menu composed of buttons for each item in a current group that the player is over
+
+* when an item button is clicked that item should be transferd to the players pouch and the menu will exit
+* when exiting from pickup menuKey the pickup menu will recreate with up to date buttons
+* if the group is empty clear the cell, and return to main menu key
 
 
 * in the event that a group is empty set the cell unit back to null

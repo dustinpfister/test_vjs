@@ -565,7 +565,8 @@ var gameMod = (function () {
 
     // create a menu for the current game state
     var createMenu = function(game){
-
+        // current menu key
+        var menuKey = menuPool.data.menuKey;
 
         // purge all buttons first
         game.options.objects.forEach(function(button){
@@ -573,7 +574,7 @@ var gameMod = (function () {
         });
 
         // create button keys
-        var buttonKeys = MENUS.main.buttonKeys(game);
+        var buttonKeys = MENUS[menuKey].buttonKeys(game);
 
         // spawn buttons
         var oi = 0, 
@@ -613,8 +614,9 @@ var gameMod = (function () {
             outerTotal: 1,
             frame: 0,
             maxFrame: 15,
-            activeButton: null, // a ref to the active button to use on 'exit' mode end
-            mode: 'enter'       // current mode of the menuPool 'enter', 'exit'
+            activeButton: null,  // a ref to the active button to use on 'exit' mode end
+            mode: 'enter',       // current mode of the menuPool 'enter', 'exit'
+            menuKey: 'main'
         }
     };
     // buttons spawn

@@ -15,8 +15,8 @@ https://stackoverflow.com/questions/10323392/in-javascript-jquery-what-does-e-me
 * 1-touchstart : touch event example
 
 ## () - expand av-nested section
-* rename 1-nested-e-current-target to 1-child-current-target
-* rename 2-nested-e-target to 3-root-target
+* (done) rename 1-nested-e-current-target to 1-child-current-target
+* (done) rename 2-nested-e-target to 3-root-target
 * new 2-child-target-example
 
 ## ( done 11/08/2021 ) - new av-mouse section

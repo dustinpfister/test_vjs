@@ -556,6 +556,7 @@ var gameMod = (function () {
         },
         genButtons : function(){
             var buttons = [];
+/*
             buttons.push({
                 desc: 'gen',
                 outer: true,
@@ -563,6 +564,7 @@ var gameMod = (function () {
                     sm.game.mode = 'map';
                 }
             });
+*/
             return buttons;
         }
     };
@@ -574,7 +576,19 @@ var gameMod = (function () {
             var buttonKeys = ['resume'];
             return buttonKeys;
         },
-        genButtons: function(){
+        genButtons: function(game){
+             // gen a button for each item
+             if(game.player.children.type === 'group'){
+                  return game.player.children.pouch.map(function(item){     
+                      return {
+                          desc: item.subType.split('.')[2] || 'item',
+                          outer: true,
+                          onClick: function(sm, button){
+                              sm.game.mode = 'map';
+                          }
+                      }
+                  });
+             }
              return [];
         }
     };

@@ -13,7 +13,7 @@
 
     // state machine object
     var sm = {
-        ver: '0.13.0',
+        ver: '0.14.0',
         fps: 12,
         lt: new Date(),
 

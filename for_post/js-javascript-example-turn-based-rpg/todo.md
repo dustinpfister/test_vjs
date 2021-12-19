@@ -128,6 +128,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * the player can drop an item to the current cell, cretaing a new group if needed
 
 
+<!-- js/lib/units.js -->
+* rename unit.children to unit.over and make the changes in gameMod also
+
 ## ( done 12/19/2021 ) - r13 - new circle menu system with more than one menu
 <!-- js/game.js -->
 * (done) see about having an out animation when not clicking a buton in menu mode
@@ -144,9 +147,6 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) remove old code for cretaing buttons that is no longer used
 * (done) in pickup menu key, generate a button for each item in the group
 * (done) have a to main button in pickup menu
-
-<!-- js/lib/units.js -->
-* rename unit.children to unit.over and make the changes in gameMod also
 
 ## ( done 12/18/2021 ) - r12 - ITEM global and perLevel object in units.js
 <!-- js/lib/utils.js -->

@@ -117,11 +117,18 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - rxx - item json files, weapons
 * start a new type of json file format for defining one or more items
 
-## () - r14 - player pouch equip
+## () - r14 - more on pickup, player pouch, equip and drop
 <!-- js/game.js -->
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
+* when an item button is clicked that item should be transferd to the players pouch, and the menu should exit
+* after exiting from pickup menuKey, the pickup menu will recreate with up to date buttons
+* if the group is empty clear the cell, and return to main menu key
+* I will need a MENUS.pouch
+* if the player has one or more items in the pouch a pouch button will show up in the main menu of the circle menu
+* the player can drop an item to the current cell, cretaing a new group if needed
 
-## () - r13 - player pouch pick up and drop
+
+## () - r13 - new circle menu system with more than one menu
 <!-- js/game.js -->
 * (done) see about having an out animation when not clicking a buton in menu mode
 * (done) when the player is over a group have a pickup button show up in the circle menu
@@ -135,17 +142,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a createButtonDataObjects helper that will create an array of buttonData objects from buttonKeys and calling genButtons
 * (done) changes will need to be made to the createMenu helper to make use of a genButtons method as another way to create menu buttons
 * (done) remove old code for cretaing buttons that is no longer used
-
 * (done) in pickup menu key, generate a button for each item in the group
-* have a backToMain button
-
-* when an item button is clicked that item should be transferd to the players pouch and the menu will exit
-* when exiting from pickup menuKey the pickup menu will recreate with up to date buttons
-* if the group is empty clear the cell, and return to main menu key
-* if the player has one or more items in the pouch a pouch button will show up in the circle menu
-* the player can drop an item to the current cell, cretaing a new group if needed
-
-
+* (done) have a to main button in pickup menu
 
 <!-- js/lib/units.js -->
 * rename unit.children to unit.over and make the changes in gameMod also

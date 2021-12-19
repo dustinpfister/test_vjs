@@ -125,12 +125,14 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/game.js -->
 * (done) see about having an out animation when not clicking a buton in menu mode
 * (done) when the player is over a group have a pickup button show up in the circle menu
-
 * (done) new MENUS const
-* I will want a menuPool.data.menuKey prop that will default to 'main'
-* the createMenu helper will need to be a main method that will call one of several menus in a new MENUS const
-* have a MENUS.main.create that will create the main menu
-* have a MENUS.pickup.create that will be a new menu composed of buttons for each item in a current group that the player is over
+* (done) I will want a menuPool.data.menuKey prop that will default to 'main'
+* (done) the createMenu helper will need to be a main method that will call one of several menus in a new MENUS const
+* (done) have a MENUS.main.buttonKeys that will create an array of hard coded button keys to use for the main menu
+
+* have a MENUS.pickup.buttonKeys method
+* I will need a MENUS.pickup.genButtons that will create buttons for each item in a current group that the player is over
+* changes will need to be made to the createMenu helper to make use of a genButtons method as another way to create menu buttons
 
 * when an item button is clicked that item should be transferd to the players pouch and the menu will exit
 * when exiting from pickup menuKey the pickup menu will recreate with up to date buttons

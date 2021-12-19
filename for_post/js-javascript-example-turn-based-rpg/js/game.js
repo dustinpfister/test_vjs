@@ -525,7 +525,9 @@ var gameMod = (function () {
         desc: 'Pick Up',
         outer: true,
         onClick: function(sm, button){
-           console.log('pick up button clicked');
+            console.log('pick up button clicked');
+            // for now just going back to map
+            sm.game.mode = 'map';
         }
     };
 

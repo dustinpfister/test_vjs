@@ -130,8 +130,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) the createMenu helper will need to be a main method that will call one of several menus in a new MENUS const
 * (done) have a MENUS.main.buttonKeys that will create an array of hard coded button keys to use for the main menu
 * (done) one click to circle menu if player is clicked for now
+* (done) have a MENUS.pickup.buttonKeys method
 
-* have a MENUS.pickup.buttonKeys method
 * I will need a MENUS.pickup.genButtons that will create buttons for each item in a current group that the player is over
 * changes will need to be made to the createMenu helper to make use of a genButtons method as another way to create menu buttons
 

@@ -553,6 +553,17 @@ var gameMod = (function () {
                 buttonKeys.push('pickup');
             }
             return buttonKeys;
+        },
+        genButtons : function(){
+            var buttons = [];
+buttons.push({
+    desc: 'gen',
+    outer: true,
+    onClick: function(sm, button){
+        sm.game.mode = 'map';
+    }
+});
+            return buttons;
         }
     };
 
@@ -562,6 +573,9 @@ var gameMod = (function () {
             // default buttonKeys array
             var buttonKeys = ['resume'];
             return buttonKeys;
+        },
+        genButtons: function(){
+             return [];
         }
     };
 
@@ -576,8 +590,6 @@ var gameMod = (function () {
             return acc;
         }, 0);
     };
-
-
 
     // create a menu for the current game state
     var createMenu = function(game){

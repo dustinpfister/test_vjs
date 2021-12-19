@@ -621,8 +621,14 @@ var gameMod = (function () {
             if(pd.mode === 'exit'){
                 pd.frame -= 30 * secs;
                 pd.frame = pd.frame < 0 ? 0 : pd.frame;
-                if(pd.frame === 0 && pd.activeButton){
-                    pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+                if(pd.frame === 0){
+                    // we should have an active button, if so call the onClick method for it
+                    // else drop back to map mode
+                    if(pd.activeButton){
+                        pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+                    }else{
+                        sm.game.mode = 'map';
+                    }
                 }
             }
         }
@@ -944,7 +950,9 @@ var gameMod = (function () {
                     game.options.data.activeButton = clicked[0];
                 }else{
                    // no button was clicked
-                   game.mode = 'map';
+                   //game.mode = 'map';
+                    game.options.data.mode = 'exit';
+                    game.options.data.activeButton = null;
                 }
             }
         }

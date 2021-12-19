@@ -131,12 +131,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a MENUS.main.buttonKeys that will create an array of hard coded button keys to use for the main menu
 * (done) one click to circle menu if player is clicked for now
 * (done) have a MENUS.pickup.buttonKeys method
-
 * (done) I will need a MENUS.pickup.genButtons that will create buttons for each item in a current group that the player is over
-
-* have a createButtons helper that will create an array of buttonData obejcts from buttonKeys and calling genButtons
-
-* changes will need to be made to the createMenu helper to make use of a genButtons method as another way to create menu buttons
+* (done) have a createButtonDataObjects helper that will create an array of buttonData objects from buttonKeys and calling genButtons
+* (done) changes will need to be made to the createMenu helper to make use of a genButtons method as another way to create menu buttons
+* remove old code
 
 * when an item button is clicked that item should be transferd to the players pouch and the menu will exit
 * when exiting from pickup menuKey the pickup menu will recreate with up to date buttons

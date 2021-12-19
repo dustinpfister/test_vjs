@@ -556,13 +556,13 @@ var gameMod = (function () {
         },
         genButtons : function(){
             var buttons = [];
-buttons.push({
-    desc: 'gen',
-    outer: true,
-    onClick: function(sm, button){
-        sm.game.mode = 'map';
-    }
-});
+            buttons.push({
+                desc: 'gen',
+                outer: true,
+                onClick: function(sm, button){
+                    sm.game.mode = 'map';
+                }
+            });
             return buttons;
         }
     };
@@ -581,68 +581,46 @@ buttons.push({
 
     // get a count of buttons with the given prop and value, this is used in createMenu
     // to help with creating menu buttons in the 'circle menu feature' 
-    var getButtonKeyValueCount = function(buttonKeys, prop, value){
-        return buttonKeys.reduce(function(acc, buttonKey){
-            var buttonDATA = BUTTON[buttonKey];
-            if(buttonDATA[prop] === value){
+    var getCollectionKeyValueCount = function(objects, prop, value){
+        return objects.reduce(function(acc, obj){
+            if(obj[prop] === value){
                 acc += 1;
             }
             return acc;
         }, 0);
     };
 
-var getCollectionKeyValueCount = function(objects, prop, value){
-    return objects.reduce(function(acc, obj){
-        if(obj[prop] === value){
-            acc += 1;
-        }
-        return acc;
-    }, 0);
-};
-
-var createButtonDataObjects = function(game){
-    // current menu key
-    var menuKey = menuPool.data.menuKey,
-    menu = MENUS[menuKey];
-    // start with hard coded objects
-    var buttonDataObjects = menu.buttonKeys(game).map(function(bKey){
-        return BUTTON[bKey];
-    });
-    var genButtons = menu.genButtons(game);
-    buttonDataObjects = buttonDataObjects.concat(genButtons);
-    // call genButtons
-    return buttonDataObjects;
-};
+    var createButtonDataObjects = function(game){
+        // current menu key
+        var menuKey = menuPool.data.menuKey,
+        menu = MENUS[menuKey];
+        // start with hard coded objects
+        var buttonDataObjects = menu.buttonKeys(game).map(function(bKey){
+            return BUTTON[bKey];
+        });
+        var genButtons = menu.genButtons(game);
+        buttonDataObjects = buttonDataObjects.concat(genButtons);
+        // call genButtons
+        return buttonDataObjects;
+    };
 
     // create a menu for the current game state
     var createMenu = function(game){
         // current menu key
         var menuKey = menuPool.data.menuKey;
-
         // purge all buttons first
         game.options.objects.forEach(function(button){
             button.active = false;
         });
-
-        // create button keys
-        var buttonKeys = MENUS[menuKey].buttonKeys(game);
-
-// create buttons for the current menu
-var buttonDataObjects = createButtonDataObjects(game);
-
-console.log(buttonDataObjects);
-console.log( getCollectionKeyValueCount(buttonDataObjects, 'outer', true) );
-console.log( getCollectionKeyValueCount(buttonDataObjects, 'outer', false) );
-
-
+        // create buttons for the current menu
+        var buttonDataObjects = createButtonDataObjects(game);
         // spawn buttons
         var oi = 0, 
         ii = 0,
-        oc = getButtonKeyValueCount(buttonKeys, 'outer', true),
-        ic = getButtonKeyValueCount(buttonKeys, 'outer', false);
-        buttonKeys.forEach(function(buttonKey){
-            var buttonDATA = BUTTON[buttonKey],
-            len = (buttonDATA.outer ? oc : ic),
+        oc = getCollectionKeyValueCount(buttonDataObjects, 'outer', true),
+        ic = getCollectionKeyValueCount(buttonDataObjects, 'outer', false);
+        buttonDataObjects.forEach(function(buttonDATA){
+            var len = (buttonDATA.outer ? oc : ic),
             i = (buttonDATA.outer ? oi : ii),
             ta = Math.PI * 2 / len * (i + 1);
             // use buttonDATA.ta if there is one

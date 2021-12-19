@@ -485,6 +485,7 @@ var gameMod = (function () {
         desc: 'quit',
         outer: true,
         onClick: function(sm, button){
+           sm.game.options.data.menuKey = 'main';
            sm.setState('title');
         }
     };
@@ -492,6 +493,7 @@ var gameMod = (function () {
         desc: 'resume',
         outer: true,
         onClick: function(sm, button){
+           sm.game.options.data.menuKey = 'main';
            sm.game.mode = 'map';
         }
     };
@@ -527,7 +529,10 @@ var gameMod = (function () {
         onClick: function(sm, button){
             console.log('pick up button clicked');
             // for now just going back to map
-            sm.game.mode = 'map';
+            //sm.game.mode = 'map';
+            sm.game.options.data.menuKey = 'pickup';
+            sm.game.options.data.mode = 'enter';
+            createMenu(sm.game);
         }
     };
 
@@ -547,6 +552,15 @@ var gameMod = (function () {
             if(game.player.children.type === 'group'){
                 buttonKeys.push('pickup');
             }
+            return buttonKeys;
+        }
+    };
+
+    MENUS.pickup = {
+        // create an array of keys for hard coded buttons to use
+        buttonKeys : function(game){
+            // default buttonKeys array
+            var buttonKeys = ['resume'];
             return buttonKeys;
         }
     };
@@ -659,6 +673,7 @@ var gameMod = (function () {
                     if(pd.activeButton){
                         pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
                     }else{
+                        sm.game.options.data.menuKey = 'main';
                         sm.game.mode = 'map';
                     }
                 }

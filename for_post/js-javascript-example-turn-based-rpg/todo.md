@@ -136,12 +136,12 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) changes will need to be made to the createMenu helper to make use of a genButtons method as another way to create menu buttons
 * (done) remove old code for cretaing buttons that is no longer used
 
+* in pickup menu key, generate a button for each item in the group
+* have a backToMain button
+
 * when an item button is clicked that item should be transferd to the players pouch and the menu will exit
 * when exiting from pickup menuKey the pickup menu will recreate with up to date buttons
 * if the group is empty clear the cell, and return to main menu key
-
-
-* in the event that a group is empty set the cell unit back to null
 * if the player has one or more items in the pouch a pouch button will show up in the circle menu
 * the player can drop an item to the current cell, cretaing a new group if needed
 

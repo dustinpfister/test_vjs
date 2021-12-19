@@ -129,6 +129,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) I will want a menuPool.data.menuKey prop that will default to 'main'
 * (done) the createMenu helper will need to be a main method that will call one of several menus in a new MENUS const
 * (done) have a MENUS.main.buttonKeys that will create an array of hard coded button keys to use for the main menu
+* (done) one click to circle menu if player is clicked for now
 
 * have a MENUS.pickup.buttonKeys method
 * I will need a MENUS.pickup.genButtons that will create buttons for each item in a current group that the player is over
@@ -142,6 +143,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * in the event that a group is empty set the cell unit back to null
 * if the player has one or more items in the pouch a pouch button will show up in the circle menu
 * the player can drop an item to the current cell, cretaing a new group if needed
+
+
+
 <!-- js/lib/units.js -->
 * rename unit.children to unit.over and make the changes in gameMod also
 

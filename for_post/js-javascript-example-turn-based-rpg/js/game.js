@@ -964,7 +964,7 @@ var gameMod = (function () {
             if (game.mode === 'map' && clickedCell) {
                 // log cell to console
                 utils.log(clickedCell, 'debug');
-                // if player cell is clicked and there is a toIndex value
+                // if player cell is clicked AND there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
                     if(game.toMap.options.length > 1){
                         game.mode = 'menu';
@@ -978,10 +978,22 @@ var gameMod = (function () {
                 // if cell has a unit on it
                 if(clickedCell.unit){
                     var unit = clickedCell.unit;
+                    // enemey clicked
                     if(unit.type === 'enemy'){
                         // set meleeTarget index
                         game.player.meleeTarget = clickedCell.i;
                         game.turnState = 'start';
+                        return;
+                    }
+                    // player clicked but not at map edge
+                    if(unit.type === 'player'){
+                        console.log('player click');
+                        game.mode = 'menu';
+                        game.options.data.mode = 'enter';
+                        createMenu(game);
+                        // set meleeTarget index
+                        //game.player.meleeTarget = clickedCell.i;
+                        //game.turnState = 'start';
                         return;
                     }
                 }

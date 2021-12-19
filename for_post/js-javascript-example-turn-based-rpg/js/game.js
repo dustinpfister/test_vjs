@@ -591,6 +591,17 @@ buttons.push({
         }, 0);
     };
 
+var createButtonDataObjects = function(game){
+    // current menu key
+    var menuKey = menuPool.data.menuKey,
+    menu = MENUS[menuKey];
+    // start with hard coded objects
+    var buttonDataObjects = menu.buttonKeys(game).map(function(bKey){
+        return BUTTON[bKey];
+    });
+    return buttonDataObjects;
+};
+
     // create a menu for the current game state
     var createMenu = function(game){
         // current menu key
@@ -603,6 +614,11 @@ buttons.push({
 
         // create button keys
         var buttonKeys = MENUS[menuKey].buttonKeys(game);
+
+// create buttons for the current menu
+var buttonDataObjects = createButtonDataObjects(game);
+
+console.log(buttonDataObjects);
 
         // spawn buttons
         var oi = 0, 

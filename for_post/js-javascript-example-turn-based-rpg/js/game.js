@@ -586,17 +586,20 @@ var gameMod = (function () {
                           desc: item.subType.split('.')[2] || 'item',
                           outer: true,
                           onClick: function(sm, button){
-                              console.log('item button clicked!');
-                              console.log('groupIndex: ' + i, 'subType: ' + item.subType);
-
                               // splice the item from the group
                               group.pouch.splice(i, 1);
                               // push the item into the player pouch
                               game.player.pouch.push(item);
-
-                              console.log('player pouch: ' + game.player.pouch);
-                              console.log(group.pouch);
+                              // remove group if empty set children prop
+                              // back to a default empty array
+                              if(group.pouch.length === 0){
+                                  game.player.children = [];
+                              }
                               sm.game.mode = 'map';
+                              utils.log('item button clicked!', 'debug');
+                              utils.log('groupIndex: ' + i + ', subType: ' + item.subType, 'debug');
+                              utils.log('player pouch: ' + game.player.pouch, 'debug');
+                              utils.log('group pouch: ' + group.pouch, 'debug');
                           }
                       }
                   });

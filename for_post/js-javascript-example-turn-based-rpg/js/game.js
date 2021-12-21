@@ -463,6 +463,13 @@ var gameMod = (function () {
 /********** **********
      CIRCLE MENU
 *********** *********/
+    // start menu helper
+    var startMenu = function(game, menuKey){
+        game.mode = 'menu';
+        game.options.data.menuKey = menuKey || 'main';
+        game.options.data.mode = 'enter';
+        createMenu(game);
+    };
     // helper to create on click events for direction buttons
     var createMapButtonOnClick = function(dir){
         return function(sm, button){
@@ -527,21 +534,15 @@ var gameMod = (function () {
         desc: 'Pick Up',
         outer: true,
         onClick: function(sm, button){
-            console.log('pick up button clicked');
-            // for now just going back to map
-            //sm.game.mode = 'map';
-            sm.game.options.data.menuKey = 'pickup';
-            sm.game.options.data.mode = 'enter';
-            createMenu(sm.game);
+            startMenu(sm.game, 'pickup');
         }
     };
     BUTTON.to_main = {
         desc: 'To Main',
         outer: true,
         onClick: function(sm, button){
-            sm.game.options.data.menuKey = 'main';
-            sm.game.options.data.mode = 'enter';
-            createMenu(sm.game);
+            // return to main menu key
+            startMenu(sm.game, 'main');
         }
     };
 
@@ -984,13 +985,6 @@ var gameMod = (function () {
         var game = sm.game;
         // pointerDownTime should start at now
         game.pointerDownTime = new Date();
-    };
-    // start menu helper
-    var startMenu = function(game, menuKey){
-        game.mode = 'menu';
-        game.options.data.menuKey = menuKey || 'main';
-        game.options.data.mode = 'enter';
-        createMenu(game);
     };
     // call when a pointer has ended
     api.pointerEnd = function(sm, x, y){

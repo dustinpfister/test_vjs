@@ -633,7 +633,6 @@ var gameMod = (function () {
                     onClick: function(sm, button){
                         game.options.data.menuOpt.itemIndex = i;
                         game.options.data.menuOpt.item = item;
-                        game.options.data.lines = [item.subType];
                         startMenu(sm.game, 'item', {
                             lines: [item.subType]
                         });

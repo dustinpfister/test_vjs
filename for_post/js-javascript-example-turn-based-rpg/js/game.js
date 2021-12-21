@@ -643,7 +643,23 @@ var gameMod = (function () {
         },
         // gen buttons
         genButtons : function(game){
-            return [];
+
+            var i = game.options.data.menuOpt.itemIndex;
+            var item = game.player.pouch[i];
+
+var buttons = [];
+
+buttons.push({
+    desc: 'drop ' + item.subType.split('.')[2],
+    outer: true,
+    onClick: function(sm, button){
+  
+        startMenu(sm.game, 'pouch');
+  
+    }
+})
+
+            return buttons;
         }
     };
 

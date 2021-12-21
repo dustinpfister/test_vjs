@@ -117,12 +117,18 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - rxx - item json files, weapons
 * start a new type of json file format for defining one or more items
 
-## () - r14 - more on pickup, player pouch, equip and drop
-<!-- js/game.js -->
-* meuKey defauts in main on each start
+## () - r15 - equip item in pouch
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
+
+## () - r14 - player pouch, pickup and drop
+<!-- js/game.js -->
+* (done) meuKey defauts in main on each start
+* (done) new startMenu helper
+
+
 * when an item button is clicked that item should be transferd to the players pouch, and the menu should exit
 * after exiting from pickup menuKey, the pickup menu will recreate with up to date buttons
+
 * if the group is empty clear the cell, and return to main menu key
 * I will need a MENUS.pouch
 * if the player has one or more items in the pouch a pouch button will show up in the main menu of the circle menu

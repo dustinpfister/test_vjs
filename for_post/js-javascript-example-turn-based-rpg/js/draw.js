@@ -79,11 +79,20 @@ var drawCell = function(sm, cell){
         ctx.fillStyle = style || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
+    // draw options menu
     api.options = function (sm) {
         var canvas = sm.canvas,
         pool = sm.game.options,
         ctx = sm.ctx,
         opt = {};
+        // into text
+        ctx.fillStyle = 'yellow';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.font = '12px courier';
+        // display menu key
+        var d = pool.data;
+        ctx.fillText('menuKey: ' + d.menuKey, 10, 10);
         // based off of pool-solid draw method in mod-pool.js in Clucker
         pool.objects.forEach(function (obj) {
             ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';
@@ -98,7 +107,7 @@ var drawCell = function(sm, cell){
                 if(obj.data.desc){
                     ctx.fillStyle = 'black';
                     ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
+                    //ctx.textBaseline = 'middle';
                     ctx.font = '9px courier';
                     ctx.fillText(obj.data.desc, cx, cy);
                 }

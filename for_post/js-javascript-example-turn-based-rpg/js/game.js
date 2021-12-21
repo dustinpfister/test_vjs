@@ -629,6 +629,7 @@ var gameMod = (function () {
                     outer: true,
                     onClick: function(sm, button){
                         game.options.data.menuOpt.itemIndex = i;
+                        game.options.data.menuOpt.item = item;
                         startMenu(sm.game, 'item');
                     }
                 }

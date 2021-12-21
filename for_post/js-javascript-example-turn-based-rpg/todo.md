@@ -136,6 +136,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) I will want a menuPool.data.menuOpt
 * (done) use menuPool.data.menuOpt to know what the current item is in the player pouch
 * (done) from the MENUS.item menu the player can drop an item to the current cell, cretaing a new group if needed
+* display item info
 
 ## ( done 12/19/2021 ) - r13 - new circle menu system with more than one menu
 <!-- js/game.js -->

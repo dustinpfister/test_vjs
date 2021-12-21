@@ -129,11 +129,12 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) when an item button is clicked that item should be transferd to the players pouch, and the menu should exit
 * (done) after exiting from pickup menuKey, the pickup menu will recreate with up to date buttons
 * (done) if the group is empty clear the cell, and return to main menu key
-
 * (done) I will need a MENUS.pouch
 * (done) if the player has a pouch button that will show up in the main menu of the circle menu
-* generate a button for each item in the pouch
-* from the pouch menu the player can drop an item to the current cell, cretaing a new group if needed
+* (done) generate a button for each item in the pouch
+
+* I will need a MENUS.item
+* from the MENUS.item menu the player can drop an item to the current cell, cretaing a new group if needed
 
 
 

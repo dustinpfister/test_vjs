@@ -985,6 +985,13 @@ var gameMod = (function () {
         // pointerDownTime should start at now
         game.pointerDownTime = new Date();
     };
+    // start menu helper
+    var startMenu = function(game, menuKey){
+        game.mode = 'menu';
+        game.options.data.menuKey = menuKey || 'main';
+        game.options.data.mode = 'enter';
+        createMenu(game);
+    };
     // call when a pointer has ended
     api.pointerEnd = function(sm, x, y){
         var game = sm.game,
@@ -1011,9 +1018,7 @@ var gameMod = (function () {
                 // if player cell is clicked AND there is a toIndex value
                 if(clickedCell === pCell && game.toMap.index != null){
                     if(game.toMap.options.length > 1){
-                        game.mode = 'menu';
-                        game.options.data.mode = 'enter';
-                        createMenu(game);
+                        startMenu(game, 'main');
                     }else{
                         changeMap(game);
                     }
@@ -1031,11 +1036,7 @@ var gameMod = (function () {
                     }
                     // player clicked but not at map edge
                     if(unit.type === 'player'){
-                        console.log('player click');
-                        game.mode = 'menu';
-                        game.options.data.menuKey = 'main';
-                        game.options.data.mode = 'enter';
-                        createMenu(game);
+                        startMenu(game, 'main');
                         return;
                     }
                 }

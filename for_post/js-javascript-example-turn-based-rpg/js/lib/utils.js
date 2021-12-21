@@ -84,7 +84,7 @@ utils.log = function(mess, type){
     }
     // using console.log for debug also for now
     if(type === 'debug'){
-        console.log(mess);
+        //console.log(mess);
         return;
     }
     // if we get here use console.warn

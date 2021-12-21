@@ -25,7 +25,8 @@
       "x": 4,
       "y": 1,
       "pouch":[
-        {"subType": "weapon.melee.sword", "level": 7}
+        {"subType": "weapon.melee.sword", "level": 7},
+        {"subType": "weapon.melee.sword", "level": 3}
       ]
     }
   ],

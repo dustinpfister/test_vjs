@@ -594,8 +594,11 @@ var gameMod = (function () {
                               // back to a default empty array
                               if(group.pouch.length === 0){
                                   game.player.children = [];
+                                  startMenu(sm.game, 'main');
+                              }else{
+                                  startMenu(sm.game, 'pickup');
                               }
-                              sm.game.mode = 'map';
+                              //sm.game.mode = 'map';
                               utils.log('item button clicked!', 'debug');
                               utils.log('groupIndex: ' + i + ', subType: ' + item.subType, 'debug');
                               utils.log('player pouch: ' + game.player.pouch, 'debug');

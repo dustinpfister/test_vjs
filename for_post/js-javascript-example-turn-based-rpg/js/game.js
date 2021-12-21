@@ -630,6 +630,7 @@ var gameMod = (function () {
                     onClick: function(sm, button){
                         game.options.data.menuOpt.itemIndex = i;
                         game.options.data.menuOpt.item = item;
+                        game.options.data.lines = [item.subType];
                         startMenu(sm.game, 'item');
                     }
                 }
@@ -750,7 +751,8 @@ var gameMod = (function () {
             activeButton: null,   // a ref to the active button to use on 'exit' mode end
             mode: 'enter',        // current mode of the menuPool 'enter', 'exit'
             menuKey: 'main',      // the current menu key
-            menuOpt: {}           // the current options for the current menu
+            menuOpt: {},          // the current options for the current menu
+            lines: []             // lines of text to display for the current menu
         }
     };
     // buttons spawn

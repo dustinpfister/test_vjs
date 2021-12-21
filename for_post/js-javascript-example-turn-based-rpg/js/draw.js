@@ -93,6 +93,9 @@ var drawCell = function(sm, cell){
         // display menu key
         var d = pool.data;
         ctx.fillText('menuKey: ' + d.menuKey, 10, 10);
+        d.lines.forEach(function(line, i){
+            ctx.fillText(line, 10, 10 + 15 * ( i + 1 ));
+        });
         // based off of pool-solid draw method in mod-pool.js in Clucker
         pool.objects.forEach(function (obj) {
             ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';

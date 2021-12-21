@@ -128,8 +128,14 @@ var unitMod = (function () {
             // create and add items to the group
             var pouch = opt.pouch;
             if(pouch){
-                pouch.forEach(function(itemOpt){
-                    group.pouch.push(api.createUnit('item', itemOpt));
+                pouch.forEach(function(obj){
+                    if(obj.type === 'item'){
+                        var item = obj;
+                        group.pouch.push(item);
+                    }else{
+                        var itemOpt = obj;
+                        group.pouch.push(api.createUnit('item', itemOpt));
+                    }
                 });
             }
         }

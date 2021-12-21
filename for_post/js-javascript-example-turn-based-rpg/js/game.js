@@ -643,22 +643,33 @@ var gameMod = (function () {
         },
         // gen buttons
         genButtons : function(game){
-
-            var i = game.options.data.menuOpt.itemIndex;
-            var item = game.player.pouch[i];
-
-var buttons = [];
-
-buttons.push({
-    desc: 'drop ' + item.subType.split('.')[2],
-    outer: true,
-    onClick: function(sm, button){
-  
-        startMenu(sm.game, 'pouch');
-  
-    }
-})
-
+            var i = game.options.data.menuOpt.itemIndex,
+            item = game.player.pouch[i],
+            itemName = item.subType.split('.')[2],
+            buttons = [];
+            // create the drop item button
+            buttons.push({
+                desc: 'drop',
+                outer: true,
+                onClick: function(sm, button){
+                    // check the children prop of the player
+                    var over = game.player.children;
+                    // if it is all ready a group just go ahead and drop it to that group
+                    if(over.type === 'group'){
+                        game.player.pouch.splice(i, 1);
+                        over.pouch.push(item);
+                    }else{
+                        // create a new group if we can
+                        if(over.type === undefined){
+                            game.player.pouch.splice(i, 1);
+                            game.player.children = unitMod.createUnit('group', {
+                                pouch: [item]
+                            });
+                        }
+                    }
+                    startMenu(sm.game, 'pouch');
+                }
+            });
             return buttons;
         }
     };

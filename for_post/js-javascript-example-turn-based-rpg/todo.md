@@ -122,7 +122,7 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/lib/units.js -->
 * rename unit.children to unit.over and make the changes in gameMod also
 
-## () - r14 - player pouch, pickup and drop
+## ( done 12/21/2021 ) - r14 - player pouch, pickup and drop
 <!-- js/game.js -->
 * (done) meuKey defauts in main on each start
 * (done) new startMenu helper
@@ -132,14 +132,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) I will need a MENUS.pouch
 * (done) if the player has a pouch button that will show up in the main menu of the circle menu
 * (done) generate a button for each item in the pouch
-
 * (done) I will need a MENUS.item
 * (done) I will want a menuPool.data.menuOpt
 * (done) use menuPool.data.menuOpt to know what the current item is in the player pouch
-* from the MENUS.item menu the player can drop an item to the current cell, cretaing a new group if needed
-
-
-
+* (done) from the MENUS.item menu the player can drop an item to the current cell, cretaing a new group if needed
 
 ## ( done 12/19/2021 ) - r13 - new circle menu system with more than one menu
 <!-- js/game.js -->

@@ -28,6 +28,15 @@
         {"subType": "weapon.melee.sword", "level": 7},
         {"subType": "weapon.melee.sword", "level": 3}
       ]
+    },
+    {
+      "mi": 3,
+      "x": 6,
+      "y": 3,
+      "pouch":[
+        {"subType": "weapon.melee.sword", "level": 1},
+        {"subType": "weapon.melee.sword", "level": 1}
+      ]
     }
   ],
   "mapWorldUnits" : [

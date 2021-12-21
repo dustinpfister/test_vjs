@@ -1033,11 +1033,9 @@ var gameMod = (function () {
                     if(unit.type === 'player'){
                         console.log('player click');
                         game.mode = 'menu';
+                        game.options.data.menuKey = 'main';
                         game.options.data.mode = 'enter';
                         createMenu(game);
-                        // set meleeTarget index
-                        //game.player.meleeTarget = clickedCell.i;
-                        //game.turnState = 'start';
                         return;
                     }
                 }

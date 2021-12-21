@@ -119,6 +119,7 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - r14 - more on pickup, player pouch, equip and drop
 <!-- js/game.js -->
+* meuKey defauts in main on each start
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
 * when an item button is clicked that item should be transferd to the players pouch, and the menu should exit
 * after exiting from pickup menuKey, the pickup menu will recreate with up to date buttons

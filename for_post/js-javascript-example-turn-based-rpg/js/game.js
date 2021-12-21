@@ -628,10 +628,22 @@ var gameMod = (function () {
                     desc: item.subType.split('.')[2] || 'item',
                     outer: true,
                     onClick: function(sm, button){
-                        startMenu(sm.game, 'pouch');
+                        game.options.data.menuOpt.itemIndex = i;
+                        startMenu(sm.game, 'item');
                     }
                 }
             });
+        }
+    };
+    // the item menu
+    MENUS.item = {
+        // hard coded buttons for item menu
+        buttonKeys : function(game){
+            return ['to_pouch'];
+        },
+        // gen buttons
+        genButtons : function(game){
+            return [];
         }
     };
 
@@ -707,9 +719,10 @@ var gameMod = (function () {
             outerTotal: 1,
             frame: 0,
             maxFrame: 15,
-            activeButton: null,  // a ref to the active button to use on 'exit' mode end
-            mode: 'enter',       // current mode of the menuPool 'enter', 'exit'
-            menuKey: 'main'
+            activeButton: null,   // a ref to the active button to use on 'exit' mode end
+            mode: 'enter',        // current mode of the menuPool 'enter', 'exit'
+            menuKey: 'main',      // the current menu key
+            menuOpt: {}           // the current options for the current menu
         }
     };
     // buttons spawn

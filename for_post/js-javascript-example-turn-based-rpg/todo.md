@@ -124,12 +124,10 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/game.js -->
 * (done) meuKey defauts in main on each start
 * (done) new startMenu helper
+* (done) when an item button is clicked that item should be transferd to the players pouch, and the menu should exit
+* (done) after exiting from pickup menuKey, the pickup menu will recreate with up to date buttons
+* (done) if the group is empty clear the cell, and return to main menu key
 
-
-* when an item button is clicked that item should be transferd to the players pouch, and the menu should exit
-* after exiting from pickup menuKey, the pickup menu will recreate with up to date buttons
-
-* if the group is empty clear the cell, and return to main menu key
 * I will need a MENUS.pouch
 * if the player has one or more items in the pouch a pouch button will show up in the main menu of the circle menu
 * the player can drop an item to the current cell, cretaing a new group if needed

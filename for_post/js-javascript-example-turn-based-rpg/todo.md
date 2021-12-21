@@ -132,7 +132,7 @@ The idea of the library game world is to have a game world that acts as a portal
 
 * I will need a MENUS.pouch
 * if the player has one or more items in the pouch a pouch button will show up in the main menu of the circle menu
-* the player can drop an item to the current cell, cretaing a new group if needed
+* from the pouch menu the player can drop an item to the current cell, cretaing a new group if needed
 
 
 

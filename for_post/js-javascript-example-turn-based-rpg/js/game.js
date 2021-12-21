@@ -500,6 +500,30 @@ var gameMod = (function () {
            sm.game.mode = 'map';
         }
     };
+    // to menu buttons
+    BUTTON.to_pickup = {
+        desc: 'Pick Up',
+        outer: true,
+        onClick: function(sm, button){
+            startMenu(sm.game, 'pickup');
+        }
+    };
+    BUTTON.to_main = {
+        desc: 'To Main',
+        outer: true,
+        onClick: function(sm, button){
+            // return to main menu key
+            startMenu(sm.game, 'main');
+        }
+    };
+    BUTTON.to_pouch = {
+        desc: 'Pouch',
+        outer: true,
+        onClick: function(sm, button){
+            // return to main menu key
+            startMenu(sm.game, 'pouch');
+        }
+    };
     // direction buttons
     BUTTON.map_south = {
         desc: 'South',
@@ -525,38 +549,23 @@ var gameMod = (function () {
         ta: Math.PI * 1,
         onClick: createMapButtonOnClick('west')
     };
-    // player inventory buttons
-    BUTTON.pickup = {
-        desc: 'Pick Up',
-        outer: true,
-        onClick: function(sm, button){
-            startMenu(sm.game, 'pickup');
-        }
-    };
-    BUTTON.to_main = {
-        desc: 'To Main',
-        outer: true,
-        onClick: function(sm, button){
-            // return to main menu key
-            startMenu(sm.game, 'main');
-        }
-    };
+
 
     // MENUS
     var MENUS = {};
-
+    // the main menu
     MENUS.main = {
         // create an array of keys for hard coded buttons to use
         buttonKeys : function(game){
             // default buttonKeys array
-            var buttonKeys = ['quit', 'resume'];
+            var buttonKeys = ['quit', 'resume', 'to_pouch'];
             // appending direction buttons
             buttonKeys = buttonKeys.concat(game.toMap.options.map(function(opt){
                  return 'map_' + opt.dir;
             }));
             // check if the player has items that they can pick up if they want
             if(game.player.children.type === 'group'){
-                buttonKeys.push('pickup');
+                buttonKeys.push('to_pickup');
             }
             return buttonKeys;
         },
@@ -565,7 +574,7 @@ var gameMod = (function () {
             return buttons;
         }
     };
-
+    // the pick up item menu
     MENUS.pickup = {
         // create an array of keys for hard coded buttons to use
         buttonKeys : function(game){
@@ -604,6 +613,18 @@ var gameMod = (function () {
                   });
              }
              return [];
+        }
+    };
+    // the pouch menu
+    MENUS.pouch = {
+        // hard coded buttons for pouch menu
+        buttonKeys : function(game){
+            return ['to_main'];
+        },
+        // gen buttons
+        genButtons : function(){
+            var buttons = [];
+            return buttons;
         }
     };
 

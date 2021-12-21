@@ -460,10 +460,13 @@ var gameMod = (function () {
      CIRCLE MENU
 *********** *********/
     // start menu helper
-    var startMenu = function(game, menuKey){
+    var startMenu = function(game, menuKey, opt){
+        opt = opt || {};
         game.mode = 'menu';
-        game.options.data.menuKey = menuKey || 'main';
-        game.options.data.mode = 'enter';
+        var d = game.options.data;
+        d.menuKey = menuKey || 'main';
+        d.mode = 'enter';
+        d.lines = opt.lines || [];
         createMenu(game);
     };
     // helper to create on click events for direction buttons
@@ -631,7 +634,9 @@ var gameMod = (function () {
                         game.options.data.menuOpt.itemIndex = i;
                         game.options.data.menuOpt.item = item;
                         game.options.data.lines = [item.subType];
-                        startMenu(sm.game, 'item');
+                        startMenu(sm.game, 'item', {
+                            lines: [item.subType]
+                        });
                     }
                 }
             });

@@ -134,8 +134,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) generate a button for each item in the pouch
 
 * (done) I will need a MENUS.item
-* I will want a menuPool.data.menuOpt
-* use menuPool.data.menuOpt to know what the current item is in the player pouch
+* (done) I will want a menuPool.data.menuOpt
+* (done) use menuPool.data.menuOpt to know what the current item is in the player pouch
 * from the MENUS.item menu the player can drop an item to the current cell, cretaing a new group if needed
 
 

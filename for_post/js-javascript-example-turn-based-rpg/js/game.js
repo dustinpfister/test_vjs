@@ -622,9 +622,16 @@ var gameMod = (function () {
             return ['to_main'];
         },
         // gen buttons
-        genButtons : function(){
-            var buttons = [];
-            return buttons;
+        genButtons : function(game){
+            return game.player.pouch.map(function(item, i){     
+                return {
+                    desc: item.subType.split('.')[2] || 'item',
+                    outer: true,
+                    onClick: function(sm, button){
+                        startMenu(sm.game, 'pouch');
+                    }
+                }
+            });
         }
     };
 

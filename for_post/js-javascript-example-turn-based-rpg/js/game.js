@@ -566,15 +566,6 @@ var gameMod = (function () {
         },
         genButtons : function(){
             var buttons = [];
-/*
-            buttons.push({
-                desc: 'gen',
-                outer: true,
-                onClick: function(sm, button){
-                    sm.game.mode = 'map';
-                }
-            });
-*/
             return buttons;
         }
     };
@@ -587,13 +578,24 @@ var gameMod = (function () {
             return buttonKeys;
         },
         genButtons: function(game){
+             var group = game.player.children; 
              // gen a button for each item
-             if(game.player.children.type === 'group'){
-                  return game.player.children.pouch.map(function(item){     
+             if(group.type === 'group'){
+                  return group.pouch.map(function(item, i){     
                       return {
                           desc: item.subType.split('.')[2] || 'item',
                           outer: true,
                           onClick: function(sm, button){
+                              console.log('item button clicked!');
+                              console.log('groupIndex: ' + i, 'subType: ' + item.subType);
+
+                              // splice the item from the group
+                              group.pouch.splice(i, 1);
+                              // push the item into the player pouch
+                              game.player.pouch.push(item);
+
+                              console.log('player pouch: ' + game.player.pouch);
+                              console.log(group.pouch);
                               sm.game.mode = 'map';
                           }
                       }

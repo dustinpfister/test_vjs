@@ -6,25 +6,43 @@
         <canvas id="the-canvas" width="320" height="240"></canvas>
         <script src="dist.js"></script>
         <script>
-
-var rnd_skew = function(skew){
-    skew = skew || 0;
-    return Math.pow(2, Math.log(skew) / Math.log(2) * Math.random() );
+// https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
+var MIN_NUMBER = 0, MAX_NUMBER = 1;
+function skew(skewTo,stdDev){
+    var rand = (Math.random() * 2 - 1) + (Math.random() * 2 - 1) + (Math.random() * 2 - 1);
+    return skewTo + rand*stdDev;
 };
 
+function getRandom(skewTo){
+    var difference = Math.min(skewTo-MIN_NUMBER, MAX_NUMBER-skewTo);
+    var steps = 5;
+    var total = 0.0;
+    for(var i=1; i<=steps; i++){
+        total += skew(skewTo, 1.0 * i * difference / steps);
+    }
+    return total/steps
+};
 
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
 // create bars array
-var bars = [0,0,0,0,0,0,0,0,0,0],
+var bars = [0,0,0,0,0,0,0,0,0,0, 0],
 bLen = bars.length;
-var i = 0, len = 1000, bi;
+var i = 0, len = 10000, bi;
 while(i < len){
-    bi = Math.floor( Math.random() * bLen );
+    //bi = Math.floor( Math.random() * bLen );
+    bi = Math.floor( getRandom(0.5) * bLen );
+	bi = bi < 0 ? 0: bi;
+	bi = bi >= bLen ? bLen - 1 : bi;
     bars[bi] = bars[bi] += 1;
+	if(String(bars[bi]) === 'NaN'){
+	console.log('NaN');
+	    console.log(bi)
+	}
     i += 1;
 }
+console.log(bars);
 
 // draw bars
 var max = Math.max.apply(null, bars);

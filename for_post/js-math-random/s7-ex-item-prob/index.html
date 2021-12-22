@@ -4,51 +4,20 @@
     </head>
     <body>
         <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="item-class.js"></script>
         <script>
-// create ITEM Classes object
-var createClasses = function(opt){
-    opt = opt || {};
-    opt.pool = opt.pool || [];
-    // get total points
-    opt.totalPoints = opt.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
-    // set 0-1 numbs for each itemClasses object
-    opt.pool = opt.pool.map( function(obj, i){ obj.per = obj.points / opt.totalPoints; obj.i = i; return obj; } );
-    return opt;
-};
-// GET a random ITEM classes object
-var getRandomItemClass = function(classes){
-    var i = 0,
-    len = classes.pool.length
-    roll = Math.random(),
-    n = 1
-    while(i < len){
-        var item = classes.pool[i];
-        n -= item.per;
-        if(roll > n){
-            return item;
-        }
-        i += 1;
-    }
-    return item;
-};
 // DEMO
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 // creating a item classes obect
-var items = createClasses({pool: [
-   { desc: 'Junk', points: 1000 },
-   { desc: 'Common', points: 250 },
-   { desc: 'Fair', points: 160 },
-   { desc: 'Rare', points: 80 },
-   { desc: 'Epic', points: 15}
-]});
+var items = itemClass.create();
 // create bars array
 var bars = [0,0,0,0,0],
 bLen = bars.length;
 var i = 0, len = 1000, bi;
 while(i < len){
-    var item = getRandomItemClass(items);
-    bi = getRandomItemClass(items).i;
+    var item = itemClass.getRandomItemClass(items);
+    bi = item.i;
     bars[bi] = bars[bi] += 1;
     i += 1;
 }

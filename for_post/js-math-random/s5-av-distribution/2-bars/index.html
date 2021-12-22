@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Math random</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="dist.js"></script>
+        <script>
+
+var rnd_skew = function(skew){
+    skew = skew || 0;
+    return Math.pow(2, Math.log(skew) / Math.log(2) * Math.random() );
+};
+
+
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+// create bars array
+var bars = [0,0,0,0,0,0,0,0,0,0],
+bLen = bars.length;
+var i = 0, len = 1000, bi;
+while(i < len){
+    bi = Math.floor( Math.random() * bLen );
+    bars[bi] = bars[bi] += 1;
+    i += 1;
+}
+
+// draw bars
+var max = Math.max.apply(null, bars);
+ctx.fillStyle = 'lime';
+bars.forEach(function(ct, i){
+   var p = ct / max;
+   ctx.fillRect(0, 21 * i, 320 * p, 20 )
+});
+
+/*
+var dist = (function () {
+    var api = function (count, w, h, method) {
+        count = count === undefined ? 100 : count;
+        w = w === undefined ? 320 : w;
+        h = h === undefined ? 240 : h;
+        method = method || api.methodOne;
+        var points = [],
+        i = count;
+        while (i--) {
+            points.push(method(i, w, h));
+        }
+        return points;
+    };
+    api.methodOne = function (i, w, h) {
+        return {
+            x: Math.floor(Math.random() * w),
+            y: Math.floor(Math.random() * h)
+        };
+    };
+    api.methodTwo = function (i, w, h) {
+        return {
+            x: Math.pow(2, Math.log(w) / Math.log(2) * Math.random()),
+            y: Math.pow(2, Math.log(h) / Math.log(2) * Math.random())
+        };
+    };
+    return api;
+}
+    ());
+
+
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d'),
+points1 = dist(1000, 150, 200, dist.methodOne);
+points2 = dist(1000, 150, 200, dist.methodTwo);
+
+var drawPoints = function (points, ctx, fill, sx, sy) {
+    ctx.fillStyle = fill || 'green';
+    sx = sx === undefined ? 0 : sx;
+    sy = sy === undefined ? 0 : sy;
+    points.forEach(function (pt) {
+        ctx.beginPath();
+        ctx.arc(sx + pt.x, sy + pt.y, 5, 0, Math.PI * 2);
+        ctx.fill();
+    });
+};
+
+drawPoints(points1, ctx, 'red');
+drawPoints(points2, ctx, 'green', 150);
+*/
+        </script>
+    </body>
+</html>

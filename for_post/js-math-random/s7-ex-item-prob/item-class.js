@@ -12,12 +12,13 @@ var itemClass = (function(){
     // create ITEM Classes object
     api.create = function(opt){
         opt = opt || {};
-        opt.pool = opt.pool || DEFAULT_POOL;
+        var classes = {};
+        classes.pool = opt.pool || DEFAULT_POOL;
         // get total points
-        opt.totalPoints = opt.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
+        classes.totalPoints = classes.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
         // set 0-1 numbs for each itemClasses object
-        opt.pool = opt.pool.map( function(obj, i){ obj.per = obj.points / opt.totalPoints; obj.i = i; return obj; } );
-        return opt;
+        classes.pool = classes.pool.map( function(obj, i){ obj.per = obj.points / classes.totalPoints; obj.i = i; return obj; } );
+        return classes;
     };
     // GET a random ITEM classes object
     api.getRandomItemClass = function(classes){

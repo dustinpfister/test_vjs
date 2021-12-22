@@ -1,5 +1,7 @@
 # js-math-random todo list
 
+## () - expand av-distribution
+
 ## () - new section on a canvas project
 * inject it in the top of the post
 
@@ -18,6 +20,10 @@
 ```
 https://stackoverflow.com/questions/52089553/what-are-the-chances-of-math-random-returning-0
 ```
+
+## () - new ex-item-prob section
+* start a new section that has to do with the probability of an item
+
 
 ## (done 11/30/2021 ) - expand av-range section
 * (done) 2-range-per example that is a range function that takes an 0-1 argument

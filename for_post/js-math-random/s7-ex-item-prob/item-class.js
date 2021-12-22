@@ -35,6 +35,6 @@ var itemClass = (function(){
         }
         return item;
     };
- 
+    // return the public api
     return api;
 }());

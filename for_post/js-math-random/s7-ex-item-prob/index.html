@@ -11,9 +11,9 @@ var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 // creating a item classes object
 var items = itemClass.create({
-   levelPer: 1,
-   levelPerRatio: 0.25,
-   pool: [
+   levelPer: 1,             // the current global level for item drops
+   levelPerRatio: 0.25,     // the ratio 0-1 that is the amount that the global levelPer effects points for each item class
+   pool: [                  // pool defining values for each class
      {desc: 'Junk', range: [1000, 300], levelPer: 0.25},
      {desc: 'Common', range: [100, 800], levelPer: 0.5},
      {desc: 'Epic', range: [10, 100], levelPer: 1}

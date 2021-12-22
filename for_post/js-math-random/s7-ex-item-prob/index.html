@@ -14,6 +14,7 @@ var items = itemClass.create();
 // create bars array
 var bars = items.pool.map(function(item){
     return {
+       i: item.i,
        desc: item.desc,
        count: 0
     };
@@ -29,14 +30,21 @@ while(i < len){
 }
 // draw bars
 var max = Math.max.apply(null, bars.map(function(bar){ return bar.count;}));
+ctx.fillStyle = '#afafaf';
+ctx.fillRect(0,0,canvas.width, canvas.height);
+var barHeight = canvas.height / bLen - 5;
 bars.forEach(function(bar, i){
    var p = bar.count / max,
-   y = 21 * i;
+   y = canvas.height / bLen * i;
    ctx.fillStyle = 'lime';
-   ctx.fillRect(0, y, 320 * p, 20 );
+   ctx
+   ctx.beginPath();
+   ctx.rect(0, y, canvas.width * p, barHeight );
+   ctx.fill();
+   ctx.stroke();
    ctx.fillStyle = 'black';
    ctx.textBaseline = 'middle';
-   ctx.fillText(bar.desc, 10, y + 10);
+   ctx.fillText(bar.i + ') ' +bar.desc, 10, y + barHeight / 2);
 });
         </script>
     </body>

@@ -1,5 +1,5 @@
 var itemClass = (function(){
-    // creating a item classes object
+    // default pool of objects for each item class
     var DEFAULT_POOL = [
         { desc: 'Junk', points: 1000 },
         { desc: 'Common', points: 250 },
@@ -7,9 +7,8 @@ var itemClass = (function(){
         { desc: 'Rare', points: 80 },
         { desc: 'Epic', points: 15}
     ]
- 
+    // public api
     var api = {};
- 
     // create ITEM Classes object
     api.create = function(opt){
         opt = opt || {};

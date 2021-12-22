@@ -12,21 +12,31 @@ ctx = canvas.getContext('2d');
 // creating a item classes object
 var items = itemClass.create();
 // create bars array
-var bars = [0,0,0,0,0],
+var bars = items.pool.map(function(item){
+    return {
+       desc: item.desc,
+       count: 0
+    };
+}),
 bLen = bars.length;
 var i = 0, len = 1000, bi;
 while(i < len){
     var item = itemClass.getRandomItemClass(items);
     bi = item.i;
-    bars[bi] = bars[bi] += 1;
+    var bar = bars[bi];
+     bar.count += 1;
     i += 1;
 }
 // draw bars
-var max = Math.max.apply(null, bars);
-ctx.fillStyle = 'lime';
-bars.forEach(function(ct, i){
-   var p = ct / max;
-   ctx.fillRect(0, 21 * i, 320 * p, 20 )
+var max = Math.max.apply(null, bars.map(function(bar){ return bar.count;}));
+bars.forEach(function(bar, i){
+   var p = bar.count / max,
+   y = 21 * i;
+   ctx.fillStyle = 'lime';
+   ctx.fillRect(0, y, 320 * p, 20 );
+   ctx.fillStyle = 'black';
+   ctx.textBaseline = 'middle';
+   ctx.fillText(bar.desc, 10, y + 10);
 });
         </script>
     </body>

@@ -10,7 +10,10 @@
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 // creating a item classes object
-var items = itemClass.create();
+var items = itemClass.create({
+   levelPer: 0.5,
+   
+});
 // create bars array
 var bars = items.pool.map(function(item){
     return {

@@ -5,8 +5,7 @@
     <body>
         <canvas id="the-canvas" width="320" height="240"></canvas>
         <script>
-
-// create Classes object
+// create ITEM Classes object
 var createClasses = function(opt){
     opt = opt || {};
     opt.pool = opt.pool || [];
@@ -16,7 +15,7 @@ var createClasses = function(opt){
     opt.pool = opt.pool.map( function(obj, i){ obj.per = obj.points / opt.totalPoints; obj.i = i; return obj; } );
     return opt;
 };
-
+// GET a random ITEM classes object
 var getRandomItemClass = function(classes){
     var i = 0,
     len = classes.pool.length
@@ -32,32 +31,27 @@ var getRandomItemClass = function(classes){
     }
     return item;
 };
-
-var items = createClasses({pool: [
-   { desc: 'Junk', points: 1000 },
-   { desc: 'Common', points: 100 },
-   { desc: 'Fair', points: 60 },
-   { desc: 'Rare', points: 20 },
-   { desc: 'Epic', points: 5}
-]});
-
 // DEMO
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-
+// creating a item classes obect
+var items = createClasses({pool: [
+   { desc: 'Junk', points: 1000 },
+   { desc: 'Common', points: 250 },
+   { desc: 'Fair', points: 160 },
+   { desc: 'Rare', points: 80 },
+   { desc: 'Epic', points: 15}
+]});
 // create bars array
 var bars = [0,0,0,0,0],
 bLen = bars.length;
 var i = 0, len = 1000, bi;
 while(i < len){
-    //bi = Math.floor( Math.random() * bLen );
-    //bi = Math.floor( getRandom(0.25) * bLen );
     var item = getRandomItemClass(items);
     bi = getRandomItemClass(items).i;
     bars[bi] = bars[bi] += 1;
     i += 1;
 }
-
 // draw bars
 var max = Math.max.apply(null, bars);
 ctx.fillStyle = 'lime';
@@ -65,7 +59,6 @@ bars.forEach(function(ct, i){
    var p = ct / max;
    ctx.fillRect(0, 21 * i, 320 * p, 20 )
 });
-
         </script>
     </body>
 </html>

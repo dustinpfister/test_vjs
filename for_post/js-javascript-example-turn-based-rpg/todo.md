@@ -108,6 +108,9 @@ The idea of the library game world is to have a game world that acts as a portal
     ITEMS AND DROPS - item json files
 ********** *******-->
 
+## () - rxx - make use of item-class.js
+* make use of the item-class.js file from js-math-random for post folder
+
 ## () - rxx - enemy unit item drops, and enemy unit inventory
 * when the player moves over an 'item' or 'itemStack' this should cause the 'circle menu' to show up
 * a new button should show up in the circle menu called 'drops'

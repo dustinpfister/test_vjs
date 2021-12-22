@@ -1,11 +1,11 @@
 var itemClass = (function(){
     // default pool of objects for each item class
     var DEFAULT_POOL = [
-        { desc: 'Junk', points: 1000 },
-        { desc: 'Common', points: 250 },
-        { desc: 'Fair', points: 160 },
-        { desc: 'Rare', points: 80 },
-        { desc: 'Epic', points: 15}
+        { desc: 'Junk', color: '#efefef', points: 1000 },
+        { desc: 'Common', color: 'lime', points: 250 },
+        { desc: 'Fair', color: 'blue', points: 160 },
+        { desc: 'Rare', color: 'orange', points: 80 },
+        { desc: 'Epic', color: 'purple', points: 15}
     ]
     // public api
     var api = {};

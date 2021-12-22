@@ -3,7 +3,7 @@
         <title>Math random</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <canvas id="the-canvas" width="640" height="480"></canvas>
         <script src="item-class.js"></script>
         <script>
 // DEMO
@@ -15,6 +15,7 @@ var items = itemClass.create();
 var bars = items.pool.map(function(item){
     return {
        i: item.i,
+       color: item.color,
        desc: item.desc,
        count: 0
     };
@@ -32,12 +33,14 @@ while(i < len){
 var max = Math.max.apply(null, bars.map(function(bar){ return bar.count;}));
 ctx.fillStyle = '#afafaf';
 ctx.fillRect(0,0,canvas.width, canvas.height);
+ctx.font = '20px arial';
+ctx.lineWidth = 3;
 var barHeight = canvas.height / bLen - 5;
 bars.forEach(function(bar, i){
    var p = bar.count / max,
    y = canvas.height / bLen * i;
-   ctx.fillStyle = 'lime';
-   ctx
+   ctx.fillStyle = bar.color || 'lime';
+   ctx.strokeStyle = '#4a4a4a';
    ctx.beginPath();
    ctx.rect(0, y, canvas.width * p, barHeight );
    ctx.fill();

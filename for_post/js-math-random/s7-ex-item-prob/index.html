@@ -5,20 +5,26 @@
     <body>
         <canvas id="the-canvas" width="320" height="240"></canvas>
         <script>
-// item classes
-var itemClasses = [
-   { desc: 'junk', points: 1000 },
-   { desc: 'common', points: 280 },
-   { desc: 'fair', points: 160 },
-   { desc: 'rare', points: 80 },
-   { desc: 'Epic', points: 10}
-];
-// get total points
-var totalPoints = itemClasses.reduce( function(acc, obj){ return acc + obj.points;}, 0);
-// set 0-1 numbs for each itemClasses object
-itemClasses = itemClasses.map( function(obj){ obj.per = obj.points / totalPoints; return obj; } );
 
-console.log(itemClasses);
+
+var createClasses = function(opt){
+    opt = opt || {};
+    opt.pool = opt.pool || [];
+    // get total points
+    opt.totalPoints = opt.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
+    // set 0-1 numbs for each itemClasses object
+    opt.pool = opt.pool.map( function(obj){ obj.per = obj.points / opt.totalPoints; return obj; } );
+    return opt;
+};
+
+var items = createClasses({pool: [
+   { desc: 'Junk', points: 1000 },
+   { desc: 'Common', points: 280 },
+   { desc: 'Fair', points: 160 },
+   { desc: 'Rare', points: 80 },
+   { desc: 'Epic', points: 10}
+]});
+console.log(items);
 
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');

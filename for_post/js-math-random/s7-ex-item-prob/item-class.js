@@ -11,22 +11,31 @@ var itemClass = (function(){
     DEFAULT_POOL = DEFAULT_POOL.map(function(obj, i){ obj.color = DEFAULT_COLORS[i] || 'white'; return obj;  })
     // public api
     var api = {};
-    // create ITEM Classes object
-    api.create = function(opt){
-        opt = opt || {};
-        var classes = {
-            levelPer: opt.levelPer || 0
-        };
-        // use given pool array or default starting pool
-        classes.pool = opt.pool || DEFAULT_POOL;
-        // parse given pool collection
-        classes.pool = classes.pool.map(function(obj, i){
-            obj.range = obj.range || [1,1];
-            obj.points = obj.range[0] + (obj.range[1] - obj.range[0]) * classes.levelPer;
+    // parse pool helper
+    var parsePool = function(classes){
+        return classes.pool.map(function(obj, i){
+            obj.range = obj.range || [1, 1];
+            var min = obj.range[0],
+            max = obj.range[1], level;
+            obj.levelPer = obj.levelPer === undefined ? 0 : obj.levelPer;
+            level = classes.levelPer * classes.levelPerRatio + (1 - classes.levelPerRatio) * obj.levelPer;
+            obj.points = min + (max - min) * level;
             obj.desc = obj.desc || '';
             obj.color = obj.color || DEFAULT_COLORS[i] || 'white';
             return obj;
         });
+    };
+    // create ITEM Classes object
+    api.create = function(opt){
+        opt = opt || {};
+        var classes = {
+            levelPer: opt.levelPer || 0,
+            levelPerRatio: opt.levelPerRatio === undefined ? 1 : opt.levelPerRatio
+        };
+        // use given pool array or default starting pool
+        classes.pool = opt.pool || DEFAULT_POOL;
+        // parse given pool collection
+        classes.pool = parsePool(classes);
         // get total points
         classes.totalPoints = classes.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
         // set 0-1 numbs for each itemClasses object

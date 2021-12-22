@@ -12,10 +12,11 @@ ctx = canvas.getContext('2d');
 // creating a item classes object
 var items = itemClass.create({
    levelPer: 1,
+   levelPerRatio: 0.25,
    pool: [
-     {desc: 'Junk', range: [1000, 300]},
-     {desc: 'Common', range: [100, 800]},
-     {desc: 'Epic', range: [10, 50]}
+     {desc: 'Junk', range: [1000, 300], levelPer: 0.25},
+     {desc: 'Common', range: [100, 800], levelPer: 0.5},
+     {desc: 'Epic', range: [10, 100], levelPer: 1}
    ]
 });
 // create bars array

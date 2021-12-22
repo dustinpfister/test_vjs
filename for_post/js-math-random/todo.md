@@ -21,6 +21,9 @@
 https://stackoverflow.com/questions/52089553/what-are-the-chances-of-math-random-returning-0
 ```
 
+## () - break down ex-item-prob
+* break down the index.html file into a items.js, draw.js, main.js and index.html files
+
 ## (done 12/22/2021 ) - new ex-item-prob section
 * () start a new section that has to do with the probability of an item
 

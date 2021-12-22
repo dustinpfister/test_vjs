@@ -40,10 +40,8 @@ var items = createClasses({pool: [
    { desc: 'Rare', points: 20 },
    { desc: 'Epic', points: 5}
 ]});
-console.log(items);
 
-console.log(getRandomItemClass(items))
-
+// DEMO
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 
@@ -68,56 +66,6 @@ bars.forEach(function(ct, i){
    ctx.fillRect(0, 21 * i, 320 * p, 20 )
 });
 
-/*
-var dist = (function () {
-    var api = function (count, w, h, method) {
-        count = count === undefined ? 100 : count;
-        w = w === undefined ? 320 : w;
-        h = h === undefined ? 240 : h;
-        method = method || api.methodOne;
-        var points = [],
-        i = count;
-        while (i--) {
-            points.push(method(i, w, h));
-        }
-        return points;
-    };
-    api.methodOne = function (i, w, h) {
-        return {
-            x: Math.floor(Math.random() * w),
-            y: Math.floor(Math.random() * h)
-        };
-    };
-    api.methodTwo = function (i, w, h) {
-        return {
-            x: Math.pow(2, Math.log(w) / Math.log(2) * Math.random()),
-            y: Math.pow(2, Math.log(h) / Math.log(2) * Math.random())
-        };
-    };
-    return api;
-}
-    ());
-
-
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d'),
-points1 = dist(1000, 150, 200, dist.methodOne);
-points2 = dist(1000, 150, 200, dist.methodTwo);
-
-var drawPoints = function (points, ctx, fill, sx, sy) {
-    ctx.fillStyle = fill || 'green';
-    sx = sx === undefined ? 0 : sx;
-    sy = sy === undefined ? 0 : sy;
-    points.forEach(function (pt) {
-        ctx.beginPath();
-        ctx.arc(sx + pt.x, sy + pt.y, 5, 0, Math.PI * 2);
-        ctx.fill();
-    });
-};
-
-drawPoints(points1, ctx, 'red');
-drawPoints(points2, ctx, 'green', 150);
-*/
         </script>
     </body>
 </html>

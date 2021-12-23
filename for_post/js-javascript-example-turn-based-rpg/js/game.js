@@ -673,6 +673,10 @@ var gameMod = (function () {
                             });
                         }
                     }
+                    // if item is the current weapon
+                    if(item === game.player.currentWeapon){
+                        game.player.currentWeapon = null;
+                    }
                     startMenu(sm.game, 'pouch');
                 }
             });

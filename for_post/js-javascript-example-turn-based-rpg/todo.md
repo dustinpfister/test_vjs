@@ -142,7 +142,8 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/draw.js -->
 * (done) display current weapon info with at least base attack
 * (done) display unarmed if the player has no weapon
-* in item menu I will need to display current stat info for the current weapon
+* in item menu I will need to display player.currentWeapon info
+* in item menu I will need to display menuOpt.item info
 
 
 ## ( done 12/21/2021 ) - r14 - player pouch, pickup and drop

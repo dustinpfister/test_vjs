@@ -119,16 +119,19 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - rxx - item json files, weapons
 * start a new type of json file format for defining one or more items
+<!-- js/lib/units.js -->
+* rename unit.children to unit.over and make the changes in gameMod also
+
 
 ## () - r15 - plyaer starting items, equip item in pouch
 <!-- js/game.js -->
 * (done) when the player drops the currentWeapon set the currentWeapon prop to null
+* add an equip button to MENUS.item
 
 * set limit for number of items the player can carry in the pouch
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
 <!-- js/lib/units.js -->
 * (done) have a starting weapon for the player in the player pouch and make that the current weapon
-* rename unit.children to unit.over and make the changes in gameMod also
 <!-- js/draw.js -->
 * (done) display current weapon info with at least base attack
 * display unarmed if the player has no weapon

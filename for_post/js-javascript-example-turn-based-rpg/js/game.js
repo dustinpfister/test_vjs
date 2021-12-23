@@ -642,10 +642,40 @@ var gameMod = (function () {
         }
     };
     // the item menu
+    BUTTON.item_drop = {
+        desc: 'drop',
+        outer: true,
+        onClick: function(sm, button){
+            var game = sm.game,
+            i = game.options.data.menuOpt.itemIndex,
+            item = game.player.pouch[i],
+            itemName = item.subType.split('.')[2];
+            // check the children prop of the player
+            var over = game.player.children;
+            // if it is all ready a group just go ahead and drop it to that group
+            if(over.type === 'group'){
+                game.player.pouch.splice(i, 1);
+                over.pouch.push(item);
+            }else{
+                // create a new group if we can
+                if(over.type === undefined){
+                    game.player.pouch.splice(i, 1);
+                    game.player.children = unitMod.createUnit('group', {
+                        pouch: [item]
+                    });
+                }
+            }
+            // if item is the current weapon
+            if(item === game.player.currentWeapon){
+                game.player.currentWeapon = null;
+            }
+            startMenu(sm.game, 'pouch');
+        }
+    };
     MENUS.item = {
         // hard coded buttons for item menu
         buttonKeys : function(game){
-            return ['to_pouch'];
+            return ['to_pouch', 'item_drop'];
         },
         // gen buttons
         genButtons : function(game){
@@ -653,6 +683,7 @@ var gameMod = (function () {
             item = game.player.pouch[i],
             itemName = item.subType.split('.')[2],
             buttons = [];
+/*
             // create the drop item button
             buttons.push({
                 desc: 'drop',
@@ -680,6 +711,7 @@ var gameMod = (function () {
                     startMenu(sm.game, 'pouch');
                 }
             });
+*/
             return buttons;
         }
     };

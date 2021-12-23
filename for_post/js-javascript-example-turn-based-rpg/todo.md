@@ -122,12 +122,14 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - r15 - plyaer starting items, equip item in pouch
 <!-- js/game.js -->
-* have a number of starting items for the player
+* have a starting weapon for the player in the player pouch and make that the current weapon
 
 * set limit for number of items the player can carry in the pouch
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
 <!-- js/lib/units.js -->
 * rename unit.children to unit.over and make the changes in gameMod also
+<!-- js/draw.js -->
+* display current weapon info
 
 ## ( done 12/21/2021 ) - r14 - player pouch, pickup and drop
 <!-- js/game.js -->

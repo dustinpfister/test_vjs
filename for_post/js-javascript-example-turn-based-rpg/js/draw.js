@@ -175,34 +175,6 @@ var drawCell = function(sm, cell){
         ctx.fillText('attack: ' + p.attack[0] + ' - ' + p.attack[1], 5, getY(2));
         ctx.fillText('defense: ' + p.baseDefense[0] + ' - ' + p.baseDefense[1], 5, getY(3));
     };
-/*
-    api.info = function (sm) {
-        var ctx = sm.ctx,
-        pos = sm.input.pos,
-        pCell = gameMod.getPlayerCell(sm.game),
-        canvas = sm.canvas,
-        dy = 12;
-        // text style
-        ctx.fillStyle = 'yellow';
-        ctx.font = '10px courier';
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        // draw current pointer position
-        ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, 5 + dy * 0);
-        // player cell pos
-        ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, 5 + dy * 1);
-        // to map values
-        var tm = sm.game.toMap;
-        ctx.fillText('toMap: mi:' + tm.index + ', x: ' + tm.x + ', y: ' + tm.y, 5, 5 + dy * 2);
-        ctx.fillText('toMap.options:' + JSON.stringify(tm.options.map(function(opt){ 
-            return opt.dir + '(' + opt.x + ',' + opt.y + ');' + opt.mi;
-        })) , 5, 5 + dy * 3);
-        // turn number and turnChange bool
-        ctx.fillText('turn:' + sm.game.turn + ', turnState: ' + sm.game.turnState, 5, 5 + dy * 4);
-        // enemies
-        ctx.fillText('enemies:' + sm.game.remainingEnemies, 5, 5 + dy * 5);
-    };
-*/
     // return the public api to draw variable
     return api;
 }

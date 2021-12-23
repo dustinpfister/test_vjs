@@ -118,12 +118,15 @@ The idea of the library game world is to have a game world that acts as a portal
 
 
 ## () - r16 - item json files, weapons
-* start a new type of json file format for defining one or more items
+<!-- json/items-junk-weapons.json -->
+* start a new type of json file format for defining at least two items for the game
+
 <!-- js/game.js -->
 * (done) fix bug where an enemy that dies over a group ends up deleteing the group
 * button subtext
 
 <!-- js/lib/units.js -->
+* I will need a way to load items into the ITEMS global from json files
 * set limit for number of items the player can carry in the pouch
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
 * rename unit.children to unit.over and make the changes in gameMod also

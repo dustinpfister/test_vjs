@@ -672,10 +672,18 @@ var gameMod = (function () {
             startMenu(sm.game, 'pouch');
         }
     };
+    BUTTON.item_equip = {
+        desc: 'equip',
+        outer: true,
+        onClick: function(sm, button){
+            
+            startMenu(sm.game, 'pouch');
+        }
+    };
     MENUS.item = {
         // hard coded buttons for item menu
         buttonKeys : function(game){
-            return ['to_pouch', 'item_drop'];
+            return ['to_pouch', 'item_drop', 'item_equip'];
         },
         genButtons : function(game){
             return [];

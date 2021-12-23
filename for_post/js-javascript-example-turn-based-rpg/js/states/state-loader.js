@@ -59,6 +59,7 @@ sm.states.loader = {
         utils.log('loaded: ' + jl.loaded + ' / ' + jl.count, 'debug');
         utils.log('errors: ' + jl.errorCount, 'debug');
         utils.log(jl.errors, 'debug');
+        utils.log(sm.data, 'debug');
         utils.log('**********', 'debug');
     },
     update: function(sm, secs){

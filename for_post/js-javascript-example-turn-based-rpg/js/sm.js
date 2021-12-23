@@ -28,7 +28,8 @@
                 baseURL: './json',
                 fileNames: [
                     'world-home',
-                    'world-forest'
+                    'world-forest',
+                    'items-home'
                 ]
             }
         },

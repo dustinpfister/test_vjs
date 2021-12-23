@@ -165,7 +165,7 @@ var unitMod = (function () {
             };
 
 // starting item for player
-var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
+var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 2});
 player.pouch.push(startItem);
 
             // starting weapon for the player

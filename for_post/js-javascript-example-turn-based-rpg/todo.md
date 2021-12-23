@@ -127,8 +127,13 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/game.js -->
 * (done) when the player drops the currentWeapon set the currentWeapon prop to null
 * (done) start an equip button to MENUS.item
-* I will want a new wait mode for menuPool.data.mode
-* when then enter mode is compleate the mode will progress to the 'wait' mode
+* (done) I will want a new wait mode for menuPool.data.mode
+* (done) when then enter mode is compleate the mode will progress to the 'wait' mode
+
+* I will want to be able to set the type of a button
+* an action type button should just call the onClick method, and clear activeButton back to null, and keep current mode in 'wait'
+* make BUTTON.item_equip an 'action' type button
+
 
 
 * set limit for number of items the player can carry in the pouch

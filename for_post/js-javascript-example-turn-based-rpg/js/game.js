@@ -676,8 +676,9 @@ var gameMod = (function () {
     BUTTON.item_equip = {
         desc: 'equip',
         outer: true,
+        type: 'action',
         onClick: function(sm, button){
-            
+            console.log('yeah');
             //startMenu(sm.game, 'pouch');
         }
     };
@@ -742,7 +743,8 @@ var gameMod = (function () {
                 desc: buttonDATA.desc,
                 onClick: buttonDATA.onClick,
                 outer: buttonDATA.outer,
-                ta: ta
+                ta: ta,
+                type: buttonDATA.type
             });
             if(buttonDATA.outer){
                oi += 1;
@@ -808,7 +810,16 @@ var gameMod = (function () {
                 if(pd.activeButton){
                     // if the active button is a 'default' type
                     if(pd.activeButton.data.type === 'default'){
-                        sm.game.options.data.mode = 'exit';
+                        // by default switch mode to exit
+                        pd.mode = 'exit';
+                    }
+                    // if the type is 'action' just call the onClick
+                    // method, clean activeButon back to null, and 
+                    // stay in 'wait' mode
+                    if(pd.activeButton.data.type === 'action'){
+                        pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+                        pd.activeButton = null;
+                        // mode should stay in wait
                     }
                 }
             }
@@ -822,7 +833,7 @@ var gameMod = (function () {
                     if(pd.activeButton){
                         pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
                     }else{
-                        sm.game.options.data.menuKey = 'main';
+                        pd.menuKey = 'main';
                         sm.game.mode = 'map';
                     }
                 }

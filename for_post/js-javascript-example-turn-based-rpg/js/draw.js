@@ -91,12 +91,18 @@ var drawCell = function(sm, cell){
             y = canvas.height / 2 - 40;
             // current weapon info
             var cw = sm.game.player.currentWeapon;
-            ctx.fillText('currentWeapon: ', x, y);
+            ctx.fillText('Current Weapon: ', x, y);
             if(cw){
                 ctx.fillText('baseAttack ' + cw.baseAttack, x, y + 10);
             }else{
                 ctx.fillText('Unarmed ', x, y + 10);
             }
+            // menu weapon info
+            var mw = sm.game.options.data.menuOpt.item;
+            ctx.fillText('This Weapon: ', x, y + 30);
+            ctx.fillText('baseAttack ' + mw.baseAttack, x, y + 40);
+            
+            
         }
     };
     // based off of pool-solid draw method in mod-pool.js in Clucker
@@ -134,7 +140,7 @@ var drawCell = function(sm, cell){
                 if(obj.data.desc){
                     ctx.fillStyle = 'black';
                     ctx.textAlign = 'center';
-                    //ctx.textBaseline = 'middle';
+                    ctx.textBaseline = 'middle';
                     ctx.font = '9px courier';
                     ctx.fillText(obj.data.desc, cx, cy);
                 }

@@ -117,11 +117,12 @@ The idea of the library game world is to have a game world that acts as a portal
 * clicking drops
 
 
-## () - rxx - item json files, weapons
+## () - r16 - item json files, weapons
 * start a new type of json file format for defining one or more items
 <!-- js/lib/units.js -->
+* set limit for number of items the player can carry in the pouch
+* have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
 * rename unit.children to unit.over and make the changes in gameMod also
-
 
 ## () - r15 - plyaer starting items, equip item in pouch
 <!-- js/game.js -->
@@ -133,18 +134,13 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) an action type button should just call the onClick method, and clear activeButton back to null, and keep current mode in 'wait'
 * (done) make BUTTON.item_equip an 'action' type button
 * (done) when BUTTON.item_equip onClick is called, set game.player.currentWeapon to the item
-
-
-* set limit for number of items the player can carry in the pouch
-* have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
 <!-- js/lib/units.js -->
 * (done) have a starting weapon for the player in the player pouch and make that the current weapon
 <!-- js/draw.js -->
 * (done) display current weapon info with at least base attack
 * (done) display unarmed if the player has no weapon
-* in item menu I will need to display player.currentWeapon info
-* in item menu I will need to display menuOpt.item info
-
+* (done) in item menu I will need to display player.currentWeapon info
+* (done) in item menu I will need to display menuOpt.item info
 
 ## ( done 12/21/2021 ) - r14 - player pouch, pickup and drop
 <!-- js/game.js -->

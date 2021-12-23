@@ -128,7 +128,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
 * rename unit.children to unit.over and make the changes in gameMod also
 
-## () - r15 - plyaer starting items, equip item in pouch
+## ( done 12/23/2021 ) - r15 - plyaer starting items, equip item in pouch
 <!-- js/game.js -->
 * (done) when the player drops the currentWeapon set the currentWeapon prop to null
 * (done) start an equip button to MENUS.item

@@ -17,14 +17,10 @@ var unitMod = (function () {
     ITEMS.weapon.melee = {};
 
     ITEMS.weapon.melee.sword = {
-        //variants: ['short', 'long'],
-        //defaultVariant: 0,
         perLevel: {
           baseAttack: { min: [1, 1], inc: [1, 0.5] }
         }
     };
-
-    
 
 /********** **********
      SET STAT HELPERS
@@ -164,9 +160,9 @@ var unitMod = (function () {
                 baseDefense: { min: [1, 1], inc: [0.125, 0.025] }
             };
 
-// starting item for player
-var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 2});
-player.pouch.push(startItem);
+            // starting item for player
+            var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 2});
+            player.pouch.push(startItem);
 
             // starting weapon for the player
             //player.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});

@@ -120,8 +120,8 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - r16 - item json files, weapons
 * start a new type of json file format for defining one or more items
 <!-- js/game.js -->
+* (done) fix bug where an enemy that dies over a group ends up deleteing the group
 * button subtext
-* fix bug where an enemy that dies over a group ends up deleteing the group
 
 <!-- js/lib/units.js -->
 * set limit for number of items the player can carry in the pouch

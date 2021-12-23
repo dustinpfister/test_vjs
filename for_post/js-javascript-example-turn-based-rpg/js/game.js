@@ -1006,8 +1006,14 @@ var gameMod = (function () {
                 if(tUnit.HP <= 0 && tUnit.type === 'enemy'){
                     // give xp value to player
                     unitMod.giveXP(game.player, tUnit.xpValue);
+                    // if the target unit has a group that needs to be placed back
+                    // as the top level unit, put it back, else just clear the cell
                     targetCell.walkable = true;
-                    targetCell.unit = null;
+                    if(tUnit.children.type === 'group'){
+                        targetCell.unit = tUnit.children;
+                    }else{
+                        targetCell.unit = null;
+                    }
                 }
             }
             unit.meleeTarget = null;

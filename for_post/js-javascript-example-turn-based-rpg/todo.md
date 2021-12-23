@@ -129,11 +129,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) start an equip button to MENUS.item
 * (done) I will want a new wait mode for menuPool.data.mode
 * (done) when then enter mode is compleate the mode will progress to the 'wait' mode
-
-* I will want to be able to set the type of a button
-* an action type button should just call the onClick method, and clear activeButton back to null, and keep current mode in 'wait'
-* make BUTTON.item_equip an 'action' type button
-
+* (done) I will want to be able to set the type of a button
+* (done) an action type button should just call the onClick method, and clear activeButton back to null, and keep current mode in 'wait'
+* (done) make BUTTON.item_equip an 'action' type button
+* (done) when BUTTON.item_equip onClick is called, set game.player.currentWeapon to the item
 
 
 * set limit for number of items the player can carry in the pouch
@@ -142,7 +141,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a starting weapon for the player in the player pouch and make that the current weapon
 <!-- js/draw.js -->
 * (done) display current weapon info with at least base attack
-* display unarmed if the player has no weapon
+* (done) display unarmed if the player has no weapon
+* in item menu I will need to display current stat info for the current weapon
+
 
 ## ( done 12/21/2021 ) - r14 - player pouch, pickup and drop
 <!-- js/game.js -->

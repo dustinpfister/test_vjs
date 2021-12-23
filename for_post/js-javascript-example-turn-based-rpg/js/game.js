@@ -678,8 +678,15 @@ var gameMod = (function () {
         outer: true,
         type: 'action',
         onClick: function(sm, button){
-            console.log('yeah');
-            //startMenu(sm.game, 'pouch');
+            var item = sm.game.options.data.menuOpt.item;
+            // if the menu item is the currentWeapon
+            // then unarm the play
+            if(item === sm.game.player.currentWeapon){
+                sm.game.player.currentWeapon = null;
+            }else{
+               // else just set a ref for currentWeapon
+               sm.game.player.currentWeapon = item;
+            }
         }
     };
     MENUS.item = {

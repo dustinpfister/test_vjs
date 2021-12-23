@@ -126,7 +126,10 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - r15 - plyaer starting items, equip item in pouch
 <!-- js/game.js -->
 * (done) when the player drops the currentWeapon set the currentWeapon prop to null
-* add an equip button to MENUS.item
+* (done) start an equip button to MENUS.item
+* I will want a new wait mode for menuPool.data.mode
+* when then enter mode is compleate the mode will progress to the 'wait' mode
+
 
 * set limit for number of items the player can carry in the pouch
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch

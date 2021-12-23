@@ -467,6 +467,7 @@ var gameMod = (function () {
         d.menuKey = menuKey || 'main';
         d.mode = 'enter';
         d.lines = opt.lines || [];
+        d.activeButton = null;
         createMenu(game);
     };
     // helper to create on click events for direction buttons
@@ -677,7 +678,7 @@ var gameMod = (function () {
         outer: true,
         onClick: function(sm, button){
             
-            startMenu(sm.game, 'pouch');
+            //startMenu(sm.game, 'pouch');
         }
     };
     MENUS.item = {
@@ -763,7 +764,7 @@ var gameMod = (function () {
             frame: 0,
             maxFrame: 15,
             activeButton: null,   // a ref to the active button to use on 'exit' mode end
-            mode: 'enter',        // current mode of the menuPool 'enter', 'exit'
+            mode: 'enter',        // current mode of the menuPool 'enter', 'wait', and 'exit'
             menuKey: 'main',      // the current menu key
             menuOpt: {},          // the current options for the current menu
             lines: []             // lines of text to display for the current menu
@@ -775,6 +776,7 @@ var gameMod = (function () {
         pd = options.data;
         // button data
         bd.desc = spawnOpt.desc || false;
+        bd.type = spawnOpt.type || 'default';
         bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
         bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;
         bd.radius = 0;
@@ -796,6 +798,19 @@ var gameMod = (function () {
             if(pd.mode === 'enter'){
                 pd.frame += 30 * secs;
                 pd.frame = pd.frame >= pd.maxFrame ? pd.maxFrame : pd.frame;
+                if(pd.frame === pd.maxFrame){
+                    pd.mode = 'wait';
+                }
+            }
+            // after enter mode is down we are in waite mode
+            if(pd.mode === 'wait'){
+                // if we have an active button
+                if(pd.activeButton){
+                    // if the active button is a 'default' type
+                    if(pd.activeButton.data.type === 'default'){
+                        sm.game.options.data.mode = 'exit';
+                    }
+                }
             }
             // if we are in exit mode
             if(pd.mode === 'exit'){
@@ -1131,7 +1146,7 @@ var gameMod = (function () {
             if(game.mode === 'menu'){
                 var clicked = poolMod.getOverlaping({active: true, w:1, h:1, x: x, y: y}, game.options);
                 if(clicked.length >= 1){
-                    game.options.data.mode = 'exit';
+                    //game.options.data.mode = 'exit';
                     game.options.data.activeButton = clicked[0];
                 }else{
                    // no button was clicked

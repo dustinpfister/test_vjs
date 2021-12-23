@@ -169,7 +169,8 @@ var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 2
 player.pouch.push(startItem);
 
             // starting weapon for the player
-            player.currentWeapon = player.pouch[0]; //api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
+            //player.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
+            //player.currentWeapon = player.pouch[0]; 
         }
     };
     // enemy type

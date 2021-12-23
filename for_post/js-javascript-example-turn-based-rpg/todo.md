@@ -129,7 +129,8 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/lib/units.js -->
 * rename unit.children to unit.over and make the changes in gameMod also
 <!-- js/draw.js -->
-* display current weapon info
+* (done) display current weapon info with at least base attack
+* display unarmed if the player has no weapon
 
 ## ( done 12/21/2021 ) - r14 - player pouch, pickup and drop
 <!-- js/game.js -->

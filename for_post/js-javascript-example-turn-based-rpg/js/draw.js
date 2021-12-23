@@ -177,6 +177,8 @@ var drawCell = function(sm, cell){
         var w = p.currentWeapon;
         if(w){
             ctx.fillText('wepaon attack: ' + w.baseAttack[0] + ' - ' + w.baseAttack[1] , 5, getY(4));
+        }else{
+            ctx.fillText('wepaon: unarmed', 5, getY(4));
         }
     };
     // return the public api to draw variable

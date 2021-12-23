@@ -80,6 +80,26 @@ var drawCell = function(sm, cell){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     // draw options menu
+    var forMenuKey = {
+        // display weapon info for item menu
+        item: function(sm, ctx, canvas){
+            ctx.fillStyle = 'yellow';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+            ctx.font = '9px courier';
+            var x = canvas.width / 2,
+            y = canvas.height / 2 - 40;
+            // current weapon info
+            var cw = sm.game.player.currentWeapon;
+            ctx.fillText('currentWeapon: ', x, y);
+            if(cw){
+                ctx.fillText('baseAttack ' + cw.baseAttack, x, y + 10);
+            }else{
+                ctx.fillText('Unarmed ', x, y + 10);
+            }
+        }
+    };
+    // based off of pool-solid draw method in mod-pool.js in Clucker
     api.options = function (sm) {
         var canvas = sm.canvas,
         pool = sm.game.options,
@@ -96,7 +116,11 @@ var drawCell = function(sm, cell){
         d.lines.forEach(function(line, i){
             ctx.fillText(line, 10, 10 + 15 * ( i + 1 ));
         });
-        // based off of pool-solid draw method in mod-pool.js in Clucker
+        var fm = forMenuKey[d.menuKey];
+        if(fm){
+            fm(sm, ctx, canvas);
+        }
+        // draw menu buttons
         pool.objects.forEach(function (obj) {
             ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';
             ctx.strokeStyle = opt.strokeStyle || obj.data.strokeStyle || 'black';

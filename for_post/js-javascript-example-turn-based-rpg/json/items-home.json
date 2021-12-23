@@ -1,0 +1,13 @@
+{
+  "dataKey": "i_home",
+  "desc": "Items that are to be added for the home world.",
+  "items": [
+      {
+         "subType": "weapon.melee.sword",
+         "baseAttack": {
+             "min": [1, 1],
+             "inc": [1, 0.5]
+         }
+      }
+  ]
+}

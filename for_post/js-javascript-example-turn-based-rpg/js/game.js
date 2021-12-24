@@ -757,8 +757,8 @@ var gameMod = (function () {
     // the menu object pool
     var menuPool = {
         count: 8,
-        w: 40,
-        h: 40,
+        w: 45,
+        h: 45,
         disableLifespan: true,
         data: {
             outerRadius: 85,
@@ -779,7 +779,7 @@ var gameMod = (function () {
         pd = options.data;
         // button data
         bd.desc = spawnOpt.desc || false;
-        bd.subText = spawnOpt.subText || 'foo';
+        bd.subText = spawnOpt.subText || '';
         bd.type = spawnOpt.type || 'default';
         bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
         bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;

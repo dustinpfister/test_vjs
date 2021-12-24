@@ -83,9 +83,8 @@
 * (done) button subtext to display at least level for each item
 <!-- js/lib/utils.js -->
 * (done) add a utils.setPath method
-
 <!-- js/lib/units.js -->
-* I will need a way to load items into the ITEMS global from json files
+* (done) I will need a way to load items into the ITEMS global from json files
 
 <!-- js/draw.js-->
 * (done) update draw.js to draw a subtext value if any

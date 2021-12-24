@@ -626,6 +626,7 @@ var gameMod = (function () {
             return game.player.pouch.map(function(item, i){     
                 return {
                     desc: item.subType.split('.')[2] || 'item',
+                    subText: 'foobar',
                     outer: true,
                     onClick: function(sm, button){
                         game.options.data.menuOpt.itemIndex = i;
@@ -742,6 +743,7 @@ var gameMod = (function () {
             // spawn buttons
             poolMod.spawn(game.options, sm, {
                 desc: buttonDATA.desc,
+                subText: buttonDATA.subText,
                 onClick: buttonDATA.onClick,
                 outer: buttonDATA.outer,
                 ta: ta,

@@ -91,7 +91,6 @@
 <!-- js/draw.js-->
 * (done) update draw.js to draw a subtext value if any
 
-
 ## ( done 12/23/2021 ) - r15 - plyaer starting items, equip item in pouch
 <!-- js/game.js -->
 * (done) when the player drops the currentWeapon set the currentWeapon prop to null

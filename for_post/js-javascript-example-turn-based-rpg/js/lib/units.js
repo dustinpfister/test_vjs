@@ -7,7 +7,7 @@ var unitMod = (function () {
     // PUBLIC API
     var api = {};
 
-    // built in ITEMS
+    // built in ITEMS 'database' object
     var ITEMS = {};
 
     // weapon Items
@@ -247,6 +247,16 @@ var unitMod = (function () {
         target.HP -= a;
         target.HP = target.HP < 0 ? 0 : target.HP;
     };
+
+/********** **********
+     LOAD ITEMS
+*********** *********/
+
+    // load items from the given data collection
+    api.loadItems = function(data){
+
+    };
+
 
     // return the public API
     return api;

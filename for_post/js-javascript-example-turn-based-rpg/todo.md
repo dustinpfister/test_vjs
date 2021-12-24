@@ -73,7 +73,7 @@
 * in the event that the player pouch is full clicking items in pickup menu will not work
 * change color of buttons in pickUp menu to red when player pouch is full
 
-## () - r16 - item json files, weapons
+## () - r16 - item json files, more than one weapon
 <!-- json/items-junk-weapons.json -->
 * (done) start a new type of json file format for defining at least two items for the game
 <!-- js/sm.js -->
@@ -82,8 +82,12 @@
 * (done) fix bug where an enemy that dies over a group ends up deleting the group
 * (done) button subtext to display at least level for each item
 
+<!-- js/lib/utils.js -->
+* add a utils.setPath method
+
 <!-- js/lib/units.js -->
 * I will need a way to load items into the ITEMS global from json files
+
 <!-- js/draw.js-->
 * (done) update draw.js to draw a subtext value if any
 

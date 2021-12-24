@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Math random</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="640" height="480"></canvas>
+        <script src="item-class.js"></script>
+        <script>
+// DEMO
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+// creating a item classes object
+var items = itemClass.create({
+   levelPer: 1,             // the current global level for item drops
+   levelPerRatio: 0.25,     // the ratio 0-1 that is the amount that the global levelPer effects points for each item class
+   pool: [                  // pool defining values for each class
+     {desc: 'Junk', range: [1000, 300], levelPer: 0.25},
+     {desc: 'Common', range: [100, 800], levelPer: 0.5},
+     {desc: 'Epic', range: [10, 100], levelPer: 1}
+   ]
+});
+// create bars array
+var bars = items.pool.map(function(item){
+    return {
+       i: item.i,
+       color: item.color,
+       desc: item.desc,
+       count: 0
+    };
+}),
+bLen = bars.length;
+var i = 0, len = 1000, bi;
+while(i < len){
+    var item = itemClass.getRandomItemClass(items);
+    bi = item.i;
+    var bar = bars[bi];
+     bar.count += 1;
+    i += 1;
+}
+// draw bars
+var max = Math.max.apply(null, bars.map(function(bar){ return bar.count;}));
+ctx.fillStyle = '#afafaf';
+ctx.fillRect(0,0,canvas.width, canvas.height);
+ctx.font = '20px arial';
+ctx.lineWidth = 3;
+var barHeight = canvas.height / bLen - 5;
+bars.forEach(function(bar, i){
+   var p = bar.count / max,
+   y = canvas.height / bLen * i;
+   ctx.fillStyle = bar.color || 'lime';
+   ctx.strokeStyle = '#4a4a4a';
+   ctx.beginPath();
+   ctx.rect(0, y, canvas.width * p, barHeight );
+   ctx.fill();
+   ctx.stroke();
+   ctx.fillStyle = 'black';
+   ctx.textBaseline = 'middle';
+   ctx.fillText(bar.i + ') ' +bar.desc, 10, y + barHeight / 2);
+});
+        </script>
+    </body>
+</html>

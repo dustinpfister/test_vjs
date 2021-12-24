@@ -1,19 +1,24 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
 <!--****** **********
-    KNOWN BUGS/ISSHUES
+    KNOWN BUGS / ISSHUES / MISC CHANGES
 ********** *******-->
-* (#0 fixed in r9) weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
+* (#0 done in r9) fix Weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
 * (#1) I should not have to have a setupGame2 method in gameMod
 * (#2) I should have a main update loop for object pools
-
+* (#3) Rename unit.children to unit.over in units.js, and make the changes in gameMod also
+* (#4) have folders with README files for each lib
+* (#5) Have demos for each lib as a way to enforce that each lib works as a stand alone project
+* (#6) Pull code that has to do with the circle menu out of game.js and into its own lib folder
 
 <!--****** **********
-    The Librray game world
+    The Library game world
 ********** *******-->
 
-## () rx - Start the libray game world
-The idea of the library game world is to have a game world that acts as a portal to at least one of not more compain type modes that follow some kind of story.
+The idea of the library game world is to have a game world that acts as a portal to at least one if not more words that follow some kind of story.
+
+## () rx - Start the library game world
+
 
 <!--****** **********
     MISC IMPROVEMENTS
@@ -33,7 +38,7 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - rx - spell turnState
 * have a new 'spell' turnState in which all units that have chosen to use a spell for there turn
-* have spell turn state be prefromed last
+* have spell turn state be preformed last
 
 ## () - rx - range turnState
 * have a new 'range' turnState in which all units that have chosen to use a ranged attack will have there turn processed
@@ -45,7 +50,7 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () - rx - keyboard events
 * add keyboard events
-* when at an edge of a corner relavent wasd key press will result in a map change
+* when at an edge of a corner relevant wasd key press will result in a map change
 * use wasd keys to move a cell selector, and use the 'j' key to 'click' that cell
 * in menu game mode the 'ad' keys can be used to select an option and 'j' will result in a click
 * in menu game mode the 'ws' keys can be used to switch between inner and outer rings
@@ -54,14 +59,14 @@ The idea of the library game world is to have a game world that acts as a portal
 * take code in game.js that has to do with the circle menu, and turn it into its own lin file
 * use new menu-circle.js lib file in game.js
 * have a main update loop for a pool object created with pool.js
-* remove old curcle menu code from game.js that is no longer used
+* remove old circle menu code from game.js that is no longer used
 
 <!--****** **********
-    GAME WORLDS - world json files that make use of built in features the present differnt kinds of games
+    GAME WORLDS - world json files that make use of built in features the present different kinds of games
 ********** *******-->
 
 ## () - rx - The forest game world
-  continue work on the world-forest.json file to make the kind of game mode that I have in mind with this. The general idea of the forest game world is that the player can enter at the main game level at home, and the enemies found in the forest will be of a simular level to that of the player. The units are all unarmed beast like units, but the player can take whatever gear that they want with them from the home world. So then the idea is to just have a world where the player can go to just do a little easy grinding if they would like to.
+  continue work on the world-forest.json file to make the kind of game mode that I have in mind with this. The general idea of the forest game world is that the player can enter at the main game level at home, and the enemies found in the forest will be of a similar level to that of the player. The units are all unarmed beast like units, but the player can take whatever gear that they want with them from the home world. So then the idea is to just have a world where the player can go to just do a little easy grinding if they would like to.
 
 ## () - rx - The caves game world
 
@@ -129,14 +134,14 @@ The idea of the library game world is to have a game world that acts as a portal
 * I will need a way to load items into the ITEMS global from json files
 * set limit for number of items the player can carry in the pouch
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
-* rename unit.children to unit.over and make the changes in gameMod also
+
 
 ## ( done 12/23/2021 ) - r15 - plyaer starting items, equip item in pouch
 <!-- js/game.js -->
 * (done) when the player drops the currentWeapon set the currentWeapon prop to null
 * (done) start an equip button to MENUS.item
 * (done) I will want a new wait mode for menuPool.data.mode
-* (done) when then enter mode is compleate the mode will progress to the 'wait' mode
+* (done) when then enter mode is complete the mode will progress to the 'wait' mode
 * (done) I will want to be able to set the type of a button
 * (done) an action type button should just call the onClick method, and clear activeButton back to null, and keep current mode in 'wait'
 * (done) make BUTTON.item_equip an 'action' type button
@@ -153,7 +158,7 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/game.js -->
 * (done) meuKey defauts in main on each start
 * (done) new startMenu helper
-* (done) when an item button is clicked that item should be transferd to the players pouch, and the menu should exit
+* (done) when an item button is clicked that item should be transfered to the players pouch, and the menu should exit
 * (done) after exiting from pickup menuKey, the pickup menu will recreate with up to date buttons
 * (done) if the group is empty clear the cell, and return to main menu key
 * (done) I will need a MENUS.pouch
@@ -162,13 +167,13 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) I will need a MENUS.item
 * (done) I will want a menuPool.data.menuOpt
 * (done) use menuPool.data.menuOpt to know what the current item is in the player pouch
-* (done) from the MENUS.item menu the player can drop an item to the current cell, cretaing a new group if needed
+* (done) from the MENUS.item menu the player can drop an item to the current cell, creating a new group if needed
 <!-- js/draw.js -->
 * (done) display item info with new lines array of menuPool
 
 ## ( done 12/19/2021 ) - r13 - new circle menu system with more than one menu
 <!-- js/game.js -->
-* (done) see about having an out animation when not clicking a buton in menu mode
+* (done) see about having an out animation when not clicking a button in menu mode
 * (done) when the player is over a group have a pickup button show up in the circle menu
 * (done) new MENUS const
 * (done) I will want a menuPool.data.menuKey prop that will default to 'main'
@@ -179,7 +184,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) I will need a MENUS.pickup.genButtons that will create buttons for each item in a current group that the player is over
 * (done) have a createButtonDataObjects helper that will create an array of buttonData objects from buttonKeys and calling genButtons
 * (done) changes will need to be made to the createMenu helper to make use of a genButtons method as another way to create menu buttons
-* (done) remove old code for cretaing buttons that is no longer used
+* (done) remove old code for creating buttons that is no longer used
 * (done) in pickup menu key, generate a button for each item in the group
 * (done) have a to main button in pickup menu
 
@@ -214,9 +219,9 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/game.js -->
 * (done) I will want a setUp groups helper just like with setupPortals
 * (done) make to so that adding groups from a world map is part of the setup process
-* (done) when a player or enemey unit moves over a group, that group should be in the children prop of that unit
+* (done) when a player or enemy unit moves over a group, that group should be in the children prop of that unit
 * (done) each time a unit moves to a new cell it will unload a child that it has to the cell it is leaving
-* see about doing the same with porals as with groups where the portal becomes a child of the unit
+* see about doing the same with portals as with groups where the portal becomes a child of the unit
 <!-- js/lib/draw.js -->
 * (done) update drawCell helper to make it so it will draw stroke lines for all units
 * (done) update draw.js to make it so that a group is shown as a black rec outline for now
@@ -224,7 +229,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a worldMap.mapGroups array just like worldMap.mapPortals but with groups
 
 <!--****** **********
-    utils.XP - level objects for player and enemey units
+    utils.XP - level objects for player and enemy units
 ********** *******-->
 
 ## ( done 12/15/2021 ) - r10 - level objects for player and enemy units
@@ -233,7 +238,7 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/lib/units.js -->
 * (done) use utils.XP to create a unit.levelObj for all base units
 * (done) have a unitMod.giveXP public method
-* (done) have unit.levelObj have an inpact on hit points
+* (done) have unit.levelObj have an impact on hit points
 * (done) have unit.levelObj effect base Attack
 * (done) have unit.levelObj effect base defense
 <!-- js/game.js -->
@@ -255,9 +260,9 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) add support for worldMap.onWorldMapLeave and enter methods
 * (done) logging more into for built in 'nothing' map event
 * (done) have a applyMapStringsToMaps helper and use that in setUpGame first
-* (done) start a MAP_EVENTS.respawnWorldEnemies event that by default will respawn all world enemies except the current map
+* (done) start a MAP_EVENTS.respawnWorldEnemies event that by default will re-spawn all world enemies except the current map
 * (done) had to work out a whole other kind of setupGame block of code in MAP_EVENTS.respawnWorldEnemies
-* (done) see if the werid bug with the wall in map index 0 can be fixed
+* (done) see if the weird bug with the wall in map index 0 can be fixed
 <!-- world-home.json -->
 * (done) worldMap.onMapLeave and enter events should be 'nothing' for world-home.json
 <!-- world-forest.json -->
@@ -271,10 +276,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) processTurn end turnState should make use of a worldMap.onPlayerDeath prop
 * (done) processTurn end turnState should make use of a worldMap.onNoEnemies
 * (done) default for worldMap.onNoEnemies could be 'hardMapReset' which is what the deal is all ready
-* (done) default for worldMap.onPlayerDeath cound be a 'softMapReset of the current world map
+* (done) default for worldMap.onPlayerDeath could be a 'softMapReset of the current world map
 * (done) I will want to have 'nothing' option for onNoEnemies and onPlayerDeath
 * (done) have a parseMapEvent helper
-* (done) the parseMapEvent helper will return an object from a string contaning a method, options, and so forth
+* (done) the parseMapEvent helper will return an object from a string containing a method, options, and so forth
 * (done) callMapEvent helper
 * (done) change world map helper
 * (done) I will want to have a 'toMap:dataKey,mi,x,y' short hand for these methods along with a toMap method
@@ -305,7 +310,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) start a sm.data object that will contain all data objects loaded by way of json
 * (done) have an sm.loader object that contains a base url, and a list of files to load at that base url
 * (done) start a new states-loader.js file that will be a simple json file loader state
-* (done) just base the states-loader off of what I worked out in gamframe.ja in Clucker for now as that seems to work well
+* (done) just base the states-loader off of what I worked out in gameframe.js in Clucker for now as that seems to work well
 <!-- World map standard -->
 * (done) start a root json folder that will contain all the json files for the game
 * (done) start a new world map json file standard
@@ -326,7 +331,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have a game.sm ref
 * (done) use game.sm.data in moveUnit helper to set game.worldMap to the map given in portalUnit.data
 * (done) get portals working using word-home and world-forest world map files
-* (done) have a way to make it so the player unit spawns near the portal rather than the ushual start location of the world map
+* (done) have a way to make it so the player unit spawns near the portal rather than the usual start location of the world map
 <!-- booting for index.html and pkg.html files -->
 * (done) start a boot script tag that will just set a relative path to JSON assets and start the main app loop
 * (done) path to json will be './json' for main index.html files, and will need to be '../json' for pkg_rx.html files
@@ -338,9 +343,9 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## ( done 12/09/2021 ) - r5 - More work on menu game mode
 * (done) createMenu helper and BUTTON const in game.js
-* (done) add a back button that will also have a simular effect to just clicking outside of the button circle
+* (done) add a back button that will also have a similar effect to just clicking outside of the button circle
 * (done) get oc and ic count in createMenu
-* (done) when a button is clicked prefrom the animation is reverse and then call the button.onClick method
+* (done) when a button is clicked preform the animation is reverse and then call the button.onClick method
 * (done) update getToMap helper to append and array of objects that contain mi,x,y, and dir like this:
 ```
 [
@@ -354,7 +359,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) if at a corner the menu will always show up even with a short click
 
 ## ( done 12/08/2021 ) - r4 - Game mode property, with 'map', and 'menu' mode
-* (done) add an object pool librray to the js lib folder
+* (done) add an object pool library to the js lib folder
 * (done) start using the game.map mode to have more than one game mode in gameMod
 * (done) the current game as it stands can be called 'map' mode
 * (done) start a new 'menu' mode that can be used to switch between various 'options'
@@ -403,7 +408,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) have an roll for each attack and use a random attack value between the range of baseAttack
 * (done) have a baseDefense stat for units just like baseAttack
 * (done) figure a defense value for the target just like with base attack
-* (done) subtract defelse value from attack value to get a final attack value
+* (done) subtract defense value from attack value to get a final attack value
 * (done) final attack value can not go below zero
 
 ## ( done 12/07/2021 ) - r0 - units.js lib

@@ -3,7 +3,7 @@
 <!--****** **********
     KNOWN BUGS / ISSHUES / MISC CHANGES
 ********** *******-->
-* (#0 done in r9) fix Weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
+* (#0 done-r9) fix Weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
 * (#1) I should not have to have a setupGame2 method in gameMod
 * (#2) I should have a main update loop for object pools
 * (#3) Rename unit.children to unit.over in units.js, and make the changes in gameMod also
@@ -132,10 +132,11 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/game.js -->
 * (done) fix bug where an enemy that dies over a group ends up deleting the group
 * (done) button subtext to display at least level for each item
+* set limit for number of items the player can carry in the pouch to 10 for now
+* in the event that the player pouch is full clicking items in pickup menu will not work
+* change color of buttons in pickUp menu to red when player pouch is full
 <!-- js/lib/units.js -->
 * I will need a way to load items into the ITEMS global from json files
-* set limit for number of items the player can carry in the pouch
-* have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
 <!-- js/draw.js-->
 * (done) update draw.js to draw a subtext value if any
 

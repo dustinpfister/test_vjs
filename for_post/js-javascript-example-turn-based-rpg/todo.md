@@ -118,10 +118,11 @@ The idea of the library game world is to have a game world that acts as a portal
 ## () - rxx - make use of item-class.js
 * make use of the item-class.js file from js-math-random for post folder
 
-## () - rxx - enemy unit item drops, and enemy unit inventory
-* when the player moves over an 'item' or 'itemStack' this should cause the 'circle menu' to show up
-* a new button should show up in the circle menu called 'drops'
-* clicking drops
+## () - rxx - enemy unit item drops, and enemy unit pouch
+* An enemy unit should have items in its pouch
+* one of the items in the pouch should be a weapon, and that weapon should be equipped for it
+* when an enemy unit dies it should drop its items to one or more cells
+* if there are no free cells and all groups are full then the enemy will drop nothing
 
 ## () - r17 - Item count limit for groups
 * set a limit for the number of items in a group

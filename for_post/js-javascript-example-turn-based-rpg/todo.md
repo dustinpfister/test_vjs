@@ -74,7 +74,7 @@
 * in the event that the player pouch is full clicking items in pickup menu will not work
 * change color of buttons in pickUp menu to red when player pouch is full
 
-## () - r16 - item json files, more than one weapon
+## ( done 12/24/2021 ) - r16 - item json files, more than one weapon
 <!-- json/items-home.json -->
 * (done) start a new type of json file format for defining at least two items for the game
 <!-- js/sm.js -->

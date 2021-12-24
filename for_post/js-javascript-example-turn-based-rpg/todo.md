@@ -123,6 +123,10 @@ The idea of the library game world is to have a game world that acts as a portal
 * a new button should show up in the circle menu called 'drops'
 * clicking drops
 
+## () - r17 - Item count limit for groups
+* set a limit for the number of items in a group
+* when dropping items I will want to select another cell in which to place items in the event that current one is full
+* In the event that there are no empty cells the player can not drop
 
 ## () - r16 - item json files, weapons
 <!-- json/items-junk-weapons.json -->

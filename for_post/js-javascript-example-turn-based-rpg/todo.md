@@ -10,6 +10,7 @@
 * (#4) have folders with README files for each lib
 * (#5) Have demos for each lib as a way to enforce that each lib works as a stand alone project
 * (#6) Pull code that has to do with the circle menu out of game.js and into its own lib folder
+* (#7) smooth unit animation when it comes to movement from one cell to another
 
 <!--****** **********
     The Library game world
@@ -128,7 +129,7 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/sm.js -->
 * (done) I will need to add items-home.json to the lost of json files to load
 <!-- js/game.js -->
-* (done) fix bug where an enemy that dies over a group ends up deleteing the group
+* (done) fix bug where an enemy that dies over a group ends up deleting the group
 * button subtext
 <!-- js/lib/units.js -->
 * I will need a way to load items into the ITEMS global from json files

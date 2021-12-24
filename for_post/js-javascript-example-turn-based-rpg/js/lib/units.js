@@ -254,7 +254,6 @@ var unitMod = (function () {
 
     // load items from the given data collection
     api.loadItems = function(data){
-
         utils.log('units.js: loading items from a given data object');
         // get valid item keys which start with 'i' and have at east two
         // or more parts sepearted with an underscore ( 'i_home', 'i_home_sublevel_0' )
@@ -265,9 +264,15 @@ var unitMod = (function () {
             }
             return false;
         });
-
-console.log(itemKeys);
-
+        // loop itemKeys of the data object
+        itemKeys.forEach(function(key){
+            var itemDefs = data[key];
+            itemDefs.items.forEach(function(itemDef){
+                // update ITEMS
+                var item = utils.setPath(ITEMS, itemDef.subType, itemDef);
+            });
+        });
+        utils.log('units.js: There are now ' + Object.keys(ITEMS.weapon.melee).length + ' melee weapons to work with.');
     };
 
 

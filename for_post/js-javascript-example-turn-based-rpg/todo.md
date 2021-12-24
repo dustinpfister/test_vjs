@@ -16,6 +16,31 @@
 
 
 <!--****** **********
+    World MENUS and new worlds
+********** *******-->
+
+## () - r24 - Start world menu system
+* start a new world menu system that will pop up each time the player enters a portal to a new world from home
+* In this world menu the player will know what classes of items there are in terms of drops
+<!-- json/world-forest.js -->
+* for the forest make it so the player can set the level range of enemies
+* higher level enmeies means better item drops
+
+<!--****** **********
+    RANGE WEAPONS
+********** *******-->
+
+## () - r23 - start range weapons
+* start range weapons
+
+<!--****** **********
+    ARMOR ITEMS
+********** *******-->
+
+## () - r22 - start armor items
+* I will want to add armor items
+
+<!--****** **********
     SAVE STATE MENU - unit json files
 ********** *******-->
 

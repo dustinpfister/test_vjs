@@ -509,7 +509,7 @@ var gameMod = (function () {
         }
     };
     BUTTON.to_main = {
-        desc: 'To Main',
+        desc: 'Main',
         outer: true,
         onClick: function(sm, button){
             // return to main menu key
@@ -626,7 +626,7 @@ var gameMod = (function () {
             return game.player.pouch.map(function(item, i){     
                 return {
                     desc: item.subType.split('.')[2] || 'item',
-                    subText: 'foobar',
+                    subText: 'lv' + item.levelObj.level,
                     outer: true,
                     onClick: function(sm, button){
                         game.options.data.menuOpt.itemIndex = i;

@@ -589,6 +589,7 @@ var gameMod = (function () {
                   return group.pouch.map(function(item, i){     
                       return {
                           desc: item.subType.split('.')[2] || 'item',
+                          subText: 'lv' + item.levelObj.level,
                           outer: true,
                           onClick: function(sm, button){
                               // splice the item from the group

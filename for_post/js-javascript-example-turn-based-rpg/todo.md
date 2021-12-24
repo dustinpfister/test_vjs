@@ -13,80 +13,20 @@
 * (#7) smooth unit animation when it comes to movement from one cell to another
 * (#8) Fix bug where an enemy will spawn at the player start location
 
-<!--****** **********
-    The Library game world
-********** *******-->
-
-The idea of the library game world is to have a game world that acts as a portal to at least one if not more words that follow some kind of story.
-
-## () rx - Start the library game world
-
 
 <!--****** **********
-    MISC IMPROVEMENTS
+    SAVE STATE MENU - unit json files
 ********** *******-->
 
-## () - rx - Custom MAP EVENTS
-* I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic
-
-## () - rx - respawnPlayer map event
-* respawnPlayer map event
-
-## () - rx - Cell movement animation
-* see about having a move animation where the unit cell moves on a pps basis to the new cell location
-
-## () - rx - custom events.js file
-* start a new lib/events.js file that will be used by map.js
-
-## () - rx - spell turnState
-* have a new 'spell' turnState in which all units that have chosen to use a spell for there turn
-* have spell turn state be preformed last
-
-## () - rx - range turnState
-* have a new 'range' turnState in which all units that have chosen to use a ranged attack will have there turn processed
-* see about fixing bug where the player, or any unit can 'jump' over a unit in the way
-
-<!--****** **********
-    MENU UI IMPROVEMENTS
-********** *******-->
-
-## () - rx - keyboard events
-* add keyboard events
-* when at an edge of a corner relevant wasd key press will result in a map change
-* use wasd keys to move a cell selector, and use the 'j' key to 'click' that cell
-* in menu game mode the 'ad' keys can be used to select an option and 'j' will result in a click
-* in menu game mode the 'ws' keys can be used to switch between inner and outer rings
-
-## () - rx - lib menu-circle.js, and pool.js improvements
-* take code in game.js that has to do with the circle menu, and turn it into its own lin file
-* use new menu-circle.js lib file in game.js
-* have a main update loop for a pool object created with pool.js
-* remove old circle menu code from game.js that is no longer used
-
-<!--****** **********
-    GAME WORLDS - world json files that make use of built in features the present different kinds of games
-********** *******-->
-
-## () - rx - The forest game world
-  continue work on the world-forest.json file to make the kind of game mode that I have in mind with this. The general idea of the forest game world is that the player can enter at the main game level at home, and the enemies found in the forest will be of a similar level to that of the player. The units are all unarmed beast like units, but the player can take whatever gear that they want with them from the home world. So then the idea is to just have a world where the player can go to just do a little easy grinding if they would like to.
-
-## () - rx - The caves game world
-
-## () - rx - The home game world
-
-<!--****** **********
-    JSON - pixmap json files 
-********** *******-->
-
-## () - rx - pixmaps
-* see about using the pixmap json standard that I worked out, as a way to add images
+## () - r21 - save state menu
+* start a new save state menu
 
 <!--****** **********
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
-## () - rx - unit sub-types starting with enemy unit type
-* I will want to have more than one type of the unit.type 'enemy' of course so then I am goinf to want to have some kind of sub type system
+## () - r20 - unit sub-types starting with enemy unit type
+* I will want to have more than one type of the unit.type 'enemy' of course so then I am going to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
 * I think I will also want to have a way to set level by a type string also like 'enemy.blob.red.5'
@@ -115,19 +55,23 @@ The idea of the library game world is to have a game world that acts as a portal
     ITEMS AND DROPS - item json files
 ********** *******-->
 
-## () - rxx - make use of item-class.js
+## () - r19 - make use of item-class.js
 * make use of the item-class.js file from js-math-random for post folder
 
-## () - rxx - enemy unit item drops, and enemy unit pouch
+## () - r18 - enemy unit item drops, and enemy unit pouch
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it
 * when an enemy unit dies it should drop its items to one or more cells
 * if there are no free cells and all groups are full then the enemy will drop nothing
 
-## () - r17 - Item count limit for groups
+## () - r17 - Item count limit for groups, and a unit pouch
 * set a limit for the number of items in a group
 * when dropping items I will want to select another cell in which to place items in the event that current one is full
 * In the event that there are no empty cells the player can not drop
+
+* set limit for number of items the player can carry in the pouch to 10 for now
+* in the event that the player pouch is full clicking items in pickup menu will not work
+* change color of buttons in pickUp menu to red when player pouch is full
 
 ## () - r16 - item json files, weapons
 <!-- json/items-junk-weapons.json -->
@@ -137,9 +81,7 @@ The idea of the library game world is to have a game world that acts as a portal
 <!-- js/game.js -->
 * (done) fix bug where an enemy that dies over a group ends up deleting the group
 * (done) button subtext to display at least level for each item
-* set limit for number of items the player can carry in the pouch to 10 for now
-* in the event that the player pouch is full clicking items in pickup menu will not work
-* change color of buttons in pickUp menu to red when player pouch is full
+
 <!-- js/lib/units.js -->
 * I will need a way to load items into the ITEMS global from json files
 <!-- js/draw.js-->

@@ -130,7 +130,7 @@ The idea of the library game world is to have a game world that acts as a portal
 * (done) I will need to add items-home.json to the lost of json files to load
 <!-- js/game.js -->
 * (done) fix bug where an enemy that dies over a group ends up deleting the group
-* button subtext
+* button subtext to display at least level for each item
 <!-- js/lib/units.js -->
 * I will need a way to load items into the ITEMS global from json files
 * set limit for number of items the player can carry in the pouch

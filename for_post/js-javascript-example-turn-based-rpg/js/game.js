@@ -176,7 +176,7 @@ var gameMod = (function () {
         // return the path
         return path;
     };
-    // get an arary of cell index values
+    // get an array of cell index values
     var getMoveCells = function(game, startCell, targetCell){
         var map = game.maps[game.mapIndex];
         var path = getMovePath(game, startCell, targetCell).map(function(pos){
@@ -199,7 +199,7 @@ var gameMod = (function () {
         }).filter(function(mtcOptions){
             return mtcOptions.length > 0;
         });
-        // rteurn first path or empty array
+        // return first path or empty array
         return mtcOptions[0] || [];
     };
 /********** **********
@@ -283,7 +283,7 @@ var gameMod = (function () {
             }else{
                 placeUnit(game, unit, moveToCell.x, moveToCell.y);
             }
-            // what needs to hapen when just the player moves
+            // what needs to happen when just the player moves
             if(unit.type === 'player'){
                 game.toMap = getToMap(game);
                 // the player unit can go threw portals
@@ -353,8 +353,6 @@ var gameMod = (function () {
         // update game.maps
         game.maps = game.maps.map(function(map, mi){
             var mapStr = wMap.mapStrings[mi] || '';
-
-            //game.mapIndex = mi;
             map.cells = map.cells.map(function(cell, ci){
                 var cellIndex = parseInt(mapStr[ci] || '0'),
                 x = ci % map.w,
@@ -386,7 +384,7 @@ var gameMod = (function () {
             });
             return map;
         });
-        // return an object with info about what happended
+        // return an object with info about what happened
         return {
             playerPlaced: playerPlaced,
             startMapIndex: startMapIndex
@@ -435,14 +433,12 @@ var gameMod = (function () {
     var changeWorldMap = function(game, portalData){
         // call onWorldMapLeave
         callMapEvent(game, 0, 'onWorldMapLeave', MAP_EVENTS.nothing);
-
         var newWorldMap = game.sm.data[portalData.dataKey];
         game.worldMap = newWorldMap;
         game.turnState = 'wait';
         setupGame(game, true, portalData);
         // call onWorldMapLeave
         callMapEvent(game, 0, 'onWorldMapEnter', MAP_EVENTS.nothing);
-
     };
     // change the current map
     var changeMap = function(game){
@@ -698,7 +694,6 @@ var gameMod = (function () {
             return [];
         }
     };
-
     // get a count of buttons with the given prop and value, this is used in createMenu
     // to help with creating menu buttons in the 'circle menu feature' 
     var getCollectionKeyValueCount = function(objects, prop, value){
@@ -709,7 +704,7 @@ var gameMod = (function () {
             return acc;
         }, 0);
     };
-
+    // create button data objects
     var createButtonDataObjects = function(game){
         // current menu key
         var menuKey = menuPool.data.menuKey,
@@ -723,7 +718,6 @@ var gameMod = (function () {
         // call genButtons
         return buttonDataObjects;
     };
-
     // create a menu for the current game state
     var createMenu = function(game){
         // current menu key
@@ -868,7 +862,6 @@ var gameMod = (function () {
     var setupGroups = function(game){
         // wMap portals
         game.worldMap.mapGroups.forEach(function(opt){
-            //game.mapIndex = portal.mi;
             var gUnit = unitMod.createUnit('group', opt);
             placeUnit(game, gUnit, opt.x, opt.y, opt.mi);
             gUnit.data = {};
@@ -1149,7 +1142,7 @@ var gameMod = (function () {
                 // if cell has a unit on it
                 if(clickedCell.unit){
                     var unit = clickedCell.unit;
-                    // enemey clicked
+                    // enemy clicked
                     if(unit.type === 'enemy'){
                         // set meleeTarget index
                         game.player.meleeTarget = clickedCell.i;
@@ -1184,5 +1177,4 @@ var gameMod = (function () {
     return api;
 }
     ());
-
 

@@ -138,11 +138,15 @@ var drawCell = function(sm, cell){
                 ctx.fill();
                 ctx.stroke();
                 if(obj.data.desc){
+                    // draw main display text
                     ctx.fillStyle = 'black';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
-                    ctx.font = '9px courier';
+                    ctx.font = '10px courier';
                     ctx.fillText(obj.data.desc, cx, cy);
+                    // sub text
+                    //ctx.font = '9px courier';
+                    //ctx.fillText(obj.data.desc, cx, cy);
                 }
             }
         });

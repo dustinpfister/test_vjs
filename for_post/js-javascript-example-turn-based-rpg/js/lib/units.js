@@ -255,6 +255,19 @@ var unitMod = (function () {
     // load items from the given data collection
     api.loadItems = function(data){
 
+        utils.log('units.js: loading items from a given data object');
+        // get valid item keys which start with 'i' and have at east two
+        // or more parts sepearted with an underscore ( 'i_home', 'i_home_sublevel_0' )
+        var itemKeys = Object.keys(data).filter(function(key){
+            var parts = key.split('_');
+            if(parts.length >= 2 && parts[0] === 'i'){
+                return true;
+            }
+            return false;
+        });
+
+console.log(itemKeys);
+
     };
 
 

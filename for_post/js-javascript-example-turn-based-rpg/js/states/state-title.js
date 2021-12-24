@@ -1,16 +1,19 @@
 sm.states.title = {
     key: 'title',
-    start: function(){
+    start: function(sm){
         utils.log('title start', 'debug');
 
-var items = {};
 
-utils.setPath(items, 'weapons.range.bow', { baseAttack: [1,1]});
+unitMod.loadItems(sm.data);
 
-console.log( utils.getPath(items, 'weapons', false) );
-console.log( utils.getPath(items, 'weapons.range', false) );
-console.log( utils.getPath(items, 'weapons.range.bow', false) );
-console.log( utils.getPath(items, 'weapons.range.bow.baseAttack', false) );
+//var items = {};
+
+//utils.setPath(items, 'weapons.range.bow', { baseAttack: [1,1]});
+
+//console.log( utils.getPath(items, 'weapons', false) );
+//console.log( utils.getPath(items, 'weapons.range', false) );
+//console.log( utils.getPath(items, 'weapons.range.bow', false) );
+//console.log( utils.getPath(items, 'weapons.range.bow.baseAttack', false) );
 
 
     },

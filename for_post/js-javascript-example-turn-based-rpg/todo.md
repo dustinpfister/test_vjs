@@ -81,9 +81,8 @@
 <!-- js/game.js -->
 * (done) fix bug where an enemy that dies over a group ends up deleting the group
 * (done) button subtext to display at least level for each item
-
 <!-- js/lib/utils.js -->
-* add a utils.setPath method
+* (done) add a utils.setPath method
 
 <!-- js/lib/units.js -->
 * I will need a way to load items into the ITEMS global from json files

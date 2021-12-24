@@ -1153,7 +1153,7 @@ var gameMod = (function () {
                     }
                     // player clicked but not at map edge
                     if(unit.type === 'player'){
-                        startMenu(game, 'main');
+                        //startMenu(game, 'main');
                         return;
                     }
                 }

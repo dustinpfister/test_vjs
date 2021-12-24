@@ -12,6 +12,7 @@
 * (#6) Pull code that has to do with the circle menu out of game.js and into its own lib folder
 * (#7) smooth unit animation when it comes to movement from one cell to another
 * (#8) Fix bug where an enemy will spawn at the player start location
+* (#9) Fix bug where player attack will not update until next attack when switching weapons
 
 
 <!--****** **********

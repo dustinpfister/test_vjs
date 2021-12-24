@@ -549,8 +549,6 @@ var gameMod = (function () {
         ta: Math.PI * 1,
         onClick: createMapButtonOnClick('west')
     };
-
-
     // MENUS
     var MENUS = {};
     // the main menu
@@ -759,7 +757,7 @@ var gameMod = (function () {
     };
     // the menu object pool
     var menuPool = {
-        count: 8,
+        count: 11,
         w: 45,
         h: 45,
         disableLifespan: true,

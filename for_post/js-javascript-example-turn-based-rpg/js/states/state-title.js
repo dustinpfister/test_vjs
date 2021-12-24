@@ -7,7 +7,11 @@ var items = {};
 
 utils.setPath(items, 'weapons.range.bow', { baseAttack: [1,1]});
 
-console.log(items);
+console.log( utils.getPath(items, 'weapons', false) );
+console.log( utils.getPath(items, 'weapons.range', false) );
+console.log( utils.getPath(items, 'weapons.range.bow', false) );
+console.log( utils.getPath(items, 'weapons.range.bow.baseAttack', false) );
+
 
     },
     update: function(sm, secs){

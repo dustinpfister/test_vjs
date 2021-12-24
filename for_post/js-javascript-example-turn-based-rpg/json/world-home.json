@@ -25,8 +25,16 @@
       "x": 4,
       "y": 1,
       "pouch":[
+        {"subType": "weapon.melee.sword", "level": 10},
         {"subType": "weapon.melee.sword", "level": 7},
-        {"subType": "weapon.melee.sword", "level": 3}
+        {"subType": "weapon.melee.sword", "level": 5},
+        {"subType": "weapon.melee.sword", "level": 3},
+        {"subType": "weapon.melee.sword", "level": 2},
+        {"subType": "weapon.melee.sword", "level": 1},
+        {"subType": "weapon.melee.sword", "level": 1},
+        {"subType": "weapon.melee.sword", "level": 1},
+        {"subType": "weapon.melee.sword", "level": 1},
+        {"subType": "weapon.melee.sword", "level": 1}
       ]
     },
     {

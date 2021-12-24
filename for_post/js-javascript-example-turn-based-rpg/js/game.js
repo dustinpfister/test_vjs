@@ -779,6 +779,7 @@ var gameMod = (function () {
         pd = options.data;
         // button data
         bd.desc = spawnOpt.desc || false;
+        bd.subText = spawnOpt.subText || 'foo';
         bd.type = spawnOpt.type || 'default';
         bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;
         bd.cy = button.y = sm.canvas.height / 2 - button.h / 2;

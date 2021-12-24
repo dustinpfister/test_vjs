@@ -135,6 +135,8 @@ The idea of the library game world is to have a game world that acts as a portal
 * I will need a way to load items into the ITEMS global from json files
 * set limit for number of items the player can carry in the pouch
 * have an equip button in the circle menu that allows for the player to equip a weapon in the players pouch
+<!-- js/draw.js-->
+* update draw.js to draw a subtext value if any
 
 
 ## ( done 12/23/2021 ) - r15 - plyaer starting items, equip item in pouch

@@ -143,10 +143,15 @@ var drawCell = function(sm, cell){
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
                     ctx.font = '10px courier';
-                    ctx.fillText(obj.data.desc, cx, cy);
-                    // sub text
-                    //ctx.font = '9px courier';
-                    //ctx.fillText(obj.data.desc, cx, cy);
+                    // if subtext value
+                    if(obj.data.subText){
+                        ctx.fillText(obj.data.desc, cx, cy - 7);
+                        // sub text
+                        ctx.font = '9px courier';
+                        ctx.fillText(obj.data.subText, cx, cy + 7);
+                    }else{
+                        ctx.fillText(obj.data.desc, cx, cy);
+                    }
                 }
             }
         });

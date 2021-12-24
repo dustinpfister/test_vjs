@@ -74,7 +74,7 @@
 * change color of buttons in pickUp menu to red when player pouch is full
 
 ## () - r16 - item json files, more than one weapon
-<!-- json/items-junk-weapons.json -->
+<!-- json/items-home.json -->
 * (done) start a new type of json file format for defining at least two items for the game
 <!-- js/sm.js -->
 * (done) I will need to add items-home.json to the lost of json files to load
@@ -85,7 +85,8 @@
 * (done) add a utils.setPath method
 <!-- js/lib/units.js -->
 * (done) I will need a way to load items into the ITEMS global from json files
-
+<!-- json/world-home.js -->
+* (done) update json of home world to make use of at least one item from items-home.json
 <!-- js/draw.js-->
 * (done) update draw.js to draw a subtext value if any
 

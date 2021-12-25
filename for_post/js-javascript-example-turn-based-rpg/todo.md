@@ -98,15 +98,15 @@
 ## () - r17 - Item count limit for groups, and a unit pouch
 <!-- json/world-home.js -->
 * (done) have 30 items in 3 groups for now for testing that drops will work as they should in r17
-
-
-* set a limit for the number of items in a group
+<!-- js/game.js -->
+* (done) set a GROUP POUCH MAX const limit for the number of items in a group
 * when dropping items I will want to select another cell in which to place items in the event that current one is full
 * In the event that there are no empty cells the player can not drop
-
-* set limit for number of items the player can carry in the pouch to 10 for now
+* change color of buttons in pickUp menu to red when player pouch is full
 * in the event that the player pouch is full clicking items in pickup menu will not work
 * change color of buttons in pickUp menu to red when player pouch is full
+<!-- js/units.js -->
+* have a player.pouch_max value
 
 ## ( done 12/24/2021 ) - r16 - item json files, more than one weapon
 <!-- json/items-home.json -->

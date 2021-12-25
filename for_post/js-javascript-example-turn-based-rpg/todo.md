@@ -98,6 +98,8 @@
 ## () - r17 - Item count limit for groups, and a unit pouch
 <!-- json/world-home.js -->
 * (done) have 30 items in 3 groups for now for testing that drops will work as they should in r17
+<!-- js/lib/map.js -->
+* (done) the mapMod.getNeighbors method now has a dirCount option
 <!-- js/game.js -->
 * (done) set a GROUP POUCH MAX const limit for the number of items in a group
 

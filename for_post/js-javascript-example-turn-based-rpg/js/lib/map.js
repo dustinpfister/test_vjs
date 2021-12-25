@@ -177,21 +177,40 @@ PATHS
     };
 
     // get the four Neighbors of a node
-    api.getNeighbors = function (grid, node) {
+    api.getNeighbors = function (grid, node, dirCount) {
         var x = node.x,
         y = node.y,
         neighbors = [];
-        if (api.isWalkable(grid, x, y - 1)) {
-            neighbors.push(mapMod.get(grid, x, y - 1));
+        dirCount = dirCount === undefined ? 4 : dirCount;
+        // for dircount 4 or 8
+        if(dirCount === 4 || dirCount === 8){
+            if (api.isWalkable(grid, x, y - 1)) {
+                neighbors.push(mapMod.get(grid, x, y - 1));
+            }
+            if (api.isWalkable(grid, x, y + 1)) {
+                neighbors.push(mapMod.get(grid, x, y + 1));
+            }
+            if (api.isWalkable(grid, x - 1, y)) {
+                neighbors.push(mapMod.get(grid, x - 1, y));
+            }
+            if (api.isWalkable(grid, x + 1, y)) {
+                neighbors.push(mapMod.get(grid, x + 1, y));
+            }
         }
-        if (api.isWalkable(grid, x, y + 1)) {
-            neighbors.push(mapMod.get(grid, x, y + 1));
-        }
-        if (api.isWalkable(grid, x - 1, y)) {
-            neighbors.push(mapMod.get(grid, x - 1, y));
-        }
-        if (api.isWalkable(grid, x + 1, y)) {
-            neighbors.push(mapMod.get(grid, x + 1, y));
+        // for dirCount 8 only
+        if(dirCount || 8){
+            if (api.isWalkable(grid, x - 1, y - 1)) {
+                neighbors.push(mapMod.get(grid, x - 1, y - 1));
+            }
+            if (api.isWalkable(grid, x + 1, y + 1)) {
+                neighbors.push(mapMod.get(grid, x + 1, y + 1));
+            }
+            if (api.isWalkable(grid, x - 1, y + 1)) {
+                neighbors.push(mapMod.get(grid, x - 1, y + 1));
+            }
+            if (api.isWalkable(grid, x + 1, y - 1)) {
+                neighbors.push(mapMod.get(grid, x + 1, y - 1));
+            }
         }
         return neighbors;
     };

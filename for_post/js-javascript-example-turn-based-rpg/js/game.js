@@ -661,7 +661,7 @@ var gameMod = (function () {
                     var map = game.maps[game.mapIndex],
                     pCell = api.getPlayerCell(game);
                     // check out other cells near this one
-                    var cells = mapMod.getNeighbors(map, pCell);
+                    var cells = mapMod.getNeighbors(map, pCell, 8);
                     console.log('group is full checking other cells');
                     console.log(cells);
                 }

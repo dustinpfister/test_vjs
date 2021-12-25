@@ -40,6 +40,24 @@ The idea of the library game world is to have a game world that acts as a portal
 * see about fixing bug where the player, or any unit can 'jump' over a unit in the way
 
 <!--****** **********
+    Taxonomy and Apothecary ( making potions )
+    https://en.wikipedia.org/wiki/Taxonomy_%28biology%29
+    https://en.wikipedia.org/wiki/Fungus
+    https://en.wikipedia.org/wiki/Laetiporus_sulphureus
+    https://en.wikipedia.org/wiki/Apothecary
+********** *******-->
+
+## () - rx - start Apothecary
+* have an Apothecary button in the circle menu that will lead to a menu that can be used to make potions
+
+## () - rx - start taxonomy and fungi items
+* start a new subtype of items 'fungi' with a 'fungi.laetiporus.sulphureus' item (chicken of the woods)
+* have the itemClass of laetiporus.sulphureus be Epic
+* I will want junk, common, and rare class types of fungi also
+* have these items spawn in the forest
+* the player can pick them up and add them to there pouch just like any other drop
+
+<!--****** **********
     MENU UI IMPROVEMENTS
 ********** *******-->
 

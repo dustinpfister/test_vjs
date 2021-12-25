@@ -14,7 +14,6 @@
 * (#8) Fix bug where an enemy will spawn at the player start location
 * (#9) Fix bug where player attack will not update until next attack when switching weapons
 
-
 <!--****** **********
     World MENUS and new worlds
 ********** *******-->

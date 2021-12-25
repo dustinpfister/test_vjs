@@ -18,7 +18,7 @@
     World MENUS and new worlds
 ********** *******-->
 
-## () - r24 - Start world menu system
+## () - r25 - Start world menu system
 * start a new world menu system that will pop up each time the player enters a portal to a new world from home
 * In this world menu the player will know what classes of items there are in terms of drops
 <!-- json/world-forest.js -->
@@ -29,28 +29,28 @@
     RANGE WEAPONS
 ********** *******-->
 
-## () - r23 - start range weapons
+## () - r24 - start range weapons
 * start range weapons
 
 <!--****** **********
     ARMOR ITEMS
 ********** *******-->
 
-## () - r22 - start armor items
+## () - r23 - start armor items
 * I will want to add armor items
 
 <!--****** **********
     SAVE STATE MENU - unit json files
 ********** *******-->
 
-## () - r21 - save state menu
+## () - r22 - save state menu
 * start a new save state menu
 
 <!--****** **********
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
-## () - r20 - unit sub-types starting with enemy unit type
+## () - r21 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am going to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -79,6 +79,12 @@
 <!--****** **********
     ITEMS AND DROPS - item json files
 ********** *******-->
+
+## () - r20 - new game-pouch state
+* Start a new game-pouch state along with the many other states thus far that will work in place of the item menu in gameMod
+* The pouch size will now be though of in terms of 4 by 4 grids
+* Start the player off with 2 4x4 grids which means a total size of 32 items
+* The player can switch between two or more grids of item slot locations in there pouch
 
 ## () - r19 - make use of item-class.js
 * make use of the item-class.js file from js-math-random for post folder

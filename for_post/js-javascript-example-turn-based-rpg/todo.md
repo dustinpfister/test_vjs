@@ -96,6 +96,10 @@
 * if there are no free cells and all groups are full then the enemy will drop nothing
 
 ## () - r17 - Item count limit for groups, and a unit pouch
+<!-- json/world-home.js -->
+* have 20 items in 2 groups for now for testing that drops will work as they should in r17
+
+
 * set a limit for the number of items in a group
 * when dropping items I will want to select another cell in which to place items in the event that current one is full
 * In the event that there are no empty cells the player can not drop

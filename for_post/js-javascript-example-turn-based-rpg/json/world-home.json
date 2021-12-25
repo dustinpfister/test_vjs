@@ -25,7 +25,7 @@
       "x": 4,
       "y": 1,
       "pouch":[
-        {"subType": "weapon.melee.sword_long", "level": 10},
+        {"subType": "weapon.melee.sword", "level": 10},
         {"subType": "weapon.melee.sword", "level": 10},
         {"subType": "weapon.melee.sword", "level": 7},
         {"subType": "weapon.melee.sword", "level": 5},
@@ -35,6 +35,40 @@
         {"subType": "weapon.melee.sword", "level": 1},
         {"subType": "weapon.melee.sword", "level": 1},
         {"subType": "weapon.melee.sword", "level": 1}
+      ]
+    },
+    {
+      "mi": 4,
+      "x": 2,
+      "y": 1,
+      "pouch":[
+        {"subType": "weapon.melee.sword_long", "level": 10},
+        {"subType": "weapon.melee.sword_long", "level": 10},
+        {"subType": "weapon.melee.sword_long", "level": 7},
+        {"subType": "weapon.melee.sword_long", "level": 5},
+        {"subType": "weapon.melee.sword_long", "level": 3},
+        {"subType": "weapon.melee.sword_long", "level": 2},
+        {"subType": "weapon.melee.sword_long", "level": 1},
+        {"subType": "weapon.melee.sword_long", "level": 1},
+        {"subType": "weapon.melee.sword_long", "level": 1},
+        {"subType": "weapon.melee.sword_long", "level": 1}
+      ]
+    },
+    {
+      "mi": 4,
+      "x": 6,
+      "y": 1,
+      "pouch":[
+        {"subType": "weapon.melee.sword_short", "level": 10},
+        {"subType": "weapon.melee.sword_short", "level": 10},
+        {"subType": "weapon.melee.sword_short", "level": 7},
+        {"subType": "weapon.melee.sword_short", "level": 5},
+        {"subType": "weapon.melee.sword_short", "level": 3},
+        {"subType": "weapon.melee.sword_short", "level": 2},
+        {"subType": "weapon.melee.sword_short", "level": 1},
+        {"subType": "weapon.melee.sword_short", "level": 1},
+        {"subType": "weapon.melee.sword_short", "level": 1},
+        {"subType": "weapon.melee.sword_short", "level": 1}
       ]
     },
     {

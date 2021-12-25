@@ -182,19 +182,15 @@ PATHS
         y = node.y,
         neighbors = [];
         if (api.isWalkable(grid, x, y - 1)) {
-            //neighbors.push(this.nodes[y - 1][x]);
             neighbors.push(mapMod.get(grid, x, y - 1));
         }
         if (api.isWalkable(grid, x, y + 1)) {
-            //neighbors.push(this.nodes[y + 1][x]);
             neighbors.push(mapMod.get(grid, x, y + 1));
         }
         if (api.isWalkable(grid, x - 1, y)) {
-            //neighbors.push(this.nodes[y][x - 1]);
             neighbors.push(mapMod.get(grid, x - 1, y));
         }
         if (api.isWalkable(grid, x + 1, y)) {
-            //neighbors.push(this.nodes[y][x + 1]);
             neighbors.push(mapMod.get(grid, x + 1, y));
         }
         return neighbors;

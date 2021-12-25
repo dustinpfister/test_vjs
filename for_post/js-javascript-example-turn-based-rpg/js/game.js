@@ -655,9 +655,15 @@ var gameMod = (function () {
             if(over.type === 'group'){
                 // add to the group only if the length of the pouch is less than GROUP_POUCH_MAX
                 if(over.pouch.length < GROUP_POUCH_MAX){
-
                     game.player.pouch.splice(i, 1);
                     over.pouch.push(item);
+                }else{
+                    var map = game.maps[game.mapIndex],
+                    pCell = api.getPlayerCell(game);
+                    // check out other cells near this one
+                    var cells = mapMod.getNeighbors(map, pCell);
+                    console.log('group is full checking other cells');
+                    console.log(cells);
                 }
             }else{
                 // create a new group if we can

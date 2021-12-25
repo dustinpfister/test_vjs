@@ -100,8 +100,10 @@
 * (done) have 30 items in 3 groups for now for testing that drops will work as they should in r17
 <!-- js/game.js -->
 * (done) set a GROUP POUCH MAX const limit for the number of items in a group
+
 * when dropping items I will want to select another cell in which to place items in the event that current one is full
 * In the event that there are no empty cells the player can not drop
+
 * change color of buttons in pickUp menu to red when player pouch is full
 * in the event that the player pouch is full clicking items in pickup menu will not work
 * change color of buttons in pickUp menu to red when player pouch is full

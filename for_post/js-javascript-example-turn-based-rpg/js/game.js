@@ -669,6 +669,7 @@ var gameMod = (function () {
                         cell = cells[i];
                         // if cell.unit is null we can create a new group there
                         if(cell.unit === null){
+                            game.player.pouch.splice(i, 1);
                             cell.unit = unitMod.createUnit('group', {
                                 pouch: [item]
                             });

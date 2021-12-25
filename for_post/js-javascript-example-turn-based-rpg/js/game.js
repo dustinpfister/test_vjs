@@ -676,6 +676,16 @@ var gameMod = (function () {
                             // break the loop
                             break;
                         }
+                        // if cell.unit is a group with a length less than GROUP_POUCH_MAX
+                        // we can drop the item there
+                        if(cell.unit){
+                            if(cell.unit.type === 'group' && cell.unit.pouch.length < GROUP_POUCH_MAX){
+                                game.player.pouch.splice(i, 1);
+                                cell.unit.pouch.push(item);
+                                // break the loop
+                                break;
+                            }
+                        }
                         i += 1;
                     }
                 }

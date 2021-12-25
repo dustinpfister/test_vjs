@@ -677,11 +677,6 @@ var gameMod = (function () {
                         }
                         i += 1;
                     }
-/*
-                    cells.forEach(function(cell){
-                        console.log(cell.unit);
-                    });
-*/
                 }
             }else{
                 // create a new group if we can

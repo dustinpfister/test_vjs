@@ -658,12 +658,30 @@ var gameMod = (function () {
                     game.player.pouch.splice(i, 1);
                     over.pouch.push(item);
                 }else{
+                    // check cells near this one then
                     var map = game.maps[game.mapIndex],
                     pCell = api.getPlayerCell(game);
-                    // check out other cells near this one
                     var cells = mapMod.getNeighbors(map, pCell, 8);
                     console.log('group is full checking other cells');
-                    console.log(cells);
+                    // loop options
+                    var i = 0,cell;
+                    while(i < cells.length){
+                        cell = cells[i];
+                        // if cell.unit is null we can create a new group there
+                        if(cell.unit === null){
+                            cell.unit = unitMod.createUnit('group', {
+                                pouch: [item]
+                            });
+                            // break the loop
+                            break;
+                        }
+                        i += 1;
+                    }
+/*
+                    cells.forEach(function(cell){
+                        console.log(cell.unit);
+                    });
+*/
                 }
             }else{
                 // create a new group if we can

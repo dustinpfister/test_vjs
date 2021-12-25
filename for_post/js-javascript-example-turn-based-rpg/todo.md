@@ -13,12 +13,13 @@
 * (#7) smooth unit animation when it comes to movement from one cell to another
 * (#8) Fix bug where an enemy will spawn at the player start location
 * (#9) Fix bug where player attack will not update until next attack when switching weapons
+* (#10) tell the user that an item can not be dropped when in such a situation
 
 <!--****** **********
     World MENUS and new worlds
 ********** *******-->
 
-## () - r25 - Start world menu system
+## () - r28 - Start world menu system
 * start a new world menu system that will pop up each time the player enters a portal to a new world from home
 * In this world menu the player will know what classes of items there are in terms of drops
 <!-- json/world-forest.js -->
@@ -29,28 +30,28 @@
     RANGE WEAPONS
 ********** *******-->
 
-## () - r24 - start range weapons
+## () - r27 - start range weapons
 * start range weapons
 
 <!--****** **********
     ARMOR ITEMS
 ********** *******-->
 
-## () - r23 - start armor items
+## () - r26 - start armor items
 * I will want to add armor items
 
 <!--****** **********
     SAVE STATE MENU - unit json files
 ********** *******-->
 
-## () - r22 - save state menu
+## () - r25 - save state menu
 * start a new save state menu
 
 <!--****** **********
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
-## () - r21 - unit sub-types starting with enemy unit type
+## () - r24 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am going to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -77,40 +78,51 @@
 ```
 
 <!--****** **********
+    MISC IMPROVEMENTS
+********** *******-->
+
+## () - r23 - init state
+* start an init state
+
+## () - r22 - message system
+* start a message system that wil be used to inform the player of things
+* fix #10 by using mesage system to inform the user that they can not drop an item here
+
+<!--****** **********
     ITEMS AND DROPS - item json files
 ********** *******-->
 
-## () - r20 - new game-pouch state
+## () - r21 - new game-pouch state
 * Start a new game-pouch state along with the many other states thus far that will work in place of the item menu in gameMod
 * The pouch size will now be though of in terms of 4 by 4 grids
 * Start the player off with 2 4x4 grids which means a total size of 32 items
 * The player can switch between two or more grids of item slot locations in there pouch
 
-## () - r19 - make use of item-class.js
+## () - r20 - make use of item-class.js
 * make use of the item-class.js file from js-math-random for post folder
 
-## () - r18 - enemy unit item drops, and enemy unit pouch
+## () - r19 - enemy unit item drops, and enemy unit pouch
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it
 * when an enemy unit dies it should drop its items to one or more cells
 * if there are no free cells and all groups are full then the enemy will drop nothing
 
-## () - r17 - Item count limit for groups, and a unit pouch
+## () - r18 - player pouch limits
+* change color of buttons in pickUp menu to red when player pouch is full
+* in the event that the player pouch is full clicking items in pickup menu will not work
+* change color of buttons in pickUp menu to red when player pouch is full
+<!-- js/units.js -->
+* have a player.pouch_max value
+
+## ( done 12/25/2021 ) - r17 - Item count limit for groups
 <!-- json/world-home.js -->
 * (done) have 30 items in 3 groups for now for testing that drops will work as they should in r17
 <!-- js/lib/map.js -->
 * (done) the mapMod.getNeighbors method now has a dirCount option
 <!-- js/game.js -->
 * (done) set a GROUP POUCH MAX const limit for the number of items in a group
-
-* when dropping items I will want to select another cell in which to place items in the event that current one is full
-* In the event that there are no empty cells the player can not drop
-
-* change color of buttons in pickUp menu to red when player pouch is full
-* in the event that the player pouch is full clicking items in pickup menu will not work
-* change color of buttons in pickUp menu to red when player pouch is full
-<!-- js/units.js -->
-* have a player.pouch_max value
+* (done) when dropping items I will want to select another cell in which to place items in the event that current one is full
+* (done) In the event that there are no empty cells the player can not drop
 
 ## ( done 12/24/2021 ) - r16 - item json files, more than one weapon
 <!-- json/items-home.json -->

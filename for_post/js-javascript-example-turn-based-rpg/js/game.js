@@ -664,9 +664,9 @@ var gameMod = (function () {
                     var cells = mapMod.getNeighbors(map, pCell, 8);
                     console.log('group is full checking other cells');
                     // loop options
-                    var i = 0,cell;
-                    while(i < cells.length){
-                        cell = cells[i];
+                    var nci = 0,cell;
+                    while(nci < cells.length){
+                        cell = cells[nci];
                         // if cell.unit is null we can create a new group there
                         if(cell.unit === null){
                             game.player.pouch.splice(i, 1);
@@ -686,7 +686,7 @@ var gameMod = (function () {
                                 break;
                             }
                         }
-                        i += 1;
+                        nci += 1;
                     }
                 }
             }else{

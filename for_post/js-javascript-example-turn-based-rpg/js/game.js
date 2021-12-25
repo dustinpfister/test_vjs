@@ -686,6 +686,10 @@ var gameMod = (function () {
                                 break;
                             }
                         }
+                        // can not drop if last cell and above has failed
+                        if(nci === cells.length - 1){
+                            console.log('can not drop');
+                        }
                         nci += 1;
                     }
                 }

@@ -1,4 +1,6 @@
 var gameMod = (function () {
+    // max pouch size
+    var GROUP_POUCH_MAX = 10;
     // hard coded map events
     var MAP_EVENTS = {};
     // hard map reset
@@ -651,8 +653,12 @@ var gameMod = (function () {
             var over = game.player.children;
             // if it is all ready a group just go ahead and drop it to that group
             if(over.type === 'group'){
-                game.player.pouch.splice(i, 1);
-                over.pouch.push(item);
+                // add to the group only if the length of the pouch is less than GROUP_POUCH_MAX
+                if(over.pouch.length < GROUP_POUCH_MAX){
+
+                    game.player.pouch.splice(i, 1);
+                    over.pouch.push(item);
+                }
             }else{
                 // create a new group if we can
                 if(over.type === undefined){

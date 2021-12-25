@@ -97,7 +97,7 @@
 
 ## () - r17 - Item count limit for groups, and a unit pouch
 <!-- json/world-home.js -->
-* have 20 items in 2 groups for now for testing that drops will work as they should in r17
+* (done) have 30 items in 3 groups for now for testing that drops will work as they should in r17
 
 
 * set a limit for the number of items in a group

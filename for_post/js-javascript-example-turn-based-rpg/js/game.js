@@ -669,7 +669,54 @@ var gameMod = (function () {
             }
         }
     };
-    // return a ref to a group unit
+
+    // get a drop cell ref, or return false for the given cell postion and map index
+    var getDropObj = function(game, x, y, mi){
+        // assume current map if no mi (map index) is given
+        var map = game.maps[mi === undefined ? game.mapIndex: mi],
+        cell = mapMod.get(map, x, y),
+        result = {
+            cell: cell,
+            mode: 'fail'
+        };
+
+// modes are
+// create, add, createUnder, addUnder, and fail
+
+        // if cell.unit is null then we can drop here at this cell
+        // by way of just creating a new group at cell.unit
+        if(cell.unit === null){
+            result.mode = 'create';
+            return result;
+        }
+        // if the cell.unit type is group we can add to that if it is not full
+        if(cell.unit.type === 'group'){
+            // if the group is not full we can drop there
+            if(cell.unit.pouch.length < GROUP_POUCH_MAX){
+                result.mode = 'add';
+                return result;
+            }
+        }
+        // if the type is 'player' or 'enemy' we can check what is below it
+        if(cell.unit.type === 'player' || cell.unit.type === 'enemy'){
+            var under = cell.unit.children;
+            if(under.type === undefined){
+                result.mode = 'createUnder';
+                return result;
+            }
+            if(under.type === 'group'){
+                if(under.pouch.length < GROUP_POUCH_MAX){
+                    result.mode = 'addUnder';
+                    return result;
+                }
+            }
+        }
+        // return default object then
+        return result;
+    };
+
+
+    // return a ref to a group unit or return false if no group can or had been created
     var getDropItemGroup = function(sm, passiveMode){
         var game = sm.game,
         i = game.options.data.menuOpt.itemIndex,
@@ -1090,6 +1137,9 @@ var gameMod = (function () {
         createCleanMaps(game);
         // set up game for first time as new game
         setupGame(game, true);
+
+console.log( getDropObj(game, 4, 3) );
+
         // return the game object
         return game;
     };

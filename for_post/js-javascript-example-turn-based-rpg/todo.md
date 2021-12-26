@@ -104,7 +104,11 @@
 * make use of the item-class.js file from js-math-random for post folder
 
 ## () - r20 - enemy unit pouch, enemy unit item drops
+
+
 * update getDropItemGroup to work with any unit beyond just that of the player unit
+
+
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it
 * when an enemy unit dies it should drop its items to one or more cells

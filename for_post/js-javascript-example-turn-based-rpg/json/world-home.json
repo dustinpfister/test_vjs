@@ -58,6 +58,22 @@
     },
     {
       "mi": 4,
+      "x": 5,
+      "y": 3,
+      "pouch":[
+        {"subType": "weapon.melee.sword_long", "level": 10},
+        {"subType": "weapon.melee.sword_long", "level": 10},
+        {"subType": "weapon.melee.sword_long", "level": 7},
+        {"subType": "weapon.melee.sword_long", "level": 5},
+        {"subType": "weapon.melee.sword_long", "level": 3},
+        {"subType": "weapon.melee.sword_long", "level": 2},
+        {"subType": "weapon.melee.sword_long", "level": 1},
+        {"subType": "weapon.melee.sword_long", "level": 1},
+        {"subType": "weapon.melee.sword_long", "level": 1}
+      ]
+    },
+    {
+      "mi": 4,
       "x": 6,
       "y": 1,
       "pouch":[

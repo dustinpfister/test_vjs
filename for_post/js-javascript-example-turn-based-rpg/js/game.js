@@ -711,6 +711,43 @@ var gameMod = (function () {
                 }
             }
         }
+        // next step is to check the cells near this one if type is group, player or enemy
+        if(cell.unit.type === 'player' || cell.unit.type === 'enemy' || cell.unit.type === 'group'){
+            var otherCells = mapMod.getNeighbors(map, cell, 8);
+            var oci = 0, other;
+            while(oci < otherCells.length){
+                other = result.cell = otherCells[oci];
+                // if other cell is null we can create there
+                if(other.unit === null){
+                    result.mode = 'create';
+                    return result;
+                }
+                // if other cell is a group check if we can add there
+                if(other.unit.type === 'group'){
+                    if(other.unit.pouch.length < GROUP_POUCH_MAX){
+                        result.mode = 'add';
+                        return result;
+                    }
+                }
+/*
+                // if other cell has the player or the enemy above it, check if we can create or add under
+                if(other.unit.type === 'player' || other.unit.type === 'enemy'){
+                    var under = other.unit.children;
+                    if(under.type === undefined){
+                        result.mode = 'createUnder';
+                        return result;
+                    }
+                    if(under.type === 'group'){
+                        if(under.unit.pouch.length < GROUP_POUCH_MAX){
+                            result.mode = 'addUnder';
+                            return result;
+                        }
+                    }                  
+                }
+*/
+                oci += 1;
+            }
+        }
         // return default object then
         return result;
     };
@@ -1138,7 +1175,8 @@ var gameMod = (function () {
         // set up game for first time as new game
         setupGame(game, true);
 
-console.log( getDropObj(game, 4, 3) );
+console.log( getDropObj(game, 4, 2) );
+//console.log( getDropObj(game, 4, 3) );
 
         // return the game object
         return game;

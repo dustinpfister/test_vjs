@@ -178,8 +178,10 @@ var unitMod = (function () {
             // min value, incremental values
             perLevel.baseAttack = { min: [2, 1], inc: [0.25, 0.125] };
 
-            var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
-            enemy.pouch.push(startItem);
+            //var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
+            [1, 7].forEach(function(level){
+                enemy.pouch.push(api.createUnit('item', { subType: 'weapon.melee.sword', level: level}));
+            });
             // starting weapon for enemy
             enemy.currentWeapon = enemy.pouch[0];
         }

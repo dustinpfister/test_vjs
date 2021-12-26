@@ -117,8 +117,8 @@
 * when an enemy unit dies it should drop its items to one or more cells new enemyPouchDrop helper
 
 <!-- js/lib/units.js -->
-* An enemy unit should have items in its pouch
-* one of the items in the pouch should be a weapon, and that weapon should be equipped for it
+* (done) An enemy unit should have items in its pouch
+* (done) one of the items in the pouch should be a weapon, and that weapon should be equipped for it
 
 
 

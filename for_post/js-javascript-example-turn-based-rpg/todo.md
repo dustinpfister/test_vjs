@@ -105,7 +105,7 @@
 ## () - r21 - make use of item-class.js
 * make use of the item-class.js file from js-math-random for post folder
 
-## () - r20 - enemy unit pouch, enemy unit item drops
+## ( done 12/26/2021 ) - r20 - enemy unit pouch, enemy unit item drops
 <!-- js/game.js -->
 * (done) start new getDropObj helper that will be used to help work out what needs to happen with drops in general
 * (done) use getDropObj helper to create a canDropAtCell helper

@@ -112,15 +112,11 @@
 * (done) new playerItemDrop helper
 * (done) use playerItemDrop helper in place of getDropItemGroup in MENUS.item
 * (done) remove getDropItemGroup if it is no longer used
-
-* start an enemyPouchDrop helper
-* when an enemy unit dies it should drop its items to one or more cells new enemyPouchDrop helper
-
+* (done) start an enemyPouchDrop helper
+* (done) when an enemy unit dies it should drop its items to one or more cells new enemyPouchDrop helper
 <!-- js/lib/units.js -->
 * (done) An enemy unit should have items in its pouch
 * (done) one of the items in the pouch should be a weapon, and that weapon should be equipped for it
-
-
 
 ## ( done 12/26/2021 ) - r19 - fixed bug (#12)
 <!-- js/game.js -->

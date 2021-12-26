@@ -21,7 +21,7 @@
     World MENUS and new worlds
 ********** *******-->
 
-## () - r28 - Start world menu system
+## () - r29 - Start world menu system
 * start a new world menu system that will pop up each time the player enters a portal to a new world from home
 * In this world menu the player will know what classes of items there are in terms of drops
 <!-- json/world-forest.js -->
@@ -32,28 +32,28 @@
     RANGE WEAPONS
 ********** *******-->
 
-## () - r27 - start range weapons
+## () - r28 - start range weapons
 * start range weapons
 
 <!--****** **********
     ARMOR ITEMS
 ********** *******-->
 
-## () - r26 - start armor items
+## () - r27 - start armor items
 * I will want to add armor items
 
 <!--****** **********
     SAVE STATE MENU - unit json files
 ********** *******-->
 
-## () - r25 - save state menu
+## () - r26 - save state menu
 * start a new save state menu
 
 <!--****** **********
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
-## () - r24 - unit sub-types starting with enemy unit type
+## () - r25 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am going to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -83,10 +83,10 @@
     MISC IMPROVEMENTS
 ********** *******-->
 
-## () - r23 - init state
+## () - r24 - init state
 * start an init state
 
-## () - r22 - message system
+## () - r23 - message system
 * start a message system that wil be used to inform the player of things
 * fix #10 by using mesage system to inform the user that they can not drop an item here
 
@@ -94,16 +94,23 @@
     ITEMS AND DROPS - item json files
 ********** *******-->
 
-## () - r21 - new game-pouch state
+## () - r22 - new game-pouch state
 * Start a new game-pouch state along with the many other states thus far that will work in place of the item menu in gameMod
 * The pouch size will now be though of in terms of 4 by 4 grids
 * Start the player off with 2 4x4 grids which means a total size of 32 items
 * The player can switch between two or more grids of item slot locations in there pouch
 
-## () - r20 - make use of item-class.js
+## () - r21 - make use of item-class.js
 * make use of the item-class.js file from js-math-random for post folder
 
-## () - r19 - enemy unit pouch, enemy unit item drops, fixed bug (#12)
+## () - r20 - enemy unit pouch, enemy unit item drops
+* update getDropItemGroup to work with any unit beyond just that of the player unit
+* An enemy unit should have items in its pouch
+* one of the items in the pouch should be a weapon, and that weapon should be equipped for it
+* when an enemy unit dies it should drop its items to one or more cells
+* if there are no free cells and all groups are full then the enemy will drop nothing
+
+## () - r19 - fixed bug (#12)
 <!-- js/game.js -->
 * (done) rename createMapButtonOnClick to createMapButtonOnExit
 * (done) cyan color for items in pouch menu
@@ -112,12 +119,6 @@
 * (done) use getDropItemGroup helper in onClick event of drop button in MENUS.item to set buttonType and color
 * (done) use getDropItemGroup helper in onExit to know group to drop to
 * (done) at this point #12 should be fixed
-
-
-* An enemy unit should have items in its pouch
-* one of the items in the pouch should be a weapon, and that weapon should be equipped for it
-* when an enemy unit dies it should drop its items to one or more cells
-* if there are no free cells and all groups are full then the enemy will drop nothing
 
 ## ( done 12/26/2021 ) - r18 - player pouch limits, new onExit button event
 <!-- js/game.js -->

@@ -119,6 +119,7 @@
 * add a new onExit button event for buttons
 * regardless of button type, onClick should fire the very moment that a button is clicked
 * the onExit event should fire when pd.frame === 0 and md.mode === 'exit'
+* make all needed changes to all buttons with new event options
 
 <!-- js/lib/units.js -->
 * (done) have a player.pouch_max value

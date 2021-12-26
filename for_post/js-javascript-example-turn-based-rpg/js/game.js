@@ -489,7 +489,8 @@ var gameMod = (function () {
     BUTTON.quit = {
         desc: 'quit',
         outer: true,
-        onClick: function(sm, button){
+        //onClick: function(sm, button){
+        onExit: function(sm, button){
            sm.game.options.data.menuKey = 'main';
            sm.setState('title');
         }
@@ -497,7 +498,8 @@ var gameMod = (function () {
     BUTTON.resume = {
         desc: 'resume',
         outer: true,
-        onClick: function(sm, button){
+        //onClick: function(sm, button){
+onExit: function(sm, button){
            sm.game.options.data.menuKey = 'main';
            sm.game.mode = 'map';
         }
@@ -506,14 +508,16 @@ var gameMod = (function () {
     BUTTON.to_pickup = {
         desc: 'Pick Up',
         outer: true,
-        onClick: function(sm, button){
+        //onClick: function(sm, button){
+onExit: function(sm, button){
             startMenu(sm.game, 'pickup');
         }
     };
     BUTTON.to_main = {
         desc: 'Main',
         outer: true,
-        onClick: function(sm, button){
+        //onClick: function(sm, button){
+onExit: function(sm, button){
             // return to main menu key
             startMenu(sm.game, 'main');
         }
@@ -521,7 +525,8 @@ var gameMod = (function () {
     BUTTON.to_pouch = {
         desc: 'Pouch',
         outer: true,
-        onClick: function(sm, button){
+        //onClick: function(sm, button){
+onExit: function(sm, button){
             // return to main menu key
             startMenu(sm.game, 'pouch');
         }
@@ -531,25 +536,29 @@ var gameMod = (function () {
         desc: 'South',
         outer: false,
         ta: Math.PI * 0.5,
-        onClick: createMapButtonOnClick('south')
+        //onClick: createMapButtonOnClick('south')
+onExit: createMapButtonOnClick('south')
     };
     BUTTON.map_north = {
         desc: 'North',
         outer: false,
         ta: Math.PI * 1.5,
-        onClick: createMapButtonOnClick('north')
+        //onClick: createMapButtonOnClick('north')
+onExit: createMapButtonOnClick('north')
     };
     BUTTON.map_east = {
         desc: 'East',
         outer: false,
         ta: Math.PI * 2,
-        onClick: createMapButtonOnClick('east')
+        //onClick: createMapButtonOnClick('east')
+onExit: createMapButtonOnClick('east')
     };
     BUTTON.map_west = {
         desc: 'West',
         outer: false,
         ta: Math.PI * 1,
-        onClick: createMapButtonOnClick('west')
+        //onClick: createMapButtonOnClick('west')
+onExit: createMapButtonOnClick('west')
     };
     // MENUS
     var MENUS = {};
@@ -592,7 +601,8 @@ var gameMod = (function () {
                         //type: 'action',
                         subText: 'lv' + item.levelObj.level,
                         outer: true,
-                        onClick: function(sm, button){
+                        //onClick: function(sm, button){
+onExit: function(sm, button){
 
 var pd = sm.game.options.data;
 
@@ -658,7 +668,8 @@ var pd = sm.game.options.data;
                     desc: item.subType.split('.')[2] || 'item',
                     subText: 'lv' + item.levelObj.level,
                     outer: true,
-                    onClick: function(sm, button){
+                    //onClick: function(sm, button){
+onExit: function(sm, button){
                         game.options.data.menuOpt.itemIndex = i;
                         game.options.data.menuOpt.item = item;
                         startMenu(sm.game, 'item', {
@@ -673,7 +684,8 @@ var pd = sm.game.options.data;
     BUTTON.item_drop = {
         desc: 'drop',
         outer: true,
-        onClick: function(sm, button){
+        //onClick: function(sm, button){
+onExit: function(sm, button){
             var game = sm.game,
             i = game.options.data.menuOpt.itemIndex,
             item = game.player.pouch[i],
@@ -813,6 +825,7 @@ var pd = sm.game.options.data;
                 desc: buttonDATA.desc,
                 subText: buttonDATA.subText,
                 onClick: buttonDATA.onClick,
+                onExit: buttonDATA.onExit,
                 outer: buttonDATA.outer,
                 ta: ta,
                 type: buttonDATA.type
@@ -857,7 +870,9 @@ var pd = sm.game.options.data;
         bd.a = 0;
         bd.ta = spawnOpt.ta === undefined ? Math.PI * 2: spawnOpt.ta;
         bd.outer = spawnOpt.outer === undefined ? true : spawnOpt.outer;
+        // event methods
         bd.onClick = spawnOpt.onClick || function(){};
+        bd.onExit = spawnOpt.onExit || function(){};
         // pool data
         pd.frame = 0;
         pd.outerTotal = spawnOpt.outerTotal === undefined ? 1 : spawnOpt.outerTotal
@@ -900,10 +915,14 @@ var pd = sm.game.options.data;
                 pd.frame -= 30 * secs;
                 pd.frame = pd.frame < 0 ? 0 : pd.frame;
                 if(pd.frame === 0){
-                    // we should have an active button, if so call the onClick method for it
+                    // we should have an active button, if so call the onExit method for it
                     // else drop back to map mode
                     if(pd.activeButton){
-                        pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+                        //pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+pd.mode = 'enter';
+pd.frame = 0;
+pd.activeButton.data.onExit.call(sm, sm, pd.activeButton);
+pd.activeButton = null;
                     }else{
                         pd.menuKey = 'main';
                         sm.game.mode = 'map';

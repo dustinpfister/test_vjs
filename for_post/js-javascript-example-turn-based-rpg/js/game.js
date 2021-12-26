@@ -752,11 +752,25 @@ var gameMod = (function () {
         return result;
     };
 
-    // can drop at given cell location
+    // just see if we can drop a item at given cell location returning true or false
     var canDropAtCell = function(game, cell){
         var result = getDropObj(game, cell.x, cell.y, game.mapIndex);
         if(result.mode === 'fail'){
             return false;
+        }
+        return true;
+    };
+
+    var unitDropAtCell = function(game, cell, itemIndex){
+        var result = getDropObj(game, cell.x, cell.y, game.mapIndex),
+        unit = cell.unit,
+        item = unit.pouch[itemIndex];
+
+        if(result.mode === 'fail'){
+            return false;
+        }
+
+        if(result.mode === 'add'){
         }
         return true;
     };

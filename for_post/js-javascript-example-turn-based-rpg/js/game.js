@@ -761,23 +761,45 @@ var gameMod = (function () {
         return true;
     };
 
-    // the unit at the given cell wants to drop the given item index in its pouch
-/*
-    var unitDropAtCell = function(game, cell, itemIndex){
-        var result = getDropObj(game, cell.x, cell.y, game.mapIndex),
-        unit = cell.unit,
-        item = unit.pouch[itemIndex];
+    // puch drop of enemy unit at given eCell
+    var enemyPouchDrop = function(game, eCell){
 
-        if(result.mode === 'fail'){
-            return false;
-        }
+console.log('pouch drop!');
+        eCell.unit.pouch.forEach(function(item){
+            //var result = getDropObj(game, eCell.x, eCell.y, game.mapIndex);
 
-        if(result.mode === 'add'){
-        }
-        return true;
+        });
+        
     };
-*/
-
+    var unitItemDrop = function(game, uCell, itemIndex){
+        //var item = game.player.pouch[itemIndex],
+        //pCell = api.getPlayerCell(game),
+        var result = getDropObj(game, uCell.x, uCell.y, game.mapIndex),
+        unit = uCell.unit,
+        item = unit.pouch[itemIndex],
+        group;
+        // if result is 'fail'
+        if(result.mode === 'fail' || item === undefined){
+            return;
+        }
+        if(result.mode === 'createUnder'){
+            result.cell.unit.children = unitMod.createUnit('group',  { pouch:[ item ] } );
+        }
+        if(result.mode === 'addUnder'){
+            result.cell.unit.children.pouch.push(item);
+        }
+        if(result.mode === 'create'){
+            result.cell.unit = unitMod.createUnit('group',  { pouch:[ item ] } );
+        }
+        if(result.mode === 'add'){
+            result.cell.unit.pouch.push(item);
+        }
+        if(unit.type === 'player' && item === game.player.currentWeapon){
+            game.player.currentWeapon = null;
+        }
+        unit.pouch.splice(itemIndex, 1);
+    };
+/*
     var playerItemDrop = function(game, itemIndex){
         var item = game.player.pouch[itemIndex],
         pCell = api.getPlayerCell(game),
@@ -805,6 +827,7 @@ var gameMod = (function () {
         }
         game.player.pouch.splice(itemIndex, 1);
     };
+*/
     // menu for a current item
     MENUS.item = {
         // hard coded buttons for item menu
@@ -828,7 +851,8 @@ var gameMod = (function () {
                 },
                 onExit: function(sm, button){
                         // use player item drop method
-                        playerItemDrop(sm.game, game.options.data.menuOpt.itemIndex);
+                        //playerItemDrop(sm.game, game.options.data.menuOpt.itemIndex);
+                        unitItemDrop(sm.game, api.getPlayerCell(game), game.options.data.menuOpt.itemIndex);
                         startMenu(sm.game, 'pouch');
                 }
             });
@@ -1148,7 +1172,7 @@ var gameMod = (function () {
         // set up game for first time as new game
         setupGame(game, true);
 
-console.log( getDropObj(game, 4, 2) );
+//console.log( getDropObj(game, 4, 2) );
 //console.log( getDropObj(game, 4, 3) );
 
         // return the game object
@@ -1178,6 +1202,8 @@ console.log( getDropObj(game, 4, 2) );
                     }else{
                         targetCell.unit = null;
                     }
+                    // drop the pouch
+                    enemyPouchDrop(game, targetCell);
                 }
             }
             unit.meleeTarget = null;

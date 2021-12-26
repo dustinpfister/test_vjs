@@ -751,10 +751,19 @@ return ['to_pouch', 'item_equip'];
 
 var buttons = [];
 
+
+var canDrop = true;
+
 buttons.push({
         desc: 'drop',
         outer: true,
-        fillStyle : 'cyan',
+        type: 'default',
+        fillStyle : canDrop ? 'cyan' : 'red',
+        onClick: function(sm, button){
+
+console.log('onClick of drop item button: ');
+
+        },
         onExit: function(sm, button){
             var game = sm.game,
             i = game.options.data.menuOpt.itemIndex,

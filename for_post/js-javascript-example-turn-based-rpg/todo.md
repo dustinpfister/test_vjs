@@ -103,12 +103,17 @@
 ## () - r20 - make use of item-class.js
 * make use of the item-class.js file from js-math-random for post folder
 
-## () - r19 - enemy unit item drops, and enemy unit pouch
+## () - r19 - enemy unit pouch, enemy unit item drops, fixed bug (#12)
 <!-- js/game.js -->
 * (done) rename createMapButtonOnClick to createMapButtonOnExit
 * (done) cyan color for items in pouch menu
+* (done) ro fix #12 start by making item_drop button a gen button in MENUS.item in gameMod
 
-* see about fixing #12 by making item_drop button a gen button in MENUS.item in gameMod
+* I will want to have a canDropItem helper that will return a ref to a group unit, or false to fix #12
+* use canDropItem helper in onClick event of drop button in MENUS.item to set buttonType and color
+* use canDropItem helper in onExit to know group to drop to
+* at this point #12 should be fixed
+
 
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it

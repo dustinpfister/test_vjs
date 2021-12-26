@@ -109,12 +109,17 @@
 
 ## () - r18 - player pouch limits
 <!-- js/game.js -->
+* (done) make it so that the player can not pick up an item if the player pouch is full
+
 * change color of buttons in pickUp menu to red when player pouch is full
 * in the event that the player pouch is full clicking items in pickup menu will not work
 
 * change color of buttons in pouch menu to red when player can not drop
+
+* see about making MENUS.pickup generated buttons a dynamic type that will work one of two ways (pouch full, and not full)
+
 <!-- js/lib/units.js -->
-* have a player.pouch_max value
+* (done) have a player.pouch_max value
 
 ## ( done 12/25/2021 ) - r17 - Item count limit for groups
 <!-- json/world-home.js -->

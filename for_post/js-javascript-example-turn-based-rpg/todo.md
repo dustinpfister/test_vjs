@@ -3,7 +3,7 @@
 <!--****** **********
     KNOWN BUGS / ISSUES / MISC CHANGES WANTED
 ********** *******-->
-* (#0 done-r9) fix Weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
+* (#0 done-r009) fix Weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
 * (#1) I should not have to have a setupGame2 method in gameMod
 * (#2) I should have a main update loop for object pools
 * (#3) Rename unit.children to unit.over in units.js, and make the changes in gameMod also
@@ -15,7 +15,7 @@
 * (#9) Fix bug where player attack will not update until next attack when switching weapons
 * (#10) tell the user that an item can not be dropped when in such a situation
 * (#11) strange outcome when setting buttonDATA.ta in createMenu helper in gameMod
-* (#12) change color of drop item button to red when player can not drop an item
+* (#12 done-r019) change color of drop item button to red when player can not drop an item
 
 <!--****** **********
     World MENUS and new worlds
@@ -108,11 +108,10 @@
 * (done) rename createMapButtonOnClick to createMapButtonOnExit
 * (done) cyan color for items in pouch menu
 * (done) ro fix #12 start by making item_drop button a gen button in MENUS.item in gameMod
-
-* I will want to have a canDropItem helper that will return a ref to a group unit, or false to fix #12
-* use canDropItem helper in onClick event of drop button in MENUS.item to set buttonType and color
-* use canDropItem helper in onExit to know group to drop to
-* at this point #12 should be fixed
+* (done) I will want to have a getDropItemGroup helper that will return a ref to a group unit, or false to fix #12
+* (done) use getDropItemGroup helper in onClick event of drop button in MENUS.item to set buttonType and color
+* (done) use getDropItemGroup helper in onExit to know group to drop to
+* (done) at this point #12 should be fixed
 
 
 * An enemy unit should have items in its pouch

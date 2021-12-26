@@ -764,12 +764,13 @@ var gameMod = (function () {
     // puch drop of enemy unit at given eCell
     var enemyPouchDrop = function(game, eCell){
 
-console.log('pouch drop!');
-        eCell.unit.pouch.forEach(function(item){
-            //var result = getDropObj(game, eCell.x, eCell.y, game.mapIndex);
+        console.log('pouch drop!');
 
-        });
-        
+        var i = eCell.unit.pouch.length;
+        while(i--){
+            unitItemDrop(game, eCell, i);
+        }
+      
     };
     var unitItemDrop = function(game, uCell, itemIndex){
         //var item = game.player.pouch[itemIndex],
@@ -1194,6 +1195,8 @@ console.log('pouch drop!');
                 if(tUnit.HP <= 0 && tUnit.type === 'enemy'){
                     // give xp value to player
                     unitMod.giveXP(game.player, tUnit.xpValue);
+                    // drop the pouch
+                    enemyPouchDrop(game, targetCell);
                     // if the target unit has a group that needs to be placed back
                     // as the top level unit, put it back, else just clear the cell
                     targetCell.walkable = true;
@@ -1202,8 +1205,6 @@ console.log('pouch drop!');
                     }else{
                         targetCell.unit = null;
                     }
-                    // drop the pouch
-                    enemyPouchDrop(game, targetCell);
                 }
             }
             unit.meleeTarget = null;

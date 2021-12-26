@@ -1,7 +1,7 @@
 # todo list for js-javascript-example-grid-game-unit-movement
 
 <!--****** **********
-    KNOWN BUGS / ISSHUES / MISC CHANGES
+    KNOWN BUGS / ISSUES / MISC CHANGES WANTED
 ********** *******-->
 * (#0 done-r9) fix Weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
 * (#1) I should not have to have a setupGame2 method in gameMod
@@ -116,7 +116,6 @@
 * (done) the onExit event should fire when pd.frame === 0 and md.mode === 'exit'
 * (done) make all needed changes to all buttons with new event options	
 * (done) dynamic button typing for the pickup item gen buttons in MENUS.pickup
-
 * (done) createMenu helper is now using Object.assign to create a spawnOpt object
 
 * change color of buttons in pickUp menu to red when player pouch is full

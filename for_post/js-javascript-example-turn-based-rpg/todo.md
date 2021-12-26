@@ -109,11 +109,9 @@
 * (done) start new getDropObj helper that will be used to help work out what needs to happen with drops in general
 * (done) use getDropObj helper to create a canDropAtCell helper
 * (done) use canDropAtCell helper in place of getDropItemGroup in MENUS.item 
-
-
-* new playerItemDrop helper
-* use playerItemDrop helper in place of getDropItemGroup in MENUS.item
-* remove getDropItemGroup if it is no longer used
+* (done) new playerItemDrop helper
+* (done) use playerItemDrop helper in place of getDropItemGroup in MENUS.item
+* (done) remove getDropItemGroup if it is no longer used
 
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it

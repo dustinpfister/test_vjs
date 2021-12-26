@@ -805,81 +805,6 @@ var gameMod = (function () {
         }
         game.player.pouch.splice(itemIndex, 1);
     };
-/*
-    // return a ref to a group unit or return false if no group can or had been created
-    var getDropItemGroup = function(sm, passiveMode){
-        var game = sm.game,
-        i = game.options.data.menuOpt.itemIndex,
-        item = game.player.pouch[i];
-        // can not drop is the assumed default
-        group = false,
-        // check the children prop of the player
-        over = game.player.children;
-        // in passiveMode just return true or false, and do not mutate state in any way
-        passiveMode = passiveMode === undefined ? false : passiveMode;
-        // if it is all ready a group just go ahead and drop it to that group
-        if(over.type === 'group'){
-            // add to the group only if the length of the pouch is less than GROUP_POUCH_MAX
-            if(over.pouch.length < GROUP_POUCH_MAX){
-                if(passiveMode){
-                    return true;
-                }
-                group = over;
-            }else{
-                // check cells near this one then
-                var map = game.maps[game.mapIndex],
-                pCell = api.getPlayerCell(game);
-                var cells = mapMod.getNeighbors(map, pCell, 8);
-                console.log('group is full checking other cells');
-                // loop options
-                var nci = 0,cell;
-                while(nci < cells.length){
-                    cell = cells[nci];
-                    // if cell.unit is null we can create a new group there
-                    if(cell.unit === null){
-                        if(passiveMode){
-                            return true;
-                        }
-                        cell.unit = unitMod.createUnit('group', {});
-                        group = cell.unit;
-                        // break the loop
-                        break;
-                    }
-                    // if cell.unit is a group with a length less than GROUP_POUCH_MAX
-                    // we can drop the item there
-                    if(cell.unit){
-                        if(cell.unit.type === 'group' && cell.unit.pouch.length < GROUP_POUCH_MAX){
-                            if(passiveMode){
-                                return true;
-                            }
-                            group = cell.unit;
-                            // break the loop
-                            break;
-                        }
-                    }
-                    nci += 1;
-                }
-            }
-        }else{
-            // create a new group if we can
-            if(over.type === undefined){
-                if(passiveMode){
-                    return true;
-                }
-                game.player.children = unitMod.createUnit('group', {});
-                group = game.player.children;
-            }
-        }
-        if(passiveMode){
-            return false;
-        }
-        // if item is the current weapon
-        if(item === game.player.currentWeapon){
-            game.player.currentWeapon = null;
-        }
-        return group;
-    };
-*/
     // menu for a current item
     MENUS.item = {
         // hard coded buttons for item menu
@@ -905,19 +830,6 @@ var gameMod = (function () {
                         // use player item drop method
                         playerItemDrop(sm.game, game.options.data.menuOpt.itemIndex);
                         startMenu(sm.game, 'pouch');
-
-/*
-                    var group = getDropItemGroup(sm),
-                    i = game.options.data.menuOpt.itemIndex,
-                    item = game.player.pouch[i];
-                    // if we have a group we can drop
-                    if(group){
-                        utils.log('droping item to a group.', 'debug');
-                        game.player.pouch.splice(i, 1);
-                        group.pouch.push(item);
-                        startMenu(sm.game, 'pouch');
-                    }
-*/
                 }
             });
             return buttons;

@@ -104,6 +104,9 @@
 * make use of the item-class.js file from js-math-random for post folder
 
 ## () - r19 - enemy unit item drops, and enemy unit pouch
+* rename createMapButtonOnClick to createMapButtonOnExit
+* cyan color for items in poucn menu
+
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it
 * when an enemy unit dies it should drop its items to one or more cells

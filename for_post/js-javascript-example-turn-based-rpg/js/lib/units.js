@@ -166,7 +166,7 @@ var unitMod = (function () {
             // starting weapon for the player
             player.currentWeapon = player.pouch[0];
             // player pouch size
-            player.pouch_max = 3;
+            player.pouch_max = 10;
         }
     };
     // enemy type

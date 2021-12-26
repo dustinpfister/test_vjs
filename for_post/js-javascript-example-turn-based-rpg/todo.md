@@ -109,11 +109,12 @@
 * (done) use getDropObj helper to create a canDropAtCell helper
 * (done) use canDropAtCell helper in place of getDropItemGroup in MENUS.item 
 
-* use getDropObj helper in place of getDropItemGroup for player drops
+* new dropItemAtCell helper that will use getDropObj and take a cell as an arument
+* use dropItemAtCell helper in place of getDropItemGroup for player drops
 
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it
-* when an enemy unit dies it should drop its items to one or more cells
+* when an enemy unit dies it should drop its items to one or more cells using dropItemAtCell
 * if there are no free cells and all groups are full then the enemy will drop nothing
 
 ## ( done 12/26/2021 ) - r19 - fixed bug (#12)

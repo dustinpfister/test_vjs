@@ -115,8 +115,9 @@
 
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it
-* when an enemy unit dies it should drop its items to one or more cells using dropItemAtCell
-* if there are no free cells and all groups are full then the enemy will drop nothing
+* start an enemyPouchDrop helper
+* when an enemy unit dies it should drop its items to one or more cells new enemyPouchDrop helper
+
 
 ## ( done 12/26/2021 ) - r19 - fixed bug (#12)
 <!-- js/game.js -->

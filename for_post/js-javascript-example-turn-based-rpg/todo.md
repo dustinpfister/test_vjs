@@ -17,6 +17,7 @@
 * (#11) strange outcome when setting buttonDATA.ta in createMenu helper in gameMod
 * (#12 done-r019) change color of drop item button to red when player can not drop an item
 * (#13) getDropObj will not create or add under player and enemy cells
+* (#14) fix drop map cary over bug where enemy item drops cary over to the next map with the player unit
 
 <!--****** **********
     World MENUS and new worlds

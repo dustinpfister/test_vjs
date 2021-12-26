@@ -761,6 +761,8 @@ var gameMod = (function () {
         return true;
     };
 
+    // the unit at the given cell wants to drop the given item index in its pouch
+/*
     var unitDropAtCell = function(game, cell, itemIndex){
         var result = getDropObj(game, cell.x, cell.y, game.mapIndex),
         unit = cell.unit,
@@ -774,7 +776,7 @@ var gameMod = (function () {
         }
         return true;
     };
-
+*/
 
     // return a ref to a group unit or return false if no group can or had been created
     var getDropItemGroup = function(sm, passiveMode){

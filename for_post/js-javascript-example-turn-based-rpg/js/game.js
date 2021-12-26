@@ -469,7 +469,7 @@ var gameMod = (function () {
         createMenu(game);
     };
     // helper to create on click events for direction buttons
-    var createMapButtonOnClick = function(dir){
+    var createMapButtonOnExit = function(dir){
         return function(sm, button){
             var tm = sm.game.toMap;
             sm.game.mode = 'map';
@@ -532,25 +532,25 @@ var gameMod = (function () {
         desc: 'South',
         outer: false,
         ta: Math.PI * 0.5,
-        onExit: createMapButtonOnClick('south')
+        onExit: createMapButtonOnExit('south')
     };
     BUTTON.map_north = {
         desc: 'North',
         outer: false,
         ta: Math.PI * 1.5,
-        onExit: createMapButtonOnClick('north')
+        onExit: createMapButtonOnExit('north')
     };
     BUTTON.map_east = {
         desc: 'East',
         outer: false,
         ta: Math.PI * 2,
-        onExit: createMapButtonOnClick('east')
+        onExit: createMapButtonOnExit('east')
     };
     BUTTON.map_west = {
         desc: 'West',
         outer: false,
         ta: Math.PI * 1,
-        onExit: createMapButtonOnClick('west')
+        onExit: createMapButtonOnExit('west')
     };
     // MENUS
     var MENUS = {};

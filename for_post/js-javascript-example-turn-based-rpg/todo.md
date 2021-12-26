@@ -104,10 +104,10 @@
 * make use of the item-class.js file from js-math-random for post folder
 
 ## () - r20 - enemy unit pouch, enemy unit item drops
+* (done) start new getDropObj helper that will be used to help work out what needs to happen with drops in general
 
 
-* update getDropItemGroup to work with any unit beyond just that of the player unit
-
+* use getDropObj helper in place of getDropItemGroup for player drops
 
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it

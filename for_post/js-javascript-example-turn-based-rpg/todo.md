@@ -118,9 +118,6 @@
 
 * change color of buttons in pickUp menu to red when player pouch is full
 * change color of buttons in pouch menu to red when player can not drop
-
-
-
 <!-- js/lib/units.js -->
 * (done) have a player.pouch_max value
 

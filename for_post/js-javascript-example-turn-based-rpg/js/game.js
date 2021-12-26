@@ -601,6 +601,7 @@ onExit: createMapButtonOnClick('west')
                         type: 'default',
                         subText: 'lv' + item.levelObj.level,
                         outer: true,
+                        fillStyle: 'lime',
                         // use onClick to find out what the type should be ffor this button
                         onClick: function(sm, button){
                             // by default assume default type
@@ -797,6 +798,8 @@ onExit: function(sm, button){
             i = (buttonDATA.outer ? oi : ii),
             ta = Math.PI * 2 / len * (i + 1);
             // use buttonDATA.ta if there is one
+/*
+            // oldesy way of doing this is not so great
             ta = buttonDATA.ta != undefined ? buttonDATA.ta : ta;
             // spawn buttons
             poolMod.spawn(game.options, sm, {
@@ -808,6 +811,17 @@ onExit: function(sm, button){
                 ta: ta,
                 type: buttonDATA.type
             });
+*/
+/*
+            // this should work, but it does not
+            buttonDATA.ta = buttonDATA.ta != undefined ? buttonDATA.ta : ta;
+            poolMod.spawn(game.options, sm, buttonDATA);
+*/
+            // !!! using object assign for now ( may need to switch back!? )
+            ta = buttonDATA.ta === undefined ? ta : buttonDATA.ta;
+            var spawnOpt = Object.assign({}, buttonDATA, {ta: ta});
+            poolMod.spawn(game.options, sm, spawnOpt);
+            // steping outer and inner counts
             if(buttonDATA.outer){
                oi += 1;
             }else{

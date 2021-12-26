@@ -653,76 +653,6 @@ var gameMod = (function () {
         }
     };
     // the item menu
-/*
-    BUTTON.item_drop = {
-        desc: 'drop',
-        outer: true,
-        onExit: function(sm, button){
-            var game = sm.game,
-            i = game.options.data.menuOpt.itemIndex,
-            item = game.player.pouch[i],
-            itemName = item.subType.split('.')[2];
-            // check the children prop of the player
-            var over = game.player.children;
-            // if it is all ready a group just go ahead and drop it to that group
-            if(over.type === 'group'){
-                // add to the group only if the length of the pouch is less than GROUP_POUCH_MAX
-                if(over.pouch.length < GROUP_POUCH_MAX){
-                    game.player.pouch.splice(i, 1);
-                    over.pouch.push(item);
-                }else{
-                    // check cells near this one then
-                    var map = game.maps[game.mapIndex],
-                    pCell = api.getPlayerCell(game);
-                    var cells = mapMod.getNeighbors(map, pCell, 8);
-                    console.log('group is full checking other cells');
-                    // loop options
-                    var nci = 0,cell;
-                    while(nci < cells.length){
-                        cell = cells[nci];
-                        // if cell.unit is null we can create a new group there
-                        if(cell.unit === null){
-                            game.player.pouch.splice(i, 1);
-                            cell.unit = unitMod.createUnit('group', {
-                                pouch: [item]
-                            });
-                            // break the loop
-                            break;
-                        }
-                        // if cell.unit is a group with a length less than GROUP_POUCH_MAX
-                        // we can drop the item there
-                        if(cell.unit){
-                            if(cell.unit.type === 'group' && cell.unit.pouch.length < GROUP_POUCH_MAX){
-                                game.player.pouch.splice(i, 1);
-                                cell.unit.pouch.push(item);
-                                // break the loop
-                                break;
-                            }
-                        }
-                        // can not drop if last cell and above has failed
-                        if(nci === cells.length - 1){
-                            console.log('can not drop');
-                        }
-                        nci += 1;
-                    }
-                }
-            }else{
-                // create a new group if we can
-                if(over.type === undefined){
-                    game.player.pouch.splice(i, 1);
-                    game.player.children = unitMod.createUnit('group', {
-                        pouch: [item]
-                    });
-                }
-            }
-            // if item is the current weapon
-            if(item === game.player.currentWeapon){
-                game.player.currentWeapon = null;
-            }
-            startMenu(sm.game, 'pouch');
-        }
-    };
-*/
     BUTTON.item_equip = {
         desc: 'equip',
         outer: true,
@@ -743,8 +673,7 @@ var gameMod = (function () {
     var getDropItemGroup = function(sm, passiveMode){
         var game = sm.game,
         i = game.options.data.menuOpt.itemIndex,
-        item = game.player.pouch[i],
-        itemName = item.subType.split('.')[2],
+        item = game.player.pouch[i];
         // can not drop is the assumed default
         group = false,
         // check the children prop of the player

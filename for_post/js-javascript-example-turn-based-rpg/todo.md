@@ -110,7 +110,7 @@
 * when an enemy unit dies it should drop its items to one or more cells
 * if there are no free cells and all groups are full then the enemy will drop nothing
 
-## () - r19 - fixed bug (#12)
+## ( done 12/26/2021 ) - r19 - fixed bug (#12)
 <!-- js/game.js -->
 * (done) rename createMapButtonOnClick to createMapButtonOnExit
 * (done) cyan color for items in pouch menu

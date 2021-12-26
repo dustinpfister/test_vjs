@@ -107,6 +107,8 @@
 ## () - r20 - enemy unit pouch, enemy unit item drops
 * (done) start new getDropObj helper that will be used to help work out what needs to happen with drops in general
 
+* use getDropObj helper to create a canDropAtCell helper
+* use canDropAtCell helper in place of getDropItemGroup in MENUS.item 
 
 * use getDropObj helper in place of getDropItemGroup for player drops
 

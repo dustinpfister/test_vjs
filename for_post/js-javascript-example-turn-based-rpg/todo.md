@@ -110,16 +110,17 @@
 ## () - r18 - player pouch limits, new onExit button event
 <!-- js/game.js -->
 * (done) make it so that the player can not pick up an item if the player pouch is full
+* (done) add a new onExit button event for buttons
+* (done) regardless of button type, onClick should fire the very moment that a button is clicked
+* (done) the onExit event should fire when pd.frame === 0 and md.mode === 'exit'
+* (done) make all needed changes to all buttons with new event options
 
 * change color of buttons in pickUp menu to red when player pouch is full
 * in the event that the player pouch is full clicking items in pickup menu will not work
 
 * change color of buttons in pouch menu to red when player can not drop
 
-* add a new onExit button event for buttons
-* regardless of button type, onClick should fire the very moment that a button is clicked
-* the onExit event should fire when pd.frame === 0 and md.mode === 'exit'
-* make all needed changes to all buttons with new event options
+
 
 <!-- js/lib/units.js -->
 * (done) have a player.pouch_max value

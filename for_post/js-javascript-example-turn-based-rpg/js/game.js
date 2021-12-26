@@ -895,18 +895,22 @@ onExit: function(sm, button){
             if(pd.mode === 'wait'){
                 // if we have an active button
                 if(pd.activeButton){
+
+                    // always call on click for the active button
+                    pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+
                     // if the active button is a 'default' type
+                    // mode should change to exit and the active button
+                    // ref should remain as the onExit event will need to fire later
                     if(pd.activeButton.data.type === 'default'){
                         // by default switch mode to exit
                         pd.mode = 'exit';
                     }
                     // if the type is 'action' just call the onClick
                     // method, clean activeButon back to null, and 
-                    // stay in 'wait' mode
-                    if(pd.activeButton.data.type === 'action'){
-                        pd.activeButton.data.onClick.call(sm, sm, pd.activeButton);
+                    // stay in 'wait' mode. The onExit event is not used in this mode
+                    if(pd.activeButton.data.type === 'action'){    
                         pd.activeButton = null;
-                        // mode should stay in wait
                     }
                 }
             }

@@ -598,54 +598,32 @@ onExit: createMapButtonOnClick('west')
                 return group.pouch.map(function(item, i){     
                     return {
                         desc: item.subType.split('.')[2] || 'item',
-                        //type: 'action',
+                        type: 'default',
                         subText: 'lv' + item.levelObj.level,
                         outer: true,
-                        //onClick: function(sm, button){
-onExit: function(sm, button){
-
-var pd = sm.game.options.data;
-
-                            // if the player pouch is not full we can pick up the item
-                            if(game.player.pouch.length < game.player.pouch_max){
-                                utils.log('picking up an item', 'debug');
-                                // splice the item from the group
-                                group.pouch.splice(i, 1);
-                                // push the item into the player pouch
-                                game.player.pouch.push(item);
-                                // remove group if empty set children prop
-                                // back to a default empty array
-//button.data.type = 'action';
-
-//console.log(button.data.type);
-                                if(group.pouch.length === 0){
-                                    game.player.children = [];
-
-
-//game.mode = 'menu';
-//pd.menuKey = 'main';
-//pd.mode = 'exit';
-//pd.lines = opt.lines || [];
-//pd.activeButton = null;
-//createMenu(game);
-
-
-//pd.mode = 'exit';
-                                    startMenu(sm.game, 'main');
-                                }else{
-//pd.mode = 'exit';
-                                    startMenu(sm.game, 'pickup');
-//game.mode = 'menu';
-//pd.menuKey = 'pickup';
-//pd.mode = 'exit';
-//pd.lines = opt.lines || [];
-//pd.activeButton = null;
-//createMenu(game);
-                                }
+                        // use onClick to find out what the type should be ffor this button
+                        onClick: function(sm, button){
+                            // by default assume default type
+                            button.data.type = 'default';
+                            // switch to 'action' type if player pouch is full
+                            if(game.player.pouch.length >= game.player.pouch_max){
+                                button.data.type = 'action';
+                                utils.log('player pouch is full', 'debug');
+                            }
+                        },
+                        // on exit event should only fire if player pouch is NOT full
+                        onExit: function(sm, button){
+                            utils.log('picking up an item', 'debug');
+                            // splice the item from the group
+                            group.pouch.splice(i, 1);
+                            // push the item into the player pouch
+                            game.player.pouch.push(item);
+                            // remove group if empty set children prop
+                            // back to a default empty array
+                            if(group.pouch.length === 0){
+                                game.player.children = [];
+                                startMenu(sm.game, 'main');
                             }else{
-//button.data.type = 'action';
-                                // else the player pouch is full
-                                utils.log('player pouch is full, can not pick up the item');
                                 startMenu(sm.game, 'pickup');
                             }
                         }

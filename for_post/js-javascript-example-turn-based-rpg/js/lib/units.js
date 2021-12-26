@@ -99,6 +99,7 @@ var unitMod = (function () {
             data: {},
             children: [],
             pouch:[],             // a collection of item units for this unit AKA and inventory
+            pouch_max: 10,        // max size of the pouch
             walkable: false,      // used to set if the cell should be walkable or not if this unit is the actual unit of a cell
             weaponIndex: 0,
             sheetIndex: 0,
@@ -159,14 +160,13 @@ var unitMod = (function () {
                 baseAttack: { min: [2, 1], inc: [0.75, 0.5] },
                 baseDefense: { min: [1, 1], inc: [0.125, 0.025] }
             };
-
             // starting item for player
             var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 2});
             player.pouch.push(startItem);
-
             // starting weapon for the player
-            //player.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
-            player.currentWeapon = player.pouch[0]; 
+            player.currentWeapon = player.pouch[0];
+            // player pouch size
+            player.pouch_max = 3;
         }
     };
     // enemy type

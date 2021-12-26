@@ -583,37 +583,41 @@ var gameMod = (function () {
             return buttonKeys;
         },
         genButtons: function(game){
-             var group = game.player.children; 
-             // gen a button for each item
-             if(group.type === 'group'){
-                  return group.pouch.map(function(item, i){     
-                      return {
-                          desc: item.subType.split('.')[2] || 'item',
-                          subText: 'lv' + item.levelObj.level,
-                          outer: true,
-                          onClick: function(sm, button){
-                              // splice the item from the group
-                              group.pouch.splice(i, 1);
-                              // push the item into the player pouch
-                              game.player.pouch.push(item);
-                              // remove group if empty set children prop
-                              // back to a default empty array
-                              if(group.pouch.length === 0){
-                                  game.player.children = [];
-                                  startMenu(sm.game, 'main');
-                              }else{
-                                  startMenu(sm.game, 'pickup');
-                              }
-                              //sm.game.mode = 'map';
-                              utils.log('item button clicked!', 'debug');
-                              utils.log('groupIndex: ' + i + ', subType: ' + item.subType, 'debug');
-                              utils.log('player pouch: ' + game.player.pouch, 'debug');
-                              utils.log('group pouch: ' + group.pouch, 'debug');
-                          }
-                      }
-                  });
-             }
-             return [];
+            var group = game.player.children; 
+            // gen a button for each item
+            if(group.type === 'group'){
+                return group.pouch.map(function(item, i){     
+                    return {
+                        desc: item.subType.split('.')[2] || 'item',
+                        //type: 'action',
+                        subText: 'lv' + item.levelObj.level,
+                        outer: true,
+                        onClick: function(sm, button){
+                            // if the player pouch is not full we can pick up the item
+                            if(game.player.pouch.length < game.player.pouch_max){
+                                utils.log('picking up an item', 'debug');
+                                // splice the item from the group
+                                group.pouch.splice(i, 1);
+                                // push the item into the player pouch
+                                game.player.pouch.push(item);
+                                // remove group if empty set children prop
+                                // back to a default empty array
+                                if(group.pouch.length === 0){
+                                    game.player.children = [];
+                                    startMenu(sm.game, 'main');
+                                }else{
+                                    startMenu(sm.game, 'pickup');
+                                }
+                            }else{
+                                // else the player pouch is full
+                                utils.log('player pouch is full, can not pick up the item');
+                                startMenu(sm.game, 'pickup');
+                            }
+                        }
+                    }
+                });
+            }
+            return [];
         }
     };
     // the pouch menu

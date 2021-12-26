@@ -108,6 +108,8 @@
 * (done) rename createMapButtonOnClick to createMapButtonOnExit
 * (done) cyan color for items in pouch menu
 
+* see about fixing #12 by making item_drop button a gen button in MENUS.item in gameMod
+
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it
 * when an enemy unit dies it should drop its items to one or more cells

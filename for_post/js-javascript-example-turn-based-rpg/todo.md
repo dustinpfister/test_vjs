@@ -16,6 +16,7 @@
 * (#10) tell the user that an item can not be dropped when in such a situation
 * (#11) strange outcome when setting buttonDATA.ta in createMenu helper in gameMod
 * (#12 done-r019) change color of drop item button to red when player can not drop an item
+* (#13) getDropObj will not create or add under player and enemy cells
 
 <!--****** **********
     World MENUS and new worlds

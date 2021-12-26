@@ -107,7 +107,7 @@
 * when an enemy unit dies it should drop its items to one or more cells
 * if there are no free cells and all groups are full then the enemy will drop nothing
 
-## () - r18 - player pouch limits
+## () - r18 - player pouch limits, new onExit button event
 <!-- js/game.js -->
 * (done) make it so that the player can not pick up an item if the player pouch is full
 
@@ -116,7 +116,9 @@
 
 * change color of buttons in pouch menu to red when player can not drop
 
-* see about making MENUS.pickup generated buttons a dynamic type that will work one of two ways (pouch full, and not full)
+* add a new onExit button event for buttons
+* regardless of button type, onClick should fire the very moment that a button is clicked
+* the onExit event should fire when pd.frame === 0 and md.mode === 'exit'
 
 <!-- js/lib/units.js -->
 * (done) have a player.pouch_max value

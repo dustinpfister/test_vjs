@@ -593,6 +593,9 @@ var gameMod = (function () {
                         subText: 'lv' + item.levelObj.level,
                         outer: true,
                         onClick: function(sm, button){
+
+var pd = sm.game.options.data;
+
                             // if the player pouch is not full we can pick up the item
                             if(game.player.pouch.length < game.player.pouch_max){
                                 utils.log('picking up an item', 'debug');
@@ -602,13 +605,35 @@ var gameMod = (function () {
                                 game.player.pouch.push(item);
                                 // remove group if empty set children prop
                                 // back to a default empty array
+//button.data.type = 'action';
+
+//console.log(button.data.type);
                                 if(group.pouch.length === 0){
                                     game.player.children = [];
+
+
+//game.mode = 'menu';
+//pd.menuKey = 'main';
+//pd.mode = 'exit';
+//pd.lines = opt.lines || [];
+//pd.activeButton = null;
+//createMenu(game);
+
+
+//pd.mode = 'exit';
                                     startMenu(sm.game, 'main');
                                 }else{
+//pd.mode = 'exit';
                                     startMenu(sm.game, 'pickup');
+//game.mode = 'menu';
+//pd.menuKey = 'pickup';
+//pd.mode = 'exit';
+//pd.lines = opt.lines || [];
+//pd.activeButton = null;
+//createMenu(game);
                                 }
                             }else{
+//button.data.type = 'action';
                                 // else the player pouch is full
                                 utils.log('player pouch is full, can not pick up the item');
                                 startMenu(sm.game, 'pickup');

@@ -14,6 +14,7 @@
 * (#8) Fix bug where an enemy will spawn at the player start location
 * (#9) Fix bug where player attack will not update until next attack when switching weapons
 * (#10) tell the user that an item can not be dropped when in such a situation
+* (#11) strange outcome when setting buttonDATA.ta in createMenu helper in gameMod
 
 <!--****** **********
     World MENUS and new worlds
@@ -115,6 +116,8 @@
 * (done) the onExit event should fire when pd.frame === 0 and md.mode === 'exit'
 * (done) make all needed changes to all buttons with new event options	
 * (done) dynamic button typing for the pickup item gen buttons in MENUS.pickup
+
+* (done) createMenu helper is now using Object.assign to create a spawnOpt object
 
 * change color of buttons in pickUp menu to red when player pouch is full
 * change color of buttons in pouch menu to red when player can not drop

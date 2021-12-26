@@ -778,6 +778,34 @@ var gameMod = (function () {
     };
 */
 
+    var playerItemDrop = function(game, itemIndex){
+        var item = game.player.pouch[itemIndex],
+        pCell = api.getPlayerCell(game),
+        result = getDropObj(game, pCell.x, pCell.y, game.mapIndex),
+        group;
+        // if result is 'fail'
+        if(result.mode === 'fail' || item === undefined){
+            utils.log('playerItemDrop: failed to drop item for player', 'debug');
+            return;
+        }
+        if(result.mode === 'createUnder'){
+            result.cell.unit.children = unitMod.createUnit('group',  { pouch:[ item ] } );
+        }
+        if(result.mode === 'addUnder'){
+            result.cell.unit.children.pouch.push(item);
+        }
+        if(result.mode === 'create'){
+            result.cell.unit = unitMod.createUnit('group',  { pouch:[ item ] } );
+        }
+        if(result.mode === 'add'){
+            result.cell.unit.pouch.push(item);
+        }
+        if(item === game.player.currentWeapon){
+            game.player.currentWeapon = null;
+        }
+        game.player.pouch.splice(itemIndex, 1);
+    };
+/*
     // return a ref to a group unit or return false if no group can or had been created
     var getDropItemGroup = function(sm, passiveMode){
         var game = sm.game,
@@ -851,6 +879,7 @@ var gameMod = (function () {
         }
         return group;
     };
+*/
     // menu for a current item
     MENUS.item = {
         // hard coded buttons for item menu
@@ -873,6 +902,11 @@ var gameMod = (function () {
                     }
                 },
                 onExit: function(sm, button){
+                        // use player item drop method
+                        playerItemDrop(sm.game, game.options.data.menuOpt.itemIndex);
+                        startMenu(sm.game, 'pouch');
+
+/*
                     var group = getDropItemGroup(sm),
                     i = game.options.data.menuOpt.itemIndex,
                     item = game.player.pouch[i];
@@ -883,6 +917,7 @@ var gameMod = (function () {
                         group.pouch.push(item);
                         startMenu(sm.game, 'pouch');
                     }
+*/
                 }
             });
             return buttons;

@@ -595,19 +595,20 @@ onExit: createMapButtonOnClick('west')
             var group = game.player.children; 
             // gen a button for each item
             if(group.type === 'group'){
-                return group.pouch.map(function(item, i){     
+                return group.pouch.map(function(item, i){
+                    var pouchFull = game.player.pouch.length >= game.player.pouch_max; 
                     return {
                         desc: item.subType.split('.')[2] || 'item',
                         type: 'default',
                         subText: 'lv' + item.levelObj.level,
                         outer: true,
-                        fillStyle: 'lime',
+                        fillStyle: pouchFull ? 'red' : 'cyan',
                         // use onClick to find out what the type should be ffor this button
                         onClick: function(sm, button){
                             // by default assume default type
                             button.data.type = 'default';
                             // switch to 'action' type if player pouch is full
-                            if(game.player.pouch.length >= game.player.pouch_max){
+                            if(pouchFull){
                                 button.data.type = 'action';
                                 utils.log('player pouch is full', 'debug');
                             }
@@ -854,6 +855,7 @@ onExit: function(sm, button){
         pd = options.data;
         // button data
         bd.desc = spawnOpt.desc || false;
+        bd.fillStyle = spawnOpt.fillStyle || '#dadada';
         bd.subText = spawnOpt.subText || '';
         bd.type = spawnOpt.type || 'default';
         bd.cx = button.x = sm.canvas.width / 2 - button.w / 2;

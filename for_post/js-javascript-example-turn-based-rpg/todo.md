@@ -15,6 +15,7 @@
 * (#9) Fix bug where player attack will not update until next attack when switching weapons
 * (#10) tell the user that an item can not be dropped when in such a situation
 * (#11) strange outcome when setting buttonDATA.ta in createMenu helper in gameMod
+* (#12) change color of buttons in pouch menu to red when player can not drop an item
 
 <!--****** **********
     World MENUS and new worlds
@@ -108,7 +109,7 @@
 * when an enemy unit dies it should drop its items to one or more cells
 * if there are no free cells and all groups are full then the enemy will drop nothing
 
-## () - r18 - player pouch limits, new onExit button event
+## ( done 12/26/2021 ) - r18 - player pouch limits, new onExit button event
 <!-- js/game.js -->
 * (done) make it so that the player can not pick up an item if the player pouch is full
 * (done) add a new onExit button event for buttons
@@ -117,9 +118,7 @@
 * (done) make all needed changes to all buttons with new event options	
 * (done) dynamic button typing for the pickup item gen buttons in MENUS.pickup
 * (done) createMenu helper is now using Object.assign to create a spawnOpt object
-
-* change color of buttons in pickUp menu to red when player pouch is full
-* change color of buttons in pouch menu to red when player can not drop
+* (done) change color of buttons in pickUp menu to red when player pouch is full
 <!-- js/lib/units.js -->
 * (done) have a player.pouch_max value
 

@@ -108,10 +108,12 @@
 * if there are no free cells and all groups are full then the enemy will drop nothing
 
 ## () - r18 - player pouch limits
+<!-- js/game.js -->
 * change color of buttons in pickUp menu to red when player pouch is full
 * in the event that the player pouch is full clicking items in pickup menu will not work
-* change color of buttons in pickUp menu to red when player pouch is full
-<!-- js/units.js -->
+
+* change color of buttons in pouch menu to red when player can not drop
+<!-- js/lib/units.js -->
 * have a player.pouch_max value
 
 ## ( done 12/25/2021 ) - r17 - Item count limit for groups

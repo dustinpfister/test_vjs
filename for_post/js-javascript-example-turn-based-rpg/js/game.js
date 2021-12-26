@@ -752,6 +752,15 @@ var gameMod = (function () {
         return result;
     };
 
+    // can drop at given cell location
+    var canDropAtCell = function(game, cell){
+        var result = getDropObj(game, cell.x, cell.y, game.mapIndex);
+        if(result.mode === 'fail'){
+            return false;
+        }
+        return true;
+    };
+
 
     // return a ref to a group unit or return false if no group can or had been created
     var getDropItemGroup = function(sm, passiveMode){
@@ -834,7 +843,8 @@ var gameMod = (function () {
         },
         genButtons : function(game){
             var buttons = [];
-            var canDrop = getDropItemGroup(sm, true);
+            //var canDrop = getDropItemGroup(sm, true);
+            var canDrop = canDropAtCell(game, api.getPlayerCell(game));
             buttons.push({
                 desc: 'drop',
                 outer: true,

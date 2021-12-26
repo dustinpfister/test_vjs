@@ -15,7 +15,7 @@
 * (#9) Fix bug where player attack will not update until next attack when switching weapons
 * (#10) tell the user that an item can not be dropped when in such a situation
 * (#11) strange outcome when setting buttonDATA.ta in createMenu helper in gameMod
-* (#12) change color of buttons in pouch menu to red when player can not drop an item
+* (#12) change color of drop item button to red when player can not drop an item
 
 <!--****** **********
     World MENUS and new worlds
@@ -104,8 +104,9 @@
 * make use of the item-class.js file from js-math-random for post folder
 
 ## () - r19 - enemy unit item drops, and enemy unit pouch
-* rename createMapButtonOnClick to createMapButtonOnExit
-* cyan color for items in poucn menu
+<!-- js/game.js -->
+* (done) rename createMapButtonOnClick to createMapButtonOnExit
+* (done) cyan color for items in pouch menu
 
 * An enemy unit should have items in its pouch
 * one of the items in the pouch should be a weapon, and that weapon should be equipped for it

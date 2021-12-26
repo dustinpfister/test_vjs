@@ -639,6 +639,7 @@ var gameMod = (function () {
                 return {
                     desc: item.subType.split('.')[2] || 'item',
                     subText: 'lv' + item.levelObj.level,
+                    fillStyle: 'cyan',
                     outer: true,
                     onExit: function(sm, button){
                         game.options.data.menuOpt.itemIndex = i;

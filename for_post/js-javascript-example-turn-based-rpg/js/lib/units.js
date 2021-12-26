@@ -177,8 +177,11 @@ var unitMod = (function () {
             var perLevel = enemy.perLevel = {};
             // min value, incremental values
             perLevel.baseAttack = { min: [2, 1], inc: [0.25, 0.125] };
+
+            var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
+            enemy.pouch.push(startItem);
             // starting weapon for enemy
-            enemy.currentWeapon = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
+            enemy.currentWeapon = enemy.pouch[0];
         }
     };
     // wall type

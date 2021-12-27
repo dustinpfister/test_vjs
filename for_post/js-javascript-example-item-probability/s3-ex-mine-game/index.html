@@ -50,7 +50,8 @@ var singleStrike = function(mine){
     var classObj = itemClass.getRandomItemClass(mine.itemClassObj),
     oreList = ORES[classObj.desc],
     oreKey = oreList[ Math.floor( Math.random() * oreList.length ) ];
-    console.log(oreKey);
+    mine.oreCounts[oreKey] += 1;
+	console.log(mine.oreCounts);
 };
 
 var mine = createMine();

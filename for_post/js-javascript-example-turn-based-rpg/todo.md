@@ -109,7 +109,7 @@
 * (done ) add itemClassPool and itemSubTypes keys to define what classes, and what items will drop
 * (done) itemPouchRange prop
 <!-- world-forest.json -->
-* (done ) add itemClassPool and itemSubTypes keys to define what classes, and what items will drop
+* (done) add itemClassPool and itemSubTypes keys to define what classes, and what items will drop
 * (done) itemPouchRange prop
 <!-- js/game.js -->
 * (done) itemClassPool and itemSubTypes for void world
@@ -117,8 +117,8 @@
 * (done) pass a game object as one of the arguments for createEnemyOptions and use that to get a ref to the worldMap in the method
 * (done) use the worldMap object in createEnemeyOptions to check for an itemPouchRange prop, defaulting to 0 0 if there is not one there
 
-* make use of itemClass.create to make a game.itemClass object with the itemClassPool of the current world map
-* make use of new options object to set what the pouch should be for an enemy in setupGame and setupGame2
+* I will need to create a subTypes option based on worldMap values in createEnemyOptions
+* make use of itemClass.create to make a opt.classes object with the itemClassPool of the current world map in createEnemyOptions helper
 
 
 

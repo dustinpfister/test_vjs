@@ -209,14 +209,16 @@ opt.subTypes = opt.subTypes || {
             ].forEach(function(level){
 
 var itemClassObj = itemClass.getRandomItemClass(opt.classes);
-var subTypes = opt.subTypes[itemClassObj.desc];
+var subTypeList = opt.subTypes[itemClassObj.desc];
 
-console.log('options for ' + itemClassObj.desc);
-console.log(subTypes);
+//console.log('options for ' + itemClassObj.desc);
+//console.log(subTypes);
 
+// !!! for now I am just getting a random item from subTypes
+var subType = subTypeList[ Math.floor( Math.random() * subTypeList.length ) ];
+console.log( itemClassObj.desc, subType );
 
-
-                enemy.pouch.push(api.createUnit('item', { subType: 'weapon.melee.sword', level: level}));
+                enemy.pouch.push(api.createUnit('item', { subType: subType, level: level}));
             });
             // starting weapon for enemy
             enemy.currentWeapon = enemy.pouch[0];

@@ -103,6 +103,8 @@
 * The player can switch between two or more grids of item slot locations in there pouch
 
 ## () - r21 - make use of item-class.js
+<!-- index.html and build.sh -->
+* update index.html and build.sh to make use of item-class.js
 <!-- world-home.json -->
 * (done ) add itemClassPool and itemSubTypes keys to define what classes, and what items will drop
 <!-- world-forest.json -->

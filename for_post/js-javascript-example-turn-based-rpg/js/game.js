@@ -42,15 +42,12 @@ var gameMod = (function () {
         mapWorldWidth: 3,
         mapWorldHeight: 3,
         itemClassPool: [
-            {desc: "Junk", "range": [1000, 150] },
-            {desc: "common", "range": [25, 200] }
+            {desc: "Junk", "range": [1, 1] }
         ],
         itemSubTypes: {
             weapon: {
                 melee: [ 
-                    ["dagger_flint", [100, 20] ], 
-                    ["sword_rusty", [10, 50] ],
-                    ["sword_short", [1, 1]]
+                    ["sword", [1, 1] ]
                 ]
             }
         },

@@ -185,7 +185,7 @@ opt.classes = opt.classes || itemClass.create({
    levelPer: 1,             // the current global level for item drops
    levelPerRatio: 1,     // the ratio 0-1 that is the amount that the global levelPer effects points for each item class
    pool: [                  // pool defining values for each class
-     {desc: 'Junk', range: [1, 1]},
+     {desc: 'junk', range: [1, 1]},
      //{desc: 'Common', range: [100, 800], levelPer: 0.5},
      //{desc: 'Epic', range: [10, 100], levelPer: 1}
    ]
@@ -193,6 +193,13 @@ opt.classes = opt.classes || itemClass.create({
 
 console.log('classes object: ');
 console.log(opt);
+
+opt.subTypes = {
+    junk:[
+        'weapon.melee.dagger_flint',
+        'weapon.melee.sword_rusty'
+    ]
+};
 
             [
                 1, 7

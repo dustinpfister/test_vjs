@@ -314,7 +314,8 @@ var gameMod = (function () {
         console.log('enemey options: ');
         var worldMap = game.worldMap;
         var eOptions = {
-            pouchRange: worldMap.itemPouchRange || [0, 0]
+            pouchRange: worldMap.itemPouchRange || [0, 0],
+            levelRange: worldMap.itemLevelRange || [1, 1]
         };
         return eOptions;
     };

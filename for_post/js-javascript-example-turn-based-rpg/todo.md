@@ -116,8 +116,7 @@
 * (done) looks like I am going to need a createEnemyOptions helper
 * (done) pass a game object as one of the arguments for createEnemyOptions and use that to get a ref to the worldMap in the method
 * (done) use the worldMap object in createEnemeyOptions to check for an itemPouchRange prop, defaulting to 0 0 if there is not one there
-
-* set a levelRange prop in createEnemyOptions
+* (done) set a levelRange prop in createEnemyOptions
 
 * I will need to create a subTypes option based on worldMap values in createEnemyOptions
 * make use of itemClass.create to make a opt.classes object with the itemClassPool of the current world map in createEnemyOptions helper
@@ -129,6 +128,7 @@
 * (done) by default the only drops should be 'sword' as that is the only built in
 * (done) I will want to be able to set min and max number of pouch weapons by way of the new options object
 * (done) I will want to be able to set min and max levels for item drops
+
 * I will want to set points range values for each subtype for each class with this enemey obtions object
 
 

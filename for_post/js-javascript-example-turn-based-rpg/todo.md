@@ -117,7 +117,10 @@
 
 
 <!-- js/lib/units.js -->
-* add an option object for enemey create method that can be used to define what subtypes can be used for an enemy pouch
+* (done) add an option object for enemey create method that can be used to define what subtypes can be used for an enemy pouch
+* I will want to be able to set min and max number of pouch weapons by way of the new options object
+* I will want to set points range values for each subtype for each class with this enemey obtions object
+
 
 <!-- items-home.json -->
 * add at least one epic class item

@@ -38,17 +38,19 @@ var createMine = function(){
         itemClassObj: null
     };
     Object.keys(ORES).forEach(function(oreClassKey){
-	   ORES[oreClassKey].forEach(function(oreKey){
-	       mine.oreCounts[oreKey] = 0;
-	   });
-	});
+       ORES[oreClassKey].forEach(function(oreKey){
+           mine.oreCounts[oreKey] = 0;
+       });
+    });
     mine.itemClassObj = getItemClassObj(mine);
     return mine;
 };
 
 var singleStrike = function(mine){
-    var classObj = itemClass.getRandomItemClass(mine.itemClassObj);
-    console.log(classObj.desc);
+    var classObj = itemClass.getRandomItemClass(mine.itemClassObj),
+    oreList = ORES[classObj.desc],
+    oreKey = oreList[ Math.floor( Math.random() * oreList.length ) ];
+    console.log(oreKey);
 };
 
 var mine = createMine();

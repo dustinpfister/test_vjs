@@ -30,12 +30,18 @@ var createMine = function(){
     var mine = {
         level: 1,
         maxLevel: 10,
+        oreCounts: {},
         oreClasses: [
             {desc: 'oreJunk', range: [1000, 1000], levelPer: 1},
             {desc: 'oreCommon', range: [50, 600], levelPer: 0}
         ],
         itemClassObj: null
     };
+    Object.keys(ORES).forEach(function(oreClassKey){
+	   ORES[oreClassKey].forEach(function(oreKey){
+	       mine.oreCounts[oreKey] = 0;
+	   });
+	});
     mine.itemClassObj = getItemClassObj(mine);
     return mine;
 };

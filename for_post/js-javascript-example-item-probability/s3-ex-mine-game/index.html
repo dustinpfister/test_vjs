@@ -3,16 +3,24 @@
         <title>Item Probability</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="640" height="480"></canvas>
+        <!--<canvas id="the-canvas" width="640" height="480"></canvas>-->
+
+        <input id="mine_manual" type="button" value="mine">
+
         <script src="../s1-item-class/item-class.js"></script>
         <script>
+
+var ORES = {
+    oreJunk: ['copper', 'iron'],
+    oreCommon: ['zink', 'lead']
+};
 
 // create and return an itemClass object for the given map
 // using itemClass.create
 var getItemClassObj = function(mine){
     // creating a item classes object
     return itemClass.create({
-       levelPer: mine.level / mine.maxLevel,
+       levelPer: (mine.level - 1) / (mine.maxLevel -1),
        levelPerRatio: 0.5,
        pool: mine.oreClasses
     });
@@ -24,7 +32,7 @@ var createMine = function(){
         maxLevel: 10,
         oreClasses: [
             {desc: 'oreJunk', range: [1000, 1000], levelPer: 1},
-            {desc: 'oreCommon', range: [250, 500], levelPer: 1}
+            {desc: 'oreCommon', range: [50, 600], levelPer: 0}
         ],
         itemClassObj: null
     };
@@ -32,9 +40,18 @@ var createMine = function(){
     return mine;
 };
 
+var singleStrike = function(mine){
+    var classObj = itemClass.getRandomItemClass(mine.itemClassObj);
+    console.log(classObj.desc);
+};
+
 var mine = createMine();
 
 console.log(mine);
+
+document.getElementById('mine_manual').addEventListener('click', function(e){
+   singleStrike(mine);
+});
 
 // DEMO
 //var canvas = document.getElementById('the-canvas'),

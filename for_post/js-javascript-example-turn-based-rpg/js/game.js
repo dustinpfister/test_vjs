@@ -41,6 +41,19 @@ var gameMod = (function () {
         mapHeight: 7,
         mapWorldWidth: 3,
         mapWorldHeight: 3,
+        itemClassPool: [
+            {desc: "Junk", "range": [1000, 150] },
+            {desc: "common", "range": [25, 200] }
+        ],
+        itemSubTypes: {
+            weapon: {
+                melee: [ 
+                    ["dagger_flint", [100, 20] ], 
+                    ["sword_rusty", [10, 50] ],
+                    ["sword_short", [1, 1]]
+                ]
+            }
+        },
         mapStrings: [
             "111111111120000003100000000100000000100000000100000000100000000",
             "111111111000000000000000000000000000000000000000000000000000000",

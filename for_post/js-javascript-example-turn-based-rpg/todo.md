@@ -109,6 +109,7 @@
 * (done ) add itemClassPool and itemSubTypes keys to define what classes, and what items will drop
 
 <!-- js/game.js -->
+* (done) itemClassPool and itemSubTypes for void world
 * make use of the item-class.js file from js-math-random for post folder
 
 <!-- js/lib/units.js -->

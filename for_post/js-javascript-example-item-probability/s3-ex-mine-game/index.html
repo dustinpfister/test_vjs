@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Item Probability</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="640" height="480"></canvas>
+        <script src="../s1-item-class/item-class.js"></script>
+        <script>
+
+// create and return an itemClass object for the given map
+// using itemClass.create
+var getItemClassObj = function(mine){
+    // creating a item classes object
+    return itemClass.create({
+       levelPer: mine.level / mine.maxLevel,
+       levelPerRatio: 0.5,
+       pool: mine.oreClasses
+    });
+};
+
+var createMine = function(){
+    var mine = {
+        level: 1,
+        maxLevel: 10,
+        oreClasses: [
+            {desc: 'oreJunk', range: [1000, 1000], levelPer: 1},
+            {desc: 'oreCommon', range: [250, 500], levelPer: 1}
+        ],
+        itemClassObj: null
+    };
+    mine.itemClassObj = getItemClassObj(mine);
+    return mine;
+};
+
+var mine = createMine();
+
+console.log(mine);
+
+// DEMO
+//var canvas = document.getElementById('the-canvas'),
+//ctx = canvas.getContext('2d');
+
+        </script>
+    </body>
+</html>

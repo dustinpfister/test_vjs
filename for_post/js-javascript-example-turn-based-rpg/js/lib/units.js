@@ -186,7 +186,7 @@ opt.classes = opt.classes || itemClass.create({
    levelPerRatio: 1,     // the ratio 0-1 that is the amount that the global levelPer effects points for each item class
    pool: [                  // pool defining values for each class
      {desc: 'junk', range: [100, 10]},
-     {desc: 'Common', range: [10, 80], levelPer: 0.5},
+     {desc: 'common', range: [10, 80], levelPer: 0.5},
      //{desc: 'Epic', range: [10, 100], levelPer: 1}
    ]
 });
@@ -195,15 +195,27 @@ opt.subTypes = opt.subTypes || {
     junk:[
         'weapon.melee.dagger_flint',
         'weapon.melee.sword_rusty'
+    ],
+    common:[
+        'weapon.melee.sword_short',
+        'weapon.melee.sword_long'
     ]
 };
 
-var itemClassObj = itemClass.getRandomItemClass(opt.classes);
-console.log( itemClassObj.desc );
+
 
             [
                 1, 7
             ].forEach(function(level){
+
+var itemClassObj = itemClass.getRandomItemClass(opt.classes);
+var subTypes = opt.subTypes[itemClassObj.desc];
+
+console.log('options for ' + itemClassObj.desc);
+console.log(subTypes);
+
+
+
                 enemy.pouch.push(api.createUnit('item', { subType: 'weapon.melee.sword', level: level}));
             });
             // starting weapon for enemy

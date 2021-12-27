@@ -103,6 +103,15 @@
 * The player can switch between two or more grids of item slot locations in there pouch
 
 ## () - r21 - make use of item-class.js
+
+<!-- items-home.json -->
+
+<!-- world-home.json -->
+
+<!-- world-forest.json -->
+
+<!-- -->
+
 * make use of the item-class.js file from js-math-random for post folder
 
 ## ( done 12/26/2021 ) - r20 - enemy unit pouch, enemy unit item drops

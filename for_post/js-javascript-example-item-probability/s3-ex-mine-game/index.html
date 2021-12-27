@@ -12,8 +12,8 @@
         <script>
 
 var ORES = {
-    oreJunk: ['copper', 'iron'],
-    oreCommon: ['zink', 'lead']
+    oreJunk: [['copper', 0.75], ['iron', 1]],
+    oreCommon: [['zink', 0.25], ['lead', 1]]
 };
 
 // create and return an itemClass object for the given map
@@ -34,13 +34,13 @@ var createMine = function(){
         oreCounts: {},
         oreClasses: [
             {desc: 'oreJunk', range: [1000, 1000], levelPer: 1},
-            {desc: 'oreCommon', range: [50, 600], levelPer: 0}
+            {desc: 'oreCommon', range: [250, 600], levelPer: 0}
         ],
         itemClassObj: null
     };
     Object.keys(ORES).forEach(function(oreClassKey){
-       ORES[oreClassKey].forEach(function(oreKey){
-           mine.oreCounts[oreKey] = 0;
+       ORES[oreClassKey].forEach(function(oreArr){
+           mine.oreCounts[oreArr[0]] = 0;
        });
     });
     mine.itemClassObj = getItemClassObj(mine);
@@ -57,9 +57,22 @@ var draw = function(mine){
 
 var singleStrike = function(mine){
     var classObj = itemClass.getRandomItemClass(mine.itemClassObj),
-    oreList = ORES[classObj.desc],
-    oreKey = oreList[ Math.floor( Math.random() * oreList.length ) ];
-    mine.oreCounts[oreKey] += 1;
+    oreList = ORES[classObj.desc];
+    //oreArr = oreList[ Math.floor( Math.random() * oreList.length ) ];
+	
+	var i = 0,
+	len = oreList.length,
+	roll = Math.random();
+	while(i < len){
+	   var oreArr = oreList[i];
+	   if(roll < oreArr[1]){
+	       mine.oreCounts[oreArr[0]] += 1;
+		   break;
+	   }
+	   i += 1;
+	}
+	
+    //mine.oreCounts[oreArr[0]] += 1;
     console.log(mine.oreCounts);
     draw(mine);
 };

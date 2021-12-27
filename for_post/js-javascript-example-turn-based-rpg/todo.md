@@ -113,9 +113,10 @@
 <!-- js/game.js -->
 * (done) itemClassPool and itemSubTypes for void world
 
+* looks like I am going to need a createEnemyOptions helper
+
+
 * make use of itemClass.create to make a game.itemClass object with the itemClassPool of the current world map
-
-
 * make use of new options object to set what the pouch should be for an enemy in setupGame and setupGame2
 
 

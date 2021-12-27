@@ -310,6 +310,12 @@ var gameMod = (function () {
 /********** **********
      MAP HELPERS
 *********** *********/
+    var createEnemyOptions = function(opt){
+        var eOptions = {
+            pouchRange: [3, 10]
+        };
+        return eOptions;
+    };
     // get remaining Enemies helper used to update game.remainingEnemies in 'end' process turn state
     var getRemainingEnemies = function(game){
         return game.maps.reduce(function(acc, map){
@@ -388,7 +394,7 @@ var gameMod = (function () {
                 // enemy
                 if(cellIndex === 3 && newGame && !skipCI[3]){
                     //game.remainingEnemies += 1;
-                    var enemy = unitMod.createUnit('enemy');
+                    var enemy = unitMod.createUnit('enemy', createEnemyOptions());
                     enemy.HP = enemy.maxHP;
                     placeUnit(game, enemy, x, y, mi);
                 }
@@ -1092,7 +1098,7 @@ var gameMod = (function () {
                 }
                 // enemy
                 if(cellIndex === 3){
-                    var enemy = unitMod.createUnit('enemy');
+                    var enemy = unitMod.createUnit('enemy', createEnemyOptions());
                     enemy.HP = enemy.maxHP;
                     placeUnit(game, enemy, x, y, mi);
                 }

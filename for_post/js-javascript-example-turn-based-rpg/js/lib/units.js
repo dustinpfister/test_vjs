@@ -189,8 +189,17 @@ var unitMod = (function () {
             opt.subTypes = opt.subTypes || {
                 junk: ['weapon.melee.sword']
             };
+            // pouch range
+            opt.pouchRange = opt.pouchRange === undefined ? [0, 0] : opt.pouchRange;
             // create pouch
-            [1,2,3,4,5].forEach(function(level){
+            var itemLevels = [],
+            len = utils.valueByRange(Math.random(), opt.pouchRange[0], opt.pouchRange[1]),
+            itemIndex = 0;
+            while(itemIndex < len){
+                itemLevels.push(1);
+                itemIndex += 1;
+            }
+            itemLevels.forEach(function(level){
                 var itemClassObj = itemClass.getRandomItemClass(opt.classes);
                 var subTypeList = opt.subTypes[itemClassObj.desc];
                 // !!! for now I am just getting a random item from subTypes

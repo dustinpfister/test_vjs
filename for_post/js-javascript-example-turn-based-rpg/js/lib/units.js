@@ -172,55 +172,29 @@ var unitMod = (function () {
     // enemy type
     UNIT_TYPES.enemy = {
         create : function(enemy, opt){
-opt = opt || {};
+            opt = opt || {};
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
             var perLevel = enemy.perLevel = {};
             // min value, incremental values
             perLevel.baseAttack = { min: [2, 1], inc: [0.25, 0.125] };
 
-            //var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
-
-opt.classes = opt.classes || itemClass.create({
-   levelPer: 0,             // the current global level for item drops
-   levelPerRatio: 1,     // the ratio 0-1 that is the amount that the global levelPer effects points for each item class
-   pool: [                  // pool defining values for each class
-     {desc: 'junk', range: [1, 1]},
-     //{desc: 'common', range: [10, 80], levelPer: 0.5},
-     //{desc: 'Epic', range: [10, 100], levelPer: 1}
-   ]
-});
-
-opt.subTypes = opt.subTypes || {
-    junk: ['weapon.melee.sword'],
-/*
-    junk:[
-        'weapon.melee.dagger_flint',
-        'weapon.melee.sword_rusty'
-    ],
-    common:[
-        'weapon.melee.sword_short',
-        'weapon.melee.sword_long'
-    ]
-*/
-};
-
-
-
-            [
-                1, 7
-            ].forEach(function(level){
-
-var itemClassObj = itemClass.getRandomItemClass(opt.classes);
-var subTypeList = opt.subTypes[itemClassObj.desc];
-
-//console.log('options for ' + itemClassObj.desc);
-//console.log(subTypes);
-
-// !!! for now I am just getting a random item from subTypes
-var subType = subTypeList[ Math.floor( Math.random() * subTypeList.length ) ];
-console.log( itemClassObj.desc, subType );
-
+            // use given classes object or default to a hard coded object
+            opt.classes = opt.classes || itemClass.create({
+                levelPer: 0,
+                levelPerRatio: 1,
+                pool: [{desc: 'junk', range: [1, 1]}]
+            });
+            // item sub types
+            opt.subTypes = opt.subTypes || {
+                junk: ['weapon.melee.sword']
+            };
+            // create pouch
+            [1,2,3,4,5].forEach(function(level){
+                var itemClassObj = itemClass.getRandomItemClass(opt.classes);
+                var subTypeList = opt.subTypes[itemClassObj.desc];
+                // !!! for now I am just getting a random item from subTypes
+                var subType = subTypeList[ Math.floor( Math.random() * subTypeList.length ) ];
                 enemy.pouch.push(api.createUnit('item', { subType: subType, level: level}));
             });
             // starting weapon for enemy

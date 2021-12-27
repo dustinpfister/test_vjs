@@ -122,6 +122,8 @@
 
 <!-- js/lib/units.js -->
 * (done) add an option object for enemey create method that can be used to define what subtypes can be used for an enemy pouch
+* (done) by default the only drops should be 'sword' as that is the only built in
+
 * I will want to be able to set min and max number of pouch weapons by way of the new options object
 * I will want to set points range values for each subtype for each class with this enemey obtions object
 

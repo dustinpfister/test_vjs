@@ -310,7 +310,7 @@ var gameMod = (function () {
 /********** **********
      MAP HELPERS
 *********** *********/
-    var createEnemyOptions = function(opt){
+    var createEnemyOptions = function(sm, opt){
         var eOptions = {
             pouchRange: [3, 10]
         };
@@ -394,7 +394,7 @@ var gameMod = (function () {
                 // enemy
                 if(cellIndex === 3 && newGame && !skipCI[3]){
                     //game.remainingEnemies += 1;
-                    var enemy = unitMod.createUnit('enemy', createEnemyOptions());
+                    var enemy = unitMod.createUnit('enemy', createEnemyOptions(game, {}));
                     enemy.HP = enemy.maxHP;
                     placeUnit(game, enemy, x, y, mi);
                 }
@@ -1098,7 +1098,7 @@ var gameMod = (function () {
                 }
                 // enemy
                 if(cellIndex === 3){
-                    var enemy = unitMod.createUnit('enemy', createEnemyOptions());
+                    var enemy = unitMod.createUnit('enemy', createEnemyOptions(game, {}));
                     enemy.HP = enemy.maxHP;
                     placeUnit(game, enemy, x, y, mi);
                 }

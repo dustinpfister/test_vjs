@@ -3,19 +3,15 @@
         <title>Item Probability</title>
     </head>
     <body>
-        <!--<canvas id="the-canvas" width="640" height="480"></canvas>-->
-
         <div id="out"></div>
         <input id="mine_manual" type="button" value="mine">
-
         <script src="../s1-item-class/item-class.js"></script>
         <script>
-
+// ore items
 var ORES = {
     oreJunk: [['copper', 0.75], ['iron', 1]],
     oreCommon: [['zink', 0.25], ['lead', 1]]
 };
-
 // create and return an itemClass object for the given map
 // using itemClass.create
 var getItemClassObj = function(mine){
@@ -26,7 +22,7 @@ var getItemClassObj = function(mine){
        pool: mine.oreClasses
     });
 };
-
+// create a mine object
 var createMine = function(){
     var mine = {
         level: 1,
@@ -46,7 +42,7 @@ var createMine = function(){
     mine.itemClassObj = getItemClassObj(mine);
     return mine;
 };
-
+// draw the state of a mine object
 var draw = function(mine){
     var text = 'level: ' + mine.level + '/' + mine.maxLevel + ', ores: [ '
     text += Object.keys(mine.oreCounts).map(function(oreKey){
@@ -54,41 +50,29 @@ var draw = function(mine){
     }).join('') + ' ]';
     document.getElementById('out').innerText = text;
 };
-
+// single stroke of a mine
 var singleStrike = function(mine){
     var classObj = itemClass.getRandomItemClass(mine.itemClassObj),
     oreList = ORES[classObj.desc];
-    //oreArr = oreList[ Math.floor( Math.random() * oreList.length ) ];
-	
-	var i = 0,
-	len = oreList.length,
-	roll = Math.random();
-	while(i < len){
-	   var oreArr = oreList[i];
-	   if(roll < oreArr[1]){
-	       mine.oreCounts[oreArr[0]] += 1;
-		   break;
-	   }
-	   i += 1;
-	}
-	
-    //mine.oreCounts[oreArr[0]] += 1;
-    console.log(mine.oreCounts);
+    var i = 0,
+    len = oreList.length,
+    roll = Math.random();
+    while(i < len){
+       var oreArr = oreList[i];
+       if(roll < oreArr[1]){
+           mine.oreCounts[oreArr[0]] += 1;
+           break;
+       }
+       i += 1;
+    }
     draw(mine);
 };
-
+// create mine, draw for first time, and event attachment
 var mine = createMine();
-
 draw(mine);
-
 document.getElementById('mine_manual').addEventListener('click', function(e){
    singleStrike(mine);
 });
-
-// DEMO
-//var canvas = document.getElementById('the-canvas'),
-//ctx = canvas.getContext('2d');
-
         </script>
     </body>
 </html>

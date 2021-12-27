@@ -182,24 +182,24 @@ opt = opt || {};
             //var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
 
 opt.classes = opt.classes || itemClass.create({
-   levelPer: 1,             // the current global level for item drops
+   levelPer: 0,             // the current global level for item drops
    levelPerRatio: 1,     // the ratio 0-1 that is the amount that the global levelPer effects points for each item class
    pool: [                  // pool defining values for each class
-     {desc: 'junk', range: [1, 1]},
-     //{desc: 'Common', range: [100, 800], levelPer: 0.5},
+     {desc: 'junk', range: [100, 10]},
+     {desc: 'Common', range: [10, 80], levelPer: 0.5},
      //{desc: 'Epic', range: [10, 100], levelPer: 1}
    ]
 });
 
-console.log('classes object: ');
-console.log(opt);
-
-opt.subTypes = {
+opt.subTypes = opt.subTypes || {
     junk:[
         'weapon.melee.dagger_flint',
         'weapon.melee.sword_rusty'
     ]
 };
+
+var itemClassObj = itemClass.getRandomItemClass(opt.classes);
+console.log( itemClassObj.desc );
 
             [
                 1, 7

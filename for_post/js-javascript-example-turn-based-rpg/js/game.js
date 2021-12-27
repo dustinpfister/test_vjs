@@ -310,9 +310,11 @@ var gameMod = (function () {
 /********** **********
      MAP HELPERS
 *********** *********/
-    var createEnemyOptions = function(sm, opt){
+    var createEnemyOptions = function(game, opt){
+        console.log('enemey options: ');
+        var worldMap = game.worldMap;
         var eOptions = {
-            pouchRange: [3, 10]
+            pouchRange: worldMap.itemPouchRange || [0, 0]
         };
         return eOptions;
     };

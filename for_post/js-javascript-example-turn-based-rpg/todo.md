@@ -104,7 +104,7 @@
 
 ## () - r21 - make use of item-class.js
 <!-- index.html and build.sh -->
-* update index.html and build.sh to make use of item-class.js
+* (done) update index.html and build.sh to make use of item-class.js
 <!-- world-home.json -->
 * (done ) add itemClassPool and itemSubTypes keys to define what classes, and what items will drop
 <!-- world-forest.json -->
@@ -112,10 +112,12 @@
 
 <!-- js/game.js -->
 * (done) itemClassPool and itemSubTypes for void world
-* make use of the item-class.js file from js-math-random for post folder
+* make use of new options object to set what the pouch should be for an enemy in setupGame and setupGame2
+* make use of itemClass.create to made a game.itemClass object with the itemClassPool of the current world map
+
 
 <!-- js/lib/units.js -->
-* make needed changes to create enemy method
+* add an option object for enemey create method that can be used to define what subtypes can be used for an enemy pouch
 
 <!-- items-home.json -->
 * add at least one epic class item

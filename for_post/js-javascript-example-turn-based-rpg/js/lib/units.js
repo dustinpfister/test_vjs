@@ -171,7 +171,7 @@ var unitMod = (function () {
     };
     // enemy type
     UNIT_TYPES.enemy = {
-        create : function(enemy){
+        create : function(enemy, opt){
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
             var perLevel = enemy.perLevel = {};
@@ -180,14 +180,7 @@ var unitMod = (function () {
 
             //var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
             [
-                1, 7, 7, 7, 1, 1, 2, 3, 4, 5, 
-                6, 7, 8, 1, 1, 1, 1, 1, 1, 1,
-                6, 7, 8, 1, 1, 1, 1, 1, 1, 1,
-                6, 7, 8, 1, 1, 1, 1, 1, 1, 1,
-                6, 7, 8, 1, 1, 1, 1, 1, 1, 1,
-                6, 7, 8, 1, 1, 1, 1, 1, 1, 1,
-                6, 7, 8, 1, 1, 1, 1, 1, 1, 1,
-                6, 7, 8, 1, 1, 1, 1, 1, 1, 1
+                1, 7
             ].forEach(function(level){
                 enemy.pouch.push(api.createUnit('item', { subType: 'weapon.melee.sword', level: level}));
             });

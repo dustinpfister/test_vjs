@@ -191,12 +191,15 @@ var unitMod = (function () {
             };
             // pouch range
             opt.pouchRange = opt.pouchRange === undefined ? [0, 0] : opt.pouchRange;
+            // item level range
+            opt.levelRange = opt.levelRange === undefined ? [1, 1] : opt.levelRange;
             // create pouch
             var itemLevels = [],
             len = utils.valueByRange(Math.random(), opt.pouchRange[0], opt.pouchRange[1]),
             itemIndex = 0;
             while(itemIndex < len){
-                itemLevels.push(1);
+                var level = utils.valueByRange(Math.random(), opt.levelRange[0], opt.levelRange[1]);
+                itemLevels.push(level);
                 itemIndex += 1;
             }
             itemLevels.forEach(function(level){

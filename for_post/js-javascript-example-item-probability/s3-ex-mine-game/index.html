@@ -5,6 +5,7 @@
     <body>
         <!--<canvas id="the-canvas" width="640" height="480"></canvas>-->
 
+        <div id="out"></div>
         <input id="mine_manual" type="button" value="mine">
 
         <script src="../s1-item-class/item-class.js"></script>
@@ -46,17 +47,26 @@ var createMine = function(){
     return mine;
 };
 
+var draw = function(mine){
+	document.getElementById('out').innerText = Object.keys(mine.oreCounts).map(function(oreKey){
+	    return oreKey + ': ' + mine.oreCounts[oreKey] + ', '
+	}).join('');
+};
+
 var singleStrike = function(mine){
     var classObj = itemClass.getRandomItemClass(mine.itemClassObj),
     oreList = ORES[classObj.desc],
     oreKey = oreList[ Math.floor( Math.random() * oreList.length ) ];
     mine.oreCounts[oreKey] += 1;
-	console.log(mine.oreCounts);
+    console.log(mine.oreCounts);
+	
+draw(mine);
+	
 };
 
 var mine = createMine();
 
-console.log(mine);
+draw(mine);
 
 document.getElementById('mine_manual').addEventListener('click', function(e){
    singleStrike(mine);

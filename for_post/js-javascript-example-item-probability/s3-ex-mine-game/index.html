@@ -48,9 +48,11 @@ var createMine = function(){
 };
 
 var draw = function(mine){
-	document.getElementById('out').innerText = Object.keys(mine.oreCounts).map(function(oreKey){
-	    return oreKey + ': ' + mine.oreCounts[oreKey] + ', '
-	}).join('');
+    var text = 'level: ' + mine.level + '/' + mine.maxLevel + ', ores: [ '
+    text += Object.keys(mine.oreCounts).map(function(oreKey){
+        return oreKey + ': ' + mine.oreCounts[oreKey] + ', '
+    }).join('') + ' ]';
+    document.getElementById('out').innerText = text;
 };
 
 var singleStrike = function(mine){
@@ -59,9 +61,7 @@ var singleStrike = function(mine){
     oreKey = oreList[ Math.floor( Math.random() * oreList.length ) ];
     mine.oreCounts[oreKey] += 1;
     console.log(mine.oreCounts);
-	
-draw(mine);
-	
+    draw(mine);
 };
 
 var mine = createMine();

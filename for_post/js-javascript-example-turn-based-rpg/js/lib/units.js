@@ -172,6 +172,7 @@ var unitMod = (function () {
     // enemy type
     UNIT_TYPES.enemy = {
         create : function(enemy, opt){
+opt = opt || {};
             enemy.maxCellsPerTurn = 2;
             enemy.sheetIndex = 3;
             var perLevel = enemy.perLevel = {};
@@ -179,6 +180,20 @@ var unitMod = (function () {
             perLevel.baseAttack = { min: [2, 1], inc: [0.25, 0.125] };
 
             //var startItem = api.createUnit('item', { subType: 'weapon.melee.sword', level: 1});
+
+opt.classes = opt.classes || itemClass.create({
+   levelPer: 1,             // the current global level for item drops
+   levelPerRatio: 1,     // the ratio 0-1 that is the amount that the global levelPer effects points for each item class
+   pool: [                  // pool defining values for each class
+     {desc: 'Junk', range: [1, 1]},
+     //{desc: 'Common', range: [100, 800], levelPer: 0.5},
+     //{desc: 'Epic', range: [10, 100], levelPer: 1}
+   ]
+});
+
+console.log('classes object: ');
+console.log(opt);
+
             [
                 1, 7
             ].forEach(function(level){

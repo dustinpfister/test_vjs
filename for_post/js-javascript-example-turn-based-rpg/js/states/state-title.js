@@ -4,7 +4,7 @@ sm.states.title = {
         utils.log('title start', 'debug');
 
 
-unitMod.loadItems(sm.data);
+//unitMod.loadItems(sm.data);
 
 //var items = {};
 

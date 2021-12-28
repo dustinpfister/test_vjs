@@ -30,7 +30,7 @@ sm.states.loader = {
                                 sm.data[dataKey] = dataObj;
                                 jl.loaded += 1;
                                 if(jl.loaded === count){
-                                    sm.setState('title');
+                                    sm.setState('init');
                                 }
                             }catch(e){
                                 jl.errorCount += 1;
@@ -66,7 +66,11 @@ sm.states.loader = {
         // if we have so much as just one error
         // switch to title and go with hard coded stuff
         if(sm.loader.json.errorCount > 0){
-            sm.setState('title');
+            //sm.setState('title');
+
+            //sm.setState('title');
+
+            sm.setState('init');
         }
     },
     draw: function(sm, layers){

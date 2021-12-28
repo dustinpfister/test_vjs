@@ -311,12 +311,20 @@ var gameMod = (function () {
      MAP HELPERS
 *********** *********/
     var createEnemyOptions = function(game, opt){
-        console.log('enemey options: ');
+
         var worldMap = game.worldMap;
+
+        console.log('enemey options: ');
+        console.log(worldMap)
+
         var eOptions = {
             pouchRange: worldMap.itemPouchRange || [0, 0],
-            levelRange: worldMap.itemLevelRange || [1, 1]
+            levelRange: worldMap.itemLevelRange || [1, 1],
+            subTypes: {}
         };
+
+eOptions.subTypes.junk = ['weapon.melee.sword'];
+
         return eOptions;
     };
     // get remaining Enemies helper used to update game.remainingEnemies in 'end' process turn state

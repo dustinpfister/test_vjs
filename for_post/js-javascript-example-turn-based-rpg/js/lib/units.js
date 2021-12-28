@@ -183,7 +183,8 @@ var unitMod = (function () {
             opt.classes = opt.classes || itemClass.create({
                 levelPer: 0,
                 levelPerRatio: 1,
-                pool: [{desc: 'junk', range: [1, 1]}]
+                //pool: [{desc: 'junk', range: [1, 1]}]
+                pool: []
             });
             // item sub types
             opt.subTypes = opt.subTypes || {
@@ -204,10 +205,13 @@ var unitMod = (function () {
             }
             itemLevels.forEach(function(level){
                 var itemClassObj = itemClass.getRandomItemClass(opt.classes);
-                var subTypeList = opt.subTypes[itemClassObj.desc];
-                // !!! for now I am just getting a random item from subTypes
-                var subType = subTypeList[ Math.floor( Math.random() * subTypeList.length ) ];
-                enemy.pouch.push(api.createUnit('item', { subType: subType, level: level}));
+
+                if(itemClassObj){
+                    var subTypeList = opt.subTypes[itemClassObj.desc];
+                    // !!! for now I am just getting a random item from subTypes
+                    var subType = subTypeList[ Math.floor( Math.random() * subTypeList.length ) ];
+                    enemy.pouch.push(api.createUnit('item', { subType: subType, level: level}));
+                }
             });
             // starting weapon for enemy
             enemy.currentWeapon = enemy.pouch[0];

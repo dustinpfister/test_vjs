@@ -47,9 +47,10 @@ var itemClass = (function(){
         var i = 0,
         len = classes.pool.length
         roll = Math.random(),
-        n = 1
+        item = false,
+        n = 1;
         while(i < len){
-            var item = classes.pool[i];
+            item = classes.pool[i];
             n -= item.per;
             if(roll > n){
                 return item;

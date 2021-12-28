@@ -108,6 +108,8 @@
 <!-- world-home.json -->
 * (done ) add itemClassPool and itemSubTypes keys to define what classes, and what items will drop
 * (done) itemPouchRange prop
+<!-- js/lib/item-class/item-class.js -->
+* (done) the itemClass.getRandomItemClass method will now return false if not item object is found or there is an empty collection
 <!-- world-forest.json -->
 * (done) add itemClassPool and itemSubTypes keys to define what classes, and what items will drop
 * (done) itemPouchRange prop
@@ -120,6 +122,7 @@
 
 * I will need to create a subTypes option based on worldMap values in createEnemyOptions
 * make use of itemClass.create to make a opt.classes object with the itemClassPool of the current world map in createEnemyOptions helper
+
 
 
 

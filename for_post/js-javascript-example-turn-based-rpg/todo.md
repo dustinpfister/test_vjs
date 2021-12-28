@@ -21,27 +21,11 @@
 
 
 
-
-
-<!--****** **********
-    ARMOR ITEMS
-********** *******-->
-
-## () - r25 - start armor items
-* I will want to add armor items
-
-<!--****** **********
-    SAVE STATE MENU - unit json files
-********** *******-->
-
-## () - r24 - save state menu
-* start a new save state menu
-
 <!--****** **********
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
-## () - r23 - unit sub-types starting with enemy unit type
+## () - r25 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am going to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -71,6 +55,12 @@
     MISC IMPROVEMENTS
 ********** *******-->
 
+
+## () - r24 - save state menu
+* start a new save state menu
+
+## () - r23 - start armor items
+* I will want to add armor items
 
 ## () - r22 - item drop chances, and init state
 * start an init state that will set up things that are now being set up in title state

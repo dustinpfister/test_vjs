@@ -1,6 +1,12 @@
 sm.states.loader = {
     key: 'loader',
     start: function(sm){
+
+        utils.log('**********', 'debug');
+        utils.log('loader state start', 'debug');
+        utils.log(sm.loader, 'debug');
+        utils.log('**********', 'debug');
+
         // check for sm.loader.json
         if (sm.loader.json) {
             // defaults for sm.loader.json

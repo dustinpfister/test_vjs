@@ -19,43 +19,29 @@
 * (#13) getDropObj will not create or add under player and enemy cells
 * (#14) fix drop map cary over bug where enemy item drops cary over to the next map with the player unit
 
-<!--****** **********
-    World MENUS and new worlds
-********** *******-->
 
-## () - r29 - Start world menu system
-* start a new world menu system that will pop up each time the player enters a portal to a new world from home
-* In this world menu the player will know what classes of items there are in terms of drops
-<!-- json/world-forest.js -->
-* for the forest make it so the player can set the level range of enemies
-* higher level enmeies means better item drops
 
-<!--****** **********
-    RANGE WEAPONS
-********** *******-->
 
-## () - r28 - start range weapons
-* start range weapons
 
 <!--****** **********
     ARMOR ITEMS
 ********** *******-->
 
-## () - r27 - start armor items
+## () - r25 - start armor items
 * I will want to add armor items
 
 <!--****** **********
     SAVE STATE MENU - unit json files
 ********** *******-->
 
-## () - r26 - save state menu
+## () - r24 - save state menu
 * start a new save state menu
 
 <!--****** **********
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
-## () - r25 - unit sub-types starting with enemy unit type
+## () - r23 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am going to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -85,22 +71,18 @@
     MISC IMPROVEMENTS
 ********** *******-->
 
-## () - r24 - init state
-* start an init state
 
-## () - r23 - message system
-* start a message system that wil be used to inform the player of things
-* fix #10 by using mesage system to inform the user that they can not drop an item here
+## () - r22 - item drop chances, and init state
+* start an init state that will set up things that are now being set up in title state
+<!-- js/lib/units.js -->
+* I will want to set points range values for each drop subtype for each class with this enemey options object
+<!-- items-home.json -->
+* add at least one epic class item
+
 
 <!--****** **********
     ITEMS AND DROPS - item json files
 ********** *******-->
-
-## () - r22 - new game-pouch state
-* Start a new game-pouch state along with the many other states thus far that will work in place of the item menu in gameMod
-* The pouch size will now be though of in terms of 4 by 4 grids
-* Start the player off with 2 4x4 grids which means a total size of 32 items
-* The player can switch between two or more grids of item slot locations in there pouch
 
 ## () - r21 - make use of item-class.js
 <!-- index.html and build.sh -->
@@ -119,25 +101,13 @@
 * (done) pass a game object as one of the arguments for createEnemyOptions and use that to get a ref to the worldMap in the method
 * (done) use the worldMap object in createEnemeyOptions to check for an itemPouchRange prop, defaulting to 0 0 if there is not one there
 * (done) set a levelRange prop in createEnemyOptions
-
-* I will need to create a subTypes option based on worldMap values in createEnemyOptions
-* make use of itemClass.create to make a opt.classes object with the itemClassPool of the current world map in createEnemyOptions helper
-
-
-
-
+* (done) I will need to create a subTypes option based on worldMap values in createEnemyOptions
+* (done) make use of itemClass.create with the itemClassPool of the current world map in createEnemyOptions helper
 <!-- js/lib/units.js -->
 * (done) add an option object for enemey create method that can be used to define what subtypes can be used for an enemy pouch
 * (done) by default the only drops should be 'sword' as that is the only built in
 * (done) I will want to be able to set min and max number of pouch weapons by way of the new options object
 * (done) I will want to be able to set min and max levels for item drops
-
-* I will want to set points range values for each subtype for each class with this enemey obtions object
-
-
-<!-- items-home.json -->
-* add at least one epic class item
-
 
 ## ( done 12/26/2021 ) - r20 - enemy unit pouch, enemy unit item drops
 <!-- js/game.js -->

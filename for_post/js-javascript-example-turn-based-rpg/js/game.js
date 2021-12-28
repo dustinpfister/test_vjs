@@ -310,39 +310,24 @@ var gameMod = (function () {
 /********** **********
      MAP HELPERS
 *********** *********/
+    // create enemy unit options
     var createEnemyOptions = function(game, opt){
-
+        // ref to world map
         var worldMap = game.worldMap;
-
-
-
+        // start the eOptions object
         var eOptions = {
             pouchRange: worldMap.itemPouchRange || [0, 0],
             levelRange: worldMap.itemLevelRange || [1, 1],
             subTypes: worldMap.itemSubTypes || {},
             classes: {}
         };
-
-        //eOptions.subTypes.junk = ['weapon.melee.dagger_flint'];
-
-        //eOptions.subTypes.common = ['weapon.melee.sword_long'];
-
-// item class probabilities
-eOptions.classes = itemClass.create({
-    levelPer: 0,
-    levelPerRatio: 1,
-    pool: [
-        { desc: 'junk', range: [100, 1000] },
-        { desc: 'common', range: [25, 1] }
-    ]
-});
-
-
-
-
-        //console.log('enemey options: ');
-        //console.log(worldMap.itemSubTypes)
-
+        // item class probabilities
+        eOptions.classes = itemClass.create({
+            levelPer: 0,
+            levelPerRatio: 1,
+            pool: worldMap.itemClassPool || []
+        });
+        // return the options for creation of the enemy unit
         return eOptions;
     };
     // get remaining Enemies helper used to update game.remainingEnemies in 'end' process turn state

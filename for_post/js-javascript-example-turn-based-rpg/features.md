@@ -7,6 +7,17 @@
 * see about using the pixmap json standard that I worked out, as a way to add images
 
 <!--****** **********
+    World MENUS and new worlds
+********** *******-->
+
+## () - rxx - Start world menu system
+* start a new world menu system that will pop up each time the player enters a portal to a new world from home
+* In this world menu the player will know what classes of items there are in terms of drops
+<!-- json/world-forest.js -->
+* for the forest make it so the player can set the level range of enemies
+* higher level enmeies means better item drops
+
+<!--****** **********
     The Library game world
 ********** *******-->
 
@@ -14,10 +25,26 @@ The idea of the library game world is to have a game world that acts as a portal
 
 ## () rx - Start the library game world
 
+<!--****** **********
+    RANGE WEAPONS
+********** *******-->
+
+## () - rxx - start range weapons
+* start range weapons
 
 <!--****** **********
     MISC IMPROVEMENTS
 ********** *******-->
+
+## () - rxx - message system
+* start a message system that wil be used to inform the player of things
+* fix #10 by using mesage system to inform the user that they can not drop an item here
+
+## () - rxx - new game-pouch state
+* Start a new game-pouch state along with the many other states thus far that will work in place of the item menu in gameMod
+* The pouch size will now be though of in terms of 4 by 4 grids
+* Start the player off with 2 4x4 grids which means a total size of 32 items
+* The player can switch between two or more grids of item slot locations in there pouch
 
 ## () - rx - Custom MAP EVENTS
 * I will also want to be able to assign a function for onPlayerDeath and onNoEnemies that can be used to define custom logic

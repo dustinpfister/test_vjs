@@ -314,19 +314,18 @@ var gameMod = (function () {
 
         var worldMap = game.worldMap;
 
-        console.log('enemey options: ');
-        console.log(worldMap)
+
 
         var eOptions = {
             pouchRange: worldMap.itemPouchRange || [0, 0],
             levelRange: worldMap.itemLevelRange || [1, 1],
-            subTypes: {},
+            subTypes: worldMap.itemSubTypes || {},
             classes: {}
         };
 
-        eOptions.subTypes.junk = ['weapon.melee.dagger_flint'];
+        //eOptions.subTypes.junk = ['weapon.melee.dagger_flint'];
 
-        eOptions.subTypes.common = ['weapon.melee.sword_long'];
+        //eOptions.subTypes.common = ['weapon.melee.sword_long'];
 
 // item class probabilities
 eOptions.classes = itemClass.create({
@@ -337,6 +336,12 @@ eOptions.classes = itemClass.create({
         { desc: 'common', range: [25, 1] }
     ]
 });
+
+
+
+
+        //console.log('enemey options: ');
+        //console.log(worldMap.itemSubTypes)
 
         return eOptions;
     };

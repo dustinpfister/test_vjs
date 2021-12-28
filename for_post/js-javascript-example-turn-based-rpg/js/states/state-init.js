@@ -1,9 +1,14 @@
 sm.states.init = {
     key: 'init',
     start: function(sm){
-        console.log('init state start', 'debug');
+        utils.log('**********', 'debug');
+        utils.log('init state start', 'debug');
+
         // load items once at this time
         unitMod.loadItems(sm.data);
+
+
+        utils.log('**********', 'debug');
         // switch to title state
         sm.setState('title');
     },

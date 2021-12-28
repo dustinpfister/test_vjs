@@ -63,7 +63,10 @@
 * I will want to add armor items
 
 ## () - r22 - item drop chances, and init state
-* start an init state that will set up things that are now being set up in title state
+<!-- js/states/state-init.js -->
+* (done) start an init state that will set up things that are now being set up in title state
+* (done) use new init state to load items in place of doing so in the title state
+* (done) log version number
 <!-- js/lib/units.js -->
 * I will want to set points range values for each drop subtype for each class with this enemey options object
 <!-- items-home.json -->

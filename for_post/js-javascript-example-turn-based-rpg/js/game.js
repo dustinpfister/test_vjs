@@ -320,10 +320,23 @@ var gameMod = (function () {
         var eOptions = {
             pouchRange: worldMap.itemPouchRange || [0, 0],
             levelRange: worldMap.itemLevelRange || [1, 1],
-            subTypes: {}
+            subTypes: {},
+            classes: {}
         };
 
-eOptions.subTypes.junk = ['weapon.melee.sword'];
+        eOptions.subTypes.junk = ['weapon.melee.dagger_flint'];
+
+        eOptions.subTypes.common = ['weapon.melee.sword_long'];
+
+// item class probabilities
+eOptions.classes = itemClass.create({
+    levelPer: 0,
+    levelPerRatio: 1,
+    pool: [
+        { desc: 'junk', range: [100, 1000] },
+        { desc: 'common', range: [25, 1] }
+    ]
+});
 
         return eOptions;
     };

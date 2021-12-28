@@ -3,7 +3,7 @@ sm.states.init = {
     start: function(sm){
         utils.log('**********', 'debug');
         utils.log('init state start', 'debug');
-
+        utils.log('app ver: ' + sm.ver, 'debug');
         // load items once at this time
         unitMod.loadItems(sm.data);
 

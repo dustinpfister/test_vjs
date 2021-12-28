@@ -16,7 +16,7 @@
   },
 
   "itemPouchRange": [0, 4],
-  "itemLevelRange": [1, 5],
+  "itemLevelRange": [1, 10],
   "mapStrings": [
     "111111111100000000100000000100030000100000000100000000100000001",
     "111111111000000000000000000000030000000000000000000000111111111",
@@ -39,16 +39,8 @@
       "x": 4,
       "y": 1,
       "pouch":[
-        {"subType": "weapon.melee.sword", "level": 10},
-        {"subType": "weapon.melee.sword", "level": 10},
-        {"subType": "weapon.melee.sword", "level": 7},
-        {"subType": "weapon.melee.sword", "level": 5},
-        {"subType": "weapon.melee.sword", "level": 3},
-        {"subType": "weapon.melee.sword", "level": 2},
-        {"subType": "weapon.melee.sword", "level": 1},
-        {"subType": "weapon.melee.sword", "level": 1},
-        {"subType": "weapon.melee.sword", "level": 1},
-        {"subType": "weapon.melee.sword", "level": 1}
+        {"subType": "weapon.melee.sword_short", "level": 12},
+        {"subType": "weapon.melee.dagger_flint", "level": 15}
       ]
     }
   ],

@@ -84,7 +84,7 @@
     ITEMS AND DROPS - item json files
 ********** *******-->
 
-## () - r21 - make use of item-class.js
+## ( done 12/28/2021 ) - r21 - make use of item-class.js
 <!-- index.html and build.sh -->
 * (done) update index.html and build.sh to make use of item-class.js
 <!-- world-home.json -->

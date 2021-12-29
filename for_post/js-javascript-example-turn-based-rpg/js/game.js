@@ -44,6 +44,14 @@ var gameMod = (function () {
         itemClassPool: [
             {desc: "Junk", "range": [1, 1] }
         ],
+
+        itemSubTypes: {
+            junk: [
+                "weapon.melee.sword"
+            ]
+        },
+
+/*
         itemSubTypes: {
             weapon: {
                 melee: [ 
@@ -51,6 +59,7 @@ var gameMod = (function () {
                 ]
             }
         },
+*/
         mapStrings: [
             "111111111120000003100000000100000000100000000100000000100000000",
             "111111111000000000000000000000000000000000000000000000000000000",

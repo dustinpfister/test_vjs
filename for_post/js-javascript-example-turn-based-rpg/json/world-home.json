@@ -6,8 +6,8 @@
   "mapWorldWidth": 3,
   "mapWorldHeight": 3,
   "itemClassPool": [
-    {"desc": "junk", "range": [1000, 25] },
-    {"desc": "common", "range": [1, 100] }
+    {"desc": "junk", "range": [200, 25] },
+    {"desc": "common", "range": [50, 50] }
   ],
 
   "itemSubTypes": {
@@ -16,7 +16,7 @@
           ["weapon.melee.sword_rusty", 10]
       ],
       "common": [
-          ["weapon.melee.sword_short"]
+          ["weapon.melee.sword_short", 1]
       ]
   },
 

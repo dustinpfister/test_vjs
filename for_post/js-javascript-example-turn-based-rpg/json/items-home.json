@@ -25,6 +25,17 @@
          }
       },
       {
+         "subType": "weapon.melee.dagger_iron",
+         "Desc": "Iron Dagger",
+         "class": "common",
+         "perLevel": {
+             "baseAttack": {
+                 "min": [1, 1],
+                 "inc": [1.25, 1]
+             }
+         }
+      },
+      {
          "subType": "weapon.melee.sword_short",
          "Desc": "Short Sword",
          "class": "common",
@@ -43,6 +54,17 @@
              "baseAttack": {
                  "min": [2, 2],
                  "inc": [2, 1]
+             }
+         }
+      },
+      {
+         "subType": "weapon.melee.mace",
+         "Desc": "Mace",
+         "class": "rare",
+         "perLevel": {
+             "baseAttack": {
+                 "min": [2, 3],
+                 "inc": [4, 2]
              }
          }
       }

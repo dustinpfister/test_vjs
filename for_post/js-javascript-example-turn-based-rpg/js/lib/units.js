@@ -215,7 +215,12 @@ var unitMod = (function () {
                     var subType = subTypeArr[0];
                     var points = subTypeArr[1];
 
-console.log(classIndex)
+// !!! I have done this before, I should have some kind of utils method for this
+var totalPoints = subTypeList.reduce(function(acc, subTypeArr){ return acc + subTypeArr[1];}, 0);
+var pers = subTypeList.map(function(subTypeArr){ return subTypeArr[1] / totalPoints});
+console.log(totalPoints);
+console.log(pers);
+//console.log(classIndex)
 //console.log(subType, points);
 
                     enemy.pouch.push(api.createUnit('item', { subType: subType, level: level}));

@@ -6,16 +6,21 @@
   "mapWorldWidth": 3,
   "mapWorldHeight": 3,
   "itemClassPool": [
-    {"desc": "junk", "range": [100, 25] },
-    {"desc": "common", "range": [15, 100] }
+    {"desc": "junk", "range": [1000, 25] },
+    {"desc": "common", "range": [1, 100] }
   ],
 
   "itemSubTypes": {
-      "junk": ["weapon.melee.dagger_flint"],
-      "common": ["weapon.melee.sword_short"]
+      "junk": [
+          "weapon.melee.dagger_flint", 
+          "weapon.melee.sword_rusty"
+      ],
+      "common": [
+          "weapon.melee.sword_short"
+      ]
   },
 
-  "itemPouchRange": [0, 4],
+  "itemPouchRange": [5, 10],
   "itemLevelRange": [1, 10],
   "mapStrings": [
     "111111111100000000100000000100030000100000000100000000100000001",

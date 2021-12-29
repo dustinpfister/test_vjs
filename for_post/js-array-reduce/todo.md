@@ -6,8 +6,8 @@
 * any pool object that is not active will have alpha and radius values reduce to zero
 * calls of reduce will on occasions actuality increase the size of the active array, but only up to  max that is the length of the pool
 
-## () - expand ex-simple-examples
-* 3-checksum
+## ( done 12/29/2021 ) - expand ex-simple-examples
+* (done) 3-checksum example
 
 ## ( done 12/04/2021) - new av-reduce-as-filter
 * (done) one basic example using array filter and array reduce to do the same thing

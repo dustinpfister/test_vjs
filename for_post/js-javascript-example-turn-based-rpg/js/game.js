@@ -47,7 +47,7 @@ var gameMod = (function () {
 
         itemSubTypes: {
             junk: [
-                "weapon.melee.sword"
+                ["weapon.melee.sword", 1]
             ]
         },
 

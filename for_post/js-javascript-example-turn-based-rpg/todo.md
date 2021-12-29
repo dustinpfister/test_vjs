@@ -69,6 +69,8 @@
 * (done) log version number
 <!-- js/lib/units.js -->
 * I will want to set points range values for each drop subtype for each class with this enemey options object
+<!-- js/game.js -->
+* update the itemSubTypes prop of the void world
 <!-- items-home.json -->
 * add at least one epic class item
 * add at least one rare class item

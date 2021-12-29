@@ -209,7 +209,8 @@ var unitMod = (function () {
                 if(itemClassObj){
                     var subTypeList = opt.subTypes[itemClassObj.desc];
                     // !!! for now I am just getting a random item from subTypes
-                    var subType = subTypeList[ Math.floor( Math.random() * subTypeList.length ) ];
+                    //var subType = subTypeList[ Math.floor( Math.random() * subTypeList.length ) ];
+                    subType = subTypeList[Math.floor( Math.random() * subTypeList.length )][0]
                     enemy.pouch.push(api.createUnit('item', { subType: subType, level: level}));
                 }
             });

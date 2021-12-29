@@ -61,20 +61,19 @@
 
 ## () - r23 - start armor items
 * I will want to add armor items
+<!-- items-home.json -->
+* add at least one epic class item
+* add at least one rare class item
 
-## () - r22 - init state, item drop chances 
+## ( done 12/29/2021 ) - r22 - init state, item drop chances 
 <!-- js/states/state-init.js -->
 * (done) start an init state that will set up things that are now being set up in title state
 * (done) use new init state to load items in place of doing so in the title state
 * (done) log version number
 <!-- js/lib/units.js -->
-* I will want to set points range values for each drop subtype for each class with this enemey options object
+* (done) I will want to set points range values for each drop subtype for each class with this enemey options object
 <!-- js/game.js -->
-* update the itemSubTypes prop of the void world
-<!-- items-home.json -->
-* add at least one epic class item
-* add at least one rare class item
-
+* (done) update the itemSubTypes prop of the void world
 
 <!--****** **********
     ITEMS AND DROPS - item json files

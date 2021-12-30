@@ -169,6 +169,17 @@ var unitMod = (function () {
             player.pouch_max = 10;
         }
     };
+
+
+var getMeleeItem = function(unit){
+
+   return unit.pouch.filter(function(item){
+       var parts = item.subType.split('.');
+       return parts[0] === 'weapon' && parts[1] === 'melee';
+   });
+
+};
+
     // enemy type
     UNIT_TYPES.enemy = {
         create : function(enemy, opt){
@@ -228,9 +239,14 @@ var unitMod = (function () {
 enemy.currentWeapon = null;
 
 var meleeItem = enemy.pouch[0];
+
 if(meleeItem){
 console.log('The enemy has equiped: ');
-console.log( meleeItem.subType );
+console.log( meleeItem.subType, meleeItem.levelObj.level );
+
+var meleeItem2 = getMeleeItem(enemy);
+console.log(meleeItem2)
+//console.log( meleeItem2.subType, meleeItem.levelObj2.level  )
 
             // starting weapon for enemy
             enemy.currentWeapon = meleeItem;

@@ -45,7 +45,8 @@
       "y": 1,
       "pouch":[
         {"subType": "weapon.melee.sword_short", "level": 12},
-        {"subType": "weapon.melee.dagger_flint", "level": 15}
+        {"subType": "weapon.melee.dagger_flint", "level": 15},
+        {"subType": "weapon.melee.mace_plus", "level": 10}
       ]
     }
   ],

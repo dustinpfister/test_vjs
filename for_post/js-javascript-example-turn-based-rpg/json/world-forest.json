@@ -7,7 +7,9 @@
   "mapWorldHeight": 3,
   "itemClassPool": [
     {"desc": "junk", "range": [100, 100] },
-    {"desc": "common", "range": [25, 150] }
+    {"desc": "common", "range": [75, 250] },
+    {"desc": "rare", "range": [25, 100] },
+    {"desc": "epic", "range": [1, 25] }
   ],
   "itemSubTypes": {
       "junk": [
@@ -17,6 +19,13 @@
       "common": [
           ["weapon.melee.sword_short", 100], 
           ["weapon.melee.sword_long", 25]
+      ],
+      "rare": [
+          ["weapon.melee.sword_long_plus", 1], 
+          ["weapon.melee.mace", 1]
+      ],
+      "epic": [
+          ["weapon.melee.mace_plus", 1]
       ]
   },
   "itemPouchRange": [1, 5],

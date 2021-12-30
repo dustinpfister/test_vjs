@@ -173,8 +173,8 @@ var unitMod = (function () {
     };
 
 
-var getMeleeItem = function(unit){
-
+var getMeleeItem = function(unit, allowClasses){
+   allowClasses = allowClasses || ['junk']
    // first filter out any items that are not melee weapons
    var options = unit.pouch.filter(function(item){
        var parts = item.subType.split('.');
@@ -182,7 +182,9 @@ var getMeleeItem = function(unit){
    })
    // filter out any class other than what is allowed
    .filter(function(item){
-       return item.class === 'junk';
+       return allowClasses.some(function(className){
+           return item.class === className;
+       });
    })
    // sort by level
    .sort(function(a, b){

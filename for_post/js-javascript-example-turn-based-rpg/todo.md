@@ -60,12 +60,20 @@
 * start a new save state menu
 
 ## () - r23 - start armor items
+
 * I will want to add armor items
+
+<!-- /js/lib/units.js -->
+* have a getMeleeItem helper that will get a melee item in a given unit pouch
+* have it so that the getMeleeItem helper can be given options to sort by class and level
+
 <!-- world-forest.json -->
-* make it so that the forest will drop rare and epic items
+* (done) make it so that the forest will drop rare and epic items
 <!-- items-home.json -->
 * (done) add at least onw epic class weapon item
 * (done) add at least one rare class weapon item
+
+* add first armor item as a junk class item
 
 ## ( done 12/29/2021 ) - r22 - init state, item drop chances 
 <!-- js/states/state-init.js -->

@@ -25,7 +25,7 @@
     UNIT SUB-TYPES - unit json files
 ********** *******-->
 
-## () - r25 - unit sub-types starting with enemy unit type
+## () - r26 - unit sub-types starting with enemy unit type
 * I will want to have more than one type of the unit.type 'enemy' of course so then I am going to want to have some kind of sub type system
 * maybe a standard like 'enemy.blob' to have a unit type of 'enemy' with a sub type of 'blob'
 * when it comes to defining what a sub type is I might also want to have several 'variants' of a sub type such as 'enemy.blob.green'
@@ -56,13 +56,13 @@
 ********** *******-->
 
 
-## () - r24 - save state menu
+## () - r25 - save state menu
 * start a new save state menu
 
-## () - r23 - start armor items
-
+## () - r24 - armor items
 * I will want to add armor items
 
+## () - r23 - getMeleeItem helper in units.js 
 <!-- /js/lib/units.js -->
 * have a getMeleeItem helper that will get a melee item in a given unit pouch
 * have it so that the getMeleeItem helper can be given options to sort by class and level

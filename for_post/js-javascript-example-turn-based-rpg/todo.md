@@ -61,23 +61,20 @@
 
 ## () - r24 - armor items
 * I will want to add armor items
+* add first armor item as a junk class item
 
 ## () - r23 - getMeleeItem helper in units.js 
 <!-- /js/lib/units.js -->
 * (done) have a getMeleeItem helper that will get a melee item in a given unit pouch
 * (done) have it so that the getMeleeItem helper will filter out any items that are not melee items
-
-* units will need to have a class prop set when they are created
-
-* have it so that the getMeleeItem helper can be given options to sort by class and level
-
+* (done) units will need to have a class prop set when they are created
+* (done) have it so that the getMeleeItem helper can be given and option to sort by level high or low
 <!-- world-forest.json -->
 * (done) make it so that the forest will drop rare and epic items
 <!-- items-home.json -->
 * (done) add at least onw epic class weapon item
 * (done) add at least one rare class weapon item
 
-* add first armor item as a junk class item
 
 ## ( done 12/29/2021 ) - r22 - init state, item drop chances 
 <!-- js/states/state-init.js -->

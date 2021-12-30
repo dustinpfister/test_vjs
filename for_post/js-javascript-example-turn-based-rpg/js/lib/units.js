@@ -197,7 +197,7 @@ var unitMod = (function () {
             }
             return 0;
         });
-        console.log(options.map(function(item){ return item.levelObj.level + ' : ' + item.class  }))
+        //console.log(options.map(function(item){ return item.levelObj.level + ' : ' + item.class  }))
         // return null if zero options
         if(options.length === 0){
            return null;
@@ -262,8 +262,17 @@ var unitMod = (function () {
                 }
             });
 
+// default to unarmed
 enemy.currentWeapon = null;
+enemy.currentWeapon = getMeleeItem(enemy, ['junk'], true);
+if(enemy.currentWeapon){
+    console.log('The enemy has equiped: ');
+    console.log( enemy.currentWeapon.subType, enemy.currentWeapon.levelObj.level );
+}else{
+    console.log('Enemy is unarmed.');
+}
 
+/*
 var meleeItem = enemy.pouch[0];
 
 if(meleeItem){
@@ -283,6 +292,7 @@ console.log('Enemy is unarmed.');
 
 }
 console.log('');
+*/
 
         }
     };

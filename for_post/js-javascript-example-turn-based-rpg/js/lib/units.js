@@ -224,8 +224,24 @@ var unitMod = (function () {
                     enemy.pouch.push(api.createUnit('item', { subType: subTypeList[ classIndex ][0], level: level}));
                 }
             });
+
+enemy.currentWeapon = null;
+
+var meleeItem = enemy.pouch[0];
+if(meleeItem){
+console.log('The enemy has equiped: ');
+console.log( meleeItem.subType );
+
             // starting weapon for enemy
-            enemy.currentWeapon = enemy.pouch[0];
+            enemy.currentWeapon = meleeItem;
+
+}else{
+
+console.log('Enemy is unarmed.');
+
+}
+console.log('');
+
         }
     };
     // wall type

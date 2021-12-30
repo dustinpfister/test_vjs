@@ -177,7 +177,7 @@ var getMeleeItem = function(unit){
        var parts = item.subType.split('.');
        return parts[0] === 'weapon' && parts[1] === 'melee';
    })
-   // sort by level first
+   // sort by level
    .sort(function(a, b){
        if(a.levelObj.level < b.levelObj.level){
            return 1;
@@ -187,6 +187,8 @@ var getMeleeItem = function(unit){
        }
        return 0;
    });
+//console.log(options);
+console.log(options.map(function(item){ return item.levelObj.level  }))
    // return null if zero options
    if(options.length === 0){
       return null;

@@ -64,7 +64,11 @@
 
 ## () - r23 - getMeleeItem helper in units.js 
 <!-- /js/lib/units.js -->
-* have a getMeleeItem helper that will get a melee item in a given unit pouch
+* (done) have a getMeleeItem helper that will get a melee item in a given unit pouch
+* (done) have it so that the getMeleeItem helper will filter out any items that are not melee items
+
+* units will need to have a class prop set when they are created
+
 * have it so that the getMeleeItem helper can be given options to sort by class and level
 
 <!-- world-forest.json -->

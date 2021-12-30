@@ -96,6 +96,7 @@ var unitMod = (function () {
             // current values
             HP: 1,
             subType: '',
+            class: '',
             data: {},
             children: [],
             pouch:[],             // a collection of item units for this unit AKA and inventory
@@ -147,6 +148,7 @@ var unitMod = (function () {
             var itemRec = utils.getPath(ITEMS, itemOpt.subType, null);
             item.levelObj = utils.XP.parseByLevel(itemOpt.level, LEVEL_CAP, LEVEL_DELTA_NEXT);
             item.perLevel = itemRec.perLevel;
+            item.class = itemRec.class;
         }
     };
     // player type
@@ -188,7 +190,7 @@ var getMeleeItem = function(unit){
        return 0;
    });
 //console.log(options);
-console.log(options.map(function(item){ return item.levelObj.level  }))
+console.log(options.map(function(item){ return item.levelObj.level + ' : ' + item.class  }))
    // return null if zero options
    if(options.length === 0){
       return null;
@@ -295,8 +297,13 @@ console.log('');
 
     // Public unitMod.create method
     api.createUnit = function(type, opt){
+opt = opt || {};
         var unit = createBaseUnit();
         unit.type = type;
+
+//unit.class = opt.class || 'unknown';
+unit.class = opt.class || 'unkown';
+
         // call create method for the type
         UNIT_TYPES[type].create(unit, opt);
         // set unit stats

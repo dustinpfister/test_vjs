@@ -173,39 +173,38 @@ var unitMod = (function () {
     };
 
 
-var getMeleeItem = function(unit, allowClasses){
-   allowClasses = allowClasses || ['junk']
-   // first filter out any items that are not melee weapons
-   var options = unit.pouch.filter(function(item){
-       var parts = item.subType.split('.');
-       return parts[0] === 'weapon' && parts[1] === 'melee';
-   })
-   // filter out any class other than what is allowed
-   .filter(function(item){
-       return allowClasses.some(function(className){
-           return item.class === className;
-       });
-   })
-   // sort by level
-   .sort(function(a, b){
-       if(a.levelObj.level < b.levelObj.level){
-           return 1;
-       }
-       if(a.levelObj.level > b.levelObj.level){
-           return -1;
-       }
-       return 0;
-   });
-//console.log(options);
-console.log(options.map(function(item){ return item.levelObj.level + ' : ' + item.class  }))
-   // return null if zero options
-   if(options.length === 0){
-      return null;
-   }
-   // else return option 0
-   return options[0];
-
-};
+    var getMeleeItem = function(unit, allowClasses, lowLevel){
+        allowClasses = allowClasses || ['junk'];
+        lowLevel = lowLevel === undefined ? true: lowLevel;
+        // first filter out any items that are not melee weapons
+        var options = unit.pouch.filter(function(item){
+            var parts = item.subType.split('.');
+            return parts[0] === 'weapon' && parts[1] === 'melee';
+        })
+        // filter out any class other than what is allowed
+        .filter(function(item){
+            return allowClasses.some(function(className){
+                return item.class === className;
+            });
+        })
+        // sort by level
+        .sort(function(a, b){
+            if(a.levelObj.level < b.levelObj.level){
+                return lowLevel ? -1 : 1;
+            }
+            if(a.levelObj.level > b.levelObj.level){
+               return lowLevel ? 1 : -1;
+            }
+            return 0;
+        });
+        console.log(options.map(function(item){ return item.levelObj.level + ' : ' + item.class  }))
+        // return null if zero options
+        if(options.length === 0){
+           return null;
+        }
+        // else return option 0
+        return options[0];
+    };
 
     // enemy type
     UNIT_TYPES.enemy = {
@@ -271,7 +270,7 @@ if(meleeItem){
 console.log('The enemy has equiped: ');
 console.log( meleeItem.subType, meleeItem.levelObj.level );
 
-var meleeItem2 = getMeleeItem(enemy);
+var meleeItem2 = getMeleeItem(enemy, ['junk', 'common'], false);
 //console.log(meleeItem2)
 console.log( meleeItem2.subType, meleeItem2.levelObj.level  )
 

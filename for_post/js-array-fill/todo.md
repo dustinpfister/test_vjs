@@ -11,10 +11,11 @@
 * 4-match
 
 ### () - expand and rename av-apply-map
-* rename av-apply-map to av-apply-from-map
 * have an example that showcases the problem using Array constructor with new keyword and map
 * have a apply example with a plain object to help better show what the situation is
-* have an array from example
+
+### () - new av-array-from section
+* 1-array-from
 
 ### ( done 11/26/2021 ) - expand and rename av-string-split
 * (done) rename av-string-split to av-fill-with-string

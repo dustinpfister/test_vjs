@@ -4,7 +4,7 @@ var fill = function (count, val) {
         length: count
     }).map(function () {
         return val
-    })
+    });
 };
 
 var newByt = function () {

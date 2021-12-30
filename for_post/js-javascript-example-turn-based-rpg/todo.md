@@ -19,7 +19,7 @@
 * (#13) getDropObj will not create or add under player and enemy cells
 * (#14) fix drop map cary over bug where enemy item drops cary over to the next map with the player unit
 * (#15) have a utils method for getting a random item from an array of choices with point values to be used in units.js
-
+* (#16) have a way to set allowed classes for drops in world map objects and use that for the getMeleeItem helper in units.js
 
 <!--****** **********
     UNIT SUB-TYPES - unit json files
@@ -63,7 +63,7 @@
 * I will want to add armor items
 * add first armor item as a junk class item
 
-## () - r23 - getMeleeItem helper in units.js 
+## ( done 12/30/2021 ) - r23 - getMeleeItem helper in units.js 
 <!-- /js/lib/units.js -->
 * (done) have a getMeleeItem helper that will get a melee item in a given unit pouch
 * (done) have it so that the getMeleeItem helper will filter out any items that are not melee items
@@ -74,7 +74,6 @@
 <!-- items-home.json -->
 * (done) add at least onw epic class weapon item
 * (done) add at least one rare class weapon item
-
 
 ## ( done 12/29/2021 ) - r22 - init state, item drop chances 
 <!-- js/states/state-init.js -->

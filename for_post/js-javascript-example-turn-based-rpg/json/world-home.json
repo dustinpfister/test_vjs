@@ -9,7 +9,6 @@
     {"desc": "junk", "range": [100, 50] },
     {"desc": "common", "range": [100, 50] }
   ],
-
   "itemSubTypes": {
       "junk": [
           ["weapon.melee.dagger_flint", 100], 
@@ -19,7 +18,6 @@
           ["weapon.melee.sword_short", 1]
       ]
   },
-
   "itemPouchRange": [10, 30],
   "itemLevelRange": [10, 25],
   "mapStrings": [

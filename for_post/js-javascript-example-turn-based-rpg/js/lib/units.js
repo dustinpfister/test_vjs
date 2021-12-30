@@ -173,10 +173,26 @@ var unitMod = (function () {
 
 var getMeleeItem = function(unit){
 
-   return unit.pouch.filter(function(item){
+   var options = unit.pouch.filter(function(item){
        var parts = item.subType.split('.');
        return parts[0] === 'weapon' && parts[1] === 'melee';
+   })
+   // sort by level first
+   .sort(function(a, b){
+       if(a.levelObj.level < b.levelObj.level){
+           return 1;
+       }
+       if(a.levelObj.level > b.levelObj.level){
+           return -1;
+       }
+       return 0;
    });
+   // return null if zero options
+   if(options.length === 0){
+      return null;
+   }
+   // else return option 0
+   return options[0];
 
 };
 
@@ -245,8 +261,8 @@ console.log('The enemy has equiped: ');
 console.log( meleeItem.subType, meleeItem.levelObj.level );
 
 var meleeItem2 = getMeleeItem(enemy);
-console.log(meleeItem2)
-//console.log( meleeItem2.subType, meleeItem.levelObj2.level  )
+//console.log(meleeItem2)
+console.log( meleeItem2.subType, meleeItem2.levelObj.level  )
 
             // starting weapon for enemy
             enemy.currentWeapon = meleeItem;

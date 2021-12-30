@@ -61,9 +61,11 @@
 
 ## () - r23 - start armor items
 * I will want to add armor items
+<!-- world-forest.json -->
+* make it so that the forest will drop rare and epic items
 <!-- items-home.json -->
-* add at least one epic class item
-* add at least one rare class item
+* (done) add at least onw epic class weapon item
+* (done) add at least one rare class weapon item
 
 ## ( done 12/29/2021 ) - r22 - init state, item drop chances 
 <!-- js/states/state-init.js -->

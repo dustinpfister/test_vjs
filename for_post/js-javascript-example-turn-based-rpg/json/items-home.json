@@ -58,6 +58,17 @@
          }
       },
       {
+         "subType": "weapon.melee.sword_long_plus",
+         "Desc": "Long Sword Plus",
+         "class": "rare",
+         "perLevel": {
+             "baseAttack": {
+                 "min": [2.5, 2.25],
+                 "inc": [3, 2]
+             }
+         }
+      },
+      {
          "subType": "weapon.melee.mace",
          "Desc": "Mace",
          "class": "rare",
@@ -65,6 +76,17 @@
              "baseAttack": {
                  "min": [2, 3],
                  "inc": [4, 2]
+             }
+         }
+      },
+      {
+         "subType": "weapon.melee.mace_plus",
+         "Desc": "Mace Plus",
+         "class": "epic",
+         "perLevel": {
+             "baseAttack": {
+                 "min": [2.5, 3.25],
+                 "inc": [6, 3]
              }
          }
       }

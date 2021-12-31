@@ -700,17 +700,13 @@ var gameMod = (function () {
                     sm.game.player.currentWeapon = item;
                 }
             }
-
-
             if(parts[0] === 'armor'){
                 if(item === sm.game.player.currentArmor[parts[1]]){
                     sm.game.player.currentArmor[parts[1]] = null
                 }else{
-console.log('yes');
                     sm.game.player.currentArmor[parts[1]] = item;
                 }
             }
-
         }
     };
 

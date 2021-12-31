@@ -75,6 +75,7 @@
 * fix equip button to update currentArmor prop rather than currentWeapon when equiping armor
 <!-- bugs -->
 * address #16 as I am going to want to be able to set that in a map
+* fix #9 so that I have up to date info when equiping all ready
 
 ## ( done 12/30/2021 ) - r23 - getMeleeItem helper in units.js 
 <!-- /js/lib/units.js -->

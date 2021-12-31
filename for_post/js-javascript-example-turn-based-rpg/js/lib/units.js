@@ -90,6 +90,7 @@ var unitMod = (function () {
             baseAttack: [0, 0],   // base attack
             baseDefense: [0, 0],  // base defense
             attack: [0, 0],       // actual attack (baseAttack + weapons + buffs + ect) ( see setAttack helper)
+            defense: [0, 0],      // actual defesne (baseDefense + armor)
             // equipment
             meleeWeapon: null,
             currentWeapon: null,  // the current active weapon

@@ -68,6 +68,10 @@
 * (done) the currentArmor prop should be an object with at least head and body props for now
 * (done) have an updateStats public method
 
+* (done) I am going to need a unit.defense prop just like with unit.attack
+
+* I will then need a setStat.defesne
+
 * have armor effect baseDefense just like with current weapon
 
 <!-- items-home.json -->
@@ -77,6 +81,9 @@
 * (done) add new armor items
 <!-- js/draw.js -->
 * (done) update draw.js to show realvent info based on the subType of the menuItem
+
+* update draw.info to display defense rather than baseDefense
+
 <!-- js/game.js -->
 * (done) fix equip button to update currentArmor prop rather than currentWeapon when equiping armor
 <!-- bugs -->

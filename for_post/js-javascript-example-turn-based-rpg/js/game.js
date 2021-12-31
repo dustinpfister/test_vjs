@@ -707,6 +707,8 @@ var gameMod = (function () {
                     sm.game.player.currentArmor[parts[1]] = item;
                 }
             }
+            // update states with the new equip
+            unitMod.updateStats(sm.game.player);
         }
     };
 

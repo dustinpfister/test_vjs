@@ -350,6 +350,14 @@ unit.class = opt.class || 'unkown';
     };
 
 /********** **********
+     UPDATE STATS
+*********** *********/
+
+    api.updateStats = function(unit){
+        setUnitStats(unit);
+    };
+
+/********** **********
      MELEE ATTACK
 *********** *********/
 

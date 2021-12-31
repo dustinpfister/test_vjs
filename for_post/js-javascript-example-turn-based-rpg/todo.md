@@ -3,7 +3,12 @@
 <!--****** **********
     KNOWN BUGS / ISSUES / MISC CHANGES WANTED
 ********** *******-->
+<!-- resolved -->
 * (#0 done-r009) fix Weird bug with portals and walls when not setting game.mapIndex to portal.mi in setupGame helper in gameMod
+* (#9 done-r024) Fix bug where player attack will not update until next attack when switching weapons
+* (#10 done-r019) tell the user that an item can not be dropped when in such a situation
+* (#12 done-r019) change color of drop item button to red when player can not drop an item
+<!-- unresolved -->
 * (#1) I should not have to have a setupGame2 method in gameMod
 * (#2) I should have a main update loop for object pools
 * (#3) Rename unit.children to unit.over in units.js, and make the changes in gameMod also
@@ -12,10 +17,7 @@
 * (#6) Pull code that has to do with the circle menu out of game.js and into its own lib folder
 * (#7) smooth unit animation when it comes to movement from one cell to another
 * (#8) Fix bug where an enemy will spawn at the player start location
-* (#9) Fix bug where player attack will not update until next attack when switching weapons
-* (#10 done-r019) tell the user that an item can not be dropped when in such a situation
 * (#11) strange outcome when setting buttonDATA.ta in createMenu helper in gameMod
-* (#12 done-r019) change color of drop item button to red when player can not drop an item
 * (#13) getDropObj will not create or add under player and enemy cells
 * (#14) fix drop map cary over bug where enemy item drops cary over to the next map with the player unit
 * (#15) have a utils method for getting a random item from an array of choices with point values to be used in units.js
@@ -64,6 +66,10 @@
 <!-- /js/lib/units.js -->
 * (done) I am going to need a currentArmor prop for units just like with currentWeapon
 * (done) the currentArmor prop should be an object with at least head and body props for now
+* (done) have an updateStats public method
+
+* have armor effect baseDefense just like with current weapon
+
 <!-- items-home.json -->
 * (done) add first armor item as a junk class item as armor.head.helmet_copper
 * (done) add a armor.body.vest_copper armor item
@@ -72,10 +78,10 @@
 <!-- js/draw.js -->
 * (done) update draw.js to show realvent info based on the subType of the menuItem
 <!-- js/game.js -->
-* fix equip button to update currentArmor prop rather than currentWeapon when equiping armor
+* (done) fix equip button to update currentArmor prop rather than currentWeapon when equiping armor
 <!-- bugs -->
 * address #16 as I am going to want to be able to set that in a map
-* fix #9 so that I have up to date info when equiping all ready
+* (done) fix #9 by using new updateStats method so that I have up to date info when equiping all ready
 
 ## ( done 12/30/2021 ) - r23 - getMeleeItem helper in units.js 
 <!-- /js/lib/units.js -->

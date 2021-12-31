@@ -98,9 +98,9 @@ var drawCell = function(sm, cell){
                 ctx.fillText('Unarmed ', x, y + 10);
             }
             // menu weapon info
-            var mw = sm.game.options.data.menuOpt.item;
+            var menuItem = sm.game.options.data.menuOpt.item;
             ctx.fillText('This Weapon: ', x, y + 30);
-            ctx.fillText('baseAttack ' + mw.baseAttack, x, y + 40);
+            ctx.fillText('baseAttack ' + menuItem.baseAttack, x, y + 40);
             
             
         }

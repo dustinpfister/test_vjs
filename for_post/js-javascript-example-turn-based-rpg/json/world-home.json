@@ -46,7 +46,9 @@
       "pouch":[
         {"subType": "weapon.melee.sword_short", "level": 12},
         {"subType": "weapon.melee.dagger_flint", "level": 15},
-        {"subType": "weapon.melee.mace_plus", "level": 10}
+        {"subType": "weapon.melee.mace_plus", "level": 10},
+        {"subType": "armor.head.helmet_copper", "level": 5},
+        {"subType": "armor.body.vest_copper", "level": 5}
       ]
     }
   ],

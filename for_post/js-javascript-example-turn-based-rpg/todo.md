@@ -65,10 +65,14 @@
 * (done) I am going to need a currentArmor prop for units just like with currentWeapon
 * (done) the currentArmor prop should be an object with at least head and body props for now
 <!-- items-home.json -->
-* add first armor item as a junk class item as armor.head.helmet_copper
-* add a armor.body.vest_copper armor item
+* (done) add first armor item as a junk class item as armor.head.helmet_copper
+* (done) add a armor.body.vest_copper armor item
 <!-- world-home.json -->
-* add new armor items
+* (done) add new armor items
+<!-- js/draw.js -->
+* update draw.js to show realvent info based on the subType of the menuItem
+<!-- js/game.js -->
+* fix equip button to update currentArmor prop rather than currentWeapon when equiping armor
 <!-- bugs -->
 * address #16 as I am going to want to be able to set that in a map
 

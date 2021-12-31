@@ -3,16 +3,17 @@ var gameMod = (function () {
 
     var api = {};
 
-    UNIT_SIZE_RANGE = [32, 128]
+    var UNIT_SIZE_RANGE = [16, 128],
+    UNIT_COUNT = 30;
 
     var UNIT_OPT = {
-        count: 25,
+        count: UNIT_COUNT,
         disableLifespan: true
     };
 
     // set the size of the given unit object
     var getSize = function (unit) {
-        var totalMass = 25 * 50,
+        var totalMass = UNIT_COUNT * 50,
         sizePer = unit.data.mass / totalMass,
         size = UNIT_SIZE_RANGE[0] + (UNIT_SIZE_RANGE[1] - UNIT_SIZE_RANGE[0]) * sizePer;
         return size;
@@ -32,15 +33,17 @@ var gameMod = (function () {
         obj.y = canvas.height / 2 - obj.h / 2 + Math.sin(a) * r;
 
         // speed and heading
-        obj.pps = 32;
+        obj.pps = 64;
         obj.heading = Math.PI * 2 * Math.random();
     };
 
     UNIT_OPT.update = function (obj, pool, game, secs) {
+        // move the unit my pps and wrap
         poolMod.moveByPPS(obj, secs);
-        obj.x = utils.wrapNumber(obj.x, -32, game.sm.canvas.width + 32);
-        obj.y = utils.wrapNumber(obj.y, -32, game.sm.canvas.height + 32);
-
+		var size = UNIT_SIZE_RANGE[1];
+        obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
+        obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
+        // if any other unit is under this one add the mass of them and purge them
         var under = poolMod.getOverlaping(obj, pool);
         if (under.length > 0) {
             under.forEach(function (underUnit) {
@@ -51,7 +54,6 @@ var gameMod = (function () {
             obj.w = size;
             obj.h = size;
         }
-
     };
 
     UNIT_OPT.purge = function (obj, pool, game) {}

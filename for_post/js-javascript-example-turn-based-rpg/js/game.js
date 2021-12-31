@@ -708,10 +708,8 @@ var gameMod = (function () {
             cell: cell,
             mode: 'fail'
         };
-
-// modes are
-// create, add, createUnder, addUnder, and fail
-
+        // modes are
+        // create, add, createUnder, addUnder, and fail
         // if cell.unit is null then we can drop here at this cell
         // by way of just creating a new group at cell.unit
         if(cell.unit === null){
@@ -802,8 +800,6 @@ var gameMod = (function () {
       
     };
     var unitItemDrop = function(game, uCell, itemIndex){
-        //var item = game.player.pouch[itemIndex],
-        //pCell = api.getPlayerCell(game),
         var result = getDropObj(game, uCell.x, uCell.y, game.mapIndex),
         unit = uCell.unit,
         item = unit.pouch[itemIndex],
@@ -829,35 +825,6 @@ var gameMod = (function () {
         }
         unit.pouch.splice(itemIndex, 1);
     };
-/*
-    var playerItemDrop = function(game, itemIndex){
-        var item = game.player.pouch[itemIndex],
-        pCell = api.getPlayerCell(game),
-        result = getDropObj(game, pCell.x, pCell.y, game.mapIndex),
-        group;
-        // if result is 'fail'
-        if(result.mode === 'fail' || item === undefined){
-            utils.log('playerItemDrop: failed to drop item for player', 'debug');
-            return;
-        }
-        if(result.mode === 'createUnder'){
-            result.cell.unit.children = unitMod.createUnit('group',  { pouch:[ item ] } );
-        }
-        if(result.mode === 'addUnder'){
-            result.cell.unit.children.pouch.push(item);
-        }
-        if(result.mode === 'create'){
-            result.cell.unit = unitMod.createUnit('group',  { pouch:[ item ] } );
-        }
-        if(result.mode === 'add'){
-            result.cell.unit.pouch.push(item);
-        }
-        if(item === game.player.currentWeapon){
-            game.player.currentWeapon = null;
-        }
-        game.player.pouch.splice(itemIndex, 1);
-    };
-*/
     // menu for a current item
     MENUS.item = {
         // hard coded buttons for item menu
@@ -866,7 +833,6 @@ var gameMod = (function () {
         },
         genButtons : function(game){
             var buttons = [];
-            //var canDrop = getDropItemGroup(sm, true);
             var canDrop = canDropAtCell(game, api.getPlayerCell(game));
             buttons.push({
                 desc: 'drop',

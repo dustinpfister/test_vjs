@@ -11,14 +11,16 @@
   ],
   "itemSubTypes": {
       "junk": [
-          ["weapon.melee.dagger_flint", 100], 
-          ["weapon.melee.sword_rusty", 10]
+          ["weapon.melee.dagger_flint", 50], 
+          ["weapon.melee.sword_rusty", 10],
+          ["armor.head.helmet_copper", 10],
+          ["armor.body.vest_copper", 10]
       ],
       "common": [
           ["weapon.melee.sword_short", 1]
       ]
   },
-  "itemPouchRange": [10, 30],
+  "itemPouchRange": [1, 4],
   "itemLevelRange": [10, 25],
   "mapStrings": [
     "111111111100000000100000000100030000100000000100000000100000001",

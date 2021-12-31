@@ -1,30 +1,3 @@
-
-var gameMod = (function () {
-
-    var api = {};
-
-    api.create = function () {
-        var game = {};
-        return game;
-    };
-	
-	api.update = function(game, secs){
-		
-		
-	};
-
-    return api;
-
-}
-    ());
-
-var draw = {};
-
-draw.background = function (ctx, canvas) {
-    ctx.fillStyle = 'black';
-    ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
-};
-
 // state object
 var canvasObj = utils.createCanvas({
         width: 640,
@@ -33,6 +6,7 @@ var canvasObj = utils.createCanvas({
 var sm = {
     lt: new Date(),
     fps: 30,
+    game: gameMod.create(),
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas
 };
@@ -44,10 +18,9 @@ var loop = function () {
     requestAnimationFrame(loop);
  
     if (secs >= 1 / sm.fps) {
- 
         gameMod.update(sm.game, secs);
         draw.background(sm.ctx, sm.canvas);
- 
+        draw.pool(sm.game, sm.ctx);
         sm.lt = now;
     }
 };

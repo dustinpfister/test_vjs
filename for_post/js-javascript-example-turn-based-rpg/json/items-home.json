@@ -89,6 +89,28 @@
                  "inc": [6, 3]
              }
          }
+      },
+      {
+         "subType": "armor.head.helmet_copper",
+         "Desc": "Copper Helmet",
+         "class": "junk",
+         "perLevel": {
+             "baseDefense": {
+                 "min": [2.5, 3.25],
+                 "inc": [6, 3]
+             }
+         }
+      },
+      {
+         "subType": "armor.body.vest_copper",
+         "Desc": "Copper Vest",
+         "class": "junk",
+         "perLevel": {
+             "baseDefense": {
+                 "min": [2.5, 3.25],
+                 "inc": [6, 3]
+             }
+         }
       }
   ]
 }

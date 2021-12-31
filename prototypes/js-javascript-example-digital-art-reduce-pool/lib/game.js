@@ -25,11 +25,9 @@ var gameMod = (function () {
     };
 
     UNIT_OPT.update = function (obj, pool, game, secs) {
-
         poolMod.moveByPPS(obj, secs);
         obj.x = utils.wrapNumber(obj.x, -32, game.sm.canvas.width + 32);
         obj.y = utils.wrapNumber(obj.y, -32, game.sm.canvas.height + 32);
-
     }
 
     UNIT_OPT.purge = function (obj, pool, game) {}

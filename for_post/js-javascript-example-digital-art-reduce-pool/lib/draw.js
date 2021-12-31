@@ -1,10 +1,10 @@
 var draw = {};
-
+// draw the background
 draw.background = function (ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
 };
-
+// draw the pool
 draw.pool = function (game, ctx, canvas) {
     var pool = game.units;
     pool.objects.forEach(function (obj) {
@@ -20,7 +20,7 @@ draw.pool = function (game, ctx, canvas) {
         }
     });
 };
-
+// draw version number
 draw.ver = function (sm, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';

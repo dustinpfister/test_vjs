@@ -14,7 +14,6 @@ var sm = {
 sm.game = gameMod.create({
         sm: sm
     });
-
 // basic app loop
 var loop = function () {
     var now = new Date(),

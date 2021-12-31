@@ -70,7 +70,7 @@
 <!-- world-home.json -->
 * (done) add new armor items
 <!-- js/draw.js -->
-* update draw.js to show realvent info based on the subType of the menuItem
+* (done) update draw.js to show realvent info based on the subType of the menuItem
 <!-- js/game.js -->
 * fix equip button to update currentArmor prop rather than currentWeapon when equiping armor
 <!-- bugs -->

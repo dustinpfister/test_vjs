@@ -83,25 +83,43 @@ var drawCell = function(sm, cell){
     var forMenuKey = {
         // display weapon info for item menu
         item: function(sm, ctx, canvas){
+            var menuItem = sm.game.options.data.menuOpt.item,
+            parts = menuItem.subType.split('.');
+
             ctx.fillStyle = 'yellow';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'top';
             ctx.font = '9px courier';
             var x = canvas.width / 2,
             y = canvas.height / 2 - 40;
-            // current weapon info
-            var cw = sm.game.player.currentWeapon;
-            ctx.fillText('Current Weapon: ', x, y);
-            if(cw){
-                ctx.fillText('baseAttack ' + cw.baseAttack, x, y + 10);
-            }else{
-                ctx.fillText('Unarmed ', x, y + 10);
+
+            if(parts[0] === 'weapon'){
+                // current weapon info
+                var cw = sm.game.player.currentWeapon;
+                ctx.fillText('Current Weapon: ', x, y);
+                if(cw){
+                    ctx.fillText('baseAttack ' + cw.baseAttack, x, y + 10);
+                }else{
+                    ctx.fillText('Unarmed ', x, y + 10);
+                }
+                // menu weapon info
+                ctx.fillText('This Weapon: ', x, y + 30);
+                ctx.fillText('baseAttack ' + menuItem.baseAttack, x, y + 40);
             }
-            // menu weapon info
-            var menuItem = sm.game.options.data.menuOpt.item;
-            ctx.fillText('This Weapon: ', x, y + 30);
-            ctx.fillText('baseAttack ' + menuItem.baseAttack, x, y + 40);
-            
+
+            if(parts[0] === 'armor'){
+                // current armor info
+                var ca = sm.game.player.currentArmor[parts[1]];
+                ctx.fillText('Current Armor: ', x, y);
+                if(cw){
+                    ctx.fillText('baseDefense ' + ca.baseDefense, x, y + 10);
+                }else{
+                    ctx.fillText('nothing', x, y + 10);
+                }
+                // this armor info
+                ctx.fillText('This Armor: ', x, y + 30);
+                ctx.fillText('baseDefense ' + menuItem.baseDefense, x, y + 40);
+            }
             
         }
     };

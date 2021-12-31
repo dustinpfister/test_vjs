@@ -28,7 +28,16 @@ var gameMod = (function () {
         poolMod.moveByPPS(obj, secs);
         obj.x = utils.wrapNumber(obj.x, -32, game.sm.canvas.width + 32);
         obj.y = utils.wrapNumber(obj.y, -32, game.sm.canvas.height + 32);
-    }
+
+        var over = poolMod.getOverlaping(obj, pool);
+        if (over.length > 0) {
+            console.log(over.length);
+            over.forEach(function () {
+                poolMod.purge(pool, obj, game)
+            })
+        }
+
+    };
 
     UNIT_OPT.purge = function (obj, pool, game) {}
 

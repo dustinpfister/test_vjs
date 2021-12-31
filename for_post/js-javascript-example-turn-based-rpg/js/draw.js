@@ -111,7 +111,7 @@ var drawCell = function(sm, cell){
                 // current armor info
                 var ca = sm.game.player.currentArmor[parts[1]];
                 ctx.fillText('Current Armor: ', x, y);
-                if(cw){
+                if(ca){
                     ctx.fillText('baseDefense ' + ca.baseDefense, x, y + 10);
                 }else{
                     ctx.fillText('nothing', x, y + 10);

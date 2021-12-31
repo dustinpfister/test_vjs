@@ -20,3 +20,11 @@ draw.pool = function (game, ctx, canvas) {
         }
     });
 };
+
+draw.ver = function (sm, ctx, canvas) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '12px arial';
+    ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
+};

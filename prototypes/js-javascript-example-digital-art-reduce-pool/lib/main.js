@@ -4,6 +4,7 @@ var canvasObj = utils.createCanvas({
         height: 480
     });
 var sm = {
+    ver: 'r0',
     lt: new Date(),
     fps: 30,
     game: null,
@@ -24,6 +25,7 @@ var loop = function () {
         gameMod.update(sm.game, secs);
         draw.background(sm.ctx, sm.canvas);
         draw.pool(sm.game, sm.ctx);
+        draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;
     }
 };

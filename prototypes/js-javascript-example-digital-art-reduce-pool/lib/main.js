@@ -6,17 +6,20 @@ var canvasObj = utils.createCanvas({
 var sm = {
     lt: new Date(),
     fps: 30,
-    game: gameMod.create(),
+    game: null,
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas
 };
+sm.game = gameMod.create({
+        sm: sm
+    });
 
 // basic app loop
 var loop = function () {
     var now = new Date(),
     secs = (now - sm.lt) / 1000;
     requestAnimationFrame(loop);
- 
+
     if (secs >= 1 / sm.fps) {
         gameMod.update(sm.game, secs);
         draw.background(sm.ctx, sm.canvas);

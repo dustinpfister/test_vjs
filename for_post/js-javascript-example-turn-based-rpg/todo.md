@@ -13,13 +13,14 @@
 * (#7) smooth unit animation when it comes to movement from one cell to another
 * (#8) Fix bug where an enemy will spawn at the player start location
 * (#9) Fix bug where player attack will not update until next attack when switching weapons
-* (#10) tell the user that an item can not be dropped when in such a situation
+* (#10 done-r019) tell the user that an item can not be dropped when in such a situation
 * (#11) strange outcome when setting buttonDATA.ta in createMenu helper in gameMod
 * (#12 done-r019) change color of drop item button to red when player can not drop an item
 * (#13) getDropObj will not create or add under player and enemy cells
 * (#14) fix drop map cary over bug where enemy item drops cary over to the next map with the player unit
 * (#15) have a utils method for getting a random item from an array of choices with point values to be used in units.js
 * (#16) have a way to set allowed classes for drops in world map objects and use that for the getMeleeItem helper in units.js
+* (#17) the player seems to jump over enemies see about fixing this
 
 <!--****** **********
     UNIT SUB-TYPES - unit json files
@@ -178,7 +179,7 @@
 <!-- js/draw.js-->
 * (done) update draw.js to draw a subtext value if any
 
-## ( done 12/23/2021 ) - r15 - plyaer starting items, equip item in pouch
+## ( done 12/23/2021 ) - r15 - player starting items, equip item in pouch
 <!-- js/game.js -->
 * (done) when the player drops the currentWeapon set the currentWeapon prop to null
 * (done) start an equip button to MENUS.item

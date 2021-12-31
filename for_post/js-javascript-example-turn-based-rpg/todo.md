@@ -61,8 +61,14 @@
 * start a new save state menu
 
 ## () - r24 - armor items
-* I will want to add armor items
-* add first armor item as a junk class item
+<!-- /js/lib/units.js -->
+* (done) I am going to need a currentArmor prop for units just like with currentWeapon
+* (done) the currentArmor prop should be an object with at least head and body props for now
+<!-- items-home.json -->
+* add first armor item as a junk class item as armor.head.helmet_copper
+* add a armor.body.vest_copper armor item
+<!-- world-home.json -->
+* add new armor items
 
 ## ( done 12/30/2021 ) - r23 - getMeleeItem helper in units.js 
 <!-- /js/lib/units.js -->

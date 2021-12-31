@@ -93,6 +93,10 @@ var unitMod = (function () {
             // equipment
             meleeWeapon: null,
             currentWeapon: null,  // the current active weapon
+            currentArmor: {
+               body: null,
+               head: null
+            },
             // current values
             HP: 1,
             subType: '',

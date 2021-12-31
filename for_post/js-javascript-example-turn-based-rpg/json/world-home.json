@@ -7,7 +7,7 @@
   "mapWorldHeight": 3,
   "itemClassPool": [
     {"desc": "junk", "range": [100, 50] },
-    {"desc": "common", "range": [100, 50] }
+    {"desc": "common", "range": [50, 50] }
   ],
   "itemSubTypes": {
       "junk": [
@@ -20,7 +20,7 @@
           ["weapon.melee.sword_short", 1]
       ]
   },
-  "itemPouchRange": [1, 4],
+  "itemPouchRange": [2, 8],
   "itemLevelRange": [10, 25],
   "mapStrings": [
     "111111111100000000100000000100030000100000000100000000100000001",

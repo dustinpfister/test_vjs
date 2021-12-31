@@ -69,6 +69,8 @@
 * add a armor.body.vest_copper armor item
 <!-- world-home.json -->
 * add new armor items
+<!-- bugs -->
+* address #16 as I am going to want to be able to set that in a map
 
 ## ( done 12/30/2021 ) - r23 - getMeleeItem helper in units.js 
 <!-- /js/lib/units.js -->

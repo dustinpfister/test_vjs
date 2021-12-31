@@ -8,25 +8,46 @@ var gameMod = (function () {
         disableLifespan: true
     };
 
-    UNIT_OPT.spawn = function (obj, pool, state, opt) {}
+    UNIT_OPT.spawn = function (obj, pool, game, opt) {
 
-    UNIT_OPT.update = function (obj, pool, state, secs) {}
+        var canvas = game.sm.canvas;
+        // size and position
+        obj.w = 32;
+        obj.h = 32;
+        var r = canvas.height * 0.4,
+        a = Math.PI * 2 * Math.random();
+        obj.x = canvas.width / 2 - obj.w / 2 + Math.cos(a) * r;
+        obj.y = canvas.height / 2 - obj.h / 2 + Math.sin(a) * r;
 
-    UNIT_OPT.purge = function (obj, pool, state) {}
+        // speed and heading
+        obj.pps = 32;
+        obj.heading = Math.PI * 2 * Math.random();
+    };
+
+    UNIT_OPT.update = function (obj, pool, game, secs) {
+
+        poolMod.moveByPPS(obj, secs);
+
+    }
+
+    UNIT_OPT.purge = function (obj, pool, game) {}
 
     api.create = function (opt) {
-		opt = opt || {};
+        opt = opt || {};
         var game = {
-			sm: opt.sm || {},
+            sm: opt.sm || {},
             units: poolMod.create(UNIT_OPT)
         };
-		
-		poolMod.spawnAll(game.units, game)
-		
+        // spawn all for starters
+        poolMod.spawnAll(game.units, game)
         return game;
     };
 
-    api.update = function (game, secs) {};
+    api.update = function (game, secs) {
+
+        poolMod.update(game.units, secs, sm.game)
+
+    };
 
     return api;
 

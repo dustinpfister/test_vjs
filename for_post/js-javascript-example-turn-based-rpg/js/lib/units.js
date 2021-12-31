@@ -370,7 +370,8 @@ unit.class = opt.class || 'unkown';
         var fa = attacker.attack,
         ra = utils.valueByRange(Math.random(), fa[0], fa[1]);
         // figure target defense
-        var bd = target.baseDefense,
+        //var bd = target.baseDefense,
+        var bd = target.defense,
         d = utils.valueByRange(Math.random(), bd[0], bd[1]);
         // figure attack value
         var a = ra - d;

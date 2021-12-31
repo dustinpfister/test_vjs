@@ -67,8 +67,8 @@
 * (done) I am going to need a currentArmor prop for units just like with currentWeapon
 * (done) the currentArmor prop should be an object with at least head and body props for now
 * (done) have an updateStats public method
-
 * (done) I am going to need a unit.defense prop just like with unit.attack
+* (done) I will then need to use unit.defense rather than unit.baseDefense in unitMod.meleeAttack 
 
 * I will then need a setStat.defesne
 

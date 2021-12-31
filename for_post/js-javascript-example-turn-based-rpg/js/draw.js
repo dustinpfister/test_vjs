@@ -231,7 +231,10 @@ var drawCell = function(sm, cell){
         ctx.fillText('HP: ' + p.HP + ' / ' + p.maxHP, 5, getY(1));
         ctx.fillText('attack: ' + p.attack[0] + ' - ' + p.attack[1], 5, getY(2));
         
-        ctx.fillText('defense: ' + p.baseDefense[0] + ' - ' + p.baseDefense[1], 5, getY(3));
+        //ctx.fillText('defense: ' + p.baseDefense[0] + ' - ' + p.baseDefense[1], 5, getY(3));
+
+ctx.fillText('defense: ' + p.defense[0] + ' - ' + p.defense[1], 5, getY(3));
+
 
         var w = p.currentWeapon;
         if(w){

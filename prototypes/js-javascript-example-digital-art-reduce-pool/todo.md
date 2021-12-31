@@ -1,5 +1,11 @@
 # js-javascript-example-digital-art-reduce-pool
 
+### () - r2 - restart
+* when there is a single unit the game will restart
+
+### () - r1 - seeking units
+* use Math.atan2 to get units to seek each other out
+
 ### ( done 12/31/2021 ) - r0 - first state of example
 * (done) start out with pool.js file from turn based RPG example
 * (done) start out with a utils.js with the canvas method and various other tools such as wrapNumber

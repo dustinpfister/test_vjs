@@ -18,8 +18,16 @@ var gameMod = (function () {
         return size;
     };
 
+    var modeUnit = function(game, obj, secs){
+        poolMod.moveByPPS(obj, secs);
+        var size = UNIT_SIZE_RANGE[1];
+        obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
+        obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
+    };
+
     var UNIT_MODES = {};
 
+    // transfer mode
     UNIT_MODES.transfer = {
         update: function(obj, pool, game, secs){
             var target = obj.data.transferTarget;
@@ -41,10 +49,7 @@ var gameMod = (function () {
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
-            poolMod.moveByPPS(obj, secs);
-            var size = UNIT_SIZE_RANGE[1];
-            obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
-            obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
+modeUnit(game, obj, secs);
             // if any other unit is under this one add the mass of them and purge them
             var under = poolMod.getOverlaping(obj, pool);
             if (under.length > 0) {

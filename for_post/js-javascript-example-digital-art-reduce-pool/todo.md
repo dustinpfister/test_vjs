@@ -10,7 +10,7 @@
 * in seek mode a unit will use distnace and reduce to get a target
 * when a target is found use Math.atan2 to update heading
 
-### () - r1 - unit modes, and mass transfer over time
+### ( done 01/01/2022 ) - r1 - unit modes, and mass transfer over time
 * (done) start a UNIT_MODES object in game.js
 * (done) start out with a 'move' mode that is just the current behaviour of the units
 * (done) start a 'transfer' mode that is a new mode where a unit will be transferting its mass to a target unit

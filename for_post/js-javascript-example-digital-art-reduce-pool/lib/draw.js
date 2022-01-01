@@ -1,7 +1,7 @@
 var draw = {};
 // draw the background
 draw.background = function (ctx, canvas) {
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'gray';
     ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
 };
 // draw the pool

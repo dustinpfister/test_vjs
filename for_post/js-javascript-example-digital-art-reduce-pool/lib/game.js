@@ -17,9 +17,35 @@ var gameMod = (function () {
         size = UNIT_SIZE_RANGE[0] + (UNIT_SIZE_RANGE[1] - UNIT_SIZE_RANGE[0]) * sizePer;
         return size;
     };
+
+var UNIT_MODES = {};
+
+UNIT_MODES.move = {
+    update: function(obj, pool, game, secs){
+        poolMod.moveByPPS(obj, secs);
+        var size = UNIT_SIZE_RANGE[1];
+        obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
+        obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
+        // if any other unit is under this one add the mass of them and purge them
+        var under = poolMod.getOverlaping(obj, pool);
+        if (under.length > 0) {
+            under.forEach(function (underUnit) {
+                obj.data.mass += underUnit.data.mass;
+                poolMod.purge(pool, underUnit, game)
+            });
+            var size = getSize(obj);
+            obj.w = size;
+            obj.h = size;
+        }
+    }
+};
+
     // spawn a unit
-    UNIT_OPT.spawn = function (obj, pool, game, opt) {
+    UNIT_OPT.spawn = function (obj, pool, game, spawnOpt) {
+spawnOpt = spawnOpt || {};
         var canvas = game.sm.canvas;
+        // start in move mode by default
+        obj.data.mode = spawnOpt.mode || 'move';
         // start mass
         obj.data.mass = 50;
         // size and position
@@ -37,24 +63,10 @@ var gameMod = (function () {
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {
         // move the unit my pps and wrap
-        poolMod.moveByPPS(obj, secs);
-        var size = UNIT_SIZE_RANGE[1];
-        obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
-        obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
-        // if any other unit is under this one add the mass of them and purge them
-        var under = poolMod.getOverlaping(obj, pool);
-        if (under.length > 0) {
-            under.forEach(function (underUnit) {
-                obj.data.mass += underUnit.data.mass;
-                poolMod.purge(pool, underUnit, game)
-            });
-            var size = getSize(obj);
-            obj.w = size;
-            obj.h = size;
-        }
+        UNIT_MODES[obj.data.mode].update(obj, pool, game, secs)
     };
     // purge a unit
-    UNIT_OPT.purge = function (obj, pool, game) {}
+    UNIT_OPT.purge = function (obj, pool, game) {};
     // public create method
     api.create = function (opt) {
         opt = opt || {};

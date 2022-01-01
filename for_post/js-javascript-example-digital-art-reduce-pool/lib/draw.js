@@ -10,6 +10,7 @@ draw.pool = function (game, ctx, canvas) {
     pool.objects.forEach(function (obj) {
         ctx.fillStyle = obj.data.fillStyle || 'white';
         ctx.strokeStyle = obj.data.strokeStyle || 'black';
+        ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
         if (obj.active) {
             var cx = obj.x + obj.w / 2,
             cy = obj.y + obj.h / 2;
@@ -19,6 +20,7 @@ draw.pool = function (game, ctx, canvas) {
             ctx.stroke();
         }
     });
+    ctx.globalAlpha = 1;
 };
 // draw version number
 draw.ver = function (sm, ctx, canvas) {

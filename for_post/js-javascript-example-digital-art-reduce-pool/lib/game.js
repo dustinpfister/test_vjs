@@ -39,6 +39,8 @@ var gameMod = (function () {
             }else{
                 poolMod.purge(pool, obj, game);
             }
+            obj.data.alpha = obj.data.mass / 50;
+            obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
             // update size on unit and target unit
             var size = getSize(obj);
             obj.w = size;
@@ -77,6 +79,7 @@ var gameMod = (function () {
         // start in move mode by default
         obj.data.mode = spawnOpt.mode || 'move';
         obj.data.transferTarget = null;
+        obj.data.alpha = 1;
         // start mass
         obj.data.mass = 50;
         // size and position

@@ -1,10 +1,20 @@
 # js-javascript-example-digital-art-reduce-pool
 
-### () - r2 - restart
-* when there is a single unit the game will restart
+### () - r3 - split mode
+* when there is just one active object it will enter split mode
+* in split mode the units will split over time until all units are active again
+* once all units are active again all units will switch back to 'move' mode
 
-### () - r1 - seeking units
-* use Math.atan2 to get units to seek each other out
+### () - r2 - seek mode
+* start a new 'seek' mode
+* in seek mode a unit will use distnace and reduce to get a target
+* when a target is found use Math.atan2 to update heading
+
+### () - r1 - unit modes, and mass transfer over time
+* start a UNIT_MODES object in game.js
+* start out with a 'move' mode that is just the current behaviour of the units
+* start a 'transfer' mode that is a new mode where a unit will be transferting its mass to a target unit
+* when a transfer mode unit runs out of mass it will then purge
 
 ### ( done 12/31/2021 ) - r0 - first state of example
 * (done) start out with pool.js file from turn based RPG example

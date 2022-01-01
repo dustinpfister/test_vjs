@@ -11,10 +11,15 @@
 * when a target is found use Math.atan2 to update heading
 
 ### () - r1 - unit modes, and mass transfer over time
-* start a UNIT_MODES object in game.js
-* start out with a 'move' mode that is just the current behaviour of the units
-* start a 'transfer' mode that is a new mode where a unit will be transferting its mass to a target unit
-* when a transfer mode unit runs out of mass it will then purge
+* (done) start a UNIT_MODES object in game.js
+* (done) start out with a 'move' mode that is just the current behaviour of the units
+* (done) start a 'transfer' mode that is a new mode where a unit will be transferting its mass to a target unit
+* (done) when a transfer mode unit runs out of mass it will then purge
+* (done) set heading of unit to that of the target in transfer mode
+
+* alpha effect for transfer units
+* have distance of transfer mode unit reduce twords that of the target
+
 
 ### ( done 12/31/2021 ) - r0 - first state of example
 * (done) start out with pool.js file from turn based RPG example

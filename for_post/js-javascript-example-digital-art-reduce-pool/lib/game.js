@@ -4,7 +4,7 @@ var gameMod = (function () {
     var api = {};
     // some constants
     var UNIT_SIZE_RANGE = [16, 256],
-    UNIT_COUNT = 30;
+    UNIT_COUNT = 50;
     // the unit pool options object
     var UNIT_OPT = {
         count: UNIT_COUNT,
@@ -31,25 +31,31 @@ var gameMod = (function () {
     UNIT_MODES.transfer = {
         update: function(obj, pool, game, secs){
             var target = obj.data.transferTarget;
+            // set heading of unit to that of the target
+            obj.heading = target.heading;
             if(obj.data.mass > 0){
                 obj.data.mass -= 1;
                 target.data.mass += 1;
             }else{
                 poolMod.purge(pool, obj, game);
             }
+            // update size on unit and target unit
             var size = getSize(obj);
             obj.w = size;
             obj.h = size;
             var size = getSize(target);
             target.w = size;
             target.h = size;
+            // move the unit
+            modeUnit(game, obj, secs);
         }
     };
 
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
-modeUnit(game, obj, secs);
+            // move the unit
+            modeUnit(game, obj, secs);
             // if any other unit is under this one add the mass of them and purge them
             var under = poolMod.getOverlaping(obj, pool);
             if (under.length > 0) {
@@ -82,7 +88,7 @@ modeUnit(game, obj, secs);
         obj.x = canvas.width / 2 - obj.w / 2 + Math.cos(a) * r;
         obj.y = canvas.height / 2 - obj.h / 2 + Math.sin(a) * r;
         // speed and heading
-        obj.pps = 64;
+        obj.pps = 64 + Math.floor(128 * Math.random());
         obj.heading = Math.PI * 2 * Math.random();
     };
     // update a unit

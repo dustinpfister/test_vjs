@@ -3,7 +3,7 @@ var gameMod = (function () {
     // the public api
     var api = {};
     // some constants
-    var UNIT_SIZE_RANGE = [16, 256],
+    var UNIT_SIZE_RANGE = [32, 256],
     UNIT_COUNT = 50;
     // the unit pool options object
     var UNIT_OPT = {
@@ -66,13 +66,14 @@ var gameMod = (function () {
             var under = poolMod.getOverlaping(obj, pool);
             if (under.length > 0) {
                 under.forEach(function (underUnit) {
+                    var uud = underUnit.data;
                     // set unit into transfer mode
-                    if(underUnit.data.mode === 'move'){
-                        underUnit.data.mode = 'transfer';
-                        underUnit.data.transferTarget = obj;
-                        underUnit.data.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
-                        underUnit.data.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
-                        underUnit.data.m = underUnit.data.mass;
+                    if(uud.mode === 'move'){
+                        uud.mode = 'transfer';
+                        uud.transferTarget = obj;
+                        uud.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
+                        uud.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
+                        uud.m = uud.mass;
                     }
                 });
             }

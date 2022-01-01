@@ -3,7 +3,7 @@ var gameMod = (function () {
     // the public api
     var api = {};
     // some constants
-    var UNIT_SIZE_RANGE = [16, 128],
+    var UNIT_SIZE_RANGE = [16, 256],
     UNIT_COUNT = 30;
     // the unit pool options object
     var UNIT_OPT = {
@@ -18,34 +18,54 @@ var gameMod = (function () {
         return size;
     };
 
-var UNIT_MODES = {};
+    var UNIT_MODES = {};
 
-UNIT_MODES.move = {
-    update: function(obj, pool, game, secs){
-        poolMod.moveByPPS(obj, secs);
-        var size = UNIT_SIZE_RANGE[1];
-        obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
-        obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
-        // if any other unit is under this one add the mass of them and purge them
-        var under = poolMod.getOverlaping(obj, pool);
-        if (under.length > 0) {
-            under.forEach(function (underUnit) {
-                obj.data.mass += underUnit.data.mass;
-                poolMod.purge(pool, underUnit, game)
-            });
+    UNIT_MODES.transfer = {
+        update: function(obj, pool, game, secs){
+            var target = obj.data.transferTarget;
+            if(obj.data.mass > 0){
+                obj.data.mass -= 1;
+                target.data.mass += 1;
+            }else{
+                poolMod.purge(pool, obj, game);
+            }
             var size = getSize(obj);
             obj.w = size;
             obj.h = size;
+            var size = getSize(target);
+            target.w = size;
+            target.h = size;
         }
-    }
-};
+    };
+
+    // move mode
+    UNIT_MODES.move = {
+        update: function(obj, pool, game, secs){
+            poolMod.moveByPPS(obj, secs);
+            var size = UNIT_SIZE_RANGE[1];
+            obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
+            obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
+            // if any other unit is under this one add the mass of them and purge them
+            var under = poolMod.getOverlaping(obj, pool);
+            if (under.length > 0) {
+                under.forEach(function (underUnit) {
+                    // set unit into transfer mode
+                    if(underUnit.data.mode === 'move'){
+                        underUnit.data.mode = 'transfer';
+                        underUnit.data.transferTarget = obj;
+                    }
+                });
+            }
+        }
+    };
 
     // spawn a unit
     UNIT_OPT.spawn = function (obj, pool, game, spawnOpt) {
-spawnOpt = spawnOpt || {};
+        spawnOpt = spawnOpt || {};
         var canvas = game.sm.canvas;
         // start in move mode by default
         obj.data.mode = spawnOpt.mode || 'move';
+        obj.data.transferTarget = null;
         // start mass
         obj.data.mass = 50;
         // size and position

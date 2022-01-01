@@ -17,7 +17,7 @@
 * (done) when a transfer mode unit runs out of mass it will then purge
 * (done) set heading of unit to that of the target in transfer mode
 * (done) alpha effect for transfer units
-* (done) have distance of transfer mode unit reduce twords that of the target
+* have distance of transfer mode unit reduce twords that of the target
 
 ### ( done 12/31/2021 ) - r0 - first state of example
 * (done) start out with pool.js file from turn based RPG example

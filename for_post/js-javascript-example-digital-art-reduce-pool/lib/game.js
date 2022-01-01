@@ -31,14 +31,14 @@ var gameMod = (function () {
     UNIT_MODES.transfer = {
         update: function(obj, pool, game, secs){
             var target = obj.data.transferTarget;
-            // set heading of unit to that of the target
-            obj.heading = target.heading;
+            // reduce mass
             if(obj.data.mass > 0){
                 obj.data.mass -= 1;
                 target.data.mass += 1;
             }else{
                 poolMod.purge(pool, obj, game);
             }
+            // adjust alpha
             obj.data.alpha = obj.data.mass / 50;
             obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
             // update size on unit and target unit
@@ -48,8 +48,12 @@ var gameMod = (function () {
             var size = getSize(target);
             target.w = size;
             target.h = size;
-            // move the unit
-            modeUnit(game, obj, secs);
+            // how to update positon?
+            var d = obj.data.d,
+            a = obj.data.a,
+            per = obj.data.mass / obj.data.m;
+            obj.x = target.x + Math.cos(a) * (d * per);
+            obj.y = target.y + Math.sin(a) * (d * per);
         }
     };
 
@@ -66,6 +70,9 @@ var gameMod = (function () {
                     if(underUnit.data.mode === 'move'){
                         underUnit.data.mode = 'transfer';
                         underUnit.data.transferTarget = obj;
+                        underUnit.data.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
+                        underUnit.data.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
+                        underUnit.data.m = underUnit.data.mass;
                     }
                 });
             }
@@ -91,7 +98,7 @@ var gameMod = (function () {
         obj.x = canvas.width / 2 - obj.w / 2 + Math.cos(a) * r;
         obj.y = canvas.height / 2 - obj.h / 2 + Math.sin(a) * r;
         // speed and heading
-        obj.pps = 64 + Math.floor(128 * Math.random());
+        obj.pps = 32 + Math.floor(64 * Math.random());
         obj.heading = Math.PI * 2 * Math.random();
     };
     // update a unit

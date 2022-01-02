@@ -8,7 +8,7 @@ var gameMod = (function () {
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
     UNIT_SPLIT_DELAY = 3,
-    UNIT_CHASE_PPS_DELTA = 256,
+    UNIT_CHASE_PPS_DELTA = 64,
     UNIT_PPS_RANGE = [32, 64],
     UNIT_COUNT = 50;
     // the unit pool options object

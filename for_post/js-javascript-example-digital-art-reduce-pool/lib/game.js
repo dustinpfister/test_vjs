@@ -54,6 +54,21 @@ var gameMod = (function () {
         if(getNewTarget){
             var activeUnits = poolMod.getActiveObjects(game.units),
             i = activeUnits.length;
+
+// sort
+activeUnits.sort(function(a, b){
+    var d1 = utils.distance(unit.x, unit.y, a.x, a.y),
+    d2 = utils.distance(unit.x, unit.y, b.x, b.y);
+
+    if(d1 > d2){
+        return -1;
+    }
+    if(d1 < d2){
+        return 1;
+    }
+    return 0;
+});
+
             while(i--){
                 var unit2 = activeUnits[i];
                 if(!(unit === unit2)){
@@ -64,9 +79,8 @@ var gameMod = (function () {
         }
         // if we have a target
         if(ud.target){
-           // match heading and speed plus a little more
+           // match heading
            unit.heading = ud.target.heading;
-           //unit.pps = ud.target.pps;
         }
     };
     // unit modes

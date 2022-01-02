@@ -17,9 +17,18 @@ var gameMod = (function () {
         count: UNIT_COUNT,
         disableLifespan: true
     };
+    // get total mass helper (actual or exspcted)
+    var getTotalMass = function(game){
+        return game.units.objects.reduce(function(acc, unit){
+            return acc + unit.data.mass;
+        }, 0);
+    };
+    var getExpectedTotalMass = function(){
+        return UNIT_COUNT * UNIT_MASS_PER;
+    };
     // get the size of the given unit object
     var getSize = function (unit) {
-        var totalMass = UNIT_COUNT * UNIT_MASS_PER,
+        var totalMass = getExpectedTotalMass(); //UNIT_COUNT * UNIT_MASS_PER,
         sizePer = unit.data.mass / totalMass,
         size = UNIT_SIZE_RANGE[0] + (UNIT_SIZE_RANGE[1] - UNIT_SIZE_RANGE[0]) * sizePer;
         return size;
@@ -74,11 +83,7 @@ var gameMod = (function () {
                 return target.i != unit.i;
             }),
             i = activeUnits.length;
-
-            //console.log(activeUnits.map((unit)=>{ return unit.i;}).some((b)=>{ return b.i === unit.i;}));
-
             // sort
-
             activeUnits.sort(function(a, b){
                 var d1 = utils.distance(unit.x, unit.y, a.x, a.y),
                 d2 = utils.distance(unit.x, unit.y, b.x, b.y);
@@ -264,12 +269,7 @@ var gameMod = (function () {
     // public update method
     api.update = function (game, secs) {
         game.activeCount = poolMod.getActiveCount(game.units);
-        game.totalMass = game.units.objects.reduce(function(acc, unit){
-            if(String(unit.data.mass).indexOf('.') != -1){
-
-            }
-            return acc + unit.data.mass;
-        }, 0);
+        game.totalMass = getTotalMass(game);
         // update units
         poolMod.update(game.units, secs, sm.game);
         // set units back to move if in split up mode

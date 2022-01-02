@@ -1,10 +1,7 @@
 # js-javascript-example-digital-art-reduce-pool
 
 
-### () - r4 - mass fix
-* take another look at how mass is split up
-
-### () - r3 - seek units
+### () - r3 - seek units, unit mass fix
 * (done) start a new seek helper function
 * (done) use new seek unit helper in move mode
 * (done) start new random pps helper and use it in spawn unit as well as in move mode
@@ -12,6 +9,7 @@
 * (done) const for split delay
 * (done) const for chase pps bounus
 * (done) use Math.atan2 in place of just setting heading
+* (done) unit mass per const
 
 * fix total mass bug in split mode
 

@@ -15,8 +15,8 @@
 * (done) have a game.totalMass prop and display that with draw.info
 * (done) half mass value and remainder
 * (done) once all units are active again all units will switch back to 'move' mode
-
-* see about adjusting transfer mode potions so that units move to center of unit rather than upper left corner
+* (done) start a update size and positon by mass helper and use it in transfer mode
+* (done) see about adjusting transfer mode potions so that units move to center of unit rather than upper left corner
 
 
 ### ( done 01/01/2022 ) - r1 - unit modes, and mass transfer over time

@@ -5,6 +5,8 @@ var gameMod = (function () {
     // some constants
     var UNIT_SIZE_RANGE = [32, 256],
     UNIT_TRANSFER_RATE = 600,
+    UNIT_TRANSFER_MODE_MAX_PPS = 256,
+    UNIT_TRANSFER_MODE_MAX_DIST = 100,
     UNIT_COUNT = 50;
     // the unit pool options object
     var UNIT_OPT = {
@@ -95,26 +97,34 @@ var gameMod = (function () {
             obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
             // update size on unit and target unit
 
-            //var size = getSize(obj);
-            //obj.w = size;
-            //obj.h = size;
 
-updateByMass(obj);
-updateByMass(target);
+            updateByMass(obj);
+            updateByMass(target);
+
+            // how to update heading and speed
+
+            var x1 = obj.x + obj.w / 2,
+            y1 = obj.y + obj.h / 2,
+            x2 = target.x + target.w / 2,
+            y2 = target.y + target.h / 2;
+            var d = utils.distance(x1, y1, x2, y2);
+            var a = Math.atan2(y2 - y1, x2 - x1);
+
+            obj.heading = a;
+            var per = d / UNIT_TRANSFER_MODE_MAX_DIST,
+            per = per > 1 ? 1 : per;
+            obj.pps = UNIT_TRANSFER_MODE_MAX_PPS * per;
+
+            moveUnit(game, obj, secs);
 
 
-            var size = getSize(target);
-            target.w = size;
-            target.h = size;
-
-
-
-            // how to update positon?
-            //var d = obj.data.d,
-            //a = obj.data.a,
-            //per = obj.data.mass / obj.data.m;
-            //obj.x = target.x + Math.cos(a) * (d * per);
-            //obj.y = target.y + Math.sin(a) * (d * per);
+/*
+            var d = obj.data.d,
+            a = obj.data.a,
+            per = obj.data.mass / obj.data.m;
+            obj.x = target.x + Math.cos(a) * (d * per);
+            obj.y = target.y + Math.sin(a) * (d * per);
+*/
 
 /*
             var d = obj.data.d,
@@ -149,9 +159,8 @@ updateByMass(target);
                     obj.data.mode = 'move';
                 });
             }
-            var size = getSize(obj);
-            obj.w = size;
-            obj.h = size;
+            // update size and positon by mass
+            updateByMass(obj);
         }
     };
 

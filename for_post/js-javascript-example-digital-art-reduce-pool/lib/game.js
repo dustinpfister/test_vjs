@@ -4,6 +4,7 @@ var gameMod = (function () {
     var api = {};
     // some constants
     var UNIT_SIZE_RANGE = [32, 256],
+    UNIT_TRANSFER_RATE = 600,
     UNIT_COUNT = 50;
     // the unit pool options object
     var UNIT_OPT = {
@@ -33,8 +34,16 @@ var gameMod = (function () {
             var target = obj.data.transferTarget;
             // reduce mass
             if(obj.data.mass > 0){
-                obj.data.mass -= 30;
-                target.data.mass += 30;
+
+var mDelta = Math.floor(UNIT_TRANSFER_RATE * secs);
+mDelta = mDelta === 0 ? 1 : mDelta;
+
+if(obj.data.mass - mDelta < 0){
+   mDelta = obj.data.mass
+}
+
+                obj.data.mass -= mDelta;
+                target.data.mass += mDelta;
                
             }else{
                 poolMod.purge(pool, obj, game);
@@ -93,7 +102,7 @@ var gameMod = (function () {
             modeUnit(game, obj, secs);
             if(game.activeCount < UNIT_COUNT){
                 var mass = obj.data.mass / 2;
-                obj.mass = mass;
+                obj.data.mass = mass;
                 poolMod.spawn(game.units, game, {
                     mode: 'splitup',
                     mass: mass,
@@ -131,7 +140,7 @@ var gameMod = (function () {
         
         
         // speed and heading
-        obj.pps = 256; //32 + Math.floor(64 * Math.random());
+        obj.pps = 32 + Math.floor(64 * Math.random());
         
         obj.heading = spawnOpt.heading || 'center';
 

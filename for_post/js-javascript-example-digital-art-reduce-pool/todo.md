@@ -1,14 +1,16 @@
 # js-javascript-example-digital-art-reduce-pool
 
 
+### () - r4 - mass fix
+* take another look at how mass is split up
+
 ### () - r3 - seek units
 * (done) start a new seek helper function
 * (done) use new seek unit helper in move mode
 * (done) start new random pps helper and use it in spawn unit as well as in move mode
 * (done) start a chasePPS helper and use it in mode mode
-* const for split delay
-* const for chase pps bounus
-
+* (done) const for split delay
+* (done) const for chase pps bounus
 
 ### ( done 01/01/2022 ) - r2 - split mode, transfer rate
 * (done) draw info method

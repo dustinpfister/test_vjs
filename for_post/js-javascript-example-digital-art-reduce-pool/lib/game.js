@@ -33,8 +33,9 @@ var gameMod = (function () {
             var target = obj.data.transferTarget;
             // reduce mass
             if(obj.data.mass > 0){
-                obj.data.mass -= 1;
-                target.data.mass += 1;
+                obj.data.mass -= 30;
+                target.data.mass += 30;
+               
             }else{
                 poolMod.purge(pool, obj, game);
             }
@@ -91,7 +92,7 @@ var gameMod = (function () {
             // move the unit
             modeUnit(game, obj, secs);
             if(game.activeCount < UNIT_COUNT){
-                var mass = obj.mass / 2;
+                var mass = obj.data.mass / 2;
                 obj.mass = mass;
                 poolMod.spawn(game.units, game, {
                     mode: 'splitup',
@@ -130,7 +131,7 @@ var gameMod = (function () {
         
         
         // speed and heading
-        obj.pps = 32 + Math.floor(64 * Math.random());
+        obj.pps = 256; //32 + Math.floor(64 * Math.random());
         
         obj.heading = spawnOpt.heading || 'center';
 

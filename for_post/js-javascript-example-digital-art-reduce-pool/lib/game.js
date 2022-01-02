@@ -10,6 +10,7 @@ var gameMod = (function () {
     UNIT_SPLIT_DELAY = 3,
     UNIT_CHASE_PPS_DELTA = 64,
     UNIT_PPS_RANGE = [32, 64],
+    UNIT_MASS_PER = 50,
     UNIT_COUNT = 50;
     // the unit pool options object
     var UNIT_OPT = {
@@ -18,7 +19,7 @@ var gameMod = (function () {
     };
     // get the size of the given unit object
     var getSize = function (unit) {
-        var totalMass = UNIT_COUNT * 50,
+        var totalMass = UNIT_COUNT * UNIT_MASS_PER,
         sizePer = unit.data.mass / totalMass,
         size = UNIT_SIZE_RANGE[0] + (UNIT_SIZE_RANGE[1] - UNIT_SIZE_RANGE[0]) * sizePer;
         return size;
@@ -154,7 +155,7 @@ var gameMod = (function () {
                 poolMod.purge(pool, obj, game);
             }
             // adjust alpha
-            obj.data.alpha = obj.data.mass / 50;
+            obj.data.alpha = obj.data.mass / UNIT_MASS_PER;
             obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
             // update size on unit and target unit
             updateByMass(obj);
@@ -180,8 +181,10 @@ var gameMod = (function () {
         update: function(obj, pool, game, secs){
             // move the unit
             moveUnit(game, obj, secs);
+
             // if active count is below UNIT COUNT then spawn a new unit
             if(game.activeCount < UNIT_COUNT){
+
                 var hMass = Math.floor(obj.data.mass / 2),
                 r = obj.data.mass - hMass * 2;
                 // this cuttent unit should be halfMass plus any remainder
@@ -213,7 +216,7 @@ var gameMod = (function () {
         };
         obj.pps = obj.data.speed.basePPS;
         // start mass
-        obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;	
+        obj.data.mass = spawnOpt.mass === undefined ? UNIT_MASS_PER : spawnOpt.mass;	
         // random pos from center by default
         var r = canvas.height * 0.4,
         a = Math.PI * 2 * Math.random();

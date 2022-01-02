@@ -11,8 +11,9 @@
 * (done) start a chasePPS helper and use it in mode mode
 * (done) const for split delay
 * (done) const for chase pps bounus
+* (done) use Math.atan2 in place of just setting heading
 
-* use Math.atan2 in place of just setting heading
+* fix total mass bug in split mode
 
 
 ### ( done 01/01/2022 ) - r2 - split mode, transfer rate

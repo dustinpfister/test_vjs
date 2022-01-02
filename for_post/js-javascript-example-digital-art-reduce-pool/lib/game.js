@@ -28,6 +28,34 @@ var gameMod = (function () {
 
     var UNIT_MODES = {};
 
+    // move mode
+    UNIT_MODES.move = {
+        update: function(obj, pool, game, secs){
+            //var activeCount = poolMod.getActiveCount(pool);
+            // move the unit
+            modeUnit(game, obj, secs);
+            // if any other unit is under this one add the mass of them and purge them
+            var under = poolMod.getOverlaping(obj, pool);
+            if (under.length > 0) {
+                under.forEach(function (underUnit) {
+                    var uud = underUnit.data;
+                    // set unit into transfer mode
+                    if(uud.mode === 'move'){
+                        uud.mode = 'transfer';
+                        uud.transferTarget = obj;
+                        uud.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
+                        uud.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
+                        uud.m = uud.mass;
+                    }
+                });
+            }
+            // if active count is 1, set this last move mode unit to splitup mode
+            if(game.activeCount === 1){
+                obj.data.mode = 'splitup';
+            }
+        }
+    };
+
     // transfer mode
     UNIT_MODES.transfer = {
         update: function(obj, pool, game, secs){
@@ -63,34 +91,6 @@ var gameMod = (function () {
         }
     };
 
-    // move mode
-    UNIT_MODES.move = {
-        update: function(obj, pool, game, secs){
-            //var activeCount = poolMod.getActiveCount(pool);
-            // move the unit
-            modeUnit(game, obj, secs);
-            // if any other unit is under this one add the mass of them and purge them
-            var under = poolMod.getOverlaping(obj, pool);
-            if (under.length > 0) {
-                under.forEach(function (underUnit) {
-                    var uud = underUnit.data;
-                    // set unit into transfer mode
-                    if(uud.mode === 'move'){
-                        uud.mode = 'transfer';
-                        uud.transferTarget = obj;
-                        uud.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
-                        uud.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
-                        uud.m = uud.mass;
-                    }
-                });
-            }
-            // if active count is 1, set this last move mode unit to splitup mode
-            if(game.activeCount === 1){
-                obj.data.mode = 'splitup';
-            }
-        }
-    };
-
     // splitup mode
     UNIT_MODES.splitup = {
         update: function(obj, pool, game, secs){
@@ -108,6 +108,14 @@ var gameMod = (function () {
                     heading: 'random'
                 });
             }
+            // all active? then set all back to move mode
+            if(game.activeCount === UNIT_COUNT){
+                pool.objects.forEach(function(obj){
+                    obj.data.mode = 'move';
+                });
+            }
+
+
             var size = getSize(obj);
             obj.w = size;
             obj.h = size;

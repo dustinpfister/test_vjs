@@ -12,10 +12,12 @@
 * (done) in split mode the units will split over time until all units are active again
 * (done) have a UNIT TRANSFER RATE const
 * (done) use new UNIT TRANSFER RATE const in transfer mode when it comes to having an amount of mass to add to a target
+* (done) have a game.totalMass prop and display that with draw.info
+* (done) half mass value and remainder
+* (done) once all units are active again all units will switch back to 'move' mode
 
-* have a game.totalMass prop and display that with draw.info
+* see about adjusting transfer mode potions so that units move to center of unit rather than upper left corner
 
-* once all units are active again all units will switch back to 'move' mode
 
 ### ( done 01/01/2022 ) - r1 - unit modes, and mass transfer over time
 * (done) start a UNIT_MODES object in game.js

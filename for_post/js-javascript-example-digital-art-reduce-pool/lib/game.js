@@ -24,8 +24,12 @@ var gameMod = (function () {
     var moveUnit = function(game, obj, secs){
         poolMod.moveByPPS(obj, secs);
         var size = UNIT_SIZE_RANGE[1];
+        //obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
+        //obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
+        var size = obj.w;
         obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
         obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
+
     };
     // update unit helper
     var updateByMass = function(obj){
@@ -52,23 +56,31 @@ var gameMod = (function () {
 
         // new new target
         if(getNewTarget){
-            var activeUnits = poolMod.getActiveObjects(game.units),
+            var activeUnits = poolMod.getActiveObjects(game.units).filter(function(target){
+                return target === unit;
+            }),
             i = activeUnits.length;
 
 // sort
+
 activeUnits.sort(function(a, b){
     var d1 = utils.distance(unit.x, unit.y, a.x, a.y),
     d2 = utils.distance(unit.x, unit.y, b.x, b.y);
 
     if(d1 > d2){
-        return -1;
+        return 1;
     }
     if(d1 < d2){
-        return 1;
+        return -1;
     }
     return 0;
 });
 
+if(activeUnits.length >= 1){
+ud.target = activeUnits[0];
+}
+
+/*
             while(i--){
                 var unit2 = activeUnits[i];
                 if(!(unit === unit2)){
@@ -76,20 +88,42 @@ activeUnits.sort(function(a, b){
                    break;
                 }
             }
+*/
         }
-        // if we have a target
-        if(ud.target){
-           // match heading
-           unit.heading = ud.target.heading;
-        }
+
     };
     // unit modes
     var UNIT_MODES = {};
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
-            // seek
-            seekUnit(game, obj);
+
+
+            // if we have a target
+            var ud = obj.data;
+
+            if(ud.target === null ){
+                // seek
+                seekUnit(game, obj);
+                if(ud.target){
+                    obj.pps = ud.target.pps + 128;
+                }
+            }
+
+            if(ud.target){
+                if(ud.target.active){
+                    // match heading
+                    obj.heading = ud.target.heading;
+                    //obj.pps = ud.target.pps + 64;
+                }else{
+                    ud.target = null;
+                    // new random pps
+                    obj.pps = 128 + Math.floor(64 * Math.random());
+                }
+            }
+
+
+
             // move the unit
             moveUnit(game, obj, secs);
             // if any other unit is under this one add the mass of them and purge them

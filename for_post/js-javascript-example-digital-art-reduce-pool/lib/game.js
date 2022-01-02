@@ -20,6 +20,9 @@ var gameMod = (function () {
         size = UNIT_SIZE_RANGE[0] + (UNIT_SIZE_RANGE[1] - UNIT_SIZE_RANGE[0]) * sizePer;
         return size;
     };
+    var randomPPS = function(unit){
+        return 128 + Math.floor(64 * Math.random());
+    };
     // move unit helper
     var moveUnit = function(game, obj, secs){
         poolMod.moveByPPS(obj, secs);
@@ -203,7 +206,7 @@ var gameMod = (function () {
         // update size and positon based on mass
         updateByMass(obj);
         // speed and heading
-        obj.pps = 128 + Math.floor(64 * Math.random());
+        obj.pps = randomPPS(obj); //128 + Math.floor(64 * Math.random());
         obj.heading = spawnOpt.heading || 'center';
         // heading to center
         if(typeof obj.heading === 'string'){

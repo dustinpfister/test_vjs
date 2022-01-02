@@ -34,17 +34,13 @@ var gameMod = (function () {
             var target = obj.data.transferTarget;
             // reduce mass
             if(obj.data.mass > 0){
-
-var mDelta = Math.floor(UNIT_TRANSFER_RATE * secs);
-mDelta = mDelta === 0 ? 1 : mDelta;
-
-if(obj.data.mass - mDelta < 0){
-   mDelta = obj.data.mass
-}
-
+                var mDelta = Math.floor(UNIT_TRANSFER_RATE * secs);
+                mDelta = mDelta === 0 ? 1 : mDelta;
+                if(obj.data.mass - mDelta < 0){
+                    mDelta = obj.data.mass
+                }
                 obj.data.mass -= mDelta;
                 target.data.mass += mDelta;
-               
             }else{
                 poolMod.purge(pool, obj, game);
             }

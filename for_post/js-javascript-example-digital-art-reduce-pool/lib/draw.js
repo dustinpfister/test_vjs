@@ -29,6 +29,7 @@ draw.info = function (sm, ctx, canvas) {
     ctx.textAlign = 'left';
     ctx.font = '12px arial';
     ctx.fillText('active count: ' + sm.game.activeCount, 10, 10);
+    ctx.fillText('total mass: ' + sm.game.totalMass, 10, 20);
 };
 // draw version number
 draw.ver = function (sm, ctx, canvas) {

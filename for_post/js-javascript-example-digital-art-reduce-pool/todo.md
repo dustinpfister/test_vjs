@@ -10,10 +10,10 @@
 * (done) draw info method
 * (done) when there is just one active object it will enter split mode
 * (done) in split mode the units will split over time until all units are active again
+* (done) have a UNIT TRANSFER RATE const
+* (done) use new UNIT TRANSFER RATE const in transfer mode when it comes to having an amount of mass to add to a target
 
-
-* have a UNIT TRANSFER RATE const
-* use new UNIT TRANSFER RATE const in transfer mode when it comes to having an amount of mass to add to a target
+* have a game.totalMass prop and display that with draw.info
 
 * once all units are active again all units will switch back to 'move' mode
 

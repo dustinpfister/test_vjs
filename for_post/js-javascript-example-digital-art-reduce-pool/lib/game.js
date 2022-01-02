@@ -37,10 +37,10 @@ var gameMod = (function () {
                 var mDelta = Math.floor(UNIT_TRANSFER_RATE * secs);
                 mDelta = mDelta === 0 ? 1 : mDelta;
                 if(obj.data.mass - mDelta < 0){
-                    mDelta = obj.data.mass
+                    mDelta = Math.round(obj.data.mass);
                 }
-                obj.data.mass -= mDelta;
-                target.data.mass += mDelta;
+                obj.data.mass = obj.data.mass - mDelta;
+                target.data.mass = target.data.mass + mDelta;
             }else{
                 poolMod.purge(pool, obj, game);
             }
@@ -97,7 +97,7 @@ var gameMod = (function () {
             // move the unit
             modeUnit(game, obj, secs);
             if(game.activeCount < UNIT_COUNT){
-                var mass = obj.data.mass / 2;
+                var mass = Math.floor(obj.data.mass / 2);
                 obj.data.mass = mass;
                 poolMod.spawn(game.units, game, {
                     mode: 'splitup',
@@ -105,6 +105,9 @@ var gameMod = (function () {
                     heading: 'random'
                 });
             }
+            var size = getSize(obj);
+            obj.w = size;
+            obj.h = size;
         }
     };
 
@@ -165,7 +168,8 @@ var gameMod = (function () {
         var game = {
             sm: opt.sm || {},
             units: poolMod.create(UNIT_OPT),
-            activeCount: 0
+            activeCount: 0,
+            totalMass: 0
         };
         // spawn all for starters
         poolMod.spawnAll(game.units, game, {});
@@ -175,6 +179,12 @@ var gameMod = (function () {
     // public update method
     api.update = function (game, secs) {
         game.activeCount = poolMod.getActiveCount(game.units);
+        game.totalMass = game.units.objects.reduce(function(acc, unit){
+            if(String(unit.data.mass).indexOf('.') != -1){
+
+            }
+            return acc + unit.data.mass;
+        }, 0);
         poolMod.update(game.units, secs, sm.game)
     };
     // return the public API

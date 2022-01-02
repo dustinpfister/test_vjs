@@ -8,6 +8,7 @@ var gameMod = (function () {
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
     UNIT_SPLIT_DELAY = 3,
+    UNIT_CHASE_PPS_DELTA = 256,
     UNIT_COUNT = 50;
     // the unit pool options object
     var UNIT_OPT = {
@@ -28,7 +29,7 @@ var gameMod = (function () {
         var ud = unit.data;
         if(ud.target){
             if(ud.target.active){
-                return ud.speed.basePPS + 256;
+                return ud.speed.basePPS + UNIT_CHASE_PPS_DELTA;
             }
         }
         return ud.speed.basePPS;
@@ -243,7 +244,7 @@ var gameMod = (function () {
             units: poolMod.create(UNIT_OPT),
             activeCount: 0,
             totalMass: 0,
-            splitDelay: 3
+            splitDelay: UNIT_SPLIT_DELAY
         };
         // spawn all for starters
         poolMod.spawnAll(game.units, game, {});

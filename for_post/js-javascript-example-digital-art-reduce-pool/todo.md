@@ -4,6 +4,7 @@
 ### () - r3 - seek units
 * (done) start a new seek helper function
 * (done) use new seek unit helper in move mode
+* start new random pps helper and use it in spawn unit as well as in move mode
 
 ### ( done 01/01/2022 ) - r2 - split mode, transfer rate
 * (done) draw info method

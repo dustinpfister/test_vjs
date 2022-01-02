@@ -107,12 +107,8 @@ var gameMod = (function () {
             }
             if(ud.target){
                 if(ud.target.active){
-                    // match heading
-                    obj.heading = ud.target.heading;
-
-//obj.heading = Math.atan2(obj.y - ud.target.y, obj.x - ud.target.x);
-//obj.heading = Math.atan2(ud.target.y - obj.y, ud.target.x - obj.x);
-
+                    // set heading for target
+                    obj.heading = Math.atan2(ud.target.y - obj.y, ud.target.x - obj.x);
                 }else{
                     ud.target = null;
                 }

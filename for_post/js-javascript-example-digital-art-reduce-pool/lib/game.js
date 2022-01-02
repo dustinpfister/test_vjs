@@ -21,7 +21,16 @@ var gameMod = (function () {
         return size;
     };
     var randomPPS = function(unit){
-        return 128 + Math.floor(64 * Math.random());
+        return 32 + Math.floor(64 * Math.random());
+    };
+    var chasePPS = function(unit){
+        var ud = unit.data;
+        if(ud.target){
+            if(ud.target.active){
+                return ud.speed.basePPS + 256;
+            }
+        }
+        return ud.speed.basePPS;
     };
     // move unit helper
     var moveUnit = function(game, obj, secs){
@@ -86,9 +95,9 @@ var gameMod = (function () {
             if(ud.target === null ){
                 // seek
                 seekUnit(game, obj);
-                if(ud.target){
-                    obj.pps = ud.target.pps + 128;
-                }
+                //if(ud.target){
+                //    obj.pps = ud.target.pps + 128;
+                //}
             }
             if(ud.target){
                 if(ud.target.active){
@@ -97,9 +106,10 @@ var gameMod = (function () {
                 }else{
                     ud.target = null;
                     // new random pps
-                    obj.pps = randomPPS(obj);
+                    //obj.pps = randomPPS(obj);
                 }
             }
+            obj.pps = chasePPS(obj);
             // move the unit
             moveUnit(game, obj, secs);
             // if any other unit is under this one add the mass of them and purge them
@@ -193,6 +203,11 @@ var gameMod = (function () {
         obj.data.transferTarget = null;
         obj.data.target = null;
         obj.data.alpha = 1;
+
+        obj.data.speed = {
+            basePPS: randomPPS(obj)
+        };
+
         // start mass
         obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;	
         // random pos from center by default
@@ -206,7 +221,7 @@ var gameMod = (function () {
         // update size and positon based on mass
         updateByMass(obj);
         // speed and heading
-        obj.pps = randomPPS(obj); //128 + Math.floor(64 * Math.random());
+        obj.pps = obj.data.speed.basePPS; //randomPPS(obj); //128 + Math.floor(64 * Math.random());
         obj.heading = spawnOpt.heading || 'center';
         // heading to center
         if(typeof obj.heading === 'string'){

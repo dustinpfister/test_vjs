@@ -40,12 +40,42 @@ var gameMod = (function () {
         obj.x = cx - obj.w / 2;
         obj.y = cy - obj.h / 2;
     };
+    // seek unit helper
+    var seekUnit = function(game, unit){
+        var ud = unit.data,
+        getNewTarget = false;
+
+        getNewTarget = ud.target === null ? true : getNewTarget;
+        if(ud.target){
+           getNewTarget = !ud.target.active ? true: getNewTarget;
+        }
+
+        // new new target
+        if(getNewTarget){
+            var activeUnits = poolMod.getActiveObjects(game.units),
+            i = activeUnits.length;
+            while(i--){
+                var unit2 = activeUnits[i];
+                if(!(unit === unit2)){
+                   ud.target = unit2;
+                   break;
+                }
+            }
+        }
+        // if we have a target
+        if(ud.target){
+           // match heading and speed plus a little more
+           unit.heading = ud.target.heading;
+           //unit.pps = ud.target.pps;
+        }
+    };
     // unit modes
     var UNIT_MODES = {};
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
-            //var activeCount = poolMod.getActiveCount(pool);
+            // seek
+            seekUnit(game, obj);
             // move the unit
             moveUnit(game, obj, secs);
             // if any other unit is under this one add the mass of them and purge them
@@ -137,6 +167,7 @@ var gameMod = (function () {
         // start in move mode by default
         obj.data.mode = spawnOpt.mode || 'move';
         obj.data.transferTarget = null;
+        obj.data.target = null;
         obj.data.alpha = 1;
         // start mass
         obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;	
@@ -151,7 +182,7 @@ var gameMod = (function () {
         // update size and positon based on mass
         updateByMass(obj);
         // speed and heading
-        obj.pps = 32 + Math.floor(64 * Math.random());
+        obj.pps = 128 + Math.floor(64 * Math.random());
         obj.heading = spawnOpt.heading || 'center';
         // heading to center
         if(typeof obj.heading === 'string'){

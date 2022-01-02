@@ -48,60 +48,40 @@ var gameMod = (function () {
     var seekUnit = function(game, unit){
         var ud = unit.data,
         getNewTarget = false;
-
         getNewTarget = ud.target === null ? true : getNewTarget;
         if(ud.target){
            getNewTarget = !ud.target.active ? true: getNewTarget;
         }
-
         // new new target
         if(getNewTarget){
             var activeUnits = poolMod.getActiveObjects(game.units).filter(function(target){
                 return target === unit;
             }),
             i = activeUnits.length;
-
-// sort
-
-activeUnits.sort(function(a, b){
-    var d1 = utils.distance(unit.x, unit.y, a.x, a.y),
-    d2 = utils.distance(unit.x, unit.y, b.x, b.y);
-
-    if(d1 > d2){
-        return 1;
-    }
-    if(d1 < d2){
-        return -1;
-    }
-    return 0;
-});
-
-if(activeUnits.length >= 1){
-ud.target = activeUnits[0];
-}
-
-/*
-            while(i--){
-                var unit2 = activeUnits[i];
-                if(!(unit === unit2)){
-                   ud.target = unit2;
-                   break;
+            // sort
+            activeUnits.sort(function(a, b){
+                var d1 = utils.distance(unit.x, unit.y, a.x, a.y),
+                d2 = utils.distance(unit.x, unit.y, b.x, b.y);
+                if(d1 > d2){
+                    return 1;
                 }
+                if(d1 < d2){
+                    return -1;
+                }
+                return 0;
+            });
+            if(activeUnits.length >= 1){
+                ud.target = activeUnits[0];
             }
-*/
         }
-
     };
     // unit modes
     var UNIT_MODES = {};
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
-
-
-            // if we have a target
+            // target
             var ud = obj.data;
-
             if(ud.target === null ){
                 // seek
                 seekUnit(game, obj);
@@ -109,7 +89,6 @@ ud.target = activeUnits[0];
                     obj.pps = ud.target.pps + 128;
                 }
             }
-
             if(ud.target){
                 if(ud.target.active){
                     // match heading
@@ -121,9 +100,6 @@ ud.target = activeUnits[0];
                     obj.pps = 128 + Math.floor(64 * Math.random());
                 }
             }
-
-
-
             // move the unit
             moveUnit(game, obj, secs);
             // if any other unit is under this one add the mass of them and purge them

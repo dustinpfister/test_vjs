@@ -6,7 +6,7 @@
 * in seek mode a unit will use distance and reduce to get a targets
 * when a target is found use Math.atan2 to update heading
 
-### () - r2 - split mode, transfer rate
+### ( done 01/01/2022 ) - r2 - split mode, transfer rate
 * (done) draw info method
 * (done) when there is just one active object it will enter split mode
 * (done) in split mode the units will split over time until all units are active again
@@ -18,8 +18,7 @@
 * (done) start a update size and positon by mass helper and use it in transfer mode
 * (done) see about adjusting transfer mode potions so that units move to center of unit rather than upper left corner
 * (done) make it so that there is a delay before all units go back to move mode in split mode
-
-* make it so that in split up mode units spawn from a parent unit
+* (done) make it so that in split up mode units spawn from a parent unit
 
 ### ( done 01/01/2022 ) - r1 - unit modes, and mass transfer over time
 * (done) start a UNIT_MODES object in game.js

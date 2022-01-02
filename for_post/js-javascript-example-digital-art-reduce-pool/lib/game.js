@@ -40,9 +40,8 @@ var gameMod = (function () {
         obj.x = cx - obj.w / 2;
         obj.y = cy - obj.h / 2;
     };
-
+    // unit modes
     var UNIT_MODES = {};
-
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
@@ -70,7 +69,6 @@ var gameMod = (function () {
             }
         }
     };
-
     // transfer mode
     UNIT_MODES.transfer = {
         update: function(obj, pool, game, secs){
@@ -109,7 +107,6 @@ var gameMod = (function () {
             moveUnit(game, obj, secs);
         }
     };
-
     // splitup mode
     UNIT_MODES.splitup = {
         update: function(obj, pool, game, secs){
@@ -133,7 +130,6 @@ var gameMod = (function () {
             updateByMass(obj);
         }
     };
-
     // spawn a unit
     UNIT_OPT.spawn = function (obj, pool, game, spawnOpt) {
         spawnOpt = spawnOpt || {};
@@ -144,10 +140,6 @@ var gameMod = (function () {
         obj.data.alpha = 1;
         // start mass
         obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;	
-        // size and position
-        //var size = getSize(obj);
-        //obj.w = size;
-        //obj.h = size;
         // random pos from center by default
         var r = canvas.height * 0.4,
         a = Math.PI * 2 * Math.random();
@@ -156,9 +148,8 @@ var gameMod = (function () {
         // use spawnOpt to set start postion, esle go with random from center
         obj.x = spawnOpt.x === undefined ? x : spawnOpt.x;
         obj.y = spawnOpt.y === undefined ? y : spawnOpt.y;
-
+        // update size and positon based on mass
         updateByMass(obj);
-
         // speed and heading
         obj.pps = 32 + Math.floor(64 * Math.random());
         obj.heading = spawnOpt.heading || 'center';
@@ -205,21 +196,18 @@ var gameMod = (function () {
         }, 0);
         // update units
         poolMod.update(game.units, secs, sm.game);
-
-
-if(game.activeCount === UNIT_COUNT && game.units.objects[0].data.mode === 'splitup'){
-    game.splitDelay -= secs;
-    if(game.splitDelay <= 0){
-        game.units.objects.forEach(function(obj){
-            obj.data.mode = 'move';
-        });
-        game.splitDelay = 3;
-    }
-}else{
-    game.splitDelay = 3;
-}
-
-
+        // set units back to move if in split up mode
+        if(game.activeCount === UNIT_COUNT && game.units.objects[0].data.mode === 'splitup'){
+            game.splitDelay -= secs;
+            if(game.splitDelay <= 0){
+                game.units.objects.forEach(function(obj){
+                    obj.data.mode = 'move';
+                });
+                game.splitDelay = 3;
+            }
+        }else{
+            game.splitDelay = 3;
+        }
     };
     // return the public API
     return api;

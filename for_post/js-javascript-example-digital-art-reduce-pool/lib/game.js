@@ -112,7 +112,7 @@ var gameMod = (function () {
         obj.data.transferTarget = null;
         obj.data.alpha = 1;
         // start mass
-        obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;
+        obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;	
 
         // size and position
         var size = getSize(obj);

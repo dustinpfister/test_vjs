@@ -19,6 +19,8 @@
 * (done) see about adjusting transfer mode potions so that units move to center of unit rather than upper left corner
 * (done) make it so that there is a delay before all units go back to move mode in split mode
 
+* make it so that in split up mode units spawn from a parent unit
+
 ### ( done 01/01/2022 ) - r1 - unit modes, and mass transfer over time
 * (done) start a UNIT_MODES object in game.js
 * (done) start out with a 'move' mode that is just the current behaviour of the units

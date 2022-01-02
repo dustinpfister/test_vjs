@@ -146,11 +146,14 @@ var gameMod = (function () {
         var size = getSize(obj);
         obj.w = size;
         obj.h = size;
-        // random pos from center
+        // random pos from center by default
         var r = canvas.height * 0.4,
         a = Math.PI * 2 * Math.random();
-        obj.x = canvas.width / 2 - obj.w / 2 + Math.cos(a) * r;
-        obj.y = canvas.height / 2 - obj.h / 2 + Math.sin(a) * r;
+        x = canvas.width / 2 - obj.w / 2 + Math.cos(a) * r,
+        y = canvas.height / 2 - obj.h / 2 + Math.sin(a) * r;
+        // use spawnOpt to set start postion, esle go with random from center
+        obj.x = spawnOpt.x === undefined ? x : spawnOpt.x;
+        obj.y = spawnOpt.y === undefined ? y : spawnOpt.y;
         // speed and heading
         obj.pps = 32 + Math.floor(64 * Math.random());
         obj.heading = spawnOpt.heading || 'center';
@@ -168,10 +171,6 @@ var gameMod = (function () {
     UNIT_OPT.update = function (obj, pool, game, secs) {
         // move the unit my pps and wrap
         UNIT_MODES[obj.data.mode].update(obj, pool, game, secs);
-
-       
-
-
     };
     // purge a unit
     UNIT_OPT.purge = function (obj, pool, game) {};

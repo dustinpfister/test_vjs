@@ -18,12 +18,25 @@ var gameMod = (function () {
         size = UNIT_SIZE_RANGE[0] + (UNIT_SIZE_RANGE[1] - UNIT_SIZE_RANGE[0]) * sizePer;
         return size;
     };
-
+    // move unit helper
     var moveUnit = function(game, obj, secs){
         poolMod.moveByPPS(obj, secs);
         var size = UNIT_SIZE_RANGE[1];
         obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
         obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
+    };
+    // update unit helper
+    var updateByMass = function(obj){
+        // center position
+        var cx = obj.x + obj.w / 2;
+        cy = obj.y + obj.h / 2;
+        // new size
+        var size = getSize(obj);
+        obj.w = size;
+        obj.h = size;
+        // adjust postion
+        obj.x = cx - obj.w / 2;
+        obj.y = cy - obj.h / 2;
     };
 
     var UNIT_MODES = {};
@@ -82,9 +95,13 @@ var gameMod = (function () {
             obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
             // update size on unit and target unit
 
-            var size = getSize(obj);
-            obj.w = size;
-            obj.h = size;
+            //var size = getSize(obj);
+            //obj.w = size;
+            //obj.h = size;
+
+updateByMass(obj);
+updateByMass(target);
+
 
             var size = getSize(target);
             target.w = size;

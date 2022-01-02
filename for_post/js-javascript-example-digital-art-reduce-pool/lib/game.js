@@ -71,6 +71,7 @@ var gameMod = (function () {
             }
             // if active count is 1, set this last move mode unit to splitup mode
             if(game.activeCount === 1){
+game.splitDelay = 3;
                 obj.data.mode = 'splitup';
             }
         }
@@ -154,11 +155,18 @@ var gameMod = (function () {
                 });
             }
             // all active? then set all back to move mode
-            if(game.activeCount === UNIT_COUNT){
-                pool.objects.forEach(function(obj){
-                    obj.data.mode = 'move';
-                });
-            }
+//            if(game.activeCount === UNIT_COUNT){
+
+//game.splitDelay -= secs;
+
+//if(game.splitDelay <= 0){
+
+                //pool.objects.forEach(function(obj){
+                //    obj.data.mode = 'move';
+                //});
+//game.splitDelay = 3;
+//}
+//            }
             // update size and positon by mass
             updateByMass(obj);
         }
@@ -211,7 +219,11 @@ var gameMod = (function () {
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {
         // move the unit my pps and wrap
-        UNIT_MODES[obj.data.mode].update(obj, pool, game, secs)
+        UNIT_MODES[obj.data.mode].update(obj, pool, game, secs);
+
+       
+
+
     };
     // purge a unit
     UNIT_OPT.purge = function (obj, pool, game) {};
@@ -222,7 +234,8 @@ var gameMod = (function () {
             sm: opt.sm || {},
             units: poolMod.create(UNIT_OPT),
             activeCount: 0,
-            totalMass: 0
+            totalMass: 0,
+            splitDelay: 3
         };
         // spawn all for starters
         poolMod.spawnAll(game.units, game, {});
@@ -238,7 +251,21 @@ var gameMod = (function () {
             }
             return acc + unit.data.mass;
         }, 0);
-        poolMod.update(game.units, secs, sm.game)
+        // update units
+        poolMod.update(game.units, secs, sm.game);
+
+
+if(game.activeCount === UNIT_COUNT && game.units.objects[0].data.mode === 'splitup'){
+    game.splitDelay -= secs;
+    if(game.splitDelay <= 0){
+        game.units.objects.forEach(function(obj){
+            obj.data.mode = 'move';
+        });
+        game.splitDelay = 3;
+    }
+} 
+
+
     };
     // return the public API
     return api;

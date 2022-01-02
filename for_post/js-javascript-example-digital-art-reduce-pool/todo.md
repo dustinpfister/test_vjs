@@ -17,7 +17,7 @@
 * (done) once all units are active again all units will switch back to 'move' mode
 * (done) start a update size and positon by mass helper and use it in transfer mode
 * (done) see about adjusting transfer mode potions so that units move to center of unit rather than upper left corner
-
+* (done) make it so that there is a delay before all units go back to move mode in split mode
 
 ### ( done 01/01/2022 ) - r1 - unit modes, and mass transfer over time
 * (done) start a UNIT_MODES object in game.js

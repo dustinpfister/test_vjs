@@ -11,7 +11,7 @@ var gameMod = (function () {
         count: UNIT_COUNT,
         disableLifespan: true
     };
-    // set the size of the given unit object
+    // get the size of the given unit object
     var getSize = function (unit) {
         var totalMass = UNIT_COUNT * 50,
         sizePer = unit.data.mass / totalMass,
@@ -19,7 +19,7 @@ var gameMod = (function () {
         return size;
     };
 
-    var modeUnit = function(game, obj, secs){
+    var moveUnit = function(game, obj, secs){
         poolMod.moveByPPS(obj, secs);
         var size = UNIT_SIZE_RANGE[1];
         obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
@@ -33,7 +33,7 @@ var gameMod = (function () {
         update: function(obj, pool, game, secs){
             //var activeCount = poolMod.getActiveCount(pool);
             // move the unit
-            modeUnit(game, obj, secs);
+            moveUnit(game, obj, secs);
             // if any other unit is under this one add the mass of them and purge them
             var under = poolMod.getOverlaping(obj, pool);
             if (under.length > 0) {
@@ -43,8 +43,13 @@ var gameMod = (function () {
                     if(uud.mode === 'move'){
                         uud.mode = 'transfer';
                         uud.transferTarget = obj;
+
+                
+
                         uud.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
                         uud.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
+
+
                         uud.m = uud.mass;
                     }
                 });
@@ -76,18 +81,31 @@ var gameMod = (function () {
             obj.data.alpha = obj.data.mass / 50;
             obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
             // update size on unit and target unit
+
             var size = getSize(obj);
             obj.w = size;
             obj.h = size;
+
             var size = getSize(target);
             target.w = size;
             target.h = size;
+
+
+
             // how to update positon?
+            //var d = obj.data.d,
+            //a = obj.data.a,
+            //per = obj.data.mass / obj.data.m;
+            //obj.x = target.x + Math.cos(a) * (d * per);
+            //obj.y = target.y + Math.sin(a) * (d * per);
+
+/*
             var d = obj.data.d,
             a = obj.data.a,
             per = obj.data.mass / obj.data.m;
-            obj.x = target.x + Math.cos(a) * (d * per);
-            obj.y = target.y + Math.sin(a) * (d * per);
+            obj.x = (target.x + target.w / 2) + Math.cos(a) * (d * per);
+            obj.y = (target.y + target.h / 2) + Math.sin(a) * (d * per);
+*/
         }
     };
 
@@ -95,7 +113,7 @@ var gameMod = (function () {
     UNIT_MODES.splitup = {
         update: function(obj, pool, game, secs){
             // move the unit
-            modeUnit(game, obj, secs);
+            moveUnit(game, obj, secs);
             // if active count is below UNIT COUNT then spawn a new unit
             if(game.activeCount < UNIT_COUNT){
                 var hMass = Math.floor(obj.data.mass / 2),
@@ -114,8 +132,6 @@ var gameMod = (function () {
                     obj.data.mode = 'move';
                 });
             }
-
-
             var size = getSize(obj);
             obj.w = size;
             obj.h = size;

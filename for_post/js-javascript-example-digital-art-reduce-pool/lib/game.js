@@ -124,7 +124,9 @@ var gameMod = (function () {
                 poolMod.spawn(game.units, game, {
                     mode: 'splitup',
                     mass: hMass,
-                    heading: 'random'
+                    heading: 'random',
+                    x: obj.x,
+                    y: obj.y
                 });
             }
             // update size and positon by mass
@@ -143,9 +145,9 @@ var gameMod = (function () {
         // start mass
         obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;	
         // size and position
-        var size = getSize(obj);
-        obj.w = size;
-        obj.h = size;
+        //var size = getSize(obj);
+        //obj.w = size;
+        //obj.h = size;
         // random pos from center by default
         var r = canvas.height * 0.4,
         a = Math.PI * 2 * Math.random();
@@ -154,6 +156,9 @@ var gameMod = (function () {
         // use spawnOpt to set start postion, esle go with random from center
         obj.x = spawnOpt.x === undefined ? x : spawnOpt.x;
         obj.y = spawnOpt.y === undefined ? y : spawnOpt.y;
+
+        updateByMass(obj);
+
         // speed and heading
         obj.pps = 32 + Math.floor(64 * Math.random());
         obj.heading = spawnOpt.heading || 'center';

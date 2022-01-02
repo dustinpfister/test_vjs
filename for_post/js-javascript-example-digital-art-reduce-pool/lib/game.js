@@ -97,7 +97,7 @@ var gameMod = (function () {
                 }else{
                     ud.target = null;
                     // new random pps
-                    obj.pps = 128 + Math.floor(64 * Math.random());
+                    obj.pps = randomPPS(obj);
                 }
             }
             // move the unit

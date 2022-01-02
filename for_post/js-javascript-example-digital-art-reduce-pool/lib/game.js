@@ -7,6 +7,7 @@ var gameMod = (function () {
     UNIT_TRANSFER_RATE = 600,
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
+    UNIT_SPLIT_DELAY = 3,
     UNIT_COUNT = 50;
     // the unit pool options object
     var UNIT_OPT = {
@@ -267,10 +268,10 @@ var gameMod = (function () {
                 game.units.objects.forEach(function(obj){
                     obj.data.mode = 'move';
                 });
-                game.splitDelay = 3;
+                game.splitDelay = UNIT_SPLIT_DELAY;
             }
         }else{
-            game.splitDelay = 3;
+            game.splitDelay = UNIT_SPLIT_DELAY;
         }
     };
     // return the public API

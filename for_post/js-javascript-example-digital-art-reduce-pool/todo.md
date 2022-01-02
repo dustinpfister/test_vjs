@@ -3,8 +3,7 @@
 
 ### () - r3 - seek units
 * (done) start a new seek helper function
-* in seek mode a unit will use distance and reduce to get a targets
-* when a target is found use Math.atan2 to update heading
+* (done) use new seek unit helper in move mode
 
 ### ( done 01/01/2022 ) - r2 - split mode, transfer rate
 * (done) draw info method

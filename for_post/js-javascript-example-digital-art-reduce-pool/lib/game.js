@@ -24,8 +24,6 @@ var gameMod = (function () {
     var moveUnit = function(game, obj, secs){
         poolMod.moveByPPS(obj, secs);
         var size = UNIT_SIZE_RANGE[1];
-        //obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
-        //obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
         var size = obj.w;
         obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
         obj.y = utils.wrapNumber(obj.y, size * -1, game.sm.canvas.height + size);
@@ -93,7 +91,6 @@ var gameMod = (function () {
                 if(ud.target.active){
                     // match heading
                     obj.heading = ud.target.heading;
-                    //obj.pps = ud.target.pps + 64;
                 }else{
                     ud.target = null;
                     // new random pps

@@ -9,6 +9,7 @@ var gameMod = (function () {
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
     UNIT_SPLIT_DELAY = 3,
     UNIT_CHASE_PPS_DELTA = 256,
+    UNIT_PPS_RANGE = [32, 64],
     UNIT_COUNT = 50;
     // the unit pool options object
     var UNIT_OPT = {
@@ -23,7 +24,9 @@ var gameMod = (function () {
         return size;
     };
     var randomPPS = function(unit){
-        return 32 + Math.floor(64 * Math.random());
+        var ppsMin = UNIT_PPS_RANGE[0],
+        ppsMax = UNIT_PPS_RANGE[1];
+        return ppsMin + Math.floor( (ppsMax - ppsMin) * Math.random());
     };
     var chasePPS = function(unit){
         var ud = unit.data;

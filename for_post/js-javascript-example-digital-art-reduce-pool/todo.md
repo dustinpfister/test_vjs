@@ -1,8 +1,8 @@
 # js-javascript-example-digital-art-reduce-pool
 
 
-### () - r3 - seek mode
-* start a new 'seek' mode
+### () - r3 - seek units
+* (done) start a new seek helper function
 * in seek mode a unit will use distance and reduce to get a targets
 * when a target is found use Math.atan2 to update heading
 

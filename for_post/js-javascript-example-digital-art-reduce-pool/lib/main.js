@@ -5,7 +5,7 @@ var canvasObj = utils.createCanvas({
     });
 // sm
 var sm = {
-    ver: 'r2',
+    ver: 'r3',
     lt: new Date(),
     fps: 30,
     game: null,

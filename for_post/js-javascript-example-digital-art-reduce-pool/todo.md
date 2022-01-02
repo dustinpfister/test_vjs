@@ -1,14 +1,15 @@
 # js-javascript-example-digital-art-reduce-pool
 
-### () - r3 - split mode
+
+### () - r3 - seek mode
+* start a new 'seek' mode
+* in seek mode a unit will use distance and reduce to get a targets
+* when a target is found use Math.atan2 to update heading
+
+### () - r2 - split mode
 * when there is just one active object it will enter split mode
 * in split mode the units will split over time until all units are active again
 * once all units are active again all units will switch back to 'move' mode
-
-### () - r2 - seek mode
-* start a new 'seek' mode
-* in seek mode a unit will use distnace and reduce to get a target
-* when a target is found use Math.atan2 to update heading
 
 ### ( done 01/01/2022 ) - r1 - unit modes, and mass transfer over time
 * (done) start a UNIT_MODES object in game.js

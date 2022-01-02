@@ -23,6 +23,14 @@ draw.pool = function (game, ctx, canvas) {
     ctx.globalAlpha = 1;
 };
 // draw version number
+draw.info = function (sm, ctx, canvas) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '12px arial';
+    ctx.fillText('active count: ' + sm.game.activeCount, 10, 10);
+};
+// draw version number
 draw.ver = function (sm, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';

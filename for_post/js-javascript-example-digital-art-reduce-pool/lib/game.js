@@ -60,6 +60,7 @@ var gameMod = (function () {
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
+            //var activeCount = poolMod.getActiveCount(pool);
             // move the unit
             modeUnit(game, obj, secs);
             // if any other unit is under this one add the mass of them and purge them
@@ -77,6 +78,25 @@ var gameMod = (function () {
                     }
                 });
             }
+            // if active count is 1, set this last move mode unit to splitup mode
+            if(game.activeCount === 1){
+                obj.data.mode = 'splitup';
+            }
+        }
+    };
+
+    // splitup mode
+    UNIT_MODES.splitup = {
+        update: function(obj, pool, game, secs){
+            //var activeCount = poolMod.getActiveCount(pool);
+            if(game.activeCount < UNIT_COUNT){
+                var mass = obj.mass / 2;
+                obj.mass = mass;
+                poolMod.spawn(game.units, game, {
+                    mode: 'splitup',
+                    mass: mass
+                });
+            }
         }
     };
 
@@ -89,18 +109,31 @@ var gameMod = (function () {
         obj.data.transferTarget = null;
         obj.data.alpha = 1;
         // start mass
-        obj.data.mass = 50;
+        obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;
+
         // size and position
         var size = getSize(obj);
         obj.w = size;
         obj.h = size;
+        // random pos from center
+        //var r = canvas.height * 0.4,
+        //a = Math.PI * 2 * Math.random();
+        //obj.x = canvas.width / 2 - obj.w / 2 + Math.cos(a) * r;
+        //obj.y = canvas.height / 2 - obj.h / 2 + Math.sin(a) * r;
+
         var r = canvas.height * 0.4,
         a = Math.PI * 2 * Math.random();
         obj.x = canvas.width / 2 - obj.w / 2 + Math.cos(a) * r;
         obj.y = canvas.height / 2 - obj.h / 2 + Math.sin(a) * r;
+        
+        
         // speed and heading
         obj.pps = 32 + Math.floor(64 * Math.random());
-        obj.heading = Math.PI * 2 * Math.random();
+        // random heading
+        //obj.heading = Math.PI * 2 * Math.random();
+        // heading to center
+        obj.heading = Math.atan2(canvas.height / 2 - obj.y, canvas.width / 2 - obj.x);
+        
     };
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {
@@ -114,14 +147,17 @@ var gameMod = (function () {
         opt = opt || {};
         var game = {
             sm: opt.sm || {},
-            units: poolMod.create(UNIT_OPT)
+            units: poolMod.create(UNIT_OPT),
+            activeCount: 0
         };
         // spawn all for starters
-        poolMod.spawnAll(game.units, game)
+        poolMod.spawnAll(game.units, game, {});
+        game.activeCount = poolMod.getActiveCount(game.units);
         return game;
     };
     // public update method
     api.update = function (game, secs) {
+        game.activeCount = poolMod.getActiveCount(game.units);
         poolMod.update(game.units, secs, sm.game)
     };
     // return the public API

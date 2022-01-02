@@ -7,6 +7,7 @@
 * when a target is found use Math.atan2 to update heading
 
 ### () - r2 - split mode
+* ()
 * when there is just one active object it will enter split mode
 * in split mode the units will split over time until all units are active again
 * once all units are active again all units will switch back to 'move' mode

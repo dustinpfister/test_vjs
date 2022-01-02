@@ -88,7 +88,8 @@ var gameMod = (function () {
     // splitup mode
     UNIT_MODES.splitup = {
         update: function(obj, pool, game, secs){
-            //var activeCount = poolMod.getActiveCount(pool);
+            // move the unit
+            modeUnit(game, obj, secs);
             if(game.activeCount < UNIT_COUNT){
                 var mass = obj.mass / 2;
                 obj.mass = mass;

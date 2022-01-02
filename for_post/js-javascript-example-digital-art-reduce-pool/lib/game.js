@@ -95,9 +95,6 @@ var gameMod = (function () {
             if(ud.target === null ){
                 // seek
                 seekUnit(game, obj);
-                //if(ud.target){
-                //    obj.pps = ud.target.pps + 128;
-                //}
             }
             if(ud.target){
                 if(ud.target.active){
@@ -105,8 +102,6 @@ var gameMod = (function () {
                     obj.heading = ud.target.heading;
                 }else{
                     ud.target = null;
-                    // new random pps
-                    //obj.pps = randomPPS(obj);
                 }
             }
             obj.pps = chasePPS(obj);
@@ -203,11 +198,11 @@ var gameMod = (function () {
         obj.data.transferTarget = null;
         obj.data.target = null;
         obj.data.alpha = 1;
-
+        // speed
         obj.data.speed = {
             basePPS: randomPPS(obj)
         };
-
+        obj.pps = obj.data.speed.basePPS;
         // start mass
         obj.data.mass = spawnOpt.mass === undefined ? 50 : spawnOpt.mass;	
         // random pos from center by default
@@ -220,8 +215,7 @@ var gameMod = (function () {
         obj.y = spawnOpt.y === undefined ? y : spawnOpt.y;
         // update size and positon based on mass
         updateByMass(obj);
-        // speed and heading
-        obj.pps = obj.data.speed.basePPS; //randomPPS(obj); //128 + Math.floor(64 * Math.random());
+        // heading
         obj.heading = spawnOpt.heading || 'center';
         // heading to center
         if(typeof obj.heading === 'string'){

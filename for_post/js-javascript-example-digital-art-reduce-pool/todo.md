@@ -5,7 +5,9 @@
 * (done) start a new seek helper function
 * (done) use new seek unit helper in move mode
 * (done) start new random pps helper and use it in spawn unit as well as in move mode
-* start a chasePPS helper and use it in mode mode
+* (done) start a chasePPS helper and use it in mode mode
+* const for split delay
+* const for chase pps bounus
 
 
 ### ( done 01/01/2022 ) - r2 - split mode, transfer rate

@@ -12,6 +12,9 @@
 * (done) const for split delay
 * (done) const for chase pps bounus
 
+* use Math.atan2 in place of just setting heading
+
+
 ### ( done 01/01/2022 ) - r2 - split mode, transfer rate
 * (done) draw info method
 * (done) when there is just one active object it will enter split mode

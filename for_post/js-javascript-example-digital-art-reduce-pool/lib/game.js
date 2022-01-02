@@ -70,10 +70,14 @@ var gameMod = (function () {
         // new new target
         if(getNewTarget){
             var activeUnits = poolMod.getActiveObjects(game.units).filter(function(target){
-                return target === unit;
+                return target.i != unit.i;
             }),
             i = activeUnits.length;
+
+            //console.log(activeUnits.map((unit)=>{ return unit.i;}).some((b)=>{ return b.i === unit.i;}));
+
             // sort
+
             activeUnits.sort(function(a, b){
                 var d1 = utils.distance(unit.x, unit.y, a.x, a.y),
                 d2 = utils.distance(unit.x, unit.y, b.x, b.y);
@@ -105,6 +109,10 @@ var gameMod = (function () {
                 if(ud.target.active){
                     // match heading
                     obj.heading = ud.target.heading;
+
+//obj.heading = Math.atan2(obj.y - ud.target.y, obj.x - ud.target.x);
+//obj.heading = Math.atan2(ud.target.y - obj.y, ud.target.x - obj.x);
+
                 }else{
                     ud.target = null;
                 }

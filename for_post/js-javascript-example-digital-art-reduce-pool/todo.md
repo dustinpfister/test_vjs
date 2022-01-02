@@ -6,10 +6,15 @@
 * in seek mode a unit will use distance and reduce to get a targets
 * when a target is found use Math.atan2 to update heading
 
-### () - r2 - split mode
-* ()
-* when there is just one active object it will enter split mode
-* in split mode the units will split over time until all units are active again
+### () - r2 - split mode, transfer rate
+* (done) draw info method
+* (done) when there is just one active object it will enter split mode
+* (done) in split mode the units will split over time until all units are active again
+
+
+* have a UNIT TRANSFER RATE const
+* use new UNIT TRANSFER RATE const in transfer mode when it comes to having an amount of mass to add to a target
+
 * once all units are active again all units will switch back to 'move' mode
 
 ### ( done 01/01/2022 ) - r1 - unit modes, and mass transfer over time

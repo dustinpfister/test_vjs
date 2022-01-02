@@ -95,7 +95,8 @@ var gameMod = (function () {
                 obj.mass = mass;
                 poolMod.spawn(game.units, game, {
                     mode: 'splitup',
-                    mass: mass
+                    mass: mass,
+                    heading: 'random'
                 });
             }
         }
@@ -130,10 +131,19 @@ var gameMod = (function () {
         
         // speed and heading
         obj.pps = 32 + Math.floor(64 * Math.random());
-        // random heading
-        //obj.heading = Math.PI * 2 * Math.random();
+        
+        obj.heading = spawnOpt.heading || 'center';
+
         // heading to center
-        obj.heading = Math.atan2(canvas.height / 2 - obj.y, canvas.width / 2 - obj.x);
+        if(typeof obj.heading === 'string'){
+            if(obj.heading === 'center'){
+                obj.heading = Math.atan2(canvas.height / 2 - obj.y, canvas.width / 2 - obj.x);
+            }
+            if(obj.heading === 'random'){
+                obj.heading = Math.PI * 2 * Math.random();
+            }
+        }
+        
         
     };
     // update a unit

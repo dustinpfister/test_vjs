@@ -24,7 +24,7 @@ draw.pool = function (game, ctx, canvas) {
 };
 // draw version number
 draw.info = function (sm, ctx, canvas) {
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'yellow';
     ctx.textBaseline = 'top';
     ctx.textAlign = 'left';
     ctx.font = '12px arial';
@@ -34,7 +34,7 @@ draw.info = function (sm, ctx, canvas) {
 };
 // draw version number
 draw.ver = function (sm, ctx, canvas) {
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'yellow';
     ctx.textBaseline = 'top';
     ctx.textAlign = 'left';
     ctx.font = '12px arial';

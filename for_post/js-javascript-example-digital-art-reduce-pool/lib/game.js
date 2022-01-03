@@ -151,9 +151,6 @@ var gameMod = (function () {
                     if(uud.mode === 'move'){
                         uud.mode = 'transfer';
                         uud.transferTarget = obj;
-                        //uud.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
-                        //uud.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
-                        //uud.m = uud.mass;
                     }
                 });
             }

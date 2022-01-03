@@ -1,10 +1,16 @@
-# js-javascript-example-digital-art-reduce-pool
+# js-javascript-example-digital-art-reduce-pool todo list
+
+## Known bugs
+* #0 - weird bug that has to do with adjustment of postion
+
 
 ### - r4 - wait to split
 * (done) make it so that the single unit that remains enterting split mode will not just split right away by adding  a delay in time for it
 * (done) make it so that the single unit will move to a location around the center of the canvas and split there
+* (done) see about making it so that the single unit will not always end up in the bottom right corner
 
-* see about making it so that the single unit will not always end up in the bottom right corner
+* new transparent look
+* colors for units
 
 ### (done 01/03/2022) - r3 - seek units, unit mass fix
 * (done) start a new seek helper function

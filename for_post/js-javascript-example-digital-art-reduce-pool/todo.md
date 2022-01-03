@@ -1,8 +1,10 @@
 # js-javascript-example-digital-art-reduce-pool
 
 ### - r4 - wait to split
-* make it so that the single unit that remains enterting split mode will not just split right away by adding  a delay in time for it
-* make it so that the single unit will move to a location around the center of the canvas and split there
+* (done) make it so that the single unit that remains enterting split mode will not just split right away by adding  a delay in time for it
+* (done) make it so that the single unit will move to a location around the center of the canvas and split there
+
+* see about making it so that the single unit will not always end up in the bottom right corner
 
 ### (done 01/03/2022) - r3 - seek units, unit mass fix
 * (done) start a new seek helper function

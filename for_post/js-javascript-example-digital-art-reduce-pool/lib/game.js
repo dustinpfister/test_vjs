@@ -20,6 +20,10 @@ var gameMod = (function () {
             splitDelay: 3
         }
     };
+    // random heading helper
+    var randomHeading = function(){
+       return Math.PI * 2 * Math.random();
+    };
     // parse heading helper
     var parseHeading = function(heading, obj, game){
         if(typeof heading === 'string'){
@@ -28,7 +32,7 @@ var gameMod = (function () {
                 return Math.atan2(canvas.height / 2 - obj.y, canvas.width / 2 - obj.x);
             }
             if(heading === 'random'){
-                return Math.PI * 2 * Math.random();
+                return randomHeading()
             }
         }
         return heading;
@@ -263,19 +267,6 @@ var gameMod = (function () {
         // update size and positon based on mass
         updateByMass(obj);
         obj.heading = parseHeading(spawnOpt.heading || 'center', obj, game);
-/*
-        // heading
-        obj.heading = spawnOpt.heading || 'center';
-        // heading to center
-        if(typeof obj.heading === 'string'){
-            if(obj.heading === 'center'){
-                obj.heading = Math.atan2(canvas.height / 2 - obj.y, canvas.width / 2 - obj.x);
-            }
-            if(obj.heading === 'random'){
-                obj.heading = Math.PI * 2 * Math.random();
-            }
-        }
-*/
     };
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {

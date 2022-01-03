@@ -7,9 +7,9 @@ var gameMod = (function () {
     UNIT_TRANSFER_RATE = 600,
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
-    UNIT_SPLIT_DELAY = 3,
+    UNIT_SPLIT_DELAY = 7,
     UNIT_CHASE_PPS_DELTA = 64,
-    UNIT_PPS_RANGE = [32, 64],
+    UNIT_PPS_RANGE = [32, 128],
     UNIT_MASS_PER = 50,
     UNIT_COUNT = 50;
     // the unit pool options object
@@ -19,6 +19,19 @@ var gameMod = (function () {
         data: {
             splitDelay: 3
         }
+    };
+    // parse heading helper
+    var parseHeading = function(heading, obj, game){
+        if(typeof heading === 'string'){
+            if(heading === 'center'){
+                var canvas = game.sm.canvas;
+                return Math.atan2(canvas.height / 2 - obj.y, canvas.width / 2 - obj.x);
+            }
+            if(heading === 'random'){
+                return Math.PI * 2 * Math.random();
+            }
+        }
+        return heading;
     };
     // get total mass helper (actual or exspcted)
     var getTotalMass = function(game){
@@ -134,9 +147,9 @@ var gameMod = (function () {
                     if(uud.mode === 'move'){
                         uud.mode = 'transfer';
                         uud.transferTarget = obj;
-                        uud.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
-                        uud.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
-                        uud.m = uud.mass;
+                        //uud.a = Math.atan2(obj.y - underUnit.y, obj.x - underUnit.x) + Math.PI;
+                        //uud.d = utils.distance(underUnit.x, underUnit.y, obj.x, obj.y);
+                        //uud.m = uud.mass;
                     }
                 });
             }
@@ -190,6 +203,7 @@ var gameMod = (function () {
         update: function(obj, pool, game, secs){
             // move the unit
             moveUnit(game, obj, secs);
+            updateByMass(obj);
             // subtract from delay
             pool.data.splitDelay -= secs;
             // if delay is over
@@ -198,6 +212,7 @@ var gameMod = (function () {
                 if(game.activeCount < UNIT_COUNT){
                     poolMod.getActiveObjects(pool).forEach(function(aObj){
                        aObj.data.mass = UNIT_MASS_PER;
+                       updateByMass(aObj);
                     });
                     var len = UNIT_COUNT - game.activeCount,
                     i = 0;
@@ -218,7 +233,6 @@ var gameMod = (function () {
                 y = canvas.height / 2 - obj.y - obj.h / 2;
                 obj.heading = Math.atan2(y, x);
                 obj.pps = UNIT_PPS_RANGE[1];
-
             }
         }
     };
@@ -248,6 +262,8 @@ var gameMod = (function () {
         obj.y = spawnOpt.y === undefined ? y : spawnOpt.y;
         // update size and positon based on mass
         updateByMass(obj);
+        obj.heading = parseHeading(spawnOpt.heading || 'center', obj, game);
+/*
         // heading
         obj.heading = spawnOpt.heading || 'center';
         // heading to center
@@ -259,6 +275,7 @@ var gameMod = (function () {
                 obj.heading = Math.PI * 2 * Math.random();
             }
         }
+*/
     };
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {

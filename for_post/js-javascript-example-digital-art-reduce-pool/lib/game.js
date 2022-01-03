@@ -7,7 +7,7 @@ var gameMod = (function () {
     UNIT_TRANSFER_RATE = 600,
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
-    UNIT_SPLIT_DELAY = 7,
+    UNIT_SPLIT_DELAY = 3,
     UNIT_CHASE_PPS_DELTA = 64,
     UNIT_PPS_RANGE = [32, 128],
     UNIT_MASS_PER = 50,
@@ -86,8 +86,13 @@ var gameMod = (function () {
         obj.w = size;
         obj.h = size;
         // adjust postion
-        obj.x = cx - obj.w / 2;
-        obj.y = cy - obj.h / 2;
+        //obj.x = cx - obj.w / 2;
+        //obj.y = cy - obj.h / 2;
+        //obj.x = cx - obj.w / 1.95;
+        //obj.y = cy - obj.h / 1.95;
+        // !!! TEMP fix for bug #0 
+        obj.x = cx - obj.w / (1.94 + 0.06 * Math.random());
+        obj.y = cy - obj.h / (1.94 + 0.06 * Math.random());
     };
     // seek unit helper
     var seekUnit = function(game, unit){
@@ -104,17 +109,19 @@ var gameMod = (function () {
             }),
             i = activeUnits.length;
             // sort
+/*
             activeUnits.sort(function(a, b){
                 var d1 = utils.distance(unit.x, unit.y, a.x, a.y),
                 d2 = utils.distance(unit.x, unit.y, b.x, b.y);
                 if(d1 > d2){
-                    return 1;
+                    return -1;
                 }
                 if(d1 < d2){
-                    return -1;
+                    return 1;
                 }
                 return 0;
             });
+*/
             if(activeUnits.length >= 1){
                 ud.target = activeUnits[0];
             }
@@ -142,6 +149,7 @@ var gameMod = (function () {
             obj.pps = chasePPS(obj);
             // move the unit
             moveUnit(game, obj, secs);
+            updateByMass(obj);
             // if any other unit is under this one add the mass of them and purge them
             var under = poolMod.getOverlaping(obj, pool);
             if (under.length > 0) {
@@ -156,7 +164,7 @@ var gameMod = (function () {
             }
             // if active count is 1, set this last move mode unit to splitup mode
             if(game.activeCount === 1){
-                pool.data.splitDelay = 5;
+                //pool.data.splitDelay = 5;
                 obj.data.mode = 'splitup';
             }
         }
@@ -208,7 +216,7 @@ var gameMod = (function () {
             // subtract from delay
             pool.data.splitDelay -= secs;
             // if delay is over
-            if(pool.data.splitDelay <= 0){
+            //if(pool.data.splitDelay <= 0){
                 // if active count is below UNIT COUNT then spawn new units
                 if(game.activeCount < UNIT_COUNT){
                     poolMod.getActiveObjects(pool).forEach(function(aObj){
@@ -228,13 +236,13 @@ var gameMod = (function () {
                         i += 1;
                     }
                 }
-            }else{
-                var canvas = game.sm.canvas,
-                x = canvas.width / 2 - obj.x - obj.w / 2,
-                y = canvas.height / 2 - obj.y - obj.h / 2;
-                obj.heading = Math.atan2(y, x);
-                obj.pps = UNIT_PPS_RANGE[1];
-            }
+            //}else{
+            //    var canvas = game.sm.canvas,
+            //    x = canvas.width / 2 - obj.x - obj.w / 2,
+            //    y = canvas.height / 2 - obj.y - obj.h / 2;
+            //    obj.heading = Math.atan2(y, x);
+            //    obj.pps = UNIT_PPS_RANGE[1];
+            //}
         }
     };
     // spawn a unit

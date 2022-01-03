@@ -189,23 +189,35 @@ var gameMod = (function () {
             // if active count is below UNIT COUNT then spawn a new unit
             if(game.activeCount < UNIT_COUNT){
 
+                poolMod.getActiveObjects(pool).forEach(function(aObj){
+                   aObj.data.mass = UNIT_MASS_PER;
+                });
+
+
+
+// purge all first
+//poolMod.purgeAll(pool, game, {});
+        //poolMod.update(pool, secs, game);
+// then respawn all
                 var len = UNIT_COUNT - game.activeCount,
                 i = 0;
+
+                
                 while(i < len){
 
-                var hMass = Math.floor(obj.data.mass / 2),
-                r = obj.data.mass - hMass * 2;
-                // this cuttent unit should be halfMass plus any remainder
-                obj.data.mass = hMass + r;
-                poolMod.spawn(game.units, game, {
-                    mode: 'splitup',
-                    mass: hMass,
-                    heading: 'random',
-                    x: obj.x,
-                    y: obj.y
-                });
-i += 1;
-}
+                    //var hMass = Math.floor(obj.data.mass / 2),
+                    //r = obj.data.mass - hMass * 2;
+                    // this cuttent unit should be halfMass plus any remainder
+                    //obj.data.mass = hMass + r;
+                    poolMod.spawn(game.units, game, {
+                        mode: 'splitup',
+                        mass: UNIT_MASS_PER,
+                        heading: 'random',
+                        x: obj.x,
+                        y: obj.y
+                    });
+                    i += 1;
+                }
 
             }
             // update size and positon by mass

@@ -188,6 +188,11 @@ var gameMod = (function () {
             moveUnit(game, obj, secs);
             // if active count is below UNIT COUNT then spawn a new unit
             if(game.activeCount < UNIT_COUNT){
+
+                var len = UNIT_COUNT - game.activeCount,
+                i = 0;
+                while(i < len){
+
                 var hMass = Math.floor(obj.data.mass / 2),
                 r = obj.data.mass - hMass * 2;
                 // this cuttent unit should be halfMass plus any remainder
@@ -199,6 +204,9 @@ var gameMod = (function () {
                     x: obj.x,
                     y: obj.y
                 });
+i += 1;
+}
+
             }
             // update size and positon by mass
             updateByMass(obj);

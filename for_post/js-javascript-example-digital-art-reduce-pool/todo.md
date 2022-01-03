@@ -1,7 +1,10 @@
 # js-javascript-example-digital-art-reduce-pool
 
+### - r4 - wait to split
+* make it so that the single unit that remains enterting split mode will not just split right away by adding  a delay in time for it
+* make it so that the single unit will move to a location around the center of the canvas and split there
 
-### () - r3 - seek units, unit mass fix
+### (done 01/03/2022) - r3 - seek units, unit mass fix
 * (done) start a new seek helper function
 * (done) use new seek unit helper in move mode
 * (done) start new random pps helper and use it in spawn unit as well as in move mode
@@ -10,11 +13,9 @@
 * (done) const for chase pps bounus
 * (done) use Math.atan2 in place of just setting heading
 * (done) unit mass per const
+* (done) fix total mass bug in split mode
 
-* fix total mass bug in split mode
-
-
-### ( done 01/01/2022 ) - r2 - split mode, transfer rate
+### ( done 01/02/2022 ) - r2 - split mode, transfer rate
 * (done) draw info method
 * (done) when there is just one active object it will enter split mode
 * (done) in split mode the units will split over time until all units are active again

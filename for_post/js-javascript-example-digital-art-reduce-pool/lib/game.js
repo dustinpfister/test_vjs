@@ -275,6 +275,7 @@ var gameMod = (function () {
     };
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {
+        obj.data.alpha = 0.7;
         // move the unit my pps and wrap
         UNIT_MODES[obj.data.mode].update(obj, pool, game, secs);
     };

@@ -15,7 +15,10 @@ var gameMod = (function () {
     // the unit pool options object
     var UNIT_OPT = {
         count: UNIT_COUNT,
-        disableLifespan: true
+        disableLifespan: true,
+        data: {
+            splitDelay: 3
+        }
     };
     // get total mass helper (actual or exspcted)
     var getTotalMass = function(game){
@@ -139,6 +142,7 @@ var gameMod = (function () {
             }
             // if active count is 1, set this last move mode unit to splitup mode
             if(game.activeCount === 1){
+                pool.data.splitDelay = 5;
                 obj.data.mode = 'splitup';
             }
         }
@@ -186,26 +190,36 @@ var gameMod = (function () {
         update: function(obj, pool, game, secs){
             // move the unit
             moveUnit(game, obj, secs);
-            // if active count is below UNIT COUNT then spawn new units
-            if(game.activeCount < UNIT_COUNT){
-                poolMod.getActiveObjects(pool).forEach(function(aObj){
-                   aObj.data.mass = UNIT_MASS_PER;
-                });
-                var len = UNIT_COUNT - game.activeCount,
-                i = 0;
-                while(i < len){
-                    poolMod.spawn(game.units, game, {
-                        mode: 'splitup',
-                        mass: UNIT_MASS_PER,
-                        heading: 'random',
-                        x: obj.x,
-                        y: obj.y
+            // subtract from delay
+            pool.data.splitDelay -= secs;
+            // if delay is over
+            if(pool.data.splitDelay <= 0){
+                // if active count is below UNIT COUNT then spawn new units
+                if(game.activeCount < UNIT_COUNT){
+                    poolMod.getActiveObjects(pool).forEach(function(aObj){
+                       aObj.data.mass = UNIT_MASS_PER;
                     });
-                    i += 1;
+                    var len = UNIT_COUNT - game.activeCount,
+                    i = 0;
+                    while(i < len){
+                        poolMod.spawn(game.units, game, {
+                            mode: 'splitup',
+                            mass: UNIT_MASS_PER,
+                            heading: 'random',
+                            x: obj.x,
+                            y: obj.y
+                        });
+                        i += 1;
+                    }
                 }
+            }else{
+                var canvas = game.sm.canvas,
+                x = canvas.width / 2 - obj.x - obj.w / 2,
+                y = canvas.height / 2 - obj.y - obj.h / 2;
+                obj.heading = Math.atan2(y, x);
+                obj.pps = UNIT_PPS_RANGE[1];
+
             }
-            // update size and positon by mass
-            updateByMass(obj);
         }
     };
     // spawn a unit

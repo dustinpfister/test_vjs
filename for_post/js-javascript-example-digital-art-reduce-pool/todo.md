@@ -3,12 +3,12 @@
 ## Known bugs
 * #0 - weird bug that has to do with adjustment of postion
 
-### - r6 - wind
+### () - r6 - wind
 * turn bug 0 into a feature by making it a kind of 'wind'
 * have wind change over time
 * let current wind values effect background
 
-### - r5 - new background, poolMod update hooks
+### () - r5 - new background, poolMod update hooks
 * (done) have a gradient background use in draw.js
 * (done) draw.js should be wraped up in an IIFE now
 * (done) sm.background object that contains options for createBackground helper to be used when calling draw.background
@@ -20,7 +20,7 @@
 * have a beforeUpdated hook also
 * have a beforeUpdated and afterUpdtaed hooks for the units object pool in gameMod
 
-### - r4 - enter split delay, move to center fix, colors
+### ( done 01/04/2022 ) - r4 - enter split delay, move to center fix, colors
 * (done) see about making it so that the single unit will not always end up in the bottom right corner
 * (done) use game.splitDelay to delay in move mode to delay switch to split mode
 * (done) parseHeading helper now returns an adjusted value for 'center' string heading value
@@ -31,7 +31,7 @@
 * (done) new transparent look with UNIT MAX ALPHA const value
 * (done) colors for units
 
-### (done 01/03/2022) - r3 - seek units, unit mass fix
+### ( done 01/03/2022) - r3 - seek units, unit mass fix
 * (done) start a new seek helper function
 * (done) use new seek unit helper in move mode
 * (done) start new random pps helper and use it in spawn unit as well as in move mode

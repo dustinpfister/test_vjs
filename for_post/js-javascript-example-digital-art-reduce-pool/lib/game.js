@@ -11,7 +11,8 @@ var gameMod = (function () {
     UNIT_CHASE_PPS_DELTA = 64,
     UNIT_PPS_RANGE = [32, 256],
     UNIT_MASS_PER = 50,
-    UNIT_COUNT = 50;
+    UNIT_COUNT = 50,
+    BUG0_TEMP = [1.90, 0.10];          // bug #0 temp fix values used in updateByMass helper
     // the unit pool options object
     var UNIT_OPT = {
         count: UNIT_COUNT,
@@ -109,8 +110,8 @@ var gameMod = (function () {
         //obj.x = cx - obj.w / 1.95;
         //obj.y = cy - obj.h / 1.95;
         // !!! TEMP fix for bug #0 
-        obj.x = cx - obj.w / (1.90 + 0.10 * Math.random());
-        obj.y = cy - obj.h / (1.90 + 0.10 * Math.random());
+        obj.x = cx - obj.w / (BUG0_TEMP[0] + BUG0_TEMP[1] * Math.random());
+        obj.y = cy - obj.h / (BUG0_TEMP[0] + BUG0_TEMP[1] * Math.random());
     };
     // seek unit helper
     var seekUnit = function(game, unit){

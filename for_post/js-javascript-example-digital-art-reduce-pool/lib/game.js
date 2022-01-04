@@ -23,15 +23,21 @@ var gameMod = (function () {
     };
     // parse heading helper
     var parseHeading = function(heading, obj, game){
+        // if heading is a string
         if(typeof heading === 'string'){
+            // for 'center' value set heading to adjusted center
             if(heading === 'center'){
-                var canvas = game.sm.canvas;
-                return Math.atan2(canvas.height / 2 - obj.y, canvas.width / 2 - obj.x);
+                var canvas = game.sm.canvas,
+                x = canvas.width / 2 - obj.x - obj.w / 2,
+                y = canvas.height / 2 - obj.y - obj.h / 2;
+                return Math.atan2(y, x);
             }
+            // for random heading
             if(heading === 'random'){
                 return randomHeading()
             }
         }
+        // return heading value
         return heading;
     };
     // get total mass helper (actual or exspcted)
@@ -151,7 +157,10 @@ var gameMod = (function () {
             // still no target? The this should be the last active div
             if(ud.target === null && game.activeCount === 1){
                 
-                obj.heading = Math.PI * 1.5;
+                //obj.heading = Math.PI * 1.5;
+
+obj.heading = 'center';
+
             }
             obj.pps = chasePPS(obj);
 
@@ -159,7 +168,9 @@ var gameMod = (function () {
             // move the unit
             moveUnit(game, obj, secs);
             //updateByMass(obj);
-            // if any other unit is under this one add the mass of them and purge them
+
+            // if any other unit is under this one switch them over to transfer mode
+            // and make it so that the transfer target is this current unit
             var under = poolMod.getOverlaping(obj, pool);
             if (under.length > 0) {
                 under.forEach(function (underUnit) {
@@ -289,6 +300,7 @@ var gameMod = (function () {
         // move unit by 0 secs this will parse heading for first time
         // as well as prefroming any wrapping of obj.x, and obj.y that might need to happen
         //obj.heading = parseHeading(spawnOpt.heading || 'center', obj, game);
+        obj.heading = 'random';
         moveUnit(game, obj, 0);
     };
     // update a unit

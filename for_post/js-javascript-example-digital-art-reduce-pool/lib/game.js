@@ -66,7 +66,11 @@ var gameMod = (function () {
     };
     // move unit helper
     var moveUnit = function(game, obj, secs){
+        // parse heading first
+        obj.heading = parseHeading(obj.heading, obj, game);
+        // move by pps
         poolMod.moveByPPS(obj, secs);
+        // wrap
         var size = UNIT_SIZE_RANGE[1];
         var size = obj.w;
         obj.x = utils.wrapNumber(obj.x, size * -1, game.sm.canvas.width + size);
@@ -144,9 +148,10 @@ var gameMod = (function () {
                     ud.target = null;
                 }
             }
-            // still no target?
-            if(ud.target === null){
-obj.heading = Math.PI * 1.5;
+            // still no target? The this should be the last active div
+            if(ud.target === null && game.activeCount === 1){
+                
+                obj.heading = Math.PI * 1.5;
             }
             obj.pps = chasePPS(obj);
 
@@ -281,7 +286,10 @@ obj.heading = Math.PI * 1.5;
         obj.y = spawnOpt.y === undefined ? y : spawnOpt.y;
         // update size and positon based on mass
         updateByMass(obj);
-        obj.heading = parseHeading(spawnOpt.heading || 'center', obj, game);
+        // move unit by 0 secs this will parse heading for first time
+        // as well as prefroming any wrapping of obj.x, and obj.y that might need to happen
+        //obj.heading = parseHeading(spawnOpt.heading || 'center', obj, game);
+        moveUnit(game, obj, 0);
     };
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {

@@ -1,18 +1,20 @@
 var draw = (function(){
     // HELPERS
     var createBackground = function(ctx, canvas, opt){
+        // options
         opt = opt || {};
         opt.angle = opt.angle === undefined ? Math.PI * 0.25: opt.angle;
-
+        opt.radius = opt.radis === undefined ? 150 : opt.radius;
+        // create locals
         var cx = canvas.width / 2,
         cy = canvas.height / 2,
-        dx = Math.cos(opt.angle) * 100,
-        dy = Math.sin(opt.angle) * 100,
+        dx = Math.cos(opt.angle) * opt.radius,
+        dy = Math.sin(opt.angle) * opt.radius,
         sx = cx - dx,
         sy = cy - dy,
         ex = cx + dx,
         ey = cy + dy;
-
+        // create gradient
         var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
         gradient.addColorStop(0, 'red');
@@ -21,12 +23,13 @@ var draw = (function(){
         gradient.addColorStop(0.6, 'blue');
         gradient.addColorStop(0.8, 'cyan');
         gradient.addColorStop(1, 'lime');
+        // return gradiant
         return gradient;
     };
     // PUBLIC API METHODS
     var api = {};
     // draw the background
-    api.background = function (ctx, canvas) {
+    api.background = function (sm, ctx, canvas) {
         var bg = createBackground(ctx, canvas);
         ctx.fillStyle = bg;
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);

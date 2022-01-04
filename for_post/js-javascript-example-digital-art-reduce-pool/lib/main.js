@@ -22,7 +22,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (secs >= 1 / sm.fps) {
         gameMod.update(sm.game, secs);
-        draw.background(sm.ctx, sm.canvas);
+        draw.background(sm, sm.ctx, sm.canvas);
         draw.pool(sm.game, sm.ctx);
         draw.info(sm, sm.ctx, sm.canvas);
         draw.ver(sm, sm.ctx, sm.canvas);

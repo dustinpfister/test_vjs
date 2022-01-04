@@ -16,8 +16,7 @@ var gameMod = (function () {
     var UNIT_OPT = {
         count: UNIT_COUNT,
         disableLifespan: true
-    };
-    
+    }; 
     // get adjusted center helper
     var getAdjustedCenter = function(game, obj){
         var canvas = game.sm.canvas;
@@ -28,10 +27,8 @@ var gameMod = (function () {
     };
     // distToCenter helper
     var distToCenter = function(game, obj){
-        var centerPos = getAdjustedCenter(game, obj),
-        ux = obj.x + obj.w / 2,
-        uy = obj.y + obj.h / 2;
-        return utils.distance(ux, uy, centerPos.x, centerPos.y);
+        var centerPos = getAdjustedCenter(game, obj);
+        return utils.distance(0, 0, centerPos.x, centerPos.y);
     };
     // random heading helper
     var randomHeading = function(){
@@ -153,12 +150,14 @@ var gameMod = (function () {
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
+
             // target
             var ud = obj.data;
             if(ud.target === null){
                 // seek
                 seekUnit(game, obj);
             }
+
             // if we have a target
             if(ud.target){
                 if(ud.target.active){
@@ -168,15 +167,22 @@ var gameMod = (function () {
                     ud.target = null;
                 }
             }
+
+            // set pps by chasePPS at this point
+            obj.pps = chasePPS(obj);
+
             // still no target? The this should be the last active div
             if(ud.target === null && game.activeCount === 1){
-                
-                //obj.heading = Math.PI * 1.5;
-
                 obj.heading = 'center';
+                var d = distToCenter(game, obj),
+                per = d / 300;
+                per = per > 1 ? 1 : per;
+                obj.pps = 256 * per;
+
+                // !!! debug info for distnace to center
+                sm.game.debugInfo = { key: 'd', value: d };
 
             }
-            obj.pps = chasePPS(obj);
 
 
             // move the unit

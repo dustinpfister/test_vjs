@@ -7,7 +7,7 @@
 ### - r4 - enter split delay
 * (done) see about making it so that the single unit will not always end up in the bottom right corner
 
-* use game.splitDelay to delay switch to split mode
+* use game.splitDelay to delay in move mode to delay switch to split mode
 
 * new transparent look
 * colors for units

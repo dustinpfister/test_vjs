@@ -162,7 +162,12 @@ var gameMod = (function () {
             // if active count is 1, set this last move mode unit to splitup mode
             if(game.activeCount === 1){
                 //pool.data.splitDelay = 5;
-                obj.data.mode = 'splitup';
+                game.splitDelay -= secs;
+
+                if(game.splitDelay <= 0){
+                    game.splitDelay = UNIT_SPLIT_DELAY;
+                    obj.data.mode = 'splitup';
+                }
             }
         }
     };
@@ -309,7 +314,7 @@ var gameMod = (function () {
                 game.splitDelay = UNIT_SPLIT_DELAY;
             }
         }else{
-            game.splitDelay = UNIT_SPLIT_DELAY;
+            //game.splitDelay = UNIT_SPLIT_DELAY;
         }
     };
     // return the public API

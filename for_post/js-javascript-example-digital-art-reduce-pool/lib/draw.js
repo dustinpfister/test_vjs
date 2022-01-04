@@ -54,7 +54,7 @@ var draw = (function(){
     };
     // draw version number
     api.info = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'yellow';
+        ctx.fillStyle = 'black';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';
@@ -68,7 +68,7 @@ var draw = (function(){
     };
     // draw version number
     api.ver = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'yellow';
+        ctx.fillStyle = 'black';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';

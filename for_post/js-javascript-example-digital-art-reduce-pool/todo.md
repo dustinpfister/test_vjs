@@ -3,9 +3,19 @@
 ## Known bugs
 * #0 - weird bug that has to do with adjustment of postion
 
+### - r6 - wind
+* turn bug 0 into a feature by making it a kind of 'wind'
+* have wind change over time
+* let current wind values effect background
+
 ### - r5 - new background, poolMod update hooks
 * (done) have a gradient background use in draw.js
-* draw.js should be wraped up in an IIFE now
+* (done) draw.js should be wraped up in an IIFE now
+
+* sm.background object that contains options for createBackground helper to be used when calling draw.background
+* have angle, and other background values change over time
+
+* thinker line width when drawing units
 
 * have a way to set a main afterUpdated method for a pool object
 * this afterUpdated hook should be called after all pool objects are updated

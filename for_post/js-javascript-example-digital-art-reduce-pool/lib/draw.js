@@ -37,6 +37,7 @@ var draw = (function(){
     // draw the pool
     api.pool = function (game, ctx, canvas) {
         var pool = game.units;
+        ctx.lineWidth = 3;
         pool.objects.forEach(function (obj) {
             ctx.fillStyle = obj.data.fillStyle || 'white';
             ctx.strokeStyle = obj.data.strokeStyle || 'black';

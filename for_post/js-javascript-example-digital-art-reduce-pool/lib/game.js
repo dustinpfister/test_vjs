@@ -13,7 +13,7 @@ var gameMod = (function () {
     UNIT_MASS_PER = 50,
     UNIT_COUNT = 50,
     UNIT_MAX_ALPHA = 0.7,
-    UNIT_COLORS = ['red', 'lime', 'blue'],
+    UNIT_COLORS = ['red', 'lime', 'blue', 'white', 'purple', 'pink'],
     BUG0_TEMP = [1.90, 0.10];          // bug #0 temp fix values used in updateByMass helper
     // the unit pool options object
     var UNIT_OPT = {

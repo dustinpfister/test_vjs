@@ -15,10 +15,7 @@ var gameMod = (function () {
     // the unit pool options object
     var UNIT_OPT = {
         count: UNIT_COUNT,
-        disableLifespan: true,
-        data: {
-            splitDelay: 3
-        }
+        disableLifespan: true
     };
     // random heading helper
     var randomHeading = function(){

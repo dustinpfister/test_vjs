@@ -4,10 +4,10 @@
 * #0 - weird bug that has to do with adjustment of postion
 
 
-### - r4 - wait to split
-* (done) make it so that the single unit that remains enterting split mode will not just split right away by adding  a delay in time for it
-* (done) make it so that the single unit will move to a location around the center of the canvas and split there
+### - r4 - enter split delay
 * (done) see about making it so that the single unit will not always end up in the bottom right corner
+
+* use game.splitDelay to delay switch to split mode
 
 * new transparent look
 * colors for units

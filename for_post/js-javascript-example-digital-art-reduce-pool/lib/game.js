@@ -4,12 +4,12 @@ var gameMod = (function () {
     var api = {};
     // some constants
     var UNIT_SIZE_RANGE = [32, 256],
-    UNIT_TRANSFER_RATE = 100,
+    UNIT_TRANSFER_RATE = 150,
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
     UNIT_SPLIT_DELAY = 5,
     UNIT_CHASE_PPS_DELTA = 64,
-    UNIT_PPS_RANGE = [32, 64],
+    UNIT_PPS_RANGE = [32, 128],
     UNIT_MASS_PER = 50,
     UNIT_COUNT = 50,
     UNIT_MAX_ALPHA = 0.7,

@@ -4,14 +4,15 @@ var gameMod = (function () {
     var api = {};
     // some constants
     var UNIT_SIZE_RANGE = [32, 256],
-    UNIT_TRANSFER_RATE = 600,
+    UNIT_TRANSFER_RATE = 100,
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
     UNIT_SPLIT_DELAY = 5,
     UNIT_CHASE_PPS_DELTA = 64,
-    UNIT_PPS_RANGE = [32, 256],
+    UNIT_PPS_RANGE = [32, 64],
     UNIT_MASS_PER = 50,
     UNIT_COUNT = 50,
+    UNIT_MAX_ALPHA = 0.7,
     BUG0_TEMP = [1.90, 0.10];          // bug #0 temp fix values used in updateByMass helper
     // the unit pool options object
     var UNIT_OPT = {
@@ -179,10 +180,6 @@ var gameMod = (function () {
                 per = d / 300;
                 per = per > 1 ? 1 : per;
                 obj.pps = UNIT_PPS_RANGE[1] * per;
-
-                // !!! debug info for distnace to center
-                sm.game.debugInfo = { key: 'd', value: d };
-
             }
 
 
@@ -232,9 +229,20 @@ var gameMod = (function () {
             }else{
                 poolMod.purge(pool, obj, game);
             }
+
             // adjust alpha
-            obj.data.alpha = obj.data.mass / UNIT_MASS_PER;
-            obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
+            var per = obj.data.mass / UNIT_MASS_PER;
+            per = per > 1 ? 1 : per;
+            obj.data.alpha = UNIT_MAX_ALPHA * per;
+
+            // !!! debug info for distnace to center
+            if(obj.i === 1){
+                sm.game.debugInfo = { key: 'alpha', value: obj.data.alpha };
+            }
+
+
+            //obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
+
             // update size on unit and target unit
             updateByMass(obj);
             updateByMass(target);
@@ -292,7 +300,7 @@ var gameMod = (function () {
         obj.data.mode = spawnOpt.mode || 'move';
         obj.data.transferTarget = null;
         obj.data.target = null;
-        obj.data.alpha = 1;
+        obj.data.alpha = spawnOpt.alpha === undefined ? UNIT_MAX_ALPHA: spawnOpt.alpha;
         // heading
         obj.heading = spawnOpt.heading || 'random';
         // speed
@@ -318,7 +326,8 @@ var gameMod = (function () {
     };
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {
-        obj.data.alpha = 0.7;
+        // set max alpha by default here
+        //obj.data.alpha = UNIT_MAX_ALPHA;
         // move the unit my pps and wrap
         UNIT_MODES[obj.data.mode].update(obj, pool, game, secs);
     };

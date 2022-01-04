@@ -1,7 +1,23 @@
 var draw = {};
+
+    var createBackground = function(ctx, canvas){
+        var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        // Add color stops
+        gradient.addColorStop(0, 'red');
+        gradient.addColorStop(0.2, 'orange');
+        gradient.addColorStop(0.4, 'yellow');
+        gradient.addColorStop(0.6, 'blue');
+        gradient.addColorStop(0.8, 'cyan');
+        gradient.addColorStop(1, 'lime');
+        return gradient;
+    };
+
 // draw the background
 draw.background = function (ctx, canvas) {
-    ctx.fillStyle = 'gray';
+
+var bg = createBackground(ctx, canvas);
+
+    ctx.fillStyle = bg;
     ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
 };
 // draw the pool

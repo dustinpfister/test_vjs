@@ -109,8 +109,8 @@ var gameMod = (function () {
         //obj.x = cx - obj.w / 1.95;
         //obj.y = cy - obj.h / 1.95;
         // !!! TEMP fix for bug #0 
-        obj.x = cx - obj.w / (1.94 + 0.06 * Math.random());
-        obj.y = cy - obj.h / (1.94 + 0.06 * Math.random());
+        obj.x = cx - obj.w / (1.90 + 0.10 * Math.random());
+        obj.y = cy - obj.h / (1.90 + 0.10 * Math.random());
     };
     // seek unit helper
     var seekUnit = function(game, unit){

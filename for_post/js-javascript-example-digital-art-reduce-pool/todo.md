@@ -3,6 +3,12 @@
 ## Known bugs
 * #0 - weird bug that has to do with adjustment of postion
 
+### - r5 - new background, poolMod update hooks
+* have a gradient background use in draw.js
+* have a way to set a main afterUpdated method for a pool object
+* this afterUpdated hook should be called after all pool objects are updated
+* have a beforeUpdated hook also
+* have a beforeUpdated and afterUpdtaed hooks for the units object pool in gameMod
 
 ### - r4 - enter split delay, move to center fix, colors
 * (done) see about making it so that the single unit will not always end up in the bottom right corner

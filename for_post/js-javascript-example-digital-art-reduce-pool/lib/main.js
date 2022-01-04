@@ -10,7 +10,11 @@ var sm = {
     fps: 30,
     game: null,
     ctx: canvasObj.ctx,
-    canvas: canvasObj.canvas
+    canvas: canvasObj.canvas,
+    background: {
+       angle: 0,
+       degreesPerSec: -5
+    }
 };
 sm.game = gameMod.create({
         sm: sm
@@ -27,6 +31,9 @@ var loop = function () {
         draw.info(sm, sm.ctx, sm.canvas);
         draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;
+        // rotation of background
+        sm.background.angle += Math.PI / 180 * sm.background.degreesPerSec * secs;
+        sm.background.angle = utils.mod(sm.background.angle, Math.PI * 2);
     }
 };
 loop();

@@ -30,7 +30,7 @@ var draw = (function(){
     var api = {};
     // draw the background
     api.background = function (sm, ctx, canvas) {
-        var bg = createBackground(ctx, canvas);
+        var bg = createBackground(ctx, canvas, sm.background);
         ctx.fillStyle = bg;
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
     };

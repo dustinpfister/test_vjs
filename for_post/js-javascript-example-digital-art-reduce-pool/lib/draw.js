@@ -1,7 +1,15 @@
 var draw = (function(){
     // HELPERS
-    var createBackground = function(ctx, canvas){
-        var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    var createBackground = function(ctx, canvas, opt){
+        opt = opt || {};
+        opt.angle = opt.angle === undefined ? Math.PI * 0.25: opt.angle;
+
+        var sx = 0,
+        sy = 0,
+        ex = canvas.width,
+        ey = canvas.height;
+
+        var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
         gradient.addColorStop(0, 'red');
         gradient.addColorStop(0.2, 'orange');

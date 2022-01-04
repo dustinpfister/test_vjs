@@ -131,10 +131,11 @@ var gameMod = (function () {
         update: function(obj, pool, game, secs){
             // target
             var ud = obj.data;
-            if(ud.target === null ){
+            if(ud.target === null){
                 // seek
                 seekUnit(game, obj);
             }
+            // if we have a target
             if(ud.target){
                 if(ud.target.active){
                     // set heading for target
@@ -143,10 +144,16 @@ var gameMod = (function () {
                     ud.target = null;
                 }
             }
+            // still no target?
+            if(ud.target === null){
+obj.heading = Math.PI * 1.5;
+            }
             obj.pps = chasePPS(obj);
+
+
             // move the unit
             moveUnit(game, obj, secs);
-            updateByMass(obj);
+            //updateByMass(obj);
             // if any other unit is under this one add the mass of them and purge them
             var under = poolMod.getOverlaping(obj, pool);
             if (under.length > 0) {
@@ -161,8 +168,9 @@ var gameMod = (function () {
             }
             // if active count is 1, set this last move mode unit to splitup mode
             if(game.activeCount === 1){
-                //pool.data.splitDelay = 5;
                 game.splitDelay -= secs;
+
+                    //game.splitDelay = UNIT_SPLIT_DELAY;
 
                 if(game.splitDelay <= 0){
                     game.splitDelay = UNIT_SPLIT_DELAY;

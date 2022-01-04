@@ -9,8 +9,9 @@
 * (done) use game.splitDelay to delay in move mode to delay switch to split mode
 * (done) parseHeading helper now returns an adjusted value for 'center' string heading value
 * (done) single lone unit will move to center in move mode
+* (done) have a getAdjustedCenter helper
+* (done) start a distToCenter helper
 
-* have a getAdjustedCenter helper
 * have speed of the last active unit in move mode change depeding on distance to adjusted center
 
 * new transparent look

@@ -18,6 +18,7 @@ var gameMod = (function () {
         disableLifespan: true
     };
     
+    // get adjusted center helper
     var getAdjustedCenter = function(game, obj){
         var canvas = game.sm.canvas;
         return {
@@ -25,7 +26,13 @@ var gameMod = (function () {
             y : canvas.height / 2 - obj.y - obj.h / 2 
         };
     };
-
+    // distToCenter helper
+    var distToCenter = function(game, obj){
+        var centerPos = getAdjustedCenter(game, obj),
+        ux = obj.x + obj.w / 2,
+        uy = obj.y + obj.h / 2;
+        return utils.distance(ux, uy, centerPos.x, centerPos.y);
+    };
     // random heading helper
     var randomHeading = function(){
        return Math.PI * 2 * Math.random();
@@ -166,7 +173,7 @@ var gameMod = (function () {
                 
                 //obj.heading = Math.PI * 1.5;
 
-obj.heading = 'center';
+                obj.heading = 'center';
 
             }
             obj.pps = chasePPS(obj);

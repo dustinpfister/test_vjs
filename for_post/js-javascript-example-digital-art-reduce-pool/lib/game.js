@@ -13,6 +13,7 @@ var gameMod = (function () {
     UNIT_MASS_PER = 50,
     UNIT_COUNT = 50,
     UNIT_MAX_ALPHA = 0.7,
+    UNIT_COLORS = ['red', 'lime', 'blue'],
     BUG0_TEMP = [1.90, 0.10];          // bug #0 temp fix values used in updateByMass helper
     // the unit pool options object
     var UNIT_OPT = {
@@ -301,6 +302,8 @@ var gameMod = (function () {
         obj.data.transferTarget = null;
         obj.data.target = null;
         obj.data.alpha = spawnOpt.alpha === undefined ? UNIT_MAX_ALPHA: spawnOpt.alpha;
+        // random colors for now
+        obj.data.fillStyle = UNIT_COLORS[ Math.floor(UNIT_COLORS.length * Math.random()) ];
         // heading
         obj.heading = spawnOpt.heading || 'random';
         // speed

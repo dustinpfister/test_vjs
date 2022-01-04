@@ -4,7 +4,7 @@
 * #0 - weird bug that has to do with adjustment of postion
 
 
-### - r4 - enter split delay
+### - r4 - enter split delay, move to center fix, colors
 * (done) see about making it so that the single unit will not always end up in the bottom right corner
 * (done) use game.splitDelay to delay in move mode to delay switch to split mode
 * (done) parseHeading helper now returns an adjusted value for 'center' string heading value
@@ -12,8 +12,8 @@
 * (done) have a getAdjustedCenter helper
 * (done) start a distToCenter helper
 * (done) have speed of the last active unit in move mode change depeding on distance to adjusted center
+* (done) new transparent look with UNIT MAX ALPHA const value
 
-* new transparent look with UNIT MAX ALPHA const value
 * colors for units
 
 ### (done 01/03/2022) - r3 - seek units, unit mass fix

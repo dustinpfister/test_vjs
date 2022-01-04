@@ -4,10 +4,14 @@ var draw = (function(){
         opt = opt || {};
         opt.angle = opt.angle === undefined ? Math.PI * 0.25: opt.angle;
 
-        var sx = 0,
-        sy = 0,
-        ex = canvas.width,
-        ey = canvas.height;
+        var cx = canvas.width / 2,
+        cy = canvas.height / 2,
+        dx = Math.cos(opt.angle) * 100,
+        dy = Math.sin(opt.angle) * 100,
+        sx = cx - dx,
+        sy = cy - dy,
+        ex = cx + dx,
+        ey = cy + dy;
 
         var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops

@@ -7,9 +7,9 @@ var gameMod = (function () {
     UNIT_TRANSFER_RATE = 600,
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
-    UNIT_SPLIT_DELAY = 3,
+    UNIT_SPLIT_DELAY = 5,
     UNIT_CHASE_PPS_DELTA = 64,
-    UNIT_PPS_RANGE = [32, 128],
+    UNIT_PPS_RANGE = [32, 256],
     UNIT_MASS_PER = 50,
     UNIT_COUNT = 50;
     // the unit pool options object
@@ -177,7 +177,7 @@ var gameMod = (function () {
                 var d = distToCenter(game, obj),
                 per = d / 300;
                 per = per > 1 ? 1 : per;
-                obj.pps = 256 * per;
+                obj.pps = UNIT_PPS_RANGE[1] * per;
 
                 // !!! debug info for distnace to center
                 sm.game.debugInfo = { key: 'd', value: d };

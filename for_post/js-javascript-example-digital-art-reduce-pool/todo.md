@@ -13,8 +13,7 @@
 * (done) start a distToCenter helper
 * (done) have speed of the last active unit in move mode change depeding on distance to adjusted center
 * (done) new transparent look with UNIT MAX ALPHA const value
-
-* colors for units
+* (done) colors for units
 
 ### (done 01/03/2022) - r3 - seek units, unit mass fix
 * (done) start a new seek helper function

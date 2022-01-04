@@ -107,10 +107,6 @@ var gameMod = (function () {
         obj.w = size;
         obj.h = size;
         // adjust postion
-        //obj.x = cx - obj.w / 2;
-        //obj.y = cy - obj.h / 2;
-        //obj.x = cx - obj.w / 1.95;
-        //obj.y = cy - obj.h / 1.95;
         // !!! TEMP fix for bug #0 
         obj.x = cx - obj.w / (BUG0_TEMP[0] + BUG0_TEMP[1] * Math.random());
         obj.y = cy - obj.h / (BUG0_TEMP[0] + BUG0_TEMP[1] * Math.random());
@@ -129,20 +125,6 @@ var gameMod = (function () {
                 return target.i != unit.i;
             }),
             i = activeUnits.length;
-            // sort
-/*
-            activeUnits.sort(function(a, b){
-                var d1 = utils.distance(unit.x, unit.y, a.x, a.y),
-                d2 = utils.distance(unit.x, unit.y, b.x, b.y);
-                if(d1 > d2){
-                    return -1;
-                }
-                if(d1 < d2){
-                    return 1;
-                }
-                return 0;
-            });
-*/
             if(activeUnits.length >= 1){
                 ud.target = activeUnits[0];
             }
@@ -153,14 +135,12 @@ var gameMod = (function () {
     // move mode
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
-
             // target
             var ud = obj.data;
             if(ud.target === null){
                 // seek
                 seekUnit(game, obj);
             }
-
             // if we have a target
             if(ud.target){
                 if(ud.target.active){
@@ -170,10 +150,8 @@ var gameMod = (function () {
                     ud.target = null;
                 }
             }
-
             // set pps by chasePPS at this point
             obj.pps = chasePPS(obj);
-
             // still no target? The this should be the last active div
             if(ud.target === null && game.activeCount === 1){
                 obj.heading = 'center';
@@ -182,12 +160,8 @@ var gameMod = (function () {
                 per = per > 1 ? 1 : per;
                 obj.pps = UNIT_PPS_RANGE[1] * per;
             }
-
-
             // move the unit
             moveUnit(game, obj, secs);
-            //updateByMass(obj);
-
             // if any other unit is under this one switch them over to transfer mode
             // and make it so that the transfer target is this current unit
             var under = poolMod.getOverlaping(obj, pool);
@@ -204,9 +178,6 @@ var gameMod = (function () {
             // if active count is 1, set this last move mode unit to splitup mode
             if(game.activeCount === 1){
                 game.splitDelay -= secs;
-
-                    //game.splitDelay = UNIT_SPLIT_DELAY;
-
                 if(game.splitDelay <= 0){
                     game.splitDelay = UNIT_SPLIT_DELAY;
                     obj.data.mode = 'splitup';
@@ -230,20 +201,10 @@ var gameMod = (function () {
             }else{
                 poolMod.purge(pool, obj, game);
             }
-
             // adjust alpha
             var per = obj.data.mass / UNIT_MASS_PER;
             per = per > 1 ? 1 : per;
             obj.data.alpha = UNIT_MAX_ALPHA * per;
-
-            // !!! debug info for distnace to center
-            if(obj.i === 1){
-                sm.game.debugInfo = { key: 'alpha', value: obj.data.alpha };
-            }
-
-
-            //obj.data.alpha = obj.data.alpha > 1 ? 1 : obj.data.alpha;
-
             // update size on unit and target unit
             updateByMass(obj);
             updateByMass(target);
@@ -271,7 +232,6 @@ var gameMod = (function () {
             updateByMass(obj);
             // subtract from delay
             pool.data.splitDelay -= secs;
-
             // if active count is below UNIT COUNT then spawn new units
             if(game.activeCount < UNIT_COUNT){
                 poolMod.getActiveObjects(pool).forEach(function(aObj){
@@ -329,8 +289,6 @@ var gameMod = (function () {
     };
     // update a unit
     UNIT_OPT.update = function (obj, pool, game, secs) {
-        // set max alpha by default here
-        //obj.data.alpha = UNIT_MAX_ALPHA;
         // move the unit my pps and wrap
         UNIT_MODES[obj.data.mode].update(obj, pool, game, secs);
     };

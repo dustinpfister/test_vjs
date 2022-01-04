@@ -17,6 +17,15 @@ var gameMod = (function () {
         count: UNIT_COUNT,
         disableLifespan: true
     };
+    
+    var getAdjustedCenter = function(game, obj){
+        var canvas = game.sm.canvas;
+        return {
+            x : canvas.width / 2 - obj.x - obj.w / 2,
+            y : canvas.height / 2 - obj.y - obj.h / 2 
+        };
+    };
+
     // random heading helper
     var randomHeading = function(){
        return Math.PI * 2 * Math.random();
@@ -27,10 +36,8 @@ var gameMod = (function () {
         if(typeof heading === 'string'){
             // for 'center' value set heading to adjusted center
             if(heading === 'center'){
-                var canvas = game.sm.canvas,
-                x = canvas.width / 2 - obj.x - obj.w / 2,
-                y = canvas.height / 2 - obj.y - obj.h / 2;
-                return Math.atan2(y, x);
+                var pos = getAdjustedCenter(game, obj);
+                return Math.atan2(pos.y, pos.x);
             }
             // for random heading
             if(heading === 'random'){

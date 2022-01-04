@@ -261,34 +261,26 @@ var gameMod = (function () {
             updateByMass(obj);
             // subtract from delay
             pool.data.splitDelay -= secs;
-            // if delay is over
-            //if(pool.data.splitDelay <= 0){
-                // if active count is below UNIT COUNT then spawn new units
-                if(game.activeCount < UNIT_COUNT){
-                    poolMod.getActiveObjects(pool).forEach(function(aObj){
-                       aObj.data.mass = UNIT_MASS_PER;
-                       updateByMass(aObj);
+
+            // if active count is below UNIT COUNT then spawn new units
+            if(game.activeCount < UNIT_COUNT){
+                poolMod.getActiveObjects(pool).forEach(function(aObj){
+                   aObj.data.mass = UNIT_MASS_PER;
+                   updateByMass(aObj);
+                });
+                var len = UNIT_COUNT - game.activeCount,
+                i = 0;
+                while(i < len){
+                    poolMod.spawn(game.units, game, {
+                        mode: 'splitup',
+                        mass: UNIT_MASS_PER,
+                        heading: 'random',
+                        x: obj.x,
+                        y: obj.y
                     });
-                    var len = UNIT_COUNT - game.activeCount,
-                    i = 0;
-                    while(i < len){
-                        poolMod.spawn(game.units, game, {
-                            mode: 'splitup',
-                            mass: UNIT_MASS_PER,
-                            heading: 'random',
-                            x: obj.x,
-                            y: obj.y
-                        });
-                        i += 1;
-                    }
+                    i += 1;
                 }
-            //}else{
-            //    var canvas = game.sm.canvas,
-            //    x = canvas.width / 2 - obj.x - obj.w / 2,
-            //    y = canvas.height / 2 - obj.y - obj.h / 2;
-            //    obj.heading = Math.atan2(y, x);
-            //    obj.pps = UNIT_PPS_RANGE[1];
-            //}
+            }
         }
     };
     // spawn a unit
@@ -300,6 +292,8 @@ var gameMod = (function () {
         obj.data.transferTarget = null;
         obj.data.target = null;
         obj.data.alpha = 1;
+        // heading
+        obj.heading = spawnOpt.heading || 'random';
         // speed
         obj.data.speed = {
             basePPS: randomPPS(obj)
@@ -319,8 +313,6 @@ var gameMod = (function () {
         updateByMass(obj);
         // move unit by 0 secs this will parse heading for first time
         // as well as prefroming any wrapping of obj.x, and obj.y that might need to happen
-        //obj.heading = parseHeading(spawnOpt.heading || 'center', obj, game);
-        obj.heading = 'random';
         moveUnit(game, obj, 0);
     };
     // update a unit
@@ -361,8 +353,6 @@ var gameMod = (function () {
                 });
                 game.splitDelay = UNIT_SPLIT_DELAY;
             }
-        }else{
-            //game.splitDelay = UNIT_SPLIT_DELAY;
         }
     };
     // return the public API

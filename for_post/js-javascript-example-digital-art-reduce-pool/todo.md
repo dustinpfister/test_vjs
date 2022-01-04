@@ -11,8 +11,7 @@
 * (done) single lone unit will move to center in move mode
 * (done) have a getAdjustedCenter helper
 * (done) start a distToCenter helper
-
-* have speed of the last active unit in move mode change depeding on distance to adjusted center
+* (done) have speed of the last active unit in move mode change depeding on distance to adjusted center
 
 * new transparent look
 * colors for units

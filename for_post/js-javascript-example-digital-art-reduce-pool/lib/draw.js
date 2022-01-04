@@ -4,7 +4,7 @@ var draw = (function(){
         // options
         opt = opt || {};
         opt.angle = opt.angle === undefined ? Math.PI * 0.25: opt.angle;
-        opt.radius = opt.radis === undefined ? 150 : opt.radius;
+        opt.radius = opt.radius === undefined ? 150 : opt.radius;
         // create locals
         var cx = canvas.width / 2,
         cy = canvas.height / 2,

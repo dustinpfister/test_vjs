@@ -13,6 +13,21 @@ var poolMod = (function () {
         }
         return false;
     };
+    // create a single display object
+    var createDisp = function(i, opt){
+        return {
+            active: false,
+            i: i,
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            w: opt.w === undefined ? 32 : opt.w,
+            h: opt.h === undefined ? 32 : opt.h,
+            heading: opt.heading === undefined ? 0 : opt.heading,
+            pps: opt.pps === undefined ? 32 : opt.pps,
+            lifespan: opt.lifespan || 3,
+            data: {}
+        }
+    };
     // create a new pool
     api.create = function (opt) {
         opt = opt || {};
@@ -28,18 +43,7 @@ var poolMod = (function () {
             update: opt.update || function (obj, pool, state, secs) {}
         };
         while (i < opt.count) {
-            pool.objects.push({
-                active: false,
-                i: i,
-                x: opt.x === undefined ? 0 : opt.x,
-                y: opt.y === undefined ? 0 : opt.y,
-                w: opt.w === undefined ? 32 : opt.w,
-                h: opt.h === undefined ? 32 : opt.h,
-                heading: opt.heading === undefined ? 0 : opt.heading,
-                pps: opt.pps === undefined ? 32 : opt.pps,
-                lifespan: opt.lifespan || 3,
-                data: {}
-            });
+            pool.objects.push(createDisp(i, opt));
             i += 1;
         }
         return pool;

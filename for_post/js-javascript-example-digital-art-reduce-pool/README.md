@@ -4,7 +4,22 @@ This is the first of what might be a few javaScript examples of digital art, sta
 
 ## Minimum Viable Product versions (r0 to r4)
 
+A Minimum Viable Product is a term given for a version of a product with just enough features to be usable by early customers who can then provide feedback for future product development. This example is just a simple digital art type thing, but still the general idea is the same when it comes to just getting togetaher what the core of product is first and formost. As of revision 4 of this example the general idea of what I wanted to do is done. However just becuase soemthing is done, and even if something is indeed up and running and seems to work the way i want it to, that does not mean that there is nothing wrong with it. Also the general core set of features alone might prove to be kind of bland, and as such additonal features might help to make the project more intertesing. Still then general idea is to first figure out what the MVP for short is, and get the done first and formost.
 
-## Addtional Features, and changes (r5 to - )
+### r0 - first state of example
+
+With r0 I started out with a the object pool librra from my turn based rpg example, and various ushual suspect methods in a custom utilties libraray. At this point I also started the first state of the main.js, game.js, and draw.js files.
+
+### r1 - unit modes, and mass transfer over time
+
+### r2 - split mode, transfer rate
+
+### r3 - seek units, unit mass fix
+
+### r4 - enter split delay, move to center fix, colors
+
+
+## Some Addtional Features, and fixes (r5 to - )
 
 ## Software Architecture ( r? to r? )
+

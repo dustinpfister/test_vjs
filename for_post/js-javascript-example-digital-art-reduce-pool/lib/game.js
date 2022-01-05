@@ -3,8 +3,8 @@ var gameMod = (function () {
     // the public api
     var api = {};
     // some constants
-    var UNIT_SIZE_RANGE = [32, 256],
-    UNIT_TRANSFER_RATE = 150,
+    var UNIT_SIZE_RANGE = [32, 128],
+    UNIT_TRANSFER_RATE = 250,
     UNIT_TRANSFER_MODE_MAX_PPS = 256,
     UNIT_TRANSFER_MODE_MAX_DIST = 100,
     UNIT_SPLIT_DELAY = 5,

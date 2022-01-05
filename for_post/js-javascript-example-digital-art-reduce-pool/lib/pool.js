@@ -32,8 +32,8 @@ var poolMod = (function () {
     api.create = function (opt) {
         opt = opt || {};
         opt.count = opt.count || 10;
-        var i = 0,
-        pool = {
+        // the main pool object
+        var pool = {
             objects: [],
             secsCap: opt.secsCap === undefined ? Infinity : opt.secsCap,
             disableLifespan: opt.disableLifespan || false,
@@ -42,10 +42,13 @@ var poolMod = (function () {
             purge: opt.purge || function (obj, pool, state) {},
             update: opt.update || function (obj, pool, state, secs) {}
         };
+        // populate the pools objects array
+        var i = 0;
         while (i < opt.count) {
-            pool.objects.push(createDisp(i, opt));
+            pool.objects.push( createDisp(i, opt) );
             i += 1;
         }
+        // return the pool object
         return pool;
     };
     // spawn the next inactive object in the given pool

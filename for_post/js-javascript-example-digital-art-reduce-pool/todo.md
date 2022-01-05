@@ -15,8 +15,13 @@
 
 ### () - r6 - Wind feature
 * Eather loose it or use it, turn bug 0 into a feature by making it a kind of 'wind'
-* have wind change over time
-* let current wind values effect background
+* change BUG0-TEMP const to WIND-RANGE
+* have a game.wind object that will have a heading, and speed value
+* use game.wind and WIND-RANGE const in updateByMass helper
+* let current wind values effect background by adjusting angle and radius value for the gradient
+* have wind heading change over time by making use of a game.wind.degreesPerSecond value
+* make it so that the wind direction change will stop of a period of time
+* have a simular delta value that will effect speed also
 
 ### ( done 01/05/2022 ) - r5 - new background, poolMod update hooks
 * (done) have a gradient background use in draw.js

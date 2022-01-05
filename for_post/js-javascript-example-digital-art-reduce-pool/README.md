@@ -19,7 +19,24 @@ With r0 I started out with a the object pool librra from my turn based rpg examp
 ### r4 - enter split delay, move to center fix, colors
 
 
-## Some Addtional Features, and fixes (r5 to - )
+## Some Addtional Features, fixes and general changes (r5 to - )
 
-## Software Architecture ( r? to r? )
+Now that the Core idea, Minimum Viable Product, or whatever you want to call it is done. The next step is adding additonal features that will make this digital art project, well more intersting as that is what the point of such a project is.
+
+### r5 - new background, poolMod update hooks
+
+### r6 - Wind feature
+
+### r7 - Points
+
+### r8 - Grid lines moving with Wind
+
+## Software Architecture ( r9 to r? )
+
+Software architecture refers to how software is structured, and can be thought of as the discipline of creating sortware structures and systems. In other words the term architecture for short often may refer to how one would go about anwsering the question of how one would go about ccretaing, and maintaing a software system that may ultimately consist of thousands, if not millions of lines of code. This is just a silliy artful thing, but never the less there is taking a moment to look over the state of the source code, and make changes that will result in the same outcome, but the state of the source code is easy to follow and debug. Speaking of bugs there is also idneifying know isshues and seeing about fixing those isshues.
+
+So then from this point forward any and all additional revisions will have to do with just making changes that are just better ways of doing the same thing. Changes that do not result in any kind of new feature as the basic idea with this is done, and all the additonal features I wanted to add are also done at this point. However there is making the source code more readable, more effeciant, and also fixing any and all known bugs. 
+
+### r9 - 
+
 

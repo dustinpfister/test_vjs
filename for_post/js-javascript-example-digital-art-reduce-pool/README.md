@@ -23,9 +23,11 @@ With r0 I started out with a the object pool librra from my turn based rpg examp
 
 Now that the Core idea, Minimum Viable Product, or whatever you want to call it is done. The next step is adding additonal features that will make this digital art project, well more intersting as that is what the point of such a project is.
 
-### r5 - new background, poolMod update hooks
+### r5 - New background, poolMod update hooks
 
 ### r6 - Wind feature
+
+Use it or loose it, by fixing a bug, or turning it into a feature actually.
 
 ### r7 - Points
 

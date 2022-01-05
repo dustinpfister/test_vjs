@@ -3,8 +3,18 @@
 ## Known bugs
 * #0 - weird bug that has to do with adjustment of postion
 
-### () - r6 - wind
-* turn bug 0 into a feature by making it a kind of 'wind'
+<!-- Maintenance -->
+
+### () - r9 - 
+
+<!-- Additional Features -->
+
+### () - r8 - Grid lines moving with Wind
+
+### () - r7 - Points
+
+### () - r6 - Wind feature
+* Eather loose it or use it, turn bug 0 into a feature by making it a kind of 'wind'
 * have wind change over time
 * let current wind values effect background
 
@@ -18,6 +28,8 @@
 * (done) this afterUpdated hook should be called after all pool objects are updated
 * (done) have a beforeUpdated hook also
 * (done) have a beforeUpdated and afterUpdtaed hooks for the units object pool in gameMod
+
+<!-- General Idea of Project done -->
 
 ### ( done 01/04/2022 ) - r4 - enter split delay, move to center fix, colors
 * (done) see about making it so that the single unit will not always end up in the bottom right corner

@@ -8,7 +8,7 @@
 * have wind change over time
 * let current wind values effect background
 
-### () - r5 - new background, poolMod update hooks
+### ( done 01/05/2022 ) - r5 - new background, poolMod update hooks
 * (done) have a gradient background use in draw.js
 * (done) draw.js should be wraped up in an IIFE now
 * (done) sm.background object that contains options for createBackground helper to be used when calling draw.background
@@ -17,8 +17,7 @@
 * (done) have a way to set a main afterUpdated method for a pool object
 * (done) this afterUpdated hook should be called after all pool objects are updated
 * (done) have a beforeUpdated hook also
-
-* have a beforeUpdated and afterUpdtaed hooks for the units object pool in gameMod
+* (done) have a beforeUpdated and afterUpdtaed hooks for the units object pool in gameMod
 
 ### ( done 01/04/2022 ) - r4 - enter split delay, move to center fix, colors
 * (done) see about making it so that the single unit will not always end up in the bottom right corner

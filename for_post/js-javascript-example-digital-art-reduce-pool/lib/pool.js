@@ -40,7 +40,9 @@ var poolMod = (function () {
             data: opt.data || {},
             spawn: opt.spawn || function (obj, pool, state, opt) {},
             purge: opt.purge || function (obj, pool, state) {},
-            update: opt.update || function (obj, pool, state, secs) {}
+            update: opt.update || function (obj, pool, state, secs) {},
+            beforeUpdate: opt.beforeUpdate || function(pool, state, secs){},
+            afterUpdate: opt.beforeUpdate || function(pool, state, secs){}
         };
         // populate the pools objects array
         var i = 0;
@@ -97,6 +99,9 @@ var poolMod = (function () {
         obj;
         state = state || {}; // your projects state object
         secs = secs > pool.secsCap ? pool.secsCap : secs;
+        // call beforeUpdate hook
+        pool.beforeUpdate.call(pool, pool, secs, state);
+        // for each object
         while (i--) {
             obj = pool.objects[i];
             if (obj.active) {
@@ -115,6 +120,8 @@ var poolMod = (function () {
                 }
             }
         }
+        // call afterUpdate hook
+        pool.beforeUpdate.call(pool, pool, secs, state);
     };
     // set all to inActive or active state
     api.setActiveStateForAll = function (pool, bool) {

@@ -14,10 +14,10 @@
 * (done) sm.background object that contains options for createBackground helper to be used when calling draw.background
 * (done) have angle, and other background values change over time
 * (done) thicker line width when drawing units
+* (done) have a way to set a main afterUpdated method for a pool object
+* (done) this afterUpdated hook should be called after all pool objects are updated
+* (done) have a beforeUpdated hook also
 
-* have a way to set a main afterUpdated method for a pool object
-* this afterUpdated hook should be called after all pool objects are updated
-* have a beforeUpdated hook also
 * have a beforeUpdated and afterUpdtaed hooks for the units object pool in gameMod
 
 ### ( done 01/04/2022 ) - r4 - enter split delay, move to center fix, colors

@@ -294,6 +294,19 @@ var gameMod = (function () {
     };
     // purge a unit
     UNIT_OPT.purge = function (obj, pool, game) {};
+    // what to do after all the objects have been updated
+    UNIT_OPT.afterUpdate = function(pool, secs, game){
+        // set units back to move if in split up mode
+        if(game.activeCount === UNIT_COUNT && game.units.objects[0].data.mode === 'splitup'){
+            game.splitDelay -= secs;
+            if(game.splitDelay <= 0){
+                game.units.objects.forEach(function(obj){
+                    obj.data.mode = 'move';
+                });
+                game.splitDelay = UNIT_SPLIT_DELAY;
+            }
+        }
+    };
     // public create method
     api.create = function (opt) {
         opt = opt || {};
@@ -315,16 +328,6 @@ var gameMod = (function () {
         game.totalMass = getTotalMass(game);
         // update units
         poolMod.update(game.units, secs, sm.game);
-        // set units back to move if in split up mode
-        if(game.activeCount === UNIT_COUNT && game.units.objects[0].data.mode === 'splitup'){
-            game.splitDelay -= secs;
-            if(game.splitDelay <= 0){
-                game.units.objects.forEach(function(obj){
-                    obj.data.mode = 'move';
-                });
-                game.splitDelay = UNIT_SPLIT_DELAY;
-            }
-        }
     };
     // return the public API
     return api;

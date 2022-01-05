@@ -42,7 +42,7 @@ var poolMod = (function () {
             purge: opt.purge || function (obj, pool, state) {},
             update: opt.update || function (obj, pool, state, secs) {},
             beforeUpdate: opt.beforeUpdate || function(pool, state, secs){},
-            afterUpdate: opt.beforeUpdate || function(pool, state, secs){}
+            afterUpdate: opt.afterUpdate || function(pool, state, secs){}
         };
         // populate the pools objects array
         var i = 0;
@@ -121,7 +121,7 @@ var poolMod = (function () {
             }
         }
         // call afterUpdate hook
-        pool.beforeUpdate.call(pool, pool, secs, state);
+        pool.afterUpdate.call(pool, pool, secs, state);
     };
     // set all to inActive or active state
     api.setActiveStateForAll = function (pool, bool) {

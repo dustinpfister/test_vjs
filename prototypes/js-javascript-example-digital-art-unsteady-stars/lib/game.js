@@ -65,7 +65,6 @@ var gameMod = (function () {
             sm: opt.sm || {},
             units: poolMod.create(UNIT_OPTIONS)
         };
-console.log(game);
         // spawn all for starters
         poolMod.spawnAll(game.units, game, {});
         return game;

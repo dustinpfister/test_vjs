@@ -19,5 +19,5 @@
 * (done) expand draw.js with methods from the draw.js file in canvas-example-star
 * (done) new game.js file where the over all state for now is just an object pool with the objects just moving around randomly
 * (done) use star.js to create an array of points for each display object in the main units pool
-* update the draw.pool method to draw and points array, star or otherwise
-* update main.js with any needed changes
+* (done) update the draw.pool method to draw and points array, star or otherwise
+* (done) update main.js with any needed changes

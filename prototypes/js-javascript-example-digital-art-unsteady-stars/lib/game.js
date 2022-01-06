@@ -28,11 +28,7 @@ var gameMod = (function () {
         var canvas = game.sm.canvas;
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'move';
-        // start points for the unit
-        unit.data.points = starMod.create1({
-            radius : 32,
-            radiusInner: 16
-        });
+
         // alpha
         unit.data.alpha = 0.5;
         // size
@@ -43,6 +39,12 @@ var gameMod = (function () {
         unit.y = canvas.height / 2 - unit.h / 2;
         // heading
         unit.heading = randomHeading();
+        // start points for the unit
+        unit.data.points = starMod.create1({
+            radius : 32,
+            radiusInner: 16,
+            radianAjust: unit.heading
+        });
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

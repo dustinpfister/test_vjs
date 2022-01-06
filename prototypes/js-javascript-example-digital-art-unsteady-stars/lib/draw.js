@@ -62,13 +62,23 @@ var draw = (function(){
             ctx.fillStyle = obj.data.fillStyle || 'white';
             ctx.strokeStyle = obj.data.strokeStyle || 'black';
             ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
+            // if the object is active
             if (obj.active) {
+                // draw base area
                 var cx = obj.x + obj.w / 2,
                 cy = obj.y + obj.h / 2;
                 ctx.beginPath();
                 ctx.arc(cx, cy, (obj.w + obj.h) / 2 / 2, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.stroke();
+                // draw any points
+                var points = obj.data.points || null;
+                if(points){
+                    ctx.save();
+                    ctx.translate(cx, cy);
+                    api.points(ctx, points);
+                    ctx.restore();
+                }
             }
         });
         ctx.globalAlpha = 1;

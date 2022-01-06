@@ -13,7 +13,7 @@
 * The methods can still return a object that will work with draw.points buy with addital data attached by way of named keys
 * Add update methods to star.js that can be used to mutate, reset, ect one of these 'unsteady stars'
 
-### () - r0 - Start with source code from various other projects
+### ( done 01/06/2022 ) - r0 - Start with source code from various other projects
 * (done) start with the source code from r5 of reduce pool digital art example
 * (done) start with the star.js file from my canvas-example-star project
 * (done) expand draw.js with methods from the draw.js file in canvas-example-star

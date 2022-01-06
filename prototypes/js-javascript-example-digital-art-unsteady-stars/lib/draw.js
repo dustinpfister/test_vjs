@@ -18,11 +18,7 @@ var draw = (function(){
         var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
         gradient.addColorStop(0, 'red');
-        gradient.addColorStop(0.2, 'orange');
-        gradient.addColorStop(0.4, 'yellow');
-        gradient.addColorStop(0.6, 'blue');
-        gradient.addColorStop(0.8, 'cyan');
-        gradient.addColorStop(1, 'lime');
+        gradient.addColorStop(1, 'blue');
         // return gradiant
         return gradient;
     };

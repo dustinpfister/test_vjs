@@ -2,6 +2,7 @@
 var gameMod = (function () {
     // the public api
     var api = {};
+
     // some constants
     var UNIT_SIZE_RANGE = [32, 128],
     UNIT_TRANSFER_RATE = 250,

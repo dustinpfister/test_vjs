@@ -14,7 +14,7 @@ var sm = {
     background: {
        angle: 0,
        degreesPerSec: -5,
-       radius: 300
+       radius: 400
     }
 };
 sm.game = gameMod.create({
@@ -33,9 +33,9 @@ var loop = function () {
         draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;
         // rotation of background
-        var bg = sm.background; 
-        bg.angle += Math.PI / 180 * bg.degreesPerSec * secs;
-        bg.angle = utils.mod(bg.angle, Math.PI * 2);
+        //var bg = sm.background; 
+        //bg.angle += Math.PI / 180 * bg.degreesPerSec * secs;
+        //bg.angle = utils.mod(bg.angle, Math.PI * 2);
     }
 };
 loop();

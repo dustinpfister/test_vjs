@@ -1,0 +1,3 @@
+# js-javascript-example-digital-art-unsteady-stars
+
+This is the second javaScript project where the aim is to just make a quick, simple, digital art type thing within the span of just a few days, or even just a few hours if possible. The source code in this example is based off of what I have worked out in various other project examples in both my javaScript examples, an canvas examples series of simple project examples.

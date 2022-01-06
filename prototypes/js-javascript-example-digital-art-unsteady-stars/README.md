@@ -1,3 +1,5 @@
 # js-javascript-example-digital-art-unsteady-stars
 
-This is the second javaScript project where the aim is to just make a quick, simple, digital art type thing within the span of just a few days, or even just a few hours if possible. The source code in this example is based off of what I have worked out in various other project examples in both my javaScript examples, an canvas examples series of simple project examples.
+This is the second javaScript project where the aim is to just make a quick, simple, digital art type thing within the span of just a few days, or even just a few hours if possible. The source code in this example is based off of what I have worked out in various other project examples in both my javaScript examples, an canvas examples series of simple projects that I write about on my website.
+
+The General idea with this digital art project is to have an object pool and each object has a collection of points that are a kind of star. Over time though the positions of the various points of the star will move around within a given range, thus it is a kinf of 'unsteady star'. That is it when it comes to what I wanted to put togeather for this example, so then the General idea, Minimal Viable Product or whatever you want to call it should be up and running real fast.

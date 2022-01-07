@@ -1,4 +1,7 @@
 var starMod = (function () {
+/********* **********
+   HELPERS
+********** *********/
     // get a point with a given radian, radius, and origin point
     var getPoint = function (radian, radius, ox, oy) {
         return {
@@ -18,49 +21,52 @@ var starMod = (function () {
         opt.pointSkip = opt.pointSkip || 2;
         return opt;
     };
-    // public API
-    return {
-        // create a star points array by pointCount, and inner and outer radius
-        create1: function (opt) {
-            opt = parseOptions(opt);
-            var i = 0,
-            pt,
-            r,
-            rd = Math.PI * 2 / opt.pointCount,
-            points = [];
-            while (i < opt.pointCount) {
-                pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
-                points.push(pt.x, pt.y);
-                pt = getPoint(rd * i + rd / 2 + opt.radianAjust, opt.radiusInner, opt.ox, opt.oy);
-                points.push(pt.x, pt.y);
-                i += 1;
-            }
-            return [points];
-        },
-        // create a star by point count radius and point skip
-        create2: function (opt) {
-            opt = parseOptions(opt);
-            var i = 0,
-            pt,
-            r,
-            rd = Math.PI * 2 / opt.pointCount * opt.pointSkip,
-            even = opt.pointCount % 2 === 0 ? true: false;
-            var points = [[]];
-            if(even){
-                points = [[],[]];
-            }
-            while (i < opt.pointCount) {
-                pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
-                points[0].push(pt.x, pt.y);
-                if(even){
-                    var a = Math.PI * 2 / opt.pointCount
-                    pt = getPoint(rd * i + a + opt.radianAjust, opt.radius, opt.ox, opt.oy);
-                    points[1].push(pt.x, pt.y);
-                }
-                i += 1;
-            }
-            return points;
+/********* **********
+   PUBLIC METHODS
+********** *********/
+    var api = {};
+    // create a star points array by pointCount, and inner and outer radius
+    api.create1 = function (opt) {
+        opt = parseOptions(opt);
+        var i = 0,
+        pt,
+        r,
+        rd = Math.PI * 2 / opt.pointCount,
+        points = [];
+        while (i < opt.pointCount) {
+            pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
+            points.push(pt.x, pt.y);
+            pt = getPoint(rd * i + rd / 2 + opt.radianAjust, opt.radiusInner, opt.ox, opt.oy);
+            points.push(pt.x, pt.y);
+            i += 1;
         }
-    }
+        return [points];
+    };
+    // create a star by point count radius and point skip
+    api.create2 = function (opt) {
+        opt = parseOptions(opt);
+        var i = 0,
+        pt,
+        r,
+        rd = Math.PI * 2 / opt.pointCount * opt.pointSkip,
+        even = opt.pointCount % 2 === 0 ? true: false;
+        var points = [[]];
+        if(even){
+            points = [[],[]];
+        }
+        while (i < opt.pointCount) {
+            pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
+            points[0].push(pt.x, pt.y);
+            if(even){
+                var a = Math.PI * 2 / opt.pointCount
+                pt = getPoint(rd * i + a + opt.radianAjust, opt.radius, opt.ox, opt.oy);
+                points[1].push(pt.x, pt.y);
+            }
+            i += 1;
+        }
+        return points;
+    };
+    // return the public api
+    return api;
 }
     ());

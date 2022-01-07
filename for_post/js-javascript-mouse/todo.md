@@ -21,8 +21,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
 * the user can select a cell in the grid
 
 
-### () - expand av-sim section
-* 3-mouse-move example
+### ( done 01/07/2022 ) - expand av-sim section
+* (done) 3-mouse-move example
 
 ### ( done 12/01/2021 ) - new av-touch section on touch events
 * (done) 1-basic have an example that involves using mouse down and touch start events

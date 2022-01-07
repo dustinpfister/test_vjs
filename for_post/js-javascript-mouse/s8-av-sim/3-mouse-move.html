@@ -3,6 +3,7 @@
         <title>javaScript mouse basic example</title>
     </head>
     <body>
+        <div id="div_pos" style="position:fixed;width:32px;height:32px;background:rgba(0,255,0,0.5);"></div>
         <div id="out">0<div>
         <script>
 var simMouseFor = function(el, x, y){
@@ -19,6 +20,9 @@ var simMouseFor = function(el, x, y){
 // hander on window
 window.addEventListener('mousemove', function(e){
     document.getElementById('out').innerText = e.clientX + ',' + e.clientY;
+    var div = document.getElementById('div_pos');
+    div.style.left = e.clientX + 'px';
+    div.style.top = e.clientY + 'px';
 });
 // simulating a mouse move with position
 var i = 0,

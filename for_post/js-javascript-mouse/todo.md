@@ -1,6 +1,6 @@
 # js-javascript-mouse todo list
 
-### ( done 12/01/2021) - expand s6-av-mouse-wheel section examples
+### () - expand s6-av-mouse-wheel section examples
 * 4-module example that creates and returns a container element
 * the 4-module example should use javaScript to set the display css prop to all elements other than the container to node when in full screen mode
 * another option for this might be to look into the full screen api
@@ -9,7 +9,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
 ```
 
 ### () - expand av-sim section
-* simulate mousedown, move, and up
+* simulate mousedown
+* simulate mousedown
 * simulate touch events
 * simulate pointer event
 
@@ -18,6 +19,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
 * the user can pan around the grid my doing a click and drag
 * the user can pan around by clicking direction buttons on the sides of the canvas
 * the user can select a cell in the grid
+
+
+### () - expand av-sim section
+* 3-mouse-move example
 
 ### ( done 12/01/2021 ) - new av-touch section on touch events
 * (done) 1-basic have an example that involves using mouse down and touch start events

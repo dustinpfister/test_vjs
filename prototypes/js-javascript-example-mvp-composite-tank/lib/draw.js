@@ -59,13 +59,13 @@ var draw = (function(){
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';
-        ctx.fillText('active count: ' + sm.game.activeCount, 10, 10);
-        ctx.fillText('total mass: ' + sm.game.totalMass, 10, 20);
-        ctx.fillText('splitDelay: ' + sm.game.splitDelay, 10, 30);
-        var dInfo = sm.game.debugInfo;
-        if(dInfo){
-            ctx.fillText( dInfo.key + ' : ' + dInfo.value, 10, 40);
-        }
+        //ctx.fillText('active count: ' + sm.game.activeCount, 10, 10);
+        //ctx.fillText('total mass: ' + sm.game.totalMass, 10, 20);
+        //ctx.fillText('splitDelay: ' + sm.game.splitDelay, 10, 30);
+        //var dInfo = sm.game.debugInfo;
+        //if(dInfo){
+        //    ctx.fillText( dInfo.key + ' : ' + dInfo.value, 10, 40);
+        //}
     };
     // draw version number
     api.ver = function (sm, ctx, canvas) {

@@ -4,7 +4,7 @@
 
 <!-- Additional Features -->
 
-### () - r2 - Background Gird
+### () - r3 - Background Gird
 
 <!-- General Idea or MVP of Project done -->
 

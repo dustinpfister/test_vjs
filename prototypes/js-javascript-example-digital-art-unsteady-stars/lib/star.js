@@ -73,7 +73,7 @@ var starMod = (function () {
         utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
             var vIndex = 1,
             radian = Math.PI * 2 * Math.random(),
-            radius = 10,
+            radius = 5,
             // new position for each point
             //x = pos[0] + Math.cos(radian) * radius,
             //y = pos[1] + Math.sin(radian) * radius;
@@ -97,7 +97,7 @@ var starMod = (function () {
 
         uStar.frame = opt.frame === undefined ? 0 : opt.frame;
         uStar.maxFrame = opt.maxFrame === undefined ? 60 : opt.maxFrame;
-        uStar.fps = 30;
+        uStar.fps = 20;
 
         // call update for first time, with 0 secs of time to just set things up
         api.unsteady.update(uStar, 0);

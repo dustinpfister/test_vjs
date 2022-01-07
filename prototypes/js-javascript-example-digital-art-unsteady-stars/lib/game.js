@@ -40,23 +40,11 @@ var gameMod = (function () {
         // heading
         unit.heading = randomHeading();
         // start points for the unit
-/*
-        unit.data.points = starMod.create1({
-            radius : 32,
-            radiusInner: 16,
-            radianAjust: unit.heading
-        });
-*/
-
-
         unit.data.points = starMod.unsteady({
             radius : 32,
             radiusInner: 16,
             radianAjust: unit.heading
         });
-
-        starMod.unsteady.update(unit.data.points, 0);
-
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

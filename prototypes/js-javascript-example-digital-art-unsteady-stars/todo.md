@@ -8,10 +8,13 @@
 
 <!-- General Idea or MVP of Project done -->
 
+### () - r2 - new postions over deltas
+* go with a system that has to do with getting random points from home points rather than deltas
+
 ### () - r1 - expand star.js with 'unsteady stars'
-* Add methods to create and return an 'unsteady stars' object
-* The methods can still return a object that will work with draw.points buy with addital data attached by way of named keys
-* Add update methods to star.js that can be used to mutate, reset, ect one of these 'unsteady stars'
+* (done) Add methods to create and return an 'unsteady stars' object
+* (done) The methods can still return a object that will work with draw.points buy with addital data attached by way of named keys
+* (done) Add update method to star.js that can be used mutate one of these 'unsteady stars'
 
 ### ( done 01/06/2022 ) - r0 - Start with source code from various other projects
 * (done) start with the source code from r5 of reduce pool digital art example

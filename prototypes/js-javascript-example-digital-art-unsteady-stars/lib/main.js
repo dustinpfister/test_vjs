@@ -20,6 +20,10 @@ var sm = {
 sm.game = gameMod.create({
         sm: sm
     });
+
+var uStar = starMod.unsteady();
+console.log(uStar);
+
 // basic app loop
 var loop = function () {
     var now = new Date(),

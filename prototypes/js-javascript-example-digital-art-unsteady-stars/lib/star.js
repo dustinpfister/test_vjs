@@ -66,6 +66,31 @@ var starMod = (function () {
         }
         return points;
     };
+    // unsteady star objects
+    api.unsteady = function(opt){
+
+        
+        var points = api.create1(opt);
+        // deltas for each point
+        points.deltas = [];
+        utils.chunk(points[0], 2).forEach(function(pos, i){
+            var vIndex = 1,
+            x = pos[0],
+            y = pos[1];
+            console.log(i, x, y);
+        });
+
+        return points;
+
+    };
+    // create is a ref to the main starMod.unsteady method
+    api.unsteady.create = api.upsteady;
+    // update an unsteady star created with starMod.unsteady.create
+    api.unsteady.update = function(uStar, secs){
+        
+    };
+
+
     // return the public api
     return api;
 }

@@ -44,3 +44,14 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
         x1 + w1 < x2 ||
         x1 > x2 + w2);
 };
+
+// chunk and array
+utils.chunk = function (arr, size) {
+    var chunkedArr = [];
+    arr = arr || [];
+    size = size === undefined ? 1 : size;
+    for (var i = 0; i < arr.length; i += size) {
+        chunkedArr.push(arr.slice(i, i + size));
+    }
+    return chunkedArr;
+};

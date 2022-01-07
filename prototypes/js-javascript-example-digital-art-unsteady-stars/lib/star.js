@@ -74,8 +74,12 @@ var starMod = (function () {
             var vIndex = 1,
             radian = Math.PI * 2 * Math.random(),
             radius = 10,
-            x = pos[0] + Math.cos(radian) * radius,
-            y = pos[1] + Math.sin(radian) * radius;
+            // new position for each point
+            //x = pos[0] + Math.cos(radian) * radius,
+            //y = pos[1] + Math.sin(radian) * radius;
+            // an array of deltas for each point
+            x = Math.cos(radian) * radius,
+            y = Math.sin(radian) * radius;
             // start points at points.homePoints locations
             deltas[0][i * 2] = x;
             deltas[0][i * 2 + 1] = y;
@@ -85,10 +89,16 @@ var starMod = (function () {
 
     // unsteady star objects
     api.unsteady = function(opt){
+        opt = opt || {};
         var uStar = [[]];
         uStar.homePoints = api.create1(opt);
         // deltas for each point
         uStar.deltas = uStarDeltas(uStar);
+
+        uStar.frame = opt.frame === undefined ? 0 : opt.frame;
+        uStar.maxFrame = opt.maxFrame === undefined ? 60 : opt.maxFrame;
+        uStar.fps = 30;
+
         // call update for first time, with 0 secs of time to just set things up
         api.unsteady.update(uStar, 0);
         // return the uStar
@@ -97,15 +107,25 @@ var starMod = (function () {
     // create is a ref to the main starMod.unsteady method
     api.unsteady.create = api.upsteady;
     // update an unsteady star created with starMod.unsteady.create
-    api.unsteady.update = function(uStar, secs){    
+    api.unsteady.update = function(uStar, secs){
+        // steap frame
+        uStar.frame += uStar.fps * secs;
+        uStar.frame = uStar.frame > uStar.maxFrame ? uStar.maxFrame : uStar.frame;
+        var perDone = uStar.frame / uStar.maxFrame; 
+        // for each delta
+        var deltas = utils.chunk(uStar.deltas[0], 2);
         utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
-            var vIndex = 1,
-            x = pos[0],
-            y = pos[1];
+            var vIndex = i,
+            x = pos[0] + deltas[i][0] * perDone,
+            y = pos[1] + deltas[i][1] * perDone;
             // set current x and y values for uStar
-            uStar[0][i * 2] = x;
-            uStar[0][i * 2 + 1] = y;
+            uStar[0][vIndex * 2] = x;
+            uStar[0][vIndex * 2 + 1] = y;
         });
+        if(uStar.frame === uStar.maxFrame){
+            uStar.deltas = uStarDeltas(uStar);
+            uStar.frame = 0;
+        }
     };
 
 

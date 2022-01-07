@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out">0<div>
+        <script>
+var simMouseFor = function(el, x, y){
+    el = el || document.body;
+    var event = new MouseEvent('mousemove', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        clientX: x === undefined ? 0 : x,
+        clientY: y === undefined ? 0 : y
+    });
+    el.dispatchEvent(event);
+};
+// hander on window
+window.addEventListener('mousemove', function(e){
+    document.getElementById('out').innerText = e.clientX + ',' + e.clientY;
+});
+// simulating a mouse move with position
+var i = 0,
+iMax = 100;
+var loop = function(){
+    setTimeout(loop, 100);
+    var a = Math.PI * 2 * (i / iMax),
+    x = 50 + Math.cos(a) * 50,
+    y = 50 + Math.sin(a) * 50;
+    simMouseFor(document.body, x, y);
+    i += 1;
+    i %= iMax;
+};
+loop();
+
+        </script>
+    </body>
+</html>

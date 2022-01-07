@@ -85,27 +85,14 @@ var starMod = (function () {
 
     // unsteady star objects
     api.unsteady = function(opt){
-        var points = [[]];
-        points.homePoints = api.create1(opt);
+        var uStar = [[]];
+        uStar.homePoints = api.create1(opt);
         // deltas for each point
-        points.deltas = uStarDeltas(points);
-/*
-        points.deltas = [[]];
-        utils.chunk(points.homePoints[0], 2).forEach(function(pos, i){
-            var vIndex = 1,
-            radian = Math.PI * 2 * Math.random(),
-            radius = 10,
-            x = pos[0] + Math.cos(radian) * radius,
-            y = pos[1] + Math.sin(radian) * radius;
-            // start points at points.homePoints locations
-            points.deltas[0][i * 2] = x;
-            points.deltas[0][i * 2 + 1] = y;
-        });
-*/
+        uStar.deltas = uStarDeltas(uStar);
         // call update for first time, with 0 secs of time to just set things up
-        api.unsteady.update(points, 0);
+        api.unsteady.update(uStar, 0);
         // return the uStar
-        return points;
+        return uStar;
     };
     // create is a ref to the main starMod.unsteady method
     api.unsteady.create = api.upsteady;

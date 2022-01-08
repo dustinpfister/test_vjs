@@ -66,30 +66,10 @@ var starMod = (function () {
         }
         return points;
     };
-/*
-    var uStarDeltas = function(uStar){
-        // deltas for each point
-        var deltas = [[]];
-        utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
-            var vIndex = 1,
-            radian = Math.PI * 2 * Math.random(),
-            radius = 5,
-            // new position for each point
-            //x = pos[0] + Math.cos(radian) * radius,
-            //y = pos[1] + Math.sin(radian) * radius;
-            // an array of deltas for each point
-            x = Math.cos(radian) * radius,
-            y = Math.sin(radian) * radius;
-            // start points at points.homePoints locations
-            deltas[0][i * 2] = x;
-            deltas[0][i * 2 + 1] = y;
-        });
-        return deltas;
-    };
-*/
+    // new random positons
     var getNewPositions = function(uStar){
         // deltas for each point
-        var deltas = [[]];
+        var newPos = [[]];
         utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
             var vIndex = 1,
             radian = Math.PI * 2 * Math.random(),
@@ -97,11 +77,11 @@ var starMod = (function () {
             // new position for each point
             x = pos[0] + Math.cos(radian) * radius,
             y = pos[1] + Math.sin(radian) * radius;
-            // start points at points.homePoints locations
-            deltas[0][i * 2] = x;
-            deltas[0][i * 2 + 1] = y;
+            // set new pos values
+            newPos[0][i * 2] = x;
+            newPos[0][i * 2 + 1] = y;
         });
-        return deltas;
+        return newPos;
     };
 
     // unsteady star objects

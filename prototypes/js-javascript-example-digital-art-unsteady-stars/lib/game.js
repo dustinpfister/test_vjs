@@ -19,7 +19,7 @@ var gameMod = (function () {
     };
     // the unit pool options object
     var UNIT_OPTIONS = {
-        count: 5,
+        count: 10,
         disableLifespan: true
     };
     // spawn a unit
@@ -28,20 +28,20 @@ var gameMod = (function () {
         var canvas = game.sm.canvas;
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'move';
-
         // alpha
         unit.data.alpha = 0.5;
         // size
         unit.w = 64;
         unit.h = 64;
         // start position
-        unit.x = canvas.width / 2 - unit.w / 2;
-        unit.y = canvas.height / 2 - unit.h / 2;
+        //unit.x = canvas.width / 2 - unit.w / 2;
+        //unit.y = canvas.height / 2 - unit.h / 2;
+        unit.x = Math.floor( canvas.width * Math.random());
+        unit.y = Math.floor( canvas.height * Math.random());
         // heading
         unit.heading = randomHeading();
-
-unit.pps = 32 + Math.round(64 * Math.random());
-
+        // speed
+        unit.pps = 16 + Math.round(32 * Math.random());
         // start points for the unit
         unit.data.points = starMod.unsteady({
             radius : 32,

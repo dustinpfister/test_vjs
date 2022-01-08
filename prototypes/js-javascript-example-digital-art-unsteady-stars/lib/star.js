@@ -87,6 +87,23 @@ var starMod = (function () {
         return deltas;
     };
 
+    var getNewPositions = function(uStar){
+        // deltas for each point
+        var deltas = [[]];
+        utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
+            var vIndex = 1,
+            radian = Math.PI * 2 * Math.random(),
+            radius = 5,
+            // new position for each point
+            x = pos[0] + Math.cos(radian) * radius,
+            y = pos[1] + Math.sin(radian) * radius;
+            // start points at points.homePoints locations
+            deltas[0][i * 2] = x;
+            deltas[0][i * 2 + 1] = y;
+        });
+        return deltas;
+    };
+
     // unsteady star objects
     api.unsteady = function(opt){
         opt = opt || {};

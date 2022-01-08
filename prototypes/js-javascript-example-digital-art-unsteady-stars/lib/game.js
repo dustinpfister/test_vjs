@@ -19,7 +19,7 @@ var gameMod = (function () {
     };
     // the unit pool options object
     var UNIT_OPTIONS = {
-        count: 11,
+        count: 5,
         disableLifespan: true
     };
     // spawn a unit

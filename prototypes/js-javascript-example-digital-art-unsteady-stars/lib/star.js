@@ -66,7 +66,7 @@ var starMod = (function () {
         }
         return points;
     };
-
+/*
     var uStarDeltas = function(uStar){
         // deltas for each point
         var deltas = [[]];
@@ -86,14 +86,14 @@ var starMod = (function () {
         });
         return deltas;
     };
-
+*/
     var getNewPositions = function(uStar){
         // deltas for each point
         var deltas = [[]];
         utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
             var vIndex = 1,
             radian = Math.PI * 2 * Math.random(),
-            radius = 5,
+            radius = 2,
             // new position for each point
             x = pos[0] + Math.cos(radian) * radius,
             y = pos[1] + Math.sin(radian) * radius;
@@ -110,11 +110,16 @@ var starMod = (function () {
         var uStar = [[]];
         uStar.homePoints = api.create1(opt);
         // deltas for each point
-        uStar.deltas = uStarDeltas(uStar);
+        //uStar.deltas = uStarDeltas(uStar);
+
+        // old positions start out at home positions for now
+        uStar.oldPositions = uStar.homePoints;
+        // get first set of new positions
+        uStar.newPositions = getNewPositions(uStar);
 
         uStar.frame = opt.frame === undefined ? 0 : opt.frame;
-        uStar.maxFrame = opt.maxFrame === undefined ? 60 : opt.maxFrame;
-        uStar.fps = 20;
+        uStar.maxFrame = opt.maxFrame === undefined ? 30 : opt.maxFrame;
+        uStar.fps = 30;
 
         // call update for first time, with 0 secs of time to just set things up
         api.unsteady.update(uStar, 0);
@@ -123,6 +128,7 @@ var starMod = (function () {
     };
     // create is a ref to the main starMod.unsteady method
     api.unsteady.create = api.upsteady;
+/*
     // update an unsteady star created with starMod.unsteady.create
     api.unsteady.update = function(uStar, secs){
         // steap frame
@@ -144,7 +150,56 @@ var starMod = (function () {
             uStar.frame = 0;
         }
     };
+*/
 
+    // update an unsteady star created with starMod.unsteady.create
+    api.unsteady.update = function(uStar, secs){
+        // steap frame
+        uStar.frame += uStar.fps * secs;
+        uStar.frame = uStar.frame > uStar.maxFrame ? uStar.maxFrame : uStar.frame;
+        var perDone = uStar.frame / uStar.maxFrame; 
+        // for each delta
+        //var deltas = utils.chunk(uStar.deltas[0], 2);
+        var newPos = utils.chunk(uStar.newPositions[0], 2);
+        //utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
+utils.chunk(uStar.oldPositions[0], 2).forEach(function(pos, i){
+            var vIndex = i,
+
+            // start and end positons
+            sx = pos[0],
+            sy = pos[1],
+            ex = newPos[i][0],
+            ey = newPos[i][1],
+
+            a = Math.atan2(ey - sy, ex - sx),
+            d = utils.distance(sx, sy, ex, ey),
+
+
+            dx = Math.cos(a) * d,
+            dy = Math.sin(a) * d,
+
+            //dx = sx - ex,
+            //dy = sy - ey,
+
+            x = sx + dx * perDone,
+            y = sy + dy * perDone;
+            
+
+            //x = pos[0] + deltas[i][0] * perDone,
+            //y = pos[1] + deltas[i][1] * perDone;
+            //x = pos[0] + newPos[i][0] * perDone,
+            //y = pos[1] + newPos[i][1] * perDone;
+            // set current x and y values for uStar
+            uStar[0][vIndex * 2] = x;
+            uStar[0][vIndex * 2 + 1] = y;
+        });
+        if(uStar.frame === uStar.maxFrame){
+            //uStar.deltas = uStarDeltas(uStar);
+            uStar.frame = 0;
+uStar.oldPositions = uStar.newPositions;
+uStar.newPositions = getNewPositions(uStar);
+        }
+    };
 
     // return the public api
     return api;

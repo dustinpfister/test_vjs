@@ -69,7 +69,7 @@ var gameMod = (function () {
         // move the unit my pps and wrap
         UNIT_MODES[unit.data.mode].update(unit, pool, game, secs);
         // wrap and unit that goes out of the canvas in any mode
-        poolMod.wrap(unit, game.sm.canvas, unit.w / 2);
+        poolMod.wrap(unit, game.sm.canvas, unit.w);
     };
     // purge a unit
     UNIT_OPTIONS.purge = function (obj, pool, game) {};

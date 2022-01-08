@@ -9,7 +9,9 @@
 <!-- General Idea or MVP of Project done -->
 
 ### () - r2 - new postions over deltas
-* go with a system that has to do with getting random points from home points rather than deltas
+* (done) go with a system that has to do with getting random points from home points rather than deltas
+* have the number of points be 5 to 10
+
 
 ### () - r1 - expand star.js with 'unsteady stars'
 * (done) Add methods to create and return an 'unsteady stars' object

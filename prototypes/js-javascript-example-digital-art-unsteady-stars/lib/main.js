@@ -3,7 +3,7 @@ var canvasObj = utils.createCanvas({
         width: 640,
         height: 480
     });
-// sm
+// main sm object
 var sm = {
     ver: 'r2',
     lt: new Date(),
@@ -17,13 +17,10 @@ var sm = {
        radius: 400
     }
 };
+// set up game object
 sm.game = gameMod.create({
         sm: sm
     });
-
-var uStar = starMod.unsteady();
-console.log(uStar);
-
 // basic app loop
 var loop = function () {
     var now = new Date(),

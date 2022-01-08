@@ -14,7 +14,7 @@
 * (done) random fill colors for the stars
 * (done) random base colors
 * (done) random base size + radius
-* new pos radius option for main unsteady create method
+* (done) new pos radius option for main unsteady create method
 
 ### () - r1 - expand star.js with 'unsteady stars'
 * (done) Add methods to create and return an 'unsteady stars' object

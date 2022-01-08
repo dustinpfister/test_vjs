@@ -45,7 +45,7 @@ var gameMod = (function () {
         // alpha
         unit.data.alpha = 0.5;
         // size
-        var size = 128;
+        var size = Math.round(64 + 128 * Math.random());
         unit.w = size;
         unit.h = size;
         // start position

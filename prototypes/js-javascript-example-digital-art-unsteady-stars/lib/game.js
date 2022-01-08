@@ -6,6 +6,10 @@ var gameMod = (function () {
     // the public api
     var api = {};
 
+    var randomColor = function(){
+        return UNIT_COLORS[ Math.floor(UNIT_COLORS.length * Math.random()) ];
+    };
+
     // random heading helper
     var randomHeading = function(){
        return Math.PI * 2 * Math.random();
@@ -32,8 +36,10 @@ var gameMod = (function () {
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'move';
 
+
+        unit.data.fillStyle = randomColor();
         unit.data.pointsOpt = {
-            fill: UNIT_COLORS[ Math.floor(UNIT_COLORS.length * Math.random()) ]
+            fill: randomColor()
         };
 
         // alpha

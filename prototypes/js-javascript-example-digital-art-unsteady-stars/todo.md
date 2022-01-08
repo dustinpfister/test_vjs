@@ -11,7 +11,7 @@
 ### () - r2 - new postions over deltas, random point counts, colors, size + radius
 * (done) go with a system that has to do with getting random points from home points rather than deltas
 * (done) have the number of points be 5 to 10
-* random fill colors for the stars
+* (done) random fill colors for the stars
 * random base colors
 * random base size + radius
 

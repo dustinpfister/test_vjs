@@ -73,7 +73,7 @@ var starMod = (function () {
         utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
             var vIndex = 1,
             radian = Math.PI * 2 * Math.random(),
-            radius = 5,
+            radius = uStar.nprMin + ( uStar.nprMax - uStar.nprMin ) * Math.random(),
             // new position for each point
             x = pos[0] + Math.cos(radian) * radius,
             y = pos[1] + Math.sin(radian) * radius;
@@ -88,6 +88,8 @@ var starMod = (function () {
     api.unsteady = function(opt){
         opt = opt || {};
         var uStar = [[]];
+        uStar.nprMin = opt.nprMin === undefined ? 1 : opt.nprMin;
+        uStar.nprMax = opt.nprMax === undefined ? 5 : opt.nprMax;
         // home positons that will be used to fine new postions
         uStar.homePoints = api.create1(opt);
         // old positions start out at home positions for now

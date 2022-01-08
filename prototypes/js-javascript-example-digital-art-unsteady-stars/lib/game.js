@@ -69,7 +69,7 @@ var gameMod = (function () {
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
         // call update method for star mod
         starMod.unsteady.update(unit.data.points, secs);
-        // move the unit my pps and wrap
+        // call the current mode update method
         UNIT_MODES[unit.data.mode].update(unit, pool, game, secs);
         // wrap and unit that goes out of the canvas in any mode
         poolMod.wrap(unit, game.sm.canvas, unit.w);

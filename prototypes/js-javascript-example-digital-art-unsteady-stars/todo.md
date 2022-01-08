@@ -4,7 +4,7 @@
 
 <!-- Additional Features -->
 
-### () - r3 - Background Gird
+### () - r3 - rebirth mode, and main update pool method
 
 <!-- General Idea or MVP of Project done -->
 

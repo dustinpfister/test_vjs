@@ -13,7 +13,7 @@
 * (done) have the number of points be 5 to 10
 * (done) random fill colors for the stars
 * (done) random base colors
-* random base size + radius
+* (done) random base size + radius
 * new pos radius option for main unsteady create method
 
 ### () - r1 - expand star.js with 'unsteady stars'

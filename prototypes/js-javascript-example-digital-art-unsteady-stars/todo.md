@@ -12,8 +12,9 @@
 * (done) go with a system that has to do with getting random points from home points rather than deltas
 * (done) have the number of points be 5 to 10
 * (done) random fill colors for the stars
-* random base colors
+* (done) random base colors
 * random base size + radius
+* new pos radius option for main unsteady create method
 
 ### () - r1 - expand star.js with 'unsteady stars'
 * (done) Add methods to create and return an 'unsteady stars' object

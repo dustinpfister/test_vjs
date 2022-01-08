@@ -73,7 +73,7 @@ var starMod = (function () {
         utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
             var vIndex = 1,
             radian = Math.PI * 2 * Math.random(),
-            radius = 2,
+            radius = 5,
             // new position for each point
             x = pos[0] + Math.cos(radian) * radius,
             y = pos[1] + Math.sin(radian) * radius;

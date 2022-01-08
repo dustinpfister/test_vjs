@@ -45,8 +45,9 @@ var gameMod = (function () {
         // alpha
         unit.data.alpha = 0.5;
         // size
-        unit.w = 64;
-        unit.h = 64;
+        var size = 128;
+        unit.w = size;
+        unit.h = size;
         // start position
         unit.x = Math.floor( canvas.width * Math.random());
         unit.y = Math.floor( canvas.height * Math.random());
@@ -57,8 +58,8 @@ var gameMod = (function () {
         // start points for the unit
         unit.data.points = starMod.unsteady({
             pointCount: 5 + Math.round(5 * Math.random()),
-            radius : 32,
-            radiusInner: 16,
+            radius : size / 2,
+            radiusInner: size / 4,
             radianAjust: unit.heading
         });
     };

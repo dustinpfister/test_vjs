@@ -1,5 +1,8 @@
 
 var gameMod = (function () {
+
+    var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'];
+
     // the public api
     var api = {};
 
@@ -29,9 +32,9 @@ var gameMod = (function () {
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'move';
 
-unit.data.pointsOpt = {
-   fill: 'lime'
-};
+        unit.data.pointsOpt = {
+            fill: UNIT_COLORS[ Math.floor(UNIT_COLORS.length * Math.random()) ]
+        };
 
         // alpha
         unit.data.alpha = 0.5;

@@ -52,10 +52,10 @@ var draw = (function(){
         cx = obj.x + obj.w / 2,
         cy = obj.y + obj.h / 2;
         if(points){
-            ctx.save();
-            ctx.translate(cx, cy);
-            api.points(ctx, points);
-            ctx.restore();
+            //ctx.save();
+            //ctx.translate(cx, cy);
+            api.points(ctx, points, cx, cy, obj.data.pointsOpt);
+            //ctx.restore();
         }
     };
 

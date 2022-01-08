@@ -28,6 +28,11 @@ var gameMod = (function () {
         var canvas = game.sm.canvas;
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'move';
+
+unit.data.pointsOpt = {
+   fill: 'lime'
+};
+
         // alpha
         unit.data.alpha = 0.5;
         // size

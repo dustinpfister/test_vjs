@@ -46,6 +46,19 @@ var draw = (function(){
         ctx.fillText('heading: ' + utils.radianToDegree(obj.heading), obj.x + 10, obj.y + 30);
         ctx.fillText('facing: ' + utils.radianToDegree(obj.facing), obj.x + 10, obj.y + 40);
     };
+
+    var drawPoints = function(obj, ctx, canvas){
+        var points = obj.data.points || null,
+        cx = obj.x + obj.w / 2,
+        cy = obj.y + obj.h / 2;
+        if(points){
+            ctx.save();
+            ctx.translate(cx, cy);
+            api.points(ctx, points);
+            ctx.restore();
+        }
+    };
+
     // PUBLIC API METHODS
     var api = {};
     // draw the background
@@ -72,17 +85,12 @@ var draw = (function(){
                 ctx.fill();
                 ctx.stroke();
                 // draw any points
-                var points = obj.data.points || null;
-                if(points){
-                    ctx.save();
-                    ctx.translate(cx, cy);
-                    api.points(ctx, points);
-                    ctx.restore();
-                }
+                drawPoints(obj, ctx, canvas);
             }
         });
         ctx.globalAlpha = 1;
     };
+/*
     // draw a star
     api.star = function(ctx, obj, state){
         ctx.lineWidth = 6;
@@ -91,7 +99,7 @@ var draw = (function(){
         ctx.translate(obj.x, obj.y);
         ctx.rotate(obj.facing);
         // new draw points method works greate with new star.create1 and star.create2 (0.3.0+)
-        api.points(ctx, obj.points, 0, 0);
+        api.points(ctx, obj.points, 0, 0, obj.data.pointsOpt);
         ctx.restore();
         // draw dir lines for heading and facing
         ctx.lineWidth = 2;
@@ -103,11 +111,13 @@ var draw = (function(){
             drawStarInfo(ctx, state.selected);
         }
     };
+*/
     // new draw points
     api.points = function (ctx, points, cx, cy, opt) {
         opt = opt || {};
         ctx.save();
         ctx.translate(cx, cy);
+
         points.forEach(function (pointArray) {
             var len = pointArray.length,
             close = opt.close === undefined ? true : opt.close,

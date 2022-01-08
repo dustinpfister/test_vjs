@@ -67,6 +67,7 @@ var gameMod = (function () {
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
+        // call update method for star mod
         starMod.unsteady.update(unit.data.points, secs);
         // move the unit my pps and wrap
         UNIT_MODES[unit.data.mode].update(unit, pool, game, secs);

@@ -8,7 +8,7 @@
 
 <!-- General Idea or MVP of Project done -->
 
-### () - r2 - new postions over deltas, random point counts, colors, size + radius
+### ( done 01/08/2022 ) - r2 - new postions over deltas, random point counts, colors, size + radius
 * (done) go with a system that has to do with getting random points from home points rather than deltas
 * (done) have the number of points be 5 to 10
 * (done) random fill colors for the stars
@@ -16,7 +16,7 @@
 * (done) random base size + radius
 * (done) new pos radius option for main unsteady create method
 
-### () - r1 - expand star.js with 'unsteady stars'
+### ( done 01/07/2022 ) - r1 - expand star.js with 'unsteady stars'
 * (done) Add methods to create and return an 'unsteady stars' object
 * (done) The methods can still return a object that will work with draw.points buy with addital data attached by way of named keys
 * (done) Add update method to star.js that can be used mutate one of these 'unsteady stars'

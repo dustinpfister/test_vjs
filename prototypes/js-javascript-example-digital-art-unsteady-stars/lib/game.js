@@ -60,7 +60,9 @@ var gameMod = (function () {
             pointCount: 5 + Math.round(5 * Math.random()),
             radius : size / 2,
             radiusInner: size / 4,
-            radianAjust: unit.heading
+            radianAjust: unit.heading,
+            nprMin: 2,
+            nprMax: 6
         });
     };
     // update a unit

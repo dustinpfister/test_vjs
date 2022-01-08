@@ -88,6 +88,7 @@ var starMod = (function () {
     api.unsteady = function(opt){
         opt = opt || {};
         var uStar = [[]];
+        // new point radius min and max
         uStar.nprMin = opt.nprMin === undefined ? 1 : opt.nprMin;
         uStar.nprMax = opt.nprMax === undefined ? 5 : opt.nprMax;
         // home positons that will be used to fine new postions

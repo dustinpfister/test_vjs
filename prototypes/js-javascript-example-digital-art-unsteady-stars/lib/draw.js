@@ -52,10 +52,7 @@ var draw = (function(){
         cx = obj.x + obj.w / 2,
         cy = obj.y + obj.h / 2;
         if(points){
-            //ctx.save();
-            //ctx.translate(cx, cy);
             api.points(ctx, points, cx, cy, obj.data.pointsOpt);
-            //ctx.restore();
         }
     };
 
@@ -90,34 +87,11 @@ var draw = (function(){
         });
         ctx.globalAlpha = 1;
     };
-/*
-    // draw a star
-    api.star = function(ctx, obj, state){
-        ctx.lineWidth = 6;
-        ctx.globalAlpha = obj.alpha;
-        ctx.save();
-        ctx.translate(obj.x, obj.y);
-        ctx.rotate(obj.facing);
-        // new draw points method works greate with new star.create1 and star.create2 (0.3.0+)
-        api.points(ctx, obj.points, 0, 0, obj.data.pointsOpt);
-        ctx.restore();
-        // draw dir lines for heading and facing
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = 'rgba(255,255,255,0.4)';
-        strokeDirHelper(ctx, obj, obj.heading, obj.r1 * 0.5, obj.r1);
-        strokeDirHelper(ctx, obj, obj.facing, 0, obj.r1 * 0.5);
-        ctx.globalAlpha = 1;
-        if(state.selected){
-            drawStarInfo(ctx, state.selected);
-        }
-    };
-*/
     // new draw points
     api.points = function (ctx, points, cx, cy, opt) {
         opt = opt || {};
         ctx.save();
         ctx.translate(cx, cy);
-
         points.forEach(function (pointArray) {
             var len = pointArray.length,
             close = opt.close === undefined ? true : opt.close,
@@ -171,9 +145,6 @@ var draw = (function(){
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';
-        //ctx.fillText('active count: ' + sm.game.activeCount, 10, 10);
-        //ctx.fillText('total mass: ' + sm.game.totalMass, 10, 20);
-        //ctx.fillText('splitDelay: ' + sm.game.splitDelay, 10, 30);
         var dInfo = sm.game.debugInfo;
         if(dInfo){
             ctx.fillText( dInfo.key + ' : ' + dInfo.value, 10, 10);

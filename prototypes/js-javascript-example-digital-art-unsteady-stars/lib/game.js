@@ -39,6 +39,9 @@ var gameMod = (function () {
         unit.y = canvas.height / 2 - unit.h / 2;
         // heading
         unit.heading = randomHeading();
+
+unit.pps = 32 + Math.round(64 * Math.random());
+
         // start points for the unit
         unit.data.points = starMod.unsteady({
             radius : 32,

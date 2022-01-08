@@ -4,7 +4,16 @@
 
 <!-- Additional Features -->
 
-### () - r3 - rebirth mode, and main update pool method
+### () - r4 - move2 mode
+* new mode that is like move mode but will also change headin gover time also
+
+### () - r3 - rebirth mode
+* start a new mode that is a rebith mode that will cause a unit to reset with all new values
+* in rebith mode the position will stay the same
+* in rebirth mode the size of a unit will go down from the current size down to zero
+* once at zero the unit will have all new values for the star, as well as heading, speed, ect
+* once all values at set the size will then go back up from zero to the new full size
+* once the new size is set the mode with switch to move mode
 
 <!-- General Idea or MVP of Project done -->
 

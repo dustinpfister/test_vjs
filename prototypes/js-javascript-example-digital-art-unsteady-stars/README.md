@@ -6,6 +6,9 @@ The Minimum Viable Product with this digital art project is to have an object po
 
 After the Minimum Viable product is done I will then want to maybe add a few more features beyond the Basic core idea. I do not think that I will want to put to much time into this one, but for the sake of following threw with something I think I will add at least one or more additional revisions after that of the MVP. Once I get a few additional feature in I will then get to a point where it is just about cleaning up the code, fixing any and all bugs, and making just simple changes as needed to keep code from breaking. In other words a kind of maintenance phase of sorts.
 
+## The Main Goal of this Project is not the Project itself, but a new process of working on projects
+
+The main goal hear was to just start a new habit that I intend to continue with when it comes to additional javaScript examples, as well as canvas examples, and any other projects that I might start at any point in the future. There is thinking in terms of fine grain revisions, and also breaking things down in three phases where each phase is one if not more revisions. 
 
 ## General Idea or Minimum Viable Product ( r0 - r2 )
 
@@ -13,8 +16,18 @@ As of this writing the MVP for this idea is done for what it is worth at revisio
 
 ### r0 - Start with source code from various other projects
 
-With revision 0 I started out with the source code from revision 5 of my [reduce pool digital art example](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-digital-art-reduce-pool) as such I also started out with a number of core features right off the bat then including a basic object pool library. I also took the star.js module that I worked out for my canvas examples series project on drawing stars, while I was at it I also added a draw points method that I worked out for that project to the draw.js lib for this example.
+With revision 0 I started out with the source code from revision 5 of my [reduce pool digital art example](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-digital-art-reduce-pool) as such I also started out with a number of core features right off the bat then including a basic object pool library. I also took the star.js module that I worked out for my canvas examples series [project on drawing stars](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-star), while I was at it I also added a draw points method that I worked out for that project to the draw.js lib for this example.
+
+### r1 - expand star.js with 'unsteady stars'
+
+In this revision the goal was to just simply start, but not necessary finish the main feature of this example by expanding on the star.js module that I copied over from an older project.
+
+### r2 - new positions over deltas, random point counts, colors, size + radius
+
+
 
 ## Additional Features ( r3 - r4 )
 
 ## Maintenance ( r5+ )
+
+When it comes to Maintenance of this project I think that there is only so much that I will be willing to do, at least as long as I am the only one that shows interest in this. 

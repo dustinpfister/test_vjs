@@ -57,8 +57,8 @@ var gameMod = (function () {
             // update disp object w and h to size
             unit.w = size;
             unit.h = size;
-			unit.x = uDat.cx - size / 2;
-			unit.y = uDat.cy - size / 2;
+            unit.x = uDat.cx - size / 2;
+            unit.y = uDat.cy - size / 2;
             if(uDat.size === 0){
                 uDat.sizeDelta = 100;
                 // new heading and speed
@@ -83,8 +83,23 @@ var gameMod = (function () {
             }
             unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
             if(size === uDat.newSize && uDat.sizeDelta > 0){
-                changeMode(unit, 'move', pool, game);
+                changeMode(unit, 'move2', pool, game);
             }
+        }
+    };
+    // a more advanced move2 mode where the heading and pps values will change over time
+    UNIT_MODES.move2 = {
+        init: function(unit, pool, game){
+        },
+        update: function(unit, pool, game, secs){
+
+unit.heading += Math.PI / 180 * 45 * secs;
+
+            // move and wrap
+            poolMod.moveByPPS(unit, secs);
+            poolMod.wrap(unit, game.sm.canvas, unit.w);
+            // update only in move mode
+            starMod.unsteady.update(unit.data.points, secs);
         }
     };
     // a simple move mode where the unit will just move by current PPS and heading values
@@ -109,7 +124,7 @@ var gameMod = (function () {
         spawnOpt = spawnOpt || {};
         var canvas = game.sm.canvas;
         // mode of the unit
-        unit.data.mode = spawnOpt.mode || 'move';
+        unit.data.mode = spawnOpt.mode || 'move2';
         unit.data.modeTime = 0; // the total amount of time the unit has been in the current mode
         unit.data.lastRoll = 0; // the amount of time sense the last roll (used for mode switching)
         // colors
@@ -157,7 +172,7 @@ var gameMod = (function () {
             var roll = Math.random();
             if(roll > 0.5){
                 //uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
-                if(uDat.mode === 'move'){
+                if(uDat.mode === 'move2'){
                     changeMode(unit, 'rebirth', pool, game);
                 }
             }

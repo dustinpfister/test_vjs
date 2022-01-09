@@ -1,0 +1,890 @@
+<html>
+    <head>
+        <title>javascript example</title>
+       <style>
+#canvas-app {
+  width:640px;
+  height:480px;
+  margin-left:auto;
+  margin-right:auto;
+}
+   </style>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+
+<script>
+
+(function(){
+
+/********* **********
+UTILS
+********** *********/
+var utils = {};
+
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+
+// mathematical modulo
+utils.mod = function(x, m) {
+    return (x % m + m) % m;
+};
+
+// wrap a number
+utils.wrapNumber = function(n, min, max){
+    var r = max - min;
+    return (min + ((((n - min) % r) + r) % r));
+};
+
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
+// bounding box
+utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        y1 + h1 < y2 ||
+        y1 > y2 + h2 ||
+        x1 + w1 < x2 ||
+        x1 > x2 + w2);
+};
+
+// chunk and array
+utils.chunk = function (arr, size) {
+    var chunkedArr = [];
+    arr = arr || [];
+    size = size === undefined ? 1 : size;
+    for (var i = 0; i < arr.length; i += size) {
+        chunkedArr.push(arr.slice(i, i + size));
+    }
+    return chunkedArr;
+};
+/********* **********
+STAR
+********** *********/
+var starMod = (function () {
+/********* **********
+   HELPERS
+********** *********/
+    // get a point with a given radian, radius, and origin point
+    var getPoint = function (radian, radius, ox, oy) {
+        return {
+            x: Math.cos(radian) * radius + ox,
+            y: Math.sin(radian) * radius + oy
+        };
+    };
+    // parse options
+    var parseOptions = function (opt) {
+        opt = opt || {};
+        opt.pointCount = opt.pointCount || 5;
+        opt.radius = opt.radius === undefined ? 50 : opt.radius;
+        opt.radiusInner = opt.radiusInner === undefined ? 25 : opt.radiusInner;
+        opt.radianAjust = opt.radianAjust === undefined ? 0 : opt.radianAjust;
+        opt.ox = opt.ox || 0;
+        opt.oy = opt.oy || 0;
+        opt.pointSkip = opt.pointSkip || 2;
+        return opt;
+    };
+/********* **********
+   PUBLIC METHODS
+********** *********/
+    var api = {};
+    // create a star points array by pointCount, and inner and outer radius
+    api.create1 = function (opt) {
+        opt = parseOptions(opt);
+        var i = 0,
+        pt,
+        r,
+        rd = Math.PI * 2 / opt.pointCount,
+        points = [];
+        while (i < opt.pointCount) {
+            pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
+            points.push(pt.x, pt.y);
+            pt = getPoint(rd * i + rd / 2 + opt.radianAjust, opt.radiusInner, opt.ox, opt.oy);
+            points.push(pt.x, pt.y);
+            i += 1;
+        }
+        return [points];
+    };
+    // create a star by point count radius and point skip
+    api.create2 = function (opt) {
+        opt = parseOptions(opt);
+        var i = 0,
+        pt,
+        r,
+        rd = Math.PI * 2 / opt.pointCount * opt.pointSkip,
+        even = opt.pointCount % 2 === 0 ? true: false;
+        var points = [[]];
+        if(even){
+            points = [[],[]];
+        }
+        while (i < opt.pointCount) {
+            pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
+            points[0].push(pt.x, pt.y);
+            if(even){
+                var a = Math.PI * 2 / opt.pointCount
+                pt = getPoint(rd * i + a + opt.radianAjust, opt.radius, opt.ox, opt.oy);
+                points[1].push(pt.x, pt.y);
+            }
+            i += 1;
+        }
+        return points;
+    };
+    // new random positions
+    var getNewPositions = function(uStar){
+        // deltas for each point
+        var newPos = [[]];
+        utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
+            var vIndex = 1,
+            radian = Math.PI * 2 * Math.random(),
+            radius = uStar.nprMin + ( uStar.nprMax - uStar.nprMin ) * Math.random(),
+            // new position for each point
+            x = pos[0] + Math.cos(radian) * radius,
+            y = pos[1] + Math.sin(radian) * radius;
+            // set new pos values
+            newPos[0][i * 2] = x;
+            newPos[0][i * 2 + 1] = y;
+        });
+        return newPos;
+    };
+
+    // unsteady star objects
+    api.unsteady = function(opt){
+        opt = opt || {};
+        var uStar = [[]];
+        // new point radius min and max
+        uStar.nprMin = opt.nprMin === undefined ? 1 : opt.nprMin;
+        uStar.nprMax = opt.nprMax === undefined ? 5 : opt.nprMax;
+        // star create1 options
+        uStar.pointCount = opt.pointCount === undefined ? 5 : opt.pointCount;
+        uStar.radius = opt.radius === undefined ? 50 : opt.radius;
+        uStar.radiusInner = opt.radiusInner === undefined ? 25 : opt.radiusInner;
+        uStar.radianAjust = opt.radianAjust === undefined ? 0 : opt.radianAjust;
+        // home positions that will be used to fine new positions
+        uStar.homePoints = api.create1(uStar);
+        // old positions start out at home positions for now
+        uStar.oldPositions = uStar.homePoints;
+        // get first set of new positions
+        uStar.newPositions = getNewPositions(uStar);
+        // frame, maxFrame, and Frames Per Second
+        uStar.frame = opt.frame === undefined ? 0 : opt.frame;
+        uStar.maxFrame = opt.maxFrame === undefined ? 30 : opt.maxFrame;
+        uStar.fps = 30;
+        // call update for first time, with 0 secs of time to just set things up
+        api.unsteady.update(uStar, 0);
+        // return the uStar
+        return uStar;
+    };
+    // create is a ref to the main starMod.unsteady method
+    api.unsteady.create = api.upsteady;
+    // update an unsteady star created with starMod.unsteady.create
+    api.unsteady.update = function(uStar, secs){
+        // step frame
+        uStar.frame += uStar.fps * secs;
+        uStar.frame = uStar.frame > uStar.maxFrame ? uStar.maxFrame : uStar.frame;
+        var perDone = uStar.frame / uStar.maxFrame; 
+        // update pos of uStar
+        var newPos = utils.chunk(uStar.newPositions[0], 2);
+        utils.chunk(uStar.oldPositions[0], 2).forEach(function(pos, i){
+            var vIndex = i,
+            // start and end positions
+            sx = pos[0],
+            sy = pos[1],
+            ex = newPos[i][0],
+            ey = newPos[i][1],
+            // angle and distance from old position and new position
+            a = Math.atan2(ey - sy, ex - sx),
+            d = utils.distance(sx, sy, ex, ey),
+            // delta x and delta y based off of angle and distance
+            dx = Math.cos(a) * d,
+            dy = Math.sin(a) * d,
+            // current x and y is start position + deltas over perDone
+            // which is set by frame / maxFrame
+            x = sx + dx * perDone,
+            y = sy + dy * perDone;
+            // set the positions for uStar points array
+            uStar[0][vIndex * 2] = x;
+            uStar[0][vIndex * 2 + 1] = y;
+        });
+        // if frame === maxFrame then set frame back to 0, set old position
+        // as current new position, and then get a new position
+        if(uStar.frame === uStar.maxFrame){
+            uStar.frame = 0;
+            uStar.oldPositions = uStar.newPositions;
+            uStar.newPositions = getNewPositions(uStar);
+        }
+    };
+    // resize unsteady
+    api.resizeUnsteady = function(uStar, size, rDiv, riDiv){
+        size = size || 0;
+        rDiv = rDiv === undefined ? 2 : rDiv;
+        riDiv = riDiv === undefined ? r : riDiv;
+        var opt = Object.assign({}, uStar, {
+            radius: size / rDiv,
+            radiusInner: size / riDiv
+        });
+        return api.unsteady(opt);
+    };
+    // return the public api
+    return api;
+}
+    ());
+/********* **********
+POOL
+********** *********/
+var poolMod = (function () {
+    // Public API
+    var api = {};
+    // get next inactive object in the given pool
+    var getInactive = function (pool) {
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
+            obj = pool.objects[i];
+            if (!obj.active) {
+                return obj;
+            }
+        }
+        return false;
+    };
+    // create a single display object
+    var createDisp = function(i, opt){
+        return {
+            active: false,
+            i: i,
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            w: opt.w === undefined ? 32 : opt.w,
+            h: opt.h === undefined ? 32 : opt.h,
+            heading: opt.heading === undefined ? 0 : opt.heading,
+            pps: opt.pps === undefined ? 32 : opt.pps,
+            lifespan: opt.lifespan || 3,
+            data: {}
+        }
+    };
+    // create a new pool
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.count = opt.count || 10;
+        // the main pool object
+        var pool = {
+            objects: [],
+            secsCap: opt.secsCap === undefined ? Infinity : opt.secsCap,
+            disableLifespan: opt.disableLifespan || false,
+            data: opt.data || {},
+            spawn: opt.spawn || function (obj, pool, state, opt) {},
+            purge: opt.purge || function (obj, pool, state) {},
+            update: opt.update || function (obj, pool, state, secs) {},
+            beforeUpdate: opt.beforeUpdate || function(pool, state, secs){},
+            afterUpdate: opt.afterUpdate || function(pool, state, secs){}
+        };
+        // populate the pools objects array
+        var i = 0;
+        while (i < opt.count) {
+            pool.objects.push( createDisp(i, opt) );
+            i += 1;
+        }
+        // return the pool object
+        return pool;
+    };
+    // spawn the next inactive object in the given pool
+    api.spawn = function (pool, state, opt) {
+        var obj = getInactive(pool);
+        state = state || {};
+        opt = opt || {};
+        if (obj) {
+            if (!obj.active) {
+                obj.active = true;
+                pool.spawn.call(pool, obj, pool, state, opt);
+                return obj;
+            }
+        }
+        return false;
+    };
+    // spawn all objects
+    api.spawnAll = function(pool, state, opt){
+        pool.objects.forEach(function(obj){
+            if (!obj.active) {
+                obj.active = true;
+                pool.spawn.call(pool, obj, pool, state, opt);
+                return obj;
+            }
+        });
+        return pool.objects;
+    };
+    // purge an object ( make it inactive and call the purge method for the pool )
+    api.purge = function(pool, obj, state){
+        obj.active = false;
+        pool.purge.call(pool, obj, pool, state);
+    };
+    // spawn all objects
+    api.purgeAll = function(pool, state, opt){
+        pool.objects.forEach(function(obj){
+            if (!obj.active) {
+                obj.active =  false;
+                pool.purge.call(pool, obj, pool, state);
+            }
+        });
+        return pool.objects;
+    };
+    // update a pool object by a secs value
+    api.update = function (pool, secs, state) {
+        var i = pool.objects.length,
+        obj;
+        state = state || {}; // your projects state object
+        secs = secs > pool.secsCap ? pool.secsCap : secs;
+        // call beforeUpdate hook
+        pool.beforeUpdate.call(pool, pool, secs, state);
+        // for each object
+        while (i--) {
+            obj = pool.objects[i];
+            if (obj.active) {
+                pool.update.call(pool, obj, pool, state, secs);
+                // if disableLifespan featre
+                if(pool.disableLifespan){
+                }else{
+                    // else use lifespan feature
+                    obj.lifespan -= secs;
+                    obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
+                    if (obj.lifespan === 0) {
+                        obj.active = false;
+                        //pool.purge.call(pool, obj, pool, state);
+                        api.purge.call(pool, pool, obj, state);
+                    }
+                }
+            }
+        }
+        // call afterUpdate hook
+        pool.afterUpdate.call(pool, pool, secs, state);
+    };
+    // set all to inActive or active state
+    api.setActiveStateForAll = function (pool, bool) {
+        bool = bool === undefined ? false : bool;
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
+            obj = pool.objects[i];
+            obj.active = bool;
+        }
+    };
+    // move the given object by its current heading and pps
+    api.moveByPPS = function (obj, secs) {
+        obj.x += Math.cos(obj.heading) * obj.pps * secs;
+        obj.y += Math.sin(obj.heading) * obj.pps * secs;
+    };
+    // check bounds for the given display object and canvas and return true if the object
+    // is out of bounds and false if it is not.
+    api.checkBounds = function (obj, canvas) {
+        if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
+            return false;
+        }
+        return true;
+    };
+    // bounding box
+    api.boundingBox = function (a, b) {
+        return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
+    };
+    // wrap an object to an area like a canvas
+    api.wrap = function(obj, area, space){
+        area = area || {x: 0, y: 0, width: 640, height: 480 };
+        space = space === undefined ? 32 : space;
+        if(!utils.boundingBox(obj.x, obj.y, obj.w, obj.h, space * -1, space * -1, area.width + space, area.height + space)){
+            obj.x = utils.mod(obj.x + space, area.width + space * 2) - space;
+            obj.y = utils.mod(obj.y + space, area.height + space * 2) - space;
+        }
+    };
+    // get a collection of overlaying active objects from a pool, that overlap with the gievn object
+    api.getOverlaping = function(obj, pool){
+        var i = 0,
+        obj2,
+        overlap = [];
+        len = pool.objects.length;
+        if(obj.active){
+            while(i < len){
+                obj2 = pool.objects[i];
+                if(obj != obj2 && obj2.active){
+                    if(utils.boundingBox(obj.x, obj.y, obj.w, obj.h, obj2.x, obj2.y, obj2.w, obj2.h)){
+                         overlap.push(obj2);
+                    }
+                }
+                i += 1;
+            }
+        }
+        return overlap;
+    };
+    // get a current active count for a pool
+    api.getActiveCount = function(pool){
+        return pool.objects.reduce(function(acc, obj){
+            return obj.active ? acc += 1: acc;
+        }, 0);
+    };
+    // get active objects from a pool
+    api.getActiveObjects = function(pool){
+        return pool.objects.reduce(function(acc, obj){
+            if(obj.active){
+                acc.push(obj);
+            }
+            return acc;
+        }, []);
+    };
+    // get distance to object method
+    api.getDistanceToObj = function(obj1, obj2){
+        var x1 = obj2.x + obj2.w / 2,
+        y1 = obj2.y + obj2.h / 2,
+        x2 = obj1.x + obj1.w / 2,
+        y2 = obj1.y + obj1.h / 2;
+        return utils.distance(x1, y1, x2, y2);
+    };
+
+    // return public method
+    return api;
+}
+    ());
+
+
+/********* **********
+GAME
+********** *********/
+var gameMod = (function () {
+ 
+    var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'];
+ 
+/*  HELPERS */
+ 
+    var changeMode = function(unit, modeKey, pool, game){
+        var uDat = unit.data;
+        // old mode object
+        //var oldModeObj = UNIT_MODES[uDat.mode];
+        // update mode key of unit and get new modeObj
+        uDat.mode = modeKey;
+        var modeObj = UNIT_MODES[uDat.mode];
+        uDat.modeTime = 0;
+        uDat.lastRoll = 0;
+        // call init hook of new mode obj
+        modeObj.init.call(unit, unit, pool, game);
+    };
+    // random unit color helper
+    var randomColor = function(){
+        return UNIT_COLORS[ Math.floor(UNIT_COLORS.length * Math.random()) ];
+    };
+    // random heading helper
+    var randomHeading = function(){
+       return Math.PI * 2 * Math.random();
+    };
+    // random ppx helper
+    var randomPPS = function(){
+       return 16 + Math.round(32 * Math.random());
+    };
+    var randomSize = function(){
+        return Math.round(64 + 128 * Math.random());
+    };
+ 
+/*  UNITS MODES AND OPTIONS */
+ 
+    // unit modes
+    var UNIT_MODES = {};
+ 
+    // in rebirth mode the unit will translation from one set of values to another
+    UNIT_MODES.rebirth = {
+        init: function(unit, pool, game){
+            unit.data.oldSize = unit.data.size;
+            unit.data.newSize = randomSize();
+            unit.data.sizeDelta = -100; // size delta
+            unit.data.cx = unit.x + unit.w / 2;
+            unit.data.cy = unit.y + unit.h / 2;
+            // set frame to zero in order to keep a bug #0 from happening
+            // This is something I might want to look into more at some point maybe
+            var points = unit.data.points;
+            points.frame = 0;
+        },
+        update: function(unit, pool, game, secs){
+            var uDat = unit.data;
+            uDat.size += uDat.sizeDelta * secs;
+            var size = uDat.size = uDat.size < 0 ? 0 : uDat.size;
+            // update disp object w and h to size
+            unit.w = size;
+            unit.h = size;
+			unit.x = uDat.cx - size / 2;
+			unit.y = uDat.cy - size / 2;
+            if(uDat.size === 0){
+                uDat.sizeDelta = 100;
+                // new heading and speed
+                unit.heading = randomHeading();
+                unit.pps = randomPPS();
+                unit.data.fillStyle = randomColor();
+                unit.data.pointsOpt = {
+                    fill: randomColor()
+                };
+                // new points
+                unit.data.points = starMod.unsteady({
+                    pointCount: 5 + Math.round(5 * Math.random()),
+                    radius : size / 2,
+                    radiusInner: size / 4,
+                    radianAjust: unit.heading,
+                    nprMin: 2,
+                    nprMax: 6
+                });
+            }
+            if(uDat.sizeDelta > 0){
+                size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
+            }
+            unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
+            if(size === uDat.newSize && uDat.sizeDelta > 0){
+                changeMode(unit, 'move', pool, game);
+            }
+        }
+    };
+    // a simple move mode where the unit will just move by current PPS and heading values
+    UNIT_MODES.move = {
+        init: function(unit, pool, game){
+        },
+        update: function(unit, pool, game, secs){
+            // move and wrap
+            poolMod.moveByPPS(unit, secs);
+            poolMod.wrap(unit, game.sm.canvas, unit.w);
+            // update only in move mode
+            starMod.unsteady.update(unit.data.points, secs);
+        }
+    };
+    // the unit pool options object
+    var UNIT_OPTIONS = {
+        count: 20,
+        disableLifespan: true
+    };
+    // spawn a unit
+    UNIT_OPTIONS.spawn = function (unit, pool, game, spawnOpt) {
+        spawnOpt = spawnOpt || {};
+        var canvas = game.sm.canvas;
+        // mode of the unit
+        unit.data.mode = spawnOpt.mode || 'move';
+        unit.data.modeTime = 0; // the total amount of time the unit has been in the current mode
+        unit.data.lastRoll = 0; // the amount of time sense the last roll (used for mode switching)
+        // colors
+        unit.data.fillStyle = randomColor();
+        unit.data.pointsOpt = {
+            fill: randomColor()
+        };
+        // alpha
+        unit.data.alpha = 0.5;
+        // size
+        var size = unit.data.size = randomSize();
+        unit.w = size;
+        unit.h = size;
+        // start position
+        unit.x = Math.floor( canvas.width * Math.random());
+        unit.y = Math.floor( canvas.height * Math.random());
+        // heading
+        unit.heading = randomHeading();
+        // speed
+        unit.pps = randomPPS();
+        // start points for the unit
+        unit.data.points = starMod.unsteady({
+            pointCount: 5 + Math.round(5 * Math.random()),
+            radius : size / 2,
+            radiusInner: size / 4,
+            radianAjust: unit.heading,
+            nprMin: 2,
+            nprMax: 6
+        });
+        // chance mode
+        changeMode(unit, unit.data.mode, pool, game);
+    };
+    // update a unit
+    UNIT_OPTIONS.update = function (unit, pool, game, secs) {
+        var uDat = unit.data;
+		/*
+        modeKey = uDat.mode,
+        modeObj = UNIT_MODES[modeKey];
+		*/
+        // update mode time and last roll
+        uDat.modeTime += secs;
+        uDat.lastRoll += secs;
+        // crude yet effective mode switching
+        if(uDat.modeTime >= 3 & uDat.lastRoll >= 2){
+            var roll = Math.random();
+            if(roll > 0.5){
+                //uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
+                if(uDat.mode === 'move'){
+                    changeMode(unit, 'rebirth', pool, game);
+                }
+            }
+            uDat.lastRoll = 0;
+        }
+		var modeKey = uDat.mode,
+        modeObj = UNIT_MODES[modeKey];
+		
+        // call update method for star mod
+        //starMod.unsteady.update(unit.data.points, secs);
+        // call the current mode update method
+        modeObj.update(unit, pool, game, secs);
+        // wrap and unit that goes out of the canvas in any mode
+        //poolMod.wrap(unit, game.sm.canvas, unit.w);
+    };
+    // purge a unit
+    UNIT_OPTIONS.purge = function (obj, pool, game) {};
+    // what to do after all the objects have been updated
+    UNIT_OPTIONS.afterUpdate = function(pool, secs, game){};
+ 
+/*  PUBLIC API */
+ 
+    // the public api
+    var api = {};
+
+    // public create method
+    api.create = function (opt) {
+        opt = opt || {};
+        var game = {
+            sm: opt.sm || {},
+            units: poolMod.create(UNIT_OPTIONS)
+        };
+        // spawn all for starters
+        poolMod.spawnAll(game.units, game, {});
+        return game;
+    };
+    // public update method
+    api.update = function (game, secs) {
+        // update units
+        poolMod.update(game.units, secs, sm.game);
+    };
+    // return the public API
+    return api;
+}
+    ());
+
+
+var draw = (function(){
+    // HELPERS
+    var createBackground = function(ctx, canvas, opt){
+        // options
+        opt = opt || {};
+        opt.angle = opt.angle === undefined ? Math.PI * 0.25: opt.angle;
+        opt.radius = opt.radius === undefined ? 150 : opt.radius;
+        // create locals
+        var cx = canvas.width / 2,
+        cy = canvas.height / 2,
+        dx = Math.cos(opt.angle) * opt.radius,
+        dy = Math.sin(opt.angle) * opt.radius,
+        sx = cx - dx,
+        sy = cy - dy,
+        ex = cx + dx,
+        ey = cy + dy;
+        // create gradient
+        var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
+        // Add color stops
+        gradient.addColorStop(0, 'red');
+        gradient.addColorStop(1, 'blue');
+        // return gradiant
+        return gradient;
+    };
+    // draw direction helper
+    var strokeDirHelper = function(ctx, obj, dir, radiusBegin, radiusEnd){
+        radiusBegin = radiusBegin === undefined ? obj.r2 : radiusBegin;
+        radiusEnd = radiusEnd === undefined ? obj.r1 : radiusEnd;
+        ctx.beginPath();
+        ctx.moveTo(
+            obj.x + Math.cos(dir) * radiusBegin, 
+            obj.y + Math.sin(dir) * radiusBegin);
+        ctx.lineTo(
+            obj.x + Math.cos(dir) * radiusEnd,
+            obj.y + Math.sin(dir) * radiusEnd);
+        ctx.stroke();
+    };
+    // draw star info
+    var drawStarInfo = function(ctx, obj){
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.font = '10px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.fillText('pos: ' + Math.floor(obj.x) + ', ' + Math.floor(obj.y), obj.x + 10, obj.y + 10);
+        ctx.fillText('pps: ' + Math.floor(obj.pps), obj.x + 10, obj.y + 20);
+        ctx.fillText('heading: ' + utils.radianToDegree(obj.heading), obj.x + 10, obj.y + 30);
+        ctx.fillText('facing: ' + utils.radianToDegree(obj.facing), obj.x + 10, obj.y + 40);
+    };
+
+    var drawPoints = function(obj, ctx, canvas){
+        var points = obj.data.points || null,
+        cx = obj.x + obj.w / 2,
+        cy = obj.y + obj.h / 2;
+        if(points){
+            api.points(ctx, points, cx, cy, obj.data.pointsOpt);
+        }
+    };
+
+    // PUBLIC API METHODS
+    var api = {};
+    // draw the background
+    api.background = function (sm, ctx, canvas) {
+        var bg = createBackground(ctx, canvas, sm.background);
+        ctx.fillStyle = bg;
+        ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+    };
+    // draw the pool
+    api.pool = function (game, ctx, canvas) {
+        var pool = game.units;
+        ctx.lineWidth = 3;	
+        pool.objects.forEach(function (obj) {
+            ctx.fillStyle = obj.data.fillStyle || 'white';
+            ctx.strokeStyle = obj.data.strokeStyle || 'black';
+            ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
+            // if the object is active
+            if (obj.active) {
+                // draw base area
+                var cx = obj.x + obj.w / 2,
+                cy = obj.y + obj.h / 2;
+                ctx.beginPath();
+                ctx.arc(cx, cy, (obj.w + obj.h) / 2 / 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+                // draw any points
+                drawPoints(obj, ctx, canvas);
+            }
+        });
+        ctx.globalAlpha = 1;
+    };
+    // new draw points
+    api.points = function (ctx, points, cx, cy, opt) {
+        opt = opt || {};
+        ctx.save();
+        ctx.translate(cx, cy);
+        points.forEach(function (pointArray) {
+            var len = pointArray.length,
+            close = opt.close === undefined ? true : opt.close,
+            fill = opt.fill === undefined ? 'black' : opt.fill,
+            stroke = opt.stroke === undefined ? 'white' : opt.stroke,
+            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
+            el,
+            i = 2;
+            ctx.beginPath();
+            ctx.moveTo(pointArray[0], pointArray[1]);
+            while (i < len) {
+                el = pointArray[i];
+                if (typeof el === 'number') {
+                    ctx.lineTo(el, pointArray[i + 1]);
+                    i += 2;
+                } else {
+                    var parts = el.split(':');
+                    if (parts[0] === 'close') {
+                        close = parts[1] === 'true' ? true : false;
+                    }
+                    if (parts[0] === 'stroke') {
+                        stroke = parts[1] || false;
+                    }
+                    if (parts[0] === 'fill') {
+                        fill = parts[1] || false;
+                    }
+                    if (parts[0] === 'lineWidth') {
+                        lineWidth = parts[1] || 1;
+                    }
+                    i += 1;
+                }
+            }
+            ctx.lineWidth = lineWidth;
+            if (close) {
+                ctx.closePath();
+            }
+            if (fill) {
+                ctx.fillStyle = fill;
+                ctx.fill();
+            }
+            if (stroke) {
+                ctx.strokeStyle = stroke;
+                ctx.stroke();
+            }
+        });
+        ctx.restore();
+    };
+    // draw version number
+    api.info = function (sm, ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '12px arial';
+        var dInfo = sm.game.debugInfo;
+        if(dInfo){
+            ctx.fillText( dInfo.key + ' : ' + dInfo.value, 10, 10);
+        }
+    };
+    // draw version number
+    api.ver = function (sm, ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '12px arial';
+        ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
+    };
+    // return public api
+    return api;
+}());
+
+
+/********* **********
+MAIN
+********** *********/
+// state object
+var canvasObj = utils.createCanvas({
+        width: 640,
+        height: 480
+    });
+// main sm object
+var sm = {
+    ver: 'r3',
+    lt: new Date(),
+    fps: 30,
+    game: null,
+    ctx: canvasObj.ctx,
+    canvas: canvasObj.canvas,
+    background: {
+       angle: 0,
+       degreesPerSec: -5,
+       radius: 400
+    }
+};
+// set up game object
+sm.game = gameMod.create({
+        sm: sm
+    });
+// basic app loop
+var loop = function () {
+    var now = new Date(),
+    secs = (now - sm.lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs >= 1 / sm.fps) {
+        gameMod.update(sm.game, secs);
+        draw.background(sm, sm.ctx, sm.canvas);
+        draw.pool(sm.game, sm.ctx);
+        draw.info(sm, sm.ctx, sm.canvas);
+        draw.ver(sm, sm.ctx, sm.canvas);
+        sm.lt = now;
+        // rotation of background
+        //var bg = sm.background; 
+        //bg.angle += Math.PI / 180 * bg.degreesPerSec * secs;
+        //bg.angle = utils.mod(bg.angle, Math.PI * 2);
+    }
+};
+loop();
+
+
+}());
+
+</script>
+
+    </body>
+</html>

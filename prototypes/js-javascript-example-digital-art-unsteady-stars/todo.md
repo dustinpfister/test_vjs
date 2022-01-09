@@ -14,13 +14,13 @@
 ### () - r4 - move2 mode with heading change, and variable speed
 * (done) new utils method that will help to get the shortest direction to targetHeading
 * (done) new utils method to get angular distance from oldHeading to targetHeading
-* start a new mode that is like move mode but will also change heading over time
-* I will want a targetHeading value for the unit data object that will be the new target heading to go to
-* I will want a oldHeading value that will store the current unit.heading value at the moment that a heading change starts
-* There will then need to be a radiansPerSec value that will be the rate at which the unit.heading value will change to targetHeading
+* (done) start a new mode that is like move mode but will also change heading over time
+* (done) I will want a targetHeading value for the unit data object that will be the new target heading to go to
+* (done) I will want a oldHeading value that will store the current unit.heading value at the moment that a heading change starts
+* (done) There will then need to be a radiansPerSec value that will be the rate at which the unit.heading value will change to targetHeading
 
-* variable speed
-
+* variable speed with move2 with uDat.targetPPS
+* figure out a way to handle switching with move, move2, and rebirth modes
 * see about fixing bug #1 as the size chnage should not happen
 
 ### ( done 01/09/2022 ) - r3 - rebirth mode

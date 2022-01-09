@@ -42,6 +42,9 @@ var gameMod = (function () {
         var canvas = game.sm.canvas;
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'move';
+        unit.data.modeTime = 0; // the total amount of time the unit has been in the current mode
+        unit.data.lastRoll = 0; // the amount of time sense the last roll (used for mode switching)
+        unit.data
         // colors
         unit.data.fillStyle = randomColor();
         unit.data.pointsOpt = {
@@ -72,8 +75,21 @@ var gameMod = (function () {
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
-        var modeKey = unit.data.mode,
+        var uDat = unit.data,
+        modeKey = uDat.mode,
         modeObj = UNIT_MODES[modeKey];
+        // update mode time and last roll
+        uDat.modeTime += secs;
+        uDat.lastRoll += secs;
+        // crude yet effective mode switching
+        if(uDat.modeTime >= 3 & uDat.lastRoll >= 2){
+            var roll = Math.random();
+            if(roll > 0.5){
+                uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
+                uDat.modeTime = 0;
+            }
+            uDat.lastRoll = 0;
+        }
         // call update method for star mod
         starMod.unsteady.update(unit.data.points, secs);
         // call the current mode update method

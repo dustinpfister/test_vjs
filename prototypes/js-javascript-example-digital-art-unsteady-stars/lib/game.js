@@ -98,7 +98,8 @@ var gameMod = (function () {
             nprMax: 6
         });
         // call init for current mode
-        UNIT_MODES[unit.data.mode].init.call(unit, unit, pool, game);
+        //UNIT_MODES[unit.data.mode].init.call(unit, unit, pool, game);
+		changeMode(unit, unit.data.mode, pool, game);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
@@ -113,8 +114,9 @@ var gameMod = (function () {
             var roll = Math.random();
             if(roll > 0.5){
                 uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
-                modeObj.init.call(unit, unit, pool, game);
-                uDat.modeTime = 0;
+                //modeObj.init.call(unit, unit, pool, game);
+                //uDat.modeTime = 0;
+                changeMode(unit, unit.data.mode, pool, game);
             }
             uDat.lastRoll = 0;
         }

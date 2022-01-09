@@ -13,7 +13,7 @@ As of this writing the MVP for this idea is done for what it is worth at revisio
 
 ### r0 - Start with source code from various other projects
 
-With revision 0 I started out with the source code from revision 5 of my [reduce pool digital art example](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-digital-art-reduce-pool) as such I also started out with a number of core features right off the bat then including a basic object pool library.
+With revision 0 I started out with the source code from revision 5 of my [reduce pool digital art example](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-digital-art-reduce-pool) as such I also started out with a number of core features right off the bat then including a basic object pool library. I also took the star.js module that I worked out for my canvas examples series project on drawing stars, while I was at it I also added a draw points method that I worked out for that project to the draw.js lib for this example.
 
 ## Additional Features ( r3 - r4 )
 

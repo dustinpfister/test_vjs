@@ -5,6 +5,17 @@ var gameMod = (function () {
 
 /*  HELPERS */
 
+    var changeMode = function(unit, modeKey, pool, game){
+        var uDat = unit.data;
+        // old mode object
+        var oldModeObj = UNIT_MODES[uDat.mode];
+        // update mode key of unit and get new modeObj
+        uDat.mode = modeKey;
+        var modeObj = UNIT_MODES[uDat.mode];
+        // call init hook of new mode obj
+        modeObj.init.call(unit, unit, pool, game);
+    };
+
     var randomColor = function(){
         return UNIT_COLORS[ Math.floor(UNIT_COLORS.length * Math.random()) ];
     };

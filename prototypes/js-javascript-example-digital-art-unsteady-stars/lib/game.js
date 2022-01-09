@@ -26,7 +26,7 @@ var gameMod = (function () {
     };
     // random ppx helper
     var randomPPS = function(){
-       return 16 + Math.round(32 * Math.random());
+       return 32 + Math.round(64 * Math.random());
     };
     var randomSize = function(){
         return Math.round(64 + 128 * Math.random());
@@ -96,24 +96,20 @@ var gameMod = (function () {
             uDat.targetHeading = randomHeading();
             uDat.targetDir = utils.shortestAngleDirection(unit.heading, uDat.targetHeading);
             uDat.targetDist = utils.angleDistance(unit.heading, uDat.targetHeading, Math.PI * 2);
-            uDat.radiansPerSec = Math.PI / 180 * 45;
+            uDat.radiansPerSec = Math.PI / 180 * (10 + 80 * Math.random());
             uDat.headingSecs = 0;
         },
         update: function(unit, pool, game, secs){
             var uDat = unit.data;
-            //unit.heading += Math.PI / 180 * 45 * secs;
 
-uDat.headingSecs += secs;
-
-var totalSecs = uDat.targetDist / uDat.radiansPerSec;
-var per = uDat.headingSecs / totalSecs;
-per = per > 1 ? 1 : per;
-unit.heading = uDat.oldHeading + uDat.targetDist * uDat.targetDir * per;
-
-if(per === 1){
+            uDat.headingSecs += secs;
+            var totalSecs = uDat.targetDist / uDat.radiansPerSec;
+            var per = uDat.headingSecs / totalSecs;
+            per = per > 1 ? 1 : per;
+            unit.heading = uDat.oldHeading + uDat.targetDist * uDat.targetDir * per;
+            if(per === 1){
                 changeMode(unit, 'move2', pool, game);
-}
-
+            }
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);

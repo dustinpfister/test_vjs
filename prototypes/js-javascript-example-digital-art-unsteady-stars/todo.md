@@ -16,11 +16,14 @@
 * (done) randomPPS helper
 * (done) start an init method for unit mode objects that will be called each time the mode changes
 * (done) have a changeMode helper that will be used to change mode, rather than just setting the string value
+* (done) in rebirth mode the size of a unit will go down from the current size down to zero
+* (done) once at zero the unit will have all new values for the star, as well as heading, speed, ect
+* (done) once all values are set the size will then go back up from zero to the new full size
+* (done) once the new size is set the mode with switch to move mode
 
-* in rebirth mode the size of a unit will go down from the current size down to zero
-* once at zero the unit will have all new values for the star, as well as heading, speed, ect
-* once all values are set the size will then go back up from zero to the new full size
-* once the new size is set the mode with switch to move mode
+* () make it so that the size of points will update for the old points as the unit size goes down to zero
+* () make it so that the size of points will update and unit size goes back up
+* () see about adjusting so that the unit size goes down to the center rather than the upper left corner
 
 <!-- General Idea or MVP of Project done -->
 

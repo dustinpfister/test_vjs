@@ -12,6 +12,8 @@ var gameMod = (function () {
         // update mode key of unit and get new modeObj
         uDat.mode = modeKey;
         var modeObj = UNIT_MODES[uDat.mode];
+        uDat.modeTime = 0;
+        uDat.lastRoll = 0;
         // call init hook of new mode obj
         modeObj.init.call(unit, unit, pool, game);
     };

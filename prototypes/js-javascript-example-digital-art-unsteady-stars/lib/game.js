@@ -1,14 +1,13 @@
-
 var gameMod = (function () {
-
+ 
     var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'];
-
+ 
 /*  HELPERS */
-
+ 
     var changeMode = function(unit, modeKey, pool, game){
         var uDat = unit.data;
         // old mode object
-        var oldModeObj = UNIT_MODES[uDat.mode];
+        //var oldModeObj = UNIT_MODES[uDat.mode];
         // update mode key of unit and get new modeObj
         uDat.mode = modeKey;
         var modeObj = UNIT_MODES[uDat.mode];
@@ -17,25 +16,24 @@ var gameMod = (function () {
         // call init hook of new mode obj
         modeObj.init.call(unit, unit, pool, game);
     };
-
+    // random unit color helper
     var randomColor = function(){
         return UNIT_COLORS[ Math.floor(UNIT_COLORS.length * Math.random()) ];
     };
-
     // random heading helper
     var randomHeading = function(){
        return Math.PI * 2 * Math.random();
     };
-
+    // random ppx helper
     var randomPPS = function(){
        return 16 + Math.round(32 * Math.random());
     };
-
+ 
 /*  UNITS MODES AND OPTIONS */
-
+ 
     // unit modes
     var UNIT_MODES = {};
-
+ 
     // in rebirth mode the unit will translation from one set of values to another
     UNIT_MODES.rebirth = {
         init: function(unit, pool, game){
@@ -99,9 +97,8 @@ var gameMod = (function () {
             nprMin: 2,
             nprMax: 6
         });
-        // call init for current mode
-        //UNIT_MODES[unit.data.mode].init.call(unit, unit, pool, game);
-		changeMode(unit, unit.data.mode, pool, game);
+        // chance mode
+        changeMode(unit, unit.data.mode, pool, game);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
@@ -116,8 +113,6 @@ var gameMod = (function () {
             var roll = Math.random();
             if(roll > 0.5){
                 uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
-                //modeObj.init.call(unit, unit, pool, game);
-                //uDat.modeTime = 0;
                 changeMode(unit, unit.data.mode, pool, game);
             }
             uDat.lastRoll = 0;
@@ -126,7 +121,6 @@ var gameMod = (function () {
         starMod.unsteady.update(unit.data.points, secs);
         // call the current mode update method
         modeObj.update(unit, pool, game, secs);
-
         // wrap and unit that goes out of the canvas in any mode
         poolMod.wrap(unit, game.sm.canvas, unit.w);
     };

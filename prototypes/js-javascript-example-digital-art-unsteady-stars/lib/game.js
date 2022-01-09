@@ -56,7 +56,8 @@ var gameMod = (function () {
                 // new heading and speed
                 unit.heading = randomHeading();
                 unit.pps = randomPPS();
-				unit.data.points = starMod.unsteady({
+                // new points
+               unit.data.points = starMod.unsteady({
                         pointCount: 5 + Math.round(5 * Math.random()),
                         radius : size / 2,
                         radiusInner: size / 4,
@@ -64,24 +65,14 @@ var gameMod = (function () {
                         nprMin: 2,
                         nprMax: 6
                     });
-			}
-			if(uDat.sizeDelta > 0){
-				size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
-				if(size === uDat.newSize){
-					/*
-                    unit.data.points = starMod.unsteady({
-                        pointCount: 5 + Math.round(5 * Math.random()),
-                        radius : size / 2,
-                        radiusInner: size / 4,
-                        radianAjust: unit.heading,
-                        nprMin: 2,
-                        nprMax: 6
-                    });
-					*/
+            }
+            if(uDat.sizeDelta > 0){
+                size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
+                if(size === uDat.newSize){
                     changeMode(unit, 'move', pool, game);
-				}
-			}
-			unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
+                }
+            }
+            unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
         }
     };
     // a simple move mode where the unit will just move by current PPS and heading values
@@ -149,9 +140,9 @@ var gameMod = (function () {
             var roll = Math.random();
             if(roll > 0.5){
                 //uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
-				if(uDat.mode === 'move'){
+                if(uDat.mode === 'move'){
                     changeMode(unit, 'rebirth', pool, game);
-				}
+                }
             }
             uDat.lastRoll = 0;
         }

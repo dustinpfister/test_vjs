@@ -66,7 +66,7 @@ var starMod = (function () {
         }
         return points;
     };
-    // new random positons
+    // new random positions
     var getNewPositions = function(uStar){
         // deltas for each point
         var newPos = [[]];
@@ -91,8 +91,13 @@ var starMod = (function () {
         // new point radius min and max
         uStar.nprMin = opt.nprMin === undefined ? 1 : opt.nprMin;
         uStar.nprMax = opt.nprMax === undefined ? 5 : opt.nprMax;
-        // home positons that will be used to fine new postions
-        uStar.homePoints = api.create1(opt);
+        // star create1 options
+        uStar.pointCount = opt.pointCount === undefined ? 5 : opt.pointCount;
+        uStar.radius = opt.radius === undefined ? 50 : opt.radius;
+        uStar.radiusInner = opt.radiusInner === undefined ? 25 : opt.radiusInner;
+        uStar.radianAjust = opt.radianAjust === undefined ? 0 : opt.radianAjust;
+        // home positions that will be used to fine new positions
+        uStar.homePoints = api.create1(uStar);
         // old positions start out at home positions for now
         uStar.oldPositions = uStar.homePoints;
         // get first set of new positions
@@ -110,7 +115,7 @@ var starMod = (function () {
     api.unsteady.create = api.upsteady;
     // update an unsteady star created with starMod.unsteady.create
     api.unsteady.update = function(uStar, secs){
-        // steap frame
+        // step frame
         uStar.frame += uStar.fps * secs;
         uStar.frame = uStar.frame > uStar.maxFrame ? uStar.maxFrame : uStar.frame;
         var perDone = uStar.frame / uStar.maxFrame; 
@@ -118,12 +123,12 @@ var starMod = (function () {
         var newPos = utils.chunk(uStar.newPositions[0], 2);
         utils.chunk(uStar.oldPositions[0], 2).forEach(function(pos, i){
             var vIndex = i,
-            // start and end positons
+            // start and end positions
             sx = pos[0],
             sy = pos[1],
             ex = newPos[i][0],
             ey = newPos[i][1],
-            // angle and distance from old posiiton and new position
+            // angle and distance from old position and new position
             a = Math.atan2(ey - sy, ex - sx),
             d = utils.distance(sx, sy, ex, ey),
             // delta x and delta y based off of angle and distance
@@ -138,14 +143,13 @@ var starMod = (function () {
             uStar[0][vIndex * 2 + 1] = y;
         });
         // if frame === maxFrame then set frame back to 0, set old position
-        // as current new position, and then get a new posiiton
+        // as current new position, and then get a new position
         if(uStar.frame === uStar.maxFrame){
             uStar.frame = 0;
             uStar.oldPositions = uStar.newPositions;
             uStar.newPositions = getNewPositions(uStar);
         }
     };
-
     // return the public api
     return api;
 }

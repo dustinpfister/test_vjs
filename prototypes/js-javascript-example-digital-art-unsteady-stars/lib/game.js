@@ -45,18 +45,17 @@ var gameMod = (function () {
             unit.data.sizeDelta = -100; // size delta
         },
         update: function(unit, pool, game, secs){
-			var uDat = unit.data;
-			uDat.size += uDat.sizeDelta * secs;
-			var size = uDat.size = uDat.size < 0 ? 0 : uDat.size;
-			// update disp object w and h to size
+            var uDat = unit.data;
+            uDat.size += uDat.sizeDelta * secs;
+            var size = uDat.size = uDat.size < 0 ? 0 : uDat.size;
+            // update disp object w and h to size
             unit.w = size;
             unit.h = size;
-			if(uDat.size === 0){
-				uDat.sizeDelta = 100;
+            if(uDat.size === 0){
+                uDat.sizeDelta = 100;
                 // new heading and speed
                 unit.heading = randomHeading();
                 unit.pps = randomPPS();
-				
 				unit.data.points = starMod.unsteady({
                         pointCount: 5 + Math.round(5 * Math.random()),
                         radius : size / 2,
@@ -65,12 +64,10 @@ var gameMod = (function () {
                         nprMin: 2,
                         nprMax: 6
                     });
-				
 			}
 			if(uDat.sizeDelta > 0){
 				size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
 				if(size === uDat.newSize){
-					
                     unit.data.points = starMod.unsteady({
                         pointCount: 5 + Math.round(5 * Math.random()),
                         radius : size / 2,
@@ -79,7 +76,6 @@ var gameMod = (function () {
                         nprMin: 2,
                         nprMax: 6
                     });
-					
                     changeMode(unit, 'move', pool, game);
 				}
 			}

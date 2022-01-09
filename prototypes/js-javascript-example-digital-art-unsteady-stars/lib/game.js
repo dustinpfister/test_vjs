@@ -24,6 +24,9 @@ var gameMod = (function () {
 
     // in rebirth mode the unit will translation from one set of values to another
     UNIT_MODES.rebirth = {
+        init: function(unit, pool, game){
+            console.log('init for rebirth mode ');
+        },
         update: function(unit, pool, game, secs){
             // heading
             unit.heading = randomHeading();
@@ -33,6 +36,9 @@ var gameMod = (function () {
     };
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
+        init: function(unit, pool, game){
+            console.log('init for move mode ');
+        },
         update: function(unit, pool, game, secs){
             // move by pps
             poolMod.moveByPPS(unit, secs);
@@ -79,6 +85,8 @@ var gameMod = (function () {
             nprMin: 2,
             nprMax: 6
         });
+        // call init for current mode
+        UNIT_MODES[unit.data.mode].init.call(unit, unit, pool, game);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
@@ -93,6 +101,7 @@ var gameMod = (function () {
             var roll = Math.random();
             if(roll > 0.5){
                 uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
+                modeObj.init.call(unit, unit, pool, game);
                 uDat.modeTime = 0;
             }
             uDat.lastRoll = 0;

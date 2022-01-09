@@ -13,8 +13,7 @@
 ### () - r3 - rebirth mode
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values
 * (done) in rebirth mode the position will stay the same
-
-* randomPPS helper
+* (done) randomPPS helper
 
 * start an init method for unit mode objects that will be called each time the mode changes
 * have a changeMode helper that will be used to change mode, rather than just setting the string value

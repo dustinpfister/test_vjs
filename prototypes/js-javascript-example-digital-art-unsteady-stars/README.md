@@ -20,11 +20,11 @@ With revision 0 I started out with the source code from revision 5 of my [reduce
 
 ### r1 - expand star.js with 'unsteady stars'
 
-In this revision the goal was to just simply start, but not necessary finish the main feature of this example by expanding on the star.js module that I copied over from an older project.
+In this revision the goal was to just simply start, but not necessary finish the main feature of this example by expanding on the star.js module that I copied over from an older project by starting a unsteady star object. There is a method to create and return a uStar object, as well as a method to update one as well. In addtion to this I also worked out what values I would like to have randomized.
 
 ### r2 - new positions over deltas, random point counts, colors, size + radius
 
-
+This is where I have finished with this example as far as the core idea of what it will be at least. The points of the stars move around the way that I had in mind, and everything seems to be working okay. The next step is to add at least one or two additonal features to help making the digital art porject a little more intertsting, and also I will want to start wotking out some bugs, but at this point the project is all ready pretty much done.
 
 ## Additional Features ( r3 - r4 )
 
@@ -35,6 +35,10 @@ In r3 the first additonal feature that I added was a rebirth mode as a first add
 Other chnages at this point have to do with starting to work out how to go about managing how the various modes will chnage for a unit. For now there are just two, the move and rebirth modes, but looking ahead to the next planed out revision there will be at least one more for this example. So then I added a change mode helper, and also a new init method for a mode object beyond just the update method that such an object had before hand.
 
 At this time I have also address the first of what I am sure of will be a few bugs. This bug \#0 had to do with not reseting the uStar.frame value back to zero when switching modes.
+
+### r4 - move2 mode
+
+At least one more aditional mode might be nice that is a more advamced form of movement that will not just move by a fixed pps and heading, but also change heading and or pps while moving also.
 
 ## Maintenance ( r5+ )
 

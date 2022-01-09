@@ -14,8 +14,7 @@
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values
 * (done) in rebirth mode the position will stay the same
 * (done) randomPPS helper
-
-* start an init method for unit mode objects that will be called each time the mode changes
+* (done) start an init method for unit mode objects that will be called each time the mode changes
 * have a changeMode helper that will be used to change mode, rather than just setting the string value
 
 * in rebirth mode the size of a unit will go down from the current size down to zero

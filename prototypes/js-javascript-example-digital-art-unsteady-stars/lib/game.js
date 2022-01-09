@@ -3,8 +3,7 @@ var gameMod = (function () {
 
     var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'];
 
-    // the public api
-    var api = {};
+/*  HELPERS */
 
     var randomColor = function(){
         return UNIT_COLORS[ Math.floor(UNIT_COLORS.length * Math.random()) ];
@@ -18,6 +17,8 @@ var gameMod = (function () {
     var randomPPS = function(){
        return 16 + Math.round(32 * Math.random());
     };
+
+/*  UNITS MODES AND OPTIONS */
 
     // unit modes
     var UNIT_MODES = {};
@@ -118,6 +119,11 @@ var gameMod = (function () {
     UNIT_OPTIONS.purge = function (obj, pool, game) {};
     // what to do after all the objects have been updated
     UNIT_OPTIONS.afterUpdate = function(pool, secs, game){};
+ 
+/*  PUBLIC API */
+ 
+    // the public api
+    var api = {};
 
     // public create method
     api.create = function (opt) {

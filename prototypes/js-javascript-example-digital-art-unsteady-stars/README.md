@@ -9,6 +9,12 @@ After the Minimum Viable product is done I will then want to maybe add a few mor
 
 ## General Idea or Minimum Viable Product ( r0 - r2 )
 
-## Additonal Features ( r3 - r4 )
+As of this writing the MVP for this idea is done for what it is worth at revision 2. If I set the bar very low at first as to what the core idea is, then it should not be to hard to get to that point and that as the case with this project. The real goal here is to start to think this way with all future projects moving forward, not just this one.
+
+### r0 - Start with source code from various other projects
+
+With revision 0 I started out with the source code from revision 5 of my [reduce pool digital art example](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-digital-art-reduce-pool) as such I also started out with a number of core features right off the bat then including a basic object pool library.
+
+## Additional Features ( r3 - r4 )
 
 ## Maintenance ( r5+ )

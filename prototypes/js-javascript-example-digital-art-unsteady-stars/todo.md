@@ -5,11 +5,11 @@
 <!-- Additional Features -->
 
 ### () - r4 - move2 mode
-* new mode that is like move mode but will also change headin gover time also
+* new mode that is like move mode but will also change heading over time also
 
 ### () - r3 - rebirth mode
 * start a new mode that is a rebith mode that will cause a unit to reset with all new values
-* in rebith mode the position will stay the same
+* in rebirth mode the position will stay the same
 * in rebirth mode the size of a unit will go down from the current size down to zero
 * once at zero the unit will have all new values for the star, as well as heading, speed, ect
 * once all values at set the size will then go back up from zero to the new full size
@@ -17,7 +17,7 @@
 
 <!-- General Idea or MVP of Project done -->
 
-### ( done 01/08/2022 ) - r2 - new postions over deltas, random point counts, colors, size + radius
+### ( done 01/08/2022 ) - r2 - new positions over deltas, random point counts, colors, size + radius
 * (done) go with a system that has to do with getting random points from home points rather than deltas
 * (done) have the number of points be 5 to 10
 * (done) random fill colors for the stars
@@ -27,7 +27,7 @@
 
 ### ( done 01/07/2022 ) - r1 - expand star.js with 'unsteady stars'
 * (done) Add methods to create and return an 'unsteady stars' object
-* (done) The methods can still return a object that will work with draw.points buy with addital data attached by way of named keys
+* (done) The methods can still return a object that will work with draw.points buy with additional data attached by way of named keys
 * (done) Add update method to star.js that can be used mutate one of these 'unsteady stars'
 
 ### ( done 01/06/2022 ) - r0 - Start with source code from various other projects

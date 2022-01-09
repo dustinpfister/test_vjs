@@ -90,10 +90,29 @@ var gameMod = (function () {
     // a more advanced move2 mode where the heading and pps values will change over time
     UNIT_MODES.move2 = {
         init: function(unit, pool, game){
+            var uDat = unit.data;
+
+            uDat.oldHeading = unit.heading;
+            uDat.targetHeading = randomHeading();
+            uDat.targetDir = utils.shortestAngleDirection(unit.heading, uDat.targetHeading);
+            uDat.targetDist = utils.angleDistance(unit.heading, uDat.targetHeading, Math.PI * 2);
+            uDat.radiansPerSec = Math.PI / 180 * 45;
+            uDat.headingSecs = 0;
         },
         update: function(unit, pool, game, secs){
+            var uDat = unit.data;
+            //unit.heading += Math.PI / 180 * 45 * secs;
 
-unit.heading += Math.PI / 180 * 45 * secs;
+uDat.headingSecs += secs;
+
+var totalSecs = uDat.targetDist / uDat.radiansPerSec;
+var per = uDat.headingSecs / totalSecs;
+per = per > 1 ? 1 : per;
+unit.heading = uDat.oldHeading + uDat.targetDist * uDat.targetDir * per;
+
+if(per === 1){
+                changeMode(unit, 'move2', pool, game);
+}
 
             // move and wrap
             poolMod.moveByPPS(unit, secs);

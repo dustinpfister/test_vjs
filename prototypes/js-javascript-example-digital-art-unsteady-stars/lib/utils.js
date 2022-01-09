@@ -69,13 +69,14 @@ utils.normalizeHalf = function (n, scale) {
  
 // the angular distance between two angles
 utils.angleDistance = function (a, b, scale) {
-    var m = scale || angles.PI2,
+    var m = scale || utils.PI2,
     h = m / 2,
     diff = utils.normalizeHalf(a - b);
+
     if (diff > h) {
         diff = diff - m;
     }
-    return utils.mod( Math.abs(diff), scale);
+    return utils.mod( Math.abs(diff), m);
 };
  
 // get the angle from one point to another

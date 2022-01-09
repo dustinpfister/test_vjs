@@ -2,6 +2,9 @@
 
 <!-- Maintenance -->
 
+## Known bugs
+* #0 - ( fixed in r3 ) - Bug where a uStar points would move around all over the place as the size goes down in rebirth mode
+
 ## () - r5 - remove unused code
 * remove any unused create method from star.js such as create2 if it is still not in use at this point
 
@@ -20,10 +23,9 @@
 * (done) once at zero the unit will have all new values for the star, as well as heading, speed, ect
 * (done) once all values are set the size will then go back up from zero to the new full size
 * (done) once the new size is set the mode with switch to move mode
-
 * (done) make it so that the size of points will update for the old points as the unit size goes down to zero
 * (done) make it so that the size of points will update and unit size goes back up
-* (done) fix bug where stars will move around weird as the size goes up and down
+* (done) fix bug #0 where stars will move around weird as the size goes down in rebirth mode
 * () see about adjusting so that the unit size goes down to the center rather than the upper left corner
 
 <!-- General Idea or MVP of Project done -->

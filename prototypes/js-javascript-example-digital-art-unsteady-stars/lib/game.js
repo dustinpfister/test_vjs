@@ -43,16 +43,12 @@ var gameMod = (function () {
             unit.data.oldSize = unit.data.size;
             unit.data.newSize = randomSize();
             unit.data.sizeDelta = -100; // size delta
-			
-			var points = unit.data.points;
-			points.frame = 0;
-			
+            // set frame to zero in order to keep a bug #0 from happening
+            // This is something I might want to look into more at some point maybe
+            var points = unit.data.points;
+            points.frame = 0;
         },
         update: function(unit, pool, game, secs){
-			
-			
-			unit.data.fillStyle = 'black';
-			
             var uDat = unit.data;
             uDat.size += uDat.sizeDelta * secs;
             var size = uDat.size = uDat.size < 0 ? 0 : uDat.size;
@@ -79,7 +75,7 @@ var gameMod = (function () {
                 
             }
             unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
-			if(size === uDat.newSize && uDat.sizeDelta > 0){
+            if(size === uDat.newSize && uDat.sizeDelta > 0){
                 changeMode(unit, 'move', pool, game);
             }
         }
@@ -89,12 +85,11 @@ var gameMod = (function () {
         init: function(unit, pool, game){
         },
         update: function(unit, pool, game, secs){
-			unit.data.fillStyle = 'white';
+            unit.data.fillStyle = 'white';
             // move by pps
             poolMod.moveByPPS(unit, secs);
-			// update only in move mode
+            // update only in move mode
             starMod.unsteady.update(unit.data.points, secs);
-			
         }
     };
     // the unit pool options object

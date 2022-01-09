@@ -2,6 +2,9 @@
 
 <!-- Maintenance -->
 
+## () - r5 - remove unused code
+* remove any unused create method from star.js such as create2 if it is still not in use at this point
+
 <!-- Additional Features -->
 
 ### () - r4 - move2 mode

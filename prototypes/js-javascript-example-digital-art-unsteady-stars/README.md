@@ -30,4 +30,8 @@ In this revision the goal was to just simply start, but not necessary finish the
 
 ## Maintenance ( r5+ )
 
-When it comes to Maintenance of this project I think that there is only so much that I will be willing to do, at least as long as I am the only one that shows interest in this. 
+When it comes to Maintenance of this project I think that there is only so much that I will be willing to do, at least as long as I am the only one that shows interest in this. Still there is making at least a few changes, as well as removing any unused code that is there from other projects that I pull this from that I am not using and things to that effect. The main goal then with this is to just improve the readability of the source code, as well as fix any bugs that might pop up. The only other thing that comes to mind is maybe making just a few simple changes that might need to be made to adjust things if I aim to deploy this in some way, other than that I do not think that much will be added in terms of new features at this point. 
+
+### r5 - remove unused code
+
+

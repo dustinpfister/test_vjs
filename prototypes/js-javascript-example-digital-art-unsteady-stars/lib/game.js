@@ -40,20 +40,32 @@ var gameMod = (function () {
     // in rebirth mode the unit will translation from one set of values to another
     UNIT_MODES.rebirth = {
         init: function(unit, pool, game){
-            console.log('init for rebirth mode ');
-			unit.data.tempSize = unit.w
+            unit.data.oldSize = unit.data.size;
+            unit.data.newSize = randomSize();
+            unit.data.sizeDelta = -100; // size delta
         },
         update: function(unit, pool, game, secs){
-            // heading
-            unit.heading = randomHeading();
-            // speed
-            unit.pps = randomPPS();
+			var uDat = unit.data;
+			uDat.size += uDat.sizeDelta * secs;
+			var size = uDat.size = uDat.size < 0 ? 0 : uDat.size;
+			// update disp object w and h to size
+            unit.w = size;
+            unit.h = size;
+			if(uDat.size === 0){
+				uDat.sizeDelta = 100;
+                // new heading and speed
+                unit.heading = randomHeading();
+                unit.pps = randomPPS();
+			}
+			if(uDat.sizeDelta > 0){
+				uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
+				
+			}
         }
     };
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         init: function(unit, pool, game){
-            console.log('init for move mode ');
         },
         update: function(unit, pool, game, secs){
             // move by pps

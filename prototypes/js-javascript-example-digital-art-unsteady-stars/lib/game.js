@@ -60,15 +60,19 @@ var gameMod = (function () {
                 // new heading and speed
                 unit.heading = randomHeading();
                 unit.pps = randomPPS();
+                unit.data.fillStyle = randomColor();
+                unit.data.pointsOpt = {
+                    fill: randomColor()
+                };
                 // new points
-               unit.data.points = starMod.unsteady({
-                        pointCount: 5 + Math.round(5 * Math.random()),
-                        radius : size / 2,
-                        radiusInner: size / 4,
-                        radianAjust: unit.heading,
-                        nprMin: 2,
-                        nprMax: 6
-                    });
+                unit.data.points = starMod.unsteady({
+                    pointCount: 5 + Math.round(5 * Math.random()),
+                    radius : size / 2,
+                    radiusInner: size / 4,
+                    radianAjust: unit.heading,
+                    nprMin: 2,
+                    nprMax: 6
+                });
             }
             if(uDat.sizeDelta > 0){
                 size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
@@ -85,7 +89,6 @@ var gameMod = (function () {
         init: function(unit, pool, game){
         },
         update: function(unit, pool, game, secs){
-            unit.data.fillStyle = 'white';
             // move by pps
             poolMod.moveByPPS(unit, secs);
             // update only in move mode
@@ -106,7 +109,7 @@ var gameMod = (function () {
         unit.data.modeTime = 0; // the total amount of time the unit has been in the current mode
         unit.data.lastRoll = 0; // the amount of time sense the last roll (used for mode switching)
         // colors
-        unit.data.fillStyle = 'lime'; //randomColor();
+        unit.data.fillStyle = randomColor();
         unit.data.pointsOpt = {
             fill: randomColor()
         };

@@ -17,7 +17,14 @@ var gameMod = (function () {
 
     // unit modes
     var UNIT_MODES = {};
-    // move mode
+
+    // in rebirth mode the unit will translation from one set of values to another
+    UNIT_MODES.rebirth = {
+        update: function(obj, pool, game, secs){
+            
+        }
+    };
+    // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         update: function(obj, pool, game, secs){
             // move by pps
@@ -35,13 +42,11 @@ var gameMod = (function () {
         var canvas = game.sm.canvas;
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'move';
-
-
+        // colors
         unit.data.fillStyle = randomColor();
         unit.data.pointsOpt = {
             fill: randomColor()
         };
-
         // alpha
         unit.data.alpha = 0.5;
         // size
@@ -67,10 +72,13 @@ var gameMod = (function () {
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
+        var modeKey = unit.data.mode,
+        modeObj = UNIT_MODES[modeKey];
         // call update method for star mod
         starMod.unsteady.update(unit.data.points, secs);
         // call the current mode update method
-        UNIT_MODES[unit.data.mode].update(unit, pool, game, secs);
+        modeObj.update(unit, pool, game, secs);
+
         // wrap and unit that goes out of the canvas in any mode
         poolMod.wrap(unit, game.sm.canvas, unit.w);
     };

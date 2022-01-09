@@ -11,8 +11,15 @@
 
 <!-- Additional Features -->
 
-### () - r4 - move2 mode
-* new mode that is like move mode but will also change heading over time also
+### () - r4 - move2 mode with heading change, and variable speed
+* new utils method that will help to get the shortest direction to targetHeading
+* new utils method to get angular distance from oldHeading to targetHeading
+* start a new mode that is like move mode but will also change heading over time
+* I will want a targetHeading value for the unit data object that will be the new target heading to go to
+* I will want a oldHeading value that will store the current unit.heading value at the moment that a heading change starts
+* There will then need to be a radiansPerSec value that will be the rate at which the unit.heading value will change to targetHeading
+
+* variable speed
 
 ### ( done 01/09/2022 ) - r3 - rebirth mode
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values

@@ -21,25 +21,6 @@ var sm = {
 sm.game = gameMod.create({
         sm: sm
     });
-
-var newPoints = function(size){
-    size = size || 0;
-    return starMod.unsteady({
-        pointCount: 5 + Math.round(5 * Math.random()),
-        radius : size / 2,
-        radiusInner: size / 4,
-        radianAjust: 0,
-        nprMin: 2,
-        nprMax: 6
-    });
-};
-
-var a = newPoints(32);
-
-console.log( starMod.resizeUnsteady(a, 50, 2, 8) );
-
-
-
 // basic app loop
 var loop = function () {
     var now = new Date(),

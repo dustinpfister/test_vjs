@@ -15,6 +15,10 @@ var gameMod = (function () {
        return Math.PI * 2 * Math.random();
     };
 
+    var randomPPS = function(){
+       return 16 + Math.round(32 * Math.random());
+    };
+
     // unit modes
     var UNIT_MODES = {};
 
@@ -24,7 +28,7 @@ var gameMod = (function () {
             // heading
             unit.heading = randomHeading();
             // speed
-            unit.pps = 16 + Math.round(32 * Math.random());
+            unit.pps = randomPPS();
         }
     };
     // a simple move mode where the unit will just move by current PPS and heading values
@@ -65,7 +69,7 @@ var gameMod = (function () {
         // heading
         unit.heading = randomHeading();
         // speed
-        unit.pps = 16 + Math.round(32 * Math.random());
+        unit.pps = randomPPS();
         // start points for the unit
         unit.data.points = starMod.unsteady({
             pointCount: 5 + Math.round(5 * Math.random()),

@@ -33,7 +33,7 @@ var newPoints = function(size){
         nprMax: 6
     });
 };
-
+/*
 var resizeUnsteady = function(uStar, size){
     size = size || 0;
     var opt = Object.assign({}, uStar, {
@@ -42,10 +42,10 @@ var resizeUnsteady = function(uStar, size){
     });
     return starMod.unsteady(opt);
 };
+*/
+var a = newPoints(32);
 
-var p = newPoints(32);
-
-console.log( resizeUnsteady(p, 50) );
+console.log( starMod.resizeUnsteady(a, 50, 2, 8) );
 
 
 

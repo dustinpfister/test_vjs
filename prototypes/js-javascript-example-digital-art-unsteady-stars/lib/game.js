@@ -20,15 +20,18 @@ var gameMod = (function () {
 
     // in rebirth mode the unit will translation from one set of values to another
     UNIT_MODES.rebirth = {
-        update: function(obj, pool, game, secs){
-            
+        update: function(unit, pool, game, secs){
+            // heading
+            unit.heading = randomHeading();
+            // speed
+            unit.pps = 16 + Math.round(32 * Math.random());
         }
     };
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
-        update: function(obj, pool, game, secs){
+        update: function(unit, pool, game, secs){
             // move by pps
-            poolMod.moveByPPS(obj, secs);
+            poolMod.moveByPPS(unit, secs);
         }
     };
     // the unit pool options object

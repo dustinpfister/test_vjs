@@ -12,8 +12,8 @@
 <!-- Additional Features -->
 
 ### () - r4 - move2 mode with heading change, and variable speed
-* new utils method that will help to get the shortest direction to targetHeading
-* new utils method to get angular distance from oldHeading to targetHeading
+* (done) new utils method that will help to get the shortest direction to targetHeading
+* (done) new utils method to get angular distance from oldHeading to targetHeading
 * start a new mode that is like move mode but will also change heading over time
 * I will want a targetHeading value for the unit data object that will be the new target heading to go to
 * I will want a oldHeading value that will store the current unit.heading value at the moment that a heading change starts

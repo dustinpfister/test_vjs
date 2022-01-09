@@ -56,10 +56,30 @@ var gameMod = (function () {
                 // new heading and speed
                 unit.heading = randomHeading();
                 unit.pps = randomPPS();
+				
+				unit.data.points = starMod.unsteady({
+                        pointCount: 5 + Math.round(5 * Math.random()),
+                        radius : size / 2,
+                        radiusInner: size / 4,
+                        radianAjust: unit.heading,
+                        nprMin: 2,
+                        nprMax: 6
+                    });
+				
 			}
 			if(uDat.sizeDelta > 0){
 				size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
 				if(size === uDat.newSize){
+					
+                    unit.data.points = starMod.unsteady({
+                        pointCount: 5 + Math.round(5 * Math.random()),
+                        radius : size / 2,
+                        radiusInner: size / 4,
+                        radianAjust: unit.heading,
+                        nprMin: 2,
+                        nprMax: 6
+                    });
+					
                     changeMode(unit, 'move', pool, game);
 				}
 			}

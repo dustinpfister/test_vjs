@@ -28,6 +28,9 @@ var gameMod = (function () {
     var randomPPS = function(){
        return 16 + Math.round(32 * Math.random());
     };
+    var randomSize = function(){
+        return Math.round(64 + 128 * Math.random());
+    };
  
 /*  UNITS MODES AND OPTIONS */
  
@@ -38,6 +41,7 @@ var gameMod = (function () {
     UNIT_MODES.rebirth = {
         init: function(unit, pool, game){
             console.log('init for rebirth mode ');
+			unit.data.tempSize = unit.w
         },
         update: function(unit, pool, game, secs){
             // heading
@@ -69,7 +73,6 @@ var gameMod = (function () {
         unit.data.mode = spawnOpt.mode || 'move';
         unit.data.modeTime = 0; // the total amount of time the unit has been in the current mode
         unit.data.lastRoll = 0; // the amount of time sense the last roll (used for mode switching)
-        unit.data
         // colors
         unit.data.fillStyle = randomColor();
         unit.data.pointsOpt = {
@@ -78,7 +81,7 @@ var gameMod = (function () {
         // alpha
         unit.data.alpha = 0.5;
         // size
-        var size = Math.round(64 + 128 * Math.random());
+        var size = unit.data.size = randomSize();
         unit.w = size;
         unit.h = size;
         // start position

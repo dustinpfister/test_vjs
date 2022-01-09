@@ -28,6 +28,14 @@ In this revision the goal was to just simply start, but not necessary finish the
 
 ## Additional Features ( r3 - r4 )
 
+### r3  - rebirth mode
+
+In r3 the first additonal feature that I added was a rebirth mode as a first addtional unit mode beyond just the basic move mode that just moves a unit by the current heading and pps. The birth mode does not move the unit to a new position, but rather cuases a transformation of sorts from the current state of the unit to a new state. This is done by reducing the size of the unit down to zero, at which point values that have to do with the size, color, number of points in the star, heading, speed, ect are changed. At which point the size which is currently at zero is the incressed to a set new size. Once the new size is reached the unit then changed back to move mode.
+
+Other chnages at this point have to do with starting to work out how to go about managing how the various modes will chnage for a unit. For now there are just two, the move and rebirth modes, but looking ahead to the next planed out revision there will be at least one more for this example. So then I added a change mode helper, and also a new init method for a mode object beyond just the update method that such an object had before hand.
+
+At this time I have also address the first of what I am sure of will be a few bugs. This bug \#0 had to do with not reseting the uStar.frame value back to zero when switching modes.
+
 ## Maintenance ( r5+ )
 
 When it comes to Maintenance of this project I think that there is only so much that I will be willing to do, at least as long as I am the only one that shows interest in this. Still there is making at least a few changes, as well as removing any unused code that is there from other projects that I pull this from that I am not using and things to that effect. The main goal then with this is to just improve the readability of the source code, as well as fix any bugs that might pop up. The only other thing that comes to mind is maybe making just a few simple changes that might need to be made to adjust things if I aim to deploy this in some way, other than that I do not think that much will be added in terms of new features at this point. 

@@ -58,8 +58,10 @@ var gameMod = (function () {
                 unit.pps = randomPPS();
 			}
 			if(uDat.sizeDelta > 0){
-				uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
-				
+				size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
+				if(size === uDat.newSize){
+                    changeMode(unit, 'move', pool, game);
+				}
 			}
         }
     };
@@ -127,8 +129,10 @@ var gameMod = (function () {
         if(uDat.modeTime >= 3 & uDat.lastRoll >= 2){
             var roll = Math.random();
             if(roll > 0.5){
-                uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
-                changeMode(unit, unit.data.mode, pool, game);
+                //uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
+				if(uDat.mode === 'move'){
+                    changeMode(unit, 'rebirth', pool, game);
+				}
             }
             uDat.lastRoll = 0;
         }

@@ -23,7 +23,7 @@ sm.game = gameMod.create({
     });
 
 var newPoints = function(size){
-	size = size || 0;
+    size = size || 0;
     return starMod.unsteady({
         pointCount: 5 + Math.round(5 * Math.random()),
         radius : size / 2,
@@ -34,9 +34,18 @@ var newPoints = function(size){
     });
 };
 
+var resizeUnsteady = function(uStar, size){
+    size = size || 0;
+    var opt = Object.assign({}, uStar, {
+        radius: size / 2,
+        radiusInner: size / 4
+    });
+    return starMod.unsteady(opt);
+};
+
 var p = newPoints(32);
 
-console.log(p);
+console.log( resizeUnsteady(p, 50) );
 
 
 

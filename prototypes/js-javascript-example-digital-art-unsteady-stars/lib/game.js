@@ -68,6 +68,7 @@ var gameMod = (function () {
 			if(uDat.sizeDelta > 0){
 				size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
 				if(size === uDat.newSize){
+					/*
                     unit.data.points = starMod.unsteady({
                         pointCount: 5 + Math.round(5 * Math.random()),
                         radius : size / 2,
@@ -76,9 +77,11 @@ var gameMod = (function () {
                         nprMin: 2,
                         nprMax: 6
                     });
+					*/
                     changeMode(unit, 'move', pool, game);
 				}
 			}
+			unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
         }
     };
     // a simple move mode where the unit will just move by current PPS and heading values

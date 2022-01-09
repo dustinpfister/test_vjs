@@ -21,6 +21,8 @@
 
 * variable speed
 
+* see about fixing bug #1 as the size chnage should not happen
+
 ### ( done 01/09/2022 ) - r3 - rebirth mode
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values
 * (done) in rebirth mode the position will stay the same

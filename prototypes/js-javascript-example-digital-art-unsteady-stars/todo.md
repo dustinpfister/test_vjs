@@ -13,7 +13,7 @@
 ### () - r4 - move2 mode
 * new mode that is like move mode but will also change heading over time also
 
-### () - r3 - rebirth mode
+### ( done 01/09/2022 ) - r3 - rebirth mode
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values
 * (done) in rebirth mode the position will stay the same
 * (done) randomPPS helper
@@ -26,7 +26,7 @@
 * (done) make it so that the size of points will update for the old points as the unit size goes down to zero
 * (done) make it so that the size of points will update and unit size goes back up
 * (done) fix bug #0 where stars will move around weird as the size goes down in rebirth mode
-* () see about adjusting so that the unit size goes down to the center rather than the upper left corner
+* (done) see about adjusting so that the unit size goes down to the center rather than the upper left corner
 
 <!-- General Idea or MVP of Project done -->
 

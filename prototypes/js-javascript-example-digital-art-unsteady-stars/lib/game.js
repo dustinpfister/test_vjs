@@ -43,6 +43,8 @@ var gameMod = (function () {
             unit.data.oldSize = unit.data.size;
             unit.data.newSize = randomSize();
             unit.data.sizeDelta = -100; // size delta
+            unit.data.cx = unit.x + unit.w / 2;
+            unit.data.cy = unit.y + unit.h / 2;
             // set frame to zero in order to keep a bug #0 from happening
             // This is something I might want to look into more at some point maybe
             var points = unit.data.points;
@@ -55,6 +57,8 @@ var gameMod = (function () {
             // update disp object w and h to size
             unit.w = size;
             unit.h = size;
+			unit.x = uDat.cx - size / 2;
+			unit.y = uDat.cy - size / 2;
             if(uDat.size === 0){
                 uDat.sizeDelta = 100;
                 // new heading and speed
@@ -76,7 +80,6 @@ var gameMod = (function () {
             }
             if(uDat.sizeDelta > 0){
                 size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
-                
             }
             unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
             if(size === uDat.newSize && uDat.sizeDelta > 0){
@@ -89,8 +92,9 @@ var gameMod = (function () {
         init: function(unit, pool, game){
         },
         update: function(unit, pool, game, secs){
-            // move by pps
+            // move and wrap
             poolMod.moveByPPS(unit, secs);
+            poolMod.wrap(unit, game.sm.canvas, unit.w);
             // update only in move mode
             starMod.unsteady.update(unit.data.points, secs);
         }
@@ -167,7 +171,7 @@ var gameMod = (function () {
         // call the current mode update method
         modeObj.update(unit, pool, game, secs);
         // wrap and unit that goes out of the canvas in any mode
-        poolMod.wrap(unit, game.sm.canvas, unit.w);
+        //poolMod.wrap(unit, game.sm.canvas, unit.w);
     };
     // purge a unit
     UNIT_OPTIONS.purge = function (obj, pool, game) {};

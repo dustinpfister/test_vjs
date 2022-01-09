@@ -21,8 +21,9 @@
 * (done) once all values are set the size will then go back up from zero to the new full size
 * (done) once the new size is set the mode with switch to move mode
 
-* () make it so that the size of points will update for the old points as the unit size goes down to zero
-* () make it so that the size of points will update and unit size goes back up
+* (done) make it so that the size of points will update for the old points as the unit size goes down to zero
+* (done) make it so that the size of points will update and unit size goes back up
+* (done) fix bug where stars will move around weird as the size goes up and down
 * () see about adjusting so that the unit size goes down to the center rather than the upper left corner
 
 <!-- General Idea or MVP of Project done -->

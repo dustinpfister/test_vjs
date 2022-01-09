@@ -43,8 +43,16 @@ var gameMod = (function () {
             unit.data.oldSize = unit.data.size;
             unit.data.newSize = randomSize();
             unit.data.sizeDelta = -100; // size delta
+			
+			var points = unit.data.points;
+			points.frame = 0;
+			
         },
         update: function(unit, pool, game, secs){
+			
+			
+			unit.data.fillStyle = 'black';
+			
             var uDat = unit.data;
             uDat.size += uDat.sizeDelta * secs;
             var size = uDat.size = uDat.size < 0 ? 0 : uDat.size;
@@ -68,11 +76,12 @@ var gameMod = (function () {
             }
             if(uDat.sizeDelta > 0){
                 size = uDat.size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
-                if(size === uDat.newSize){
-                    changeMode(unit, 'move', pool, game);
-                }
+                
             }
             unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
+			if(size === uDat.newSize && uDat.sizeDelta > 0){
+                changeMode(unit, 'move', pool, game);
+            }
         }
     };
     // a simple move mode where the unit will just move by current PPS and heading values
@@ -80,8 +89,12 @@ var gameMod = (function () {
         init: function(unit, pool, game){
         },
         update: function(unit, pool, game, secs){
+			unit.data.fillStyle = 'white';
             // move by pps
             poolMod.moveByPPS(unit, secs);
+			// update only in move mode
+            starMod.unsteady.update(unit.data.points, secs);
+			
         }
     };
     // the unit pool options object
@@ -98,7 +111,7 @@ var gameMod = (function () {
         unit.data.modeTime = 0; // the total amount of time the unit has been in the current mode
         unit.data.lastRoll = 0; // the amount of time sense the last roll (used for mode switching)
         // colors
-        unit.data.fillStyle = randomColor();
+        unit.data.fillStyle = 'lime'; //randomColor();
         unit.data.pointsOpt = {
             fill: randomColor()
         };
@@ -129,9 +142,11 @@ var gameMod = (function () {
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
-        var uDat = unit.data,
+        var uDat = unit.data;
+		/*
         modeKey = uDat.mode,
         modeObj = UNIT_MODES[modeKey];
+		*/
         // update mode time and last roll
         uDat.modeTime += secs;
         uDat.lastRoll += secs;
@@ -146,8 +161,11 @@ var gameMod = (function () {
             }
             uDat.lastRoll = 0;
         }
+		var modeKey = uDat.mode,
+        modeObj = UNIT_MODES[modeKey];
+		
         // call update method for star mod
-        starMod.unsteady.update(unit.data.points, secs);
+        //starMod.unsteady.update(unit.data.points, secs);
         // call the current mode update method
         modeObj.update(unit, pool, game, secs);
         // wrap and unit that goes out of the canvas in any mode

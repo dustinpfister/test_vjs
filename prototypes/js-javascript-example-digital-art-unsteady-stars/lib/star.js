@@ -153,8 +153,8 @@ var starMod = (function () {
     // resize unsteady
     api.resizeUnsteady = function(uStar, size, rDiv, riDiv){
         size = size || 0;
-		rDiv = rDiv === undefined ? 2 : rDiv;
-		riDiv = riDiv === undefined ? r : riDiv;
+        rDiv = rDiv === undefined ? 2 : rDiv;
+        riDiv = riDiv === undefined ? r : riDiv;
         var opt = Object.assign({}, uStar, {
             radius: size / rDiv,
             radiusInner: size / riDiv

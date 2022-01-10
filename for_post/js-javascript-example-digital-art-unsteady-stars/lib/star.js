@@ -21,6 +21,23 @@ var starMod = (function () {
         opt.pointSkip = opt.pointSkip || 2;
         return opt;
     };
+    // new random positions
+    var getNewPositions = function(uStar){
+        // deltas for each point
+        var newPos = [[]];
+        utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
+            var vIndex = 1,
+            radian = Math.PI * 2 * Math.random(),
+            radius = uStar.nprMin + ( uStar.nprMax - uStar.nprMin ) * Math.random(),
+            // new position for each point
+            x = pos[0] + Math.cos(radian) * radius,
+            y = pos[1] + Math.sin(radian) * radius;
+            // set new pos values
+            newPos[0][i * 2] = x;
+            newPos[0][i * 2 + 1] = y;
+        });
+        return newPos;
+    };
 /********* **********
    PUBLIC METHODS
 ********** *********/
@@ -42,48 +59,6 @@ var starMod = (function () {
         }
         return [points];
     };
-    // create a star by point count radius and point skip
-    api.create2 = function (opt) {
-        opt = parseOptions(opt);
-        var i = 0,
-        pt,
-        r,
-        rd = Math.PI * 2 / opt.pointCount * opt.pointSkip,
-        even = opt.pointCount % 2 === 0 ? true: false;
-        var points = [[]];
-        if(even){
-            points = [[],[]];
-        }
-        while (i < opt.pointCount) {
-            pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
-            points[0].push(pt.x, pt.y);
-            if(even){
-                var a = Math.PI * 2 / opt.pointCount
-                pt = getPoint(rd * i + a + opt.radianAjust, opt.radius, opt.ox, opt.oy);
-                points[1].push(pt.x, pt.y);
-            }
-            i += 1;
-        }
-        return points;
-    };
-    // new random positions
-    var getNewPositions = function(uStar){
-        // deltas for each point
-        var newPos = [[]];
-        utils.chunk(uStar.homePoints[0], 2).forEach(function(pos, i){
-            var vIndex = 1,
-            radian = Math.PI * 2 * Math.random(),
-            radius = uStar.nprMin + ( uStar.nprMax - uStar.nprMin ) * Math.random(),
-            // new position for each point
-            x = pos[0] + Math.cos(radian) * radius,
-            y = pos[1] + Math.sin(radian) * radius;
-            // set new pos values
-            newPos[0][i * 2] = x;
-            newPos[0][i * 2 + 1] = y;
-        });
-        return newPos;
-    };
-
     // unsteady star objects
     api.unsteady = function(opt){
         opt = opt || {};

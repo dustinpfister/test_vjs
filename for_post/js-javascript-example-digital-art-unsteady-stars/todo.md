@@ -15,9 +15,7 @@
 * (done) remove strokeDirHelper in draw.js
 * (done) default line width for draw.js
 * (done) defualt stroke and fill styles
-
-
-* anamated background code use it or loose it
+* (done) anamated background code use it or loose it
 * draw.info use it or lose it
 
 <!-- Additional Features -->

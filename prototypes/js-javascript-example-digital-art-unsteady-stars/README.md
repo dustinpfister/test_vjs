@@ -6,7 +6,13 @@ The Minimum Viable Product with this digital art project is to have an object po
 
 ## The Main Goal of this Project is not the Project itself, but a new process of working on projects
 
-The main goal hear was to just start a new habit that I intend to continue with when it comes to additional javaScript examples, as well as canvas examples, and any other projects that I might start at any point in the future. There is thinking in terms of fine grain revisions, and also breaking things down in three phases where each phase is one if not more revisions. 
+The main goal hear was to just start a new habit that I intend to continue with when it comes to additional javaScript examples, as well as canvas examples, and any other projects that I might start at any point in the future. There is thinking in terms of fine grain revisions, and also breaking things down in three phases where each phase is one if not more revisions. These three phases are then also follows:
+
+* The Minimum Viable Product phase
+* The Additional Features Phase
+* The Maintenance Phase
+
+So then there is working one what the basic idea is, and that is it. Even if that basic idea is very crude, and also maybe a bit bland, it does not matter. Just getting the core idea up and running is all the matters first, then I can progress into a phase that has to do with adding features that make the idea more interesting, easy to use, or fun. Once it would seem that there are enough features then it is just a matter of making sure that the code will continue to work okay. While in this final phase the main focus should be Fixing any and all bugs, making code more readable, improving any documentation such as this that describes what the deal is with everything and so forth.
 
 ## General Idea or Minimum Viable Product ( r0 - r2 )
 

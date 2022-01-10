@@ -38,11 +38,18 @@ var gameMod = (function () {
     var randomPPS = function(){
        return UNIT_PPS_MIN + Math.round((UNIT_PPS_MAX - UNIT_PPS_MIN) * Math.random());
     };
-    // set size
+    // SIZE
     var setSizeByPer = function(per){
         per = per === undefined ? 1 : per;
         return Math.round(UNIT_SIZE_MIN + (UNIT_SIZE_MAX - UNIT_SIZE_MIN) * per);
     };
+    var getSizePer = function(size){
+        var a = size - UNIT_SIZE_MIN;
+        return a / (UNIT_SIZE_MAX - UNIT_SIZE_MIN);
+    };
+
+console.log(getSizePer(200));
+
     var randomSize = function(){
         return setSizeByPer(Math.random());
     };

@@ -35,17 +35,6 @@ var draw = (function(){
             obj.y + Math.sin(dir) * radiusEnd);
         ctx.stroke();
     };
-    // draw star info
-    var drawStarInfo = function(ctx, obj){
-        ctx.fillStyle = 'rgba(255,255,0,0.5)';
-        ctx.font = '10px arial';
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        ctx.fillText('pos: ' + Math.floor(obj.x) + ', ' + Math.floor(obj.y), obj.x + 10, obj.y + 10);
-        ctx.fillText('pps: ' + Math.floor(obj.pps), obj.x + 10, obj.y + 20);
-        ctx.fillText('heading: ' + utils.radianToDegree(obj.heading), obj.x + 10, obj.y + 30);
-        ctx.fillText('facing: ' + utils.radianToDegree(obj.facing), obj.x + 10, obj.y + 40);
-    };
 
     var drawPoints = function(obj, ctx, canvas){
         var points = obj.data.points || null,

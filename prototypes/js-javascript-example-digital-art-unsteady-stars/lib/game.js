@@ -39,19 +39,19 @@ var gameMod = (function () {
        return UNIT_PPS_MIN + Math.round((UNIT_PPS_MAX - UNIT_PPS_MIN) * Math.random());
     };
     // SIZE
-    var setSizeByPer = function(per){
+    // get a size by a per value 0-1
+    var getSizeByPer = function(per){
         per = per === undefined ? 1 : per;
         return Math.round(UNIT_SIZE_MIN + (UNIT_SIZE_MAX - UNIT_SIZE_MIN) * per);
     };
+    // get a per value of 0-1 from a given size
     var getSizePer = function(size){
         var a = size - UNIT_SIZE_MIN;
         return a / (UNIT_SIZE_MAX - UNIT_SIZE_MIN);
     };
-
-console.log(getSizePer(200));
-
-    var randomSize = function(){
-        return setSizeByPer(Math.random());
+    // get a random size
+    var getRandomSize = function(){
+        return getSizeByPer(Math.random());
     };
     // to random move mode helper
     var toRandomMoveMode = function(unit, pool, game){
@@ -67,7 +67,7 @@ console.log(getSizePer(200));
     UNIT_MODES.rebirth = {
         init: function(unit, pool, game){
             unit.data.oldSize = unit.data.size;
-            unit.data.newSize = randomSize();
+            unit.data.newSize = getRandomSize();
             unit.data.sizeDelta = -100; // size delta
             unit.data.cx = unit.x + unit.w / 2;
             unit.data.cy = unit.y + unit.h / 2;
@@ -193,7 +193,7 @@ console.log(getSizePer(200));
         // alpha
         unit.data.alpha = UNIT_ALPHA;
         // size
-        var size = unit.data.size = randomSize();
+        var size = unit.data.size = getRandomSize();
         unit.w = size;
         unit.h = size;
         // start position

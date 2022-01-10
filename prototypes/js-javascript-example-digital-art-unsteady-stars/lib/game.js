@@ -42,6 +42,8 @@ var gameMod = (function () {
     // get a size by a per value 0-1
     var getSizeByPer = function(per){
         per = per === undefined ? 1 : per;
+        per = per < 0 ? 0 : per;
+        per = per > 1 ? 1 : per;
         return Math.round(UNIT_SIZE_MIN + (UNIT_SIZE_MAX - UNIT_SIZE_MIN) * per);
     };
     // get a per value of 0-1 from a given size
@@ -158,9 +160,19 @@ var gameMod = (function () {
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         init: function(unit, pool, game){
+            var uDat = unit.data;
+            uDat.sizePer = getSizePer(unit.data.size);
         },
         update: function(unit, pool, game, secs){
             var uDat = unit.data;
+
+            // random size jumble effect
+            //var size = unit.data.size = getSizeByPer(uDat.sizePer - 0.025 + 0.05 * Math.random());
+            //unit.w = size;
+            //unit.h = size;
+            //unit.x = uDat.cx - size / 2;
+            //unit.y = uDat.cy - size / 2;
+
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);

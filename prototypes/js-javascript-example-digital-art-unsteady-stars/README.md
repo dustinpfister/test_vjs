@@ -20,25 +20,25 @@ With revision 0 I started out with the source code from revision 5 of my [reduce
 
 ### r1 - expand star.js with 'unsteady stars'
 
-In this revision the goal was to just simply start, but not necessary finish the main feature of this example by expanding on the star.js module that I copied over from an older project by starting a unsteady star object. There is a method to create and return a uStar object, as well as a method to update one as well. In addtion to this I also worked out what values I would like to have randomized.
+In this revision the goal was to just simply start, but not necessary finish the main feature of this example by expanding on the star.js module that I copied over from an older project by starting a unsteady star object. There is a method to create and return a uStar object, as well as a method to update one as well. In addition to this I also worked out what values I would like to have randomized.
 
 ### r2 - new positions over deltas, random point counts, colors, size + radius
 
-This is where I have finished with this example as far as the core idea of what it will be at least. The points of the stars move around the way that I had in mind, and everything seems to be working okay. The next step is to add at least one or two additonal features to help making the digital art porject a little more intertsting, and also I will want to start wotking out some bugs, but at this point the project is all ready pretty much done.
+This is where I have finished with this example as far as the core idea of what it will be at least. The points of the stars move around the way that I had in mind, and everything seems to be working okay. The next step is to add at least one or two additional features to help making the digital art project a little more interesting, and also I will want to start working out some bugs, but at this point the project is all ready pretty much done.
 
 ## Additional Features ( r3 - r4 )
 
 ### r3  - rebirth mode
 
-In r3 the first additonal feature that I added was a rebirth mode as a first addtional unit mode beyond just the basic move mode that just moves a unit by the current heading and pps. The birth mode does not move the unit to a new position, but rather cuases a transformation of sorts from the current state of the unit to a new state. This is done by reducing the size of the unit down to zero, at which point values that have to do with the size, color, number of points in the star, heading, speed, ect are changed. At which point the size which is currently at zero is the incressed to a set new size. Once the new size is reached the unit then changed back to move mode.
+In r3 the first additional feature that I added was a rebirth mode as a first additional unit mode beyond just the basic move mode that just moves a unit by the current heading and pps. The birth mode does not move the unit to a new position, but rather causes a transformation of sorts from the current state of the unit to a new state. This is done by reducing the size of the unit down to zero, at which point values that have to do with the size, color, number of points in the star, heading, speed, ect are changed. At which point the size which is currently at zero is the increased to a set new size. Once the new size is reached the unit then changed back to move mode.
 
-Other chnages at this point have to do with starting to work out how to go about managing how the various modes will chnage for a unit. For now there are just two, the move and rebirth modes, but looking ahead to the next planed out revision there will be at least one more for this example. So then I added a change mode helper, and also a new init method for a mode object beyond just the update method that such an object had before hand.
+Other changes at this point have to do with starting to work out how to go about managing how the various modes will change for a unit. For now there are just two, the move and rebirth modes, but looking ahead to the next planed out revision there will be at least one more for this example. So then I added a change mode helper, and also a new init method for a mode object beyond just the update method that such an object had before hand.
 
 At this time I have also address the first of what I am sure of will be a few bugs. This bug \#0 had to do with not reseting the uStar.frame value back to zero when switching modes.
 
 ### r4 - move2 mode
 
-At least one more aditional mode might be nice that is a more advamced form of movement that will not just move by a fixed pps and heading, but also change heading and or pps while moving also.
+At least one more additional mode might be nice that is a more advanced form of movement that will not just move by a fixed pps and heading, but also change heading and or pps while moving also.
 
 ## Maintenance ( r5+ )
 

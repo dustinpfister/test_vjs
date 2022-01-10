@@ -3,7 +3,11 @@ var draw = (function(){
     var DEFAULT_LINE_WIDTH = 6,
     DEFAULT_STROKE_STYLE = 'black',
     DEFAULT_FILL_STYLE = 'white',
-    DEFAULT_TEXT_COLOR = 'black';
+    DEFAULT_TEXT_COLOR = 'black',
+    DEFAULT_COLOR_STOPS = [
+       [1, 'red'],
+       [2, 'blue']
+    ];
 
     // HELPERS
     var createBackground = function(ctx, canvas, opt){
@@ -23,11 +27,19 @@ var draw = (function(){
         // create gradient
         var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
+        var colorStops = opt.colorStops || DEFAULT_COLOR_STOPS;
+
+colorStops.forEach(function(colorStop){
+    gradient.addColorStop(colorStop[0], colorStop[1]);
+});
+
+/*
         gradient.addColorStop(0, 'white');
         gradient.addColorStop(0.4, 'red');
         gradient.addColorStop(0.5, 'green');
         gradient.addColorStop(0.6, 'blue');
         gradient.addColorStop(1, 'white');
+*/
         // return gradiant
         return gradient;
     };

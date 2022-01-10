@@ -15,7 +15,12 @@ var sm = {
        angle: 1,
        degreesPerSec: 5,
        ri: 0,
-       radius: 100
+       radius: 100,
+       colorStops: [
+           [0, 'white'],
+           [0.5, 'green'],
+           [1, 'white']
+       ]
     }
 };
 // set up game object

@@ -1,4 +1,7 @@
 var draw = (function(){
+
+    var DEFAULT_LINE_WIDTH = 6;
+
     // HELPERS
     var createBackground = function(ctx, canvas, opt){
         // options
@@ -42,10 +45,10 @@ var draw = (function(){
     // draw the pool
     api.pool = function (game, ctx, canvas) {
         var pool = game.units;
-        ctx.lineWidth = 3;	
+        ctx.lineWidth = DEFAULT_LINE_WIDTH;
         pool.objects.forEach(function (obj) {
-            ctx.fillStyle = obj.data.fillStyle || 'white';
-            ctx.strokeStyle = obj.data.strokeStyle || 'black';
+            ctx.fillStyle = obj.data.fillStyle || 'black';
+            ctx.strokeStyle = obj.data.strokeStyle || 'white';
             ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
             // if the object is active
             if (obj.active) {
@@ -72,7 +75,7 @@ var draw = (function(){
             close = opt.close === undefined ? true : opt.close,
             fill = opt.fill === undefined ? 'black' : opt.fill,
             stroke = opt.stroke === undefined ? 'white' : opt.stroke,
-            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
+            lineWidth = opt.lineWidth === undefined ? DEFAULT_LINE_WIDTH : opt.lineWidth,
             el,
             i = 2;
             ctx.beginPath();

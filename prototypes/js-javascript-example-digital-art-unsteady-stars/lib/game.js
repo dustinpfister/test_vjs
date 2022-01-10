@@ -2,11 +2,11 @@ var gameMod = (function () {
  
     var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
     UNIT_SIZE_MIN = 64,
-    UNIT_SIZE_MAX = 192,
-    UNIT_NPR_MIN = 4,
-    UNIT_NPR_MAX = 7,
-    UNIT_NPR_RATIO_MIN = 0.25,
-    UNIT_NPR_RATIO_MAX = 0.5;
+    UNIT_SIZE_MAX = 64, //192,
+    //UNIT_NPR_MIN = 4,
+    //UNIT_NPR_MAX = 7,
+    UNIT_NPR_RATIO_MIN = 0.025, // Unit New Point Radius Min + Max values used for new points to create 'unsteady star' effect
+    UNIT_NPR_RATIO_MAX = 0.05;
  
 /*  HELPERS */
  
@@ -83,8 +83,8 @@ var gameMod = (function () {
                     radius : size / 2,
                     radiusInner: size / 4,
                     radianAjust: unit.heading,
-                    nprMin: UNIT_NPR_MIN,
-                    nprMax: UNIT_NPR_MAX
+                    nprMin: Math.round(UNIT_NPR_RATIO_MIN * uDat.newSize), //UNIT_NPR_MIN,
+                    nprMax: Math.round(UNIT_NPR_RATIO_MAX * uDat.newSize) //UNIT_NPR_MAX
                 });
             }
             if(uDat.sizeDelta > 0){
@@ -175,8 +175,8 @@ var gameMod = (function () {
             radius : size / 2,
             radiusInner: size / 4,
             radianAjust: unit.heading,
-            nprMin: UNIT_NPR_MIN,
-            nprMax: UNIT_NPR_MAX
+            nprMin: Math.round(UNIT_NPR_RATIO_MIN * size),
+            nprMax: Math.round(UNIT_NPR_RATIO_MAX * size)
         });
         // chance mode
         changeMode(unit, unit.data.mode, pool, game);

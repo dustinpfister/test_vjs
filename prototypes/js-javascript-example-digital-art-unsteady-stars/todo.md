@@ -18,13 +18,14 @@
 * (done) I will want a targetHeading value for the unit data object that will be the new target heading to go to
 * (done) I will want a oldHeading value that will store the current unit.heading value at the moment that a heading change starts
 * (done) There will then need to be a radiansPerSec value that will be the rate at which the unit.heading value will change to targetHeading
+* (done) constants with size of units
+* (done) see about fixing bug #1 as the size change should not happen when a tab becomes inactive
+* (done) see about varaible NPR values based on size
+
+
 
 * variable speed with move2 with uDat.targetPPS
 * figure out a way to handle switching with move, move2, and rebirth modes
-
-* (done) constants with size of units
-* (done) see about fixing bug #1 as the size change should not happen when a tab becomes inactive
-* see about varaible NPR values based on size
 
 ### ( done 01/09/2022 ) - r3 - rebirth mode
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values

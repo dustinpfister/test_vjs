@@ -17,6 +17,7 @@
 
 
 * anamated background code use it or loose it
+* draw.info use it or lose it
 
 <!-- Additional Features -->
 

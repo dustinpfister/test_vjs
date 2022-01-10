@@ -1,6 +1,10 @@
 var gameMod = (function () {
  
-    var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'];
+    var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
+    UNIT_NPR_MIN = 8,
+    UNIT_NPR_MAX = 15,
+    UNIT_NPR_RATIO_MIN = 0.25,
+    UNIT_NPR_RATIO_MAX = 0.5;
  
 /*  HELPERS */
  
@@ -74,8 +78,8 @@ var gameMod = (function () {
                     radius : size / 2,
                     radiusInner: size / 4,
                     radianAjust: unit.heading,
-                    nprMin: 2,
-                    nprMax: 6
+                    nprMin: UNIT_NPR_MIN,
+                    nprMax: UNIT_NPR_MAX
                 });
             }
             if(uDat.sizeDelta > 0){
@@ -166,8 +170,8 @@ var gameMod = (function () {
             radius : size / 2,
             radiusInner: size / 4,
             radianAjust: unit.heading,
-            nprMin: 2,
-            nprMax: 6
+            nprMin: UNIT_NPR_MIN,
+            nprMax: UNIT_NPR_MAX
         });
         // chance mode
         changeMode(unit, unit.data.mode, pool, game);

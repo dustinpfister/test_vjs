@@ -18,9 +18,6 @@ var gameMod = (function () {
  
     var changeMode = function(unit, modeKey, pool, game){
         var uDat = unit.data;
-        // old mode object
-        //var oldModeObj = UNIT_MODES[uDat.mode];
-        // update mode key of unit and get new modeObj
         uDat.mode = modeKey;
         var modeObj = UNIT_MODES[uDat.mode];
         uDat.modeTime = 0;
@@ -48,7 +45,6 @@ var gameMod = (function () {
  
     // unit modes
     var UNIT_MODES = {};
- 
     // in rebirth mode the unit will translation from one set of values to another
     UNIT_MODES.rebirth = {
         init: function(unit, pool, game){
@@ -103,9 +99,6 @@ var gameMod = (function () {
             }
         }
     };
-
-
-
     // a more advanced move2 mode where the heading and pps values will change over time
     UNIT_MODES.move2 = {
         init: function(unit, pool, game){
@@ -128,18 +121,15 @@ var gameMod = (function () {
             if(per === 1){
                 changeMode(unit, 'move2', pool, game);
             }
-// incress or decress target pps
-if(unit.pps < uDat.targetPPS){
-   unit.pps += UNIT_PPSPS * secs;
-   unit.pps = unit.pps > uDat.targetPPS ? uDat.targetPPS : unit.pps;
-}
-
-if(unit.pps > uDat.targetPPS){
-   unit.pps -= UNIT_PPSPS * secs;
-   unit.pps = unit.pps < uDat.targetPPS ? uDat.targetPPS : unit.pps;
-}
-
-
+            // incress or decress target pps
+            if(unit.pps < uDat.targetPPS){
+                unit.pps += UNIT_PPSPS * secs;
+                unit.pps = unit.pps > uDat.targetPPS ? uDat.targetPPS : unit.pps;
+            }
+            if(unit.pps > uDat.targetPPS){
+                unit.pps -= UNIT_PPSPS * secs;
+                unit.pps = unit.pps < uDat.targetPPS ? uDat.targetPPS : unit.pps;
+            }
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);
@@ -147,9 +137,6 @@ if(unit.pps > uDat.targetPPS){
             starMod.unsteady.update(unit.data.points, secs);
         }
     };
-
-
-
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         init: function(unit, pool, game){
@@ -208,10 +195,6 @@ if(unit.pps > uDat.targetPPS){
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
         var uDat = unit.data;
-        /*
-        modeKey = uDat.mode,
-        modeObj = UNIT_MODES[modeKey];
-        */
         // update mode time and last roll
         uDat.modeTime += secs;
         uDat.lastRoll += secs;
@@ -228,7 +211,6 @@ if(unit.pps > uDat.targetPPS){
         }
         var modeKey = uDat.mode,
         modeObj = UNIT_MODES[modeKey];
-        
         // call update method for star mod
         //starMod.unsteady.update(unit.data.points, secs);
         // call the current mode update method
@@ -245,7 +227,6 @@ if(unit.pps > uDat.targetPPS){
  
     // the public api
     var api = {};
- 
     // public create method
     api.create = function (opt) {
         opt = opt || {};

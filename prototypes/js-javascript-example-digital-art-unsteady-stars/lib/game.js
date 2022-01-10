@@ -1,6 +1,7 @@
 var gameMod = (function () {
  
-    var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
+    var UNIT_COLORS = ['rgb(64,0,32)', 'rgb(64,0,64)', 'rgb(64,0,128)', 'rgb(64,0,255)', 'black', 'white'], 
+    //['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
     UNIT_ALPHA = 0.8,
     UNIT_SIZE_MIN = 32,
     UNIT_SIZE_MAX = 256,

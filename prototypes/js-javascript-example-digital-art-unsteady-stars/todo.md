@@ -5,6 +5,7 @@
 ## Known bugs
 * #0 - ( fixed in r3 ) - Bug where a uStar points would move around all over the place as the size goes down in rebirth mode
 * #1 - ( fixed in r4 ) - fix bug with size of units that happen when tab becomes inactive
+* #2 - ( fixed in r4 ) - when size is going down from a old size that is higher than the new size clamping happens to soon
 
 ## () - r5 - remove unused code
 * remove any unused create method from star.js such as create2 if it is still not in use at this point
@@ -21,7 +22,7 @@
 * (done) constants with size of units
 * (done) see about fixing bug #1 as the size change should not happen when a tab becomes inactive
 * (done) see about varaible NPR values based on size
-
+* (done) Fix bug #2 with clamping
 
 
 * variable speed with move2 with uDat.targetPPS

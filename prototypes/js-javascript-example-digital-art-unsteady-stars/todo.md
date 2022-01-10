@@ -22,6 +22,7 @@
 * variable speed with move2 with uDat.targetPPS
 * figure out a way to handle switching with move, move2, and rebirth modes
 * see about fixing bug #1 as the size change should not happen when a tab becomes inactive
+* see about varaible NPR values based on size
 
 ### ( done 01/09/2022 ) - r3 - rebirth mode
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values

@@ -1,8 +1,8 @@
 var gameMod = (function () {
  
     var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
-    UNIT_NPR_MIN = 8,
-    UNIT_NPR_MAX = 15,
+    UNIT_NPR_MIN = 4,
+    UNIT_NPR_MAX = 7,
     UNIT_NPR_RATIO_MIN = 0.25,
     UNIT_NPR_RATIO_MAX = 0.5;
  

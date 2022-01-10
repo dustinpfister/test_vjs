@@ -28,7 +28,9 @@ This is where I have finished with this example as far as the core idea of what 
 
 ## Additional Features ( r3 - r4 )
 
-### r3  - new 'rebirth' mode
+After I have a Minimum Viable Product chances are that MVP for short will be just simply that, as such it will typically be called for to add at least one, if not more additional features once the core idea is done. Because this digital art project is for the most part just a kind of exercise of an over all model of how to start, improve, and maintain a project, I will only be adding a few features at this point.
+
+### r3  - New 'rebirth' mode
 
 In r3 the first additional feature that I added was a rebirth mode as a first additional unit mode beyond just the basic move mode that just moves a unit by the current heading and pps. The birth mode does not move the unit to a new position, but rather causes a transformation of sorts from the current state of the unit to a new state. This is done by reducing the size of the unit down to zero, at which point values that have to do with the size, color, number of points in the star, heading, speed, ect are changed. At which point the size which is currently at zero is the increased to a set new size. Once the new size is reached the unit then changed back to move mode.
 

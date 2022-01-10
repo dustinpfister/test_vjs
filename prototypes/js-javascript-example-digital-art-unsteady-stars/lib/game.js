@@ -41,6 +41,11 @@ var gameMod = (function () {
     var randomSize = function(){
         return Math.round(UNIT_SIZE_MIN + (UNIT_SIZE_MAX - UNIT_SIZE_MIN) * Math.random());
     };
+    // to random move mode helper
+    var toRandomMoveMode = function(unit, pool, game){
+        var nextMoveMode = UNIT_MOVE_MODES[ Math.floor( UNIT_MOVE_MODES.length * Math.random() ) ];
+        changeMode(unit, nextMoveMode, pool, game);
+    };
  
 /*  UNITS MODES AND OPTIONS */
  
@@ -96,7 +101,7 @@ var gameMod = (function () {
             }
             unit.data.points = starMod.resizeUnsteady(uDat.points, uDat.size, 2, 4);
             if(size === uDat.newSize && uDat.sizeDelta > 0){
-                changeMode(unit, 'move2', pool, game);
+                toRandomMoveMode(unit, pool, game)
             }
         }
     };
@@ -120,8 +125,7 @@ var gameMod = (function () {
             per = per > 1 ? 1 : per;
             unit.heading = uDat.oldHeading + uDat.targetDist * uDat.targetDir * per;
             if(per === 1){
-                var nextMoveMode = UNIT_MOVE_MODES[ Math.floor( UNIT_MOVE_MODES.length * Math.random() ) ];
-                changeMode(unit, nextMoveMode, pool, game);
+                toRandomMoveMode(unit, pool, game)
             }
             // incress or decress target pps
             if(unit.pps < uDat.targetPPS){

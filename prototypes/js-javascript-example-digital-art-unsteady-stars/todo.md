@@ -24,8 +24,8 @@
 * (done) see about varaible NPR values based on size
 * (done) Fix bug #2 with clamping
 * (done) variable speed with move2 with uDat.targetPPS
-
-* figure out a way to handle switching with move, move2, and rebirth modes
+* (done) figure out a way to handle switching with move, move2, and rebirth modes
+* (done) have it so that move mode will also change to a new random move mode every of often
 
 ### ( done 01/09/2022 ) - r3 - rebirth mode
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values

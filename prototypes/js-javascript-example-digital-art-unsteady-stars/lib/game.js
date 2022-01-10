@@ -125,7 +125,7 @@ var gameMod = (function () {
             per = per > 1 ? 1 : per;
             unit.heading = uDat.oldHeading + uDat.targetDist * uDat.targetDir * per;
             if(per === 1){
-                toRandomMoveMode(unit, pool, game)
+                toRandomMoveMode(unit, pool, game);
             }
             // incress or decress target pps
             if(unit.pps < uDat.targetPPS){
@@ -148,11 +148,16 @@ var gameMod = (function () {
         init: function(unit, pool, game){
         },
         update: function(unit, pool, game, secs){
+            var uDat = unit.data;
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);
             // update only in move mode
-            starMod.unsteady.update(unit.data.points, secs);
+            starMod.unsteady.update(uDat.points, secs);
+            // switch to another move mode after some time
+            if(uDat.modeTime >= 5){
+               toRandomMoveMode(unit, pool, game);
+            }
         }
     };
     // the unit pool options object

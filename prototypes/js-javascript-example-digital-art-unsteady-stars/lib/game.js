@@ -1,6 +1,7 @@
 var gameMod = (function () {
  
-    var UNIT_COLORS = ['rgb(64,0,32)', 'rgb(64,0,64)', 'rgb(64,0,128)', 'rgb(64,0,255)', 'black', 'white'], 
+    var UNIT_COUNT = 100,
+    UNIT_COLORS = ['rgb(64,0,32)', 'rgb(64,0,64)', 'rgb(64,0,128)', 'rgb(64,0,255)', 'black', 'white'], 
     //['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
     UNIT_ALPHA = 0.8,
     UNIT_SIZE_MIN = 32,
@@ -60,10 +61,13 @@ var gameMod = (function () {
         },
         update: function(unit, pool, game, secs){
             var uDat = unit.data;
+            // update size
             uDat.size += uDat.sizeDelta * secs;
             // clamp size
             uDat.size = uDat.size < 0 ? 0 : uDat.size;
-            var size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
+            uDat.size = uDat.size > uDat.newSize && uDat.sizeDelta > 0 ? uDat.newSize : uDat.size;
+
+            var size = uDat.size;
 
             // update disp object w and h to size
             unit.w = size;
@@ -98,11 +102,13 @@ var gameMod = (function () {
             }
         }
     };
+
+
+
     // a more advanced move2 mode where the heading and pps values will change over time
     UNIT_MODES.move2 = {
         init: function(unit, pool, game){
             var uDat = unit.data;
-
             uDat.oldHeading = unit.heading;
             uDat.targetHeading = randomHeading();
             uDat.targetDir = utils.shortestAngleDirection(unit.heading, uDat.targetHeading);
@@ -112,7 +118,6 @@ var gameMod = (function () {
         },
         update: function(unit, pool, game, secs){
             var uDat = unit.data;
-
             uDat.headingSecs += secs;
             var totalSecs = uDat.targetDist / uDat.radiansPerSec;
             var per = uDat.headingSecs / totalSecs;
@@ -128,6 +133,9 @@ var gameMod = (function () {
             starMod.unsteady.update(unit.data.points, secs);
         }
     };
+
+
+
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         init: function(unit, pool, game){
@@ -142,7 +150,7 @@ var gameMod = (function () {
     };
     // the unit pool options object
     var UNIT_OPTIONS = {
-        count: 20,
+        count: UNIT_COUNT,
         disableLifespan: true
     };
     // spawn a unit

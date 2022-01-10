@@ -2,7 +2,8 @@ var draw = (function(){
 
     var DEFAULT_LINE_WIDTH = 6,
     DEFAULT_STROKE_STYLE = 'black',
-    DEFAULT_FILL_STYLE = 'white';
+    DEFAULT_FILL_STYLE = 'white',
+    DEFAULT_TEXT_COLOR = 'black';
 
     // HELPERS
     var createBackground = function(ctx, canvas, opt){
@@ -22,7 +23,10 @@ var draw = (function(){
         // create gradient
         var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
-        gradient.addColorStop(0, 'black');
+        gradient.addColorStop(0, 'white');
+        gradient.addColorStop(0.4, 'red');
+        gradient.addColorStop(0.5, 'green');
+        gradient.addColorStop(0.6, 'blue');
         gradient.addColorStop(1, 'white');
         // return gradiant
         return gradient;
@@ -121,7 +125,7 @@ var draw = (function(){
     };
     // draw version number
     api.info = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'yellow';
+        ctx.fillStyle = DEFAULT_TEXT_COLOR;
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';
@@ -132,7 +136,7 @@ var draw = (function(){
     };
     // draw version number
     api.ver = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'yellow';
+        ctx.fillStyle = DEFAULT_TEXT_COLOR;
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';

@@ -208,7 +208,6 @@ var gameMod = (function () {
         if(uDat.modeTime >= 3 & uDat.lastRoll >= 2){
             var roll = Math.random();
             if(roll > 0.5){
-                //uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
                 if(uDat.mode === 'move' || uDat.mode === 'move2'){
                     changeMode(unit, 'rebirth', pool, game);
                 }
@@ -217,12 +216,8 @@ var gameMod = (function () {
         }
         var modeKey = uDat.mode,
         modeObj = UNIT_MODES[modeKey];
-        // call update method for star mod
-        //starMod.unsteady.update(unit.data.points, secs);
         // call the current mode update method
         modeObj.update(unit, pool, game, secs);
-        // wrap and unit that goes out of the canvas in any mode
-        //poolMod.wrap(unit, game.sm.canvas, unit.w);
     };
     // purge a unit
     UNIT_OPTIONS.purge = function (obj, pool, game) {};

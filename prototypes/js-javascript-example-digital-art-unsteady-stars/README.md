@@ -38,7 +38,9 @@ At this time I have also address the first of what I am sure of will be a few bu
 
 ### r4 - move2 mode
 
-At least one more additional mode might be nice that is a more advanced form of movement that will not just move by a fixed pps and heading, but also change heading and or pps while moving also.
+At least one more additional mode might be nice that is a more advanced form of movement that will not just move by a fixed pps and heading, but also change heading and or pps while moving also. This the main feature of this revision was the introduction of the second move mode just called simply move2 as I am bad with names. Sense there are now three modes one of which has to do with just transition from one set of values to another, and the other two with just movement the other main area of focus was to revisit how units switch from one mode to another. If I where to continue working on this mode switching is something that I would want to put even more thought into, but for now I just fond something that seems to work okay. 
+
+In this revision I also fixed an additional two bugs that had to do with clamping in this new move2 mode for units. Lots of additional changes mosue of which have to do with just the over all style of the digital art project, as well as a number of helper functions to help keep the over all body of code a little more fine grain.
 
 ## Maintenance ( r5+ )
 

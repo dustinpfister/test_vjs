@@ -17,8 +17,8 @@ var draw = (function(){
         // create gradient
         var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
-        gradient.addColorStop(0, 'red');
-        gradient.addColorStop(1, 'blue');
+        gradient.addColorStop(0, 'black');
+        gradient.addColorStop(1, 'white');
         // return gradiant
         return gradient;
     };
@@ -37,7 +37,7 @@ var draw = (function(){
     };
     // draw star info
     var drawStarInfo = function(ctx, obj){
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillStyle = 'rgba(255,255,0,0.5)';
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
@@ -141,7 +141,7 @@ var draw = (function(){
     };
     // draw version number
     api.info = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'yellow';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';
@@ -152,7 +152,7 @@ var draw = (function(){
     };
     // draw version number
     api.ver = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'yellow';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';

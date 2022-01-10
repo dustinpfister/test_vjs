@@ -12,9 +12,9 @@ var sm = {
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas,
     background: {
-       angle: 0,
+       angle: 1,
        degreesPerSec: -5,
-       radius: 400
+       radius: 200
     }
 };
 // set up game object

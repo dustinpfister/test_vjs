@@ -1,8 +1,9 @@
 var gameMod = (function () {
  
     var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
-    UNIT_SIZE_MIN = 64,
-    UNIT_SIZE_MAX = 64, //192,
+    UNIT_ALPHA = 0.8,
+    UNIT_SIZE_MIN = 32,
+    UNIT_SIZE_MAX = 256,
     //UNIT_NPR_MIN = 4,
     //UNIT_NPR_MAX = 7,
     UNIT_NPR_RATIO_MIN = 0.025, // Unit New Point Radius Min + Max values used for new points to create 'unsteady star' effect
@@ -157,7 +158,7 @@ var gameMod = (function () {
             fill: randomColor()
         };
         // alpha
-        unit.data.alpha = 0.5;
+        unit.data.alpha = UNIT_ALPHA;
         // size
         var size = unit.data.size = randomSize();
         unit.w = size;

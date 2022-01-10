@@ -8,8 +8,8 @@
 * #2 - ( fixed in r4 ) - when size is going down from a old size that is higher than the new size clamping happens to soon
 
 ## () - r5 - remove unused code
+* (done) see about using utils.wrapNumber in poolMod.wrap
 * remove any unused create method from star.js such as create2 if it is still not in use at this point
-* see about using utils.wrapNumber in poolMod.wrap
 * anamated background code use it or loose it
 
 <!-- Additional Features -->

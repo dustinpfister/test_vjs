@@ -127,6 +127,18 @@ var gameMod = (function () {
             if(per === 1){
                 changeMode(unit, 'move2', pool, game);
             }
+
+if(unit.pps < uDat.targetPPS){
+   unit.pps += 10 * secs;
+   unit.pps = unit.pps > uDat.targetPPS ? uDat.targetPPS : unit.pps;
+}
+
+if(unit.pps > uDat.targetPPS){
+   unit.pps -= 10 * secs;
+   unit.pps = unit.pps < uDat.targetPPS ? uDat.targetPPS : unit.pps;
+}
+
+
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);

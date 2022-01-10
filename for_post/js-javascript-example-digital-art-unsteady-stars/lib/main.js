@@ -13,8 +13,8 @@ var sm = {
     canvas: canvasObj.canvas,
     background: {
        angle: 1,
-       degreesPerSec: -5,
-       radius: 200
+       degreesPerSec: 5,
+       radius: 100
     }
 };
 // set up game object
@@ -33,9 +33,9 @@ var loop = function () {
         draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;
         // rotation of background
-        //var bg = sm.background; 
-        //bg.angle += Math.PI / 180 * bg.degreesPerSec * secs;
-        //bg.angle = utils.mod(bg.angle, Math.PI * 2);
+        var bg = sm.background; 
+        bg.angle += Math.PI / 180 * bg.degreesPerSec * secs;
+        bg.angle = utils.mod(bg.angle, Math.PI * 2);
     }
 };
 loop();

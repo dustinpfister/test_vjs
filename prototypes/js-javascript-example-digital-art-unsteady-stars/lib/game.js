@@ -38,8 +38,13 @@ var gameMod = (function () {
     var randomPPS = function(){
        return UNIT_PPS_MIN + Math.round((UNIT_PPS_MAX - UNIT_PPS_MIN) * Math.random());
     };
+    // set size
+    var setSizeByPer = function(per){
+        per = per === undefined ? 1 : per;
+        return Math.round(UNIT_SIZE_MIN + (UNIT_SIZE_MAX - UNIT_SIZE_MIN) * per);
+    };
     var randomSize = function(){
-        return Math.round(UNIT_SIZE_MIN + (UNIT_SIZE_MAX - UNIT_SIZE_MIN) * Math.random());
+        return setSizeByPer(Math.random());
     };
     // to random move mode helper
     var toRandomMoveMode = function(unit, pool, game){

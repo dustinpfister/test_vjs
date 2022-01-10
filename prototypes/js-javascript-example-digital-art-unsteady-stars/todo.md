@@ -27,6 +27,9 @@
 * (done) figure out a way to handle switching with move, move2, and rebirth modes
 * (done) have it so that move mode will also change to a new random move mode every of often
 
+* set size by per helper
+* try a random size jumble effect
+
 ### ( done 01/09/2022 ) - r3 - rebirth mode
 * (done) start a new mode that is a rebirth mode that will cause a unit to reset with all new values
 * (done) in rebirth mode the position will stay the same

@@ -13,7 +13,7 @@
 
 <!-- Additional Features -->
 
-### ( done 01/09/2022 ) - r4 - move2 mode with heading + speed change, variable NPR values
+### ( done 01/10/2022 ) - r4 - move2 mode with heading + speed change, variable NPR values
 * (done) new utils method that will help to get the shortest direction to targetHeading
 * (done) new utils method to get angular distance from oldHeading to targetHeading
 * (done) start a new mode that is like move mode but will also change heading over time

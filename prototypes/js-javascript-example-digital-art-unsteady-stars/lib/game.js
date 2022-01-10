@@ -1,15 +1,16 @@
 var gameMod = (function () {
  
+/*  HARD CODED SETTINGS */
+
     var UNIT_COUNT = 20,
     UNIT_COLORS = ['rgb(64,0,32)', 'rgb(64,0,64)', 'rgb(64,0,128)', 'rgb(64,0,255)', 'black', 'white'], 
     //['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
-    UNIT_ALPHA = 0.8,
-    UNIT_SIZE_MIN = 32,
+    UNIT_ALPHA = 0.8,    // alpha transparency
+    UNIT_SIZE_MIN = 32,  // size min and max values
     UNIT_SIZE_MAX = 256,
-    UNIT_PPS_MIN = 16,
+    UNIT_PPS_MIN = 16,   // Pixles Per Second min and max values
     UNIT_PPS_MAX = 256,
-    //UNIT_NPR_MIN = 4,
-    //UNIT_NPR_MAX = 7,
+    UNIT_PPSPS = 128,    // Pixles Per Second Per Second used in mode 'move2'
     UNIT_NPR_RATIO_MIN = 0.025, // Unit New Point Radius Min + Max values used for new points to create 'unsteady star' effect
     UNIT_NPR_RATIO_MAX = 0.05;
  
@@ -127,14 +128,14 @@ var gameMod = (function () {
             if(per === 1){
                 changeMode(unit, 'move2', pool, game);
             }
-
+// incress or decress target pps
 if(unit.pps < uDat.targetPPS){
-   unit.pps += 10 * secs;
+   unit.pps += UNIT_PPSPS * secs;
    unit.pps = unit.pps > uDat.targetPPS ? uDat.targetPPS : unit.pps;
 }
 
 if(unit.pps > uDat.targetPPS){
-   unit.pps -= 10 * secs;
+   unit.pps -= UNIT_PPSPS * secs;
    unit.pps = unit.pps < uDat.targetPPS ? uDat.targetPPS : unit.pps;
 }
 

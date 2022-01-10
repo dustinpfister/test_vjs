@@ -1,6 +1,8 @@
 var gameMod = (function () {
  
     var UNIT_COLORS = ['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
+    UNIT_SIZE_MIN = 64,
+    UNIT_SIZE_MAX = 192,
     UNIT_NPR_MIN = 4,
     UNIT_NPR_MAX = 7,
     UNIT_NPR_RATIO_MIN = 0.25,
@@ -33,7 +35,7 @@ var gameMod = (function () {
        return 32 + Math.round(64 * Math.random());
     };
     var randomSize = function(){
-        return Math.round(64 + 128 * Math.random());
+        return Math.round(UNIT_SIZE_MIN + (UNIT_SIZE_MAX - UNIT_SIZE_MIN) * Math.random());
     };
  
 /*  UNITS MODES AND OPTIONS */
@@ -179,10 +181,10 @@ var gameMod = (function () {
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
         var uDat = unit.data;
-		/*
+        /*
         modeKey = uDat.mode,
         modeObj = UNIT_MODES[modeKey];
-		*/
+        */
         // update mode time and last roll
         uDat.modeTime += secs;
         uDat.lastRoll += secs;
@@ -197,9 +199,9 @@ var gameMod = (function () {
             }
             uDat.lastRoll = 0;
         }
-		var modeKey = uDat.mode,
+        var modeKey = uDat.mode,
         modeObj = UNIT_MODES[modeKey];
-		
+        
         // call update method for star mod
         //starMod.unsteady.update(unit.data.points, secs);
         // call the current mode update method
@@ -216,7 +218,7 @@ var gameMod = (function () {
  
     // the public api
     var api = {};
-
+ 
     // public create method
     api.create = function (opt) {
         opt = opt || {};

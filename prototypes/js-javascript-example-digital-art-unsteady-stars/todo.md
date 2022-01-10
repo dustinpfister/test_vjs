@@ -4,7 +4,7 @@
 
 ## Known bugs
 * #0 - ( fixed in r3 ) - Bug where a uStar points would move around all over the place as the size goes down in rebirth mode
-* #1 - () - there are issues that happen when tab becomes inactive
+* #1 - () - fix bug with size of units that happen when tab becomes inactive
 
 ## () - r5 - remove unused code
 * remove any unused create method from star.js such as create2 if it is still not in use at this point

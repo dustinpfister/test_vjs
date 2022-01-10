@@ -22,20 +22,7 @@ var draw = (function(){
         // return gradiant
         return gradient;
     };
-    // draw direction helper
-    var strokeDirHelper = function(ctx, obj, dir, radiusBegin, radiusEnd){
-        radiusBegin = radiusBegin === undefined ? obj.r2 : radiusBegin;
-        radiusEnd = radiusEnd === undefined ? obj.r1 : radiusEnd;
-        ctx.beginPath();
-        ctx.moveTo(
-            obj.x + Math.cos(dir) * radiusBegin, 
-            obj.y + Math.sin(dir) * radiusBegin);
-        ctx.lineTo(
-            obj.x + Math.cos(dir) * radiusEnd,
-            obj.y + Math.sin(dir) * radiusEnd);
-        ctx.stroke();
-    };
-
+    // draw points
     var drawPoints = function(obj, ctx, canvas){
         var points = obj.data.points || null,
         cx = obj.x + obj.w / 2,
@@ -44,7 +31,6 @@ var draw = (function(){
             api.points(ctx, points, cx, cy, obj.data.pointsOpt);
         }
     };
-
     // PUBLIC API METHODS
     var api = {};
     // draw the background

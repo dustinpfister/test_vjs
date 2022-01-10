@@ -12,7 +12,8 @@ var gameMod = (function () {
     UNIT_PPS_MAX = 256,
     UNIT_PPSPS = 128,    // Pixles Per Second Per Second used in mode 'move2'
     UNIT_NPR_RATIO_MIN = 0.025, // Unit New Point Radius Min + Max values used for new points to create 'unsteady star' effect
-    UNIT_NPR_RATIO_MAX = 0.05;
+    UNIT_NPR_RATIO_MAX = 0.05,
+    UNIT_MOVE_MODES = ['move', 'move2'];
  
 /*  HELPERS */
  
@@ -119,7 +120,8 @@ var gameMod = (function () {
             per = per > 1 ? 1 : per;
             unit.heading = uDat.oldHeading + uDat.targetDist * uDat.targetDir * per;
             if(per === 1){
-                changeMode(unit, 'move2', pool, game);
+                var nextMoveMode = UNIT_MOVE_MODES[ Math.floor( UNIT_MOVE_MODES.length * Math.random() ) ];
+                changeMode(unit, nextMoveMode, pool, game);
             }
             // incress or decress target pps
             if(unit.pps < uDat.targetPPS){
@@ -159,7 +161,7 @@ var gameMod = (function () {
         spawnOpt = spawnOpt || {};
         var canvas = game.sm.canvas;
         // mode of the unit
-        unit.data.mode = spawnOpt.mode || 'move2';
+        unit.data.mode = spawnOpt.mode || UNIT_MOVE_MODES[0];
         unit.data.modeTime = 0; // the total amount of time the unit has been in the current mode
         unit.data.lastRoll = 0; // the amount of time sense the last roll (used for mode switching)
         // colors
@@ -203,7 +205,7 @@ var gameMod = (function () {
             var roll = Math.random();
             if(roll > 0.5){
                 //uDat.mode = uDat.mode === 'move' ? 'rebirth' : 'move';
-                if(uDat.mode === 'move2'){
+                if(uDat.mode === 'move' || uDat.mode === 'move2'){
                     changeMode(unit, 'rebirth', pool, game);
                 }
             }

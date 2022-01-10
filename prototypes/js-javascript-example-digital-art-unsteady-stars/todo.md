@@ -23,9 +23,8 @@
 * (done) see about fixing bug #1 as the size change should not happen when a tab becomes inactive
 * (done) see about varaible NPR values based on size
 * (done) Fix bug #2 with clamping
+* (done) variable speed with move2 with uDat.targetPPS
 
-
-* variable speed with move2 with uDat.targetPPS
 * figure out a way to handle switching with move, move2, and rebirth modes
 
 ### ( done 01/09/2022 ) - r3 - rebirth mode

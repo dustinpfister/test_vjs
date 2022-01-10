@@ -59,7 +59,10 @@ var gameMod = (function () {
         update: function(unit, pool, game, secs){
             var uDat = unit.data;
             uDat.size += uDat.sizeDelta * secs;
-            var size = uDat.size = uDat.size < 0 ? 0 : uDat.size;
+            // clamp size
+            uDat.size = uDat.size < 0 ? 0 : uDat.size;
+            var size = uDat.size > uDat.newSize ? uDat.newSize : uDat.size;
+
             // update disp object w and h to size
             unit.w = size;
             unit.h = size;

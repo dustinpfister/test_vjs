@@ -4,14 +4,14 @@
 
 ## Known bugs
 * #0 - ( fixed in r3 ) - Bug where a uStar points would move around all over the place as the size goes down in rebirth mode
-* #1 - () - fix bug with size of units that happen when tab becomes inactive
+* #1 - ( fixed in r4 ) - fix bug with size of units that happen when tab becomes inactive
 
 ## () - r5 - remove unused code
 * remove any unused create method from star.js such as create2 if it is still not in use at this point
 
 <!-- Additional Features -->
 
-### () - r4 - move2 mode with heading change, and variable speed
+### () - r4 - move2 mode with heading + speed change, variable NPR values
 * (done) new utils method that will help to get the shortest direction to targetHeading
 * (done) new utils method to get angular distance from oldHeading to targetHeading
 * (done) start a new mode that is like move mode but will also change heading over time
@@ -21,7 +21,9 @@
 
 * variable speed with move2 with uDat.targetPPS
 * figure out a way to handle switching with move, move2, and rebirth modes
-* see about fixing bug #1 as the size change should not happen when a tab becomes inactive
+
+* (done) constants with size of units
+* (done) see about fixing bug #1 as the size change should not happen when a tab becomes inactive
 * see about varaible NPR values based on size
 
 ### ( done 01/09/2022 ) - r3 - rebirth mode

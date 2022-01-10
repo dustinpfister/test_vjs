@@ -157,15 +157,6 @@ var poolMod = (function () {
         // using new utils.wrapNumber method
         obj.x = utils.wrapNumber(obj.x, 0 - space, area.width + space);
         obj.y = utils.wrapNumber(obj.y, 0 - space, area.height + space);
-
-/*
-        area = area || {x: 0, y: 0, width: 640, height: 480 };
-        space = space === undefined ? 32 : space;
-        if(!utils.boundingBox(obj.x, obj.y, obj.w, obj.h, space * -1, space * -1, area.width + space, area.height + space)){
-            obj.x = utils.mod(obj.x + space, area.width + space * 2) - space;
-            obj.y = utils.mod(obj.y + space, area.height + space * 2) - space;
-        }
-*/
     };
     // get a collection of overlaying active objects from a pool, that overlap with the gievn object
     api.getOverlaping = function(obj, pool){

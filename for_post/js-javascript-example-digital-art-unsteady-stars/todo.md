@@ -9,6 +9,8 @@
 
 ## () - r5 - remove unused code
 * (done) see about using utils.wrapNumber in poolMod.wrap
+* (done) remove utils.getAngleToPoint method as it is not being used
+
 * remove any unused create method from star.js such as create2 if it is still not in use at this point
 * anamated background code use it or loose it
 

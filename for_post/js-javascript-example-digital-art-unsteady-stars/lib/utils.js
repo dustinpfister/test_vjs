@@ -79,12 +79,6 @@ utils.angleDistance = function (a, b, scale) {
     return utils.mod( Math.abs(diff), m);
 };
  
-// get the angle from one point to another
-utils.getAngleToPoint = function (pt1, pt2, scale) {
-    var a = Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x);
-    return utils.normalizeHalf(a, scale || utils.PI2);
-};
- 
 // get -1, 1, or 0 depending on the the state of two angles
 utils.shortestAngleDirection = function (a1, a2, scale) {
     var z = a1 - a2,

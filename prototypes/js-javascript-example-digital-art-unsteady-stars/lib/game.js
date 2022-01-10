@@ -1,11 +1,13 @@
 var gameMod = (function () {
  
-    var UNIT_COUNT = 100,
+    var UNIT_COUNT = 20,
     UNIT_COLORS = ['rgb(64,0,32)', 'rgb(64,0,64)', 'rgb(64,0,128)', 'rgb(64,0,255)', 'black', 'white'], 
     //['red', 'green', 'blue', 'pink', 'purple', 'orange', 'black'],
     UNIT_ALPHA = 0.8,
     UNIT_SIZE_MIN = 32,
     UNIT_SIZE_MAX = 256,
+    UNIT_PPS_MIN = 16,
+    UNIT_PPS_MAX = 256,
     //UNIT_NPR_MIN = 4,
     //UNIT_NPR_MAX = 7,
     UNIT_NPR_RATIO_MIN = 0.025, // Unit New Point Radius Min + Max values used for new points to create 'unsteady star' effect
@@ -35,7 +37,7 @@ var gameMod = (function () {
     };
     // random ppx helper
     var randomPPS = function(){
-       return 32 + Math.round(64 * Math.random());
+       return UNIT_PPS_MIN + Math.round((UNIT_PPS_MAX - UNIT_PPS_MIN) * Math.random());
     };
     var randomSize = function(){
         return Math.round(UNIT_SIZE_MIN + (UNIT_SIZE_MAX - UNIT_SIZE_MIN) * Math.random());
@@ -66,9 +68,7 @@ var gameMod = (function () {
             // clamp size
             uDat.size = uDat.size < 0 ? 0 : uDat.size;
             uDat.size = uDat.size > uDat.newSize && uDat.sizeDelta > 0 ? uDat.newSize : uDat.size;
-
             var size = uDat.size;
-
             // update disp object w and h to size
             unit.w = size;
             unit.h = size;
@@ -115,6 +115,7 @@ var gameMod = (function () {
             uDat.targetDist = utils.angleDistance(unit.heading, uDat.targetHeading, Math.PI * 2);
             uDat.radiansPerSec = Math.PI / 180 * (10 + 80 * Math.random());
             uDat.headingSecs = 0;
+            uDat.targetPPS = randomPPS();
         },
         update: function(unit, pool, game, secs){
             var uDat = unit.data;

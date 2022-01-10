@@ -14,6 +14,7 @@ var sm = {
     background: {
        angle: 1,
        degreesPerSec: 5,
+       ri: 0,
        radius: 100
     }
 };
@@ -36,6 +37,12 @@ var loop = function () {
         var bg = sm.background; 
         bg.angle += Math.PI / 180 * bg.degreesPerSec * secs;
         bg.angle = utils.mod(bg.angle, Math.PI * 2);
+        // radius
+        bg.ri += 5 * secs;
+        bg.ri %= 100;
+        var per = bg.ri / 100,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        bg.radius = 400 - 350 * bias;
     }
 };
 loop();

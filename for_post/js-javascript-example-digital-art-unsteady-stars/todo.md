@@ -7,12 +7,14 @@
 * #1 - ( fixed in r4 ) - fix bug with size of units that happen when tab becomes inactive
 * #2 - ( fixed in r4 ) - when size is going down from a old size that is higher than the new size clamping happens to soon
 
-## () - r5 - remove unused code
+## () - r5 - remove unused code, draw.js improvements
 * (done) see about using utils.wrapNumber in poolMod.wrap
 * (done) remove utils.getAngleToPoint method as it is not being used
 * (done) remove any unused create method from star.js such as create2 if it is still not in use at this point
 * (done) remove drawStarInfo helper in draw.js 
 * (done) remove strokeDirHelper in draw.js
+* (done) default line width for draw.js
+* (done) defualt stroke and fill styles
 
 
 * anamated background code use it or loose it

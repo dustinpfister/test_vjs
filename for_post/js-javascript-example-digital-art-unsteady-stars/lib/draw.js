@@ -1,6 +1,8 @@
 var draw = (function(){
 
-    var DEFAULT_LINE_WIDTH = 6;
+    var DEFAULT_LINE_WIDTH = 6,
+    DEFAULT_STROKE_STYLE = 'black',
+    DEFAULT_FILL_STYLE = 'white';
 
     // HELPERS
     var createBackground = function(ctx, canvas, opt){
@@ -47,8 +49,8 @@ var draw = (function(){
         var pool = game.units;
         ctx.lineWidth = DEFAULT_LINE_WIDTH;
         pool.objects.forEach(function (obj) {
-            ctx.fillStyle = obj.data.fillStyle || 'black';
-            ctx.strokeStyle = obj.data.strokeStyle || 'white';
+            ctx.fillStyle = obj.data.fillStyle || DEFAULT_FILL_STYLE;
+            ctx.strokeStyle = obj.data.strokeStyle || DEFAULT_STROKE_STYLE;
             ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
             // if the object is active
             if (obj.active) {
@@ -73,8 +75,8 @@ var draw = (function(){
         points.forEach(function (pointArray) {
             var len = pointArray.length,
             close = opt.close === undefined ? true : opt.close,
-            fill = opt.fill === undefined ? 'black' : opt.fill,
-            stroke = opt.stroke === undefined ? 'white' : opt.stroke,
+            fill = opt.fill === undefined ? DEFAULT_FILL_STYLE : opt.fill,
+            stroke = opt.stroke === undefined ? DEFAULT_STROKE_STYLE : opt.stroke,
             lineWidth = opt.lineWidth === undefined ? DEFAULT_LINE_WIDTH : opt.lineWidth,
             el,
             i = 2;

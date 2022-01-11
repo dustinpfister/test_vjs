@@ -42,11 +42,13 @@
 ### ( ) - r1 - pool-normalized.js
 * start a new pool-normalized.js file based off of pool.js
 * the goal with this is to change the standard of each object where x and y refer to a center point
+* use pool-normalized in place of pool.js
 
 ### ( ) - r0 - Start project, and units.js
 * (done) start with the source code from r4 of unsteady stars digital art example
-* loose the star.js file as I do not think I will be using that for this example
-* have a clean, simple game.js file that is just a 'move' mode for the units
+* (done) loose the star.js file as I do not think I will be using that for this example
+* (done) have a clean, simple game.js file that is just a 'move' mode for the units
 * start a units.js file that will be used to create any kind of unit for the game
 * have a unitsMod.create method that will just create a regular array of units by default
 * use units.js in place of what is worked out in game.js
+

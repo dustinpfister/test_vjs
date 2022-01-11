@@ -165,14 +165,6 @@ var gameMod = (function () {
         },
         update: function(unit, pool, game, secs){
             var uDat = unit.data;
-
-            // random size jumble effect
-            //var size = unit.data.size = getSizeByPer(uDat.sizePer - 0.025 + 0.05 * Math.random());
-            //unit.w = size;
-            //unit.h = size;
-            //unit.x = uDat.cx - size / 2;
-            //unit.y = uDat.cy - size / 2;
-
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);

@@ -18,8 +18,8 @@
 * (done) remove drawStarInfo helper in draw.js 
 * (done) remove strokeDirHelper in draw.js
 * (done) default line width for draw.js
-* (done) defualt stroke and fill styles
-* (done) anamated background code use it or loose it
+* (done) default stroke and fill styles
+* (done) animated background code use it or loose it
 * (done) remove getSizePer helper from game.js
 * (done) draw.info use it or lose it
 

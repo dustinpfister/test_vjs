@@ -32,7 +32,7 @@ This is where I have finished with this example as far as the core idea of what 
 
 ## Additional Features ( r3 - r4 )
 
-After I have a Minimum Viable Product chances are that MVP for short will be just simply that, as such it will typically be called for to add at least one, if not more additional features once the core idea is done. Because this digital art project is for the most part just a kind of exercise of an over all model of how to start, improve, and maintain a project, I will only be adding a few features at this point.
+After I have a Minimum Viable Product chances are that MVP for short will be just simply that, as such it will typically be called for to add at least one, if not more additional features once the core idea is done. Because this digital art project is for the most part just a kind of exercise of an over all model of how to start, improve, and maintain a project, I will only be adding a few features at this point. With that said as of this writing this phase for this example as far as i am concerned with at least is done at revision 4.
 
 ### r3  - New 'rebirth' mode
 
@@ -53,5 +53,8 @@ In this revision I also fixed an additional two bugs that had to do with clampin
 When it comes to Maintenance of this project I think that there is only so much that I will be willing to do, at least as long as I am the only one that shows interest in this. Still there is making at least a few changes, as well as removing any unused code that is there from other projects that I pull this from that I am not using and things to that effect. The main goal then with this is to just improve the readability of the source code, as well as fix any bugs that might pop up. The only other thing that comes to mind is maybe making just a few simple changes that might need to be made to adjust things if I aim to deploy this in some way, other than that I do not think that much will be added in terms of new features at this point. 
 
 ### r5 - Remove unused code
+
+In revision 5 I removed a lot of code in various files that was not being used in the over all application. Many of these methods where there because I copied a lot of code from various other projects, and just did not get around to cutting it out of there. I did keep the utils.wrapNumber method as I have made a change to the object pool library that I am using so that the objectMod.wrap method is now using it, and sense I am using the objectMod.wrap method in the game modules then method will stay. I also started making use of the animated background code that was all ready there from the prevision digital art project, only this time I made a few quick improvements in the draw module when it comes to using the animated background feature in main.js.
+
 
 

@@ -30,7 +30,7 @@ var loop = function () {
         gameMod.update(sm.game, secs);
         draw.background(sm, sm.ctx, sm.canvas);
         draw.pool(sm.game, sm.ctx);
-        draw.info(sm, sm.ctx, sm.canvas);
+        //draw.info(sm, sm.ctx, sm.canvas);
         draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;
         // rotation of background

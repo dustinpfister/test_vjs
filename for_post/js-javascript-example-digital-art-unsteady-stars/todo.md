@@ -7,8 +7,10 @@
 * #1 - ( fixed in r4 ) - fix bug with size of units that happen when tab becomes inactive
 * #2 - ( fixed in r4 ) - when size is going down from a old size that is higher than the new size clamping happens to soon
 * #3 - ( ) - current points will snap to home points when size goes down to zero in birth mode, see about leaving them as is
+* #4 - ( fixed in r6) - fixed simple mistake with DEFAULT COLOR STOPS in draw.js
 
 ## () - r6 - Bug Fix
+* (done) fixed #4 which was a mistake with DEFAULT COLOR STOPS in draw.js
 * see about fixing Known bug #3
 
 ## ( done 01/11/2022 ) - r5 - remove unused code, draw.js improvements

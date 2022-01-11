@@ -1,4 +1,14 @@
 var draw = (function(){
+
+    var DEFAULT_LINE_WIDTH = 6,
+    DEFAULT_STROKE_STYLE = 'black',
+    DEFAULT_FILL_STYLE = 'white',
+    DEFAULT_TEXT_COLOR = 'black',
+    DEFAULT_COLOR_STOPS = [
+       [0, 'red'],
+       [1, 'blue']
+    ];
+
     // HELPERS
     var createBackground = function(ctx, canvas, opt){
         // options
@@ -17,36 +27,14 @@ var draw = (function(){
         // create gradient
         var gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
-        gradient.addColorStop(0, 'black');
-        gradient.addColorStop(1, 'white');
+        var colorStops = opt.colorStops || DEFAULT_COLOR_STOPS;
+        colorStops.forEach(function(colorStop){
+            gradient.addColorStop(colorStop[0], colorStop[1]);
+        });
         // return gradiant
         return gradient;
     };
-    // draw direction helper
-    var strokeDirHelper = function(ctx, obj, dir, radiusBegin, radiusEnd){
-        radiusBegin = radiusBegin === undefined ? obj.r2 : radiusBegin;
-        radiusEnd = radiusEnd === undefined ? obj.r1 : radiusEnd;
-        ctx.beginPath();
-        ctx.moveTo(
-            obj.x + Math.cos(dir) * radiusBegin, 
-            obj.y + Math.sin(dir) * radiusBegin);
-        ctx.lineTo(
-            obj.x + Math.cos(dir) * radiusEnd,
-            obj.y + Math.sin(dir) * radiusEnd);
-        ctx.stroke();
-    };
-    // draw star info
-    var drawStarInfo = function(ctx, obj){
-        ctx.fillStyle = 'rgba(255,255,0,0.5)';
-        ctx.font = '10px arial';
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        ctx.fillText('pos: ' + Math.floor(obj.x) + ', ' + Math.floor(obj.y), obj.x + 10, obj.y + 10);
-        ctx.fillText('pps: ' + Math.floor(obj.pps), obj.x + 10, obj.y + 20);
-        ctx.fillText('heading: ' + utils.radianToDegree(obj.heading), obj.x + 10, obj.y + 30);
-        ctx.fillText('facing: ' + utils.radianToDegree(obj.facing), obj.x + 10, obj.y + 40);
-    };
-
+    // draw points
     var drawPoints = function(obj, ctx, canvas){
         var points = obj.data.points || null,
         cx = obj.x + obj.w / 2,
@@ -55,7 +43,6 @@ var draw = (function(){
             api.points(ctx, points, cx, cy, obj.data.pointsOpt);
         }
     };
-
     // PUBLIC API METHODS
     var api = {};
     // draw the background
@@ -67,10 +54,10 @@ var draw = (function(){
     // draw the pool
     api.pool = function (game, ctx, canvas) {
         var pool = game.units;
-        ctx.lineWidth = 3;	
+        ctx.lineWidth = DEFAULT_LINE_WIDTH;
         pool.objects.forEach(function (obj) {
-            ctx.fillStyle = obj.data.fillStyle || 'white';
-            ctx.strokeStyle = obj.data.strokeStyle || 'black';
+            ctx.fillStyle = obj.data.fillStyle || DEFAULT_FILL_STYLE;
+            ctx.strokeStyle = obj.data.strokeStyle || DEFAULT_STROKE_STYLE;
             ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
             // if the object is active
             if (obj.active) {
@@ -95,9 +82,9 @@ var draw = (function(){
         points.forEach(function (pointArray) {
             var len = pointArray.length,
             close = opt.close === undefined ? true : opt.close,
-            fill = opt.fill === undefined ? 'black' : opt.fill,
-            stroke = opt.stroke === undefined ? 'white' : opt.stroke,
-            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
+            fill = opt.fill === undefined ? DEFAULT_FILL_STYLE : opt.fill,
+            stroke = opt.stroke === undefined ? DEFAULT_STROKE_STYLE : opt.stroke,
+            lineWidth = opt.lineWidth === undefined ? DEFAULT_LINE_WIDTH : opt.lineWidth,
             el,
             i = 2;
             ctx.beginPath();
@@ -140,19 +127,8 @@ var draw = (function(){
         ctx.restore();
     };
     // draw version number
-    api.info = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'yellow';
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        ctx.font = '12px arial';
-        var dInfo = sm.game.debugInfo;
-        if(dInfo){
-            ctx.fillText( dInfo.key + ' : ' + dInfo.value, 10, 10);
-        }
-    };
-    // draw version number
     api.ver = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'yellow';
+        ctx.fillStyle = DEFAULT_TEXT_COLOR;
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '12px arial';

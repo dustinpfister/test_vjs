@@ -5,8 +5,8 @@ var draw = (function(){
     DEFAULT_FILL_STYLE = 'white',
     DEFAULT_TEXT_COLOR = 'black',
     DEFAULT_COLOR_STOPS = [
-       [1, 'red'],
-       [2, 'blue']
+       [0, 'red'],
+       [1, 'blue']
     ];
 
     // HELPERS

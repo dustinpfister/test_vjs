@@ -16,7 +16,10 @@
 * have an example that showcases the problem using Array constructor with new keyword and map
 * have a apply example with a plain object to help better show what the situation is
 
-### ( done 01/11/2022 ) - new av-pollyfill-ponyfill section
+### () - expand av-polyfill section
+* 2-pony example of one ore more pony fill examples
+
+### ( done 01/11/2022 ) - new av-polyfill section
 * (done) 1-poly example that uses a polyfill aka mokey patching
 
 ### ( done 12/20/2021 ) - new av-array-from section

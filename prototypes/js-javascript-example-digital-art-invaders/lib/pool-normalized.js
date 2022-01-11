@@ -141,14 +141,6 @@ var poolMod = (function () {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;
         obj.y += Math.sin(obj.heading) * obj.pps * secs;
     };
-    // check bounds for the given display object and canvas and return true if the object
-    // is out of bounds and false if it is not.
-    api.checkBounds = function (obj, canvas) {
-        if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
-            return false;
-        }
-        return true;
-    };
     // bounding box
     api.boundingBox = function (obj, obj2) {
         var x1 = obj.x - obj.w / 2,
@@ -156,8 +148,6 @@ var poolMod = (function () {
         x2 = obj2.x - obj2.w / 2,
         y2 = obj2.y - obj2.h / 2;
         return utils.boundingBox(x1, y1, obj.w, obj.h, x2, y2, obj2.w, obj2.h);
-
-        //return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
     };
     // wrap an object to an area like a canvas
     api.wrap = function(obj, area, space){
@@ -177,13 +167,6 @@ var poolMod = (function () {
             while(i < len){
                 obj2 = pool.objects[i];
                 if(obj != obj2 && obj2.active){
-/*
-                    var x1 = obj.x - obj.w / 2,
-                    y1 = obj.y - obj.h / 2,
-                    x2 = obj2.x - obj2.w / 2,
-                    y2 = obj2.y - obj2.h / 2;
-                    var isOver = utils.boundingBox(x1, y1, obj.w, obj.h, x2, y2, obj2.w, obj2.h);
-*/
                     if(api.boundingBox(obj, obj2)){
                          overlap.push(obj2);
                     }
@@ -208,15 +191,6 @@ var poolMod = (function () {
             return acc;
         }, []);
     };
-    // get distance to object method
-    api.getDistanceToObj = function(obj1, obj2){
-        var x1 = obj2.x + obj2.w / 2,
-        y1 = obj2.y + obj2.h / 2,
-        x2 = obj1.x + obj1.w / 2,
-        y2 = obj1.y + obj1.h / 2;
-        return utils.distance(x1, y1, x2, y2);
-    };
-
     // return public method
     return api;
 }

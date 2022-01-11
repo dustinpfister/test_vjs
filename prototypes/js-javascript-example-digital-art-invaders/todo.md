@@ -40,9 +40,12 @@
 * when an attacker gets to the center of the canvas it will purge and thus will be able to respawn
 
 ### ( ) - r1 - pool-normalized.js
-* start a new pool-normalized.js file based off of pool.js
-* the goal with this is to change the standard of each object where x and y refer to a center point
-* use pool-normalized in place of pool.js
+* (done) start a new pool-normalized.js file based off of pool.js
+* (done) the goal with this is to change the standard of each object where x and y refer to a center point
+* (done) use pool-normalized in place of pool.js
+* poolMod.distance
+* poolMod.getAngleTo
+
 
 ### ( done 01/11/2022 ) - r0 - Start project, and units.js
 * (done) start with the source code from r4 of unsteady stars digital art example

@@ -1,5 +1,5 @@
 var draw = (function(){
-    var DEFAULT_LINE_WIDTH = 6,
+    var DEFAULT_LINE_WIDTH = 3,
     DEFAULT_STROKE_STYLE = 'black',
     DEFAULT_FILL_STYLE = 'white',
     DEFAULT_TEXT_COLOR = 'yellow',
@@ -51,14 +51,34 @@ var draw = (function(){
             // if the object is active
             if (obj.active) {
                 // draw base area
+// old way of drawing a clircle
+/*
                 var cx = obj.x + obj.w / 2,
                 cy = obj.y + obj.h / 2;
                 ctx.beginPath();
                 ctx.arc(cx, cy, (obj.w + obj.h) / 2 / 2, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.stroke();
-                // draw any points
-                //drawPoints(obj, ctx, canvas);
+*/
+
+                ctx.beginPath();
+ctx.rect(obj.x - obj.w / 2, obj.y - obj.h / 2, obj.w, obj.h);
+ctx.fill();
+ctx.stroke();
+
+// new way should just be like this
+                ctx.beginPath();
+                ctx.arc(obj.x, obj.y, (obj.w + obj.h) / 2 / 2, 0, utils.PI2);
+                ctx.fill();
+                ctx.stroke();
+
+
+// draw small circle over obj.x, obj.y
+ctx.beginPath();
+ctx.fillStyle = 'black';
+ctx.arc(obj.x, obj.y, 2, 0, Math.PI * 2);
+ctx.fill();
+
             }
         });
         ctx.globalAlpha = 1;

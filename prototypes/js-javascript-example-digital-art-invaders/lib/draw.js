@@ -1,14 +1,12 @@
 var draw = (function(){
-
     var DEFAULT_LINE_WIDTH = 6,
     DEFAULT_STROKE_STYLE = 'black',
     DEFAULT_FILL_STYLE = 'white',
-    DEFAULT_TEXT_COLOR = 'black',
+    DEFAULT_TEXT_COLOR = 'yellow',
     DEFAULT_COLOR_STOPS = [
-       [0, 'red'],
-       [1, 'blue']
+       [0, 'black'],
+       [1, 'white']
     ];
-
     // HELPERS
     var createBackground = function(ctx, canvas, opt){
         // options
@@ -33,15 +31,6 @@ var draw = (function(){
         });
         // return gradiant
         return gradient;
-    };
-    // draw points
-    var drawPoints = function(obj, ctx, canvas){
-        var points = obj.data.points || null,
-        cx = obj.x + obj.w / 2,
-        cy = obj.y + obj.h / 2;
-        if(points){
-            api.points(ctx, points, cx, cy, obj.data.pointsOpt);
-        }
     };
     // PUBLIC API METHODS
     var api = {};
@@ -69,69 +58,17 @@ var draw = (function(){
                 ctx.fill();
                 ctx.stroke();
                 // draw any points
-                drawPoints(obj, ctx, canvas);
+                //drawPoints(obj, ctx, canvas);
             }
         });
         ctx.globalAlpha = 1;
-    };
-    // new draw points
-    api.points = function (ctx, points, cx, cy, opt) {
-        opt = opt || {};
-        ctx.save();
-        ctx.translate(cx, cy);
-        points.forEach(function (pointArray) {
-            var len = pointArray.length,
-            close = opt.close === undefined ? true : opt.close,
-            fill = opt.fill === undefined ? DEFAULT_FILL_STYLE : opt.fill,
-            stroke = opt.stroke === undefined ? DEFAULT_STROKE_STYLE : opt.stroke,
-            lineWidth = opt.lineWidth === undefined ? DEFAULT_LINE_WIDTH : opt.lineWidth,
-            el,
-            i = 2;
-            ctx.beginPath();
-            ctx.moveTo(pointArray[0], pointArray[1]);
-            while (i < len) {
-                el = pointArray[i];
-                if (typeof el === 'number') {
-                    ctx.lineTo(el, pointArray[i + 1]);
-                    i += 2;
-                } else {
-                    var parts = el.split(':');
-                    if (parts[0] === 'close') {
-                        close = parts[1] === 'true' ? true : false;
-                    }
-                    if (parts[0] === 'stroke') {
-                        stroke = parts[1] || false;
-                    }
-                    if (parts[0] === 'fill') {
-                        fill = parts[1] || false;
-                    }
-                    if (parts[0] === 'lineWidth') {
-                        lineWidth = parts[1] || 1;
-                    }
-                    i += 1;
-                }
-            }
-            ctx.lineWidth = lineWidth;
-            if (close) {
-                ctx.closePath();
-            }
-            if (fill) {
-                ctx.fillStyle = fill;
-                ctx.fill();
-            }
-            if (stroke) {
-                ctx.strokeStyle = stroke;
-                ctx.stroke();
-            }
-        });
-        ctx.restore();
     };
     // draw version number
     api.ver = function (sm, ctx, canvas) {
         ctx.fillStyle = DEFAULT_TEXT_COLOR;
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
-        ctx.font = '12px arial';
+        ctx.font = '14px arial';
         ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
     };
     // return public api

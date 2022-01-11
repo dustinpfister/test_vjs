@@ -16,6 +16,7 @@
 * (done) default line width for draw.js
 * (done) defualt stroke and fill styles
 * (done) anamated background code use it or loose it
+* remove getSizePer helper from game.js
 * draw.info use it or lose it
 
 <!-- Additional Features -->

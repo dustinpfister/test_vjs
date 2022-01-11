@@ -56,5 +56,7 @@ When it comes to Maintenance of this project I think that there is only so much 
 
 In revision 5 I removed a lot of code in various files that was not being used in the over all application. Many of these methods where there because I copied a lot of code from various other projects, and just did not get around to cutting it out of there. I did keep the utils.wrapNumber method as I have made a change to the object pool library that I am using so that the objectMod.wrap method is now using it, and sense I am using the objectMod.wrap method in the game modules then method will stay. I also started making use of the animated background code that was all ready there from the prevision digital art project, only this time I made a few quick improvements in the draw module when it comes to using the animated background feature in main.js.
 
+### r6 - ?
 
+I am not sure at this time if I will even bother with r6+ of this, I have all ready started writing down a few things in the todo list, but I also want to move on. I do get around to editing my javaScript posts, and when I do I typically also take another look at the source code. So at some point in the future there might be an r6 of this, but it might be a long time, if it even happens at all.
 

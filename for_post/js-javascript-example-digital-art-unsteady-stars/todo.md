@@ -6,8 +6,12 @@
 * #0 - ( fixed in r3 ) - Bug where a uStar points would move around all over the place as the size goes down in rebirth mode
 * #1 - ( fixed in r4 ) - fix bug with size of units that happen when tab becomes inactive
 * #2 - ( fixed in r4 ) - when size is going down from a old size that is higher than the new size clamping happens to soon
+* #3 - ( ) - current points will snap to home points when size goes down to zero in birth mode, see about leaving them as is
 
-## () - r5 - remove unused code, draw.js improvements
+## () - r6 - Bug Fix
+* see about fixing Known bug #3
+
+## ( done 01/11/2022 ) - r5 - remove unused code, draw.js improvements
 * (done) see about using utils.wrapNumber in poolMod.wrap
 * (done) remove utils.getAngleToPoint method as it is not being used
 * (done) remove any unused create method from star.js such as create2 if it is still not in use at this point
@@ -16,8 +20,8 @@
 * (done) default line width for draw.js
 * (done) defualt stroke and fill styles
 * (done) anamated background code use it or loose it
-* remove getSizePer helper from game.js
-* draw.info use it or lose it
+* (done) remove getSizePer helper from game.js
+* (done) draw.info use it or lose it
 
 <!-- Additional Features -->
 

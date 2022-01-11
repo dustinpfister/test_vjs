@@ -127,17 +127,6 @@ var draw = (function(){
         ctx.restore();
     };
     // draw version number
-    api.info = function (sm, ctx, canvas) {
-        ctx.fillStyle = DEFAULT_TEXT_COLOR;
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        ctx.font = '12px arial';
-        var dInfo = sm.game.debugInfo;
-        if(dInfo){
-            ctx.fillText( dInfo.key + ' : ' + dInfo.value, 10, 10);
-        }
-    };
-    // draw version number
     api.ver = function (sm, ctx, canvas) {
         ctx.fillStyle = DEFAULT_TEXT_COLOR;
         ctx.textBaseline = 'top';

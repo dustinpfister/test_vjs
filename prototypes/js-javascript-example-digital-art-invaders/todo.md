@@ -44,7 +44,7 @@
 * the goal with this is to change the standard of each object where x and y refer to a center point
 * use pool-normalized in place of pool.js
 
-### ( ) - r0 - Start project, and units.js
+### ( done 01/11/2022 ) - r0 - Start project, and units.js
 * (done) start with the source code from r4 of unsteady stars digital art example
 * (done) loose the star.js file as I do not think I will be using that for this example
 * (done) have a clean, simple game.js file that is just a 'move' mode for the units

@@ -1,5 +1,6 @@
 var gameMod = (function () {
  
+/*  CONST VALUES */
 
     var UNIT_PPS_MIN = 32,
     UNIT_PPS_MAX = 64;
@@ -14,7 +15,7 @@ var gameMod = (function () {
     var randomPPS = function(){
        return UNIT_PPS_MIN + Math.round((UNIT_PPS_MAX - UNIT_PPS_MIN) * Math.random());
     };
-
+    // change the mode of a current unit
     var changeMode = function(unit, modeKey, pool, game){
         var uDat = unit.data;
         uDat.mode = modeKey;
@@ -33,16 +34,11 @@ var gameMod = (function () {
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         init: function(unit, pool, game){
-
         },
         update: function(unit, pool, game, secs){
-            var uDat = unit.data;
-
             // move and wrap
             poolMod.moveByPPS(unit, secs);
-poolMod.wrap(unit, game.sm.canvas, unit.w);
-
-
+            poolMod.wrap(unit, game.sm.canvas, unit.w);
         }
     };
     // the unit pool options object
@@ -56,11 +52,8 @@ poolMod.wrap(unit, game.sm.canvas, unit.w);
         var canvas = game.sm.canvas;
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'move';
-        unit.data.modeTime = 0; // the total amount of time the unit has been in the current mode
-        unit.data.lastRoll = 0; // the amount of time sense the last roll (used for mode switching)
         // colors
         unit.data.fillStyle = 'white'
-        
         // alpha
         unit.data.alpha = 1;
         // size
@@ -83,9 +76,9 @@ poolMod.wrap(unit, game.sm.canvas, unit.w);
         modeObj.update(unit, pool, game, secs);
     };
     // purge a unit
-    UNIT_OPTIONS.purge = function (obj, pool, game) {};
+    //UNIT_OPTIONS.purge = function (obj, pool, game) {};
     // what to do after all the objects have been updated
-    UNIT_OPTIONS.afterUpdate = function(pool, secs, game){};
+    //UNIT_OPTIONS.afterUpdate = function(pool, secs, game){};
  
 /*  PUBLIC API */
  

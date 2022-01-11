@@ -48,7 +48,7 @@
 * (done) start with the source code from r4 of unsteady stars digital art example
 * (done) loose the star.js file as I do not think I will be using that for this example
 * (done) have a clean, simple game.js file that is just a 'move' mode for the units
-* start a units.js file that will be used to create any kind of unit for the game
-* have a unitsMod.create method that will just create a regular array of units by default
-* use units.js in place of what is worked out in game.js
+* (done) start a units.js file that will be used to create any kind of unit for the game
+* (done) have a unitsMod.create method that will just create a regular array of units by default
+* (done) use units.js in place of what is worked out in game.js
 

@@ -1,5 +1,11 @@
 var unitsMod = (function () {
  
+
+    // the public api
+    var api = {};
+
+    // the unit types object that is to be extended
+    // by calling unitsMod.load
     var UNIT_TYPES = {};
 
 
@@ -11,11 +17,11 @@ var unitsMod = (function () {
 //  HELPERS
  
     // random heading helper
-    var randomHeading = function(){
+    api.randomHeading = function(){
        return Math.PI * 2 * Math.random();
     };
     // random ppx helper
-    var randomPPS = function(){
+    api.randomPPS = function(){
        return UNIT_PPS_MIN + Math.round((UNIT_PPS_MAX - UNIT_PPS_MIN) * Math.random());
     };
     // change the mode of a current unit
@@ -68,9 +74,9 @@ var unitsMod = (function () {
         unit.x = Math.floor( canvas.width * Math.random());
         unit.y = Math.floor( canvas.height * Math.random());
         // heading
-        unit.heading = randomHeading();
+        unit.heading = api.randomHeading();
         // speed
-        unit.pps = randomPPS();
+        unit.pps = api.randomPPS();
         // chance mode
         changeMode(unit, unit.data.mode, pool, game);
     };
@@ -87,8 +93,6 @@ var unitsMod = (function () {
  
 //  PUBLIC API
  
-    // the public api
-    var api = {};
     api.load = function(typeOptions){
         var typeKey = typeOptions.typeKey || Object.keys(UNIT_TYPES).length; 
         console.log('setting the given typeOptions object at key: ' + typeKey);

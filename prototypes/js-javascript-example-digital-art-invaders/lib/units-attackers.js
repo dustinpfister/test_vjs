@@ -11,15 +11,7 @@ unitsMod.load( (function () {
     UNIT_PPS_MAX = 64;
  
 //  HELPERS
- 
-    // random heading helper
-    var randomHeading = function(){
-       return Math.PI * 2 * Math.random();
-    };
-    // random ppx helper
-    var randomPPS = function(){
-       return UNIT_PPS_MIN + Math.round((UNIT_PPS_MAX - UNIT_PPS_MIN) * Math.random());
-    };
+
     // change the mode of a current unit
     var changeMode = function(unit, modeKey, pool, game){
         var uDat = unit.data;
@@ -71,9 +63,9 @@ unitsMod.load( (function () {
         unit.x = Math.floor( canvas.width * Math.random());
         unit.y = Math.floor( canvas.height * Math.random());
         // heading
-        unit.heading = randomHeading();
+        unit.heading = unitsMod.randomHeading();
         // speed
-        unit.pps = randomPPS();
+        unit.pps = unitsMod.randomPPS();
         // chance mode
         changeMode(unit, unit.data.mode, pool, game);
     };

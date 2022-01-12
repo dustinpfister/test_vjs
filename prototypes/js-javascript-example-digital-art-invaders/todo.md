@@ -30,12 +30,10 @@
 ### ( ) - r2 - first unit types, units-buildings.js, units-attackers.js, and units-shots.js
 * (done) have a unitsMod.load method that can be used to load a new 'unit type'
 * (done) start a units-attackers.js
-
-* make it so that there is a pool.data.modes object that will be a ref to modes for the type
-* I will want to use this pool.data.modes object in a new unitsMod.changeMode method
-* use unitsMod.changeMode in units-attacker.js
-
-* do away with the built in unit options, units.js will just be a lib that I want to use at least one plug-in with
+* (done) make it so that there is a pool.data.modes object that will be a ref to modes for the type
+* (done) I will want to use this pool.data.modes object in a new unitsMod.changeMode method
+* (done) use unitsMod.changeMode in units-attacker.js
+* (done) do away with the built in unit options, units.js will just be a lib that I want to use at least one plug-in with
 
 
 * start a units-building.js file that will call the unitsMod.load method adding a 'building' unit type

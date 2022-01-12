@@ -1,14 +1,12 @@
 var unitsMod = (function () {
-
+ 
 //  CONST VALUES
-
     var UNIT_PPS_MIN = 32,
     UNIT_PPS_MAX = 64;
     // the unit types object that is to be extended
     // by calling unitsMod.load
     var UNIT_TYPES = {};
-
-
+ 
 //  PUBLIC API
     // the public api
     var api = {};
@@ -47,7 +45,6 @@ var unitsMod = (function () {
         options.data = {
             modes: options.modes
         };
-
         return poolMod.create(options);
     };
     // public update method

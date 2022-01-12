@@ -14,7 +14,6 @@ unitsMod.load( (function () {
     UNIT_MODES.move = {
         init: function(unit, pool, game){
             unit.data.overlapCount = 0;
-console.log('yes I am bar');
         },
         update: function(unit, pool, game, secs){
 

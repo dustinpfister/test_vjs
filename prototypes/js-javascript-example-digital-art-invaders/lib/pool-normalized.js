@@ -14,10 +14,10 @@ var poolMod = (function () {
         return false;
     };
     // create a single display object
-    var createDisp = function(i, opt){
+    var createDisp = api.createDisp = function(opt, i){
         return {
             active: false,
-            i: i,
+            i: i === undefined ? -1 : i,
             x: opt.x === undefined ? 0 : opt.x,
             y: opt.y === undefined ? 0 : opt.y,
             w: opt.w === undefined ? 32 : opt.w,
@@ -48,7 +48,7 @@ var poolMod = (function () {
         // populate the pools objects array
         var i = 0;
         while (i < opt.count) {
-            pool.objects.push( createDisp(i, opt) );
+            pool.objects.push( createDisp(opt, i) );
             i += 1;
         }
         // return the pool object

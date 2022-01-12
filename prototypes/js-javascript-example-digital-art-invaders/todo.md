@@ -43,13 +43,13 @@
 * (done) start a new pool-normalized.js file based off of pool.js
 * (done) the goal with this is to change the standard of each object where x and y refer to a center point
 * (done) use pool-normalized in place of pool.js
+* (done) make createDisp a public method
 * poolMod.distance
 * poolMod.getAngleTo
 * bool argument for poolMod.getActiveObjects
 * use poolMod.getActiveObjects in poolMod.getActiveCount
 * bool argument for poolMod.getActiveCount
 * new poolMod.center object
-* make createDisp a public method
 
 
 ### ( done 01/11/2022 ) - r0 - Start project, and units.js

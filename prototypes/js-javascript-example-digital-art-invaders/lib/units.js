@@ -37,8 +37,6 @@ var unitsMod = (function () {
 
 unit.data.overlapCount = 0;
 
-console.log(game);
-
         },
         update: function(unit, pool, game, secs){
 

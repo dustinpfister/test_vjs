@@ -176,12 +176,6 @@ var poolMod = (function () {
             obj.active = bool;
         }
     };
-    // get a current active count for a pool
-    api.getActiveCount = function(pool){
-        return pool.objects.reduce(function(acc, obj){
-            return obj.active ? acc += 1: acc;
-        }, 0);
-    };
     // get active objects from a pool
     api.getActiveObjects = function(pool){
         return pool.objects.reduce(function(acc, obj){
@@ -190,6 +184,10 @@ var poolMod = (function () {
             }
             return acc;
         }, []);
+    };
+    // get a current active count for a pool
+    api.getActiveCount = function(pool){
+        return api.getActiveObjects(pool).length;
     };
     // return public method
     return api;

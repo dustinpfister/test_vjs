@@ -199,6 +199,20 @@ var poolMod = (function () {
         }
         return overlap;
     };
+    // get the distance between the two given disp objects
+    // or a given position depending on the number of arguments given
+    api.distance = function(disp, a, b){
+        var x2 = 0, y2 = 0;
+        if(typeof a === 'object' && a != null){
+            x2 = a.x;
+            y2 = a.y;
+        }
+        if(b != undefined){
+            x2 = a;
+            y2 = b;
+        }
+        return utils.distance(disp.x, disp.y, x2, y2);
+    };
     // return public method
     return api;
 }

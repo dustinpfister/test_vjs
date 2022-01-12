@@ -80,11 +80,6 @@ var poolMod = (function () {
         });
         return pool.objects;
     };
-    // purge an object ( make it inactive and call the purge method for the pool )
-    api.purge = function(pool, obj, state){
-        obj.active = false;
-        pool.purge.call(pool, obj, pool, state || pool.game || {});
-    };
     // spawn all objects
     api.purgeAll = function(pool, state, opt){
         state = state || pool.game || {};
@@ -146,6 +141,11 @@ var poolMod = (function () {
         // using new utils.wrapNumber method
         obj.x = utils.wrapNumber(obj.x, 0 - space, area.width + space);
         obj.y = utils.wrapNumber(obj.y, 0 - space, area.height + space);
+    };
+    // purge an object ( make it inactive and call the purge method for the pool )
+    api.purge = function(obj, pool, state){
+        obj.active = false;
+        pool.purge.call(pool, obj, pool, state || pool.game || {});
     };
     // get a collection of overlaying active objects from a pool, that overlap with the given object
     api.getOverlaping = function(obj, pool){

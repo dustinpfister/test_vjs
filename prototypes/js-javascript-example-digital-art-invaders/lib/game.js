@@ -33,13 +33,16 @@ var gameMod = (function () {
         //});
 
         // testing poolMod.getAngleTo
-        var disp = game.units.objects[0],
-        disp2 = game.units.objects[1];
-        disp.x = 100; disp.y = 100;
-        disp2.x = 100; disp2.y = 50;
-        console.log( utils.radToDeg( poolMod.getAngleTo(disp, disp2) ) );
+        //var disp = game.units.objects[0],
+        //disp2 = game.units.objects[1];
+        //disp.x = 100; disp.y = 100;
+        //disp2.x = 100; disp2.y = 50;
+        //console.log( utils.radToDeg( poolMod.getAngleTo(disp, disp2) ) );
         
-        //console.log( poolMod.distance(disp, disp2)); // 0
+        // testing purge and disp.pool
+        var disp = game.units.objects[0];
+        console.log(disp.pool);
+
         return game;
     };
     // public update method

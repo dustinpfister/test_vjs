@@ -20,6 +20,7 @@ var poolMod = (function () {
     var createDisp = api.createDisp = function(opt, i){
         return {
             active: false,
+            pool: opt.pool || null,
             i: i === undefined ? -1 : i,
             x: opt.x === undefined ? 0 : opt.x,
             y: opt.y === undefined ? 0 : opt.y,
@@ -49,9 +50,10 @@ var poolMod = (function () {
             afterUpdate: opt.afterUpdate || function(pool, state, secs){}
         };
         // populate the pools objects array
-        var i = 0;
+        var i = 0, dispOpt;
         while (i < opt.count) {
-            pool.objects.push( createDisp(opt, i) );
+            var dispOpt = Object.assign({}, {pool: pool}, opt)
+            pool.objects.push( createDisp(dispOpt, i) );
             i += 1;
         }
         // return the pool object

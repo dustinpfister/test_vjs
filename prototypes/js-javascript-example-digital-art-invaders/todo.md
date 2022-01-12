@@ -53,6 +53,9 @@
 * (done) make it so that poolMod.purge takes an object as the first argument
 * (done) group all public methods into 'pool' and 'disp' areas
 
+* utils.radToDeg
+* utils.degToRad
+
 * make it so that each display object a ref to its pool
 * make it so that poolMod.purge does not need to be given a pool argument as it will use disp.pool
 

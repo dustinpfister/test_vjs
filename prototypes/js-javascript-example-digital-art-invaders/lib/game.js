@@ -37,7 +37,7 @@ var gameMod = (function () {
         disp2 = game.units.objects[1];
         disp.x = 100; disp.y = 100;
         disp2.x = 100; disp2.y = 50;
-        console.log( poolMod.getAngleTo(disp, disp2) / utils.PI2 * 360 );
+        console.log( utils.radToDeg( poolMod.getAngleTo(disp, disp2) ) );
         
         //console.log( poolMod.distance(disp, disp2)); // 0
         return game;

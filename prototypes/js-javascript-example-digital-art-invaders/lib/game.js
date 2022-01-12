@@ -29,12 +29,9 @@ var gameMod = (function () {
             count: 100
         });
 
-
-
         // spawn all attackers for starters
-        poolMod.spawnAll(game.attackers, game, {});
-
-        poolMod.spawnAll(game.buildings, game, {});
+        //poolMod.spawnAll(game.attackers, game, {});
+        //poolMod.spawnAll(game.buildings, game, {});
 
         return game;
     };

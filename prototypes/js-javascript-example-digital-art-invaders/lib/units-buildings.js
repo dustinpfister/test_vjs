@@ -47,6 +47,13 @@ unitsMod.load( (function () {
         modeObj.update(unit, pool, game, secs);
     };
 
+    UNIT_OPTIONS.beforeUpdate = function(pool, secs, game){
+
+poolMod.spawn(pool, game, {})
+
+
+    };
+
     // return the OPTIONS object to use to create
     // this type of unit
     return UNIT_OPTIONS;

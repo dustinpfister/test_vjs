@@ -213,6 +213,19 @@ var poolMod = (function () {
         }
         return utils.distance(disp.x, disp.y, x2, y2);
     };
+    // get the angle from the given disp, to the given other disp or position
+    api.getAngleTo = function(disp, a, b){
+        var x2 = 0, y2 = 0;
+        if(typeof a === 'object' && a != null){
+            x2 = a.x;
+            y2 = a.y;
+        }
+        if(b != undefined){
+            x2 = a;
+            y2 = b;
+        }
+        return Math.atan2(disp.y - y2, disp.x - x2);
+    };
     // center the disp to the given areaObj, the areaObj can be a canvas
     api.centerDisp = function(obj, areaObj){
         areaObj = areaObj === undefined ? {width: 0, height: 0} : areaObj;

@@ -12,7 +12,7 @@ var gameMod = (function () {
         game.buildings = unitsMod.create({
             type: 'buildings',
             game: game,
-            count: 10
+            count: 20
         });
 
         // create game units

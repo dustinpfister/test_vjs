@@ -50,35 +50,21 @@ var draw = (function(){
             ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
             // if the object is active
             if (obj.active) {
-                // draw base area
-// old way of drawing a clircle
-/*
-                var cx = obj.x + obj.w / 2,
-                cy = obj.y + obj.h / 2;
+                // draw base area as recr
                 ctx.beginPath();
-                ctx.arc(cx, cy, (obj.w + obj.h) / 2 / 2, 0, Math.PI * 2);
+                ctx.rect(obj.x - obj.w / 2, obj.y - obj.h / 2, obj.w, obj.h);
                 ctx.fill();
                 ctx.stroke();
-*/
-
-                ctx.beginPath();
-ctx.rect(obj.x - obj.w / 2, obj.y - obj.h / 2, obj.w, obj.h);
-ctx.fill();
-ctx.stroke();
-
-// new way should just be like this
+                // draw base area as circle
                 ctx.beginPath();
                 ctx.arc(obj.x, obj.y, (obj.w + obj.h) / 2 / 2, 0, utils.PI2);
                 ctx.fill();
                 ctx.stroke();
-
-
-// draw small circle over obj.x, obj.y
-ctx.beginPath();
-ctx.fillStyle = 'black';
-ctx.arc(obj.x, obj.y, 2, 0, Math.PI * 2);
-ctx.fill();
-
+                // draw small circle over obj.x, obj.y
+                ctx.beginPath();
+                ctx.fillStyle = 'black';
+                ctx.arc(obj.x, obj.y, 2, 0, Math.PI * 2);
+                ctx.fill();
             }
         });
         ctx.globalAlpha = 1;

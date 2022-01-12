@@ -1,5 +1,8 @@
 var unitsMod = (function () {
  
+    var UNIT_TYPES = {};
+
+
 //  CONST VALUES
 
     var UNIT_PPS_MIN = 32,
@@ -49,7 +52,7 @@ var unitsMod = (function () {
     };
     // the unit pool options object
     var UNIT_OPTIONS = {
-        count: 6,
+        count: 10,
         disableLifespan: true
     };
     // spawn a unit
@@ -90,13 +93,17 @@ var unitsMod = (function () {
  
     // the public api
     var api = {};
-    api.load = function(){
+    api.load = function(typeOptions){
+
+
 
     };
     // public create method
     api.create = function (opt) {
         opt = opt || {};
-        var options = Object.assign({}, UNIT_OPTIONS, opt);
+        var typeOptions = UNIT_TYPES[opt.type];
+        var unitOpt = typeOptions ? typeOptions : UNIT_OPTIONS;
+        var options = Object.assign({}, unitOpt, opt);
         return poolMod.create(options);
     };
     // public update method

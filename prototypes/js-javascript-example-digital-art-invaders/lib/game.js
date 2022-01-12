@@ -41,7 +41,9 @@ var gameMod = (function () {
     // public update method
     api.update = function (game, secs) {
         // update units
+        poolMod.update(game.shots, secs, sm.game);
         poolMod.update(game.attackers, secs, sm.game);
+        poolMod.update(game.buildings, secs, sm.game);
     };
     // return the public API
     return api;

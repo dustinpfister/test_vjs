@@ -1,4 +1,4 @@
-var unitsMod.load( (function () {
+unitsMod.load( (function () {
 
     // the unit pool options object
     var UNIT_OPTIONS = {

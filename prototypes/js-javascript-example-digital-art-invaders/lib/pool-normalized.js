@@ -178,9 +178,11 @@ var poolMod = (function () {
         obj.y = utils.wrapNumber(obj.y, 0 - space, area.height + space);
     };
     // purge an object ( make it inactive and call the purge method for the pool )
-    api.purge = function(obj, pool, state){
+    api.purge = function(obj, state){
+        var pool = obj.pool;
+        state = state || pool.game || {};
         obj.active = false;
-        pool.purge.call(pool, obj, pool, state || pool.game || {});
+        pool.purge.call(pool, obj, pool, state);
     };
     // get a collection of overlaying active objects from a pool, that overlap with the given object
     api.getOverlaping = function(obj, pool){

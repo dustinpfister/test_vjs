@@ -55,7 +55,7 @@ unit.data.fillStyle = 'red';
     };
     // the unit pool options object
     var UNIT_OPTIONS = {
-        count: 15,
+        count: 6,
         disableLifespan: true
     };
     // spawn a unit

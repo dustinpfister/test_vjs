@@ -42,6 +42,9 @@ var gameMod = (function () {
         // testing purge and disp.pool
         var disp = game.units.objects[0];
         console.log(disp.pool);
+		poolMod.purge(game.units.objects[0]);
+		poolMod.purge(game.units.objects[1]);
+		poolMod.purge(game.units.objects[2]);
 
         return game;
     };

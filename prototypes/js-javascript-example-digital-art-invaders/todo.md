@@ -34,8 +34,7 @@
 * (done) I will want to use this pool.data.modes object in a new unitsMod.changeMode method
 * (done) use unitsMod.changeMode in units-attacker.js
 * (done) do away with the built in unit options, units.js will just be a lib that I want to use at least one plug-in with
-
-* have a drawDisp helper in draw.js
+* (done) have a drawDisp helper in draw.js
 
 * start a units-building.js file that will call the unitsMod.load method adding a 'building' unit type
 * do the same for a units-shots.js

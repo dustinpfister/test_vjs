@@ -43,6 +43,11 @@ var unitsMod = (function () {
         var typeOptions = UNIT_TYPES[opt.type];
         var unitOpt = typeOptions ? typeOptions : UNIT_OPTIONS;
         var options = Object.assign({}, unitOpt, opt);
+        // data object should have the modes
+        options.data = {
+            modes: options.modes
+        };
+
         return poolMod.create(options);
     };
     // public update method

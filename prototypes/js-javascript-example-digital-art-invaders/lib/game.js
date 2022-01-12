@@ -15,6 +15,9 @@ var gameMod = (function () {
         });
         // spawn all for starters
         poolMod.spawnAll(game.units, game, {});
+
+console.log(game.units.data)
+
         return game;
     };
     // public update method

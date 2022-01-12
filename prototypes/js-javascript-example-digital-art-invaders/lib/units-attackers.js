@@ -1,30 +1,12 @@
 unitsMod.load( (function () {
 
-    // the unit pool options object
+// THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
         typeKey: 'attackers',
         count: 6,
         disableLifespan: true
     };
 
-    var UNIT_PPS_MIN = 32,
-    UNIT_PPS_MAX = 64;
- 
-//  HELPERS
-
-    // change the mode of a current unit
-    var changeMode = function(unit, modeKey, pool, game){
-        var uDat = unit.data;
-        uDat.mode = modeKey;
-        var modeObj = UNIT_MODES[uDat.mode];
-        uDat.modeTime = 0;
-        uDat.lastRoll = 0;
-        // call init hook of new mode obj
-        modeObj.init.call(unit, unit, pool, game);
-    };
- 
-//  UNITS MODES AND OPTIONS
- 
     // unit modes
     var UNIT_MODES = {};
     
@@ -32,6 +14,7 @@ unitsMod.load( (function () {
     UNIT_MODES.move = {
         init: function(unit, pool, game){
             unit.data.overlapCount = 0;
+console.log('yes I am bar');
         },
         update: function(unit, pool, game, secs){
 
@@ -46,6 +29,9 @@ unitsMod.load( (function () {
             poolMod.wrap(unit, game.sm.canvas, unit.w);
         }
     };
+
+    UNIT_OPTIONS.modes = UNIT_MODES;
+
     // spawn a unit
     UNIT_OPTIONS.spawn = function (unit, pool, game, spawnOpt) {
         spawnOpt = spawnOpt || {};
@@ -67,7 +53,7 @@ unitsMod.load( (function () {
         // speed
         unit.pps = unitsMod.randomPPS();
         // chance mode
-        changeMode(unit, unit.data.mode, pool, game);
+        unitsMod.changeMode(unit, unit.data.mode, pool, game);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

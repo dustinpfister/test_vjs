@@ -55,7 +55,7 @@
 * (done) make it so that poolMod.purge takes an object as the first argument
 * make it so that each display object a ref to its pool
 * make it so that poolMod.purge does not need to be given a pool argument as it will use disp.pool
-* group all public methods into 'pool' and 'disp' areas
+* (done) group all public methods into 'pool' and 'disp' areas
 
 ### ( done 01/11/2022 ) - r0 - Start project, and units.js
 * (done) start with the source code from r4 of unsteady stars digital art example

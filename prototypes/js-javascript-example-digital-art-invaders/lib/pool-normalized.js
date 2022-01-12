@@ -13,6 +13,9 @@ var poolMod = (function () {
         }
         return false;
     };
+//******** **********
+//  CREATE METHODS
+//******** **********
     // create a single display object
     var createDisp = api.createDisp = function(opt, i){
         return {
@@ -54,6 +57,9 @@ var poolMod = (function () {
         // return the pool object
         return pool;
     };
+//******** **********
+//  POOL METHODS
+//******** **********
     // spawn the next inactive object in the given pool
     api.spawn = function (pool, state, opt) {
         var obj = getInactive(pool);
@@ -121,6 +127,33 @@ var poolMod = (function () {
         // call afterUpdate hook
         pool.afterUpdate.call(pool, pool, secs, state);
     };
+    // set all to inActive or active state
+    api.setActiveStateForAll = function (pool, bool) {
+        bool = bool === undefined ? false : bool;
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
+            obj = pool.objects[i];
+            obj.active = bool;
+        }
+    };
+    // get active objects from a pool
+    api.getActiveObjects = function(pool, bool){
+        bool = bool === undefined ? true : bool;
+        return pool.objects.reduce(function(acc, obj){
+            if(obj.active === bool){
+                acc.push(obj);
+            }
+            return acc;
+        }, []);
+    };
+    // get a current active count for a pool
+    api.getActiveCount = function(pool, bool){
+        return api.getActiveObjects(pool, bool).length;
+    };
+//******** **********
+//  DISP OBJECT METHODS
+//******** **********
     // move the given object by its current heading and pps
     api.moveByPPS = function (obj, secs) {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;
@@ -165,30 +198,6 @@ var poolMod = (function () {
             }
         }
         return overlap;
-    };
-    // set all to inActive or active state
-    api.setActiveStateForAll = function (pool, bool) {
-        bool = bool === undefined ? false : bool;
-        var i = pool.objects.length,
-        obj;
-        while (i--) {
-            obj = pool.objects[i];
-            obj.active = bool;
-        }
-    };
-    // get active objects from a pool
-    api.getActiveObjects = function(pool, bool){
-        bool = bool === undefined ? true : bool;
-        return pool.objects.reduce(function(acc, obj){
-            if(obj.active === bool){
-                acc.push(obj);
-            }
-            return acc;
-        }, []);
-    };
-    // get a current active count for a pool
-    api.getActiveCount = function(pool, bool){
-        return api.getActiveObjects(pool, bool).length;
     };
     // return public method
     return api;

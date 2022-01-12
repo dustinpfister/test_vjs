@@ -45,6 +45,11 @@
 * (done) use pool-normalized in place of pool.js
 * poolMod.distance
 * poolMod.getAngleTo
+* bool argument for poolMod.getActiveObjects
+* use poolMod.getActiveObjects in poolMod.getActiveCount
+* bool argument for poolMod.getActiveCount
+* new poolMod.center object
+* make createDisp a public method
 
 
 ### ( done 01/11/2022 ) - r0 - Start project, and units.js

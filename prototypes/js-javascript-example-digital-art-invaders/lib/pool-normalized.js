@@ -126,16 +126,6 @@ var poolMod = (function () {
         // call afterUpdate hook
         pool.afterUpdate.call(pool, pool, secs, state);
     };
-    // set all to inActive or active state
-    api.setActiveStateForAll = function (pool, bool) {
-        bool = bool === undefined ? false : bool;
-        var i = pool.objects.length,
-        obj;
-        while (i--) {
-            obj = pool.objects[i];
-            obj.active = bool;
-        }
-    };
     // move the given object by its current heading and pps
     api.moveByPPS = function (obj, secs) {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;
@@ -157,7 +147,7 @@ var poolMod = (function () {
         obj.x = utils.wrapNumber(obj.x, 0 - space, area.width + space);
         obj.y = utils.wrapNumber(obj.y, 0 - space, area.height + space);
     };
-    // get a collection of overlaying active objects from a pool, that overlap with the gievn object
+    // get a collection of overlaying active objects from a pool, that overlap with the given object
     api.getOverlaping = function(obj, pool){
         var i = 0,
         obj2,
@@ -175,6 +165,16 @@ var poolMod = (function () {
             }
         }
         return overlap;
+    };
+    // set all to inActive or active state
+    api.setActiveStateForAll = function (pool, bool) {
+        bool = bool === undefined ? false : bool;
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
+            obj = pool.objects[i];
+            obj.active = bool;
+        }
     };
     // get a current active count for a pool
     api.getActiveCount = function(pool){

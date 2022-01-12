@@ -39,7 +39,7 @@
 * attackers will fire at buildings until they are destroyed
 * when an attacker gets to the center of the canvas it will purge and thus will be able to respawn
 
-### ( ) - r1 - pool-normalized.js
+### ( done 01/12/2022 ) - r1 - pool-normalized.js
 * (done) start a new pool-normalized.js file based off of pool.js
 * (done) the goal with this is to change the standard of each object where x and y refer to a center point
 * (done) use pool-normalized in place of pool.js
@@ -54,9 +54,8 @@
 * (done) group all public methods into 'pool' and 'disp' areas
 * (done) utils.radToDeg
 * (done) utils.degToRad
-
-* make it so that each display object a ref to its pool
-* make it so that poolMod.purge does not need to be given a pool argument as it will use disp.pool
+* (done) make it so that each display object a ref to its pool
+* (done) make it so that poolMod.purge does not need to be given a pool argument as it will use disp.pool
 
 ### ( done 01/11/2022 ) - r0 - Start project, and units.js
 * (done) start with the source code from r4 of unsteady stars digital art example

@@ -48,7 +48,7 @@
 * (done) use poolMod.getActiveObjects in poolMod.getActiveCount
 * (done) bool argument for poolMod.getActiveCount
 
-* new poolMod.distance
+* (done) new poolMod.distance
 * new poolMod.getAngleTo
 * new poolMod.centerDisp method
 

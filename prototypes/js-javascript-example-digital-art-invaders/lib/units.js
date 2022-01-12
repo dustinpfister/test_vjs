@@ -19,6 +19,16 @@ var unitsMod = (function () {
         // just ref the object for now if that works okay
         UNIT_TYPES[typeKey] = typeOptions;
     };
+    // change the mode of a given unit
+    api.changeMode = function(unit, modeKey, pool, game){
+        var uDat = unit.data;
+        uDat.mode = modeKey;
+        var modeObj = pool.data.modes[uDat.mode]; //UNIT_MODES[uDat.mode];
+        uDat.modeTime = 0;
+        uDat.lastRoll = 0;
+        // call init hook of new mode obj
+        modeObj.init.call(unit, unit, pool, game);
+    };
     // random heading helper
     api.randomHeading = function(){
        return Math.PI * 2 * Math.random();

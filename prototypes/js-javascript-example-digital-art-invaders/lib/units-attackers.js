@@ -56,7 +56,7 @@ unitsMod.load( (function () {
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {
-        var modeObj = UNIT_MODES[unit.data.mode];
+        var modeObj = pool.data.modes[unit.data.mode];
         // call the current mode update method
         modeObj.update(unit, pool, game, secs);
     };

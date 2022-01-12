@@ -61,8 +61,8 @@ var draw = (function(){
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
     };
     // draw the pool
-    api.pool = function (game, ctx, canvas) {
-        var pool = game.units;
+    api.pool = function (sm, pool, ctx, canvas) {
+        //var pool = game.units;
         ctx.lineWidth = DEFAULT_LINE_WIDTH;
         pool.objects.forEach(function (obj) {
             ctx.fillStyle = obj.data.fillStyle || DEFAULT_FILL_STYLE;

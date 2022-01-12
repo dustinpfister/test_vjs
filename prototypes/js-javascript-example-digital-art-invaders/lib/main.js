@@ -29,7 +29,7 @@ var loop = function () {
     if (secs >= 1 / sm.fps) {
         gameMod.update(sm.game, secs);
         draw.background(sm, sm.ctx, sm.canvas);
-        draw.pool(sm.game, sm.ctx);
+        draw.pool(sm, sm.game.units, sm.ctx);
         //draw.info(sm, sm.ctx, sm.canvas);
         draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;

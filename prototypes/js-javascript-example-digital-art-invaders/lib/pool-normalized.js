@@ -213,6 +213,12 @@ var poolMod = (function () {
         }
         return utils.distance(disp.x, disp.y, x2, y2);
     };
+    // center the disp to the given areaObj, the areaObj can be a canvas
+    api.centerDisp = function(obj, areaObj){
+        areaObj = areaObj === undefined ? {width: 0, height: 0} : areaObj;
+        obj.x = areaObj.width / 2;
+        obj.y = areaObj.height / 2;
+    };
     // return public method
     return api;
 }

@@ -49,8 +49,8 @@
 * (done) bool argument for poolMod.getActiveCount
 
 * (done) new poolMod.distance
-* new poolMod.getAngleTo
 * new poolMod.centerDisp method
+* new poolMod.getAngleTo
 
 * (done) make it so that poolMod.purge takes an object as the first argument
 * make it so that each display object a ref to its pool

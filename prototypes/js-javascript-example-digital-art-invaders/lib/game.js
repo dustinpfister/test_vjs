@@ -16,16 +16,21 @@ var gameMod = (function () {
         //console.log(poolMod.getActiveCount(game.units, false));
         //console.log(poolMod.getActiveObjects(game.units, true));
         //console.log(poolMod.getActiveObjects(game.units, false));
-		
-		// testing distance method
-		var disp = game.units.objects[0],
-		disp2 = game.units.objects[1];
-		disp.x = 100;
-		disp.y = 50;
-		console.log( poolMod.distance(disp, 100, 100) ); // 50
-		disp2.x = 100; disp2.y = 50;
-		console.log( poolMod.distance(disp, disp2)); // 0
-		
+
+        // testing distance method
+        //var disp = game.units.objects[0],
+        //disp2 = game.units.objects[1];
+        //disp.x = 100;
+        //disp.y = 50;
+        //console.log( poolMod.distance(disp, 100, 100) ); // 50
+        //disp2.x = 100; disp2.y = 50;
+        //console.log( poolMod.distance(disp, disp2)); // 0
+
+var areaObj = game.sm.canvas;
+poolMod.getActiveObjects(game.units).forEach(function(disp){
+    poolMod.centerDisp(disp, areaObj);
+});
+
         return game;
     };
     // public update method

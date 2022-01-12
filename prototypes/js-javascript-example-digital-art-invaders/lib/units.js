@@ -1,11 +1,11 @@
 var unitsMod = (function () {
  
-/*  CONST VALUES */
+//  CONST VALUES
 
     var UNIT_PPS_MIN = 32,
     UNIT_PPS_MAX = 64;
  
-/*  HELPERS */
+//  HELPERS
  
     // random heading helper
     var randomHeading = function(){
@@ -26,7 +26,7 @@ var unitsMod = (function () {
         modeObj.init.call(unit, unit, pool, game);
     };
  
-/*  UNITS MODES AND OPTIONS */
+//  UNITS MODES AND OPTIONS
  
     // unit modes
     var UNIT_MODES = {};
@@ -34,20 +34,14 @@ var unitsMod = (function () {
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         init: function(unit, pool, game){
-
-unit.data.overlapCount = 0;
-
+            unit.data.overlapCount = 0;
         },
         update: function(unit, pool, game, secs){
-
-unit.data.fillStyle = 'blue';
-unit.data.overlapCount = poolMod.getOverlaping(unit, pool).length;
-
-if(unit.data.overlapCount > 0){
-unit.data.fillStyle = 'red';
-
-}
-
+            unit.data.fillStyle = 'blue';
+            unit.data.overlapCount = poolMod.getOverlaping(unit, pool).length;
+            if(unit.data.overlapCount > 0){
+                unit.data.fillStyle = 'red';
+            }
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);
@@ -92,7 +86,7 @@ unit.data.fillStyle = 'red';
     // what to do after all the objects have been updated
     //UNIT_OPTIONS.afterUpdate = function(pool, secs, game){};
  
-/*  PUBLIC API */
+//  PUBLIC API
  
     // the public api
     var api = {};

@@ -32,6 +32,26 @@ var draw = (function(){
         // return gradiant
         return gradient;
     };
+    var drawDisp = function(sm, disp, ctx, canvas){
+        // if the object is active
+        if (disp.active) {
+            // draw base area as recr
+            ctx.beginPath();
+            ctx.rect(disp.x - disp.w / 2, disp.y - disp.h / 2, disp.w, disp.h);
+            ctx.fill();
+            ctx.stroke();
+            // draw base area as circle
+            ctx.beginPath();
+            ctx.arc(disp.x, disp.y, (disp.w + disp.h) / 2 / 2, 0, utils.PI2);
+            ctx.fill();
+            ctx.stroke();
+            // draw small circle over obj.x, obj.y
+            ctx.beginPath();
+            ctx.fillStyle = 'black';
+            ctx.arc(disp.x, disp.y, 2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    };
     // PUBLIC API METHODS
     var api = {};
     // draw the background
@@ -48,24 +68,7 @@ var draw = (function(){
             ctx.fillStyle = obj.data.fillStyle || DEFAULT_FILL_STYLE;
             ctx.strokeStyle = obj.data.strokeStyle || DEFAULT_STROKE_STYLE;
             ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
-            // if the object is active
-            if (obj.active) {
-                // draw base area as recr
-                ctx.beginPath();
-                ctx.rect(obj.x - obj.w / 2, obj.y - obj.h / 2, obj.w, obj.h);
-                ctx.fill();
-                ctx.stroke();
-                // draw base area as circle
-                ctx.beginPath();
-                ctx.arc(obj.x, obj.y, (obj.w + obj.h) / 2 / 2, 0, utils.PI2);
-                ctx.fill();
-                ctx.stroke();
-                // draw small circle over obj.x, obj.y
-                ctx.beginPath();
-                ctx.fillStyle = 'black';
-                ctx.arc(obj.x, obj.y, 2, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            drawDisp(sm, obj, ctx, canvas);
         });
         ctx.globalAlpha = 1;
     };

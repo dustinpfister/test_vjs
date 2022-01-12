@@ -44,9 +44,9 @@
 * (done) the goal with this is to change the standard of each object where x and y refer to a center point
 * (done) use pool-normalized in place of pool.js
 * (done) make createDisp a public method
-* bool argument for poolMod.getActiveObjects
-* use poolMod.getActiveObjects in poolMod.getActiveCount
-* bool argument for poolMod.getActiveCount
+* (done) bool argument for poolMod.getActiveObjects
+* (done) use poolMod.getActiveObjects in poolMod.getActiveCount
+* (done) bool argument for poolMod.getActiveCount
 
 * new poolMod.distance
 * new poolMod.getAngleTo

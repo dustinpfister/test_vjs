@@ -177,17 +177,18 @@ var poolMod = (function () {
         }
     };
     // get active objects from a pool
-    api.getActiveObjects = function(pool){
+    api.getActiveObjects = function(pool, bool){
+        bool = bool === undefined ? true : bool;
         return pool.objects.reduce(function(acc, obj){
-            if(obj.active){
+            if(obj.active === bool){
                 acc.push(obj);
             }
             return acc;
         }, []);
     };
     // get a current active count for a pool
-    api.getActiveCount = function(pool){
-        return api.getActiveObjects(pool).length;
+    api.getActiveCount = function(pool, bool){
+        return api.getActiveObjects(pool, bool).length;
     };
     // return public method
     return api;

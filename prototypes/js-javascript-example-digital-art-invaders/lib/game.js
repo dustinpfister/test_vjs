@@ -12,9 +12,10 @@ var gameMod = (function () {
         });
         // spawn all for starters
         poolMod.spawnAll(game.units, game, {});
-		
-		console.log(poolMod.getActiveCount(game.units));
-		
+        console.log(poolMod.getActiveCount(game.units, true));
+        console.log(poolMod.getActiveCount(game.units, false));
+        console.log(poolMod.getActiveObjects(game.units, true));
+        console.log(poolMod.getActiveObjects(game.units, false));
         return game;
     };
     // public update method

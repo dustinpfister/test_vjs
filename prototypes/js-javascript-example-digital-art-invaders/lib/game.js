@@ -26,11 +26,20 @@ var gameMod = (function () {
         //disp2.x = 100; disp2.y = 50;
         //console.log( poolMod.distance(disp, disp2)); // 0
 
-var areaObj = game.sm.canvas;
-poolMod.getActiveObjects(game.units).forEach(function(disp){
-    poolMod.centerDisp(disp, areaObj);
-});
+        // testing poolMod.centerDisp
+        //var areaObj = game.sm.canvas;
+        //poolMod.getActiveObjects(game.units).forEach(function(disp){
+        //    poolMod.centerDisp(disp, areaObj);
+        //});
 
+        // testing poolMod.getAngleTo
+        var disp = game.units.objects[0],
+        disp2 = game.units.objects[1];
+        disp.x = 100; disp.y = 100;
+        disp2.x = 100; disp2.y = 50;
+        console.log( poolMod.getAngleTo(disp, disp2) / utils.PI2 * 360 );
+        
+        //console.log( poolMod.distance(disp, disp2)); // 0
         return game;
     };
     // public update method

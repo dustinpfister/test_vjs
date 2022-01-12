@@ -7,23 +7,34 @@ var gameMod = (function () {
         var game = {
             sm: opt.sm || {}
         };
+
         // create game units
-        game.units = unitsMod.create({
+        game.buildings = unitsMod.create({
+            type: 'buildings',
+            game: game,
+            count: 10
+        });
+
+        // create game units
+        game.attackers = unitsMod.create({
             type: 'attackers',
             game: game,
             count: 30
         });
-        // spawn all for starters
-        poolMod.spawnAll(game.units, game, {});
 
-console.log(game.units.data)
+
+
+        // spawn all attackers for starters
+        poolMod.spawnAll(game.attackers, game, {});
+
+        poolMod.spawnAll(game.buildings, game, {});
 
         return game;
     };
     // public update method
     api.update = function (game, secs) {
         // update units
-        poolMod.update(game.units, secs, sm.game);
+        poolMod.update(game.attackers, secs, sm.game);
     };
     // return the public API
     return api;

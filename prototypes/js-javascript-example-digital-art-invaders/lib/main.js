@@ -29,7 +29,9 @@ var loop = function () {
     if (secs >= 1 / sm.fps) {
         gameMod.update(sm.game, secs);
         draw.background(sm, sm.ctx, sm.canvas);
-        draw.pool(sm, sm.game.units, sm.ctx);
+        // draw pools
+        draw.pool(sm, sm.game.buildings, sm.ctx);
+        draw.pool(sm, sm.game.attackers, sm.ctx);
         draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;
     }

@@ -22,6 +22,13 @@ var gameMod = (function () {
             count: 30
         });
 
+        // create game units
+        game.shots = unitsMod.create({
+            type: 'shots',
+            game: game,
+            count: 100
+        });
+
 
 
         // spawn all attackers for starters

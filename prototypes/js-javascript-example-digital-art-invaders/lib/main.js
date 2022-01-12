@@ -27,11 +27,13 @@ var loop = function () {
     secs = (now - sm.lt) / 1000;
     requestAnimationFrame(loop);
     if (secs >= 1 / sm.fps) {
+        // update game
         gameMod.update(sm.game, secs);
+        // draw
         draw.background(sm, sm.ctx, sm.canvas);
-        // draw pools
         draw.pool(sm, sm.game.buildings, sm.ctx);
         draw.pool(sm, sm.game.attackers, sm.ctx);
+        draw.pool(sm, sm.game.shots, sm.ctx);
         draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;
     }

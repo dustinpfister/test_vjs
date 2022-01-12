@@ -42,8 +42,8 @@ unitsMod.load( (function () {
         // alpha
         unit.data.alpha = 1;
         // size
-        unit.w = 64;
-        unit.h = 64;
+        unit.w = 32;
+        unit.h = 32;
         // start position
         unit.x = Math.floor( canvas.width * Math.random());
         unit.y = Math.floor( canvas.height * Math.random());
@@ -60,6 +60,10 @@ unitsMod.load( (function () {
         // call the current mode update method
         modeObj.update(unit, pool, game, secs);
     };
+
+    UNIT_OPTIONS.beforeUpdate = function(pool, secs, game){
+        poolMod.spawn(pool, game, {});
+    }
 
     // return the OPTIONS object to use to create
     // this type of unit

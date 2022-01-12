@@ -37,14 +37,10 @@ var unitsMod = (function () {
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         init: function(unit, pool, game){
-            unit.data.overlapCount = 0;
+
         },
         update: function(unit, pool, game, secs){
-            unit.data.fillStyle = 'blue';
-            unit.data.overlapCount = poolMod.getOverlaping(unit, pool).length;
-            if(unit.data.overlapCount > 0){
-                unit.data.fillStyle = 'red';
-            }
+
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);
@@ -94,9 +90,10 @@ var unitsMod = (function () {
     // the public api
     var api = {};
     api.load = function(typeOptions){
-
-
-
+        var typeKey = typeOptions.typeKey || Object.keys(UNIT_TYPES).length; 
+        console.log('setting the given typeOptions object at key: ' + typeKey);
+        // just ref the object for now if that works okay
+        UNIT_TYPES[typeKey] = typeOptions;
     };
     // public create method
     api.create = function (opt) {

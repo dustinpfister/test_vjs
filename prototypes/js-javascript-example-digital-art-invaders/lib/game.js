@@ -8,6 +8,7 @@ var gameMod = (function () {
             sm: opt.sm || {}
         };
         game.units = unitsMod.create({
+            type: 'attackers',
             game: game,
             count: 30
         });

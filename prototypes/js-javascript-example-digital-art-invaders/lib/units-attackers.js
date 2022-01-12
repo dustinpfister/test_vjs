@@ -39,8 +39,16 @@ unitsMod.load( (function () {
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.move = {
         init: function(unit, pool, game){
+            unit.data.overlapCount = 0;
         },
         update: function(unit, pool, game, secs){
+
+            unit.data.fillStyle = 'blue';
+            unit.data.overlapCount = poolMod.getOverlaping(unit, pool).length;
+            if(unit.data.overlapCount > 0){
+                unit.data.fillStyle = 'red';
+            }
+
             // move and wrap
             poolMod.moveByPPS(unit, secs);
             poolMod.wrap(unit, game.sm.canvas, unit.w);

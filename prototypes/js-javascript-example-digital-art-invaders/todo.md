@@ -45,10 +45,13 @@
 * (done) once a target is set in seekTarget mode change to a moveToTarget mode
 * (done) in moveToTarget mode check that the current target is still active
 * (done) in the event that the target is no longer active go back to idle mode
+* (done) in the event that that target is in range enter attackTarget mode
 
-* in the event that that target is in range enter attackTarget mode
+* There should be a spawnRate for buildings
+* Attackers should move back out of range when there are no targets
+
+<!-- shots -->
 * attackers will spawn shots when in attackTarget mode
-
 * shots will need to move by set values when spawned
 * shots will need to check if they hit a target or not
 * buildings will need to have hp values

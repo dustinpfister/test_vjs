@@ -35,8 +35,10 @@ unitsMod.load( (function () {
         unit.w = 4;
         unit.h = 4;
         // start position
-        unit.x = spawnOpt.x || 0;
-        unit.y = spawnOpt.y || 0;
+        uDat.sx = spawnOpt.x || 0;
+        uDat.sy = spawnOpt.y || 0;
+        unit.x = uDat.sx;
+        unit.y = uDat.sy;
         // heading and speed not used
         unit.heading = spawnOpt.heading || 0;
         unit.pps = 128;

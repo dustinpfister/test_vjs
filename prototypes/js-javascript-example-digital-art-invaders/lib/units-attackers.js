@@ -137,8 +137,11 @@ unitsMod.load( (function () {
         init: function(unit, pool, game){
             unit.heading += Math.PI;
             unit.heading = utils.mod(unit.heading, utils.PI2);
+
+            unit.data.yaw = Math.PI / 180 * (-20 + 40 * Math.random())
         },
         update: function(unit, pool, game, secs){
+            var canvas = game.sm.canvas;
             // set overlap color in move mode also for now
             setOverlapColor(unit);
 
@@ -148,7 +151,14 @@ unitsMod.load( (function () {
                 unitsMod.changeMode(unit, 'idle', pool, game);
             }
 
-            poolMod.moveByPPS(unit, secs);
+            // distance from center
+            var dc = poolMod.distance(unit, canvas.width / 2, canvas.height / 2);
+
+            if(dc < ATTACKER_SPAWN_RADIUS[0]){
+                unit.heading += unit.data.yaw * secs;
+                unit.heading = utils.mod(unit.heading, utils.PI2);
+                poolMod.moveByPPS(unit, secs);
+            }
   
         }
     };

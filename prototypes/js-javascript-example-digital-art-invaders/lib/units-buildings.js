@@ -81,8 +81,15 @@ unitsMod.load( (function () {
 
     UNIT_OPTIONS.beforeUpdate = function(pool, secs, game){
 
+        // set spawn secs of not there
+        pool.data.spawnSecs = pool.data.spawnSecs === undefined ? 0 : pool.data.spawnSecs; 
 
-        spawnBuilding(game, pool)
+        pool.data.spawnSecs += secs;
+
+        if(pool.data.spawnSecs > 1){
+            spawnBuilding(game, pool);
+            pool.data.spawnSecs = 0;
+        }
 
     };
 

@@ -24,7 +24,13 @@
 
 <!-- MVP -->
 
-### ( ) - r3 - buildings fire back
+### ( ) - r3 - shots, and buildings attacking back
+
+<!-- shots -->
+* attackers will spawn shots when in attackTarget mode
+* shots will need to move by set values when spawned
+* shots will need to check if they hit a target or not
+<!-- buildings -->
 * make it so that buildings will fire back at attackers
 
 ### ( ) - r2 - first unit types, units-buildings.js, units-attackers.js, and units-shots.js
@@ -51,14 +57,13 @@
 
 <!-- building HP -->
 
-* buildings will need to have hp values
+* (done) buildings will need to have hp values
+* attackers should have a attack stat
+* attackers should have a fireRate stat
+* make it so that an attacker will deduct hp from a building
 * when a building losses all hp it will need to purge
 
 
-<!-- shots -->
-* attackers will spawn shots when in attackTarget mode
-* shots will need to move by set values when spawned
-* shots will need to check if they hit a target or not
 
 
 

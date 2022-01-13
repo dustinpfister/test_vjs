@@ -18,7 +18,7 @@ var sm = {
        radius: 100,
        colorStops: [
            [0, 'white'],
-           [0.5, 'green'],
+           [0.5, 'rgb(0,0,128)'],
            [1, 'white']
        ]
     }

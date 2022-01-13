@@ -11,6 +11,7 @@
 
 ## () - r6 - Bug Fix
 * (done) fixed #4 which was a mistake with DEFAULT COLOR STOPS in draw.js
+* (done) new style
 * see about fixing Known bug #3
 
 ## ( done 01/11/2022 ) - r5 - remove unused code, draw.js improvements

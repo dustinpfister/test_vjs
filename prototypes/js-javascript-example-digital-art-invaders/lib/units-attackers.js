@@ -53,7 +53,34 @@ unitsMod.load( (function () {
 
     // unit modes
     var UNIT_MODES = {};
-    
+   
+    UNIT_MODES.attackTarget = {
+        init: function(unit, pool, game){
+
+        },
+        update: function(unit, pool, game, secs){
+            // set overlap color in move mode also for now
+            setOverlapColor(unit);
+
+            // ref to target
+            var target = unit.data.target;
+                if(target === null){
+                    unitsMod.changeMode(unit, 'idle', pool, game);
+                }else{
+                // if target null, or is no longer active, set target back to null, and go back to idle mode
+                if(!target.active || target === null){
+                    unit.data.target = null;
+                    unitsMod.changeMode(unit, 'idle', pool, game);
+                }else{
+      
+poolMod.purge(target, game)
+
+                }
+            }
+        }
+    };
+
+
     // a simple move mode where the unit will just move by current PPS and heading values
     UNIT_MODES.moveToTarget = {
         init: function(unit, pool, game){
@@ -66,19 +93,27 @@ unitsMod.load( (function () {
             getTarget(unit, game);
             // ref to target
             var target = unit.data.target;
-            // if target null, or is no longer active, set target back to null, and go back to idle mode
-            if(!target.active || target === null){
-                unit.data.target = null;
+            // if target is null return to idle mode
+            if(target === null){
                 unitsMod.changeMode(unit, 'idle', pool, game);
             }else{
-                // distance and abgle
-                var d = poolMod.distance(unit, unit.data.target),
-                a = poolMod.getAngleTo(unit, unit.data.target);
-                // set heading of unit to move to target
-                unit.heading = a;
-                // if distance to building is greater that range move
-                if(d > 120){
-                    poolMod.moveByPPS(unit, secs);
+                // if target is no longer active, set target back to null, and go back to idle mode
+                if(!target.active){
+                    unit.data.target = null;
+                    unitsMod.changeMode(unit, 'idle', pool, game);
+                }else{
+                    // distance and abgle
+                    var d = poolMod.distance(unit, unit.data.target),
+                    a = poolMod.getAngleTo(unit, unit.data.target);
+                    // set heading of unit to move to target
+                    unit.heading = a;
+                    // if distance to building is greater that range move
+                    if(d > 120){
+                        poolMod.moveByPPS(unit, secs);
+                    }else{
+                       // else the unit is in range, and thus can attack
+                       unitsMod.changeMode(unit, 'attackTarget', pool, game);
+                    }
                 }
             }
         }

@@ -135,7 +135,8 @@ unitsMod.load( (function () {
 
     UNIT_MODES.moveOut = {
         init: function(unit, pool, game){
-
+            unit.heading += Math.PI;
+            unit.heading = utils.mod(unit.heading, utils.PI2);
         },
         update: function(unit, pool, game, secs){
             // set overlap color in move mode also for now

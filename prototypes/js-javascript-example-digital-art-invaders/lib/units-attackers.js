@@ -66,25 +66,21 @@ unitsMod.load( (function () {
             getTarget(unit, game);
             // ref to target
             var target = unit.data.target;
-            // if target is no longer active set target back to null, and go back to idle mode
-            if(!target.active){
+            // if target null, or is no longer active, set target back to null, and go back to idle mode
+            if(!target.active || target === null){
                 unit.data.target = null;
                 unitsMod.changeMode(unit, 'idle', pool, game);
             }else{
-
+                // distance and abgle
                 var d = poolMod.distance(unit, unit.data.target),
                 a = poolMod.getAngleTo(unit, unit.data.target);
-
                 // set heading of unit to move to target
                 unit.heading = a;
                 // if distance to building is greater that range move
                 if(d > 50){
                     poolMod.moveByPPS(unit, secs);
                 }
-
             }
-
-            //poolMod.wrap(unit, game.sm.canvas, unit.w);
         }
     };
 

@@ -22,6 +22,27 @@ unitsMod.load( (function () {
             unit.data.fillStyle = 'red';
         }
     };
+    // get a target or set current to default null value
+    var getTarget = function(unit, game){
+        // defualt to no target
+        unit.data.target = null;
+        // get current active buildings and sort by distance
+        var targets = poolMod.getActiveObjects(game.buildings).sort(function(a, b){
+            var d1 = poolMod.distance(unit, a),
+            d2 = poolMod.distance(unit, b);
+            if(d1 < d2){
+                return -1;
+            }
+            if(d1 > d2){
+                return 1;
+            }
+            return 0;
+        });
+        // if we have one or more targets set a target
+        if(targets.length >= 1){
+            unit.data.target = targets[0];
+        }
+    };
 
 // THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
@@ -41,8 +62,9 @@ unitsMod.load( (function () {
         update: function(unit, pool, game, secs){
             // set overlap color in move mode also for now
             setOverlapColor(unit);
-
-
+            // update target?
+            getTarget(unit, game);
+            // ref to target
             var target = unit.data.target;
             // if target is no longer active set target back to null, and go back to idle mode
             if(!target.active){
@@ -66,27 +88,6 @@ unitsMod.load( (function () {
         }
     };
 
-    var getTarget = function(unit, game){
-        // defualt to no target
-        unit.data.target = null;
-        // get current active buildings and sort by distance
-        var targets = poolMod.getActiveObjects(game.buildings).sort(function(a, b){
-            var d1 = poolMod.distance(unit, a),
-            d2 = poolMod.distance(unit, b);
-            if(d1 < d2){
-                return -1;
-            }
-            if(d1 > d2){
-                return 1;
-            }
-            return 0;
-        });
-        // if we have one or more targets set a target
-        if(targets.length >= 1){
-            unit.data.target = targets[0];
-        }
-    };
-
     // get a target mode
     UNIT_MODES.getTarget = {
         init: function(unit, pool, game){
@@ -97,7 +98,6 @@ unitsMod.load( (function () {
             getTarget(unit, game);
             // if we have a target move to it
             if(unit.data.target){
-                unit.data.target.data.fillStyle = 'lime';
                 unitsMod.changeMode(unit, 'moveToTarget', pool, game);
             }else{
                 // no active targets? return to idle

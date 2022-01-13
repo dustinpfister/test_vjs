@@ -25,7 +25,6 @@
 <!-- MVP -->
 
 ### ( ) - r3 - shots, and buildings attacking back
-
 <!-- shots -->
 * attackers will spawn shots when in attackTarget mode
 * shots will need to move by set values when spawned
@@ -33,7 +32,7 @@
 <!-- buildings -->
 * make it so that buildings will fire back at attackers
 
-### ( ) - r2 - first unit types, units-buildings.js, units-attackers.js, and units-shots.js
+### ( done 01/13/2022 ) - r2 - first unit types, units-buildings.js, units-attackers.js, and units-shots.js
 * (done) have a unitsMod.load method that can be used to load a new 'unit type'
 * (done) start a units-attackers.js
 * (done) make it so that there is a pool.data.modes object that will be a ref to modes for the type
@@ -54,20 +53,12 @@
 * (done) in the event that that target is in range enter attackTarget mode
 * (done) There should be a spawnRate for buildings
 * (done) Attackers should move back out of range when there are no targets
-
-<!-- building HP -->
-
 * (done) buildings will need to have hp values
 * (done) in draw.js if a unit has a data.hp value then display an hp bar
-* attackers should have a attack stat
-* attackers should have a fireRate stat
-* make it so that an attacker will deduct hp from a building
-* when a building losses all hp it will need to purge
-
-
-
-
-
+* (done) attackers should have a attack stat
+* (done) attackers should have a fireRate stat
+* (done) make it so that an attacker will deduct hp from a building
+* (done) when a building losses all hp it will need to purge
 
 ### ( done 01/12/2022 ) - r1 - pool-normalized.js
 * (done) start a new pool-normalized.js file based off of pool.js

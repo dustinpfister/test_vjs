@@ -184,30 +184,6 @@ unitsMod.load( (function () {
         }
     };
 
-    // repositon and set back to idle
-/*
-    UNIT_MODES.repos = {
-        init: function(unit, pool, game){
-
-        },
-        update: function(unit, pool, game, secs){
-
-            overClapCount = poolMod.getOverlaping(unit, pool).length;
-            if(overClapCount > 0){
-                var newPos = getAttackerStartPos(game);
-                var areaDisp = poolMod.createDisp(newPos) 
-                if( poolMod.getOverlaping(areaDisp, pool).length === 0){
-                    Object.assign(unit, newPos);
-                    unitsMod.changeMode(unit, 'idle', pool, game);
-                }
-            }else{
-                    unitsMod.changeMode(unit, 'idle', pool, game);
-            }
-
-        }
-    };
-*/
-
     UNIT_OPTIONS.modes = UNIT_MODES;
 
     // spawn a unit

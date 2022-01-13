@@ -49,6 +49,9 @@ unitsMod.load( (function () {
             unit.data.overlapCount = poolMod.getOverlaping(unit, pool).length;
             if(unit.data.overlapCount > 0){
                 unit.data.fillStyle = 'red';
+                //Object.assign(unit,getAttackerStartPos(game));
+                //unitsMod.changeMode(unit, 'repos', pool, game);
+                  
             }
 
             // move and wrap
@@ -56,6 +59,30 @@ unitsMod.load( (function () {
             //poolMod.wrap(unit, game.sm.canvas, unit.w);
         }
     };
+
+    // repositon and set back to idle
+/*
+    UNIT_MODES.repos = {
+        init: function(unit, pool, game){
+
+        },
+        update: function(unit, pool, game, secs){
+
+            overClapCount = poolMod.getOverlaping(unit, pool).length;
+            if(overClapCount > 0){
+                var newPos = getAttackerStartPos(game);
+                var areaDisp = poolMod.createDisp(newPos) 
+                if( poolMod.getOverlaping(areaDisp, pool).length === 0){
+                    Object.assign(unit, newPos);
+                    unitsMod.changeMode(unit, 'idle', pool, game);
+                }
+            }else{
+                    unitsMod.changeMode(unit, 'idle', pool, game);
+            }
+
+        }
+    };
+*/
 
     UNIT_OPTIONS.modes = UNIT_MODES;
 

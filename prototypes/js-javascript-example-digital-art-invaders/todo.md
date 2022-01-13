@@ -58,7 +58,7 @@
 <!-- building HP -->
 
 * (done) buildings will need to have hp values
-* in draw.js if a unit has a data.hp value then display an hp bar
+* (done) in draw.js if a unit has a data.hp value then display an hp bar
 * attackers should have a attack stat
 * attackers should have a fireRate stat
 * make it so that an attacker will deduct hp from a building

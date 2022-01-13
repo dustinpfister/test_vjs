@@ -58,20 +58,26 @@ unitsMod.load( (function () {
     UNIT_MODES.attackTarget = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
+            var uDat = unit.data;
             // set overlap color in move mode also for now
             setOverlapColor(unit);
 
             // ref to target
-            var target = unit.data.target;
+            var target = uDat.target;
             if(target === null){
                 unitsMod.changeMode(unit, 'idle', pool, game);
             }else{
                 // if target null, or is no longer active, set target back to null, and go back to idle mode
                 if(!target.active){
-                    unit.data.target = null;
+                    uDat.target = null;
                     unitsMod.changeMode(unit, 'idle', pool, game);
                 }else{
-                    poolMod.purge(target, game)
+                    // attack target!
+                    uDat.fireSecs += secs;
+                    if(uDat.fireSecs >= uDat.fireRate){
+                        uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
+                        poolMod.purge(target, game);
+                    }
                 }
             }
         }
@@ -191,6 +197,10 @@ unitsMod.load( (function () {
         spawnOpt = spawnOpt || {};
         var canvas = game.sm.canvas,
         uDat = unit.data;
+        // STATS
+        uDat.attack = 1;
+        uDat.fireRate = 1;
+        uDat.fireSecs = 0;
         // the current target to attack
         uDat.target = null;
         // mode of the unit
@@ -207,7 +217,7 @@ unitsMod.load( (function () {
         // heading
         unit.heading = unitsMod.randomHeading();
         // speed
-        unit.pps = unitsMod.randomPPS();
+        unit.pps = 128; //unitsMod.randomPPS();
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);
     };

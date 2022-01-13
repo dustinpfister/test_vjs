@@ -56,7 +56,7 @@ var draw = (function(){
             if(dDat.hp != undefined){
                var x = disp.x - disp.w / 2,
                y = disp.y - disp.h / 2;
-               hpPer = 1; //dDat.hp / dDat.hpMax;
+               hpPer = dDat.hp / dDat.hpMax;
                ctx.fillStyle = 'lime';
                ctx.fillRect(x, y, disp.w * hpPer, disp.h * 0.15 );
             }

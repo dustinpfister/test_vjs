@@ -76,7 +76,11 @@ unitsMod.load( (function () {
                     uDat.fireSecs += secs;
                     if(uDat.fireSecs >= uDat.fireRate){
                         uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
-                        poolMod.purge(target, game);
+                        target.data.hp -= uDat.attack;
+                        target.data.hp = target.data.hp < 0 ? 0 : target.data.hp;
+                        if(target.data.hp === 0){
+                            poolMod.purge(target, game);
+                        }
                     }
                 }
             }
@@ -199,7 +203,7 @@ unitsMod.load( (function () {
         uDat = unit.data;
         // STATS
         uDat.attack = 1;
-        uDat.fireRate = 1;
+        uDat.fireRate = 0.5;
         uDat.fireSecs = 0;
         // the current target to attack
         uDat.target = null;

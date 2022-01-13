@@ -40,10 +40,10 @@
 * (done) buildings will just spawn for now
 * (done) attackers should spawn from outside of the canvas area
 
-* from idle mode enter a seek target mode
+* from idle mode enter a get target mode
 
-* have a seekTarget mode in which a unit will start with no ref to a building
-* in seekTarget mode use utils.distance to sort an array of active buildings
+* have a getTarget mode in which a unit will start with no ref to a building
+* in getTarget mode use utils.distance to sort an array of active buildings
 * once a target is set in seekTarget mode change to a moveToTarget mode
 
 * in moveTotarget mode check that the current target is still active

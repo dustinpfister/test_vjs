@@ -15,6 +15,14 @@ unitsMod.load( (function () {
         return pos;
     };
 
+    var setOverlapColor = function(unit){
+        unit.data.fillStyle = 'blue';
+        unit.data.overlapCount = poolMod.getOverlaping(unit, unit.pool).length;
+        if(unit.data.overlapCount > 0){
+            unit.data.fillStyle = 'red';
+        }
+    };
+
 // THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
         typeKey: 'attackers',
@@ -32,7 +40,7 @@ unitsMod.load( (function () {
         },
         update: function(unit, pool, game, secs){
 
-  
+            setOverlapColor(unit);
 
             // move and wrap
             poolMod.moveByPPS(unit, secs);
@@ -40,6 +48,7 @@ unitsMod.load( (function () {
         }
     };
 
+    // get a target
     UNIT_MODES.getTarget = {
         init: function(unit, pool, game){
         },
@@ -55,14 +64,7 @@ unitsMod.load( (function () {
         },
         update: function(unit, pool, game, secs){
 
-            unit.data.fillStyle = 'blue';
-            unit.data.overlapCount = poolMod.getOverlaping(unit, pool).length;
-            if(unit.data.overlapCount > 0){
-                unit.data.fillStyle = 'red';
-                //Object.assign(unit,getAttackerStartPos(game));
-                //unitsMod.changeMode(unit, 'repos', pool, game);
-                  
-            }
+            setOverlapColor(unit);
 
             // move and wrap
             //poolMod.moveByPPS(unit, secs);
@@ -100,6 +102,8 @@ unitsMod.load( (function () {
     UNIT_OPTIONS.spawn = function (unit, pool, game, spawnOpt) {
         spawnOpt = spawnOpt || {};
         var canvas = game.sm.canvas;
+        // the current target to attack
+        unit.data.target = null;
         // mode of the unit
         unit.data.mode = spawnOpt.mode || 'idle';
         // colors

@@ -1,6 +1,6 @@
 unitsMod.load( (function () {
 
-    ATTACKER_SPAWN_RADIUS = [400, 500];
+    ATTACKER_SPAWN_RADIUS = [450, 600];
 
 // HELPERS
     var getAttackerStartPos = function(game){

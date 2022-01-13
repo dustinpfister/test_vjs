@@ -73,9 +73,6 @@ unitsMod.load( (function () {
         // heading and speed not used
         unit.heading = 0;
         unit.pps = 0;
-
-console.log(uDat.hp);
-
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);
     };

@@ -138,7 +138,7 @@ unitsMod.load( (function () {
             unit.heading += Math.PI;
             unit.heading = utils.mod(unit.heading, utils.PI2);
 
-            unit.data.yaw = Math.PI / 180 * (-20 + 40 * Math.random())
+            unit.data.yaw = Math.PI / 180 * (-10 + 20 * Math.random())
         },
         update: function(unit, pool, game, secs){
             var canvas = game.sm.canvas;
@@ -147,7 +147,7 @@ unitsMod.load( (function () {
 
             var targets = poolMod.getActiveObjects(game.buildings),
             targetCount = targets.length;
-            if(targetCount > 0){
+            if(targetCount > 5){
                 unitsMod.changeMode(unit, 'idle', pool, game);
             }
 

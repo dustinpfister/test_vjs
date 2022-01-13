@@ -17,8 +17,8 @@ unitsMod.load( (function () {
 
     var setOverlapColor = function(unit){
         unit.data.fillStyle = 'blue';
-        unit.data.overlapCount = poolMod.getOverlaping(unit, unit.pool).length;
-        if(unit.data.overlapCount > 0){
+        var overlap = poolMod.getOverlaping(unit, unit.pool).length;
+        if(overlap > 0){
             unit.data.fillStyle = 'red';
         }
     };
@@ -34,9 +34,9 @@ unitsMod.load( (function () {
     var UNIT_MODES = {};
     
     // a simple move mode where the unit will just move by current PPS and heading values
-    UNIT_MODES.move = {
+    UNIT_MODES.moveToTarget = {
         init: function(unit, pool, game){
-            unit.data.overlapCount = 0;
+
         },
         update: function(unit, pool, game, secs){
 
@@ -51,8 +51,25 @@ unitsMod.load( (function () {
     // get a target
     UNIT_MODES.getTarget = {
         init: function(unit, pool, game){
+            unit.data.target = null;
+
         },
         update: function(unit, pool, game, secs){
+            var targets = poolMod.getActiveObjects(game.buildings).sort(function(a, b){
+                var d1 = poolMod.distance(unit, a),
+                d2 = poolMod.distance(unit, b);
+                if(d1 < d2){
+                    return -1;
+                }
+                if(d1 > d2){
+                    return 1;
+                }
+                return 0;
+            });
+            if(targets.length >= 1){
+                unit.data.target = targets[0];
+                unitsMod.changeMode(unit, 'moveToTarget', pool, game);
+            }
         }
     };
 
@@ -60,11 +77,13 @@ unitsMod.load( (function () {
     // of task such as seeking a target, moving to a new location ect, attacking a building ect.
     UNIT_MODES.idle = {
         init: function(unit, pool, game){
-
+            unit.data.target = null;
         },
         update: function(unit, pool, game, secs){
 
             setOverlapColor(unit);
+
+            unitsMod.changeMode(unit, 'getTarget', pool, game);
 
             // move and wrap
             //poolMod.moveByPPS(unit, secs);

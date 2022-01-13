@@ -1,5 +1,7 @@
 unitsMod.load( (function () {
 
+// HELPERS
+
     // spawn building helper
     var spawnBuilding = function(game, pool){
         // spawn buidling

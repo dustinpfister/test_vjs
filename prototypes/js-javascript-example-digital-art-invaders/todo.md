@@ -46,16 +46,20 @@
 * (done) in moveToTarget mode check that the current target is still active
 * (done) in the event that the target is no longer active go back to idle mode
 * (done) in the event that that target is in range enter attackTarget mode
-
 * (done) There should be a spawnRate for buildings
-* Attackers should move back out of range when there are no targets
+* (done) Attackers should move back out of range when there are no targets
+
+<!-- building HP -->
+
+* buildings will need to have hp values
+* when a building losses all hp it will need to purge
+
 
 <!-- shots -->
 * attackers will spawn shots when in attackTarget mode
 * shots will need to move by set values when spawned
 * shots will need to check if they hit a target or not
-* buildings will need to have hp values
-* when a building losses all hp it will need to purge
+
 
 
 

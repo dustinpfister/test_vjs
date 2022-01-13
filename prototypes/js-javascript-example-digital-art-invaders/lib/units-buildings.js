@@ -53,13 +53,17 @@ unitsMod.load( (function () {
     // spawn a unit
     UNIT_OPTIONS.spawn = function (unit, pool, game, spawnOpt) {
         spawnOpt = spawnOpt || {};
-        var canvas = game.sm.canvas;
+        var canvas = game.sm.canvas,
+        uDat = unit.data;
         // mode of the unit
-        unit.data.mode = spawnOpt.mode || 'idle';
+        uDat.mode = spawnOpt.mode || 'idle';
+        // STATS
+        uDat.hpMax = 10;
+        uDat.hp = unit.data.maxHP;
         // colors
-        unit.data.fillStyle = 'white'
+        uDat.fillStyle = 'white'
         // alpha
-        unit.data.alpha = 1;
+        uDat.alpha = 1;
         // size
         unit.w = 32;
         unit.h = 32;
@@ -70,7 +74,7 @@ unitsMod.load( (function () {
         unit.heading = 0;
         unit.pps = 0;
         // chance mode
-        unitsMod.changeMode(unit, unit.data.mode, pool, game);
+        unitsMod.changeMode(unit, uDat.mode, pool, game);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

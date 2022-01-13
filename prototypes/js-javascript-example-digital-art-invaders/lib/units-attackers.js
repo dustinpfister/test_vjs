@@ -77,7 +77,7 @@ unitsMod.load( (function () {
                 // set heading of unit to move to target
                 unit.heading = a;
                 // if distance to building is greater that range move
-                if(d > 50){
+                if(d > 120){
                     poolMod.moveByPPS(unit, secs);
                 }
             }

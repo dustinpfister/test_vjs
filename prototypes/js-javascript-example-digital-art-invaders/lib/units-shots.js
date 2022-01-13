@@ -11,9 +11,11 @@ unitsMod.load( (function () {
     var UNIT_MODES = {};
     
     // idle
-    UNIT_MODES.idle = {
+    UNIT_MODES.move = {
         init: function(unit, pool, game){},
-        update: function(unit, pool, game, secs){}
+        update: function(unit, pool, game, secs){
+            poolMod.moveByPPS(unit, secs);
+        }
     };
 
     UNIT_OPTIONS.modes = UNIT_MODES;
@@ -21,13 +23,14 @@ unitsMod.load( (function () {
     // spawn a unit
     UNIT_OPTIONS.spawn = function (unit, pool, game, spawnOpt) {
         spawnOpt = spawnOpt || {};
-        var canvas = game.sm.canvas;
+        var canvas = game.sm.canvas,
+        uDat = unit.data;
         // mode of the unit
-        unit.data.mode = spawnOpt.mode || 'idle';
+        uDat.mode = spawnOpt.mode || 'idle';
         // colors
-        unit.data.fillStyle = 'white'
+        uDat.fillStyle = 'white'
         // alpha
-        unit.data.alpha = 1;
+        uDat.alpha = 1;
         // size
         unit.w = 4;
         unit.h = 4;
@@ -35,10 +38,10 @@ unitsMod.load( (function () {
         unit.x = spawnOpt.x || 0;
         unit.y = spawnOpt.y || 0;
         // heading and speed not used
-        unit.heading = 0;
-        unit.pps = 0;
+        unit.heading = spawnOpt.heading || 0;
+        unit.pps = 128;
         // chance mode
-        unitsMod.changeMode(unit, unit.data.mode, pool, game);
+        unitsMod.changeMode(unit, uDat.mode, pool, game);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

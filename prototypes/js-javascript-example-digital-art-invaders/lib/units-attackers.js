@@ -189,28 +189,27 @@ unitsMod.load( (function () {
     // spawn a unit
     UNIT_OPTIONS.spawn = function (unit, pool, game, spawnOpt) {
         spawnOpt = spawnOpt || {};
-        var canvas = game.sm.canvas;
+        var canvas = game.sm.canvas,
+        uDat = unit.data;
         // the current target to attack
-        unit.data.target = null;
+        uDat.target = null;
         // mode of the unit
-        unit.data.mode = spawnOpt.mode || 'idle';
+        uDat.mode = spawnOpt.mode || 'idle';
         // colors
-        unit.data.fillStyle = '#aa0000';
+        uDat.fillStyle = '#aa0000';
         // alpha
-        unit.data.alpha = 1;
+        uDat.alpha = 1;
         // size
         unit.w = 32;
         unit.h = 32;
         // start position
-        Object.assign(unit,getAttackerStartPos(game));
-        //unit.x = canvas.width / 2;
-        //unit.y = canvas.height / 2;
+        Object.assign(unit, getAttackerStartPos(game));
         // heading
         unit.heading = unitsMod.randomHeading();
         // speed
         unit.pps = unitsMod.randomPPS();
         // chance mode
-        unitsMod.changeMode(unit, unit.data.mode, pool, game);
+        unitsMod.changeMode(unit, uDat.mode, pool, game);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

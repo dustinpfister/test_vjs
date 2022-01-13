@@ -59,7 +59,7 @@ unitsMod.load( (function () {
         uDat.mode = spawnOpt.mode || 'idle';
         // STATS
         uDat.hpMax = 10;
-        uDat.hp = unit.data.maxHP;
+        uDat.hp = unit.data.hpMax;
         // colors
         uDat.fillStyle = 'white'
         // alpha
@@ -73,6 +73,9 @@ unitsMod.load( (function () {
         // heading and speed not used
         unit.heading = 0;
         unit.pps = 0;
+
+console.log(uDat.hp);
+
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);
     };

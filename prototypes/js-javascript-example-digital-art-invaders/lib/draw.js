@@ -33,6 +33,8 @@ var draw = (function(){
         return gradient;
     };
     var drawDisp = function(sm, disp, ctx, canvas){
+        var hpPer = 0,
+        dDat = disp.data;
         // if the object is active
         if (disp.active) {
             // draw base area as recr
@@ -50,6 +52,14 @@ var draw = (function(){
             ctx.fillStyle = 'black';
             ctx.arc(disp.x, disp.y, 2, 0, Math.PI * 2);
             ctx.fill();
+            // hp bar
+            if(dDat.hp != undefined){
+               var x = disp.x - disp.w / 2,
+               y = disp.y - disp.h / 2;
+               hpPer = 1; //dDat.hp / dDat.hpMax;
+               ctx.fillStyle = 'lime';
+               ctx.fillRect(x, y, disp.w * hpPer, disp.h * 0.15 );
+            }
         }
     };
     // PUBLIC API METHODS

@@ -52,9 +52,9 @@ unitsMod.load( (function () {
     UNIT_MODES.getTarget = {
         init: function(unit, pool, game){
             unit.data.target = null;
-
         },
         update: function(unit, pool, game, secs){
+            // get current active buildings and sort by distance
             var targets = poolMod.getActiveObjects(game.buildings).sort(function(a, b){
                 var d1 = poolMod.distance(unit, a),
                 d2 = poolMod.distance(unit, b);
@@ -66,9 +66,13 @@ unitsMod.load( (function () {
                 }
                 return 0;
             });
+            // just get top target by distance
             if(targets.length >= 1){
                 unit.data.target = targets[0];
                 unitsMod.changeMode(unit, 'moveToTarget', pool, game);
+            }else{
+                // no active targets? return to idle
+                unitsMod.changeMode(unit, 'idle', pool, game);
             }
         }
     };
@@ -82,9 +86,12 @@ unitsMod.load( (function () {
         update: function(unit, pool, game, secs){
 
             setOverlapColor(unit);
+            var targets = poolMod.getActiveObjects(game.buildings),
+            targetCount = targets.length;
 
-            unitsMod.changeMode(unit, 'getTarget', pool, game);
-
+            if(targets.length > 0){
+                unitsMod.changeMode(unit, 'getTarget', pool, game);
+            }
             // move and wrap
             //poolMod.moveByPPS(unit, secs);
             //poolMod.wrap(unit, game.sm.canvas, unit.w);

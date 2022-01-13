@@ -39,8 +39,9 @@
 * (done) do the same for a units-shots.js
 * (done) buildings will just spawn for now
 
+* attackers should spawn from outside of the canvas area
 * attackers will select a building that is the building that is the near using distance formula
-* attackers should spawn from outside of the canvas area and move to the center
+
 * attackers will stop when they come into range of any buildings
 * attackers will fire at buildings until they are destroyed
 * when an attacker gets to the center of the canvas it will purge and thus will be able to respawn

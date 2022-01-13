@@ -1,5 +1,17 @@
 unitsMod.load( (function () {
 
+// HELPERS
+    var getAttackerStartPos = function(game){
+        var canvas = game.sm.canvas,
+        cx = canvas.width / 2,
+        cy = canvas.height / 2,
+        pos = {},
+        radian = unitsMod.randomHeading();
+        pos.x = cx + Math.cos(radian) * 180;
+        pos.y = cy + Math.sin(radian) * 180;
+        return pos;
+    };
+
 // THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
         typeKey: 'attackers',
@@ -17,6 +29,22 @@ unitsMod.load( (function () {
         },
         update: function(unit, pool, game, secs){
 
+  
+
+            // move and wrap
+            poolMod.moveByPPS(unit, secs);
+            //poolMod.wrap(unit, game.sm.canvas, unit.w);
+        }
+    };
+
+    // idle mode - what an attacker should do while it is active, but does not have any kind
+    // of task such as seeking a target, moving to a new location ect.
+    UNIT_MODES.idle = {
+        init: function(unit, pool, game){
+
+        },
+        update: function(unit, pool, game, secs){
+
             unit.data.fillStyle = 'blue';
             unit.data.overlapCount = poolMod.getOverlaping(unit, pool).length;
             if(unit.data.overlapCount > 0){
@@ -24,8 +52,8 @@ unitsMod.load( (function () {
             }
 
             // move and wrap
-            poolMod.moveByPPS(unit, secs);
-            poolMod.wrap(unit, game.sm.canvas, unit.w);
+            //poolMod.moveByPPS(unit, secs);
+            //poolMod.wrap(unit, game.sm.canvas, unit.w);
         }
     };
 
@@ -36,17 +64,18 @@ unitsMod.load( (function () {
         spawnOpt = spawnOpt || {};
         var canvas = game.sm.canvas;
         // mode of the unit
-        unit.data.mode = spawnOpt.mode || 'move';
+        unit.data.mode = spawnOpt.mode || 'idle';
         // colors
-        unit.data.fillStyle = 'white'
+        unit.data.fillStyle = '#aa0000';
         // alpha
         unit.data.alpha = 1;
         // size
         unit.w = 32;
         unit.h = 32;
         // start position
-        unit.x = Math.floor( canvas.width * Math.random());
-        unit.y = Math.floor( canvas.height * Math.random());
+        Object.assign(unit,getAttackerStartPos(game));
+        //unit.x = canvas.width / 2;
+        //unit.y = canvas.height / 2;
         // heading
         unit.heading = unitsMod.randomHeading();
         // speed

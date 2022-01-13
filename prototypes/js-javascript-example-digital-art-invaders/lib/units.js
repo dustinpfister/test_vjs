@@ -29,7 +29,7 @@ var unitsMod = (function () {
     };
     // random heading helper
     api.randomHeading = function(){
-       return Math.PI * 2 * Math.random();
+       return utils.PI2 * Math.random();
     };
     // random ppx helper
     api.randomPPS = function(){

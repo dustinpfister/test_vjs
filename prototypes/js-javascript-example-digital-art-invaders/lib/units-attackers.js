@@ -133,6 +133,25 @@ unitsMod.load( (function () {
         }
     };
 
+    UNIT_MODES.moveOut = {
+        init: function(unit, pool, game){
+
+        },
+        update: function(unit, pool, game, secs){
+            // set overlap color in move mode also for now
+            setOverlapColor(unit);
+
+            var targets = poolMod.getActiveObjects(game.buildings),
+            targetCount = targets.length;
+            if(targetCount > 0){
+                unitsMod.changeMode(unit, 'idle', pool, game);
+            }
+
+            poolMod.moveByPPS(unit, secs);
+  
+        }
+    };
+
     // idle mode - what an attacker should do while it is active, but does not have any kind
     // of task such as seeking a target, moving to a new location ect, attacking a building ect.
     UNIT_MODES.idle = {
@@ -145,8 +164,11 @@ unitsMod.load( (function () {
             // if there are targets switch to getTarget mode
             var targets = poolMod.getActiveObjects(game.buildings),
             targetCount = targets.length;
-            if(targets.length > 0){
+            if(targetCount > 0){
                 unitsMod.changeMode(unit, 'getTarget', pool, game);
+            }else{
+                // if no targets
+                unitsMod.changeMode(unit, 'moveOut', pool, game);
             }
         }
     };

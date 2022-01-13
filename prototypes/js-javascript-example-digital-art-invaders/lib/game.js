@@ -19,7 +19,7 @@ var gameMod = (function () {
         game.attackers = unitsMod.create({
             type: 'attackers',
             game: game,
-            count: 20
+            count: 50
         });
 
         // create game units

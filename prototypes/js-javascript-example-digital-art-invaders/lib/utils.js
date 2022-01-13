@@ -1,4 +1,11 @@
 var utils = {};
+// get a value by way of a per value (0-1), and a min and max value
+utils.valueByRange = function(per, nMin, nMax){
+    per = per === undefined ? 0 : per;
+    nMin = nMin === undefined ? 0 : nMin;
+    nMax = nMax === undefined ? 1 : nMax;
+    return nMin + Math.round(per * (nMax - nMin));
+};
 // create a canvas element
 utils.createCanvas = function(opt){
     opt = opt || {};

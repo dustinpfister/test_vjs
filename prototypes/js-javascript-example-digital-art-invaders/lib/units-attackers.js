@@ -1,14 +1,18 @@
 unitsMod.load( (function () {
 
+    ATTACKER_SPAWN_RADIUS = [200, 300];
+
 // HELPERS
     var getAttackerStartPos = function(game){
         var canvas = game.sm.canvas,
         cx = canvas.width / 2,
         cy = canvas.height / 2,
         pos = {},
-        radian = unitsMod.randomHeading();
-        pos.x = cx + Math.cos(radian) * 180;
-        pos.y = cy + Math.sin(radian) * 180;
+        radiusRange = ATTACKER_SPAWN_RADIUS,
+        radian = unitsMod.randomHeading(),
+        radius = utils.valueByRange(Math.random(), radiusRange[0], radiusRange[1])
+        pos.x = cx + Math.cos(radian) * radius;
+        pos.y = cy + Math.sin(radian) * radius;
         return pos;
     };
 

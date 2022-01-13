@@ -1,5 +1,35 @@
 unitsMod.load( (function () {
 
+    // spawn building helper
+    var spawnBuilding = function(game, pool){
+        // spawn buidling
+        var canvas = game.sm.canvas,
+        space = 5,
+        unitsPerAxis = 5,
+        sx = canvas.width / 2 - ((32 + space) * (unitsPerAxis - 1 ) / 2),
+        sy = canvas.height / 2 - ((32 + space) * ( unitsPerAxis - 1) / 2);
+        // get a random area
+        var areaDisp = poolMod.createDisp({
+            x: sx + (32 + space) * Math.floor( unitsPerAxis * Math.random()) ,
+            y: sy + (32 + space) * Math.floor( unitsPerAxis * Math.random())
+        });
+        // check to see of area if not taken
+        var active = poolMod.getActiveObjects(pool),
+        ai = active.length,
+        good = true;
+        while(ai--){
+            var disp = active[ai];
+            if(poolMod.boundingBox(areaDisp, disp)){
+                good = false;
+                break;
+            }
+        }
+        // if we have a good location spawn
+        if(good){
+            poolMod.spawn(pool, game, {x: areaDisp.x, y: areaDisp.y});
+        }
+    }
+
 // THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
         typeKey: 'buildings',
@@ -49,32 +79,8 @@ unitsMod.load( (function () {
 
     UNIT_OPTIONS.beforeUpdate = function(pool, secs, game){
 
-        var canvas = game.sm.canvas,
-        space = 5,
-        unitsPerAxis = 5,
-        sx = canvas.width / 2 - ((32 + space) * (unitsPerAxis - 1 ) / 2),
-        sy = canvas.height / 2 - ((32 + space) * ( unitsPerAxis - 1) / 2);
 
-        var areaDisp = poolMod.createDisp({
-            x: sx + (32 + space) * Math.floor( unitsPerAxis * Math.random()) ,
-            y: sy + (32 + space) * Math.floor( unitsPerAxis * Math.random())
-        });
-
-        var active = poolMod.getActiveObjects(pool),
-        ai = active.length,
-        good = true;
-
-        while(ai--){
-            var disp = active[ai];
-            if(poolMod.boundingBox(areaDisp, disp)){
-                good = false;
-                break;
-            }
-        }
-
-        if(good){
-            poolMod.spawn(pool, game, {x: areaDisp.x, y: areaDisp.y});
-        }
+        spawnBuilding(game, pool)
 
     };
 

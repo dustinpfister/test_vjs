@@ -39,11 +39,29 @@ unitsMod.load( (function () {
 
         },
         update: function(unit, pool, game, secs){
-
+            // set overlap color in move mode also for now
             setOverlapColor(unit);
 
-            // move and wrap
-            poolMod.moveByPPS(unit, secs);
+
+            var target = unit.data.target;
+            // if target is no longer active set target back to null, and go back to idle mode
+            if(!target.active){
+                unit.data.target = null;
+                unitsMod.changeMode(unit, 'idle', pool, game);
+            }else{
+
+                var d = poolMod.distance(unit, unit.data.target),
+                a = poolMod.getAngleTo(unit, unit.data.target);
+
+                // set heading of unit to move to target
+                unit.heading = a;
+                // if distance to building is greater that range move
+                if(d > 50){
+                    poolMod.moveByPPS(unit, secs);
+                }
+
+            }
+
             //poolMod.wrap(unit, game.sm.canvas, unit.w);
         }
     };
@@ -69,6 +87,7 @@ unitsMod.load( (function () {
             // just get top target by distance
             if(targets.length >= 1){
                 unit.data.target = targets[0];
+unit.data.target.data.fillStyle = 'lime';
                 unitsMod.changeMode(unit, 'moveToTarget', pool, game);
             }else{
                 // no active targets? return to idle
@@ -84,17 +103,14 @@ unitsMod.load( (function () {
             unit.data.target = null;
         },
         update: function(unit, pool, game, secs){
-
+            // set overlap color for now in this mode
             setOverlapColor(unit);
+            // if there are targets switch to getTarget mode
             var targets = poolMod.getActiveObjects(game.buildings),
             targetCount = targets.length;
-
             if(targets.length > 0){
                 unitsMod.changeMode(unit, 'getTarget', pool, game);
             }
-            // move and wrap
-            //poolMod.moveByPPS(unit, secs);
-            //poolMod.wrap(unit, game.sm.canvas, unit.w);
         }
     };
 

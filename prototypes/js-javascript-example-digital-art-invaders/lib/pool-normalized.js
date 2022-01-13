@@ -228,7 +228,7 @@ var poolMod = (function () {
             x2 = a;
             y2 = b;
         }
-        return Math.atan2(disp.y - y2, disp.x - x2);
+        return Math.atan2(y2 - disp.y, x2 - disp.x);
     };
     // center the disp to the given areaObj, the areaObj can be a canvas
     api.centerDisp = function(obj, areaObj){

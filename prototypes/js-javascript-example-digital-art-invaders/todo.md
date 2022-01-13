@@ -39,16 +39,21 @@
 * (done) do the same for a units-shots.js
 * (done) buildings will just spawn for now
 * (done) attackers should spawn from outside of the canvas area
+* (done) from idle mode enter a get target mode
+* (done) have a getTarget mode in which a unit will start with no ref to a building
+* (done) in getTarget mode use utils.distance to sort an array of active buildings
+* (done) once a target is set in seekTarget mode change to a moveToTarget mode
+* (done) in moveToTarget mode check that the current target is still active
+* (done) in the event that the target is no longer active go back to idle mode
 
-* from idle mode enter a get target mode
-
-* have a getTarget mode in which a unit will start with no ref to a building
-* in getTarget mode use utils.distance to sort an array of active buildings
-* once a target is set in seekTarget mode change to a moveToTarget mode
-
-* in moveTotarget mode check that the current target is still active
-* in the event that the target is no longer active go back to idle mode
 * in the event that that target is in range enter attackTarget mode
+* attackers will spawn shots when in attackTarget mode
+
+* shots will need to move by set values when spawned
+* shots will need to check if they hit a target or not
+* buildings will need to have hp values
+* when a building losses all hp it will need to purge
+
 
 
 ### ( done 01/12/2022 ) - r1 - pool-normalized.js

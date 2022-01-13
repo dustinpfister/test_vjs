@@ -38,13 +38,18 @@
 * (done) start a units-building.js file that will call the unitsMod.load method adding a 'building' unit type
 * (done) do the same for a units-shots.js
 * (done) buildings will just spawn for now
+* (done) attackers should spawn from outside of the canvas area
 
-* attackers should spawn from outside of the canvas area
-* attackers will select a building that is the building that is the near using distance formula
+* from idle mode enter a seek target mode
 
-* attackers will stop when they come into range of any buildings
-* attackers will fire at buildings until they are destroyed
-* when an attacker gets to the center of the canvas it will purge and thus will be able to respawn
+* have a seekTarget mode in which a unit will start with no ref to a building
+* in seekTarget mode use utils.distance to sort an array of active buildings
+* once a target is set in seekTarget mode change to a moveToTarget mode
+
+* in moveTotarget mode check that the current target is still active
+* in the event that the target is no longer active go back to idle mode
+* in the event that that target is in range enter attackTarget mode
+
 
 ### ( done 01/12/2022 ) - r1 - pool-normalized.js
 * (done) start a new pool-normalized.js file based off of pool.js

@@ -40,8 +40,15 @@ unitsMod.load( (function () {
         }
     };
 
+    UNIT_MODES.getTarget = {
+        init: function(unit, pool, game){
+        },
+        update: function(unit, pool, game, secs){
+        }
+    };
+
     // idle mode - what an attacker should do while it is active, but does not have any kind
-    // of task such as seeking a target, moving to a new location ect.
+    // of task such as seeking a target, moving to a new location ect, attacking a building ect.
     UNIT_MODES.idle = {
         init: function(unit, pool, game){
 

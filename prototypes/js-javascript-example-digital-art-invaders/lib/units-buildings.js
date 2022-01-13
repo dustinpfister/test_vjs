@@ -86,7 +86,7 @@ unitsMod.load( (function () {
 
         pool.data.spawnSecs += secs;
 
-        if(pool.data.spawnSecs > 1){
+        if(pool.data.spawnSecs > 4){
             spawnBuilding(game, pool);
             pool.data.spawnSecs = 0;
         }

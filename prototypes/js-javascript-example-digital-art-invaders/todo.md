@@ -47,7 +47,7 @@
 * (done) in the event that the target is no longer active go back to idle mode
 * (done) in the event that that target is in range enter attackTarget mode
 
-* There should be a spawnRate for buildings
+* (done) There should be a spawnRate for buildings
 * Attackers should move back out of range when there are no targets
 
 <!-- shots -->

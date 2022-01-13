@@ -54,34 +54,30 @@ unitsMod.load( (function () {
     // unit modes
     var UNIT_MODES = {};
    
+    // attack the current target switching back to idle if the target is null of not active
     UNIT_MODES.attackTarget = {
-        init: function(unit, pool, game){
-
-        },
+        init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
             // set overlap color in move mode also for now
             setOverlapColor(unit);
 
             // ref to target
             var target = unit.data.target;
-                if(target === null){
-                    unitsMod.changeMode(unit, 'idle', pool, game);
-                }else{
+            if(target === null){
+                unitsMod.changeMode(unit, 'idle', pool, game);
+            }else{
                 // if target null, or is no longer active, set target back to null, and go back to idle mode
-                if(!target.active || target === null){
+                if(!target.active){
                     unit.data.target = null;
                     unitsMod.changeMode(unit, 'idle', pool, game);
                 }else{
-      
-poolMod.purge(target, game)
-
+                    poolMod.purge(target, game)
                 }
             }
         }
     };
 
-
-    // a simple move mode where the unit will just move by current PPS and heading values
+    // move to the current target, and switch to attackTarget mode when it range. For othe cases switch back to idle
     UNIT_MODES.moveToTarget = {
         init: function(unit, pool, game){
 
@@ -119,7 +115,7 @@ poolMod.purge(target, game)
         }
     };
 
-    // get a target mode
+    // get a target and switch to move to target, or back to idle
     UNIT_MODES.getTarget = {
         init: function(unit, pool, game){
             unit.data.target = null;

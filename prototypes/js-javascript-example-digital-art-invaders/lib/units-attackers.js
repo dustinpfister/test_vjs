@@ -8,9 +8,8 @@ unitsMod.load( (function () {
         cx = canvas.width / 2,
         cy = canvas.height / 2,
         pos = {},
-        radiusRange = ATTACKER_SPAWN_RADIUS,
         radian = unitsMod.randomHeading(),
-        radius = utils.valueByRange(Math.random(), radiusRange[0], radiusRange[1])
+        radius = utils.valueByRange(Math.random(), ATTACKER_SPAWN_RADIUS)
         pos.x = cx + Math.cos(radian) * radius;
         pos.y = cy + Math.sin(radian) * radius;
         return pos;

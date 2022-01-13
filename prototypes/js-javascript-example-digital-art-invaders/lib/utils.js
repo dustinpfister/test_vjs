@@ -1,9 +1,15 @@
 var utils = {};
 // get a value by way of a per value (0-1), and a min and max value
-utils.valueByRange = function(per, nMin, nMax){
+utils.valueByRange = function(per, a, b){
     per = per === undefined ? 0 : per;
-    nMin = nMin === undefined ? 0 : nMin;
-    nMax = nMax === undefined ? 1 : nMax;
+    var nMin, nMax;
+    if(typeof a === 'object'){
+        nMin = a[0];
+        nMax = a[1];
+    }else{
+        nMin = a === undefined ? 0 : a;
+        nMax = b === undefined ? 1 : b;
+    }
     return nMin + Math.round(per * (nMax - nMin));
 };
 // create a canvas element

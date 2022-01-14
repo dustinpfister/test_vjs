@@ -29,8 +29,8 @@
 * (done) attackers will spawn shots when in attackTarget mode
 * (done) shots will need to move by set values when spawned
 * (done) shots will need to check if they hit a target or not
-
-* can set attack value when spawning a shot
+* (done) can set attack value when spawning a shot
+* can set shot color when spawning a shot
 
 <!-- buildings -->
 * make it so that buildings will fire back at attackers

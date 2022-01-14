@@ -79,7 +79,8 @@ unitsMod.load( (function () {
         // shot hitPool - a pool to check on each update to see if something that hot or not
         uDat.hitPool = spawnOpt.hitPool || null;
         // colors
-        uDat.fillStyle = 'white'
+        uDat.strokeStyle = spawnOpt.strokeStyle || 'white';
+        uDat.fillStyle = spawnOpt.fillStyle || 'white';
         // alpha
         uDat.alpha = 1;
         // size

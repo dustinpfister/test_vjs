@@ -7,7 +7,10 @@ This is the third digital art project example, continuing with a trend that I th
 
 ## General Idea or Minimum Viable Product ( r0 - rx )
 
-### r0 -
+### r0 - Start project, and units.js
+
+When I first started this project I copied what I had for revision 4 of my unsteady stars example, and then striped that down to a crude starting point. Off of that I started a new units.js library as I would like to start a new system for this sort of thing while working on this project.
+
 
 ## Additional Features ( rx - rx )
 

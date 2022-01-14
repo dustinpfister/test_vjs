@@ -61,7 +61,7 @@ var unitsMod = (function () {
                         sx: unit.x,
                         sy: unit.y,
                         heading: poolMod.getAngleTo(unit, target),
-                        range: 120,
+                        range: uDat.range,
                         hitPool: opt.hitPool
                     });
                 }

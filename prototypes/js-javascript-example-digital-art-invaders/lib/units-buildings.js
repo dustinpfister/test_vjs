@@ -76,7 +76,7 @@ unitsMod.load( (function () {
         uDat.fireRate = 1;
         uDat.fireSecs = 0;
         uDat.hpMax = 10;
-        uDat.range = 250;
+        uDat.range = 150; //250;
         uDat.hp = unit.data.hpMax;
         // colors
         uDat.fillStyle = 'white'

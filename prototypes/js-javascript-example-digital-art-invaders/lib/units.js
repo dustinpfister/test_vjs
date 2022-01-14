@@ -21,7 +21,7 @@ var unitsMod = (function () {
            power += uDat.attack / uDat.fireRate;
            // 
         });
-        return power;
+        return Math.round(power);
     };
 
     // get a target or set current to default null value

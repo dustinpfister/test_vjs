@@ -45,7 +45,11 @@ unitsMod.load( (function () {
     // idle
     UNIT_MODES.idle = {
         init: function(unit, pool, game){},
-        update: function(unit, pool, game, secs){}
+        update: function(unit, pool, game, secs){
+
+
+
+        }
     };
 
     UNIT_OPTIONS.modes = UNIT_MODES;
@@ -84,17 +88,13 @@ unitsMod.load( (function () {
     };
 
     UNIT_OPTIONS.beforeUpdate = function(pool, secs, game){
-
         // set spawn secs of not there
         pool.data.spawnSecs = pool.data.spawnSecs === undefined ? 0 : pool.data.spawnSecs; 
-
         pool.data.spawnSecs += secs;
-
         if(pool.data.spawnSecs > 1){
             spawnBuilding(game, pool);
             pool.data.spawnSecs = 0;
         }
-
     };
 
     // return the OPTIONS object to use to create

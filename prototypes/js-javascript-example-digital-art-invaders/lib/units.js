@@ -10,6 +10,31 @@ var unitsMod = (function () {
 //  PUBLIC API
     // the public api
     var api = {};
+
+
+
+    // get a target or set current to default null value
+    api.getTarget = function(unit, targetPool, game){
+        // defualt to no target
+        unit.data.target = null;
+        // get current active buildings and sort by distance
+        var targets = poolMod.getActiveObjects(targetPool).sort(function(a, b){
+            var d1 = poolMod.distance(unit, a),
+            d2 = poolMod.distance(unit, b);
+            if(d1 < d2){
+                return -1;
+            }
+            if(d1 > d2){
+                return 1;
+            }
+            return 0;
+        });
+        // if we have one or more targets set a target
+        if(targets.length >= 1){
+            unit.data.target = targets[0];
+        }
+    };
+
     // load a unit type 
     api.load = function(typeOptions){
         var typeKey = typeOptions.typeKey || Object.keys(UNIT_TYPES).length; 

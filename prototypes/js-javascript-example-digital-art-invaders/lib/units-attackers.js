@@ -22,6 +22,7 @@ unitsMod.load( (function () {
             unit.data.fillStyle = 'red';
         }
     };
+/*
     // get a target or set current to default null value
     var getTarget = function(unit, game){
         // defualt to no target
@@ -43,6 +44,7 @@ unitsMod.load( (function () {
             unit.data.target = targets[0];
         }
     };
+*/
 
 // THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
@@ -101,7 +103,10 @@ unitsMod.load( (function () {
             // set overlap color in move mode also for now
             setOverlapColor(unit);
             // update target?
-            getTarget(unit, game);
+            //getTarget(unit, game);
+
+unitsMod.getTarget(unit, game.buildings, game);
+
             // ref to target
             var target = unit.data.target;
             // if target is null return to idle mode
@@ -137,7 +142,10 @@ unitsMod.load( (function () {
         },
         update: function(unit, pool, game, secs){
             // try to get a target
-            getTarget(unit, game);
+            //getTarget(unit, game);
+
+unitsMod.getTarget(unit, game.buildings, game);
+
             // if we have a target move to it
             if(unit.data.target){
                 unitsMod.changeMode(unit, 'moveToTarget', pool, game);

@@ -63,7 +63,14 @@ unitsMod.load( (function () {
             var uDat = unit.data;
             // set overlap color in move mode also for now
             setOverlapColor(unit);
+
+
+unitsMod.fireAtTarget(unit, game, secs, function(){
+    unitsMod.changeMode(unit, 'idle', pool, game);
+});
+
             // ref to target
+/*
             var target = uDat.target;
             if(target === null){
                 unitsMod.changeMode(unit, 'idle', pool, game);
@@ -77,7 +84,6 @@ unitsMod.load( (function () {
                     uDat.fireSecs += secs;
                     if(uDat.fireSecs >= uDat.fireRate){
                         uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
-
                         poolMod.spawn(game.shots, game, {
                             strokeStyle: 'yellow',
                             attack: uDat.attack,
@@ -87,10 +93,11 @@ unitsMod.load( (function () {
                             range: 120,
                             hitPool: game.buildings
                         });
-
                     }
                 }
             }
+*/
+
         }
     };
 
@@ -144,7 +151,7 @@ unitsMod.getTarget(unit, game.buildings, game);
             // try to get a target
             //getTarget(unit, game);
 
-unitsMod.getTarget(unit, game.buildings, game);
+            unitsMod.getTarget(unit, game.buildings, game);
 
             // if we have a target move to it
             if(unit.data.target){

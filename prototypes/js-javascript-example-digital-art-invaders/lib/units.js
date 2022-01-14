@@ -11,8 +11,6 @@ var unitsMod = (function () {
     // the public api
     var api = {};
 
-
-
     // get a target or set current to default null value
     api.getTarget = function(unit, targetPool, game){
         // defualt to no target
@@ -32,6 +30,38 @@ var unitsMod = (function () {
         // if we have one or more targets set a target
         if(targets.length >= 1){
             unit.data.target = targets[0];
+        }
+    };
+
+    api.fireAtTarget = function(unit, game, secs, onNoTarget){
+        onNoTarget = onNoTarget || function(unit, game){};
+        var uDat = unit.data;
+        var target = uDat.target;
+        if(target === null){
+            //unitsMod.changeMode(unit, 'idle', pool, game);
+            onNoTarget(unit, game);
+        }else{
+            // if target null, or is no longer active, set target back to null, and go back to idle mode
+            if(!target.active){
+                uDat.target = null;
+                //unitsMod.changeMode(unit, 'idle', pool, game);
+                onNoTarget(unit, game);
+            }else{
+                // attack target!
+                uDat.fireSecs += secs;
+                if(uDat.fireSecs >= uDat.fireRate){
+                    uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
+                    poolMod.spawn(game.shots, game, {
+                        strokeStyle: 'yellow',
+                        attack: uDat.attack,
+                        sx: unit.x,
+                        sy: unit.y,
+                        heading: poolMod.getAngleTo(unit, target),
+                        range: 120,
+                        hitPool: game.buildings
+                    });
+                }
+            }
         }
     };
 

@@ -52,6 +52,16 @@ unitsMod.load( (function () {
            unitsMod.getTarget(unit, game.attackers, game);
 
 
+unitsMod.fireAtTarget(unit, {
+    game: game,
+    secs: secs,
+    hitPool: game.attackers,
+    onNoTarget: function(unit, game){
+        //unitsMod.changeMode(unit, 'idle', pool, game);
+    }
+});
+
+
 
         }
     };

@@ -61,7 +61,6 @@ unitsMod.load( (function () {
             var uDat = unit.data;
             // set overlap color in move mode also for now
             setOverlapColor(unit);
-
             // ref to target
             var target = uDat.target;
             if(target === null){

@@ -9,12 +9,24 @@ unitsMod.load( (function () {
 
     // unit modes
     var UNIT_MODES = {};
-    
-    // idle
+   
+
+ 
+    // move
     UNIT_MODES.move = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
+            var uDat = unit.data;
+            // distance from start position
+            var ds = poolMod.distance(unit, uDat.sx, uDat.sy);
+
             poolMod.moveByPPS(unit, secs);
+            if(ds >= uDat.range){
+                // make sure shot is at range, not beyond
+                unit.x = uDat.sx + Math.cos(unit.heading) * uDat.range;
+                unit.y = uDat.sy + Math.sin(unit.heading) * uDat.range;
+            }
+            
         }
     };
 
@@ -27,6 +39,8 @@ unitsMod.load( (function () {
         uDat = unit.data;
         // mode of the unit
         uDat.mode = spawnOpt.mode || 'idle';
+        // SHOT STATS
+        uDat.range = spawnOpt.range === undefined ? 100: spawnOpt.range;
         // colors
         uDat.fillStyle = 'white'
         // alpha

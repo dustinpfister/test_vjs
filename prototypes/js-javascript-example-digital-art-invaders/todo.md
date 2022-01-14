@@ -45,9 +45,8 @@
 * (done) shots will need to check if they hit a target or not
 * (done) can set attack value when spawning a shot
 * (done) can set shot color when spawning a shot
-<!-- buildings -->
-* make it so that buildings will fire back at attackers
-* attackers will then also need to have hp stats
+* (done) make it so that buildings will fire back at attackers
+* (done) attackers will then also need to have hp stats
 
 ### ( done 01/13/2022 ) - r2 - first unit types, units-buildings.js, units-attackers.js, and units-shots.js
 * (done) have a unitsMod.load method that can be used to load a new 'unit type'

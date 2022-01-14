@@ -41,14 +41,13 @@ var unitsMod = (function () {
         opt.game = opt.game || {};
         var uDat = unit.data;
         var target = uDat.target;
+        // if target is null call onNoTarget
         if(target === null){
-            //unitsMod.changeMode(unit, 'idle', pool, game);
             opt.onNoTarget(unit, opt.game);
         }else{
-            // if target null, or is no longer active, set target back to null, and go back to idle mode
+            // if target is longer active, set target back to null, and call onNoTarget
             if(!target.active){
                 uDat.target = null;
-                //unitsMod.changeMode(unit, 'idle', pool, game);
                 opt.onNoTarget(unit, opt.game);
             }else{
                 // attack target!
@@ -56,7 +55,8 @@ var unitsMod = (function () {
                 if(uDat.fireSecs >= uDat.fireRate){
                     uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
                     poolMod.spawn(opt.game.shots, opt.game, {
-                        strokeStyle: 'yellow',
+                        strokeStyle: opt.strokeStyle || 'yellow',
+                        fillStyle: opt.fillStyle || 'yellow',
                         attack: uDat.attack,
                         sx: unit.x,
                         sy: unit.y,

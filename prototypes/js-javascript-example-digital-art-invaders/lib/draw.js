@@ -1,5 +1,5 @@
 var draw = (function(){
-    var DEFAULT_LINE_WIDTH = 3,
+    var DEFAULT_LINE_WIDTH = 1,
     DEFAULT_STROKE_STYLE = 'black',
     DEFAULT_FILL_STYLE = 'white',
     DEFAULT_TEXT_COLOR = 'yellow',
@@ -48,10 +48,12 @@ var draw = (function(){
             ctx.fill();
             ctx.stroke();
             // draw small circle over obj.x, obj.y
+/*
             ctx.beginPath();
             ctx.fillStyle = 'black';
             ctx.arc(disp.x, disp.y, 2, 0, Math.PI * 2);
             ctx.fill();
+*/
             // hp bar
             if(dDat.hp != undefined){
                var x = disp.x - disp.w / 2,

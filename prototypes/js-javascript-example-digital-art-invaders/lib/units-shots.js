@@ -23,7 +23,6 @@ unitsMod.load( (function () {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
             var uDat = unit.data;
-
             var hitObjects = poolMod.getOverlaping(unit, uDat.hitPool);
             if(hitObjects.length > 0){
                 hitObjects.forEach(function(target){
@@ -34,7 +33,6 @@ unitsMod.load( (function () {
                     }
                 });
             }
-
             // purge shot
             poolMod.purge(unit, game);
         }
@@ -76,7 +74,7 @@ unitsMod.load( (function () {
         // mode of the unit
         uDat.mode = spawnOpt.mode || 'move';
         // SHOT STATS
-        uDat.attack = 1;
+        uDat.attack = spawnOpt.attack === undefined ? 1 : spawnOpt.attack;
         uDat.range = spawnOpt.range === undefined ? 100: spawnOpt.range;
         // shot hitPool - a pool to check on each update to see if something that hot or not
         uDat.hitPool = spawnOpt.hitPool || null;

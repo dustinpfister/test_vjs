@@ -48,6 +48,10 @@ unitsMod.load( (function () {
         update: function(unit, pool, game, secs){
 
 
+           // set or update target
+           unitsMod.getTarget(unit, game.attackers, game);
+
+
 
         }
     };
@@ -62,6 +66,9 @@ unitsMod.load( (function () {
         // mode of the unit
         uDat.mode = spawnOpt.mode || 'idle';
         // STATS
+        uDat.attack = 1;
+        uDat.fireRate = 0.5;
+        uDat.fireSecs = 0;
         uDat.hpMax = 10;
         uDat.hp = unit.data.hpMax;
         // colors

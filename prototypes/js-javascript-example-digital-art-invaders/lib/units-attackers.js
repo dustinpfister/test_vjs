@@ -64,9 +64,18 @@ unitsMod.load( (function () {
             // set overlap color in move mode also for now
             setOverlapColor(unit);
 
-
+/*
 unitsMod.fireAtTarget(unit, game, secs, function(){
     unitsMod.changeMode(unit, 'idle', pool, game);
+});
+*/
+unitsMod.fireAtTarget(unit, {
+    game: game,
+    secs: secs,
+    hitPool: game.buildings,
+    onNoTarget: function(unit, game){
+        unitsMod.changeMode(unit, 'idle', pool, game);
+    }
 });
 
             // ref to target

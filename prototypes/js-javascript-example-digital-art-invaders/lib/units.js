@@ -33,32 +33,36 @@ var unitsMod = (function () {
         }
     };
 
-    api.fireAtTarget = function(unit, game, secs, onNoTarget){
-        onNoTarget = onNoTarget || function(unit, game){};
+    // fire at target method
+    api.fireAtTarget = function(unit, opt){
+        opt = opt || {};
+        opt.onNoTarget = opt.onNoTarget || function(unit, game){};
+        opt.secs = opt.secs || 0;
+        opt.game = opt.game || {};
         var uDat = unit.data;
         var target = uDat.target;
         if(target === null){
             //unitsMod.changeMode(unit, 'idle', pool, game);
-            onNoTarget(unit, game);
+            opt.onNoTarget(unit, opt.game);
         }else{
             // if target null, or is no longer active, set target back to null, and go back to idle mode
             if(!target.active){
                 uDat.target = null;
                 //unitsMod.changeMode(unit, 'idle', pool, game);
-                onNoTarget(unit, game);
+                opt.onNoTarget(unit, opt.game);
             }else{
                 // attack target!
-                uDat.fireSecs += secs;
+                uDat.fireSecs += opt.secs;
                 if(uDat.fireSecs >= uDat.fireRate){
                     uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
-                    poolMod.spawn(game.shots, game, {
+                    poolMod.spawn(opt.game.shots, opt.game, {
                         strokeStyle: 'yellow',
                         attack: uDat.attack,
                         sx: unit.x,
                         sy: unit.y,
                         heading: poolMod.getAngleTo(unit, target),
                         range: 120,
-                        hitPool: game.buildings
+                        hitPool: opt.hitPool
                     });
                 }
             }

@@ -38,7 +38,7 @@
 
 <!-- MVP -->
 
-### ( ) - r3 - More work on shots, buildings attacking back
+### ( done 01/14/2022 ) - r3 - More work on shots, buildings attacking back
 <!-- shots -->
 * (done) attackers will spawn shots when in attackTarget mode
 * (done) shots will need to move by set values when spawned

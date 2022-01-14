@@ -18,6 +18,15 @@ unitsMod.load( (function () {
             poolMod.purge(unit, game);
         }
     };
+
+    UNIT_MODES.hit = {
+        init: function(unit, pool, game){},
+        update: function(unit, pool, game, secs){
+            var uDat = unit.data;
+            // purge shot
+            poolMod.purge(unit, game);
+        }
+    };
  
     // move
     UNIT_MODES.move = {
@@ -26,7 +35,7 @@ unitsMod.load( (function () {
             var uDat = unit.data;
             // distance from start position
             var ds = poolMod.distance(unit, uDat.sx, uDat.sy);
-
+            // move and switch to at rangMode if set range is reached
             poolMod.moveByPPS(unit, secs);
             if(ds >= uDat.range){
                 // make sure shot is at range, not beyond
@@ -34,7 +43,14 @@ unitsMod.load( (function () {
                 unit.y = uDat.sy + Math.sin(unit.heading) * uDat.range;
                 // switch to at range mode
                 unitsMod.changeMode(unit, 'atRange', pool, game);
-            }  
+            }
+            // check hit pool and switch to hitMode if one or more objects where hit
+            if(uDat.hitPool){
+                var hitObjects = poolMod.getOverlaping(unit, uDat.hitPool);
+                if(hitObjects.length > 0){
+                    unitsMod.changeMode(unit, 'hit', pool, game);
+                }
+            }
         }
     };
 
@@ -49,6 +65,8 @@ unitsMod.load( (function () {
         uDat.mode = spawnOpt.mode || 'move';
         // SHOT STATS
         uDat.range = spawnOpt.range === undefined ? 100: spawnOpt.range;
+        // shot hitPool - a pool to check on each update to see if something that hot or not
+        uDat.hitPool = spawnOpt.hitPool || null;
         // colors
         uDat.fillStyle = 'white'
         // alpha

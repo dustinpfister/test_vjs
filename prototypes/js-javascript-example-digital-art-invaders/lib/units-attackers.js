@@ -80,7 +80,8 @@ poolMod.spawn(game.shots, game, {
     sx: unit.x,
     sy: unit.y,
     heading: poolMod.getAngleTo(unit, target),
-    range: 120
+    range: 120,
+    hitPool: game.buildings
 });
 
 /*

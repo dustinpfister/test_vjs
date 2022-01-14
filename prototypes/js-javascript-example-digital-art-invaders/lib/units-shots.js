@@ -10,7 +10,14 @@ unitsMod.load( (function () {
     // unit modes
     var UNIT_MODES = {};
    
-
+    UNIT_MODES.atRange = {
+        init: function(unit, pool, game){},
+        update: function(unit, pool, game, secs){
+            var uDat = unit.data;
+            // purge shot
+            poolMod.purge(unit, game);
+        }
+    };
  
     // move
     UNIT_MODES.move = {
@@ -25,8 +32,9 @@ unitsMod.load( (function () {
                 // make sure shot is at range, not beyond
                 unit.x = uDat.sx + Math.cos(unit.heading) * uDat.range;
                 unit.y = uDat.sy + Math.sin(unit.heading) * uDat.range;
-            }
-            
+                // switch to at range mode
+                unitsMod.changeMode(unit, 'atRange', pool, game);
+            }  
         }
     };
 

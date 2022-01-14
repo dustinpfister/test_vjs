@@ -72,7 +72,7 @@ unitsMod.load( (function () {
         // mode of the unit
         uDat.mode = spawnOpt.mode || 'idle';
         // STATS
-        uDat.attack = 1;
+        uDat.attack = 4;
         uDat.fireRate = 1;
         uDat.fireSecs = 0;
         uDat.hpMax = 10;

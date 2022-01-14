@@ -164,7 +164,7 @@ unitsMod.load( (function () {
         uDat = unit.data;
         // STATS
         uDat.attack = 1;
-        uDat.fireRate = 0.6;
+        uDat.fireRate = 0.5;
         uDat.fireSecs = 0;
         uDat.hpMax = 10;
         uDat.range = 150;

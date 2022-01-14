@@ -8,23 +8,37 @@
 
 <!-- Additonal Features -->
 
-### () - r6 - loader.js and sprite sheets
+### () - r9 - loader.js and sprite sheets
 * add a loader.js file that will load sprite sheets
 * have a sprite sheet to skin buildings
 * have a sprite sheet to skin attackers
 * have a sprite sheet to skin shots
 
-### () - r5 - unit subtypes
-* have subtypes for buildings
-* have subtypes for attackers
-
-### () - r4 - units-info.js
+### () - r8 - units-info.js, damage displayed
 * start a units-info.js file to add an 'info' unit type
 * use the info unit type to display damage each time a unit is hit 
 
+### () - r7 - xp system, levels for buildings and attackers
+
+### () - r6 - building types
+
+### () - r5 - attacker types
+
+### () - r4 - shot types, bullet and shell
+* have a subtype system for shots like that of what I worked out in in my turn based rpg example
+* have a bullet type that will be a 'line of sight' type
+* with bullet 'line of sight' means that it will hit any target when moving along a path
+* bullet types will be a 'single hit' type, meaning that when it will only apply onHit for a single target
+* when a bullet goes out of range, it will just purge
+
+* have a shell type that will be a 'blast area' type of shot
+* a shell type will not check any hitPool on each update
+* a shell type will not check if it has gone out of range or not
+* a shell type will just go to a set location and once there will switch to blastMode
+
 <!-- MVP -->
 
-### ( ) - r3 - shots, and buildings attacking back
+### ( ) - r3 - More work on shots, buildings attacking back
 <!-- shots -->
 * (done) attackers will spawn shots when in attackTarget mode
 * (done) shots will need to move by set values when spawned
@@ -33,6 +47,7 @@
 * (done) can set shot color when spawning a shot
 <!-- buildings -->
 * make it so that buildings will fire back at attackers
+* attackers will then also need to have hp stats
 
 ### ( done 01/13/2022 ) - r2 - first unit types, units-buildings.js, units-attackers.js, and units-shots.js
 * (done) have a unitsMod.load method that can be used to load a new 'unit type'

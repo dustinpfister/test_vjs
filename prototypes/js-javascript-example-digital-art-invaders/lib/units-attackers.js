@@ -75,6 +75,7 @@ unitsMod.load( (function () {
                     uDat.fireSecs += secs;
                     if(uDat.fireSecs >= uDat.fireRate){
                         uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
+
                         poolMod.spawn(game.shots, game, {
                             strokeStyle: 'yellow',
                             attack: uDat.attack,
@@ -84,6 +85,7 @@ unitsMod.load( (function () {
                             range: 120,
                             hitPool: game.buildings
                         });
+
                     }
                 }
             }

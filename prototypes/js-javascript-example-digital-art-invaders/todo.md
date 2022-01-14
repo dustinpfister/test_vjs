@@ -26,9 +26,9 @@
 
 ### ( ) - r3 - shots, and buildings attacking back
 <!-- shots -->
-* attackers will spawn shots when in attackTarget mode
-* shots will need to move by set values when spawned
-* shots will need to check if they hit a target or not
+* (done) attackers will spawn shots when in attackTarget mode
+* (done) shots will need to move by set values when spawned
+* (done) shots will need to check if they hit a target or not
 <!-- buildings -->
 * make it so that buildings will fire back at attackers
 

@@ -75,11 +75,21 @@ unitsMod.load( (function () {
                     uDat.fireSecs += secs;
                     if(uDat.fireSecs >= uDat.fireRate){
                         uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
+
+poolMod.spawn(game.shots, game, {
+    sx: unit.x,
+    sy: unit.y,
+    heading: poolMod.getAngleTo(unit, target),
+    range: 120
+});
+
+/*
                         target.data.hp -= uDat.attack;
                         target.data.hp = target.data.hp < 0 ? 0 : target.data.hp;
                         if(target.data.hp === 0){
                             poolMod.purge(target, game);
                         }
+*/
                     }
                 }
             }

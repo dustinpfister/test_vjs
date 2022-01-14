@@ -46,7 +46,7 @@ unitsMod.load( (function () {
         var canvas = game.sm.canvas,
         uDat = unit.data;
         // mode of the unit
-        uDat.mode = spawnOpt.mode || 'idle';
+        uDat.mode = spawnOpt.mode || 'move';
         // SHOT STATS
         uDat.range = spawnOpt.range === undefined ? 100: spawnOpt.range;
         // colors
@@ -57,8 +57,8 @@ unitsMod.load( (function () {
         unit.w = 4;
         unit.h = 4;
         // start position
-        uDat.sx = spawnOpt.x || 0;
-        uDat.sy = spawnOpt.y || 0;
+        uDat.sx = spawnOpt.sx || 0;
+        uDat.sy = spawnOpt.sy || 0;
         unit.x = uDat.sx;
         unit.y = uDat.sy;
         // heading and speed not used

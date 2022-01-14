@@ -210,6 +210,8 @@ unitsMod.load( (function () {
         uDat.attack = 1;
         uDat.fireRate = 0.5;
         uDat.fireSecs = 0;
+        uDat.hpMax = 10;
+        uDat.hp = unit.data.hpMax;
         // the current target to attack
         uDat.target = null;
         // mode of the unit

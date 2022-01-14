@@ -8,23 +8,23 @@
 
 <!-- Additonal Features -->
 
-### () - r9 - loader.js and sprite sheets
+### () - r10 - loader.js and sprite sheets
 * add a loader.js file that will load sprite sheets
 * have a sprite sheet to skin buildings
 * have a sprite sheet to skin attackers
 * have a sprite sheet to skin shots
 
-### () - r8 - units-info.js, damage displayed
+### () - r9 - units-info.js, damage displayed
 * start a units-info.js file to add an 'info' unit type
 * use the info unit type to display damage each time a unit is hit 
 
-### () - r7 - xp system, levels for buildings and attackers
+### () - r8 - xp system, levels for buildings and attackers
 
-### () - r6 - building types
+### () - r7 - building types
 
-### () - r5 - attacker types
+### () - r6 - attacker types
 
-### () - r4 - shot types, bullet and shell
+### () - r5 - shot types, bullet and shell
 * have a subtype system for shots like that of what I worked out in in my turn based rpg example
 * have a bullet type that will be a 'line of sight' type
 * with bullet 'line of sight' means that it will hit any target when moving along a path
@@ -35,6 +35,12 @@
 * a shell type will not check any hitPool on each update
 * a shell type will not check if it has gone out of range or not
 * a shell type will just go to a set location and once there will switch to blastMode
+
+### r4 - unitMod totalPower method
+* unitMod.totalPower method that will return a value that should indacate how powerful a given pool is
+* unitMod.totalPower will only add up values for current active units
+* base unitMod.totalPower on attack and fireRate stats for now
+* display totalPower for attackers and buildings
 
 <!-- MVP -->
 

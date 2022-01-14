@@ -11,6 +11,19 @@ var unitsMod = (function () {
     // the public api
     var api = {};
 
+    // totalPower of a pool
+    api.totalPower = function(pool){
+        var power = 0;
+        // for each active object
+        poolMod.getActiveObjects(pool, true).forEach(function(unit){
+           var uDat = unit.data;
+           // dps
+           power += uDat.attack / uDat.fireRate;
+           // 
+        });
+        return power;
+    };
+
     // get a target or set current to default null value
     api.getTarget = function(unit, targetPool, game){
         // defualt to no target

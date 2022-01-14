@@ -84,6 +84,17 @@ var draw = (function(){
         });
         ctx.globalAlpha = 1;
     };
+    // draw status info
+    api.status = function (sm, ctx, canvas) {
+        var game = sm.game,
+        power = game.power;
+        ctx.fillStyle = DEFAULT_TEXT_COLOR;
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '14px arial';
+        ctx.fillText('power buildings: ' + power.buildings, 10, 10);
+        ctx.fillText('power attackers: ' + power.attackers, 10, 25);
+    };
     // draw version number
     api.ver = function (sm, ctx, canvas) {
         ctx.fillStyle = DEFAULT_TEXT_COLOR;

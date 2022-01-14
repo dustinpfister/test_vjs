@@ -34,6 +34,7 @@ var loop = function () {
         draw.pool(sm, sm.game.buildings, sm.ctx);
         draw.pool(sm, sm.game.attackers, sm.ctx);
         draw.pool(sm, sm.game.shots, sm.ctx);
+        draw.status(sm, sm.ctx, sm.canvas);
         draw.ver(sm, sm.ctx, sm.canvas);
         sm.lt = now;
     }

@@ -37,10 +37,12 @@
 * a shell type will just go to a set location and once there will switch to blastMode
 
 ### r4 - unitMod totalPower method
-* unitMod.totalPower method that will return a value that should indacate how powerful a given pool is
-* unitMod.totalPower will only add up values for current active units
-* base unitMod.totalPower on attack and fireRate stats for now
-* display totalPower for attackers and buildings
+* (done) unitMod.totalPower method that will return a value that should indacate how powerful a given pool is
+* (done) unitMod.totalPower will only add up values for current active units
+* (done) base unitMod.totalPower on attack and fireRate stats for now
+* (done) display totalPower for attackers and buildings
+* make it so that buildings will not shoot unless there is soemthing in range to shoot at
+
 
 <!-- MVP -->
 

@@ -30,7 +30,30 @@ unitsMod.load( (function () {
         if(good){
             poolMod.spawn(pool, game, {x: areaDisp.x, y: areaDisp.y});
         }
-    }
+    };
+
+    var attackUpdate = function(unit, game, secs){
+        // set or update target
+        unitsMod.getTarget(unit, game.attackers, game);
+        // if we have a target
+        if(unit.data.target){
+            // check if the target is in range, if so fire
+            var d = poolMod.distance(unit, unit.data.target);
+            if(d <= unit.data.range){
+                // fire at target
+                unitsMod.fireAtTarget(unit, {
+                    strokeStyle: 'blue',
+                    fillStyle: 'cyan',
+                    game: game,
+                    secs: secs,
+                    hitPool: game.attackers,
+                    onNoTarget: function(unit, game){
+                  
+                    }
+                });
+            }
+        }
+    };
 
 // THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
@@ -46,19 +69,10 @@ unitsMod.load( (function () {
     UNIT_MODES.idle = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
-           // set or update target
-           unitsMod.getTarget(unit, game.attackers, game);
-           // fire at target
-           unitsMod.fireAtTarget(unit, {
-               strokeStyle: 'blue',
-               fillStyle: 'cyan',
-               game: game,
-               secs: secs,
-               hitPool: game.attackers,
-               onNoTarget: function(unit, game){
-                  
-               }
-           });
+           
+
+            attackUpdate(unit, game, secs);
+
         }
     };
 

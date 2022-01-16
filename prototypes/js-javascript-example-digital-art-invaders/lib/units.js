@@ -1,7 +1,11 @@
 var unitsMod = (function () {
  
 //  CONST VALUES
-    var UNIT_PPS_MIN = 32,
+    var UNIT_STATS_DEFAULTS = {
+        range: 100,
+        attack: 1
+    },
+    UNIT_PPS_MIN = 32,
     UNIT_PPS_MAX = 64;
     // the unit types object that is to be extended
     // by calling unitsMod.load
@@ -10,6 +14,14 @@ var unitsMod = (function () {
 //  PUBLIC API
     // the public api
     var api = {};
+
+    // parse core stats for a unit
+    api.coreStats = function(unit, spawnOpt, defaults){
+        defaults = defaults || UNIT_STATS_DEFAULTS;
+        var uDat = unit.data;
+        uDat.attack = spawnOpt.attack === undefined ? defaults.attack : spawnOpt.attack;
+        uDat.range = spawnOpt.range === undefined ? defaults.range: spawnOpt.range;
+    };
 
     // totalPower of a pool
     api.totalPower = function(pool){

@@ -78,6 +78,7 @@ unitsMod.load( (function () {
         // mode of the unit
         uDat.mode = spawnOpt.mode || 'move';
         // SHOT STATS
+        // core stats
         uDat.attack = spawnOpt.attack === undefined ? 1 : spawnOpt.attack;
         uDat.range = spawnOpt.range === undefined ? 100: spawnOpt.range;
         // shot hitPool - a pool to check on each update to see if something that hot or not

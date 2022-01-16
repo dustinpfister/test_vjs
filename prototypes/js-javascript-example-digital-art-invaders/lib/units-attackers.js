@@ -163,8 +163,9 @@ unitsMod.load( (function () {
         var canvas = game.sm.canvas,
         uDat = unit.data;
         // STATS
-        uDat.attack = 1;
-        uDat.range = 150;
+        //uDat.attack = 1;
+        //uDat.range = 150;
+        unitsMod.coreStats(unit, spawnOpt, {attack: 1, range: 150});
 
         uDat.fireRate = 0.25;
         uDat.fireSecs = 0;
@@ -188,7 +189,7 @@ unitsMod.load( (function () {
         // heading
         unit.heading = unitsMod.randomHeading();
         // speed
-        unit.pps = 128; //unitsMod.randomPPS();
+        unit.pps = 64; //32; //unitsMod.randomPPS();
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);
     };

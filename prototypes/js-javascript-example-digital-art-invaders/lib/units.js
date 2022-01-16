@@ -67,6 +67,7 @@ var unitsMod = (function () {
                 uDat.fireSecs += opt.secs;
                 if(uDat.fireSecs >= uDat.fireRate){
                     uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
+                    // spawn a shot
                     poolMod.spawn(opt.game.shots, opt.game, {
                         strokeStyle: opt.strokeStyle || 'yellow',
                         fillStyle: opt.fillStyle || 'yellow',
@@ -74,6 +75,7 @@ var unitsMod = (function () {
                         sx: unit.x,
                         sy: unit.y,
                         heading: poolMod.getAngleTo(unit, target),
+                        accuracy: uDat.accuracy,
                         range: uDat.range,
                         hitPool: opt.hitPool
                     });

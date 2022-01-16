@@ -30,8 +30,7 @@
 * figure out range for each sub type thus far
 
 ### () - r5 - unit sub types, bullet and shell shot types
-
-* have a unitMod.coreStats helper that will parse a core common set of stats
+* (done) have a unitMod.coreStats helper that will parse a core common set of stats
 * coreStats for now should be attack, range, and now subType 
 * have a subType system for units like that of what I worked out in in my turn based rpg example
 

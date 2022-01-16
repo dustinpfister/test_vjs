@@ -166,6 +166,7 @@ unitsMod.load( (function () {
         uDat.attack = 1;
         uDat.fireRate = 0.25;
         uDat.fireSecs = 0;
+        uDat.accuracy = 0.25;
         uDat.hpMax = 10;
         uDat.range = 150;
         uDat.hp = unit.data.hpMax;

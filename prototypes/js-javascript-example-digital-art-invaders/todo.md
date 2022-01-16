@@ -30,10 +30,13 @@
 * figure out range for each sub type thus far
 
 ### () - r5 - unit sub types, bullet and shell shot types
-* have a subType system for shots like that of what I worked out in in my turn based rpg example
 
-* coreStats for now should be attack, range, and now subType 
 * have a unitMod.coreStats helper that will parse a core common set of stats
+* coreStats for now should be attack, range, and now subType 
+* have a subType system for units like that of what I worked out in in my turn based rpg example
+
+* start a 'shot.bullet' sub type
+* start a 'shot.shell' sub type
 
 * have a bullet type that will be a 'line of sight' type
 * with bullet 'line of sight' means that it will hit any target when moving along a path

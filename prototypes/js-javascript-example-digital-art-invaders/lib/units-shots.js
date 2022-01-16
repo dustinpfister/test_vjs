@@ -1,5 +1,7 @@
 unitsMod.load( (function () {
 
+    var SHOT_MAX_ACCURACY_HEADING_DELTA = utils.degToRad(20); 
+
 // THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
         typeKey: 'shots',
@@ -10,6 +12,7 @@ unitsMod.load( (function () {
     // unit modes
     var UNIT_MODES = {};
    
+    // The atRange mode is what needs to happen when a shot is at or beyond the max range of the shot
     UNIT_MODES.atRange = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
@@ -19,6 +22,7 @@ unitsMod.load( (function () {
         }
     };
 
+    // a shot enters hit mode when a shot hits one ore more units in the hitPool of the shot
     UNIT_MODES.hit = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
@@ -38,7 +42,7 @@ unitsMod.load( (function () {
         }
     };
  
-    // move
+    // The general move mode of a shot
     UNIT_MODES.move = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
@@ -93,6 +97,10 @@ unitsMod.load( (function () {
         unit.y = uDat.sy;
         // heading and speed not used
         unit.heading = spawnOpt.heading || 0;
+        // apply accuracy
+        var delta = SHOT_MAX_ACCURACY_HEADING_DELTA;
+        delta = delta * -1 + delta * 2 * Math.random();
+        unit.heading += delta;
         unit.pps = 128;
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);

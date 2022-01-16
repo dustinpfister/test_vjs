@@ -36,12 +36,15 @@
 * a shell type will not check if it has gone out of range or not
 * a shell type will just go to a set location and once there will switch to blastMode
 
-### r4 - unitMod totalPower method
+### () r4 - unitMod totalPower method, shot accuracy
 * (done) unitMod.totalPower method that will return a value that should indacate how powerful a given pool is
 * (done) unitMod.totalPower will only add up values for current active units
 * (done) base unitMod.totalPower on attack and fireRate stats for now
 * (done) display totalPower for attackers and buildings
-* make it so that buildings will not shoot unless there is soemthing in range to shoot at
+* (done) make it so that buildings will not shoot unless there is soemthing in range to shoot at
+
+* have an accuracy option when spawning a shot on a 0 to 1 scale
+* I am thinking that accuracy should be a delta applyed to heading so I will want consts for that in units-shots.js
 
 
 <!-- MVP -->

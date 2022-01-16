@@ -48,6 +48,8 @@
 * a shell type will not check if it has gone out of range or not
 * a shell type will just go to a set location and once there will switch to blastMode
 
+* pps should effect power values with unitMod.totalPower
+
 ### ( done 01/16/2022 ) r4 - unitMod totalPower method, shot accuracy
 * (done) unitMod.totalPower method that will return a value that should indacate how powerful a given pool is
 * (done) unitMod.totalPower will only add up values for current active units

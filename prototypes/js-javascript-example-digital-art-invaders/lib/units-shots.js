@@ -98,9 +98,10 @@ unitsMod.load( (function () {
         // heading and speed not used
         unit.heading = spawnOpt.heading || 0;
         // apply accuracy
-        var delta = SHOT_MAX_ACCURACY_HEADING_DELTA;
+        var delta = SHOT_MAX_ACCURACY_HEADING_DELTA,
+        accuracy = spawnOpt.accuracy === undefined ? 0 : spawnOpt.accuracy;
         delta = delta * -1 + delta * 2 * Math.random();
-        unit.heading += delta;
+        unit.heading += delta * (1 - accuracy);
         unit.pps = 128;
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);

@@ -86,12 +86,14 @@ unitsMod.load( (function () {
         // mode of the unit
         uDat.mode = spawnOpt.mode || 'idle';
         // STATS
-        uDat.attack = 4;
+        uDat.attack = 4;  // used by shots
+        uDat.range = 150; 
+
         uDat.fireRate = 0.5;
         uDat.fireSecs = 0;
         uDat.accuracy = 0.25;
         uDat.hpMax = 10;
-        uDat.range = 150; //250;
+
         uDat.hp = unit.data.hpMax;
         // colors
         uDat.fillStyle = 'white'

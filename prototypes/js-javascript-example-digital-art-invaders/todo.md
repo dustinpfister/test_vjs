@@ -23,9 +23,18 @@
 ### () - r7 - building types
 
 ### () - r6 - attacker types
+* I will want a unitsMod.gameStats method that will parse a common set of stats for attackers and budilings
+* have a 'attacker.jeep.clunker' unit with low hp, low accuracy, high rate of fire, bullet type shots, fast pps
+* have a 'attacker.jeep.hummer' like clunker but with higher hp, and accuracy, fast pps
+* have a 'attacker.tank.light' with very high hp, very low accuracy, low rate of fire, shell type shots, slow pps
+* figure out range for each sub type thus far
 
-### () - r5 - shot types, bullet and shell
-* have a subtype system for shots like that of what I worked out in in my turn based rpg example
+### () - r5 - unit sub types, bullet and shell shot types
+* have a subType system for shots like that of what I worked out in in my turn based rpg example
+
+* coreStats for now should be attack, range, and now subType 
+* have a unitMod.coreStats helper that will parse a core common set of stats
+
 * have a bullet type that will be a 'line of sight' type
 * with bullet 'line of sight' means that it will hit any target when moving along a path
 * bullet types will be a 'single hit' type, meaning that when it will only apply onHit for a single target

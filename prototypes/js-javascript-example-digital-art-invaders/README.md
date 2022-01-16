@@ -25,6 +25,12 @@ Addtional work was done on the shots unit.js plugin, allowing for chnages that m
 
 ## Additional Features ( r4 - rx )
 
+### r4 - unitMod totalPower method, shot accuracy
+
+Added a unitMod.totalPower method as a way to get an idea of how powerful one side is compared to the other. For now this method will just take into account over all Damage Per Second. However the aim of this method is to just have a basic tool that might help with balancing stats as I play around with some figures with that moving forward with addtional revisions of this. Another note worth feature added at this point was some additonal logic that will allow for setting an accuracy value for shots in the form of a 0 to 1 value. For now I am thinking that it might be best to have a system that will adjust the given heading value when spawning a shot bu that of a delta value. This delta value will be set by a given accuracy option, a hard coded max angle, and the use of the Math.random method.
+
+### r5 -
+
 ## Maintenance ( rx+ )
 
 

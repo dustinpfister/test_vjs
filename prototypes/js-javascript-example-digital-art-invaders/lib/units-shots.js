@@ -20,13 +20,15 @@ unitsMod.load( (function () {
        onHit : function(unit, pool, game, secs, hitObjects){
             var uDat = unit.data;
             if(hitObjects.length > 0){
-                hitObjects.forEach(function(target){
+                // bullets are single hit
+                var target = hitObjects[hitObjects.length - 1];
+                //hitObjects.forEach(function(target){
                     target.data.hp -= uDat.attack;
                     target.data.hp = target.data.hp < 0 ? 0 : target.data.hp;
                     if(target.data.hp === 0){
                         poolMod.purge(target, game);
                     }
-                });
+                //});
             }
             // purge shot
             poolMod.purge(unit, game);
@@ -34,7 +36,8 @@ unitsMod.load( (function () {
    };
    
    subTypes.shot.shell = {
-       atRange : function(unit, pool, game, secs){}
+       atRange : function(unit, pool, game, secs){},
+       onHit : function(unit, pool, game, secs, hitObjects){}
    };
 
 

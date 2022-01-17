@@ -37,9 +37,10 @@ unitsMod.load( (function () {
     UNIT_MODES.atRange = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
-            var uDat = unit.data;
+            unit.data.subTypeObj.atRange(unit, pool, game, secs);
+            //var uDat = unit.data;
             // purge shot
-            poolMod.purge(unit, game);
+            //poolMod.purge(unit, game);
         }
     };
 
@@ -101,6 +102,7 @@ unitsMod.load( (function () {
         // SHOT STATS
         // core stats
         unitsMod.coreStats(unit, spawnOpt, SHOT_DEFAULTS);
+        uDat.subTypeObj = utils.getPath(subTypes, uDat.subType, {});
         // shot hitPool - a pool to check on each update to see if something that hot or not
         uDat.hitPool = spawnOpt.hitPool || null;
         // colors
@@ -126,7 +128,7 @@ unitsMod.load( (function () {
         unit.pps = 128;
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);
-		console.log(unit.data.subType);
+        console.log(unit.data.subTypeObj);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

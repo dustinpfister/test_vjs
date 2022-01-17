@@ -21,9 +21,10 @@ var unitsMod = (function () {
     api.coreStats = function(unit, spawnOpt, defaults){
         defaults = defaults || UNIT_STATS_DEFAULTS;
         var uDat = unit.data;
-        uDat.attack = spawnOpt.attack === undefined ? defaults.attack : spawnOpt.attack;
-        uDat.range = spawnOpt.range === undefined ? defaults.range: spawnOpt.range;
-        uDat.subType = spawnOpt.subType === undefined ? defaults.subType: spawnOpt.subType;
+        // parse core stats
+        ['attack', 'range', 'subType'].forEach(function(statKey){
+            uDat[statKey] = spawnOpt[statKey] === undefined ? defaults[statKey] : spawnOpt[statKey];
+        });
     };
 
     // totalPower of a pool

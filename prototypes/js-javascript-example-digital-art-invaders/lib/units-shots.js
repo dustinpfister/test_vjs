@@ -1,6 +1,27 @@
 unitsMod.load( (function () {
 
-    var SHOT_MAX_ACCURACY_HEADING_DELTA = utils.degToRad(20); 
+    var SHOT_MAX_ACCURACY_HEADING_DELTA = utils.degToRad(20),
+    SHOT_DEFAULTS = {
+        range: 100,
+        attack: 1,
+        subType: 'shot.bullet'
+    }
+
+   var subTypes = {};
+   
+   subTypes.shot = {};
+   
+   subTypes.shot.bullet = {
+       // a bullet will purge if at range
+       atRange : function(unit, pool, game, secs){
+            poolMod.purge(unit, game);
+       }
+   };
+   
+   subTypes.shot.shell = {
+       atRange : function(unit, pool, game, secs){}
+   };
+
 
 // THE OPTIONS OBJECT 
     var UNIT_OPTIONS = {
@@ -75,11 +96,11 @@ unitsMod.load( (function () {
         spawnOpt = spawnOpt || {};
         var canvas = game.sm.canvas,
         uDat = unit.data;
-        // mode of the unit
+        // current mode of the unit
         uDat.mode = spawnOpt.mode || 'move';
         // SHOT STATS
         // core stats
-        unitsMod.coreStats(unit, spawnOpt);
+        unitsMod.coreStats(unit, spawnOpt, SHOT_DEFAULTS);
         // shot hitPool - a pool to check on each update to see if something that hot or not
         uDat.hitPool = spawnOpt.hitPool || null;
         // colors
@@ -105,6 +126,7 @@ unitsMod.load( (function () {
         unit.pps = 128;
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);
+		console.log(unit.data.subType);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

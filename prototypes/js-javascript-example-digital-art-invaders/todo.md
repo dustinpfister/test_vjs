@@ -39,12 +39,10 @@
 * start a 'shot.bullet' sub type in units-shots
 * start a 'shot.shell' sub type in units-shots
 
-* have a bullet type that will be a 'line of sight' type
 * with bullet 'line of sight' means that it will hit any target when moving along a path
 * bullet types will be a 'single hit' type, meaning that when it will only apply onHit for a single target
 * when a bullet goes out of range, it will just purge
 
-* have a shell type that will be a 'blast area' type of shot
 * a shell type will not check any hitPool on each update
 * a shell type will not check if it has gone out of range or not
 * a shell type will just go to a set location and once there will switch to blastMode

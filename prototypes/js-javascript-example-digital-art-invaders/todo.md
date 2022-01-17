@@ -48,6 +48,11 @@
 
 * I will want to add ex and ey values when spawning a shot that was the target location when the shot was fired
 * I will want to start a new shotMode called blast mode
+
+* when a shot is in blast mode the w and h props of the shot will start at 0 and expand to maxSize
+* the hitPool will be checked while a shot is in blast mode, and any unit in the current blast area will take damage
+* damage applied to units will be based on distance from shot center
+
 * a shell type will just go to a set location and once there will switch to blast mode
 * have attackers use shot.bullet subType
 * have buildings use shot.shell subType

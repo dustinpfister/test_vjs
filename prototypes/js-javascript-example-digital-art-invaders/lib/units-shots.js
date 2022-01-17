@@ -53,7 +53,7 @@ unitsMod.load( (function () {
        },
        onHit : function(unit, pool, game, secs, hitObjects){},
        onEndPoint: function(unit, pool, game, secs){
-
+           poolMod.purge(unit, game);
        }
    };
 
@@ -104,6 +104,17 @@ unitsMod.load( (function () {
                 // switch to at range mode
                 unitsMod.changeMode(unit, 'atRange', pool, game);
             }
+            // end point check
+            if(uDat.subTypeObj.endPointCheck){
+               // is the distance from the start point greater than that distance to the end point?
+               var de = utils.distance(uDat.sx, uDat.sy, uDat.ex, uDat.ey);
+			   if(ds >= de){
+				   
+                   unit.x = uDat.sx + Math.cos(unit.heading) * de;
+                   unit.y = uDat.sy + Math.sin(unit.heading) * de;
+				   uDat.subTypeObj.onEndPoint(unit, pool, game, secs);
+			   }
+            }
             // check hit pool and switch to hitMode if one or more objects where hit
             if(uDat.hitPool && uDat.subTypeObj.hitCheck){
                 var hitObjects = poolMod.getOverlaping(unit, uDat.hitPool);
@@ -143,8 +154,8 @@ unitsMod.load( (function () {
         unit.x = uDat.sx;
         unit.y = uDat.sy;
         // end x and y used for shells
-        uDat.ex = spawnOpt.sx;
-        uDat.ey = spawnOpt.sy;
+        uDat.ex = spawnOpt.ex;
+        uDat.ey = spawnOpt.ey;
         // heading and speed not used
         unit.heading = spawnOpt.heading || 0;
         // apply accuracy

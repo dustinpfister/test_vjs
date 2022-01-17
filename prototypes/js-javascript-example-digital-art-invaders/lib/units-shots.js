@@ -12,8 +12,10 @@ unitsMod.load( (function () {
    subTypes.shot = {};
    
    subTypes.shot.bullet = {
-       // check for one or more hits of any target in hitPool when moving
+       // check for one or more hits of any target in hitPool when moving and do not
+       // care about any end point position
        hitCheck: true,
+       endPointCheck: false,
        // a bullet will purge if at range
        atRange : function(unit, pool, game, secs){
             poolMod.purge(unit, game);
@@ -34,17 +36,25 @@ unitsMod.load( (function () {
             }
             // purge shot
             poolMod.purge(unit, game);
+       },
+       onEndPoint: function(unit, pool, game, secs){
+
        }
    };
    
    subTypes.shot.shell = {
+       // no hit detection while moving, but check endPoint
        hitCheck: false,
+       endPointCheck: true,
        atRange : function(unit, pool, game, secs){
            // purging for now, but the shot should switch to blast mode
            // also it should not even get to this point
            poolMod.purge(unit, game);
        },
-       onHit : function(unit, pool, game, secs, hitObjects){}
+       onHit : function(unit, pool, game, secs, hitObjects){},
+       onEndPoint: function(unit, pool, game, secs){
+
+       }
    };
 
 
@@ -132,6 +142,9 @@ unitsMod.load( (function () {
         uDat.sy = spawnOpt.sy || 0;
         unit.x = uDat.sx;
         unit.y = uDat.sy;
+        // end x and y used for shells
+        uDat.ex = spawnOpt.sx;
+        uDat.ey = spawnOpt.sy;
         // heading and speed not used
         unit.heading = spawnOpt.heading || 0;
         // apply accuracy

@@ -86,9 +86,6 @@ unitsMod.load( (function () {
         // mode of the unit
         uDat.mode = spawnOpt.mode || 'idle';
         // STATS
-        //uDat.attack = 4;  // used by shots
-        //uDat.range = 150;
-
         unitsMod.coreStats(unit, spawnOpt, {attack: 3, range: 150});
 
         uDat.shotSubType = 'shot.bullet';

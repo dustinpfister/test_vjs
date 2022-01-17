@@ -1,4 +1,57 @@
 var utils = {};
+// get a nested object node from a source object by path string
+utils.getPath = function(sourceObj, pathStr, def){
+   var propNames = pathStr.split('.');
+   var node = sourceObj[propNames[0]];
+   var i = 1, len = propNames.length;
+   while(i < len){
+      try{
+          node = node[propNames[i]];
+          if(node === undefined){
+              return def;
+          }
+      }catch(e){
+          return def;
+      }
+      i += 1;
+   }
+   return node;
+};
+// set a given path to a source object to a given value,
+// return an error object if something goes wrong, or empty object if all goes well
+utils.setPath = function(sourceObj, pathStr, value){
+   var propNames = pathStr.split('.');
+   var i = 0, len = propNames.length,
+   node = sourceObj, tNode;
+   while(i < len){
+      try{
+          // if this is the last index in propNames
+          // then set the value to the current object
+          // stored in 'node'
+          if(i === len - 1){
+              node[propNames[i]] = value;
+          }else{
+              // else I need to create an object
+              // for a given prop name if the key
+              // is undefined, and update node var
+              tNode = node[propNames[i]];
+              // create new object if undefined
+              if(tNode === undefined){
+                  tNode = node[propNames[i]] = {};
+              }
+              // if tNode is not an object
+              if(typeof tNode != 'object' || tNode === null){
+                  return new Error('Property ' + propNames[i] + ' is not an object or is null.');
+              }
+              node = tNode;
+          }
+      }catch(e){
+          return e;
+      }
+      i += 1;
+   }
+   return {};
+};
 // get a value by way of a per value (0-1), and a min and max value
 utils.valueByRange = function(per, a, b){
     per = per === undefined ? 0 : per;

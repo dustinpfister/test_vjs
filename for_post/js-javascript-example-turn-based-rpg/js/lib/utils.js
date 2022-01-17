@@ -72,7 +72,7 @@ utils.getPath = function(sourceObj, pathStr, def){
 };
 
 // set a given path to a source object to a given value,
-// return an error object if soemthing goes wrong, or empty object if all goes well
+// return an error object if something goes wrong, or empty object if all goes well
 utils.setPath = function(sourceObj, pathStr, value){
    var propNames = pathStr.split('.');
    var i = 0, len = propNames.length,

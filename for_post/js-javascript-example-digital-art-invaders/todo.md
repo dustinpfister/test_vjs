@@ -6,6 +6,9 @@
 
 <!-- Maintenance -->
 
+### () - rx - DPS tracking
+* add DPS tracking feature that will log what mean dps is for attackers and buildings for the sake of balancing stats
+
 <!-- Additional Features -->
 
 ### () - r11 - loader.js and sprite sheets

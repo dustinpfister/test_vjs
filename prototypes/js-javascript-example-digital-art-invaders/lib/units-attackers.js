@@ -167,6 +167,7 @@ unitsMod.load( (function () {
         //uDat.range = 150;
         unitsMod.coreStats(unit, spawnOpt, {attack: 1, range: 150});
 
+        uDat.shotSubType = 'shot.shell';
         uDat.fireRate = 0.25;
         uDat.fireSecs = 0;
         uDat.accuracy = 0.25;

@@ -39,7 +39,11 @@ unitsMod.load( (function () {
    
    subTypes.shot.shell = {
        hitCheck: false,
-       atRange : function(unit, pool, game, secs){},
+       atRange : function(unit, pool, game, secs){
+           // purging for now, but the shot should switch to blast mode
+           // also it should not even get to this point
+           poolMod.purge(unit, game);
+       },
        onHit : function(unit, pool, game, secs, hitObjects){}
    };
 

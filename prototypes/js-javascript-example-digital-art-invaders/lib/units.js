@@ -85,6 +85,7 @@ var unitsMod = (function () {
                     uDat.fireSecs = utils.mod(uDat.fireSecs, uDat.fireRate);
                     // spawn a shot
                     poolMod.spawn(opt.game.shots, opt.game, {
+						subType: uDat.shotSubType,
                         strokeStyle: opt.strokeStyle || 'yellow',
                         fillStyle: opt.fillStyle || 'yellow',
                         attack: uDat.attack,

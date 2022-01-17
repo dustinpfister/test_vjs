@@ -1,7 +1,7 @@
 # js-javascript-example-digital-art-invaders todo list
 
 ## Known bugs
-* #0 - 
+* (fixed in r5 ) #0 - there is a bug where units will go far away when the tap is inactive for a while
 
 
 <!-- Maintenance -->
@@ -31,6 +31,8 @@
 
 ### () - r5 - unit sub types, bullet and shell shot types
 * (done) have a unitMod.coreStats helper that will parse a core common set of stats
+* (done) fix bug #0 by adding a limit for secs when updating units
+
 * coreStats for now should be attack, range, and now subType 
 * have a subType system for units like that of what I worked out in in my turn based rpg example
 

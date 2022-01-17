@@ -1,7 +1,8 @@
 var unitsMod = (function () {
  
 //  CONST VALUES
-    var UNIT_STATS_DEFAULTS = {
+    var SECS_CAP = 1,
+    UNIT_STATS_DEFAULTS = {
         range: 100,
         attack: 1
     },
@@ -134,9 +135,10 @@ var unitsMod = (function () {
         return poolMod.create(options);
     };
     // public update method
-    api.update = function (units, secs) {
+    api.update = function (units, secs, state) {
+        secs = secs > SECS_CAP ? SECS_CAP : secs;
         // update units
-        poolMod.update(units, secs);
+        poolMod.update(units, secs, state);
     };
     // return the public API
     return api;

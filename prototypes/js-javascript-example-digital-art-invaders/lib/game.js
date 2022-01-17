@@ -34,9 +34,9 @@ var gameMod = (function () {
     // public update method
     api.update = function (game, secs) {
         // update units
-        poolMod.update(game.shots, secs, sm.game);
-        poolMod.update(game.attackers, secs, sm.game);
-        poolMod.update(game.buildings, secs, sm.game);
+        unitsMod.update(game.shots, secs, sm.game);
+        unitsMod.update(game.attackers, secs, sm.game);
+        unitsMod.update(game.buildings, secs, sm.game);
         // power stats
         game.power.buildings = unitsMod.totalPower(game.buildings);
         game.power.attackers = unitsMod.totalPower(game.attackers);

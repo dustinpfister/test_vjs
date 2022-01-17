@@ -31,7 +31,14 @@
 
 * pps should effect power values with unitMod.totalPower
 
-### () - r5 - unit sub types, bullet and shell shot types
+### () - r6 - blast mode
+* I will want to start a new shotMode called blast mode
+* a shell type will just go to a set location and once there will switch to blast mode
+* when a shot is in blast mode the w and h props of the shot will start at 0 and expand to maxSize
+* the hitPool will be checked while a shot is in blast mode, and any unit in the current blast area will take damage
+* damage applied to units will be based on distance from shot center
+
+### ( done 01/17/2022 ) - r5 - unit sub types, bullet and shell shot types
 * (done) have a unitMod.coreStats helper that will parse a core common set of stats
 * (done) fix bug #0 by adding a limit for secs when updating units
 * (done) I will want to add utils.getPath and utils.setPath
@@ -45,17 +52,9 @@
 * (done) if not subType is given when spawning a shot default to 'shot.bullet'
 * (done) a shell type will not check any hitPool on each update
 * (done) a shell type will not check if it has gone out of range or not
-
-* I will want to add ex and ey values when spawning a shot that was the target location when the shot was fired
-* I will want to start a new shotMode called blast mode
-
-* when a shot is in blast mode the w and h props of the shot will start at 0 and expand to maxSize
-* the hitPool will be checked while a shot is in blast mode, and any unit in the current blast area will take damage
-* damage applied to units will be based on distance from shot center
-
-* a shell type will just go to a set location and once there will switch to blast mode
-* have attackers use shot.bullet subType
-* have buildings use shot.shell subType
+* (done) I will want to add ex and ey values when spawning a shot that was the target location when the shot was fired
+* (done) have attackers use shot.shell subType
+* (done) have buildings use shot.bullet subType
 
 
 ### ( done 01/16/2022 ) r4 - unitMod totalPower method, shot accuracy

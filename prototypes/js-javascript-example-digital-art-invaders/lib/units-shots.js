@@ -15,6 +15,21 @@ unitsMod.load( (function () {
        // a bullet will purge if at range
        atRange : function(unit, pool, game, secs){
             poolMod.purge(unit, game);
+       },
+       // when one or more objects are hit
+       onHit : function(unit, pool, game, secs, hitObjects){
+            var uDat = unit.data;
+            if(hitObjects.length > 0){
+                hitObjects.forEach(function(target){
+                    target.data.hp -= uDat.attack;
+                    target.data.hp = target.data.hp < 0 ? 0 : target.data.hp;
+                    if(target.data.hp === 0){
+                        poolMod.purge(target, game);
+                    }
+                });
+            }
+            // purge shot
+            poolMod.purge(unit, game);
        }
    };
    
@@ -37,10 +52,8 @@ unitsMod.load( (function () {
     UNIT_MODES.atRange = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
+            // call at range method for the current subType
             unit.data.subTypeObj.atRange(unit, pool, game, secs);
-            //var uDat = unit.data;
-            // purge shot
-            //poolMod.purge(unit, game);
         }
     };
 
@@ -48,6 +61,10 @@ unitsMod.load( (function () {
     UNIT_MODES.hit = {
         init: function(unit, pool, game){},
         update: function(unit, pool, game, secs){
+            var uDat = unit.data;
+            var hitObjects = poolMod.getOverlaping(unit, uDat.hitPool);
+            unit.data.subTypeObj.onHit(unit, pool, game, secs, hitObjects);
+/*
             var uDat = unit.data;
             var hitObjects = poolMod.getOverlaping(unit, uDat.hitPool);
             if(hitObjects.length > 0){
@@ -61,6 +78,7 @@ unitsMod.load( (function () {
             }
             // purge shot
             poolMod.purge(unit, game);
+*/
         }
     };
  

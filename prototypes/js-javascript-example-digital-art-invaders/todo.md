@@ -33,12 +33,11 @@
 * (done) have a unitMod.coreStats helper that will parse a core common set of stats
 * (done) fix bug #0 by adding a limit for secs when updating units
 * (done) I will want to add utils.getPath and utils.setPath
+* (done) coreStats for now should be attack, range, and now subType 
+* (done) have a subType system for units like that of what I worked out in in my turn based rpg example
 
-* coreStats for now should be attack, range, and now subType 
-* have a subType system for units like that of what I worked out in in my turn based rpg example
-
-* start a 'shot.bullet' sub type
-* start a 'shot.shell' sub type
+* start a 'shot.bullet' sub type in units-shots
+* start a 'shot.shell' sub type in units-shots
 
 * have a bullet type that will be a 'line of sight' type
 * with bullet 'line of sight' means that it will hit any target when moving along a path
@@ -49,6 +48,9 @@
 * a shell type will not check any hitPool on each update
 * a shell type will not check if it has gone out of range or not
 * a shell type will just go to a set location and once there will switch to blastMode
+
+* if not subType is given when spawning a shot default to 'shot.bullet'
+* have attackers use shot.bullet and buildings use shot.shell for now
 
 * pps should effect power values with unitMod.totalPower
 

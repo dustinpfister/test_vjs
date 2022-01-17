@@ -4,7 +4,8 @@ var unitsMod = (function () {
     var SECS_CAP = 1,
     UNIT_STATS_DEFAULTS = {
         range: 100,
-        attack: 1
+        attack: 1,
+        subType: 'none'
     },
     UNIT_PPS_MIN = 32,
     UNIT_PPS_MAX = 64;
@@ -22,6 +23,7 @@ var unitsMod = (function () {
         var uDat = unit.data;
         uDat.attack = spawnOpt.attack === undefined ? defaults.attack : spawnOpt.attack;
         uDat.range = spawnOpt.range === undefined ? defaults.range: spawnOpt.range;
+        uDat.subType = spawnOpt.subType === undefined ? defaults.subType: spawnOpt.subType;
     };
 
     // totalPower of a pool

@@ -32,8 +32,7 @@
 ### () - r5 - unit sub types, bullet and shell shot types
 * (done) have a unitMod.coreStats helper that will parse a core common set of stats
 * (done) fix bug #0 by adding a limit for secs when updating units
-
-* I will want to add utils.getPath and utils.setPath
+* (done) I will want to add utils.getPath and utils.setPath
 
 * coreStats for now should be attack, range, and now subType 
 * have a subType system for units like that of what I worked out in in my turn based rpg example

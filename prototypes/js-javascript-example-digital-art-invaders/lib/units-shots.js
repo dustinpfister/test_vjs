@@ -53,20 +53,22 @@ unitsMod.load( (function () {
        },
        onHit : function(unit, pool, game, secs, hitObjects){},
        onEndPoint: function(unit, pool, game, secs){
-		   var uDat = unit.data;
-		   // blast!
-		    unit.w = 128
-			unit.h = 128;
+            var uDat = unit.data;
+            // blast!
+            var blastRadius = 32;
+            unit.w = blastRadius * 2;
+            unit.h = blastRadius * 2;
             var hitObjects = poolMod.getOverlaping(unit, uDat.hitPool);
-			
-			hitObjects.forEach(function(target){
-                target.data.hp -= uDat.attack;
+            hitObjects.forEach(function(target){
+                var d = poolMod.distance(unit, target);
+                d = d > blastRadius ? blastRadius: d;
+                var damagePer = 1 - (d / blastRadius);
+                target.data.hp -= uDat.attack * damagePer;
                 target.data.hp = target.data.hp < 0 ? 0 : target.data.hp;
                 if(target.data.hp === 0){
                     poolMod.purge(target, game);
                 }
            });
-		   
            poolMod.purge(unit, game);
        }
    };

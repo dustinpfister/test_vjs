@@ -29,28 +29,29 @@
 * have a 'attacker.tank.light' with very high hp, very low accuracy, low rate of fire, shell type shots, slow pps
 * figure out range for each sub type thus far
 
+* pps should effect power values with unitMod.totalPower
+
 ### () - r5 - unit sub types, bullet and shell shot types
 * (done) have a unitMod.coreStats helper that will parse a core common set of stats
 * (done) fix bug #0 by adding a limit for secs when updating units
 * (done) I will want to add utils.getPath and utils.setPath
 * (done) coreStats for now should be attack, range, and now subType 
 * (done) have a subType system for units like that of what I worked out in in my turn based rpg example
+* (done) start a 'shot.bullet' sub type in units-shots
+* (done) start a 'shot.shell' sub type in units-shots
+* (done) with bullet 'line of sight' means that it will hit any target when moving along a path
+* (done) bullet types will be a 'single hit' type, meaning that when it will only apply onHit for a single target
+* (done) when a bullet goes out of range, it will just purge
+* (done) if not subType is given when spawning a shot default to 'shot.bullet'
+* (done) a shell type will not check any hitPool on each update
+* (done) a shell type will not check if it has gone out of range or not
 
-* start a 'shot.bullet' sub type in units-shots
-* start a 'shot.shell' sub type in units-shots
+* I will want to add ex and ey values when spawning a shot that was the target location when the shot was fired
+* I will want to start a new shotMode called blast mode
+* a shell type will just go to a set location and once there will switch to blast mode
+* have attackers use shot.bullet subType
+* have buildings use shot.shell subType
 
-* with bullet 'line of sight' means that it will hit any target when moving along a path
-* bullet types will be a 'single hit' type, meaning that when it will only apply onHit for a single target
-* when a bullet goes out of range, it will just purge
-
-* a shell type will not check any hitPool on each update
-* a shell type will not check if it has gone out of range or not
-* a shell type will just go to a set location and once there will switch to blastMode
-
-* if not subType is given when spawning a shot default to 'shot.bullet'
-* have attackers use shot.bullet and buildings use shot.shell for now
-
-* pps should effect power values with unitMod.totalPower
 
 ### ( done 01/16/2022 ) r4 - unitMod totalPower method, shot accuracy
 * (done) unitMod.totalPower method that will return a value that should indacate how powerful a given pool is

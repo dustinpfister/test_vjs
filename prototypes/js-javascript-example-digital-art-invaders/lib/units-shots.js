@@ -82,6 +82,7 @@ unitsMod.load( (function () {
             var ds = poolMod.distance(unit, uDat.sx, uDat.sy);
             // move and switch to at rangMode if set range is reached
             poolMod.moveByPPS(unit, secs);
+            // if distance from start point is at or over range
             if(ds >= uDat.range){
                 // make sure shot is at range, not beyond
                 unit.x = uDat.sx + Math.cos(unit.heading) * uDat.range;
@@ -137,7 +138,6 @@ unitsMod.load( (function () {
         unit.pps = 128;
         // chance mode
         unitsMod.changeMode(unit, uDat.mode, pool, game);
-        console.log(unit.data.subTypeObj);
     };
     // update a unit
     UNIT_OPTIONS.update = function (unit, pool, game, secs) {

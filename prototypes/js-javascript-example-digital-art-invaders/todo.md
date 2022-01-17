@@ -6,23 +6,23 @@
 
 <!-- Maintenance -->
 
-<!-- Additonal Features -->
+<!-- Additional Features -->
 
-### () - r10 - loader.js and sprite sheets
+### () - r11 - loader.js and sprite sheets
 * add a loader.js file that will load sprite sheets
 * have a sprite sheet to skin buildings
 * have a sprite sheet to skin attackers
 * have a sprite sheet to skin shots
 
-### () - r9 - units-info.js, damage displayed
+### () - r10 - units-info.js, damage displayed
 * start a units-info.js file to add an 'info' unit type
 * use the info unit type to display damage each time a unit is hit 
 
-### () - r8 - xp system, levels for buildings and attackers
+### () - r9 - xp system, levels for buildings and attackers
 
-### () - r7 - building types
+### () - r8 - building types
 
-### () - r6 - attacker types
+### () - r7 - attacker types
 * I will want a unitsMod.gameStats method that will parse a common set of stats for attackers and budilings
 * have a 'attacker.jeep.clunker' unit with low hp, low accuracy, high rate of fire, bullet type shots, fast pps
 * have a 'attacker.jeep.hummer' like clunker but with higher hp, and accuracy, fast pps

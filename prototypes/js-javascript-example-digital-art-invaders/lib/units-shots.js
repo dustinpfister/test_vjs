@@ -12,6 +12,8 @@ unitsMod.load( (function () {
    subTypes.shot = {};
    
    subTypes.shot.bullet = {
+       // check for one or more hits of any target in hitPool when moving
+       hitCheck: false,
        // a bullet will purge if at range
        atRange : function(unit, pool, game, secs){
             poolMod.purge(unit, game);
@@ -36,6 +38,7 @@ unitsMod.load( (function () {
    };
    
    subTypes.shot.shell = {
+       hitCheck: false,
        atRange : function(unit, pool, game, secs){},
        onHit : function(unit, pool, game, secs, hitObjects){}
    };
@@ -102,7 +105,7 @@ unitsMod.load( (function () {
                 unitsMod.changeMode(unit, 'atRange', pool, game);
             }
             // check hit pool and switch to hitMode if one or more objects where hit
-            if(uDat.hitPool){
+            if(uDat.hitPool && uDat.subTypeObj.hitCheck){
                 var hitObjects = poolMod.getOverlaping(unit, uDat.hitPool);
                 if(hitObjects.length > 0){
                     unitsMod.changeMode(unit, 'hit', pool, game);

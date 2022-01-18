@@ -67,6 +67,17 @@ var jsonToTabIndex = function(sm, index){
     }
 };
 
+// attach on key up event hander for text area
+document.querySelector('#input-json').addEventListener('keyup', function(e){
+
+    //console.log(e);
+
+jsonToTabIndex(sm, sm.currentTabIndex);
+renderTabSelection()
+drawCurrentTabIndex();
+
+});
+
 // draw the current tab index to the canvas
 var drawCurrentTabIndex = function(){
     draw.background(ctx, canvas, 'blue');

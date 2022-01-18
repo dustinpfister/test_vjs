@@ -27,13 +27,17 @@
 * Select a single index value in a single line that will be a current point index value
 * can move a single point of a single line
 
-## () - r1 - text area element
+## () - r1 - text area element, points.js, utils.js
 * (done) have a text area element that can be used to create a points array with text
 * (done) any change to the text area input area will update the canvas if it is valid
 * (done) any change to a tab will update the text content to the current project
 * (done) if more than one object in a project draw them all
+* (done) See if I can get JSON.stringify working the way I would like it to with a replacer and regex formating maybe
 
-* See if I can get JSON.stringify working the way I would like it to
+* start a utils.js and have a utils.removeAllChildNodes
+* add a utils.jsonPretty
+* start a points.js file and have a pointMod.createBox helper
+
 
 
 ## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started

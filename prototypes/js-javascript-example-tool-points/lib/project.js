@@ -3,7 +3,6 @@ var projectMod = (function(){
 
     var POINTS = {};
 
-
     POINTS.BOX = [
         [25, 25, 200, 25, 200, 200, 25, 200, 'close:true', 'fill:red']
     ];
@@ -27,34 +26,24 @@ var projectMod = (function(){
 
     var api = {};
 
-// push a new project into the given tabs array
-api.pushNewProject = function(tabs, startPoints){
-    var n = tabs ? tabs.length : 0;
-    var project = baseCreateProject();
-    project.fileName = 'Untitled-' + n;
-
-    var points = JSON.parse(JSON.stringify(POINTS_START));
-    // start points
-    if(typeof startPoints === 'string'){
-        points = JSON.parse(JSON.stringify(POINTS[startPoints]));
-    };
-    project.objects.push(points);
-    // puch the new project into tabs
-    tabs.push(project);
-    return tabs;
-};  
+    // push a new project into the given tabs array
+    api.pushNewProject = function(tabs, startPoints){
+        var n = tabs ? tabs.length : 0;
+        var project = baseCreateProject();
+        project.fileName = 'Untitled-' + n;
+        var points = JSON.parse(JSON.stringify(POINTS_START));
+        // start points
+        if(typeof startPoints === 'string'){
+            points = JSON.parse(JSON.stringify(POINTS[startPoints]));
+        };
+        project.objects.push(points);
+        // puch the new project into tabs
+        tabs.push(project);
+        return tabs;
+    };  
 
 
     return api;
 
 }());
 
-
-/*
-// literal of a points array
-var points = [
-    [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
-    [30, 80, 165, 55, 22, 200, 'fill:red']
-];
-
-*/

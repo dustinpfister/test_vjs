@@ -6,7 +6,7 @@ canvas.width = 640;
 canvas.height = 480;
 
 var sm = {
-   ver: 'r1'
+   ver: 'r2'
 };
 
 // literal of a points array

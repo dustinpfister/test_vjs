@@ -2,11 +2,13 @@
 
 <!-- Mantanace / new features  -->
 
-## () - r1 - just one draw.js file
-* have a single draw.js file and just have the draw points method a method in that file
-* move main.js to the lib folder
-* have a version number as 'r0' in main.js
-* draw.ver method added to draw.js and version number displayed in canvas
+## () - r2 -
+
+## ( done 01/18/2022 ) - r1 - just one draw.js file
+* (done) have a single draw.js file and just have the draw points method a method in that file
+* (done) move main.js to the lib folder
+* (done) have a version number as 'r1' in main.js
+* (done) draw.ver method added to draw.js and version number displayed in canvas
 
 <!-- MVP -->
 

@@ -11,11 +11,24 @@ var sm = {
     tabs: []
 };
 
-// push start project
-projectMod.pushNewProject(sm.tabs);
-projectMod.pushNewProject(sm.tabs);
 
-console.log(sm);
+var removeAllChildNodes = function(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+// render the tab selection menu for the current state of sm.tabs
+var renderTabSelection = function(){
+    var div = document.querySelector('#area-tab-selection');
+    removeAllChildNodes(div);
+    sm.tabs.forEach(function(project){
+         var div_tab = document.createElement('div');
+         div_tab.className = 'tab';
+         div_tab.innerText = project.fileName;
+         div.appendChild(div_tab);
+    });
+};
 
 // draw
 var drawCurrentTabIndex = function(){
@@ -23,6 +36,13 @@ var drawCurrentTabIndex = function(){
     draw.points(ctx, sm.tabs[sm.currentTabIndex].objects[0], 80, 5);
     draw.ver(sm, ctx, canvas);
 };
+
+
+
+// push start project
+projectMod.pushNewProject(sm.tabs);
+projectMod.pushNewProject(sm.tabs);
+renderTabSelection()
 
 drawCurrentTabIndex();
 

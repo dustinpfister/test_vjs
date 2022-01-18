@@ -1,6 +1,7 @@
 
 (function (global) {
 
+/*
     var api = global.draw = global.draw || {}
 
     api.points = function (ctx, points, cx, cy, opt) {
@@ -54,5 +55,7 @@
         });
         ctx.restore();
     };
+
+*/
 }
     (this));

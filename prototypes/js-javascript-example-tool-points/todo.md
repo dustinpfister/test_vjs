@@ -6,6 +6,9 @@
 
 ## () - rx - points, and line rotation
 
+## () - rx - points.js
+* start a points.js file that will contain methods to create and mutate points
+
 <!-- Minimum Viable Product -->
 
 ## () - r4 - FileReader api to load background image
@@ -22,7 +25,7 @@
 * can move a single point of a single line
 
 ## () - r1 - text area element
-* have a text area element that can be used to create a points array with text
+* (done) have a text area element that can be used to create a points array with text
 * I will need an input validation helper
 * any change to the text area input area will update the canvas if it is valid
 * any change to a tab will update the text content to the current project

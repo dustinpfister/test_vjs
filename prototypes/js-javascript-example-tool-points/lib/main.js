@@ -48,8 +48,8 @@ var drawCurrentTabIndex = function(){
 
 
 // push start project
-projectMod.pushNewProject(sm.tabs, 'WEIRD');
 projectMod.pushNewProject(sm.tabs, 'BOX');
+projectMod.pushNewProject(sm.tabs, 'WEIRD');
 renderTabSelection()
 
 drawCurrentTabIndex();

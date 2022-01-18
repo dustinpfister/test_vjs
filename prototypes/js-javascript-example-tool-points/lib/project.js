@@ -3,8 +3,12 @@ var projectMod = (function(){
 
     var POINTS = {};
 
+
     POINTS.BOX = [
-        [25, 25, 50, 25, 50, 50, 25, 50]
+        [25, 25, 50, 25, 50, 50, 25, 50, 'close:true', 'fill:red']
+    ];
+    POINTS.LINE = [
+        [25, 25, 50, 25, 50, 50, 25, 100, 'close:false', 'fill:false']
     ];
     POINTS.WEIRD = [
         [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],

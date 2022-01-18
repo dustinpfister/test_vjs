@@ -1,11 +1,14 @@
 
 var projectMod = (function(){
 
-
-var POINTS_START = [
+var POINTS_BOX = [
+    [25, 25, 50, 25, 50, 50, 25, 50]
+];
+var POINTS_WEIRD = [
     [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
     [30, 80, 165, 55, 22, 200, 'fill:red']
 ];
+var POINTS_START = POINTS_BOX;
 
     // base clean project object
     var baseCreateProject = function(){

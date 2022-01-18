@@ -18,6 +18,10 @@ var removeAllChildNodes = function(parent) {
     }
 }
 
+var tabClick = function(e){
+
+};
+
 // render the tab selection menu for the current state of sm.tabs
 var renderTabSelection = function(){
     var div = document.querySelector('#area-tab-selection');
@@ -26,6 +30,7 @@ var renderTabSelection = function(){
          var div_tab = document.createElement('div');
          div_tab.className = 'tab';
          div_tab.innerText = project.fileName;
+         div_tab.addEventListener('click', tabClick);
          div.appendChild(div_tab);
     });
 };

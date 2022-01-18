@@ -1,23 +1,25 @@
-
+// set up canvas
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 document.getElementById('area-canvas').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
+// 'state machine' object
 var sm = {
     ver: 'r1',
     currentTabIndex: 0, // current tab index
     tabs: []
 };
 
-
+// remove all child nodes
 var removeAllChildNodes = function(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
 
+// the event hander used when a tab section div is clicked
 var tabClick = function(e){
     var i = parseInt( e.target.dataset.i );
     sm.currentTabIndex = i;
@@ -38,19 +40,18 @@ var renderTabSelection = function(){
     });
 };
 
-// draw
+// draw the current tab index to the canvas
 var drawCurrentTabIndex = function(){
     draw.background(ctx, canvas, 'blue');
     draw.points(ctx, sm.tabs[sm.currentTabIndex].objects[0], 80, 5);
     draw.ver(sm, ctx, canvas);
 };
 
-
-
-// push start project
+// push start project(s)
 projectMod.pushNewProject(sm.tabs, 'BOX');
 projectMod.pushNewProject(sm.tabs, 'WEIRD');
-renderTabSelection()
 
+// render tab section and draw curent tab index for first time
+renderTabSelection()
 drawCurrentTabIndex();
 

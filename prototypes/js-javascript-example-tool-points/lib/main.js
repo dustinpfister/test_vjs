@@ -6,9 +6,22 @@ canvas.width = 640;
 canvas.height = 480;
 
 var sm = {
-   ver: 'r2'
+    ver: 'r0',
+    currentTabIndex: 0, // current tab index
+    tabs: []
 };
 
+// push start project
+projectMod.pushNewProject(sm.tabs)
+
+console.log(sm);
+
+// draw
+draw.background(ctx, canvas, 'blue');
+draw.points(ctx, sm.tabs[sm.currentTabIndex].objects[0], 80, 5);
+draw.ver(sm, ctx, canvas);
+
+/*
 // literal of a points array
 var points = [
     [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
@@ -39,5 +52,6 @@ var demoMethod = function () {
 draw.background(ctx, canvas, 'blue');
 draw.points(ctx, points, 80, 5);
 draw.ver(sm, ctx, canvas);
-
 draw.points(ctx, demoMethod(), 300, 150);
+
+*/

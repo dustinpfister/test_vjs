@@ -26,11 +26,11 @@
 * I will need an input validation helper
 * any change to the text area input area will update the canvas if it is valid
 
-## () - r0 - Start with draw points example code, sm.tab and Project object started
+## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started
 * (done) start out with the system that I worked out for my js-javascript-example-draw-points post
 * (done) use the draw points method from js-javascript-example-draw-points post in draw.js
-* have an sm.tab array that will be an array of loaded points projects
-* each element in a tab array wil then be a Project object
-* a Project object will contain a fileName prop
-* a project object will contain an array of points arrays
-* have a collection of tabs above the canvas that can be used to switch between tabs
+* (done) have an sm.tab array that will be an array of loaded points projects
+* (done) each element in a tab array wil then be a Project object
+* (done) a Project object will contain a fileName prop
+* (done) a project object will contain an array of points arrays
+* (done) have a collection of tabs above the canvas that can be used to switch between tabs

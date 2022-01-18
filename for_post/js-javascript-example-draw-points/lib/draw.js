@@ -21,7 +21,9 @@ var draw = (function(){
         opt = opt || {};
         ctx.save();
         ctx.translate(cx, cy);
+        // for each line in points
         points.forEach(function (pointArray) {
+            // number of items in the array of point values/commands
             var len = pointArray.length,
             close = opt.close === undefined ? true : opt.close,
             fill = opt.fill === undefined ? 'black' : opt.fill,
@@ -31,10 +33,12 @@ var draw = (function(){
             i = 2;
             ctx.beginPath();
             ctx.moveTo(pointArray[0], pointArray[1]);
+            // loop over the line
             while (i < len) {
                 el = pointArray[i];
                 if (typeof el === 'number') {
                     ctx.lineTo(el, pointArray[i + 1]);
+                    // step by two if numbers
                     i += 2;
                 } else {
                     var parts = el.split(':');
@@ -50,6 +54,7 @@ var draw = (function(){
                     if (parts[0] === 'lineWidth') {
                         lineWidth = parts[1] || 1;
                     }
+                    // step by one if one of these values
                     i += 1;
                 }
             }
@@ -69,6 +74,7 @@ var draw = (function(){
         ctx.restore();
     };
 
+    // return the public api
     return api;
 
 }());

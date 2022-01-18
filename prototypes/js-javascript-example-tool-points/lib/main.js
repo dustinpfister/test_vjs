@@ -17,7 +17,7 @@ var removeAllChildNodes = function(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
-}
+};
 
 // the event hander used when a tab section div is clicked
 var tabClick = function(e){
@@ -40,6 +40,16 @@ var renderTabSelection = function(){
     });
 };
 
+// parse the given tab index to JSON in the area-json div
+var tabIndexToJSON = function(sm, index){
+
+    var project = sm.tabs[index];
+    var json = JSON.stringify(project);
+
+    document.querySelector('#input-json').value = json;
+
+};
+
 // draw the current tab index to the canvas
 var drawCurrentTabIndex = function(){
     draw.background(ctx, canvas, 'blue');
@@ -54,4 +64,5 @@ projectMod.pushNewProject(sm.tabs, 'WEIRD');
 // render tab section and draw curent tab index for first time
 renderTabSelection()
 drawCurrentTabIndex();
+tabIndexToJSON(sm, sm.currentTabIndex);
 

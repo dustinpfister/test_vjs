@@ -25,6 +25,7 @@
 * have a text area element that can be used to create a points array with text
 * I will need an input validation helper
 * any change to the text area input area will update the canvas if it is valid
+* any change to a tab will update the text content to the current project
 
 ## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started
 * (done) start out with the system that I worked out for my js-javascript-example-draw-points post

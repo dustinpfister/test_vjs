@@ -45,12 +45,26 @@ var renderTabSelection = function(){
 
 // parse the given tab index to JSON in the area-json div
 var tabIndexToJSON = function(sm, index){
-
     var project = sm.tabs[index];
     var json = JSON.stringify(project);
-
     document.querySelector('#input-json').value = json;
+};
 
+// parse the JSON in the text area to the project at the given index if vaild
+// else do not update the project
+var jsonToTabIndex = function(sm, index){
+    // get the raw txt
+    var text = document.querySelector('#input-json').value,
+    obj = null;
+    try{
+        obj = JSON.parse(text);
+    }catch(e){
+        // !!! display a message at least maybe
+    }
+    // if obj set to the tab
+    if(obj){
+        sm.tabs[index] = obj;
+    }
 };
 
 // draw the current tab index to the canvas

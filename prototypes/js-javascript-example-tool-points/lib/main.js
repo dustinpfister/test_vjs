@@ -46,7 +46,17 @@ var renderTabSelection = function(){
 // parse the given tab index to JSON in the area-json div
 var tabIndexToJSON = function(sm, index){
     var project = sm.tabs[index];
-    var json = JSON.stringify(project);
+    var json = JSON.stringify(project, function(key, value){
+/*
+if(typeof value === 'object'){
+    if(typeof value[0] === 'number'){
+         return value.join(',')
+    }
+}
+*/
+
+return value;
+    }, 2);
     document.querySelector('#input-json').value = json;
 };
 

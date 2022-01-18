@@ -31,7 +31,9 @@
 * (done) have a text area element that can be used to create a points array with text
 * (done) any change to the text area input area will update the canvas if it is valid
 * (done) any change to a tab will update the text content to the current project
-* if more than one object in a project draw them all
+* (done) if more than one object in a project draw them all
+
+* See if I can get JSON.stringify working the way I would like it to
 
 
 ## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started

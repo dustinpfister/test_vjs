@@ -12,8 +12,8 @@
 * 6-template-elements
 * 7-template-literals
 
-## () - expand av-alternatives section
-* new  5-canvas example that showcases the use of a canvas element as a way to inject content
+## ( done 01/18/2022 ) - expand av-alternatives section
+* (done) new  5-canvas example that showcases the use of a canvas element as a way to inject content
 
 ## ( done 12/17/2021 ) - expand and rename av-eval to av-script-tags
 * (done) rename av-eval to av-script-tags

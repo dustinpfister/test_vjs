@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>innerHTML alternative</title>
+    </head>
+    <body>
+        <canvas id="out_canvas" width="640" height="480"></canvas>
+        <script>
+var canvas = document.querySelector('#out_canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle = 'black';
+ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+ctx.fillStyle = 'white';
+ctx.textBaseline = 'middle';
+ctx.textAlign = 'center';
+ctx.font = '40pt courier';
+ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2)
+        </script>
+    </body>
+</html>

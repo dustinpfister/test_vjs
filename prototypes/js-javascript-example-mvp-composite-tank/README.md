@@ -1,44 +1,12 @@
 # js-javascript-example-mvp-composite-tank
 
-This aims to be a game prototype where I figure out all the features that I want to have before I even get started.
+This aims to be a game prototype where I figure out all the features that I want to have before I even get started. That is to just start out with this README file, and also a todo list. In fact for the most part I think it is best to start oiut with a todo list first, and then expand this read me file as I actually work on the prototype.
+
+The General idea that I had for this game was to have a simple game where player units will be fixed at the bottom of the canvas and enemy units will come down from the top of the canvas in the direction of the player units at the bottom. This is not because the player units are static but because the player is progressing forward, so the movement of any background can help to show that is the case. Anyway the real core idea of this is that these tanks and composite tanks, in other worlds they are not just one display unit but a few display objects attached to a root or parent unit. These composite parts can then be things like player controlled turrets that will fire only when the player clicks somewhere on the canvas, as well as auto turrets that will automatically select a target and fire.
 
 ## Minimum Viable Product versions (r0 - )
 
-### R0 - new object pool system
-
-Have display objects be a separate thing from pools. This is because the player will control one or more units where each of unit will be a composition of several display objects. So this is the main thing that I would want to get solid in revision zero.
-
-### R1 - crude basics of game working
-
-In this revision I would like to get the crude basics of the game working. This week just be one or more player units that are fixed to the bottom of the canvas. Enemy units will then spawn from the top of the canvas and move down to the bottom of the canvas. When enemy units come into range of the player units they will open fire.
-
-At this point the player can die but when they do the have will just reset for now.
-
-The player can also do manual damage to enemy units by just clicking on a location on the canvas which will fire any and all manual control components of all player units.
-
-The player units should also have components that fire at the enemy units when they are in range.
-
-### R2 - config state
-
-In this revision I would like to get the state machine worked out. I would also like to start the first set of states. So have the following states: loader, init, title, save, config, and game.
-
-When it comes to the loader state that can just directly switch to int for now. The main focus at this time should be the config state.
-
-### R3 - loader
-
-When it comes to the loader I am thinking that I might want to start out with what I worked out in the turn based rpg rather than Clucker.
-This loader will have to be revised to allow for images on top of JSON.
-
-Have some basic art for the game this far.
-
-## R4 - save state menu
-
-
-
-
-
-## Some Addtional Features, fixes and general changes (rx - )
-
+## Some Additional Features, fixes and general changes (rx - )
 
 ## Software Architecture ( rx - )
 

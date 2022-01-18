@@ -7,6 +7,11 @@
 
 <!-- Additional Features -->
 
+## () - r4 - Save states
+
+## () - r3 - Loader
+
+## () - r2 - Game Configure state
 
 <!-- Minimum Viable Product -->
 

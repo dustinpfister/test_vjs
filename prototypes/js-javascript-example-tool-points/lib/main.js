@@ -81,7 +81,13 @@ drawCurrentTabIndex();
 // draw the current tab index to the canvas
 var drawCurrentTabIndex = function(){
     draw.background(ctx, canvas, 'blue');
-    draw.points(ctx, sm.tabs[sm.currentTabIndex].objects[0], 80, 5);
+
+var objects = sm.tabs[sm.currentTabIndex].objects;
+    
+objects.forEach(function(obj){
+    draw.points(ctx, obj, 80, 5);
+
+});
     draw.ver(sm, ctx, canvas);
 };
 

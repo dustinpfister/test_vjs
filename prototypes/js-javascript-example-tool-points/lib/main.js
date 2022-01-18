@@ -47,13 +47,13 @@ var renderTabSelection = function(){
 var tabIndexToJSON = function(sm, index){
     var project = sm.tabs[index];
     var json = JSON.stringify(project, function(key, value){
-/*
+
 if(typeof value === 'object'){
     if(typeof value[0] === 'number'){
-         return value.join(',')
+         //return JSON.stringify(value)
     }
 }
-*/
+
 
 return value;
     }, 2);

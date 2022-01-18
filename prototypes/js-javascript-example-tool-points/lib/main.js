@@ -99,7 +99,7 @@ var drawCurrentTabIndex = function(){
 var objects = sm.tabs[sm.currentTabIndex].objects;
     
 objects.forEach(function(obj){
-    draw.points(ctx, obj, 80, 5);
+    draw.points(ctx, obj, 0, 0);
 
 });
     draw.ver(sm, ctx, canvas);

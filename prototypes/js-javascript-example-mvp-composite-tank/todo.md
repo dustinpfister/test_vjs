@@ -7,6 +7,9 @@
 
 <!-- Additional Features -->
 
+## () - r5 - Buff Components
+* add first buff components that will not fire at units in any way, but provide some kind of buff
+
 ## () - r4 - Save states
 
 ## () - r3 - Loader
@@ -15,8 +18,13 @@
 
 <!-- Minimum Viable Product -->
 
-## () - r1 - Composite units
+## () - r2 - Manual turrets
+* add a new kind of manual turret that can be added to player units only
+* manual turrets will only fire at locations in the canavs that the player will click or touch
+
+## () - r1 - Composite units, auto turrets
 * make it so that player units can be a composite of more than one disp object
+* make the first kind of tank component be an auto turret
 
 ## () - r0 - crude start with clean pool normalized source code
 * start with a clean up to date source code containing pool-normalized.js

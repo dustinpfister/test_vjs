@@ -10,7 +10,7 @@ var draw = (function(){
 
     // draw version number
     api.ver = function (sm, ctx, canvas) {
-        ctx.fillStyle = DEFAULT_TEXT_COLOR;
+        ctx.fillStyle = 'black';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '14px arial';

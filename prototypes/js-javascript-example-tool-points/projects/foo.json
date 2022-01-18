@@ -1,0 +1,12 @@
+{
+  "fileName":"Foo project",
+  "objects":[
+    [
+      [ 25, 25, 200, 50, 200, 200, 25, 200, "close:true", "fill:lime"],
+      [ 200, 100, 400, 100, 400, 400, 100, 400, "close:true", "fill:red"]
+    ],
+    [
+      [ 400, 400, 500, 400, 500, 500, 400, 500, "close:true", "fill:black"]
+    ]
+  ]
+}

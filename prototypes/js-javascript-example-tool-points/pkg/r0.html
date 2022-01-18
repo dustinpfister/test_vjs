@@ -1,0 +1,218 @@
+<html>
+    <head>
+        <title>javaScript example</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+
+        <div id="area-tab-selection"></div>
+        <div id="area-canvas"></div>
+
+<script>
+
+//******** **********
+// project
+//******** **********
+
+var projectMod = (function(){
+
+    var POINTS = {};
+
+    POINTS.BOX = [
+        [25, 25, 50, 25, 50, 50, 25, 50]
+    ];
+    POINTS.WEIRD = [
+        [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
+        [30, 80, 165, 55, 22, 200, 'fill:red']
+    ];
+    var POINTS_START = POINTS.BOX;
+
+    // base clean project object
+    var baseCreateProject = function(){
+        var project = {
+            fileName: '', // the file name for this project
+            objects: []   // the array of points objects
+        };
+        return project;
+    };
+
+    var api = {};
+
+// push a new project into the given tabs array
+api.pushNewProject = function(tabs, startPoints){
+    var n = tabs ? tabs.length : 0;
+    var project = baseCreateProject();
+    project.fileName = 'Untitled-' + n;
+
+    var points = JSON.parse(JSON.stringify(POINTS_START));
+    // start points
+    if(typeof startPoints === 'string'){
+        points = JSON.parse(JSON.stringify(POINTS[startPoints]));
+    };
+    project.objects.push(points);
+    // puch the new project into tabs
+    tabs.push(project);
+    return tabs;
+};  
+
+
+    return api;
+
+}());
+
+
+/*
+// literal of a points array
+var points = [
+    [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
+    [30, 80, 165, 55, 22, 200, 'fill:red']
+];
+
+*/
+
+//******** **********
+// draw
+//******** **********
+var draw = (function(){
+
+    var api = {};
+
+    // draw a background
+    api.background = function(ctx, canvas, style){
+        ctx.fillStyle = style || 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+
+    // draw version number
+    api.ver = function (sm, ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '14px arial';
+        ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
+    };
+
+    api.points = function (ctx, points, cx, cy, opt) {
+        opt = opt || {};
+        ctx.save();
+        ctx.translate(cx, cy);
+        // for each line in points
+        points.forEach(function (pointArray) {
+            // number of items in the array of point values/commands
+            var len = pointArray.length,
+            close = opt.close === undefined ? true : opt.close,
+            fill = opt.fill === undefined ? 'black' : opt.fill,
+            stroke = opt.stroke === undefined ? 'white' : opt.stroke,
+            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
+            el,
+            i = 2;
+            ctx.beginPath();
+            ctx.moveTo(pointArray[0], pointArray[1]);
+            // loop over the line
+            while (i < len) {
+                el = pointArray[i];
+                if (typeof el === 'number') {
+                    ctx.lineTo(el, pointArray[i + 1]);
+                    // step by two if numbers
+                    i += 2;
+                } else {
+                    var parts = el.split(':');
+                    if (parts[0] === 'close') {
+                        close = parts[1] === 'true' ? true : false;
+                    }
+                    if (parts[0] === 'stroke') {
+                        stroke = parts[1] || false;
+                    }
+                    if (parts[0] === 'fill') {
+                        fill = parts[1] || false;
+                    }
+                    if (parts[0] === 'lineWidth') {
+                        lineWidth = parts[1] || 1;
+                    }
+                    // step by one if one of these values
+                    i += 1;
+                }
+            }
+            ctx.lineWidth = lineWidth;
+            if (close) {
+                ctx.closePath();
+            }
+            if (fill) {
+                ctx.fillStyle = fill;
+                ctx.fill();
+            }
+            if (stroke) {
+                ctx.strokeStyle = stroke;
+                ctx.stroke();
+            }
+        });
+        ctx.restore();
+    };
+
+    // return the public api
+    return api;
+
+}());
+
+//******** **********
+// main
+//******** **********
+
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+document.getElementById('area-canvas').appendChild(canvas);
+canvas.width = 640;
+canvas.height = 480;
+
+var sm = {
+    ver: 'r0',
+    currentTabIndex: 0, // current tab index
+    tabs: []
+};
+
+
+var removeAllChildNodes = function(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+var tabClick = function(e){
+    var i = parseInt( e.target.dataset.i );
+    sm.currentTabIndex = i;
+    drawCurrentTabIndex();
+};
+
+// render the tab selection menu for the current state of sm.tabs
+var renderTabSelection = function(){
+    var div = document.querySelector('#area-tab-selection');
+    removeAllChildNodes(div);
+    sm.tabs.forEach(function(project, i){
+         var div_tab = document.createElement('div');
+         div_tab.className = 'tab';
+         div_tab.dataset.i = i;
+         div_tab.innerText = project.fileName;
+         div_tab.addEventListener('click', tabClick);
+         div.appendChild(div_tab);
+    });
+};
+
+// draw
+var drawCurrentTabIndex = function(){
+    draw.background(ctx, canvas, 'blue');
+    draw.points(ctx, sm.tabs[sm.currentTabIndex].objects[0], 80, 5);
+    draw.ver(sm, ctx, canvas);
+};
+
+
+
+// push start project
+projectMod.pushNewProject(sm.tabs, 'WEIRD');
+projectMod.pushNewProject(sm.tabs, 'BOX');
+renderTabSelection()
+drawCurrentTabIndex();
+
+</script>
+
+    </body>
+</html>

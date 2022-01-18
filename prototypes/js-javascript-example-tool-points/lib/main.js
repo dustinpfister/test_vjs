@@ -1,7 +1,7 @@
 
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
-document.getElementById('canvas-app').appendChild(canvas);
+document.getElementById('area-canvas').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
@@ -12,14 +12,19 @@ var sm = {
 };
 
 // push start project
-projectMod.pushNewProject(sm.tabs)
+projectMod.pushNewProject(sm.tabs);
+projectMod.pushNewProject(sm.tabs);
 
 console.log(sm);
 
 // draw
-draw.background(ctx, canvas, 'blue');
-draw.points(ctx, sm.tabs[sm.currentTabIndex].objects[0], 80, 5);
-draw.ver(sm, ctx, canvas);
+var drawCurrentTabIndex = function(){
+    draw.background(ctx, canvas, 'blue');
+    draw.points(ctx, sm.tabs[sm.currentTabIndex].objects[0], 80, 5);
+    draw.ver(sm, ctx, canvas);
+};
+
+drawCurrentTabIndex();
 
 /*
 // literal of a points array

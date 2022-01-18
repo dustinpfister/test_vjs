@@ -23,7 +23,10 @@ var removeAllChildNodes = function(parent) {
 var tabClick = function(e){
     var i = parseInt( e.target.dataset.i );
     sm.currentTabIndex = i;
+    // update canvas
     drawCurrentTabIndex();
+    // update json text area
+    tabIndexToJSON(sm, sm.currentTabIndex);
 };
 
 // render the tab selection menu for the current state of sm.tabs

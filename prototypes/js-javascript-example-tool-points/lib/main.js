@@ -6,7 +6,7 @@ canvas.width = 640;
 canvas.height = 480;
 
 var sm = {
-    ver: 'r0',
+    ver: 'r1',
     currentTabIndex: 0, // current tab index
     tabs: []
 };

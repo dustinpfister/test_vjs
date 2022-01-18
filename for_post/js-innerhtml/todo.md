@@ -5,6 +5,13 @@
 * the html file makes use of a simple script that makes an http request for a collection of comments, and injects them using innerhtml
 * the html file also has a simple ui for creating and posting a comment to the server side database.
 
+## () - expand av-altertaives with text area example
+* 8-textarea example as a way to log data
+
+## () - expand av-alternatives section with templates
+* 6-template-elements
+* 7-template-literals
+
 ## () - expand av-alternatives section
 * new  5-canvas example that showcases the use of a canvas element as a way to inject content
 

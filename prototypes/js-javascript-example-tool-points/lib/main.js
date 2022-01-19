@@ -91,7 +91,7 @@ var createObjectSelectors = function(sm){
 
 // 'state machine' object
 var sm = {
-    ver: 'r2',
+    ver: 'r3',
 
     // tabs
     currentTabIndex: 0, // current tab index

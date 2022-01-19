@@ -5,13 +5,6 @@ document.getElementById('area-canvas').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-// 'state machine' object
-var sm = {
-    ver: 'r2',
-    currentTabIndex: 0, // current tab index
-    tabs: []
-};
-
 // the event hander used when a tab section div is clicked
 var tabClick = function(e){
     var i = parseInt( e.target.dataset.i );
@@ -60,13 +53,6 @@ var jsonToTabIndex = function(sm, index){
     }
 };
 
-// attach on key up event hander for text area
-document.querySelector('#input-json').addEventListener('keyup', function(e){
-    jsonToTabIndex(sm, sm.currentTabIndex);
-    renderTabSelection()
-    drawCurrentTabIndex();
-});
-
 // draw the current tab index to the canvas
 var drawCurrentTabIndex = function(){
     draw.background(ctx, canvas, 'blue');
@@ -77,14 +63,38 @@ var drawCurrentTabIndex = function(){
     draw.ver(sm, ctx, canvas);
 };
 
-// push start project(s)
-projectMod.pushNewProject(sm.tabs, 'BOX');
-projectMod.pushNewProject(sm.tabs, 'WEIRD');
+// 'state machine' object
+var sm = {
+    ver: 'r2',
+    currentTabIndex: 0, // current tab index
+    tabs: [],
+    currentState: 'init',
+    states: {}
+};
 
-console.log( projectMod.getObjectCenter(sm.tabs[0], 0) );
+// init state should only run once, this state should be used to set things up for the first time
+sm.states.init = {
+    start: function(sm){
+        // push start project(s)
+        projectMod.pushNewProject(sm.tabs, 'BOX');
+        projectMod.pushNewProject(sm.tabs, 'WEIRD');
 
-// render tab section and draw curent tab index for first time
-renderTabSelection()
-drawCurrentTabIndex();
-tabIndexToJSON(sm, sm.currentTabIndex);
+        // render tab section and draw curent tab index for first time
+        renderTabSelection()
+        drawCurrentTabIndex();
+        tabIndexToJSON(sm, sm.currentTabIndex);
+    }
+};
+
+// attach on key up event hander for text area
+document.querySelector('#input-json').addEventListener('keyup', function(e){
+    jsonToTabIndex(sm, sm.currentTabIndex);
+    renderTabSelection()
+    drawCurrentTabIndex();
+});
+
+
+sm.states[sm.currentState].start(sm);
+
+
 

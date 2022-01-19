@@ -33,9 +33,10 @@
 * (done) any change to a tab will update the text content to the current project
 * (done) if more than one object in a project draw them all
 * (done) See if I can get JSON.stringify working the way I would like it to with a replacer and regex formating maybe
+* (done) start a utils.js and have a utils.removeAllChildNodes
 
-* start a utils.js and have a utils.removeAllChildNodes
-* add a utils.jsonPretty
+* add a utils.jsonPretty method
+
 * start a points.js file and have a pointMod.createBox helper
 
 ## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started

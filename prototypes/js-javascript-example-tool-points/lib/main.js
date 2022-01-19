@@ -46,23 +46,9 @@ var renderTabSelection = function(){
 };
 
 // parse the given tab index to JSON in the area-json div
-// https://stackoverflow.com/questions/6937863/json-stringify-so-that-arrays-are-on-one-line
-var replacer = function(k, v){
-    if(v instanceof Array){
-        if(typeof v[0] === 'number'){
-            return JSON.stringify(v);
-        }
-    }
-    return v;
-};
 var tabIndexToJSON = function(sm, index){
     var project = sm.tabs[index];
-    var json = JSON.stringify(project, replacer, 2)
-    .replace(/\\/g, '')
-    .replace(/\"\[/g, '[')
-    .replace(/\]\"/g,']')
-    .replace(/\"\{/g, '{')
-    .replace(/\}\"/g,'}');;
+    var json = utils.jsonPretty(project);
     document.querySelector('#input-json').value = json;
 };
 

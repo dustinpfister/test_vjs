@@ -30,7 +30,7 @@
 * Select a single index value in a single line that will be a current point index value
 * can move a single point of a single line
 
-## () - r1 - text area element, start a points.js, and utils.js file
+## ( done 01/19/2022 ) - r1 - text area element, start a points.js, and utils.js file
 * (done) have a text area element that can be used to create a points array with text
 * (done) any change to the text area input area will update the canvas if it is valid
 * (done) any change to a tab will update the text content to the current project
@@ -42,7 +42,7 @@
 * (done) have a utils.defaults object method and use that for the options of pointMod.createBox
 * (done) use pointMod.createBox in project.js to create the build in starting box
 * (done) see about fixing bug #0
-* fill option for pointMod.createBox
+* (done) fill option for pointMod.createBox
 
 ## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started
 * (done) start out with the system that I worked out for my js-javascript-example-draw-points post

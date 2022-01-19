@@ -12,8 +12,6 @@ var sm = {
     tabs: []
 };
 
-console.log( utils.defaults( {x:5}, {x:0, y:0}) );
-
 // the event hander used when a tab section div is clicked
 var tabClick = function(e){
     var i = parseInt( e.target.dataset.i );
@@ -82,6 +80,8 @@ var drawCurrentTabIndex = function(){
 // push start project(s)
 projectMod.pushNewProject(sm.tabs, 'BOX');
 projectMod.pushNewProject(sm.tabs, 'WEIRD');
+
+console.log( projectMod.getObjectCenter(sm.tabs[0], 0) );
 
 // render tab section and draw curent tab index for first time
 renderTabSelection()

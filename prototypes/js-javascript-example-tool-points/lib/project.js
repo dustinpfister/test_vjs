@@ -38,7 +38,20 @@ var projectMod = (function(){
         // puch the new project into tabs
         tabs.push(project);
         return tabs;
-    };  
+    };
+
+    // get the center of an object in the given project
+    api.getObjectCenter = function(project, objectIndex){
+        var points = project.objects[objectIndex].map(function(line){
+            return line.filter(function(el){
+                return typeof el === 'number';
+            })
+        }),
+        pos = points;
+
+        return pos;
+
+    };
 
 
     return api;

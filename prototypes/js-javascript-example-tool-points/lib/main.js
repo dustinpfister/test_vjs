@@ -63,12 +63,27 @@ var drawCurrentTabIndex = function(){
     draw.ver(sm, ctx, canvas);
 };
 
+// check sm.selectors with the given pos and return an array of selectors that are in range
+var selectorCheck = function(sm, pos){
+    return sm.selectors.filter(function(sel){
+        return utils.distance(sel.x, sel.y, pos.x, pos.y) < sel.r;
+    });
+};
+
 // 'state machine' object
 var sm = {
     ver: 'r2',
+
+    // tabs
     currentTabIndex: 0, // current tab index
     tabs: [],
+
+    // selector objects
+    pointerDown: false,
     selectors: [],
+    activeSelector: null,
+
+    // states
     currentState: 'init',
     stateObj: null,
     states: {}
@@ -125,17 +140,31 @@ sm.states.editProject = {
     events: {
         pointerdown : function(sm, pos, e){
 
-            console.log(pos)
+            sm.activeSelector = null;
+            var selectors = selectorCheck(sm, pos);
+            if(selectors.length > 0){
+                sm.activeSelector = selectors[0];
+            }
 
         },
         pointermove : function(sm, pos, e){
 
-            console.log(pos)
+            //console.log(pos)
+            var sel = sm.activeSelector;
+            if(sel){
+console.log(sel)
+               Object.assign(sel, pos);
+
+    drawCurrentTabIndex();
+draw.selectors(sm, ctx);
+
+            }
+
 
         },
         pointerup : function(sm, pos, e){
-
-            console.log(pos)
+            sm.activeSelector = null;
+            //console.log(pos)
 
         }
     }

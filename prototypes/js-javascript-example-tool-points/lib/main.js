@@ -12,15 +12,6 @@ var sm = {
     tabs: []
 };
 
-// remove all child nodes
-/*
-var removeAllChildNodes = function(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
-};
-*/
-
 // the event hander used when a tab section div is clicked
 var tabClick = function(e){
     var i = parseInt( e.target.dataset.i );
@@ -71,25 +62,18 @@ var jsonToTabIndex = function(sm, index){
 
 // attach on key up event hander for text area
 document.querySelector('#input-json').addEventListener('keyup', function(e){
-
-    //console.log(e);
-
-jsonToTabIndex(sm, sm.currentTabIndex);
-renderTabSelection()
-drawCurrentTabIndex();
-
+    jsonToTabIndex(sm, sm.currentTabIndex);
+    renderTabSelection()
+    drawCurrentTabIndex();
 });
 
 // draw the current tab index to the canvas
 var drawCurrentTabIndex = function(){
     draw.background(ctx, canvas, 'blue');
-
-var objects = sm.tabs[sm.currentTabIndex].objects;
-    
-objects.forEach(function(obj){
-    draw.points(ctx, obj, 0, 0);
-
-});
+    var objects = sm.tabs[sm.currentTabIndex].objects;
+    objects.forEach(function(obj){
+        draw.points(ctx, obj, 0, 0);
+    });
     draw.ver(sm, ctx, canvas);
 };
 

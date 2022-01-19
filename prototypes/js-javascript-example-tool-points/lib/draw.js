@@ -50,6 +50,9 @@ var draw = (function(){
                     }
                     if (parts[0] === 'fill') {
                         fill = parts[1] || false;
+                        if(parts[1].toLowerCase() === 'false'){
+                            fill = false;
+                        }
                     }
                     if (parts[0] === 'lineWidth') {
                         lineWidth = parts[1] || 1;

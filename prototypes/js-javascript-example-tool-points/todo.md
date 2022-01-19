@@ -1,7 +1,7 @@
 # js-javascript-example-tool-points
 
 ## Known bugs
-* () - #0 - Fix deal with fill:false not working as it should in draw.js 
+* ( fixed in r1 ) - #0 - Fix deal with fill:false not working as it should in draw.js 
 
 <!-- Maintenance -->
 
@@ -38,10 +38,11 @@
 * (done) See if I can get JSON.stringify working the way I would like it to with a replacer and regex formating maybe
 * (done) start a utils.js and have a utils.removeAllChildNodes
 * (done) add a utils.jsonPretty method
-
-* start a points.js file and have a pointMod.createBox helper
-* have a utils.defaults object method and use that for the options of pointMod.createBox
-* use pointMod.createBox in project.js to create the build in starting box
+* (done) start a points.js file and have a pointMod.createBox helper
+* (done) have a utils.defaults object method and use that for the options of pointMod.createBox
+* (done) use pointMod.createBox in project.js to create the build in starting box
+* (done) see about fixing bug #0
+* fill option for pointMod.createBox
 
 ## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started
 * (done) start out with the system that I worked out for my js-javascript-example-draw-points post

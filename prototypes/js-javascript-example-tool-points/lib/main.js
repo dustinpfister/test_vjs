@@ -7,7 +7,7 @@ canvas.height = 480;
 
 // 'state machine' object
 var sm = {
-    ver: 'r1',
+    ver: 'r2',
     currentTabIndex: 0, // current tab index
     tabs: []
 };

@@ -25,10 +25,10 @@
 * load and save points using FileReader api
 
 ## () - r2 - point, and line indices Selection system
-* select a single line of a points array
-* can move a whole line
-* Select a single index value in a single line that will be a current point index value
-* can move a single point of a single line
+* select an object by uisng the mouse and clicking the canvas
+* can move a whole object by clicking and draging
+* select a single index value in a single object that will be a current point index value
+* can move a single point of a single line by moveing the mouse
 
 ## ( done 01/19/2022 ) - r1 - text area element, start a points.js, and utils.js file
 * (done) have a text area element that can be used to create a points array with text

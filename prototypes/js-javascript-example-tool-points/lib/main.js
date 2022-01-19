@@ -13,11 +13,13 @@ var sm = {
 };
 
 // remove all child nodes
+/*
 var removeAllChildNodes = function(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 };
+*/
 
 // the event hander used when a tab section div is clicked
 var tabClick = function(e){
@@ -32,7 +34,7 @@ var tabClick = function(e){
 // render the tab selection menu for the current state of sm.tabs
 var renderTabSelection = function(){
     var div = document.querySelector('#area-tab-selection');
-    removeAllChildNodes(div);
+    utils.removeAllChildNodes(div);
     sm.tabs.forEach(function(project, i){
          var div_tab = document.createElement('div');
          div_tab.className = 'tab';

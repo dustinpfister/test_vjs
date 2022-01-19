@@ -9,8 +9,8 @@
 
 ## () - rx - points, and line rotation
 
-## () - rx - points.js
-* start a points.js file that will contain methods to create and mutate points
+## () - rx - menu bar
+* start a menu bar area that will contain typical options like 'file', 'edit', 'help' ect
 
 <!-- Minimum Viable Product -->
 
@@ -37,8 +37,6 @@
 * start a utils.js and have a utils.removeAllChildNodes
 * add a utils.jsonPretty
 * start a points.js file and have a pointMod.createBox helper
-
-
 
 ## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started
 * (done) start out with the system that I worked out for my js-javascript-example-draw-points post

@@ -35,7 +35,7 @@
 * select a single index value in a single object that will be a current point index value
 * can move a single point of a single line by moveing the mouse
 
-## () - r2 - point, and line indices Selection system
+## ( done 01/19/2022 ) - r2 - point, and line indices Selection system
 * (done) I will want a projectMod.getObjectCenter method that will return a position that is at the center of a given project object
 * (done) start to have more than one state object in main.js, have the current app be a 'init' state
 * (done) start an 'editProject' state
@@ -47,8 +47,6 @@
 * (done) see about fixing bug #1
 * (done) I think I will want a draw method for each state
 * (done) call the draw method for the current state where and when needed when switching tabs, editing json, and using the selector objects
-
-
 
 ## ( done 01/19/2022 ) - r1 - text area element, start a points.js, and utils.js file
 * (done) have a text area element that can be used to create a points array with text

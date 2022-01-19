@@ -15,14 +15,18 @@
 ## () - rx - menu bar
 * start a menu bar area that will contain typical options like 'file', 'edit', 'help' ect
 
+
 <!-- Minimum Viable Product -->
 
-## () - r4 - FileReader api to load background image
+## () - r5 - FileReader api to load background image
 * I will want at least two canvas elements, one for the background and another for the points
 * use the FileReader api to load an image and use that as a the content of a background canvas
 
-## () - r3 - FileReader api to load and save points
+## () - r4 - FileReader api to load and save points
 * load and save points using FileReader api
+
+## () - r3 - draw new mode
+* create a new object by just clicking points in the canvas with a 'draw new mode'
 
 ## () - r2 - point, and line indices Selection system
 * select an object by uisng the mouse and clicking the canvas

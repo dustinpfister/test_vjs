@@ -11,8 +11,8 @@ var sm = {
 
 // literal of a points array
 var points = [
-    [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
-    [30, 80, 165, 55, 22, 200, 'fill:red']
+    [25, 75, 175, 50, 17, 210, 'fill:red', 'stroke:lime'],
+    [100, 20, 165, 55, 22, 200, 'fill:false']
 ];
 
 // method that will create a points array

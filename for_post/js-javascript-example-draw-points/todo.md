@@ -1,8 +1,12 @@
 # js-javascript-example-draw-points todo list
 
+## Known bugs
+* () - #0 - render bug with fill:false
+
 <!-- Mantanace / new features  -->
 
-## () - r2 -
+## ( done 01/19/2022 ) - r2 - fix #0
+* (done) fix #0 fill:false bug
 
 ## ( done 01/18/2022 ) - r1 - just one draw.js file
 * (done) have a single draw.js file and just have the draw points method a method in that file

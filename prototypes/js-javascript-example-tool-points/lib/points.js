@@ -7,7 +7,7 @@ var pointMod = (function(){
         // parse options
         opt = opt || {};
         opt = utils.defaults(opt, {
-            x: 0, y: 0, w: 50, h: 50
+            x: 0, y: 0, w: 50, h: 50, fill: 'white', stroke: 'black', lineWidth: 6
         });
         // push points
         var points = [[]],
@@ -23,6 +23,10 @@ var pointMod = (function(){
             points[0].push(x, y);
             i += 2;
         }
+        // push style opttions for the line
+        points[0].push('fill:' + opt.fill);
+        points[0].push('stroke:' + opt.stroke);
+        points[0].push('lineWidth:' + opt.lineWidth);
         // return box points
         return points;
     };

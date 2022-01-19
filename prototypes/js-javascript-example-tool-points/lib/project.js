@@ -47,16 +47,27 @@ var projectMod = (function(){
         // get center positon of all lines
         var pos = points.reduce(function(acc, line){
            var i = 0,
+           x = 0,
+           y = 0,
            len = line.length;
            while(i < len){
-               acc.x += line[i];
-               acc.y += line[i + 1]
+               x += line[i];
+               y += line[i + 1]
                i += 2;
            };
-           acc.x /= len / 2;
-           acc.y /= len / 2;
+           x /= len / 2;
+           y /= len / 2;
+           acc.x += x;
+           acc.y += y;
            return acc;
         }, {x:0, y:0});
+
+        pos.x = Math.round(pos.x / points.length);
+        pos.y = Math.round(pos.y / points.length); 
+
+// ((25 + 175 + 17) / 3 + (30 + 165 + 22 ) / 3 ) / 2 = 72.33333333333333
+console.log(pos)
+
         // return postion
         return pos;
     };

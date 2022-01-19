@@ -2,7 +2,7 @@
 
 ## Known bugs
 * ( fixed in r1 ) - #0 - Fix deal with fill:false not working as it should in draw.js 
-* () - #1 - when moving the project.js built in POINTS.WEIRD points the selector postion updates to a wrong position 
+* ( fixed in r2 ) - #1 - when moving the project.js built in POINTS.WEIRD points the selector postion updates to a wrong position 
 
 <!-- Maintenance -->
 
@@ -44,8 +44,8 @@
 * (done) pointsMod.numbersOnly method
 * (done) I will need a pointsMod.translatePoints method
 * (done) in 'editProject' state move a whole object by clicking and draging the selector of an object
+* (done) see about fixing bug #1
 
-* see about fixing bug #1
 * I think I will want a draw method for each state
 * call the draw method for the current state where and when needed when switching tabs, editing json, and using the selector objects
 

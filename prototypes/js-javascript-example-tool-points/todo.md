@@ -33,7 +33,7 @@
 * (done) start to have more than one state object in main.js, have the current app be a 'init' state
 * (done) start an 'editProject' state
 
-* I will want a draw.selectors method
+* (done) I will want a draw.selectors method
 
 * in 'editProject' state use projectMod.getObjectCenter to place disp objects at the center of each object
 * in 'editProject' state move a whole object by clicking and draging the center disp object

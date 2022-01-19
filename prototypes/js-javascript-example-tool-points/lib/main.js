@@ -123,7 +123,19 @@ sm.states.editProject = {
     },
 
     events: {
-        pointerUp : function(){
+        pointerdown : function(sm, pos, e){
+
+            console.log(pos)
+
+        },
+        pointermove : function(sm, pos, e){
+
+            console.log(pos)
+
+        },
+        pointerup : function(sm, pos, e){
+
+            console.log(pos)
 
         }
     }
@@ -136,6 +148,23 @@ document.querySelector('#input-json').addEventListener('keyup', function(e){
     renderTabSelection()
     drawCurrentTabIndex();
 });
+
+
+var createPointerEventHander = function(eventKey){
+    return function(e){
+        var events = sm.stateObj.events,
+        pos = utils.getCanvasRelative(e);
+        if(events){
+            if(events[eventKey]){
+                events[eventKey](sm, pos, e);
+            }
+        }
+    }
+};
+
+canvas.addEventListener('pointerdown', createPointerEventHander('pointerdown') );
+canvas.addEventListener('pointerup', createPointerEventHander('pointerup') );
+canvas.addEventListener('pointermove', createPointerEventHander('pointermove') );
 
 setState(sm, 'init');
 

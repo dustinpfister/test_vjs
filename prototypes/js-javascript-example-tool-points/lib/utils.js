@@ -1,5 +1,7 @@
 var utils = {};
 
+
+
 //-------- ----------
 //  DOM
 //-------- ----------
@@ -8,6 +10,21 @@ utils.removeAllChildNodes = function(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
+};
+
+// get a canvas relative position that is adjusted for scale
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // adjust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    return pos;
 };
 
 //-------- ----------

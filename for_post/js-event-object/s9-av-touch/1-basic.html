@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>js mouse and touch events</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="canvas-app"><div>
+        <script>
+// HELPERS
+var getElRel = function(el, clientX, clientY){
+    var bx = el.getBoundingClientRect();
+    return  {
+      x : clientX - bx.left,
+      y : clientY - bx.top
+    };
+}
+// DRAW
+var draw = {};
+draw.back = function(ctx, canvas, sm){
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+}
+draw.pool = function(ctx, canvas, sm){
+    draw.back(ctx, canvas, sm);
+    sm.pool.forEach(function(obj){
+       ctx.beginPath();
+       ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2)
+       ctx.fillStyle = obj.fillStyle || 'lime';
+       ctx.fill();
+       ctx.stroke();
+    })
+};
+// CANVAS SETUP
+var container = document.getElementById('canvas-app'),
+canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 640;
+canvas.height = 480;
+container.appendChild(canvas);
+// STATE
+var sm = {
+  canvas: canvas,
+  ctx: ctx,
+  pool: []
+};
+// WHAT TO DO FOR A TOUCH START EVENT
+var touchStart = function(e){
+    // create pool of objects from touch array
+    sm.pool = [].map.call(e.touches, function(touch){
+        var obj = getElRel(e.target, touch.clientX, touch.clientY);
+        obj.r = 64;
+        return obj;
+    });
+    // draw pool
+    draw.pool(ctx, canvas, sm);
+    // e.preventDefault will suppress an additional mouse down event
+    // that will fire if not suppresses
+    e.preventDefault();
+};
+var mouseDown = function(e){
+    var obj = getElRel(e.target, e.clientX, e.clientY);
+    obj.r = 64;
+    obj.fillStyle = 'red';
+    // if left click start a new pool
+    if(e.button === 0){
+        obj.fillStyle = 'cyan';
+        sm.pool = [];
+    }
+    sm.pool.push(obj);
+    // draw pool
+    draw.pool(ctx, canvas, sm);
+};
+// on context event handler
+var oncontext = function(e){
+    e.preventDefault();
+    if (event.stopPropagation){
+        event.stopPropagation();
+    }
+    event.cancelBubble = true;
+    //render(e.button);
+    return false;
+};
+canvas.addEventListener('touchstart', touchStart);
+canvas.addEventListener('mousedown', mouseDown);
+canvas.addEventListener('contextmenu', oncontext);
+// draw for first time
+draw.back(ctx, canvas, sm);
+        </script>
+    </body>
+</html>

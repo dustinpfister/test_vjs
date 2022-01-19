@@ -50,7 +50,7 @@ var pointMod = (function(){
                     }else{
                        el += dy;
                     }
-                    line[i] = el;
+                    line[i] = Math.round(el);
                 }
             });
         });

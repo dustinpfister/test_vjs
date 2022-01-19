@@ -9,10 +9,16 @@ canvas.height = 480;
 var tabClick = function(e){
     var i = parseInt( e.target.dataset.i );
     sm.currentTabIndex = i;
-    // update canvas
-    drawCurrentTabIndex();
+
     // update json text area
     tabIndexToJSON(sm, sm.currentTabIndex);
+
+    createObjectSelectors(sm);
+
+    // update canvas
+    drawCurrentTabIndex();
+    draw.selectors(sm, ctx);
+
 };
 
 // render the tab selection menu for the current state of sm.tabs
@@ -73,10 +79,8 @@ var selectorCheck = function(sm, pos){
 var createObjectSelectors = function(sm){
         // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
         var tab = sm.tabs[sm.currentTabIndex];
-
         // selectors for each object
         sm.selectors = [];
-
         tab.objects.forEach(function(points, i){
             var centerPos = projectMod.getObjectCenter(tab, i);
             sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
@@ -160,7 +164,7 @@ sm.states.editProject = {
                delta.x = pos.x - sel.x;
                delta.y = pos.y - sel.y;
 
-               pointMod.translatePoints(sm.tabs[0].objects[0], delta.x, delta.y);
+               pointMod.translatePoints(sm.tabs[sm.currentTabIndex].objects[0], delta.x, delta.y);
 
                Object.assign(sel, pos);
 
@@ -181,6 +185,8 @@ sm.states.editProject = {
             sm.activeSelector = null;
             // make sure selectors are centerd
             createObjectSelectors(sm);
+               drawCurrentTabIndex();
+               draw.selectors(sm, ctx);
             //console.log(pos)
 
         }
@@ -193,6 +199,7 @@ document.querySelector('#input-json').addEventListener('keyup', function(e){
     jsonToTabIndex(sm, sm.currentTabIndex);
     renderTabSelection()
     drawCurrentTabIndex();
+
 });
 
 

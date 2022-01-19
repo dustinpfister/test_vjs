@@ -2,11 +2,11 @@
   "fileName": "Foo project",
   "objects": [
     [
-      [25,25,200,50,200,200,25,200,"close:true","fill:rgba(255,255,255,0.4)"],
-      [200,100,400,100,400,400,100,400,"close:true","fill:false"]
+      [25,25,200,50,200,200,25,200,"close:true","fill:cyan"],
+      [200,100,400,100,400,400,100,400,"close:true","fill:lime"]
     ],
     [
-      [300,300,450,300,450,450,300,450,"fill:false","close:false"]
+      [300,300,450,300,450,450,300,450,"fill:red","close:true"]
     ]
   ]
 }

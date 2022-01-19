@@ -2,6 +2,7 @@
 
 ## Known bugs
 * ( fixed in r1 ) - #0 - Fix deal with fill:false not working as it should in draw.js 
+* () - #1 - when moving the project.js built in POINTS.WEIRD points the selector postion updates to a wrong position 
 
 <!-- Maintenance -->
 
@@ -34,11 +35,11 @@
 * (done) start an 'editProject' state
 * (done) I will want a draw.selectors method
 * (done) in 'editProject' state use projectMod.getObjectCenter to place selector objects at the center of each object
-
 * (done) pointsMod.numbersOnly method
 * (done) I will need a pointsMod.translatePoints method
+* (done) in 'editProject' state move a whole object by clicking and draging the selector of an object
 
-* in 'editProject' state move a whole object by clicking and draging the selector of an object
+* see about fixing bug #1
 
 * start an 'editObject' state that will be used to mutate just one object in a current tab
 * when one of these display objects in 'edit.project' are clicked enter 'edit.object' state with that object selected

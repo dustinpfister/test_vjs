@@ -107,6 +107,8 @@ sm.states.init = {
         projectMod.pushNewProject(sm.tabs, 'BOX');
         projectMod.pushNewProject(sm.tabs, 'WEIRD');
 
+pointMod.translatePoints(sm.tabs[0].objects[0], -100, -100);
+
         // render tab section and draw curent tab index for first time
         renderTabSelection()
         drawCurrentTabIndex();
@@ -149,14 +151,13 @@ sm.states.editProject = {
         },
         pointermove : function(sm, pos, e){
 
-            //console.log(pos)
             var sel = sm.activeSelector;
             if(sel){
-console.log(sel)
                Object.assign(sel, pos);
 
-    drawCurrentTabIndex();
-draw.selectors(sm, ctx);
+               // draw
+               drawCurrentTabIndex();
+               draw.selectors(sm, ctx);
 
             }
 

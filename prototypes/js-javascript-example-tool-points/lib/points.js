@@ -31,6 +31,31 @@ var pointMod = (function(){
         return points;
     };
 
+    // return a new points object that is numbers only
+    api.numbersOnly = function(points){
+        return points.map(function(line){
+            return line.filter(function(el){
+                return typeof el === 'number';
+            });
+        });
+    };
+
+    // translate points
+    api.translatePoints = function(points, dx, dy){
+        points.forEach(function(line){
+            line.forEach(function(el, i){
+                if(typeof el === 'number'){
+                    if(i % 2 === 0){
+                       el += dx;
+                    }else{
+                       el += dy;
+                    }
+                    line[i] = el;
+                }
+            });
+        });
+    };
+
     // return the public api
     return api;
 

@@ -32,11 +32,13 @@
 * (done) I will want a projectMod.getObjectCenter method that will return a position that is at the center of a given project object
 * (done) start to have more than one state object in main.js, have the current app be a 'init' state
 * (done) start an 'editProject' state
-
 * (done) I will want a draw.selectors method
+* (done) in 'editProject' state use projectMod.getObjectCenter to place selector objects at the center of each object
 
-* in 'editProject' state use projectMod.getObjectCenter to place disp objects at the center of each object
-* in 'editProject' state move a whole object by clicking and draging the center disp object
+* (done) pointsMod.numbersOnly method
+* (done) I will need a pointsMod.translatePoints method
+
+* in 'editProject' state move a whole object by clicking and draging the selector of an object
 
 * start an 'editObject' state that will be used to mutate just one object in a current tab
 * when one of these display objects in 'edit.project' are clicked enter 'edit.object' state with that object selected

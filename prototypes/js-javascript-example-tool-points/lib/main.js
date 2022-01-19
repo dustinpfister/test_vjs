@@ -70,6 +70,7 @@ var selectorCheck = function(sm, pos){
     });
 };
 
+
 // 'state machine' object
 var sm = {
     ver: 'r2',
@@ -107,7 +108,7 @@ sm.states.init = {
         projectMod.pushNewProject(sm.tabs, 'BOX');
         projectMod.pushNewProject(sm.tabs, 'WEIRD');
 
-pointMod.translatePoints(sm.tabs[0].objects[0], -100, -100);
+//pointMod.translatePoints(sm.tabs[0].objects[0], -100, -100);
 
         // render tab section and draw curent tab index for first time
         renderTabSelection()
@@ -129,11 +130,11 @@ sm.states.editProject = {
 
         // selectors for each object
         sm.selectors = [];
+
         tab.objects.forEach(function(points, i){
             var centerPos = projectMod.getObjectCenter(tab, i);
             sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
         });
-        console.log(sm.selectors[0]);
 
         draw.selectors(sm, ctx);
 
@@ -153,6 +154,13 @@ sm.states.editProject = {
 
             var sel = sm.activeSelector;
             if(sel){
+
+               var delta = {};
+               delta.x = pos.x - sel.x;
+               delta.y = pos.y - sel.y;
+
+               pointMod.translatePoints(sm.tabs[0].objects[0], delta.x, delta.y);
+
                Object.assign(sel, pos);
 
                // draw

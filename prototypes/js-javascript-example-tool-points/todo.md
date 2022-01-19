@@ -29,11 +29,14 @@
 * create a new object by just clicking points in the canvas with a 'draw new mode'
 
 ## () - r2 - point, and line indices Selection system
-* I will want a projectMod.getObjectCenter method that will return a position that is at the center of a given project object
-* start to have more than one state object in main.js, have the current app be a 'editProject' state
+* (done) I will want a projectMod.getObjectCenter method that will return a position that is at the center of a given project object
+
+* start to have more than one state object in main.js, have the current app be a 'edit.project' state
 * start an 'edit.object' state that will be used to mutate just one object in a current tab
+
 * in 'edit.project' state use projectMod.getObjectCenter to place disp objects at the center of each object
 * in 'edit.project' state move a whole object by clicking and draging the center disp object
+
 * when one of these display objects in 'edit.project' are clicked enter 'edit.object' state with that object selected
 * select a single index value in a single object that will be a current point index value
 * can move a single point of a single line by moveing the mouse

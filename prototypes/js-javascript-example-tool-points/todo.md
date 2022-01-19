@@ -19,15 +19,21 @@
 
 <!-- Minimum Viable Product -->
 
-## () - r5 - FileReader api to load background image
+## () - r6 - FileReader api to load background image
 * I will want at least two canvas elements, one for the background and another for the points
 * use the FileReader api to load an image and use that as a the content of a background canvas
 
-## () - r4 - FileReader api to load and save points
+## () - r5 - FileReader api to load and save points
 * load and save points using FileReader api
 
-## () - r3 - draw new mode
+## () - r4 - draw new mode
 * create a new object by just clicking points in the canvas with a 'draw new mode'
+
+## () - r3 - editObject state
+* start an 'editObject' state that will be used to mutate just one object in a current tab
+* when one of these display objects in 'edit.project' are clicked enter 'edit.object' state with that object selected
+* select a single index value in a single object that will be a current point index value
+* can move a single point of a single line by moveing the mouse
 
 ## () - r2 - point, and line indices Selection system
 * (done) I will want a projectMod.getObjectCenter method that will return a position that is at the center of a given project object
@@ -40,11 +46,10 @@
 * (done) in 'editProject' state move a whole object by clicking and draging the selector of an object
 
 * see about fixing bug #1
+* I think I will want a draw method for each state
+* call the draw method for the current state where and when needed when switching tabs, editing json, and using the selector objects
 
-* start an 'editObject' state that will be used to mutate just one object in a current tab
-* when one of these display objects in 'edit.project' are clicked enter 'edit.object' state with that object selected
-* select a single index value in a single object that will be a current point index value
-* can move a single point of a single line by moveing the mouse
+
 
 ## ( done 01/19/2022 ) - r1 - text area element, start a points.js, and utils.js file
 * (done) have a text area element that can be used to create a points array with text

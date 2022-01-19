@@ -164,7 +164,7 @@ sm.states.editProject = {
                delta.x = pos.x - sel.x;
                delta.y = pos.y - sel.y;
 
-               pointMod.translatePoints(sm.tabs[sm.currentTabIndex].objects[0], delta.x, delta.y);
+               pointMod.translatePoints(sm.tabs[sm.currentTabIndex].objects[sel.i], delta.x, delta.y);
 
                Object.assign(sel, pos);
 
@@ -185,8 +185,8 @@ sm.states.editProject = {
             sm.activeSelector = null;
             // make sure selectors are centerd
             createObjectSelectors(sm);
-               drawCurrentTabIndex();
-               draw.selectors(sm, ctx);
+            drawCurrentTabIndex();
+            draw.selectors(sm, ctx);
             //console.log(pos)
 
         }
@@ -198,7 +198,10 @@ sm.states.editProject = {
 document.querySelector('#input-json').addEventListener('keyup', function(e){
     jsonToTabIndex(sm, sm.currentTabIndex);
     renderTabSelection()
-    drawCurrentTabIndex();
+
+            createObjectSelectors(sm);
+            drawCurrentTabIndex();
+            draw.selectors(sm, ctx);
 
 });
 

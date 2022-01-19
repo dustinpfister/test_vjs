@@ -16,8 +16,10 @@ var tabClick = function(e){
     createObjectSelectors(sm);
 
     // update canvas
-    drawCurrentTabIndex();
-    draw.selectors(sm, ctx);
+    //drawCurrentTabIndex();
+    //draw.selectors(sm, ctx);
+
+drawState(sm, ctx, canvas);
 
 };
 
@@ -117,6 +119,13 @@ var setState = function(sm, newState){
     }
 };
 
+var drawState = function(sm, ctx, canvas){
+    var draw = sm.stateObj.draw; 
+    if(draw){
+        draw.call(sm, sm, ctx, canvas)
+    }
+};
+
 // init state should only run once, this state should be used to set things up for the first time
 sm.states.init = {
     start: function(sm){
@@ -141,6 +150,17 @@ sm.states.editProject = {
 
         createObjectSelectors(sm);
 
+        //draw.selectors(sm, ctx);
+
+        //sm.stateObj.draw.call(sm, sm, ctx, canvas)
+
+        drawState(sm, ctx, canvas);
+
+    },
+
+    draw: function(sm, ctx, canvas){
+
+        drawCurrentTabIndex();
         draw.selectors(sm, ctx);
 
     },
@@ -171,8 +191,10 @@ sm.states.editProject = {
                //createObjectSelectors(sm);
 
                // draw
-               drawCurrentTabIndex();
-               draw.selectors(sm, ctx);
+               //drawCurrentTabIndex();
+               //draw.selectors(sm, ctx);
+
+               drawState(sm, ctx, canvas);
 
                // update json
                tabIndexToJSON(sm, sm.currentTabIndex);
@@ -185,8 +207,10 @@ sm.states.editProject = {
             sm.activeSelector = null;
             // make sure selectors are centerd
             createObjectSelectors(sm);
-            drawCurrentTabIndex();
-            draw.selectors(sm, ctx);
+
+            drawState(sm, ctx, canvas);
+            //drawCurrentTabIndex();
+            //draw.selectors(sm, ctx);
             //console.log(pos)
 
         }
@@ -200,8 +224,10 @@ document.querySelector('#input-json').addEventListener('keyup', function(e){
     renderTabSelection()
 
             createObjectSelectors(sm);
-            drawCurrentTabIndex();
-            draw.selectors(sm, ctx);
+            //drawCurrentTabIndex();
+            //draw.selectors(sm, ctx);
+
+drawState(sm, ctx, canvas);
 
 });
 

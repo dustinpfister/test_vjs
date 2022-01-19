@@ -45,9 +45,8 @@
 * (done) I will need a pointsMod.translatePoints method
 * (done) in 'editProject' state move a whole object by clicking and draging the selector of an object
 * (done) see about fixing bug #1
-
-* I think I will want a draw method for each state
-* call the draw method for the current state where and when needed when switching tabs, editing json, and using the selector objects
+* (done) I think I will want a draw method for each state
+* (done) call the draw method for the current state where and when needed when switching tabs, editing json, and using the selector objects
 
 
 

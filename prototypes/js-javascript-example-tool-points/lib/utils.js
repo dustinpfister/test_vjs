@@ -36,3 +36,8 @@ utils.jsonPretty = (function(){
         .replace(/\}\"/g,'}');
     };
 }());
+
+// parse an object with defaults
+utils.defaults = function(obj, defaults){
+    return Object.assign({}, defaults, obj);
+};

@@ -30,13 +30,15 @@
 
 ## () - r2 - point, and line indices Selection system
 * (done) I will want a projectMod.getObjectCenter method that will return a position that is at the center of a given project object
+* (done) start to have more than one state object in main.js, have the current app be a 'init' state
+* (done) start an 'editProject' state
 
-* start to have more than one state object in main.js, have the current app be a 'edit.project' state
-* start an 'edit.object' state that will be used to mutate just one object in a current tab
+* I will want a draw.selectors method
 
-* in 'edit.project' state use projectMod.getObjectCenter to place disp objects at the center of each object
-* in 'edit.project' state move a whole object by clicking and draging the center disp object
+* in 'editProject' state use projectMod.getObjectCenter to place disp objects at the center of each object
+* in 'editProject' state move a whole object by clicking and draging the center disp object
 
+* start an 'editObject' state that will be used to mutate just one object in a current tab
 * when one of these display objects in 'edit.project' are clicked enter 'edit.object' state with that object selected
 * select a single index value in a single object that will be a current point index value
 * can move a single point of a single line by moveing the mouse

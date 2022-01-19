@@ -68,6 +68,7 @@ var sm = {
     ver: 'r2',
     currentTabIndex: 0, // current tab index
     tabs: [],
+    selectors: [],
     currentState: 'init',
     stateObj: null,
     states: {}
@@ -102,9 +103,31 @@ sm.states.init = {
     }
 };
 
+// edit a project
 sm.states.editProject = {
     start: function(sm){
+
+        // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
+        var tab = sm.tabs[sm.currentTabIndex];
+
+        // selectors for each object
+        sm.selectors = [];
+        tab.objects.forEach(function(points, i){
+            var centerPos = projectMod.getObjectCenter(tab, i);
+            sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
+        });
+        console.log(sm.selectors[0]);
+
+        draw.selectors(sm, ctx);
+
+    },
+
+    events: {
+        pointerUp : function(){
+
+        }
     }
+
 };
 
 // attach on key up event hander for text area

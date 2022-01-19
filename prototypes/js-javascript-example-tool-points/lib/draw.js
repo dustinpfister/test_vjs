@@ -17,6 +17,20 @@ var draw = (function(){
         ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
     };
 
+    // draw selectors
+    api.selectors = function(sm, ctx){
+      ctx.fillStyle = 'gray';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 3;
+      sm.selectors.forEach(function(sel){
+          ctx.beginPath();
+          ctx.arc(sel.x, sel.y, sel.r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+      });
+    };
+
+    // draw points method from js-javascript-example-draw-points
     api.points = function (ctx, points, cx, cy, opt) {
         opt = opt || {};
         ctx.save();

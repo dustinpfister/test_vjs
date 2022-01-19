@@ -69,7 +69,19 @@ var sm = {
     currentTabIndex: 0, // current tab index
     tabs: [],
     currentState: 'init',
+    stateObj: null,
     states: {}
+};
+
+var setState = function(sm, newState){
+    if(sm.stateObj){
+        
+    }
+    sm.currentState = newState;
+    sm.stateObj = sm.states[sm.currentState];
+    if(sm.stateObj.start){
+        sm.stateObj.start.call(sm, sm);
+    }
 };
 
 // init state should only run once, this state should be used to set things up for the first time
@@ -83,6 +95,15 @@ sm.states.init = {
         renderTabSelection()
         drawCurrentTabIndex();
         tabIndexToJSON(sm, sm.currentTabIndex);
+
+
+        setState(sm, 'editProject');
+
+    }
+};
+
+sm.states.editProject = {
+    start: function(sm){
     }
 };
 
@@ -93,8 +114,9 @@ document.querySelector('#input-json').addEventListener('keyup', function(e){
     drawCurrentTabIndex();
 });
 
+setState(sm, 'init');
 
-sm.states[sm.currentState].start(sm);
+
 
 
 

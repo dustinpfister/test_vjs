@@ -3,14 +3,7 @@ var projectMod = (function(){
 
     var POINTS = {};
 
-    POINTS.BOX = pointMod.createBox({x: 320, y: 240, w: 250, h: 250})
-
-/*
-    POINTS.BOX = [
-        [25, 25, 200, 25, 200, 200, 25, 200, 'close:true', 'fill:red']
-    ];
-
-*/
+    POINTS.BOX = pointMod.createBox({x: 320, y: 240, w: 250, h: 250, fill: 'rgba(255,255,255,0.5)'})
     POINTS.LINE = [
         [25, 25, 50, 25, 50, 50, 25, 100, 'close:false', 'fill:false']
     ];

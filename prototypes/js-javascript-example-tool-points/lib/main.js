@@ -70,6 +70,18 @@ var selectorCheck = function(sm, pos){
     });
 };
 
+var createObjectSelectors = function(sm){
+        // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
+        var tab = sm.tabs[sm.currentTabIndex];
+
+        // selectors for each object
+        sm.selectors = [];
+
+        tab.objects.forEach(function(points, i){
+            var centerPos = projectMod.getObjectCenter(tab, i);
+            sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
+        });
+};
 
 // 'state machine' object
 var sm = {
@@ -108,8 +120,6 @@ sm.states.init = {
         projectMod.pushNewProject(sm.tabs, 'BOX');
         projectMod.pushNewProject(sm.tabs, 'WEIRD');
 
-//pointMod.translatePoints(sm.tabs[0].objects[0], -100, -100);
-
         // render tab section and draw curent tab index for first time
         renderTabSelection()
         drawCurrentTabIndex();
@@ -125,16 +135,7 @@ sm.states.init = {
 sm.states.editProject = {
     start: function(sm){
 
-        // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
-        var tab = sm.tabs[sm.currentTabIndex];
-
-        // selectors for each object
-        sm.selectors = [];
-
-        tab.objects.forEach(function(points, i){
-            var centerPos = projectMod.getObjectCenter(tab, i);
-            sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
-        });
+        createObjectSelectors(sm);
 
         draw.selectors(sm, ctx);
 
@@ -163,9 +164,14 @@ sm.states.editProject = {
 
                Object.assign(sel, pos);
 
+               //createObjectSelectors(sm);
+
                // draw
                drawCurrentTabIndex();
                draw.selectors(sm, ctx);
+
+               // update json
+               tabIndexToJSON(sm, sm.currentTabIndex);
 
             }
 
@@ -173,6 +179,8 @@ sm.states.editProject = {
         },
         pointerup : function(sm, pos, e){
             sm.activeSelector = null;
+            // make sure selectors are centerd
+            createObjectSelectors(sm);
             //console.log(pos)
 
         }

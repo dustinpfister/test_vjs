@@ -1,5 +1,8 @@
 # js-javascript-example-tool-points
 
+## Known bugs
+* () - #0 - Fix deal with fill:false not working as it should in draw.js 
+
 <!-- Maintenance -->
 
 ## () - rx - json input validation
@@ -27,17 +30,18 @@
 * Select a single index value in a single line that will be a current point index value
 * can move a single point of a single line
 
-## () - r1 - text area element, points.js, utils.js
+## () - r1 - text area element, start a points.js, and utils.js file
 * (done) have a text area element that can be used to create a points array with text
 * (done) any change to the text area input area will update the canvas if it is valid
 * (done) any change to a tab will update the text content to the current project
 * (done) if more than one object in a project draw them all
 * (done) See if I can get JSON.stringify working the way I would like it to with a replacer and regex formating maybe
 * (done) start a utils.js and have a utils.removeAllChildNodes
-
-* add a utils.jsonPretty method
+* (done) add a utils.jsonPretty method
 
 * start a points.js file and have a pointMod.createBox helper
+* have a utils.defaults object method and use that for the options of pointMod.createBox
+* use pointMod.createBox in project.js to create the build in starting box
 
 ## ( done 01/18/2022) - r0 - Start with draw points example code, sm.tab and Project object started
 * (done) start out with the system that I worked out for my js-javascript-example-draw-points post

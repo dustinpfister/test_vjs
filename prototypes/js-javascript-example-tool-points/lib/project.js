@@ -42,15 +42,27 @@ var projectMod = (function(){
 
     // get the center of an object in the given project
     api.getObjectCenter = function(project, objectIndex){
+        // just numbers of points
         var points = project.objects[objectIndex].map(function(line){
             return line.filter(function(el){
                 return typeof el === 'number';
             })
-        }),
-        pos = points;
-
+        });
+        // get center positon of all lines
+        var pos = points.reduce(function(acc, line){
+           var i = 0,
+           len = line.length;
+           while(i < len){
+               acc.x += line[i];
+               acc.y += line[i + 1]
+               i += 2;
+           };
+           acc.x /= len / 2;
+           acc.y /= len / 2;
+           return acc;
+        }, {x:0, y:0});
+        // return postion
         return pos;
-
     };
 
 

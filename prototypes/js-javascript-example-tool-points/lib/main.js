@@ -90,19 +90,30 @@ var createPointSelectors = function(sm){
     if(sm.activeSelector){
         var object = sm.activeSelector.points;
 
-        console.log( pointMod.newChunked(object) );
+        console.log(  );
+
+        sm.selectors = [];
+        //tab.objects.forEach(function(points, i){
+            //var centerPos = projectMod.getObjectCenter(tab, i);
+
+pointMod.newChunked(object).forEach(function(line, oi){
+
+    line.forEach(function(ptArr, pi){
+
+            var centerPos = {
+                x: ptArr[0],
+                y: ptArr[1]
+            };
+            sm.selectors.push( Object.assign( { i: pi, r: 16 }, centerPos ) );
+
+    });
+
+});
+        //});
+
 
     }
 
-    // selectors for each object
-/*
-    sm.selectors = [];
-    tab.objects.forEach(function(points, i){
-        //var centerPos = projectMod.getObjectCenter(tab, i);
-        var centerPos = 
-        sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
-    });
-*/
 };
 
 // 'state machine' object
@@ -196,13 +207,12 @@ sm.states.editProject = {
                     console.log('clicked selector, entering editObject state');
                     setState(sm, 'editObject');
                 }
+            }else{
+                // make sure selectors are centerd
+                createObjectSelectors(sm);
+                sm.activeSelector = null;
             }
-
-            sm.activeSelector = null;
-            // make sure selectors are centerd
-            createObjectSelectors(sm);
             drawState(sm, ctx, canvas);
-
         }
     }
 };
@@ -241,18 +251,19 @@ sm.states.editObject = {
         },
         pointerup : function(sm, pos, e){
 
-if(sm.activeSelector === null){
+            if(sm.activeSelector === null){
+                console.log('returing to edit project mode');
+                setState(sm, 'editProject');
+            }else{
 
-console.log('returing to edit project mode');
-                    setState(sm, 'editProject');
+                // make sure selectors are centerd
+                createPointSelectors(sm);
+                sm.activeSelector = null;
+            
+            }
 
-}
 
-            sm.activeSelector = null;
-            // make sure selectors are centerd
-            createPointSelectors(sm);
             drawState(sm, ctx, canvas);
-
 
 
         }

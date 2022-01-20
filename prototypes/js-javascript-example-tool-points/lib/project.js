@@ -61,13 +61,8 @@ var projectMod = (function(){
            acc.y += y;
            return acc;
         }, {x:0, y:0});
-
         pos.x = Math.round(pos.x / points.length);
         pos.y = Math.round(pos.y / points.length); 
-
-// ((25 + 175 + 17) / 3 + (30 + 165 + 22 ) / 3 ) / 2 = 72.33333333333333
-console.log(pos)
-
         // return postion
         return pos;
     };

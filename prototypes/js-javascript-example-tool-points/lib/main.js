@@ -110,7 +110,7 @@ var createPointSelectors = function(sm){
 
 // 'state machine' object
 var sm = {
-    ver: 'r3',
+    ver: 'r4',
     // tabs
     currentTabIndex: 0, // current tab index
     tabs: [],

@@ -1,7 +1,17 @@
 // set up canvas
+
+/*
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 document.getElementById('area-canvas').appendChild(canvas);
+*/
+
+var canvasObj = utils.createCanvas({
+   container: document.getElementById('area-canvas')
+});
+var canvas = canvasObj.canvas;
+var ctx = canvasObj.ctx;
+
 canvas.width = 640;
 canvas.height = 480;
 

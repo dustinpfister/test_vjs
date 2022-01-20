@@ -35,9 +35,8 @@
 * (done) add utils.newChunked method
 * (done) I will need a createPointSelectors helper in main.js
 * (done) when one of these selector objects in 'editProject' are clicked enter 'editObject' state with that object selected
-
 * (done) in editObject mode when a selctor is clicked that results in a point being selected
-* can translate a single point of a single line by moveing the mouse in editObject mode
+* (done) can translate a single point of a single line by moveing the mouse in editObject mode
 
 
 * add and use utils.createCanvas

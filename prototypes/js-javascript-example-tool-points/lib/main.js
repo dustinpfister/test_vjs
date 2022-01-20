@@ -110,6 +110,8 @@ var sm = {
     tabs: [],
     // ui
     userDown: false,
+    sx: null, sy: null,
+    tx: null, ty: null,
     // selector objects
     selectors: [],
     activeSelector: null,
@@ -186,6 +188,10 @@ sm.states.editProject = {
             // make sure selectors are centerd
             createObjectSelectors(sm);
             drawState(sm, ctx, canvas);
+
+var d = utils.distance(sm.sx, sm.sy, sm.tx, sm.ty);
+console.log(d)
+
         }
     }
 };
@@ -227,6 +233,10 @@ sm.states.editObject = {
             // make sure selectors are centerd
             createPointSelectors(sm);
             drawState(sm, ctx, canvas);
+
+
+
+
         }
     }
 };
@@ -246,6 +256,13 @@ var createPointerEventHander = function(eventKey){
 
         if(e.type === 'pointerdown'){
             sm.userDown = true;
+            sm.sx = pos.x;
+            sm.sy = pos.y;
+        }
+
+        if(e.type === 'pointermove'){
+            sm.tx = pos.x;
+            sm.ty = pos.y;
         }
 
         if(e.type === 'pointerup'){

@@ -40,6 +40,13 @@ var pointMod = (function(){
         });
     };
 
+    api.newChunked = function(points){
+        var nPoints = pointMod.numbersOnly( points );
+        return nPoints.map(function(line){
+            return utils.chunk( line, 2 );
+        });
+    };
+
     // translate points
     api.translatePoints = function(points, dx, dy){
         points.forEach(function(line){

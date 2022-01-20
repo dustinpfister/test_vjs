@@ -135,6 +135,9 @@ sm.states.init = {
         // push start project(s)
         projectMod.pushNewProject(sm.tabs, 'BOX');
         projectMod.pushNewProject(sm.tabs, 'WEIRD');
+
+        console.log( pointMod.newChunked(sm.tabs[0].objects[0]) );
+
         // render tab section and draw curent tab index for first time
         renderTabSelection()
         drawCurrentTabIndex();

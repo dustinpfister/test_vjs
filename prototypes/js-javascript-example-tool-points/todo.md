@@ -31,8 +31,9 @@
 
 ## () - r3 - editObject state
 * (done) start an 'editObject' state that will be used to mutate just one object in a current tab
+* (done) add utils.chunk method
+* (done) add utils.newChunked method
 
-* add utils.chunk
 
 * I will need a createPointSelectors helper in main.js
 * when one of these display objects in 'editProject' are clicked enter 'editObject' state with that object selected

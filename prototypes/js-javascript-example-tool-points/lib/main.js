@@ -85,11 +85,14 @@ var createObjectSelectors = function(sm){
 
 var createPointSelectors = function(sm){
     // create 'selector' objects for each point in the current tab for the current active selector
-    var tab = sm.tabs[sm.currentTabIndex],
-    object = sm.activeSelector.points;
+    var tab = sm.tabs[sm.currentTabIndex];
 
+    if(sm.activeSelector){
+        var object = sm.activeSelector.points;
 
-    pointMod.newChunked(object);
+        console.log( pointMod.newChunked(object) );
+
+    }
 
     // selectors for each object
 /*
@@ -190,7 +193,8 @@ sm.states.editProject = {
             // it clicked rather than moved?
             if(sm.activeSelector){
                 if(sm.moveDist === 0){
-                    console.log('click');
+                    console.log('clicked selector, entering editObject state');
+                    setState(sm, 'editObject');
                 }
             }
 

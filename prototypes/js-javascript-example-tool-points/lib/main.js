@@ -108,8 +108,9 @@ var sm = {
     // tabs
     currentTabIndex: 0, // current tab index
     tabs: [],
+    // ui
+    userDown: false,
     // selector objects
-    pointerDown: false,
     selectors: [],
     activeSelector: null,
     // states
@@ -142,9 +143,6 @@ sm.states.init = {
         // push start project(s)
         projectMod.pushNewProject(sm.tabs, 'BOX');
         projectMod.pushNewProject(sm.tabs, 'WEIRD');
-
-        console.log( pointMod.newChunked(sm.tabs[0].objects[0]) );
-
         // render tab section and draw curent tab index for first time
         renderTabSelection()
         drawCurrentTabIndex();
@@ -245,6 +243,15 @@ var createPointerEventHander = function(eventKey){
     return function(e){
         var events = sm.stateObj.events,
         pos = utils.getCanvasRelative(e);
+
+        if(e.type === 'pointerdown'){
+            sm.userDown = true;
+        }
+
+        if(e.type === 'pointerup'){
+            sm.userDown = false;
+        }
+
         if(events){
             if(events[eventKey]){
                 events[eventKey](sm, pos, e);

@@ -1,0 +1,713 @@
+<html>
+    <head>
+        <title>Points Tool</title>
+                <style>
+#area-tab-selection{
+    background:#555555;
+    position:relative;
+    
+    height:30px;
+    margin:10px;
+    padding:5px;
+}
+#area-canvas{
+    background: #555555;
+    position:relative;
+    margin:10px;
+    padding:5px;
+}
+#area-json{
+    background: #555555;
+    position:relative;
+    margin:10px;
+    padding:5px;
+}
+.tab{
+    background:#afafaf;
+    display: inline-block;
+    height:20px;
+    padding:5px;
+    margin-left:10px;
+}
+        </style>
+    </head>
+    <body>
+
+        <div id="area-tab-selection"></div>
+        <div id="area-canvas"></div>
+        <div id="area-json">
+            <textarea id="input-json" cols="70" rows="10"></textarea>
+        </div>
+
+<script>
+
+//******** **********
+// utils
+//******** **********
+var utils = {};
+
+//-------- ----------
+//  GEO
+//-------- ----------
+
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
+//-------- ----------
+//  DOM
+//-------- ----------
+
+// create a canvas element
+utils.createCanvas = function (opt) {
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () {
+        return false;
+    }
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+
+utils.removeAllChildNodes = function(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+};
+
+// get a canvas relative position that is adjusted for scale
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // adjust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    return pos;
+};
+
+//-------- ----------
+//  Object
+//-------- ----------
+
+// chunk and array
+utils.chunk = function (arr, size) {
+    var chunkedArr = [];
+    arr = arr || [];
+    size = size === undefined ? 1 : size;
+    for (var i = 0; i < arr.length; i += size) {
+        chunkedArr.push(arr.slice(i, i + size));
+    }
+    return chunkedArr;
+};
+
+// parse json in a pretty way
+// https://stackoverflow.com/questions/6937863/json-stringify-so-that-arrays-are-on-one-line
+utils.jsonPretty = (function(){
+    // built in replacer
+    var replacer = function(k, v){
+        if(v instanceof Array){
+            if(typeof v[0] === 'number'){
+                return JSON.stringify(v);
+            }
+        }
+        return v;
+    };
+    // public jsonPretty function
+    return function(obj){
+        return JSON.stringify(obj, replacer, 2)
+        .replace(/\\/g, '')
+        .replace(/\"\[/g, '[')
+        .replace(/\]\"/g,']')
+        .replace(/\"\{/g, '{')
+        .replace(/\}\"/g,'}');
+    };
+}());
+
+// parse an object with defaults
+utils.defaults = function(obj, defaults){
+    return Object.assign({}, defaults, obj);
+};
+
+//******** **********
+// points
+//******** **********
+var pointMod = (function(){
+
+    var api = {};
+
+    // create box method
+    api.createBox = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, w: 50, h: 50, fill: 'white', stroke: 'black', lineWidth: 6
+        });
+        // push points
+        var points = [[]],
+        i = 0,
+        len = 2 * 4,
+        hw = opt.w / 2,
+        hh = opt.h / 2;
+        while(i < len){
+            var pi = Math.floor(i / 2),
+            yi = Math.floor(pi / 2),
+            y = (opt.y - hh) + yi * opt.h,
+            x = (opt.x - hw) + ( yi === 0 ? pi % 2 : 1 - pi % 2 ) * opt.w;
+            points[0].push(x, y);
+            i += 2;
+        }
+        // push style opttions for the line
+        points[0].push('fill:' + opt.fill);
+        points[0].push('stroke:' + opt.stroke);
+        points[0].push('lineWidth:' + opt.lineWidth);
+        // return box points
+        return points;
+    };
+
+    // return a new points object that is numbers only
+    api.numbersOnly = function(points){
+        return points.map(function(line){
+            return line.filter(function(el){
+                return typeof el === 'number';
+            });
+        });
+    };
+
+    api.newChunked = function(points){
+        var nPoints = pointMod.numbersOnly( points );
+        return nPoints.map(function(line){
+            return utils.chunk( line, 2 );
+        });
+    };
+
+    // translate a single point with the given points object along with line and point index values
+    // by the given set of deltas
+    api.translatePT = function(points, lineIndex, ptIndex, dx, dy){
+        var line = points[lineIndex],
+        i = ptIndex * 2;
+        line[i] += dx;
+        line[i + 1] += dy;
+    };
+
+    // translate points
+    api.translatePoints = function(points, dx, dy){
+        points.forEach(function(line){
+            line.forEach(function(el, i){
+                if(typeof el === 'number'){
+                    if(i % 2 === 0){
+                       el += dx;
+                    }else{
+                       el += dy;
+                    }
+                    line[i] = Math.round(el);
+                }
+            });
+        });
+    };
+
+    // return the public api
+    return api;
+
+}());
+
+//******** **********
+// project
+//******** **********
+
+var projectMod = (function(){
+
+    var POINTS = {};
+
+    POINTS.BOX = pointMod.createBox({x: 320, y: 240, w: 250, h: 250, fill: 'rgba(255,255,255,0.5)'})
+    POINTS.LINE = [
+        [25, 25, 50, 25, 50, 50, 25, 100, 'close:false', 'fill:false']
+    ];
+    POINTS.WEIRD = [
+        [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
+        [30, 80, 165, 55, 22, 200, 'fill:red']
+    ];
+    var POINTS_START = POINTS.BOX;
+
+    // base clean project object
+    var baseCreateProject = function(){
+        var project = {
+            fileName: '', // the file name for this project
+            objects: []   // the array of points objects
+        };
+        return project;
+    };
+
+    var api = {};
+
+    // push a new project into the given tabs array
+    api.pushNewProject = function(tabs, startPoints){
+        var n = tabs ? tabs.length : 0;
+        var project = baseCreateProject();
+        project.fileName = 'Untitled-' + n;
+        var points = JSON.parse(JSON.stringify(POINTS_START));
+        // start points
+        if(typeof startPoints === 'string'){
+            points = JSON.parse(JSON.stringify(POINTS[startPoints]));
+        };
+        project.objects.push(points);
+        // puch the new project into tabs
+        tabs.push(project);
+        return tabs;
+    };
+
+    // get the center of an object in the given project
+    api.getObjectCenter = function(project, objectIndex){
+        // just numbers of points
+        var points = pointMod.numbersOnly( project.objects[objectIndex] );
+        // get center positon of all lines
+        var pos = points.reduce(function(acc, line){
+           var i = 0,
+           x = 0,
+           y = 0,
+           len = line.length;
+           while(i < len){
+               x += line[i];
+               y += line[i + 1]
+               i += 2;
+           };
+           x /= len / 2;
+           y /= len / 2;
+           acc.x += x;
+           acc.y += y;
+           return acc;
+        }, {x:0, y:0});
+        pos.x = Math.round(pos.x / points.length);
+        pos.y = Math.round(pos.y / points.length); 
+        // return postion
+        return pos;
+    };
+
+
+    return api;
+
+}());
+
+
+//******** **********
+// draw
+//******** **********
+var draw = (function(){
+
+    var api = {};
+
+    // draw a background
+    api.background = function(ctx, canvas, style){
+        ctx.fillStyle = style || 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+
+    // draw version number
+    api.ver = function (sm, ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '14px arial';
+        ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
+    };
+
+    // draw selectors
+    api.selectors = function(sm, ctx){
+      ctx.fillStyle = 'gray';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 3;
+      sm.selectors.forEach(function(sel){
+          ctx.beginPath();
+          ctx.arc(sel.x, sel.y, sel.r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+      });
+    };
+
+    // draw points method from js-javascript-example-draw-points
+    api.points = function (ctx, points, cx, cy, opt) {
+        opt = opt || {};
+        ctx.save();
+        ctx.translate(cx, cy);
+        // for each line in points
+        points.forEach(function (pointArray) {
+            // number of items in the array of point values/commands
+            var len = pointArray.length,
+            close = opt.close === undefined ? true : opt.close,
+            fill = opt.fill === undefined ? 'black' : opt.fill,
+            stroke = opt.stroke === undefined ? 'white' : opt.stroke,
+            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
+            el,
+            i = 2;
+            ctx.beginPath();
+            ctx.moveTo(pointArray[0], pointArray[1]);
+            // loop over the line
+            while (i < len) {
+                el = pointArray[i];
+                if (typeof el === 'number') {
+                    ctx.lineTo(el, pointArray[i + 1]);
+                    // step by two if numbers
+                    i += 2;
+                } else {
+                    var parts = el.split(':');
+                    if (parts[0] === 'close') {
+                        close = parts[1] === 'true' ? true : false;
+                    }
+                    if (parts[0] === 'stroke') {
+                        stroke = parts[1] || false;
+                    }
+                    if (parts[0] === 'fill') {
+                        fill = parts[1] || false;
+                        if(parts[1].toLowerCase() === 'false'){
+                            fill = false;
+                        }
+                    }
+                    if (parts[0] === 'lineWidth') {
+                        lineWidth = parts[1] || 1;
+                    }
+                    // step by one if one of these values
+                    i += 1;
+                }
+            }
+            ctx.lineWidth = lineWidth;
+            if (close) {
+                ctx.closePath();
+            }
+            if (fill) {
+                ctx.fillStyle = fill;
+                ctx.fill();
+            }
+            if (stroke) {
+                ctx.strokeStyle = stroke;
+                ctx.stroke();
+            }
+        });
+        ctx.restore();
+    };
+
+    // return the public api
+    return api;
+
+}());
+
+//******** **********
+// main
+//******** **********
+
+// set up canvas
+
+/*
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+document.getElementById('area-canvas').appendChild(canvas);
+*/
+
+var canvasObj = utils.createCanvas({
+   container: document.getElementById('area-canvas')
+});
+var canvas = canvasObj.canvas;
+var ctx = canvasObj.ctx;
+
+canvas.width = 640;
+canvas.height = 480;
+
+// the event hander used when a tab section div is clicked
+var tabClick = function(e){
+    var i = parseInt( e.target.dataset.i );
+    sm.currentTabIndex = i;
+    // update json text area
+    tabIndexToJSON(sm, sm.currentTabIndex);
+    createObjectSelectors(sm);
+    // draw
+    drawState(sm, ctx, canvas);
+};
+
+// render the tab selection menu for the current state of sm.tabs
+var renderTabSelection = function(){
+    var div = document.querySelector('#area-tab-selection');
+    utils.removeAllChildNodes(div);
+    sm.tabs.forEach(function(project, i){
+         var div_tab = document.createElement('div');
+         div_tab.className = 'tab';
+         div_tab.dataset.i = i;
+         div_tab.innerText = project.fileName;
+         div_tab.addEventListener('click', tabClick);
+         div.appendChild(div_tab);
+    });
+};
+
+// parse the given tab index to JSON in the area-json div
+var tabIndexToJSON = function(sm, index){
+    var project = sm.tabs[index];
+    var json = utils.jsonPretty(project);
+    document.querySelector('#input-json').value = json;
+};
+
+// parse the JSON in the text area to the project at the given index if vaild
+// else do not update the project
+var jsonToTabIndex = function(sm, index){
+    // get the raw txt
+    var text = document.querySelector('#input-json').value,
+    obj = null;
+    try{
+        obj = JSON.parse(text);
+    }catch(e){
+        // !!! display a message at least maybe
+    }
+    // if obj set to the tab
+    if(obj){
+        sm.tabs[index] = obj;
+    }
+};
+
+// draw the current tab index to the canvas
+var drawCurrentTabIndex = function(){
+    draw.background(ctx, canvas, 'blue');
+    var objects = sm.tabs[sm.currentTabIndex].objects;
+    objects.forEach(function(obj){
+        draw.points(ctx, obj, 0, 0);
+    });
+    draw.ver(sm, ctx, canvas);
+};
+
+// check sm.selectors with the given pos and return an array of selectors that are in range
+var selectorCheck = function(sm, pos){
+    return sm.selectors.filter(function(sel){
+        return utils.distance(sel.x, sel.y, pos.x, pos.y) < sel.r;
+    });
+};
+
+var createObjectSelectors = function(sm){
+    // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
+    var tab = sm.tabs[sm.currentTabIndex];
+    // selectors for each object
+    sm.selectors = [];
+    tab.objects.forEach(function(points, i){
+        var centerPos = projectMod.getObjectCenter(tab, i);
+        sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
+    });
+};
+
+
+var createPointSelectors = function(sm){
+    // create 'selector' objects for each point in the current tab for the current active selector
+    var tab = sm.tabs[sm.currentTabIndex];
+    if(sm.activeSelector){
+        var object = sm.activeSelector.points;
+        sm.selectors = [];
+        pointMod.newChunked(object).forEach(function(line, li){
+            line.forEach(function(ptArr, pi){
+                var centerPos = { x: ptArr[0], y: ptArr[1] };
+                sm.selectors.push( Object.assign( { i: null, li: li, pi: pi, points: object, r: 16 }, centerPos ) );
+            });
+        });
+    }
+};
+
+// 'state machine' object
+var sm = {
+    ver: 'r3',
+    // tabs
+    currentTabIndex: 0, // current tab index
+    tabs: [],
+    // ui
+    userDown: false,
+    sx: null, sy: null,
+    tx: null, ty: null,
+    moveDist: 0,
+    // selector objects
+    selectors: [],
+    activeSelector: null,
+    // states
+    currentState: 'init',
+    stateObj: null,
+    states: {}
+};
+
+var setState = function(sm, newState){
+    if(sm.stateObj){
+        
+    }
+    sm.currentState = newState;
+    sm.stateObj = sm.states[sm.currentState];
+    if(sm.stateObj.start){
+        sm.stateObj.start.call(sm, sm);
+    }
+};
+
+var drawState = function(sm, ctx, canvas){
+    var draw = sm.stateObj.draw; 
+    if(draw){
+        draw.call(sm, sm, ctx, canvas)
+    }
+};
+
+// init state should only run once, this state should be used to set things up for the first time
+sm.states.init = {
+    start: function(sm){
+        // push start project(s)
+        projectMod.pushNewProject(sm.tabs, 'BOX');
+        projectMod.pushNewProject(sm.tabs, 'WEIRD');
+        // render tab section and draw curent tab index for first time
+        renderTabSelection()
+        drawCurrentTabIndex();
+        tabIndexToJSON(sm, sm.currentTabIndex);
+        setState(sm, 'editProject');
+    }
+};
+
+// edit a project
+sm.states.editProject = {
+    start: function(sm){
+        createObjectSelectors(sm);
+        drawState(sm, ctx, canvas);
+    },
+    draw: function(sm, ctx, canvas){
+        drawCurrentTabIndex();
+        draw.selectors(sm, ctx);
+    },
+    events: {
+        pointerdown : function(sm, pos, e){
+            sm.activeSelector = null;
+            var selectors = selectorCheck(sm, pos);
+            if(selectors.length > 0){
+                sm.activeSelector = selectors[0];
+            }
+        },
+        pointermove : function(sm, pos, e){
+            var sel = sm.activeSelector;
+            if(sel){
+               var delta = {};
+               delta.x = pos.x - sel.x;
+               delta.y = pos.y - sel.y;
+               pointMod.translatePoints(sm.tabs[sm.currentTabIndex].objects[sel.i], delta.x, delta.y);
+               Object.assign(sel, pos);
+               drawState(sm, ctx, canvas);
+               tabIndexToJSON(sm, sm.currentTabIndex);
+            }
+        },
+        pointerup : function(sm, pos, e){
+            // is there a current active selector, and was
+            // it clicked rather than moved?
+            if(sm.activeSelector){
+                if(sm.moveDist === 0){
+                    setState(sm, 'editObject');
+                }
+            }else{
+                // make sure selectors are centerd
+                createObjectSelectors(sm);
+            }
+            sm.activeSelector = null;
+            drawState(sm, ctx, canvas);
+        }
+    }
+};
+
+// edit a project
+sm.states.editObject = {
+    start: function(sm){
+        createPointSelectors(sm);
+        drawState(sm, ctx, canvas);
+        sm.activeSelector = null;
+    },
+    draw: function(sm, ctx, canvas){
+        drawCurrentTabIndex();
+        draw.selectors(sm, ctx);
+    },
+    events: {
+        pointerdown : function(sm, pos, e){
+            sm.activeSelector = null;
+            var selectors = selectorCheck(sm, pos);
+            if(selectors.length > 0){
+                sm.activeSelector = selectors[0];
+            }
+        },
+        pointermove : function(sm, pos, e){
+            var sel = sm.activeSelector;
+            if(sel){
+               var delta = {};
+               delta.x = pos.x - sel.x;
+               delta.y = pos.y - sel.y;
+               // translate the single point
+               pointMod.translatePT(sel.points, sel.li, sel.pi, delta.x, delta.y);
+               Object.assign(sel, pos);
+               drawState(sm, ctx, canvas);
+               tabIndexToJSON(sm, sm.currentTabIndex);
+            }
+        },
+        pointerup : function(sm, pos, e){
+            if(sm.activeSelector === null){
+                setState(sm, 'editProject');
+            }else{
+                createPointSelectors(sm);
+            }
+            sm.activeSelector = null;
+            drawState(sm, ctx, canvas);
+        }
+    }
+};
+
+// attach on key up event hander for text area
+document.querySelector('#input-json').addEventListener('keyup', function(e){
+    jsonToTabIndex(sm, sm.currentTabIndex);
+    renderTabSelection()
+    createObjectSelectors(sm);
+    drawState(sm, ctx, canvas);
+});
+
+var createPointerEventHander = function(eventKey){
+    return function(e){
+        var events = sm.stateObj.events,
+        pos = utils.getCanvasRelative(e);
+        if(e.type === 'pointerdown'){
+            sm.userDown = true;
+            sm.sx = pos.x;
+            sm.sy = pos.y;
+            sm.moveDist = 0;
+        }
+        if(e.type === 'pointermove'){
+            sm.tx = pos.x;
+            sm.ty = pos.y;
+            sm.moveDist = utils.distance(sm.sx, sm.sy, sm.tx, sm.ty);
+        }
+        if(e.type === 'pointerup'){
+            sm.userDown = false;
+        }
+        if(events){
+            if(events[eventKey]){
+                events[eventKey](sm, pos, e);
+            }
+        }
+    }
+};
+
+canvas.addEventListener('pointerdown', createPointerEventHander('pointerdown') );
+canvas.addEventListener('pointerup', createPointerEventHander('pointerup') );
+canvas.addEventListener('pointermove', createPointerEventHander('pointermove') );
+
+setState(sm, 'init');
+
+
+
+
+
+</script>
+
+    </body>
+</html>

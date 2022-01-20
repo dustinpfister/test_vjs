@@ -16,20 +16,19 @@
 ## () - rx - menu bar
 * start a menu bar area that will contain typical options like 'file', 'edit', 'help' ect
 
+## () - rx - FileReader api to load and save points
+* load and save points using FileReader api
+
+## () - rx - draw new mode
+* create a new object by just clicking points in the canvas with a 'draw new mode'
 
 <!-- Minimum Viable Product -->
 
-## () - r6 - FileReader api to load background image
+## () - r4 - FileReader api to load background image
 * I will want at least two canvas elements, one for the background and another for the points
 * use the FileReader api to load an image and use that as a the content of a background canvas
 
-## () - r5 - FileReader api to load and save points
-* load and save points using FileReader api
-
-## () - r4 - draw new mode
-* create a new object by just clicking points in the canvas with a 'draw new mode'
-
-## () - r3 - editObject state
+## ( done 01/20/2022 ) - r3 - editObject state
 * (done) start an 'editObject' state that will be used to mutate just one object in a current tab
 * (done) add utils.chunk method
 * (done) add utils.newChunked method
@@ -37,9 +36,7 @@
 * (done) when one of these selector objects in 'editProject' are clicked enter 'editObject' state with that object selected
 * (done) in editObject mode when a selctor is clicked that results in a point being selected
 * (done) can translate a single point of a single line by moveing the mouse in editObject mode
-
-
-* add and use utils.createCanvas
+* (done) add and use utils.createCanvas
 
 ## ( done 01/19/2022 ) - r2 - point, and line indices Selection system
 * (done) I will want a projectMod.getObjectCenter method that will return a position that is at the center of a given project object

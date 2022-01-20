@@ -33,7 +33,7 @@
 * background rotation angle option
 * background transform options such as image flip
 
-## () - r5 - view state, basic background options
+## () - r5 - view state, basic background options, circle points method
 * (done) start a new 'view' state that will be used to just view the current project in the canvas
 * (done) click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
 * (done) have an empty selectors array and do not draw selectors at all even while in 'view' state
@@ -43,6 +43,9 @@
 * I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
 * I will then want text input elements for dx dy dw and dh in the area-background div
 * I will want to have a way to set the solid color for the background
+
+* have a points.createCircle method
+* use pointMod.createCircle for untitled 1, and pointMod.createBox for untitled 2
 
 <!-- Minimum Viable Product -->
 

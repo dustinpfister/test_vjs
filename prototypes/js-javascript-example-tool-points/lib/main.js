@@ -240,11 +240,18 @@ sm.states.editObject = {
             }
         },
         pointerup : function(sm, pos, e){
+
+if(sm.activeSelector === null){
+
+console.log('returing to edit project mode');
+                    setState(sm, 'editProject');
+
+}
+
             sm.activeSelector = null;
             // make sure selectors are centerd
             createPointSelectors(sm);
             drawState(sm, ctx, canvas);
-
 
 
 

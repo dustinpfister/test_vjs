@@ -25,6 +25,7 @@
 ## () - rx - more background options
 * background sx sy sw and sh props to adjust the source position and size from the background image
 * background rotation angle option
+* background transform options such as image flip
 
 ## () - rx - view state
 * start a new 'view' state that will be used to just view the current project in the canvas
@@ -33,6 +34,9 @@
 * do not draw ver or any debug mode data while in 'view' state
 * when in 'view' state click anywahere in the canvas to enter 'editProject' state again
 
+## () - rx - basic background options
+* I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
+
 <!-- Minimum Viable Product -->
 
 ## () - r4 - FileReader api to load background image
@@ -40,11 +44,8 @@
 * (done) update style and html so that the area-background is next to area-json
 * (done) have an sm.background object starting with a solid prop
 * (done) update draw.background to use sm.background to set solid background color
-
-* I will need a file type input element in the area-background div that will be used with fireRead to open a background image
-* use the FileReader api to load an image and set that as an sm.background.image prop
-* I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
-
+* (done) I will need a file type input element in the area-background div that will be used with fireRead to open a background image
+* (done) use the FileReader api to load an image and set that as an sm.background.image prop
 
 ## ( done 01/20/2022 ) - r3 - editObject state
 * (done) start an 'editObject' state that will be used to mutate just one object in a current tab

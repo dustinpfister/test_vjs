@@ -7,7 +7,7 @@ var draw = (function(){
         opt = opt || {};
         // solid background
         ctx.fillStyle = opt.solid || 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
     };
 
     // draw version number

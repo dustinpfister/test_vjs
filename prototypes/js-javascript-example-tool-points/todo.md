@@ -22,6 +22,10 @@
 ## () - rx - draw new mode
 * create a new object by just clicking points in the canvas with a 'draw new mode'
 
+## () - rx - more background options
+* background sx sy sw and sh props to adjust the source position and size from the background image
+* background rotation angle option
+
 ## () - rx - view state
 * start a new 'view' state that will be used to just view the current project in the canvas
 * click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
@@ -34,9 +38,13 @@
 ## () - r4 - FileReader api to load background image
 * (done) I am going to want a area-background div
 * (done) update style and html so that the area-background is next to area-json
+* (done) have an sm.background object starting with a solid prop
+* (done) update draw.background to use sm.background to set solid background color
 
-* I will want at least two canvas elements, one for the background and another for the points
-* use the FileReader api to load an image and use that as a the content of a background canvas
+* I will need a file type input element in the area-background div that will be used with fireRead to open a background image
+* use the FileReader api to load an image and set that as an sm.background.image prop
+* I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
+
 
 ## ( done 01/20/2022 ) - r3 - editObject state
 * (done) start an 'editObject' state that will be used to mutate just one object in a current tab

@@ -86,34 +86,16 @@ var createObjectSelectors = function(sm){
 var createPointSelectors = function(sm){
     // create 'selector' objects for each point in the current tab for the current active selector
     var tab = sm.tabs[sm.currentTabIndex];
-
     if(sm.activeSelector){
         var object = sm.activeSelector.points;
-
-        console.log(  );
-
         sm.selectors = [];
-        //tab.objects.forEach(function(points, i){
-            //var centerPos = projectMod.getObjectCenter(tab, i);
-
-pointMod.newChunked(object).forEach(function(line, oi){
-
-    line.forEach(function(ptArr, pi){
-
-            var centerPos = {
-                x: ptArr[0],
-                y: ptArr[1]
-            };
-            sm.selectors.push( Object.assign( { i: pi, r: 16 }, centerPos ) );
-
-    });
-
-});
-        //});
-
-
+        pointMod.newChunked(object).forEach(function(line, oi){
+            line.forEach(function(ptArr, pi){
+                var centerPos = { x: ptArr[0], y: ptArr[1] };
+                sm.selectors.push( Object.assign( { i: pi, points: object, r: 16 }, centerPos ) );
+            });
+        });
     }
-
 };
 
 // 'state machine' object
@@ -256,7 +238,7 @@ sm.states.editObject = {
                 setState(sm, 'editProject');
             }else{
 
-                // make sure selectors are centerd
+
                 createPointSelectors(sm);
                 sm.activeSelector = null;
             

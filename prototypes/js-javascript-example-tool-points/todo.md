@@ -33,15 +33,15 @@
 * background rotation angle option
 * background transform options such as image flip
 
-## () - rx - basic background options
-* I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
+## () - r5 - view state, basic background options
+* (done) start a new 'view' state that will be used to just view the current project in the canvas
+* (done) click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
+* (done) have an empty selectors array and do not draw selectors at all even while in 'view' state
+* (done) do not draw ver or any debug mode data while in 'view' state
+* (done) when in 'view' state click anywahere in the canvas to enter 'editProject' state again
 
-## () - r5 - view state
-* start a new 'view' state that will be used to just view the current project in the canvas
-* click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
-* have an empty selectors array and do not draw selectors at all even while in 'view' state
-* do not draw ver or any debug mode data while in 'view' state
-* when in 'view' state click anywahere in the canvas to enter 'editProject' state again
+* I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
+* I will want to have a way to set the solid color for the background
 
 <!-- Minimum Viable Product -->
 

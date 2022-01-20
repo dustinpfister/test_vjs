@@ -47,6 +47,8 @@
 * (done) I will need a file type input element in the area-background div that will be used with fireRead to open a background image
 * (done) use the FileReader api to load an image and set that as an sm.background.image prop
 
+* I will want an on load event for the image object, and call the current state over when that event fires
+
 ## ( done 01/20/2022 ) - r3 - editObject state
 * (done) start an 'editObject' state that will be used to mutate just one object in a current tab
 * (done) add utils.chunk method

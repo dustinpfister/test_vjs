@@ -22,6 +22,13 @@
 ## () - rx - draw new mode
 * create a new object by just clicking points in the canvas with a 'draw new mode'
 
+## () - rx - view state
+* start a new 'view' state that will be used to just view the current project in the canvas
+* click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
+* have an empty selectors array and do not draw selectors at all even while in 'view' state
+* do not draw ver or any debug mode data while in 'view' state
+* when in 'view' state click anywahere in the canvas to enter 'editProject' state again
+
 <!-- Minimum Viable Product -->
 
 ## () - r4 - FileReader api to load background image

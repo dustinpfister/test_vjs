@@ -64,7 +64,6 @@ var drawCurrentTabIndex = function(){
     objects.forEach(function(obj){
         draw.points(ctx, obj, 0, 0);
     });
-    draw.ver(sm, ctx, canvas);
 };
 
 // check sm.selectors with the given pos and return an array of selectors that are in range
@@ -103,7 +102,7 @@ var createPointSelectors = function(sm){
 
 // 'state machine' object
 var sm = {
-    ver: 'r4',
+    ver: 'r5',
     // tabs
     currentTabIndex: 0, // current tab index
     tabs: [],
@@ -167,6 +166,7 @@ sm.states.editProject = {
         draw.background(ctx, canvas, sm.background);
         drawCurrentTabIndex();
         draw.selectors(sm, ctx);
+        draw.ver(sm, ctx, canvas);
     },
     events: {
         pointerdown : function(sm, pos, e){
@@ -216,6 +216,7 @@ sm.states.editObject = {
         draw.background(ctx, canvas, sm.background);
         drawCurrentTabIndex();
         draw.selectors(sm, ctx);
+        //draw.ver(sm, ctx, canvas);
     },
     events: {
         pointerdown : function(sm, pos, e){

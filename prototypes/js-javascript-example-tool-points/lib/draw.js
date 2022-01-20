@@ -9,7 +9,15 @@ var draw = (function(){
         ctx.fillStyle = opt.solid || 'black';
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
         if(opt.image){
-            ctx.drawImage(opt.image, 0, 0, opt.image.width, opt.image.height);
+            var sx = 0,
+            sy = 0,
+            sw = opt.image.width,
+            sh = opt.image.height,
+            dx = 0,
+            dy = 0,
+            dw = opt.image.width,
+            dh = opt.image.height;
+            ctx.drawImage(opt.image, sx, sy, sw, sh, dx, dy, sw, dh);
         }
     };
 

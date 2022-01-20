@@ -283,9 +283,18 @@ var createPointerEventHander = function(eventKey){
         }
     }
 };
-
+// pointer events
 canvas.addEventListener('pointerdown', createPointerEventHander('pointerdown') );
 canvas.addEventListener('pointerup', createPointerEventHander('pointerup') );
 canvas.addEventListener('pointermove', createPointerEventHander('pointermove') );
 
+
+var bgImageInput = document.getElementById('input-background-image'); 
+
+bgImageInput.addEventListener('change', function(e){
+   var files = e.target.files;
+   console.log(files);
+});
+
+// start init state
 setState(sm, 'init');

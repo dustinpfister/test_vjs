@@ -185,13 +185,19 @@ sm.states.editProject = {
             }
         },
         pointerup : function(sm, pos, e){
+
+            // is there a current active selector, and was
+            // it clicked rather than moved?
+            if(sm.activeSelector){
+                if(sm.moveDist === 0){
+                    console.log('click');
+                }
+            }
+
             sm.activeSelector = null;
             // make sure selectors are centerd
             createObjectSelectors(sm);
             drawState(sm, ctx, canvas);
-
-console.log( sm.moveDist );
-
 
         }
     }

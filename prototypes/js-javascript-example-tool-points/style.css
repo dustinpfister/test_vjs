@@ -14,7 +14,7 @@
 }
 #area-json{
     background: #555555;
-    display: inline-block;
+    position:absolute;
     width:640px;
     height:180px;
     margin:10px;
@@ -25,9 +25,10 @@
 }
 #area-background{
     background: #555555;
-    display: inline-block;
-    width:300px;
-    height:130px;
+    position:absolute;
+    left:680px;
+    width:320px;
+    height:180px;
     margin:10px;
     padding:5px;
 }

@@ -8,6 +8,13 @@ var draw = (function(){
         // solid background
         ctx.fillStyle = opt.solid || 'black';
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+
+if(opt.image){
+
+ctx.drawImage(opt.image, 0, 0, opt.image.width, opt.image.height);
+
+}
+
     };
 
     // draw version number

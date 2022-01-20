@@ -181,12 +181,10 @@ sm.states.editProject = {
             }
         },
         pointerup : function(sm, pos, e){
-
             // is there a current active selector, and was
             // it clicked rather than moved?
             if(sm.activeSelector){
                 if(sm.moveDist === 0){
-                    console.log('clicked selector, entering editObject state');
                     setState(sm, 'editObject');
                 }
             }else{
@@ -202,7 +200,6 @@ sm.states.editProject = {
 // edit a project
 sm.states.editObject = {
     start: function(sm){
-
         createPointSelectors(sm);
         drawState(sm, ctx, canvas);
         sm.activeSelector = null;
@@ -225,33 +222,21 @@ sm.states.editObject = {
                var delta = {};
                delta.x = pos.x - sel.x;
                delta.y = pos.y - sel.y;
-
-               //pointMod.translatePoints(sm.tabs[sm.currentTabIndex].objects[sel.i], delta.x, delta.y);
-
+               // translate the single point
                pointMod.translatePT(sel.points, sel.li, sel.pi, delta.x, delta.y);
-
                Object.assign(sel, pos);
                drawState(sm, ctx, canvas);
                tabIndexToJSON(sm, sm.currentTabIndex);
             }
         },
         pointerup : function(sm, pos, e){
-
             if(sm.activeSelector === null){
-                console.log('returing to edit project mode');
                 setState(sm, 'editProject');
             }else{
-
-
                 createPointSelectors(sm);
-                sm.activeSelector = null;
-            
             }
-
-
+            sm.activeSelector = null;
             drawState(sm, ctx, canvas);
-
-
         }
     }
 };
@@ -268,24 +253,20 @@ var createPointerEventHander = function(eventKey){
     return function(e){
         var events = sm.stateObj.events,
         pos = utils.getCanvasRelative(e);
-
         if(e.type === 'pointerdown'){
             sm.userDown = true;
             sm.sx = pos.x;
             sm.sy = pos.y;
             sm.moveDist = 0;
         }
-
         if(e.type === 'pointermove'){
             sm.tx = pos.x;
             sm.ty = pos.y;
             sm.moveDist = utils.distance(sm.sx, sm.sy, sm.tx, sm.ty);
         }
-
         if(e.type === 'pointerup'){
             sm.userDown = false;
         }
-
         if(events){
             if(events[eventKey]){
                 events[eventKey](sm, pos, e);

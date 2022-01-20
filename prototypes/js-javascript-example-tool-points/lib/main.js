@@ -89,10 +89,10 @@ var createPointSelectors = function(sm){
     if(sm.activeSelector){
         var object = sm.activeSelector.points;
         sm.selectors = [];
-        pointMod.newChunked(object).forEach(function(line, oi){
+        pointMod.newChunked(object).forEach(function(line, li){
             line.forEach(function(ptArr, pi){
                 var centerPos = { x: ptArr[0], y: ptArr[1] };
-                sm.selectors.push( Object.assign( { i: pi, points: object, r: 16 }, centerPos ) );
+                sm.selectors.push( Object.assign( { i: null, li: li, pi: pi, points: object, r: 16 }, centerPos ) );
             });
         });
     }
@@ -202,8 +202,10 @@ sm.states.editProject = {
 // edit a project
 sm.states.editObject = {
     start: function(sm){
+
         createPointSelectors(sm);
         drawState(sm, ctx, canvas);
+        sm.activeSelector = null;
     },
     draw: function(sm, ctx, canvas){
         drawCurrentTabIndex();
@@ -225,6 +227,8 @@ sm.states.editObject = {
                delta.y = pos.y - sel.y;
 
                //pointMod.translatePoints(sm.tabs[sm.currentTabIndex].objects[sel.i], delta.x, delta.y);
+
+               pointMod.translatePT(sel.points, sel.li, sel.pi, delta.x, delta.y);
 
                Object.assign(sel, pos);
                drawState(sm, ctx, canvas);

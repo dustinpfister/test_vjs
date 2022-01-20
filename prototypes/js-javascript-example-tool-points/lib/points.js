@@ -47,6 +47,15 @@ var pointMod = (function(){
         });
     };
 
+    // translate a single point with the given points object along with line and point index values
+    // by the given set of deltas
+    api.translatePT = function(points, lineIndex, ptIndex, dx, dy){
+        var line = points[lineIndex],
+        i = ptIndex * 2;
+        line[i] += dx;
+        line[i + 1] += dy;
+    };
+
     // translate points
     api.translatePoints = function(points, dx, dy){
         points.forEach(function(line){

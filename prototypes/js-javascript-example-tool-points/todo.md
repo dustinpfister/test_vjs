@@ -33,13 +33,11 @@
 * (done) start an 'editObject' state that will be used to mutate just one object in a current tab
 * (done) add utils.chunk method
 * (done) add utils.newChunked method
+* (done) I will need a createPointSelectors helper in main.js
+* (done) when one of these selector objects in 'editProject' are clicked enter 'editObject' state with that object selected
 
-
-* I will need a createPointSelectors helper in main.js
-* when one of these display objects in 'editProject' are clicked enter 'editObject' state with that object selected
-
-* in editObject mode when a selctor is clicked that results in a point being selected
-* can move a single point of a single line by moveing the mouse in editObject mode
+* (done) in editObject mode when a selctor is clicked that results in a point being selected
+* can translate a single point of a single line by moveing the mouse in editObject mode
 
 
 * add and use utils.createCanvas

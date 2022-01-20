@@ -82,6 +82,18 @@ var createObjectSelectors = function(sm){
     });
 };
 
+
+var createPointSelectors = function(sm){
+    // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
+    var tab = sm.tabs[sm.currentTabIndex];
+    // selectors for each object
+    sm.selectors = [];
+    tab.objects.forEach(function(points, i){
+        var centerPos = projectMod.getObjectCenter(tab, i);
+        sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
+    });
+};
+
 // 'state machine' object
 var sm = {
     ver: 'r3',
@@ -164,6 +176,47 @@ sm.states.editProject = {
             sm.activeSelector = null;
             // make sure selectors are centerd
             createObjectSelectors(sm);
+            drawState(sm, ctx, canvas);
+        }
+    }
+};
+
+// edit a project
+sm.states.editObject = {
+    start: function(sm){
+        createPointSelectors(sm);
+        drawState(sm, ctx, canvas);
+    },
+    draw: function(sm, ctx, canvas){
+        drawCurrentTabIndex();
+        draw.selectors(sm, ctx);
+    },
+    events: {
+        pointerdown : function(sm, pos, e){
+            sm.activeSelector = null;
+            var selectors = selectorCheck(sm, pos);
+            if(selectors.length > 0){
+                sm.activeSelector = selectors[0];
+            }
+        },
+        pointermove : function(sm, pos, e){
+            var sel = sm.activeSelector;
+            if(sel){
+               var delta = {};
+               delta.x = pos.x - sel.x;
+               delta.y = pos.y - sel.y;
+
+               //pointMod.translatePoints(sm.tabs[sm.currentTabIndex].objects[sel.i], delta.x, delta.y);
+
+               Object.assign(sel, pos);
+               drawState(sm, ctx, canvas);
+               tabIndexToJSON(sm, sm.currentTabIndex);
+            }
+        },
+        pointerup : function(sm, pos, e){
+            sm.activeSelector = null;
+            // make sure selectors are centerd
+            createPointSelectors(sm);
             drawState(sm, ctx, canvas);
         }
     }

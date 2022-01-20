@@ -30,10 +30,16 @@
 * create a new object by just clicking points in the canvas with a 'draw new mode'
 
 ## () - r3 - editObject state
-* start an 'editObject' state that will be used to mutate just one object in a current tab
-* when one of these display objects in 'edit.project' are clicked enter 'edit.object' state with that object selected
-* select a single index value in a single object that will be a current point index value
-* can move a single point of a single line by moveing the mouse
+* (done) start an 'editObject' state that will be used to mutate just one object in a current tab
+
+* I will need a createPointSelectors helper in main.js
+* when one of these display objects in 'editProject' are clicked enter 'editObject' state with that object selected
+
+* in editObject mode when a selctor is clicked that results in a point being selected
+* can move a single point of a single line by moveing the mouse in editObject mode
+
+
+* add and use utils.createCanvas
 
 ## ( done 01/19/2022 ) - r2 - point, and line indices Selection system
 * (done) I will want a projectMod.getObjectCenter method that will return a position that is at the center of a given project object

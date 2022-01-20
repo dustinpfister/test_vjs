@@ -47,6 +47,8 @@
 * have a points.createCircle method
 * use pointMod.createCircle for untitled 1, and pointMod.createBox for untitled 2
 
+* have a way to clear the background image
+
 <!-- Minimum Viable Product -->
 
 ## ( done 01/20/2022 ) - r4 - FileReader api to load background image

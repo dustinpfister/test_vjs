@@ -41,6 +41,7 @@
 * (done) when in 'view' state click anywahere in the canvas to enter 'editProject' state again
 
 * I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
+* I will then want text input elements for dx dy dw and dh in the area-background div
 * I will want to have a way to set the solid color for the background
 
 <!-- Minimum Viable Product -->

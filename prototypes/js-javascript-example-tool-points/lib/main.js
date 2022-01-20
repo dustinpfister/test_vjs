@@ -9,18 +9,11 @@ canvas.height = 480;
 var tabClick = function(e){
     var i = parseInt( e.target.dataset.i );
     sm.currentTabIndex = i;
-
     // update json text area
     tabIndexToJSON(sm, sm.currentTabIndex);
-
     createObjectSelectors(sm);
-
-    // update canvas
-    //drawCurrentTabIndex();
-    //draw.selectors(sm, ctx);
-
-drawState(sm, ctx, canvas);
-
+    // draw
+    drawState(sm, ctx, canvas);
 };
 
 // render the tab selection menu for the current state of sm.tabs
@@ -79,29 +72,26 @@ var selectorCheck = function(sm, pos){
 };
 
 var createObjectSelectors = function(sm){
-        // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
-        var tab = sm.tabs[sm.currentTabIndex];
-        // selectors for each object
-        sm.selectors = [];
-        tab.objects.forEach(function(points, i){
-            var centerPos = projectMod.getObjectCenter(tab, i);
-            sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
-        });
+    // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
+    var tab = sm.tabs[sm.currentTabIndex];
+    // selectors for each object
+    sm.selectors = [];
+    tab.objects.forEach(function(points, i){
+        var centerPos = projectMod.getObjectCenter(tab, i);
+        sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
+    });
 };
 
 // 'state machine' object
 var sm = {
     ver: 'r3',
-
     // tabs
     currentTabIndex: 0, // current tab index
     tabs: [],
-
     // selector objects
     pointerDown: false,
     selectors: [],
     activeSelector: null,
-
     // states
     currentState: 'init',
     stateObj: null,
@@ -132,105 +122,60 @@ sm.states.init = {
         // push start project(s)
         projectMod.pushNewProject(sm.tabs, 'BOX');
         projectMod.pushNewProject(sm.tabs, 'WEIRD');
-
         // render tab section and draw curent tab index for first time
         renderTabSelection()
         drawCurrentTabIndex();
         tabIndexToJSON(sm, sm.currentTabIndex);
-
-
         setState(sm, 'editProject');
-
     }
 };
 
 // edit a project
 sm.states.editProject = {
     start: function(sm){
-
         createObjectSelectors(sm);
-
-        //draw.selectors(sm, ctx);
-
-        //sm.stateObj.draw.call(sm, sm, ctx, canvas)
-
         drawState(sm, ctx, canvas);
-
     },
-
     draw: function(sm, ctx, canvas){
-
         drawCurrentTabIndex();
         draw.selectors(sm, ctx);
-
     },
-
     events: {
         pointerdown : function(sm, pos, e){
-
             sm.activeSelector = null;
             var selectors = selectorCheck(sm, pos);
             if(selectors.length > 0){
                 sm.activeSelector = selectors[0];
             }
-
         },
         pointermove : function(sm, pos, e){
-
             var sel = sm.activeSelector;
             if(sel){
-
                var delta = {};
                delta.x = pos.x - sel.x;
                delta.y = pos.y - sel.y;
-
                pointMod.translatePoints(sm.tabs[sm.currentTabIndex].objects[sel.i], delta.x, delta.y);
-
                Object.assign(sel, pos);
-
-               //createObjectSelectors(sm);
-
-               // draw
-               //drawCurrentTabIndex();
-               //draw.selectors(sm, ctx);
-
                drawState(sm, ctx, canvas);
-
-               // update json
                tabIndexToJSON(sm, sm.currentTabIndex);
-
             }
-
-
         },
         pointerup : function(sm, pos, e){
             sm.activeSelector = null;
             // make sure selectors are centerd
             createObjectSelectors(sm);
-
             drawState(sm, ctx, canvas);
-            //drawCurrentTabIndex();
-            //draw.selectors(sm, ctx);
-            //console.log(pos)
-
         }
     }
-
 };
 
 // attach on key up event hander for text area
 document.querySelector('#input-json').addEventListener('keyup', function(e){
     jsonToTabIndex(sm, sm.currentTabIndex);
     renderTabSelection()
-
-            createObjectSelectors(sm);
-            //drawCurrentTabIndex();
-            //draw.selectors(sm, ctx);
-
-drawState(sm, ctx, canvas);
-
+    createObjectSelectors(sm);
+    drawState(sm, ctx, canvas);
 });
-
 
 var createPointerEventHander = function(eventKey){
     return function(e){
@@ -249,8 +194,3 @@ canvas.addEventListener('pointerup', createPointerEventHander('pointerup') );
 canvas.addEventListener('pointermove', createPointerEventHander('pointermove') );
 
 setState(sm, 'init');
-
-
-
-
-

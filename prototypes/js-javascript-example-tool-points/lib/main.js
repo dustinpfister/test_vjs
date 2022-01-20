@@ -192,8 +192,8 @@ sm.states.editProject = {
             }else{
                 // make sure selectors are centerd
                 createObjectSelectors(sm);
-                sm.activeSelector = null;
             }
+            sm.activeSelector = null;
             drawState(sm, ctx, canvas);
         }
     }

@@ -16,8 +16,14 @@
 ## () - rx - menu bar
 * start a menu bar area that will contain typical options like 'file', 'edit', 'help' ect
 
-## () - rx - FileReader api to load and save points
+## () - rx - FileReader api to load and save projects
 * load and save points using FileReader api
+
+## () - rx - new tab buttons
+* in the tab selection area there should be a button that when clicked will create a new tab
+
+## () - rx - delete tab button
+* each tab in the tab selection area should have a button that when clicked will purge that project
 
 ## () - rx - draw new mode
 * create a new object by just clicking points in the canvas with a 'draw new mode'
@@ -27,15 +33,15 @@
 * background rotation angle option
 * background transform options such as image flip
 
-## () - rx - view state
+## () - rx - basic background options
+* I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
+
+## () - r5 - view state
 * start a new 'view' state that will be used to just view the current project in the canvas
 * click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
 * have an empty selectors array and do not draw selectors at all even while in 'view' state
 * do not draw ver or any debug mode data while in 'view' state
 * when in 'view' state click anywahere in the canvas to enter 'editProject' state again
-
-## () - rx - basic background options
-* I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
 
 <!-- Minimum Viable Product -->
 

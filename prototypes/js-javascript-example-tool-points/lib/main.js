@@ -292,8 +292,22 @@ canvas.addEventListener('pointermove', createPointerEventHander('pointermove') )
 var bgImageInput = document.getElementById('input-background-image'); 
 
 bgImageInput.addEventListener('change', function(e){
-   var files = e.target.files;
-   console.log(files);
+   var files = e.target.files,
+   file = files[0];
+   var reader = new FileReader();
+   reader.addEventListener('load', function () {
+
+      var img = sm.background.image = new Image();
+      img.src = reader.result;
+      console.log('set new background');
+      console.log(sm.background)
+      setState(sm, sm.currentState);
+
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
 });
 
 // start init state

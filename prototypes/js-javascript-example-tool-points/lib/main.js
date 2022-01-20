@@ -1,11 +1,7 @@
 // set up canvas
-
 var canvasObj = utils.createCanvas({
    container: document.getElementById('area-canvas')
-});
-var canvas = canvasObj.canvas;
-var ctx = canvasObj.ctx;
-
+}), canvas = canvasObj.canvas,ctx = canvasObj.ctx;
 canvas.width = 640;
 canvas.height = 480;
 
@@ -73,10 +69,9 @@ var selectorCheck = function(sm, pos){
     });
 };
 
-var createObjectSelectors = function(sm){
     // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
+var createObjectSelectors = function(sm){
     var tab = sm.tabs[sm.currentTabIndex];
-    // selectors for each object
     sm.selectors = [];
     tab.objects.forEach(function(points, i){
         var centerPos = projectMod.getObjectCenter(tab, i);
@@ -84,9 +79,8 @@ var createObjectSelectors = function(sm){
     });
 };
 
-
+// create 'selector' objects for each point in the current tab for the current active selector
 var createPointSelectors = function(sm){
-    // create 'selector' objects for each point in the current tab for the current active selector
     var tab = sm.tabs[sm.currentTabIndex];
     if(sm.activeSelector){
         var object = sm.activeSelector.points;
@@ -124,6 +118,7 @@ var sm = {
     states: {}
 };
 
+// set the current state
 var setState = function(sm, newState){
     if(sm.stateObj){
         
@@ -135,6 +130,7 @@ var setState = function(sm, newState){
     }
 };
 
+// draw the current state by calling any draw method that it might have
 var drawState = function(sm, ctx, canvas){
     var draw = sm.stateObj.draw; 
     if(draw){
@@ -253,6 +249,7 @@ sm.states.editObject = {
     }
 };
 
+// view state
 sm.states.view = {
     start: function(sm){
         sm.selectors = [];
@@ -280,6 +277,7 @@ document.querySelector('#input-json').addEventListener('keyup', function(e){
     drawState(sm, ctx, canvas);
 });
 
+// create pointer events helper
 var createPointerEventHander = function(eventKey){
     return function(e){
         var events = sm.stateObj.events,
@@ -310,21 +308,18 @@ canvas.addEventListener('pointerdown', createPointerEventHander('pointerdown') )
 canvas.addEventListener('pointerup', createPointerEventHander('pointerup') );
 canvas.addEventListener('pointermove', createPointerEventHander('pointermove') );
 
-
+// load a background image
 var bgImageInput = document.getElementById('input-background-image'); 
-
 bgImageInput.addEventListener('change', function(e){
    var files = e.target.files,
    file = files[0];
    var reader = new FileReader();
    reader.addEventListener('load', function () {
-
       var img = sm.background.image = new Image();
       img.src = reader.result;
       img.addEventListener('load', function(){
           setState(sm, sm.currentState);
       });
-
   }, false);
 
   if (file) {

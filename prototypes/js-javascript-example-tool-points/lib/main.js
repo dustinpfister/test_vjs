@@ -88,7 +88,7 @@ var createPointSelectors = function(sm){
         pointMod.newChunked(object).forEach(function(line, li){
             line.forEach(function(ptArr, pi){
                 var centerPos = { x: ptArr[0], y: ptArr[1] };
-                sm.selectors.push( Object.assign( { i: null, li: li, pi: pi, points: object, r: 16 }, centerPos ) );
+                sm.selectors.push( Object.assign( { i: null, li: li, pi: pi, points: object, r: 8 }, centerPos ) );
             });
         });
     }

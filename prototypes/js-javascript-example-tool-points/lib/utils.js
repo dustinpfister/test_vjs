@@ -38,6 +38,17 @@ utils.getCanvasRelative = function (e) {
 //  Object
 //-------- ----------
 
+// chunk and array
+utils.chunk = function (arr, size) {
+    var chunkedArr = [];
+    arr = arr || [];
+    size = size === undefined ? 1 : size;
+    for (var i = 0; i < arr.length; i += size) {
+        chunkedArr.push(arr.slice(i, i + size));
+    }
+    return chunkedArr;
+};
+
 // parse json in a pretty way
 // https://stackoverflow.com/questions/6937863/json-stringify-so-that-arrays-are-on-one-line
 utils.jsonPretty = (function(){

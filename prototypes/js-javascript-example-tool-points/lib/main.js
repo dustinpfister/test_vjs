@@ -89,7 +89,8 @@ var createPointSelectors = function(sm){
     // selectors for each object
     sm.selectors = [];
     tab.objects.forEach(function(points, i){
-        var centerPos = projectMod.getObjectCenter(tab, i);
+        //var centerPos = projectMod.getObjectCenter(tab, i);
+        var centerPos = 
         sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
     });
 };

@@ -299,9 +299,9 @@ bgImageInput.addEventListener('change', function(e){
 
       var img = sm.background.image = new Image();
       img.src = reader.result;
-      console.log('set new background');
-      console.log(sm.background)
-      setState(sm, sm.currentState);
+      img.addEventListener('load', function(){
+          setState(sm, sm.currentState);
+      });
 
   }, false);
 

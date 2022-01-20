@@ -8,13 +8,9 @@ var draw = (function(){
         // solid background
         ctx.fillStyle = opt.solid || 'black';
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
-
-if(opt.image){
-
-ctx.drawImage(opt.image, 0, 0, opt.image.width, opt.image.height);
-
-}
-
+        if(opt.image){
+            ctx.drawImage(opt.image, 0, 0, opt.image.width, opt.image.height);
+        }
     };
 
     // draw version number
@@ -28,9 +24,9 @@ ctx.drawImage(opt.image, 0, 0, opt.image.width, opt.image.height);
 
     // draw selectors
     api.selectors = function(sm, ctx){
-      ctx.fillStyle = 'gray';
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
       ctx.strokeStyle = 'black';
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 1;
       sm.selectors.forEach(function(sel){
           ctx.beginPath();
           ctx.arc(sel.x, sel.y, sel.r, 0, Math.PI * 2);

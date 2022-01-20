@@ -1,11 +1,5 @@
 // set up canvas
 
-/*
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d');
-document.getElementById('area-canvas').appendChild(canvas);
-*/
-
 var canvasObj = utils.createCanvas({
    container: document.getElementById('area-canvas')
 });
@@ -66,7 +60,6 @@ var jsonToTabIndex = function(sm, index){
 
 // draw the current tab index to the canvas
 var drawCurrentTabIndex = function(){
-    draw.background(ctx, canvas, 'blue');
     var objects = sm.tabs[sm.currentTabIndex].objects;
     objects.forEach(function(obj){
         draw.points(ctx, obj, 0, 0);
@@ -114,6 +107,10 @@ var sm = {
     // tabs
     currentTabIndex: 0, // current tab index
     tabs: [],
+    // background
+    background: {
+        solid: '#0044af'
+    },
     // ui
     userDown: false,
     sx: null, sy: null,
@@ -153,8 +150,8 @@ sm.states.init = {
         projectMod.pushNewProject(sm.tabs, 'BOX');
         projectMod.pushNewProject(sm.tabs, 'WEIRD');
         // render tab section and draw curent tab index for first time
-        renderTabSelection()
-        drawCurrentTabIndex();
+        renderTabSelection();
+        //drawCurrentTabIndex();
         tabIndexToJSON(sm, sm.currentTabIndex);
         setState(sm, 'editProject');
     }
@@ -167,6 +164,7 @@ sm.states.editProject = {
         drawState(sm, ctx, canvas);
     },
     draw: function(sm, ctx, canvas){
+        draw.background(ctx, canvas, sm.background);
         drawCurrentTabIndex();
         draw.selectors(sm, ctx);
     },
@@ -215,6 +213,7 @@ sm.states.editObject = {
         sm.activeSelector = null;
     },
     draw: function(sm, ctx, canvas){
+        draw.background(ctx, canvas, sm.background);
         drawCurrentTabIndex();
         draw.selectors(sm, ctx);
     },

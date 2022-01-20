@@ -3,8 +3,10 @@ var draw = (function(){
     var api = {};
 
     // draw a background
-    api.background = function(ctx, canvas, style){
-        ctx.fillStyle = style || 'black';
+    api.background = function(ctx, canvas, opt){
+        opt = opt || {};
+        // solid background
+        ctx.fillStyle = opt.solid || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 

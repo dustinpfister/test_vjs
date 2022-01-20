@@ -84,15 +84,22 @@ var createObjectSelectors = function(sm){
 
 
 var createPointSelectors = function(sm){
-    // create 'selector' objects for each object in sm.tabs[sm.currentTabIndex].objects
-    var tab = sm.tabs[sm.currentTabIndex];
+    // create 'selector' objects for each point in the current tab for the current active selector
+    var tab = sm.tabs[sm.currentTabIndex],
+    object = sm.activeSelector.points;
+
+
+    pointMod.newChunked(object);
+
     // selectors for each object
+/*
     sm.selectors = [];
     tab.objects.forEach(function(points, i){
         //var centerPos = projectMod.getObjectCenter(tab, i);
         var centerPos = 
         sm.selectors.push( Object.assign( { i: i, points: points, r: 16 }, centerPos ) );
     });
+*/
 };
 
 // 'state machine' object

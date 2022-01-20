@@ -32,6 +32,9 @@
 <!-- Minimum Viable Product -->
 
 ## () - r4 - FileReader api to load background image
+* (done) I am going to want a area-background div
+* (done) update style and html so that the area-background is next to area-json
+
 * I will want at least two canvas elements, one for the background and another for the points
 * use the FileReader api to load an image and use that as a the content of a background canvas
 

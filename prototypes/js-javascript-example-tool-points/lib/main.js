@@ -189,15 +189,17 @@ sm.states.editProject = {
             }
         },
         pointerup : function(sm, pos, e){
+            // make sure selectors are centerd
+            createObjectSelectors(sm);
             // is there a current active selector, and was
             // it clicked rather than moved?
+            createObjectSelectors(sm);
             if(sm.activeSelector){
                 if(sm.moveDist === 0){
                     setState(sm, 'editObject');
                 }
             }else{
-                // make sure selectors are centerd
-                createObjectSelectors(sm);
+                setState(sm, 'view');
             }
             sm.activeSelector = null;
             drawState(sm, ctx, canvas);
@@ -216,7 +218,7 @@ sm.states.editObject = {
         draw.background(ctx, canvas, sm.background);
         drawCurrentTabIndex();
         draw.selectors(sm, ctx);
-        //draw.ver(sm, ctx, canvas);
+        draw.ver(sm, ctx, canvas);
     },
     events: {
         pointerdown : function(sm, pos, e){
@@ -247,6 +249,25 @@ sm.states.editObject = {
             }
             sm.activeSelector = null;
             drawState(sm, ctx, canvas);
+        }
+    }
+};
+
+sm.states.view = {
+    start: function(sm){
+        sm.selectors = [];
+        sm.activeSelector = null;
+        drawState(sm, ctx, canvas);
+    },
+    draw: function(sm, ctx, canvas){
+        draw.background(ctx, canvas, sm.background);
+        drawCurrentTabIndex();
+    },
+    events: {
+        pointerdown : function(sm, pos, e){},
+        pointermove : function(sm, pos, e){},
+        pointerup : function(sm, pos, e){
+            setState(sm, 'editProject');
         }
     }
 };

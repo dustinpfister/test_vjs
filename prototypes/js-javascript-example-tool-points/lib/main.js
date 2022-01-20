@@ -112,6 +112,7 @@ var sm = {
     userDown: false,
     sx: null, sy: null,
     tx: null, ty: null,
+    moveDist: 0,
     // selector objects
     selectors: [],
     activeSelector: null,
@@ -189,8 +190,8 @@ sm.states.editProject = {
             createObjectSelectors(sm);
             drawState(sm, ctx, canvas);
 
-var d = utils.distance(sm.sx, sm.sy, sm.tx, sm.ty);
-console.log(d)
+console.log( sm.moveDist );
+
 
         }
     }
@@ -258,11 +259,13 @@ var createPointerEventHander = function(eventKey){
             sm.userDown = true;
             sm.sx = pos.x;
             sm.sy = pos.y;
+            sm.moveDist = 0;
         }
 
         if(e.type === 'pointermove'){
             sm.tx = pos.x;
             sm.ty = pos.y;
+            sm.moveDist = utils.distance(sm.sx, sm.sy, sm.tx, sm.ty);
         }
 
         if(e.type === 'pointerup'){

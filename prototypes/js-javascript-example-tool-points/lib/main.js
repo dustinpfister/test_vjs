@@ -339,5 +339,15 @@ bgModeInput.addEventListener('change', function(e){
     // set current state
     setState(sm, sm.currentState);
 });
+
+var bgColorInput = document.getElementById('input-background-color'); 
+bgColorInput.addEventListener('change', function(e){
+    // set solid prop of background
+    sm.background.solid = e.target.value; 
+    // set current state
+    setState(sm, sm.currentState);
+});
+
+
 // start init state
 setState(sm, 'init');

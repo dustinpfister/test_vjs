@@ -7,11 +7,11 @@ var draw = (function(){
        dx:0, dy: 0, dw: 320, dh: 240
     };
 
-    // adjust the given background options object for the given canvas
-    var adjustBackgroundOptDefaults = function(opt, canvas){
-
-        var img = opt.image; 
-        if(img){
+    // adjust the given background options object for the given canvas element and bgMode
+    // values for mode are 'stretch', 'center'
+    var backgroundModes = {
+        stretch : function(opt, canvas){
+           var img = opt.image; 
            // use full source of image
            opt.sx = 0;
            opt.sy = 0;
@@ -23,10 +23,14 @@ var draw = (function(){
            opt.dw = canvas.width;
            opt.dh = canvas.height;
         }
-        
-
+    };
+    var setBackgroundOptDefaults = function(opt, canvas, bgMode){
+        bgMode = bgMode || 'stretch';
+        var img = opt.image; 
+        if(img){
+            backgroundModes[bgMode](opt, canvas);
+        }
         return opt;
-
     };
 
     var api = {};
@@ -36,7 +40,7 @@ var draw = (function(){
         opt = opt || {};
         opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
 
-        opt = adjustBackgroundOptDefaults(opt, canvas );
+        opt = setBackgroundOptDefaults(opt, canvas );
         
         // solid background
         ctx.fillStyle = opt.solid;

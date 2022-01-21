@@ -9,19 +9,35 @@ var draw = (function(){
 
     // adjust the given background options object for the given canvas element and bgMode
     // values for mode are 'stretch', 'center'
+    var setFullSource = function(opt){
+        var img = opt.image; 
+        // use full source of image
+        opt.sx = 0;
+        opt.sy = 0;
+        opt.sw = img.width;
+        opt.sh = img.height;  
+    };
     var backgroundModes = {
+        // just simply center the source image to the center of the canvas, preserving the aspect ratio of the source image
+        // however depeding on the size of the source image this might result in the image being to small, or to large resulting
+        // in some loss of the image
+        center : function(opt, canvas){
+            // use full source of image
+            setFullSource(opt);  
+
+
+        },
+        // stretch the source image to match the ratio of the canvas which will result in a distored image
+        // but the background will be filled with the source image
         stretch : function(opt, canvas){
-           var img = opt.image; 
-           // use full source of image
-           opt.sx = 0;
-           opt.sy = 0;
-           opt.sw = img.width;
-           opt.sh = img.height;
-           // use full size of canvas
-           opt.dx = 0;
-           opt.dy = 0;
-           opt.dw = canvas.width;
-           opt.dh = canvas.height;
+            var img = opt.image; 
+            // use full source of image
+            setFullSource(opt);
+            // use full size of canvas
+            opt.dx = 0;
+            opt.dy = 0;
+            opt.dw = canvas.width;
+            opt.dh = canvas.height;
         }
     };
     var setBackgroundOptDefaults = function(opt, canvas, bgMode){

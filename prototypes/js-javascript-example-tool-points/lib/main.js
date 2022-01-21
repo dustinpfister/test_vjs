@@ -320,9 +320,7 @@ bgImageInput.addEventListener('change', function(e){
       img.addEventListener('load', function(){
           // parse background with image and canvas
           sm.background.bgMode = 'center';
-
           sm.background = draw.BGParseOpt(sm.background, canvas);
-
           // set current state
           setState(sm, sm.currentState);
       });

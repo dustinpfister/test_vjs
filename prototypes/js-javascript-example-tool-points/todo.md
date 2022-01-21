@@ -50,8 +50,7 @@
 * (done) I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
 * (done) I will want a number of typical background modes to choose from starting with what is often called 'stretch' mode
 * (done) I will want to have a 'center' background mode
-
-* draw.BGParseOpt method that will parse and return a background object that can then be used with draw.background
+* (done) draw.BGParseOpt method that will parse and return a background object that can then be used with draw.background
 
 * I will want a background mode selection element in the html
 

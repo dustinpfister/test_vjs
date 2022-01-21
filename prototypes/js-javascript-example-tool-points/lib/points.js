@@ -31,22 +31,32 @@ var pointMod = (function(){
         return points;
     };
 
+    // a createBox2 method that almost creates the same output as createBox method using the createEllipse method
+    api.createBox2 = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, w: 50, h: 50, fill: 'white', stroke: 'black', lineWidth: 6, startDegree: 45 * 5
+        });
+        return api.createEllipse(utils.defaults({ r1: (opt.w / 2) * 1.4, r2: (opt.h / 2) * 1.4, points: 4 }, opt));
+    };
+
     // create ellipse
     api.createEllipse = function(opt){
         // parse options
         opt = opt || {};
         opt = utils.defaults(opt, {
-            x: 0, y: 0, r1: 160 * 1.5, r2:120 * 1.5, points: 30, fill: 'white', stroke: 'black', lineWidth: 6
+            x: 0, y: 0, startDegree: 0, r1: 160, r2: 120, points: 30, fill: 'white', stroke: 'black', lineWidth: 6
         });
         // push points
         var points = [[]],
         i = 0,
         len = opt.points * 2,
-        radianStart = Math.PI / 180 * 45;
+        radianStart = Math.PI / 180 * opt.startDegree;
         while(i < len){
             var radian = radianStart + Math.PI * 2 / opt.points * (i / 2),
-            x = opt.x + Math.cos(radian) * opt.r1,
-            y = opt.y + Math.sin(radian) * opt.r2;
+            x = Math.round(opt.x + Math.cos(radian) * opt.r1),
+            y = Math.round(opt.y + Math.sin(radian) * opt.r2);
             points[0].push(x, y);
             i += 2;
         }

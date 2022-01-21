@@ -3,9 +3,9 @@ var projectMod = (function(){
 
     var POINTS = {};
 
-    //POINTS.BOX = pointMod.createBox({x: 320, y: 240, w: 250, h: 250, fill: 'rgba(255,255,255,0.5)'})
+    //POINTS.BOX = pointMod.createBox({x: 320, y: 240, w: 300, h: 300, fill: 'rgba(255,255,255,0.5)'});
+    POINTS.BOX = pointMod.createBox2({x: 320, y: 240, w: 300, h: 300, fill: 'rgba(255,255,255,0.5)'});
 
-    POINTS.BOX = pointMod.createEllipse({points: 4, x: 320, y: 240})
     POINTS.LINE = [
         [25, 25, 50, 25, 50, 50, 25, 100, 'close:false', 'fill:false']
     ];

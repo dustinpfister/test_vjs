@@ -101,9 +101,7 @@ var sm = {
     currentTabIndex: 0, // current tab index
     tabs: [],
     // background
-    background: draw.BGParseOpt({
-        solid: '#00af88'
-    }),
+    background: draw.BGParseOpt(),
     // ui
     userDown: false,
     sx: null, sy: null,
@@ -347,7 +345,7 @@ bgColorInput.addEventListener('change', function(e){
     // set current state
     setState(sm, sm.currentState);
 });
-
+sm.background.solid = bgColorInput.value;
 
 // start init state
 setState(sm, 'init');

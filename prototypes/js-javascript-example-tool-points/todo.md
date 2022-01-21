@@ -53,8 +53,7 @@
 * (done) draw.BGParseOpt method that will parse and return a background object that can then be used with draw.background
 * (done) I will want a background mode selection element in the html
 * (done) have a way to clear the background image with a 'none' bgMode
-
-* I will want to have a way to set the solid color for the background
+* (done) I will want to have a way to set the solid color for the background
 
 * have a points.createCircle method
 * use pointMod.createCircle for untitled 1, and pointMod.createBox for untitled 2

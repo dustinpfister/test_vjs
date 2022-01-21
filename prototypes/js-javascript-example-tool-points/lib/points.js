@@ -31,6 +31,36 @@ var pointMod = (function(){
         return points;
     };
 
+    // create ellipse
+    api.createEllipse = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, r1: 160 * 1.5, r2:120 * 1.5, points: 30, fill: 'white', stroke: 'black', lineWidth: 6
+        });
+        // push points
+        var points = [[]],
+        i = 0,
+        len = opt.points * 2,
+        radianStart = Math.PI / 180 * 45;
+        while(i < len){
+            var radian = radianStart + Math.PI * 2 / opt.points * (i / 2),
+            x = opt.x + Math.cos(radian) * opt.r1,
+            y = opt.y + Math.sin(radian) * opt.r2;
+            points[0].push(x, y);
+            i += 2;
+        }
+        // push style options for the line
+        points[0].push('fill:' + opt.fill);
+        points[0].push('stroke:' + opt.stroke);
+        points[0].push('lineWidth:' + opt.lineWidth);
+        points[0].push('close:true');
+        // return ellipse points
+        return points;        
+
+    };
+
+
     // return a new points object that is numbers only
     api.numbersOnly = function(points){
         return points.map(function(line){

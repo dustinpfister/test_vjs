@@ -19,7 +19,7 @@ var draw = (function(){
         opt.sh = img.height;  
     };
     var backgroundModes = {
-        // just simply center the source image to the center of the canvas, preserving the aspect ratio of the source image
+        // just simply 'center' the source image to the center of the canvas, preserving the aspect ratio of the source image
         // however depeding on the size of the source image this might result in the image being to small, or to large resulting
         // in some loss of the image
         center : function(opt, canvas){
@@ -33,7 +33,7 @@ var draw = (function(){
             opt.dh = img.height;
 
         },
-        // stretch the source image to match the ratio of the canvas which will result in a distored image
+        // 'stretch' the source image to match the ratio of the canvas which will result in a distored image
         // but the background will be filled with the source image
         stretch : function(opt, canvas){
             // use full source of image
@@ -44,6 +44,11 @@ var draw = (function(){
             opt.dy = 0;
             opt.dw = canvas.width;
             opt.dh = canvas.height;
+        },
+        // 'none' mode will make it so the image will not draw to the canvas without clearing the image
+        none : function(opt, canvas){
+            opt.sx = 0;opt.sy = 0;opt.sw = 0;opt.sw = 0;
+            opt.dx = -1;opt.dy = -1;opt.dw = 0;opt.dh = 0;
         }
     };
     var setBackgroundOptDefaults = function(opt, canvas, bgMode){

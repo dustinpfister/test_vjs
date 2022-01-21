@@ -12,10 +12,16 @@ var draw = (function(){
 
         var img = opt.image; 
         if(img){
+           // use full source of image
            opt.sx = 0;
            opt.sy = 0;
            opt.sw = img.width;
            opt.sh = img.height;
+           // use full size of canvas
+           opt.dx = 0;
+           opt.dy = 0;
+           opt.dw = canvas.width;
+           opt.dh = canvas.height;
         }
         
 

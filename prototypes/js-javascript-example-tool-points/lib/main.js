@@ -318,6 +318,12 @@ bgImageInput.addEventListener('change', function(e){
       var img = sm.background.image = new Image();
       img.src = reader.result;
       img.addEventListener('load', function(){
+          // parse background with image and canvas
+          sm.background.bgMode = 'center';
+
+          sm.background = draw.BGParseOpt(sm.background, canvas);
+
+          // set current state
           setState(sm, sm.currentState);
       });
   }, false);

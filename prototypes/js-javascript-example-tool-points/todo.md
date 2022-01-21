@@ -28,13 +28,16 @@
 ## () - rx - draw new mode
 * create a new object by just clicking points in the canvas with a 'draw new mode'
 
-## () - rx - more background options
-* background sx sy sw and sh props to adjust the source position and size from the background image
-* background rotation angle option
-* background transform options such as image flip
+## () - rx -  background trasformation
+* background transform flip horazonal
+* background transform flip vertical
 
-## () - rx - 'custom', 'tiled', and fill background mode
+## () - rx - background rotation
+* background rotation angle option
+
+## () - rx - more background modes 'custom', 'tiled', 'fit', and 'fill'
 * I will then want text input elements for dx dy dw and dh in the area-background div
+* I will want to have a 'fit' background mode that will fill the whole canvas, but with a preserve aspect ratio with bars
 * have a 'fill' mode like 'fit', but without bars resulting in image loss if source image and the canvas ratios do not match.
 * have a 'tiled' bg mode
 
@@ -46,9 +49,11 @@
 * (done) when in 'view' state click anywahere in the canvas to enter 'editProject' state again
 * (done) I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
 * (done) I will want a number of typical background modes to choose from starting with what is often called 'stretch' mode
+* (done) I will want to have a 'center' background mode
 
-* I will want to have a 'center' background mode
-* I will want to have a 'fit' background mode that will fill the whole canvas, but with a preserve aspect ratio with bars
+* draw.BGParseOpt method that will parse and return a background object that can then be used with draw.background
+
+* I will want a background mode selection element in the html
 
 * have a way to clear the background image
 

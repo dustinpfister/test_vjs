@@ -2,6 +2,7 @@ var draw = (function(){
 
     var BACKGROUND_OPT_STATIC_DEFAULTS = {
        image: null,
+       bgMode: 'center',
        solid: 'black',
        sx: 0, sy: 0, sw: 320, sh: 240,
        dx:0, dy: 0, dw: 320, dh: 240
@@ -46,22 +47,30 @@ var draw = (function(){
         }
     };
     var setBackgroundOptDefaults = function(opt, canvas, bgMode){
-        bgMode = bgMode || 'center';
+        opt.bgMode = opt.bgMode || 'center';
         var img = opt.image; 
         if(img){
-            backgroundModes[bgMode](opt, canvas);
+            backgroundModes[opt.bgMode](opt, canvas);
         }
         return opt;
     };
 
     var api = {};
 
+    // parse and return a background options object
+    api.BGParseOpt = function(opt, canvas){
+        opt = opt || {};
+        opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
+        opt = setBackgroundOptDefaults(opt, canvas);
+        return opt;
+    };
+
     // draw a background
     api.background = function(ctx, canvas, opt){
         opt = opt || {};
         opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
 
-        opt = setBackgroundOptDefaults(opt, canvas );
+        //opt = setBackgroundOptDefaults(opt, canvas );
         
         // solid background
         ctx.fillStyle = opt.solid;

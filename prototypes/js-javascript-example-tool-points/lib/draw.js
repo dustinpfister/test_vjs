@@ -74,21 +74,10 @@ var draw = (function(){
     api.background = function(ctx, canvas, opt){
         opt = opt || {};
         opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
-
-        //opt = setBackgroundOptDefaults(opt, canvas );
-        
         // solid background
         ctx.fillStyle = opt.solid;
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
         if(opt.image){
-            //var sx = 0,
-            //sy = 0,
-            //sw = opt.image.width,
-            //sh = opt.image.height,
-            //dx = 0,
-            //dy = 0,
-            //dw = opt.image.width,
-            //dh = opt.image.height;
             ctx.drawImage(opt.image, opt.sx, opt.sy, opt.sw, opt.sh, opt.dx, opt.dy, opt.dw, opt.dh);
         }
     };

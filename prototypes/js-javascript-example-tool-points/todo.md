@@ -44,8 +44,11 @@
 * start a 'custom' bgMode that will allow for setting
 * I will then want text input elements for dx dy dw and dh in the area-background div
 
-## () - rx - bgMode options starting with zoom level for center mode
-* start having options for each bgMod starting with center mode
+## () - r6 - bgMode options starting with zoom level for center mode
+* break down backgroundModes in draw.js into an object for each bgMode
+* each function for each bgMod should be a parseBGOpt method for the mode, and update setBackgroundOptDefaults to work with this
+* start having options for each bgMod starting with center mode which will just need a zoom option
+* I will need to add a bgModeOptions div in index.html that will change depending on the bgMode
 
 ## ( done 01/21/2022 ) - r5 - view state, basic background options with modes and solid color set, circle points method
 * (done) start a new 'view' state that will be used to just view the current project in the canvas

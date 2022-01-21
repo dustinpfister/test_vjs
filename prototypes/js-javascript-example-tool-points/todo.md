@@ -54,9 +54,14 @@
 * (done) I will want a background mode selection element in the html
 * (done) have a way to clear the background image with a 'none' bgMode
 * (done) I will want to have a way to set the solid color for the background
+* (done) have a points.createEllipse method
 
-* have a points.createCircle method
-* use pointMod.createCircle for untitled 1, and pointMod.createBox for untitled 2
+* (done) use pointMod.createEllipse to create a POINTS.CIRCLE const in project.js
+
+* (done) use POINTS.CIRCLE for untitled 0
+* (done) use POINTS.BOX for untitled 1
+* (done) new untiled2 using a POINTS.TRI
+* new untitled3 using a POINTS.ELLIPSE
 
 <!-- Minimum Viable Product -->
 

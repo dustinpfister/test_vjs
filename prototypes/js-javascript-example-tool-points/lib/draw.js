@@ -1,23 +1,32 @@
 var draw = (function(){
 
+    var BACKGROUND_OPT_STATIC_DEFAULTS = {
+       image: null,
+       solid: 'black',
+       sx: 0, sy: 0, sw: 320, sh: 240,
+       dx:0, dy: 0, dw: 320, dh: 240
+    };
+
     var api = {};
 
     // draw a background
     api.background = function(ctx, canvas, opt){
         opt = opt || {};
+        opt = utils.defaults(opt, BACKGROUND_OPT_STATIC_DEFAULTS)
+        
         // solid background
-        ctx.fillStyle = opt.solid || 'black';
+        ctx.fillStyle = opt.solid;
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
         if(opt.image){
-            var sx = 0,
-            sy = 0,
-            sw = opt.image.width,
-            sh = opt.image.height,
-            dx = 0,
-            dy = 0,
-            dw = opt.image.width,
-            dh = opt.image.height;
-            ctx.drawImage(opt.image, sx, sy, sw, sh, dx, dy, sw, dh);
+            //var sx = 0,
+            //sy = 0,
+            //sw = opt.image.width,
+            //sh = opt.image.height,
+            //dx = 0,
+            //dy = 0,
+            //dw = opt.image.width,
+            //dh = opt.image.height;
+            ctx.drawImage(opt.image, opt.sx, opt.sy, opt.sw, opt.sh, opt.dx, opt.dy, opt.dw, opt.dh);
         }
     };
 

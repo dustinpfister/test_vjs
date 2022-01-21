@@ -5,7 +5,8 @@ var projectMod = (function(){
 
     //POINTS.BOX = pointMod.createBox({x: 320, y: 240, w: 300, h: 300, fill: 'rgba(255,255,255,0.5)'});
     POINTS.BOX = pointMod.createBox2({x: 320, y: 240, w: 300, h: 300, fill: 'rgba(255,255,255,0.5)'});
-
+    POINTS.CIRCLE = pointMod.createEllipse({x: 320, y: 240, r1: 150, r2: 150, points: 50 });
+    POINTS.TRI = pointMod.createEllipse({x: 320, y: 240, r1: 150, r2: 150, points: 3, startDegree: 30 });
     POINTS.LINE = [
         [25, 25, 50, 25, 50, 50, 25, 100, 'close:false', 'fill:false']
     ];
@@ -13,7 +14,7 @@ var projectMod = (function(){
         [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
         [30, 80, 165, 55, 22, 200, 'fill:red']
     ];
-    var POINTS_START = POINTS.BOX;
+    var POINTS_START = POINTS.CIRCLE; //POINTS.BOX;
 
     // base clean project object
     var baseCreateProject = function(){
@@ -27,10 +28,10 @@ var projectMod = (function(){
     var api = {};
 
     // push a new project into the given tabs array
-    api.pushNewProject = function(tabs, startPoints){
+    api.pushNewProject = function(tabs, startPoints, fileName){
         var n = tabs ? tabs.length : 0;
         var project = baseCreateProject();
-        project.fileName = 'Untitled-' + n;
+        project.fileName = fileName || 'Untitled-' + n;
         var points = JSON.parse(JSON.stringify(POINTS_START));
         // start points
         if(typeof startPoints === 'string'){

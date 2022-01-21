@@ -140,8 +140,10 @@ var drawState = function(sm, ctx, canvas){
 sm.states.init = {
     start: function(sm){
         // push start project(s)
+        projectMod.pushNewProject(sm.tabs, 'CIRCLE');
         projectMod.pushNewProject(sm.tabs, 'BOX');
-        projectMod.pushNewProject(sm.tabs, 'WEIRD');
+        projectMod.pushNewProject(sm.tabs, 'TRI');
+        //projectMod.pushNewProject(sm.tabs, 'WEIRD');
         // render tab section and draw curent tab index for first time
         renderTabSelection();
         //drawCurrentTabIndex();

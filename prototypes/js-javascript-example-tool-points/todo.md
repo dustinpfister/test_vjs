@@ -33,21 +33,29 @@
 * background rotation angle option
 * background transform options such as image flip
 
-## () - r5 - view state, basic background options, circle points method
+## () - rx - 'custom', 'tiled', and fill background mode
+* I will then want text input elements for dx dy dw and dh in the area-background div
+* have a 'fill' mode like 'fit', but without bars resulting in image loss if source image and the canvas ratios do not match.
+* have a 'tiled' bg mode
+
+## () - r5 - view state, basic background options with modes and solid color set, circle points method
 * (done) start a new 'view' state that will be used to just view the current project in the canvas
 * (done) click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
 * (done) have an empty selectors array and do not draw selectors at all even while in 'view' state
 * (done) do not draw ver or any debug mode data while in 'view' state
 * (done) when in 'view' state click anywahere in the canvas to enter 'editProject' state again
+* (done) I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
+* (done) I will want a number of typical background modes to choose from starting with what is often called 'stretch' mode
 
-* I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
-* I will then want text input elements for dx dy dw and dh in the area-background div
+* I will want to have a 'center' background mode
+* I will want to have a 'fit' background mode that will fill the whole canvas, but with a preserve aspect ratio with bars
+
+* have a way to clear the background image
+
 * I will want to have a way to set the solid color for the background
 
 * have a points.createCircle method
 * use pointMod.createCircle for untitled 1, and pointMod.createBox for untitled 2
-
-* have a way to clear the background image
 
 <!-- Minimum Viable Product -->
 

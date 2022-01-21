@@ -23,17 +23,22 @@ var draw = (function(){
         // in some loss of the image
         center : function(opt, canvas){
             // use full source of image
-            setFullSource(opt);  
+            setFullSource(opt);
 
+            var img = opt.image;
+            opt.dx = canvas.width / 2 - img.width / 2;
+            opt.dy = canvas.height / 2 - img.height / 2;
+            opt.dw = img.width;
+            opt.dh = img.height;
 
         },
         // stretch the source image to match the ratio of the canvas which will result in a distored image
         // but the background will be filled with the source image
         stretch : function(opt, canvas){
-            var img = opt.image; 
             // use full source of image
             setFullSource(opt);
             // use full size of canvas
+            var img = opt.image; 
             opt.dx = 0;
             opt.dy = 0;
             opt.dw = canvas.width;
@@ -41,7 +46,7 @@ var draw = (function(){
         }
     };
     var setBackgroundOptDefaults = function(opt, canvas, bgMode){
-        bgMode = bgMode || 'stretch';
+        bgMode = bgMode || 'center';
         var img = opt.image; 
         if(img){
             backgroundModes[bgMode](opt, canvas);

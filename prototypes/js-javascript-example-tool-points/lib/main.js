@@ -101,9 +101,9 @@ var sm = {
     currentTabIndex: 0, // current tab index
     tabs: [],
     // background
-    background: {
+    background: draw.BGParseOpt({
         solid: '#0044af'
-    },
+    }),
     // ui
     userDown: false,
     sx: null, sy: null,
@@ -319,7 +319,6 @@ bgImageInput.addEventListener('change', function(e){
       img.src = reader.result;
       img.addEventListener('load', function(){
           // parse background with image and canvas
-          sm.background.bgMode = 'center';
           sm.background = draw.BGParseOpt(sm.background, canvas);
           // set current state
           setState(sm, sm.currentState);
@@ -331,5 +330,10 @@ bgImageInput.addEventListener('change', function(e){
   }
 });
 
+// change background mode
+var bgModeInput = document.getElementById('input-background-mode'); 
+bgModeInput.addEventListener('change', function(e){
+    sm.background.bgMode = e.target.value;
+});
 // start init state
 setState(sm, 'init');

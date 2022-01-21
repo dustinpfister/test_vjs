@@ -7,12 +7,30 @@ var draw = (function(){
        dx:0, dy: 0, dw: 320, dh: 240
     };
 
+    // adjust the given background options object for the given canvas
+    var adjustBackgroundOptDefaults = function(opt, canvas){
+
+        var img = opt.image; 
+        if(img){
+           opt.sx = 0;
+           opt.sy = 0;
+           opt.sw = img.width;
+           opt.sh = img.height;
+        }
+        
+
+        return opt;
+
+    };
+
     var api = {};
 
     // draw a background
     api.background = function(ctx, canvas, opt){
         opt = opt || {};
-        opt = utils.defaults(opt, BACKGROUND_OPT_STATIC_DEFAULTS)
+        opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
+
+        opt = adjustBackgroundOptDefaults(opt, canvas );
         
         // solid background
         ctx.fillStyle = opt.solid;

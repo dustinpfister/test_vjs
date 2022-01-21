@@ -35,7 +35,7 @@
 ## () - rx - background rotation
 * background rotation angle option
 
-## () - rx - more background modes 'custom', 'tiled', 'fit', and 'fill'
+## () - r6 - more background modes 'custom', 'tiled', 'fit', and 'fill'
 * I will then want text input elements for dx dy dw and dh in the area-background div
 * I will want to have a 'fit' background mode that will fill the whole canvas, but with a preserve aspect ratio with bars
 * have a 'fill' mode like 'fit', but without bars resulting in image loss if source image and the canvas ratios do not match.

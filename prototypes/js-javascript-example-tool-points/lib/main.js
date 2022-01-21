@@ -102,7 +102,7 @@ var sm = {
     tabs: [],
     // background
     background: draw.BGParseOpt({
-        solid: '#0044af'
+        solid: '#00af88'
     }),
     // ui
     userDown: false,

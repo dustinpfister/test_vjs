@@ -51,10 +51,8 @@
 * (done) I will want a number of typical background modes to choose from starting with what is often called 'stretch' mode
 * (done) I will want to have a 'center' background mode
 * (done) draw.BGParseOpt method that will parse and return a background object that can then be used with draw.background
-
-* I will want a background mode selection element in the html
-
-* have a way to clear the background image
+* (done) I will want a background mode selection element in the html
+* (done) have a way to clear the background image with a 'none' bgMode
 
 * I will want to have a way to set the solid color for the background
 

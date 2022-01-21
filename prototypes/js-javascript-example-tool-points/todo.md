@@ -35,11 +35,17 @@
 ## () - rx - background rotation
 * background rotation angle option
 
-## () - r6 - more background modes 'custom', 'tiled', 'fit', and 'fill'
-* I will then want text input elements for dx dy dw and dh in the area-background div
+## () - rx - Addtional background modes, 'tiled', 'fit', and 'fill'
 * I will want to have a 'fit' background mode that will fill the whole canvas, but with a preserve aspect ratio with bars
 * have a 'fill' mode like 'fit', but without bars resulting in image loss if source image and the canvas ratios do not match.
 * have a 'tiled' bg mode
+
+## () - rx - more background modes 'custom'
+* start a 'custom' bgMode that will allow for setting
+* I will then want text input elements for dx dy dw and dh in the area-background div
+
+## () - rx - bgMode options starting with zoom level for center mode
+* start having options for each bgMod starting with center mode
 
 ## ( done 01/21/2022 ) - r5 - view state, basic background options with modes and solid color set, circle points method
 * (done) start a new 'view' state that will be used to just view the current project in the canvas

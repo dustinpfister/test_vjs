@@ -41,7 +41,7 @@
 * have a 'fill' mode like 'fit', but without bars resulting in image loss if source image and the canvas ratios do not match.
 * have a 'tiled' bg mode
 
-## () - r5 - view state, basic background options with modes and solid color set, circle points method
+## ( done 01/21/2022 ) - r5 - view state, basic background options with modes and solid color set, circle points method
 * (done) start a new 'view' state that will be used to just view the current project in the canvas
 * (done) click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
 * (done) have an empty selectors array and do not draw selectors at all even while in 'view' state
@@ -55,13 +55,11 @@
 * (done) have a way to clear the background image with a 'none' bgMode
 * (done) I will want to have a way to set the solid color for the background
 * (done) have a points.createEllipse method
-
 * (done) use pointMod.createEllipse to create a POINTS.CIRCLE const in project.js
-
 * (done) use POINTS.CIRCLE for untitled 0
 * (done) use POINTS.BOX for untitled 1
 * (done) new untiled2 using a POINTS.TRI
-* new untitled3 using a POINTS.ELLIPSE
+* (done) new untitled3 using a POINTS.ELLIPSE
 
 <!-- Minimum Viable Product -->
 

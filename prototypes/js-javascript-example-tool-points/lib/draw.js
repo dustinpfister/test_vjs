@@ -38,7 +38,7 @@ var draw = (function(){
                 nodeName: 'input',
                 type: 'text',
                 on: {
-                    change: function(e, opt){
+                    keyup: function(e, opt){
                         console.log('on change of center bgMode zoom option');
                     }
                 }
@@ -93,16 +93,19 @@ var draw = (function(){
     // create HTML for the current bgMode in the given BG opt object
     api.BGCreateModeOptionsHTML = function(opt){
         var bgMode = backgroundModes[opt.bgMode],
-		bgOptions = bgMode.options,
-		parentNode = document.createElement('span')
-		Object.keys(bgOptions).forEach(function(optKey){
-			var nodeOpt = bgOptions[optKey];
-			var node = document.createElement(nodeOpt.nodeName);
-			node.type = nodeOpt.type;
-			parentNode.appendChild(node);
-			
-		});
-		return parentNode;
+        bgOptions = bgMode.options,
+        parentNode = document.createElement('span')
+        Object.keys(bgOptions).forEach(function(optKey){
+            var nodeOpt = bgOptions[optKey];
+            var node = document.createElement(nodeOpt.nodeName);
+            node.type = nodeOpt.type;
+            // attach events
+            Object.keys(nodeOpt.on).forEach(function(eventKey){
+                node.addEventListener(eventKey, nodeOpt.on[eventKey])
+            });
+            parentNode.appendChild(node);
+        });
+        return parentNode;
     };
 
     // draw a background

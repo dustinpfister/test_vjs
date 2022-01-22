@@ -144,9 +144,8 @@ sm.states.init = {
         projectMod.pushNewProject(sm.tabs, 'TRI');
         projectMod.pushNewProject(sm.tabs, 'CIRCLE');
         projectMod.pushNewProject(sm.tabs, 'ELLIPSE');
-        // render tab section and draw curent tab index for first time
+        // render tab section
         renderTabSelection();
-        //drawCurrentTabIndex();
         tabIndexToJSON(sm, sm.currentTabIndex);
         setState(sm, 'editProject');
     }

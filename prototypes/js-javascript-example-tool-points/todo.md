@@ -3,6 +3,7 @@
 ## Known bugs
 * ( fixed in r1 ) - #0 - Fix deal with fill:false not working as it should in draw.js 
 * ( fixed in r2 ) - #1 - when moving the project.js built in POINTS.WEIRD points the selector postion updates to a wrong position 
+* () - #2 - fix 'center' bgMode zoom option bug where zoom will not property update
 
 <!-- Maintenance -->
 

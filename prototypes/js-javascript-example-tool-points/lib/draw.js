@@ -1,6 +1,7 @@
 var draw = (function(){
 
     var BACKGROUND_OPT_STATIC_DEFAULTS = {
+       canvas: {},
        image: null,
        bgMode: 'center',
        solid: 'black',
@@ -29,18 +30,18 @@ var draw = (function(){
             // use full source of image
             setFullSource(opt);
             var img = opt.image,
-			cx = canvas.width / 2,
-			cy = canvas.height / 2,
-			dw = img.width * opt.zoom,
-			dh = img.height * opt.zoom;
+            cx = canvas.width / 2,
+            cy = canvas.height / 2,
+	    dw = img.width * opt.zoom,
+            dh = img.height * opt.zoom;
 			
             opt.dx = cx - dw / 2
             opt.dy = cy - dh / 2;
 
             opt.dw = dw;
             opt.dh = dh;
-			console.log(opt.zoom, dw, dh)
-			api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
+	
+//api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
 			
         },
         options: {
@@ -104,9 +105,7 @@ var draw = (function(){
 		console.log(opt.zoom)
 		//opt = Object.assign(opt, BACKGROUND_OPT_STATIC_DEFAULTS)
         opt = utils.defaults(opt, BACKGROUND_OPT_STATIC_DEFAULTS);
-        opt = setBackgroundOptDefaults(opt, canvas);
-		console.log(opt.zoom);
-		console.log('******')
+        opt = setBackgroundOptDefaults(opt, opt.canvas);
         return opt;
     };
 
@@ -123,7 +122,11 @@ var draw = (function(){
             Object.keys(nodeOpt.on).forEach(function(eventKey){
                 node.addEventListener(eventKey, function(e){
                     nodeOpt.on[eventKey](e, opt);
+                    api.BGParseOpt(opt, opt.canvas);
                     setBackgroundOptDefaults(opt, opt.canvas);
+
+//api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
+
                 });
             });
             parentNode.appendChild(node);
@@ -134,10 +137,7 @@ var draw = (function(){
     // draw a background
     api.background = function(ctx, canvas, opt){
         opt = opt || {};
-        opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
-		
-		console.log('yes this is beging called', opt.zoom);
-		
+        opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);	
         // solid background
         ctx.fillStyle = opt.solid;
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);

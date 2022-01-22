@@ -101,7 +101,7 @@ var sm = {
     currentTabIndex: 0, // current tab index
     tabs: [],
     // background
-    background: draw.BGParseOpt(),
+    background: draw.BGParseOpt({}, canvas),
     // ui
     userDown: false,
     sx: null, sy: null,
@@ -338,6 +338,7 @@ var bgModeOptions = document.getElementById('input-background-options');
 var updateBGOptions = function(){
    utils.removeAllChildNodes(bgModeOptions);
    var html = draw.BGCreateModeOptionsHTML(sm.background);
+
    bgModeOptions.appendChild(html);
 }
 bgModeInput.addEventListener('change', function(e){

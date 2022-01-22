@@ -92,7 +92,17 @@ var draw = (function(){
 
     // create HTML for the current bgMode in the given BG opt object
     api.BGCreateModeOptionsHTML = function(opt){
-        var bgMode = backgroundModes[opt.bgMode];
+        var bgMode = backgroundModes[opt.bgMode],
+		bgOptions = bgMode.options,
+		parentNode = document.createElement('span')
+		Object.keys(bgOptions).forEach(function(optKey){
+			var nodeOpt = bgOptions[optKey];
+			var node = document.createElement(nodeOpt.nodeName);
+			node.type = nodeOpt.type;
+			parentNode.appendChild(node);
+			
+		});
+		return parentNode;
     };
 
     // draw a background

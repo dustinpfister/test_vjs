@@ -33,6 +33,9 @@ var draw = (function(){
             opt.dy = canvas.height / 2 - img.height / 2;
             opt.dw = img.width;
             opt.dh = img.height;
+			console.log('center BGParseOPt');
+			console.log(opt);
+			console.log(canvas)
         },
         options: {
             zoom: {
@@ -77,7 +80,7 @@ var draw = (function(){
         options: {}
     };
  
-    var setBackgroundOptDefaults = function(opt, canvas, bgMode){
+    var setBackgroundOptDefaults = function(opt, canvas){
         opt.bgMode = opt.bgMode || 'center';
         var img = opt.image; 
         if(img){
@@ -91,6 +94,7 @@ var draw = (function(){
     // parse and return a background options object
     api.BGParseOpt = function(opt, canvas){
         opt = opt || {};
+		opt.canvas = canvas;
         opt = utils.defaults(opt, BACKGROUND_OPT_STATIC_DEFAULTS);
         opt = setBackgroundOptDefaults(opt, canvas);
         return opt;
@@ -109,7 +113,7 @@ var draw = (function(){
             Object.keys(nodeOpt.on).forEach(function(eventKey){
                 node.addEventListener(eventKey, function(e){
                     nodeOpt.on[eventKey](e, opt);
-                    setBackgroundOptDefaults(opt);
+                    setBackgroundOptDefaults(opt, opt.canvas);
                 });
             });
             parentNode.appendChild(node);

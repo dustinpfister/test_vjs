@@ -4,7 +4,7 @@ var draw = (function(){
        image: null,
        bgMode: 'center',
        solid: 'black',
-       zoom: 2,
+       zoom: 1,
        sx: 0, sy: 0, sw: 320, sh: 240,
        dx:0, dy: 0, dw: 320, dh: 240
     };
@@ -42,7 +42,7 @@ var draw = (function(){
 			console.log(opt.zoom, dw, dh)
 			
 			
-			api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
+			//api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
 			
         },
         options: {
@@ -134,7 +134,7 @@ var draw = (function(){
         opt = opt || {};
         opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
 		
-		console.log('yes this is beging called');
+		console.log('yes this is beging called', opt.zoom);
 		
         // solid background
         ctx.fillStyle = opt.solid;

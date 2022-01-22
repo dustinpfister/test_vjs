@@ -154,8 +154,12 @@ sm.states.init = {
 // edit a project
 sm.states.editProject = {
     start: function(sm){
+		
         createObjectSelectors(sm);
         drawState(sm, ctx, canvas);
+		
+		console.log(sm.background.zoom)
+		
     },
     draw: function(sm, ctx, canvas){
         draw.background(ctx, canvas, sm.background);
@@ -336,14 +340,12 @@ var updateBGOptions = function(){
    utils.removeAllChildNodes(bgModeOptions);
    var html = draw.BGCreateModeOptionsHTML(sm.background);
    
-   html.addEventListener('keydown', function(){
+   //html.addEventListener('keydown', function(){
 	   
-	   console.log('yeah');
+    //sm.background = draw.BGParseOpt(sm.background, canvas);
+    //setState(sm, sm.currentState);
 	   
-    sm.background = draw.BGParseOpt(sm.background, canvas);
-    setState(sm, sm.currentState);
-	   
-   })
+   //})
    
    
    bgModeOptions.appendChild(html);

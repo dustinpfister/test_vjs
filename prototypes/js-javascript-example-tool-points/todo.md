@@ -11,13 +11,27 @@
 
 <!-- Additional Features -->
 
-## () - rx - points, and line rotation
+## () - rx - Background transformation
+* background transform flip horizontal
+* background transform flip vertical
+
+## () - rx - Background - rotation
+* background rotation angle option
+
+## () - rx - Background - Additional modes, 'tiled', 'fit', and 'fill'
+* I will want to have a 'fit' background mode that will fill the whole canvas, but with a preserve aspect ratio with bars
+* have a 'fill' mode like 'fit', but without bars resulting in image loss if source image and the canvas ratios do not match.
+* have a 'tiled' bg mode
+
+## () - rx - Background - Additional mode 'custom'
+* start a 'custom' bgMode that will allow for setting
+* I will then want text input elements for dx dy dw and dh in the area-background div
 
 ## () - rx - menu bar
 * start a menu bar area that will contain typical options like 'file', 'edit', 'help' ect
 
 ## () - rx - FileReader api to load and save projects
-* load and save points using FileReader api
+* load and save points using FileReader API
 
 ## () - rx - new tab buttons
 * in the tab selection area there should be a button that when clicked will create a new tab
@@ -28,23 +42,11 @@
 ## () - rx - draw new mode
 * create a new object by just clicking points in the canvas with a 'draw new mode'
 
-## () - rx -  background trasformation
-* background transform flip horazonal
-* background transform flip vertical
+## () - rx - object rotation
 
-## () - rx - background rotation
-* background rotation angle option
+## () - rx - line rotation
 
-## () - rx - Addtional background modes, 'tiled', 'fit', and 'fill'
-* I will want to have a 'fit' background mode that will fill the whole canvas, but with a preserve aspect ratio with bars
-* have a 'fill' mode like 'fit', but without bars resulting in image loss if source image and the canvas ratios do not match.
-* have a 'tiled' bg mode
-
-## () - rx - more background modes 'custom'
-* start a 'custom' bgMode that will allow for setting
-* I will then want text input elements for dx dy dw and dh in the area-background div
-
-## () - r6 - bgMode options starting with zoom level for center mode
+## () - r6 - Background - bgMode options starting with zoom level for center mode
 * break down backgroundModes in draw.js into an object for each bgMode
 * each function for each bgMod should be a parseBGOpt method for the mode, and update setBackgroundOptDefaults to work with this
 * start having options for each bgMod starting with center mode which will just need a zoom option

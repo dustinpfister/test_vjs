@@ -109,8 +109,14 @@ var draw = (function(){
             var nodeOpt = bgOptions[optKey];
             var node = document.createElement(nodeOpt.nodeName);
             node.type = nodeOpt.type;
+
+// !!! not good
+node.value = opt.zoom;
+
             // attach events
             Object.keys(nodeOpt.on).forEach(function(eventKey){
+
+
                 node.addEventListener(eventKey, function(e){
                     nodeOpt.on[eventKey](e, opt);
                     api.BGParseOpt(opt, opt.canvas);

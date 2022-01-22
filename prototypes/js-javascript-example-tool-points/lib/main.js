@@ -332,7 +332,8 @@ bgImageInput.addEventListener('change', function(e){
 });
 
 // change background mode
-var bgModeInput = document.getElementById('input-background-mode'); 
+var bgModeInput = document.getElementById('input-background-mode');
+
 bgModeInput.addEventListener('change', function(e){
     // set bgMod to value in e.target and parse the background object
     sm.background.bgMode = e.target.value;
@@ -340,6 +341,7 @@ bgModeInput.addEventListener('change', function(e){
     // set current state
     setState(sm, sm.currentState);
 });
+sm.background.bgMode = bgModeInput.value;
 
 var bgColorInput = document.getElementById('input-background-color'); 
 bgColorInput.addEventListener('change', function(e){

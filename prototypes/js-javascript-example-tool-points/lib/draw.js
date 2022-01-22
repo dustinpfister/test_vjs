@@ -32,6 +32,17 @@ var draw = (function(){
             opt.dy = canvas.height / 2 - img.height / 2;
             opt.dw = img.width;
             opt.dh = img.height;
+        },
+        options: {
+            zoom: {
+                nodeName: 'input',
+                type: 'text',
+                on: {
+                    change: function(e, opt){
+                        console.log('on change of center bgMode zoom option');
+                    }
+                }
+            }
         }
     };
  
@@ -47,7 +58,8 @@ var draw = (function(){
             opt.dy = 0;
             opt.dw = canvas.width;
             opt.dh = canvas.height;
-        }
+        },
+        options: {}
     };
  
     // 'none' mode will make it so the image will not draw to the canvas without clearing the image
@@ -55,7 +67,8 @@ var draw = (function(){
         BGParseOpt : function(opt, canvas){
             opt.sx = 0;opt.sy = 0;opt.sw = 0;opt.sw = 0;
             opt.dx = -1;opt.dy = -1;opt.dw = 0;opt.dh = 0;;
-        }
+        },
+        options: {}
     };
  
     var setBackgroundOptDefaults = function(opt, canvas, bgMode){
@@ -72,9 +85,14 @@ var draw = (function(){
     // parse and return a background options object
     api.BGParseOpt = function(opt, canvas){
         opt = opt || {};
-        opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
+        opt = utils.defaults(opt, BACKGROUND_OPT_STATIC_DEFAULTS);
         opt = setBackgroundOptDefaults(opt, canvas);
         return opt;
+    };
+
+    // create HTML for the current bgMode in the given BG opt object
+    api.BGCreateModeOptionsHTML = function(opt){
+        var bgMode = backgroundModes[opt.bgMode];
     };
 
     // draw a background

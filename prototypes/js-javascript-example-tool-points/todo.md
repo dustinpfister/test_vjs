@@ -47,7 +47,7 @@
 ## () - rx - line rotation
 
 ## () - r6 - Background - bgMode options starting with zoom level for center mode
-* break down backgroundModes in draw.js into an object for each bgMode
+* (done) break down backgroundModes in draw.js into an object for each bgMode
 * each function for each bgMod should be a parseBGOpt method for the mode, and update setBackgroundOptDefaults to work with this
 * start having options for each bgMod starting with center mode which will just need a zoom option
 * I will need to add a bgModeOptions div in index.html that will change depending on the bgMode

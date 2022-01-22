@@ -154,8 +154,6 @@ sm.states.init = {
 // edit a project
 sm.states.editProject = {
     start: function(sm){
-		
-		
         createObjectSelectors(sm);
         drawState(sm, ctx, canvas);
 		
@@ -338,7 +336,6 @@ var bgModeOptions = document.getElementById('input-background-options');
 var updateBGOptions = function(){
    utils.removeAllChildNodes(bgModeOptions);
    var html = draw.BGCreateModeOptionsHTML(sm.background);
-
    bgModeOptions.appendChild(html);
 }
 bgModeInput.addEventListener('change', function(e){

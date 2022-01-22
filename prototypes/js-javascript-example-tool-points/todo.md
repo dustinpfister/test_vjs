@@ -54,11 +54,11 @@
 
 ## ( done 01/21/2022 ) - r5 - view state, basic background options with modes and solid color set, circle points method
 * (done) start a new 'view' state that will be used to just view the current project in the canvas
-* (done) click anyware in the canvas other than a selector location while in 'editProject' state to enter 'view' state
+* (done) click anywhere in the canvas other than a selector location while in 'editProject' state to enter 'view' state
 * (done) have an empty selectors array and do not draw selectors at all even while in 'view' state
 * (done) do not draw ver or any debug mode data while in 'view' state
-* (done) when in 'view' state click anywahere in the canvas to enter 'editProject' state again
-* (done) I will want background.dx, dy, dw, and dh values to set the destanation position and size of the background image
+* (done) when in 'view' state click anywhere in the canvas to enter 'editProject' state again
+* (done) I will want background.dx, dy, dw, and dh values to set the destination position and size of the background image
 * (done) I will want a number of typical background modes to choose from starting with what is often called 'stretch' mode
 * (done) I will want to have a 'center' background mode
 * (done) draw.BGParseOpt method that will parse and return a background object that can then be used with draw.background

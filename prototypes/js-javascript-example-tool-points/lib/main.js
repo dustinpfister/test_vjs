@@ -140,11 +140,10 @@ var drawState = function(sm, ctx, canvas){
 sm.states.init = {
     start: function(sm){
         // push start project(s)
-        projectMod.pushNewProject(sm.tabs, 'CIRCLE');
         projectMod.pushNewProject(sm.tabs, 'BOX');
         projectMod.pushNewProject(sm.tabs, 'TRI');
+        projectMod.pushNewProject(sm.tabs, 'CIRCLE');
         projectMod.pushNewProject(sm.tabs, 'ELLIPSE');
-        //projectMod.pushNewProject(sm.tabs, 'WEIRD');
         // render tab section and draw curent tab index for first time
         renderTabSelection();
         //drawCurrentTabIndex();
@@ -186,7 +185,7 @@ sm.states.editProject = {
             }
         },
         pointerup : function(sm, pos, e){
-            // make sure selectors are centerd
+            // make sure selectors are centered
             createObjectSelectors(sm);
             // is there a current active selector, and was
             // it clicked rather than moved?

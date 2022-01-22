@@ -28,9 +28,13 @@ var draw = (function(){
         BGParseOpt : function(opt, canvas){
             // use full source of image
             setFullSource(opt);
-            var img = opt.image;
-            opt.dx = canvas.width / 2 - img.width / 2;
-            opt.dy = canvas.height / 2 - img.height / 2;
+            var img = opt.image,
+			cx = canvas.width / 2,
+			cy = canvas.height / 2;
+			
+            opt.dx = cx - img.width / 2;
+            opt.dy = cy - img.height / 2;
+
             opt.dw = img.width;
             opt.dh = img.height;
 			console.log('center BGParseOPt');

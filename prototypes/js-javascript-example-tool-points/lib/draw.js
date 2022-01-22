@@ -33,16 +33,11 @@ var draw = (function(){
             cx = canvas.width / 2,
             cy = canvas.height / 2,
 	    dw = img.width * opt.zoom,
-            dh = img.height * opt.zoom;
-			
+            dh = img.height * opt.zoom;		
             opt.dx = cx - dw / 2
             opt.dy = cy - dh / 2;
-
             opt.dw = dw;
-            opt.dh = dh;
-	
-//api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
-			
+            opt.dh = dh;			
         },
         options: {
             zoom: {
@@ -50,11 +45,9 @@ var draw = (function(){
                 type: 'text',
                 on: {
                     keyup: function(e, opt){
-                        console.log('on change of center bgMode zoom option');
                         var zoom = parseFloat(e.target.value);
                         if(String(zoom) != 'NaN'){
                             opt.zoom = zoom;
-							console.log(opt === sm.background)
                         }
                     }
                 }
@@ -102,8 +95,6 @@ var draw = (function(){
     api.BGParseOpt = function(opt, canvas){
         opt = opt || {};
         opt.canvas = canvas;
-		console.log(opt.zoom)
-		//opt = Object.assign(opt, BACKGROUND_OPT_STATIC_DEFAULTS)
         opt = utils.defaults(opt, BACKGROUND_OPT_STATIC_DEFAULTS);
         opt = setBackgroundOptDefaults(opt, opt.canvas);
         return opt;
@@ -124,9 +115,6 @@ var draw = (function(){
                     nodeOpt.on[eventKey](e, opt);
                     api.BGParseOpt(opt, opt.canvas);
                     setBackgroundOptDefaults(opt, opt.canvas);
-
-//api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
-
                 });
             });
             parentNode.appendChild(node);

@@ -49,9 +49,12 @@
 
 ## () - r6 - Background - bgMode options starting with zoom level for center mode
 * (done) break down backgroundModes in draw.js into an object for each bgMode
-* each function for each bgMod should be a parseBGOpt method for the mode, and update setBackgroundOptDefaults to work with this
-* start having options for each bgMod starting with center mode which will just need a zoom option
-* I will need to add a bgModeOptions div in index.html that will change depending on the bgMode
+* (done) each function for each bgMod should be a parseBGOpt method for the mode, and update setBackgroundOptDefaults to work with this
+* (done) start having options for each bgMod starting with center mode which will just need a zoom option
+* (done) I will need to add a bgModeOptions div in index.html that will change depending on the bgMode
+
+* see about fixing bug #2 by making a whole new system for the background with a new background.js file as draw.js should not be used the way that it is being used
+
 
 ## ( done 01/21/2022 ) - r5 - view state, basic background options with modes and solid color set, circle points method
 * (done) start a new 'view' state that will be used to just view the current project in the canvas

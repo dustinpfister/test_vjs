@@ -40,9 +40,7 @@ var draw = (function(){
             opt.dw = dw;
             opt.dh = dh;
 			console.log(opt.zoom, dw, dh)
-			
-			
-			//api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
+			api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
 			
         },
         options: {
@@ -55,8 +53,8 @@ var draw = (function(){
                         var zoom = parseFloat(e.target.value);
                         if(String(zoom) != 'NaN'){
                             opt.zoom = zoom;
+							console.log(opt === sm.background)
                         }
-                        console.log(opt.zoom);
                     }
                 }
             }
@@ -103,8 +101,12 @@ var draw = (function(){
     api.BGParseOpt = function(opt, canvas){
         opt = opt || {};
         opt.canvas = canvas;
+		console.log(opt.zoom)
+		//opt = Object.assign(opt, BACKGROUND_OPT_STATIC_DEFAULTS)
         opt = utils.defaults(opt, BACKGROUND_OPT_STATIC_DEFAULTS);
         opt = setBackgroundOptDefaults(opt, canvas);
+		console.log(opt.zoom);
+		console.log('******')
         return opt;
     };
 

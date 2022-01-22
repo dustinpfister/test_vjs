@@ -155,10 +155,9 @@ sm.states.init = {
 sm.states.editProject = {
     start: function(sm){
 		
+		
         createObjectSelectors(sm);
         drawState(sm, ctx, canvas);
-		
-		console.log(sm.background.zoom)
 		
     },
     draw: function(sm, ctx, canvas){
@@ -339,15 +338,6 @@ var bgModeOptions = document.getElementById('input-background-options');
 var updateBGOptions = function(){
    utils.removeAllChildNodes(bgModeOptions);
    var html = draw.BGCreateModeOptionsHTML(sm.background);
-   
-   //html.addEventListener('keydown', function(){
-	   
-    //sm.background = draw.BGParseOpt(sm.background, canvas);
-    //setState(sm, sm.currentState);
-	   
-   //})
-   
-   
    bgModeOptions.appendChild(html);
 }
 bgModeInput.addEventListener('change', function(e){

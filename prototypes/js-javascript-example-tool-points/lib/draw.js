@@ -18,24 +18,27 @@ var draw = (function(){
         opt.sw = img.width;
         opt.sh = img.height;  
     };
-    var backgroundModes = {
-        // just simply 'center' the source image to the center of the canvas, preserving the aspect ratio of the source image
-        // however depeding on the size of the source image this might result in the image being to small, or to large resulting
-        // in some loss of the image
-        center : function(opt, canvas){
+
+    var backgroundModes = {};
+    // just simply 'center' the source image to the center of the canvas, preserving the aspect ratio of the source image
+    // however depending on the size of the source image this might result in the image being to small, or to large resulting
+    // in some loss of the image
+    backgroundModes.center = {
+        BGParseOpt : function(opt, canvas){
             // use full source of image
             setFullSource(opt);
-
             var img = opt.image;
             opt.dx = canvas.width / 2 - img.width / 2;
             opt.dy = canvas.height / 2 - img.height / 2;
             opt.dw = img.width;
             opt.dh = img.height;
-
-        },
-        // 'stretch' the source image to match the ratio of the canvas which will result in a distored image
-        // but the background will be filled with the source image
-        stretch : function(opt, canvas){
+        }
+    };
+ 
+    // 'stretch' the source image to match the ratio of the canvas which will result in a distorted image
+    // but the background will be filled with the source image
+    backgroundModes.stretch = {
+        BGParseOpt : function(opt, canvas){
             // use full source of image
             setFullSource(opt);
             // use full size of canvas
@@ -44,18 +47,22 @@ var draw = (function(){
             opt.dy = 0;
             opt.dw = canvas.width;
             opt.dh = canvas.height;
-        },
-        // 'none' mode will make it so the image will not draw to the canvas without clearing the image
-        none : function(opt, canvas){
-            opt.sx = 0;opt.sy = 0;opt.sw = 0;opt.sw = 0;
-            opt.dx = -1;opt.dy = -1;opt.dw = 0;opt.dh = 0;
         }
     };
+ 
+    // 'none' mode will make it so the image will not draw to the canvas without clearing the image
+    backgroundModes.none = {
+        BGParseOpt : function(opt, canvas){
+            opt.sx = 0;opt.sy = 0;opt.sw = 0;opt.sw = 0;
+            opt.dx = -1;opt.dy = -1;opt.dw = 0;opt.dh = 0;;
+        }
+    };
+ 
     var setBackgroundOptDefaults = function(opt, canvas, bgMode){
         opt.bgMode = opt.bgMode || 'center';
         var img = opt.image; 
         if(img){
-            backgroundModes[opt.bgMode](opt, canvas);
+            backgroundModes[opt.bgMode].BGParseOpt(opt, canvas);
         }
         return opt;
     };

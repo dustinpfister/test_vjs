@@ -40,6 +40,8 @@ var draw = (function(){
                 on: {
                     keyup: function(e, opt){
                         console.log('on change of center bgMode zoom option');
+						console.log(e);
+						console.log(opt);
                     }
                 }
             }
@@ -101,7 +103,9 @@ var draw = (function(){
             node.type = nodeOpt.type;
             // attach events
             Object.keys(nodeOpt.on).forEach(function(eventKey){
-                node.addEventListener(eventKey, nodeOpt.on[eventKey])
+                node.addEventListener(eventKey, function(e){
+                    nodeOpt.on[eventKey](e, opt);
+                })
             });
             parentNode.appendChild(node);
         });

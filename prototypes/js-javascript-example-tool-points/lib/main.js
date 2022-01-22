@@ -335,6 +335,17 @@ var bgModeOptions = document.getElementById('input-background-options');
 var updateBGOptions = function(){
    utils.removeAllChildNodes(bgModeOptions);
    var html = draw.BGCreateModeOptionsHTML(sm.background);
+   
+   html.addEventListener('keydown', function(){
+	   
+	   console.log('yeah');
+	   
+    sm.background = draw.BGParseOpt(sm.background, canvas);
+    setState(sm, sm.currentState);
+	   
+   })
+   
+   
    bgModeOptions.appendChild(html);
 }
 bgModeInput.addEventListener('change', function(e){

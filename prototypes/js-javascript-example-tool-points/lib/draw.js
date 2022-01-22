@@ -30,16 +30,20 @@ var draw = (function(){
             setFullSource(opt);
             var img = opt.image,
 			cx = canvas.width / 2,
-			cy = canvas.height / 2;
+			cy = canvas.height / 2,
+			dw = img.width * opt.zoom,
+			dh = img.height * opt.zoom;
 			
-            opt.dx = cx - img.width / 2;
-            opt.dy = cy - img.height / 2;
+            opt.dx = cx - dw / 2
+            opt.dy = cy - dh / 2;
 
-            opt.dw = img.width;
-            opt.dh = img.height;
-			console.log('center BGParseOPt');
-			console.log(opt);
-			console.log(canvas)
+            opt.dw = dw;
+            opt.dh = dh;
+			console.log(opt.zoom, dw, dh)
+			
+			
+			api.background(opt.canvas.getContext('2d'), opt.canvas, opt)
+			
         },
         options: {
             zoom: {
@@ -98,7 +102,7 @@ var draw = (function(){
     // parse and return a background options object
     api.BGParseOpt = function(opt, canvas){
         opt = opt || {};
-		opt.canvas = canvas;
+        opt.canvas = canvas;
         opt = utils.defaults(opt, BACKGROUND_OPT_STATIC_DEFAULTS);
         opt = setBackgroundOptDefaults(opt, canvas);
         return opt;
@@ -129,6 +133,9 @@ var draw = (function(){
     api.background = function(ctx, canvas, opt){
         opt = opt || {};
         opt = utils.defaults(opt,  BACKGROUND_OPT_STATIC_DEFAULTS);
+		
+		console.log('yes this is beging called');
+		
         // solid background
         ctx.fillStyle = opt.solid;
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);

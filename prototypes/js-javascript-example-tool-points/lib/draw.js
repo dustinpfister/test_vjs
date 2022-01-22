@@ -4,7 +4,7 @@ var draw = (function(){
        image: null,
        bgMode: 'center',
        solid: 'black',
-       zoom: 1,
+       zoom: 2,
        sx: 0, sy: 0, sw: 320, sh: 240,
        dx:0, dy: 0, dw: 320, dh: 240
     };
@@ -41,11 +41,11 @@ var draw = (function(){
                 on: {
                     keyup: function(e, opt){
                         console.log('on change of center bgMode zoom option');
-						var zoom = parseFloat(e.target.value);
-						if(String(zoom) != 'NaN'){
+                        var zoom = parseFloat(e.target.value);
+                        if(String(zoom) != 'NaN'){
                             opt.zoom = zoom;
-						}
-						console.log(opt.zoom);
+                        }
+                        console.log(opt.zoom);
                     }
                 }
             }
@@ -109,6 +109,7 @@ var draw = (function(){
             Object.keys(nodeOpt.on).forEach(function(eventKey){
                 node.addEventListener(eventKey, function(e){
                     nodeOpt.on[eventKey](e, opt);
+                    setBackgroundOptDefaults(opt);
                 });
             });
             parentNode.appendChild(node);

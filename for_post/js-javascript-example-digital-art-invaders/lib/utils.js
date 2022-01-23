@@ -54,11 +54,6 @@ utils.createCanvas = function(opt){
 utils.mod = function(x, m) {
     return (x % m + m) % m;
 };
-// wrap a number
-utils.wrapNumber = function(n, min, max){
-    var r = max - min;
-    return (min + ((((n - min) % r) + r) % r));
-};
 // distance
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));

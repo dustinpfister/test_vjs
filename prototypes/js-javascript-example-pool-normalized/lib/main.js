@@ -23,9 +23,9 @@ POOL_OPT.spawn = function (unit, pool, sm, spawnOpt) {
         unit.x = canvas.width / 2;
         unit.y = canvas.height / 2;
         // heading
-        unit.heading = Math.PI * 2 * Math.random();
+        unit.heading = utils.PI2 * Math.random();
         // speed
-        unit.pps = 32 + 128 * Math.random();
+        unit.pps = utils.valueByRange(Math.random(), [32, 256]);
 };
 // update a unit
 POOL_OPT.update = function (unit, pool, sm, secs) {

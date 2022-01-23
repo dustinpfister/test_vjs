@@ -240,4 +240,3 @@ var poolMod = (function () {
     return api;
 }
     ());
-

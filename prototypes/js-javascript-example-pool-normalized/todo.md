@@ -12,4 +12,4 @@
 <!-- MVP -->
 
 ## r0 - Start with clean example 
-* start with r2 of js-javascript-example-digital-art-invaders
+* start with r5 of js-javascript-example-digital-art-invaders

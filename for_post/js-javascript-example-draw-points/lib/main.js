@@ -1,10 +1,7 @@
-
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 document.getElementById('canvas-app').appendChild(canvas);
-canvas.width = 640;
-canvas.height = 480;
-
+canvas.width = 640; canvas.height = 480;
 var sm = {
    ver: 'r3',
    objects: []
@@ -12,10 +9,8 @@ var sm = {
 // using the pointMod.createEllipse method
 sm.objects.push(pointMod.createEllipse({
     points: 40,
-    r1: 300,
-    r2: 75,
-    x: canvas.width / 2,
-    y: canvas.height / 2
+    r1: 300, r2: 75,
+    x: canvas.width / 2, y: canvas.height / 2
 }));
 // creating a points object manually
 sm.objects.push([
@@ -24,12 +19,8 @@ sm.objects.push([
 ]);
 // drawing
 draw.background(ctx, canvas, 'blue');
-
+// using the draw points method
 sm.objects.forEach(function(points){
     draw.points(ctx, points, 0, 0);
 });
-
-// using the draw points method
-//draw.points(ctx, ellipse, canvas.width / 2, canvas.height / 2);
-//draw.points(ctx, arr, 100, 10);
 draw.ver(sm, ctx, canvas);

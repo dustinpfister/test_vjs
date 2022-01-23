@@ -1,10 +1,10 @@
 var draw = (function(){
-
-    var LINE_WIDTH = 3,
+    // hard settings
+    var BACKGROUND_COLOR = 'gray',
+    LINE_WIDTH = 3,
     STROKE_STYLE = 'black',
     FILL_STYLE = 'white',
     TEXT_COLOR = 'yellow';
-
     // draw disp
     var drawDisp = function(sm, disp, ctx, canvas){
         // if the object is active
@@ -30,12 +30,11 @@ var draw = (function(){
     var api = {};
     // draw the background
     api.background = function (sm, ctx, canvas) {
-        ctx.fillStyle = 'black'; //bg;
+        ctx.fillStyle = BACKGROUND_COLOR;
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
     };
     // draw the pool
     api.pool = function (sm, pool, ctx, canvas) {
-        //var pool = game.units;
         ctx.lineWidth = LINE_WIDTH;
         pool.objects.forEach(function (obj) {
             ctx.fillStyle = obj.data.fillStyle || FILL_STYLE;

@@ -14,7 +14,7 @@ POOL_OPT.spawn = function (unit, pool, sm, spawnOpt) {
         var canvas = sm.canvas;
         // usere defined data for this example
         var uDat = unit.data;
-        uDat.fillStyle = '#aa0000';
+        uDat.fillStyle = '#008888';
         uDat.alpha = 1;
         uDat.size = 32;
         // size and pos

@@ -47,13 +47,6 @@ var draw = (function(){
             ctx.arc(disp.x, disp.y, (disp.w + disp.h) / 2 / 2, 0, utils.PI2);
             ctx.fill();
             ctx.stroke();
-            // draw small circle over obj.x, obj.y
-/*
-            ctx.beginPath();
-            ctx.fillStyle = 'black';
-            ctx.arc(disp.x, disp.y, 2, 0, Math.PI * 2);
-            ctx.fill();
-*/
             // hp bar
             if(dDat.hp != undefined){
                var x = disp.x - disp.w / 2,

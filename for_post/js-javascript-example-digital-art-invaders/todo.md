@@ -35,6 +35,8 @@
 * pps should effect power values with unitMod.totalPower
 
 ### () - r6 - blast mode
+* remove any unused methods from utils
+
 * I will want to start a new shotMode called blast mode
 * a shell type will just go to a set location and once there will switch to blast mode
 * when a shot is in blast mode the w and h props of the shot will start at 0 and expand to maxSize

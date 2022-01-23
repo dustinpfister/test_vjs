@@ -1,4 +1,4 @@
-# js-javascript-example-pool-normalized
+# js-javascript-example-pool-normalized-units
 
 
 

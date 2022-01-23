@@ -1,0 +1,278 @@
+<html>
+    <head>
+        <title>javaScript example</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script>
+//******** **********
+//    utils
+//******** **********
+var utils = {};
+
+//-------- ----------
+//  Array
+//-------- ----------
+
+// chunk and array
+utils.chunk = function (arr, size) {
+    var chunkedArr = [];
+    arr = arr || [];
+    size = size === undefined ? 1 : size;
+    for (var i = 0; i < arr.length; i += size) {
+        chunkedArr.push(arr.slice(i, i + size));
+    }
+    return chunkedArr;
+};
+
+//-------- ----------
+//  Object
+//-------- ----------
+
+// parse an object with defaults
+utils.defaults = function(obj, defaults){
+    return Object.assign({}, defaults, obj);
+};
+//******** **********
+//    points
+//******** **********
+var pointMod = (function(){
+
+    var api = {};
+
+    // create box method
+    api.createBox = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, w: 50, h: 50, fill: 'white', stroke: 'black', lineWidth: 6
+        });
+        // push points
+        var points = [[]],
+        i = 0,
+        len = 2 * 4,
+        hw = opt.w / 2,
+        hh = opt.h / 2;
+        while(i < len){
+            var pi = Math.floor(i / 2),
+            yi = Math.floor(pi / 2),
+            y = (opt.y - hh) + yi * opt.h,
+            x = (opt.x - hw) + ( yi === 0 ? pi % 2 : 1 - pi % 2 ) * opt.w;
+            points[0].push(x, y);
+            i += 2;
+        }
+        // push style opttions for the line
+        points[0].push('fill:' + opt.fill);
+        points[0].push('stroke:' + opt.stroke);
+        points[0].push('lineWidth:' + opt.lineWidth);
+        // return box points
+        return points;
+    };
+
+    // a createBox2 method that almost creates the same output as createBox method using the createEllipse method
+    api.createBox2 = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, w: 50, h: 50, fill: 'white', stroke: 'black', lineWidth: 6, startDegree: 45 * 5
+        });
+        return api.createEllipse(utils.defaults({ r1: (opt.w / 2) * 1.4, r2: (opt.h / 2) * 1.4, points: 4 }, opt));
+    };
+
+    // create ellipse
+    api.createEllipse = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, startDegree: 0, r1: 160, r2: 120, points: 30, fill: 'white', stroke: 'black', lineWidth: 6
+        });
+        // push points
+        var points = [[]],
+        i = 0,
+        len = opt.points * 2,
+        radianStart = Math.PI / 180 * opt.startDegree;
+        while(i < len){
+            var radian = radianStart + Math.PI * 2 / opt.points * (i / 2),
+            x = Math.round(opt.x + Math.cos(radian) * opt.r1),
+            y = Math.round(opt.y + Math.sin(radian) * opt.r2);
+            points[0].push(x, y);
+            i += 2;
+        }
+        // push style options for the line
+        points[0].push('fill:' + opt.fill);
+        points[0].push('stroke:' + opt.stroke);
+        points[0].push('lineWidth:' + opt.lineWidth);
+        points[0].push('close:true');
+        // return ellipse points
+        return points;        
+
+    };
+
+
+    // return a new points object that is numbers only
+    api.numbersOnly = function(points){
+        return points.map(function(line){
+            return line.filter(function(el){
+                return typeof el === 'number';
+            });
+        });
+    };
+
+    api.newChunked = function(points){
+        var nPoints = pointMod.numbersOnly( points );
+        return nPoints.map(function(line){
+            return utils.chunk( line, 2 );
+        });
+    };
+
+    // translate a single point with the given points object along with line and point index values
+    // by the given set of deltas
+    api.translatePT = function(points, lineIndex, ptIndex, dx, dy){
+        var line = points[lineIndex],
+        i = ptIndex * 2;
+        line[i] += dx;
+        line[i + 1] += dy;
+    };
+
+    // translate points
+    api.translatePoints = function(points, dx, dy){
+        points.forEach(function(line){
+            line.forEach(function(el, i){
+                if(typeof el === 'number'){
+                    if(i % 2 === 0){
+                       el += dx;
+                    }else{
+                       el += dy;
+                    }
+                    line[i] = Math.round(el);
+                }
+            });
+        });
+    };
+
+    // return the public api
+    return api;
+
+}());
+
+//******** **********
+//    draw
+//******** **********
+var draw = (function(){
+
+    var api = {};
+
+    // draw a background
+    api.background = function(ctx, canvas, style){
+        ctx.fillStyle = style || 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+
+    // draw version number
+    api.ver = function (sm, ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '14px arial';
+        ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
+    };
+
+    api.points = function (ctx, points, cx, cy, opt) {
+        opt = opt || {};
+        ctx.save();
+        ctx.translate(cx, cy);
+        // for each line in points
+        points.forEach(function (pointArray) {
+            // number of items in the array of point values/commands
+            var len = pointArray.length,
+            close = opt.close === undefined ? true : opt.close,
+            fill = opt.fill === undefined ? 'black' : opt.fill,
+            stroke = opt.stroke === undefined ? 'white' : opt.stroke,
+            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
+            el,
+            i = 2;
+            ctx.beginPath();
+            ctx.moveTo(pointArray[0], pointArray[1]);
+            // loop over the line
+            while (i < len) {
+                el = pointArray[i];
+                if (typeof el === 'number') {
+                    ctx.lineTo(el, pointArray[i + 1]);
+                    // step by two if numbers
+                    i += 2;
+                } else {
+                    var parts = el.split(':');
+                    if (parts[0] === 'close') {
+                        close = parts[1] === 'true' ? true : false;
+                    }
+                    if (parts[0] === 'stroke') {
+                        stroke = parts[1] || false;
+                    }
+                    if (parts[0] === 'fill') {
+                        fill = parts[1] || false;
+                        if(parts[1].toLowerCase() === 'false'){
+                            fill = false;
+                        }
+                    }
+                    if (parts[0] === 'lineWidth') {
+                        lineWidth = parts[1] || 1;
+                    }
+                    // step by one if one of these values
+                    i += 1;
+                }
+            }
+            ctx.lineWidth = lineWidth;
+            if (close) {
+                ctx.closePath();
+            }
+            if (fill) {
+                ctx.fillStyle = fill;
+                ctx.fill();
+            }
+            if (stroke) {
+                ctx.strokeStyle = stroke;
+                ctx.stroke();
+            }
+        });
+        ctx.restore();
+    };
+
+    // return the public api
+    return api;
+
+}());
+
+//******** **********
+//    main
+//******** **********
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+document.getElementById('canvas-app').appendChild(canvas);
+canvas.width = 640; canvas.height = 480;
+var sm = {
+   ver: 'r3',
+   objects: []
+};
+// using the pointMod.createEllipse method
+sm.objects.push(pointMod.createEllipse({
+    points: 40,
+    r1: 300, r2: 75,
+    x: canvas.width / 2, y: canvas.height / 2
+}));
+// creating a points object manually
+sm.objects.push([
+    [25, 75, 175, 50, 17, 110, 'fill:red', 'stroke:lime'],
+    [100, 20, 165, 25, 22, 130, 300, 130, 300, 20, 'fill:false', 'close:false']
+]);
+// drawing
+draw.background(ctx, canvas, 'blue');
+// using the draw points method
+sm.objects.forEach(function(points){
+    draw.points(ctx, points, 0, 0);
+});
+draw.ver(sm, ctx, canvas);
+
+        </script>
+
+    </body>
+</html>

@@ -34,14 +34,18 @@
 
 * pps should effect power values with unitMod.totalPower
 
-### () - r6 - blast mode
-* (done) remove any unused methods from utils
 
+### () - r7 - blast mode
 * I will want to start a new shotMode called blast mode
 * a shell type will just go to a set location and once there will switch to blast mode
 * when a shot is in blast mode the w and h props of the shot will start at 0 and expand to maxSize
 * the hitPool will be checked while a shot is in blast mode, and any unit in the current blast area will take damage
 * damage applied to units will be based on distance from shot center
+
+### () - r6 - general code clean up
+* (done) remove any unused methods from utils
+* (done) remove unused methods from pool-normalized
+
 
 ### ( done 01/17/2022 ) - r5 - unit sub types, bullet and shell shot types
 * (done) have a unitMod.coreStats helper that will parse a core common set of stats

@@ -5,7 +5,11 @@
 
 <!-- Mantanace / new features  -->
 
-## () - r3 -
+## () - r3 - points.js
+* (done) have a points.js lib for this example
+* (done) use the points.js file in the mian demo
+* still have an object literal example of the points object standard
+
 
 ## ( done 01/19/2022 ) - r2 - fix #0
 * (done) fix #0 fill:false bug

@@ -9,6 +9,18 @@ var sm = {
    ver: 'r3'
 };
 
+var ellipse = pointMod.createEllipse({
+    points: 40,
+    r1: 300,
+    r2: 75
+});
+
+draw.background(ctx, canvas, 'blue');
+draw.points(ctx, ellipse, canvas.width / 2, canvas.height / 2);
+draw.ver(sm, ctx, canvas);
+
+
+/*
 // literal of a points array
 var points = [
     [25, 75, 175, 50, 17, 210, 'fill:red', 'stroke:lime'],
@@ -35,9 +47,8 @@ var demoMethod = function () {
     }
     return points
 };
-
-draw.background(ctx, canvas, 'blue');
-draw.points(ctx, points, 80, 5);
-draw.ver(sm, ctx, canvas);
-
-draw.points(ctx, demoMethod(), 300, 150);
+*/
+//draw.background(ctx, canvas, 'blue');
+//draw.points(ctx, points, 80, 5);
+//draw.ver(sm, ctx, canvas);
+//draw.points(ctx, demoMethod(), 300, 150);

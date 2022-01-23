@@ -3,7 +3,7 @@ ctx = canvas.getContext('2d');
 document.getElementById('canvas-app').appendChild(canvas);
 canvas.width = 640; canvas.height = 480;
 var sm = {
-   ver: 'r3',
+   ver: 'r4',
    objects: []
 };
 // using the pointMod.createEllipse method

@@ -5,6 +5,10 @@
 
 <!-- Maintenance / new features  -->
 
+## () - r4 - basic demo of the draw points method
+* start a simple hello world style demo of the draw points method and wrote a section of that before the current demo
+* expand on the older demo and make it more about the various constructor, and mutation methods of points.js
+
 ## ( done 01/23/2022 ) - r3 - points.js
 * (done) have a points.js lib for this example
 * (done) use the points.js file in the mian demo

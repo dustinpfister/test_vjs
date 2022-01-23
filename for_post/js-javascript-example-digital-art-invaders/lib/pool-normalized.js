@@ -76,29 +76,6 @@ var poolMod = (function () {
         }
         return false;
     };
-    // spawn all objects
-    api.spawnAll = function(pool, state, opt){
-        state = state || pool.game || {};
-        pool.objects.forEach(function(obj){
-            if (!obj.active) {
-                obj.active = true;
-                pool.spawn.call(pool, obj, pool, state, opt);
-                return obj;
-            }
-        });
-        return pool.objects;
-    };
-    // spawn all objects
-    api.purgeAll = function(pool, state, opt){
-        state = state || pool.game || {};
-        pool.objects.forEach(function(obj){
-            if (!obj.active) {
-                obj.active =  false;
-                pool.purge.call(pool, obj, pool, state);
-            }
-        });
-        return pool.objects;
-    };
     // update a pool object by a secs value
     api.update = function (pool, secs, state) {
         var i = pool.objects.length,
@@ -129,16 +106,6 @@ var poolMod = (function () {
         // call afterUpdate hook
         pool.afterUpdate.call(pool, pool, secs, state);
     };
-    // set all to inActive or active state
-    api.setActiveStateForAll = function (pool, bool) {
-        bool = bool === undefined ? false : bool;
-        var i = pool.objects.length,
-        obj;
-        while (i--) {
-            obj = pool.objects[i];
-            obj.active = bool;
-        }
-    };
     // get active objects from a pool
     api.getActiveObjects = function(pool, bool){
         bool = bool === undefined ? true : bool;
@@ -148,10 +115,6 @@ var poolMod = (function () {
             }
             return acc;
         }, []);
-    };
-    // get a current active count for a pool
-    api.getActiveCount = function(pool, bool){
-        return api.getActiveObjects(pool, bool).length;
     };
 //******** **********
 //  DISP OBJECT METHODS
@@ -168,14 +131,6 @@ var poolMod = (function () {
         x2 = obj2.x - obj2.w / 2,
         y2 = obj2.y - obj2.h / 2;
         return utils.boundingBox(x1, y1, obj.w, obj.h, x2, y2, obj2.w, obj2.h);
-    };
-    // wrap an object to an area like a canvas
-    api.wrap = function(obj, area, space){
-        area = area || {x: 0, y: 0, width: 640, height: 480 };
-        space = space === undefined ? 0 : space;
-        // using new utils.wrapNumber method
-        obj.x = utils.wrapNumber(obj.x, 0 - space, area.width + space);
-        obj.y = utils.wrapNumber(obj.y, 0 - space, area.height + space);
     };
     // purge an object ( make it inactive and call the purge method for the pool )
     api.purge = function(obj, state){
@@ -229,12 +184,6 @@ var poolMod = (function () {
             y2 = b;
         }
         return Math.atan2(y2 - disp.y, x2 - disp.x);
-    };
-    // center the disp to the given areaObj, the areaObj can be a canvas
-    api.centerDisp = function(obj, areaObj){
-        areaObj = areaObj === undefined ? {width: 0, height: 0} : areaObj;
-        obj.x = areaObj.width / 2;
-        obj.y = areaObj.height / 2;
     };
     // return public method
     return api;

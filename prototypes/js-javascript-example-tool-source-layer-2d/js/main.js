@@ -21,13 +21,14 @@ var sm = {
     canvas: canvas,
     ctx: ctx,
     down: false,
+    size: 3,
     color: 'black'
 };
 
 var paintAt = function(sm, pos){
     var ctx = sm.ctx;
     ctx.beginPath();
-    ctx.arc(pos.x, pos.y, 2, 0, Math.PI * 2);
+    ctx.arc(pos.x, pos.y, sm.size, 0, Math.PI * 2);
     ctx.fill();
 };
 
@@ -63,3 +64,8 @@ var pointerUp = function(e){
 canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mousemove', pointerMove);
 canvas.addEventListener('mouseup', pointerUp);
+
+// clear button
+document.getElementById('ui-draw-clear').addEventListener('click', function(){
+   sm.ctx.clearRect(-1, -1, sm.canvas.width + 2, sm.canvas.height + 2);
+});

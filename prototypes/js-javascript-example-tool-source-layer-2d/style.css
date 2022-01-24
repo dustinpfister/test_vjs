@@ -1,9 +1,13 @@
 .ui{
+  display: inline-block;
+  float:left;
   background:gray;
   margin:10px;
   padding:10px;
 }
 #area-canvas{
+  display: inline-block;
+  float:left;
   background:gray;
   padding:0px;
   width: 680px;

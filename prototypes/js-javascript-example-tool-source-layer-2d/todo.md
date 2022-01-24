@@ -12,7 +12,7 @@
 ## ( ) - r4 - draw am ui
 * set size of brush
 * set color of brush
-* have a clear draw canvas button
+
 * have an eraser tool
 
 ## ( ) - r3 - 'fill' and 'fit' bgModes
@@ -31,3 +31,4 @@
 * (done) use the file input element type to load and image to draw in the 'source layer'
 * (done) have a canvas element on top of the source layer that will serve as a 'draw layer'
 * (done) for now have it so that each mouse or touch move while down will cause a circle to draw there with a single color
+* (done) have a clear draw canvas button

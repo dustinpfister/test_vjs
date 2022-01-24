@@ -88,10 +88,21 @@ var sourceLayer = (function(){
         });
     };
 
+    // zoom hander
     api.appendZoomHandler = function(source, fileEl){
         var fileEl = resolveElRef(fileEl);
         fileEl.addEventListener('input', function(e){
             source.zoom = e.target.value
+            draw(source);
+            source.onUpdate.call(source, source);
+        });
+    };
+
+    // rotation
+    api.appendRotationHandler = function(source, fileEl){
+        var fileEl = resolveElRef(fileEl);
+        fileEl.addEventListener('input', function(e){
+            source.radian = Math.PI * 2 * (parseFloat(e.target.value) / 1);
             draw(source);
             source.onUpdate.call(source, source);
         });

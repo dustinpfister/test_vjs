@@ -9,14 +9,19 @@ var POOL_OPT = {
     disableLifespan: true
 };
 // on spawn
+var modes = ['wrap', 'clamp'],
+mIndex = 0;
 POOL_OPT.spawn = function (unit, pool, sm, spawnOpt) {
         spawnOpt = spawnOpt || {};
         var canvas = sm.canvas;
         // usere defined data for this example
         var uDat = unit.data;
-        uDat.fillStyle = '#008888';
         uDat.alpha = 1;
         uDat.size = 32;
+        uDat.mode = modes[mIndex];
+        uDat.fillStyle = uDat.mode === 'wrap' ? '#008888' : '#880088';
+        mIndex += 1;
+        mIndex = utils.mod(mIndex, modes.length);
         // size and pos
         unit.w = uDat.size;
         unit.h = uDat.size;
@@ -29,10 +34,17 @@ POOL_OPT.spawn = function (unit, pool, sm, spawnOpt) {
 };
 // update a unit
 POOL_OPT.update = function (unit, pool, sm, secs) {
-    poolMod.moveByPPS(unit, secs);
-    //poolMod.wrap(unit, sm.canvas, unit.data.size)
+    var uDat = unit.data;
 
-    poolMod.clamp(unit, sm.canvas, unit.data.size / 2 * -1);
+    poolMod.moveByPPS(unit, secs);
+
+    if(uDat.mode === 'wrap'){
+        poolMod.wrap(unit, sm.canvas, unit.data.size)
+    }
+    if(uDat.mode === 'clamp'){
+        poolMod.clamp(unit, sm.canvas, unit.data.size / 2 * -1);
+    }
+
 };
 
 // main sm object

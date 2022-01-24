@@ -29,31 +29,6 @@ var source = sourceLayer.create({
 
 sourceLayer.appendImageHandler(source, '#ui-background-image');
 
-// load a background image
-/*
-var bgImageInput = document.getElementById('ui-background-image'); 
-bgImageInput.addEventListener('change', function(e){
-   var files = e.target.files,
-   file = files[0];
-   var reader = new FileReader();
-   reader.addEventListener('load', function () {
-
-      var img = sm.background.image = new Image();
-      img.src = reader.result;
-      img.addEventListener('load', function(){
-          // parse background with image and canvas
-          sm.background = draw.BGParseOpt(sm.background, canvas);
-          // set current state
-          setState(sm, sm.currentState);
-      });
-
-  }, false);
-
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-});
-*/
 
         </script>
     </body>

@@ -5,8 +5,8 @@ var sourceLayer = (function(){
         source.sy = 0;
         source.sw = source.image.width;
         source.sh = source.image.height;
-        source.dx = 0;
-        source.dy = 0;
+        source.dx = source.canvas.width / 2;
+        source.dy = source.canvas.height / 2;
         source.dw = source.sw;
         source.dh = source.sh;
     };
@@ -27,15 +27,14 @@ var sourceLayer = (function(){
         // clear source layer
         ctx.clearRect(-1, -1 , canvas.width + 2, canvas.height + 2);
         // draw source image to layer with current settings
-        ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, source.dx, source.dy, source.dw, source.dh);
-
-//ctx.drawImage(source.image, 0, 0)
-
-
-
-//ctx.fillStyle = 'black';
-//ctx.fillRect(0,0, 100, 100);
-
+        ctx.save();
+        ctx.translate(source.dx, source.dy);
+        var w = source.dw,
+        h = source.dh,
+        x = w / 2 * -1,
+        y = h / 2 * -1;
+        ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, x, y, w, h);
+        ctx.restore();
     };
 
     var api = {};

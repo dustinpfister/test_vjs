@@ -1,0 +1,254 @@
+<html>
+    <head>
+        <title>Source Layer</title>
+        <style>
+.ui{
+  display: inline-block;
+  float:left;
+  background:gray;
+  margin:10px;
+  padding:10px;
+}
+#area-canvas{
+  display: inline-block;
+  float:left;
+  background:gray;
+  padding:0px;
+  width: 680px;
+  height: 520px;
+}
+.canvas-layer{
+  margin: 20px;
+  position:absolute;
+  outline: 1px solid #000000;
+  width: 640px;
+  height: 480px;
+}
+        </style>
+    </head>
+    <body>
+        <!-- canvas -->
+        <div id="area-canvas">
+            <canvas id="canvas-source" class="canvas-layer"></canvas>
+            <canvas id="canvas-draw"  class="canvas-layer"></canvas>
+        </div>
+        <!-- UI -->
+
+            <!-- out -->
+            <div id="ui-out" class="ui">
+            </div>
+            <!-- background -->
+            <div id="ui-background" class="ui">
+                <span>Background Image:</span><br>
+                <input id="ui-background-image" type="file"><br><br>
+
+                <input id="ui-background-zoom" type="range" value="1" min="0" max="4" step="0.05">
+                <span>Zoom</span><br>
+
+                <input id="ui-background-rotation" type="range" value="0" min="0" max="1" step="0.01">
+                <span>Rotation</span><br>
+            </div>
+            <div id="ui-draw" class="ui">
+                <span>Draw:</span><br>
+                <input id="ui-draw-clear" type="button" value="clear"><br><br>
+            </div>
+
+<script>
+//-------- ----------
+// source-layer.js
+//-------- ----------
+var sourceLayer = (function(){
+
+    var api = {
+       ver: 'r0'
+    };
+
+    var ON_IMAGE_LOAD = function(source){
+        source.sx = 0;
+        source.sy = 0;
+        source.sw = source.image.width;
+        source.sh = source.image.height;
+        source.dx = source.canvas.width / 2;
+        source.dy = source.canvas.height / 2;
+        source.dw = source.sw;
+        source.dh = source.sh;
+    };
+
+    var resolveElRef = function(elRef){
+        if(typeof elRef === 'object' && elRef != null){
+            return elRef
+        }
+        if(typeof elRef === 'string'){
+            return document.querySelector(elRef);
+        }
+        return null
+    };
+
+    var draw = function(source){
+        var canvas = source.canvas,
+        ctx = source.ctx;
+        // clear source layer
+        ctx.clearRect(-1, -1 , canvas.width + 2, canvas.height + 2);
+        // draw source image to layer with current settings
+
+        ctx.save();
+        ctx.translate(source.dx, source.dy);
+        ctx.rotate(source.radian)
+        var w = source.dw * source.zoom,
+        h = source.dh * source.zoom,
+        x = w / 2 * -1,
+        y = h / 2 * -1;
+        if(source.image){
+            ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, x, y, w, h);
+        }
+        ctx.restore();
+
+    };
+
+    api.create = function(opt){
+        opt = opt || {};
+        var source = {
+            canvas: null,
+            ctx: null,
+            zoom: 1,
+            radian: 0,
+            image: null,
+            sx: 0, sy: 0, sw: 100, sh: 100, dx: 0, dy: 0, dw: 100, dh: 100,
+            onImageLoad: opt.onImageLoad || ON_IMAGE_LOAD,
+            onUpdate: opt.onUpdate || function(source){}
+        };
+        source.canvas = resolveElRef(opt.canvas);
+        if(source.canvas){
+            source.canvas.width = opt.width;
+            source.canvas.height = opt.height;
+            source.ctx = source.canvas.getContext('2d');
+        }
+        return source;
+
+    };
+
+    // append image hander
+    api.appendImageHandler = function(source, fileEl){
+        var fileEl = resolveElRef(fileEl);
+        fileEl.addEventListener('change', function(e){
+            var files = e.target.files,
+            file = files[0];
+            var reader = new FileReader();
+            reader.addEventListener('load', function () {
+                var img = source.image = new Image();
+                img.src = reader.result;
+                img.addEventListener('load', function(){
+                    source.onImageLoad.call(source, source)
+                    draw(source);
+                    source.onUpdate.call(source, source);
+                });
+            }, false);
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    };
+
+    // zoom hander
+    api.appendZoomHandler = function(source, fileEl){
+        var fileEl = resolveElRef(fileEl);
+        fileEl.addEventListener('input', function(e){
+            source.zoom = e.target.value
+            draw(source);
+            source.onUpdate.call(source, source);
+        });
+    };
+
+    // rotation
+    api.appendRotationHandler = function(source, fileEl){
+        var fileEl = resolveElRef(fileEl);
+        fileEl.addEventListener('input', function(e){
+            source.radian = Math.PI * 2 * (parseFloat(e.target.value) / 1);
+            draw(source);
+            source.onUpdate.call(source, source);
+        });
+    };
+
+
+    return api;
+
+}());
+//-------- ----------
+// main.js
+//-------- ----------
+// source layer set up
+var source = sourceLayer.create({
+   canvas: '#canvas-source',
+   width: 640, height: 480,
+   onUpdate: function(source){
+   }
+});
+sourceLayer.appendImageHandler(source, '#ui-background-image');
+sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
+sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
+
+// out
+document.querySelector('#ui-out').innerText = 'version: ' + sourceLayer.ver;
+
+// draw layer
+var canvas = document.querySelector('#canvas-draw'),
+ctx = canvas.getContext('2d');
+canvas.width = 640;
+canvas.height = 480;
+var sm = {
+    canvas: canvas,
+    ctx: ctx,
+    down: false,
+    size: 3,
+    color: 'black'
+};
+
+var paintAt = function(sm, pos){
+    var ctx = sm.ctx;
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, sm.size, 0, Math.PI * 2);
+    ctx.fill();
+};
+
+// get position helper
+var getPos = function(e){
+    var bx = e.target.getBoundingClientRect(),
+    pos = {};
+    if(e.touches){
+        pos.x = e.touches[0].clientX;
+        pos.y = e.touches[0].clientY;
+    }else{
+        pos.x = e.clientX;
+        pos.y = e.clientY;
+    }
+    pos.x = pos.x - bx.left;
+    pos.y = pos.y - bx.top;
+    return pos;
+};
+
+var pointerDown = function(e){
+    sm.down = true;
+    paintAt(sm, getPos(e));
+};
+var pointerMove = function(e){
+    if(sm.down){
+        paintAt(sm, getPos(e));
+    }
+};
+var pointerUp = function(e){
+    sm.down = false;
+};
+
+canvas.addEventListener('mousedown', pointerDown);
+canvas.addEventListener('mousemove', pointerMove);
+canvas.addEventListener('mouseup', pointerUp);
+
+// clear button
+document.getElementById('ui-draw-clear').addEventListener('click', function(){
+   sm.ctx.clearRect(-1, -1, sm.canvas.width + 2, sm.canvas.height + 2);
+});
+
+
+</script>
+    </body>
+</html>

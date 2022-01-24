@@ -25,7 +25,7 @@
 * start bgModes starting with a custom mode that should be able to set anything
 * have text input elements for sx, sy, sw, sh, dx, dy, dw, and dh
 
-## ( ) - r0 - Basic idea working
+## ( done 01/24/2022 ) - r0 - Basic idea working
 * (done) have a canvas element that will serve as a 'source layer'
 * (done) have a div area that will serve as a ui for the 'source layer'
 * (done) use the file input element type to load and image to draw in the 'source layer'

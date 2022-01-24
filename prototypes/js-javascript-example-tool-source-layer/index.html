@@ -15,7 +15,8 @@
                 <span>Background Image:</span><br>
                 <input id="ui-background-image" type="file"><br><br>
 
-                <input id="ui-background-zoom" type="range" min="0" max="4" step="0.05">
+                <input id="ui-background-zoom" type="range" value="1" min="0" max="4" step="0.05">
+                <span>Zoom</span><br>
 
             </div>
         </div>
@@ -26,7 +27,6 @@ var source = sourceLayer.create({
    canvas: '#canvas-source',
    width: 640, height: 480,
    onUpdate: function(source){
-        //console.log(source);
    }
 });
 

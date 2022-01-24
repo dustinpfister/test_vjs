@@ -30,7 +30,9 @@ POOL_OPT.spawn = function (unit, pool, sm, spawnOpt) {
 // update a unit
 POOL_OPT.update = function (unit, pool, sm, secs) {
     poolMod.moveByPPS(unit, secs);
-    poolMod.wrap(unit, sm.canvas, unit.data.size)
+    //poolMod.wrap(unit, sm.canvas, unit.data.size)
+
+    poolMod.clamp(unit, sm.canvas);
 };
 
 // main sm object

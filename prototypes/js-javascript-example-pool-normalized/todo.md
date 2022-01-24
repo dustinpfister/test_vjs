@@ -9,8 +9,10 @@
 <!-- Additonal Features -->
 
 ## () - r1 - poolMod.clamp
-* have a poolMod.clamp method for the library on top of just poolMod.wrap
 * (done) make it so that the ver string is part of the library rather than main.js
+* have a poolMod.clamp method for the library on top of just poolMod.wrap
+* have some units clamp rather than wrap in the demo
+* with the clamped units have them get new headings when they hit a side
 
 <!-- MVP -->
 

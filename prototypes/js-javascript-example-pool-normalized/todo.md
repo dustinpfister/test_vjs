@@ -3,10 +3,9 @@
 ## Known bugs
 * #0 - 
 
+<!-- Additonal Features / Maintenance -->
 
-<!-- Maintenance -->
-
-<!-- Additonal Features -->
+## () - r2 - 
 
 ## ( done 01/24/2022 ) - r1 - poolMod.clamp, and poolMod.isOnEdge
 * (done) make it so that the ver string is part of the library rather than main.js

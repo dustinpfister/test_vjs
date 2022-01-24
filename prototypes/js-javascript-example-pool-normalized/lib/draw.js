@@ -50,7 +50,7 @@ var draw = (function(){
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '14px arial';
-        ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
+        ctx.fillText('version: ' + poolMod.ver, 5, canvas.height - 15);
     };
     // return public api
     return api;

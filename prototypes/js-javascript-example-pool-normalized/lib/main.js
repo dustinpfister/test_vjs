@@ -35,7 +35,6 @@ POOL_OPT.update = function (unit, pool, sm, secs) {
 
 // main sm object
 var sm = {
-    ver: 'r1',
     lt: new Date(),
     fps: 30,
     pool: poolMod.create(POOL_OPT),

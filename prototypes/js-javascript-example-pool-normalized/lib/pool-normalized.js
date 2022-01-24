@@ -1,6 +1,8 @@
 var poolMod = (function () {
     // Public API
-    var api = {};
+    var api = {
+        ver: 'r1'
+    };
     // get next inactive object in the given pool
     var getInactive = function (pool) {
         var i = pool.objects.length,

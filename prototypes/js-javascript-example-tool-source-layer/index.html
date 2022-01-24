@@ -9,9 +9,13 @@
             <canvas id="canvas-source" class="canvas-layer"></canvas>
             <canvas id="canvas-draw"  class="canvas-layer"></canvas>
         </div>
-        <!-- JSON state and Background -->
+        <!-- UI -->
         <div>
-            <div id="ui-background">
+            <!-- out -->
+            <div id="ui-out" class="ui">
+            </div>
+            <!-- background -->
+            <div id="ui-background" class="ui">
                 <span>Background Image:</span><br>
                 <input id="ui-background-image" type="file"><br><br>
 
@@ -20,22 +24,46 @@
 
                 <input id="ui-background-rotation" type="range" value="0" min="0" max="1" step="0.01">
                 <span>Rotation</span><br>
-
             </div>
         </div>
         <script src="source-layer.js"></script>
         <script>
 
+// source layer set up
 var source = sourceLayer.create({
    canvas: '#canvas-source',
    width: 640, height: 480,
    onUpdate: function(source){
    }
 });
-
 sourceLayer.appendImageHandler(source, '#ui-background-image');
 sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
 sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
+
+// out
+document.querySelector('#ui-out').innerText = 'version: ' + sourceLayer.ver;
+
+// draw layer
+var canvas = document.querySelector('#canvas-draw'),
+ctx = canvas.getContext('2d');
+
+var sm = {
+   down: false
+};
+
+var pointerDown = function(e){
+
+};
+var pointerMove = function(e){
+
+};
+var pointerUp = function(e){
+
+};
+
+canvas.addEventListener('mousedown', pointerDown);
+canvas.addEventListener('mousemove', pointerMove);
+canvas.addEventListener('mouseup', pointerUp);
 
 
         </script>

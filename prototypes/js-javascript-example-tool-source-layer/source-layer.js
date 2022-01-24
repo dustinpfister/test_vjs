@@ -1,5 +1,9 @@
 var sourceLayer = (function(){
 
+    var api = {
+       ver: 'r0'
+    };
+
     var ON_IMAGE_LOAD = function(source){
         source.sx = 0;
         source.sy = 0;
@@ -41,8 +45,6 @@ var sourceLayer = (function(){
         ctx.restore();
 
     };
-
-    var api = {};
 
     api.create = function(opt){
         opt = opt || {};

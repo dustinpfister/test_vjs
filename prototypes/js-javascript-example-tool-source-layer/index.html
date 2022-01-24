@@ -20,10 +20,11 @@
         <script>
 
 var source = sourceLayer.create({
-   canvas: '#canvas-source'
+   canvas: '#canvas-source',
+   onUpdate: function(source){
+        console.log(source);
+   }
 });
-
-console.log(source);
 
 sourceLayer.appendImageHandler(source, '#ui-background-image');
 

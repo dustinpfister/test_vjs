@@ -29,6 +29,7 @@ var sourceLayer = (function(){
         // draw source image to layer with current settings
         ctx.save();
         ctx.translate(source.dx, source.dy);
+        ctx.rotate(source.radian)
         var w = source.dw,
         h = source.dh,
         x = w / 2 * -1,
@@ -45,7 +46,7 @@ var sourceLayer = (function(){
             canvas: null,
             ctx: null,
             zoom: 1,
-            radian: 0,
+            radian: Math.PI / 180 * 45,
             image: null,
             sx: 0, sy: 0, sw: 100, sh: 100, dx: 0, dy: 0, dw: 100, dh: 100,
             onImageLoad: opt.onImageLoad || ON_IMAGE_LOAD,

@@ -27,6 +27,7 @@ var sourceLayer = (function(){
         // clear source layer
         ctx.clearRect(-1, -1 , canvas.width + 2, canvas.height + 2);
         // draw source image to layer with current settings
+
         ctx.save();
         ctx.translate(source.dx, source.dy);
         ctx.rotate(source.radian)
@@ -34,8 +35,11 @@ var sourceLayer = (function(){
         h = source.dh * source.zoom,
         x = w / 2 * -1,
         y = h / 2 * -1;
-        ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, x, y, w, h);
+        if(source.image){
+            ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, x, y, w, h);
+        }
         ctx.restore();
+
     };
 
     var api = {};
@@ -87,9 +91,9 @@ var sourceLayer = (function(){
     api.appendZoomHandler = function(source, fileEl){
         var fileEl = resolveElRef(fileEl);
         fileEl.addEventListener('input', function(e){
-
-console.log(e.target.value)
-
+            source.zoom = e.target.value
+            draw(source);
+            source.onUpdate.call(source, source);
         });
     };
 

@@ -180,16 +180,17 @@ var poolMod = (function () {
         obj.y = utils.wrapNumber(obj.y, 0 - space, area.height + space);
     };
     // clamp an object to an area like a canvas
-    api.clamp = function(obj, area){
+    api.clamp = function(obj, area, space){
         area = area || {x: 0, y: 0, width: 640, height: 480 };
         area = Object.assign({}, {x: area.x, y: area.y, width: area.width, height: area.height}, {x: 0, y: 0});
-        var xMin = area.x,
-        xMax = area.x + area.width,
-        yMin = area.y,
-        yMax = area.y + area.height;
+        space = space === undefined ? 0 : space;
+        var xMin = area.x - space,
+        xMax = area.x + area.width + space,
+        yMin = area.y - space,
+        yMax = area.y + area.height + space;
         if(obj.x < xMin){ obj.x = xMin; }
         if(obj.x > xMax){ obj.x = xMax; }
-        if(obj.y < area.y){ obj.y = yMin;}
+        if(obj.y < yMin){ obj.y = yMin;}
         if(obj.y > yMax){ obj.y = yMax; }
     };
     // purge an object ( make it inactive and call the purge method for the pool )

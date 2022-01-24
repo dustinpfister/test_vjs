@@ -32,7 +32,7 @@ POOL_OPT.update = function (unit, pool, sm, secs) {
     poolMod.moveByPPS(unit, secs);
     //poolMod.wrap(unit, sm.canvas, unit.data.size)
 
-    poolMod.clamp(unit, sm.canvas);
+    poolMod.clamp(unit, sm.canvas, unit.data.size / 2 * -1);
 };
 
 // main sm object

@@ -5,6 +5,10 @@ var sourceLayer = (function(){
         source.sy = 0;
         source.sw = source.image.width;
         source.sh = source.image.height;
+        source.dx = 0;
+        source.dy = 0;
+        source.dw = source.sw;
+        source.dh = source.sh;
     };
 
     var resolveElRef = function(elRef){

@@ -30,8 +30,8 @@ var sourceLayer = (function(){
         ctx.save();
         ctx.translate(source.dx, source.dy);
         ctx.rotate(source.radian)
-        var w = source.dw,
-        h = source.dh,
+        var w = source.dw * source.zoom,
+        h = source.dh * source.zoom,
         x = w / 2 * -1,
         y = h / 2 * -1;
         ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, x, y, w, h);
@@ -45,7 +45,7 @@ var sourceLayer = (function(){
         var source = {
             canvas: null,
             ctx: null,
-            zoom: 1,
+            zoom: 2,
             radian: Math.PI / 180 * 45,
             image: null,
             sx: 0, sy: 0, sw: 100, sh: 100, dx: 0, dy: 0, dw: 100, dh: 100,

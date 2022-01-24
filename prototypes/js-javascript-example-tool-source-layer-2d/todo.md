@@ -13,8 +13,6 @@
 * set size of brush
 * set color of brush
 
-* have an eraser tool
-
 ## ( ) - r3 - 'fill' and 'fit' bgModes
 
 ## ( ) - r2 - 'stretch' bgMode
@@ -22,8 +20,14 @@
 <!-- Minimum Viable Product -->
 
 ## ( ) - r1 - bgMode modes starting with 'custom', and 'center'
+<!-- source layer -->
 * start bgModes starting with a custom mode that should be able to set anything
 * have text input elements for sx, sy, sw, sh, dx, dy, dw, and dh
+<!-- draw -->
+* have an eraser tool for the draw app
+* make it so that sm.down will set to false when a mouse pointer leaves the canvas
+* touch events
+
 
 ## ( done 01/24/2022 ) - r0 - Basic idea working
 * (done) have a canvas element that will serve as a 'source layer'

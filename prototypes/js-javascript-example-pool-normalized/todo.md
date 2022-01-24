@@ -10,7 +10,7 @@
 
 ## () - r1 - poolMod.clamp
 * have a poolMod.clamp method for the library on top of just poolMod.wrap
-* make it so that the ver string is part of the library rather than main.js
+* (done) make it so that the ver string is part of the library rather than main.js
 
 <!-- MVP -->
 

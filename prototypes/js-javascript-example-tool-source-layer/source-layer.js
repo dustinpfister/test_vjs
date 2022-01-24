@@ -1,5 +1,12 @@
 var sourceLayer = (function(){
 
+    var ON_IMAGE_LOAD = function(source){
+        source.sx = 0;
+        source.sy = 0;
+        source.sw = source.image.width;
+        source.sh = source.image.height;
+    };
+
     var resolveElRef = function(elRef){
         if(typeof elRef === 'object' && elRef != null){
             return elRef
@@ -16,10 +23,14 @@ var sourceLayer = (function(){
         // clear source layer
         ctx.clearRect(-1, -1 , canvas.width + 2, canvas.height + 2);
         // draw source image to layer with current settings
-        //ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, source.dx, source.dy, source.dw, source.dh);
+        ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, source.dx, source.dy, source.dw, source.dh);
 
-ctx.fillStyle = 'black';
-ctx.fillRect(0,0, 100, 100);
+//ctx.drawImage(source.image, 0, 0)
+
+
+
+//ctx.fillStyle = 'black';
+//ctx.fillRect(0,0, 100, 100);
 
     };
 
@@ -33,7 +44,8 @@ ctx.fillRect(0,0, 100, 100);
             zoom: 1,
             radian: 0,
             image: null,
-            sx: 0, sy: 0, sw: 100, sh: 100, sx: 0, dx: 0, dw: 100, dh: 100,
+            sx: 0, sy: 0, sw: 100, sh: 100, dx: 0, dy: 0, dw: 100, dh: 100,
+            onImageLoad: opt.onImageLoad || ON_IMAGE_LOAD,
             onUpdate: opt.onUpdate || function(source){}
         };
         source.canvas = resolveElRef(opt.canvas);
@@ -57,6 +69,7 @@ ctx.fillRect(0,0, 100, 100);
                 var img = source.image = new Image();
                 img.src = reader.result;
                 img.addEventListener('load', function(){
+                    source.onImageLoad.call(source, source)
                     draw(source);
                     source.onUpdate.call(source, source);
                 });

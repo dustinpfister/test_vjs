@@ -42,7 +42,11 @@ POOL_OPT.update = function (unit, pool, sm, secs) {
         poolMod.wrap(unit, sm.canvas, unit.data.size)
     }
     if(uDat.mode === 'clamp'){
-        poolMod.clamp(unit, sm.canvas, unit.data.size / 2 * -1);
+        var space = unit.data.size / 2 * -1;
+        poolMod.clamp(unit, sm.canvas, space);
+        if(poolMod.isOnEdge(unit, sm.canvas, space)){
+            unit.heading = utils.PI2 * Math.random();
+        }
     }
 
 };

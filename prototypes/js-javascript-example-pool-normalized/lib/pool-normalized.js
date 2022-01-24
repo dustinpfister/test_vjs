@@ -193,6 +193,21 @@ var poolMod = (function () {
         if(obj.y < yMin){ obj.y = yMin;}
         if(obj.y > yMax){ obj.y = yMax; }
     };
+    // find out if an object is on edge or not with the given area and space values
+    api.isOnEdge = function(obj, area, space){
+        area = area || {x: 0, y: 0, width: 640, height: 480 };
+        area = Object.assign({}, {x: area.x, y: area.y, width: area.width, height: area.height}, {x: 0, y: 0});
+        space = space === undefined ? 0 : space;
+        var xMin = area.x - space,
+        xMax = area.x + area.width + space,
+        yMin = area.y - space,
+        yMax = area.y + area.height + space;
+        if(obj.x === xMin){ return true; }
+        if(obj.x === xMax){ return true; }
+        if(obj.y === yMin){ return true; }
+        if(obj.y === yMax){ return true; }
+        return false;
+    };
     // purge an object ( make it inactive and call the purge method for the pool )
     api.purge = function(obj, state){
         var pool = obj.pool;

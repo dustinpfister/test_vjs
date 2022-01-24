@@ -1,0 +1,13 @@
+#area-canvas{
+  background:gray;
+  padding:0px;
+  width: 680px;
+  height: 520px;
+}
+.canvas-layer{
+  margin: 20px;
+  position:absolute;
+  outline: 1px solid #000000;
+  width: 640px;
+  height: 480px;
+}

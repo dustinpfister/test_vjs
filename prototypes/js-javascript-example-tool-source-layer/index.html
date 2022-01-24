@@ -14,6 +14,9 @@
             <div id="ui-background">
                 <span>Background Image:</span><br>
                 <input id="ui-background-image" type="file"><br><br>
+
+                <input id="ui-background-zoom" type="range" min="0" max="4" step="0.05">
+
             </div>
         </div>
         <script src="source-layer.js"></script>
@@ -28,6 +31,7 @@ var source = sourceLayer.create({
 });
 
 sourceLayer.appendImageHandler(source, '#ui-background-image');
+sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
 
 
         </script>

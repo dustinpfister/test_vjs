@@ -45,8 +45,8 @@ var sourceLayer = (function(){
         var source = {
             canvas: null,
             ctx: null,
-            zoom: 2,
-            radian: Math.PI / 180 * 45,
+            zoom: 1,
+            radian: 0,
             image: null,
             sx: 0, sy: 0, sw: 100, sh: 100, dx: 0, dy: 0, dw: 100, dh: 100,
             onImageLoad: opt.onImageLoad || ON_IMAGE_LOAD,
@@ -81,6 +81,15 @@ var sourceLayer = (function(){
             if (file) {
                 reader.readAsDataURL(file);
             }
+        });
+    };
+
+    api.appendZoomHandler = function(source, fileEl){
+        var fileEl = resolveElRef(fileEl);
+        fileEl.addEventListener('input', function(e){
+
+console.log(e.target.value)
+
         });
     };
 

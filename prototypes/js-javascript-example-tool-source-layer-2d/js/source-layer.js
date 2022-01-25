@@ -47,12 +47,7 @@ var sourceLayer = (function(){
     MODES.custom = {
         controls: ['zoom', 'rotation', 'pos', 'size'],
         update: function(){
-            source.sx = 0;
-            source.sy = 0;
-            source.sw = source.image.width;
-            source.sh = source.image.height;
-            source.dw = source.sw;
-            source.dh = source.sh;
+
         }
     };
 
@@ -167,7 +162,7 @@ var sourceLayer = (function(){
         );
     };
 
-    var UpdateControlValuesForMode = function(source){
+    var UpdateControlValuesForMode = function(source, el){
         get('#ui-background-zoom').value = source.zoom;
         get('#ui-background-rotation').value = source.radian / (Math.PI * 2)
         get('#ui-background-dx').value = source.dx;
@@ -211,7 +206,7 @@ var sourceLayer = (function(){
         get('#ui-background-dh').addEventListener('input', createTextInputHander(source, el, 'dh'));
 
         displayControlsForMode(source, el);
-        UpdateControlValuesForMode(source);
+        UpdateControlValuesForMode(source, el);
     };
 
     // append image hander
@@ -228,7 +223,6 @@ var sourceLayer = (function(){
                     source.onImageLoad.call(source, source);
                     update(source);
                     draw(source);
-                    UpdateControlValuesForMode(source);
                     source.onUpdate.call(source, source);
                 });
             }, false);

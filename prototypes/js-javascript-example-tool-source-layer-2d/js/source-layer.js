@@ -7,8 +7,14 @@ var sourceLayer = (function(){
 
     var ON_IMAGE_LOAD = function(source){};
     var ON_UPDATE = function(source){};
-    var UI_HTML = '<span>Background Image:</span><br>' +
-                '<input id=\"ui-background-image\" type=\"file\"><br><br>' +
+    var UI_HTML = '<span>Background:</span><br><br>' +
+                'image: <input id=\"ui-background-image\" type=\"file\"><br><br>' +
+
+                'mode: <select id=\"input-background-mode\">' +
+                    '<option value=\"center\">Center</option>' +
+                    '<option value=\"custom\">Custom</option>' +
+                '</select><br><br>' +
+
                 '<input id=\"ui-background-zoom\" type=\"range\" value=\"1\" min=\"0\" max=\"4\" step=\"0.05\">' +
                 '<span>Zoom</span><br>' +
                 '<input id=\"ui-background-rotation\" type=\"range\" value=\"0\" min=\"0\" max=\"1\" step=\"0.01\">' +

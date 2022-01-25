@@ -172,6 +172,16 @@ var sourceLayer = (function(){
     };
 
 
+    var createTextInputHander = function(source, el, key){
+        return function(e){
+            source[key] = e.target.value;
+            update(source);
+            draw(source);
+            displayControlsForMode(source, el);
+            UpdateControlValuesForMode(source, el);
+        };
+    };
+
     
     // create an HTML User Interface for the given source object and append it to the given mount point
     api.createSourceUI = function(source, mountEl){
@@ -181,7 +191,7 @@ var sourceLayer = (function(){
         sourceLayer.appendImageHandler(source, '#ui-background-image');
         sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
         sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
-
+        // change mode
         el.querySelector('#input-background-mode').addEventListener('change', function(e){
             source.mode = e.target.value;
             update(source);
@@ -189,6 +199,11 @@ var sourceLayer = (function(){
             displayControlsForMode(source, el);
             UpdateControlValuesForMode(source, el);
         });
+
+        get('#ui-background-dx').addEventListener('input', createTextInputHander(source, el, 'dx'));
+        get('#ui-background-dy').addEventListener('input', createTextInputHander(source, el, 'dy'));
+        get('#ui-background-dw').addEventListener('input', createTextInputHander(source, el, 'dw'));
+        get('#ui-background-dh').addEventListener('input', createTextInputHander(source, el, 'dh'));
 
         displayControlsForMode(source, el);
         UpdateControlValuesForMode(source, el);

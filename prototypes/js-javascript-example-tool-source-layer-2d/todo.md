@@ -14,7 +14,9 @@
 
 ## ( ) - r3 - 'fill' and 'fit' bgModes
 
-## ( ) - r2 - 'stretch' bgMode
+## ( ) - r2 - init mode for bgMod objects and 'stretch' bgMode
+* add an init mode for each bgMod object that will just be called once when a mode change happens
+* the 'update' method of a mode might not need to do anything actually for most moes
 
 
 <!-- Minimum Viable Product -->

@@ -47,7 +47,8 @@ var sourceLayer = (function(){
     MODES.custom = {
         controls: ['zoom', 'rotation', 'pos', 'size'],
         update: function(){
-
+            source.sw = source.image.width;
+            source.sh = source.image.height;
         }
     };
 

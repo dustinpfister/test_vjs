@@ -98,7 +98,9 @@ var sourceLayer = (function(){
     // update a source object
     var update = function(source){
         var modeObj = MODES[source.mode];
-        modeObj.update(source);
+        if(source.image){
+            modeObj.update(source);
+        }
     };
 
     // main method used to create a source object
@@ -144,15 +146,26 @@ var sourceLayer = (function(){
         });   
     };
 
+
+    
     // create an HTML User Interface for the given source object and append it to the given mount point
     api.createSourceUI = function(source, mountEl){
         var el = resolveElRef(mountEl);
         el.innerHTML = UI_HTML;
+        // handlers
         sourceLayer.appendImageHandler(source, '#ui-background-image');
         sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
         sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
 
-displayControlsForMode(source, el)
+        el.querySelector('#input-background-mode').addEventListener('change', function(e){
+            console.log(e.target.value)
+            source.mode = e.target.value;
+            update(source);
+            draw(source);
+            displayControlsForMode(source, el);
+        });
+
+        displayControlsForMode(source, el);
 
     };
 

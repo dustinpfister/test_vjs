@@ -21,6 +21,7 @@
 
 ## ( ) - r1 - bgMode modes starting with 'custom', and 'center'
 <!-- source layer -->
+* place holder code generated background when no image is loaded
 * start bgModes starting with a custom mode that should be able to set anything
 * have text input elements for sx, sy, sw, sh, dx, dy, dw, and dh
 <!-- draw -->

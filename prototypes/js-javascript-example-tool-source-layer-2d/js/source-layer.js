@@ -25,22 +25,32 @@ var sourceLayer = (function(){
         return null
     };
 
+    var drawPlaceHolder = function(ctx, x, y, w, h){
+        ctx.fillStyle = 'black';
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        ctx.rect(x ,y, w, h);
+        ctx.fill();
+        ctx.stroke();
+    };
+
     var draw = function(source){
         var canvas = source.canvas,
         ctx = source.ctx;
         // clear source layer
         ctx.clearRect(-1, -1 , canvas.width + 2, canvas.height + 2);
         // draw source image to layer with current settings
-
         ctx.save();
         ctx.translate(source.dx, source.dy);
-        ctx.rotate(source.radian)
+        ctx.rotate(source.radian);
         var w = source.dw * source.zoom,
         h = source.dh * source.zoom,
         x = w / 2 * -1,
         y = h / 2 * -1;
         if(source.image){
             ctx.drawImage(source.image, source.sx, source.sy, source.sw, source.sh, x, y, w, h);
+        }else{
+           drawPlaceHolder(ctx, x, y, w, h);
         }
         ctx.restore();
 
@@ -58,12 +68,19 @@ var sourceLayer = (function(){
             onImageLoad: opt.onImageLoad || ON_IMAGE_LOAD,
             onUpdate: opt.onUpdate || function(source){}
         };
-        source.canvas = resolveElRef(opt.canvas);
-        if(source.canvas){
-            source.canvas.width = opt.width;
-            source.canvas.height = opt.height;
-            source.ctx = source.canvas.getContext('2d');
+        var canvas = source.canvas = resolveElRef(opt.canvas);
+        if(canvas){
+            canvas.width = opt.width;
+            canvas.height = opt.height;
+            source.ctx = canvas.getContext('2d');
+
+            // values for placeholder
+            source.dx = canvas.width / 2;
+            source.dy = canvas.height / 2;
+            source.dw = 320;
+            source.dh = 240;
         }
+        draw(source);
         return source;
 
     };

@@ -5,6 +5,9 @@ var sourceLayer = (function(){
        ver: 'r1'
     };
 
+    var ON_IMAGE_LOAD = function(source){};
+    var ON_UPDATE = function(source){};
+
     var MODES = {};
 
     MODES.center = {
@@ -28,18 +31,7 @@ var sourceLayer = (function(){
         }
     };
 
-    var ON_IMAGE_LOAD = function(source){
-/*
-        source.sx = 0;
-        source.sy = 0;
-        source.sw = source.image.width;
-        source.sh = source.image.height;
-        source.dx = source.canvas.width / 2;
-        source.dy = source.canvas.height / 2;
-        source.dw = source.sw;
-        source.dh = source.sh;
-*/
-    };
+
 
     var resolveElRef = function(elRef){
         if(typeof elRef === 'object' && elRef != null){
@@ -98,7 +90,7 @@ var sourceLayer = (function(){
             image: null,
             sx: 0, sy: 0, sw: 100, sh: 100, dx: 0, dy: 0, dw: 100, dh: 100,
             onImageLoad: opt.onImageLoad || ON_IMAGE_LOAD,
-            onUpdate: opt.onUpdate || function(source){}
+            onUpdate: opt.onUpdate || ON_UPDATE
         };
         var canvas = source.canvas = resolveElRef(opt.canvas);
         if(canvas){

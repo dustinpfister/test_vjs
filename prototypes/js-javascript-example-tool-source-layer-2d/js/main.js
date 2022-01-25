@@ -5,6 +5,7 @@ var source = sourceLayer.create({
    onUpdate: function(source){
    }
 });
+
 sourceLayer.appendImageHandler(source, '#ui-background-image');
 sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
 sourceLayer.appendRotationHandler(source, '#ui-background-rotation');

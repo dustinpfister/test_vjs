@@ -8,24 +8,26 @@
 
 <!-- Additional Features -->
 
-## ( ) - r5 - more draw ui options
+## ( ) - r4 - more draw ui options
 * set size of brush
 * set color of brush
 
-## ( ) - r4 - 'fill' and 'fit' bgModes
+## ( ) - r3 - 'fill' and 'fit' bgModes
 
-## ( ) - r3 - 'stretch' bgMode
-
-## ( ) - r2 - sourceLayer.createUI method
+## ( ) - r2 - 'stretch' bgMode
 
 
 <!-- Minimum Viable Product -->
 
-## ( ) - r1 - bgMode modes starting with 'custom', and 'center'
+## ( ) - r1 - sourceLayer.createUI, bgMode modes starting with 'custom', and 'center'
 <!-- source layer -->
 * (done) place holder code generated background when no image is loaded
+* (done) start MODES with the center mode
 
-* start bgModes starting with a custom mode that should be able to set all values that matter
+* start a sourceLayer.createUI method where I just pass a source object along with a mount point element to create a ui
+
+
+* add a 'custom' mode that should be able to set all values that matter
 * have text input elements for source.dx, source.dy, source.dw, and source.dh
 * each mode has an array of key names for inputs that will show up in the ui when that made is active
 

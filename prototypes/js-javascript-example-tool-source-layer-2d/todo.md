@@ -23,8 +23,7 @@
 <!-- source layer -->
 * (done) place holder code generated background when no image is loaded
 * (done) start MODES with the center mode
-
-* start a sourceLayer.createUI method where I just pass a source object along with a mount point element to create a ui
+* (done) start a sourceLayer.createUI method where I just pass a source object along with a mount point element to create a ui
 
 
 * add a 'custom' mode that should be able to set all values that matter

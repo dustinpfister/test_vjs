@@ -7,6 +7,16 @@ var sourceLayer = (function(){
 
     var ON_IMAGE_LOAD = function(source){};
     var ON_UPDATE = function(source){};
+    var UI_HTML = '<span>Background Image:</span><br>' +
+                '<input id=\"ui-background-image\" type=\"file\"><br><br>' +
+                '<input id=\"ui-background-zoom\" type=\"range\" value=\"1\" min=\"0\" max=\"4\" step=\"0.05\">' +
+                '<span>Zoom</span><br>' +
+                '<input id=\"ui-background-rotation\" type=\"range\" value=\"0\" min=\"0\" max=\"1\" step=\"0.01\">' +
+                '<span>Rotation</span><br>' +
+                'dx: <input id=\"ui-background-dx\" type=\"text\" size="4"> '+
+                'dy: <input id=\"ui-background-dy\" type=\"text\" size="4"> <br>' +
+                'dw: <input id=\"ui-background-dw\" type=\"text\" size="4"> ' +
+                'dh: <input id=\"ui-background-dh\" type=\"text\" size="4"> <br>';
 
     var MODES = {};
 
@@ -31,8 +41,7 @@ var sourceLayer = (function(){
         }
     };
 
-
-
+    // resolve a string to an element object, or just return what should be a element object
     var resolveElRef = function(elRef){
         if(typeof elRef === 'object' && elRef != null){
             return elRef
@@ -43,6 +52,7 @@ var sourceLayer = (function(){
         return null
     };
 
+    // draw place holder image when no image is loaded
     var drawPlaceHolder = function(ctx, x, y, w, h){
         ctx.fillStyle = 'black';
         ctx.strokeStyle = 'white';
@@ -53,6 +63,7 @@ var sourceLayer = (function(){
         ctx.stroke();
     };
 
+    // draw the current state of a source object to the context of the source object
     var draw = function(source){
         var canvas = source.canvas,
         ctx = source.ctx;
@@ -74,11 +85,13 @@ var sourceLayer = (function(){
         ctx.restore();
     };
 
+    // update a source object
     var update = function(source){
         var modeObj = MODES[source.mode];
         modeObj.update(source);
     };
 
+    // main method used to create a source object
     api.create = function(opt){
         opt = opt || {};
         var source = {
@@ -108,13 +121,7 @@ var sourceLayer = (function(){
 
     };
 
-    var UI_HTML = '<span>Background Image:</span><br>' +
-                '<input id=\"ui-background-image\" type=\"file\"><br><br>' +
-                '<input id=\"ui-background-zoom\" type=\"range\" value=\"1\" min=\"0\" max=\"4\" step=\"0.05\">' +
-                '<span>Zoom</span><br>' +
-                '<input id=\"ui-background-rotation\" type=\"range\" value=\"0\" min=\"0\" max=\"1\" step=\"0.01\">' +
-                '<span>Rotation</span><br>';
-
+    // create an HTML User Interface for the given source object and append it to the given mount point
     api.createSourceUI = function(source, mountEl){
         var el = resolveElRef(mountEl);
         el.innerHTML = UI_HTML;
@@ -122,7 +129,6 @@ var sourceLayer = (function(){
         sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
         sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
     };
-
 
     // append image hander
     api.appendImageHandler = function(source, fileEl){

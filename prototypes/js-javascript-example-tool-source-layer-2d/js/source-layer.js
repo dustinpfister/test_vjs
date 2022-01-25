@@ -1,10 +1,35 @@
 var sourceLayer = (function(){
 
+    // public api
     var api = {
        ver: 'r1'
     };
 
+    var MODES = {};
+
+    MODES.center = {
+        controls: ['zoom', 'rotation'],
+        update: function(source){
+            source.sx = 0;
+            source.sy = 0;
+            source.sw = source.image.width;
+            source.sh = source.image.height;
+            source.dx = source.canvas.width / 2;
+            source.dy = source.canvas.height / 2;
+            source.dw = source.sw;
+            source.dh = source.sh;
+        }
+    };
+
+    MODES.custom = {
+        controls: ['zoom', 'rotation', 'dx', 'dy', 'dw', 'dh'],
+        update: function(){
+
+        }
+    };
+
     var ON_IMAGE_LOAD = function(source){
+/*
         source.sx = 0;
         source.sy = 0;
         source.sw = source.image.width;
@@ -13,6 +38,7 @@ var sourceLayer = (function(){
         source.dy = source.canvas.height / 2;
         source.dw = source.sw;
         source.dh = source.sh;
+*/
     };
 
     var resolveElRef = function(elRef){
@@ -56,9 +82,15 @@ var sourceLayer = (function(){
         ctx.restore();
     };
 
+    var update = function(source){
+        var modeObj = MODES[source.mode];
+        modeObj.update(source);
+    };
+
     api.create = function(opt){
         opt = opt || {};
         var source = {
+            mode: 'center',
             canvas: null,
             ctx: null,
             zoom: 1,
@@ -95,7 +127,8 @@ var sourceLayer = (function(){
                 var img = source.image = new Image();
                 img.src = reader.result;
                 img.addEventListener('load', function(){
-                    source.onImageLoad.call(source, source)
+                    source.onImageLoad.call(source, source);
+                    update(source);
                     draw(source);
                     source.onUpdate.call(source, source);
                 });

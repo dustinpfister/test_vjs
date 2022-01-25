@@ -140,9 +140,9 @@ var sourceLayer = (function(){
             if(modeObj.controls.some(function(modeKey){
                 return key === modeKey;
             })){
-                ifOn(source, controlEl, el);
+                ifOn(source, controlEl, el, key);
             }else{
-                ifOff(source, controlEl, el);
+                ifOff(source, controlEl, el, key);
             } 
         });   
     };
@@ -154,6 +154,16 @@ var sourceLayer = (function(){
             },
             function(source, controlEl){
                 controlEl.style.visibility = 'hidden';
+            }
+        );
+    };
+
+    var UpdateControlValuesForMode = function(source, el){
+        forEachControl(source, el, 
+            function(source, controlEl, el, key){
+                controlEl.value = source[key];
+            },
+            function(source, controlEl, el, key){
             }
         );
     };

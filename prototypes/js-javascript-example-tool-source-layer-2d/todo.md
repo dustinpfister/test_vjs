@@ -5,25 +5,30 @@
 
 <!-- Maintenance -->
 
-## () - r5 - sourceLayer.createUI method
 
 <!-- Additional Features -->
 
-## ( ) - r4 - draw am ui
+## ( ) - r5 - more draw ui options
 * set size of brush
 * set color of brush
 
-## ( ) - r3 - 'fill' and 'fit' bgModes
+## ( ) - r4 - 'fill' and 'fit' bgModes
 
-## ( ) - r2 - 'stretch' bgMode
+## ( ) - r3 - 'stretch' bgMode
+
+## ( ) - r2 - sourceLayer.createUI method
+
 
 <!-- Minimum Viable Product -->
 
 ## ( ) - r1 - bgMode modes starting with 'custom', and 'center'
 <!-- source layer -->
 * (done) place holder code generated background when no image is loaded
-* start bgModes starting with a custom mode that should be able to set anything
-* have text input elements for sx, sy, sw, sh, dx, dy, dw, and dh
+
+* start bgModes starting with a custom mode that should be able to set all values that matter
+* have text input elements for source.dx, source.dy, source.dw, and source.dh
+* each mode has an array of key names for inputs that will show up in the ui when that made is active
+
 <!-- draw -->
 * have an eraser tool for the draw app
 * make it so that sm.down will set to false when a mouse pointer leaves the canvas

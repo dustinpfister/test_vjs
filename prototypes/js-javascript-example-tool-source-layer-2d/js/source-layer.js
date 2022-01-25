@@ -108,6 +108,22 @@ var sourceLayer = (function(){
 
     };
 
+    var UI_HTML = '<span>Background Image:</span><br>' +
+                '<input id=\"ui-background-image\" type=\"file\"><br><br>' +
+                '<input id=\"ui-background-zoom\" type=\"range\" value=\"1\" min=\"0\" max=\"4\" step=\"0.05\">' +
+                '<span>Zoom</span><br>' +
+                '<input id=\"ui-background-rotation\" type=\"range\" value=\"0\" min=\"0\" max=\"1\" step=\"0.01\">' +
+                '<span>Rotation</span><br>';
+
+    api.createSourceUI = function(source, mountEl){
+        var el = resolveElRef(mountEl);
+        el.innerHTML = UI_HTML;
+        sourceLayer.appendImageHandler(source, '#ui-background-image');
+        sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
+        sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
+    };
+
+
     // append image hander
     api.appendImageHandler = function(source, fileEl){
         var fileEl = resolveElRef(fileEl);

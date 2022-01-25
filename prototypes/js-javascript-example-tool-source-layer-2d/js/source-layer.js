@@ -133,17 +133,29 @@ var sourceLayer = (function(){
 
     };
 
-    var displayControlsForMode = function(source, el){
+    var forEachControl = function(source, el, ifOn, ifOff){
         var modeObj = MODES[source.mode];
         ['zoom', 'rotation', 'pos', 'size'].forEach(function(key){      
             var controlEl = el.querySelector('#bgui-' + key);
-            controlEl.style.visibility = 'hidden';
             if(modeObj.controls.some(function(modeKey){
                 return key === modeKey;
             })){
-                controlEl.style.visibility = 'visible';
-            }   
+                ifOn(source, controlEl, el);
+            }else{
+                ifOff(source, controlEl, el);
+            } 
         });   
+    };
+
+    var displayControlsForMode = function(source, el){
+        forEachControl(source, el, 
+            function(source, controlEl){
+                controlEl.style.visibility = 'visible';
+            },
+            function(source, controlEl){
+                controlEl.style.visibility = 'hidden';
+            }
+        );
     };
 
 

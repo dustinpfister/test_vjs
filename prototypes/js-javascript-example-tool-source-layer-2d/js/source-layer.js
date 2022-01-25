@@ -32,6 +32,7 @@ var sourceLayer = (function(){
         ctx.rect(x ,y, w, h);
         ctx.fill();
         ctx.stroke();
+        ctx.stroke();
     };
 
     var draw = function(source){
@@ -53,7 +54,6 @@ var sourceLayer = (function(){
            drawPlaceHolder(ctx, x, y, w, h);
         }
         ctx.restore();
-
     };
 
     api.create = function(opt){
@@ -73,7 +73,6 @@ var sourceLayer = (function(){
             canvas.width = opt.width;
             canvas.height = opt.height;
             source.ctx = canvas.getContext('2d');
-
             // values for placeholder
             source.dx = canvas.width / 2;
             source.dy = canvas.height / 2;

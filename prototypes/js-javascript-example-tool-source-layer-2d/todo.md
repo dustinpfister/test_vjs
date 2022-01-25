@@ -27,9 +27,8 @@
 * (done) I will need to add a mode select to source ui
 * (done) create a method that will update the visibility of input elements based on source.mode
 * (done) add a 'custom' mode that should be able to set all values that matter
-
-* have text input elements for source.dx, source.dy, source.dw, and source.dh
-* each mode has an array of key names for inputs that will show up in the ui when that made is active
+* (done) have text input elements for source.dx, source.dy, source.dw, and source.dh
+* (done) each mode has an array of key names for inputs that will show up in the ui when that made is active
 
 <!-- draw -->
 * have an eraser tool for the draw app

@@ -206,7 +206,7 @@ var sourceLayer = (function(){
         get('#ui-background-dh').addEventListener('input', createTextInputHander(source, el, 'dh'));
 
         displayControlsForMode(source, el);
-        UpdateControlValuesForMode(source, el);
+        UpdateControlValuesForMode(source);
     };
 
     // append image hander
@@ -223,6 +223,9 @@ var sourceLayer = (function(){
                     source.onImageLoad.call(source, source);
                     update(source);
                     draw(source);
+
+                    UpdateControlValuesForMode(source);
+
                     source.onUpdate.call(source, source);
                 });
             }, false);

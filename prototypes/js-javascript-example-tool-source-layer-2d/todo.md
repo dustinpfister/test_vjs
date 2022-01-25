@@ -24,9 +24,8 @@
 * (done) place holder code generated background when no image is loaded
 * (done) start MODES with the center mode
 * (done) start a sourceLayer.createUI method where I just pass a source object along with a mount point element to create a ui
-
-* I will need to add a mode select to source ui
-* create a method that will update the visibility of input elements based on source.mode
+* (done) I will need to add a mode select to source ui
+* (done) create a method that will update the visibility of input elements based on source.mode
 
 
 * add a 'custom' mode that should be able to set all values that matter

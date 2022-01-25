@@ -131,6 +131,19 @@ var sourceLayer = (function(){
 
     };
 
+    var displayControlsForMode = function(source, el){
+        var modeObj = MODES[source.mode];
+        ['zoom', 'rotation', 'pos', 'size'].forEach(function(key){      
+            var controlEl = el.querySelector('#bgui-' + key);
+            controlEl.style.visibility = 'hidden';
+            if(modeObj.controls.some(function(modeKey){
+                return key === modeKey;
+            })){
+                controlEl.style.visibility = 'visible';
+            }   
+        });   
+    };
+
     // create an HTML User Interface for the given source object and append it to the given mount point
     api.createSourceUI = function(source, mountEl){
         var el = resolveElRef(mountEl);
@@ -138,6 +151,9 @@ var sourceLayer = (function(){
         sourceLayer.appendImageHandler(source, '#ui-background-image');
         sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
         sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
+
+displayControlsForMode(source, el)
+
     };
 
     // append image hander

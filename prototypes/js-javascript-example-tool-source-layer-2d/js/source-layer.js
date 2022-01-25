@@ -51,6 +51,10 @@ var sourceLayer = (function(){
         }
     };
 
+    var get = function(q){
+        return document.querySelector(q);
+    };
+
     // resolve a string to an element object, or just return what should be a element object
     var resolveElRef = function(elRef){
         if(typeof elRef === 'object' && elRef != null){
@@ -159,13 +163,12 @@ var sourceLayer = (function(){
     };
 
     var UpdateControlValuesForMode = function(source, el){
-        forEachControl(source, el, 
-            function(source, controlEl, el, key){
-                controlEl.value = source[key];
-            },
-            function(source, controlEl, el, key){
-            }
-        );
+        get('#ui-background-zoom').value = source.zoom;
+        get('#ui-background-rotation').value = source.radian / (Math.PI * 2)
+        get('#ui-background-dx').value = source.dx;
+        get('#ui-background-dy').value = source.dy;
+        get('#ui-background-dw').value = source.dw;
+        get('#ui-background-dh').value = source.dh;
     };
 
 
@@ -180,15 +183,15 @@ var sourceLayer = (function(){
         sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
 
         el.querySelector('#input-background-mode').addEventListener('change', function(e){
-            console.log(e.target.value)
             source.mode = e.target.value;
             update(source);
             draw(source);
             displayControlsForMode(source, el);
+            UpdateControlValuesForMode(source, el);
         });
 
         displayControlsForMode(source, el);
-
+        UpdateControlValuesForMode(source, el);
     };
 
     // append image hander

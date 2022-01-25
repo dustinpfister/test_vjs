@@ -15,14 +15,18 @@ var sourceLayer = (function(){
                     '<option value=\"custom\">Custom</option>' +
                 '</select><br><br>' +
 
-                '<input id=\"ui-background-zoom\" type=\"range\" value=\"1\" min=\"0\" max=\"4\" step=\"0.05\">' +
-                '<span>Zoom</span><br>' +
-                '<input id=\"ui-background-rotation\" type=\"range\" value=\"0\" min=\"0\" max=\"1\" step=\"0.01\">' +
-                '<span>Rotation</span><br>' +
-                'dx: <input id=\"ui-background-dx\" type=\"text\" size="4"> '+
-                'dy: <input id=\"ui-background-dy\" type=\"text\" size="4"> <br>' +
-                'dw: <input id=\"ui-background-dw\" type=\"text\" size="4"> ' +
-                'dh: <input id=\"ui-background-dh\" type=\"text\" size="4"> <br>';
+                '<div id="bgui-zoom" ><input id=\"ui-background-zoom\" type=\"range\" value=\"1\" min=\"0\" max=\"4\" step=\"0.05\">' +
+                '<span>Zoom</span><br></div>' +
+
+                '<div id="bgui-rotation" >'+
+                     '<input id=\"ui-background-rotation\" type=\"range\" value=\"0\" min=\"0\" max=\"1\" step=\"0.01\">' +
+                     '<span>Rotation</span><br>' +
+                '</div>' +
+
+                '<div id="bgui-pos" >dx: <input id=\"ui-background-dx\" type=\"text\" size="4"> '+
+                'dy: <input id=\"ui-background-dy\" type=\"text\" size="4"> <br></div>' +
+                '<div id="bgui-size" >dw: <input id=\"ui-background-dw\" type=\"text\" size="4"> ' +
+                'dh: <input id=\"ui-background-dh\" type=\"text\" size="4"> <br></div>';
 
     var MODES = {};
 
@@ -41,7 +45,7 @@ var sourceLayer = (function(){
     };
 
     MODES.custom = {
-        controls: ['zoom', 'rotation', 'dx', 'dy', 'dw', 'dh'],
+        controls: ['zoom', 'rotation', 'pos', 'size'],
         update: function(){
 
         }

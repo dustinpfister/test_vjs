@@ -2,7 +2,7 @@ var sourceLayer = (function(){
 
     // public api
     var api = {
-       ver: 'r1'
+       ver: 'r2'
     };
 
     var ON_IMAGE_LOAD = function(source){};

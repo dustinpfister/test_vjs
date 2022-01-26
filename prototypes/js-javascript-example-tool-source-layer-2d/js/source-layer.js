@@ -26,7 +26,7 @@ var sourceLayer = (function(){
     var MODES = {};
 
     // use full image mode helper
-    var useFullImage = function(source){
+    var useFullImageSource = function(source){
         source.sx = 0;
         source.sy = 0;
         if(source.image){
@@ -35,15 +35,23 @@ var sourceLayer = (function(){
         }
     };
 
+    var useCenterPos = function(source){
+        source.dx = source.canvas.width / 2;
+        source.dy = source.canvas.height / 2;
+    };
+
+    var useSourceSize = function(source){
+        source.dw = source.sw;
+        source.dh = source.sh;
+    }
+
     // center mode
     MODES.center = {
         controls: ['zoom', 'rotation'],
         init: function(source){
-            useFullImage(source);
-            source.dx = source.canvas.width / 2;
-            source.dy = source.canvas.height / 2;
-            source.dw = source.sw;
-            source.dh = source.sh;
+            useFullImageSource(source);
+            useCenterPos(source);
+            useSourceSize(source);
         },
         update: function(source){
         }
@@ -52,11 +60,9 @@ var sourceLayer = (function(){
     MODES.custom = {
         controls: ['zoom', 'rotation', 'pos', 'size'],
         init: function(source){
-            useFullImage(source);
-            source.dx = source.canvas.width / 2;
-            source.dy = source.canvas.height / 2;
-            source.dw = source.sw;
-            source.dh = source.sh;
+            useFullImageSource(source);
+            useCenterPos(source);
+            useSourceSize(source);
         },
         update: function(){
         }

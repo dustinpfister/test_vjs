@@ -14,18 +14,16 @@
 
 ## ( ) - r3 - 'fill' and 'fit' bgModes
 
-## ( ) - r2 - init mode for bgMod objects and 'stretch' bgMode
-* add an init mode for each bgMod object that will just be called once when a mode change happens
-* the 'update' method of a mode might not need to do anything actually for most moes
-
-<!-- draw -->
+## ( ) - r2 - init mode for bgMod objects, 'stretch' bgMode, draw app improvements
 * (done) tool size option
 * (done) color picker option
 * (done) have an eraser tool for the draw app
 * (done) make it so that sm.down will set to false when a mouse pointer leaves the canvas
 * (done) touch events
-<!-- misc -->
-* I will want lables for current values of range input elements
+* (done) I will want a disp for the curent size
+
+* add an init mode for each bgMod object that will just be called once when a mode change happens
+* the 'update' method of a mode might not need to do anything actually for most moes
 
 
 <!-- Minimum Viable Product -->

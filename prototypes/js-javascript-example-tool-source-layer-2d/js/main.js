@@ -103,7 +103,12 @@ get('#ui-draw-color').addEventListener('input', function(e){
 });
 sm.color = get('#ui-draw-color').value;
 // size select
+var sizeUpdate = function(){
+    var size = parseFloat( get('#ui-draw-size').value );
+    sm.size = size;
+    get('#ui-draw-size-disp').innerText = size;
+};
 get('#ui-draw-size').addEventListener('input', function(e){
-    sm.size = parseFloat(e.target.value);
+    sizeUpdate();
 });
-sm.size = parseFloat(get('#ui-draw-size').value);
+sizeUpdate();

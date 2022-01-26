@@ -13,6 +13,9 @@
   width: 680px;
   height: 520px;
 }
+#ui-draw{
+  min-width: 200px;
+}
 .canvas-layer{
   margin: 20px;
   position:absolute;

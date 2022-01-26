@@ -37,9 +37,12 @@ var paintAt = function(sm, pos){
         ctx.fill();
     }
     if(sm.tool === 'eraser'){
+        ctx.save();
         ctx.beginPath();
         ctx.arc(pos.x, pos.y, sm.size, 0, Math.PI * 2);
-        ctx.cut();
+        ctx.clip();
+        ctx.clearRect(pos.x - sm.size, pos.y - sm.size, sm.size * 2, sm.size * 2);
+        ctx.restore();
     }
 };
 
@@ -88,4 +91,9 @@ canvas.addEventListener('pointerout', pointerOut);
 // clear button
 get('#ui-draw-clear').addEventListener('click', function(){
    sm.ctx.clearRect(-1, -1, sm.canvas.width + 2, sm.canvas.height + 2);
+});
+// tool select
+get('#ui-draw-tool').addEventListener('input', function(e){
+    console.log(e.target.value);
+    sm.tool = e.target.value;
 });

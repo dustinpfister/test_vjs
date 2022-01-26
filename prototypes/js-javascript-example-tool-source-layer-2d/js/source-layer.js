@@ -27,7 +27,20 @@ var sourceLayer = (function(){
     // center mode
     MODES.center = {
         controls: ['zoom', 'rotation'],
+        init: function(source){
+            source.sx = 0;
+            source.sy = 0;
+            if(source.image){
+                source.sw = source.image.width;
+                source.sh = source.image.height;
+            }
+            source.dx = source.canvas.width / 2;
+            source.dy = source.canvas.height / 2;
+            source.dw = source.sw;
+            source.dh = source.sh;
+        },
         update: function(source){
+/*
             source.sx = 0;
             source.sy = 0;
             source.sw = source.image.width;
@@ -36,14 +49,29 @@ var sourceLayer = (function(){
             source.dy = source.canvas.height / 2;
             source.dw = source.sw;
             source.dh = source.sh;
+*/
         }
     };
     // custom mode
     MODES.custom = {
         controls: ['zoom', 'rotation', 'pos', 'size'],
+        init: function(source){
+            source.sx = 0;
+            source.sy = 0;
+            if(source.image){
+                source.sw = source.image.width;
+                source.sh = source.image.height;
+            }
+            source.dx = source.canvas.width / 2;
+            source.dy = source.canvas.height / 2;
+            source.dw = source.sw;
+            source.dh = source.sh;
+        },
         update: function(){
+/*
             source.sw = source.image.width;
             source.sh = source.image.height;
+*/
         }
     };
     // get element helper
@@ -123,6 +151,10 @@ var sourceLayer = (function(){
             source.dw = 320;
             source.dh = 240;
         }
+        // call init foe the current mode, for first time
+        var modeObj = MODES[source.mode];
+        modeObj.init.call(source, source);
+        // draw and return
         draw(source);
         return source;
 
@@ -182,6 +214,8 @@ var sourceLayer = (function(){
         // change mode
         get('#input-background-mode').addEventListener('change', function(e){
             source.mode = e.target.value;
+            var modeObj = MODES[source.mode];
+            modeObj.init.call(source, source);
             update(source);
             draw(source);
             displayControlsForMode(source, el);
@@ -206,11 +240,11 @@ var sourceLayer = (function(){
                 img.src = reader.result;
                 img.addEventListener('load', function(){
                     source.onImageLoad.call(source, source);
+                    var modeObj = MODES[source.mode];
+                    modeObj.init.call(source, source);
                     update(source);
                     draw(source);
-
                     UpdateControlValuesForMode(source);
-
                     source.onUpdate.call(source, source);
                 });
             }, false);

@@ -19,11 +19,14 @@
 * the 'update' method of a mode might not need to do anything actually for most moes
 
 <!-- draw -->
-* tool size option
+* (done) tool size option
 * (done) color picker option
 * (done) have an eraser tool for the draw app
 * (done) make it so that sm.down will set to false when a mouse pointer leaves the canvas
 * (done) touch events
+<!-- misc -->
+* I will want lables for current values of range input elements
+
 
 <!-- Minimum Viable Product -->
 

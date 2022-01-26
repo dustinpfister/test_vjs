@@ -8,6 +8,17 @@
 
 <!-- Additional Features -->
 
+## ( ) - r5 - local storage save state
+* save state data with local storage
+* store the current source image
+* store the current content for the draw layer
+* start background settings for mode, and options
+* load settings each time the app starts
+* I will want a clear state button in a new save state ui
+
+## ( ) - r4 - load content draw app feature
+* have a feature to just load some content that was drawn before hand
+
 ## ( ) - r3 - 'fit' bgMode
 * have a 'fit' mode that will set the source.dw and source.dh values to the size of the canvas, but preseve aspect ratio
 * if fit mode is working the way that it should there should be bars on the top and bottom, or side to side

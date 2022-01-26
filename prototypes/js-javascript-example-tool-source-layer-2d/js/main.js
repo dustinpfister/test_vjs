@@ -23,7 +23,7 @@ var sm = {
     canvas: canvas,
     ctx: ctx,
     down: false,
-    size: 3,
+    size: 0.5,    // 0.25 to 20 with a 0.25 step
     tool: 'brush',
     color: 'red'
 };
@@ -102,3 +102,8 @@ get('#ui-draw-color').addEventListener('input', function(e){
     sm.color = e.target.value;
 });
 sm.color = get('#ui-draw-color').value;
+// size select
+get('#ui-draw-size').addEventListener('input', function(e){
+    sm.size = parseFloat(e.target.value);
+});
+sm.size = parseFloat(get('#ui-draw-size').value);

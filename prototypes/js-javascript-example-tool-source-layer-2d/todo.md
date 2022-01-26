@@ -20,7 +20,7 @@
 
 <!-- draw -->
 * have an eraser tool for the draw app
-* make it so that sm.down will set to false when a mouse pointer leaves the canvas
+* (done) make it so that sm.down will set to false when a mouse pointer leaves the canvas
 * touch events
 
 <!-- Minimum Viable Product -->

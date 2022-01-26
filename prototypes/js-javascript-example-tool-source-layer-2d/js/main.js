@@ -66,10 +66,14 @@ var pointerMove = function(e){
 var pointerUp = function(e){
     sm.down = false;
 };
+var pointerOut = function(e){
+    sm.down = false;
+};
 
 canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mousemove', pointerMove);
 canvas.addEventListener('mouseup', pointerUp);
+canvas.addEventListener('mouseout', pointerOut);
 
 // clear button
 document.getElementById('ui-draw-clear').addEventListener('click', function(){

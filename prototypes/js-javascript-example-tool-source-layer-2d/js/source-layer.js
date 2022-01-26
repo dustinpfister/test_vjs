@@ -1,35 +1,30 @@
 var sourceLayer = (function(){
-
     // public api
     var api = {
        ver: 'r2'
     };
-
+    // hard coded values
     var ON_IMAGE_LOAD = function(source){};
     var ON_UPDATE = function(source){};
     var UI_HTML = '<span>Background:</span><br><br>' +
                 'image: <input id=\"ui-background-image\" type=\"file\"><br><br>' +
-
                 'mode: <select id=\"input-background-mode\">' +
                     '<option value=\"center\">Center</option>' +
                     '<option value=\"custom\">Custom</option>' +
                 '</select><br><br>' +
-
                 '<div id="bgui-zoom" ><input id=\"ui-background-zoom\" type=\"range\" value=\"1\" min=\"0\" max=\"4\" step=\"0.05\">' +
                 '<span>Zoom</span><br></div>' +
-
                 '<div id="bgui-rotation" >'+
                      '<input id=\"ui-background-rotation\" type=\"range\" value=\"0\" min=\"0\" max=\"1\" step=\"0.01\">' +
                      '<span>Rotation</span><br>' +
                 '</div>' +
-
                 '<div id="bgui-pos" >dx: <input id=\"ui-background-dx\" type=\"text\" size="4"> '+
                 'dy: <input id=\"ui-background-dy\" type=\"text\" size="4"> <br></div>' +
                 '<div id="bgui-size" >dw: <input id=\"ui-background-dw\" type=\"text\" size="4"> ' +
                 'dh: <input id=\"ui-background-dh\" type=\"text\" size="4"> <br></div>';
-
+    // back ground modes
     var MODES = {};
-
+    // center mode
     MODES.center = {
         controls: ['zoom', 'rotation'],
         update: function(source){
@@ -43,7 +38,7 @@ var sourceLayer = (function(){
             source.dh = source.sh;
         }
     };
-
+    // custom mode
     MODES.custom = {
         controls: ['zoom', 'rotation', 'pos', 'size'],
         update: function(){
@@ -51,11 +46,10 @@ var sourceLayer = (function(){
             source.sh = source.image.height;
         }
     };
-
+    // get element helper
     var get = function(q){
         return document.querySelector(q);
     };
-
     // resolve a string to an element object, or just return what should be a element object
     var resolveElRef = function(elRef){
         if(typeof elRef === 'object' && elRef != null){
@@ -66,7 +60,6 @@ var sourceLayer = (function(){
         }
         return null
     };
-
     // draw place holder image when no image is loaded
     var drawPlaceHolder = function(ctx, x, y, w, h){
         ctx.fillStyle = 'black';
@@ -77,7 +70,6 @@ var sourceLayer = (function(){
         ctx.stroke();
         ctx.stroke();
     };
-
     // draw the current state of a source object to the context of the source object
     var draw = function(source){
         var canvas = source.canvas,
@@ -99,7 +91,6 @@ var sourceLayer = (function(){
         }
         ctx.restore();
     };
-
     // update a source object
     var update = function(source){
         var modeObj = MODES[source.mode];
@@ -107,7 +98,6 @@ var sourceLayer = (function(){
             modeObj.update(source);
         }
     };
-
     // main method used to create a source object
     api.create = function(opt){
         opt = opt || {};
@@ -137,7 +127,7 @@ var sourceLayer = (function(){
         return source;
 
     };
-
+    // for each control helper
     var forEachControl = function(source, el, ifOn, ifOff){
         var modeObj = MODES[source.mode];
         ['zoom', 'rotation', 'pos', 'size'].forEach(function(key){      
@@ -151,7 +141,7 @@ var sourceLayer = (function(){
             } 
         });   
     };
-
+    // display controls for just the current mode
     var displayControlsForMode = function(source, el){
         forEachControl(source, el, 
             function(source, controlEl){
@@ -162,7 +152,7 @@ var sourceLayer = (function(){
             }
         );
     };
-
+    // update control values to source object
     var UpdateControlValuesForMode = function(source, el){
         get('#ui-background-zoom').value = source.zoom;
         get('#ui-background-rotation').value = source.radian / (Math.PI * 2)
@@ -171,8 +161,7 @@ var sourceLayer = (function(){
         get('#ui-background-dw').value = source.dw;
         get('#ui-background-dh').value = source.dh;
     };
-
-
+    // create a text input hander for props like dx dy dw and dh
     var createTextInputHander = function(source, el, key){
         return function(e){
             source[key] = e.target.value;
@@ -182,8 +171,6 @@ var sourceLayer = (function(){
             UpdateControlValuesForMode(source, el);
         };
     };
-
-    
     // create an HTML User Interface for the given source object and append it to the given mount point
     api.createSourceUI = function(source, mountEl){
         var el = resolveElRef(mountEl);
@@ -200,16 +187,13 @@ var sourceLayer = (function(){
             displayControlsForMode(source, el);
             UpdateControlValuesForMode(source, el);
         });
-
         get('#ui-background-dx').addEventListener('input', createTextInputHander(source, el, 'dx'));
         get('#ui-background-dy').addEventListener('input', createTextInputHander(source, el, 'dy'));
         get('#ui-background-dw').addEventListener('input', createTextInputHander(source, el, 'dw'));
         get('#ui-background-dh').addEventListener('input', createTextInputHander(source, el, 'dh'));
-
         displayControlsForMode(source, el);
         UpdateControlValuesForMode(source);
     };
-
     // append image hander
     api.appendImageHandler = function(source, fileEl){
         var fileEl = resolveElRef(fileEl);
@@ -235,7 +219,6 @@ var sourceLayer = (function(){
             }
         });
     };
-
     // zoom hander
     api.appendZoomHandler = function(source, fileEl){
         var fileEl = resolveElRef(fileEl);
@@ -245,7 +228,6 @@ var sourceLayer = (function(){
             source.onUpdate.call(source, source);
         });
     };
-
     // rotation
     api.appendRotationHandler = function(source, fileEl){
         var fileEl = resolveElRef(fileEl);
@@ -255,8 +237,6 @@ var sourceLayer = (function(){
             source.onUpdate.call(source, source);
         });
     };
-
-
+    // return the public API
     return api;
-
 }());

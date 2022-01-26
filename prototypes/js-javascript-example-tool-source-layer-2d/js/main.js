@@ -25,7 +25,7 @@ var sm = {
     down: false,
     size: 0.5,    // 0.25 to 20 with a 0.25 step
     tool: 'brush',
-    color: 'red'
+    color: '#000000'
 };
 
 var paintAt = function(sm, pos){

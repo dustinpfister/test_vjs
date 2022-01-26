@@ -20,14 +20,18 @@ var sm = {
     ctx: ctx,
     down: false,
     size: 3,
-    color: 'black'
+    tool: 'brush',
+    color: 'red'
 };
 
 var paintAt = function(sm, pos){
     var ctx = sm.ctx;
-    ctx.beginPath();
-    ctx.arc(pos.x, pos.y, sm.size, 0, Math.PI * 2);
-    ctx.fill();
+    if(sm.tool === 'brush'){
+        ctx.beginPath();
+        ctx.fillStyle = sm.color;
+        ctx.arc(pos.x, pos.y, sm.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
 };
 
 // get position helper

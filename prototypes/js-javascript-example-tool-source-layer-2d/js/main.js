@@ -73,7 +73,12 @@ var pointerOut = function(e){
 canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mousemove', pointerMove);
 canvas.addEventListener('mouseup', pointerUp);
-canvas.addEventListener('mouseout', pointerOut);
+
+canvas.addEventListener('touchstart', pointerDown);
+canvas.addEventListener('touchmove', pointerMove);
+canvas.addEventListener('touchend', pointerUp);
+
+canvas.addEventListener('pointerout', pointerOut);
 
 // clear button
 document.getElementById('ui-draw-clear').addEventListener('click', function(){

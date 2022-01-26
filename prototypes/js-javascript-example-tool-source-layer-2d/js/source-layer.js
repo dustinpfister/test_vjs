@@ -24,54 +24,41 @@ var sourceLayer = (function(){
                 'dh: <input id=\"ui-background-dh\" type=\"text\" size="4"> <br></div>';
     // back ground modes
     var MODES = {};
+
+    // use full image mode helper
+    var useFullImage = function(source){
+        source.sx = 0;
+        source.sy = 0;
+        if(source.image){
+            source.sw = source.image.width;
+            source.sh = source.image.height;
+        }
+    };
+
     // center mode
     MODES.center = {
         controls: ['zoom', 'rotation'],
         init: function(source){
-            source.sx = 0;
-            source.sy = 0;
-            if(source.image){
-                source.sw = source.image.width;
-                source.sh = source.image.height;
-            }
+            useFullImage(source);
             source.dx = source.canvas.width / 2;
             source.dy = source.canvas.height / 2;
             source.dw = source.sw;
             source.dh = source.sh;
         },
         update: function(source){
-/*
-            source.sx = 0;
-            source.sy = 0;
-            source.sw = source.image.width;
-            source.sh = source.image.height;
-            source.dx = source.canvas.width / 2;
-            source.dy = source.canvas.height / 2;
-            source.dw = source.sw;
-            source.dh = source.sh;
-*/
         }
     };
     // custom mode
     MODES.custom = {
         controls: ['zoom', 'rotation', 'pos', 'size'],
         init: function(source){
-            source.sx = 0;
-            source.sy = 0;
-            if(source.image){
-                source.sw = source.image.width;
-                source.sh = source.image.height;
-            }
+            useFullImage(source);
             source.dx = source.canvas.width / 2;
             source.dy = source.canvas.height / 2;
             source.dw = source.sw;
             source.dh = source.sh;
         },
         update: function(){
-/*
-            source.sw = source.image.width;
-            source.sh = source.image.height;
-*/
         }
     };
     // get element helper

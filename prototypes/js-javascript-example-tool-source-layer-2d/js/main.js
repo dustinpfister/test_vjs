@@ -97,3 +97,8 @@ get('#ui-draw-tool').addEventListener('input', function(e){
     console.log(e.target.value);
     sm.tool = e.target.value;
 });
+// color select
+get('#ui-draw-color').addEventListener('input', function(e){
+    sm.color = e.target.value;
+});
+sm.color = get('#ui-draw-color').value;

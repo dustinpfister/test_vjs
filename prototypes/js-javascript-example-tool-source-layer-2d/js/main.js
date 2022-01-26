@@ -5,15 +5,7 @@ var source = sourceLayer.create({
    onUpdate: function(source){
    }
 });
-
 sourceLayer.createSourceUI(source, '#ui-background');
-
-/*
-sourceLayer.appendImageHandler(source, '#ui-background-image');
-sourceLayer.appendZoomHandler(source, '#ui-background-zoom');
-sourceLayer.appendRotationHandler(source, '#ui-background-rotation');
-*/
-
 
 // out
 document.querySelector('#ui-out').innerText = 'version: ' + sourceLayer.ver;

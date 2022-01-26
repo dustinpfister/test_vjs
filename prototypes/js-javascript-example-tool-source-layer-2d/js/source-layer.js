@@ -11,6 +11,7 @@ var sourceLayer = (function(){
                 'mode: <select id=\"input-background-mode\">' +
                     '<option value=\"center\">Center</option>' +
                     '<option value=\"custom\">Custom</option>' +
+                    '<option value=\"stretch\">Stretch</option>' +
                 '</select><br><br>' +
                 '<div id="bgui-zoom" ><input id=\"ui-background-zoom\" type=\"range\" value=\"1\" min=\"0\" max=\"4\" step=\"0.05\">' +
                 '<span>Zoom</span><br></div>' +
@@ -53,8 +54,7 @@ var sourceLayer = (function(){
             useCenterPos(source);
             useSourceSize(source);
         },
-        update: function(source){
-        }
+        update: function(source){}
     };
     // custom mode
     MODES.custom = {
@@ -64,7 +64,22 @@ var sourceLayer = (function(){
             useCenterPos(source);
             useSourceSize(source);
         },
-        update: function(){
+        update: function(source){}
+    };
+    // stretch mode
+    MODES.stretch = {
+        controls: [],
+        init: function(source){
+            useFullImageSource(source);
+            useCenterPos(source);
+            // set destanation width and height to canvas width and height
+            source.dw = source.canvas.width;
+            source.dh = source.canvas.width;
+            // zoom is not used and should always be 1
+            source.zoom = 1;
+        },
+        update: function(source){
+            source.zoom = 1;
         }
     };
     // get element helper

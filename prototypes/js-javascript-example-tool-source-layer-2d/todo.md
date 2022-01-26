@@ -21,10 +21,8 @@
 * (done) make it so that sm.down will set to false when a mouse pointer leaves the canvas
 * (done) touch events
 * (done) I will want a disp for the curent size
-
-* add an init mode for each bgMod object that will just be called once when a mode change happens
-* the 'update' method of a mode might not need to do anything actually for most moes
-
+* (done) add an init mode for each bgMod object that will just be called once when a mode change happens
+* (done) start a new stretch mode
 
 <!-- Minimum Viable Product -->
 

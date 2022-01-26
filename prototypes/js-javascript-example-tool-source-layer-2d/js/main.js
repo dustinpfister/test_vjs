@@ -1,3 +1,7 @@
+var get = function(q){
+    return document.querySelector(q);
+};
+
 // source layer set up
 var source = sourceLayer.create({
    canvas: '#canvas-source',
@@ -8,10 +12,10 @@ var source = sourceLayer.create({
 sourceLayer.createSourceUI(source, '#ui-background');
 
 // out
-document.querySelector('#ui-out').innerText = 'version: ' + sourceLayer.ver;
+get('#ui-out').innerText = 'version: ' + sourceLayer.ver;
 
 // draw layer
-var canvas = document.querySelector('#canvas-draw'),
+var canvas = get('#canvas-draw'),
 ctx = canvas.getContext('2d');
 canvas.width = 640;
 canvas.height = 480;
@@ -31,6 +35,11 @@ var paintAt = function(sm, pos){
         ctx.fillStyle = sm.color;
         ctx.arc(pos.x, pos.y, sm.size, 0, Math.PI * 2);
         ctx.fill();
+    }
+    if(sm.tool === 'eraser'){
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, sm.size, 0, Math.PI * 2);
+        ctx.cut();
     }
 };
 
@@ -77,6 +86,6 @@ canvas.addEventListener('touchend', pointerUp);
 canvas.addEventListener('pointerout', pointerOut);
 
 // clear button
-document.getElementById('ui-draw-clear').addEventListener('click', function(){
+get('#ui-draw-clear').addEventListener('click', function(){
    sm.ctx.clearRect(-1, -1, sm.canvas.width + 2, sm.canvas.height + 2);
 });

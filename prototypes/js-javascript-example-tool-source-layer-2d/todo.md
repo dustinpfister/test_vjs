@@ -19,7 +19,9 @@
 * the 'update' method of a mode might not need to do anything actually for most moes
 
 <!-- draw -->
-* have an eraser tool for the draw app
+* color picker option
+* tool size option
+* (done) have an eraser tool for the draw app
 * (done) make it so that sm.down will set to false when a mouse pointer leaves the canvas
 * (done) touch events
 

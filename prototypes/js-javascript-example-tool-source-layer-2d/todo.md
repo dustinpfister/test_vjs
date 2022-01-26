@@ -8,13 +8,11 @@
 
 <!-- Additional Features -->
 
-## ( ) - r4 - more draw ui options
-* set size of brush
-* set color of brush
+## ( ) - r3 - 'fit' bgMode
+* have a 'fit' mode that will set the source.dw and source.dh values to the size of the canvas, but preseve aspect ratio
+* if fit mode is working the way that it should there should be bars on the top and bottom, or side to side
 
-## ( ) - r3 - 'fill' and 'fit' bgModes
-
-## ( ) - r2 - init mode for bgMod objects, 'stretch' bgMode, draw app improvements
+## ( done 01/26/2022 ) - r2 - init mode for bgMod objects, 'stretch' bgMode, draw app improvements
 * (done) tool size option
 * (done) color picker option
 * (done) have an eraser tool for the draw app
@@ -26,7 +24,7 @@
 
 <!-- Minimum Viable Product -->
 
-## ( done 01/24/2022 ) - r1 - sourceLayer.createUI, bgMode modes starting with 'custom', and 'center'
+## ( done 01/25/2022 ) - r1 - sourceLayer.createUI, bgMode modes starting with 'custom', and 'center'
 <!-- source layer -->
 * (done) place holder code generated background when no image is loaded
 * (done) start MODES with the center mode

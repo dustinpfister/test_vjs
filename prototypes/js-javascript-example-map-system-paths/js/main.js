@@ -8,6 +8,8 @@ var canvasObj = utils.createCanvas({
 var sm = {
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas,
+    fps: 20,
+    lt: new Date(),
     buildMenu: {
         x: 32,
         y: 32,
@@ -22,6 +24,7 @@ var sm = {
     },
     game: {
         money: 1000,
+        population: 0,
         map: mapMod.create({
             w: 10,
             h: 8,
@@ -58,41 +61,24 @@ var render = function(sm){
 sm.canvas.addEventListener('click', function(e){
     var pos = utils.getCanvasRelative(e);
     var cell = mapMod.getCellByPointer(sm.game.map, pos.x, pos.y);
-
-    // if cell
+    // if map cell clicked
     if(cell){
         var unitKey = sm.buildMenu.buttons[sm.buildMenu.currentIndex].unitKey;
-
         if(unitKey === 'sell'){
             if(cell.data.unit){
                 cell.data.unit = null;
+                sm.game.money += 50;
             }else{
                 console.log('no unit to sell');
             }
         }
-
         if(unitKey === 'res'){
-
             buildAtCell(sm, cell, 'res');
-
-/*
-            if(sm.game.money >= 100){
-                sm.game.money -= 100;
-                cell.data.unit = {
-                    fillStyle: 'red'
-                }
-            }
-*/
         }
-
         if(unitKey === 'com'){
             buildAtCell(sm, cell, 'com');
         }
-
-
-        //cell.data.fillStyle = cell.data.fillStyle === 'white' ? 'red' : 'white';
     }
-
     // if build menu clicked
     var bm = sm.buildMenu,
     w = bm.cellSize * bm.w,
@@ -107,11 +93,23 @@ sm.canvas.addEventListener('click', function(e){
             console.log(button);
         }
     }
-    
     render(sm);
-
 });
 
 init(sm);
-render(sm);
+
+
+var loop = function(){
+    var now = new Date(),
+    secs = (now - sm.lt) / 1000;
+
+    requestAnimationFrame(loop);
+
+    if(secs > 1 / sm.fps){
+        render(sm);
+        sm.lt = now;
+    }
+
+};
+loop();
 

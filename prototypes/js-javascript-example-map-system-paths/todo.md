@@ -14,13 +14,14 @@
 * (done) have a draw.unitTypeMenu draw method
 * (done) start a buildMenu that when clicked sets the current menu cell index
 * (done) when a cell is clicked the cell is set to the current type in the build menu
+* (done) have game.money, and game.population values
+* (done) display money and pop values
+* (done) have each unit cost 100 money to build
 
-* have game.money, and game.population values
-* display money and pop values
+* start a main app loop
 
 * have a house unit type that will rase population by 1
 * have a commercial type that will rase money over time
-* have each unit cost 100 money to build
 
 ## ( done 01/28/2022 ) - r0 - starting point
 * (done) start with the map.js from my turn based rpg javascript example

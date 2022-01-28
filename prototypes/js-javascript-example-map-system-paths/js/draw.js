@@ -78,7 +78,7 @@ var drawCell = function(sm, map, cell){
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         // version number
-        ctx.fillText('money: ' + sm.game.money, 5, 5);
+        ctx.fillText('money: ' + sm.game.money + ', pop: ' + sm.game.population, 5, 5);
     };
     // draw version number
     api.ver = function(sm){

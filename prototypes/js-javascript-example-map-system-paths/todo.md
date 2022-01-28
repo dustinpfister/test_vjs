@@ -15,6 +15,6 @@
 * (done) start with the utils.js form turn based rpg also
 * (done) new draw.js
 * (done) new main.js
+* (done) start with just a simple demo that involves just clicking squares to change color
 
-* start with just a simply demo that involves just clicking squares to change color
 * display mapMod.ver in canvas

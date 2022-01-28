@@ -17,10 +17,16 @@ var sm = {
     })
 };
 
-sm.map.cells.forEach(function(cell){
-    cell.data.fillStyle = 'white';
-});
+var init = function(sm){
+    sm.map.cells.forEach(function(cell){
+        cell.data.fillStyle = 'white';
+    });
+};
 
+var render = function(sm){
+    draw.back(sm);
+    draw.map(sm, sm.map)
+};
 
 sm.canvas.addEventListener('click', function(e){
     var pos = utils.getCanvasRelative(e);
@@ -28,12 +34,10 @@ sm.canvas.addEventListener('click', function(e){
 
     cell.data.fillStyle = cell.data.fillStyle === 'white' ? 'red' : 'white';
 
-    draw.back(sm);
-    draw.map(sm, sm.map)
+    render(sm);
 
 });
 
-console.log(sm);
+init(sm);
+render(sm);
 
-draw.back(sm);
-draw.map(sm, sm.map)

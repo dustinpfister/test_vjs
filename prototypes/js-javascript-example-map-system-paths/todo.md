@@ -10,11 +10,10 @@
 
 <!-- Minimum Viable Product -->
 
-## () - r0 - starting point
+## ( done 01/28/2022 ) - r0 - starting point
 * (done) start with the map.js from my turn based rpg javascript example
 * (done) start with the utils.js form turn based rpg also
 * (done) new draw.js
 * (done) new main.js
 * (done) start with just a simple demo that involves just clicking squares to change color
-
-* display mapMod.ver in canvas
+* (done) display mapMod.ver in canvas

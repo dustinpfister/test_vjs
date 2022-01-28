@@ -25,7 +25,8 @@ var init = function(sm){
 
 var render = function(sm){
     draw.back(sm);
-    draw.map(sm, sm.map)
+    draw.map(sm, sm.map);
+    draw.ver(sm);
 };
 
 sm.canvas.addEventListener('click', function(e){

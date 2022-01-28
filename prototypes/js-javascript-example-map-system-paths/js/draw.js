@@ -24,7 +24,7 @@ var drawCell = function(sm, map, cell){
 *********** *********/
 
     // draw background
-    api.back = function (sm,) {
+    api.back = function (sm) {
         var canvas = sm.canvas,
         ctx = sm.ctx;
         ctx.fillStyle = 'black';
@@ -44,12 +44,12 @@ var drawCell = function(sm, map, cell){
         var ctx = sm.ctx,
         canvas = sm.canvas;
         // text style
-        ctx.fillStyle = style || 'white';
+        ctx.fillStyle = 'white';
         ctx.font = '10px courier';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         // version number
-        ctx.fillText('v' + mapMod.ver, 1, canvas.height - 10);
+        ctx.fillText('version: ' + mapMod.ver, 5, canvas.height - 15);
     };
     // return the public api to draw variable
     return api;

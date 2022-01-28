@@ -8,7 +8,6 @@ var canvasObj = utils.createCanvas({
 var sm = {
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas,
-
     buildMenu: {
         x: 32,
         y: 32,
@@ -21,7 +20,6 @@ var sm = {
             { unitKey: 'com' }
         ]
     },
-
     game: {
         money: 1000,
         map: mapMod.create({
@@ -31,6 +29,15 @@ var sm = {
             marginY: 32,
             cellSize: 40
         })
+    }
+};
+
+var buildAtCell = function(sm, cell, unitKey){
+    if(sm.game.money >= 100){
+        sm.game.money -= 100;
+        cell.data.unit = {
+            fillStyle: unitKey === 'res' ? 'red' : 'blue'
+        }
     }
 };
 
@@ -64,15 +71,21 @@ sm.canvas.addEventListener('click', function(e){
         }
 
         if(unitKey === 'res'){
-            cell.data.unit = {
-                fillStyle: 'red'
+
+            buildAtCell(sm, cell, 'res');
+
+/*
+            if(sm.game.money >= 100){
+                sm.game.money -= 100;
+                cell.data.unit = {
+                    fillStyle: 'red'
+                }
             }
+*/
         }
 
         if(unitKey === 'com'){
-            cell.data.unit = {
-                fillStyle: 'blue'
-            }
+            buildAtCell(sm, cell, 'com');
         }
 
 

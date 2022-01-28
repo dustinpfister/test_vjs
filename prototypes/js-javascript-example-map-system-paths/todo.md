@@ -13,10 +13,11 @@
 ## () - r1 - unit type selection menu, population, money, basic game idea started
 * (done) have a draw.unitTypeMenu draw method
 * (done) start a buildMenu that when clicked sets the current menu cell index
-
-* when a cell is clicked the cell is set to the current type in the build menu
+* (done) when a cell is clicked the cell is set to the current type in the build menu
 
 * have game.money, and game.population values
+* display money and pop values
+
 * have a house unit type that will rase population by 1
 * have a commercial type that will rase money over time
 * have each unit cost 100 money to build

@@ -17,12 +17,19 @@ var sm = {
     })
 };
 
+sm.map.cells.forEach(function(cell){
+    cell.data.fillStyle = 'white';
+});
+
 
 sm.canvas.addEventListener('click', function(e){
     var pos = utils.getCanvasRelative(e);
     var cell = mapMod.getCellByPointer(sm.map, pos.x, pos.y);
 
-console.log(cell);
+    cell.data.fillStyle = cell.data.fillStyle === 'white' ? 'red' : 'white';
+
+    draw.back(sm);
+    draw.map(sm, sm.map)
 
 });
 

@@ -17,11 +17,11 @@
 * (done) have game.money, and game.population values
 * (done) display money and pop values
 * (done) have each unit cost 100 money to build
-
 * (done) start a main app loop
+* (done) have a house unit type that will rase population by 1
+* (done) have a commercial type that will rase money over time
 
-* have a house unit type that will rase population by 1
-* have a commercial type that will rase money over time
+* start a game.js file in which to start placing logic that should go there
 
 ## ( done 01/28/2022 ) - r0 - starting point
 * (done) start with the map.js from my turn based rpg javascript example

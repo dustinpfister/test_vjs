@@ -13,7 +13,14 @@ var drawCell = function(sm, map, cell){
     var cs = map.cellSize;
     var x = map.margin.x + cell.x * cs;
     var y = map.margin.y + cell.y * cs;
-    ctx.fillStyle = cell.data.fillStyle || 'red';
+
+    ctx.fillStyle = cell.data.fillStyle || 'white';
+
+    if(cell.data.unit){
+        ctx.fillStyle = cell.data.unit.fillStyle;
+    }
+
+
     ctx.beginPath();
     ctx.rect(x, y, cs, cs);
     ctx.fill();

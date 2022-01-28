@@ -53,7 +53,30 @@ sm.canvas.addEventListener('click', function(e){
 
     // if cell
     if(cell){
-        cell.data.fillStyle = cell.data.fillStyle === 'white' ? 'red' : 'white';
+        var unitKey = sm.buildMenu.buttons[sm.buildMenu.currentIndex].unitKey;
+
+        if(unitKey === 'sell'){
+            if(cell.data.unit){
+                cell.data.unit = null;
+            }else{
+                console.log('no unit to sell');
+            }
+        }
+
+        if(unitKey === 'res'){
+            cell.data.unit = {
+                fillStyle: 'red'
+            }
+        }
+
+        if(unitKey === 'com'){
+            cell.data.unit = {
+                fillStyle: 'blue'
+            }
+        }
+
+
+        //cell.data.fillStyle = cell.data.fillStyle === 'white' ? 'red' : 'white';
     }
 
     // if build menu clicked

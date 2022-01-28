@@ -17,6 +17,11 @@ var gameMod = (function(){
                 cellSize: 40
             })
         };
+
+    game.map.cells.forEach(function(cell){
+        cell.data.fillStyle = 'white';
+    });
+
         return game;
     };
 

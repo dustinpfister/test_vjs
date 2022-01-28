@@ -1,10 +1,11 @@
+// canvas
 var canvasObj = utils.createCanvas({
     container : document.getElementById('canvas-app'),
     width: 640,
     height: 480
 });
 
-
+// state machine object
 var sm = {
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas,
@@ -25,12 +26,7 @@ var sm = {
     game: gameMod.create()
 };
 
-var init = function(sm){
-    sm.game.map.cells.forEach(function(cell){
-        cell.data.fillStyle = 'white';
-    });
-};
-
+// render
 var render = function(sm){
     draw.back(sm);
     draw.map(sm, sm.game.map);
@@ -39,6 +35,7 @@ var render = function(sm){
     draw.ver(sm);
 };
 
+// single click event
 sm.canvas.addEventListener('click', function(e){
     var pos = utils.getCanvasRelative(e);
     var cell = mapMod.getCellByPointer(sm.game.map, pos.x, pos.y);
@@ -77,21 +74,16 @@ sm.canvas.addEventListener('click', function(e){
     render(sm);
 });
 
-init(sm);
-
-
+// main app loop
 var loop = function(){
     var now = new Date(),
     secs = (now - sm.lt) / 1000;
-
     requestAnimationFrame(loop);
-
     if(secs > 1 / sm.fps){
         gameMod.update(sm.game, secs)
         render(sm);
         sm.lt = now;
     }
-
 };
-loop();
 
+loop();

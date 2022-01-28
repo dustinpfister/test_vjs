@@ -1,4 +1,8 @@
 var mapMod = (function () {
+    // PUBLIC API
+    var api = {
+       ver: 'r0'
+    };
     // create Cells helper
     var createCells = function (map) {
         var cells = [];
@@ -18,8 +22,6 @@ var mapMod = (function () {
         }
         return cells;
     };
-    // PUBLIC API
-    var api = {};
     // create a new map object
     api.create = function (opt) {
         opt = opt || {};

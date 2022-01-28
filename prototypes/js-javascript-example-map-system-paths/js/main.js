@@ -22,20 +22,7 @@ var sm = {
             { unitKey: 'com' }
         ]
     },
-    game: {
-        money: 1000,
-        population: 0,
-        year: 1900,
-        secsPerYear: 10,
-        secs: 0,
-        map: mapMod.create({
-            w: 10,
-            h: 8,
-            marginX: 128,
-            marginY: 32,
-            cellSize: 40
-        })
-    }
+    game: gameMod.create()
 };
 
 var buildAtCell = function(sm, cell, unitKey){

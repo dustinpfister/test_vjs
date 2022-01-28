@@ -8,24 +8,27 @@ var canvasObj = utils.createCanvas({
 var sm = {
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas,
-    map: mapMod.create({
-        w: 10,
-        h: 8,
-        marginX: 32,
-        marginY: 32,
-        cellSize: 40
-    })
+    game: {
+        money: 1000,
+        map: mapMod.create({
+            w: 10,
+            h: 8,
+            marginX: 32,
+            marginY: 32,
+            cellSize: 40
+        })
+    }
 };
 
 var init = function(sm){
-    sm.map.cells.forEach(function(cell){
+    sm.game.map.cells.forEach(function(cell){
         cell.data.fillStyle = 'white';
     });
 };
 
 var render = function(sm){
     draw.back(sm);
-    draw.map(sm, sm.map);
+    draw.map(sm, sm.game.map);
     draw.ver(sm);
 };
 

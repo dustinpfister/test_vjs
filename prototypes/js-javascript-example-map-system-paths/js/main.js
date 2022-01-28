@@ -51,6 +51,7 @@ var render = function(sm){
     draw.back(sm);
     draw.map(sm, sm.game.map);
     draw.buildMenu(sm);
+    draw.disp(sm);
     draw.ver(sm);
 };
 

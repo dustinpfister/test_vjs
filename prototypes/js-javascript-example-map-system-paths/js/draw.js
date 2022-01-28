@@ -69,6 +69,18 @@ var drawCell = function(sm, map, cell){
         ctx.restore();
     };
     // draw version number
+    api.disp = function(sm){
+        var ctx = sm.ctx,
+        canvas = sm.canvas;
+        // text style
+        ctx.fillStyle = 'white';
+        ctx.font = '10px courier';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        // version number
+        ctx.fillText('money: ' + sm.game.money, 5, 5);
+    };
+    // draw version number
     api.ver = function(sm){
         var ctx = sm.ctx,
         canvas = sm.canvas;

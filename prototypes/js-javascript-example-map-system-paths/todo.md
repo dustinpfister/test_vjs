@@ -7,12 +7,18 @@
 
 <!-- Additional Features -->
 
-
 <!-- Minimum Viable Product -->
 
-## () - r2 - roads
+## () - r2 - mapMod.getArea method, roads, land value, new system for population
+* have a mapMod.getArea helper that will return a collection of cells that are in a given area
 * add a road unitType
-* have roads set
+* have roads set walkable values for cells to true
+* start a cell.data.landValue prop that will default to 0
+* have an update process that will use path detection to set land value for units
+* for 'res' units the number of paths to 'com' units will raise land value
+* for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
+* start a new system for population where land value will cause population to go up or down
+* if land value is 0 for a 'res' unit population will be 0
 
 ## () - r1 - unit type selection menu, population, money, basic game idea started
 * (done) have a draw.unitTypeMenu draw method
@@ -29,8 +35,6 @@
 * (done) gameMod.buildAt
 * (done) gameMod.update
 * (done) delta money as helper in gameMod
-
-
 
 ## ( done 01/28/2022 ) - r0 - starting point
 * (done) start with the map.js from my turn based rpg javascript example

@@ -59,20 +59,18 @@ sm.canvas.addEventListener('click', function(e){
     // if build menu clicked
     var bm = sm.buildMenu,
     w = bm.cellSize * bm.w,
-    h = bm.cellSize * bm.buttons.length / bm.w,
-    i;
+    h = bm.cellSize * bm.buttons.length / bm.w;
     if(utils.boundingBox( bm.x, bm.y, w, h, pos.x, pos.y, 1, 1 )){
-   
         var x = Math.floor((pos.x - bm.x) / bm.cellSize);
         var y = Math.floor((pos.y - bm.y) / bm.cellSize);
-        i = y * bm.w + x;
-
-console.log(i);
-
+        var i = y * bm.w + x;
+        var button = bm.buttons[i];
+        if(button){
+            bm.currentIndex = i;
+            console.log(button);
+        }
     }
     
-
-
     render(sm);
 
 });

@@ -26,6 +26,7 @@ var sm = {
         money: 1000,
         population: 0,
         year: 1900,
+        secsPerYear: 10,
         secs: 0,
         map: mapMod.create({
             w: 10,
@@ -75,8 +76,9 @@ var getDeltaMoney = function(sm){
 };
 
 var update = function(sm, secs){
+    var game = sm.game;
     // set population
-    sm.game.population = sm.game.map.cells.reduce(function(acc, cell){
+    game.population = game.map.cells.reduce(function(acc, cell){
         if(cell.data.unit){
             if(cell.data.unit.unitKey === 'res'){
                 acc += 1;
@@ -85,12 +87,13 @@ var update = function(sm, secs){
         return acc;
     }, 0);
     // new year?
-    sm.game.secs += secs;
-    sm.game.secs = sm.game.secs > 5 ? 5 : sm.game.secs;
-    if(sm.game.secs === 5){
-        sm.game.year += 1;
-        sm.game.secs = 0;
-        sm.game.money += getDeltaMoney(sm);
+    game.secs += secs;
+    var spy = game.secsPerYear;
+    game.secs = game.secs > spy ? spy : game.secs;
+    if(game.secs === spy){
+        game.year += 1;
+        game.secs = 0;
+        game.money += getDeltaMoney(sm);
     }
 };
 

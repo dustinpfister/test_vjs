@@ -60,19 +60,13 @@ var render = function(sm){
 };
 
 var update = function(sm, secs){
-
+   // set population
    sm.game.population = sm.game.map.cells.reduce(function(acc, cell){
-
-if(cell.data.unit){
-
-   if(cell.data.unit.unitKey === 'res'){
-
-       acc += 1;
-
-   }
-
-}
-
+       if(cell.data.unit){
+           if(cell.data.unit.unitKey === 'res'){
+               acc += 1;
+           }
+       }
        return acc;
    }, 0);
 

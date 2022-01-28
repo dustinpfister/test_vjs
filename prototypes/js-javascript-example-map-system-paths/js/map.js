@@ -1,7 +1,7 @@
 var mapMod = (function () {
     // PUBLIC API
     var api = {
-       ver: 'r0'
+       ver: 'r1'
     };
     // create Cells helper
     var createCells = function (map) {
@@ -22,6 +22,9 @@ var mapMod = (function () {
         }
         return cells;
     };
+
+// CREATE
+
     // create a new map object
     api.create = function (opt) {
         opt = opt || {};
@@ -38,6 +41,9 @@ var mapMod = (function () {
         map.cells = opt.cells || createCells(map);
         return map;
     };
+
+// GET CELL by...
+
     // return a cell at the given position, or false for out of bounds values
     api.get = function (map, xi, y) {
         if(arguments.length === 2){
@@ -56,9 +62,7 @@ var mapMod = (function () {
         return api.get(map, cx, cy)
     };
 
-/***
-PATHS
-***/
+// PATHS
 
     // sort a list of open nodes
     var sortOpen = function (opened) {
@@ -115,14 +119,7 @@ PATHS
     };
 
     api.getPath = function (grid, sx, sy, ex, ey) {
-        // copy the given grid
-        //var grid = Grid.fromMatrix(givenGrid.nodes),
-
-
         var grid = utils.deepCloneJSON(grid),
-        //var grid = utils.deepClone(grid, {
-        //    forRecursive: function(){ return {} }
-        //}),
         nodes = api.chunk(grid),
         path = [],
         opened = [],

@@ -39,6 +39,21 @@ var drawCell = function(sm, map, cell){
             i += 1;
         }
     };
+    // draw the build menu
+    api.buildMenu = function(sm){
+        var canvas = sm.canvas,
+        ctx = sm.ctx,
+        bm = sm.buildMenu;
+        ctx.save();
+        ctx.translate(bm.x, bm.y);
+        bm.buttons.forEach(function(button, i){
+            var x = i % bm.w,
+            y = Math.floor(i / bm.w);
+            ctx.fillStyle = 'white';
+            ctx.fillRect(x * 32, y * 32, 32, 32);
+        });
+        ctx.restore();
+    };
     // draw version number
     api.ver = function(sm){
         var ctx = sm.ctx,

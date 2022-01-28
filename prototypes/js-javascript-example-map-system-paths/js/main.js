@@ -26,7 +26,7 @@ var sm = {
         map: mapMod.create({
             w: 10,
             h: 8,
-            marginX: 32,
+            marginX: 128,
             marginY: 32,
             cellSize: 40
         })
@@ -42,14 +42,19 @@ var init = function(sm){
 var render = function(sm){
     draw.back(sm);
     draw.map(sm, sm.game.map);
+    draw.buildMenu(sm);
     draw.ver(sm);
 };
 
 sm.canvas.addEventListener('click', function(e){
     var pos = utils.getCanvasRelative(e);
-    var cell = mapMod.getCellByPointer(sm.map, pos.x, pos.y);
+    var cell = mapMod.getCellByPointer(sm.game.map, pos.x, pos.y);
 
-    cell.data.fillStyle = cell.data.fillStyle === 'white' ? 'red' : 'white';
+    // if cell
+    if(cell){
+        cell.data.fillStyle = cell.data.fillStyle === 'white' ? 'red' : 'white';
+    }
+
 
     render(sm);
 

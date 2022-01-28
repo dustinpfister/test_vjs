@@ -11,8 +11,9 @@
 <!-- Minimum Viable Product -->
 
 ## () - r1 - unit type selection menu, population, money, basic game idea started
-* have a unit type selection menu that when clicked sets the current menu cell index
-* have a draw.unitTypeMenu draw method
+* (done) have a draw.unitTypeMenu draw method
+* start a buildMenu that when clicked sets the current menu cell index
+
 * when a cell is clicked the cell is set to that unit type
 * have game.money, and game.population values
 * have a house unit type that will rase population by 1

@@ -61,25 +61,37 @@ var render = function(sm){
     draw.ver(sm);
 };
 
+// get delta money helper
+var getDeltaMoney = function(sm){
+     var deltaMoney = sm.game.map.cells.reduce(function(acc, cell){
+        if(cell.data.unit){
+            if(cell.data.unit.unitKey === 'com'){
+                acc += 10 + 50 * sm.game.population;
+            }
+        }
+        return acc;
+    }, 0); 
+    return deltaMoney;
+};
+
 var update = function(sm, secs){
-   // set population
-   sm.game.population = sm.game.map.cells.reduce(function(acc, cell){
-       if(cell.data.unit){
-           if(cell.data.unit.unitKey === 'res'){
-               acc += 1;
-           }
-       }
-       return acc;
-   }, 0);
-
-   // new year?
-   sm.game.secs += secs;
-   sm.game.secs = sm.game.secs > 10 ? 10 : sm.game.secs;
-   if(sm.game.secs === 10){
-       sm.game.year += 1;
-       sm.game.secs = 0;
-   }
-
+    // set population
+    sm.game.population = sm.game.map.cells.reduce(function(acc, cell){
+        if(cell.data.unit){
+            if(cell.data.unit.unitKey === 'res'){
+                acc += 1;
+            }
+        }
+        return acc;
+    }, 0);
+    // new year?
+    sm.game.secs += secs;
+    sm.game.secs = sm.game.secs > 5 ? 5 : sm.game.secs;
+    if(sm.game.secs === 5){
+        sm.game.year += 1;
+        sm.game.secs = 0;
+        sm.game.money += getDeltaMoney(sm);
+    }
 };
 
 sm.canvas.addEventListener('click', function(e){

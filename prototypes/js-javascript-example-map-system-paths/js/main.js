@@ -17,6 +17,15 @@ var sm = {
     })
 };
 
+
+sm.canvas.addEventListener('click', function(e){
+    var pos = utils.getCanvasRelative(e);
+    var cell = mapMod.getCellByPointer(sm.map, pos.x, pos.y);
+
+console.log(cell);
+
+});
+
 console.log(sm);
 
 draw.back(sm);

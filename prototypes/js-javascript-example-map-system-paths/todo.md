@@ -10,6 +10,10 @@
 
 <!-- Minimum Viable Product -->
 
+## () - r2 - roads
+* add a road unitType
+* have roads set
+
 ## () - r1 - unit type selection menu, population, money, basic game idea started
 * (done) have a draw.unitTypeMenu draw method
 * (done) start a buildMenu that when clicked sets the current menu cell index
@@ -20,8 +24,13 @@
 * (done) start a main app loop
 * (done) have a house unit type that will rase population by 1
 * (done) have a commercial type that will rase money over time
+* (done) start a game.js file in which to start placing logic that should go there
+* (done) gameMod.create
+* (done) gameMod.buildAt
+* (done) gameMod.update
+* (done) delta money as helper in gameMod
+ 
 
-* start a game.js file in which to start placing logic that should go there
 
 ## ( done 01/28/2022 ) - r0 - starting point
 * (done) start with the map.js from my turn based rpg javascript example

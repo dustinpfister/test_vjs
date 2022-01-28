@@ -25,18 +25,6 @@ var sm = {
     game: gameMod.create()
 };
 
-/*
-var buildAtCell = function(sm, cell, unitKey){
-    if(sm.game.money >= 100){
-        sm.game.money -= 100;
-        cell.data.unit = {
-            unitKey: unitKey,
-            fillStyle: unitKey === 'res' ? 'red' : 'blue'
-        }
-    }
-};
-*/
-
 var init = function(sm){
     sm.game.map.cells.forEach(function(cell){
         cell.data.fillStyle = 'white';
@@ -49,41 +37,6 @@ var render = function(sm){
     draw.buildMenu(sm);
     draw.disp(sm);
     draw.ver(sm);
-};
-
-// get delta money helper
-var getDeltaMoney = function(sm){
-     var deltaMoney = sm.game.map.cells.reduce(function(acc, cell){
-        if(cell.data.unit){
-            if(cell.data.unit.unitKey === 'com'){
-                acc += 10 + 50 * sm.game.population;
-            }
-        }
-        return acc;
-    }, 0); 
-    return deltaMoney;
-};
-
-var update = function(sm, secs){
-    var game = sm.game;
-    // set population
-    game.population = game.map.cells.reduce(function(acc, cell){
-        if(cell.data.unit){
-            if(cell.data.unit.unitKey === 'res'){
-                acc += 1;
-            }
-        }
-        return acc;
-    }, 0);
-    // new year?
-    game.secs += secs;
-    var spy = game.secsPerYear;
-    game.secs = game.secs > spy ? spy : game.secs;
-    if(game.secs === spy){
-        game.year += 1;
-        game.secs = 0;
-        game.money += getDeltaMoney(sm);
-    }
 };
 
 sm.canvas.addEventListener('click', function(e){
@@ -105,7 +58,6 @@ sm.canvas.addEventListener('click', function(e){
         }
         if(unitKey === 'com'){
             gameMod.buildAt(sm.game, 'com', cell);
-            //buildAtCell(sm, cell, 'com');
         }
     }
     // if build menu clicked
@@ -135,7 +87,7 @@ var loop = function(){
     requestAnimationFrame(loop);
 
     if(secs > 1 / sm.fps){
-        update(sm, secs);
+        gameMod.update(sm.game, secs)
         render(sm);
         sm.lt = now;
     }

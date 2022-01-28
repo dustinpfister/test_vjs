@@ -25,6 +25,7 @@ var sm = {
     game: gameMod.create()
 };
 
+/*
 var buildAtCell = function(sm, cell, unitKey){
     if(sm.game.money >= 100){
         sm.game.money -= 100;
@@ -34,6 +35,7 @@ var buildAtCell = function(sm, cell, unitKey){
         }
     }
 };
+*/
 
 var init = function(sm){
     sm.game.map.cells.forEach(function(cell){
@@ -99,10 +101,11 @@ sm.canvas.addEventListener('click', function(e){
             }
         }
         if(unitKey === 'res'){
-            buildAtCell(sm, cell, 'res');
+            gameMod.buildAt(sm.game, 'res', cell);
         }
         if(unitKey === 'com'){
-            buildAtCell(sm, cell, 'com');
+            gameMod.buildAt(sm.game, 'com', cell);
+            //buildAtCell(sm, cell, 'com');
         }
     }
     // if build menu clicked

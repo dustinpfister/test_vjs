@@ -51,6 +51,8 @@ var drawCell = function(sm, map, cell){
             y = Math.floor(i / bm.w);
             ctx.fillStyle = 'white';
             ctx.fillRect(x * 32, y * 32, 32, 32);
+            ctx.fillStyle = 'black';
+            ctx.fillText(button.unitKey, x * 32 + 5, y * 32 + 18);
         });
         ctx.restore();
     };

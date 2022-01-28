@@ -24,11 +24,11 @@ var drawCell = function(sm, map, cell){
 *********** *********/
 
     // draw background
-    api.back = function (sm, style) {
+    api.back = function (sm,) {
         var canvas = sm.canvas,
         ctx = sm.ctx;
-        ctx.fillStyle = style || 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'black';
+        ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
     };
     // draw the map
     api.map = function (sm, map) {

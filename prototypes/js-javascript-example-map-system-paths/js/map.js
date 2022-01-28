@@ -28,7 +28,7 @@ var mapMod = (function () {
         var map = {
             w: opt.w || 9,
             h: opt.h || 7,
-            cellSize: 32,
+            cellSize: opt.cellSize || 32,
             margin: {
                 x: opt.marginX == undefined ? 5 : opt.marginX,
                 y: opt.marginY == undefined ? 5 : opt.marginY

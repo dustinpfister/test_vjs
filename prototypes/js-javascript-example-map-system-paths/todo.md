@@ -17,3 +17,4 @@
 * (done) new main.js
 
 * start with just a simply demo that involves just clicking squares to change color
+* display mapMod.ver in canvas

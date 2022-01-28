@@ -8,6 +8,19 @@ var canvasObj = utils.createCanvas({
 var sm = {
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas,
+
+    buildMenu: {
+        x: 32,
+        y: 32,
+        w: 2,
+        currentIndex: 0,
+        buttons: [
+            { unitKey: 'sell'},
+            { unitKey: 'res' },
+            { unitKey: 'com' }
+        ]
+    },
+
     game: {
         money: 1000,
         map: mapMod.create({

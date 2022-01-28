@@ -18,7 +18,7 @@
 * (done) display money and pop values
 * (done) have each unit cost 100 money to build
 
-* start a main app loop
+* (done) start a main app loop
 
 * have a house unit type that will rase population by 1
 * have a commercial type that will rase money over time

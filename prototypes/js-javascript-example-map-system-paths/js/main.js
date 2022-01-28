@@ -39,6 +39,7 @@ var buildAtCell = function(sm, cell, unitKey){
     if(sm.game.money >= 100){
         sm.game.money -= 100;
         cell.data.unit = {
+            unitKey: unitKey,
             fillStyle: unitKey === 'res' ? 'red' : 'blue'
         }
     }
@@ -56,6 +57,25 @@ var render = function(sm){
     draw.buildMenu(sm);
     draw.disp(sm);
     draw.ver(sm);
+};
+
+var update = function(sm, secs){
+
+   sm.game.population = sm.game.map.cells.reduce(function(acc, cell){
+
+if(cell.data.unit){
+
+   if(cell.data.unit.unitKey === 'res'){
+
+       acc += 1;
+
+   }
+
+}
+
+       return acc;
+   }, 0);
+
 };
 
 sm.canvas.addEventListener('click', function(e){
@@ -106,6 +126,7 @@ var loop = function(){
     requestAnimationFrame(loop);
 
     if(secs > 1 / sm.fps){
+        update(sm, secs);
         render(sm);
         sm.lt = now;
     }

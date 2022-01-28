@@ -49,10 +49,14 @@ var drawCell = function(sm, map, cell){
         bm.buttons.forEach(function(button, i){
             var x = i % bm.w,
             y = Math.floor(i / bm.w);
-            ctx.fillStyle = 'white';
+            ctx.fillStyle = i === bm.currentIndex ? 'yellow' : 'white';
             ctx.fillRect(x * 32, y * 32, 32, 32);
+            // text
+            ctx.font = '10px courier';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
             ctx.fillStyle = 'black';
-            ctx.fillText(button.unitKey, x * 32 + 5, y * 32 + 18);
+            ctx.fillText(button.unitKey, x * 32 + 4, y * 32 + 12);
         });
         ctx.restore();
     };

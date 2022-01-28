@@ -43,20 +43,21 @@ var drawCell = function(sm, map, cell){
     api.buildMenu = function(sm){
         var canvas = sm.canvas,
         ctx = sm.ctx,
-        bm = sm.buildMenu;
+        bm = sm.buildMenu,
+        cs = bm.cellSize;
         ctx.save();
         ctx.translate(bm.x, bm.y);
         bm.buttons.forEach(function(button, i){
             var x = i % bm.w,
             y = Math.floor(i / bm.w);
             ctx.fillStyle = i === bm.currentIndex ? 'yellow' : 'white';
-            ctx.fillRect(x * 32, y * 32, 32, 32);
+            ctx.fillRect(x * cs, y * cs, cs, cs);
             // text
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
             ctx.fillStyle = 'black';
-            ctx.fillText(button.unitKey, x * 32 + 4, y * 32 + 12);
+            ctx.fillText(button.unitKey, x * cs + 4, y * cs + 12);
         });
         ctx.restore();
     };

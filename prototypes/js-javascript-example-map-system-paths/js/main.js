@@ -14,6 +14,7 @@ var sm = {
         y: 32,
         w: 2,
         currentIndex: 0,
+        cellSize: 32,
         buttons: [
             { unitKey: 'sell'},
             { unitKey: 'res' },
@@ -54,6 +55,9 @@ sm.canvas.addEventListener('click', function(e){
     if(cell){
         cell.data.fillStyle = cell.data.fillStyle === 'white' ? 'red' : 'white';
     }
+
+    // if build menu clicked
+    
 
 
     render(sm);

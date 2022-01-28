@@ -25,6 +25,8 @@ var sm = {
     game: {
         money: 1000,
         population: 0,
+        year: 1900,
+        secs: 0,
         map: mapMod.create({
             w: 10,
             h: 8,
@@ -69,6 +71,14 @@ var update = function(sm, secs){
        }
        return acc;
    }, 0);
+
+   // new year?
+   sm.game.secs += secs;
+   sm.game.secs = sm.game.secs > 10 ? 10 : sm.game.secs;
+   if(sm.game.secs === 10){
+       sm.game.year += 1;
+       sm.game.secs = 0;
+   }
 
 };
 

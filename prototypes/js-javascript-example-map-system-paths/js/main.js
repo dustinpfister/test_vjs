@@ -63,19 +63,6 @@ sm.canvas.addEventListener('click', function(e){
             gameMod.buildAt(sm.game, unitKey, cell);
         }
 
-/*
-        if(unitKey === 'sell'){
-            if(cell.data.unit){
-                cell.data.unit = null;
-                sm.game.money += 50;
-            }else{
-                console.log('no unit to sell');
-            }
-        }else{
-            gameMod.buildAt(sm.game, unitKey, cell);
-        }
-
-*/
     }
     // if build menu clicked
     var bm = sm.buildMenu,

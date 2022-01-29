@@ -1,5 +1,18 @@
 var gameMod = (function(){
 
+    var UNIT_TYPES = {};
+
+    UNIT_TYPES.res = {
+        cost: 100,
+        fillStyle : '#880000'
+    };
+
+    UNIT_TYPES.com = {
+        cost: 150,
+        fillStyle : '#000088'
+    };
+
+
     var api = {};
 
     api.create = function(opt){
@@ -29,17 +42,18 @@ var gameMod = (function(){
 
     api.buildAt = function(game, unitKey, a, b){
         var cell = null;
+        var unitType = UNIT_TYPES[unitKey];
         if(typeof a === 'object'){
            cell = a;
         }
         if(typeof a === 'number'){
            cell = mapMod.get(game.map, a, b)
         }
-        if(game.money >= 100 && cell){
-            game.money -= 100;
+        if(game.money >= unitType.cost && cell){
+            game.money -= unitType.cost;
             cell.data.unit = {
                 unitKey: unitKey,
-                fillStyle: unitKey === 'res' ? 'red' : 'blue'
+                fillStyle: unitType.fillStyle
             }
         }
     };

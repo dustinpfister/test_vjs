@@ -14,6 +14,9 @@
 
 ## () - r2 - mapMod.getCollectionByPos, roads, land value
 * (done) have a mapMod.getCollectionByPos helper that will return a collection of cells that are in a given area
+* I will want a UNIT TYPES const in game.js
+
+
 * add a road unitType
 * have roads set walkable values for cells to true
 * start a cell.data.landValue prop that will default to 0

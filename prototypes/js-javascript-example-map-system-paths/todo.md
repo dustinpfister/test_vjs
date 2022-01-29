@@ -5,22 +5,23 @@
 
 <!-- Additional Features -->
 
-## () - rx - mapMod.getCollectionByBox, mapMod.getCollectionByCircle, and mapMod.getCollectionByFilter
+## () - rx - 
 
-## () - rx - paths and roads
-* have an update process that will use path detection to set land value for units
-* have roads set walkable values for cells to true
-* for 'res' units the number of paths to 'com' units will raise land value
-* for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
-
-## () - rx - new system for population
-* start a new system for population where land value will cause population to go up or down
-* if land value is 0 for a 'res' unit population will be 0
 
 ## () - rx - map modes
 * I will want to start a system that will be more than one way to display info about the map
 * have a normal map that is just the current view
 * have a landValue map that will show the the current land values are for each cell
+
+
+## () - r3 - mapMod.getCollectionByCircle, paths to com units
+* rename mapMod.getCollectionByPos to mapMod.getCollectionByBox
+* new mapMod.getCollectionByCircle
+
+* have an update process that will use path detection to set land value for units
+* have roads set walkable values for cells to true
+* for 'res' units the number of paths to 'com' units will raise land value
+* for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
 <!-- Minimum Viable Product -->
 

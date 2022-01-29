@@ -1,7 +1,7 @@
 var mapMod = (function () {
     // PUBLIC API
     var api = {
-       ver: 'r2'
+       ver: 'r3'
     };
     // create Cells helper
     var createCells = function (map) {

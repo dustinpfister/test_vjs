@@ -5,24 +5,34 @@
 
 <!-- Additional Features -->
 
+## () - rx - paths and roads
+* have an update process that will use path detection to set land value for units
+* have roads set walkable values for cells to true
+* for 'res' units the number of paths to 'com' units will raise land value
+* for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
+
 
 <!-- Minimum Viable Product -->
 
-## () - r3 - new system for population
+## () - r4 - new system for population
 * start a new system for population where land value will cause population to go up or down
 * if land value is 0 for a 'res' unit population will be 0
+
+## () - r3 - map modes
+* I will want to start a system that will be more than one way to display info about the map
+* have a normal map that is just the current view
+* have a landValue map that will show the the current land values are for each cell
 
 ## () - r2 - mapMod.getCollectionByPos, roads, land value
 * (done) have a mapMod.getCollectionByPos helper that will return a collection of cells that are in a given area
 * (done) I will want a UNIT TYPES const in game.js
+* (done) add a road unitType
 
-
-* add a road unitType
-* have roads set walkable values for cells to true
 * start a cell.data.landValue prop that will default to 0
-* have an update process that will use path detection to set land value for units
-* for 'res' units the number of paths to 'com' units will raise land value
-* for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
+* have it so that the count of roads from a 'res' unit will posativly inpack landValue
+* start a population update method that will take landValue into account
+
+
 
 ## ( done 01/29/2022 ) - r1 - unit type selection menu, population, money, basic game idea started
 * (done) have a draw.unitTypeMenu draw method

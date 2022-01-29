@@ -56,7 +56,7 @@ sm.canvas.addEventListener('click', function(e){
         }
 
         if(button.action === 'info'){
-            console.log(cell);
+            console.log( Object.assign({}, cell.data, {x: cell.x, y: cell.y}) );
         }
 
         if(button.action === 'build'){

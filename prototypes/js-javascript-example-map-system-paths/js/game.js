@@ -64,7 +64,7 @@ var gameMod = (function(){
         var deltaMoney = game.map.cells.reduce(function(acc, cell){
             if(cell.data.unit){
                 if(cell.data.unit.unitKey === 'com'){
-                    acc += 10 + 50 * sm.game.population;
+                    acc += Math.floor(sm.game.population * 10 * 0.07);
                 }
             }
             return acc;
@@ -92,20 +92,41 @@ var gameMod = (function(){
         }, 0);
     };
 
-
-    api.update = function(game, secs){
-        // set population
-        //game.population = getUnitTypeCount(game, game.map.cells[0], 'res', game.map.w)
-
-        game.population = 0;
+    // run over all cells and just update population
+    var updatePop = function(game){
+       game.population = 0;
         mapMod.forEachCell(game.map, function(cell, x, y, i, map){
             var cDat = cell.data;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
-                    game.population += 1;
+                    game.population += 10 * cDat.landValue;
                 }
             }
         });
+    };
+
+    // run over all cells, and update just land value
+    var updateLandValue = function(game){
+       game.population = 0;
+        mapMod.forEachCell(game.map, function(cell, x, y, i, map){
+            var cDat = cell.data;
+            // land value should default to 0
+            cDat.landValue = 0;
+            if(cDat.unit){
+                if(cDat.unit.unitKey === 'res'){
+                    // people like roads, because people likt to go places
+                    var roadCount = getUnitTypeCount(game, cell, 'road', 3);
+                    cDat.landValue += roadCount;
+                }
+            }
+        });
+    };
+
+
+    api.update = function(game, secs){
+
+        updateLandValue(game);
+        updatePop(game);
 
         // new year?
         game.secs += secs;

@@ -23,13 +23,14 @@
 * have a normal map that is just the current view
 * have a landValue map that will show the the current land values are for each cell
 
-## () - r2 - mapMod.getCollectionByPos, roads, land value
+## () - r2 - mapMod.getCollectionByPos, mapMod.forEachCell, roads, land value
 * (done) have a mapMod.getCollectionByPos helper that will return a collection of cells that are in a given area
 * (done) I will want a UNIT TYPES const in game.js
 * (done) add a road unitType
 * (done) button.action prop in main.js
 * (done) info action button in main.js 
 * (done) start a cell.data.landValue prop that will default to 0
+* (done) mapMod.forEachCell method
 
 * have it so that the count of roads from a 'res' unit will inpack landValue
 * start a population update method that will take landValue into account

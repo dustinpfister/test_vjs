@@ -84,16 +84,9 @@ var gameMod = (function(){
         var x = cell.x,
         y = cell.y,
         collection = mapMod.getCollectionByPos(game.map, x - dist, y - dist, dist * 2, dist * 2);
-
-
-
         return collection.reduce(function(acc, cell){
-
             var cDat = cell.data; 
             if(cDat.unit){
-
-
-
                 if(cDat.unit.unitKey === unitKey){
                    acc += 1;
                 }
@@ -101,6 +94,8 @@ var gameMod = (function(){
             return acc;
         }, 0);
     };
+
+    
 
     api.update = function(game, secs){
         // set population

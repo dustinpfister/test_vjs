@@ -18,10 +18,10 @@ var sm = {
         currentIndex: 0,
         cellSize: 32,
         buttons: [
-            { unitKey: 'sell'},
-            { unitKey: 'res' },
-            { unitKey: 'com' },
-            { unitKey: 'road' }
+            { unitKey: 'sell', action: 'sell'},
+            { unitKey: 'res', action: 'build' },
+            { unitKey: 'com', action: 'build' },
+            { unitKey: 'road', action: 'build' }
         ]
     },
     game: gameMod.create()
@@ -42,7 +42,23 @@ sm.canvas.addEventListener('click', function(e){
     var cell = mapMod.getCellByPointer(sm.game.map, pos.x, pos.y);
     // if map cell clicked
     if(cell){
-        var unitKey = sm.buildMenu.buttons[sm.buildMenu.currentIndex].unitKey;
+        var button = sm.buildMenu.buttons[sm.buildMenu.currentIndex];
+        var unitKey = button.unitKey;
+
+        if(button.action === 'sell'){
+            if(cell.data.unit){
+                cell.data.unit = null;
+                sm.game.money += 50;
+            }else{
+                console.log('no unit to sell');
+            }
+        }
+
+        if(button.action === 'build'){
+            gameMod.buildAt(sm.game, unitKey, cell);
+        }
+
+/*
         if(unitKey === 'sell'){
             if(cell.data.unit){
                 cell.data.unit = null;
@@ -53,6 +69,8 @@ sm.canvas.addEventListener('click', function(e){
         }else{
             gameMod.buildAt(sm.game, unitKey, cell);
         }
+
+*/
     }
     // if build menu clicked
     var bm = sm.buildMenu,

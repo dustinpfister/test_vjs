@@ -18,9 +18,11 @@ var gameMod = (function(){
             })
         };
 
-    game.map.cells.forEach(function(cell){
-        cell.data.fillStyle = 'white';
-    });
+        game.map.cells.forEach(function(cell){
+            cell.data.fillStyle = 'white';
+        });
+
+        console.log(mapMod.getCollectionByPos(game.map, 2, 2, 2, 2));
 
         return game;
     };

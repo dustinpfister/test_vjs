@@ -5,21 +5,21 @@
 
 <!-- Additional Features -->
 
-## () - r3 - 
 
 <!-- Minimum Viable Product -->
 
-## () - r2 - mapMod.getCollectionByPos, roads, land value, new system for population
-* (done) have a mapMod.getCollectionByPos helper that will return a collection of cells that are in a given area
+## () - r3 - new system for population
+* start a new system for population where land value will cause population to go up or down
+* if land value is 0 for a 'res' unit population will be 0
 
+## () - r2 - mapMod.getCollectionByPos, roads, land value
+* (done) have a mapMod.getCollectionByPos helper that will return a collection of cells that are in a given area
 * add a road unitType
 * have roads set walkable values for cells to true
 * start a cell.data.landValue prop that will default to 0
 * have an update process that will use path detection to set land value for units
 * for 'res' units the number of paths to 'com' units will raise land value
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
-* start a new system for population where land value will cause population to go up or down
-* if land value is 0 for a 'res' unit population will be 0
 
 ## ( done 01/29/2022 ) - r1 - unit type selection menu, population, money, basic game idea started
 * (done) have a draw.unitTypeMenu draw method

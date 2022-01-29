@@ -29,10 +29,9 @@
 * (done) add a road unitType
 * (done) button.action prop in main.js
 * (done) info action button in main.js 
+* (done) start a cell.data.landValue prop that will default to 0
 
-
-* start a cell.data.landValue prop that will default to 0
-* have it so that the count of roads from a 'res' unit will posativly inpack landValue
+* have it so that the count of roads from a 'res' unit will inpack landValue
 * start a population update method that will take landValue into account
 
 

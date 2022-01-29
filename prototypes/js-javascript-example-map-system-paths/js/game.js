@@ -35,14 +35,10 @@ var gameMod = (function(){
                 cellSize: 40
             })
         };
-
         game.map.cells.forEach(function(cell){
             cell.data.fillStyle = 'white';
             cell.data.landValue = 0;
         });
-
-        console.log(mapMod.getCollectionByPos(game.map, 2, 2, 2, 2));
-
         return game;
     };
 
@@ -96,11 +92,20 @@ var gameMod = (function(){
         }, 0);
     };
 
-    
 
     api.update = function(game, secs){
         // set population
-        game.population = getUnitTypeCount(game, game.map.cells[0], 'res', game.map.w)
+        //game.population = getUnitTypeCount(game, game.map.cells[0], 'res', game.map.w)
+
+        game.population = 0;
+        mapMod.forEachCell(game.map, function(cell, x, y, i, map){
+            var cDat = cell.data;
+            if(cDat.unit){
+                if(cDat.unit.unitKey === 'res'){
+                    game.population += 1;
+                }
+            }
+        });
 
         // new year?
         game.secs += secs;

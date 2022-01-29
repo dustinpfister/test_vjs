@@ -83,6 +83,17 @@ var mapMod = (function () {
 
     };
 
+// for each cell
+    api.forEachCell = function(map, func){
+        var i = 0, cell,
+        len = map.cells.length;
+        while(i < len){
+            cell = map.cells[i];
+            func.call(map, cell, cell.x, cell.y, cell.i, map)
+            i += 1;
+        }
+    };
+
 // PATHS
 
     // sort a list of open nodes

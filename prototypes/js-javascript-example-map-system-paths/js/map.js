@@ -1,7 +1,7 @@
 var mapMod = (function () {
     // PUBLIC API
     var api = {
-       ver: 'r1'
+       ver: 'r2'
     };
     // create Cells helper
     var createCells = function (map) {
@@ -60,6 +60,27 @@ var mapMod = (function () {
         var cx = Math.floor((x - map.margin.x) / map.cellSize),
         cy = Math.floor((y - map.margin.y) / map.cellSize);
         return api.get(map, cx, cy)
+    };
+
+// Get a collection of cells by...
+
+    api.getCollectionByPos = function(map, sx, sy, w, h){
+        var collection = [];
+        var i = 0, x, y,
+        cell,
+        len = w * h;
+        while(i < len){
+            x = sx + i % w;
+            y = sy + Math.floor(i / w);
+            cell = api.get(map, x, y);
+            if(cell){
+                collection.push(cell);
+            }
+            i += 1;
+        }
+        return collection;
+
+
     };
 
 // PATHS

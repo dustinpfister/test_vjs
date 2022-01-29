@@ -3,9 +3,9 @@
 
 <!-- Maintenance -->
 
-
-
 <!-- Additional Features -->
+
+## () - r3 - 
 
 <!-- Minimum Viable Product -->
 
@@ -20,7 +20,7 @@
 * start a new system for population where land value will cause population to go up or down
 * if land value is 0 for a 'res' unit population will be 0
 
-## () - r1 - unit type selection menu, population, money, basic game idea started
+## ( done 01/29/2022 ) - r1 - unit type selection menu, population, money, basic game idea started
 * (done) have a draw.unitTypeMenu draw method
 * (done) start a buildMenu that when clicked sets the current menu cell index
 * (done) when a cell is clicked the cell is set to the current type in the build menu

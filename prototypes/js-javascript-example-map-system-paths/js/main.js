@@ -56,7 +56,7 @@ sm.canvas.addEventListener('click', function(e){
         }
 
         if(button.action === 'info'){
-            console.log(sm.game);
+            console.log(cell);
         }
 
         if(button.action === 'build'){

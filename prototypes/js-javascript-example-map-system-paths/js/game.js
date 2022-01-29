@@ -38,6 +38,7 @@ var gameMod = (function(){
 
         game.map.cells.forEach(function(cell){
             cell.data.fillStyle = 'white';
+            cell.data.landValue = 0;
         });
 
         console.log(mapMod.getCollectionByPos(game.map, 2, 2, 2, 2));

@@ -31,11 +31,8 @@
 * (done) info action button in main.js 
 * (done) start a cell.data.landValue prop that will default to 0
 * (done) mapMod.forEachCell method
-
-* have it so that the count of roads from a 'res' unit will inpack landValue
-* start a population update method that will take landValue into account
-
-
+* (done) have it so that the count of roads from a 'res' unit will inpack landValue
+* (done) start a population update method that will take landValue into account
 
 ## ( done 01/29/2022 ) - r1 - unit type selection menu, population, money, basic game idea started
 * (done) have a draw.unitTypeMenu draw method

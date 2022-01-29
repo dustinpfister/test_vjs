@@ -20,7 +20,8 @@ var sm = {
         buttons: [
             { unitKey: 'sell'},
             { unitKey: 'res' },
-            { unitKey: 'com' }
+            { unitKey: 'com' },
+            { unitKey: 'road' }
         ]
     },
     game: gameMod.create()
@@ -49,12 +50,13 @@ sm.canvas.addEventListener('click', function(e){
             }else{
                 console.log('no unit to sell');
             }
-        }
-        if(unitKey === 'res'){
-            gameMod.buildAt(sm.game, 'res', cell);
-        }
-        if(unitKey === 'com'){
-            gameMod.buildAt(sm.game, 'com', cell);
+        }else{
+        //if(unitKey === 'res'){
+            gameMod.buildAt(sm.game, unitKey, cell);
+        //}
+        //if(unitKey === 'com'){
+            //gameMod.buildAt(sm.game, 'com', cell);
+        //}
         }
     }
     // if build menu clicked

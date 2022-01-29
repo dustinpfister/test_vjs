@@ -12,6 +12,11 @@ var gameMod = (function(){
         fillStyle : '#000088'
     };
 
+    UNIT_TYPES.road = {
+        cost: 10,
+        fillStyle : '#888888'
+    };
+
 
     var api = {};
 

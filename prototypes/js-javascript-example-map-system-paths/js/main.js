@@ -19,6 +19,7 @@ var sm = {
         cellSize: 32,
         buttons: [
             { unitKey: 'sell', action: 'sell'},
+            { unitKey: 'info', action: 'info'},
             { unitKey: 'res', action: 'build' },
             { unitKey: 'com', action: 'build' },
             { unitKey: 'road', action: 'build' }
@@ -52,6 +53,10 @@ sm.canvas.addEventListener('click', function(e){
             }else{
                 console.log('no unit to sell');
             }
+        }
+
+        if(button.action === 'info'){
+            console.log(sm.game);
         }
 
         if(button.action === 'build'){

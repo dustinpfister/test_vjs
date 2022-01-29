@@ -27,6 +27,9 @@
 * (done) have a mapMod.getCollectionByPos helper that will return a collection of cells that are in a given area
 * (done) I will want a UNIT TYPES const in game.js
 * (done) add a road unitType
+* (done) button.action prop in main.js
+* (done) info action button in main.js 
+
 
 * start a cell.data.landValue prop that will default to 0
 * have it so that the count of roads from a 'res' unit will posativly inpack landValue

@@ -51,12 +51,7 @@ sm.canvas.addEventListener('click', function(e){
                 console.log('no unit to sell');
             }
         }else{
-        //if(unitKey === 'res'){
             gameMod.buildAt(sm.game, unitKey, cell);
-        //}
-        //if(unitKey === 'com'){
-            //gameMod.buildAt(sm.game, 'com', cell);
-        //}
         }
     }
     // if build menu clicked

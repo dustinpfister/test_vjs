@@ -75,16 +75,37 @@ var gameMod = (function(){
         return deltaMoney;
     };
 
-    api.update = function(game, secs){
-        // set population
-        game.population = game.map.cells.reduce(function(acc, cell){
-            if(cell.data.unit){
-                if(cell.data.unit.unitKey === 'res'){
-                    acc += 1;
+    // GET UNIT TYPE COUNT
+    // This is a helper that will get a count of unit types at a max distance
+    // from the given cell location. This is used in the update process to find out
+    // if one or more roads are at a distnace of 3 or less from a cell that has a res
+    // type unit on it
+    var getUnitTypeCount = function(game, cell, unitKey, dist){
+        var x = cell.x,
+        y = cell.y,
+        collection = mapMod.getCollectionByPos(game.map, x - dist, y - dist, dist * 2, dist * 2);
+
+
+
+        return collection.reduce(function(acc, cell){
+
+            var cDat = cell.data; 
+            if(cDat.unit){
+
+
+
+                if(cDat.unit.unitKey === unitKey){
+                   acc += 1;
                 }
             }
             return acc;
         }, 0);
+    };
+
+    api.update = function(game, secs){
+        // set population
+        game.population = getUnitTypeCount(game, game.map.cells[0], 'res', game.map.w)
+
         // new year?
         game.secs += secs;
         var spy = game.secsPerYear;

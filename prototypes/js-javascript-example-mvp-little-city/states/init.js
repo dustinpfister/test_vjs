@@ -1,7 +1,7 @@
 smMod.load({
     stateKey: 'init',
     update: function(sm, secs){
-        sm.buildMenu = {
+        sm.buildMenu = smMod.gridMenu.create({
             x: 32,
             y: 96,
             w: 2,
@@ -14,7 +14,7 @@ smMod.load({
                 { unitKey: 'com', action: 'build' },
                 { unitKey: 'road', action: 'build' }
             ]
-        };
+        });
         sm.game = gameMod.create();
         smMod.setState(sm, 'gameBuild');
     },

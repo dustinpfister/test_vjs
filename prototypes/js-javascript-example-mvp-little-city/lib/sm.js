@@ -65,6 +65,22 @@ var smMod = (function(){
         loop();
     };
 
+    // create simple menus
+    api.gridMenu = {};
+
+    api.gridMenu.create = function(opt){
+        opt = opt || {};
+        var menu = Object.assign({}, {
+            x: 32,
+            y: 32,
+            w: 4,
+            currentIndex: 0,
+            cellSize: 32,
+            buttons: []
+        }, opt);
+        return menu;
+    };
+
     return api;
 
 }());

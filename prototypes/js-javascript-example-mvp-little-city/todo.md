@@ -27,8 +27,8 @@
 * for 'res' units the number of paths to 'com' units will raise land value
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
-## () - r1 - map modes
-* I will want to start a system that will be more than one way to display info about the map
+## () - r1 - game states, and 'map' state
+* have a system like the build menu only
 * have a normal map that is just the current view
 * have a landValue map that will show the the current land values are for each cell
 

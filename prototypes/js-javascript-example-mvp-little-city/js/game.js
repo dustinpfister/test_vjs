@@ -74,7 +74,7 @@ var gameMod = (function(){
         // !!! as of r0 I just worked out a system system for 'property tax' that will 
         // need to be improved at a latter point as the expression at that point
         // is just Math.floor(game.population * game.raxRate.propertyTax)
-        var propertyTax = Math.floor(game.population * game.raxRate.propertyTax);
+        var propertyTax = Math.floor(game.population * game.taxRate.propertyTax);
 
 /*
         var deltaMoney = game.map.cells.reduce(function(acc, cell){
@@ -86,6 +86,8 @@ var gameMod = (function(){
             return acc;
         }, 0);
 */ 
+        var deltaMoney = propertyTax;
+
         return deltaMoney;
     };
 

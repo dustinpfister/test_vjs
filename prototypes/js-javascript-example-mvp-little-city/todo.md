@@ -10,6 +10,9 @@
 
 <!-- Minimum Viable Product -->
 
+## () - rx - popDelta revisit 
+* the popDelta value will increse or decress population at a given cell
+
 ## () - r3 - Mean Income, Property Tax
 * rethink property tax at this point to take into account avg landValue, and mean income
 
@@ -32,5 +35,3 @@
 * (done) over all population is then just a tabulation of all cell.data.pop values
 * (done) have a MAX POP PER CELL setting in game.js
 
-
-* the popDelta value will increse or decress population at a given cell

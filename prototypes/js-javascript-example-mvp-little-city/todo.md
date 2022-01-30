@@ -35,7 +35,7 @@
 * (done) start a sm.js lib in the lib folder that will have a plug in systme for state objects
 * (done) start a states folder to which the first file will be game-build.js
 
-* start an init state that will do everything that needs to happen to set things up for the first time
+* (done) start an init state that will do everything that needs to happen to set things up for the first time
 
 * have a system like the build menu only to switch between more than one state
 * the current game state can be a gameBuild state

@@ -21,7 +21,7 @@
 ## () - rx - popDelta revisit 
 * the popDelta value will increse or decress population at a given cell
 
-## () - r3 - Mean Income, Property Tax
+## () - r3 - gameBudget state, Mean Income, Property Tax
 * rethink property tax at this point to take into account avg landValue, and mean income
 
 ## () - r2 - Paths to com units
@@ -30,9 +30,14 @@
 * for 'res' units the number of paths to 'com' units will raise land value
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
-## () - r1 - game states, and 'map' state
-* have a system like the build menu only
-* have a normal map that is just the current view
+## () - r1 - lib and states folders, 'gameMap' state
+* start a lib folder and have utils.js and map.js in that folder
+* start a sm.js lib in the lib folder that will have a plug in systme for state objects
+* start a states folder to which the first file will be game-build.js
+
+
+* have a system like the build menu only to switch between more than one state
+* the current game state can be a gameBuild state
 * have a landValue map that will show the the current land values are for each cell
 
 ## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta

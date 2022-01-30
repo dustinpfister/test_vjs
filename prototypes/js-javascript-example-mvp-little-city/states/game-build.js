@@ -11,8 +11,8 @@ smMod.load({
         draw.ver(sm);
     },
     events: {
-        click: function(e){
-            var pos = utils.getCanvasRelative(e);
+        click: function(e, pos, sm){
+            //var pos = utils.getCanvasRelative(e);
             var cell = mapMod.getCellByPointer(sm.game.map, pos.x, pos.y);
             // if map cell clicked
             if(cell){

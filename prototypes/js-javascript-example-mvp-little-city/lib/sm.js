@@ -21,6 +21,7 @@ var smMod = (function(){
         });
         // state machine object
         var sm = {
+            verSM: 'r0',
             ver: opt.ver || '',
             ctx: canvasObj.ctx,
             canvas: canvasObj.canvas,
@@ -31,6 +32,13 @@ var smMod = (function(){
             currentState: opt.currentState || STATES[0].stateKey,
             stateObj: {}
         };
+
+        // just a click event as of r0 of this
+        sm.canvas.addEventListener('click', function(e){
+            var pos = utils.getCanvasRelative(e);
+            sm.stateObj.events.click(e, pos, sm);
+        });
+
         api.setState(sm, sm.currentState);
         return sm;
     };
@@ -46,8 +54,11 @@ var smMod = (function(){
             secs = (now - sm.lt) / 1000;
             requestAnimationFrame(loop);
             if(secs > 1 / sm.fps){
-                gameMod.update(sm.game, secs)
-                render(sm);
+                sm.stateObj.update(sm, secs);
+                sm.stateObj.draw(sm, sm.ctx, sm.canvas);
+
+                //gameMod.update(sm.game, secs)
+                //render(sm);
                 sm.lt = now;
             }
         };

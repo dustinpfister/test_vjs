@@ -11,6 +11,9 @@
 
 <!-- Minimum Viable Product -->
 
+## () - rx - info button working
+* have the info button work in game rather than having it spit out cell data to the console
+
 ## () - rx - air polution
 
 ## () - rx - crime

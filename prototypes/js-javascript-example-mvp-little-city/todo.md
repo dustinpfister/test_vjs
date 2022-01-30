@@ -40,4 +40,4 @@
 * (done) over all population is then just a tabulation of all cell.data.pop values
 * (done) have a MAX POP PER CELL setting in game.js
 * (done) new place holder system for tax
-
+* (done) remove unused code from utils

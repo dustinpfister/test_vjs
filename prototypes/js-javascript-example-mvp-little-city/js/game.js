@@ -29,6 +29,9 @@ var gameMod = (function(){
             year: 1900,
             secsPerYear: 10,
             secs: 0,
+            taxRate: {
+                propertyTax: 0.07
+            },
             map: mapMod.create({
                 w: 10,
                 h: 8,
@@ -65,7 +68,15 @@ var gameMod = (function(){
         }
     };
 
+    // figure out what the current deltaMoney amount is for a year
     var getDeltaMoney = function(game){
+        // !!! Property tax ( https://en.wikipedia.org/wiki/Property_tax )
+        // !!! as of r0 I just worked out a system system for 'property tax' that will 
+        // need to be improved at a latter point as the expression at that point
+        // is just Math.floor(game.population * game.raxRate.propertyTax)
+        var propertyTax = Math.floor(game.population * game.raxRate.propertyTax);
+
+/*
         var deltaMoney = game.map.cells.reduce(function(acc, cell){
             if(cell.data.unit){
                 if(cell.data.unit.unitKey === 'com'){
@@ -73,7 +84,8 @@ var gameMod = (function(){
                 }
             }
             return acc;
-        }, 0); 
+        }, 0);
+*/ 
         return deltaMoney;
     };
 

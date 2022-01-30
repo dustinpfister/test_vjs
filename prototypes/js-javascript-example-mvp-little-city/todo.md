@@ -10,7 +10,8 @@
 
 <!-- Minimum Viable Product -->
 
-## () - rx - 
+## () - r3 - Mean Income, Property Tax
+* rethink property tax at this point to take into account avg landValue, and mean income
 
 ## () - r2 - Paths to com units
 * have an update process that will use path detection to set land value for units

@@ -43,9 +43,8 @@
 * (done) use sm.gridMenu.create for the buildMenu in states/init.js
 * (done) use sm.gridMenu.click in the click event for states/game-build
 * (done) use sm.gridMenu to create a new tab selection menu in init
-
-* start a gameMap state
-* use sm.gridMenu.click to switch to gameMap and back again from gameBuild state
+* (done) start a gameMap state
+* (done) use sm.gridMenu.click to switch to gameMap and back again from gameBuild state
 
 * in gameMap have a system like the build menu only to switch between more than one state
 * update draw.js to allow for more than one way to draw a cell
@@ -53,6 +52,7 @@
 * have a 'pop' map display in gameMap
 
 * fix #0 bug with 'res' units not devloping
+* have a button.desc as the standard key of a button with sm.gridMenu and update all files for this in sm.js, init.js, and draw.js
 
 
 ## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta

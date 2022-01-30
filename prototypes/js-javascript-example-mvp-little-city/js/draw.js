@@ -13,14 +13,10 @@ var drawCell = function(sm, map, cell){
     var cs = map.cellSize;
     var x = map.margin.x + cell.x * cs;
     var y = map.margin.y + cell.y * cs;
-
     ctx.fillStyle = cell.data.fillStyle || 'white';
-
     if(cell.data.unit){
         ctx.fillStyle = cell.data.unit.fillStyle;
     }
-
-
     ctx.beginPath();
     ctx.rect(x, y, cs, cs);
     ctx.fill();
@@ -47,7 +43,7 @@ var drawCell = function(sm, map, cell){
         }
     };
     // draw the build menu
-    api.buildMenu = function(sm){
+    api.menu = function(sm){
         var canvas = sm.canvas,
         ctx = sm.ctx,
         bm = sm.buildMenu,

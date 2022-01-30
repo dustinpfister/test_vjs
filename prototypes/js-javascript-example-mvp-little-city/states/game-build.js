@@ -6,7 +6,7 @@ smMod.load({
     draw: function(sm, ctx, canvas){
         draw.back(sm);
         draw.map(sm, sm.game.map);
-        draw.buildMenu(sm);
+        draw.menu(sm);
         draw.disp(sm);
         draw.ver(sm);
     },
@@ -34,24 +34,10 @@ smMod.load({
                 }
             }
             // if build menu clicked
+            smMod.gridMenu.click(sm.buildMenu, pos);
 
-smMod.gridMenu.click(sm.buildMenu, pos)
 
-/*
-            var bm = sm.buildMenu,
-            w = bm.cellSize * bm.w,
-            h = bm.cellSize * bm.buttons.length / bm.w;
-            if(utils.boundingBox( bm.x, bm.y, w, h, pos.x, pos.y, 1, 1 )){
-                var x = Math.floor((pos.x - bm.x) / bm.cellSize);
-                var y = Math.floor((pos.y - bm.y) / bm.cellSize);
-                var i = y * bm.w + x;
-                var button = bm.buttons[i];
-                if(button){
-                    bm.currentIndex = i;
-                    console.log(button);
-                }
-            }
-*/
+
         }
     }
 });

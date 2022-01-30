@@ -28,8 +28,6 @@
 * rethink property tax at this point to take into account avg landValue, and mean income
 
 ## () - r2 - Paths to com units
-* fix #0 bug with 'res' units not devloping
-
 * have an update process that will use path detection to set land value for units
 * have roads set walkable values for cells to true
 * for 'res' units the number of paths to 'com' units will raise land value
@@ -41,18 +39,18 @@
 * (done) start a states folder to which the first file will be game-build.js
 * (done) start an init state that will do everything that needs to happen to set things up for the first time
 * (done) the current game state can be a gameBuild state
-
-* start a smMod.gridMenu object with a create and click method
-* use sm.gridMenu.create for the buildMenu in states/init.js
-* use sm.gridMenu.click in the click event for states/game-build
+* (done) start a smMod.gridMenu object with a create and click method
+* (done) use sm.gridMenu.create for the buildMenu in states/init.js
+* (done) use sm.gridMenu.click in the click event for states/game-build
 
 * use sm.gridMenu to create a new tab selection menu in init
 * start a gameMap state
 * use sm.gridMenu.click to switch to gameMap and back again from gameBuild state
-
-
 * in gameMap have a system like the build menu only to switch between more than one state
 * in gameMao have a landValue map that will show the the current land values are for each cell
+
+* fix #0 bug with 'res' units not devloping
+
 
 ## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta
 * (done) starting with source code of r2 of map-system-paths

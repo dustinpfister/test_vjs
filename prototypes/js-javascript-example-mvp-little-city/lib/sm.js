@@ -81,6 +81,22 @@ var smMod = (function(){
         return menu;
     };
 
+    api.gridMenu.click = function(menu, pos){
+        var w = menu.cellSize * menu.w,
+        h = menu.cellSize * menu.buttons.length / menu.w;
+        if(utils.boundingBox( menu.x, menu.y, w, h, pos.x, pos.y, 1, 1 )){
+            var x = Math.floor((pos.x - menu.x) / menu.cellSize);
+            var y = Math.floor((pos.y - menu.y) / menu.cellSize);
+            var i = y * menu.w + x;
+            var button = menu.buttons[i];
+            if(button){
+                menu.currentIndex = i;
+                return button;
+            }
+        }
+        return false;
+    }
+
     return api;
 
 }());

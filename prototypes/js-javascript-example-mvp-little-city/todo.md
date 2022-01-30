@@ -35,7 +35,7 @@
 * have a normal map that is just the current view
 * have a landValue map that will show the the current land values are for each cell
 
-## () - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta
+## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta
 * (done) starting with source code of r2 of map-system-paths
 * (done) ver number in main.js should be used for main canvas display
 * (done) start a new population system where each cell has a population value as a data object value

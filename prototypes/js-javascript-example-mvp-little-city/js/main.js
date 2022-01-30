@@ -7,7 +7,7 @@ var canvasObj = utils.createCanvas({
 
 // state machine object
 var sm = {
-    ver: 'r0',
+    ver: 'r1',
     ctx: canvasObj.ctx,
     canvas: canvasObj.canvas,
     fps: 20,

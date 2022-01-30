@@ -37,7 +37,15 @@
 * (done) start an init state that will do everything that needs to happen to set things up for the first time
 * (done) the current game state can be a gameBuild state
 
+* start a smMod.gridMenu object with a create and click method
+* use sm.gridMenu.create for the buildMenu in states/init.js
+* use sm.gridMenu.click in the click event for states/game-build
+
+* use sm.gridMenu to create a new tab selection menu in init
 * start a gameMap state
+* use sm.gridMenu.click to switch to gameMap and back again from gameBuild state
+
+
 * in gameMap have a system like the build menu only to switch between more than one state
 * in gameMao have a landValue map that will show the the current land values are for each cell
 

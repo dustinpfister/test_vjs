@@ -43,10 +43,10 @@ var drawCell = function(sm, map, cell){
         }
     };
     // draw the build menu
-    api.menu = function(sm){
+    api.menu = function(sm, menu){
         var canvas = sm.canvas,
         ctx = sm.ctx,
-        bm = sm.buildMenu,
+        bm = menu || sm.buildMenu,
         cs = bm.cellSize;
         ctx.save();
         ctx.translate(bm.x, bm.y);

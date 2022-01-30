@@ -1,10 +1,9 @@
 smMod.load({
     stateKey: 'init',
     update: function(sm, secs){
-console.log('init state');
         sm.buildMenu = {
             x: 32,
-            y: 32,
+            y: 96,
             w: 2,
             currentIndex: 0,
             cellSize: 32,

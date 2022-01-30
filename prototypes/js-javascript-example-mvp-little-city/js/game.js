@@ -36,7 +36,7 @@ var gameMod = (function(){
                 w: 10,
                 h: 8,
                 marginX: 128,
-                marginY: 32,
+                marginY: 96,
                 cellSize: 40
             })
         };

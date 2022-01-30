@@ -1,5 +1,8 @@
 # js-javascript-example-mvp-little-city
 
+## known bugs
+
+* 0 - some res units do not gain land value even when witin 3 cells away from road
 
 <!-- Maintenance -->
 
@@ -25,6 +28,8 @@
 * rethink property tax at this point to take into account avg landValue, and mean income
 
 ## () - r2 - Paths to com units
+* fix #0 bug with 'res' units not devloping
+
 * have an update process that will use path detection to set land value for units
 * have roads set walkable values for cells to true
 * for 'res' units the number of paths to 'com' units will raise land value

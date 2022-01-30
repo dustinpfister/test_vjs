@@ -54,4 +54,6 @@ var smMod = (function(){
         loop();
     };
 
+    return api;
+
 }());

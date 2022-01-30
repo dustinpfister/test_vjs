@@ -30,11 +30,12 @@
 * for 'res' units the number of paths to 'com' units will raise land value
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
-## () - r1 - lib and states folders, 'gameMap' state
+## () - r1 - lib and states folders, 'init', 'gameBuild', and 'gameMap' state
 * (done) start a lib folder and have utils.js and map.js in that folder
-* start a sm.js lib in the lib folder that will have a plug in systme for state objects
-* start a states folder to which the first file will be game-build.js
+* (done) start a sm.js lib in the lib folder that will have a plug in systme for state objects
+* (done) start a states folder to which the first file will be game-build.js
 
+* start an init state that will do everything that needs to happen to set things up for the first time
 
 * have a system like the build menu only to switch between more than one state
 * the current game state can be a gameBuild state

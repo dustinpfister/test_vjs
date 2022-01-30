@@ -7,8 +7,13 @@
 
 <!-- Additional Features -->
 
+## () - rx - noise polution
 
 <!-- Minimum Viable Product -->
+
+## () - rx - air polution
+
+## () - rx - crime
 
 ## () - rx - popDelta revisit 
 * the popDelta value will increse or decress population at a given cell
@@ -34,4 +39,5 @@
 * (done) landValue, and in time future revisions other factors will inpact a popDelta value
 * (done) over all population is then just a tabulation of all cell.data.pop values
 * (done) have a MAX POP PER CELL setting in game.js
+* (done) new place holder system for tax
 

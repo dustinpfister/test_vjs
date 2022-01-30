@@ -26,8 +26,8 @@ smMod.load({
             currentIndex: 0,
             cellSize: 50,
             buttons: [
-                { unitKey: 'build', action: 'build'},
-                { unitKey: 'map', action: 'map'}
+                { unitKey: 'build', action: 'gameBuild'},
+                { unitKey: 'map', action: 'gameMap'}
             ]
         });
 

@@ -13,6 +13,11 @@ smMod.load({
     },
     events: {
         click: function(e, pos, sm){
+            var button = smMod.gridMenu.click(sm.gameStateMenu, pos);
+            if(button){
+                console.log(button);
+                smMod.setState(sm, button.action)
+            }
         }
     }
 });

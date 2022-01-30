@@ -37,7 +37,11 @@ smMod.load({
             // if build menu clicked
             smMod.gridMenu.click(sm.buildMenu, pos);
 
-
+            var button = smMod.gridMenu.click(sm.gameStateMenu, pos);
+            if(button){
+                console.log(button);
+                smMod.setState(sm, button.action)
+            }
 
         }
     }

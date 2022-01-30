@@ -34,12 +34,12 @@
 * (done) start a lib folder and have utils.js and map.js in that folder
 * (done) start a sm.js lib in the lib folder that will have a plug in systme for state objects
 * (done) start a states folder to which the first file will be game-build.js
-
 * (done) start an init state that will do everything that needs to happen to set things up for the first time
+* (done) the current game state can be a gameBuild state
 
-* have a system like the build menu only to switch between more than one state
-* the current game state can be a gameBuild state
-* have a landValue map that will show the the current land values are for each cell
+* start a gameMap state
+* in gameMap have a system like the build menu only to switch between more than one state
+* in gameMao have a landValue map that will show the the current land values are for each cell
 
 ## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta
 * (done) starting with source code of r2 of map-system-paths

@@ -1,5 +1,7 @@
 var gameMod = (function(){
 
+    var MAX_CELL_POPULATION = 100;
+
     var UNIT_TYPES = {};
 
     UNIT_TYPES.res = {
@@ -36,8 +38,11 @@ var gameMod = (function(){
             })
         };
         game.map.cells.forEach(function(cell){
-            cell.data.fillStyle = 'white';
-            cell.data.landValue = 0;
+            var cDat = cell.data;
+            cDat.fillStyle = 'white';
+            cDat.landValue = 0;
+            cDat.population = 0;
+            cDat.popDelta = 0;
         });
         return game;
     };
@@ -94,14 +99,36 @@ var gameMod = (function(){
 
     // run over all cells and just update population
     var updatePop = function(game){
-       game.population = 0;
+        // total game population defaults to 0
+        game.population = 0;
+        // for each cell...
         mapMod.forEachCell(game.map, function(cell, x, y, i, map){
             var cDat = cell.data;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
-                    game.population += 10 * cDat.landValue;
+                    
+                    //game.population += 10 * cDat.landValue;
+                    cDat.popDelta = cDat.landValue;
+                    cDat.population += cDat.popDelta;
+                    if(cDat.population > MAX_CELL_POPULATION){
+                        cDat.population = MAX_CELL_POPULATION;
+                        cDat.popDelta = 0;
+                    }
+                    if(cDat.population < 0){
+                        cDat.population = 0;
+                    }
+                }else{
+                    // any unit other then res will not have any population or popDelta
+                    cDat.popDelta = 0;
+                    cDat.population = 0;
                 }
+            }else{
+                // any blank cell that does not have a unit, will not have any population or popDelta
+                cDat.popDelta = 0;
+                cDat.population = 0;
             }
+            // tabulate cDat.population for this cell
+            game.population += cDat.population;
         });
     };
 

@@ -50,6 +50,9 @@ var gameMod = (function(){
         return game;
     };
 
+    // build a unit an the given cell, or cell location
+    // gameMod.buildAt(game, 'res', cell)
+    // gameMod.buildAt(game, 'res', x, y)
     api.buildAt = function(game, unitKey, a, b){
         var cell = null;
         var unitType = UNIT_TYPES[unitKey];
@@ -75,19 +78,8 @@ var gameMod = (function(){
         // need to be improved at a latter point as the expression at that point
         // is just Math.floor(game.population * game.raxRate.propertyTax)
         var propertyTax = Math.floor(game.population * game.taxRate.propertyTax);
-
-/*
-        var deltaMoney = game.map.cells.reduce(function(acc, cell){
-            if(cell.data.unit){
-                if(cell.data.unit.unitKey === 'com'){
-                    acc += Math.floor(sm.game.population * 10 * 0.07);
-                }
-            }
-            return acc;
-        }, 0);
-*/ 
+        // !!! property tax is all that makes money
         var deltaMoney = propertyTax;
-
         return deltaMoney;
     };
 

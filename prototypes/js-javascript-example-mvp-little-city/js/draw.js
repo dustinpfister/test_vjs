@@ -1,4 +1,7 @@
 var draw = (function () {
+
+    var LAND_VALUE_COLORS = ['rgba(0,0,0,0.5)', '#008800', '#00ff00', '#ffff00', '#88ff00', '#ff0000']
+
     // public api
     var api = {};
 
@@ -20,10 +23,10 @@ var drawCell = function(sm, map, cell, layer){
     var cs = map.cellSize;
     var x = map.margin.x + cell.x * cs;
     var y = map.margin.y + cell.y * cs;
-    drawCell[layer](ctx, cell, x, y, cs);
+    drawCell[layer](sm, ctx, cell, x, y, cs);
 };
 
-drawCell.normal = function(ctx, cell, x, y, cs){
+drawCell.normal = function(sm, ctx, cell, x, y, cs){
     ctx.fillStyle = cell.data.fillStyle || 'white';
     if(cell.data.unit){
         ctx.fillStyle = cell.data.unit.fillStyle;
@@ -31,12 +34,9 @@ drawCell.normal = function(ctx, cell, x, y, cs){
     fillRect(ctx, x, y, cs, cs);
 };
 
-drawCell.value = function(ctx, cell, x, y, cs){
-    //ctx.fillStyle = cell.data.fillStyle || 'white';
-    //if(cell.data.unit){
-        //ctx.fillStyle = cell.data.unit.fillStyle;
-    //}
-    ctx.fillStyle = 'red'
+drawCell.value = function(sm, ctx, cell, x, y, cs){
+    var per = cell.data.landValue / 10;
+    ctx.fillStyle = LAND_VALUE_COLORS[Math.round(LAND_VALUE_COLORS.length * per)];
     fillRect(ctx, x, y, cs, cs);
 };
 

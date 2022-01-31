@@ -7,6 +7,12 @@ var draw = (function () {
      HELPERS
 *********** *********/
 
+var fillRect = function(ctx, x, y, w, h){
+    ctx.beginPath();
+    ctx.rect(x, y, w, h);
+    ctx.fill();
+};
+
 // draw a cell helper
 var drawCell = function(sm, map, cell, layer){
     layer = layer || 'normal';
@@ -22,9 +28,7 @@ drawCell.normal = function(ctx, cell, x, y, cs){
     if(cell.data.unit){
         ctx.fillStyle = cell.data.unit.fillStyle;
     }
-    ctx.beginPath();
-    ctx.rect(x, y, cs, cs);
-    ctx.fill();
+    fillRect(ctx, x, y, cs, cs);
 };
 
 /********** **********

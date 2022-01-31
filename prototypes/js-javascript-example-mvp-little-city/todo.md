@@ -3,6 +3,7 @@
 ## known bugs
 
 * ( fixed in r0 ) - #0 - some res units do not gain land value even when witin 3 cells away from road
+* ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
 
 <!-- Maintenance -->
 
@@ -28,6 +29,7 @@
 * rethink property tax at this point to take into account avg landValue, and mean income
 
 ## () - r2 - Paths to com units
+* (done) fixed bug #1 with grid menu click in sm.js
 * have an update process that will use path detection to set land value for units
 * have roads set walkable values for cells to true
 * for 'res' units the number of paths to 'com' units will raise land value

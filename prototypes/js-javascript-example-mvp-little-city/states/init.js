@@ -31,6 +31,19 @@ smMod.load({
             ]
         });
 
+        // set up the build menu
+        sm.mapMenu = smMod.gridMenu.create({
+            x: 32,
+            y: 96,
+            w: 2,
+            currentIndex: 0,
+            cellSize: 32,
+            buttons: [
+                { unitKey: 'val', action: 'value'},
+                { unitKey: 'pop', action: 'population'}
+            ]
+        });
+
 
         // create game object
         sm.game = gameMod.create();

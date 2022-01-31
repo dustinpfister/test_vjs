@@ -50,7 +50,7 @@
 * (done) have a 'value' map that will show the the current land values are for each cell
 * (done) have a 'pop' map display in gameMap
 
-* I will need a mapSelectMenu for gameMap state
+* (done) I will need a sm.mapMenu for gameMap state
 * use mapSelectMenu in gameMap state to switch between value and population
 * display text values on top of the colors for each map
 

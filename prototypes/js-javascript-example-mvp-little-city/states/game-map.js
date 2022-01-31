@@ -5,8 +5,12 @@ smMod.load({
     },
     draw: function(sm, ctx, canvas){
         draw.back(sm);
-        draw.map(sm, sm.game.map, 'population');
+        //draw.map(sm, sm.game.map, 'population');
+
+draw.map(sm, sm.game.map, sm.mapMenu.buttons[sm.mapMenu.currentIndex].action);
+
         draw.menu(sm, sm.gameStateMenu);
+        draw.menu(sm, sm.mapMenu);
         draw.disp(sm);
         draw.ver(sm);
     },

@@ -121,6 +121,13 @@ var gameMod = (function(){
         }, 0);
     };
 
+
+    var getArea = api.getArea = function(game, x, y, w, h){
+        return game.map.cells.filter(function(cell){
+            return utils.boundingBox2(x, y, w, h, cell.x, cell.y, 1, 1);
+        });
+    };
+
     // run over all cells and just update population
     var updatePop = function(game){
         // total game population defaults to 0
@@ -175,10 +182,8 @@ var gameMod = (function(){
 
 
     api.update = function(game, secs){
-
         updateLandValue(game);
         updatePop(game);
-
         // new year?
         game.secs += secs;
         var spy = game.secsPerYear;

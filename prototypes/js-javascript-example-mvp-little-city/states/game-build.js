@@ -29,6 +29,15 @@ smMod.load({
                 }
                 if(button.action === 'info'){
                     console.log( Object.assign({}, cell.data, {x: cell.x, y: cell.y}) );
+
+
+
+//console.log( gameMod.getArea(sm.game, 1, 1, 2, 2) );
+
+var dist = 2,
+s = dist * 2 + 1;
+console.log( gameMod.getArea(sm.game, cell.x - dist, cell.y - dist, s, s) );
+
                 }
                 if(button.action === 'build'){
                     gameMod.buildAt(sm.game, unitKey, cell);

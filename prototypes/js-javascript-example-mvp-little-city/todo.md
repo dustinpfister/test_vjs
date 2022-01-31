@@ -12,14 +12,14 @@
 
 ## () - rx - noise polution
 
+## () - rx - air polution
+
+## () - rx - crime
+
 <!-- Minimum Viable Product -->
 
 ## () - rx - info button working
 * have the info button work in game rather than having it spit out cell data to the console
-
-## () - rx - air polution
-
-## () - rx - crime
 
 ## () - rx - popDelta revisit 
 * the popDelta value will increse or decress population at a given cell

@@ -8,11 +8,16 @@ var draw = (function () {
 *********** *********/
 
 // draw a cell helper
-var drawCell = function(sm, map, cell){
+var drawCell = function(sm, map, cell, layer){
+    layer = layer || 'normal';
     var ctx = sm.ctx;
     var cs = map.cellSize;
     var x = map.margin.x + cell.x * cs;
     var y = map.margin.y + cell.y * cs;
+    drawCell[layer](ctx, cell, x, y, cs);
+};
+
+drawCell.normal = function(ctx, cell, x, y, cs){
     ctx.fillStyle = cell.data.fillStyle || 'white';
     if(cell.data.unit){
         ctx.fillStyle = cell.data.unit.fillStyle;

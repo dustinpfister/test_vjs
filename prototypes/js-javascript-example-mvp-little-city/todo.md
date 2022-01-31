@@ -45,8 +45,8 @@
 * (done) use sm.gridMenu to create a new tab selection menu in init
 * (done) start a gameMap state
 * (done) use sm.gridMenu.click to switch to gameMap and back again from gameBuild state
+* (done) in gameMap have a system like the build menu only to switch between more than one state
 
-* in gameMap have a system like the build menu only to switch between more than one state
 * update draw.js to allow for more than one way to draw a cell
 * have a 'value' map that will show the the current land values are for each cell
 * have a 'pop' map display in gameMap

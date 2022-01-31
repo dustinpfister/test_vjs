@@ -26,9 +26,18 @@ var gameMod = (function(){
     var api = {};
 
     api.create = function(opt){
+        opt = opt || {};
+        // if loading a city, cellData will be needed
+        opt.cellData = opt.cellData || [
+            { x: 3, y: 0, unitKey: 'road'},
+            { x: 3, y: 1, unitKey: 'road'},
+            { x: 3, y: 2, unitKey: 'road'},
+            { x: 2, y: 0, unitKey: 'res'},
+            { x: 4, y: 0, unitKey: 'com'}
+        ];
         var game = {
             hardSet: hardSet,
-            money: 1000,
+            money: 100,
             population: 0,
             year: 1900,
             secsPerYear: 10,
@@ -44,12 +53,23 @@ var gameMod = (function(){
                 cellSize: 40
             })
         };
-        game.map.cells.forEach(function(cell){
+        game.map.cells.forEach(function(cell, i){
             var cDat = cell.data;
             cDat.fillStyle = 'white';
             cDat.landValue = 0;
             cDat.population = 0;
             cDat.popDelta = 0;
+        });
+        // set up cells for any given cellData array
+        opt.cellData.forEach(function(cellData){
+            var cell = mapMod.get(game.map, cellData.x, cellData.y),
+            unitKey = cellData.unitKey;
+            var unitType = UNIT_TYPES[unitKey];
+
+            cell.data.unit = {
+                unitKey: unitKey,
+                fillStyle: unitType.fillStyle
+            }
         });
         return game;
     };

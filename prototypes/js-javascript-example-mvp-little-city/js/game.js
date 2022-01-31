@@ -27,6 +27,7 @@ var gameMod = (function(){
 
     api.create = function(opt){
         var game = {
+            hardSet: hardSet,
             money: 1000,
             population: 0,
             year: 1900,

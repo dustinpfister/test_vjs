@@ -49,9 +49,8 @@
 * (done) update draw.js to allow for more than one way to draw a cell
 * (done) have a 'value' map that will show the the current land values are for each cell
 * (done) have a 'pop' map display in gameMap
-
 * (done) I will need a sm.mapMenu for gameMap state
-* use mapSelectMenu in gameMap state to switch between value and population
+* (done) use mapSelectMenu in gameMap state to switch between value and population
 * display text values on top of the colors for each map
 
 

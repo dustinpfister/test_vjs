@@ -11,6 +11,10 @@ var draw = (function () {
      HELPERS
 *********** *********/
 
+var drawCellText = function(cell, text){
+
+};
+
 var rect = function(ctx, x, y, w, h){
     ctx.beginPath();
     ctx.rect(x, y, w, h);

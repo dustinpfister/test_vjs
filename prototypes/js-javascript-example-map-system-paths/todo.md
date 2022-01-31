@@ -13,15 +13,26 @@
 * have a normal map that is just the current view
 * have a landValue map that will show the the current land values are for each cell
 
-
-## () - r3 - mapMod.getCollectionByCircle, paths to com units
+## () - rx - mapMod.getCollectionByCircle, paths to com units
 * rename mapMod.getCollectionByPos to mapMod.getCollectionByBox
 * new mapMod.getCollectionByCircle
-
 * have an update process that will use path detection to set land value for units
 * have roads set walkable values for cells to true
 * for 'res' units the number of paths to 'com' units will raise land value
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
+
+
+## () - r3 - mapMod.getPixlePos
+* add a mapMod.getPixlePos method that will return the pixle position of a cell in a map
+* mapMod.getPixlePos can work just like mapMod.get but a cell can ref can be given as one argument on top of a index number
+```
+var map = mapMod.create({w: 4, h: 4})
+// all of these ways work
+mapMod.getPixlePos(map, 2, 1)
+mapMod.getPixlePos(map, 6);
+var cell = mapMod.get(map, 2, 1);
+mapMod.getPixlePos(map, cell)
+```
 
 <!-- Minimum Viable Product -->
 

@@ -116,8 +116,6 @@ var gameMod = (function(){
             var cDat = cell.data;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
-                    
-                    //game.population += 10 * cDat.landValue;
                     cDat.popDelta = cDat.landValue;
                     cDat.population += cDat.popDelta;
                     if(cDat.population > hardSet.MAX_CELL_POPULATION){

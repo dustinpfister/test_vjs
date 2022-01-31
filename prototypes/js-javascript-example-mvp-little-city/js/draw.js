@@ -11,10 +11,11 @@ var draw = (function () {
      HELPERS
 *********** *********/
 
-var fillRect = function(ctx, x, y, w, h){
+var rect = function(ctx, x, y, w, h){
     ctx.beginPath();
     ctx.rect(x, y, w, h);
     ctx.fill();
+    ctx.stroke();
 };
 
 // draw a cell helper
@@ -29,22 +30,25 @@ var drawCell = function(sm, map, cell, layer){
 
 drawCell.normal = function(sm, ctx, cell, x, y, cs){
     ctx.fillStyle = cell.data.fillStyle || 'white';
+    ctx.strokeStyle = 'black';
     if(cell.data.unit){
         ctx.fillStyle = cell.data.unit.fillStyle;
     }
-    fillRect(ctx, x, y, cs, cs);
+    rect(ctx, x, y, cs, cs);
 };
 
 drawCell.value = function(sm, ctx, cell, x, y, cs){
     var per = cell.data.landValue / sm.game.hardSet.MAX_CELL_LAND_VALUE;
     ctx.fillStyle = LAND_COLORS[Math.floor((LAND_COLORS.length - 1) * per)];
-    fillRect(ctx, x, y, cs, cs);
+    ctx.strokeStyle = 'white';
+    rect(ctx, x, y, cs, cs);
 };
 
 drawCell.population = function(sm, ctx, cell, x, y, cs){
     var per = cell.data.population / sm.game.hardSet.MAX_CELL_POPULATION;
     ctx.fillStyle = POP_COLORS[Math.floor((POP_COLORS.length - 1) * per)];
-    fillRect(ctx, x, y, cs, cs);
+    ctx.strokeStyle = 'white';
+    rect(ctx, x, y, cs, cs);
 };
 
 /********** **********

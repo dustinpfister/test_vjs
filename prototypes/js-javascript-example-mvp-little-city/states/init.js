@@ -10,11 +10,11 @@ smMod.load({
             currentIndex: 0,
             cellSize: 32,
             buttons: [
-                { unitKey: 'sell', action: 'sell'},
-                { unitKey: 'info', action: 'info'},
-                { unitKey: 'res', action: 'build' },
-                { unitKey: 'com', action: 'build' },
-                { unitKey: 'road', action: 'build' }
+                { desc: 'sel', unitKey: 'sell', action: 'sell'},
+                { desc: 'inf', unitKey: 'info', action: 'info'},
+                { desc: 'res', unitKey: 'res', action: 'build' },
+                { desc: 'com', unitKey: 'com', action: 'build' },
+                { desc: 'rod', unitKey: 'road', action: 'build' }
             ]
         });
 
@@ -26,8 +26,8 @@ smMod.load({
             currentIndex: 0,
             cellSize: 50,
             buttons: [
-                { unitKey: 'build', action: 'gameBuild'},
-                { unitKey: 'map', action: 'gameMap'}
+                { desc: 'b', unitKey: 'build', action: 'gameBuild'},
+                { desc: 'm', unitKey: 'map', action: 'gameMap'}
             ]
         });
 
@@ -39,8 +39,8 @@ smMod.load({
             currentIndex: 0,
             cellSize: 32,
             buttons: [
-                { unitKey: 'val', action: 'value'},
-                { unitKey: 'pop', action: 'population'}
+                { desc: 'v', unitKey: 'val', action: 'value'},
+                { desc: 'p', unitKey: 'pop', action: 'population'}
             ]
         });
 

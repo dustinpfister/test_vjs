@@ -51,7 +51,7 @@
 * (done) have a 'pop' map display in gameMap
 * (done) I will need a sm.mapMenu for gameMap state
 * (done) use mapSelectMenu in gameMap state to switch between value and population
-* display text values on top of the colors for each map
+* (done) display text values on top of the colors for each map
 
 
 * fix #0 bug with 'res' units not devloping

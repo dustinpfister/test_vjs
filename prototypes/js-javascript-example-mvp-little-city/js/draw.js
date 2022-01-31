@@ -101,7 +101,7 @@ drawCell.population = function(sm, ctx, cell, x, y, cs){
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
             ctx.fillStyle = 'black';
-            ctx.fillText(button.unitKey, x * cs + 4, y * cs + 12);
+            ctx.fillText(button.desc, x * cs + 4, y * cs + 12);
         });
         ctx.restore();
     };

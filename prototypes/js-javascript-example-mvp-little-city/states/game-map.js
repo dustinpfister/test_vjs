@@ -5,10 +5,8 @@ smMod.load({
     },
     draw: function(sm, ctx, canvas){
         draw.back(sm);
-        //draw.map(sm, sm.game.map, 'population');
-
-draw.map(sm, sm.game.map, sm.mapMenu.buttons[sm.mapMenu.currentIndex].action);
-
+        var mapButton = sm.mapMenu.buttons[sm.mapMenu.currentIndex];
+        draw.map(sm, sm.game.map, mapButton.action);
         draw.menu(sm, sm.gameStateMenu);
         draw.menu(sm, sm.mapMenu);
         draw.disp(sm);
@@ -16,6 +14,8 @@ draw.map(sm, sm.game.map, sm.mapMenu.buttons[sm.mapMenu.currentIndex].action);
     },
     events: {
         click: function(e, pos, sm){
+            // if map menu clicked
+            smMod.gridMenu.click(sm.mapMenu, pos);
             // game state change?
             var button = smMod.gridMenu.click(sm.gameStateMenu, pos);
             if(button){

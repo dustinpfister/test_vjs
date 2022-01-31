@@ -48,7 +48,7 @@
 * (done) in gameMap have a system like the build menu only to switch between more than one state
 * (done) update draw.js to allow for more than one way to draw a cell
 
-* have a 'value' map that will show the the current land values are for each cell
+* (done) have a 'value' map that will show the the current land values are for each cell
 * have a 'pop' map display in gameMap
 
 * fix #0 bug with 'res' units not devloping

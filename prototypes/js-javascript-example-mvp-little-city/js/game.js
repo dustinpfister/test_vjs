@@ -1,7 +1,9 @@
 var gameMod = (function(){
 
-    var MAX_CELL_POPULATION = 100,
-    MAX_CELL_LAND_VALUE = 10;
+    var hardSet = {
+        MAX_CELL_POPULATION : 100,
+        MAX_CELL_LAND_VALUE : 10
+    };
 
     var UNIT_TYPES = {};
 
@@ -117,8 +119,8 @@ var gameMod = (function(){
                     //game.population += 10 * cDat.landValue;
                     cDat.popDelta = cDat.landValue;
                     cDat.population += cDat.popDelta;
-                    if(cDat.population > MAX_CELL_POPULATION){
-                        cDat.population = MAX_CELL_POPULATION;
+                    if(cDat.population > hardSet.MAX_CELL_POPULATION){
+                        cDat.population = hardSet.MAX_CELL_POPULATION;
                         cDat.popDelta = 0;
                     }
                     if(cDat.population < 0){
@@ -154,7 +156,7 @@ var gameMod = (function(){
                 }
             }
             // apply max land value limit
-            cDat.landValue = cDat.landValue > MAX_CELL_LAND_VALUE ? MAX_CELL_LAND_VALUE : cDat.landValue; 
+            cDat.landValue = cDat.landValue > hardSet.MAX_CELL_LAND_VALUE ? hardSet.MAX_CELL_LAND_VALUE : cDat.landValue; 
         });
     };
 

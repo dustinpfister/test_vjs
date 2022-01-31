@@ -53,6 +53,11 @@ smMod.load({
                 { x: 3, y: 5, unitKey: 'road'},
                 { x: 2, y: 3, unitKey: 'res'},
                 { x: 2, y: 5, unitKey: 'res'},
+
+                { x: 0, y: 3, unitKey: 'res'},
+                { x: 6, y: 3, unitKey: 'res'},
+
+
                 { x: 4, y: 3, unitKey: 'com'}
             ]
         });

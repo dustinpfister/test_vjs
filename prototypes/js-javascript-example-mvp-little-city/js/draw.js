@@ -11,8 +11,14 @@ var draw = (function () {
      HELPERS
 *********** *********/
 
-var drawCellText = function(cell, text){
-
+var drawCellText = function(ctx, map, cell, text){
+    var cs = map.cellSize;
+    var x = map.margin.x + cell.x * cs + cs / 2;
+    var y = map.margin.y + cell.y * cs + cs / 2;
+    ctx.fillStyle = '#cfcfcf';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, x, y)
 };
 
 var rect = function(ctx, x, y, w, h){
@@ -46,6 +52,7 @@ drawCell.value = function(sm, ctx, cell, x, y, cs){
     ctx.fillStyle = LAND_COLORS[Math.floor((LAND_COLORS.length - 1) * per)];
     ctx.strokeStyle = 'white';
     rect(ctx, x, y, cs, cs);
+    drawCellText(ctx, sm.game.map, cell, cell.data.landValue);
 };
 
 drawCell.population = function(sm, ctx, cell, x, y, cs){
@@ -53,6 +60,7 @@ drawCell.population = function(sm, ctx, cell, x, y, cs){
     ctx.fillStyle = POP_COLORS[Math.floor((POP_COLORS.length - 1) * per)];
     ctx.strokeStyle = 'white';
     rect(ctx, x, y, cs, cs);
+    drawCellText(ctx, sm.game.map, cell, cell.data.population);
 };
 
 /********** **********

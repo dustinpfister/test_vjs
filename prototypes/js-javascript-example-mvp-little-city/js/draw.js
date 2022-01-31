@@ -1,7 +1,7 @@
 var draw = (function () {
 
     var LAND_COLORS = ['black', '#008800', '#00ff00', '#ffff00', '#ff8800', '#ff0000'],
-    POP_COLORS = ['black', 'lime', 'yellow', 'red']
+    POP_COLORS = ['black', '#008800', '#00aa00', '#00ff00', 'yellow', 'red']
 
     // public api
     var api = {};

@@ -151,8 +151,12 @@ var gameMod = (function(){
                 if(cDat.unit.unitKey === 'res'){
                     cDat.popDelta = cDat.landValue;
                     cDat.population += cDat.popDelta;
-                    if(cDat.population > hardSet.MAX_CELL_POPULATION){
-                        cDat.population = hardSet.MAX_CELL_POPULATION;
+
+                    var per = cDat.landValue / hardSet.MAX_CELL_LAND_VALUE;
+                    var currentCellPopCap = Math.round( per * hardSet.MAX_CELL_POPULATION );
+                     
+                    if(cDat.population > currentCellPopCap){
+                        cDat.population = currentCellPopCap;
                         cDat.popDelta = 0;
                     }
                     if(cDat.population < 0){

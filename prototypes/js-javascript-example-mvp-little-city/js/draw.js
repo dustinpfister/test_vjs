@@ -1,6 +1,7 @@
 var draw = (function () {
 
-    var LAND_VALUE_COLORS = ['rgba(0,0,0,0.5)', '#008800', '#00ff00', '#ffff00', '#ff8800', '#ff0000']
+    var LAND_COLORS = ['black', '#008800', '#00ff00', '#ffff00', '#ff8800', '#ff0000'],
+    POP_COLORS = ['black', 'lime', 'yellow', 'red']
 
     // public api
     var api = {};
@@ -36,7 +37,13 @@ drawCell.normal = function(sm, ctx, cell, x, y, cs){
 
 drawCell.value = function(sm, ctx, cell, x, y, cs){
     var per = cell.data.landValue / sm.game.hardSet.MAX_CELL_LAND_VALUE;
-    ctx.fillStyle = LAND_VALUE_COLORS[Math.round(LAND_VALUE_COLORS.length * per)];
+    ctx.fillStyle = LAND_COLORS[Math.floor((LAND_COLORS.length - 1) * per)];
+    fillRect(ctx, x, y, cs, cs);
+};
+
+drawCell.population = function(sm, ctx, cell, x, y, cs){
+    var per = cell.data.population / sm.game.hardSet.MAX_CELL_POPULATION;
+    ctx.fillStyle = POP_COLORS[Math.floor((POP_COLORS.length - 1) * per)];
     fillRect(ctx, x, y, cs, cs);
 };
 

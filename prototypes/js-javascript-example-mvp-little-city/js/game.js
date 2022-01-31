@@ -106,6 +106,7 @@ var gameMod = (function(){
     // from the given cell location. This is used in the update process to find out
     // if one or more roads are at a distnace of 3 or less from a cell that has a res
     // type unit on it
+    /*
     var getUnitTypeCount = function(game, cell, unitKey, dist){
         var x = cell.x,
         y = cell.y,
@@ -120,14 +121,16 @@ var gameMod = (function(){
             return acc;
         }, 0);
     };
+    */
 
-
+    // GET AN AREA IN THE MAP
     var getArea = api.getArea = function(game, x, y, w, h){
         return game.map.cells.filter(function(cell){
             return utils.boundingBox2(x, y, w, h, cell.x, cell.y, 1, 1);
         });
     };
 
+    // GET A UNIT TYPE IN AN AREA OF THE MAP
     var getTypeInArea = api.getTypeInArea = function(game, x, y, w, h, unitKey){
         return getArea(game, x, y, w, h).filter(function(cell){
             if(cell.data.unit){
@@ -179,15 +182,10 @@ var gameMod = (function(){
             cDat.landValue = 0;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
-                    // people like roads, because people likt to go places
-                    //var roadCount = getUnitTypeCount(game, cell, 'road', 3);
-
                     var dist = 3,
                     s = dist * 2 + 1,
                     roads = api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road'),
                     roadCount = roads.length;
-
-
                     cDat.landValue += roadCount;
                 }
             }

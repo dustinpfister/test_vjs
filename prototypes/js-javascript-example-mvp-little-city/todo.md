@@ -57,6 +57,8 @@
 * (done) use getArea helper when using the info button in build mode to test that it works the way that it should
 * (done) fix #0 bug with 'res' units not devloping by using getArea helper in updateLandValue to see about fxing this 
 
+* have max pop for each
+
 
 ## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta
 * (done) starting with source code of r2 of map-system-paths

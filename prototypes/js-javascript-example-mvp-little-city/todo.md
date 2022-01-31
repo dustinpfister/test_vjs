@@ -33,7 +33,7 @@
 * for 'res' units the number of paths to 'com' units will raise land value
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
-## () - r1 - lib and states folders, 'init', 'gameBuild', and 'gameMap' state
+## ( done 01/31/2022 ) - r1 - lib and states folders, 'init', 'gameBuild', and 'gameMap' state
 * (done) start a lib folder and have utils.js and map.js in that folder
 * (done) start a sm.js lib in the lib folder that will have a plug in systme for state objects
 * (done) start a states folder to which the first file will be game-build.js
@@ -56,9 +56,7 @@
 * (done) new getArea helper that uses array.filter to create an array of units in a given area
 * (done) use getArea helper when using the info button in build mode to test that it works the way that it should
 * (done) fix #0 bug with 'res' units not devloping by using getArea helper in updateLandValue to see about fxing this 
-
-* have max pop for each
-
+* (done) have max pop for each cell based on land value
 
 ## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta
 * (done) starting with source code of r2 of map-system-paths

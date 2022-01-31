@@ -1,0 +1,1006 @@
+<html>
+    <head>
+        <title>MVP Little City</title>
+
+    </head>
+    <body>
+
+        <!-- canvas -->
+        <div id="canvas-app"></div>
+
+<script>
+//-------- ----------
+//  UTILS
+//-------- ----------
+// UTILS
+var utils = {};
+
+//
+// MISC
+//
+
+// bounding box
+utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        (y1 + h1 < y2 ||
+        y1 > y2 + h2) ||
+        x1 + w1 < x2 ||
+        x1 > x2 + w2);
+};
+utils.boundingBox2 = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        (y1 + h1 <= y2 ||
+        y1 >= y2 + h2) ||
+        x1 + w1 <= x2 ||
+        x1 >= x2 + w2);
+};
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
+//
+// OBJECT
+//
+
+// deep clone using JSON
+utils.deepCloneJSON = function (obj) {
+    try{
+       return JSON.parse(JSON.stringify(obj));
+    }catch(e){
+        return {};
+    }
+};
+
+
+//
+// DOM
+//
+
+// create a canvas element
+utils.createCanvas = function (opt) {
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () {
+        return false;
+    }
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+// get a point relative to a canvas element rather than window
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: Math.floor((e.touches ? e.touches[0].clientX : e.clientX) - bx.left),
+        y: Math.floor((e.touches ? e.touches[0].clientY : e.clientY) - bx.top),
+        bx: bx
+    };
+    // adjust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    return pos;
+};
+
+//-------- ----------
+// MAP
+//-------- ----------
+var mapMod = (function () {
+    // PUBLIC API
+    var api = {
+       ver: 'r3'
+    };
+    // create Cells helper
+    var createCells = function (map) {
+        var cells = [];
+        var len = map.w * map.h,
+        i = 0;
+        while (i < len) {
+            cells.push({
+                i: i,
+                x: i % map.w,
+                y: Math.floor(i / map.w),
+                walkable: true,
+                closed: false,
+                data: {},
+                unit: null // reference to current unit here or null if empty
+            });
+            i += 1;
+        }
+        return cells;
+    };
+
+// CREATE
+
+    // create a new map object
+    api.create = function (opt) {
+        opt = opt || {};
+        var map = {
+            w: opt.w || 9,
+            h: opt.h || 7,
+            cellSize: opt.cellSize || 32,
+            margin: {
+                x: opt.marginX == undefined ? 5 : opt.marginX,
+                y: opt.marginY == undefined ? 5 : opt.marginY
+            },
+            cells: []
+        };
+        map.cells = opt.cells || createCells(map);
+        return map;
+    };
+
+// GET CELL by...
+
+    // return a cell at the given position, or false for out of bounds values
+    api.get = function (map, xi, y) {
+        if(arguments.length === 2){
+            return map.cells[xi];
+        }
+        if (xi < 0 || y < 0 || xi >= map.w || y >= map.h) {
+            return false;
+        }
+        return map.cells[y * map.w + xi];
+    };
+    // get a cell in the current map by way of
+    // a canvas relative x and y pixel pos
+    api.getCellByPointer = function (map, x, y) {
+        var cx = Math.floor((x - map.margin.x) / map.cellSize),
+        cy = Math.floor((y - map.margin.y) / map.cellSize);
+        return api.get(map, cx, cy)
+    };
+
+// Get a collection of cells by...
+
+    api.getCollectionByPos = function(map, sx, sy, w, h){
+        var collection = [];
+        var i = 0, x, y,
+        cell,
+        len = w * h;
+        while(i < len){
+            x = sx + i % w;
+            y = sy + Math.floor(i / w);
+            cell = api.get(map, x, y);
+            if(cell){
+                collection.push(cell);
+            }
+            i += 1;
+        }
+        return collection;
+
+
+    };
+
+// for each cell
+    api.forEachCell = function(map, func){
+        var i = 0, cell,
+        len = map.cells.length;
+        while(i < len){
+            cell = map.cells[i];
+            func.call(map, cell, cell.x, cell.y, cell.i, map)
+            i += 1;
+        }
+    };
+
+// PATHS
+
+    // sort a list of open nodes
+    var sortOpen = function (opened) {
+        return opened.sort(function (nodeA, nodeB) {
+            if (nodeA.weight < nodeB.weight) {
+                return 1;
+            }
+            if (nodeA.weight > nodeB.weight) {
+                return -1;
+            }
+            return 0;
+        });
+    };
+
+    // set weight for a node
+    var setWeight = function (endNode, neighbor) {
+        return utils.distance(endNode.x, endNode.y, neighbor.x, neighbor.y);
+    };
+
+    // build a path based an parent property
+    var buildPath = function (node) {
+        var path = [];
+        while (node.parent) {
+            path.push([node.x, node.y]);
+            node = node.parent;
+        }
+        //path.push([node.x, node.y]);
+        return path;
+    };
+
+    // for Each Neighbor for the given grid, node, and open list
+    var forNeighbors = function (grid, node, endNode, opened) {
+        //var neighbors = grid.getNeighbors(node);
+        var neighbors = mapMod.getNeighbors(grid, node);
+        var ni = 0,
+        nl = neighbors.length;
+        while (ni < nl) {
+            var neighbor = neighbors[ni];
+            // if the neighbor is closed continue looping
+            if (neighbor.closed) {
+                ni += 1;
+                continue;
+            }
+            // set weight for the neighbor
+            neighbor.weight = setWeight(endNode, neighbor);
+            // if the node is not opened
+            if (!neighbor.opened) {
+                neighbor.parent = node;
+                opened.push(neighbor);
+                neighbor.opened = true;
+            }
+            ni += 1;
+        }
+    };
+
+    api.getPath = function (grid, sx, sy, ex, ey) {
+        var grid = utils.deepCloneJSON(grid),
+        nodes = api.chunk(grid),
+        path = [],
+        opened = [],
+        node;
+        // set startNode and End Node to copy of grid
+        var startNode = nodes[sy][sx];
+        endNode = nodes[ey][ex];
+        // push start Node to open list
+        opened.push(startNode);
+        startNode.opened = true;
+        startNode.weight = 0;
+        // start walking
+        while (opened.length > 0) {
+            // pop out next Node from open list
+            node = opened.pop();
+            node.closed = true;
+            // if the node is the end node
+            if (node === endNode) {
+                return buildPath(node);
+            }
+            // loop current neighbors
+            forNeighbors(grid, node, endNode, opened);
+            // sort the list of nodes be weight value to end node
+            sortOpen(opened);
+        }
+        // return an empty array if we get here (can not get to end node)
+        return [];
+    };
+
+    // get a chunk form of a grid
+    api.chunk = function (grid) {
+        var arr = [],
+        row,
+        i = 0;
+        while (i < grid.cells.length) {
+            row = grid.cells.slice(i, i + grid.w);
+            arr.push(row);
+            i += grid.w;
+        }
+        return arr;
+    };
+
+    // return true if the given x and y position is in bounds
+    api.isInBounds = function (grid, x, y) {
+        return (x >= 0 && x < grid.w) && (y >= 0 && y < grid.h);
+    };
+
+    // is the given cell location walkable?
+    api.isWalkable = function (grid, x, y) {
+        if (api.isInBounds(grid, x, y)) {
+            return api.get(grid, x, y).walkable; //grid.nodes[y][x].walkable;
+        }
+        return false;
+    };
+
+    // get the four Neighbors of a node
+    api.getNeighbors = function (grid, node, dirCount) {
+        var x = node.x,
+        y = node.y,
+        neighbors = [];
+        dirCount = dirCount === undefined ? 4 : dirCount;
+        // for dircount 4 or 8
+        if(dirCount === 4 || dirCount === 8){
+            if (api.isWalkable(grid, x, y - 1)) {
+                neighbors.push(mapMod.get(grid, x, y - 1));
+            }
+            if (api.isWalkable(grid, x, y + 1)) {
+                neighbors.push(mapMod.get(grid, x, y + 1));
+            }
+            if (api.isWalkable(grid, x - 1, y)) {
+                neighbors.push(mapMod.get(grid, x - 1, y));
+            }
+            if (api.isWalkable(grid, x + 1, y)) {
+                neighbors.push(mapMod.get(grid, x + 1, y));
+            }
+        }
+        // for dirCount 8 only
+        if(dirCount || 8){
+            if (api.isWalkable(grid, x - 1, y - 1)) {
+                neighbors.push(mapMod.get(grid, x - 1, y - 1));
+            }
+            if (api.isWalkable(grid, x + 1, y + 1)) {
+                neighbors.push(mapMod.get(grid, x + 1, y + 1));
+            }
+            if (api.isWalkable(grid, x - 1, y + 1)) {
+                neighbors.push(mapMod.get(grid, x - 1, y + 1));
+            }
+            if (api.isWalkable(grid, x + 1, y - 1)) {
+                neighbors.push(mapMod.get(grid, x + 1, y - 1));
+            }
+        }
+        return neighbors;
+    };
+
+    // return the public API
+    return api;
+}
+    ());
+
+//-------- ----------
+// SM
+//-------- ----------
+var smMod = (function(){
+
+    var STATES = {
+
+    };
+
+    var api = {};
+
+    api.setState = function(sm, stateKey){
+        sm.currentState = stateKey;
+        sm.stateObj = sm.states[sm.currentState];
+    };
+
+    api.create = function(opt){
+        opt = opt || {};
+        // canvas
+        var canvasObj = utils.createCanvas({
+            container : document.getElementById('canvas-app'),
+            width: 640,
+            height: 480
+        });
+        // state machine object
+        var sm = {
+            verSM: 'r0',
+            ver: opt.ver || '',
+            ctx: canvasObj.ctx,
+            canvas: canvasObj.canvas,
+            fps: 20,
+            lt: new Date(),
+            game: {},
+            states: STATES,
+            currentState: opt.currentState || STATES[0].stateKey,
+            stateObj: {}
+        };
+
+        // just a click event as of r0 of this
+        sm.canvas.addEventListener('click', function(e){
+            var pos = utils.getCanvasRelative(e);
+            sm.stateObj.events.click(e, pos, sm);
+        });
+
+        api.setState(sm, sm.currentState);
+        return sm;
+    };
+
+    api.load = function(stateObj){
+        STATES[stateObj.stateKey] = stateObj;
+    };
+
+    api.startLoop = function(sm){
+        // main app loop
+        var loop = function(){
+            var now = new Date(),
+            secs = (now - sm.lt) / 1000;
+            requestAnimationFrame(loop);
+            if(secs > 1 / sm.fps){
+                sm.stateObj.update(sm, secs);
+                sm.stateObj.draw(sm, sm.ctx, sm.canvas);
+
+                //gameMod.update(sm.game, secs)
+                //render(sm);
+                sm.lt = now;
+            }
+        };
+        loop();
+    };
+
+    // create simple menus
+    api.gridMenu = {};
+
+    api.gridMenu.create = function(opt){
+        opt = opt || {};
+        var menu = Object.assign({}, {
+            x: 32,
+            y: 32,
+            w: 4,
+            currentIndex: 0,
+            cellSize: 32,
+            buttons: []
+        }, opt);
+        return menu;
+    };
+
+    api.gridMenu.click = function(menu, pos){
+        var w = menu.cellSize * menu.w,
+        h = menu.cellSize * menu.buttons.length / menu.w;
+        if(utils.boundingBox( menu.x, menu.y, w, h, pos.x, pos.y, 1, 1 )){
+            var x = Math.floor((pos.x - menu.x) / menu.cellSize);
+            var y = Math.floor((pos.y - menu.y) / menu.cellSize);
+            var i = y * menu.w + x;
+            var button = menu.buttons[i];
+            if(button){
+                menu.currentIndex = i;
+                return button;
+            }
+        }
+        return false;
+    }
+
+    return api;
+
+}());
+
+//-------- ----------
+// GAME
+//-------- ----------
+var gameMod = (function(){
+
+    var hardSet = {
+        MAX_CELL_POPULATION : 100,
+        MAX_CELL_LAND_VALUE : 10
+    };
+
+    var UNIT_TYPES = {};
+
+    UNIT_TYPES.res = {
+        cost: 100,
+        fillStyle : '#880000'
+    };
+
+    UNIT_TYPES.com = {
+        cost: 150,
+        fillStyle : '#000088'
+    };
+
+    UNIT_TYPES.road = {
+        cost: 10,
+        fillStyle : '#888888'
+    };
+
+
+    var api = {};
+
+    api.create = function(opt){
+        opt = opt || {};
+        // if loading a city, cellData will be needed
+        opt.cellData = opt.cellData || [];
+        var game = {
+            hardSet: hardSet,
+            money: 100,
+            population: 0,
+            year: 1900,
+            secsPerYear: 10,
+            secs: 0,
+            taxRate: {
+                propertyTax: 0.07
+            },
+            map: mapMod.create({
+                w: 10,
+                h: 8,
+                marginX: 128,
+                marginY: 96,
+                cellSize: 40
+            })
+        };
+        game.map.cells.forEach(function(cell, i){
+            var cDat = cell.data;
+            cDat.fillStyle = 'white';
+            cDat.landValue = 0;
+            cDat.population = 0;
+            cDat.popDelta = 0;
+        });
+        // set up cells for any given cellData array
+        opt.cellData.forEach(function(cellData){
+            var cell = mapMod.get(game.map, cellData.x, cellData.y),
+            unitKey = cellData.unitKey;
+            var unitType = UNIT_TYPES[unitKey];
+
+            cell.data.unit = {
+                unitKey: unitKey,
+                fillStyle: unitType.fillStyle
+            }
+        });
+        return game;
+    };
+
+    // build a unit an the given cell, or cell location
+    // gameMod.buildAt(game, 'res', cell)
+    // gameMod.buildAt(game, 'res', x, y)
+    api.buildAt = function(game, unitKey, a, b){
+        var cell = null;
+        var unitType = UNIT_TYPES[unitKey];
+        if(typeof a === 'object'){
+           cell = a;
+        }
+        if(typeof a === 'number'){
+           cell = mapMod.get(game.map, a, b)
+        }
+        if(game.money >= unitType.cost && cell){
+            game.money -= unitType.cost;
+            cell.data.unit = {
+                unitKey: unitKey,
+                fillStyle: unitType.fillStyle
+            }
+        }
+    };
+
+    // figure out what the current deltaMoney amount is for a year
+    var getDeltaMoney = function(game){
+        // !!! Property tax ( https://en.wikipedia.org/wiki/Property_tax )
+        // !!! as of r0 I just worked out a system system for 'property tax' that will 
+        // need to be improved at a latter point as the expression at that point
+        // is just Math.floor(game.population * game.raxRate.propertyTax)
+        var propertyTax = Math.floor(game.population * game.taxRate.propertyTax);
+        // !!! property tax is all that makes money
+        var deltaMoney = propertyTax;
+        return deltaMoney;
+    };
+
+    // GET UNIT TYPE COUNT
+    // This is a helper that will get a count of unit types at a max distance
+    // from the given cell location. This is used in the update process to find out
+    // if one or more roads are at a distnace of 3 or less from a cell that has a res
+    // type unit on it
+    /*
+    var getUnitTypeCount = function(game, cell, unitKey, dist){
+        var x = cell.x,
+        y = cell.y,
+        collection = mapMod.getCollectionByPos(game.map, x - dist, y - dist, dist * 2, dist * 2);
+        return collection.reduce(function(acc, cell){
+            var cDat = cell.data; 
+            if(cDat.unit){
+                if(cDat.unit.unitKey === unitKey){
+                   acc += 1;
+                }
+            }
+            return acc;
+        }, 0);
+    };
+    */
+
+    // GET AN AREA IN THE MAP
+    var getArea = api.getArea = function(game, x, y, w, h){
+        return game.map.cells.filter(function(cell){
+            return utils.boundingBox2(x, y, w, h, cell.x, cell.y, 1, 1);
+        });
+    };
+
+    // GET A UNIT TYPE IN AN AREA OF THE MAP
+    var getTypeInArea = api.getTypeInArea = function(game, x, y, w, h, unitKey){
+        return getArea(game, x, y, w, h).filter(function(cell){
+            if(cell.data.unit){
+                return cell.data.unit.unitKey === unitKey;
+            }
+            return false;
+        });
+    };
+
+    // run over all cells and just update population
+    var updatePop = function(game){
+        // total game population defaults to 0
+        game.population = 0;
+        // for each cell...
+        mapMod.forEachCell(game.map, function(cell, x, y, i, map){
+            var cDat = cell.data;
+            if(cDat.unit){
+                if(cDat.unit.unitKey === 'res'){
+                    cDat.popDelta = cDat.landValue;
+                    cDat.population += cDat.popDelta;
+
+                    var per = cDat.landValue / hardSet.MAX_CELL_LAND_VALUE;
+                    var currentCellPopCap = Math.round( per * hardSet.MAX_CELL_POPULATION );
+                     
+                    if(cDat.population > currentCellPopCap){
+                        cDat.population = currentCellPopCap;
+                        cDat.popDelta = 0;
+                    }
+                    if(cDat.population < 0){
+                        cDat.population = 0;
+                    }
+                }else{
+                    // any unit other then res will not have any population or popDelta
+                    cDat.popDelta = 0;
+                    cDat.population = 0;
+                }
+            }else{
+                // any blank cell that does not have a unit, will not have any population or popDelta
+                cDat.popDelta = 0;
+                cDat.population = 0;
+            }
+            // tabulate cDat.population for this cell
+            game.population += cDat.population;
+        });
+    };
+
+    // run over all cells, and update just land value
+    var updateLandValue = function(game){
+       game.population = 0;
+        mapMod.forEachCell(game.map, function(cell, x, y, i, map){
+            var cDat = cell.data;
+            // land value should default to 0
+            cDat.landValue = 0;
+            if(cDat.unit){
+                if(cDat.unit.unitKey === 'res'){
+                    var dist = 3,
+                    s = dist * 2 + 1,
+                    roads = api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road'),
+                    roadCount = roads.length;
+                    cDat.landValue += roadCount;
+                }
+            }
+            // apply max land value limit
+            cDat.landValue = cDat.landValue > hardSet.MAX_CELL_LAND_VALUE ? hardSet.MAX_CELL_LAND_VALUE : cDat.landValue; 
+        });
+    };
+
+
+    api.update = function(game, secs){
+        updateLandValue(game);
+        updatePop(game);
+        // new year?
+        game.secs += secs;
+        var spy = game.secsPerYear;
+        game.secs = game.secs > spy ? spy : game.secs;
+        if(game.secs === spy){
+            game.year += 1;
+            game.secs = 0;
+            game.money += getDeltaMoney(game);
+        }
+    };
+
+    return api;
+
+
+}())
+//-------- ----------
+// DRAW
+//-------- ----------
+var draw = (function () {
+
+    var LAND_COLORS = ['black', '#008800', '#00ff00', '#ffff00', '#ff8800', '#ff0000'],
+    POP_COLORS = ['black', '#008800', '#00aa00', '#00ff00', 'yellow', 'red']
+
+    // public api
+    var api = {};
+
+
+/********** **********
+     HELPERS
+*********** *********/
+
+var drawCellText = function(ctx, map, cell, text){
+    var cs = map.cellSize;
+    var x = map.margin.x + cell.x * cs + cs / 2;
+    var y = map.margin.y + cell.y * cs + cs / 2;
+    ctx.fillStyle = '#cfcfcf';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, x, y)
+};
+
+var rect = function(ctx, x, y, w, h){
+    ctx.beginPath();
+    ctx.rect(x, y, w, h);
+    ctx.fill();
+    ctx.stroke();
+};
+
+// draw a cell helper
+var drawCell = function(sm, map, cell, layer){
+    layer = layer || 'normal';
+    var ctx = sm.ctx;
+    var cs = map.cellSize;
+    var x = map.margin.x + cell.x * cs;
+    var y = map.margin.y + cell.y * cs;
+    drawCell[layer](sm, ctx, cell, x, y, cs);
+};
+
+drawCell.normal = function(sm, ctx, cell, x, y, cs){
+    ctx.fillStyle = cell.data.fillStyle || 'white';
+    ctx.strokeStyle = 'black';
+    if(cell.data.unit){
+        ctx.fillStyle = cell.data.unit.fillStyle;
+    }
+    rect(ctx, x, y, cs, cs);
+};
+
+drawCell.value = function(sm, ctx, cell, x, y, cs){
+    var per = cell.data.landValue / sm.game.hardSet.MAX_CELL_LAND_VALUE;
+    ctx.fillStyle = LAND_COLORS[Math.floor((LAND_COLORS.length - 1) * per)];
+    ctx.strokeStyle = 'white';
+    rect(ctx, x, y, cs, cs);
+    drawCellText(ctx, sm.game.map, cell, cell.data.landValue);
+};
+
+drawCell.population = function(sm, ctx, cell, x, y, cs){
+    var per = cell.data.population / sm.game.hardSet.MAX_CELL_POPULATION;
+    ctx.fillStyle = POP_COLORS[Math.floor((POP_COLORS.length - 1) * per)];
+    ctx.strokeStyle = 'white';
+    rect(ctx, x, y, cs, cs);
+    drawCellText(ctx, sm.game.map, cell, cell.data.population);
+};
+
+/********** **********
+     PUBLIC API
+*********** *********/
+
+    // draw background
+    api.back = function (sm) {
+        var canvas = sm.canvas,
+        ctx = sm.ctx;
+        ctx.fillStyle = 'black';
+        ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+    };
+    // draw the map
+    api.map = function (sm, map, layer) {
+        var i = 0,
+        len = map.cells.length;
+        while (i < len) {
+            drawCell(sm, map, map.cells[i], layer);
+            i += 1;
+        }
+    };
+    // draw the build menu
+    api.menu = function(sm, menu){
+        var canvas = sm.canvas,
+        ctx = sm.ctx,
+        bm = menu || sm.buildMenu,
+        cs = bm.cellSize;
+        ctx.save();
+        ctx.translate(bm.x, bm.y);
+        bm.buttons.forEach(function(button, i){
+            var x = i % bm.w,
+            y = Math.floor(i / bm.w);
+            ctx.fillStyle = i === bm.currentIndex ? 'yellow' : 'white';
+            ctx.fillRect(x * cs, y * cs, cs, cs);
+            // text
+            ctx.font = '10px courier';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.fillStyle = 'black';
+            ctx.fillText(button.desc, x * cs + 4, y * cs + 12);
+        });
+        ctx.restore();
+    };
+    // draw version number
+    api.disp = function(sm){
+        var ctx = sm.ctx,
+        canvas = sm.canvas;
+        // text style
+        ctx.fillStyle = 'white';
+        ctx.font = '10px courier';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        // version number
+        ctx.fillText('money: ' + sm.game.money + ', pop: ' + sm.game.population + ', year: ' + sm.game.year, 5, 5);
+    };
+    // draw version number
+    api.ver = function(sm){
+        var ctx = sm.ctx,
+        canvas = sm.canvas;
+        // text style
+        ctx.fillStyle = 'white';
+        ctx.font = '10px courier';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        // version number
+        ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
+    };
+    // return the public api to draw variable
+    return api;
+}
+    ());
+
+//-------- ----------
+// STATE - INIT
+//-------- ----------
+smMod.load({
+    stateKey: 'init',
+    update: function(sm, secs){
+
+        // set up the build menu
+        sm.buildMenu = smMod.gridMenu.create({
+            x: 32,
+            y: 96,
+            w: 2,
+            currentIndex: 0,
+            cellSize: 32,
+            buttons: [
+                { desc: 'sel', unitKey: 'sell', action: 'sell'},
+                { desc: 'inf', unitKey: 'info', action: 'info'},
+                { desc: 'res', unitKey: 'res', action: 'build' },
+                { desc: 'com', unitKey: 'com', action: 'build' },
+                { desc: 'rod', unitKey: 'road', action: 'build' }
+            ]
+        });
+
+        // set up game state menu
+        sm.gameStateMenu = smMod.gridMenu.create({
+            x: 32,
+            y: 25,
+            w: 2,
+            currentIndex: 0,
+            cellSize: 50,
+            buttons: [
+                { desc: 'b', unitKey: 'build', action: 'gameBuild'},
+                { desc: 'm', unitKey: 'map', action: 'gameMap'}
+            ]
+        });
+
+        // set up the build menu
+        sm.mapMenu = smMod.gridMenu.create({
+            x: 32,
+            y: 96,
+            w: 2,
+            currentIndex: 0,
+            cellSize: 32,
+            buttons: [
+                { desc: 'v', unitKey: 'val', action: 'value'},
+                { desc: 'p', unitKey: 'pop', action: 'population'}
+            ]
+        });
+
+
+        // create game object
+        sm.game = gameMod.create({
+            cellData: [
+                { x: 3, y: 3, unitKey: 'road'},
+                { x: 3, y: 4, unitKey: 'road'},
+                { x: 3, y: 5, unitKey: 'road'},
+                { x: 2, y: 3, unitKey: 'res'},
+                { x: 2, y: 5, unitKey: 'res'},
+
+                { x: 0, y: 3, unitKey: 'res'},
+                { x: 6, y: 3, unitKey: 'res'},
+                { x: 7, y: 3, unitKey: 'res'},
+
+
+                { x: 4, y: 3, unitKey: 'com'}
+            ]
+        });
+
+        // switch to gameBuild state
+        smMod.setState(sm, 'gameBuild');
+    },
+    draw: function(sm, ctx, canvas){},
+    events: { click: function(e, pos, sm){}}
+});
+
+//-------- ----------
+// STATE - GAME BUILD
+//-------- ----------
+smMod.load({
+    stateKey: 'gameBuild',
+    update: function(sm, secs){
+        gameMod.update(sm.game, secs)
+    },
+    draw: function(sm, ctx, canvas){
+        draw.back(sm);
+        draw.map(sm, sm.game.map, 'normal');
+        draw.menu(sm, sm.buildMenu);
+        draw.menu(sm, sm.gameStateMenu);
+        draw.disp(sm);
+        draw.ver(sm);
+    },
+    events: {
+        click: function(e, pos, sm){
+            //var pos = utils.getCanvasRelative(e);
+            var cell = mapMod.getCellByPointer(sm.game.map, pos.x, pos.y);
+            // if map cell clicked
+            if(cell){
+                var button = sm.buildMenu.buttons[sm.buildMenu.currentIndex];
+                var unitKey = button.unitKey;
+                if(button.action === 'sell'){
+                    if(cell.data.unit){
+                        cell.data.unit = null;
+                        sm.game.money += 50;
+                    }else{
+                        console.log('no unit to sell');
+                    }
+                }
+                if(button.action === 'info'){
+                    console.log( Object.assign({}, cell.data, {x: cell.x, y: cell.y}) );
+
+
+
+//console.log( gameMod.getArea(sm.game, 1, 1, 2, 2) );
+
+var dist = 3,
+s = dist * 2 + 1;
+//console.log( gameMod.getArea(sm.game, cell.x - dist, cell.y - dist, s, s) );
+console.log( gameMod.getTypeInArea(sm.game, cell.x - dist, cell.y - dist, s, s, 'road') );
+
+
+
+                }
+                if(button.action === 'build'){
+                    gameMod.buildAt(sm.game, unitKey, cell);
+                }
+            }
+            // if build menu clicked
+            smMod.gridMenu.click(sm.buildMenu, pos);
+
+            var button = smMod.gridMenu.click(sm.gameStateMenu, pos);
+            if(button){
+                console.log(button);
+                smMod.setState(sm, button.action)
+            }
+
+        }
+    }
+});
+
+//-------- ----------
+// STATE - GAME MAP
+//-------- ----------
+smMod.load({
+    stateKey: 'gameMap',
+    update: function(sm, secs){
+        gameMod.update(sm.game, secs)
+    },
+    draw: function(sm, ctx, canvas){
+        draw.back(sm);
+        var mapButton = sm.mapMenu.buttons[sm.mapMenu.currentIndex];
+        draw.map(sm, sm.game.map, mapButton.action);
+        draw.menu(sm, sm.gameStateMenu);
+        draw.menu(sm, sm.mapMenu);
+        draw.disp(sm);
+        draw.ver(sm);
+    },
+    events: {
+        click: function(e, pos, sm){
+            // if map menu clicked
+            smMod.gridMenu.click(sm.mapMenu, pos);
+            // game state change?
+            var button = smMod.gridMenu.click(sm.gameStateMenu, pos);
+            if(button){
+                console.log(button);
+                smMod.setState(sm, button.action)
+            }
+        }
+    }
+});
+
+//-------- ----------
+// MAIN
+//-------- ----------
+var sm = smMod.create({
+    ver: 'r1',
+    currentState: 'init'
+});
+
+smMod.startLoop(sm);
+
+
+
+</script>
+
+ 
+
+    </body>
+</html>

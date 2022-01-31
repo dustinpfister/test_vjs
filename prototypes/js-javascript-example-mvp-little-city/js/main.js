@@ -1,5 +1,5 @@
 var sm = smMod.create({
-    ver: 'r1',
+    ver: 'r2',
     currentState: 'init'
 });
 

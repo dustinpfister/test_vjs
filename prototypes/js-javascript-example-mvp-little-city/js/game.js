@@ -180,7 +180,14 @@ var gameMod = (function(){
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
                     // people like roads, because people likt to go places
-                    var roadCount = getUnitTypeCount(game, cell, 'road', 3);
+                    //var roadCount = getUnitTypeCount(game, cell, 'road', 3);
+
+                    var dist = 3,
+                    s = dist * 2 + 1,
+                    roads = api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road'),
+                    roadCount = roads.length;
+
+
                     cDat.landValue += roadCount;
                 }
             }

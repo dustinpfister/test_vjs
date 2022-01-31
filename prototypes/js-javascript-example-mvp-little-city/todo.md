@@ -2,7 +2,7 @@
 
 ## known bugs
 
-* 0 - some res units do not gain land value even when witin 3 cells away from road
+* ( fixed in r0 ) - #0 - some res units do not gain land value even when witin 3 cells away from road
 
 <!-- Maintenance -->
 
@@ -53,10 +53,9 @@
 * (done) use mapSelectMenu in gameMap state to switch between value and population
 * (done) display text values on top of the colors for each map
 * (done) have a button.desc as the standard key of a button with sm.gridMenu and update all files for this in sm.js, init.js, and draw.js
-
-* new unitsInArea helper that uses array.filter to create an array of units in a given area
-* use unitsInArea helper when using the info button in build mode to test that it works the way that it should
-* fix #0 bug with 'res' units not devloping use unitsInArea helper inupdateLandValue to see about fxing this 
+* (done) new getArea helper that uses array.filter to create an array of units in a given area
+* (done) use getArea helper when using the info button in build mode to test that it works the way that it should
+* (done) fix #0 bug with 'res' units not devloping by using getArea helper in updateLandValue to see about fxing this 
 
 
 ## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta

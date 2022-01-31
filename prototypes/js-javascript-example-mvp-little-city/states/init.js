@@ -6,7 +6,7 @@ smMod.load({
         sm.buildMenu = smMod.gridMenu.create({
             x: 32,
             y: 96,
-            w: 2,
+            w: 2, h: 3,
             currentIndex: 0,
             cellSize: 32,
             buttons: [

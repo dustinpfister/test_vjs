@@ -46,7 +46,16 @@ smMod.load({
 
 
         // create game object
-        sm.game = gameMod.create();
+        sm.game = gameMod.create({
+            cellData: [
+                { x: 3, y: 3, unitKey: 'road'},
+                { x: 3, y: 4, unitKey: 'road'},
+                { x: 3, y: 5, unitKey: 'road'},
+                { x: 2, y: 3, unitKey: 'res'},
+                { x: 2, y: 5, unitKey: 'res'},
+                { x: 4, y: 3, unitKey: 'com'}
+            ]
+        });
 
         // switch to gameBuild state
         smMod.setState(sm, 'gameBuild');

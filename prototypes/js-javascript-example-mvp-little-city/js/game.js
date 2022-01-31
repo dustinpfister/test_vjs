@@ -28,13 +28,7 @@ var gameMod = (function(){
     api.create = function(opt){
         opt = opt || {};
         // if loading a city, cellData will be needed
-        opt.cellData = opt.cellData || [
-            { x: 3, y: 0, unitKey: 'road'},
-            { x: 3, y: 1, unitKey: 'road'},
-            { x: 3, y: 2, unitKey: 'road'},
-            { x: 2, y: 0, unitKey: 'res'},
-            { x: 4, y: 0, unitKey: 'com'}
-        ];
+        opt.cellData = opt.cellData || [];
         var game = {
             hardSet: hardSet,
             money: 100,

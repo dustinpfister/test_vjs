@@ -128,6 +128,15 @@ var gameMod = (function(){
         });
     };
 
+    var getTypeInArea = api.getTypeInArea = function(game, x, y, w, h, unitKey){
+        return getArea(game, x, y, w, h).filter(function(cell){
+            if(cell.data.unit){
+                return cell.data.unit.unitKey === unitKey;
+            }
+            return false;
+        });
+    };
+
     // run over all cells and just update population
     var updatePop = function(game){
         // total game population defaults to 0

@@ -1,13 +1,6 @@
 smMod.load({
     stateKey: 'init',
     update: function(sm, secs){
- 
-console.log( utils.boundingBox2(0, 0, 2, 2, 0, 0, 1, 1) ); // true
-console.log( utils.boundingBox2(0, 0, 2, 2, 0, 1, 1, 1) ); // true
-console.log( utils.boundingBox2(0, 0, 2, 2, 1, 0, 1, 1) ); // true
-console.log( utils.boundingBox2(0, 0, 2, 2, 1, 1, 1, 1) ); // true
-
-console.log( utils.boundingBox2(0, 0, 2, 2, 2, 2, 1, 1) ); // false
 
         // set up the build menu
         sm.buildMenu = smMod.gridMenu.create({
@@ -63,6 +56,7 @@ console.log( utils.boundingBox2(0, 0, 2, 2, 2, 2, 1, 1) ); // false
 
                 { x: 0, y: 3, unitKey: 'res'},
                 { x: 6, y: 3, unitKey: 'res'},
+                { x: 7, y: 3, unitKey: 'res'},
 
 
                 { x: 4, y: 3, unitKey: 'com'}

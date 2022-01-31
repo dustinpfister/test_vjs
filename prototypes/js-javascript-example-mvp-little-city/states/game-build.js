@@ -34,9 +34,12 @@ smMod.load({
 
 //console.log( gameMod.getArea(sm.game, 1, 1, 2, 2) );
 
-var dist = 2,
+var dist = 3,
 s = dist * 2 + 1;
-console.log( gameMod.getArea(sm.game, cell.x - dist, cell.y - dist, s, s) );
+//console.log( gameMod.getArea(sm.game, cell.x - dist, cell.y - dist, s, s) );
+console.log( gameMod.getTypeInArea(sm.game, cell.x - dist, cell.y - dist, s, s, 'road') );
+
+
 
                 }
                 if(button.action === 'build'){

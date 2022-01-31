@@ -31,6 +31,15 @@ drawCell.normal = function(ctx, cell, x, y, cs){
     fillRect(ctx, x, y, cs, cs);
 };
 
+drawCell.value = function(ctx, cell, x, y, cs){
+    //ctx.fillStyle = cell.data.fillStyle || 'white';
+    //if(cell.data.unit){
+        //ctx.fillStyle = cell.data.unit.fillStyle;
+    //}
+    ctx.fillStyle = 'red'
+    fillRect(ctx, x, y, cs, cs);
+};
+
 /********** **********
      PUBLIC API
 *********** *********/
@@ -43,11 +52,11 @@ drawCell.normal = function(ctx, cell, x, y, cs){
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
     };
     // draw the map
-    api.map = function (sm, map) {
+    api.map = function (sm, map, layer) {
         var i = 0,
         len = map.cells.length;
         while (i < len) {
-            drawCell(sm, map, map.cells[i]);
+            drawCell(sm, map, map.cells[i], layer);
             i += 1;
         }
     };

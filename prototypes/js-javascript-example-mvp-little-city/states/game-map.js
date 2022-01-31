@@ -5,7 +5,7 @@ smMod.load({
     },
     draw: function(sm, ctx, canvas){
         draw.back(sm);
-        draw.map(sm, sm.game.map);
+        draw.map(sm, sm.game.map, 'value');
         //draw.menu(sm, sm.buildMenu);
         draw.menu(sm, sm.gameStateMenu);
         draw.disp(sm);

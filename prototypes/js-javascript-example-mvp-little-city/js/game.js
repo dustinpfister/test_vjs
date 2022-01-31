@@ -1,6 +1,7 @@
 var gameMod = (function(){
 
-    var MAX_CELL_POPULATION = 100;
+    var MAX_CELL_POPULATION = 100,
+    MAX_CELL_LAND_VALUE = 10;
 
     var UNIT_TYPES = {};
 
@@ -152,6 +153,8 @@ var gameMod = (function(){
                     cDat.landValue += roadCount;
                 }
             }
+            // apply max land value limit
+            cDat.landValue = cDat.landValue > MAX_CELL_LAND_VALUE ? MAX_CELL_LAND_VALUE : cDat.landValue; 
         });
     };
 

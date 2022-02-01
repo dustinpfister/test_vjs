@@ -2,7 +2,7 @@ var gameMod = (function(){
 
     var hardSet = {
         MAX_CELL_POPULATION : 100,
-        MAX_CELL_LAND_VALUE : 10
+        MAX_CELL_LAND_VALUE : 500   // 500 point scale for land value as of r2
     };
 
     var UNIT_TYPES = {};
@@ -191,7 +191,12 @@ var gameMod = (function(){
     var getRoadCountValue = function(cell, roads){
         var per = roads.length / 10;
         per = per > 1 ? 1 : per;
-        return roads.length;
+        var val = Math.floor(hardSet.MAX_CELL_LAND_VALUE * 0.25 * per);
+        // min value of 1
+        if(val === 0 && per > 0){
+            return 1;
+        }
+        return val;
     };
 
     // UPDATE LAND VALUE

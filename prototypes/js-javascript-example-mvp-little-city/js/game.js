@@ -184,20 +184,33 @@ var gameMod = (function(){
         });
     };
 
-    // run over all cells, and update just land value
+    // LAND VALUE
+    // main update method as well as all relavent helper methods for figuring land value for each cell
+
+    // just get a land value delta based just on the count of roads around a cell
+    var getRoadCountValue = function(cell, roads){
+        //var per = roads.length / 10;
+        return roads.length;
+    };
+
+    // UPDATE LAND VALUE
+    // run over all cells, and update just land value for each cell
     var updateLandValue = function(game){
        game.population = 0;
         mapMod.forEachCell(game.map, function(cell, x, y, i, map){
             var cDat = cell.data;
             // land value should default to 0
             cDat.landValue = 0;
+
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
+                    // a res zone must have at least one or more roads within 3 cells
+                    // or else it wil not devlope at all
                     var dist = 3,
                     s = dist * 2 + 1,
-                    roads = api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road'),
-                    roadCount = roads.length;
-                    cDat.landValue += roadCount;
+                    roads = api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road');
+
+                    cDat.landValue += getRoadCountValue(cell, roads);
                 }
             }
             // apply max land value limit

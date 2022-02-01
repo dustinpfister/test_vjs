@@ -33,13 +33,15 @@
 * (done) all cells of map should default to false
 * (done) have a walkable map for debug help
 * (done) have roads set walkable values for cells to true when creating a game object for first time
-* when a road unit is built walkable will need to be set to true
+* (done) when a road unit is built walkable will need to be set to true
 * (done) walkable will need to be set back to false when a unit of any kind is sold
 
 * have an update process that will use path detection to set land value for units
 
 * for 'res' units the number of paths to 'com' units will raise land value
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
+
+* looks like I might want a createUnit helper in game.js to be used in gameMod.create and gameMod.buildAt
 
 ## ( done 01/31/2022 ) - r1 - lib and states folders, 'init', 'gameBuild', and 'gameMap' state
 * (done) start a lib folder and have utils.js and map.js in that folder

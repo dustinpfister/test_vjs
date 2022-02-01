@@ -49,9 +49,20 @@ smMod.load({
         // create game object
         sm.game = gameMod.create({
             cellData: [
+                { x: 3, y: 2, unitKey: 'road'},
                 { x: 3, y: 3, unitKey: 'road'},
                 { x: 3, y: 4, unitKey: 'road'},
                 { x: 3, y: 5, unitKey: 'road'},
+
+                { x: 4, y: 1, unitKey: 'road'},
+                { x: 5, y: 1, unitKey: 'road'},
+                { x: 6, y: 1, unitKey: 'road'},
+                { x: 3, y: 1, unitKey: 'road'},
+                { x: 2, y: 1, unitKey: 'road'},
+                { x: 1, y: 1, unitKey: 'road'},
+                { x: 0, y: 1, unitKey: 'road'},
+
+
                 { x: 2, y: 3, unitKey: 'res'},
                 { x: 2, y: 5, unitKey: 'res'},
 

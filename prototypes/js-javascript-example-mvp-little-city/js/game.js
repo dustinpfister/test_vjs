@@ -98,8 +98,9 @@ console.log(pathsObj);
 //console.log(pathsObj);
 
 //var homeCell = mapMod.get(game.map, 2, 5);
-var homeCell = mapMod.get(game.map, 0, 3);
-console.log( getPathsToZoneValue(game, homeCell, 'com') )
+
+console.log( getPathsToZoneValue(game, mapMod.get(game.map, 0, 3), 'com') );
+console.log( getPathsToZoneValue(game, mapMod.get(game.map, 2, 5), 'com') )
 
 //console.log(coms);
 //console.log( getNear(coms, cell) )
@@ -296,7 +297,10 @@ console.log( getPathsToZoneValue(game, homeCell, 'com') )
 
         var dper = 1 - (avgDist - 1) / 9;
 
-        return dper;
+        // 50% based on distance
+        var val = Math.floor(hardSet.MAX_CELL_LAND_VALUE * 0.50 * dper);
+
+        return val;
 
     };
 

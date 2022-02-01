@@ -70,26 +70,31 @@ var gameMod = (function(){
             }
         });
 
+/*
 var homeCell = mapMod.get(game.map, 0, 3);
 var roads = getTypeInArea(game, 'road');
 var coms = getTypeInArea(game, 'com');
 var sCell = getNear(roads, homeCell);
-
 var pathsObj = {
    homeCell: homeCell,
    sCell: sCell,
    zones: []
 };
-coms.forEach(function(comCell){
-    var eCell = getNear(roads, comCell),
+coms.forEach(function(zoneCell){
+    var eCell = getNear(roads, zoneCell),
     path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
     path.push([sCell.x, sCell.y]);
     pathsObj.zones.push({
-        zoneCell: comCell,
+        zoneCell: zoneCell,
         eCell: eCell,
         path: path
-    })
+    });
 });
+console.log(pathsObj);
+*/
+
+var homeCell = mapMod.get(game.map, 2, 5);
+var pathsObj = getZonePaths(game, 'com', homeCell);
 console.log(pathsObj);
 
 
@@ -197,6 +202,34 @@ console.log(pathsObj);
             }
         });
         return nearCell;
+    };
+
+    var getZonePaths = function(game, zoneUnitKey, a, b){
+        var homeCell;
+        if(typeof a === 'object'){
+            homeCell = a;
+        }else{        
+            homeCell = mapMod.get(game.map, a, b);
+        }
+        var roads = getTypeInArea(game, 'road');
+        var zones = getTypeInArea(game, zoneUnitKey);
+        var sCell = getNear(roads, homeCell);
+        var pathsObj = {
+            homeCell: homeCell,
+            sCell: sCell,
+            zones: []
+        };
+        zones.forEach(function(zoneCell){
+            var eCell = getNear(roads, zoneCell),
+            path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
+            path.push([sCell.x, sCell.y]);
+            pathsObj.zones.push({
+                zoneCell: zoneCell,
+                eCell: eCell,
+                path: path
+            });
+        });
+        return pathsObj;
     };
 
     // run over all cells and just update population

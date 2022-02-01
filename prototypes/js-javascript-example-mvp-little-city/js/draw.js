@@ -15,8 +15,9 @@ var drawCellText = function(ctx, map, cell, text){
     var cs = map.cellSize;
     var x = map.margin.x + cell.x * cs + cs / 2;
     var y = map.margin.y + cell.y * cs + cs / 2;
-    ctx.fillStyle = '#cfcfcf';
+    ctx.fillStyle = '#8f8f8f';
     ctx.textAlign = 'center';
+    ctx.font = '12px courier';
     ctx.textBaseline = 'middle';
     ctx.fillText(text, x, y)
 };

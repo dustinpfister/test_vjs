@@ -147,6 +147,12 @@ var gameMod = (function(){
         });
     };
 
+    var getTypeFromCellDist = api.getTypeFromCellDist = function(game, cell, unitKey, dist){
+        dist = dist === undefined ? 3: dist;
+        var s = dist * 2 + 1;
+        return api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road');
+    };
+
     // run over all cells and just update population
     var updatePop = function(game){
         // total game population defaults to 0
@@ -212,11 +218,14 @@ var gameMod = (function(){
                 if(cDat.unit.unitKey === 'res'){
                     // a res zone must have at least one or more roads within 3 cells
                     // or else it wil not devlope at all
-                    var dist = 3,
-                    s = dist * 2 + 1,
-                    roads = api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road');
+                    //var dist = 3,
+                    //s = dist * 2 + 1,
+                    //roads = api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road');
+var roads = getTypeFromCellDist(game, cell, 'road', 10);
+
 
                     cDat.landValue += getRoadCountValue(cell, roads);
+                    //if(roads.length)
                 }
             }
             // apply max land value limit

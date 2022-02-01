@@ -4,6 +4,7 @@
 
 * ( fixed in r0 ) - #0 - some res units do not gain land value even when witin 3 cells away from road
 * ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
+* () - #2 - longer paths should result in lower value
 
 <!-- Maintenance -->
 
@@ -45,6 +46,7 @@
 * (done) for 'res' units the number of paths to 'com' units will raise land value
 * (done) for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
+* looks like longer paths are increasing value?
 
 * looks like I might want a createUnit helper in game.js to be used in gameMod.create and gameMod.buildAt
 * I might want to have hard coded settings in game.js that can be used to set % of max land cell value for each process that sets land value

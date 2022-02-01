@@ -237,8 +237,8 @@ var gameMod = (function(){
         // avgDist should never be lower then 1, and if over 10
         // then that is all ready the worst
         avgDist = avgDist < 1 ? 1 : avgDist;
-        avgDist = avgDist > 10 ? 10 : avgDist;
-        var dPer = 1 - (avgDist - 1) / 9;
+        avgDist = avgDist > 15 ? 15 : avgDist;
+        var dPer = 1 - (avgDist - 1) / 14;
         // 50% based on distance (r2)
         var val = hardSet.MAX_CELL_LAND_VALUE * 0.50 * dPer;
         // 25% based on count (r2)

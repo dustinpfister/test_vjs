@@ -75,13 +75,11 @@ var roads = getTypeInArea(game, 'road');
 var coms = getTypeInArea(game, 'com');
 
 var sCell = getNear(roads, resCell);
-
-
 console.log( sCell )
-
 coms.forEach(function(comCell){
     var eCell = getNear(roads, comCell),
-    path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y)
+    path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
+    path.push([sCell.x, sCell.y]);
     console.log(path);
 });
 

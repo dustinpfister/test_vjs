@@ -36,6 +36,11 @@
 * (done) when a road unit is built walkable will need to be set to true
 * (done) walkable will need to be set back to false when a unit of any kind is sold
 
+* (done) update drawCell.value and population to only draw black for a value of zero
+
+* (done) have a getRoadCountValue helper in game.js that will be a method to just get a land value delta based on a count of roads
+* have a getPathsToZoneValue helper that will get a value based on a count and avg length of paths to a target zone
+
 * have an update process that will use path detection to set land value for units
 
 * for 'res' units the number of paths to 'com' units will raise land value

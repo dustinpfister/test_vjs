@@ -189,7 +189,8 @@ var gameMod = (function(){
 
     // just get a land value delta based just on the count of roads around a cell
     var getRoadCountValue = function(cell, roads){
-        //var per = roads.length / 10;
+        var per = roads.length / 10;
+        per = per > 1 ? 1 : per;
         return roads.length;
     };
 

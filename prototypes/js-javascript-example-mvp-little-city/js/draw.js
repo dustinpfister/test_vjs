@@ -1,7 +1,7 @@
 var draw = (function () {
 
-    var LAND_COLORS = ['black', '#008800', '#00ff00', '#ffff00', '#ff8800', '#ff0000'],
-    POP_COLORS = ['black', '#008800', '#00aa00', '#00ff00', 'yellow', 'red']
+    var LAND_COLORS = ['green', 'lime', 'yellow', 'orange', 'red'],
+    POP_COLORS = ['#220022', '#550055', '#880088', '#ff00ff']
 
     // public api
     var api = {};
@@ -49,7 +49,10 @@ drawCell.normal = function(sm, ctx, cell, x, y, cs){
 
 drawCell.value = function(sm, ctx, cell, x, y, cs){
     var per = cell.data.landValue / sm.game.hardSet.MAX_CELL_LAND_VALUE;
-    ctx.fillStyle = LAND_COLORS[Math.floor((LAND_COLORS.length - 1) * per)];
+    ctx.fillStyle = 'black';
+    if(per != 0){
+        ctx.fillStyle = LAND_COLORS[Math.floor((LAND_COLORS.length - 1) * per)];
+    }
     ctx.strokeStyle = 'white';
     rect(ctx, x, y, cs, cs);
     drawCellText(ctx, sm.game.map, cell, cell.data.landValue);
@@ -57,7 +60,10 @@ drawCell.value = function(sm, ctx, cell, x, y, cs){
 
 drawCell.population = function(sm, ctx, cell, x, y, cs){
     var per = cell.data.population / sm.game.hardSet.MAX_CELL_POPULATION;
-    ctx.fillStyle = POP_COLORS[Math.floor((POP_COLORS.length - 1) * per)];
+    ctx.fillStyle = 'black';
+    if(per != 0){
+        ctx.fillStyle = POP_COLORS[Math.floor((POP_COLORS.length - 1) * per)];
+    }
     ctx.strokeStyle = 'white';
     rect(ctx, x, y, cs, cs);
     drawCellText(ctx, sm.game.map, cell, cell.data.population);

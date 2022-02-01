@@ -280,9 +280,11 @@ console.log( getPathsToZoneValue(game, mapMod.get(game.map, 2, 5), 'com') )
     var getRoadCountValue = function(cell, roads){
         var per = roads.length / 10;
         per = per > 1 ? 1 : per;
-        return Math.floor(hardSet.MAX_CELL_LAND_VALUE * 0.25 * per);
+        // 25% based on road count (r2)
+        return hardSet.MAX_CELL_LAND_VALUE * 0.25 * per;
     };
 
+    // get a value based on count of zones and avg path length to zones
     var getPathsToZoneValue = function(game, cell, unitKey){
         // get raw paths obj
         var pathsObj = getZonePaths(game, unitKey, cell);
@@ -294,14 +296,16 @@ console.log( getPathsToZoneValue(game, mapMod.get(game.map, 2, 5), 'com') )
         // then that is all ready the worst
         avgDist = avgDist < 1 ? 1 : avgDist;
         avgDist = avgDist > 10 ? 10 : avgDist;
-
-        var dper = 1 - (avgDist - 1) / 9;
-
-        // 50% based on distance
-        var val = Math.floor(hardSet.MAX_CELL_LAND_VALUE * 0.50 * dper);
-
+        var dPer = 1 - (avgDist - 1) / 9;
+        // 50% based on distance (r2)
+        var val = hardSet.MAX_CELL_LAND_VALUE * 0.50 * dPer;
+        // 25% based on count (r2)
+        var count = pathsObj.zones.length;
+        var cPer = count / 5;
+        cPer = cPer > 1 ? 1 : cPer;
+        val += hardSet.MAX_CELL_LAND_VALUE * 0.25 * cPer;
+        // return val
         return val;
-
     };
 
     // UPDATE LAND VALUE
@@ -319,10 +323,13 @@ console.log( getPathsToZoneValue(game, mapMod.get(game.map, 2, 5), 'com') )
                     // or else it wil not devlope at all
                     var roads = getTypeFromCellDist(game, cell, 'road', 3);
                     if(roads.length >= 1){
+                        // simple road count value for res, and also paths to 'com' cells
                         cDat.landValue += getRoadCountValue(cell, roads);
+                        cDat.landValue += getPathsToZoneValue(game, cell, 'com')
                     }
                 }
             }
+            cDat.landValue = Math.round(cDat.landValue);
             // apply max land value limit
             cDat.landValue = cDat.landValue > hardSet.MAX_CELL_LAND_VALUE ? hardSet.MAX_CELL_LAND_VALUE : cDat.landValue; 
         });

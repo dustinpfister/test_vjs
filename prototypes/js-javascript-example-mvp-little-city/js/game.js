@@ -61,11 +61,14 @@ var gameMod = (function(){
             var cell = mapMod.get(game.map, cellData.x, cellData.y),
             unitKey = cellData.unitKey;
             var unitType = UNIT_TYPES[unitKey];
-
             cell.data.unit = {
                 unitKey: unitKey,
                 fillStyle: unitType.fillStyle
             }
+			if(unitKey === 'road'){
+				console.log('road, setting walkbale to true');
+				cell.walkable = true;
+			}
         });
         return game;
     };

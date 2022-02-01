@@ -2,7 +2,11 @@ var gameMod = (function(){
 
     var hardSet = {
         MAX_CELL_POPULATION : 100,
-        MAX_CELL_LAND_VALUE : 500   // 500 point scale for land value as of r2
+        MAX_CELL_LAND_VALUE : 500,   // 500 point scale for land value as of r2
+        MAX_AVG_DIST: 10,
+        LVPER_ROADCT: 0.10, 
+        LVPER_COMCT: 0.10,
+        LVPER_COMDIST: 0.80
     };
 
     var UNIT_TYPES = {};
@@ -223,7 +227,7 @@ var gameMod = (function(){
         var per = roads.length / 10;
         per = per > 1 ? 1 : per;
         // 25% based on road count (r2)
-        return hardSet.MAX_CELL_LAND_VALUE * 0.25 * per;
+        return hardSet.MAX_CELL_LAND_VALUE * hardSet.LVPER_ROADCT * per;
     };
 
     // get a value based on count of zones and avg path length to zones
@@ -236,16 +240,17 @@ var gameMod = (function(){
         }, 0) / pathsObj.zones.length;
         // avgDist should never be lower then 1, and if over 10
         // then that is all ready the worst
+        var maxAvgDist = hardSet.MAX_AVG_DIST;
         avgDist = avgDist < 1 ? 1 : avgDist;
-        avgDist = avgDist > 15 ? 15 : avgDist;
-        var dPer = 1 - (avgDist - 1) / 14;
+        avgDist = avgDist > maxAvgDist ? maxAvgDist : avgDist;
+        var dPer = 1 - (avgDist - 1) / ( maxAvgDist - 1);
         // 50% based on distance (r2)
-        var val = hardSet.MAX_CELL_LAND_VALUE * 0.50 * dPer;
+        var val = hardSet.MAX_CELL_LAND_VALUE * hardSet.LVPER_COMDIST * dPer;
         // 25% based on count (r2)
         var count = pathsObj.zones.length;
         var cPer = count / 5;
         cPer = cPer > 1 ? 1 : cPer;
-        val += hardSet.MAX_CELL_LAND_VALUE * 0.25 * cPer;
+        val += hardSet.MAX_CELL_LAND_VALUE * hardSet.LVPER_COMCT * cPer;
         // return val
         return val;
     };

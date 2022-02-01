@@ -4,7 +4,7 @@
 
 * ( fixed in r0 ) - #0 - some res units do not gain land value even when witin 3 cells away from road
 * ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
-* () - #2 - longer paths should result in lower value
+
 
 <!-- Maintenance -->
 

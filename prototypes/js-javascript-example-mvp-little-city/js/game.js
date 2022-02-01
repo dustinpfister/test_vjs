@@ -69,6 +69,11 @@ var gameMod = (function(){
                 cell.walkable = true;
             }
         });
+
+var cell = mapMod.get(game.map, 0, 3);
+var roads = getTypeFromCellDist(game, cell, 'road', 3)
+console.log( getNear(roads, cell) )
+
         return game;
     };
 
@@ -153,6 +158,21 @@ var gameMod = (function(){
         return api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road');
     };
 
+    // with the given collection return the cell in the colletion that is near the given cell
+    // might return null of no cell is near at all in the collection
+    var getNear = function(cellCollection, cell){
+        var dist = Infinity,
+        nearCell = null;
+        cellCollection.forEach(function(target){
+            var d = utils.distance(cell.x, cell.y, target.x, target.y);
+            if(d < dist){
+                dist = d;
+                nearCell = target;
+            }
+        });
+        return nearCell;
+    };
+
     // run over all cells and just update population
     var updatePop = function(game){
         // total game population defaults to 0
@@ -197,12 +217,11 @@ var gameMod = (function(){
     var getRoadCountValue = function(cell, roads){
         var per = roads.length / 10;
         per = per > 1 ? 1 : per;
-        var val = Math.floor(hardSet.MAX_CELL_LAND_VALUE * 0.25 * per);
-        // min value of 1
-        if(val === 0 && per > 0){
-            return 1;
-        }
-        return val;
+        return Math.floor(hardSet.MAX_CELL_LAND_VALUE * 0.25 * per);
+    };
+
+    var getPathsToZoneValue = function(cell, roads){
+    
     };
 
     // UPDATE LAND VALUE
@@ -218,14 +237,10 @@ var gameMod = (function(){
                 if(cDat.unit.unitKey === 'res'){
                     // a res zone must have at least one or more roads within 3 cells
                     // or else it wil not devlope at all
-                    //var dist = 3,
-                    //s = dist * 2 + 1,
-                    //roads = api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road');
-var roads = getTypeFromCellDist(game, cell, 'road', 10);
-
-
-                    cDat.landValue += getRoadCountValue(cell, roads);
-                    //if(roads.length)
+                    var roads = getTypeFromCellDist(game, cell, 'road', 3);
+                    if(roads.length >= 1){
+                        cDat.landValue += getRoadCountValue(cell, roads);
+                    }
                 }
             }
             // apply max land value limit

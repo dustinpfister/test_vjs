@@ -37,9 +37,9 @@
 * (done) walkable will need to be set back to false when a unit of any kind is sold
 * (done) update drawCell.value and population to only draw black for a value of zero
 * (done) have a getRoadCountValue helper in game.js that will be a method to just get a land value delta based on a count of roads
+* (done) have a getTypeFromCellDist helper
 
-
-* have a getTypeFromCellDist helper
+* I will want a getTypeNear helper that will give the unit that is near the given cell
 
 * have a getPathsToZoneValue helper that will get a value based on a count and avg length of paths to a target zone
 
@@ -51,6 +51,7 @@
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
 * looks like I might want a createUnit helper in game.js to be used in gameMod.create and gameMod.buildAt
+* I might want to have hard coded settings in game.js that can be used to set % of max land cell value for each process that sets land value
 
 ## ( done 01/31/2022 ) - r1 - lib and states folders, 'init', 'gameBuild', and 'gameMap' state
 * (done) start a lib folder and have utils.js and map.js in that folder

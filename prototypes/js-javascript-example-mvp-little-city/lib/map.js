@@ -229,6 +229,7 @@ var mapMod = (function () {
             }
         }
         // for dirCount 8 only
+/*
         if(dirCount || 8){
             if (api.isWalkable(grid, x - 1, y - 1)) {
                 neighbors.push(mapMod.get(grid, x - 1, y - 1));
@@ -243,6 +244,7 @@ var mapMod = (function () {
                 neighbors.push(mapMod.get(grid, x + 1, y - 1));
             }
         }
+*/
         return neighbors;
     };
 

@@ -70,10 +70,24 @@ var gameMod = (function(){
             }
         });
 
-var cell = mapMod.get(game.map, 0, 3);
-var roads = getTypeFromCellDist(game, cell, 'road', 3);
-var coms = 
-console.log( getNear(roads, cell) )
+var resCell = mapMod.get(game.map, 0, 3);
+var roads = getTypeInArea(game, 'road');
+var coms = getTypeInArea(game, 'com');
+
+var sCell = getNear(roads, resCell);
+
+
+console.log( sCell )
+
+coms.forEach(function(comCell){
+    var eCell = getNear(roads, comCell),
+    path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y)
+    console.log(path);
+});
+
+
+//console.log(coms);
+//console.log( getNear(coms, cell) )
 
         return game;
     };
@@ -145,6 +159,10 @@ console.log( getNear(roads, cell) )
 
     // GET A UNIT TYPE IN AN AREA OF THE MAP
     var getTypeInArea = api.getTypeInArea = function(game, unitKey, x, y, w, h){
+        x = x === undefined ? 0 : x;
+        y = y === undefined ? 0 : y;
+        w = w === undefined ? game.map.w : w;
+        h = h === undefined ? game.map.h : h;
         return getArea(game, x, y, w, h).filter(function(cell){
             if(cell.data.unit){
                 return cell.data.unit.unitKey === unitKey;

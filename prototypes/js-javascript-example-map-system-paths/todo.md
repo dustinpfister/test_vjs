@@ -1,5 +1,7 @@
 # js-javascript-example-map-system-paths
 
+## known bugs
+* () - #0 - fix dir count bug
 
 <!-- Maintenance -->
 
@@ -23,6 +25,7 @@
 
 
 ## () - r3 - mapMod.getPixlePos, mapMod.openAll
+* fix #0 dir count bug
 * add a mapMod.getPixlePos method that will return the pixle position of a cell in a map
 * mapMod.getPixlePos can work just like mapMod.get but a cell can ref can be given as one argument on top of a index number
 ```

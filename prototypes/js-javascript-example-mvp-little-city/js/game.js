@@ -53,6 +53,8 @@ var gameMod = (function(){
             cDat.landValue = 0;
             cDat.population = 0;
             cDat.popDelta = 0;
+            // walkable defaults to false;
+            cell.walkable = false;
         });
         // set up cells for any given cellData array
         opt.cellData.forEach(function(cellData){

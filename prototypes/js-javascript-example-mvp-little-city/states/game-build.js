@@ -13,10 +13,6 @@ smMod.load({
     },
     events: {
         click: function(e, pos, sm){
-
-
-
-            //var pos = utils.getCanvasRelative(e);
             var cell = mapMod.getCellByPointer(sm.game.map, pos.x, pos.y);
             // if map cell clicked
             if(cell){
@@ -31,34 +27,22 @@ smMod.load({
                     }
                 }
                 if(button.action === 'info'){
-                    console.log( Object.assign({}, cell.data, {x: cell.x, y: cell.y}) );
-
-
-
-//console.log( gameMod.getArea(sm.game, 1, 1, 2, 2) );
-
-//var dist = 3,
-//s = dist * 2 + 1;
-//console.log( gameMod.getArea(sm.game, cell.x - dist, cell.y - dist, s, s) );
-//console.log( gameMod.getTypeInArea(sm.game, cell.x - dist, cell.y - dist, s, s, 'road') );
-
-
-
+                    console.log( Object.assign({}, cell.data, {x: cell.x, y: cell.y, walkable: cell.walkable}) );
+					
+					console.log(mapMod.getPath(sm.game.map, 2, 5, 4, 3));
+					
                 }
                 if(button.action === 'build'){
                     gameMod.buildAt(sm.game, unitKey, cell);
                 }
             }
-
             // if build menu clicked
             smMod.gridMenu.click(sm.buildMenu, pos);
-
             var button = smMod.gridMenu.click(sm.gameStateMenu, pos);
             if(button){
                 console.log(button);
                 smMod.setState(sm, button.action)
             }
-
         }
     }
 });

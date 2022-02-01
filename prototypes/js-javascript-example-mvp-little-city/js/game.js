@@ -70,18 +70,27 @@ var gameMod = (function(){
             }
         });
 
-var resCell = mapMod.get(game.map, 0, 3);
+var homeCell = mapMod.get(game.map, 0, 3);
 var roads = getTypeInArea(game, 'road');
 var coms = getTypeInArea(game, 'com');
+var sCell = getNear(roads, homeCell);
 
-var sCell = getNear(roads, resCell);
-console.log( sCell )
+var pathsObj = {
+   homeCell: homeCell,
+   sCell: sCell,
+   zones: []
+};
 coms.forEach(function(comCell){
     var eCell = getNear(roads, comCell),
     path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
     path.push([sCell.x, sCell.y]);
-    console.log(path);
+    pathsObj.zones.push({
+        zoneCell: comCell,
+        eCell: eCell,
+        path: path
+    })
 });
+console.log(pathsObj);
 
 
 //console.log(coms);

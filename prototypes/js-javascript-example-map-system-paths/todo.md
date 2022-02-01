@@ -22,7 +22,7 @@
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
 
-## () - r3 - mapMod.getPixlePos
+## () - r3 - mapMod.getPixlePos, mapMod.openAll
 * add a mapMod.getPixlePos method that will return the pixle position of a cell in a map
 * mapMod.getPixlePos can work just like mapMod.get but a cell can ref can be given as one argument on top of a index number
 ```
@@ -33,6 +33,8 @@ mapMod.getPixlePos(map, 6);
 var cell = mapMod.get(map, 2, 1);
 mapMod.getPixlePos(map, cell)
 ```
+* see about making an mapMod.openAll method that will set the closed prop of all cells to false
+* see about using mapMod.openAll in mapMod.getPath in place of cloning
 
 <!-- Minimum Viable Product -->
 

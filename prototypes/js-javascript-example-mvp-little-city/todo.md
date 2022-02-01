@@ -30,8 +30,9 @@
 
 ## () - r2 - Paths to com units
 * (done) fixed bug #1 with grid menu click in sm.js
-* have an update process that will use path detection to set land value for units
 * have roads set walkable values for cells to true
+* have an update process that will use path detection to set land value for units
+
 * for 'res' units the number of paths to 'com' units will raise land value
 * for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 

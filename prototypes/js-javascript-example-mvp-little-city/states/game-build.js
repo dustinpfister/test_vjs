@@ -21,6 +21,7 @@ smMod.load({
                 if(button.action === 'sell'){
                     if(cell.data.unit){
                         cell.data.unit = null;
+                        cell.walkable = false;
                         sm.game.money += 50;
                     }else{
                         console.log('no unit to sell');

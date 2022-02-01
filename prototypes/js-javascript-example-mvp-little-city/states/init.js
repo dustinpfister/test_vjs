@@ -41,7 +41,7 @@ smMod.load({
             buttons: [
                 { desc: 'v', unitKey: 'val', action: 'value'},
                 { desc: 'p', unitKey: 'pop', action: 'population'},
-				{ desc: 'r', unitKey: 'road', action: 'roads'}
+                { desc: 'r', unitKey: 'road', action: 'roads'}
             ]
         });
 

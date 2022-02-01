@@ -31,7 +31,7 @@ smMod.load({
             ]
         });
 
-        // set up the build menu
+        // set up the map menu
         sm.mapMenu = smMod.gridMenu.create({
             x: 32,
             y: 96,
@@ -40,7 +40,8 @@ smMod.load({
             cellSize: 32,
             buttons: [
                 { desc: 'v', unitKey: 'val', action: 'value'},
-                { desc: 'p', unitKey: 'pop', action: 'population'}
+                { desc: 'p', unitKey: 'pop', action: 'population'},
+				{ desc: 'r', unitKey: 'road', action: 'roads'}
             ]
         });
 

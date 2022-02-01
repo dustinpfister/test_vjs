@@ -63,6 +63,14 @@ drawCell.population = function(sm, ctx, cell, x, y, cs){
     drawCellText(ctx, sm.game.map, cell, cell.data.population);
 };
 
+drawCell.roads = function(sm, ctx, cell, x, y, cs){
+    ctx.fillStyle = 'black';
+    if(cell.walkable){
+        ctx.fillStyle = 'orange';
+    }
+    rect(ctx, x, y, cs, cs);
+};
+
 /********** **********
      PUBLIC API
 *********** *********/

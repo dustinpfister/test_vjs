@@ -31,7 +31,7 @@ var gameMod = (function(){
         opt.cellData = opt.cellData || [];
         var game = {
             hardSet: hardSet,
-            money: 100,
+            money: 1000,
             population: 0,
             year: 1900,
             secsPerYear: 10,

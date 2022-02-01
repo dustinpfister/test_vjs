@@ -52,7 +52,7 @@ drawCell.value = function(sm, ctx, cell, x, y, cs){
     var per = cell.data.landValue / sm.game.hardSet.MAX_CELL_LAND_VALUE;
     ctx.fillStyle = 'black';
     if(per != 0){
-        ctx.fillStyle = LAND_COLORS[Math.floor((LAND_COLORS.length - 1) * per)];
+        ctx.fillStyle = LAND_COLORS[Math.round((LAND_COLORS.length - 1) * per)];
     }
     ctx.strokeStyle = 'white';
     rect(ctx, x, y, cs, cs);
@@ -63,7 +63,7 @@ drawCell.population = function(sm, ctx, cell, x, y, cs){
     var per = cell.data.population / sm.game.hardSet.MAX_CELL_POPULATION;
     ctx.fillStyle = 'black';
     if(per != 0){
-        ctx.fillStyle = POP_COLORS[Math.floor((POP_COLORS.length - 1) * per)];
+        ctx.fillStyle = POP_COLORS[Math.round((POP_COLORS.length - 1) * per)];
     }
     ctx.strokeStyle = 'white';
     rect(ctx, x, y, cs, cs);

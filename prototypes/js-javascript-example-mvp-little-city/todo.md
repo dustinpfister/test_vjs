@@ -40,6 +40,8 @@
 * (done) have a getTypeFromCellDist helper
 * (done) I will want a getNear helper that will give the cell that is near the given cell from a collection
 
+* (done) getZonePaths helper
+
 * have a getPathsToZoneValue helper that will get a value based on a count and avg length of paths to a target zone
 
 

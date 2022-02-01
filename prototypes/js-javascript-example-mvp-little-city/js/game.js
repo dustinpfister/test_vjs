@@ -93,10 +93,13 @@ coms.forEach(function(zoneCell){
 console.log(pathsObj);
 */
 
-var homeCell = mapMod.get(game.map, 2, 5);
-var pathsObj = getZonePaths(game, 'com', homeCell);
-console.log(pathsObj);
+//var homeCell = mapMod.get(game.map, 2, 5);
+//var pathsObj = getZonePaths(game, 'com', homeCell);
+//console.log(pathsObj);
 
+//var homeCell = mapMod.get(game.map, 2, 5);
+var homeCell = mapMod.get(game.map, 0, 3);
+console.log( getPathsToZoneValue(game, homeCell, 'com') )
 
 //console.log(coms);
 //console.log( getNear(coms, cell) )
@@ -279,8 +282,22 @@ console.log(pathsObj);
         return Math.floor(hardSet.MAX_CELL_LAND_VALUE * 0.25 * per);
     };
 
-    var getPathsToZoneValue = function(cell, roads){
-    
+    var getPathsToZoneValue = function(game, cell, unitKey){
+        // get raw paths obj
+        var pathsObj = getZonePaths(game, unitKey, cell);
+        // figure avg dist
+        var avgDist = pathsObj.zones.reduce(function(acc, zoneObj){
+            return acc + zoneObj.path.length;
+        }, 0) / pathsObj.zones.length;
+        // avgDist should never be lower then 1, and if over 10
+        // then that is all ready the worst
+        avgDist = avgDist < 1 ? 1 : avgDist;
+        avgDist = avgDist > 10 ? 10 : avgDist;
+
+        var dper = 1 - (avgDist - 1) / 9;
+
+        return dper;
+
     };
 
     // UPDATE LAND VALUE

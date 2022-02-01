@@ -72,7 +72,8 @@ smMod.load({
 
 
                 { x: 4, y: 3, unitKey: 'com'},
-                { x: 1, y: 0, unitKey: 'com'}
+                { x: 1, y: 0, unitKey: 'com'},
+                { x: 0, y: 0, unitKey: 'com'}
             ]
         });
 

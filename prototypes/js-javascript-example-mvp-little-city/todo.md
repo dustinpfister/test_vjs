@@ -32,9 +32,9 @@
 * (done) fixed bug #1 with grid menu click in sm.js
 * (done) all cells of map should default to false
 * (done) have a walkable map for debug help
-* have roads set walkable values for cells to true when creating a game object for first time
-* when w road unit is built walkable will need to be set to true
-* walkable will need to be set back to false when a unit of any kind is sold
+* (done) have roads set walkable values for cells to true when creating a game object for first time
+* when a road unit is built walkable will need to be set to true
+* (done) walkable will need to be set back to false when a unit of any kind is sold
 
 * have an update process that will use path detection to set land value for units
 

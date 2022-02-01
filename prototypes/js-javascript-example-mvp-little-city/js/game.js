@@ -65,10 +65,9 @@ var gameMod = (function(){
                 unitKey: unitKey,
                 fillStyle: unitType.fillStyle
             }
-			if(unitKey === 'road'){
-				console.log('road, setting walkbale to true');
-				cell.walkable = true;
-			}
+            if(unitKey === 'road'){
+                cell.walkable = true;
+            }
         });
         return game;
     };
@@ -90,6 +89,9 @@ var gameMod = (function(){
             cell.data.unit = {
                 unitKey: unitKey,
                 fillStyle: unitType.fillStyle
+            }
+            if(unitKey === 'road'){
+                cell.walkable = true;
             }
         }
     };

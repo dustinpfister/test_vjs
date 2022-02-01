@@ -39,17 +39,12 @@
 * (done) have a getRoadCountValue helper in game.js that will be a method to just get a land value delta based on a count of roads
 * (done) have a getTypeFromCellDist helper
 * (done) I will want a getNear helper that will give the cell that is near the given cell from a collection
-
 * (done) getZonePaths helper
+* (done) have a getPathsToZoneValue helper that will get a value based on a count and avg length of paths to a target zone
+* (done) have an update process that will use path detection to set land value for units
+* (done) for 'res' units the number of paths to 'com' units will raise land value
+* (done) for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
-* have a getPathsToZoneValue helper that will get a value based on a count and avg length of paths to a target zone
-
-
-
-* have an update process that will use path detection to set land value for units
-
-* for 'res' units the number of paths to 'com' units will raise land value
-* for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 
 * looks like I might want a createUnit helper in game.js to be used in gameMod.create and gameMod.buildAt
 * I might want to have hard coded settings in game.js that can be used to set % of max land cell value for each process that sets land value

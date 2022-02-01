@@ -38,8 +38,7 @@
 * (done) update drawCell.value and population to only draw black for a value of zero
 * (done) have a getRoadCountValue helper in game.js that will be a method to just get a land value delta based on a count of roads
 * (done) have a getTypeFromCellDist helper
-
-* I will want a getTypeNear helper that will give the unit that is near the given cell
+* (done) I will want a getNear helper that will give the cell that is near the given cell from a collection
 
 * have a getPathsToZoneValue helper that will get a value based on a count and avg length of paths to a target zone
 

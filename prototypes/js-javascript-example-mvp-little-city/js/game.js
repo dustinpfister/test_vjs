@@ -71,7 +71,8 @@ var gameMod = (function(){
         });
 
 var cell = mapMod.get(game.map, 0, 3);
-var roads = getTypeFromCellDist(game, cell, 'road', 3)
+var roads = getTypeFromCellDist(game, cell, 'road', 3);
+var coms = 
 console.log( getNear(roads, cell) )
 
         return game;
@@ -143,7 +144,7 @@ console.log( getNear(roads, cell) )
     };
 
     // GET A UNIT TYPE IN AN AREA OF THE MAP
-    var getTypeInArea = api.getTypeInArea = function(game, x, y, w, h, unitKey){
+    var getTypeInArea = api.getTypeInArea = function(game, unitKey, x, y, w, h){
         return getArea(game, x, y, w, h).filter(function(cell){
             if(cell.data.unit){
                 return cell.data.unit.unitKey === unitKey;
@@ -155,7 +156,7 @@ console.log( getNear(roads, cell) )
     var getTypeFromCellDist = api.getTypeFromCellDist = function(game, cell, unitKey, dist){
         dist = dist === undefined ? 3: dist;
         var s = dist * 2 + 1;
-        return api.getTypeInArea(game, cell.x - dist, cell.y - dist, s, s, 'road');
+        return api.getTypeInArea(game, 'road', cell.x - dist, cell.y - dist, s, s);
     };
 
     // with the given collection return the cell in the colletion that is near the given cell

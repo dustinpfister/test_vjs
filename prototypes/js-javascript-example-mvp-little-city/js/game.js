@@ -69,42 +69,6 @@ var gameMod = (function(){
                 cell.walkable = true;
             }
         });
-
-/*
-var homeCell = mapMod.get(game.map, 0, 3);
-var roads = getTypeInArea(game, 'road');
-var coms = getTypeInArea(game, 'com');
-var sCell = getNear(roads, homeCell);
-var pathsObj = {
-   homeCell: homeCell,
-   sCell: sCell,
-   zones: []
-};
-coms.forEach(function(zoneCell){
-    var eCell = getNear(roads, zoneCell),
-    path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
-    path.push([sCell.x, sCell.y]);
-    pathsObj.zones.push({
-        zoneCell: zoneCell,
-        eCell: eCell,
-        path: path
-    });
-});
-console.log(pathsObj);
-*/
-
-//var homeCell = mapMod.get(game.map, 2, 5);
-//var pathsObj = getZonePaths(game, 'com', homeCell);
-//console.log(pathsObj);
-
-//var homeCell = mapMod.get(game.map, 2, 5);
-
-console.log( getPathsToZoneValue(game, mapMod.get(game.map, 0, 3), 'com') );
-console.log( getPathsToZoneValue(game, mapMod.get(game.map, 2, 5), 'com') )
-
-//console.log(coms);
-//console.log( getNear(coms, cell) )
-
         return game;
     };
 
@@ -143,28 +107,6 @@ console.log( getPathsToZoneValue(game, mapMod.get(game.map, 2, 5), 'com') )
         var deltaMoney = propertyTax;
         return deltaMoney;
     };
-
-    // GET UNIT TYPE COUNT
-    // This is a helper that will get a count of unit types at a max distance
-    // from the given cell location. This is used in the update process to find out
-    // if one or more roads are at a distnace of 3 or less from a cell that has a res
-    // type unit on it
-    /*
-    var getUnitTypeCount = function(game, cell, unitKey, dist){
-        var x = cell.x,
-        y = cell.y,
-        collection = mapMod.getCollectionByPos(game.map, x - dist, y - dist, dist * 2, dist * 2);
-        return collection.reduce(function(acc, cell){
-            var cDat = cell.data; 
-            if(cDat.unit){
-                if(cDat.unit.unitKey === unitKey){
-                   acc += 1;
-                }
-            }
-            return acc;
-        }, 0);
-    };
-    */
 
     // GET AN AREA IN THE MAP
     var getArea = api.getArea = function(game, x, y, w, h){

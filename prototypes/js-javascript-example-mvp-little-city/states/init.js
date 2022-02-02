@@ -94,6 +94,8 @@ smMod.load({
                 { x: 2, y: 5, unitKey: 'com'},
                 { x: 2, y: 6, unitKey: 'com'},
 
+                //{ x: 6, y: 0, unitKey: 'com'},
+
                 { x: 4, y: 3, unitKey: 'res'},
                 { x: 5, y: 3, unitKey: 'res'},
                 { x: 6, y: 3, unitKey: 'res'},

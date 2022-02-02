@@ -185,12 +185,17 @@ console.log( p.zones )
             zones.forEach(function(zoneCell){
                 var eCell = getNear(roads, zoneCell),
                 path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
-                //path.push([sCell.x, sCell.y]);
-                pathsObj.zones.push({
-                    zoneCell: zoneCell,
-                    eCell: eCell,
-                    path: path
-                });
+                path.push([sCell.x, sCell.y]);
+
+                // distance from end of path to zoneCell
+                var d = utils.distance(zoneCell.x, zoneCell.y, path[0][0], path[0][1] );
+                if(d <= 3){
+                    pathsObj.zones.push({
+                        zoneCell: zoneCell,
+                        eCell: eCell,
+                        path: path
+                    });
+                }
             });
         }
         return pathsObj;
@@ -248,6 +253,10 @@ console.log( p.zones )
     var getPathsToZoneValue = function(game, cell, unitKey){
         // get raw paths obj
         var pathsObj = getZonePaths(game, unitKey, cell);
+        // on zones? return 0
+        if(pathsObj.zones.length === 0){
+            return 0;
+        }
         // figure avg dist
         var avgDist = pathsObj.zones.reduce(function(acc, zoneObj){
             return acc + zoneObj.path.length;
@@ -286,7 +295,7 @@ console.log( p.zones )
                     if(roads.length >= 1){
                         // simple road count value for res, and also paths to 'com' cells
                         cDat.landValue += getRoadCountValue(cell, roads);
-                        //cDat.landValue += getPathsToZoneValue(game, cell, 'com')
+                        cDat.landValue += getPathsToZoneValue(game, cell, 'com')
                     }
                 }
             }

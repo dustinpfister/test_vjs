@@ -29,7 +29,7 @@
 ## () - r3 - gameBudget state, Mean Income, Property Tax
 * rethink property tax at this point to take into account avg landValue, and mean income
 
-## () - r2 - Paths to com units
+## ( done 02/02/2022 ) - r2 - Paths to com units
 * (done) fixed bug #1 with grid menu click in sm.js
 * (done) all cells of map should default to false
 * (done) have a walkable map for debug help

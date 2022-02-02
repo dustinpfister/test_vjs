@@ -26,8 +26,11 @@
 ## () - rx - popDelta revisit 
 * the popDelta value will increse or decress population at a given cell
 
-## () - r3 - gameBudget state, Mean Income, Property Tax
-* rethink property tax at this point to take into account avg landValue, and mean income
+## () - r3 - gameBudget state, Mean Income, Property Tax, high taxes problem
+* rethink property tax at this point to take into account avg landValue, and a mean income
+* start a gameBudget state for the game where the user can set the tax rate
+* have a game.taxTolerance value that will be the tax rate at which high taxes will start to be a problem
+* make it so that the highTax problem will have a negative impact on population
 
 ## ( done 02/02/2022 ) - r2 - Paths to com units
 * (done) fixed bug #1 with grid menu click in sm.js

@@ -48,30 +48,7 @@ smMod.load({
 
         // create game object
         sm.game = gameMod.create({
-            /*
             cellData: [
-                { x: 3, y: 2, unitKey: 'road'},
-                { x: 3, y: 3, unitKey: 'road'},
-                { x: 3, y: 4, unitKey: 'road'},
-                { x: 3, y: 5, unitKey: 'road'},
-                { x: 4, y: 1, unitKey: 'road'},
-                { x: 5, y: 1, unitKey: 'road'},
-                { x: 6, y: 1, unitKey: 'road'},
-                { x: 3, y: 1, unitKey: 'road'},
-                { x: 2, y: 1, unitKey: 'road'},
-                { x: 1, y: 1, unitKey: 'road'},
-                { x: 0, y: 1, unitKey: 'road'},
-                { x: 2, y: 3, unitKey: 'res'},
-                { x: 2, y: 5, unitKey: 'res'},
-                { x: 0, y: 3, unitKey: 'res'},
-                { x: 6, y: 3, unitKey: 'res'},
-                { x: 7, y: 3, unitKey: 'res'},
-                { x: 4, y: 3, unitKey: 'com'},
-                { x: 1, y: 0, unitKey: 'com'},
-                { x: 0, y: 0, unitKey: 'com'}
-            ]*/
-            cellData: [
-
                 { x: 0, y: 1, unitKey: 'road'},
                 { x: 1, y: 1, unitKey: 'road'},
                 { x: 2, y: 1, unitKey: 'road'},
@@ -80,7 +57,7 @@ smMod.load({
                 { x: 3, y: 3, unitKey: 'road'},
                 { x: 3, y: 4, unitKey: 'road'},
                 { x: 4, y: 4, unitKey: 'road'},
-                //{ x: 5, y: 4, unitKey: 'road'},
+                { x: 5, y: 4, unitKey: 'road'},
                 { x: 6, y: 4, unitKey: 'road'},
                 { x: 7, y: 4, unitKey: 'road'},
                 { x: 7, y: 3, unitKey: 'road'},
@@ -94,8 +71,6 @@ smMod.load({
                 { x: 2, y: 5, unitKey: 'com'},
                 { x: 2, y: 6, unitKey: 'com'},
 
-                //{ x: 6, y: 0, unitKey: 'com'},
-
                 { x: 4, y: 3, unitKey: 'res'},
                 { x: 5, y: 3, unitKey: 'res'},
                 { x: 6, y: 3, unitKey: 'res'},
@@ -107,6 +82,7 @@ smMod.load({
                 { x: 9, y: 1, unitKey: 'res'}
 
             ]
+
         });
 
         // switch to gameBuild state

@@ -26,6 +26,21 @@ var gameMod = (function(){
         fillStyle : '#888888'
     };
 
+    // create a unit for the given cell that is of the given unitKey
+    var createUnit = function(cell, unitKey){
+        var unitType = UNIT_TYPES[unitKey];
+        cell.data.unit = {
+            unitKey: unitKey,
+            fillStyle: unitType.fillStyle
+        };
+        // by default walkable bool for a cell should be false
+        // and should be set to true just for roads
+        cell.walkable = false;
+        if(unitKey === 'road'){
+            cell.walkable = true;
+        }
+    };
+
 
     var api = {};
 
@@ -64,6 +79,8 @@ var gameMod = (function(){
         opt.cellData.forEach(function(cellData){
             var cell = mapMod.get(game.map, cellData.x, cellData.y),
             unitKey = cellData.unitKey;
+            createUnit(cell, unitKey);
+/*
             var unitType = UNIT_TYPES[unitKey];
             cell.data.unit = {
                 unitKey: unitKey,
@@ -72,6 +89,7 @@ var gameMod = (function(){
             if(unitKey === 'road'){
                 cell.walkable = true;
             }
+*/
         });
         return game;
     };
@@ -90,6 +108,8 @@ var gameMod = (function(){
         }
         if(game.money >= unitType.cost && cell){
             game.money -= unitType.cost;
+            createUnit(cell, unitKey);
+/*
             cell.data.unit = {
                 unitKey: unitKey,
                 fillStyle: unitType.fillStyle
@@ -97,6 +117,7 @@ var gameMod = (function(){
             if(unitKey === 'road'){
                 cell.walkable = true;
             }
+*/
         }
     };
 

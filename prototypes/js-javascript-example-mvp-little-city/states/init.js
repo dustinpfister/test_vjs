@@ -71,6 +71,7 @@ smMod.load({
                 { x: 0, y: 0, unitKey: 'com'}
             ]*/
             cellData: [
+
                 { x: 0, y: 1, unitKey: 'road'},
                 { x: 1, y: 1, unitKey: 'road'},
                 { x: 2, y: 1, unitKey: 'road'},
@@ -79,7 +80,7 @@ smMod.load({
                 { x: 3, y: 3, unitKey: 'road'},
                 { x: 3, y: 4, unitKey: 'road'},
                 { x: 4, y: 4, unitKey: 'road'},
-                { x: 5, y: 4, unitKey: 'road'},
+                //{ x: 5, y: 4, unitKey: 'road'},
                 { x: 6, y: 4, unitKey: 'road'},
                 { x: 7, y: 4, unitKey: 'road'},
                 { x: 7, y: 3, unitKey: 'road'},

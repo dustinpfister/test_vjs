@@ -80,17 +80,12 @@ var gameMod = (function(){
             var cell = mapMod.get(game.map, cellData.x, cellData.y),
             unitKey = cellData.unitKey;
             createUnit(cell, unitKey);
-/*
-            var unitType = UNIT_TYPES[unitKey];
-            cell.data.unit = {
-                unitKey: unitKey,
-                fillStyle: unitType.fillStyle
-            }
-            if(unitKey === 'road'){
-                cell.walkable = true;
-            }
-*/
         });
+
+
+var p = getZonePaths(game, 'com', 9, 0);
+console.log( p.zones )
+
         return game;
     };
 
@@ -109,15 +104,6 @@ var gameMod = (function(){
         if(game.money >= unitType.cost && cell){
             game.money -= unitType.cost;
             createUnit(cell, unitKey);
-/*
-            cell.data.unit = {
-                unitKey: unitKey,
-                fillStyle: unitType.fillStyle
-            }
-            if(unitKey === 'road'){
-                cell.walkable = true;
-            }
-*/
         }
     };
 
@@ -182,24 +168,31 @@ var gameMod = (function(){
         }else{        
             homeCell = mapMod.get(game.map, a, b);
         }
-        var roads = getTypeInArea(game, 'road');
-        var zones = getTypeInArea(game, zoneUnitKey);
-        var sCell = getNear(roads, homeCell);
+
         var pathsObj = {
             homeCell: homeCell,
-            sCell: sCell,
+            sCell: null,
             zones: []
         };
-        zones.forEach(function(zoneCell){
-            var eCell = getNear(roads, zoneCell),
-            path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
-            path.push([sCell.x, sCell.y]);
-            pathsObj.zones.push({
-                zoneCell: zoneCell,
-                eCell: eCell,
-                path: path
+
+        var roads = getTypeFromCellDist(game, homeCell, 'road', 3);
+        if(roads.length >= 1){
+
+            var zones = getTypeInArea(game, zoneUnitKey);
+            var sCell = pathsObj.sCell = getNear(roads, homeCell);
+
+            var roads = getTypeInArea(game, 'road');
+            zones.forEach(function(zoneCell){
+                var eCell = getNear(roads, zoneCell),
+                path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
+                //path.push([sCell.x, sCell.y]);
+                pathsObj.zones.push({
+                    zoneCell: zoneCell,
+                    eCell: eCell,
+                    path: path
+                });
             });
-        });
+        }
         return pathsObj;
     };
 
@@ -293,7 +286,7 @@ var gameMod = (function(){
                     if(roads.length >= 1){
                         // simple road count value for res, and also paths to 'com' cells
                         cDat.landValue += getRoadCountValue(cell, roads);
-                        cDat.landValue += getPathsToZoneValue(game, cell, 'com')
+                        //cDat.landValue += getPathsToZoneValue(game, cell, 'com')
                     }
                 }
             }

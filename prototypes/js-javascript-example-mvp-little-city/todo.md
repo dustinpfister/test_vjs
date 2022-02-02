@@ -46,9 +46,10 @@
 * (done) for 'res' units the number of paths to 'com' units will raise land value
 * (done) for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
 * (done) more const values for game.js to help adjust things with balancing 
+* (done) looks like I might want a createUnit helper in game.js to be used in gameMod.create and gameMod.buildAt
+* (done) I want to have hard coded settings that can be used to set % of max land cell value for each process to do so
 
-* looks like I might want a createUnit helper in game.js to be used in gameMod.create and gameMod.buildAt
-* I might want to have hard coded settings in game.js that can be used to set % of max land cell value for each process that sets land value
+* see about fixing #2 when it comes to land value
 
 ## ( done 01/31/2022 ) - r1 - lib and states folders, 'init', 'gameBuild', and 'gameMap' state
 * (done) start a lib folder and have utils.js and map.js in that folder

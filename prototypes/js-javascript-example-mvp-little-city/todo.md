@@ -4,7 +4,7 @@
 
 * ( fixed in r0 ) - #0 - some res units do not gain land value even when within 3 cells away from road
 * ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
-* () - #2 - road start pos should be within 3 cells
+* ( fixed in r2 ) - #2 - road start pos should be within 3 cells
 
 <!-- Maintenance -->
 
@@ -48,8 +48,7 @@
 * (done) more const values for game.js to help adjust things with balancing 
 * (done) looks like I might want a createUnit helper in game.js to be used in gameMod.create and gameMod.buildAt
 * (done) I want to have hard coded settings that can be used to set % of max land cell value for each process to do so
-
-* see about fixing #2 when it comes to land value
+* (done) see about fixing #2 when it comes to land value
 
 ## ( done 01/31/2022 ) - r1 - lib and states folders, 'init', 'gameBuild', and 'gameMap' state
 * (done) start a lib folder and have utils.js and map.js in that folder

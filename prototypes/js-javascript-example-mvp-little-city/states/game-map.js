@@ -19,7 +19,6 @@ smMod.load({
             // game state change?
             var button = smMod.gridMenu.click(sm.gameStateMenu, pos);
             if(button){
-                console.log(button);
                 smMod.setState(sm, button.action)
             }
         }

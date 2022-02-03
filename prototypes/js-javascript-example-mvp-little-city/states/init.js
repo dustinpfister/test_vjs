@@ -22,12 +22,13 @@ smMod.load({
         sm.gameStateMenu = smMod.gridMenu.create({
             x: 32,
             y: 25,
-            w: 2,
+            w: 3,
             currentIndex: 0,
             cellSize: 50,
             buttons: [
-                { desc: 'b', unitKey: 'build', action: 'gameBuild'},
-                { desc: 'm', unitKey: 'map', action: 'gameMap'}
+                { desc: 'build', unitKey: 'build', action: 'gameBuild'},
+                { desc: 'map', unitKey: 'map', action: 'gameMap'},
+                { desc: 'budget', unitKey: 'map', action: 'gameBudget'}
             ]
         });
 

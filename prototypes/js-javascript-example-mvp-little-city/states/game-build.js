@@ -29,9 +29,7 @@ smMod.load({
                 }
                 if(button.action === 'info'){
                     console.log( Object.assign({}, cell.data, {x: cell.x, y: cell.y, walkable: cell.walkable}) );
-					
-					console.log( mapMod.getPath(sm.game.map, 3, 5, 3, 3) );
-					
+	            console.log( mapMod.getPath(sm.game.map, 3, 5, 3, 3) );		
                 }
                 if(button.action === 'build'){
                     gameMod.buildAt(sm.game, unitKey, cell);

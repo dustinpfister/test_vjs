@@ -6,7 +6,9 @@ var gameMod = (function(){
     var hardSet = {
         MAX_CELL_POPULATION : 100,
         MAX_CELL_LAND_VALUE : 500,   // 500 point scale for land value as of r2
-        MAX_AVG_DIST: 10,
+        MAX_AVG_DIST: 10,            // used in getPathsToZoneValue helper for figuring land value
+        MAX_IMMIGR: 15,              // max immigration per update used in getPopDeltaObj helper
+        MAX_EXODUS: 15,              // max exodus per update used in getPopDeltaObj helper
         LVPER_ROADCT: 0.10, 
         LVPER_COMCT: 0.10,
         LVPER_COMDIST: 0.80
@@ -200,6 +202,13 @@ var gameMod = (function(){
                 return this.immigr - this.exodus;
             }
         };
+
+        // apply caps for immigr and exodus 
+        popDelta.immigr = popDelta.immigr > hardSet.MAX_IMMIGR ? hardSet.MAX_IMMIGR : popDelta.immigr;
+        popDelta.exodus = popDelta.exodus > hardSet.MAX_EXODUS ? hardSet.MAX_EXODUS : popDelta.exodus;
+        popDelta.immigr = popDelta.immigr < 0 ? 0 : popDelta.immigr;
+        popDelta.exodus = popDelta.exodus < 0 ? 0 : popDelta.exodus;
+
         return popDelta;
     };
 

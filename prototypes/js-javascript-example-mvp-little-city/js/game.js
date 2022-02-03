@@ -206,14 +206,23 @@ var gameMod = (function(){
         var tr = game.taxRate.propertyTax,
         taxPer = tr / 0.20;
 
-        var immigrRate = [0, 0];
-        immigrRate[0] = Math.round( 10 - 5 * taxPer );
-        immigrRate[1] = immigrRate[0] + 3; //Math.round( immigrRate[0] + (5 - 5 * taxPer) );
-        popDelta.immigr = utils.valueByRange( Math.random(), immigrRate );
+        // best case
+        //var immigrRate = [5, 15];
+        //var exodusRate = [0, 10];
 
-        var exodusRate = [0, 0];
-        exodusRate[0] = Math.round( 1 + 6 * taxPer);
-        exodusRate[1] = exodusRate[0] + 3; //Math.round( exodusRate[0] - (3 - 3 * taxPer) );
+        // worst case
+        var immigrRate = [4, 13];
+        var exodusRate = [5, 15];
+
+
+
+        //var immigrRate = [1, 3];
+        //immigrRate[0] = Math.round( 10 - 5 * taxPer );
+        //immigrRate[1] = immigrRate[0] + 3; //Math.round( immigrRate[0] + (5 - 5 * taxPer) );
+        //var exodusRate = [0, 2];
+        //exodusRate[0] = Math.round( 1 + 6 * taxPer);
+        //exodusRate[1] = exodusRate[0] + 3; //Math.round( exodusRate[0] - (3 - 3 * taxPer) );
+        popDelta.immigr = utils.valueByRange( Math.random(), immigrRate );
         popDelta.exodus = utils.valueByRange( Math.random(), exodusRate );
 
         // apply caps for immigr and exodus 

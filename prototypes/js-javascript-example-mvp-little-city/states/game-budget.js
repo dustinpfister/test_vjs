@@ -13,10 +13,10 @@ smMod.load({
     events: {
         click: function(e, pos, sm){
             var game = sm.game;
+            // was the budget menu clicked?
             var button = smMod.gridMenu.click(sm.budgetMenu, pos);
             if(button){
                 var parts = button.action.split('_')
-
                 // if a property tax button
                 if(parts[0] === 'prop'){
                     var tr = game.taxRate.propertyTax; 
@@ -29,20 +29,13 @@ smMod.load({
                     tr = tr < 0 ? 0 : tr;
                     tr = tr > 0.20 ? 0.20 : tr;
                     game.taxRate.propertyTax = tr;
-                    console.log(tr);
                 }
-
-                
             }
-
-            // if game state menu is clicked
+            // was the game state menu is clicked?
             var button = smMod.gridMenu.click(sm.gameStateMenu, pos);
             if(button){
                 smMod.setState(sm, button.action)
             }
-
-
-
         }
     }
 });

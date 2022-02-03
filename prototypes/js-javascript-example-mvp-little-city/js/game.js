@@ -193,18 +193,14 @@ var gameMod = (function(){
 
     // get a pop delta object for the given cell
     var getPopDeltaObj = function(game, cell){
-
         var popDelta = {
-            immigr: 1 + Math.floor(15 * Math.random()),
-            exodus: 1 + Math.floor(10 * Math.random()),
+            immigr: utils.valueByRange( Math.random(), [1, 15] ),
+            exodus: utils.valueByRange( Math.random(), [1, 5] ),
             valueOf : function(){
-
                 return this.immigr - this.exodus;
             }
         };
-
         return popDelta;
-
     };
 
     // run over all cells and just update population

@@ -22,7 +22,9 @@ When it comes to cell data object properties for now I am thinking that land val
 
 There is what will cause land value to go up, and there is also what will case land value to go down, or for one reason or another nagativly impact over all population, happness of population, Mean income of population, ect. Thus there should be at least a few things that are a kind of problem with the city that can be solved by better layout, or incresed funding to some kind of public service, or lower Taxes. For a full blown little city game there might be a lot of problems, but for this MVP I will want to keep this list short and focus more so on the over all base of things.
 
-* Taxes - a problem that
+* High Taxes - a problem that is caused by a tax rate that is higher than a set max tolerence
+* Bad Roads - This is the result of lack of funding to roads
+* Unemployment - A problem that is the result of low com unit count
 
 ## States
 

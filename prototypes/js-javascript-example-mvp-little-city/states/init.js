@@ -4,11 +4,11 @@ smMod.load({
 
         // set up the build menu
         sm.buildMenu = smMod.gridMenu.create({
-            x: 32,
+            x: 16,
             y: 96,
             w: 2, h: 3,
             currentIndex: 0,
-            cellSize: 32,
+            cellSize: 45,
             buttons: [
                 { desc: 'sel', unitKey: 'sell', action: 'sell'},
                 { desc: 'inf', unitKey: 'info', action: 'info'},
@@ -20,7 +20,7 @@ smMod.load({
 
         // set up game state menu
         sm.gameStateMenu = smMod.gridMenu.create({
-            x: 32,
+            x: 16,
             y: 25,
             w: 3,
             currentIndex: 0,
@@ -34,15 +34,15 @@ smMod.load({
 
         // set up the map menu
         sm.mapMenu = smMod.gridMenu.create({
-            x: 32,
+            x: 16,
             y: 96,
             w: 2,
             currentIndex: 0,
-            cellSize: 32,
+            cellSize: 45,
             buttons: [
-                { desc: 'v', unitKey: 'val', action: 'value'},
-                { desc: 'p', unitKey: 'pop', action: 'population'},
-                { desc: 'r', unitKey: 'road', action: 'roads'}
+                { desc: 'val', unitKey: 'val', action: 'value'},
+                { desc: 'pop', unitKey: 'pop', action: 'population'},
+                { desc: 'road', unitKey: 'road', action: 'roads'}
             ]
         });
 

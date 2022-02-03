@@ -120,27 +120,34 @@ drawCell.roads = function(sm, ctx, cell, x, y, cs){
         });
         ctx.restore();
     };
-    // draw version number
-    api.disp = function(sm){
-        var ctx = sm.ctx,
-        canvas = sm.canvas;
-        // text style
+
+    var standardText = function(ctx){
         ctx.fillStyle = 'white';
         ctx.font = '10px courier';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
+    };
+
+    // draw standard display
+    api.disp = function(sm){
+        var ctx = sm.ctx,
+        canvas = sm.canvas;
+        // text style
+        standardText(ctx);
         // version number
         ctx.fillText('money: ' + sm.game.money + ', pop: ' + sm.game.population + ', year: ' + sm.game.year, 5, 5);
     };
+
+    api.dispBudget = function(){
+
+    };
+
     // draw version number
     api.ver = function(sm){
         var ctx = sm.ctx,
         canvas = sm.canvas;
         // text style
-        ctx.fillStyle = 'white';
-        ctx.font = '10px courier';
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
+        standardText(ctx);
         // version number
         ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
     };

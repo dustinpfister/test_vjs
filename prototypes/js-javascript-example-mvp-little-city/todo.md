@@ -55,6 +55,8 @@ cell.data.popDelta = {
 ## () - r3 - popDelta object, gameBudget state, voice state, Property Tax, high taxes problem
 * (done) start a gameBudget state for the game
 * (done) The player should be able to set the tax rate in the gameBudget state
+* display current tax rate in budget menu
+
 
 * So then cell.data.popDelta can be an object rather than a number with immigration and exodus props
 ```
@@ -62,9 +64,7 @@ cell.data.popDelta = {
 cell.data.popDelta = 3;
 // I can do this
 cell.data.popDelta = {
-   birth: 3,
    immigration: 3,
-   death: 2,
    exodus: 1,
    valueOf: function(){
        return this.birth + this.immigration - ( this.exodus + this.death );

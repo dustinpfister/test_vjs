@@ -196,12 +196,25 @@ var gameMod = (function(){
     // get a pop delta object for the given cell
     var getPopDeltaObj = function(game, cell){
         var popDelta = {
-            immigr: utils.valueByRange( Math.random(), [1, 15] ),
-            exodus: utils.valueByRange( Math.random(), [1, 5] ),
+            immigr: 0, //utils.valueByRange( Math.random(), [1, 15] ),
+            exodus: 0, //utils.valueByRange( Math.random(), [1, 5] ),
             valueOf : function(){
                 return this.immigr - this.exodus;
             }
         };
+
+        var tr = game.taxRate.propertyTax,
+        taxPer = tr / 0.20;
+
+        var immigrRate = [0, 0];
+        immigrRate[0] = Math.round( 10 - 5 * taxPer );
+        immigrRate[1] = immigrRate[0] + 3; //Math.round( immigrRate[0] + (5 - 5 * taxPer) );
+        popDelta.immigr = utils.valueByRange( Math.random(), immigrRate );
+
+        var exodusRate = [0, 0];
+        exodusRate[0] = Math.round( 1 + 6 * taxPer);
+        exodusRate[1] = exodusRate[0] + 3; //Math.round( exodusRate[0] - (3 - 3 * taxPer) );
+        popDelta.exodus = utils.valueByRange( Math.random(), exodusRate );
 
         // apply caps for immigr and exodus 
         popDelta.immigr = popDelta.immigr > hardSet.MAX_IMMIGR ? hardSet.MAX_IMMIGR : popDelta.immigr;

@@ -59,11 +59,9 @@ cell.data.popDelta = {
 * (done) start a gameBudget state for the game
 * (done) The player should be able to set the tax rate in the gameBudget state
 * (done) display current tax rate in budget menu
-
-
-* So then cell.data.popDelta can be an object rather than a number with immigration and exodus props
-* create a getPopDeltaObj helper in game.js to create such an object
-* use getPopDeltaObj helpr in updatePop helper in game.js
+* (done) So then cell.data.popDelta can be an object rather than a number with immigration and exodus props
+* (done) create a getPopDeltaObj helper in game.js to create such an object
+* (done) use getPopDeltaObj helper in updatePop helper in game.js
 ```
 // in place of something like this:
 cell.data.popDelta = 3;
@@ -78,24 +76,23 @@ cell.data.popDelta = {
 ```
 
 * start a game.problems collection that will be a collection of objects that have an impact on cell.data.poDelta values
-
 ```
 // an exmaple of what the state of game.problems would be
 // if highTax IS NOT a big problem
 game.problems = {
     highTax : {
-        index: 10,         // index of how bad the problem is on a 100 point scale
-        immigr : [1, 3],   // range for immigration
-        exodus : [0, 1]    // range for exodus
+        index: 10,          // index of how bad the problem is on a 100 point scale
+        immigr : [10, 15],   // range for immigration
+        exodus : [0, 5]     // range for exodus
     } 
 }
 // an exmaple of what the state of game.problems would be
 // if highTax IS A BIG PROMLEN
 game.problems = {
     highTax : {
-        index: 90,         // index of how bad the problem is on a 100 point scale
-        immigr : [0, 2],   // range for immigration
-        exodus : [1, 4]    // range for exodus
+        index: 90,           // index of how bad the problem is on a 100 point scale
+        immigr : [5, 12],    // range for immigration
+        exodus : [10, 15]    // range for exodus
     } 
 }
 ```

@@ -33,6 +33,9 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 
 <!-- Minimum Viable Product -->
 
+## () - rx - info button working
+* have the info button work in game rather than having it spit out cell data to the console
+
 ## () - rx - popDelta revisit 
 * I will want to think in terms of a death rate and birth rate that will result in a posative or negative pop growth
 * There is also immigration and exodus
@@ -52,14 +55,11 @@ cell.data.popDelta = {
 };
 ```
 
-
-
-## () - rx - info button working
-* have the info button work in game rather than having it spit out cell data to the console
-
 ## () - r3 - gameBudget state, voice state, Mean Income, Property Tax, high taxes problem
+* (done) start a gameBudget state for the game
+* The player should be able to set the tax rate in the gameBudget state
 * rethink property tax at this point to take into account avg landValue, and a mean income
-* start a gameBudget state for the game where the user can set the tax rate
+
 * have a game.taxTolerance value that will be the tax rate at which high taxes will start to be a problem
 * make it so that the highTax problem will have a negative impact on population
 * have a voice state that will display what the current problems are

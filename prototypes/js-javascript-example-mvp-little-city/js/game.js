@@ -81,11 +81,6 @@ var gameMod = (function(){
             unitKey = cellData.unitKey;
             createUnit(cell, unitKey);
         });
-
-
-var p = getZonePaths(game, 'com', 9, 0);
-console.log( p.zones )
-
         return game;
     };
 
@@ -168,25 +163,20 @@ console.log( p.zones )
         }else{        
             homeCell = mapMod.get(game.map, a, b);
         }
-
         var pathsObj = {
             homeCell: homeCell,
             sCell: null,
             zones: []
         };
-
         var roads = getTypeFromCellDist(game, homeCell, 'road', 3);
         if(roads.length >= 1){
-
             var zones = getTypeInArea(game, zoneUnitKey);
             var sCell = pathsObj.sCell = getNear(roads, homeCell);
-
             var roads = getTypeInArea(game, 'road');
             zones.forEach(function(zoneCell){
                 var eCell = getNear(roads, zoneCell),
                 path = mapMod.getPath(game.map, sCell.x, sCell.y, eCell.x, eCell.y);
                 path.push([sCell.x, sCell.y]);
-
                 // distance from end of path to zoneCell
                 var d = utils.distance(zoneCell.x, zoneCell.y, path[0][0], path[0][1] );
                 if(d <= 3){
@@ -201,6 +191,22 @@ console.log( p.zones )
         return pathsObj;
     };
 
+    // get a pop delta object for the given cell
+    var getPopDeltaObj = function(game, cell){
+
+        var popDelta = {
+            immigr: 1 + Math.floor(15 * Math.random()),
+            exodus: 1 + Math.floor(10 * Math.random()),
+            valueOf : function(){
+
+                return this.immigr - this.exodus;
+            }
+        };
+
+        return popDelta;
+
+    };
+
     // run over all cells and just update population
     var updatePop = function(game){
         // total game population defaults to 0
@@ -210,8 +216,10 @@ console.log( p.zones )
             var cDat = cell.data;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
-                    cDat.popDelta = cDat.landValue;
-                    cDat.population += cDat.popDelta;
+
+                    cDat.popDelta = getPopDeltaObj(game, cell) //1; //cDat.landValue;
+
+                    cDat.population += cDat.popDelta.valueOf();
 
                     var per = cDat.landValue / hardSet.MAX_CELL_LAND_VALUE;
                     var currentCellPopCap = Math.round( per * hardSet.MAX_CELL_POPULATION );

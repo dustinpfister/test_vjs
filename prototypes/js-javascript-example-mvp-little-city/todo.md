@@ -62,6 +62,8 @@ cell.data.popDelta = {
 
 
 * So then cell.data.popDelta can be an object rather than a number with immigration and exodus props
+* create a getPopDeltaObj helper in game.js to create such an object
+* use getPopDeltaObj helpr in updatePop helper in game.js
 ```
 // in place of something like this:
 cell.data.popDelta = 3;
@@ -70,7 +72,7 @@ cell.data.popDelta = {
    immigr: 3,
    exodus: 1,
    valueOf: function(){
-       return this.birth + this.immigration - ( this.exodus + this.death );
+       return this.immigration - this.exodus;
    }
 };
 ```

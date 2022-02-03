@@ -51,11 +51,14 @@ cell.data.popDelta = {
 };
 ```
 
+## () - rx - Voice state
+* have a voice state that will display what the current problems are
 
-## () - r3 - popDelta object, gameBudget state, voice state, Property Tax, high taxes problem
+
+## () - r3 - Property Tax, popDelta object, gameBudget state, problems
 * (done) start a gameBudget state for the game
 * (done) The player should be able to set the tax rate in the gameBudget state
-* display current tax rate in budget menu
+* (done) display current tax rate in budget menu
 
 
 * So then cell.data.popDelta can be an object rather than a number with immigration and exodus props
@@ -64,7 +67,7 @@ cell.data.popDelta = {
 cell.data.popDelta = 3;
 // I can do this
 cell.data.popDelta = {
-   immigration: 3,
+   immigr: 3,
    exodus: 1,
    valueOf: function(){
        return this.birth + this.immigration - ( this.exodus + this.death );
@@ -72,9 +75,33 @@ cell.data.popDelta = {
 };
 ```
 
+* start a game.problems collection that will be a collection of objects that have an impact on cell.data.poDelta values
+
+```
+// an exmaple of what the state of game.problems would be
+// if highTax IS NOT a big problem
+game.problems = {
+    highTax : {
+        index: 10,         // index of how bad the problem is on a 100 point scale
+        immigr : [1, 3],   // range for immigration
+        exodus : [0, 1]    // range for exodus
+    } 
+}
+// an exmaple of what the state of game.problems would be
+// if highTax IS A BIG PROMLEN
+game.problems = {
+    highTax : {
+        index: 90,         // index of how bad the problem is on a 100 point scale
+        immigr : [0, 2],   // range for immigration
+        exodus : [1, 4]    // range for exodus
+    } 
+}
+```
+
+
+* make it so that the highTax problem will have an impact on propDelta.immigr and propDelta.exodus
 * have a game.taxTolerance value that will be the tax rate at which high taxes will start to be a problem
-* make it so that the highTax problem will have a negative impact on population
-* have a voice state that will display what the current problems are
+
 
 
 * rethink property tax at this point to take into account avg landValue, and a mean income

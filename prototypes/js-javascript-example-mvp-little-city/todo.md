@@ -6,6 +6,19 @@
 * ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
 * ( fixed in r2 ) - #2 - road start pos should be within 3 cells
 
+## REF
+
+There is looking over the manual of Sim City
+```
+https://www.abandonwaredos.com/docs.php?sf=simcity_manual.txt&st=manual&sg=SimCity&idg=2662
+```
+
+This is a good FAQ of Sim cirt classic
+```
+https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
+```
+
+
 <!-- Maintenance -->
 
 
@@ -20,11 +33,29 @@
 
 <!-- Minimum Viable Product -->
 
+## () - rx - popDelta revisit 
+* I will want to think in terms of a death rate and birth rate that will result in a posative or negative pop growth
+* There is also immigration and exodus
+* so then cell.data.popDelta can be an object rather than a number
+```
+// in place of something like this:
+cell.data.popDelta = 3;
+// I can do this
+cell.data.popDelta = {
+   birth: 3,
+   immigration: 3,
+   death: 2,
+   exodus: 1,
+   valueOf: function(){
+       return this.birth + this.immigration - ( this.exodus + this.death );
+   }
+};
+```
+
+
+
 ## () - rx - info button working
 * have the info button work in game rather than having it spit out cell data to the console
-
-## () - rx - popDelta revisit 
-* the popDelta value will increse or decress population at a given cell
 
 ## () - r3 - gameBudget state, voice state, Mean Income, Property Tax, high taxes problem
 * rethink property tax at this point to take into account avg landValue, and a mean income

@@ -1,5 +1,8 @@
 var gameMod = (function(){
 
+    // public api
+    var api = {};
+
     var hardSet = {
         MAX_CELL_POPULATION : 100,
         MAX_CELL_LAND_VALUE : 500,   // 500 point scale for land value as of r2
@@ -40,9 +43,6 @@ var gameMod = (function(){
             cell.walkable = true;
         }
     };
-
-
-    var api = {};
 
     api.create = function(opt){
         opt = opt || {};

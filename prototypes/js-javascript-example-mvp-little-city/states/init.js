@@ -46,6 +46,17 @@ smMod.load({
             ]
         });
 
+        sm.taxRate = smMod.gridMenu.create({
+            x: 500,
+            y: 128,
+            w: 2,
+            currentIndex: 0,
+            cellSize: 32,
+            buttons: [
+               {desc: 'tax+', action: 'prop_up'},
+               {desc: 'tax-', action: 'prop_up'}
+            ]
+        });
 
         // create game object
         sm.game = gameMod.create({

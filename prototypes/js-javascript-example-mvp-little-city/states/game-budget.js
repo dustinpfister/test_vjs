@@ -6,6 +6,7 @@ smMod.load({
     draw: function(sm, ctx, canvas){
         draw.back(sm);
         draw.menu(sm, sm.gameStateMenu);
+        draw.menu(sm, sm.taxRate);
         draw.disp(sm);
         draw.ver(sm);
     },

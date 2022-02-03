@@ -5,6 +5,20 @@ var utils = {};
 // MISC
 //
 
+// get a value by way of a per value (0-1), and a min and max value
+utils.valueByRange = function(per, a, b){
+    per = per === undefined ? 0 : per;
+    var nMin, nMax;
+    if(typeof a === 'object'){
+        nMin = a[0];
+        nMax = a[1];
+    }else{
+        nMin = a === undefined ? 0 : a;
+        nMax = b === undefined ? 1 : b;
+    }
+    return nMin + Math.round(per * (nMax - nMin));
+};
+
 // bounding box
 utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(

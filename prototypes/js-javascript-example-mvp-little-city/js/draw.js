@@ -138,8 +138,13 @@ drawCell.roads = function(sm, ctx, cell, x, y, cs){
         ctx.fillText('money: ' + sm.game.money + ', pop: ' + sm.game.population + ', year: ' + sm.game.year, 5, 5);
     };
 
-    api.dispBudget = function(){
-
+    api.dispBudget = function(sm){
+        var ctx = sm.ctx, canvas = sm.canvas,
+        tr = sm.game.taxRate.propertyTax;
+        // text style
+        standardText(ctx);
+        ctx.font = '15px courier';
+        ctx.fillText('property tax rate: ' + Math.round(tr * 100) + '%', 280, 128 + 7);
     };
 
     // draw version number

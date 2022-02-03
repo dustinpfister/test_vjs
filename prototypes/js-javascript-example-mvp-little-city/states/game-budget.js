@@ -8,6 +8,7 @@ smMod.load({
         draw.menu(sm, sm.gameStateMenu);
         draw.menu(sm, sm.budgetMenu);
         draw.disp(sm);
+        draw.dispBudget(sm); // show budget display text
         draw.ver(sm);
     },
     events: {

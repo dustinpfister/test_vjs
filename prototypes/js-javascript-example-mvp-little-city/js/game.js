@@ -71,7 +71,7 @@ var gameMod = (function(){
             cDat.fillStyle = 'white';
             cDat.landValue = 0;
             cDat.population = 0;
-            cDat.popDelta = 0;
+            cDat.popDelta = getPopDeltaObj(game, cell);
             // walkable defaults to false;
             cell.walkable = false;
         });

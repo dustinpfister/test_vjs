@@ -43,6 +43,10 @@ var getElementRelative = function (e, elTarget) {
 ## () - custom event system
 * have utils custom events methods based off of what I made for my js-custom-event post
 
+## () - add utils.setPath and utils.getPath
+* add utils.setPath under object methods from js-javascript-example-turn-based-rpg
+* add utils.getPath under object methods from js-javascript-example-turn-based-rpg
+
 ## ( done 12/17/2021 ) - new wrap and clamp methods
 * (done) add a utils.clampNumber method
 * (done) add a utils.wrapNumber method based off of the one used in phaser

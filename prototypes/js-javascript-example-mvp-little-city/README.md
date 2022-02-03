@@ -23,6 +23,10 @@ When it comes to cell data object properties for now I am thinking that land val
 
 For this whole javaScript example the whole idea is to create and maintain a Minimal Viable Product and to not go nuts with features. So for my mvp little city game here I am breaking away from my MVP => Addtional Features => Maintenance way of thinking about a project, and just worrying about what the MVP state of a project is. Once I have a solid MVP worked out I might then create one or maybe even a few addtional projects based off of the MVP and a given revision number of this MVP.
 
+### r0 - Crude start of Little City
+
+I was able to get much of the general idea up and working with this very first revision of Little City. At this point I have all the zones as well as the core data props started. However the process at which I am figuring land value and population is very primative and I am not taking into acount the distance to com zones from res zones. There are also many varios applaction states that are missing at this point that I think are still very much needed even for an MVP.
+
 
 
 

@@ -19,13 +19,12 @@ When it comes to cell data object properties for now I am thinking that land val
 * (done r0) popDelta
 
 
-## Minimum Viable Product versions (r0 - )
+## Minimum Viable Product versions (r0 - rx )
+
+For this whole javaScript example the whole idea is to create and maintain a Minimal Viable Product and to not go nuts with features. So for my mvp little city game here I am breaking away from my MVP => Addtional Features => Maintenance way of thinking about a project, and just worrying about what the MVP state of a project is. Once I have a solid MVP worked out I might then create one or maybe even a few addtional projects based off of the MVP and a given revision number of this MVP.
 
 
 
-
-## Some Additional Features, fixes and general changes (rx - )
-## Software Architecture ( rx - )
 
 
 

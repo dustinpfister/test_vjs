@@ -10,6 +10,13 @@ When it comes to zone types I think that I am going to want to just start out wi
 * (done r0) 'com' cells that are cells in a map that are zoned for commercial use
 * (done r0) 'road' cells which as the name imples are just simply roads that are used in path to determine land value
 
+## Cell data props
+
+When it comes to cell data object properties for now I am thinking that land value, population, and a delta value for population are good starting points for this kind of game. In time there are a lot more properties that I might want to have on a cell by cell basis such as crime, polution, and so forth, however I think much of that will extend beyond that of what the scope of an MVP would be.
+
+* (done r0) landValue
+* (done r0) population
+* (done r0) popDelta
 
 
 ## Minimum Viable Product versions (r0 - )

@@ -36,10 +36,27 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 ## () - rx - info button working
 * have the info button work in game rather than having it spit out cell data to the console
 
-## () - rx - popDelta revisit 
+## () - rx - death rate and birth rate
 * I will want to think in terms of a death rate and birth rate that will result in a posative or negative pop growth
-* There is also immigration and exodus
-* so then cell.data.popDelta can be an object rather than a number
+
+```
+cell.data.popDelta = {
+   birth: 3,
+   immigration: 3,
+   death: 2,
+   exodus: 1,
+   valueOf: function(){
+       return this.birth + this.immigration - ( this.exodus + this.death );
+   }
+};
+```
+
+
+## () - r3 - popDelta object, gameBudget state, voice state, Property Tax, high taxes problem
+* (done) start a gameBudget state for the game
+* (done) The player should be able to set the tax rate in the gameBudget state
+
+* So then cell.data.popDelta can be an object rather than a number with immigration and exodus props
 ```
 // in place of something like this:
 cell.data.popDelta = 3;
@@ -55,14 +72,13 @@ cell.data.popDelta = {
 };
 ```
 
-## () - r3 - gameBudget state, voice state, Mean Income, Property Tax, high taxes problem
-* (done) start a gameBudget state for the game
-* The player should be able to set the tax rate in the gameBudget state
-* rethink property tax at this point to take into account avg landValue, and a mean income
-
 * have a game.taxTolerance value that will be the tax rate at which high taxes will start to be a problem
 * make it so that the highTax problem will have a negative impact on population
 * have a voice state that will display what the current problems are
+
+
+* rethink property tax at this point to take into account avg landValue, and a mean income
+
 
 ## ( done 02/02/2022 ) - r2 - Paths to com units
 * (done) fixed bug #1 with grid menu click in sm.js

@@ -46,15 +46,15 @@ smMod.load({
             ]
         });
 
-        sm.taxRate = smMod.gridMenu.create({
+        sm.budgetMenu = smMod.gridMenu.create({
             x: 500,
             y: 128,
             w: 2,
             currentIndex: 0,
             cellSize: 32,
             buttons: [
-               {desc: 'tax+', action: 'prop_up'},
-               {desc: 'tax-', action: 'prop_up'}
+               {desc: 'pt+', action: 'prop_pos'},
+               {desc: 'pt-', action: 'prop_neg'}
             ]
         });
 

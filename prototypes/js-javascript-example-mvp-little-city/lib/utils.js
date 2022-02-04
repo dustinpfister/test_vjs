@@ -19,9 +19,6 @@ utils.valueByRange = function(per, a, b){
         nMax = b === undefined ? 1 : b;
     }
     var result = nMin + Math.round(per * (nMax - nMin));
-    if(result === undefined){
-        console.log(per, nMax, nMin);
-    }
     return result;
 };
 

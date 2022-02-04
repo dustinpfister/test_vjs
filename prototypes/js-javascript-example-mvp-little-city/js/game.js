@@ -231,9 +231,8 @@ var gameMod = (function(){
         //exodusRate[1] = exodusRate[0] + 3; //Math.round( exodusRate[0] - (3 - 3 * taxPer) );
         //popDelta.immigr = utils.valueByRange( Math.random(), immigrRate );
 
-        cell.data.immigrRate = immigrRate;
+        //cell.data.immigrRate = immigrRate;
         popDelta.immigr = utils.valueByRange( Math.random(), immigrRate);
-
         popDelta.exodus = utils.valueByRange( Math.random(), exodusRate );
 
         // apply caps for immigr and exodus 

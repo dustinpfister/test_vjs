@@ -18,8 +18,10 @@ smMod.load({
                 var unitKey = cInfo.unitKey = unit.unitKey;
                 if(unitKey === 'res'){
                     cInfo.population = cell.data.population;
-                    cInfo.immigrRate = cell.data.immigrRate;
+                    //cInfo.immigrRate = cell.data.immigrRate;
                     cInfo.immigr = cell.data.popDelta.immigr;
+                    cInfo.exodus = cell.data.popDelta.exodus;
+                    cInfo.landValue = cell.data.landValue;
                 }
             }
         }

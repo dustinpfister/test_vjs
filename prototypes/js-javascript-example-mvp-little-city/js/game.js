@@ -236,6 +236,7 @@ var gameMod = (function(){
 
     // people will move out if the comm to res ratio is to low
     PROBLEMS.popDelta.jobs = function(game, cell){
+    
     };
 
     

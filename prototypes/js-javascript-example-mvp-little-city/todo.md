@@ -89,7 +89,7 @@ cell.data.popDelta = {
 * (done) there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
 * (done) start a PROBLEMS collection that will be a collection of objects that have an impact on cell.data.poDelta values
 
-* start a setTotals helper that will just create/update totals for com res and road
+* (done) start a updateTotals helper that will just create/update totals for com res and road
 * start a new jobs problem that is the result of a poor comm to res ratio
 
 * have a voice state that will display what the current problems are for a city

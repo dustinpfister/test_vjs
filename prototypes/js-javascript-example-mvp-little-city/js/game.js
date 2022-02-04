@@ -52,7 +52,7 @@ var gameMod = (function(){
         opt.cellData = opt.cellData || [];
         var game = {
             hardSet: hardSet,
-            money: 100,
+            money: 1000, //100,
             population: 0,
             year: 1900,
             secsPerYear: 10,
@@ -241,6 +241,17 @@ var gameMod = (function(){
             immigr: 0,
             exodus: 0
         };
+
+        var t = game.totals;
+        var comRatio = t.com / t.res;
+        if(String(comRatio) === 'NaN' || comRatio === Infinity){
+            comRatio = 1;
+        }
+
+        if(comRatio < 0.5){
+            deltas.exodus = Math.round( 1 + 7 * ( (0.5 - comRatio) / 0.5 ) );
+        }
+
         return deltas;
     };
 
@@ -388,9 +399,6 @@ var gameMod = (function(){
                t.land += 1;
             }
         });
-
-        console.log(t.land)
-
     };
 
 

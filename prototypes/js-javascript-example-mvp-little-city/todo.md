@@ -37,15 +37,16 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 
 ## () - rx - crime
 
+<!-- Minimum Viable Product -->
+
 ## () - difficulty settings
 * when starting a new city the player should be able to choose one of three difficulty settings easy, normal, and hard
 * The starting money will be different for each setting
 * there can be more than one tolerance setting for each problem
 
-<!-- Minimum Viable Product -->
-
-## () - rx - info button working
+## () - rx - gameCellInfo state
 * have the info button work in game rather than having it spit out cell data to the console
+* when a cell is clicked when the info build menu button is active, the game will switch to cell info
 
 ## () - rx - death rate and birth rate
 * I will want to think in terms of a death rate and birth rate that will result in a posative or negative pop growth
@@ -87,7 +88,9 @@ game.problems = {
 }
 ```
 
-## () - r3 - Property Tax, popDelta object, gameBudget state
+## () - rx - Title state, New City state
+
+## () - r3 - Property Tax, popDelta object, gameBudget state started
 * (done) start a gameBudget state for the game
 * (done) The player should be able to set the tax rate in the gameBudget state
 * (done) display current tax rate in budget menu

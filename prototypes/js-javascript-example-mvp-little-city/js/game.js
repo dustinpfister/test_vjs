@@ -249,7 +249,7 @@ var gameMod = (function(){
         }
 
         if(comRatio < 0.5){
-            deltas.exodus = Math.round( 1 + 7 * ( (0.5 - comRatio) / 0.5 ) );
+            deltas.exodus = Math.round( 1 + 4 * ( (0.5 - comRatio) / 0.5 ) );
         }
 
         return deltas;

@@ -11,7 +11,12 @@ smMod.load({
         var sDat = sm.stateObj.data;
         draw.back(sm);
         if(sDat.cellWindowActive){
-
+            ctx.fillStyle = 'white';
+            var x = 32,
+            y = 128;
+            Object.keys(sDat.cellInfo).forEach(function(key, i){
+                ctx.fillText(key + ': ' + sDat.cellInfo[key], x, y + 15 * i);
+            });
         }else{
             draw.map(sm, sm.game.map, 'normal');
             draw.menu(sm, sm.buildMenu);

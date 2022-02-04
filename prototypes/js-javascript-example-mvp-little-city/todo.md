@@ -101,25 +101,13 @@ game.problems = {
 }
 ```
 
-## () - r3 - Property Tax, popDelta object, gameBudget state started
+## ( done 02/04/2022 ) - r3 - Property Tax, popDelta object, gameBudget state started
 * (done) start a gameBudget state for the game
 * (done) The player should be able to set the tax rate in the gameBudget state
 * (done) display current tax rate in budget menu
 * (done) So then cell.data.popDelta can be an object rather than a number with immigration and exodus props
 * (done) create a getPopDeltaObj helper in game.js to create such an object
 * (done) use getPopDeltaObj helper in updatePop helper in game.js
-```
-// in place of something like this:
-cell.data.popDelta = 3;
-// I can do this
-cell.data.popDelta = {
-   immigr: 3,
-   exodus: 1,
-   valueOf: function(){
-       return this.immigration - this.exodus;
-   }
-};
-```
 
 ## ( done 02/02/2022 ) - r2 - Paths to com units
 * (done) fixed bug #1 with grid menu click in sm.js

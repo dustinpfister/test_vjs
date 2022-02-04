@@ -87,7 +87,6 @@ cell.data.popDelta = {
 <!-- voice state / problems -->
 * have a voice state that will display what the current problems are for a city
 * there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
-* make it so that the highTax problem will have an impact on propDelta.immigr and propDelta.exodus
 * start a game.problems collection that will be a collection of objects that have an impact on cell.data.poDelta values
 ```
 // an exmaple of what the state of game.problems would be

@@ -244,14 +244,10 @@ var gameMod = (function(){
             var cDat = cell.data;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
-
-                    cDat.popDelta = getPopDeltaObj(game, cell) //1; //cDat.landValue;
-
+                    cDat.popDelta = getPopDeltaObj(game, cell);
                     cDat.population += cDat.popDelta.valueOf();
-
                     var per = cDat.landValue / hardSet.MAX_CELL_LAND_VALUE;
                     var currentCellPopCap = Math.round( per * hardSet.MAX_CELL_POPULATION );
-                     
                     if(cDat.population > currentCellPopCap){
                         cDat.population = currentCellPopCap;
                     }

@@ -248,28 +248,10 @@ var gameMod = (function(){
             }
         };
 
-        var tr = game.taxRate.propertyTax,
-        taxPer = tr / 0.20;
 
-        // best case
-        //var immigrRateBest = [5, 15];
-        //var exodusRateBest = [0, 10];
-
-        // worst case
-        //var immigrRateWorst = [4, 13];
-        //var exodusRateWorst = [5, 15];
-
-        var immigrRate = [1, 5];
-        var exodusRate = [0, 0];
-
-        immigrRate[0] = utils.valueByRange(  1 - taxPer, [ 4, 5 ] ); 
-        immigrRate[1] = utils.valueByRange(  1 - taxPer, [ 13, 15 ] );
-
-        exodusRate[0] = utils.valueByRange(  taxPer, [ 0, 5 ] ); 
-        exodusRate[1] = utils.valueByRange(  taxPer, [ 10, 15 ] );
-
-        popDelta.immigr = utils.valueByRange( Math.random(), immigrRate);
-        popDelta.exodus = utils.valueByRange( Math.random(), exodusRate );
+        var delta = PROBLEMS.popDelta.highTaxes(game, cell);
+        popDelta.immigr += delta.immigr;
+        popDelta.exodus += delta.exodus;
 
         // apply caps for immigr and exodus 
         popDelta.immigr = popDelta.immigr > hardSet.MAX_IMMIGR ? hardSet.MAX_IMMIGR : popDelta.immigr;

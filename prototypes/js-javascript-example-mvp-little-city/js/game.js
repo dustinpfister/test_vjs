@@ -105,7 +105,7 @@ var gameMod = (function(){
     };
 
     // figure out what the current deltaMoney amount is for a year
-    var getDeltaMoney = function(game){
+    var getDeltaMoney = api.getDeltaMoney = function(game){
         // !!! Property tax ( https://en.wikipedia.org/wiki/Property_tax )
         // !!! as of r0 I just worked out a system system for 'property tax' that will 
         // need to be improved at a latter point as the expression at that point

@@ -57,9 +57,6 @@ var smMod = (function(){
             if(secs > 1 / sm.fps){
                 sm.stateObj.update(sm, secs);
                 sm.stateObj.draw(sm, sm.ctx, sm.canvas);
-
-                //gameMod.update(sm.game, secs)
-                //render(sm);
                 sm.lt = now;
             }
         };

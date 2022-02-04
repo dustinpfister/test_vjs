@@ -5,7 +5,8 @@ smMod.load({
     },
     update: function(sm, secs){
         gameMod.update(sm.game, secs);
-        sm.stateObj.moneyNextYear = 0;
+        var income = gameMod.getDeltaMoney(sm.game);
+        sm.stateObj.moneyNextYear = income;
     },
     draw: function(sm, ctx, canvas){
         draw.back(sm);

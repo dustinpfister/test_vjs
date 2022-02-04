@@ -76,7 +76,7 @@ cell.data.popDelta = {
 * on top of using paths to figure land value it will also need to be used to set what trafic is for each road cell
 
 ## () - r4 - budget projection, Voice state started, problems
-* display what a current projection is for next years budget in the budget state
+* (done) display what a current projection is for next years budget in the budget state
 
 * have a voice state that will display what the current problems are for a city
 * there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects

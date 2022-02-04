@@ -145,9 +145,11 @@ drawCell.roads = function(sm, ctx, cell, x, y, cs){
         standardText(ctx);
         ctx.font = '15px courier';
         var y = 128 + 7, x = 200,
-        dy = 15;
+        dy = 15,
+        sDat = sm.stateObj;
         ctx.fillText('property tax rate: ' + Math.round(tr * 100) + '%', x, y);
-        ctx.fillText('Money Next Year: ' + sm.stateObj.moneyNextYear, x, y + dy * 15);
+        ctx.fillText('income: ' + sDat.income, x, y + dy * 14);
+        ctx.fillText('Money Next Year: ' + sDat.moneyNextYear, x, y + dy * 15);
     };
 
     // draw version number

@@ -60,9 +60,6 @@ cell.data.popDelta = {
 * The starting money will be different for each setting
 * there can be more than one tolerance setting for each problem
 
-## () - rx - gameCellInfo state
-* have the info button work in game rather than having it spit out cell data to the console
-* when a cell is clicked when the info build menu button is active, the game will switch to cell info
 
 ## () - rx - Load City state
 * I will want to be able to use FileReader to read a json file of city data
@@ -75,9 +72,17 @@ cell.data.popDelta = {
 * I will want a new process for path updating where more than one thing is prefromed for each res cell path
 * on top of using paths to figure land value it will also need to be used to set what trafic is for each road cell
 
-## () - r4 - budget projection, Voice state started, problems
-* (done) display what a current projection is for next years budget in the budget state
 
+## () - r4 - budget projection, Voice state started, problems
+<!-- budget projection -->
+* (done) display what a current projection is for next years budget in the budget state
+<!-- cell info window -->
+* update gameBuild state so that a window will show up when a cell is clicked
+* when this cell window is active any click will just make the window no longer active
+* the cell winodw should display the x and y pos
+* if any unit is at the cell, the unitKey should be displayed
+* display pop, land value, ect
+<!-- voice state / problems -->
 * have a voice state that will display what the current problems are for a city
 * there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
 * make it so that the highTax problem will have an impact on propDelta.immigr and propDelta.exodus

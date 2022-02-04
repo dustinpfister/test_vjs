@@ -1,12 +1,14 @@
 smMod.load({
     stateKey: 'gameBudget',
     data: {
+       income: 0,
        moneyNextYear: 0
     },
     update: function(sm, secs){
+        var sDat = sm.stateObj;
         gameMod.update(sm.game, secs);
-        var income = gameMod.getDeltaMoney(sm.game);
-        sm.stateObj.moneyNextYear = income;
+        sDat.income = gameMod.getDeltaMoney(sm.game);
+        sDat.moneyNextYear = sm.game.money + sDat.income;
     },
     draw: function(sm, ctx, canvas){
         draw.back(sm);

@@ -44,6 +44,7 @@ var smMod = (function(){
     };
 
     api.load = function(stateObj){
+        stateObj.data = stateObj.data || {};
         STATES[stateObj.stateKey] = stateObj;
     };
 

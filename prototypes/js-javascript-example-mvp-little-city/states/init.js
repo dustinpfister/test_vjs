@@ -47,7 +47,7 @@ smMod.load({
         });
 
         sm.budgetMenu = smMod.gridMenu.create({
-            x: 500,
+            x: 420,
             y: 128,
             w: 2,
             currentIndex: 0,

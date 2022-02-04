@@ -1,7 +1,11 @@
 smMod.load({
     stateKey: 'gameBudget',
+    data: {
+       moneyNextYear: 0
+    },
     update: function(sm, secs){
-        gameMod.update(sm.game, secs)
+        gameMod.update(sm.game, secs);
+        sm.stateObj.moneyNextYear = 0;
     },
     draw: function(sm, ctx, canvas){
         draw.back(sm);

@@ -75,9 +75,11 @@ cell.data.popDelta = {
 * I will want a new process for path updating where more than one thing is prefromed for each res cell path
 * on top of using paths to figure land value it will also need to be used to set what trafic is for each road cell
 
-## () - r4 - Voice state, problems
+## () - r4 - budget projection, Voice state started, problems
+* display what a current projection is for next years budget in the budget state
+
 * have a voice state that will display what the current problems are for a city
-* there is ready one problem that just needs to be in a more standard form in terms of a collectionof objects
+* there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
 * make it so that the highTax problem will have an impact on propDelta.immigr and propDelta.exodus
 * start a game.problems collection that will be a collection of objects that have an impact on cell.data.poDelta values
 ```

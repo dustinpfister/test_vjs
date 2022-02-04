@@ -29,18 +29,19 @@ smMod.load({
     draw: function(sm, ctx, canvas){
         var sDat = sm.stateObj.data;
         draw.back(sm);
+        draw.map(sm, sm.game.map, 'normal');
         if(sDat.cellWindowActive){
-            ctx.fillStyle = 'white';
-            var x = 32,
-            y = 128;
+            draw.back(sm, 'rgba(0,0,0,0.8)');
+            ctx.fillStyle = 'yellow';
+            ctx.font = '15px arial';
+            var x = 64,
+            y = 64;
             Object.keys(sDat.cellInfo).forEach(function(key, i){
-                ctx.fillText(key + ': ' + sDat.cellInfo[key], x, y + 15 * i);
+                ctx.fillText(key + ': ' + sDat.cellInfo[key], x, y + 16 * i);
             });
         }else{
-            draw.map(sm, sm.game.map, 'normal');
             draw.menu(sm, sm.buildMenu);
             draw.menu(sm, sm.gameStateMenu);
-
         }
         draw.disp(sm);
         draw.ver(sm);

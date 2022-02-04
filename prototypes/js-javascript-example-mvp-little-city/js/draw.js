@@ -83,10 +83,10 @@ drawCell.roads = function(sm, ctx, cell, x, y, cs){
 *********** *********/
 
     // draw background
-    api.back = function (sm) {
+    api.back = function (sm, style) {
         var canvas = sm.canvas,
         ctx = sm.ctx;
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = style || 'black';
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
     };
     // draw the map

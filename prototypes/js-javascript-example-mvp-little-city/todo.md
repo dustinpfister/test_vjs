@@ -21,7 +21,10 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 
 <!-- Maintenance -->
 
-
+## () - rx - smarter updaing of cells
+* have a new system for updaing cells where it does not happen on each frame
+* so the rate at which cells update is slower than the main frame rate
+* the cells can also be updated by one row, or maybe even one cell at a time
 
 <!-- Additional Features -->
 

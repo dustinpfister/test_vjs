@@ -2,10 +2,27 @@ smMod.load({
     stateKey: 'gameBuild',
     data: {
         cellWindowActive: false, // if true the cell window is active
+        selectedCell: null,
         cellInfo: {}
     },
     update: function(sm, secs){
-        gameMod.update(sm.game, secs)
+        var sDat = sm.stateObj.data;
+        gameMod.update(sm.game, secs);
+        if(sDat.selectedCell){
+            var cell = sDat.selectedCell;
+            var cInfo = sDat.cellInfo = {
+                x: cell.x, y: cell.y
+            };
+            var unit = cell.data.unit;
+            if(unit){
+                var unitKey = cInfo.unitKey = unit.unitKey;
+                if(unitKey === 'res'){
+                    cInfo.population = cell.data.population;
+                    cInfo.immigrRate = cell.data.immigrRate;
+                    cInfo.immigr = cell.data.popDelta.immigr;
+                }
+            }
+        }
     },
     draw: function(sm, ctx, canvas){
         var sDat = sm.stateObj.data;
@@ -33,6 +50,7 @@ smMod.load({
 
             if(sDat.cellWindowActive){
                 sDat.cellWindowActive = false;
+                sDat.selectedCell = null;
             }else{
                 // if map cell clicked
                 if(cell){
@@ -49,7 +67,8 @@ smMod.load({
                     }
                     if(button.action === 'info'){
                         sDat.cellWindowActive = true;
-                        sDat.cellInfo = Object.assign({}, cell.data, {x: cell.x, y: cell.y, walkable: cell.walkable});
+                        sDat.selectedCell = cell;
+                        //sDat.cellInfo = Object.assign({}, cell.data, {x: cell.x, y: cell.y, walkable: cell.walkable});
                         //console.log( Object.assign({}, cell.data, {x: cell.x, y: cell.y, walkable: cell.walkable}) );
 	                //console.log( mapMod.getPath(sm.game.map, 3, 5, 3, 3) );		
                     }

@@ -8,6 +8,8 @@ var utils = {};
 // get a value by way of a per value (0-1), and a min and max value
 utils.valueByRange = function(per, a, b){
     per = per === undefined ? 0 : per;
+    per = per < 0 ? 0 : per;
+    per = per > 1 ? 1 : per;
     var nMin, nMax;
     if(typeof a === 'object'){
         nMin = a[0];
@@ -16,7 +18,11 @@ utils.valueByRange = function(per, a, b){
         nMin = a === undefined ? 0 : a;
         nMax = b === undefined ? 1 : b;
     }
-    return nMin + Math.round(per * (nMax - nMin));
+    var result = nMin + Math.round(per * (nMax - nMin));
+    if(result === undefined){
+        console.log(per, nMax, nMin);
+    }
+    return result;
 };
 
 // bounding box

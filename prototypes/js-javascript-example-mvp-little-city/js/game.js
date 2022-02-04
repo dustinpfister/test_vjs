@@ -214,7 +214,7 @@ var gameMod = (function(){
         var immigrRateWorst = [4, 13];
         var exodusRateWorst = [5, 15];
 
-        var immigrRate = [0, 0];
+        var immigrRate = [1, 5];
         var exodusRate = [0, 0];
 
         immigrRate[0] = utils.valueByRange(  1 - taxPer, [ 4, 5 ] ); 
@@ -229,7 +229,11 @@ var gameMod = (function(){
         //var exodusRate = [0, 2];
         //exodusRate[0] = Math.round( 1 + 6 * taxPer);
         //exodusRate[1] = exodusRate[0] + 3; //Math.round( exodusRate[0] - (3 - 3 * taxPer) );
-        popDelta.immigr = utils.valueByRange( Math.random(), immigrRate );
+        //popDelta.immigr = utils.valueByRange( Math.random(), immigrRate );
+
+        cell.data.immigrRate = immigrRate;
+        popDelta.immigr = utils.valueByRange( Math.random(), immigrRate);
+
         popDelta.exodus = utils.valueByRange( Math.random(), exodusRate );
 
         // apply caps for immigr and exodus 
@@ -260,19 +264,16 @@ var gameMod = (function(){
                      
                     if(cDat.population > currentCellPopCap){
                         cDat.population = currentCellPopCap;
-                        cDat.popDelta = 0;
                     }
                     if(cDat.population < 0){
                         cDat.population = 0;
                     }
                 }else{
                     // any unit other then res will not have any population or popDelta
-                    cDat.popDelta = 0;
                     cDat.population = 0;
                 }
             }else{
                 // any blank cell that does not have a unit, will not have any population or popDelta
-                cDat.popDelta = 0;
                 cDat.population = 0;
             }
             // tabulate cDat.population for this cell

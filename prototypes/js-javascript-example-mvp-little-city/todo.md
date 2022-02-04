@@ -34,6 +34,11 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 
 ## () - rx - crime
 
+## () - difficulty settings
+* when starting a new city the player should be able to choose one of three difficulty settings easy, normal, and hard
+* The starting money will be different for each setting
+* there can be more than one tolerance setting for each problem
+
 <!-- Minimum Viable Product -->
 
 ## () - rx - info button working
@@ -41,7 +46,6 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 
 ## () - rx - death rate and birth rate
 * I will want to think in terms of a death rate and birth rate that will result in a posative or negative pop growth
-
 ```
 cell.data.popDelta = {
    birth: 3,
@@ -54,10 +58,10 @@ cell.data.popDelta = {
 };
 ```
 
-## () - rx - Voice state
-* have a voice state that will display what the current problems are
+## () - rx - Voice state, problems
+* have a voice state that will display what the current problems are for a city
+* there is ready one problem that just needs to be in a more standard form in terms of a collectionof objects
 * make it so that the highTax problem will have an impact on propDelta.immigr and propDelta.exodus
-* have a game.taxTolerance value that will be the tax rate at which high taxes will start to be a problem
 * start a game.problems collection that will be a collection of objects that have an impact on cell.data.poDelta values
 ```
 // an exmaple of what the state of game.problems would be
@@ -80,7 +84,7 @@ game.problems = {
 }
 ```
 
-## () - r3 - Property Tax, popDelta object, gameBudget state, problems
+## () - r3 - Property Tax, popDelta object, gameBudget state
 * (done) start a gameBudget state for the game
 * (done) The player should be able to set the tax rate in the gameBudget state
 * (done) display current tax rate in budget menu

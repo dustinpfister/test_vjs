@@ -88,9 +88,8 @@ cell.data.popDelta = {
 <!-- voice state / problems -->
 * (done) there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
 * (done) start a PROBLEMS collection that will be a collection of objects that have an impact on cell.data.poDelta values
-
 * (done) start a updateTotals helper that will just create/update totals for com res and road
-* start a new jobs problem that is the result of a poor comm to res ratio
+* (done) start a new jobs problem that is the result of a poor comm to res ratio
 
 * have a voice state that will display what the current problems are for a city
 * I will want a gameMod.getProblemsReport that will create a collection of problem names, and % of how bad that problem is

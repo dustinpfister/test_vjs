@@ -248,10 +248,12 @@ var gameMod = (function(){
             }
         };
 
-
-        var delta = PROBLEMS.popDelta.highTaxes(game, cell);
-        popDelta.immigr += delta.immigr;
-        popDelta.exodus += delta.exodus;
+        Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
+            var problemFunc = PROBLEMS.popDelta[problemKey];
+            var delta = problemFunc(game, cell);
+            popDelta.immigr += delta.immigr;
+            popDelta.exodus += delta.exodus;
+        });
 
         // apply caps for immigr and exodus 
         popDelta.immigr = popDelta.immigr > hardSet.MAX_IMMIGR ? hardSet.MAX_IMMIGR : popDelta.immigr;

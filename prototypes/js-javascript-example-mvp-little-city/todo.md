@@ -85,29 +85,10 @@ cell.data.popDelta = {
 * (done) display pop, land value, ect
 * (done) fixed bug #3
 <!-- voice state / problems -->
+* (done) there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
+* (done) start a PROBLEMS collection that will be a collection of objects that have an impact on cell.data.poDelta values
 * have a voice state that will display what the current problems are for a city
-* there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
-* start a game.problems collection that will be a collection of objects that have an impact on cell.data.poDelta values
-```
-// an exmaple of what the state of game.problems would be
-// if highTax IS NOT a big problem
-game.problems = {
-    highTax : {
-        index: 10,          // index of how bad the problem is on a 100 point scale
-        immigr : [10, 15],   // range for immigration
-        exodus : [0, 5]     // range for exodus
-    } 
-}
-// an exmaple of what the state of game.problems would be
-// if highTax IS A BIG PROMLEN
-game.problems = {
-    highTax : {
-        index: 90,           // index of how bad the problem is on a 100 point scale
-        immigr : [5, 12],    // range for immigration
-        exodus : [10, 15]    // range for exodus
-    } 
-}
-```
+
 
 ## ( done 02/04/2022 ) - r3 - Property Tax, popDelta object, gameBudget state started
 * (done) start a gameBudget state for the game

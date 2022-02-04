@@ -61,7 +61,6 @@ cell.data.popDelta = {
 * The starting money will be different for each setting
 * there can be more than one tolerance setting for each problem
 
-
 ## () - rx - Load City state
 * I will want to be able to use FileReader to read a json file of city data
 
@@ -72,7 +71,6 @@ cell.data.popDelta = {
 * start a new trafic problem like that of the highTax problem that can incress exodus
 * I will want a new process for path updating where more than one thing is prefromed for each res cell path
 * on top of using paths to figure land value it will also need to be used to set what trafic is for each road cell
-
 
 ## () - r4 - budget projection, Voice state started, problems
 <!-- budget projection -->
@@ -87,8 +85,10 @@ cell.data.popDelta = {
 <!-- voice state / problems -->
 * (done) there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
 * (done) start a PROBLEMS collection that will be a collection of objects that have an impact on cell.data.poDelta values
-* have a voice state that will display what the current problems are for a city
 
+
+* have a voice state that will display what the current problems are for a city
+* I will want a gameMod.getProblemsReport that will create a collection of problem names, and % of how bad that problem is
 
 ## ( done 02/04/2022 ) - r3 - Property Tax, popDelta object, gameBudget state started
 * (done) start a gameBudget state for the game

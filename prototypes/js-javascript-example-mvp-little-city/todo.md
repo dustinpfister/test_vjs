@@ -75,7 +75,7 @@ cell.data.popDelta = {
 * I will want a new process for path updating where more than one thing is prefromed for each res cell path
 * on top of using paths to figure land value it will also need to be used to set what trafic is for each road cell
 
-## () - r4 - budget projection, Voice state started, problems
+## () - r4 - budget projection, Voice state started, problems collection started
 <!-- budget projection -->
 * (done) display what a current projection is for next years budget in the budget state
 <!-- cell info window -->

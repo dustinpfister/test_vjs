@@ -5,6 +5,7 @@
 * ( fixed in r0 ) - #0 - some res units do not gain land value even when within 3 cells away from road
 * ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
 * ( fixed in r2 ) - #2 - road start pos should be within 3 cells
+* ( fixed in r4 ) - #3 - fixed a bud that was caused by an old line of code with popDelta
 
 ## REF
 
@@ -77,11 +78,12 @@ cell.data.popDelta = {
 <!-- budget projection -->
 * (done) display what a current projection is for next years budget in the budget state
 <!-- cell info window -->
-* update gameBuild state so that a window will show up when a cell is clicked
-* when this cell window is active any click will just make the window no longer active
-* the cell winodw should display the x and y pos
-* if any unit is at the cell, the unitKey should be displayed
-* display pop, land value, ect
+* (done) update gameBuild state so that a window will show up when a cell is clicked
+* (done) when this cell window is active any click will just make the window no longer active
+* (done) the cell winodw should display the x and y pos
+* (done) if any unit is at the cell, the unitKey should be displayed
+* (done) display pop, land value, ect
+* (done) fixed bug #3
 <!-- voice state / problems -->
 * have a voice state that will display what the current problems are for a city
 * there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects

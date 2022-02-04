@@ -223,15 +223,6 @@ var gameMod = (function(){
         exodusRate[0] = utils.valueByRange(  taxPer, [ 0, 5 ] ); 
         exodusRate[1] = utils.valueByRange(  taxPer, [ 10, 15 ] );
 
-        //var immigrRate = [1, 3];
-        //immigrRate[0] = Math.round( 10 - 5 * taxPer );
-        //immigrRate[1] = immigrRate[0] + 3; //Math.round( immigrRate[0] + (5 - 5 * taxPer) );
-        //var exodusRate = [0, 2];
-        //exodusRate[0] = Math.round( 1 + 6 * taxPer);
-        //exodusRate[1] = exodusRate[0] + 3; //Math.round( exodusRate[0] - (3 - 3 * taxPer) );
-        //popDelta.immigr = utils.valueByRange( Math.random(), immigrRate );
-
-        //cell.data.immigrRate = immigrRate;
         popDelta.immigr = utils.valueByRange( Math.random(), immigrRate);
         popDelta.exodus = utils.valueByRange( Math.random(), exodusRate );
 

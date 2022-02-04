@@ -37,17 +37,6 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 
 ## () - rx - crime
 
-<!-- Minimum Viable Product -->
-
-## () - difficulty settings
-* when starting a new city the player should be able to choose one of three difficulty settings easy, normal, and hard
-* The starting money will be different for each setting
-* there can be more than one tolerance setting for each problem
-
-## () - rx - gameCellInfo state
-* have the info button work in game rather than having it spit out cell data to the console
-* when a cell is clicked when the info build menu button is active, the game will switch to cell info
-
 ## () - rx - death rate and birth rate
 * I will want to think in terms of a death rate and birth rate that will result in a posative or negative pop growth
 ```
@@ -61,6 +50,30 @@ cell.data.popDelta = {
    }
 };
 ```
+
+<!-- Minimum Viable Product -->
+
+## () - rx - load state and sprite graphics
+
+## () - rx - difficulty settings
+* when starting a new city the player should be able to choose one of three difficulty settings easy, normal, and hard
+* The starting money will be different for each setting
+* there can be more than one tolerance setting for each problem
+
+## () - rx - gameCellInfo state
+* have the info button work in game rather than having it spit out cell data to the console
+* when a cell is clicked when the info build menu button is active, the game will switch to cell info
+
+## () - rx - Load City state
+* I will want to be able to use FileReader to read a json file of city data
+
+## () - rx - Title state, New City state
+* start a main title screen state
+
+## () - rx - traffic problem, road conditions, and road upkeep cost
+* start a new trafic problem like that of the highTax problem that can incress exodus
+* I will want a new process for path updating where more than one thing is prefromed for each res cell path
+* on top of using paths to figure land value it will also need to be used to set what trafic is for each road cell
 
 ## () - rx - Voice state, problems
 * have a voice state that will display what the current problems are for a city
@@ -87,8 +100,6 @@ game.problems = {
     } 
 }
 ```
-
-## () - rx - Title state, New City state
 
 ## () - r3 - Property Tax, popDelta object, gameBudget state started
 * (done) start a gameBudget state for the game

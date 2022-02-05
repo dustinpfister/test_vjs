@@ -347,6 +347,7 @@ var gameMod = (function(){
 
     // UPDATE LAND VALUE
     // run over all cells, and update just land value for each cell
+	/*
     var updateLandValue = function(game){
        game.population = 0;
         mapMod.forEachCell(game.map, function(cell, x, y, i, map){
@@ -357,7 +358,7 @@ var gameMod = (function(){
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
                     // a res zone must have at least one or more roads within 3 cells
-                    // or else it wil not devlope at all
+                    // or else it will not develop at all
                     var roads = getTypeFromCellDist(game, cell, 'road', 3);
                     if(roads.length >= 1){
                         // simple road count value for res, and also paths to 'com' cells
@@ -371,25 +372,34 @@ var gameMod = (function(){
             cDat.landValue = cDat.landValue > hardSet.MAX_CELL_LAND_VALUE ? hardSet.MAX_CELL_LAND_VALUE : cDat.landValue; 
         });
     };
+	*/
 
-/*
-    var updateTotals = function(game){
-        var t = game.totals;
-        t.com = 0;
-        t.res = 0;
-        t.road = 0;
-        t.land = 0;
-        game.map.cells.forEach(function(cell){
-            var unit = cell.data.unit; 
-            if(unit){
-                t[unit.unitKey] += 1;
-            }else{
-               t.land += 1;
+    var updateLandValueForCell = function(game, cell){
+        //game.population = 0;
+        //mapMod.forEachCell(game.map, function(cell, x, y, i, map){
+        var cDat = cell.data;
+        // land value should default to 0
+        cDat.landValue = 0;
+
+        if(cDat.unit){
+            if(cDat.unit.unitKey === 'res'){
+                // a res zone must have at least one or more roads within 3 cells
+                // or else it will not develop at all
+                var roads = getTypeFromCellDist(game, cell, 'road', 3);
+                if(roads.length >= 1){
+                    // simple road count value for res, and also paths to 'com' cells
+                    cDat.landValue += getRoadCountValue(cell, roads);
+                    cDat.landValue += getPathsToZoneValue(game, cell, 'com')
+                }
             }
-        });
+        }
+        cDat.landValue = Math.round(cDat.landValue);
+        // apply max land value limit
+        cDat.landValue = cDat.landValue > hardSet.MAX_CELL_LAND_VALUE ? hardSet.MAX_CELL_LAND_VALUE : cDat.landValue; 
+        //});
     };
-*/
 
+    // reset totals
     var resetTotals = function(game){
         var t = game.totals;
         t.com = 0;
@@ -397,7 +407,7 @@ var gameMod = (function(){
         t.road = 0;
         t.land = 0;
     };
-
+    // step totals, to be called in main cell update loop ( see api.update )
     var stepTotalsForCell = function(game, cell){
         var t = game.totals;
         var unit = cell.data.unit; 
@@ -413,17 +423,19 @@ var gameMod = (function(){
         // reset totals
         resetTotals(game);
 
+        // global population defaulting to zero
+        game.population = 0;
+
         // single loop of cells here in the main app loop
         var i = 0, len = game.map.cells.length, cell;
         while(i < len){
             cell = game.map.cells[i];
-            stepTotalsForCell(game, cell)
+            stepTotalsForCell(game, cell);
+            updateLandValueForCell(game, cell);
             i += 1;
         };
 
-
-        //updateTotals(game);
-        updateLandValue(game);
+        //updateLandValue(game);
         updatePop(game);
         // new year?
         game.secs += secs;

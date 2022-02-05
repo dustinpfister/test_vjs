@@ -203,7 +203,6 @@ var gameMod = (function(){
     // if taxes are two high that can being down immgr, and increase exodus
     // however lower taxes can increase immgr and reduce exodus
     PROBLEMS.popDelta.highTaxes = function(game, cell){
-
         var deltas = {
             immigr: 0,
             exodus: 0
@@ -211,26 +210,16 @@ var gameMod = (function(){
         // tax rate and tax per
         var tr = game.taxRate.propertyTax,
         taxPer = tr / 0.20;
-
-        // best case
-        //var immigrRateBest = [5, 15];
-        //var exodusRateBest = [0, 10];
-        // worst case
-        //var immigrRateWorst = [4, 13];
-        //var exodusRateWorst = [5, 15];
-
+        //immigrRate best: [5, 15], worst: [4, 13]
+        //exodusRate best = [0, 10], worst: [5, 15]
         var immigrRate = [1, 5];
         var exodusRate = [0, 0];
-
         immigrRate[0] = utils.valueByRange(  1 - taxPer, [ 4, 5 ] ); 
         immigrRate[1] = utils.valueByRange(  1 - taxPer, [ 13, 15 ] );
-
         exodusRate[0] = utils.valueByRange(  taxPer, [ 0, 5 ] ); 
         exodusRate[1] = utils.valueByRange(  taxPer, [ 10, 15 ] );
-
         deltas.immigr = utils.valueByRange( Math.random(), immigrRate);
         deltas.exodus = utils.valueByRange( Math.random(), exodusRate );
-
         // return the deltas that are the result of this problem for this cell
         return deltas;
     };

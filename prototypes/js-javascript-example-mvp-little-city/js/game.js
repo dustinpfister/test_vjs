@@ -306,7 +306,7 @@ var gameMod = (function(){
     };
 
     // LAND VALUE
-    // main update method as well as all relavent helper methods for figuring land value for each cell
+    // main update method as well as all relevant helper methods for figuring land value for each cell
 
     // just get a land value delta based just on the count of roads around a cell
     var getRoadCountValue = function(cell, roads){

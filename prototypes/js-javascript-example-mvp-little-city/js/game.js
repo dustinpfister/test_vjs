@@ -204,12 +204,15 @@ var gameMod = (function(){
     // however lower taxes can increase immgr and reduce exodus
     PROBLEMS.popDelta.highTaxes = function(game, cell){
         var deltas = {
+            index: 0,
             immigr: 0,
             exodus: 0
         };
         // tax rate and tax per
         var tr = game.taxRate.propertyTax,
         taxPer = tr / 0.20;
+        // index value for the high tax problem
+        deltas.index = taxPer;
         //immigrRate best: [5, 15], worst: [4, 13]
         //exodusRate best = [0, 10], worst: [5, 15]
         var immigrRate = [1, 5];
@@ -227,25 +230,21 @@ var gameMod = (function(){
     // people will move out if the comm to res ratio is to low
     PROBLEMS.popDelta.jobs = function(game, cell){
         var deltas = {
+            index: 0,
             immigr: 0,
             exodus: 0
         };
-
         var t = game.totals;
         var comRatio = t.com / t.res;
         if(String(comRatio) === 'NaN' || comRatio === Infinity){
             comRatio = 1;
         }
-
         if(comRatio < 0.5){
-            deltas.exodus = Math.round( 1 + 4 * ( (0.5 - comRatio) / 0.5 ) );
+            deltas.index = ( 0.5 - comRatio ) / 0.5;
+            deltas.exodus = Math.round( 1 + 4 * deltas.index );
         }
-
         return deltas;
     };
-
-    
-
 
     // get a pop delta object for the given cell
     var getPopDeltaObj = function(game, cell){

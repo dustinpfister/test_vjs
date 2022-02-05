@@ -251,7 +251,6 @@ var gameMod = (function(){
         if(String(comRatio) === 'NaN' || comRatio === Infinity){
             comRatio = 1;
         }
-       game.totals.comRatio = comRatio;
         if(comRatio < 0.25){
             deltas.index = ( 0.25 - comRatio ) / 0.25;
             deltas.exodus = Math.round( 1 + 4 * deltas.index );
@@ -326,7 +325,6 @@ var gameMod = (function(){
 
     var updatePopForCell = function(game, cell){
         // for each cell...
-        //mapMod.forEachCell(game.map, function(cell, x, y, i, map){
             var cDat = cell.data;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
@@ -348,9 +346,6 @@ var gameMod = (function(){
                 // any blank cell that does not have a unit, will not have any population or popDelta
                 cDat.population = 0;
             }
-            // tabulate cDat.population for this cell
-            //game.population += cDat.population;
-        //});
     };
 
     // ////////// //////////
@@ -443,7 +438,7 @@ var gameMod = (function(){
 
     api.update = function(game, secs){
 
-        // reset totals
+        // reset, and re tabulate totals
         resetTotals(game);
         var i = 0, len = game.map.cells.length, cell;
         while(i < len){
@@ -459,7 +454,6 @@ var gameMod = (function(){
         var i = 0, len = game.map.cells.length, cell;
         while(i < len){
             cell = game.map.cells[i];
-            //stepTotalsForCell(game, cell);
             updateLandValueForCell(game, cell);
             updatePopForCell(game, cell);
             // tabulate for total pop

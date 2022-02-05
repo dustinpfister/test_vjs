@@ -6,7 +6,8 @@
 * ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
 * ( fixed in r2 ) - #2 - road start pos should be within 3 cells
 * ( fixed in r4 ) - #3 - fixed a bud that was caused by an old line of code with popDelta
-* () #4 - singel loop of cells rather than loops in more than one helper function
+* () #4 - single loop of cells rather than loops in more than one helper function
+* () #5 - res zones should just take the top 3 com zones into account when figuring land value
 
 ## REF
 

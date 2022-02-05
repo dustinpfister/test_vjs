@@ -253,7 +253,7 @@ var gameMod = (function(){
         }
         if(comRatio < 0.5){
             deltas.index = ( 0.5 - comRatio ) / 0.5;
-            deltas.exodus = Math.round( 1 + 4 * deltas.index );
+            //deltas.exodus = Math.round( 1 + 4 * deltas.index );
         }
         return deltas;
     };
@@ -290,6 +290,7 @@ var gameMod = (function(){
     };
 
     // run over all cells and just update population
+	/*
     var updatePop = function(game){
         // total game population defaults to 0
         game.population = 0;
@@ -319,6 +320,36 @@ var gameMod = (function(){
             // tabulate cDat.population for this cell
             game.population += cDat.population;
         });
+    };
+	*/
+	
+    var updatePopForCell = function(game, cell){
+        // for each cell...
+        //mapMod.forEachCell(game.map, function(cell, x, y, i, map){
+            var cDat = cell.data;
+            if(cDat.unit){
+                if(cDat.unit.unitKey === 'res'){
+                    cDat.popDelta = getPopDeltaObj(game, cell);
+                    cDat.population += cDat.popDelta.valueOf();
+                    var per = cDat.landValue / hardSet.MAX_CELL_LAND_VALUE;
+                    var currentCellPopCap = Math.round( per * hardSet.MAX_CELL_POPULATION );
+                    if(cDat.population > currentCellPopCap){
+                        cDat.population = currentCellPopCap;
+                    }
+                    if(cDat.population < 0){
+                        cDat.population = 0;
+                    }
+                }else{
+                    // any unit other then res will not have any population or popDelta
+                    cDat.population = 0;
+                }
+            }else{
+                // any blank cell that does not have a unit, will not have any population or popDelta
+                cDat.population = 0;
+            }
+            // tabulate cDat.population for this cell
+            //game.population += cDat.population;
+        //});
     };
 
     // ////////// //////////
@@ -369,7 +400,6 @@ var gameMod = (function(){
         var cDat = cell.data;
         // land value should default to 0
         cDat.landValue = 0;
-
         if(cDat.unit){
             if(cDat.unit.unitKey === 'res'){
                 // a res zone must have at least one or more roads within 3 cells
@@ -424,11 +454,16 @@ var gameMod = (function(){
             cell = game.map.cells[i];
             stepTotalsForCell(game, cell);
             updateLandValueForCell(game, cell);
+
+            updatePopForCell(game, cell);
+            // tabulate for total pop
+            game.population += cell.data.population;
+
             i += 1;
         };
 
-        //updateLandValue(game);
-        updatePop(game);
+        //updatePop(game);
+
         // new year?
         game.secs += secs;
         var spy = game.secsPerYear;

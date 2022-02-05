@@ -251,9 +251,10 @@ var gameMod = (function(){
         if(String(comRatio) === 'NaN' || comRatio === Infinity){
             comRatio = 1;
         }
-        if(comRatio < 0.5){
-            deltas.index = ( 0.5 - comRatio ) / 0.5;
-            //deltas.exodus = Math.round( 1 + 4 * deltas.index );
+       game.totals.comRatio = comRatio;
+        if(comRatio < 0.25){
+            deltas.index = ( 0.25 - comRatio ) / 0.25;
+            deltas.exodus = Math.round( 1 + 4 * deltas.index );
         }
         return deltas;
     };
@@ -290,7 +291,7 @@ var gameMod = (function(){
     };
 
     // run over all cells and just update population
-	/*
+
     var updatePop = function(game){
         // total game population defaults to 0
         game.population = 0;
@@ -321,8 +322,8 @@ var gameMod = (function(){
             game.population += cDat.population;
         });
     };
-	*/
-	
+
+
     var updatePopForCell = function(game, cell){
         // for each cell...
         //mapMod.forEachCell(game.map, function(cell, x, y, i, map){
@@ -444,6 +445,12 @@ var gameMod = (function(){
 
         // reset totals
         resetTotals(game);
+        var i = 0, len = game.map.cells.length, cell;
+        while(i < len){
+            cell = game.map.cells[i];
+            stepTotalsForCell(game, cell);
+            i += 1;
+        }
 
         // global population defaulting to zero
         game.population = 0;
@@ -452,13 +459,11 @@ var gameMod = (function(){
         var i = 0, len = game.map.cells.length, cell;
         while(i < len){
             cell = game.map.cells[i];
-            stepTotalsForCell(game, cell);
+            //stepTotalsForCell(game, cell);
             updateLandValueForCell(game, cell);
-
             updatePopForCell(game, cell);
             // tabulate for total pop
             game.population += cell.data.population;
-
             i += 1;
         };
 

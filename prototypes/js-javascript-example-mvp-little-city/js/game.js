@@ -372,8 +372,8 @@ var gameMod = (function(){
         });
     };
 
+/*
     var updateTotals = function(game){
-
         var t = game.totals;
         t.com = 0;
         t.res = 0;
@@ -388,10 +388,41 @@ var gameMod = (function(){
             }
         });
     };
+*/
 
+    var resetTotals = function(game){
+        var t = game.totals;
+        t.com = 0;
+        t.res = 0;
+        t.road = 0;
+        t.land = 0;
+    };
+
+    var stepTotalsForCell = function(game, cell){
+        var t = game.totals;
+        var unit = cell.data.unit; 
+        if(unit){
+            t[unit.unitKey] += 1;
+        }else{
+           t.land += 1;
+        }
+    };
 
     api.update = function(game, secs){
-        updateTotals(game);
+
+        // reset totals
+        resetTotals(game);
+
+        // single loop of cells here in the main app loop
+        var i = 0, len = game.map.cells.length, cell;
+        while(i < len){
+            cell = game.map.cells[i];
+            stepTotalsForCell(game, cell)
+            i += 1;
+        };
+
+
+        //updateTotals(game);
         updateLandValue(game);
         updatePop(game);
         // new year?

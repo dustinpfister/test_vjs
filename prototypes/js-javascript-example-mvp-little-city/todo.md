@@ -6,6 +6,7 @@
 * ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
 * ( fixed in r2 ) - #2 - road start pos should be within 3 cells
 * ( fixed in r4 ) - #3 - fixed a bud that was caused by an old line of code with popDelta
+* () #4 - singel loop of cells rather than loops in more than one helper function
 
 ## REF
 
@@ -97,6 +98,7 @@ cell.data.popDelta = {
 * (done) I will want to have an index prop for each problem
 * have a single main cell update loop in the main gameMod.update method
 * set popDelta object in main gameMod.update, then call the update pop helper for a single cell, removing the line that updates popDelta
+* replace update totals with a stepTotals function that also works for just one cell at a time, and is used in the main cell update loop
 
 * I will want a gameMod.getProblemsReport that will create a collection of problem names, and % of how bad that problem is
 * have a voice state that will display what the current problems are for a city

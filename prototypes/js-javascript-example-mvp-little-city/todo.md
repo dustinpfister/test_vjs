@@ -14,7 +14,7 @@ There is looking over the manual of Sim City
 https://www.abandonwaredos.com/docs.php?sf=simcity_manual.txt&st=manual&sg=SimCity&idg=2662
 ```
 
-This is a good FAQ of Sim cirt classic
+This is a good FAQ of Sim city classic
 ```
 https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 ```
@@ -22,8 +22,8 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 
 <!-- Maintenance -->
 
-## () - rx - smarter updaing of cells
-* have a new system for updaing cells where it does not happen on each frame
+## () - rx - smarter updating of cells
+* have a new system for updating cells where it does not happen on each frame
 * so the rate at which cells update is slower than the main frame rate
 * the cells can also be updated by one row, or maybe even one cell at a time
 
@@ -32,14 +32,14 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 ## () - rx - revisit tax
 * rethink property tax at this to take into account avg landValue, and a mean income
 
-## () - rx - noise polution
+## () - rx - noise pollution
 
-## () - rx - air polution
+## () - rx - air pollution
 
 ## () - rx - crime
 
 ## () - rx - death rate and birth rate
-* I will want to think in terms of a death rate and birth rate that will result in a posative or negative pop growth
+* I will want to think in terms of a death rate and birth rate that will result in a positive or negative pop growth
 ```
 cell.data.popDelta = {
    birth: 3,
@@ -53,7 +53,7 @@ cell.data.popDelta = {
 ```
 
 ## () - rx - gameTotals state
-* a state where just the totals of all zones are deisplayed
+* a state where just the totals of all zones are displayed
 
 <!-- Minimum Viable Product -->
 
@@ -71,9 +71,9 @@ cell.data.popDelta = {
 * start a main title screen state
 
 ## () - rx - traffic problem, road conditions, and road upkeep cost
-* start a new trafic problem like that of the highTax problem that can incress exodus
-* I will want a new process for path updating where more than one thing is prefromed for each res cell path
-* on top of using paths to figure land value it will also need to be used to set what trafic is for each road cell
+* start a new traffic problem like that of the highTax problem that can increase exodus
+* I will want a new process for path updating where more than one thing is preformed for each res cell path
+* on top of using paths to figure land value it will also need to be used to set what traffic is for each road cell
 
 ## () - r4 - budget projection, Voice state started, problems collection started
 <!-- budget projection -->
@@ -81,7 +81,7 @@ cell.data.popDelta = {
 <!-- cell info window -->
 * (done) update gameBuild state so that a window will show up when a cell is clicked
 * (done) when this cell window is active any click will just make the window no longer active
-* (done) the cell winodw should display the x and y pos
+* (done) the cell window should display the x and y pos
 * (done) if any unit is at the cell, the unitKey should be displayed
 * (done) display pop, land value, ect
 * (done) fixed bug #3
@@ -117,7 +117,7 @@ cell.data.popDelta = {
 * (done) have a getPathsToZoneValue helper that will get a value based on a count and avg length of paths to a target zone
 * (done) have an update process that will use path detection to set land value for units
 * (done) for 'res' units the number of paths to 'com' units will raise land value
-* (done) for 'res' units the avg length of paths to 'com' units will rase land value (lower would be better)
+* (done) for 'res' units the avg length of paths to 'com' units will raise land value (lower would be better)
 * (done) more const values for game.js to help adjust things with balancing 
 * (done) looks like I might want a createUnit helper in game.js to be used in gameMod.create and gameMod.buildAt
 * (done) I want to have hard coded settings that can be used to set % of max land cell value for each process to do so
@@ -125,7 +125,7 @@ cell.data.popDelta = {
 
 ## ( done 01/31/2022 ) - r1 - lib and states folders, 'init', 'gameBuild', and 'gameMap' state
 * (done) start a lib folder and have utils.js and map.js in that folder
-* (done) start a sm.js lib in the lib folder that will have a plug in systme for state objects
+* (done) start a sm.js lib in the lib folder that will have a plug in system for state objects
 * (done) start a states folder to which the first file will be game-build.js
 * (done) start an init state that will do everything that needs to happen to set things up for the first time
 * (done) the current game state can be a gameBuild state
@@ -145,14 +145,14 @@ cell.data.popDelta = {
 * (done) have a button.desc as the standard key of a button with sm.gridMenu and update all files for this in sm.js, init.js, and draw.js
 * (done) new getArea helper that uses array.filter to create an array of units in a given area
 * (done) use getArea helper when using the info button in build mode to test that it works the way that it should
-* (done) fix #0 bug with 'res' units not devloping by using getArea helper in updateLandValue to see about fxing this 
+* (done) fix #0 bug with 'res' units not developing by using getArea helper in updateLandValue to see about fixing this 
 * (done) have max pop for each cell based on land value
 
 ## ( done 01/30/2022 ) - r0 - start with r2 of map-system-paths, cell.data.pop, popDelta
 * (done) starting with source code of r2 of map-system-paths
 * (done) ver number in main.js should be used for main canvas display
 * (done) start a new population system where each cell has a population value as a data object value
-* (done) landValue, and in time future revisions other factors will inpact a popDelta value
+* (done) landValue, and in time future revisions other factors will impact a popDelta value
 * (done) over all population is then just a tabulation of all cell.data.pop values
 * (done) have a MAX POP PER CELL setting in game.js
 * (done) new place holder system for tax

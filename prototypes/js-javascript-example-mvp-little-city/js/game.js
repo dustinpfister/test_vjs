@@ -31,6 +31,10 @@ var gameMod = (function(){
         fillStyle : '#888888'
     };
 
+    // ////////// //////////
+    // CREATE A NEW CITY
+    // ////////// //////////
+
     // create a unit for the given cell that is of the given unitKey
     var createUnit = function(cell, unitKey){
         var unitType = UNIT_TYPES[unitKey];
@@ -86,6 +90,10 @@ var gameMod = (function(){
         });
         return game;
     };
+
+    // ////////// //////////
+    // MISC HELPERS AND METHODS
+    // ////////// //////////
 
     // build a unit an the given cell, or cell location
     // gameMod.buildAt(game, 'res', cell)
@@ -194,6 +202,10 @@ var gameMod = (function(){
         return pathsObj;
     };
 
+    // ////////// //////////
+    // PROBLEMS
+    // ////////// //////////
+
     // COLLECTION OF PROBELMS THAT INPACT THE HEALTH OF THE CITY
     var PROBLEMS = {};
 
@@ -245,6 +257,10 @@ var gameMod = (function(){
         }
         return deltas;
     };
+
+    // ////////// //////////
+    // POPULATION
+    // ////////// //////////
 
     // get a pop delta object for the given cell
     var getPopDeltaObj = function(game, cell){
@@ -305,7 +321,10 @@ var gameMod = (function(){
         });
     };
 
+    // ////////// //////////
     // LAND VALUE
+    // ////////// //////////
+
     // main update method as well as all relevant helper methods for figuring land value for each cell
 
     // just get a land value delta based just on the count of roads around a cell
@@ -345,38 +364,8 @@ var gameMod = (function(){
         return val;
     };
 
-    // UPDATE LAND VALUE
-    // run over all cells, and update just land value for each cell
-	/*
-    var updateLandValue = function(game){
-       game.population = 0;
-        mapMod.forEachCell(game.map, function(cell, x, y, i, map){
-            var cDat = cell.data;
-            // land value should default to 0
-            cDat.landValue = 0;
-
-            if(cDat.unit){
-                if(cDat.unit.unitKey === 'res'){
-                    // a res zone must have at least one or more roads within 3 cells
-                    // or else it will not develop at all
-                    var roads = getTypeFromCellDist(game, cell, 'road', 3);
-                    if(roads.length >= 1){
-                        // simple road count value for res, and also paths to 'com' cells
-                        cDat.landValue += getRoadCountValue(cell, roads);
-                        cDat.landValue += getPathsToZoneValue(game, cell, 'com')
-                    }
-                }
-            }
-            cDat.landValue = Math.round(cDat.landValue);
-            // apply max land value limit
-            cDat.landValue = cDat.landValue > hardSet.MAX_CELL_LAND_VALUE ? hardSet.MAX_CELL_LAND_VALUE : cDat.landValue; 
-        });
-    };
-	*/
-
+    // update land value for a single cell to be used in main update loop ( see api.update )
     var updateLandValueForCell = function(game, cell){
-        //game.population = 0;
-        //mapMod.forEachCell(game.map, function(cell, x, y, i, map){
         var cDat = cell.data;
         // land value should default to 0
         cDat.landValue = 0;
@@ -396,8 +385,11 @@ var gameMod = (function(){
         cDat.landValue = Math.round(cDat.landValue);
         // apply max land value limit
         cDat.landValue = cDat.landValue > hardSet.MAX_CELL_LAND_VALUE ? hardSet.MAX_CELL_LAND_VALUE : cDat.landValue; 
-        //});
     };
+
+    // ////////// //////////
+    // TOTALS
+    // ////////// //////////
 
     // reset totals
     var resetTotals = function(game){

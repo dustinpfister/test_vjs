@@ -95,11 +95,12 @@ cell.data.popDelta = {
 * (done) start a PROBLEMS collection that will be a collection of objects that have an impact on cell.data.poDelta values
 * (done) start a updateTotals helper that will just create/update totals for com res and road
 * (done) start a new jobs problem that is the result of a poor comm to res ratio
-
 * (done) I will want to have an index prop for each problem
-* have a single main cell update loop in the main gameMod.update method
+* (done) have a single main cell update loop in the main gameMod.update method
+* (done) replace update totals with a stepTotals function that also works for just one cell at a time
+* (done) use step totals in another loop in gameMod.update before the first main loop
+
 * set popDelta object in main gameMod.update, then call the update pop helper for a single cell, removing the line that updates popDelta
-* replace update totals with a stepTotals function that also works for just one cell at a time, and is used in the main cell update loop
 
 * I will want a gameMod.getProblemsReport that will create a collection of problem names, and % of how bad that problem is
 * have a voice state that will display what the current problems are for a city

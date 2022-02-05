@@ -70,7 +70,10 @@ cell.data.popDelta = {
 ## () - rx - Title state, New City state
 * start a main title screen state
 
-## () - rx - traffic problem, road conditions, and road upkeep cost
+## () - rx - external problems plug in, traffic problem, road conditions, and road upkeep cost
+* have a plug in system for game.js that allows for pulling logic about problems out of game.js and into one or more files
+* have a problems-core.js file that will contain the current set of problems high taxes and jobs.
+* have a problems-roads.js that will contain problems related to roads
 * start a new traffic problem like that of the highTax problem that can increase exodus
 * I will want a new process for path updating where more than one thing is preformed for each res cell path
 * on top of using paths to figure land value it will also need to be used to set what traffic is for each road cell

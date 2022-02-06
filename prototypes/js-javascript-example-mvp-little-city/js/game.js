@@ -279,7 +279,20 @@ var gameMod = (function(){
             var delta = problemFunc(game, cell);
             popDelta.immigr += delta.immigr;
             popDelta.exodus += delta.exodus;
+            // !!! Tabulating problem index totals here
+            var p = game.problems[problemKey];
+            if(p){
+                p.count += 1;
+                p.index += delta.index;
+            }
         });
+
+
+            // tabulate index values for problems
+            //Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
+            //    var p = game.problems[problemKey];
+            //    p.index += cell.data
+            //}); 
 
         // apply caps for immigr and exodus 
         popDelta.immigr = popDelta.immigr > hardSet.MAX_IMMIGR ? hardSet.MAX_IMMIGR : popDelta.immigr;
@@ -296,7 +309,6 @@ var gameMod = (function(){
             var cDat = cell.data;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
-                    //cDat.popDelta = getPopDeltaObj(game, cell);
                     cDat.population += cDat.popDelta.valueOf();
                     var per = cDat.landValue / hardSet.MAX_CELL_LAND_VALUE;
                     var currentCellPopCap = Math.round( per * hardSet.MAX_CELL_POPULATION );
@@ -396,6 +408,7 @@ var gameMod = (function(){
         // index values for each problem
         Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
             game.problems[problemKey] = {
+                count: 0,
                 index: 0,
                 key: problemKey
             }
@@ -436,8 +449,11 @@ var gameMod = (function(){
             cell.data.popDelta = getPopDeltaObj(game, cell);
             updatePopForCell(game, cell);
 
-            // tabulate index values for problems
-            
+            Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
+                 //var p = game.problems[problemKey];
+                 //p.index /= p.count;
+            });
+ 
 
             // tabulate for total pop
             game.population += cell.data.population;

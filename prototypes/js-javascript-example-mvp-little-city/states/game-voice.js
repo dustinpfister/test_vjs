@@ -8,7 +8,8 @@ smMod.load({
         draw.menu(sm, sm.gameStateMenu);
         ctx.fillStyle = 'yellow';
         ctx.font = '15px arial';
-        var x = 28, y = 128;
+        ctx.fillText('City Problems: ' , 28, 180);
+        var x = 28, y = 200;
         Object.keys(sm.game.problems).forEach(function(key, i){
             var p = sm.game.problems[key];
             var percentStr = Math.round(p.index * 100) + '%';

@@ -118,6 +118,8 @@ Just get a solid MVP togetaher for this phase.
 * (done) use step totals in another loop in gameMod.update before the first main loop
 * (done) set popDelta object in main gameMod.update
 * (done) have a voice state that will display what the current problems are for a city
+<!-- MISC -->
+* see about adjusting the exodus incress of the unemployment problem as it is to much for to little now
 
 ## ( done 02/04/2022 ) - r3 - Property Tax, popDelta object, gameBudget state started
 * (done) start a gameBudget state for the game

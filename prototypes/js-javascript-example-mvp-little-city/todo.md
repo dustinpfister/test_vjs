@@ -6,7 +6,7 @@
 * ( fixed in r1 ) - #1 - fix bug with grid menu click in build menu
 * ( fixed in r2 ) - #2 - road start pos should be within 3 cells
 * ( fixed in r4 ) - #3 - fixed a bud that was caused by an old line of code with popDelta
-* () #4 - single loop of cells rather than loops in more than one helper function
+* ( fixed in r4 ) #4 - just have loops for cells in gameMod.update, rather than loops in more than one helper function
 * () #5 - res zones should just take the top 3 com zones into account when figuring land value
 
 ## REF
@@ -97,17 +97,14 @@ Just get a solid MVP togetaher for this phase.
 * I will want a new process for path updating where more than one thing is preformed for each res cell path
 * on top of using paths to figure land value it will also need to be used to set what traffic is for each road cell
 
-## () - r4 - budget projection, Voice state started, problems collection started
-<!-- budget projection -->
+## ( done 02/06/2022 ) - r4 - budget projection, Voice state started, problems collection started
 * (done) display what a current projection is for next years budget in the budget state
-<!-- cell info window -->
 * (done) update gameBuild state so that a window will show up when a cell is clicked
 * (done) when this cell window is active any click will just make the window no longer active
 * (done) the cell window should display the x and y pos
 * (done) if any unit is at the cell, the unitKey should be displayed
 * (done) display pop, land value, ect
 * (done) fixed bug #3
-<!-- voice state / problems -->
 * (done) there is all ready one problem that just needs to be in a more standard form in terms of a collection of objects
 * (done) start a PROBLEMS collection that will be a collection of objects that have an impact on cell.data.poDelta values
 * (done) start a updateTotals helper that will just create/update totals for com res and road
@@ -118,7 +115,6 @@ Just get a solid MVP togetaher for this phase.
 * (done) use step totals in another loop in gameMod.update before the first main loop
 * (done) set popDelta object in main gameMod.update
 * (done) have a voice state that will display what the current problems are for a city
-<!-- MISC -->
 * (done) see about adjusting the exodus incress of the unemployment problem as it is to much for to little now
 
 ## ( done 02/04/2022 ) - r3 - Property Tax, popDelta object, gameBudget state started

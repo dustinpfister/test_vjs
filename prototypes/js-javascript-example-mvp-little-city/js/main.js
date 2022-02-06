@@ -1,6 +1,5 @@
 var sm = smMod.create({
-    ver: 'r4',
+    ver: 'r5',
     currentState: 'init'
 });
-
 smMod.startLoop(sm);

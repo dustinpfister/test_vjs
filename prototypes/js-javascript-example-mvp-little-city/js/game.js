@@ -241,7 +241,7 @@ var gameMod = (function(){
     };
 
     // people will move out if the comm to res ratio is to low
-    PROBLEMS.popDelta.jobs = function(game, cell){
+    PROBLEMS.popDelta.unemployment = function(game, cell){
         var deltas = {
             index: 0,
             immigr: 0,

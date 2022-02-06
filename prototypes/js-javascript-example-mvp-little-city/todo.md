@@ -24,10 +24,6 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 
 <!-- Maintenance -->
 
-## () - rx - smarter updating of cells
-* have a new system for updating cells where it does not happen on each frame
-* so the rate at which cells update is slower than the main frame rate
-* the cells can also be updated by one row, or maybe even one cell at a time
 
 <!-- Additional Features -->
 
@@ -54,25 +50,22 @@ cell.data.popDelta = {
 };
 ```
 
-## () - rx - gameTotals state
-* a state where just the totals of all zones are displayed
-
 <!-- Minimum Viable Product -->
 
-## () - rx - load state and sprite graphics
+## () - r9 - load state and sprite graphics
 
-## () - rx - difficulty settings
+## () - r8 - Load City state
+* I will want to be able to use FileReader to read a json file of city data
+
+## () - r7 - difficulty settings
 * when starting a new city the player should be able to choose one of three difficulty settings easy, normal, and hard
 * The starting money will be different for each setting
 * there can be more than one tolerance setting for each problem
 
-## () - rx - Load City state
-* I will want to be able to use FileReader to read a json file of city data
-
-## () - rx - Title state, New City state
+## () - r6 - Title state, New City state
 * start a main title screen state
 
-## () - rx - external problems plug in, traffic problem, road conditions, and road upkeep cost
+## () - r5 - external problems plug in, traffic problem, road conditions, and road upkeep cost
 * have a plug in system for game.js that allows for pulling logic about problems out of game.js and into one or more files
 * have a problems-core.js file that will contain the current set of problems high taxes and jobs.
 * have a problems-roads.js that will contain problems related to roads

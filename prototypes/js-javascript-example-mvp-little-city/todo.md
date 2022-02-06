@@ -61,6 +61,11 @@ cell.data.popDelta = {
 The goal here is to just have a MVP to which I might then make oe or more additonal games from at a given revision point. So once the MVP is more or less solid in terms of features then the only real thing to do with this project, by itself at least, is to make improvements to the core of what the MVP all ready is, rather than adding features.
 
 
+## () - r10 - One cell at a time updating
+* I am thinking that it is best to have a system where a single cell is updated, for a single phase at a time
+* have a IniTab update Phase where values that are needed to compute values for each cell are tabulated ( such as total 'com' units)
+* have a cellData update Phase where values such as land value are updated for each cell
+
 <!-- Minimum Viable Product -->
 
 Just get a solid MVP togetaher for this phase.
@@ -107,7 +112,7 @@ Just get a solid MVP togetaher for this phase.
 * (done) replace update totals with a stepTotals function that also works for just one cell at a time
 * (done) use step totals in another loop in gameMod.update before the first main loop
 
-* set popDelta object in main gameMod.update, then call the update pop helper for a single cell, removing the line that updates popDelta
+* (done) set popDelta object in main gameMod.update
 
 * I will want a gameMod.getProblemsReport that will create a collection of problem names, and % of how bad that problem is
 * have a voice state that will display what the current problems are for a city

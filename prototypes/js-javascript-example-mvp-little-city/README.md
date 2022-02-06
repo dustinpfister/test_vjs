@@ -86,6 +86,8 @@ Improvements where made at this point to my popDelta property for the data objec
 So then I now have a better system for working out the start of problems that effect the city, and one of the first problems is high taxes as the other feature that I added at this point is a budget menu in which the player can increase and reduce the tax rate. As the tax rate approaches the max setting exodus will approach a max, and immigration will approach a min, and as you would expect the inversion of this happens as the tax rate approaches 0.
 
 
-### r4 - Problems collection started, new gameMod.update method
+### r4 - Problems collection started, Totals state, new gameMod.update method
 
 I will want to have at least a few problems that will have a negative impact on population growth, as well as land value. This far I all ready have a kind of High Taxes problem, but now I want to have that as just one of a collection of problems. So in revision 4 I added a Problems collection in the game.js file. So the high taxes problem is now a single one of these items in the Problems collection, and while I was at it I started one additional problem that I have called jobs. The jobs problem like that of high taxes will have an impact on the exodus property of the popDelta object that I added in the last revision.
+
+Another improvement that I made at this post had to do with how I went about looping over the cells in previous revisions. I was starting to go in the direction of looping over all cells more than twice per frame. Performance improvement are not a high priority at this point, but I still figured that this is one that I should take care of now rather than later. The totals for each type of unit will need to be updated in a separate loop, but then as long as everything else can be done in just one more additional loop, then I will want to keep it that way.

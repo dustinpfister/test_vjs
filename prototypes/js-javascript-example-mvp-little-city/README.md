@@ -88,4 +88,4 @@ So then I now have a better system for working out the start of problems that ef
 
 ### r4 - Problems collection started, new gameMod.update method
 
-I will want to have at least a few problems that will have a negative impact on population growth, as well as land value. This far I all ready have a kind of High Taxes problem, but now I want to have that as just one of a collection of problems. So in revision 4 I added a Problems collection in the game.js file.
+I will want to have at least a few problems that will have a negative impact on population growth, as well as land value. This far I all ready have a kind of High Taxes problem, but now I want to have that as just one of a collection of problems. So in revision 4 I added a Problems collection in the game.js file. So the high taxes problem is now a single one of these items in the Problems collection, and while I was at it I started one additional problem that I have called jobs. The jobs problem like that of high taxes will have an impact on the exodus property of the popDelta object that I added in the last revision.

@@ -421,11 +421,12 @@ var gameMod = (function(){
         var i = 0, len = game.map.cells.length, cell;
         while(i < len){
             cell = game.map.cells[i];
+
             updateLandValueForCell(game, cell);
-
             cell.data.popDelta = getPopDeltaObj(game, cell);
-
             updatePopForCell(game, cell);
+
+            // 
             // tabulate for total pop
             game.population += cell.data.population;
             i += 1;

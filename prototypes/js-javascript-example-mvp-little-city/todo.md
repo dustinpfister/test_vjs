@@ -65,6 +65,11 @@ The goal here is to just have a MVP to which I might then make oe or more addito
 * I am thinking that it is best to have a system where a single cell is updated, for a single phase at a time
 * have a IniTab update Phase where values that are needed to compute values for each cell are tabulated ( such as total 'com' units)
 * have a cellData update Phase where values such as land value are updated for each cell
+* a finalTab update Phase then can tabulate anything where values are needed that are updated in InitTab and cellData Phase
+* on each call of gameMod.update only a single cell is processed for a single phase at a time
+* I will then want to sets of values bolth temp and current, when the last cell of the finalTab Phase is done that will result in an update of the current values
+* in map state have a vishual outline for each cell that shows what cell is currently being updated
+
 
 <!-- Minimum Viable Product -->
 

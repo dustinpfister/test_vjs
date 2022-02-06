@@ -419,6 +419,7 @@ var gameMod = (function(){
         }
     };
 
+    // The Main gameMod.update method
     api.update = function(game, secs){
 
         // reset, and re tabulate totals
@@ -432,21 +433,19 @@ var gameMod = (function(){
 
         // global population defaulting to zero
         game.population = 0;
-
         // single loop of cells here in the main app loop
         var i = 0, len = game.map.cells.length, cell;
         while(i < len){
             cell = game.map.cells[i];
-
             updateLandValueForCell(game, cell);
             cell.data.popDelta = getPopDeltaObj(game, cell);
             updatePopForCell(game, cell); 
-
             // tabulate for total pop
             game.population += cell.data.population;
             i += 1;
         };
 
+        // create index values for game.problems
         Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
              var p = game.problems[problemKey];
              p.index = p.index / p.count;

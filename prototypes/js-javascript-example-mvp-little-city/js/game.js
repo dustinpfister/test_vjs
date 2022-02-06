@@ -391,6 +391,17 @@ var gameMod = (function(){
         t.res = 0;
         t.road = 0;
         t.land = 0;
+        
+        t.problems = {};
+
+        // index values for each problem
+        Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
+            t.problems[problemKey] = {
+                index: 0,
+                key: problemKey
+            }
+        });
+
     };
     // step totals, to be called in main cell update loop ( see api.update )
     var stepTotalsForCell = function(game, cell){

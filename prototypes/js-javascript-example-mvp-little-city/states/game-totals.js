@@ -10,7 +10,7 @@ smMod.load({
         ctx.font = '15px arial';
         var x = 28, y = 128;
         Object.keys(sm.game.totals).forEach(function(key, i){
-            ctx.fillText(key + ':' + sm.game.totals[key] , x, y + 17 * i);
+            ctx.fillText(key + ': ' + sm.game.totals[key] , x, y + 17 * i);
         });
         draw.disp(sm);
         draw.ver(sm);

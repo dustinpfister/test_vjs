@@ -62,6 +62,7 @@ var gameMod = (function(){
             secsPerYear: 10,
             secs: 0,
             totals: { com:0, res: 0, road:0 },
+            problems: { },
             taxRate: {
                 propertyTax: 0.07
             },
@@ -392,11 +393,9 @@ var gameMod = (function(){
         t.road = 0;
         t.land = 0;
         
-        t.problems = {};
-
         // index values for each problem
         Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
-            t.problems[problemKey] = {
+            game.problems[problemKey] = {
                 index: 0,
                 key: problemKey
             }
@@ -437,7 +436,9 @@ var gameMod = (function(){
             cell.data.popDelta = getPopDeltaObj(game, cell);
             updatePopForCell(game, cell);
 
-            // 
+            // tabulate index values for problems
+            
+
             // tabulate for total pop
             game.population += cell.data.population;
             i += 1;

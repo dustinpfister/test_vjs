@@ -289,46 +289,13 @@ var gameMod = (function(){
         return popDelta;
     };
 
-    // run over all cells and just update population
-
-    var updatePop = function(game){
-        // total game population defaults to 0
-        game.population = 0;
-        // for each cell...
-        mapMod.forEachCell(game.map, function(cell, x, y, i, map){
-            var cDat = cell.data;
-            if(cDat.unit){
-                if(cDat.unit.unitKey === 'res'){
-                    cDat.popDelta = getPopDeltaObj(game, cell);
-                    cDat.population += cDat.popDelta.valueOf();
-                    var per = cDat.landValue / hardSet.MAX_CELL_LAND_VALUE;
-                    var currentCellPopCap = Math.round( per * hardSet.MAX_CELL_POPULATION );
-                    if(cDat.population > currentCellPopCap){
-                        cDat.population = currentCellPopCap;
-                    }
-                    if(cDat.population < 0){
-                        cDat.population = 0;
-                    }
-                }else{
-                    // any unit other then res will not have any population or popDelta
-                    cDat.population = 0;
-                }
-            }else{
-                // any blank cell that does not have a unit, will not have any population or popDelta
-                cDat.population = 0;
-            }
-            // tabulate cDat.population for this cell
-            game.population += cDat.population;
-        });
-    };
-
-
+    // update pop value for a single cell to be used in main update loop ( see api.update )
     var updatePopForCell = function(game, cell){
         // for each cell...
             var cDat = cell.data;
             if(cDat.unit){
                 if(cDat.unit.unitKey === 'res'){
-                    cDat.popDelta = getPopDeltaObj(game, cell);
+                    //cDat.popDelta = getPopDeltaObj(game, cell);
                     cDat.population += cDat.popDelta.valueOf();
                     var per = cDat.landValue / hardSet.MAX_CELL_LAND_VALUE;
                     var currentCellPopCap = Math.round( per * hardSet.MAX_CELL_POPULATION );
@@ -455,13 +422,14 @@ var gameMod = (function(){
         while(i < len){
             cell = game.map.cells[i];
             updateLandValueForCell(game, cell);
+
+            cell.data.popDelta = getPopDeltaObj(game, cell);
+
             updatePopForCell(game, cell);
             // tabulate for total pop
             game.population += cell.data.population;
             i += 1;
         };
-
-        //updatePop(game);
 
         // new year?
         game.secs += secs;

@@ -86,4 +86,6 @@ Improvements where made at this point to my popDelta property for the data objec
 So then I now have a better system for working out the start of problems that effect the city, and one of the first problems is high taxes as the other feature that I added at this point is a budget menu in which the player can increase and reduce the tax rate. As the tax rate approaches the max setting exodus will approach a max, and immigration will approach a min, and as you would expect the inversion of this happens as the tax rate approaches 0.
 
 
-### r4 - 
+### r4 - Problems collection started, new gameMod.update method
+
+I will want to have at least a few problems that will have a negative impact on population growth, as well as land value. This far I all ready have a kind of High Taxes problem, but now I want to have that as just one of a collection of problems. So in revision 4 I added a Problems collection in the game.js file.

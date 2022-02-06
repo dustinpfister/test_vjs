@@ -11,7 +11,8 @@ smMod.load({
         var x = 28, y = 128;
         Object.keys(sm.game.problems).forEach(function(key, i){
             var p = sm.game.problems[key];
-            ctx.fillText(key + ': ' + p.count + ', '+ p.index , x, y + 17 * i);
+            var percentStr = Math.round(p.index * 100) + '%';
+            ctx.fillText(key + ': ' + percentStr , x, y + 17 * i);
         });
         draw.disp(sm);
         draw.ver(sm);

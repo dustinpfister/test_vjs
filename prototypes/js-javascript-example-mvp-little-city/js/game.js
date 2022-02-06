@@ -282,17 +282,10 @@ var gameMod = (function(){
             // !!! Tabulating problem index totals here
             var p = game.problems[problemKey];
             if(p){
-                p.count += 1;
+                p.count += delta.index > 0 ? 1 : 0;
                 p.index += delta.index;
             }
         });
-
-
-            // tabulate index values for problems
-            //Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
-            //    var p = game.problems[problemKey];
-            //    p.index += cell.data
-            //}); 
 
         // apply caps for immigr and exodus 
         popDelta.immigr = popDelta.immigr > hardSet.MAX_IMMIGR ? hardSet.MAX_IMMIGR : popDelta.immigr;
@@ -447,18 +440,18 @@ var gameMod = (function(){
 
             updateLandValueForCell(game, cell);
             cell.data.popDelta = getPopDeltaObj(game, cell);
-            updatePopForCell(game, cell);
-
-            Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
-                 //var p = game.problems[problemKey];
-                 //p.index /= p.count;
-            });
- 
+            updatePopForCell(game, cell); 
 
             // tabulate for total pop
             game.population += cell.data.population;
             i += 1;
         };
+
+        Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
+             var p = game.problems[problemKey];
+             p.index = p.index / p.count;
+             p.index = String(p.index) === 'NaN' ? 0 : p.index;
+        });
 
         // new year?
         game.secs += secs;

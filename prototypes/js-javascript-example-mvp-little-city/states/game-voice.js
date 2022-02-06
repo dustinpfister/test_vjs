@@ -11,7 +11,7 @@ smMod.load({
         var x = 28, y = 128;
         Object.keys(sm.game.problems).forEach(function(key, i){
             var p = sm.game.problems[key];
-            ctx.fillText(key + ': ' + p.index , x, y + 17 * i);
+            ctx.fillText(key + ': ' + p.count + ', '+ p.index , x, y + 17 * i);
         });
         draw.disp(sm);
         draw.ver(sm);

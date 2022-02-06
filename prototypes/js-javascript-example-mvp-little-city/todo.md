@@ -116,11 +116,8 @@ Just get a solid MVP togetaher for this phase.
 * (done) have a single main cell update loop in the main gameMod.update method
 * (done) replace update totals with a stepTotals function that also works for just one cell at a time
 * (done) use step totals in another loop in gameMod.update before the first main loop
-
 * (done) set popDelta object in main gameMod.update
-
-* I will want a gameMod.getProblemsReport that will create a collection of problem names, and % of how bad that problem is
-* have a voice state that will display what the current problems are for a city
+* (done) have a voice state that will display what the current problems are for a city
 
 ## ( done 02/04/2022 ) - r3 - Property Tax, popDelta object, gameBudget state started
 * (done) start a gameBudget state for the game

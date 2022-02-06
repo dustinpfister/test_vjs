@@ -22,10 +22,12 @@ https://www.ign.com/articles/2007/02/05/simcity-1989-megalopolis-faq-753007
 ```
 
 
-<!-- Maintenance -->
 
 
-<!-- Additional Features -->
+
+<!-- Additional Features? -->
+
+Yes I think that I should have a question mark next to addtional features for a lot of these ideas, as the goal here is to just compleate an MVP. However some of these ideas for features might very well be features that I want in the MVP, otherwise they are not and should only be features to add to some other project based off of this source code actually.
 
 ## () - rx - revisit tax
 * rethink property tax at this to take into account avg landValue, and a mean income
@@ -50,7 +52,19 @@ cell.data.popDelta = {
 };
 ```
 
+## rx - sound
+* see about ading support for sound effects, and music
+
+
+<!-- Maintenance / few more features MAYBE -->
+
+The goal here is to just have a MVP to which I might then make oe or more additonal games from at a given revision point. So once the MVP is more or less solid in terms of features then the only real thing to do with this project, by itself at least, is to make improvements to the core of what the MVP all ready is, rather than adding features.
+
+
 <!-- Minimum Viable Product -->
+
+Just get a solid MVP togetaher for this phase.
+
 
 ## () - r9 - load state and sprite graphics
 

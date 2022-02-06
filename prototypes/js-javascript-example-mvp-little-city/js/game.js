@@ -254,7 +254,7 @@ var gameMod = (function(){
         }
         if(comRatio < 0.25){
             deltas.index = ( 0.25 - comRatio ) / 0.25;
-            deltas.exodus = Math.round( 1 + 4 * deltas.index );
+            deltas.exodus = Math.round( 1 + 2 * deltas.index );
         }
         return deltas;
     };

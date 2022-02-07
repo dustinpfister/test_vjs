@@ -60,6 +60,10 @@ cell.data.popDelta = {
 
 The goal here is to just have a MVP to which I might then make oe or more additonal games from at a given revision point. So once the MVP is more or less solid in terms of features then the only real thing to do with this project, by itself at least, is to make improvements to the core of what the MVP all ready is, rather than adding features.
 
+## () - r11 - better gameMod plug-in system
+* Have a better plug in system for gameMod.js that allows for defining more than just problems.
+* The new plug in system should be able to define how land value is figured
+* The new plug in system should be able to also define how population deltas are effected by land value
 
 ## () - r10 - One cell at a time updating
 * I am thinking that it is best to have a system where a single cell is updated, for a single phase at a time
@@ -89,7 +93,7 @@ Just get a solid MVP togetaher for this phase.
 ## () - r6 - Title state, New City state
 * start a main title screen state
 
-## () - r5 - external problems plug in, traffic problem, road conditions, and road upkeep cost
+## () - r5 - external problems plug in, traffic problem, road conditions, road upkeep cost
 * have a plug in system for game.js that allows for pulling logic about problems out of game.js and into one or more files
 * have a problems-core.js file that will contain the current set of problems high taxes and jobs.
 * have a problems-roads.js that will contain problems related to roads

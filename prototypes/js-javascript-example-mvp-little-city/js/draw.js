@@ -132,11 +132,12 @@ drawCell.roads = function(sm, ctx, cell, x, y, cs){
     // draw standard display
     api.disp = function(sm){
         var ctx = sm.ctx,
-        canvas = sm.canvas;
+        canvas = sm.canvas,
+        game = sm.game;
         // text style
         standardText(ctx);
         // version number
-        ctx.fillText('money: ' + sm.game.money + ', pop: ' + sm.game.population + ', year: ' + sm.game.year, 5, 5);
+        ctx.fillText( game.name+ ', money: ' + game.money + ', pop: ' + game.population + ', year: ' + game.year, 5, 5);
     };
 
     api.dispBudget = function(sm){

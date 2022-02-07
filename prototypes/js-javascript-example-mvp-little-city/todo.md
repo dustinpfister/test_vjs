@@ -96,15 +96,19 @@ Just get a solid MVP togetaher for this phase.
 
 ## () - r6 - load state and sprite graphics
 
+<!-- smMod.gridMenu and draw -->
+* have a margin option for gridMenu
+* make changes to draw.menu to work with new margin value
+
 ## () - r5 - Title state, New City state, load city state, smMod.GridMenu improvements
 
 <!-- createNew state -->
 * (done) start a main title screen state
-* have a sm.titleMenu with one button that goes to a createNew state
-<!-- smMod -->
-* allow for setting width and heigh of objects rater than just a single size for gridMenu in lib/sm.js
-* have a margin option for gridMenu
-* make any needed changes to draw.js
+* (done) have a sm.titleMenu with one button that goes to a createNew state
+<!-- smMod.gridMenu and draw -->
+* (done) allow for setting width and heigh of objects rater than just a single size for gridMenu in lib/sm.js
+* (done) make any needed changes to draw.menu for new width and height values
+* (done) fix text position in draw.menu
 <!-- createNew state -->
 * (done) start a createNew state
 * I should be able to set a name for the city using the gridMenu system

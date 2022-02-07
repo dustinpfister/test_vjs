@@ -114,10 +114,10 @@ drawCell.roads = function(sm, ctx, cell, x, y, cs){
             ctx.fillRect(x * cw, y * ch, cw, ch);
             // text
             ctx.font = '10px courier';
-            ctx.textBaseline = 'top';
-            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
             ctx.fillStyle = 'black';
-            ctx.fillText(button.desc, x * cw + 4, y * ch + 12);
+            ctx.fillText(button.desc, x * cw + cw / 2, y * ch + ch / 2);
         });
         ctx.restore();
     };

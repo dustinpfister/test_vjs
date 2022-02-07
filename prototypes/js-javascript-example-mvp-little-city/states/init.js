@@ -2,6 +2,21 @@ smMod.load({
     stateKey: 'init',
     update: function(sm, secs){
 
+
+
+        // set up the build menu
+        sm.titleMenu = smMod.gridMenu.create({
+            x: 16,
+            y: 96,
+            w: 1, h: 1,
+            currentIndex: 0,
+            cellSize: 128,
+            buttons: [
+                { desc: 'Start New City', action: 'createNew'}
+            ]
+        });
+
+
         // set up the build menu
         sm.buildMenu = smMod.gridMenu.create({
             x: 16,

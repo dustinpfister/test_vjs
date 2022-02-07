@@ -18,6 +18,8 @@ smMod.load({
         ctx.fillText('Little City MVP', sm.canvas.width * 0.5, sm.canvas.height * 0.25);
 
 
+        draw.menu(sm, sm.titleMenu);
+
         draw.ver(sm);
     },
     events: { click: function(e, pos, sm){}}

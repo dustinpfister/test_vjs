@@ -39,7 +39,7 @@ smMod.load({
             if(sDat.mode === 'name'){
                 var button = smMod.gridMenu.click(sm.textInMenu, pos);
                 if(button){
-                    console.log(button)
+                    console.log(button);
                     //smMod.setState(sm, button.action)
                 }
             }

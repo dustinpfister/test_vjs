@@ -4,17 +4,17 @@ smMod.load({
 
 
         // select game difficulty createNew state
-        sm.selectDiff = smMod.gridMenu.create({
-            x: 320 - 255,
+        sm.selectDiffMenu = smMod.gridMenu.create({
+            x: 320 - 128,
             y: 200,
-            w: 10, h: 4,
+            w: 1, h: 3,
             currentIndex: 0,
-            cellWidth: 50,
+            cellWidth: 256,
             cellHeight: 40,
             buttons: [
-                {desc: 'Easy   $10,000', action: 'easy'},
-                {desc: 'Normal $3,000', action: 'normal'},
-                {desc: 'Hard   $1,000', action: 'hard'}
+                {desc: 'Easy   $10,000', money: 10000, action: 'easy'},
+                {desc: 'Normal $3,000', money: 3000, action: 'normal'},
+                {desc: 'Hard   $1,000', money: 1000, action: 'hard'}
             ]
         });
 

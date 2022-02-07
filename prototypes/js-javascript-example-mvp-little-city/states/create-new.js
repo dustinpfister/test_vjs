@@ -15,7 +15,7 @@ smMod.load({
             ctx.textBaseline = 'middle';
             ctx.fillStyle = 'white';
             ctx.font = '30px arial';
-            ctx.fillText(sm.game.name, sm.canvas.width * 0.5, 100);
+            ctx.fillText('_' + sm.game.name + '_', sm.canvas.width * 0.5, 100);
             draw.menu(sm, sm.textInMenu);
         }
         draw.ver(sm);

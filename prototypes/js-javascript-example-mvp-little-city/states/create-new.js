@@ -17,6 +17,11 @@ smMod.load({
             draw.menu(sm, sm.selectDiffMenu);
         }
         if(sDat.mode === 'name'){
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = 'white';
+            ctx.font = '30px arial';
+            ctx.fillText(sm.game.name, sm.canvas.width * 0.5, 100);
             draw.menu(sm, sm.textInMenu);
         }
         draw.ver(sm);
@@ -32,7 +37,6 @@ smMod.load({
                     console.log(button);
                     sm.game.money = button.money;
                     sDat.mode = 'name';
-                    
                 }
             }
 

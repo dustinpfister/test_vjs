@@ -5,16 +5,26 @@ smMod.load({
         // Text In Menu used for inputing city name
 
         sm.textInMenu = smMod.gridMenu.create({
-            x: 320 - 200,
+            x: 320 - 255,
             y: 200,
             w: 10, h: 4,
             currentIndex: 0,
-            cellWidth: 32,
-            cellHeight: 32,
-            buttons: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 '.split('').map(function(key){
-                return {
+            cellWidth: 50,
+            cellHeight: 40,
+            buttons: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 <#'.split('').map(function(key){
+                var button = {
                     desc: key, key: key
                 };
+                if(key === ' '){
+                   button.desc = 'SPACE';
+                }
+                if(key === '<'){
+                   button.desc = 'DEL';
+                }
+                if(key === '#'){
+                   button.desc = 'END';
+                }
+                return button;
             })
         });
 

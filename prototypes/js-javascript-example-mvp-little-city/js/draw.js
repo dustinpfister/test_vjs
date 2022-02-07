@@ -103,20 +103,21 @@ drawCell.roads = function(sm, ctx, cell, x, y, cs){
         var canvas = sm.canvas,
         ctx = sm.ctx,
         bm = menu || sm.buildMenu,
-        cs = bm.cellSize;
+        cw = bm.cellWidth,
+        ch = bm.cellHeight;
         ctx.save();
         ctx.translate(bm.x, bm.y);
         bm.buttons.forEach(function(button, i){
             var x = i % bm.w,
             y = Math.floor(i / bm.w);
             ctx.fillStyle = i === bm.currentIndex ? 'yellow' : 'white';
-            ctx.fillRect(x * cs, y * cs, cs, cs);
+            ctx.fillRect(x * cw, y * ch, cw, ch);
             // text
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
             ctx.fillStyle = 'black';
-            ctx.fillText(button.desc, x * cs + 4, y * cs + 12);
+            ctx.fillText(button.desc, x * cw + 4, y * ch + 12);
         });
         ctx.restore();
     };

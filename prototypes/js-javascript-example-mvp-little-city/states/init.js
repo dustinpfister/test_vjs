@@ -6,11 +6,12 @@ smMod.load({
 
         // set up the build menu
         sm.titleMenu = smMod.gridMenu.create({
-            x: 16,
-            y: 96,
+            x: 320 - 128,
+            y: 200,
             w: 1, h: 1,
             currentIndex: 0,
-            cellSize: 128,
+            cellWidth: 256,
+            cellHeight: 64,
             buttons: [
                 { desc: 'Start New City', action: 'createNew'}
             ]

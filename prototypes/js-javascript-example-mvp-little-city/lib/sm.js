@@ -21,7 +21,7 @@ var smMod = (function(){
         });
         // state machine object
         var sm = {
-            verSM: 'r0',
+            verSM: '',
             ver: opt.ver || '',
             ctx: canvasObj.ctx,
             canvas: canvasObj.canvas,
@@ -75,19 +75,23 @@ var smMod = (function(){
             h: 4,
             currentIndex: 0,
             cellSize: 32,
+            cellWidth: 32,
+            cellHeight: 32,
             buttons: []
         }, opt);
+        if(opt.cellSize){
+            menu.cellWidth = opt.cellSize;
+            menu.cellHeight = opt.cellSize; 
+        }
         return menu;
     };
 
     api.gridMenu.click = function(menu, pos){
         var w = menu.cellSize * menu.w,
         h = menu.cellSize * menu.h; // * menu.buttons.length / menu.w;
-
-
         if(utils.boundingBox2( menu.x, menu.y, w, h, pos.x, pos.y, 1, 1 )){
-            var x = Math.floor((pos.x - menu.x) / menu.cellSize);
-            var y = Math.floor((pos.y - menu.y) / menu.cellSize);
+            var x = Math.floor((pos.x - menu.x) / menu.cellWidth);
+            var y = Math.floor((pos.y - menu.y) / menu.cellHeight);
             var i = y * menu.w + x;
             var button = menu.buttons[i];
             if(button){

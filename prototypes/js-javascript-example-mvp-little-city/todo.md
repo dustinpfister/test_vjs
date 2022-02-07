@@ -61,9 +61,7 @@ cell.data.popDelta = {
 The goal here is to just have a MVP to which I might then make oe or more additonal games from at a given revision point. So once the MVP is more or less solid in terms of features then the only real thing to do with this project, by itself at least, is to make improvements to the core of what the MVP all ready is, rather than adding features.
 
 ## () - rx - improved grid menu system
-* allow for setting width and heigh of objects rater than just a single size for gridMenu in lib/sm.js
-* have a margin option for gridMenu
-* make any needed changes to draw.js
+
 
 ## () - rx - gameMod plug in system, traffic problem, road conditions, road upkeep cost
 * Have a better plug in system for gameMod.js that allows for defining more than just problems.
@@ -98,13 +96,20 @@ Just get a solid MVP togetaher for this phase.
 
 ## () - r6 - load state and sprite graphics
 
-## () - r5 - Title state, New City state, load city state
-* start a main title screen state
+## () - r5 - Title state, New City state, load city state, smMod.GridMenu improvements
 
-<!-- crateNew state -->
-* start a createNew state
+<!-- createNew state -->
+* (done) start a main title screen state
+* have a sm.titleMenu with one button that goes to a createNew state
+<!-- smMod -->
+* allow for setting width and heigh of objects rater than just a single size for gridMenu in lib/sm.js
+* have a margin option for gridMenu
+* make any needed changes to draw.js
+<!-- createNew state -->
+* (done) start a createNew state
 * I should be able to set a name for the city using the gridMenu system
 * have three options for the starting amount of money
+<!-- crateFromFile state -->
 
 
 * start a createFromFile state

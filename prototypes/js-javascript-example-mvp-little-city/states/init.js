@@ -100,7 +100,7 @@ smMod.load({
         });
 
         // switch to gameBuild state
-        smMod.setState(sm, 'gameBuild');
+        smMod.setState(sm, 'title');
     },
     draw: function(sm, ctx, canvas){},
     events: { click: function(e, pos, sm){}}

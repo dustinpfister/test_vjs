@@ -39,16 +39,21 @@ smMod.load({
 
                     // if # ( END )
                     if( code === 35 ){
-                        smMod.setState(sm, 'gameBuild')
+
+                        //if(sm.game.name.length >= 1 && sm.game.name[0] != ' '){
+                            smMod.setState(sm, 'gameBuild')
+                        //}
+
                     }
 
                     // if < ( DEL )
                     if( code === 60 ){
-
+                        if(str.length > 0){
+                            var arr = str.split('');
+                            arr.splice(arr.length - 1, 1);
+                            sm.game.name = arr.join('')
+                        }
                     }
-                    
-
-                    //smMod.setState(sm, button.action)
                 }
             }
 

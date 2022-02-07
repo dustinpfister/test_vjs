@@ -2,6 +2,22 @@ smMod.load({
     stateKey: 'init',
     update: function(sm, secs){
 
+        // Text In Menu used for inputing city name
+
+        sm.textInMenu = smMod.gridMenu.create({
+            x: 320 - 200,
+            y: 200,
+            w: 10, h: 4,
+            currentIndex: 0,
+            cellWidth: 32,
+            cellHeight: 32,
+            buttons: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 '.split('').map(function(key){
+                return {
+                    desc: key, key: key
+                };
+            })
+        });
+
 
 
         // set up the build menu

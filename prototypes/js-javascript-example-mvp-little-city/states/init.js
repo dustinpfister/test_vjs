@@ -2,8 +2,23 @@ smMod.load({
     stateKey: 'init',
     update: function(sm, secs){
 
-        // Text In Menu used for inputing city name
 
+        // select game difficulty createNew state
+        sm.selectDiff = smMod.gridMenu.create({
+            x: 320 - 255,
+            y: 200,
+            w: 10, h: 4,
+            currentIndex: 0,
+            cellWidth: 50,
+            cellHeight: 40,
+            buttons: [
+                {desc: 'Easy   $10,000', action: 'easy'},
+                {desc: 'Normal $3,000', action: 'normal'},
+                {desc: 'Hard   $1,000', action: 'hard'}
+            ]
+        });
+
+        // Text In Menu used for inputing city name in createNew state
         sm.textInMenu = smMod.gridMenu.create({
             x: 320 - 255,
             y: 200,
@@ -27,8 +42,6 @@ smMod.load({
                 return button;
             })
         });
-
-
 
         // set up the build menu
         sm.titleMenu = smMod.gridMenu.create({

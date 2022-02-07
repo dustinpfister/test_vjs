@@ -99,6 +99,7 @@ Just get a solid MVP togetaher for this phase.
 <!-- smMod.gridMenu and draw -->
 * have a margin option for gridMenu
 * make changes to draw.menu to work with new margin value
+* start and end hooks
 
 ## () - r5 - Title state, New City state, load city state, smMod.GridMenu improvements
 

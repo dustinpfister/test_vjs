@@ -117,6 +117,7 @@ Just get a solid MVP togetaher for this phase.
 * (done) start a createNew state
 * (done) I should be able to set a name for the city using the gridMenu system
 * (done) have three options for the starting amount of money
+* show white space some how
 <!-- autoSave -->
 
 <!-- createFromSave state -->

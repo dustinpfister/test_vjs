@@ -115,8 +115,8 @@ Just get a solid MVP togetaher for this phase.
 * (done) fix text position in draw.menu
 <!-- createNew state -->
 * (done) start a createNew state
-* I should be able to set a name for the city using the gridMenu system
-* have three options for the starting amount of money
+* (done) I should be able to set a name for the city using the gridMenu system
+* (done) have three options for the starting amount of money
 <!-- autoSave -->
 
 <!-- createFromSave state -->

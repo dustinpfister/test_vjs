@@ -30,7 +30,6 @@ smMod.load({
                 if(button){
                     var str = sm.game.name,
                     code = button.key.charCodeAt(0); 
-
                     // if letter, number, or space
                     if( (code >= 65 && code <= 90) || (code >= 48 && code <= 57) || code === 32){
                         if(str.length < 20){
@@ -38,14 +37,12 @@ smMod.load({
                             sm.game.name = str;
                         }
                     }
-
                     // if # ( END )
                     if( code === 35 ){
                         if(sm.game.name.length >= 1 && sm.game.name[0] != ' '){
                             smMod.setState(sm, 'gameBuild')
                         }
                     }
-
                     // if < ( DEL )
                     if( code === 60 ){
                         if(str.length > 0){

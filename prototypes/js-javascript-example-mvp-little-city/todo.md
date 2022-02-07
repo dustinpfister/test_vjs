@@ -60,12 +60,24 @@ cell.data.popDelta = {
 
 The goal here is to just have a MVP to which I might then make oe or more additonal games from at a given revision point. So once the MVP is more or less solid in terms of features then the only real thing to do with this project, by itself at least, is to make improvements to the core of what the MVP all ready is, rather than adding features.
 
-## () - r11 - better gameMod plug-in system
+## () - rx - improved grid menu system
+* allow for setting width and heigh of objects rater than just a single size for gridMenu in lib/sm.js
+* have a margin option for gridMenu
+* make any needed changes to draw.js
+
+## () - rx - gameMod plug in system, traffic problem, road conditions, road upkeep cost
 * Have a better plug in system for gameMod.js that allows for defining more than just problems.
 * The new plug in system should be able to define how land value is figured
 * The new plug in system should be able to also define how population deltas are effected by land value
+* have a plug in system for game.js that allows for pulling logic about problems out of game.js and into one or more files
+* have a problems-core.js file that will contain the current set of problems high taxes and jobs.
+* have a problems-roads.js that will contain problems related to roads
+* start a new traffic problem like that of the highTax problem that can increase exodus
+* I will want a new process for path updating where more than one thing is preformed for each res cell path
+* on top of using paths to figure land value it will also need to be used to set what traffic is for each road cell
+* update budget state to allow the player to adjust funding for road upkeep costs
 
-## () - r10 - One cell at a time updating
+## () - rx - One cell at a time updating
 * I am thinking that it is best to have a system where a single cell is updated, for a single phase at a time
 * have a IniTab update Phase where values that are needed to compute values for each cell are tabulated ( such as total 'com' units)
 * have a cellData update Phase where values such as land value are updated for each cell
@@ -74,32 +86,28 @@ The goal here is to just have a MVP to which I might then make oe or more addito
 * I will then want to sets of values bolth temp and current, when the last cell of the finalTab Phase is done that will result in an update of the current values
 * in map state have a vishual outline for each cell that shows what cell is currently being updated
 
+## () - rx - difficulty settings
+* when starting a new city the player should be able to choose one of three difficulty settings easy, normal, and hard
+* The starting money will be different for each setting
+* there can be more than one tolerance setting for each problem
 
 <!-- Minimum Viable Product -->
 
 Just get a solid MVP togetaher for this phase.
 
 
-## () - r9 - load state and sprite graphics
+## () - r6 - load state and sprite graphics
 
-## () - r8 - Load City state
-* I will want to be able to use FileReader to read a json file of city data
-
-## () - r7 - difficulty settings
-* when starting a new city the player should be able to choose one of three difficulty settings easy, normal, and hard
-* The starting money will be different for each setting
-* there can be more than one tolerance setting for each problem
-
-## () - r6 - Title state, New City state
+## () - r5 - Title state, New City state, load city state
 * start a main title screen state
 
-## () - r5 - external problems plug in, traffic problem, road conditions, road upkeep cost
-* have a plug in system for game.js that allows for pulling logic about problems out of game.js and into one or more files
-* have a problems-core.js file that will contain the current set of problems high taxes and jobs.
-* have a problems-roads.js that will contain problems related to roads
-* start a new traffic problem like that of the highTax problem that can increase exodus
-* I will want a new process for path updating where more than one thing is preformed for each res cell path
-* on top of using paths to figure land value it will also need to be used to set what traffic is for each road cell
+<!-- crateNew state -->
+* start a createNew state
+* I should be able to set a name for the city using the gridMenu system
+* have three options for the starting amount of money
+
+
+* start a createFromFile state
 
 ## ( done 02/06/2022 ) - r4 - budget projection, Voice state started, problems collection started
 * (done) display what a current projection is for next years budget in the budget state

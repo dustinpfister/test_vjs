@@ -117,13 +117,18 @@ Just get a solid MVP togetaher for this phase.
 * (done) start a createNew state
 * (done) I should be able to set a name for the city using the gridMenu system
 * (done) have three options for the starting amount of money
-* show white space some how
-<!-- autoSave -->
-
+* (done) show white space some how
+<!-- sm.slots obj, autoSave -->
+* have six save slots for citys that will be stored by way of local storage
+* so then I will want sm.slots.currentIndex and sm.slots.saves array
+* auto save city to the save slot
+* update create new state so that a save slot must be selected as part of create new city process
 <!-- createFromSave state -->
-
-
-* start a createFromFile state
+* start a create-from-save.js state file
+* if there is one or more cities in local storage show a load city button in title state
+* when the load city button is clicked switch to create from save state
+* have up to six buttons for each save slot for saved cites
+* click a slot that has a city to load it
 
 ## ( done 02/06/2022 ) - r4 - budget projection, Voice state started, problems collection started
 * (done) display what a current projection is for next years budget in the budget state

@@ -22,5 +22,20 @@ smMod.load({
 
         draw.ver(sm);
     },
-    events: { click: function(e, pos, sm){}}
+    events: { 
+
+         click: function(e, pos, sm){
+
+                // if title menu clicked
+                var button = smMod.gridMenu.click(sm.titleMenu, pos);
+
+console.log(button)
+
+                if(button){
+                    smMod.setState(sm, button.action)
+                }
+
+
+        }
+    }
 });

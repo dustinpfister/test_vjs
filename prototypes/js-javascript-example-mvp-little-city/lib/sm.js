@@ -87,8 +87,8 @@ var smMod = (function(){
     };
 
     api.gridMenu.click = function(menu, pos){
-        var w = menu.cellSize * menu.w,
-        h = menu.cellSize * menu.h; // * menu.buttons.length / menu.w;
+        var w = menu.cellWidth * menu.w,
+        h = menu.cellHeight * menu.h;
         if(utils.boundingBox2( menu.x, menu.y, w, h, pos.x, pos.y, 1, 1 )){
             var x = Math.floor((pos.x - menu.x) / menu.cellWidth);
             var y = Math.floor((pos.y - menu.y) / menu.cellHeight);

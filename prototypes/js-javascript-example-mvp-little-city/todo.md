@@ -89,6 +89,9 @@ The goal here is to just have a MVP to which I might then make oe or more addito
 * The starting money will be different for each setting
 * there can be more than one tolerance setting for each problem
 
+## () - rx - save and load data from local file
+* have a way to save, and load play progress to and from an external data file stored on the local file system 
+
 <!-- Minimum Viable Product -->
 
 Just get a solid MVP togetaher for this phase.
@@ -114,7 +117,9 @@ Just get a solid MVP togetaher for this phase.
 * (done) start a createNew state
 * I should be able to set a name for the city using the gridMenu system
 * have three options for the starting amount of money
-<!-- crateFromFile state -->
+<!-- autoSave -->
+
+<!-- createFromSave state -->
 
 
 * start a createFromFile state

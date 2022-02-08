@@ -91,6 +91,16 @@ The goal here is to just have a MVP to which I might then make oe or more addito
 
 ## () - rx - save and load data from local file
 * have a way to save, and load play progress to and from an external data file stored on the local file system 
+<!-- createFromSave state -->
+* start a create-from-save.js state file
+* if there is one or more cities in local storage show a load city button in title state
+* when the load city button is clicked switch to create from save state
+* have up to six buttons for each save slot for saved cites
+* click a slot that has a city to load it
+
+
+
+
 
 <!-- Minimum Viable Product -->
 
@@ -105,7 +115,6 @@ Just get a solid MVP togetaher for this phase.
 * start and end hooks
 
 ## () - r5 - Title state, New City state, load city state, smMod.GridMenu improvements
-
 <!-- createNew state -->
 * (done) start a main title screen state
 * (done) have a sm.titleMenu with one button that goes to a createNew state
@@ -123,12 +132,7 @@ Just get a solid MVP togetaher for this phase.
 * so then I will want sm.slots.currentIndex and sm.slots.saves array
 * auto save city to the save slot
 * update create new state so that a save slot must be selected as part of create new city process
-<!-- createFromSave state -->
-* start a create-from-save.js state file
-* if there is one or more cities in local storage show a load city button in title state
-* when the load city button is clicked switch to create from save state
-* have up to six buttons for each save slot for saved cites
-* click a slot that has a city to load it
+
 
 ## ( done 02/06/2022 ) - r4 - budget projection, Voice state started, problems collection started
 * (done) display what a current projection is for next years budget in the budget state

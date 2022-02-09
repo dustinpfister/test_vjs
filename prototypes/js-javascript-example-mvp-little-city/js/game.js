@@ -55,7 +55,7 @@ var gameMod = (function(){
         // if loading a city, cellData will be needed
         opt.cellData = opt.cellData || [];
         var game = {
-            name: 'NEW CITY',
+            name: opt.name || 'NEW CITY',
             hardSet: hardSet,
             money: opt.money || 1000,
             population: 0,

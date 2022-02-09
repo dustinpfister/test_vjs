@@ -27,7 +27,7 @@ smMod.load({
                     }
                     return acc;
                 }, []);
-                console.log(cells)
+                console.log(cells);
             }
 
         };

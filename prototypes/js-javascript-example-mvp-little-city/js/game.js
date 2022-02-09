@@ -57,15 +57,15 @@ var gameMod = (function(){
         var game = {
             name: 'NEW CITY',
             hardSet: hardSet,
-            money: 1000, //100,
+            money: opt.money || 1000,
             population: 0,
-            year: 1900,
+            year: opt.year || 1900,
             secsPerYear: 10,
             secs: 0,
             totals: { com:0, res: 0, road:0 },
             problems: { },
             taxRate: {
-                propertyTax: 0.07
+                propertyTax: opt.propertyTax === undefined ? 0.07 : opt.propertyTax
             },
             map: mapMod.create({
                 w: 10,
@@ -422,7 +422,6 @@ var gameMod = (function(){
 
     // The Main gameMod.update method
     api.update = function(game, secs){
-
         // reset, and re tabulate totals
         resetTotals(game);
         var i = 0, len = game.map.cells.length, cell;
@@ -431,7 +430,6 @@ var gameMod = (function(){
             stepTotalsForCell(game, cell);
             i += 1;
         }
-
         // global population defaulting to zero
         game.population = 0;
         // single loop of cells here in the main app loop
@@ -445,14 +443,12 @@ var gameMod = (function(){
             game.population += cell.data.population;
             i += 1;
         };
-
         // create index values for game.problems
         Object.keys(PROBLEMS.popDelta).forEach(function(problemKey){
              var p = game.problems[problemKey];
              p.index = p.index / p.count;
              p.index = String(p.index) === 'NaN' ? 0 : p.index;
         });
-
         // new year?
         game.secs += secs;
         var spy = game.secsPerYear;

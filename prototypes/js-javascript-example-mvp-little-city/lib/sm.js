@@ -32,13 +32,11 @@ var smMod = (function(){
             currentState: opt.currentState || STATES[0].stateKey,
             stateObj: {}
         };
-
         // just a click event as of r0 of this
         sm.canvas.addEventListener('click', function(e){
             var pos = utils.getCanvasRelative(e);
             sm.stateObj.events.click(e, pos, sm);
         });
-
         api.setState(sm, sm.currentState);
         return sm;
     };

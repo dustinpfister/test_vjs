@@ -3,7 +3,19 @@ smMod.load({
     update: function(sm, secs){
 
         // save slots
-        sm.saveSlots = [];
+        sm.saves = {
+            slots: [],
+            currentIndex: 0
+        };
+
+        // save the given game object to the current index
+        // or save and change index
+        sm.saves.saveGame = function(game, slotIndex){
+
+              
+
+        };
+
         // try to load city data
         var saveStr = utils.ws.get('app-mvp-little-city', {
            onDisabled: function(){

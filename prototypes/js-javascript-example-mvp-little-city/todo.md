@@ -128,6 +128,7 @@ Just get a solid MVP togetaher for this phase.
 * (done) have three options for the starting amount of money
 * (done) show white space some how
 <!-- sm.slots obj, autoSave -->
+* (done) I will want a utils.ws object that will contain web storage helper functions
 * have six save slots for citys that will be stored by way of local storage
 * so then I will want sm.slots.currentIndex and sm.slots.saves array
 * auto save city to the save slot

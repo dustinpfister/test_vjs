@@ -103,6 +103,7 @@ smMod.load({
             ]
         });
 
+        // the budget menu
         sm.budgetMenu = smMod.gridMenu.create({
             x: 420,
             y: 128,
@@ -115,7 +116,7 @@ smMod.load({
             ]
         });
 
-        // create game object
+        // create a clean blank game object at this point
         sm.game = gameMod.create({
             cellData: []
         });

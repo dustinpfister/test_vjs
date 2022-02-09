@@ -129,9 +129,11 @@ Just get a solid MVP togetaher for this phase.
 * (done) show white space some how
 <!-- sm.slots obj, autoSave -->
 * (done) I will want a utils.ws object that will contain web storage helper functions
-* have six save slots for citys that will be stored by way of local storage
-* so then I will want sm.slots.currentIndex and sm.slots.saves array
-* auto save city to the save slot
+* (done) have a sm.saves object that will contain a sm.saves.slots array
+* (done) so then I will want sm.saves.currentIndex that will be the current index to use in sm.saves.slots
+* (done) auto save city to the save slot
+<!-- createFromSaves state -->
+* start a createFromSaves state
 * update create new state so that a save slot must be selected as part of create new city process
 
 

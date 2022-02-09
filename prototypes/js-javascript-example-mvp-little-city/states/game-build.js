@@ -11,7 +11,7 @@ smMod.load({
         gameMod.update(sm.game, secs);
 
         // call sm.saveGame
-        sm.saves.saveGame(sm.game, { secs: secs});
+        sm.saveGame(sm.game, { secs: secs});
         
 
         // if we have a selected cell

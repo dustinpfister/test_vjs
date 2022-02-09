@@ -12,14 +12,15 @@ smMod.load({
 
         // save the given game object to the current index
         // or save and change index
-        sm.saves.saveGame = function(game, opt){
+        sm.saveGame = function(game, opt){
             var s = sm.saves;
             opt = opt || {};
             s.secs += opt.secs === undefined ? 0 : opt.secs;
             if(s.secs >= s.saveRate){
                 s.secs = 0;
                 console.log('autosave...');
-                var cells = game.map.cells.reduce(function(acc, cell){
+                // create cellData
+                var cellData = game.map.cells.reduce(function(acc, cell){
                     if(cell.data.unit){
                         acc.push({
                             x: cell.x, y: cell.y, unitKey: cell.data.unit.unitKey
@@ -27,7 +28,18 @@ smMod.load({
                     }
                     return acc;
                 }, []);
-                console.log(cells);
+                // the game options object to store
+                var gameOpt = {
+                    name: game.name,
+                    money: game.money,
+                    propertyTax: game.taxRate.propertyTax,
+                    cellData: cellData 
+                };
+                // set the current index in slots to this gameOpt object
+                s.slots[s.currentIndex] = gameOpt;
+                // create a string of sm.saves
+                var saveStr = JSON.stringify(s)
+                console.log(saveStr);
             }
 
         };

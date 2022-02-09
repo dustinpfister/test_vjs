@@ -7,7 +7,14 @@ smMod.load({
     },
     update: function(sm, secs){
         var sDat = sm.stateObj.data;
+        // call main game update method
         gameMod.update(sm.game, secs);
+
+        // call sm.saveGame
+        sm.saves.saveGame(sm.game, { secs: secs});
+        
+
+        // if we have a selected cell
         if(sDat.selectedCell){
             var cell = sDat.selectedCell;
             var cInfo = sDat.cellInfo = {

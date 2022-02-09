@@ -5,14 +5,21 @@ smMod.load({
         // save slots
         sm.saves = {
             slots: [],
+            secs: 0,
+            saveRate: 3,
             currentIndex: 0
         };
 
         // save the given game object to the current index
         // or save and change index
-        sm.saves.saveGame = function(game, slotIndex){
-
-              
+        sm.saves.saveGame = function(game, opt){
+            var s = sm.saves;
+            opt = opt || {};
+            s.secs += opt.secs === undefined ? 0 : opt.secs;
+            if(s.secs >= s.saveRate){
+                s.secs = 0;
+                console.log('autosave...')
+            }
 
         };
 

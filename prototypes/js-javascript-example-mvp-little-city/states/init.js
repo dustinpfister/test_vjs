@@ -4,18 +4,18 @@ smMod.load({
 
         // save slots
         sm.saveSlots = [];
-
+        // try to load city data
         var saveStr = utils.ws.get('app-mvp-little-city', {
            onDisabled: function(){
               // this can be used to inform a user that webStoarge seems to not be working
-              console.warn('Web Storage seems to not be working')
+              console.warn('Web Storage seems to not be working!?')
            }
         });
-
+        // if we have a save string
         if(saveStr){
             console.log(saveStr);
         }else{
-            console.log('No Save String found, not city data will be loaded');
+            console.log('No Save String found, no city data will be loaded');
         }
 
 

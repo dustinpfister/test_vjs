@@ -2,6 +2,9 @@ smMod.load({
     stateKey: 'init',
     update: function(sm, secs){
 
+        // app name use for saves
+        sm.appName = 'app-mvp-little-city';
+
         // save slots
         sm.saves = {
             slots: [],
@@ -40,12 +43,19 @@ smMod.load({
                 // create a string of sm.saves
                 var saveStr = JSON.stringify(s)
                 console.log(saveStr);
+                utils.ws.set(sm.appName, saveStr, {
+                    onDisabled: function(){
+                        // this can be used to inform a user that webStoarge seems to not be working
+                        console.warn('Web Storage seems to not be working!?')
+                    }
+                });
+                
             }
 
         };
 
         // try to load city data
-        var saveStr = utils.ws.get('app-mvp-little-city', {
+        var saveStr = utils.ws.get(sm.appName, {
            onDisabled: function(){
               // this can be used to inform a user that webStoarge seems to not be working
               console.warn('Web Storage seems to not be working!?')

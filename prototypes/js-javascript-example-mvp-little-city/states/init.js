@@ -2,6 +2,23 @@ smMod.load({
     stateKey: 'init',
     update: function(sm, secs){
 
+        // save slots
+        sm.saveSlots = [];
+
+        var saveStr = utils.ws.get('app-mvp-little-city', {
+           onDisabled: function(){
+              // this can be used to inform a user that webStoarge seems to not be working
+              console.warn('Web Storage seems to not be working')
+           }
+        });
+
+        if(saveStr){
+            console.log(saveStr);
+        }else{
+            console.log('No Save String found, not city data will be loaded');
+        }
+
+
 
         // select game difficulty createNew state
         sm.selectDiffMenu = smMod.gridMenu.create({

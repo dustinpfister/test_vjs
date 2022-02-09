@@ -95,3 +95,79 @@ utils.getCanvasRelative = function (e) {
     pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
     return pos;
 };
+
+//
+//  STORAGE
+//
+
+
+utils.ws = (function () {
+    var ws = {};
+    // private test function
+    var test = function () {
+        if (!localStorage) {
+            return false;
+        }
+        // save a test object for key ws-test
+        localStorage.setItem('ws-test', JSON.stringify({
+                value: 'foo'
+            }));
+        // try to now get what we just saved
+        var string = localStorage.getItem('ws-test');
+        if (string) {
+            // so we have a string parse to an object
+            try {
+                var result = JSON.parse(string);
+            } catch (e) {
+                return false;
+            }
+            // so we have an object, is are test value there?
+            var pass = result.value === 'foo';
+            // in any case remove the item
+            localStorage.removeItem('ws-test');
+            // return result of pass boolean if all is well it should be true
+            return pass;
+        }
+        return false;
+    }
+    // public test function
+    ws.test = function (opt) {
+        opt = opt || {};
+        opt.onDisabled = opt.onDisabled || function () {};
+        // feature test for local storage
+        if (test()) {
+            return true;
+        }
+        opt.onDisabled.call(opt, opt, 'ws-test');
+        return false;
+
+    };
+    // get an item with local storage
+    ws.get = function (key, opt) {
+        opt = opt || {};
+        opt.onDisabled = opt.onDisabled || function () {};
+        // feature test for local storage
+        if (test()) {
+            var mess = localStorage.getItem(key);
+            if (mess) {
+                return mess;
+            }
+        } else {
+            opt.onDisabled.call(opt, opt, key);
+        }
+        return '';
+    };
+    // set an item with local storage
+    ws.set = function (key, value, opt) {
+        opt = opt || {};
+        opt.onDisabled = opt.onDisabled || function () {};
+        if (test()) {
+            localStorage.setItem(key, value);
+        } else {
+            opt.onDisabled.call(opt, opt, key);
+        }
+    };
+    // return ws
+    return ws;
+}
+    ());

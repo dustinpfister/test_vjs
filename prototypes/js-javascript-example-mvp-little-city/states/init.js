@@ -18,7 +18,16 @@ smMod.load({
             s.secs += opt.secs === undefined ? 0 : opt.secs;
             if(s.secs >= s.saveRate){
                 s.secs = 0;
-                console.log('autosave...')
+                console.log('autosave...');
+                var cells = game.map.cells.reduce(function(acc, cell){
+                    if(cell.data.unit){
+                        acc.push({
+                            x: cell.x, y: cell.y, unitKey: cell.data.unit.unitKey
+                        });
+                    }
+                    return acc;
+                }, []);
+                console.log(cells)
             }
 
         };

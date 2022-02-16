@@ -13,6 +13,23 @@ smMod.load({
             currentIndex: 0
         };
 
+        // set up the slot menu to be used in createNew and createFromSave states
+        sm.slotMenu = smMod.gridMenu.create({
+            x: 32,
+            y: 32,
+            w: 3, h: 3,
+            currentIndex: 0,
+            cellWidth: 64,
+            cellHeight: 64,
+            buttons: '0123456'.split('').map(function(index){
+                var desc = 'Empty';
+                if(sm.saves[index]){
+                    desc = 'city';
+                }
+                return {desc: desc, index: index};
+            })
+        });
+
         // save the given game object to the current index
         // or save and change index
         sm.saveGame = function(game, opt){

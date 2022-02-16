@@ -135,7 +135,9 @@ Just get a solid MVP togetaher for this phase.
 <!-- createFromSaves state -->
 * (done) start a createFromSaves state
 * (done) I will need a load saved city option in the title state
-* update create new state so that a save slot must be selected as part of create new city process
+* I am going to want a slot select menu defined in init state
+* update createNew state to make use of slot select menu when starting a new city
+* use the slot select menu to load a saved city from a slot if there is a city to load there
 
 
 ## ( done 02/06/2022 ) - r4 - budget projection, Voice state started, problems collection started

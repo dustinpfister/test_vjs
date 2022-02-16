@@ -134,7 +134,7 @@ Just get a solid MVP togetaher for this phase.
 * (done) auto save city to the save slot
 <!-- createFromSaves state -->
 * (done) start a createFromSaves state
-* I will need a load saved city option in the title state
+* (done) I will need a load saved city option in the title state
 * update create new state so that a save slot must be selected as part of create new city process
 
 

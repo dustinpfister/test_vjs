@@ -114,12 +114,13 @@ smMod.load({
         sm.titleMenu = smMod.gridMenu.create({
             x: 320 - 128,
             y: 200,
-            w: 1, h: 1,
+            w: 1, h: 2,
             currentIndex: 0,
             cellWidth: 256,
             cellHeight: 64,
             buttons: [
-                { desc: 'Start New City', action: 'createNew'}
+                { desc: 'Start New City', action: 'createNew'},
+                { desc: 'Load Saved City', action: 'createFromSave'}
             ]
         });
 

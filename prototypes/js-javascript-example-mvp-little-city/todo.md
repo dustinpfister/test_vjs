@@ -133,7 +133,8 @@ Just get a solid MVP togetaher for this phase.
 * (done) so then I will want sm.saves.currentIndex that will be the current index to use in sm.saves.slots
 * (done) auto save city to the save slot
 <!-- createFromSaves state -->
-* start a createFromSaves state
+* (done) start a createFromSaves state
+* I will need a load saved city option in the title state
 * update create new state so that a save slot must be selected as part of create new city process
 
 

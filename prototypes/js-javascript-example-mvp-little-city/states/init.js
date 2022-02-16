@@ -21,7 +21,6 @@ smMod.load({
             s.secs += opt.secs === undefined ? 0 : opt.secs;
             if(s.secs >= s.saveRate){
                 s.secs = 0;
-                console.log('autosave...');
                 // create cellData
                 var cellData = game.map.cells.reduce(function(acc, cell){
                     if(cell.data.unit){
@@ -41,8 +40,8 @@ smMod.load({
                 // set the current index in slots to this gameOpt object
                 s.slots[s.currentIndex] = gameOpt;
                 // create a string of sm.saves
-                var saveStr = JSON.stringify(s)
-                console.log(saveStr);
+                var saveStr = JSON.stringify(s);
+                console.log('current slot auto save.');
                 utils.ws.set(sm.appName, saveStr, {
                     onDisabled: function(){
                         // this can be used to inform a user that webStoarge seems to not be working

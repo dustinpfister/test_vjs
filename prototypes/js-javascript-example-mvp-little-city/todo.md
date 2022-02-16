@@ -135,6 +135,10 @@ Just get a solid MVP togetaher for this phase.
 * (done) use the slot select menu to load a saved city from a slot if there is a city to load there
 <!-- more to do for r5-->
 * update createNew state to make use of slot select menu when starting a new city
+* add start and end hooks for states
+* add a sm.createSaveSlotMenu method
+* call sm.createSaveSlotMenu for the first time in init state
+* for each start hook of createNew and createFromSave states call the sm.createSaveSlotMenu method
 
 
 ## ( done 02/06/2022 ) - r4 - budget projection, Voice state started, problems collection started

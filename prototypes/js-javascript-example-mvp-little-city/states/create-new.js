@@ -40,7 +40,7 @@ smMod.load({
                     // if # ( END )
                     if( code === 35 ){
                         if(sm.game.name.length >= 1 && sm.game.name[0] != ' '){
-                            smMod.setState(sm, 'gameBuild')
+                            smMod.setState(sm, 'gameBuild');
                         }
                     }
                     // if < ( DEL )

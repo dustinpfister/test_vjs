@@ -115,29 +115,25 @@ Just get a solid MVP togetaher for this phase.
 * start and end hooks
 
 ## () - r5 - Title state, New City state, load city state, smMod.GridMenu improvements
-<!-- createNew state -->
 * (done) start a main title screen state
 * (done) have a sm.titleMenu with one button that goes to a createNew state
-<!-- smMod.gridMenu and draw -->
 * (done) allow for setting width and heigh of objects rater than just a single size for gridMenu in lib/sm.js
 * (done) make any needed changes to draw.menu for new width and height values
 * (done) fix text position in draw.menu
-<!-- createNew state -->
 * (done) start a createNew state
 * (done) I should be able to set a name for the city using the gridMenu system
 * (done) have three options for the starting amount of money
 * (done) show white space some how
-<!-- sm.slots obj, autoSave -->
 * (done) I will want a utils.ws object that will contain web storage helper functions
 * (done) have a sm.saves object that will contain a sm.saves.slots array
 * (done) so then I will want sm.saves.currentIndex that will be the current index to use in sm.saves.slots
 * (done) auto save city to the save slot
-<!-- createFromSaves state -->
 * (done) start a createFromSaves state
 * (done) I will need a load saved city option in the title state
 * (done) I am going to want a slot select menu defined in init state
-* in init state parse the save string as the value for
-* use the slot select menu to load a saved city from a slot if there is a city to load there
+* (done) in init state parse the save string as the value for sm.saves
+* (done) use the slot select menu to load a saved city from a slot if there is a city to load there
+<!-- more to do for r5-->
 * update createNew state to make use of slot select menu when starting a new city
 
 

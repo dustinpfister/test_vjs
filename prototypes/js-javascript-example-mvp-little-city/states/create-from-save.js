@@ -18,7 +18,11 @@ smMod.load({
 
             var button = smMod.gridMenu.click(sm.slotMenu, pos);
             if(button){
-console.log(button)
+                var gameOpt = sm.saves.slots[button.index];
+                if(gameOpt){
+                    sm.game =  gameMod.create(gameOpt);
+                            smMod.setState(sm, 'gameBuild');
+                }
             }
 
 
